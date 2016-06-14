@@ -10,5 +10,6 @@ namespace CapaDeNegocios
         Racionamiento,
         CAS,
         PlanillaUnica,
+        cascas,
     }
 }
