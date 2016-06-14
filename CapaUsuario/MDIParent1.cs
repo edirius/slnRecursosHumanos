@@ -151,7 +151,7 @@ namespace CapaUsuario
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Tareo.frmTareo fTareo = new Tareo.frmTareo();
+            Tareo.frmMantenimientoTareo fTareo = new Tareo.frmMantenimientoTareo();
             fTareo.MdiParent = this;
             fTareo.Show();
         }
@@ -175,6 +175,13 @@ namespace CapaUsuario
         {
             Trabajador.frmListaCargo miListaCargos = new Trabajador.frmListaCargo();
             miListaCargos.Show();
+        }
+
+        private void residenteMetaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();
+            fMantenimientoResidenteMeta.MdiParent = this;
+            fMantenimientoResidenteMeta.Show();
         }
     }
 }

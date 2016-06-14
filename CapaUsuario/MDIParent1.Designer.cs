@@ -51,6 +51,7 @@
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeTrabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mantenimientoDeCargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,7 +84,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.mantenimientoDeCargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.residenteMetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -261,7 +262,8 @@
             // 
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mantenimientoDeTrabajadoresToolStripMenuItem,
-            this.mantenimientoDeCargosToolStripMenuItem});
+            this.mantenimientoDeCargosToolStripMenuItem,
+            this.residenteMetaToolStripMenuItem});
             this.viewMenu.Name = "viewMenu";
             this.viewMenu.Size = new System.Drawing.Size(86, 20);
             this.viewMenu.Text = "&Trabajadores";
@@ -272,6 +274,13 @@
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Text = "Mantenimiento de Trabajadores";
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeTrabajadoresToolStripMenuItem_Click);
+            // 
+            // mantenimientoDeCargosToolStripMenuItem
+            // 
+            this.mantenimientoDeCargosToolStripMenuItem.Name = "mantenimientoDeCargosToolStripMenuItem";
+            this.mantenimientoDeCargosToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.mantenimientoDeCargosToolStripMenuItem.Text = "Mantenimiento de Cargos";
+            this.mantenimientoDeCargosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeCargosToolStripMenuItem_Click);
             // 
             // toolsMenu
             // 
@@ -522,12 +531,12 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // mantenimientoDeCargosToolStripMenuItem
+            // residenteMetaToolStripMenuItem
             // 
-            this.mantenimientoDeCargosToolStripMenuItem.Name = "mantenimientoDeCargosToolStripMenuItem";
-            this.mantenimientoDeCargosToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.mantenimientoDeCargosToolStripMenuItem.Text = "Mantenimiento de Cargos";
-            this.mantenimientoDeCargosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeCargosToolStripMenuItem_Click);
+            this.residenteMetaToolStripMenuItem.Name = "residenteMetaToolStripMenuItem";
+            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.residenteMetaToolStripMenuItem.Text = "Residente Meta";
+            this.residenteMetaToolStripMenuItem.Click += new System.EventHandler(this.residenteMetaToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -611,6 +620,7 @@
         private System.Windows.Forms.ToolStripMenuItem sUNATToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem motivoFinPeriodoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeCargosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem residenteMetaToolStripMenuItem;
     }
 }
 

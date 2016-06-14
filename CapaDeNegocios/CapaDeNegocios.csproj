@@ -108,14 +108,12 @@
     <Compile Include="Planillas\cIngresos.cs" />
     <Compile Include="Planillas\cPlanilla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResidenteMeta\cResidenteMeta.cs" />
     <Compile Include="Sexo.cs" />
-    <Compile Include="Tareos\cCatalogoTareos.cs" />
-    <Compile Include="Tareos\cCategoria.cs" />
     <Compile Include="Tareos\cDetalleTareo.cs" />
     <Compile Include="Tareos\cDiaTareo.cs" />
-    <Compile Include="Tareos\cObrero.cs" />
+    <Compile Include="Tareos\cOcupacion.cs" />
     <Compile Include="Tareos\cTareo.cs" />
-    <Compile Include="Tareos\enumTipoTareo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
