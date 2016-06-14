@@ -18,7 +18,7 @@ namespace CapaUsuario.Trabajador
             InitializeComponent();
         }
 
-        public cListaTrabajadores miListaTrabajadores = new cListaTrabajadores();
+        public cTrabajador miListaTrabajadores = new cTrabajador();
 
         private void Iniciar()
         {

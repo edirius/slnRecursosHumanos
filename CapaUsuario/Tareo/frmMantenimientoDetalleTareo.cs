@@ -16,7 +16,7 @@ namespace CapaUsuario.Tareo
 
         CapaDeNegocios.Tareos.cDetalleTareo miDetalleTareo = new CapaDeNegocios.Tareos.cDetalleTareo();
         CapaDeNegocios.Tareos.cTareo miTareo = new CapaDeNegocios.Tareos.cTareo();
-        CapaDeNegocios.cListaTrabajadores miListaTrabajadores = new CapaDeNegocios.cListaTrabajadores();
+        CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
 
         public frmMantenimientoDetalleTareo()
         {
@@ -174,7 +174,7 @@ namespace CapaUsuario.Tareo
 
         public void CargarTrabajador(AutoCompleteStringCollection col)
         {
-            oDataTrabajador = miListaTrabajadores.ObtenerListaTrabajadores(true);
+            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
             foreach (DataRow row in oDataTrabajador.Rows)
             {
                 col.Add(row[1].ToString());
