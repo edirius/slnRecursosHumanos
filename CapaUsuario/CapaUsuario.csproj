@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F5BE2ECA-7819-4539-956B-E545D8C97507}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CapaUsuario</RootNamespace>
+    <AssemblyName>CapaUsuario</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AFP\frmAFP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AFP\frmAFP.Designer.cs">
+      <DependentUpon>frmAFP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AFP\frmComisiones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AFP\frmComisiones.Designer.cs">
+      <DependentUpon>frmComisiones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AFP\frmComisionesAFP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AFP\frmComisionesAFP.Designer.cs">
+      <DependentUpon>frmComisionesAFP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AFP\frmListaAFPs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AFP\frmListaAFPs.Designer.cs">
+      <DependentUpon>frmListaAFPs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConvertImage.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MDIParent1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIParent1.Designer.cs">
+      <DependentUpon>MDIParent1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmActividadObra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmActividadObra.Designer.cs">
+      <DependentUpon>frmActividadObra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmDivisionFuncional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmDivisionFuncional.Designer.cs">
+      <DependentUpon>frmDivisionFuncional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmFuncion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmFuncion.Designer.cs">
+      <DependentUpon>frmFuncion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmGrupoFuncional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmGrupoFuncional.Designer.cs">
+      <DependentUpon>frmGrupoFuncional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmListaActividadObra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmListaActividadObra.Designer.cs">
+      <DependentUpon>frmListaActividadObra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmListaGrupoFuncional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmListaGrupoFuncional.Designer.cs">
+      <DependentUpon>frmListaGrupoFuncional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoActividadObra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoActividadObra.Designer.cs">
+      <DependentUpon>frmMantenimientoActividadObra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoDivisionFuncional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoDivisionFuncional.Designer.cs">
+      <DependentUpon>frmMantenimientoDivisionFuncional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoFuncion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoFuncion.Designer.cs">
+      <DependentUpon>frmMantenimientoFuncion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoGrupoFuncional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoGrupoFuncional.Designer.cs">
+      <DependentUpon>frmMantenimientoGrupoFuncional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoMetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoMetas.Designer.cs">
+      <DependentUpon>frmMantenimientoMetas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoProductoProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoProductoProyecto.Designer.cs">
+      <DependentUpon>frmMantenimientoProductoProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoProgramaPresupuestal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmMantenimientoProgramaPresupuestal.Designer.cs">
+      <DependentUpon>frmMantenimientoProgramaPresupuestal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmMeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmMeta.Designer.cs">
+      <DependentUpon>frmMeta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmProductoProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmProductoProyecto.Designer.cs">
+      <DependentUpon>frmProductoProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metas\frmProgramaPresupuestal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmProgramaPresupuestal.Designer.cs">
+      <DependentUpon>frmProgramaPresupuestal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Navegador\frmNavegador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Navegador\frmNavegador.Designer.cs">
+      <DependentUpon>frmNavegador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tareo\frmNuevoTareo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tareo\frmNuevoTareo.Designer.cs">
+      <DependentUpon>frmNuevoTareo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tareo\frmTareo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tareo\frmTareo.Designer.cs">
+      <DependentUpon>frmTareo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmDepartamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmDepartamento.Designer.cs">
+      <DependentUpon>frmDepartamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmListaCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmListaCargo.Designer.cs">
+      <DependentUpon>frmListaCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmListaDistritos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmListaDistritos.Designer.cs">
+      <DependentUpon>frmListaDistritos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmListaTrabajadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmListaTrabajadores.Designer.cs">
+      <DependentUpon>frmListaTrabajadores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmNacionalidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmNacionalidad.Designer.cs">
+      <DependentUpon>frmNacionalidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmNuevoPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmNuevoPeriodo.Designer.cs">
+      <DependentUpon>frmNuevoPeriodo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmNuevoTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmNuevoTrabajador.Designer.cs">
+      <DependentUpon>frmNuevoTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmProvincia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmProvincia.Designer.cs">
+      <DependentUpon>frmProvincia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmTipoVia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmTipoVia.Designer.cs">
+      <DependentUpon>frmTipoVia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmTipoZona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmTipoZona.Designer.cs">
+      <DependentUpon>frmTipoZona.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frnNuevoCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frnNuevoCargo.Designer.cs">
+      <DependentUpon>frnNuevoCargo.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AFP\frmAFP.resx">
+      <DependentUpon>frmAFP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AFP\frmComisiones.resx">
+      <DependentUpon>frmComisiones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AFP\frmComisionesAFP.resx">
+      <DependentUpon>frmComisionesAFP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AFP\frmListaAFPs.resx">
+      <DependentUpon>frmListaAFPs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIParent1.resx">
+      <DependentUpon>MDIParent1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmActividadObra.resx">
+      <DependentUpon>frmActividadObra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmDivisionFuncional.resx">
+      <DependentUpon>frmDivisionFuncional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmFuncion.resx">
+      <DependentUpon>frmFuncion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmGrupoFuncional.resx">
+      <DependentUpon>frmGrupoFuncional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmListaActividadObra.resx">
+      <DependentUpon>frmListaActividadObra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmListaGrupoFuncional.resx">
+      <DependentUpon>frmListaGrupoFuncional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmMantenimientoActividadObra.resx">
+      <DependentUpon>frmMantenimientoActividadObra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmMantenimientoDivisionFuncional.resx">
+      <DependentUpon>frmMantenimientoDivisionFuncional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmMantenimientoFuncion.resx">
+      <DependentUpon>frmMantenimientoFuncion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmMantenimientoGrupoFuncional.resx">
+      <DependentUpon>frmMantenimientoGrupoFuncional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmMantenimientoMetas.resx">
+      <DependentUpon>frmMantenimientoMetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmMantenimientoProductoProyecto.resx">
+      <DependentUpon>frmMantenimientoProductoProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmMantenimientoProgramaPresupuestal.resx">
+      <DependentUpon>frmMantenimientoProgramaPresupuestal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmMeta.resx">
+      <DependentUpon>frmMeta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmProductoProyecto.resx">
+      <DependentUpon>frmProductoProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmProgramaPresupuestal.resx">
+      <DependentUpon>frmProgramaPresupuestal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Navegador\frmNavegador.resx">
+      <DependentUpon>frmNavegador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Tareo\frmNuevoTareo.resx">
+      <DependentUpon>frmNuevoTareo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tareo\frmTareo.resx">
+      <DependentUpon>frmTareo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmDepartamento.resx">
+      <DependentUpon>frmDepartamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmListaCargo.resx">
+      <DependentUpon>frmListaCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmListaDistritos.resx">
+      <DependentUpon>frmListaDistritos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmListaTrabajadores.resx">
+      <DependentUpon>frmListaTrabajadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmNacionalidad.resx">
+      <DependentUpon>frmNacionalidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmNuevoPeriodo.resx">
+      <DependentUpon>frmNuevoPeriodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmNuevoTrabajador.resx">
+      <DependentUpon>frmNuevoTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmProvincia.resx">
+      <DependentUpon>frmProvincia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmTipoVia.resx">
+      <DependentUpon>frmTipoVia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmTipoZona.resx">
+      <DependentUpon>frmTipoZona.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frnNuevoCargo.resx">
+      <DependentUpon>frnNuevoCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.csproj">
+      <Project>{0ad70875-403b-44ad-b9c7-47f27bbebb5d}</Project>
+      <Name>CapaDeDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaDeNegocios\CapaDeNegocios.csproj">
+      <Project>{24921af8-19f7-4b75-a697-f5de39a839a1}</Project>
+      <Name>CapaDeNegocios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NoPhoto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\refresh.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\internet.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sunat\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

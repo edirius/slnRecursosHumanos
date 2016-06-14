@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[tAFP]
+(
+	[IdAFP] INT NOT NULL PRIMARY KEY, 
+    [Nombre] VARCHAR(50) NULL
+)

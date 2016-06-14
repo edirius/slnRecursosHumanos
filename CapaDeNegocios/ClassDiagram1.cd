@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CapaDeNegocios.cTrabajador" Collapsed="true">
+    <Position X="4.5" Y="4.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>MRUAACARUQCAIBEggGECKIZAQAADIEQIADAGSJQEAEA=</HashCode>
+      <FileName>cTrabajador.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="cAFP" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaDeNegocios.Institucion" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAACgAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Institucion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="cGerencia" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaDeNegocios.cGerencia" Collapsed="true">
+    <Position X="2.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cGerencia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CapaDeNegocios.cTrabajadorCas" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>cTrabajadorCas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CapaDeNegocios.cCargo" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cCargo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="cTrabajador" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaDeNegocios.cPeriodo" Collapsed="true">
+    <Position X="2.5" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAADAEAAAwAAAABAABAiAAAQogAAAAAAADAQAAAwAAA=</HashCode>
+      <FileName>cPeriodo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="cTrabajador" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaDeNegocios.cTrabajador276" Collapsed="true">
+    <Position X="2.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cTrabajador276.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CapaDeNegocios.cTrabajadorServicios" Collapsed="true">
+    <Position X="4.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cTrabajadorServicios.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CapaDeNegocios.cObrero" Collapsed="true">
+    <Position X="6.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cObrero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CapaDeNegocios.cPeriodoTipoTrabajador" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAACAAAAAAAACACAAAQAAAAA=</HashCode>
+      <FileName>cPeriodoTipoTrabajador.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="cPeriodo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaDeNegocios.cTipoTrabajador" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAADAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cTipoTrabajador.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="cTrabajador" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaDeNegocios.cPLanilla" Collapsed="true">
+    <Position X="6.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAEAAQACAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>cPLanilla.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CapaDeNegocios.cDetallePlanilla" Collapsed="true">
+    <Position X="6.5" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAgAABAAAAAAAAAACAAAAAAAAAAEEAAAAA=</HashCode>
+      <FileName>cDetallePlanilla.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="cPLanilla" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaDeNegocios.cConceptoIngreso" Collapsed="true">
+    <Position X="8" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAgAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cConceptoIngreso.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="cDetallePlanilla" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaDeNegocios.cConceptoTributo" Collapsed="true">
+    <Position X="6.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAACAAAgABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cConceptoTributo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="cDetallePlanilla" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaDeNegocios.cConceptoAporte" Collapsed="true">
+    <Position X="8.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAASAAAAAAAAAAAgAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cConceptoAporte.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="cDetallePlanilla" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaDeNegocios.conceptos">
+    <Position X="14.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>conceptos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CapaDeNegocios.cAfectaciones" Collapsed="true">
+    <Position X="12.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAEAAAAAAAAQAQAAAAQACAAAAAAAAAAAA=</HashCode>
+      <FileName>cAfectaciones.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CapaDeNegocios.cAFP" Collapsed="true">
+    <Position X="2.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAABACAAAAAAAACAAAACgCAAAgAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>cAFP.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="cComisionesAFP" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CapaDeNegocios.cComisionesAFP" Collapsed="true">
+    <Position X="4.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIgAAAAIAABAAAACQAACgAAAAqAAAAICAAACAg=</HashCode>
+      <FileName>cComisionesAFP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="CapaDeNegocios.EnumSexo">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Sexo.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="CapaDeNegocios.enumPlanilla">
+    <Position X="8.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAEAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>enumPlanilla.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

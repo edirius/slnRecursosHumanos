@@ -1,0 +1,180 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using CapaDeDatos;
+using CapaDeNegocios.Obras;
+
+namespace CapaUsuario
+{
+    public partial class frmPrincipal : Form
+    {
+        
+
+        public frmPrincipal()
+        {
+            InitializeComponent();
+        }
+
+        private void ShowNewForm(object sender, EventArgs e)
+        {
+            Metas.frmProgramaPresupuestal fProgramaPresupuestal = new Metas.frmProgramaPresupuestal();
+            fProgramaPresupuestal.MdiParent = this;
+            fProgramaPresupuestal.Show();
+        }
+
+        private void OpenFile(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                string FileName = openFileDialog.FileName;
+            }
+        }
+
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                string FileName = saveFileDialog.FileName;
+            }
+        }
+
+        private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Metas.frmProductoProyecto fProductoProyecto = new Metas.frmProductoProyecto();
+            fProductoProyecto.MdiParent = this;
+            fProductoProyecto.Show();
+        }
+
+        private void TileVerticalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Metas.frmActividadObra fActividadObra = new Metas.frmActividadObra();
+            fActividadObra.MdiParent = this;
+            fActividadObra.Show();
+        }
+
+        private void TileHorizontalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Metas.frmFuncion fFuncion = new Metas.frmFuncion();
+            fFuncion.MdiParent = this;
+            fFuncion.Show();
+        }
+
+        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Metas.frmGrupoFuncional fGrupo = new Metas.frmGrupoFuncional();
+            fGrupo.MdiParent = this;
+            fGrupo.Show();
+        }
+
+        private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Metas.frmDivisionFuncional fDivisionFuncional = new Metas.frmDivisionFuncional();
+            fDivisionFuncional.MdiParent = this;
+            fDivisionFuncional.Show();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AFP.frmComisionesAFP fComisionesAFP = new AFP.frmComisionesAFP();
+
+            fComisionesAFP.miListaAFP = new CapaDeNegocios.cListaAFP();
+            
+            fComisionesAFP.miListaAFP.ObtenerListaAFP();
+            fComisionesAFP.MdiParent = this;
+            fComisionesAFP.Show();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                Conexion.IniciarSesion("localhost", "bdPersonal", "root", "bahamut");
+                MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void mantenimientoDeTrabajadoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Trabajador.frmListaTrabajadores fListaTrabajadores = new Trabajador.frmListaTrabajadores();
+            fListaTrabajadores.MdiParent = this;
+            fListaTrabajadores.Show();
+
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Tareo.frmTareo fTareo = new Tareo.frmTareo();
+            fTareo.MdiParent = this;
+            fTareo.Show();
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Metas.frmMantenimientoMetas fMeta = new Metas.frmMantenimientoMetas();
+            fMeta.MdiParent = this;
+            fMeta.Show();
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AFP.frmListaAFPs fListaAFP = new AFP.frmListaAFPs();
+
+            fListaAFP.MdiParent = this;
+            fListaAFP.Show();
+        }
+
+        private void mantenimientoDeCargosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Trabajador.frmListaCargo miListaCargos = new Trabajador.frmListaCargo();
+            miListaCargos.Show();
+        }
+    }
+}
