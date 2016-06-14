@@ -28,201 +28,184 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dtgTareos = new System.Windows.Forms.DataGridView();
-            this.idttareo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idResidente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.lblResidente = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dptFechaFin = new System.Windows.Forms.DateTimePicker();
+            this.txtMeta = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dptFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cboListaMetas = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgTareos)).BeginInit();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chkActivo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // dtgTareos
+            // btnCancelar
             // 
-            this.dtgTareos.AllowUserToAddRows = false;
-            this.dtgTareos.AllowUserToDeleteRows = false;
-            this.dtgTareos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgTareos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idttareo,
-            this.nombre,
-            this.mes,
-            this.idMeta,
-            this.fechaInicio,
-            this.fechaFin,
-            this.idResidente,
-            this.tipo});
-            this.dtgTareos.Location = new System.Drawing.Point(12, 145);
-            this.dtgTareos.Name = "dtgTareos";
-            this.dtgTareos.ReadOnly = true;
-            this.dtgTareos.Size = new System.Drawing.Size(928, 241);
-            this.dtgTareos.TabIndex = 0;
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.BackColor = System.Drawing.Color.MintCream;
+            this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
+            this.btnCancelar.Location = new System.Drawing.Point(456, 120);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 65);
+            this.btnCancelar.TabIndex = 59;
+            this.btnCancelar.Text = "&Cancelar";
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.Btn_Cancelar_Click);
             // 
-            // idttareo
+            // btnAceptar
             // 
-            this.idttareo.DataPropertyName = "idttareo";
-            this.idttareo.HeaderText = "idttareo";
-            this.idttareo.Name = "idttareo";
-            this.idttareo.ReadOnly = true;
-            this.idttareo.Visible = false;
+            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAceptar.BackColor = System.Drawing.Color.MintCream;
+            this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnAceptar.Location = new System.Drawing.Point(375, 120);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 65);
+            this.btnAceptar.TabIndex = 58;
+            this.btnAceptar.Text = "&Aceptar";
+            this.btnAceptar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAceptar.UseVisualStyleBackColor = false;
+            this.btnAceptar.Click += new System.EventHandler(this.Btn_Aceptar_Click);
             // 
-            // nombre
+            // label9
             // 
-            this.nombre.DataPropertyName = "nombre";
-            this.nombre.HeaderText = "Meta";
-            this.nombre.Name = "nombre";
-            this.nombre.ReadOnly = true;
-            this.nombre.Width = 500;
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(371, 41);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 13);
+            this.label9.TabIndex = 55;
+            this.label9.Text = "Fec. Fin :";
             // 
-            // mes
+            // dptFechaFin
             // 
-            this.mes.DataPropertyName = "mes";
-            this.mes.HeaderText = "Mes";
-            this.mes.Name = "mes";
-            this.mes.ReadOnly = true;
+            this.dptFechaFin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dptFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dptFechaFin.Location = new System.Drawing.Point(428, 38);
+            this.dptFechaFin.Name = "dptFechaFin";
+            this.dptFechaFin.Size = new System.Drawing.Size(103, 20);
+            this.dptFechaFin.TabIndex = 54;
             // 
-            // idMeta
+            // txtMeta
             // 
-            this.idMeta.DataPropertyName = "idMeta";
-            this.idMeta.HeaderText = "idMeta";
-            this.idMeta.Name = "idMeta";
-            this.idMeta.ReadOnly = true;
-            this.idMeta.Visible = false;
+            this.txtMeta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMeta.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMeta.Enabled = false;
+            this.txtMeta.Location = new System.Drawing.Point(85, 12);
+            this.txtMeta.Name = "txtMeta";
+            this.txtMeta.Size = new System.Drawing.Size(446, 20);
+            this.txtMeta.TabIndex = 52;
             // 
-            // fechaInicio
+            // label5
             // 
-            this.fechaInicio.DataPropertyName = "fechaInicio";
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.fechaInicio.DefaultCellStyle = dataGridViewCellStyle1;
-            this.fechaInicio.HeaderText = "Fecha de Inicio";
-            this.fechaInicio.Name = "fechaInicio";
-            this.fechaInicio.ReadOnly = true;
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(194, 41);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.TabIndex = 49;
+            this.label5.Text = "Fec. Inicio :";
             // 
-            // fechaFin
+            // label3
             // 
-            this.fechaFin.DataPropertyName = "fechaFin";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.fechaFin.DefaultCellStyle = dataGridViewCellStyle2;
-            this.fechaFin.HeaderText = "Fecha de Fin";
-            this.fechaFin.Name = "fechaFin";
-            this.fechaFin.ReadOnly = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Descripción :";
             // 
-            // idResidente
+            // dptFechaInicio
             // 
-            this.idResidente.DataPropertyName = "idResidente";
-            this.idResidente.HeaderText = "idResidente";
-            this.idResidente.Name = "idResidente";
-            this.idResidente.ReadOnly = true;
-            this.idResidente.Visible = false;
+            this.dptFechaInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dptFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dptFechaInicio.Location = new System.Drawing.Point(262, 38);
+            this.dptFechaInicio.Name = "dptFechaInicio";
+            this.dptFechaInicio.Size = new System.Drawing.Size(103, 20);
+            this.dptFechaInicio.TabIndex = 46;
             // 
-            // tipo
+            // txtDescripcion
             // 
-            this.tipo.DataPropertyName = "tipo";
-            this.tipo.HeaderText = "Tipo";
-            this.tipo.Name = "tipo";
-            this.tipo.ReadOnly = true;
+            this.txtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDescripcion.Location = new System.Drawing.Point(85, 64);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(446, 50);
+            this.txtDescripcion.TabIndex = 44;
             // 
-            // label1
+            // txtNumero
             // 
-            this.label1.BackColor = System.Drawing.Color.LightBlue;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(952, 30);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Lista de Tareos";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Location = new System.Drawing.Point(64, 409);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(144, 37);
-            this.btnNuevo.TabIndex = 2;
-            this.btnNuevo.Text = "Nuevo Tareo";
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(339, 408);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(144, 37);
-            this.btnModificar.TabIndex = 3;
-            this.btnModificar.Text = "Modificar Tareo";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(614, 407);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(144, 37);
-            this.btnEliminar.TabIndex = 4;
-            this.btnEliminar.Text = "Eliminar Tareo";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
-            // lblResidente
-            // 
-            this.lblResidente.BackColor = System.Drawing.Color.LightBlue;
-            this.lblResidente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblResidente.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblResidente.Location = new System.Drawing.Point(0, 30);
-            this.lblResidente.Name = "lblResidente";
-            this.lblResidente.Size = new System.Drawing.Size(952, 30);
-            this.lblResidente.TabIndex = 5;
-            this.lblResidente.Text = "Residente de Obra";
-            this.lblResidente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtNumero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNumero.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNumero.Location = new System.Drawing.Point(85, 38);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(103, 20);
+            this.txtNumero.TabIndex = 43;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 81);
+            this.label2.Location = new System.Drawing.Point(42, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Meta:";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 42;
+            this.label2.Text = "Meta :";
             // 
-            // cboListaMetas
+            // label1
             // 
-            this.cboListaMetas.FormattingEnabled = true;
-            this.cboListaMetas.Location = new System.Drawing.Point(88, 72);
-            this.cboListaMetas.Name = "cboListaMetas";
-            this.cboListaMetas.Size = new System.Drawing.Size(714, 21);
-            this.cboListaMetas.TabIndex = 7;
-            this.cboListaMetas.SelectedIndexChanged += new System.EventHandler(this.cboListaMetas_SelectedIndexChanged);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.TabIndex = 40;
+            this.label1.Text = "Numero :";
+            // 
+            // chkActivo
+            // 
+            this.chkActivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkActivo.AutoSize = true;
+            this.chkActivo.Location = new System.Drawing.Point(85, 120);
+            this.chkActivo.Name = "chkActivo";
+            this.chkActivo.Size = new System.Drawing.Size(56, 17);
+            this.chkActivo.TabIndex = 60;
+            this.chkActivo.Text = "Activo";
+            this.chkActivo.UseVisualStyleBackColor = true;
             // 
             // frmTareo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 462);
-            this.Controls.Add(this.cboListaMetas);
+            this.ClientSize = new System.Drawing.Size(543, 197);
+            this.Controls.Add(this.chkActivo);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.dptFechaFin);
+            this.Controls.Add(this.txtMeta);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dptFechaInicio);
+            this.Controls.Add(this.txtDescripcion);
+            this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.lblResidente);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnModificar);
-            this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtgTareos);
             this.Name = "frmTareo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tareo";
             this.Load += new System.EventHandler(this.frmTareo_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgTareos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,21 +213,18 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dtgTareos;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.Button btnModificar;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Label lblResidente;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker dptFechaFin;
+        private System.Windows.Forms.TextBox txtMeta;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dptFechaInicio;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cboListaMetas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idttareo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idMeta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaInicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaFin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idResidente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chkActivo;
     }
 }

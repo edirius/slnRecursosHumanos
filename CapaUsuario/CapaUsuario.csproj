@@ -185,16 +185,34 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tareo\frmNuevoTareo.cs">
+    <Compile Include="ResidenteMeta\frmMantenimientoResidenteMeta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tareo\frmNuevoTareo.Designer.cs">
-      <DependentUpon>frmNuevoTareo.cs</DependentUpon>
+    <Compile Include="ResidenteMeta\frmMantenimientoResidenteMeta.designer.cs">
+      <DependentUpon>frmMantenimientoResidenteMeta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResidenteMeta\frmResidenteMeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResidenteMeta\frmResidenteMeta.designer.cs">
+      <DependentUpon>frmResidenteMeta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tareo\frmMantenimientoDetalleTareo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tareo\frmMantenimientoDetalleTareo.designer.cs">
+      <DependentUpon>frmMantenimientoDetalleTareo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tareo\frmMantenimientoTareo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tareo\frmMantenimientoTareo.designer.cs">
+      <DependentUpon>frmMantenimientoTareo.cs</DependentUpon>
     </Compile>
     <Compile Include="Tareo\frmTareo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tareo\frmTareo.Designer.cs">
+    <Compile Include="Tareo\frmTareo.designer.cs">
       <DependentUpon>frmTareo.cs</DependentUpon>
     </Compile>
     <Compile Include="Trabajador\frmDepartamento.cs">
@@ -226,6 +244,12 @@
     </Compile>
     <Compile Include="Trabajador\frmNacionalidad.Designer.cs">
       <DependentUpon>frmNacionalidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmNuevoObrero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmNuevoObrero.designer.cs">
+      <DependentUpon>frmNuevoObrero.cs</DependentUpon>
     </Compile>
     <Compile Include="Trabajador\frmNuevoPeriodo.cs">
       <SubType>Form</SubType>
@@ -342,8 +366,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Tareo\frmNuevoTareo.resx">
-      <DependentUpon>frmNuevoTareo.cs</DependentUpon>
+    <EmbeddedResource Include="ResidenteMeta\frmMantenimientoResidenteMeta.resx">
+      <DependentUpon>frmMantenimientoResidenteMeta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResidenteMeta\frmResidenteMeta.resx">
+      <DependentUpon>frmResidenteMeta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tareo\frmMantenimientoDetalleTareo.resx">
+      <DependentUpon>frmMantenimientoDetalleTareo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tareo\frmMantenimientoTareo.resx">
+      <DependentUpon>frmMantenimientoTareo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmTareo.resx">
       <DependentUpon>frmTareo.cs</DependentUpon>
@@ -362,6 +395,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmNacionalidad.resx">
       <DependentUpon>frmNacionalidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmNuevoObrero.resx">
+      <DependentUpon>frmNuevoObrero.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmNuevoPeriodo.resx">
       <DependentUpon>frmNuevoPeriodo.cs</DependentUpon>
