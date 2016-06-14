@@ -132,7 +132,7 @@ namespace CapaUsuario
         {
             try
             {
-                Conexion.IniciarSesion("localhost", "bdPersonal", "root", "bahamut");
+                Conexion.IniciarSesion("192.168.1.133", "bdPersonal", "root", "bahamut");
                 MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
             }
             catch (Exception ex)
