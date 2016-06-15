@@ -64,12 +64,50 @@ namespace CapaUsuario.Tareo
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-
+            bool bOk = false;
+            foreach (DataGridViewRow row in dgvDetalleTareo.Rows)
+            {
+                if (Convert.ToString(row.Cells[1].Value) == "I")
+                {
+                    miDetalleTareo.Categoria = Convert.ToString(row.Cells[8].Value);
+                    miTrabajador.IdTrabajador = Convert.ToInt32(row.Cells[4].Value);
+                    miDetalleTareo.CrearDetalleTareo(miDetalleTareo, miTrabajador, miTareo);
+                    oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(miTareo);
+                    miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(oDataDetalleTareo.Compute("MAX(idtdetalletareo)", ""));
+                    row.Cells[0].Value = miDetalleTareo.IdTDetalleTareo.ToString();
+                    row.Cells[1].Value = "M";
+                    DateTime auxiliar;
+                    for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+                    {
+                        auxiliar = miTareo.FechaInicio.AddDays(i);
+                        miDiasTareo.Fecha = auxiliar;
+                        if (Convert.ToString(row.Cells[10 + i].Value) == "x")
+                        {
+                            miDiasTareo.Estado = true;
+                        }
+                        else
+                        {
+                            miDiasTareo.Estado = false;
+                        }
+                        miDiasTareo.CrearDiasTareo(miDiasTareo, miDetalleTareo);
+                    }
+                    bOk = true;
+                }
+                if (Convert.ToString(row.Cells[1].Value) == "M")
+                {
+                    //miTareo.ModificarTareo(miTareo, miMeta);
+                    bOk = true;
+                }
+            }
+            if (bOk == false)
+            {
+                MessageBox.Show("No existen datos que se puedan registrar", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            
+            DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
         private void dgvDetalleTareo_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -238,7 +276,7 @@ namespace CapaUsuario.Tareo
                 i += 1;
             }
 
-            dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = j;
+            dgvDetalleTareo.Rows[fila].Cells[dgvDetalleTareo.ColumnCount - 1].Value = j;
         }
 
         public void CargarTrabajador(AutoCompleteStringCollection col)

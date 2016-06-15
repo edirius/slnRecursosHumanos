@@ -36,6 +36,7 @@ namespace CapaDeNegocios.Tareos
         {
             Conexion.GDatos.Ejecutar("spCrearDetalleTareo", miDetalleTareo.Categoria, miTrabajador.IdTrabajador, miTareo.IdTTareo);
             return true;
+
         }
 
         public Boolean ModificarDetalleTareo(cDetalleTareo miDetalleTareo, cTrabajador miTrabajador, cTareo miTareo)
