@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CapaDeNegocios
+
+namespace CapaDeNegocios.Trabajador
 {
-    public class Class1
+    public class cTrabajadorServiciosPersonales:cTrabajador 
     {
+        
     }
 }

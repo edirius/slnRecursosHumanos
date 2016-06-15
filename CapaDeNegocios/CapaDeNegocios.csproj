@@ -40,19 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cAfectaciones.cs" />
-    <Compile Include="cAFP.cs" />
-    <Compile Include="cComisionesAFP.cs" />
-    <Compile Include="cConceptoAporte.cs" />
-    <Compile Include="cConceptoIngreso.cs" />
-    <Compile Include="cConceptoTributo.cs" />
+    <Compile Include="AFPP\cAFP.cs" />
+    <Compile Include="AFPP\cComisionesAFP.cs" />
     <Compile Include="cDepartamento.cs" />
-    <Compile Include="cDetallePlanilla.cs" />
     <Compile Include="cDistrito.cs" />
     <Compile Include="cEnumTipoDia.cs" />
-    <Compile Include="cGerencia.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="cListaAFP.cs" />
+    <Compile Include="AFPP\cListaAFP.cs" />
     <Compile Include="cNacionalidad.cs" />
     <Compile Include="cObrero.cs" />
     <Compile Include="conceptos.cs" />
@@ -72,9 +65,6 @@
     <Compile Include="cTipoVia.cs" />
     <Compile Include="cTipoZona.cs" />
     <Compile Include="cTrabajador.cs" />
-    <Compile Include="cTrabajador276.cs" />
-    <Compile Include="cTrabajadorCas.cs" />
-    <Compile Include="cTrabajadorServicios.cs" />
     <Compile Include="DatosLaborales\cDatosLaborales.cs" />
     <Compile Include="DatosLaborales\cFinPeriodo.cs" />
     <Compile Include="DatosLaborales\cMotivoFinPeriodo.cs" />
