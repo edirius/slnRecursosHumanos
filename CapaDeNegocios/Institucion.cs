@@ -11,15 +11,6 @@ namespace CapaDeNegocios
         private string ruc;
         private string email;
 
-        public cGerencia cGerencia
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+       
     }
 }
