@@ -94,6 +94,7 @@ namespace CapaUsuario.Tareo
                 foreach (DataRow row in oDataTrabajador.Select("dni = '" + dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value + "'"))
                 {
                     contador += 1;
+                    dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value = "I";
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[3].Value = e.RowIndex + 1;
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[4].Value = row[0].ToString();
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[5].Value = row[3].ToString() + " " + row[4].ToString() + ", " + row[2].ToString();
