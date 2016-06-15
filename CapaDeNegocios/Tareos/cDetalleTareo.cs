@@ -32,15 +32,15 @@ namespace CapaDeNegocios.Tareos
             return Conexion.GDatos.TraerDataTable("spListarDetalleTareo", miTareo.IdTTareo);
         }
 
-        public Boolean CrearDetalleTareo(cDetalleTareo miDetalleTareo, cOcupacion miOcupacion, cTrabajador miTrabajador, cTareo miTareo)
+        public Boolean CrearDetalleTareo(cDetalleTareo miDetalleTareo, cTrabajador miTrabajador, cTareo miTareo)
         {
-            Conexion.GDatos.Ejecutar("spCrearDetalleTareo", miDetalleTareo.Categoria, miOcupacion.IdTOcupacion, miTrabajador.IdTrabajador, miTareo.IdTTareo);
+            Conexion.GDatos.Ejecutar("spCrearDetalleTareo", miDetalleTareo.Categoria, miTrabajador.IdTrabajador, miTareo.IdTTareo);
             return true;
         }
 
-        public Boolean ModificarDetalleTareo(cDetalleTareo miDetalleTareo, cOcupacion miOcupacion, cTrabajador miTrabajador, cTareo miTareo)
+        public Boolean ModificarDetalleTareo(cDetalleTareo miDetalleTareo, cTrabajador miTrabajador, cTareo miTareo)
         {
-            Conexion.GDatos.Ejecutar("spModificarDetalleTareo", miDetalleTareo.IdTDetalleTareo, miDetalleTareo.Categoria, miOcupacion.IdTOcupacion, miTrabajador.IdTrabajador, miTareo.IdTTareo);
+            Conexion.GDatos.Ejecutar("spModificarDetalleTareo", miDetalleTareo.IdTDetalleTareo, miDetalleTareo.Categoria, miTrabajador.IdTrabajador, miTareo.IdTTareo);
             return true;
         }
 

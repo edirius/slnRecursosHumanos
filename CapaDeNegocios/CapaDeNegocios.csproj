@@ -110,7 +110,7 @@
     <Compile Include="ResidenteMeta\cResidenteMeta.cs" />
     <Compile Include="Sexo.cs" />
     <Compile Include="Tareos\cDetalleTareo.cs" />
-    <Compile Include="Tareos\cDiaTareo.cs" />
+    <Compile Include="Tareos\cDiasTareo.cs" />
     <Compile Include="Tareos\cOcupacion.cs" />
     <Compile Include="Tareos\cTareo.cs" />
   </ItemGroup>
