@@ -5,11 +5,19 @@ using System.Text;
 using CapaDeNegocios.DatosLaborales;
 using System.Data;
 using CapaDeDatos;
+using CapaDeNegocios.Trabajadores;
 
 namespace CapaDeNegocios
 {
     public class cPeriodo
     {
+        public cPeriodo(cTrabajadorServidorPersonal miTrabajador)
+        {
+            trabajadorServidorPersonal = miTrabajador;
+            fechaFin = new cFinPeriodo();
+            motivoFinPeriodo = new cMotivoFinPeriodo();
+        }
+
         private int codigo;
 
         /// <summary>
@@ -55,20 +63,6 @@ namespace CapaDeNegocios
             set { motivoFinPeriodo = value; }
         }
 
-       
-
-        /// <summary>
-        /// Lista de los Periodos del Sistema de Pensiones
-        /// </summary>
-        private cPeriodoSistemaPension[] periodosSistemaPension;
-
-        public cPeriodoSistemaPension[] PeriodosSistemaPension
-        {
-            get { return periodosSistemaPension; }
-            set { periodosSistemaPension = value; }
-        } 
-
-
         private DataTable listaPeriodos;
 
         public DataTable ListaPeriodos
@@ -77,64 +71,63 @@ namespace CapaDeNegocios
             set { listaPeriodos = value; }
         }
 
+        public cTrabajadorServidorPersonal TrabajadorServidorPersonal
+        {
+            get
+            {
+                return trabajadorServidorPersonal;
+            }
+
+            set
+            {
+                trabajadorServidorPersonal = value;
+            }
+        }
+
         public DataTable TraerPeriodos(int codigoTrabajador)
         {
             listaPeriodos = Conexion.GDatos.TraerDataTable("spTraerPeriodosTrabajador", codigoTrabajador);
             return listaPeriodos;
         }
 
-        public Boolean CrearPeriodo(cPeriodo miPeriodo, int codigoTrabajador)
+        public Boolean CrearPeriodo(cPeriodo miPeriodo)
         {
             ValidarPeriodo(miPeriodo);
             if (miPeriodo.fechaFin.TieneFin)
             {
-                Conexion.GDatos.Ejecutar("spCrearPeriodo", codigoTrabajador, miPeriodo.fechaInicio, miPeriodo.FechaFin, miPeriodo.motivoFinPeriodo.Codigo);
+                Conexion.GDatos.Ejecutar("spCrearPeriodo", miPeriodo.trabajadorServidorPersonal.IdTrabajador, miPeriodo.fechaInicio, miPeriodo.FechaFin, miPeriodo.motivoFinPeriodo.Codigo);
             }
             else
             {
-                Conexion.GDatos.Ejecutar("spCrearPeriodo", codigoTrabajador, miPeriodo.fechaInicio, null, null);
+                Conexion.GDatos.Ejecutar("spCrearPeriodo", miPeriodo.trabajadorServidorPersonal.IdTrabajador, miPeriodo.fechaInicio, null, null);
             }
                  return true;
         }
 
-        private Boolean ValidarPeriodo(cPeriodo miPeriodo)
+        public void ValidarPeriodo(cPeriodo miPeriodo)
         {
-            if (listaPeriodos.Rows.Count > 0)
+            DataTable tAuxiliar;
+            tAuxiliar = Conexion.GDatos.TraerDataTable("spValidarPeriodoFechaInicio", miPeriodo.FechaInicio, miPeriodo.TrabajadorServidorPersonal.IdTrabajador);
+            if (Convert.ToInt16(tAuxiliar.Rows[0][0].ToString()) == 1)
             {
-                DateTime fechaInicioAuxiliar;
-                DateTime fechaFinAuxiliar;
-
-                for (int i = 0; i < listaPeriodos.Rows.Count ; i++)
-                {
-                    fechaInicioAuxiliar = Convert.ToDateTime(listaPeriodos.Rows[i][2]);
-                    fechaFinAuxiliar = Convert.ToDateTime(listaPeriodos.Rows[i][3]);
-
-                    if (miPeriodo.fechaInicio < fechaFinAuxiliar)
-                    {
-                        throw new Exception("La fecha de inicio debe ser mayor a la ultima fecha de periodo");
-                    }
-                    else
-                    {
-                        return true;
-                    }
-                }
-                return true;
+                throw new cReglaNegociosException(tAuxiliar.Rows[0][1].ToString());
             }
-            else
+            tAuxiliar = Conexion.GDatos.TraerDataTable("spValidarPeriodoFechaFin", miPeriodo.FechaFin.FechaFin, miPeriodo.TrabajadorServidorPersonal.IdTrabajador);
+            if (Convert.ToInt16(tAuxiliar.Rows[0][0].ToString()) == 1)
             {
-                return false;
+                throw new cReglaNegociosException(tAuxiliar.Rows[0][1].ToString());
             }
         }
 
-        public Boolean ModificarPeriodo (cPeriodo miPeriodo, int codigoTrabajador)
+        public Boolean ModificarPeriodo (cPeriodo miPeriodo)
         {
             if (miPeriodo.fechaFin.TieneFin)
             {
-                Conexion.GDatos.Ejecutar("spModificarPeriodo", miPeriodo.codigo, codigoTrabajador, miPeriodo.fechaInicio, miPeriodo.FechaFin.FechaFin, miPeriodo.motivoFinPeriodo.Codigo);
+                Conexion.GDatos.Ejecutar("spModificarPeriodo", miPeriodo.codigo, miPeriodo.trabajadorServidorPersonal.IdTrabajador, miPeriodo.fechaInicio, miPeriodo.FechaFin.FechaFin, miPeriodo.motivoFinPeriodo.Codigo);
             }
             else
             {
-                Conexion.GDatos.Ejecutar("spModificarPeriodo", miPeriodo.codigo, codigoTrabajador, miPeriodo.fechaInicio, DBNull.Value, DBNull.Value);
+                Conexion.GDatos.Ejecutar("spModificarPeriodo", miPeriodo.codigo, miPeriodo.trabajadorServidorPersonal.IdTrabajador, miPeriodo.fechaInicio, DBNull.Value, DBNull.Value);
             }
             
             return true;
@@ -146,15 +139,7 @@ namespace CapaDeNegocios
             return true;
         }
 
-        public cTrabajador cTrabajador
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        private cTrabajadorServidorPersonal trabajadorServidorPersonal; 
+       
     }
 }

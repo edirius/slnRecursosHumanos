@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabTrabajador = new System.Windows.Forms.TabControl();
             this.tabDatosGenerales = new System.Windows.Forms.TabPage();
             this.txtDistrito = new System.Windows.Forms.TextBox();
@@ -88,6 +88,15 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabDatosContrato = new System.Windows.Forms.TabPage();
+            this.label30 = new System.Windows.Forms.Label();
+            this.cboTipoContrato = new System.Windows.Forms.ComboBox();
+            this.groupTipoServidorPersonal = new System.Windows.Forms.GroupBox();
+            this.rdnPorPeriodo = new System.Windows.Forms.RadioButton();
+            this.rdnNombrado = new System.Windows.Forms.RadioButton();
+            this.groupTipoContrato = new System.Windows.Forms.GroupBox();
+            this.rdnResidenteDeObra = new System.Windows.Forms.RadioButton();
+            this.rdnServiciosNoPersonales = new System.Windows.Forms.RadioButton();
+            this.rdnServiciosPersonales = new System.Windows.Forms.RadioButton();
             this.cboListaCargos = new System.Windows.Forms.ComboBox();
             this.txtNumeroContrato = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -127,25 +136,16 @@
             this.idtmotivofinperiodo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
-            this.groupTipoContrato = new System.Windows.Forms.GroupBox();
-            this.rdnServiciosPersonales = new System.Windows.Forms.RadioButton();
-            this.rdnServiciosNoPersonales = new System.Windows.Forms.RadioButton();
-            this.rdnResidenteDeObra = new System.Windows.Forms.RadioButton();
-            this.groupTipoServidorPersonal = new System.Windows.Forms.GroupBox();
-            this.rdnNombrado = new System.Windows.Forms.RadioButton();
-            this.rdnPorPeriodo = new System.Windows.Forms.RadioButton();
-            this.cboTipoContrato = new System.Windows.Forms.ComboBox();
-            this.label30 = new System.Windows.Forms.Label();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.tabDatosContrato.SuspendLayout();
+            this.groupTipoServidorPersonal.SuspendLayout();
+            this.groupTipoContrato.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContratos)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPeriodos)).BeginInit();
-            this.groupTipoContrato.SuspendLayout();
-            this.groupTipoServidorPersonal.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabTrabajador
@@ -706,6 +706,103 @@
             this.tabDatosContrato.UseVisualStyleBackColor = true;
             this.tabDatosContrato.Enter += new System.EventHandler(this.tabDatosContrato_Enter);
             // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(525, 113);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(71, 13);
+            this.label30.TabIndex = 22;
+            this.label30.Text = "Tipo Contrato";
+            // 
+            // cboTipoContrato
+            // 
+            this.cboTipoContrato.FormattingEnabled = true;
+            this.cboTipoContrato.Location = new System.Drawing.Point(525, 135);
+            this.cboTipoContrato.Name = "cboTipoContrato";
+            this.cboTipoContrato.Size = new System.Drawing.Size(221, 21);
+            this.cboTipoContrato.TabIndex = 21;
+            // 
+            // groupTipoServidorPersonal
+            // 
+            this.groupTipoServidorPersonal.Controls.Add(this.rdnPorPeriodo);
+            this.groupTipoServidorPersonal.Controls.Add(this.rdnNombrado);
+            this.groupTipoServidorPersonal.Enabled = false;
+            this.groupTipoServidorPersonal.Location = new System.Drawing.Point(8, 82);
+            this.groupTipoServidorPersonal.Name = "groupTipoServidorPersonal";
+            this.groupTipoServidorPersonal.Size = new System.Drawing.Size(404, 74);
+            this.groupTipoServidorPersonal.TabIndex = 20;
+            this.groupTipoServidorPersonal.TabStop = false;
+            this.groupTipoServidorPersonal.Text = "Tipo Servidor Personal";
+            // 
+            // rdnPorPeriodo
+            // 
+            this.rdnPorPeriodo.AutoSize = true;
+            this.rdnPorPeriodo.Location = new System.Drawing.Point(236, 31);
+            this.rdnPorPeriodo.Name = "rdnPorPeriodo";
+            this.rdnPorPeriodo.Size = new System.Drawing.Size(133, 17);
+            this.rdnPorPeriodo.TabIndex = 1;
+            this.rdnPorPeriodo.TabStop = true;
+            this.rdnPorPeriodo.Text = "Trabajador por Periodo";
+            this.rdnPorPeriodo.UseVisualStyleBackColor = true;
+            // 
+            // rdnNombrado
+            // 
+            this.rdnNombrado.AutoSize = true;
+            this.rdnNombrado.Location = new System.Drawing.Point(7, 31);
+            this.rdnNombrado.Name = "rdnNombrado";
+            this.rdnNombrado.Size = new System.Drawing.Size(198, 17);
+            this.rdnNombrado.TabIndex = 0;
+            this.rdnNombrado.TabStop = true;
+            this.rdnNombrado.Text = "Nombrado o Contratado Permanente";
+            this.rdnNombrado.UseVisualStyleBackColor = true;
+            // 
+            // groupTipoContrato
+            // 
+            this.groupTipoContrato.Controls.Add(this.rdnResidenteDeObra);
+            this.groupTipoContrato.Controls.Add(this.rdnServiciosNoPersonales);
+            this.groupTipoContrato.Controls.Add(this.rdnServiciosPersonales);
+            this.groupTipoContrato.Location = new System.Drawing.Point(8, 6);
+            this.groupTipoContrato.Name = "groupTipoContrato";
+            this.groupTipoContrato.Size = new System.Drawing.Size(566, 70);
+            this.groupTipoContrato.TabIndex = 19;
+            this.groupTipoContrato.TabStop = false;
+            this.groupTipoContrato.Text = "Tipo de Contrato";
+            // 
+            // rdnResidenteDeObra
+            // 
+            this.rdnResidenteDeObra.AutoSize = true;
+            this.rdnResidenteDeObra.Location = new System.Drawing.Point(409, 30);
+            this.rdnResidenteDeObra.Name = "rdnResidenteDeObra";
+            this.rdnResidenteDeObra.Size = new System.Drawing.Size(114, 17);
+            this.rdnResidenteDeObra.TabIndex = 2;
+            this.rdnResidenteDeObra.TabStop = true;
+            this.rdnResidenteDeObra.Text = "Residente de Obra";
+            this.rdnResidenteDeObra.UseVisualStyleBackColor = true;
+            // 
+            // rdnServiciosNoPersonales
+            // 
+            this.rdnServiciosNoPersonales.AutoSize = true;
+            this.rdnServiciosNoPersonales.Location = new System.Drawing.Point(190, 30);
+            this.rdnServiciosNoPersonales.Name = "rdnServiciosNoPersonales";
+            this.rdnServiciosNoPersonales.Size = new System.Drawing.Size(140, 17);
+            this.rdnServiciosNoPersonales.TabIndex = 1;
+            this.rdnServiciosNoPersonales.TabStop = true;
+            this.rdnServiciosNoPersonales.Text = "Servicios No Personales";
+            this.rdnServiciosNoPersonales.UseVisualStyleBackColor = true;
+            // 
+            // rdnServiciosPersonales
+            // 
+            this.rdnServiciosPersonales.AutoSize = true;
+            this.rdnServiciosPersonales.Location = new System.Drawing.Point(7, 30);
+            this.rdnServiciosPersonales.Name = "rdnServiciosPersonales";
+            this.rdnServiciosPersonales.Size = new System.Drawing.Size(123, 17);
+            this.rdnServiciosPersonales.TabIndex = 0;
+            this.rdnServiciosPersonales.TabStop = true;
+            this.rdnServiciosPersonales.Text = "Servicios Personales";
+            this.rdnServiciosPersonales.UseVisualStyleBackColor = true;
+            this.rdnServiciosPersonales.CheckedChanged += new System.EventHandler(this.rdnServiciosPersonales_CheckedChanged);
+            // 
             // cboListaCargos
             // 
             this.cboListaCargos.FormattingEnabled = true;
@@ -759,9 +856,9 @@
             // 
             // dtgContratos
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            this.dtgContratos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.dtgContratos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgContratos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgContratos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idtContrato,
@@ -803,18 +900,18 @@
             // colfechainicio
             // 
             this.colfechainicio.DataPropertyName = "fechainicio";
-            dataGridViewCellStyle8.Format = "d";
-            dataGridViewCellStyle8.NullValue = null;
-            this.colfechainicio.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.colfechainicio.DefaultCellStyle = dataGridViewCellStyle2;
             this.colfechainicio.HeaderText = "Fecha Inicio";
             this.colfechainicio.Name = "colfechainicio";
             // 
             // colFechaFinal
             // 
             this.colFechaFinal.DataPropertyName = "fechafinal";
-            dataGridViewCellStyle9.Format = "d";
-            dataGridViewCellStyle9.NullValue = null;
-            this.colFechaFinal.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.colFechaFinal.DefaultCellStyle = dataGridViewCellStyle3;
             this.colFechaFinal.HeaderText = "Fecha Fin";
             this.colFechaFinal.Name = "colFechaFinal";
             // 
@@ -923,7 +1020,7 @@
             this.groupBox1.Controls.Add(this.btnModificarPeriodo);
             this.groupBox1.Controls.Add(this.btnNuevoPeriodo);
             this.groupBox1.Controls.Add(this.dtgPeriodos);
-            this.groupBox1.Location = new System.Drawing.Point(525, 251);
+            this.groupBox1.Location = new System.Drawing.Point(15, 488);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(562, 146);
             this.groupBox1.TabIndex = 0;
@@ -963,8 +1060,8 @@
             // 
             this.dtgPeriodos.AllowUserToAddRows = false;
             this.dtgPeriodos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.LightBlue;
-            this.dtgPeriodos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightBlue;
+            this.dtgPeriodos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgPeriodos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgPeriodos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoPeriodo,
@@ -1002,9 +1099,9 @@
             // fechaInicio
             // 
             this.fechaInicio.DataPropertyName = "fechaInicio";
-            dataGridViewCellStyle11.Format = "d";
-            dataGridViewCellStyle11.NullValue = null;
-            this.fechaInicio.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.NullValue = null;
+            this.fechaInicio.DefaultCellStyle = dataGridViewCellStyle5;
             this.fechaInicio.HeaderText = "Fecha Inicio";
             this.fechaInicio.Name = "fechaInicio";
             this.fechaInicio.ReadOnly = true;
@@ -1029,9 +1126,9 @@
             // fechaFin
             // 
             this.fechaFin.DataPropertyName = "Fechafin";
-            dataGridViewCellStyle12.Format = "d";
-            dataGridViewCellStyle12.NullValue = null;
-            this.fechaFin.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Format = "d";
+            dataGridViewCellStyle6.NullValue = null;
+            this.fechaFin.DefaultCellStyle = dataGridViewCellStyle6;
             this.fechaFin.HeaderText = "Fecha Fin";
             this.fechaFin.Name = "fechaFin";
             this.fechaFin.ReadOnly = true;
@@ -1067,103 +1164,6 @@
             // 
             this.ofdAbrirImagen.Filter = "\"Imagenes (*.jpg)|*.jpg|Todos los archivos (*.*)|*.*\"";
             // 
-            // groupTipoContrato
-            // 
-            this.groupTipoContrato.Controls.Add(this.rdnResidenteDeObra);
-            this.groupTipoContrato.Controls.Add(this.rdnServiciosNoPersonales);
-            this.groupTipoContrato.Controls.Add(this.rdnServiciosPersonales);
-            this.groupTipoContrato.Location = new System.Drawing.Point(8, 6);
-            this.groupTipoContrato.Name = "groupTipoContrato";
-            this.groupTipoContrato.Size = new System.Drawing.Size(566, 70);
-            this.groupTipoContrato.TabIndex = 19;
-            this.groupTipoContrato.TabStop = false;
-            this.groupTipoContrato.Text = "Tipo de Contrato";
-            // 
-            // rdnServiciosPersonales
-            // 
-            this.rdnServiciosPersonales.AutoSize = true;
-            this.rdnServiciosPersonales.Location = new System.Drawing.Point(7, 30);
-            this.rdnServiciosPersonales.Name = "rdnServiciosPersonales";
-            this.rdnServiciosPersonales.Size = new System.Drawing.Size(123, 17);
-            this.rdnServiciosPersonales.TabIndex = 0;
-            this.rdnServiciosPersonales.TabStop = true;
-            this.rdnServiciosPersonales.Text = "Servicios Personales";
-            this.rdnServiciosPersonales.UseVisualStyleBackColor = true;
-            this.rdnServiciosPersonales.CheckedChanged += new System.EventHandler(this.rdnServiciosPersonales_CheckedChanged);
-            // 
-            // rdnServiciosNoPersonales
-            // 
-            this.rdnServiciosNoPersonales.AutoSize = true;
-            this.rdnServiciosNoPersonales.Location = new System.Drawing.Point(190, 30);
-            this.rdnServiciosNoPersonales.Name = "rdnServiciosNoPersonales";
-            this.rdnServiciosNoPersonales.Size = new System.Drawing.Size(140, 17);
-            this.rdnServiciosNoPersonales.TabIndex = 1;
-            this.rdnServiciosNoPersonales.TabStop = true;
-            this.rdnServiciosNoPersonales.Text = "Servicios No Personales";
-            this.rdnServiciosNoPersonales.UseVisualStyleBackColor = true;
-            // 
-            // rdnResidenteDeObra
-            // 
-            this.rdnResidenteDeObra.AutoSize = true;
-            this.rdnResidenteDeObra.Location = new System.Drawing.Point(409, 30);
-            this.rdnResidenteDeObra.Name = "rdnResidenteDeObra";
-            this.rdnResidenteDeObra.Size = new System.Drawing.Size(114, 17);
-            this.rdnResidenteDeObra.TabIndex = 2;
-            this.rdnResidenteDeObra.TabStop = true;
-            this.rdnResidenteDeObra.Text = "Residente de Obra";
-            this.rdnResidenteDeObra.UseVisualStyleBackColor = true;
-            // 
-            // groupTipoServidorPersonal
-            // 
-            this.groupTipoServidorPersonal.Controls.Add(this.rdnPorPeriodo);
-            this.groupTipoServidorPersonal.Controls.Add(this.rdnNombrado);
-            this.groupTipoServidorPersonal.Enabled = false;
-            this.groupTipoServidorPersonal.Location = new System.Drawing.Point(8, 82);
-            this.groupTipoServidorPersonal.Name = "groupTipoServidorPersonal";
-            this.groupTipoServidorPersonal.Size = new System.Drawing.Size(404, 74);
-            this.groupTipoServidorPersonal.TabIndex = 20;
-            this.groupTipoServidorPersonal.TabStop = false;
-            this.groupTipoServidorPersonal.Text = "Tipo Servidor Personal";
-            // 
-            // rdnNombrado
-            // 
-            this.rdnNombrado.AutoSize = true;
-            this.rdnNombrado.Location = new System.Drawing.Point(7, 31);
-            this.rdnNombrado.Name = "rdnNombrado";
-            this.rdnNombrado.Size = new System.Drawing.Size(198, 17);
-            this.rdnNombrado.TabIndex = 0;
-            this.rdnNombrado.TabStop = true;
-            this.rdnNombrado.Text = "Nombrado o Contratado Permanente";
-            this.rdnNombrado.UseVisualStyleBackColor = true;
-            // 
-            // rdnPorPeriodo
-            // 
-            this.rdnPorPeriodo.AutoSize = true;
-            this.rdnPorPeriodo.Location = new System.Drawing.Point(236, 31);
-            this.rdnPorPeriodo.Name = "rdnPorPeriodo";
-            this.rdnPorPeriodo.Size = new System.Drawing.Size(133, 17);
-            this.rdnPorPeriodo.TabIndex = 1;
-            this.rdnPorPeriodo.TabStop = true;
-            this.rdnPorPeriodo.Text = "Trabajador por Periodo";
-            this.rdnPorPeriodo.UseVisualStyleBackColor = true;
-            // 
-            // cboTipoContrato
-            // 
-            this.cboTipoContrato.FormattingEnabled = true;
-            this.cboTipoContrato.Location = new System.Drawing.Point(525, 135);
-            this.cboTipoContrato.Name = "cboTipoContrato";
-            this.cboTipoContrato.Size = new System.Drawing.Size(221, 21);
-            this.cboTipoContrato.TabIndex = 21;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(525, 113);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(71, 13);
-            this.label30.TabIndex = 22;
-            this.label30.Text = "Tipo Contrato";
-            // 
             // frmNuevoTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1180,14 +1180,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             this.tabDatosContrato.ResumeLayout(false);
             this.tabDatosContrato.PerformLayout();
+            this.groupTipoServidorPersonal.ResumeLayout(false);
+            this.groupTipoServidorPersonal.PerformLayout();
+            this.groupTipoContrato.ResumeLayout(false);
+            this.groupTipoContrato.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgContratos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgPeriodos)).EndInit();
-            this.groupTipoContrato.ResumeLayout(false);
-            this.groupTipoContrato.PerformLayout();
-            this.groupTipoServidorPersonal.ResumeLayout(false);
-            this.groupTipoServidorPersonal.PerformLayout();
             this.ResumeLayout(false);
 
         }

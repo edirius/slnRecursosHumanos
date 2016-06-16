@@ -47,8 +47,6 @@
     <Compile Include="cEnumTipoDia.cs" />
     <Compile Include="AFPP\cListaAFP.cs" />
     <Compile Include="cNacionalidad.cs" />
-    <Compile Include="cObrero.cs" />
-    <Compile Include="conceptos.cs" />
     <Compile Include="Contrato\cCargo.cs" />
     <Compile Include="Contrato\cContrato.cs" />
     <Compile Include="Contrato\cTipoContrato.cs" />
@@ -56,9 +54,8 @@
     <Compile Include="Contrato\enumTipoContrato.cs" />
     <Compile Include="Contrato\enumTipoServidor.cs" />
     <Compile Include="ConvertirImagen.cs" />
-    <Compile Include="cPeriodo.cs" />
+    <Compile Include="DatosLaborales\cPeriodo.cs" />
     <Compile Include="cPeriodoTipoTrabajador.cs" />
-    <Compile Include="cPLanilla.cs" />
     <Compile Include="cProvincia.cs" />
     <Compile Include="cReglaNegociosException.cs" />
     <Compile Include="Contrato\cTipoTrabajador.cs" />
@@ -71,8 +68,6 @@
     <Compile Include="DatosLaborales\cPeriodoAFP.cs" />
     <Compile Include="DatosLaborales\cPeriodoSistemaPension.cs" />
     <Compile Include="DatosLaborales\cPeriodoTipoTrabajador.cs" />
-    <Compile Include="DatosLaborales\cRegimenLaboral.cs" />
-    <Compile Include="DatosLaborales\cRegimenLaboralCas.cs" />
     <Compile Include="DatosLaborales\cSistema20530.cs" />
     <Compile Include="DatosLaborales\cSistemaAFP.cs" />
     <Compile Include="DatosLaborales\cSistemaONP.cs" />
@@ -103,6 +98,13 @@
     <Compile Include="Tareos\cDiasTareo.cs" />
     <Compile Include="Tareos\cOcupacion.cs" />
     <Compile Include="Tareos\cTareo.cs" />
+    <Compile Include="Trabajadores\cTrabajador276.cs" />
+    <Compile Include="Trabajadores\cTrabajadorCas.cs" />
+    <Compile Include="Trabajadores\cTrabajadorEventual.cs" />
+    <Compile Include="Trabajadores\cTrabajadorObrero.cs" />
+    <Compile Include="Trabajadores\cTrabajadorPermanente.cs" />
+    <Compile Include="Trabajadores\cTrabajadorServidorNoPersonal.cs" />
+    <Compile Include="Trabajadores\cTrabajadorServidorPersonal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

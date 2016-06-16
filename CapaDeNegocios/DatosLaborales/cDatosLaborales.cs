@@ -32,13 +32,6 @@ namespace CapaDeNegocios.DatosLaborales
             set { miTipoTrabajador = value; }
         }
 
-        private cRegimenLaboral regimenLaboral;
-
-        public cRegimenLaboral RegimenLaboral
-        {
-            get { return regimenLaboral; }
-            set { regimenLaboral = value; }
-        }
 
     }
 }
