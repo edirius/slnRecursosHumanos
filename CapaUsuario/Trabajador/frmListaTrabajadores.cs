@@ -42,7 +42,7 @@ namespace CapaUsuario.Trabajador
             try
             {
                 Trabajador.frmNuevoTrabajador fNuevoTrabajador = new frmNuevoTrabajador();
-                fNuevoTrabajador.miTrabajador = new cTrabajador();
+                fNuevoTrabajador.miTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorServidorPersonal();
                 fNuevoTrabajador.miTrabajador.FechaNacimiento = DateTime.Now;
                 if (fNuevoTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -62,7 +62,7 @@ namespace CapaUsuario.Trabajador
             try
             {
                 Trabajador.frmNuevoTrabajador fModificarTrabajador = new frmNuevoTrabajador();
-                fModificarTrabajador.miTrabajador = new cTrabajador();
+                fModificarTrabajador.miTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorServidorPersonal();
                 fModificarTrabajador.miTrabajador = fModificarTrabajador.miTrabajador.traerTrabajador(Convert.ToInt16(dtgListaTrabajadores.SelectedRows[0].Cells[0].Value.ToString()));
 
                 if (fModificarTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)

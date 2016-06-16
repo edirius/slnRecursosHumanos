@@ -10,13 +10,13 @@ using System.Windows.Forms;
 using CapaDeNegocios;
 using CapaDeNegocios.Contrato;
 using CapaDeNegocios.Obras;
-
+using CapaDeNegocios.Trabajadores;
 namespace CapaUsuario.Trabajador
 {
     public partial class frmNuevoTrabajador : Form
     {
-        public cTrabajador miTrabajador;
-        public cPeriodo miPeriodo = new cPeriodo();
+        public cTrabajadorServidorPersonal miTrabajador;
+        public cPeriodo miPeriodo ;
 
         public frmNuevoTrabajador()
         {
@@ -31,6 +31,7 @@ namespace CapaUsuario.Trabajador
         #region CodigoTrabajador
         private void Iniciar()
         {
+            miPeriodo = new cPeriodo(miTrabajador);
             txtCodigo.Text = miTrabajador.IdTrabajador.ToString();
             txtDNI.Text = miTrabajador.Dni;
             txtNombres.Text = miTrabajador.Nombres;
@@ -279,7 +280,7 @@ namespace CapaUsuario.Trabajador
                 fNuevoPeriodo.miPeriodo.FechaInicio = DateTime.Now;
                 if (fNuevoPeriodo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    fNuevoPeriodo.miPeriodo.CrearPeriodo(fNuevoPeriodo.miPeriodo, miTrabajador.IdTrabajador);
+                    fNuevoPeriodo.miPeriodo.CrearPeriodo(fNuevoPeriodo.miPeriodo);
                     dtgPeriodos.DataSource = miPeriodo.TraerPeriodos(miTrabajador.IdTrabajador);
                 }
             }
@@ -320,7 +321,7 @@ namespace CapaUsuario.Trabajador
 
                 if (fModificarPeriodo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    fModificarPeriodo.miPeriodo.ModificarPeriodo(fModificarPeriodo.miPeriodo, miTrabajador.IdTrabajador);
+                    fModificarPeriodo.miPeriodo.ModificarPeriodo(fModificarPeriodo.miPeriodo);
                     dtgPeriodos.DataSource = miPeriodo.TraerPeriodos(miTrabajador.IdTrabajador);
                 }
             }
