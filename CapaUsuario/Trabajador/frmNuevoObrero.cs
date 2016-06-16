@@ -33,6 +33,11 @@ namespace CapaUsuario.Trabajador
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (txtDNI.Text == "" || txtNombre.Text == "" || txtApePaterno.Text == "" || txtApeMaterno.Text == "" || cboDepartamento.Text == "" || cboProvincia.Text == "" || cboDistrito.Text == "")
+            {
+                MessageBox.Show("Existen datos en Blanco, no se puede Guardar al nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             bool bOk = false;
             miTrabajador.Nombres = txtNombre.Text;
             miTrabajador.ApellidoPaterno = txtApePaterno.Text;

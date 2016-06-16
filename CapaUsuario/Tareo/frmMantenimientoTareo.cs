@@ -51,6 +51,11 @@ namespace CapaUsuario.Tareo
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            if (sEstado == true)
+            {
+                MessageBox.Show("El Tareo ya no se puede Modificar.", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (sIdTTareo == 0 && dgvTareo.SelectedRows.Count > 0)
             {
                 MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -66,6 +71,11 @@ namespace CapaUsuario.Tareo
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            if (sEstado == true)
+            {
+                MessageBox.Show("El Tareo no se puede Eliminar.", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (sIdTTareo == 0 && dgvTareo.SelectedRows.Count > 0)
             {
                 MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -87,13 +97,18 @@ namespace CapaUsuario.Tareo
 
         private void btnDetalleTareo_Click(object sender, EventArgs e)
         {
+            if (sEstado == true)
+            {
+                MessageBox.Show("El Detalle del Tareo ya no se puede Modificar.", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (sIdTTareo == 0 && dgvTareo.SelectedRows.Count > 0)
             {
                 MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             CapaUsuario.Tareo.frmMantenimientoDetalleTareo fDetalleTareo = new CapaUsuario.Tareo.frmMantenimientoDetalleTareo();
-            fDetalleTareo.RecibirDatos(sIdTTareo, sNumero, sFechaInicio, sFechaFin, cboMeta.Text);
+            fDetalleTareo.RecibirDatos(sIdTTareo, sNumero, sFechaInicio, sFechaFin, sDescripcion, cboMeta.Text, sIdTMeta);
             if (fDetalleTareo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();

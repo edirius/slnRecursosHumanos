@@ -12,28 +12,23 @@ namespace CapaUsuario.Tareo
 {
     public partial class frmMantenimientoDetalleTareo : Form
     {
+        DateTime auxiliar;
+
         DataTable oDataTrabajador = new DataTable();
         DataTable oDataAFP = new DataTable();
         DataTable oDataDetalleTareo = new DataTable();
-        DataTable oDataDiasTareo = new DataTable();
+        DataTable oDataTareo = new DataTable();
 
         CapaDeNegocios.Tareos.cTareo miTareo = new CapaDeNegocios.Tareos.cTareo();
         CapaDeNegocios.Tareos.cDetalleTareo miDetalleTareo = new CapaDeNegocios.Tareos.cDetalleTareo();
-        CapaDeNegocios.Tareos.cDiasTareo miDiasTareo = new CapaDeNegocios.Tareos.cDiasTareo();
         CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
         CapaDeNegocios.cListaAFP miAFP = new CapaDeNegocios.cListaAFP();
+        CapaDeNegocios.Obras.cMeta miMeta = new CapaDeNegocios.Obras.cMeta();
 
         public frmMantenimientoDetalleTareo()
         {
             InitializeComponent();
         }
-
-        //public cTareo miTareo;
-        //cDetalleTareo miDetalleTareo = new cDetalleTareo();
-
-        //cListaAFP miListaAFP = new cListaAFP();
-        //cAFP miAFP = new cAFP();
-        //Boolean PrimerDibujo = false;
 
         private void frmMantenimientoDetalleTareo_Load(object sender, EventArgs e)
         {
@@ -45,12 +40,72 @@ namespace CapaUsuario.Tareo
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-
+            int pIdTTareo = 0;
+            int contador = 0;
+            int fila = 0;
+            dgvDetalleTareo.Rows.Clear();
+            pIdTTareo = miTareo.IdTTareo;
+            oDataTareo = miTareo.ListarTareo(miMeta);
+            foreach (DataRow row1 in oDataTareo.Select("numero = '" + (Convert.ToInt32(txtNumero.Text) - 1) + "'"))
+            {
+                miTareo.IdTTareo = Convert.ToInt32(row1[0]);
+            }
+            oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(miTareo);
+            foreach (DataRow row in oDataDetalleTareo.Rows)
+            {
+                contador += 1;
+                dgvDetalleTareo.Rows.Add();
+                fila = dgvDetalleTareo.RowCount - 1;
+                dgvDetalleTareo.Rows[fila].Cells[1].Value = "I";
+                dgvDetalleTareo.Rows[fila].Cells[3].Value = contador;
+                dgvDetalleTareo.Rows[fila].Cells[8].Value = row[1].ToString();
+                foreach (DataRow row1 in oDataTrabajador.Select("id_trabajador = '" + row[3].ToString() + "'"))
+                {
+                    dgvDetalleTareo.Rows[fila].Cells[4].Value = row1[0].ToString();
+                    dgvDetalleTareo.Rows[fila].Cells[5].Value = row1[3].ToString() + " " + row1[4].ToString() + ", " + row1[2].ToString();
+                    dgvDetalleTareo.Rows[fila].Cells[6].Value = row1[1].ToString();
+                    foreach (DataRow row2 in oDataAFP.Select("idtafp = '1'"))
+                    {
+                        dgvDetalleTareo.Rows[fila].Cells[7].Value = row2[1].ToString();
+                    }
+                }
+                for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+                {
+                    auxiliar = miTareo.FechaInicio.AddDays(i);
+                    if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        dgvDetalleTareo.Rows[fila].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
+                        dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = "D";
+                    }
+                }
+            }
+            if (contador == 0)
+            {
+                dgvDetalleTareo.Rows.Add();
+                for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+                {
+                    auxiliar = miTareo.FechaInicio.AddDays(i);
+                    if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        dgvDetalleTareo.Rows[fila].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
+                        dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = "D";
+                    }
+                }
+            }
+            dgvDetalleTareo.CurrentCell = dgvDetalleTareo.CurrentRow.Cells[6];
+            btnImportar.Enabled = false;
+            miTareo.IdTTareo = pIdTTareo;
         }
 
         private void btnAprobacion_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("Está seguro de poner en aprobacion el Tareo de Obra, ya no podra Modificarlo.", "Confirmar Aprobacion", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+            {
+                return;
+            }
+            miTareo.Estado = true;
+            miTareo.ModificarTareo(miTareo, miMeta);
+            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
         private void btnNuevoTrabajador_Click(object sender, EventArgs e)
@@ -65,43 +120,59 @@ namespace CapaUsuario.Tareo
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             bool bOk = false;
+            string diastareo = "";
             foreach (DataGridViewRow row in dgvDetalleTareo.Rows)
             {
+                diastareo = "";
+                for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+                {
+                    if (Convert.ToString(row.Cells[10 + i].Value) == "")
+                    {
+                        diastareo += " ";
+                    }
+                    diastareo += Convert.ToString(row.Cells[10 + i].Value);
+                }
+                miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(row.Cells[0].Value);
+                miDetalleTareo.Categoria = Convert.ToString(row.Cells[8].Value);
+                miDetalleTareo.DiasTareo = diastareo;
+                miTrabajador.IdTrabajador = Convert.ToInt32(row.Cells[4].Value);
                 if (Convert.ToString(row.Cells[1].Value) == "I")
                 {
-                    miDetalleTareo.Categoria = Convert.ToString(row.Cells[8].Value);
-                    miTrabajador.IdTrabajador = Convert.ToInt32(row.Cells[4].Value);
                     miDetalleTareo.CrearDetalleTareo(miDetalleTareo, miTrabajador, miTareo);
                     oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(miTareo);
                     miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(oDataDetalleTareo.Compute("MAX(idtdetalletareo)", ""));
                     row.Cells[0].Value = miDetalleTareo.IdTDetalleTareo.ToString();
                     row.Cells[1].Value = "M";
-                    DateTime auxiliar;
-                    for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
-                    {
-                        auxiliar = miTareo.FechaInicio.AddDays(i);
-                        miDiasTareo.Fecha = auxiliar;
-                        if (Convert.ToString(row.Cells[10 + i].Value) == "x")
-                        {
-                            miDiasTareo.Estado = true;
-                        }
-                        else
-                        {
-                            miDiasTareo.Estado = false;
-                        }
-                        miDiasTareo.CrearDiasTareo(miDiasTareo, miDetalleTareo);
-                    }
+                    //DateTime auxiliar;
+                    //for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+                    //{
+                    //    auxiliar = miTareo.FechaInicio.AddDays(i);
+                    //    miDiasTareo.Fecha = auxiliar;
+                    //    if (Convert.ToString(row.Cells[10 + i].Value) == "x")
+                    //    {
+                    //        miDiasTareo.Estado = true;
+                    //    }
+                    //    else
+                    //    {
+                    //        miDiasTareo.Estado = false;
+                    //    }
+                    //    miDiasTareo.CrearDiasTareo(miDiasTareo, miDetalleTareo);
+                    //}
                     bOk = true;
                 }
                 if (Convert.ToString(row.Cells[1].Value) == "M")
                 {
-                    //miTareo.ModificarTareo(miTareo, miMeta);
+                    miDetalleTareo.ModificarDetalleTareo(miDetalleTareo, miTrabajador, miTareo);
                     bOk = true;
                 }
             }
             if (bOk == false)
             {
                 MessageBox.Show("No existen datos que se puedan registrar", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                CargarDatos();
             }
         }
 
@@ -119,8 +190,31 @@ namespace CapaUsuario.Tareo
         {
             if (dgvDetalleTareo.Rows[e.RowIndex].Cells[9].Selected == true)
             {
-                dgvDetalleTareo.Rows[e.RowIndex].Cells[9].Value = true;
-                dgvDetalleTareo.EndEdit();
+                //string xxx = Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[9].Value);
+                //object xxxxx = dgvDetalleTareo.Rows[e.RowIndex].Cells[9].Value ;
+                for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+                {
+                    auxiliar = miTareo.FechaInicio.AddDays(i);
+                    if (auxiliar.DayOfWeek != DayOfWeek.Sunday)
+                    {
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[10 + i].Value = "x";
+                    }
+                }
+            }
+            else if (dgvDetalleTareo.Rows[e.RowIndex].Cells[2].Selected == true)
+            {
+                if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value) == "")
+                {
+                    MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (MessageBox.Show("Está seguro que desea eliminar al Trabajador del Tareo de Obra", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                {
+                    return;
+                }
+                miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value);
+                miDetalleTareo.EliminarDetalleTareo(miDetalleTareo);
+                CargarDatos();
             }
         }
 
@@ -132,7 +226,7 @@ namespace CapaUsuario.Tareo
                 foreach (DataRow row in oDataTrabajador.Select("dni = '" + dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value + "'"))
                 {
                     contador += 1;
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value = "I";
+                    if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value) == "") { dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value = "I"; }
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[3].Value = e.RowIndex + 1;
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[4].Value = row[0].ToString();
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[5].Value = row[3].ToString() + " " + row[4].ToString() + ", " + row[2].ToString();
@@ -143,20 +237,11 @@ namespace CapaUsuario.Tareo
                 }
                 if (contador == 0)
                 {
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[3].Value = "";
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[4].Value = "";
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[5].Value = "";
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = "";
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[7].Value = "";
                     MessageBox.Show("No existe el Trabajador, para agregar hacer clic en Nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
-                }
-            }
-            else if (dgvDetalleTareo.Rows[e.RowIndex].Cells[9].Selected == true)
-            {
-                for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
-                {
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[10 + i].Value = "x";
                 }
             }
         }
@@ -183,42 +268,40 @@ namespace CapaUsuario.Tareo
             if (e.KeyChar == 13)
             {
                 dgvDetalleTareo.Rows.Add();
+                for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+                {
+                    auxiliar = miTareo.FechaInicio.AddDays(i);
+                    if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        dgvDetalleTareo.Rows[dgvDetalleTareo.RowCount - 1].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
+                        dgvDetalleTareo.Rows[dgvDetalleTareo.RowCount - 1].Cells[10 + i].Value = "D";
+                    }
+                }
                 dgvDetalleTareo.CurrentCell = dgvDetalleTareo.CurrentRow.Cells[6];
             }
         }
 
-        private void dgvDetalleTareos_Paint(object sender, PaintEventArgs e)
-        {
-            //for (int j = 4; j < (4 + miTareo.MiDetalleTareo.Dias.Count); j++)
-            //{
-            //    Rectangle r1 = this.dtgListaTareos.GetCellDisplayRectangle(j, -1, true);
-            //    //r1.X += 1;
-            //    r1.Y += 1;
-            //    //r1.Width = r1.Width * 2 - 2;
-            //    r1.Height = r1.Height / 2 - 2;
-            //    e.Graphics.FillRectangle(new SolidBrush(this.dtgListaTareos.ColumnHeadersDefaultCellStyle.BackColor), r1);
-            //    StringFormat format = new StringFormat();
-            //    format.Alignment = StringAlignment.Center;
-            //    format.LineAlignment = StringAlignment.Center;
-            //    e.Graphics.DrawString(miTareo.MiDetalleTareo.Dias[j - 4].Fecha.Day.ToString(), this.dtgListaTareos.ColumnHeadersDefaultCellStyle.Font, new SolidBrush(this.dtgListaTareos.ColumnHeadersDefaultCellStyle.ForeColor), r1, format);
-            //    //j += 2;
-            //}
-        }
-
-        public void RecibirDatos(int pIdTTareo, int pNumero, DateTime pFechaInicio, DateTime pFechaFin, string pNombre)
+        public void RecibirDatos(int pIdTTareo, int pNumero, DateTime pFechaInicio, DateTime pFechaFin, string pDescripcion, string pNombre, int pIdTMeta)
         {
             miTareo.IdTTareo = pIdTTareo;
+            miTareo.Numero = pNumero;
             txtNumero.Text = Convert.ToString(pNumero);
             txtDesdeHasta.Text = Convert.ToString(pFechaInicio.ToLongDateString()) + "   -   " + Convert.ToString(pFechaFin.ToLongDateString());
             miTareo.FechaInicio = pFechaInicio;
             miTareo.FechaFin = pFechaFin;
+            miTareo.Descripcion = pDescripcion;
             txtMeta.Text = pNombre;
+            miMeta.Codigo = pIdTMeta;
         }
 
         private void CargarDatos()
         {
             int contador = 0;
             int fila = 0;
+            int j, k = 0;
+            string r = "";
+            string diastareo = "";
+            dgvDetalleTareo.Rows.Clear();
             oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(miTareo);
             foreach (DataRow row in oDataDetalleTareo.Rows)
             {
@@ -229,8 +312,7 @@ namespace CapaUsuario.Tareo
                 dgvDetalleTareo.Rows[fila].Cells[1].Value = "M";
                 dgvDetalleTareo.Rows[fila].Cells[3].Value = contador;
                 dgvDetalleTareo.Rows[fila].Cells[8].Value = row[1].ToString();
-                dgvDetalleTareo.Rows[fila].Cells[4].Value = row[2].ToString();
-                foreach (DataRow row1 in oDataTrabajador.Select("id_trabajador = '" + dgvDetalleTareo.Rows[fila].Cells[4].Value + "'"))
+                foreach (DataRow row1 in oDataTrabajador.Select("id_trabajador = '" + row[3].ToString() + "'"))
                 {
                     dgvDetalleTareo.Rows[fila].Cells[4].Value = row1[0].ToString();
                     dgvDetalleTareo.Rows[fila].Cells[5].Value = row1[3].ToString() + " " + row1[4].ToString() + ", " + row1[2].ToString();
@@ -240,13 +322,39 @@ namespace CapaUsuario.Tareo
                         dgvDetalleTareo.Rows[fila].Cells[7].Value = row2[1].ToString();
                     }
                 }
-                miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(row[0]);
-                CargarDiasTareo(fila);
+                //miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(row[0]);
+                //CargarDiasTareo(fila);
+                j = 0;
+                diastareo = row[2].ToString();
+                if ((miTareo.FechaFin.Day - miTareo.FechaInicio.Day) > diastareo.Count()) { k = diastareo.Count() - 1; }
+                else { k = (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); }
+                for (int i = 0; i <= k; i++)
+                {
+                    r = diastareo.Substring(i, 1);
+                    dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = r;
+                    if (r == "x") { j += 1; }
+                    auxiliar = miTareo.FechaInicio.AddDays(i);
+                    if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        dgvDetalleTareo.Rows[fila].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
+                        dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = "D";
+                    }
+                }
+                dgvDetalleTareo.Rows[fila].Cells[dgvDetalleTareo.ColumnCount - 1].Value = j;
                 dgvDetalleTareo.CurrentCell = dgvDetalleTareo.CurrentRow.Cells[6];
             }
             if (contador == 0)
             {
                 dgvDetalleTareo.Rows.Add();
+                for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+                {
+                    auxiliar = miTareo.FechaInicio.AddDays(i);
+                    if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        dgvDetalleTareo.Rows[fila].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
+                        dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = "D";
+                    }
+                }
                 dgvDetalleTareo.CurrentCell = dgvDetalleTareo.CurrentRow.Cells[6];
                 btnImportar.Enabled = true;
             }
@@ -256,28 +364,27 @@ namespace CapaUsuario.Tareo
             }
         }
 
-        public void CargarDiasTareo(int fila)
-        {
-            int i = 0;
-            int j = 0;
-            oDataDiasTareo = miDiasTareo.ListarDiasTareo(miDetalleTareo);
-            dataGridView1.DataSource = miDiasTareo.ListarDiasTareo(miDetalleTareo);
-            foreach (DataRow row in oDataDiasTareo.Rows)
-            {
-                if (Convert.ToInt32(row[2]) == 1)
-                {
-                    j += 1;
-                    dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = "x";
-                }
-                else
-                {
-                    dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = "";
-                }
-                i += 1;
-            }
+        //public void CargarDiasTareo(int fila)
+        //{
+        //    int i = 0;
+        //    int j = 0;
+        //    oDataDiasTareo = miDiasTareo.ListarDiasTareo(miDetalleTareo);
+        //    foreach (DataRow row in oDataDiasTareo.Rows)
+        //    {
+        //        if (Convert.ToInt32(row[2]) == 1)
+        //        {
+        //            j += 1;
+        //            dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = "x";
+        //        }
+        //        else
+        //        {
+        //            dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = "";
+        //        }
+        //        i += 1;
+        //    }
 
-            dgvDetalleTareo.Rows[fila].Cells[dgvDetalleTareo.ColumnCount - 1].Value = j;
-        }
+        //    dgvDetalleTareo.Rows[fila].Cells[dgvDetalleTareo.ColumnCount - 1].Value = j;
+        //}
 
         public void CargarTrabajador(AutoCompleteStringCollection col)
         {
@@ -290,7 +397,6 @@ namespace CapaUsuario.Tareo
         private void DibujarDataGrid(int pDias)
         {
             int j = dgvDetalleTareo.ColumnCount;
-            DateTime auxiliar;
             for (int i = 0; i <= pDias; i++)
             {
                 auxiliar = miTareo.FechaInicio.AddDays(i);
@@ -327,6 +433,10 @@ namespace CapaUsuario.Tareo
                 col.Width = 20;
                 dgvDetalleTareo.Columns.Add(col);
                 dgvDetalleTareo.Columns["col" + i.ToString()].DisplayIndex = 10 + i;
+                if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
+                {
+                    dgvDetalleTareo.Columns["col" + i.ToString()].ReadOnly = true;
+                }
             }
             DataGridViewTextBoxColumn TotalDias = new DataGridViewTextBoxColumn();
             TotalDias.Name = "txtTotalDias";
