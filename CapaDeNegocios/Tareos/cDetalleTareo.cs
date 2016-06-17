@@ -14,6 +14,7 @@ namespace CapaDeNegocios.Tareos
     {
         int sidtdetalletareo;
         string scategoria;
+        string sdiastareo;
 
         public int IdTDetalleTareo
         {
@@ -27,6 +28,12 @@ namespace CapaDeNegocios.Tareos
             set { scategoria = value; }
         }
 
+        public string DiasTareo
+        {
+            get { return sdiastareo; }
+            set { sdiastareo = value; }
+        }
+
         public DataTable ListarDetalleTareo(cTareo miTareo)
         {
             return Conexion.GDatos.TraerDataTable("spListarDetalleTareo", miTareo.IdTTareo);
@@ -34,14 +41,14 @@ namespace CapaDeNegocios.Tareos
 
         public Boolean CrearDetalleTareo(cDetalleTareo miDetalleTareo, cTrabajador miTrabajador, cTareo miTareo)
         {
-            Conexion.GDatos.Ejecutar("spCrearDetalleTareo", miDetalleTareo.Categoria, miTrabajador.IdTrabajador, miTareo.IdTTareo);
+            Conexion.GDatos.Ejecutar("spCrearDetalleTareo", miDetalleTareo.Categoria, miDetalleTareo.DiasTareo, miTrabajador.IdTrabajador, miTareo.IdTTareo);
             return true;
 
         }
 
         public Boolean ModificarDetalleTareo(cDetalleTareo miDetalleTareo, cTrabajador miTrabajador, cTareo miTareo)
         {
-            Conexion.GDatos.Ejecutar("spModificarDetalleTareo", miDetalleTareo.IdTDetalleTareo, miDetalleTareo.Categoria, miTrabajador.IdTrabajador, miTareo.IdTTareo);
+            Conexion.GDatos.Ejecutar("spModificarDetalleTareo", miDetalleTareo.IdTDetalleTareo, miDetalleTareo.Categoria, miDetalleTareo.DiasTareo, miTrabajador.IdTrabajador, miTareo.IdTTareo);
             return true;
         }
 

@@ -44,7 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnImportar = new System.Windows.Forms.Button();
             this.btnNuevoTrabajador = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtIdTDetalleTareo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnProceso = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -56,7 +55,6 @@
             this.cboCategoria = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.chkMarca = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleTareo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvDetalleTareo
@@ -98,7 +96,6 @@
             this.dgvDetalleTareo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleTareo_CellContentClick);
             this.dgvDetalleTareo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleTareo_CellEndEdit);
             this.dgvDetalleTareo.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDetalleTareo_EditingControlShowing);
-            this.dgvDetalleTareo.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvDetalleTareos_Paint);
             this.dgvDetalleTareo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvDetalleTareo_KeyPress);
             // 
             // btnCancelar
@@ -259,26 +256,19 @@
             this.btnNuevoTrabajador.UseVisualStyleBackColor = false;
             this.btnNuevoTrabajador.Click += new System.EventHandler(this.btnNuevoTrabajador_Click);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(324, 403);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 79;
-            this.dataGridView1.Visible = false;
-            // 
             // txtIdTDetalleTareo
             // 
             this.txtIdTDetalleTareo.HeaderText = "ID";
             this.txtIdTDetalleTareo.Name = "txtIdTDetalleTareo";
             this.txtIdTDetalleTareo.ReadOnly = true;
+            this.txtIdTDetalleTareo.Visible = false;
             this.txtIdTDetalleTareo.Width = 30;
             // 
             // txtAccion
             // 
             this.txtAccion.HeaderText = "Accion";
             this.txtAccion.Name = "txtAccion";
+            this.txtAccion.Visible = false;
             this.txtAccion.Width = 30;
             // 
             // btnProceso
@@ -301,6 +291,7 @@
             this.txtIdTTrabajador.HeaderText = "IdTTrabajador";
             this.txtIdTTrabajador.Name = "txtIdTTrabajador";
             this.txtIdTTrabajador.ReadOnly = true;
+            this.txtIdTTrabajador.Visible = false;
             this.txtIdTTrabajador.Width = 50;
             // 
             // txtApellidosNombres
@@ -345,7 +336,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 480);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnNuevoTrabajador);
             this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.txtResidente);
@@ -366,7 +356,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMantenimientoDetalleTareo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleTareo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -387,7 +376,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnImportar;
         private System.Windows.Forms.Button btnNuevoTrabajador;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtIdTDetalleTareo;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtAccion;
         private System.Windows.Forms.DataGridViewButtonColumn btnProceso;

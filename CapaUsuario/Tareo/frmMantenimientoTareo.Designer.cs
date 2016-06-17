@@ -38,6 +38,7 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnDetalleTareo = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTareo)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +51,7 @@
             this.groupBox2.Controls.Add(this.cboMeta);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(568, 48);
+            this.groupBox2.Size = new System.Drawing.Size(559, 48);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Meta";
@@ -59,7 +60,7 @@
             // 
             this.btnMeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMeta.Font = new System.Drawing.Font("Wide Latin", 9.75F);
-            this.btnMeta.Location = new System.Drawing.Point(498, 19);
+            this.btnMeta.Location = new System.Drawing.Point(489, 19);
             this.btnMeta.Name = "btnMeta";
             this.btnMeta.Size = new System.Drawing.Size(64, 23);
             this.btnMeta.TabIndex = 1;
@@ -75,7 +76,7 @@
             this.cboMeta.FormattingEnabled = true;
             this.cboMeta.Location = new System.Drawing.Point(6, 19);
             this.cboMeta.Name = "cboMeta";
-            this.cboMeta.Size = new System.Drawing.Size(486, 21);
+            this.cboMeta.Size = new System.Drawing.Size(477, 21);
             this.cboMeta.TabIndex = 0;
             this.cboMeta.SelectedIndexChanged += new System.EventHandler(this.cboMeta_SelectedIndexChanged);
             // 
@@ -95,7 +96,7 @@
             this.dgvTareo.Name = "dgvTareo";
             this.dgvTareo.ReadOnly = true;
             this.dgvTareo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTareo.Size = new System.Drawing.Size(568, 310);
+            this.dgvTareo.Size = new System.Drawing.Size(559, 310);
             this.dgvTareo.TabIndex = 1;
             this.dgvTareo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCronogramaTareo_CellClick);
             this.dgvTareo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCronogramaTareo_CellContentClick);
@@ -107,7 +108,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(497, 382);
+            this.btnSalir.Location = new System.Drawing.Point(488, 382);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 19;
@@ -123,7 +124,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEliminar.ImageKey = "118.png";
-            this.btnEliminar.Location = new System.Drawing.Point(408, 382);
+            this.btnEliminar.Location = new System.Drawing.Point(399, 382);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(83, 53);
             this.btnEliminar.TabIndex = 18;
@@ -139,7 +140,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificar.ImageKey = "13.png";
-            this.btnModificar.Location = new System.Drawing.Point(319, 382);
+            this.btnModificar.Location = new System.Drawing.Point(310, 382);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(83, 53);
             this.btnModificar.TabIndex = 17;
@@ -155,7 +156,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(230, 382);
+            this.btnNuevo.Location = new System.Drawing.Point(221, 382);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 16;
@@ -180,9 +181,25 @@
             this.btnDetalleTareo.UseVisualStyleBackColor = false;
             this.btnDetalleTareo.Click += new System.EventHandler(this.btnDetalleTareo_Click);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.MintCream;
+            this.button1.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.ImageIndex = 1;
+            this.button1.Location = new System.Drawing.Point(132, 382);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(83, 53);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "&Imprimir";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // frmMantenimientoTareo
             // 
-            this.ClientSize = new System.Drawing.Size(592, 447);
+            this.ClientSize = new System.Drawing.Size(583, 447);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDetalleTareo);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEliminar);
@@ -211,5 +228,6 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnDetalleTareo;
+        private System.Windows.Forms.Button button1;
     }
 }
