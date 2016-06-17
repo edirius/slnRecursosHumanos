@@ -54,19 +54,7 @@ namespace CapaDeNegocios
             }
         }
 
-        public Contrato.cContrato cContrato
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-
-            set
-            {
-            }
-        }
-
-        public DataTable ListarTiposDeTrabajadores()
+       public DataTable ListarTiposDeTrabajadores()
         {
             return Conexion.GDatos.TraerDataTable("uspListarTiposDeTrabajador" );
         }

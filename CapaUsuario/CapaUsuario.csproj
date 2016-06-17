@@ -251,6 +251,12 @@
     <Compile Include="Trabajador\frmNuevoPeriodo.Designer.cs">
       <DependentUpon>frmNuevoPeriodo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trabajador\frmNuevoTipoTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmNuevoTipoTrabajador.Designer.cs">
+      <DependentUpon>frmNuevoTipoTrabajador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trabajador\frmNuevoTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -392,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmNuevoPeriodo.resx">
       <DependentUpon>frmNuevoPeriodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmNuevoTipoTrabajador.resx">
+      <DependentUpon>frmNuevoTipoTrabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmNuevoTrabajador.resx">
       <DependentUpon>frmNuevoTrabajador.cs</DependentUpon>

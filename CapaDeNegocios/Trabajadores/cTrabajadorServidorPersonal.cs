@@ -7,6 +7,8 @@ using CapaDeNegocios.Contrato;
 using CapaDeNegocios.DatosLaborales;
 using CapaDeDatos;
 using System.Data;
+
+
 namespace CapaDeNegocios.Trabajadores
 {
     public class cTrabajadorServidorPersonal:cTrabajador 
@@ -17,27 +19,7 @@ namespace CapaDeNegocios.Trabajadores
             miListaPeriodosSistemaPension = new List<cPeriodoSistemaPension>();
         }
 
-        public void AgregarPeriodo(cPeriodo miNuevoPeriodo)
-        {
-            miNuevoPeriodo.TrabajadorServidorPersonal = this;
-           
-            miListaPeriodos.Add(miNuevoPeriodo);
-           
-        }
-
-        public void ModificarPeriodo(cPeriodo miPeriodo)
-        {
-            
-        }
-
-        public void EliminarPeriodo(cPeriodo miPeriodo)
-        {
-            miListaPeriodos.Remove(miPeriodo);
-        }
-
-       
-
-    
+      
 
         List<cPeriodo> miListaPeriodos;
         List<cPeriodoSistemaPension> miListaPeriodosSistemaPension;
@@ -66,6 +48,26 @@ namespace CapaDeNegocios.Trabajadores
             {
                 miListaPeriodosSistemaPension = value;
             }
+        }
+
+
+
+        public void AgregarPeriodo(cPeriodo miNuevoPeriodo)
+        {
+            miNuevoPeriodo.Trabajador = this;
+
+            miListaPeriodos.Add(miNuevoPeriodo);
+
+        }
+
+        public void ModificarPeriodo(cPeriodo miPeriodo)
+        {
+
+        }
+
+        public void EliminarPeriodo(cPeriodo miPeriodo)
+        {
+            miListaPeriodos.Remove(miPeriodo);
         }
 
 

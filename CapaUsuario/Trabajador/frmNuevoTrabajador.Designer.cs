@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabTrabajador = new System.Windows.Forms.TabControl();
             this.tabDatosGenerales = new System.Windows.Forms.TabPage();
             this.txtDistrito = new System.Windows.Forms.TextBox();
@@ -88,6 +91,19 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabDatosContrato = new System.Windows.Forms.TabPage();
+            this.groupTipoTrabajador = new System.Windows.Forms.GroupBox();
+            this.btnEliminarTipoTrabajador = new System.Windows.Forms.Button();
+            this.btnModificarTipoTrabajador = new System.Windows.Forms.Button();
+            this.btnNuevoTipoTrabajador = new System.Windows.Forms.Button();
+            this.dtgTipoTrabajador = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label30 = new System.Windows.Forms.Label();
             this.cboTipoContrato = new System.Windows.Forms.ComboBox();
             this.groupTipoServidorPersonal = new System.Windows.Forms.GroupBox();
@@ -140,6 +156,8 @@
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.tabDatosContrato.SuspendLayout();
+            this.groupTipoTrabajador.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgTipoTrabajador)).BeginInit();
             this.groupTipoServidorPersonal.SuspendLayout();
             this.groupTipoContrato.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -313,7 +331,7 @@
             this.txtTipoZona.Location = new System.Drawing.Point(536, 433);
             this.txtTipoZona.Name = "txtTipoZona";
             this.txtTipoZona.ReadOnly = true;
-            this.txtTipoZona.Size = new System.Drawing.Size(100, 20);
+            this.txtTipoZona.Size = new System.Drawing.Size(178, 20);
             this.txtTipoZona.TabIndex = 86;
             this.txtTipoZona.TextChanged += new System.EventHandler(this.txtTipoZona_TextChanged);
             this.txtTipoZona.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTipoZona_KeyDown);
@@ -678,6 +696,7 @@
             // 
             // tabDatosContrato
             // 
+            this.tabDatosContrato.Controls.Add(this.groupTipoTrabajador);
             this.tabDatosContrato.Controls.Add(this.label30);
             this.tabDatosContrato.Controls.Add(this.cboTipoContrato);
             this.tabDatosContrato.Controls.Add(this.groupTipoServidorPersonal);
@@ -706,10 +725,146 @@
             this.tabDatosContrato.UseVisualStyleBackColor = true;
             this.tabDatosContrato.Enter += new System.EventHandler(this.tabDatosContrato_Enter);
             // 
+            // groupTipoTrabajador
+            // 
+            this.groupTipoTrabajador.Controls.Add(this.btnEliminarTipoTrabajador);
+            this.groupTipoTrabajador.Controls.Add(this.btnModificarTipoTrabajador);
+            this.groupTipoTrabajador.Controls.Add(this.btnNuevoTipoTrabajador);
+            this.groupTipoTrabajador.Controls.Add(this.dtgTipoTrabajador);
+            this.groupTipoTrabajador.Location = new System.Drawing.Point(9, 158);
+            this.groupTipoTrabajador.Name = "groupTipoTrabajador";
+            this.groupTipoTrabajador.Size = new System.Drawing.Size(562, 143);
+            this.groupTipoTrabajador.TabIndex = 23;
+            this.groupTipoTrabajador.TabStop = false;
+            this.groupTipoTrabajador.Text = "TipoTrabajador";
+            // 
+            // btnEliminarTipoTrabajador
+            // 
+            this.btnEliminarTipoTrabajador.Location = new System.Drawing.Point(472, 102);
+            this.btnEliminarTipoTrabajador.Name = "btnEliminarTipoTrabajador";
+            this.btnEliminarTipoTrabajador.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminarTipoTrabajador.TabIndex = 6;
+            this.btnEliminarTipoTrabajador.Text = "Eliminar";
+            this.btnEliminarTipoTrabajador.UseVisualStyleBackColor = true;
+            // 
+            // btnModificarTipoTrabajador
+            // 
+            this.btnModificarTipoTrabajador.Location = new System.Drawing.Point(472, 61);
+            this.btnModificarTipoTrabajador.Name = "btnModificarTipoTrabajador";
+            this.btnModificarTipoTrabajador.Size = new System.Drawing.Size(75, 23);
+            this.btnModificarTipoTrabajador.TabIndex = 5;
+            this.btnModificarTipoTrabajador.Text = "Modificar";
+            this.btnModificarTipoTrabajador.UseVisualStyleBackColor = true;
+            this.btnModificarTipoTrabajador.Click += new System.EventHandler(this.btnModificarTipoTrabajador_Click);
+            // 
+            // btnNuevoTipoTrabajador
+            // 
+            this.btnNuevoTipoTrabajador.Location = new System.Drawing.Point(472, 21);
+            this.btnNuevoTipoTrabajador.Name = "btnNuevoTipoTrabajador";
+            this.btnNuevoTipoTrabajador.Size = new System.Drawing.Size(75, 23);
+            this.btnNuevoTipoTrabajador.TabIndex = 4;
+            this.btnNuevoTipoTrabajador.Text = "Nuevo";
+            this.btnNuevoTipoTrabajador.UseVisualStyleBackColor = true;
+            this.btnNuevoTipoTrabajador.Click += new System.EventHandler(this.btnNuevoTipoTrabajador_Click);
+            // 
+            // dtgTipoTrabajador
+            // 
+            this.dtgTipoTrabajador.AllowUserToAddRows = false;
+            this.dtgTipoTrabajador.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.LightBlue;
+            this.dtgTipoTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.dtgTipoTrabajador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgTipoTrabajador.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this.dtgTipoTrabajador.Location = new System.Drawing.Point(21, 23);
+            this.dtgTipoTrabajador.Name = "dtgTipoTrabajador";
+            this.dtgTipoTrabajador.ReadOnly = true;
+            this.dtgTipoTrabajador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgTipoTrabajador.Size = new System.Drawing.Size(434, 106);
+            this.dtgTipoTrabajador.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "idtPeriodo";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Codigo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "idtTrabajador";
+            this.dataGridViewTextBoxColumn2.HeaderText = "idtTrabajador";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "fechaInicio";
+            dataGridViewCellStyle11.Format = "d";
+            dataGridViewCellStyle11.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Fecha Inicio";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "idtMotivoFinPeriodo1";
+            this.dataGridViewTextBoxColumn4.HeaderText = "idtMotivoFinPeriodo";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "codigosunat";
+            this.dataGridViewTextBoxColumn5.HeaderText = "codigoSunat";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Fechafin";
+            dataGridViewCellStyle12.Format = "d";
+            dataGridViewCellStyle12.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Fecha Fin";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "descripcion";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Motivo Fin Periodo";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "idtmotivofinperiodo";
+            this.dataGridViewTextBoxColumn8.HeaderText = "idtmotivofinperiodo";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Visible = false;
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(525, 113);
+            this.label30.Location = new System.Drawing.Point(620, 227);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(71, 13);
             this.label30.TabIndex = 22;
@@ -718,7 +873,7 @@
             // cboTipoContrato
             // 
             this.cboTipoContrato.FormattingEnabled = true;
-            this.cboTipoContrato.Location = new System.Drawing.Point(525, 135);
+            this.cboTipoContrato.Location = new System.Drawing.Point(620, 249);
             this.cboTipoContrato.Name = "cboTipoContrato";
             this.cboTipoContrato.Size = new System.Drawing.Size(221, 21);
             this.cboTipoContrato.TabIndex = 21;
@@ -728,7 +883,7 @@
             this.groupTipoServidorPersonal.Controls.Add(this.rdnPorPeriodo);
             this.groupTipoServidorPersonal.Controls.Add(this.rdnNombrado);
             this.groupTipoServidorPersonal.Enabled = false;
-            this.groupTipoServidorPersonal.Location = new System.Drawing.Point(8, 82);
+            this.groupTipoServidorPersonal.Location = new System.Drawing.Point(609, 101);
             this.groupTipoServidorPersonal.Name = "groupTipoServidorPersonal";
             this.groupTipoServidorPersonal.Size = new System.Drawing.Size(404, 74);
             this.groupTipoServidorPersonal.TabIndex = 20;
@@ -762,7 +917,7 @@
             this.groupTipoContrato.Controls.Add(this.rdnResidenteDeObra);
             this.groupTipoContrato.Controls.Add(this.rdnServiciosNoPersonales);
             this.groupTipoContrato.Controls.Add(this.rdnServiciosPersonales);
-            this.groupTipoContrato.Location = new System.Drawing.Point(8, 6);
+            this.groupTipoContrato.Location = new System.Drawing.Point(609, 21);
             this.groupTipoContrato.Name = "groupTipoContrato";
             this.groupTipoContrato.Size = new System.Drawing.Size(566, 70);
             this.groupTipoContrato.TabIndex = 19;
@@ -806,14 +961,14 @@
             // cboListaCargos
             // 
             this.cboListaCargos.FormattingEnabled = true;
-            this.cboListaCargos.Location = new System.Drawing.Point(150, 263);
+            this.cboListaCargos.Location = new System.Drawing.Point(671, 388);
             this.cboListaCargos.Name = "cboListaCargos";
             this.cboListaCargos.Size = new System.Drawing.Size(301, 21);
             this.cboListaCargos.TabIndex = 15;
             // 
             // txtNumeroContrato
             // 
-            this.txtNumeroContrato.Location = new System.Drawing.Point(150, 173);
+            this.txtNumeroContrato.Location = new System.Drawing.Point(755, 296);
             this.txtNumeroContrato.Name = "txtNumeroContrato";
             this.txtNumeroContrato.Size = new System.Drawing.Size(60, 20);
             this.txtNumeroContrato.TabIndex = 14;
@@ -821,7 +976,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(12, 173);
+            this.label29.Location = new System.Drawing.Point(617, 296);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(90, 13);
             this.label29.TabIndex = 13;
@@ -830,7 +985,7 @@
             // cboMeta
             // 
             this.cboMeta.FormattingEnabled = true;
-            this.cboMeta.Location = new System.Drawing.Point(150, 229);
+            this.cboMeta.Location = new System.Drawing.Point(671, 354);
             this.cboMeta.Name = "cboMeta";
             this.cboMeta.Size = new System.Drawing.Size(301, 21);
             this.cboMeta.TabIndex = 12;
@@ -838,7 +993,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(12, 238);
+            this.label28.Location = new System.Drawing.Point(533, 363);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(34, 13);
             this.label28.TabIndex = 11;
@@ -847,7 +1002,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dtgContratos);
-            this.groupBox2.Location = new System.Drawing.Point(9, 342);
+            this.groupBox2.Location = new System.Drawing.Point(530, 467);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(442, 140);
             this.groupBox2.TabIndex = 10;
@@ -856,9 +1011,9 @@
             // 
             // dtgContratos
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dtgContratos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            this.dtgContratos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dtgContratos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgContratos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idtContrato,
@@ -900,18 +1055,18 @@
             // colfechainicio
             // 
             this.colfechainicio.DataPropertyName = "fechainicio";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.colfechainicio.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Format = "d";
+            dataGridViewCellStyle14.NullValue = null;
+            this.colfechainicio.DefaultCellStyle = dataGridViewCellStyle14;
             this.colfechainicio.HeaderText = "Fecha Inicio";
             this.colfechainicio.Name = "colfechainicio";
             // 
             // colFechaFinal
             // 
             this.colFechaFinal.DataPropertyName = "fechafinal";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.colFechaFinal.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Format = "d";
+            dataGridViewCellStyle15.NullValue = null;
+            this.colFechaFinal.DefaultCellStyle = dataGridViewCellStyle15;
             this.colFechaFinal.HeaderText = "Fecha Fin";
             this.colFechaFinal.Name = "colFechaFinal";
             // 
@@ -946,7 +1101,7 @@
             // cboTipoTrabajador
             // 
             this.cboTipoTrabajador.FormattingEnabled = true;
-            this.cboTipoTrabajador.Location = new System.Drawing.Point(150, 200);
+            this.cboTipoTrabajador.Location = new System.Drawing.Point(701, 191);
             this.cboTipoTrabajador.Name = "cboTipoTrabajador";
             this.cboTipoTrabajador.Size = new System.Drawing.Size(301, 21);
             this.cboTipoTrabajador.TabIndex = 9;
@@ -954,15 +1109,15 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(12, 209);
+            this.label26.Location = new System.Drawing.Point(613, 199);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(124, 13);
+            this.label26.Size = new System.Drawing.Size(82, 13);
             this.label26.TabIndex = 8;
-            this.label26.Text = "Estado de Contratacion :";
+            this.label26.Text = "Tipo Trabajador";
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(376, 302);
+            this.btnAgregar.Location = new System.Drawing.Point(897, 427);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 7;
@@ -973,7 +1128,7 @@
             // dtpFinContrato
             // 
             this.dtpFinContrato.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFinContrato.Location = new System.Drawing.Point(222, 305);
+            this.dtpFinContrato.Location = new System.Drawing.Point(743, 430);
             this.dtpFinContrato.Name = "dtpFinContrato";
             this.dtpFinContrato.Size = new System.Drawing.Size(98, 20);
             this.dtpFinContrato.TabIndex = 6;
@@ -981,7 +1136,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(174, 312);
+            this.label27.Location = new System.Drawing.Point(695, 437);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(27, 13);
             this.label27.TabIndex = 5;
@@ -990,7 +1145,7 @@
             // dtpInicioContrato
             // 
             this.dtpInicioContrato.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInicioContrato.Location = new System.Drawing.Point(53, 306);
+            this.dtpInicioContrato.Location = new System.Drawing.Point(574, 431);
             this.dtpInicioContrato.Name = "dtpInicioContrato";
             this.dtpInicioContrato.Size = new System.Drawing.Size(102, 20);
             this.dtpInicioContrato.TabIndex = 4;
@@ -999,7 +1154,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(12, 312);
+            this.label25.Location = new System.Drawing.Point(533, 437);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(35, 13);
             this.label25.TabIndex = 3;
@@ -1008,7 +1163,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 272);
+            this.label11.Location = new System.Drawing.Point(533, 397);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 13);
             this.label11.TabIndex = 1;
@@ -1020,7 +1175,7 @@
             this.groupBox1.Controls.Add(this.btnModificarPeriodo);
             this.groupBox1.Controls.Add(this.btnNuevoPeriodo);
             this.groupBox1.Controls.Add(this.dtgPeriodos);
-            this.groupBox1.Location = new System.Drawing.Point(15, 488);
+            this.groupBox1.Location = new System.Drawing.Point(9, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(562, 146);
             this.groupBox1.TabIndex = 0;
@@ -1060,8 +1215,8 @@
             // 
             this.dtgPeriodos.AllowUserToAddRows = false;
             this.dtgPeriodos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightBlue;
-            this.dtgPeriodos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.LightBlue;
+            this.dtgPeriodos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dtgPeriodos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgPeriodos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoPeriodo,
@@ -1099,9 +1254,9 @@
             // fechaInicio
             // 
             this.fechaInicio.DataPropertyName = "fechaInicio";
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.fechaInicio.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Format = "d";
+            dataGridViewCellStyle17.NullValue = null;
+            this.fechaInicio.DefaultCellStyle = dataGridViewCellStyle17;
             this.fechaInicio.HeaderText = "Fecha Inicio";
             this.fechaInicio.Name = "fechaInicio";
             this.fechaInicio.ReadOnly = true;
@@ -1126,9 +1281,9 @@
             // fechaFin
             // 
             this.fechaFin.DataPropertyName = "Fechafin";
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.fechaFin.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Format = "d";
+            dataGridViewCellStyle18.NullValue = null;
+            this.fechaFin.DefaultCellStyle = dataGridViewCellStyle18;
             this.fechaFin.HeaderText = "Fecha Fin";
             this.fechaFin.Name = "fechaFin";
             this.fechaFin.ReadOnly = true;
@@ -1180,6 +1335,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             this.tabDatosContrato.ResumeLayout(false);
             this.tabDatosContrato.PerformLayout();
+            this.groupTipoTrabajador.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgTipoTrabajador)).EndInit();
             this.groupTipoServidorPersonal.ResumeLayout(false);
             this.groupTipoServidorPersonal.PerformLayout();
             this.groupTipoContrato.ResumeLayout(false);
@@ -1296,5 +1453,18 @@
         private System.Windows.Forms.RadioButton rdnServiciosPersonales;
         private System.Windows.Forms.ComboBox cboTipoContrato;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.GroupBox groupTipoTrabajador;
+        private System.Windows.Forms.Button btnEliminarTipoTrabajador;
+        private System.Windows.Forms.Button btnModificarTipoTrabajador;
+        private System.Windows.Forms.Button btnNuevoTipoTrabajador;
+        private System.Windows.Forms.DataGridView dtgTipoTrabajador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
     }
 }

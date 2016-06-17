@@ -81,13 +81,7 @@ namespace CapaDeNegocios
             get { return idTrabajador; }
             set { idTrabajador = value; }
         }
-        private List<cPeriodo> periodos;
-
-        public List<cPeriodo> Periodos
-        {
-            get { return periodos; }
-            set { periodos = value; }
-        }
+       
 
         private byte[] foto;
 
@@ -336,16 +330,7 @@ namespace CapaDeNegocios
         {
             return Conexion.GDatos.TraerDataTable("spListarTrabajadores", Activo);
         }
-        public cAFP cAFP
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+      
 
     }
 }

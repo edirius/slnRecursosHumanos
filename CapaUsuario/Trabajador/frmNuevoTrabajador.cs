@@ -15,7 +15,7 @@ namespace CapaUsuario.Trabajador
 {
     public partial class frmNuevoTrabajador : Form
     {
-        public cTrabajadorServidorPersonal miTrabajador;
+        public cTrabajador miTrabajador;
         public cPeriodo miPeriodo ;
 
         public frmNuevoTrabajador()
@@ -413,6 +413,48 @@ namespace CapaUsuario.Trabajador
             {
                 groupTipoServidorPersonal.Enabled = false;
             }
+        }
+
+        private void btnNuevoTipoTrabajador_Click(object sender, EventArgs e)
+        {
+            frmNuevoTipoTrabajador fNuevoTipoTrabajador = new frmNuevoTipoTrabajador();
+            fNuevoTipoTrabajador.miPeriodoTipoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTipoTrabajador();
+            fNuevoTipoTrabajador.miPeriodoTipoTrabajador.FechaInicio = DateTime.Now;
+            fNuevoTipoTrabajador.miPeriodoTipoTrabajador.FechaFinal.FechaFin = DateTime.Now;
+            fNuevoTipoTrabajador.miPeriodoTipoTrabajador.FechaFinal.TieneFin = false;
+            if (fNuevoTipoTrabajador.ShowDialog() == DialogResult.OK)
+            {
+                fNuevoTipoTrabajador.miPeriodoTipoTrabajador.AgregarPeriodoTipoTrabajador(fNuevoTipoTrabajador.miPeriodoTipoTrabajador);
+            }
+        }
+
+        private void btnModificarTipoTrabajador_Click(object sender, EventArgs e)
+        {
+            frmNuevoTipoTrabajador fModificarTrabajador = new frmNuevoTipoTrabajador();
+            fModificarTrabajador.miPeriodoTipoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTipoTrabajador();
+            if (dtgTipoTrabajador.SelectedRows.Count > 0)
+            {
+                fModificarTrabajador.miPeriodoTipoTrabajador.Codigo = Convert.ToInt16(dtgPeriodos.SelectedRows[0].Cells[0].Value);
+                fModificarTrabajador.miPeriodoTipoTrabajador.FechaInicio = Convert.ToDateTime(dtgPeriodos.SelectedRows[0].Cells[2].Value);
+
+                if (dtgPeriodos.SelectedRows[0].Cells[3].Value != Convert.DBNull)
+                {
+                    fModificarTrabajador.miPeriodoTipoTrabajador.FechaFinal.TieneFin = true;
+                    fModificarTrabajador.miPeriodoTipoTrabajador.FechaFinal.FechaFin = Convert.ToDateTime(dtgPeriodos.SelectedRows[0].Cells[3].Value);
+                    fModificarTrabajador.miPeriodoTipoTrabajador.TipoTrabajador.Codigo = Convert.ToInt16(dtgPeriodos.SelectedRows[0].Cells[4].Value);
+                    fModificarTrabajador.miPeriodoTipoTrabajador.TipoTrabajador.Descripcion = Convert.ToString(dtgPeriodos.SelectedRows[0].Cells[7].Value);
+                }
+                else
+                {
+                    fModificarTrabajador.miPeriodoTipoTrabajador.FechaFinal.TieneFin = false;
+                }
+
+            }
+
+            if (fModificarTrabajador.ShowDialog() == DialogResult.OK)
+            {
+
+            }  
         }
     }
 
