@@ -155,5 +155,11 @@ namespace CapaUsuario.Tareo
             dgvTareo.Columns[0].Visible = false;
             dgvTareo.Columns[6].Visible = false;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Reportes.Reportes fReportes = new CapaUsuario.Reportes.Reportes();
+            fReportes.ShowDialog();
+        }
     }
 }
