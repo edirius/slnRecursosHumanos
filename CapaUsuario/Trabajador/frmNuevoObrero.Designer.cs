@@ -33,7 +33,7 @@
             this.txtApePaterno = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dptFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtDNI = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -115,12 +115,12 @@
             this.label3.TabIndex = 66;
             this.label3.Text = "Nombres :";
             // 
-            // dptFechaNacimiento
+            // dtpFechaNacimiento
             // 
-            this.dptFechaNacimiento.Location = new System.Drawing.Point(117, 113);
-            this.dptFechaNacimiento.Name = "dptFechaNacimiento";
-            this.dptFechaNacimiento.Size = new System.Drawing.Size(215, 20);
-            this.dptFechaNacimiento.TabIndex = 6;
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(117, 113);
+            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(215, 20);
+            this.dtpFechaNacimiento.TabIndex = 6;
             // 
             // txtNombre
             // 
@@ -326,7 +326,7 @@
             this.Controls.Add(this.txtApePaterno);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dptFechaNacimiento);
+            this.Controls.Add(this.dtpFechaNacimiento);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtDNI);
             this.Controls.Add(this.label2);
@@ -346,7 +346,7 @@
         private System.Windows.Forms.TextBox txtApePaterno;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dptFechaNacimiento;
+        private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.Label label2;

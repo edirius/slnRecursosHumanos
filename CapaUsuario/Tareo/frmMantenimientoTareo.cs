@@ -158,8 +158,10 @@ namespace CapaUsuario.Tareo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CapaUsuario.Reportes.Reportes fReportes = new CapaUsuario.Reportes.Reportes();
-            fReportes.ShowDialog();
+            CapaUsuario.Reportes.MostrarReportes fMostrarReportes = new CapaUsuario.Reportes.MostrarReportes();
+            fMostrarReportes.IdTMeta = sIdTMeta;
+            fMostrarReportes.IdTTareo = sIdTTareo;
+            fMostrarReportes.ShowDialog();
         }
     }
 }

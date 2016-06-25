@@ -78,6 +78,7 @@ namespace CapaUsuario.Tareo
                         dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = "D";
                     }
                 }
+                
             }
             if (contador == 0)
             {
@@ -121,16 +122,26 @@ namespace CapaUsuario.Tareo
         {
             bool bOk = false;
             string diastareo = "";
+            int contadordias = 0;
             foreach (DataGridViewRow row in dgvDetalleTareo.Rows)
             {
+                contadordias = 0;
                 diastareo = "";
-                for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+                for (int i = 1; i <= 31; i++)
                 {
-                    if (Convert.ToString(row.Cells[10 + i].Value) == "")
+                    if (i >= miTareo.FechaInicio.Day && i <= miTareo.FechaFin.Day)
                     {
-                        diastareo += " ";
+                        if (Convert.ToString(row.Cells[9 + i - contadordias].Value) == "")
+                        {
+                            diastareo += "0";
+                        }
+                        diastareo += Convert.ToString(row.Cells[9 + i - contadordias].Value);
                     }
-                    diastareo += Convert.ToString(row.Cells[10 + i].Value);
+                    else
+                    {
+                        contadordias += 1;
+                        diastareo += "0";
+                    }
                 }
                 miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(row.Cells[0].Value);
                 miDetalleTareo.Categoria = Convert.ToString(row.Cells[8].Value);
@@ -296,7 +307,7 @@ namespace CapaUsuario.Tareo
 
         private void CargarDatos()
         {
-            int contador = 0;
+            int contador = 0, contadordias = 0;
             int fila = 0;
             int j, k = 0;
             string r = "";
@@ -325,19 +336,29 @@ namespace CapaUsuario.Tareo
                 //miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(row[0]);
                 //CargarDiasTareo(fila);
                 j = 0;
+                contadordias = 0;
                 diastareo = row[2].ToString();
-                if ((miTareo.FechaFin.Day - miTareo.FechaInicio.Day) > diastareo.Count()) { k = diastareo.Count() - 1; }
-                else { k = (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); }
-                for (int i = 0; i <= k; i++)
+                //if ((miTareo.FechaFin.Day - miTareo.FechaInicio.Day) > diastareo.Count()) { k = diastareo.Count() - 1; }
+                //else { k = (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); }
+                for (int i = 1; i <= 31; i++)
                 {
-                    r = diastareo.Substring(i, 1);
-                    dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = r;
-                    if (r == "x") { j += 1; }
-                    auxiliar = miTareo.FechaInicio.AddDays(i);
-                    if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
+                    r = diastareo.Substring(i - 1, 1);
+                    if (i >= miTareo.FechaInicio.Day && i <= miTareo.FechaFin.Day)
                     {
-                        dgvDetalleTareo.Rows[fila].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
-                        dgvDetalleTareo.Rows[fila].Cells[10 + i].Value = "D";
+                        dgvDetalleTareo.Rows[fila].Cells[9 + i - contadordias].Value = r;
+                        if (r == "x") { j += 1; }
+                        auxiliar = miTareo.FechaInicio.AddDays(i - contadordias - 1);
+                        if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
+                        {
+                            int K = 0;
+                            k = i - contadordias - 1;
+                            dgvDetalleTareo.Rows[fila].Cells["col" + k.ToString()].Style.BackColor = Color.Red;
+                            dgvDetalleTareo.Rows[fila].Cells[9 + i - contadordias].Value = "D";
+                        }
+                    }
+                    else
+                    {
+                        contadordias += 1;
                     }
                 }
                 dgvDetalleTareo.Rows[fila].Cells[dgvDetalleTareo.ColumnCount - 1].Value = j;

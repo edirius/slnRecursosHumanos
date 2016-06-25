@@ -44,6 +44,7 @@ namespace CapaUsuario.Trabajador
             miTrabajador.ApellidoMaterno = txtApeMaterno.Text;
             if (rbtMasculino.Checked == true) { miTrabajador.Sexo = CapaDeNegocios.EnumSexo.Masculino; }
             else if (rbtFemenino.Checked == true) { miTrabajador.Sexo = CapaDeNegocios.EnumSexo.Femenino; }
+            miTrabajador.FechaNacimiento = dtpFechaNacimiento.Value;
             miTrabajador.Dni = txtDNI.Text;
             miTrabajador.CelularPersonal = txtCelular.Text;
             miTrabajador.Direccion = txtDireccion.Text;

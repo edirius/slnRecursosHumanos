@@ -299,21 +299,21 @@
             this.txtApellidosNombres.HeaderText = "APELLIDOS Y NOMBRES";
             this.txtApellidosNombres.Name = "txtApellidosNombres";
             this.txtApellidosNombres.ReadOnly = true;
-            this.txtApellidosNombres.Width = 300;
+            this.txtApellidosNombres.Width = 275;
             // 
             // txtDNI
             // 
             this.txtDNI.HeaderText = "DNI";
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtDNI.Width = 75;
             // 
             // txtSistemaPensiones
             // 
-            this.txtSistemaPensiones.HeaderText = "SISTEMA PENSIONES";
+            this.txtSistemaPensiones.HeaderText = "SIS PENSIONES";
             this.txtSistemaPensiones.Name = "txtSistemaPensiones";
             this.txtSistemaPensiones.ReadOnly = true;
             this.txtSistemaPensiones.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.txtSistemaPensiones.Width = 125;
             // 
             // cboCategoria
             // 
