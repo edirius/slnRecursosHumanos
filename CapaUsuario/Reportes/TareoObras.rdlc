@@ -6,112 +6,112 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.85958cm</Width>
+              <Width>0.80958cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>7.38308cm</Width>
+              <Width>6.4cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1.70625cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.42708cm</Width>
+              <Width>2.02708cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.75cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.65cm</Width>
+              <Width>0.53cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.5cm</Width>
+              <Width>1.20896cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -271,7 +271,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -322,7 +322,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -373,7 +373,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -424,7 +424,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -475,7 +475,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -526,7 +526,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -577,7 +577,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -628,7 +628,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -679,7 +679,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -730,7 +730,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -781,7 +781,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -832,7 +832,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -883,7 +883,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -934,7 +934,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -985,7 +985,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1036,7 +1036,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1087,7 +1087,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1138,7 +1138,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1189,7 +1189,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1240,7 +1240,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1291,7 +1291,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1342,7 +1342,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1393,7 +1393,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1444,7 +1444,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1495,7 +1495,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1546,7 +1546,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1597,7 +1597,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1648,7 +1648,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1699,7 +1699,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1750,7 +1750,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1804,7 +1804,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Dia</Value>
+                              <Value>D</Value>
                               <Style>
                                 <FontFamily>Cambria</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -2034,7 +2034,7 @@
                               <Value>=Fields!categoria.Value</Value>
                               <Style>
                                 <FontFamily>Courier New</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <FontSize>8pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -3081,9 +3081,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>TareoObras</DataSetName>
-        <Left>0.37042cm</Left>
         <Height>1.6cm</Height>
-        <Width>35.12599cm</Width>
+        <Width>28.58187cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -3094,7 +3093,7 @@
     <Height>1.27575in</Height>
     <Style />
   </Body>
-  <Width>14.07913in</Width>
+  <Width>11.2527in</Width>
   <Page>
     <PageHeader>
       <Height>4.10185cm</Height>
@@ -3146,9 +3145,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox113</rd:DefaultName>
-          <Left>13.74641cm</Left>
+          <Left>9.02291cm</Left>
           <Height>1.08479cm</Height>
-          <Width>9.85cm</Width>
+          <Width>11.17cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -3532,7 +3531,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
           <Top>2.29166cm</Top>
-          <Left>23.59641cm</Left>
+          <Left>19.09291cm</Left>
           <Height>0.6cm</Height>
           <Width>5.85cm</Width>
           <Style>
@@ -3570,7 +3569,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
           <Top>2.29166cm</Top>
-          <Left>15.79641cm</Left>
+          <Left>11.44541cm</Left>
           <Height>0.6cm</Height>
           <Width>5.85cm</Width>
           <ZIndex>1</ZIndex>
@@ -3609,7 +3608,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
           <Top>2.29166cm</Top>
-          <Left>7.89641cm</Left>
+          <Left>3.89759cm</Left>
           <Height>0.6cm</Height>
           <Width>5.85cm</Width>
           <ZIndex>2</ZIndex>
