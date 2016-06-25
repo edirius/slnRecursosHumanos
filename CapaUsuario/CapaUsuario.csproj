@@ -210,6 +210,18 @@
     <Compile Include="ResidenteMeta\frmResidenteMeta.designer.cs">
       <DependentUpon>frmResidenteMeta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sunat\frmMaestroIngresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\frmMaestroIngresos.Designer.cs">
+      <DependentUpon>frmMaestroIngresos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sunat\frmMantenimientoMaestroIngresos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\frmMantenimientoMaestroIngresos.Designer.cs">
+      <DependentUpon>frmMantenimientoMaestroIngresos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tareo\frmMantenimientoDetalleTareo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -404,6 +416,9 @@
     <EmbeddedResource Include="ResidenteMeta\frmResidenteMeta.resx">
       <DependentUpon>frmResidenteMeta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\frmMantenimientoMaestroIngresos.resx">
+      <DependentUpon>frmMantenimientoMaestroIngresos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmMantenimientoDetalleTareo.resx">
       <DependentUpon>frmMantenimientoDetalleTareo.cs</DependentUpon>
     </EmbeddedResource>
@@ -510,9 +525,7 @@
   <ItemGroup>
     <None Include="Resources\internet.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sunat\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
