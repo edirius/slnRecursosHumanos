@@ -11,8 +11,9 @@ namespace CapaDeNegocios.DatosLaborales
 {
     public class cPeriodoTipoTrabajador
     {
-        public cPeriodoTipoTrabajador ()
+        public cPeriodoTipoTrabajador (cTrabajador Trabajador)
         {
+            miTrabajador = Trabajador;
             tipoTrabajador = new cTipoTrabajador();
             fechaFinal = new cFinPeriodo();
         }
@@ -88,6 +89,11 @@ namespace CapaDeNegocios.DatosLaborales
         {
             Conexion.GDatos.Ejecutar("spEliminarPeriodoTipoTrabajador", miPeriodo.codigo);
             return true;
+        }
+
+        public DataTable ListarPeriodoTipoTrabajador ()
+        {
+            return Conexion.GDatos.TraerDataTable("spListarPeriodoTipoTrabajador", this.miTrabajador.IdTrabajador);
         }
     }
 }

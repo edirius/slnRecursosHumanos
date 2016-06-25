@@ -11,12 +11,15 @@ using CapaDeNegocios;
 using CapaDeNegocios.Contrato;
 using CapaDeNegocios.Obras;
 using CapaDeNegocios.Trabajadores;
+using CapaDeNegocios.DatosLaborales;
+
 namespace CapaUsuario.Trabajador
 {
     public partial class frmNuevoTrabajador : Form
     {
         public cTrabajador miTrabajador;
         public cPeriodo miPeriodo ;
+        
 
         public frmNuevoTrabajador()
         {
@@ -60,11 +63,7 @@ namespace CapaUsuario.Trabajador
                 pbFoto.Image = ConvertImage.ByteArrayToImage(miTrabajador.Foto);
             }
             
-            if (miTrabajador.IdTrabajador != 0)
-            {
-                dtgPeriodos.DataSource = miPeriodo.TraerPeriodos(miTrabajador.IdTrabajador);
-                
-            }
+           
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -272,63 +271,12 @@ namespace CapaUsuario.Trabajador
 
         private void btnNuevoPeriodo_Click(object sender, EventArgs e)
         {
-            try
-            {
-                frmNuevoPeriodo fNuevoPeriodo = new frmNuevoPeriodo();
-                fNuevoPeriodo.miPeriodo = miPeriodo;
-                fNuevoPeriodo.miPeriodo.FechaFin = new CapaDeNegocios.DatosLaborales.cFinPeriodo();
-                fNuevoPeriodo.miPeriodo.FechaInicio = DateTime.Now;
-                if (fNuevoPeriodo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    fNuevoPeriodo.miPeriodo.CrearPeriodo(fNuevoPeriodo.miPeriodo);
-                    dtgPeriodos.DataSource = miPeriodo.TraerPeriodos(miTrabajador.IdTrabajador);
-                }
-            }
-            catch (Exception e2)
-            {
-                MessageBox.Show (e2.Message);
-            }
+          
         }
 
         private void btnModificarPeriodo_Click(object sender, EventArgs e)
         {
-            try
-            {
-                frmNuevoPeriodo fModificarPeriodo = new frmNuevoPeriodo();
-                fModificarPeriodo.miPeriodo = miPeriodo;
-                fModificarPeriodo.miPeriodo.FechaFin = new CapaDeNegocios.DatosLaborales.cFinPeriodo();
-
-                if (dtgPeriodos.SelectedRows.Count > 0)
-                {
-                    fModificarPeriodo.miPeriodo.Codigo = Convert.ToInt16(dtgPeriodos.SelectedRows[0].Cells[0].Value);
-                    fModificarPeriodo.miPeriodo.FechaInicio = Convert.ToDateTime(dtgPeriodos.SelectedRows[0].Cells[2].Value);
-
-                    fModificarPeriodo.miPeriodo.MotivoFinPeriodo = new CapaDeNegocios.DatosLaborales.cMotivoFinPeriodo();
-
-                    if (dtgPeriodos.SelectedRows[0].Cells[3].Value != Convert.DBNull)
-                    {
-                        fModificarPeriodo.miPeriodo.FechaFin.TieneFin = true;
-                        fModificarPeriodo.miPeriodo.FechaFin.FechaFin = Convert.ToDateTime(dtgPeriodos.SelectedRows[0].Cells[3].Value);
-                        fModificarPeriodo.miPeriodo.MotivoFinPeriodo.Codigo = Convert.ToInt16(dtgPeriodos.SelectedRows[0].Cells[4].Value);
-                        fModificarPeriodo.miPeriodo.MotivoFinPeriodo.Descripcion = Convert.ToString(dtgPeriodos.SelectedRows[0].Cells[7].Value);
-                    }
-                    else
-                    {
-                        fModificarPeriodo.miPeriodo.FechaFin.TieneFin = false;
-                    }
-
-                }
-
-                if (fModificarPeriodo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    fModificarPeriodo.miPeriodo.ModificarPeriodo(fModificarPeriodo.miPeriodo);
-                    dtgPeriodos.DataSource = miPeriodo.TraerPeriodos(miTrabajador.IdTrabajador);
-                }
-            }
-            catch (Exception f)
-            {
-                MessageBox.Show (f.Message );  
-            }
+            
         }
         #endregion
 
@@ -337,29 +285,29 @@ namespace CapaUsuario.Trabajador
         cContrato miContrato = new cContrato();
         Boolean ingresoPrimeraVez { get; set; }
         cCadenaProgramaticaFuncional miCadenaProgramaticaFuncional = new cCadenaProgramaticaFuncional();
-
+       
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-                miContrato.MiTrabajador = miTrabajador;
-                miContrato.MiMeta = new cMeta();
-                miContrato.MiMeta.Codigo = Convert.ToInt16(cboMeta.SelectedValue);
-                miContrato.MiTipoTrabajador = new cTipoTrabajador();
-                miContrato.MiTipoTrabajador.Codigo = Convert.ToInt16(cboTipoTrabajador.SelectedValue);
-                miContrato.NumeroContrato = Convert.ToInt16(txtNumeroContrato.Text);
+            ////try
+            ////{
+            //    miContrato.MiTrabajador = miTrabajador;
+            //    miContrato.MiMeta = new cMeta();
+            //    miContrato.MiMeta.Codigo = Convert.ToInt16(cboMeta.SelectedValue);
+            //    miContrato.MiTipoTrabajador = new cTipoTrabajador();
+            //    miContrato.MiTipoTrabajador.Codigo = Convert.ToInt16(cboTipoTrabajador.SelectedValue);
+            //    miContrato.NumeroContrato = Convert.ToInt16(txtNumeroContrato.Text);
 
-                miContrato.FechaInicio = dtpInicioContrato.Value;
-                miContrato.FechaFinal = dtpFinContrato.Value;
+            //    miContrato.FechaInicio = dtpInicioContrato.Value;
+            //    miContrato.FechaFinal = dtpFinContrato.Value;
 
-                miContrato.AgregarContrato(miContrato);
-                dtgContratos.DataSource = miContrato.ListaContrato(miTrabajador);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
+            //    miContrato.AgregarContrato(miContrato);
+            //    dtgContratos.DataSource = miContrato.ListaContrato(miTrabajador);
+            ////}
+            ////catch (Exception ex)
+            ////{
+            ////    MessageBox.Show(ex.Message);
                
-            //}
+            ////}
             
         }
         private void tabDatosContrato_Enter(object sender, EventArgs e)
@@ -369,32 +317,35 @@ namespace CapaUsuario.Trabajador
 
         private void IniciarDatosContrato()
         {
-            if (ingresoPrimeraVez == false )
-            {
-                
-                miContrato.MiTipoTrabajador = new cTipoTrabajador();
-                CapaDeNegocios.Contrato.cCargo miCargo = new cCargo();
-                miContrato.TipoContrato = new cTipoContrato();
+            //if (ingresoPrimeraVez == false)
+            //{
 
-                cboTipoTrabajador.DisplayMember = "Descripcion";
-                cboTipoTrabajador.ValueMember = "idtsunattipotrabajador";
-                cboTipoTrabajador.DataSource = miContrato.MiTipoTrabajador.ListarTiposDeTrabajadores();
+            //    miContrato.MiTipoTrabajador = new cTipoTrabajador();
+            //    CapaDeNegocios.Contrato.cCargo miCargo = new cCargo();
+            //    miContrato.TipoContrato = new cTipoContrato();
 
-                cboTipoContrato.DisplayMember = "Descripcion";
-                cboTipoContrato.ValueMember = "idttipoContrato";
-                cboTipoContrato.DataSource = miContrato.TipoContrato.ListaTipoContratos();
+            //    cboTipoTrabajador.DisplayMember = "Descripcion";
+            //    cboTipoTrabajador.ValueMember = "idtsunattipotrabajador";
+            //    cboTipoTrabajador.DataSource = miContrato.MiTipoTrabajador.ListarTiposDeTrabajadores();
 
-                cboMeta.DisplayMember = "Nombre";
-                cboMeta.ValueMember = "idtMeta";
-                cboMeta.DataSource = miCadenaProgramaticaFuncional.ListarMetas();
+            //    cboTipoContrato.DisplayMember = "Descripcion";
+            //    cboTipoContrato.ValueMember = "idttipoContrato";
+            //    cboTipoContrato.DataSource = miContrato.TipoContrato.ListaTipoContratos();
 
-                dtgContratos.DataSource  = miContrato.ListaContrato(miTrabajador);
-                ingresoPrimeraVez = true;
+            //    cboMeta.DisplayMember = "Nombre";
+            //    cboMeta.ValueMember = "idtMeta";
+            //    cboMeta.DataSource = miCadenaProgramaticaFuncional.ListarMetas();
 
-                cboListaCargos.DisplayMember = "descripcion";
-                cboListaCargos.ValueMember = "idtCargo";
-                cboListaCargos.DataSource = miCargo.ListaCargos();
-            }
+            //    dtgContratos.DataSource = miContrato.ListaContrato(miTrabajador);
+            //    ingresoPrimeraVez = true;
+
+            //    cboListaCargos.DisplayMember = "descripcion";
+            //    cboListaCargos.ValueMember = "idtCargo";
+            //    cboListaCargos.DataSource = miCargo.ListaCargos();
+
+            //    cPeriodoTipoTrabajador miTipoTrabajador = new cPeriodoTipoTrabajador(miTrabajador);
+            //    dtgTipoTrabajador.DataSource = miTipoTrabajador.ListarPeriodoTipoTrabajador();
+            //}
         }
         private void dtpInicioContrato_ValueChanged(object sender, EventArgs e)
         {
@@ -403,25 +354,15 @@ namespace CapaUsuario.Trabajador
 
         #endregion
 
-        private void rdnServiciosPersonales_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdnServiciosPersonales.Checked == true)
-            {
-                groupTipoServidorPersonal.Enabled = true;
-            }
-            else
-            {
-                groupTipoServidorPersonal.Enabled = false;
-            }
-        }
-
+        
         private void btnNuevoTipoTrabajador_Click(object sender, EventArgs e)
         {
             frmNuevoTipoTrabajador fNuevoTipoTrabajador = new frmNuevoTipoTrabajador();
-            fNuevoTipoTrabajador.miPeriodoTipoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTipoTrabajador();
+            fNuevoTipoTrabajador.miPeriodoTipoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTipoTrabajador(miTrabajador);
             fNuevoTipoTrabajador.miPeriodoTipoTrabajador.FechaInicio = DateTime.Now;
             fNuevoTipoTrabajador.miPeriodoTipoTrabajador.FechaFinal.FechaFin = DateTime.Now;
             fNuevoTipoTrabajador.miPeriodoTipoTrabajador.FechaFinal.TieneFin = false;
+            
             if (fNuevoTipoTrabajador.ShowDialog() == DialogResult.OK)
             {
                 fNuevoTipoTrabajador.miPeriodoTipoTrabajador.AgregarPeriodoTipoTrabajador(fNuevoTipoTrabajador.miPeriodoTipoTrabajador);
@@ -430,32 +371,39 @@ namespace CapaUsuario.Trabajador
 
         private void btnModificarTipoTrabajador_Click(object sender, EventArgs e)
         {
-            frmNuevoTipoTrabajador fModificarTrabajador = new frmNuevoTipoTrabajador();
-            fModificarTrabajador.miPeriodoTipoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTipoTrabajador();
-            if (dtgTipoTrabajador.SelectedRows.Count > 0)
-            {
-                fModificarTrabajador.miPeriodoTipoTrabajador.Codigo = Convert.ToInt16(dtgPeriodos.SelectedRows[0].Cells[0].Value);
-                fModificarTrabajador.miPeriodoTipoTrabajador.FechaInicio = Convert.ToDateTime(dtgPeriodos.SelectedRows[0].Cells[2].Value);
+            //frmNuevoTipoTrabajador fModificarTrabajador = new frmNuevoTipoTrabajador();
+            //fModificarTrabajador.miPeriodoTipoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTipoTrabajador(miTrabajador);
+            //if (dtgTipoTrabajador.SelectedRows.Count > 0)
+            //{
+            //    fModificarTrabajador.miPeriodoTipoTrabajador.Codigo = Convert.ToInt16(dtgTipoTrabajador.SelectedRows[0].Cells[0].Value);
+            //    fModificarTrabajador.miPeriodoTipoTrabajador.FechaInicio = Convert.ToDateTime(dtgTipoTrabajador.SelectedRows[0].Cells[2].Value);
 
-                if (dtgPeriodos.SelectedRows[0].Cells[3].Value != Convert.DBNull)
-                {
-                    fModificarTrabajador.miPeriodoTipoTrabajador.FechaFinal.TieneFin = true;
-                    fModificarTrabajador.miPeriodoTipoTrabajador.FechaFinal.FechaFin = Convert.ToDateTime(dtgPeriodos.SelectedRows[0].Cells[3].Value);
-                    fModificarTrabajador.miPeriodoTipoTrabajador.TipoTrabajador.Codigo = Convert.ToInt16(dtgPeriodos.SelectedRows[0].Cells[4].Value);
-                    fModificarTrabajador.miPeriodoTipoTrabajador.TipoTrabajador.Descripcion = Convert.ToString(dtgPeriodos.SelectedRows[0].Cells[7].Value);
-                }
-                else
-                {
-                    fModificarTrabajador.miPeriodoTipoTrabajador.FechaFinal.TieneFin = false;
-                }
+            //    if (dtgTipoTrabajador.SelectedRows[0].Cells[3].Value != Convert.DBNull)
+            //    {
+            //        fModificarTrabajador.miPeriodoTipoTrabajador.FechaFinal.TieneFin = true;
+            //        fModificarTrabajador.miPeriodoTipoTrabajador.FechaFinal.FechaFin = Convert.ToDateTime(dtgTipoTrabajador.SelectedRows[0].Cells[3].Value);
+            //        fModificarTrabajador.miPeriodoTipoTrabajador.TipoTrabajador.Codigo = Convert.ToInt16(dtgTipoTrabajador.SelectedRows[0].Cells[4].Value);
+            //        fModificarTrabajador.miPeriodoTipoTrabajador.TipoTrabajador.Descripcion = Convert.ToString(dtgTipoTrabajador.SelectedRows[0].Cells[6].Value);
+            //    }
+            //    else
+            //    {
+            //        fModificarTrabajador.miPeriodoTipoTrabajador.FechaFinal.TieneFin = false;
+            //    }
 
-            }
+            //}
 
-            if (fModificarTrabajador.ShowDialog() == DialogResult.OK)
-            {
+            //if (fModificarTrabajador.ShowDialog() == DialogResult.OK)
+            //{
 
-            }  
+            //}  
         }
+
+        private void dtpFechaFinPeriodo_ValueChanged(object sender, EventArgs e)
+        {
+            txtFechaFinPeriodo.Text = dtpFechaFinPeriodo.Value.ToShortDateString(); 
+        }
+
+       
     }
 
 

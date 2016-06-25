@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CapaDeNegocios.Trabajadores
 {
-    public class cTrabajadorCas:cTrabajadorEventual
+    public class cTrabajadorCas:cTrabajador
     {
+
         string ruc;
 
         public string Ruc

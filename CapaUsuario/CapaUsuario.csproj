@@ -240,11 +240,23 @@
     <Compile Include="Trabajador\frmListaCargo.Designer.cs">
       <DependentUpon>frmListaCargo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trabajador\frmListaContratos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmListaContratos.Designer.cs">
+      <DependentUpon>frmListaContratos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trabajador\frmListaDistritos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Trabajador\frmListaDistritos.Designer.cs">
       <DependentUpon>frmListaDistritos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmListaPeriodos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmListaPeriodos.Designer.cs">
+      <DependentUpon>frmListaPeriodos.cs</DependentUpon>
     </Compile>
     <Compile Include="Trabajador\frmListaTrabajadores.cs">
       <SubType>Form</SubType>
@@ -407,8 +419,14 @@
     <EmbeddedResource Include="Trabajador\frmListaCargo.resx">
       <DependentUpon>frmListaCargo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmListaContratos.resx">
+      <DependentUpon>frmListaContratos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmListaDistritos.resx">
       <DependentUpon>frmListaDistritos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmListaPeriodos.resx">
+      <DependentUpon>frmListaPeriodos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmListaTrabajadores.resx">
       <DependentUpon>frmListaTrabajadores.cs</DependentUpon>

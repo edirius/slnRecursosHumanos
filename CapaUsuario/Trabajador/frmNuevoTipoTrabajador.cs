@@ -88,7 +88,7 @@ namespace CapaUsuario.Trabajador
                 miPeriodoTipoTrabajador.TipoTrabajador.Codigo = Convert.ToInt16(cboTipoTrabajador.SelectedValue);
                 miPeriodoTipoTrabajador.TipoTrabajador.Descripcion = Convert.ToString(cboTipoTrabajador.Text);
             }
-          
+            DialogResult = DialogResult.OK;
         }
     }
 }

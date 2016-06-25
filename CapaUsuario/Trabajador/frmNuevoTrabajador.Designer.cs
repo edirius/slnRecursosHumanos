@@ -28,15 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabTrabajador = new System.Windows.Forms.TabControl();
             this.tabDatosGenerales = new System.Windows.Forms.TabPage();
             this.txtDistrito = new System.Windows.Forms.TextBox();
@@ -91,79 +82,130 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabDatosContrato = new System.Windows.Forms.TabPage();
-            this.groupTipoTrabajador = new System.Windows.Forms.GroupBox();
-            this.btnEliminarTipoTrabajador = new System.Windows.Forms.Button();
-            this.btnModificarTipoTrabajador = new System.Windows.Forms.Button();
-            this.btnNuevoTipoTrabajador = new System.Windows.Forms.Button();
-            this.dtgTipoTrabajador = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label30 = new System.Windows.Forms.Label();
-            this.cboTipoContrato = new System.Windows.Forms.ComboBox();
-            this.groupTipoServidorPersonal = new System.Windows.Forms.GroupBox();
-            this.rdnPorPeriodo = new System.Windows.Forms.RadioButton();
-            this.rdnNombrado = new System.Windows.Forms.RadioButton();
-            this.groupTipoContrato = new System.Windows.Forms.GroupBox();
-            this.rdnResidenteDeObra = new System.Windows.Forms.RadioButton();
-            this.rdnServiciosNoPersonales = new System.Windows.Forms.RadioButton();
-            this.rdnServiciosPersonales = new System.Windows.Forms.RadioButton();
-            this.cboListaCargos = new System.Windows.Forms.ComboBox();
-            this.txtNumeroContrato = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.cboMeta = new System.Windows.Forms.ComboBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dtgContratos = new System.Windows.Forms.DataGridView();
-            this.idtContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colnumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idtsunattipotrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colfechainicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFechaFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colidMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idtMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colidTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Meses = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboTipoTrabajador = new System.Windows.Forms.ComboBox();
+            this.gbSistemaSalud = new System.Windows.Forms.GroupBox();
+            this.txtFechaFinSaludCas = new System.Windows.Forms.TextBox();
+            this.cboSistemaSalud = new System.Windows.Forms.ComboBox();
+            this.dtpFechaInicioSaludCas = new System.Windows.Forms.DateTimePicker();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.dtpFechaFinSaludCas = new System.Windows.Forms.DateTimePicker();
+            this.gpSistemaPension = new System.Windows.Forms.GroupBox();
+            this.txtFechaFinPensionCas = new System.Windows.Forms.TextBox();
+            this.cboPension = new System.Windows.Forms.ComboBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.dtpFechaInicioPensionCas = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.dtpFinContrato = new System.Windows.Forms.DateTimePicker();
-            this.label27 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.dtpFechaFinPensionCas = new System.Windows.Forms.DateTimePicker();
+            this.gbPeriodoCOntrato = new System.Windows.Forms.GroupBox();
+            this.txtRUCTrabajadorCAS = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.txtPagoCas = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.cboPeriocidadCas = new System.Windows.Forms.ComboBox();
             this.dtpInicioContrato = new System.Windows.Forms.DateTimePicker();
             this.label25 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.cboTipoPagoCas = new System.Windows.Forms.ComboBox();
+            this.dtpFinContrato = new System.Windows.Forms.DateTimePicker();
+            this.cboListaCargos = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.txtNumeroContrato = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnEliminarPeriodo = new System.Windows.Forms.Button();
-            this.btnModificarPeriodo = new System.Windows.Forms.Button();
-            this.btnNuevoPeriodo = new System.Windows.Forms.Button();
-            this.dtgPeriodos = new System.Windows.Forms.DataGridView();
-            this.codigoPeriodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idtMotivoFinPeriodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoSunat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MotivoFinPeriodo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idtmotivofinperiodo2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label28 = new System.Windows.Forms.Label();
+            this.cboMeta = new System.Windows.Forms.ComboBox();
+            this.gbDetalle = new System.Windows.Forms.GroupBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.cboFinPeriodoCas = new System.Windows.Forms.ComboBox();
+            this.txtFechaFinPeriodo = new System.Windows.Forms.TextBox();
+            this.dtpFechaFinPeriodo = new System.Windows.Forms.DateTimePicker();
+            this.label32 = new System.Windows.Forms.Label();
+            this.dtpFechaInicioPeriodo = new System.Windows.Forms.DateTimePicker();
+            this.label31 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cboSalud276 = new System.Windows.Forms.ComboBox();
+            this.dtpFechaInicioSalud276 = new System.Windows.Forms.DateTimePicker();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.dtpFechaFinSalud276 = new System.Windows.Forms.DateTimePicker();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cboSistemaPension276 = new System.Windows.Forms.ComboBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.dtpFechaInicioSistemaPension276 = new System.Windows.Forms.DateTimePicker();
+            this.label55 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.dtpFechaFinSistemaPension276 = new System.Windows.Forms.DateTimePicker();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtMonto276 = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.cboPeriocidad276 = new System.Windows.Forms.ComboBox();
+            this.dtpInicioContrato276 = new System.Windows.Forms.DateTimePicker();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.cboTipoPago276 = new System.Windows.Forms.ComboBox();
+            this.dtpFinContrato276 = new System.Windows.Forms.DateTimePicker();
+            this.cboCargo276 = new System.Windows.Forms.ComboBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.txtNumeroContrato276 = new System.Windows.Forms.TextBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.cboMetaContrato = new System.Windows.Forms.ComboBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.txtMontoNombrado = new System.Windows.Forms.TextBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cboSaludNombrado = new System.Windows.Forms.ComboBox();
+            this.dtpFechaInicioSaludNombrado = new System.Windows.Forms.DateTimePicker();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.dtpFechaFinSaludNombrado = new System.Windows.Forms.DateTimePicker();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cboPensionNombrado = new System.Windows.Forms.ComboBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.dateTimePicker11 = new System.Windows.Forms.DateTimePicker();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.dtpFechaFinPensionNombrado = new System.Windows.Forms.DateTimePicker();
+            this.txtNumeroResolucion = new System.Windows.Forms.TextBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.cboMotivoFinPeriodo276 = new System.Windows.Forms.ComboBox();
+            this.txtFechaFinPeriodo276 = new System.Windows.Forms.TextBox();
+            this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+            this.label42 = new System.Windows.Forms.Label();
+            this.dateTimePicker6 = new System.Windows.Forms.DateTimePicker();
+            this.label43 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
+            this.txtFechaFinPension276 = new System.Windows.Forms.TextBox();
+            this.txtFechaFinSalud276 = new System.Windows.Forms.TextBox();
+            this.chkServidorConfianza = new System.Windows.Forms.CheckBox();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.tabDatosContrato.SuspendLayout();
-            this.groupTipoTrabajador.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgTipoTrabajador)).BeginInit();
-            this.groupTipoServidorPersonal.SuspendLayout();
-            this.groupTipoContrato.SuspendLayout();
+            this.gbSistemaSalud.SuspendLayout();
+            this.gpSistemaPension.SuspendLayout();
+            this.gbPeriodoCOntrato.SuspendLayout();
+            this.gbDetalle.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgContratos)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgPeriodos)).BeginInit();
             this.SuspendLayout();
             // 
             // tabTrabajador
@@ -171,11 +213,12 @@
             this.tabTrabajador.Controls.Add(this.tabDatosGenerales);
             this.tabTrabajador.Controls.Add(this.tabDatosContrato);
             this.tabTrabajador.Controls.Add(this.tabPage1);
+            this.tabTrabajador.Controls.Add(this.tabPage4);
             this.tabTrabajador.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabTrabajador.Location = new System.Drawing.Point(0, 0);
             this.tabTrabajador.Name = "tabTrabajador";
             this.tabTrabajador.SelectedIndex = 0;
-            this.tabTrabajador.Size = new System.Drawing.Size(832, 655);
+            this.tabTrabajador.Size = new System.Drawing.Size(739, 655);
             this.tabTrabajador.TabIndex = 0;
             // 
             // tabDatosGenerales
@@ -234,7 +277,7 @@
             this.tabDatosGenerales.Location = new System.Drawing.Point(4, 22);
             this.tabDatosGenerales.Name = "tabDatosGenerales";
             this.tabDatosGenerales.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDatosGenerales.Size = new System.Drawing.Size(824, 629);
+            this.tabDatosGenerales.Size = new System.Drawing.Size(731, 629);
             this.tabDatosGenerales.TabIndex = 0;
             this.tabDatosGenerales.Text = "Datos Generales";
             this.tabDatosGenerales.UseVisualStyleBackColor = true;
@@ -696,456 +739,238 @@
             // 
             // tabDatosContrato
             // 
-            this.tabDatosContrato.Controls.Add(this.groupTipoTrabajador);
-            this.tabDatosContrato.Controls.Add(this.label30);
-            this.tabDatosContrato.Controls.Add(this.cboTipoContrato);
-            this.tabDatosContrato.Controls.Add(this.groupTipoServidorPersonal);
-            this.tabDatosContrato.Controls.Add(this.groupTipoContrato);
-            this.tabDatosContrato.Controls.Add(this.cboListaCargos);
-            this.tabDatosContrato.Controls.Add(this.txtNumeroContrato);
-            this.tabDatosContrato.Controls.Add(this.label29);
-            this.tabDatosContrato.Controls.Add(this.cboMeta);
-            this.tabDatosContrato.Controls.Add(this.label28);
-            this.tabDatosContrato.Controls.Add(this.groupBox2);
-            this.tabDatosContrato.Controls.Add(this.cboTipoTrabajador);
-            this.tabDatosContrato.Controls.Add(this.label26);
-            this.tabDatosContrato.Controls.Add(this.btnAgregar);
-            this.tabDatosContrato.Controls.Add(this.dtpFinContrato);
-            this.tabDatosContrato.Controls.Add(this.label27);
-            this.tabDatosContrato.Controls.Add(this.dtpInicioContrato);
-            this.tabDatosContrato.Controls.Add(this.label25);
-            this.tabDatosContrato.Controls.Add(this.label11);
-            this.tabDatosContrato.Controls.Add(this.groupBox1);
+            this.tabDatosContrato.Controls.Add(this.gbSistemaSalud);
+            this.tabDatosContrato.Controls.Add(this.gpSistemaPension);
+            this.tabDatosContrato.Controls.Add(this.gbPeriodoCOntrato);
+            this.tabDatosContrato.Controls.Add(this.gbDetalle);
             this.tabDatosContrato.Location = new System.Drawing.Point(4, 22);
             this.tabDatosContrato.Name = "tabDatosContrato";
             this.tabDatosContrato.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDatosContrato.Size = new System.Drawing.Size(824, 629);
+            this.tabDatosContrato.Size = new System.Drawing.Size(731, 629);
             this.tabDatosContrato.TabIndex = 1;
-            this.tabDatosContrato.Text = ":::::::Datos Contrato:::::::::";
+            this.tabDatosContrato.Text = ":::::::Contrato CAS:::::::::";
             this.tabDatosContrato.UseVisualStyleBackColor = true;
             this.tabDatosContrato.Enter += new System.EventHandler(this.tabDatosContrato_Enter);
             // 
-            // groupTipoTrabajador
-            // 
-            this.groupTipoTrabajador.Controls.Add(this.btnEliminarTipoTrabajador);
-            this.groupTipoTrabajador.Controls.Add(this.btnModificarTipoTrabajador);
-            this.groupTipoTrabajador.Controls.Add(this.btnNuevoTipoTrabajador);
-            this.groupTipoTrabajador.Controls.Add(this.dtgTipoTrabajador);
-            this.groupTipoTrabajador.Location = new System.Drawing.Point(9, 158);
-            this.groupTipoTrabajador.Name = "groupTipoTrabajador";
-            this.groupTipoTrabajador.Size = new System.Drawing.Size(562, 143);
-            this.groupTipoTrabajador.TabIndex = 23;
-            this.groupTipoTrabajador.TabStop = false;
-            this.groupTipoTrabajador.Text = "TipoTrabajador";
-            // 
-            // btnEliminarTipoTrabajador
-            // 
-            this.btnEliminarTipoTrabajador.Location = new System.Drawing.Point(472, 102);
-            this.btnEliminarTipoTrabajador.Name = "btnEliminarTipoTrabajador";
-            this.btnEliminarTipoTrabajador.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminarTipoTrabajador.TabIndex = 6;
-            this.btnEliminarTipoTrabajador.Text = "Eliminar";
-            this.btnEliminarTipoTrabajador.UseVisualStyleBackColor = true;
-            // 
-            // btnModificarTipoTrabajador
-            // 
-            this.btnModificarTipoTrabajador.Location = new System.Drawing.Point(472, 61);
-            this.btnModificarTipoTrabajador.Name = "btnModificarTipoTrabajador";
-            this.btnModificarTipoTrabajador.Size = new System.Drawing.Size(75, 23);
-            this.btnModificarTipoTrabajador.TabIndex = 5;
-            this.btnModificarTipoTrabajador.Text = "Modificar";
-            this.btnModificarTipoTrabajador.UseVisualStyleBackColor = true;
-            this.btnModificarTipoTrabajador.Click += new System.EventHandler(this.btnModificarTipoTrabajador_Click);
-            // 
-            // btnNuevoTipoTrabajador
-            // 
-            this.btnNuevoTipoTrabajador.Location = new System.Drawing.Point(472, 21);
-            this.btnNuevoTipoTrabajador.Name = "btnNuevoTipoTrabajador";
-            this.btnNuevoTipoTrabajador.Size = new System.Drawing.Size(75, 23);
-            this.btnNuevoTipoTrabajador.TabIndex = 4;
-            this.btnNuevoTipoTrabajador.Text = "Nuevo";
-            this.btnNuevoTipoTrabajador.UseVisualStyleBackColor = true;
-            this.btnNuevoTipoTrabajador.Click += new System.EventHandler(this.btnNuevoTipoTrabajador_Click);
-            // 
-            // dtgTipoTrabajador
-            // 
-            this.dtgTipoTrabajador.AllowUserToAddRows = false;
-            this.dtgTipoTrabajador.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.LightBlue;
-            this.dtgTipoTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.dtgTipoTrabajador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgTipoTrabajador.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8});
-            this.dtgTipoTrabajador.Location = new System.Drawing.Point(21, 23);
-            this.dtgTipoTrabajador.Name = "dtgTipoTrabajador";
-            this.dtgTipoTrabajador.ReadOnly = true;
-            this.dtgTipoTrabajador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgTipoTrabajador.Size = new System.Drawing.Size(434, 106);
-            this.dtgTipoTrabajador.TabIndex = 1;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "idtPeriodo";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Codigo";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "idtTrabajador";
-            this.dataGridViewTextBoxColumn2.HeaderText = "idtTrabajador";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "fechaInicio";
-            dataGridViewCellStyle11.Format = "d";
-            dataGridViewCellStyle11.NullValue = null;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Fecha Inicio";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "idtMotivoFinPeriodo1";
-            this.dataGridViewTextBoxColumn4.HeaderText = "idtMotivoFinPeriodo";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "codigosunat";
-            this.dataGridViewTextBoxColumn5.HeaderText = "codigoSunat";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Fechafin";
-            dataGridViewCellStyle12.Format = "d";
-            dataGridViewCellStyle12.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Fecha Fin";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "descripcion";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Motivo Fin Periodo";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "idtmotivofinperiodo";
-            this.dataGridViewTextBoxColumn8.HeaderText = "idtmotivofinperiodo";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Visible = false;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(620, 227);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(71, 13);
-            this.label30.TabIndex = 22;
-            this.label30.Text = "Tipo Contrato";
-            // 
-            // cboTipoContrato
-            // 
-            this.cboTipoContrato.FormattingEnabled = true;
-            this.cboTipoContrato.Location = new System.Drawing.Point(620, 249);
-            this.cboTipoContrato.Name = "cboTipoContrato";
-            this.cboTipoContrato.Size = new System.Drawing.Size(221, 21);
-            this.cboTipoContrato.TabIndex = 21;
-            // 
-            // groupTipoServidorPersonal
-            // 
-            this.groupTipoServidorPersonal.Controls.Add(this.rdnPorPeriodo);
-            this.groupTipoServidorPersonal.Controls.Add(this.rdnNombrado);
-            this.groupTipoServidorPersonal.Enabled = false;
-            this.groupTipoServidorPersonal.Location = new System.Drawing.Point(609, 101);
-            this.groupTipoServidorPersonal.Name = "groupTipoServidorPersonal";
-            this.groupTipoServidorPersonal.Size = new System.Drawing.Size(404, 74);
-            this.groupTipoServidorPersonal.TabIndex = 20;
-            this.groupTipoServidorPersonal.TabStop = false;
-            this.groupTipoServidorPersonal.Text = "Tipo Servidor Personal";
-            // 
-            // rdnPorPeriodo
-            // 
-            this.rdnPorPeriodo.AutoSize = true;
-            this.rdnPorPeriodo.Location = new System.Drawing.Point(236, 31);
-            this.rdnPorPeriodo.Name = "rdnPorPeriodo";
-            this.rdnPorPeriodo.Size = new System.Drawing.Size(133, 17);
-            this.rdnPorPeriodo.TabIndex = 1;
-            this.rdnPorPeriodo.TabStop = true;
-            this.rdnPorPeriodo.Text = "Trabajador por Periodo";
-            this.rdnPorPeriodo.UseVisualStyleBackColor = true;
-            // 
-            // rdnNombrado
-            // 
-            this.rdnNombrado.AutoSize = true;
-            this.rdnNombrado.Location = new System.Drawing.Point(7, 31);
-            this.rdnNombrado.Name = "rdnNombrado";
-            this.rdnNombrado.Size = new System.Drawing.Size(198, 17);
-            this.rdnNombrado.TabIndex = 0;
-            this.rdnNombrado.TabStop = true;
-            this.rdnNombrado.Text = "Nombrado o Contratado Permanente";
-            this.rdnNombrado.UseVisualStyleBackColor = true;
-            // 
-            // groupTipoContrato
-            // 
-            this.groupTipoContrato.Controls.Add(this.rdnResidenteDeObra);
-            this.groupTipoContrato.Controls.Add(this.rdnServiciosNoPersonales);
-            this.groupTipoContrato.Controls.Add(this.rdnServiciosPersonales);
-            this.groupTipoContrato.Location = new System.Drawing.Point(609, 21);
-            this.groupTipoContrato.Name = "groupTipoContrato";
-            this.groupTipoContrato.Size = new System.Drawing.Size(566, 70);
-            this.groupTipoContrato.TabIndex = 19;
-            this.groupTipoContrato.TabStop = false;
-            this.groupTipoContrato.Text = "Tipo de Contrato";
-            // 
-            // rdnResidenteDeObra
-            // 
-            this.rdnResidenteDeObra.AutoSize = true;
-            this.rdnResidenteDeObra.Location = new System.Drawing.Point(409, 30);
-            this.rdnResidenteDeObra.Name = "rdnResidenteDeObra";
-            this.rdnResidenteDeObra.Size = new System.Drawing.Size(114, 17);
-            this.rdnResidenteDeObra.TabIndex = 2;
-            this.rdnResidenteDeObra.TabStop = true;
-            this.rdnResidenteDeObra.Text = "Residente de Obra";
-            this.rdnResidenteDeObra.UseVisualStyleBackColor = true;
-            // 
-            // rdnServiciosNoPersonales
-            // 
-            this.rdnServiciosNoPersonales.AutoSize = true;
-            this.rdnServiciosNoPersonales.Location = new System.Drawing.Point(190, 30);
-            this.rdnServiciosNoPersonales.Name = "rdnServiciosNoPersonales";
-            this.rdnServiciosNoPersonales.Size = new System.Drawing.Size(140, 17);
-            this.rdnServiciosNoPersonales.TabIndex = 1;
-            this.rdnServiciosNoPersonales.TabStop = true;
-            this.rdnServiciosNoPersonales.Text = "Servicios No Personales";
-            this.rdnServiciosNoPersonales.UseVisualStyleBackColor = true;
-            // 
-            // rdnServiciosPersonales
-            // 
-            this.rdnServiciosPersonales.AutoSize = true;
-            this.rdnServiciosPersonales.Location = new System.Drawing.Point(7, 30);
-            this.rdnServiciosPersonales.Name = "rdnServiciosPersonales";
-            this.rdnServiciosPersonales.Size = new System.Drawing.Size(123, 17);
-            this.rdnServiciosPersonales.TabIndex = 0;
-            this.rdnServiciosPersonales.TabStop = true;
-            this.rdnServiciosPersonales.Text = "Servicios Personales";
-            this.rdnServiciosPersonales.UseVisualStyleBackColor = true;
-            this.rdnServiciosPersonales.CheckedChanged += new System.EventHandler(this.rdnServiciosPersonales_CheckedChanged);
-            // 
-            // cboListaCargos
-            // 
-            this.cboListaCargos.FormattingEnabled = true;
-            this.cboListaCargos.Location = new System.Drawing.Point(671, 388);
-            this.cboListaCargos.Name = "cboListaCargos";
-            this.cboListaCargos.Size = new System.Drawing.Size(301, 21);
-            this.cboListaCargos.TabIndex = 15;
-            // 
-            // txtNumeroContrato
-            // 
-            this.txtNumeroContrato.Location = new System.Drawing.Point(755, 296);
-            this.txtNumeroContrato.Name = "txtNumeroContrato";
-            this.txtNumeroContrato.Size = new System.Drawing.Size(60, 20);
-            this.txtNumeroContrato.TabIndex = 14;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(617, 296);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(90, 13);
-            this.label29.TabIndex = 13;
-            this.label29.Text = "Numero Contrato:";
-            // 
-            // cboMeta
-            // 
-            this.cboMeta.FormattingEnabled = true;
-            this.cboMeta.Location = new System.Drawing.Point(671, 354);
-            this.cboMeta.Name = "cboMeta";
-            this.cboMeta.Size = new System.Drawing.Size(301, 21);
-            this.cboMeta.TabIndex = 12;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(533, 363);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(34, 13);
-            this.label28.TabIndex = 11;
-            this.label28.Text = "Meta:";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dtgContratos);
-            this.groupBox2.Location = new System.Drawing.Point(530, 467);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(442, 140);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Lista de Contratos";
-            // 
-            // dtgContratos
-            // 
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            this.dtgContratos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
-            this.dtgContratos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgContratos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idtContrato,
-            this.colnumero,
-            this.idtsunattipotrabajador,
-            this.colfechainicio,
-            this.colFechaFinal,
-            this.colidMeta,
-            this.idtMeta,
-            this.colidTrabajador,
-            this.Meses});
-            this.dtgContratos.Location = new System.Drawing.Point(21, 19);
-            this.dtgContratos.Name = "dtgContratos";
-            this.dtgContratos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgContratos.Size = new System.Drawing.Size(367, 106);
-            this.dtgContratos.TabIndex = 0;
-            // 
-            // idtContrato
-            // 
-            this.idtContrato.DataPropertyName = "idtContrato";
-            this.idtContrato.HeaderText = "idtContrato";
-            this.idtContrato.Name = "idtContrato";
-            this.idtContrato.Visible = false;
-            // 
-            // colnumero
-            // 
-            this.colnumero.DataPropertyName = "numero";
-            this.colnumero.HeaderText = "N°";
-            this.colnumero.Name = "colnumero";
-            this.colnumero.Width = 50;
-            // 
-            // idtsunattipotrabajador
-            // 
-            this.idtsunattipotrabajador.DataPropertyName = "idtsunattipotrabajador";
-            this.idtsunattipotrabajador.HeaderText = "idtsunattipotrabajador";
-            this.idtsunattipotrabajador.Name = "idtsunattipotrabajador";
-            this.idtsunattipotrabajador.Visible = false;
-            // 
-            // colfechainicio
-            // 
-            this.colfechainicio.DataPropertyName = "fechainicio";
-            dataGridViewCellStyle14.Format = "d";
-            dataGridViewCellStyle14.NullValue = null;
-            this.colfechainicio.DefaultCellStyle = dataGridViewCellStyle14;
-            this.colfechainicio.HeaderText = "Fecha Inicio";
-            this.colfechainicio.Name = "colfechainicio";
-            // 
-            // colFechaFinal
-            // 
-            this.colFechaFinal.DataPropertyName = "fechafinal";
-            dataGridViewCellStyle15.Format = "d";
-            dataGridViewCellStyle15.NullValue = null;
-            this.colFechaFinal.DefaultCellStyle = dataGridViewCellStyle15;
-            this.colFechaFinal.HeaderText = "Fecha Fin";
-            this.colFechaFinal.Name = "colFechaFinal";
-            // 
-            // colidMeta
-            // 
-            this.colidMeta.DataPropertyName = "idmeta";
-            this.colidMeta.HeaderText = "idMeta";
-            this.colidMeta.Name = "colidMeta";
-            this.colidMeta.Visible = false;
-            // 
-            // idtMeta
-            // 
-            this.idtMeta.DataPropertyName = "idtmeta";
-            this.idtMeta.HeaderText = "idtMeta";
-            this.idtMeta.Name = "idtMeta";
-            this.idtMeta.Visible = false;
-            // 
-            // colidTrabajador
-            // 
-            this.colidTrabajador.DataPropertyName = "idttrabajador";
-            this.colidTrabajador.HeaderText = "colidTrabajador";
-            this.colidTrabajador.Name = "colidTrabajador";
-            this.colidTrabajador.Visible = false;
-            // 
-            // Meses
-            // 
-            this.Meses.DataPropertyName = "MESES";
-            this.Meses.HeaderText = "Meses";
-            this.Meses.Name = "Meses";
-            this.Meses.Width = 50;
-            // 
-            // cboTipoTrabajador
-            // 
-            this.cboTipoTrabajador.FormattingEnabled = true;
-            this.cboTipoTrabajador.Location = new System.Drawing.Point(701, 191);
-            this.cboTipoTrabajador.Name = "cboTipoTrabajador";
-            this.cboTipoTrabajador.Size = new System.Drawing.Size(301, 21);
-            this.cboTipoTrabajador.TabIndex = 9;
+            // gbSistemaSalud
+            // 
+            this.gbSistemaSalud.Controls.Add(this.txtFechaFinSaludCas);
+            this.gbSistemaSalud.Controls.Add(this.cboSistemaSalud);
+            this.gbSistemaSalud.Controls.Add(this.dtpFechaInicioSaludCas);
+            this.gbSistemaSalud.Controls.Add(this.label35);
+            this.gbSistemaSalud.Controls.Add(this.label36);
+            this.gbSistemaSalud.Controls.Add(this.dtpFechaFinSaludCas);
+            this.gbSistemaSalud.Location = new System.Drawing.Point(19, 512);
+            this.gbSistemaSalud.Name = "gbSistemaSalud";
+            this.gbSistemaSalud.Size = new System.Drawing.Size(528, 100);
+            this.gbSistemaSalud.TabIndex = 27;
+            this.gbSistemaSalud.TabStop = false;
+            this.gbSistemaSalud.Text = "Sistema de Salud";
+            // 
+            // txtFechaFinSaludCas
+            // 
+            this.txtFechaFinSaludCas.Location = new System.Drawing.Point(415, 41);
+            this.txtFechaFinSaludCas.Name = "txtFechaFinSaludCas";
+            this.txtFechaFinSaludCas.Size = new System.Drawing.Size(67, 20);
+            this.txtFechaFinSaludCas.TabIndex = 13;
+            // 
+            // cboSistemaSalud
+            // 
+            this.cboSistemaSalud.FormattingEnabled = true;
+            this.cboSistemaSalud.Location = new System.Drawing.Point(14, 39);
+            this.cboSistemaSalud.Name = "cboSistemaSalud";
+            this.cboSistemaSalud.Size = new System.Drawing.Size(182, 21);
+            this.cboSistemaSalud.TabIndex = 15;
+            // 
+            // dtpFechaInicioSaludCas
+            // 
+            this.dtpFechaInicioSaludCas.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicioSaludCas.Location = new System.Drawing.Point(246, 41);
+            this.dtpFechaInicioSaludCas.Name = "dtpFechaInicioSaludCas";
+            this.dtpFechaInicioSaludCas.Size = new System.Drawing.Size(102, 20);
+            this.dtpFechaInicioSaludCas.TabIndex = 12;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(205, 47);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(35, 13);
+            this.label35.TabIndex = 11;
+            this.label35.Text = "Inicio:";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(367, 47);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(27, 13);
+            this.label36.TabIndex = 13;
+            this.label36.Text = "Fin :";
+            // 
+            // dtpFechaFinSaludCas
+            // 
+            this.dtpFechaFinSaludCas.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFinSaludCas.Location = new System.Drawing.Point(415, 40);
+            this.dtpFechaFinSaludCas.Name = "dtpFechaFinSaludCas";
+            this.dtpFechaFinSaludCas.Size = new System.Drawing.Size(98, 20);
+            this.dtpFechaFinSaludCas.TabIndex = 14;
+            // 
+            // gpSistemaPension
+            // 
+            this.gpSistemaPension.Controls.Add(this.txtFechaFinPensionCas);
+            this.gpSistemaPension.Controls.Add(this.cboPension);
+            this.gpSistemaPension.Controls.Add(this.label34);
+            this.gpSistemaPension.Controls.Add(this.dtpFechaInicioPensionCas);
+            this.gpSistemaPension.Controls.Add(this.label26);
+            this.gpSistemaPension.Controls.Add(this.label30);
+            this.gpSistemaPension.Controls.Add(this.dtpFechaFinPensionCas);
+            this.gpSistemaPension.Location = new System.Drawing.Point(19, 384);
+            this.gpSistemaPension.Name = "gpSistemaPension";
+            this.gpSistemaPension.Size = new System.Drawing.Size(528, 100);
+            this.gpSistemaPension.TabIndex = 26;
+            this.gpSistemaPension.TabStop = false;
+            this.gpSistemaPension.Text = "Sistema de Pension";
+            // 
+            // txtFechaFinPensionCas
+            // 
+            this.txtFechaFinPensionCas.Location = new System.Drawing.Point(415, 51);
+            this.txtFechaFinPensionCas.Name = "txtFechaFinPensionCas";
+            this.txtFechaFinPensionCas.Size = new System.Drawing.Size(67, 20);
+            this.txtFechaFinPensionCas.TabIndex = 7;
+            // 
+            // cboPension
+            // 
+            this.cboPension.FormattingEnabled = true;
+            this.cboPension.Location = new System.Drawing.Point(14, 51);
+            this.cboPension.Name = "cboPension";
+            this.cboPension.Size = new System.Drawing.Size(182, 21);
+            this.cboPension.TabIndex = 12;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(23, 27);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(103, 13);
+            this.label34.TabIndex = 11;
+            this.label34.Text = "Sistema de Pension:";
+            // 
+            // dtpFechaInicioPensionCas
+            // 
+            this.dtpFechaInicioPensionCas.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicioPensionCas.Location = new System.Drawing.Point(246, 52);
+            this.dtpFechaInicioPensionCas.Name = "dtpFechaInicioPensionCas";
+            this.dtpFechaInicioPensionCas.Size = new System.Drawing.Size(102, 20);
+            this.dtpFechaInicioPensionCas.TabIndex = 8;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(613, 199);
+            this.label26.Location = new System.Drawing.Point(205, 58);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(82, 13);
-            this.label26.TabIndex = 8;
-            this.label26.Text = "Tipo Trabajador";
+            this.label26.Size = new System.Drawing.Size(35, 13);
+            this.label26.TabIndex = 7;
+            this.label26.Text = "Inicio:";
             // 
-            // btnAgregar
+            // label30
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(897, 427);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 7;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(367, 58);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(27, 13);
+            this.label30.TabIndex = 9;
+            this.label30.Text = "Fin :";
             // 
-            // dtpFinContrato
+            // dtpFechaFinPensionCas
             // 
-            this.dtpFinContrato.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFinContrato.Location = new System.Drawing.Point(743, 430);
-            this.dtpFinContrato.Name = "dtpFinContrato";
-            this.dtpFinContrato.Size = new System.Drawing.Size(98, 20);
-            this.dtpFinContrato.TabIndex = 6;
+            this.dtpFechaFinPensionCas.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFinPensionCas.Location = new System.Drawing.Point(415, 51);
+            this.dtpFechaFinPensionCas.Name = "dtpFechaFinPensionCas";
+            this.dtpFechaFinPensionCas.Size = new System.Drawing.Size(98, 20);
+            this.dtpFechaFinPensionCas.TabIndex = 10;
             // 
-            // label27
+            // gbPeriodoCOntrato
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(695, 437);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(27, 13);
-            this.label27.TabIndex = 5;
-            this.label27.Text = "Fin :";
+            this.gbPeriodoCOntrato.Controls.Add(this.txtRUCTrabajadorCAS);
+            this.gbPeriodoCOntrato.Controls.Add(this.label40);
+            this.gbPeriodoCOntrato.Controls.Add(this.txtPagoCas);
+            this.gbPeriodoCOntrato.Controls.Add(this.label39);
+            this.gbPeriodoCOntrato.Controls.Add(this.label38);
+            this.gbPeriodoCOntrato.Controls.Add(this.cboPeriocidadCas);
+            this.gbPeriodoCOntrato.Controls.Add(this.dtpInicioContrato);
+            this.gbPeriodoCOntrato.Controls.Add(this.label25);
+            this.gbPeriodoCOntrato.Controls.Add(this.label37);
+            this.gbPeriodoCOntrato.Controls.Add(this.label27);
+            this.gbPeriodoCOntrato.Controls.Add(this.cboTipoPagoCas);
+            this.gbPeriodoCOntrato.Controls.Add(this.dtpFinContrato);
+            this.gbPeriodoCOntrato.Controls.Add(this.cboListaCargos);
+            this.gbPeriodoCOntrato.Controls.Add(this.label29);
+            this.gbPeriodoCOntrato.Controls.Add(this.txtNumeroContrato);
+            this.gbPeriodoCOntrato.Controls.Add(this.label11);
+            this.gbPeriodoCOntrato.Controls.Add(this.label28);
+            this.gbPeriodoCOntrato.Controls.Add(this.cboMeta);
+            this.gbPeriodoCOntrato.Location = new System.Drawing.Point(19, 82);
+            this.gbPeriodoCOntrato.Name = "gbPeriodoCOntrato";
+            this.gbPeriodoCOntrato.Size = new System.Drawing.Size(528, 285);
+            this.gbPeriodoCOntrato.TabIndex = 25;
+            this.gbPeriodoCOntrato.TabStop = false;
+            this.gbPeriodoCOntrato.Text = "Periodo del Contrato";
+            // 
+            // txtRUCTrabajadorCAS
+            // 
+            this.txtRUCTrabajadorCAS.Location = new System.Drawing.Point(158, 245);
+            this.txtRUCTrabajadorCAS.MaxLength = 11;
+            this.txtRUCTrabajadorCAS.Name = "txtRUCTrabajadorCAS";
+            this.txtRUCTrabajadorCAS.Size = new System.Drawing.Size(100, 20);
+            this.txtRUCTrabajadorCAS.TabIndex = 21;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(23, 245);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(33, 13);
+            this.label40.TabIndex = 20;
+            this.label40.Text = "RUC:";
+            // 
+            // txtPagoCas
+            // 
+            this.txtPagoCas.Location = new System.Drawing.Point(324, 194);
+            this.txtPagoCas.Name = "txtPagoCas";
+            this.txtPagoCas.Size = new System.Drawing.Size(100, 20);
+            this.txtPagoCas.TabIndex = 19;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(321, 162);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(43, 13);
+            this.label39.TabIndex = 18;
+            this.label39.Text = "Monto :";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(161, 162);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(115, 13);
+            this.label38.TabIndex = 17;
+            this.label38.Text = "Periocidad del Ingreso;";
+            // 
+            // cboPeriocidadCas
+            // 
+            this.cboPeriocidadCas.FormattingEnabled = true;
+            this.cboPeriocidadCas.Location = new System.Drawing.Point(164, 194);
+            this.cboPeriocidadCas.Name = "cboPeriocidadCas";
+            this.cboPeriocidadCas.Size = new System.Drawing.Size(121, 21);
+            this.cboPeriocidadCas.TabIndex = 16;
             // 
             // dtpInicioContrato
             // 
             this.dtpInicioContrato.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInicioContrato.Location = new System.Drawing.Point(574, 431);
+            this.dtpInicioContrato.Location = new System.Drawing.Point(213, 123);
             this.dtpInicioContrato.Name = "dtpInicioContrato";
             this.dtpInicioContrato.Size = new System.Drawing.Size(102, 20);
             this.dtpInicioContrato.TabIndex = 4;
@@ -1154,176 +979,777 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(533, 437);
+            this.label25.Location = new System.Drawing.Point(161, 130);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(35, 13);
             this.label25.TabIndex = 3;
             this.label25.Text = "Inicio:";
             // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(20, 162);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(74, 13);
+            this.label37.TabIndex = 2;
+            this.label37.Text = "Tipo de Pago:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(321, 129);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(27, 13);
+            this.label27.TabIndex = 5;
+            this.label27.Text = "Fin :";
+            // 
+            // cboTipoPagoCas
+            // 
+            this.cboTipoPagoCas.FormattingEnabled = true;
+            this.cboTipoPagoCas.Location = new System.Drawing.Point(23, 194);
+            this.cboTipoPagoCas.Name = "cboTipoPagoCas";
+            this.cboTipoPagoCas.Size = new System.Drawing.Size(121, 21);
+            this.cboTipoPagoCas.TabIndex = 0;
+            // 
+            // dtpFinContrato
+            // 
+            this.dtpFinContrato.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFinContrato.Location = new System.Drawing.Point(361, 123);
+            this.dtpFinContrato.Name = "dtpFinContrato";
+            this.dtpFinContrato.Size = new System.Drawing.Size(98, 20);
+            this.dtpFinContrato.TabIndex = 6;
+            // 
+            // cboListaCargos
+            // 
+            this.cboListaCargos.FormattingEnabled = true;
+            this.cboListaCargos.Location = new System.Drawing.Point(158, 87);
+            this.cboListaCargos.Name = "cboListaCargos";
+            this.cboListaCargos.Size = new System.Drawing.Size(301, 21);
+            this.cboListaCargos.TabIndex = 15;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(20, 27);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(90, 13);
+            this.label29.TabIndex = 13;
+            this.label29.Text = "Numero Contrato:";
+            // 
+            // txtNumeroContrato
+            // 
+            this.txtNumeroContrato.Location = new System.Drawing.Point(159, 20);
+            this.txtNumeroContrato.Name = "txtNumeroContrato";
+            this.txtNumeroContrato.Size = new System.Drawing.Size(60, 20);
+            this.txtNumeroContrato.TabIndex = 14;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(533, 397);
+            this.label11.Location = new System.Drawing.Point(20, 96);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 13);
             this.label11.TabIndex = 1;
             this.label11.Text = "Cargo :";
             // 
-            // groupBox1
+            // label28
             // 
-            this.groupBox1.Controls.Add(this.btnEliminarPeriodo);
-            this.groupBox1.Controls.Add(this.btnModificarPeriodo);
-            this.groupBox1.Controls.Add(this.btnNuevoPeriodo);
-            this.groupBox1.Controls.Add(this.dtgPeriodos);
-            this.groupBox1.Location = new System.Drawing.Point(9, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(562, 146);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Periodo";
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(20, 62);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(34, 13);
+            this.label28.TabIndex = 11;
+            this.label28.Text = "Meta:";
             // 
-            // btnEliminarPeriodo
+            // cboMeta
             // 
-            this.btnEliminarPeriodo.Location = new System.Drawing.Point(472, 91);
-            this.btnEliminarPeriodo.Name = "btnEliminarPeriodo";
-            this.btnEliminarPeriodo.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminarPeriodo.TabIndex = 3;
-            this.btnEliminarPeriodo.Text = "Eliminar";
-            this.btnEliminarPeriodo.UseVisualStyleBackColor = true;
+            this.cboMeta.FormattingEnabled = true;
+            this.cboMeta.Location = new System.Drawing.Point(158, 53);
+            this.cboMeta.Name = "cboMeta";
+            this.cboMeta.Size = new System.Drawing.Size(301, 21);
+            this.cboMeta.TabIndex = 12;
             // 
-            // btnModificarPeriodo
+            // gbDetalle
             // 
-            this.btnModificarPeriodo.Location = new System.Drawing.Point(472, 50);
-            this.btnModificarPeriodo.Name = "btnModificarPeriodo";
-            this.btnModificarPeriodo.Size = new System.Drawing.Size(75, 23);
-            this.btnModificarPeriodo.TabIndex = 2;
-            this.btnModificarPeriodo.Text = "Modificar";
-            this.btnModificarPeriodo.UseVisualStyleBackColor = true;
-            this.btnModificarPeriodo.Click += new System.EventHandler(this.btnModificarPeriodo_Click);
+            this.gbDetalle.Controls.Add(this.label33);
+            this.gbDetalle.Controls.Add(this.cboFinPeriodoCas);
+            this.gbDetalle.Controls.Add(this.txtFechaFinPeriodo);
+            this.gbDetalle.Controls.Add(this.dtpFechaFinPeriodo);
+            this.gbDetalle.Controls.Add(this.label32);
+            this.gbDetalle.Controls.Add(this.dtpFechaInicioPeriodo);
+            this.gbDetalle.Controls.Add(this.label31);
+            this.gbDetalle.Location = new System.Drawing.Point(19, 7);
+            this.gbDetalle.Name = "gbDetalle";
+            this.gbDetalle.Size = new System.Drawing.Size(528, 69);
+            this.gbDetalle.TabIndex = 24;
+            this.gbDetalle.TabStop = false;
+            this.gbDetalle.Text = "Periodo del Trabajador";
             // 
-            // btnNuevoPeriodo
+            // label33
             // 
-            this.btnNuevoPeriodo.Location = new System.Drawing.Point(472, 10);
-            this.btnNuevoPeriodo.Name = "btnNuevoPeriodo";
-            this.btnNuevoPeriodo.Size = new System.Drawing.Size(75, 23);
-            this.btnNuevoPeriodo.TabIndex = 1;
-            this.btnNuevoPeriodo.Text = "Nuevo";
-            this.btnNuevoPeriodo.UseVisualStyleBackColor = true;
-            this.btnNuevoPeriodo.Click += new System.EventHandler(this.btnNuevoPeriodo_Click);
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(264, 19);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(118, 13);
+            this.label33.TabIndex = 6;
+            this.label33.Text = "Motivo Fin del Periodo :";
             // 
-            // dtgPeriodos
+            // cboFinPeriodoCas
             // 
-            this.dtgPeriodos.AllowUserToAddRows = false;
-            this.dtgPeriodos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.LightBlue;
-            this.dtgPeriodos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.dtgPeriodos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgPeriodos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoPeriodo,
-            this.idTrabajador,
-            this.fechaInicio,
-            this.idtMotivoFinPeriodo,
-            this.codigoSunat,
-            this.fechaFin,
-            this.MotivoFinPeriodo,
-            this.idtmotivofinperiodo2});
-            this.dtgPeriodos.Location = new System.Drawing.Point(21, 19);
-            this.dtgPeriodos.Name = "dtgPeriodos";
-            this.dtgPeriodos.ReadOnly = true;
-            this.dtgPeriodos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgPeriodos.Size = new System.Drawing.Size(434, 106);
-            this.dtgPeriodos.TabIndex = 0;
+            this.cboFinPeriodoCas.FormattingEnabled = true;
+            this.cboFinPeriodoCas.Location = new System.Drawing.Point(264, 37);
+            this.cboFinPeriodoCas.Name = "cboFinPeriodoCas";
+            this.cboFinPeriodoCas.Size = new System.Drawing.Size(241, 21);
+            this.cboFinPeriodoCas.TabIndex = 5;
             // 
-            // codigoPeriodo
+            // txtFechaFinPeriodo
             // 
-            this.codigoPeriodo.DataPropertyName = "idtPeriodo";
-            this.codigoPeriodo.HeaderText = "Codigo";
-            this.codigoPeriodo.Name = "codigoPeriodo";
-            this.codigoPeriodo.ReadOnly = true;
-            this.codigoPeriodo.Visible = false;
-            this.codigoPeriodo.Width = 50;
+            this.txtFechaFinPeriodo.Location = new System.Drawing.Point(136, 36);
+            this.txtFechaFinPeriodo.Name = "txtFechaFinPeriodo";
+            this.txtFechaFinPeriodo.Size = new System.Drawing.Size(67, 20);
+            this.txtFechaFinPeriodo.TabIndex = 4;
             // 
-            // idTrabajador
+            // dtpFechaFinPeriodo
             // 
-            this.idTrabajador.DataPropertyName = "idtTrabajador";
-            this.idTrabajador.HeaderText = "idtTrabajador";
-            this.idTrabajador.Name = "idTrabajador";
-            this.idTrabajador.ReadOnly = true;
-            this.idTrabajador.Visible = false;
+            this.dtpFechaFinPeriodo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFinPeriodo.Location = new System.Drawing.Point(136, 36);
+            this.dtpFechaFinPeriodo.Name = "dtpFechaFinPeriodo";
+            this.dtpFechaFinPeriodo.Size = new System.Drawing.Size(96, 20);
+            this.dtpFechaFinPeriodo.TabIndex = 3;
+            this.dtpFechaFinPeriodo.ValueChanged += new System.EventHandler(this.dtpFechaFinPeriodo_ValueChanged);
             // 
-            // fechaInicio
+            // label32
             // 
-            this.fechaInicio.DataPropertyName = "fechaInicio";
-            dataGridViewCellStyle17.Format = "d";
-            dataGridViewCellStyle17.NullValue = null;
-            this.fechaInicio.DefaultCellStyle = dataGridViewCellStyle17;
-            this.fechaInicio.HeaderText = "Fecha Inicio";
-            this.fechaInicio.Name = "fechaInicio";
-            this.fechaInicio.ReadOnly = true;
-            this.fechaInicio.Width = 80;
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(133, 20);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(24, 13);
+            this.label32.TabIndex = 2;
+            this.label32.Text = "Fin:";
             // 
-            // idtMotivoFinPeriodo
+            // dtpFechaInicioPeriodo
             // 
-            this.idtMotivoFinPeriodo.DataPropertyName = "idtMotivoFinPeriodo1";
-            this.idtMotivoFinPeriodo.HeaderText = "idtMotivoFinPeriodo";
-            this.idtMotivoFinPeriodo.Name = "idtMotivoFinPeriodo";
-            this.idtMotivoFinPeriodo.ReadOnly = true;
-            this.idtMotivoFinPeriodo.Visible = false;
+            this.dtpFechaInicioPeriodo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicioPeriodo.Location = new System.Drawing.Point(14, 37);
+            this.dtpFechaInicioPeriodo.Name = "dtpFechaInicioPeriodo";
+            this.dtpFechaInicioPeriodo.Size = new System.Drawing.Size(96, 20);
+            this.dtpFechaInicioPeriodo.TabIndex = 1;
             // 
-            // codigoSunat
+            // label31
             // 
-            this.codigoSunat.DataPropertyName = "codigosunat";
-            this.codigoSunat.HeaderText = "codigoSunat";
-            this.codigoSunat.Name = "codigoSunat";
-            this.codigoSunat.ReadOnly = true;
-            this.codigoSunat.Visible = false;
-            // 
-            // fechaFin
-            // 
-            this.fechaFin.DataPropertyName = "Fechafin";
-            dataGridViewCellStyle18.Format = "d";
-            dataGridViewCellStyle18.NullValue = null;
-            this.fechaFin.DefaultCellStyle = dataGridViewCellStyle18;
-            this.fechaFin.HeaderText = "Fecha Fin";
-            this.fechaFin.Name = "fechaFin";
-            this.fechaFin.ReadOnly = true;
-            this.fechaFin.Width = 80;
-            // 
-            // MotivoFinPeriodo
-            // 
-            this.MotivoFinPeriodo.DataPropertyName = "descripcion";
-            this.MotivoFinPeriodo.HeaderText = "Motivo Fin Periodo";
-            this.MotivoFinPeriodo.Name = "MotivoFinPeriodo";
-            this.MotivoFinPeriodo.ReadOnly = true;
-            this.MotivoFinPeriodo.Width = 200;
-            // 
-            // idtmotivofinperiodo2
-            // 
-            this.idtmotivofinperiodo2.DataPropertyName = "idtmotivofinperiodo";
-            this.idtmotivofinperiodo2.HeaderText = "idtmotivofinperiodo";
-            this.idtmotivofinperiodo2.Name = "idtmotivofinperiodo2";
-            this.idtmotivofinperiodo2.ReadOnly = true;
-            this.idtmotivofinperiodo2.Visible = false;
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(11, 20);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(35, 13);
+            this.label31.TabIndex = 0;
+            this.label31.Text = "Inicio:";
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.tabControl1);
+            this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(824, 629);
+            this.tabPage1.Size = new System.Drawing.Size(731, 629);
             this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = ":::::::Datos Laborales:::::";
+            this.tabPage1.Text = ":::::::Regimen 276:::::";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(21, 103);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(702, 518);
+            this.tabControl1.TabIndex = 26;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.groupBox2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(694, 492);
+            this.tabPage2.TabIndex = 0;
+            this.tabPage2.Text = "Contratado";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtFechaFinSalud276);
+            this.groupBox3.Controls.Add(this.cboSalud276);
+            this.groupBox3.Controls.Add(this.dtpFechaInicioSalud276);
+            this.groupBox3.Controls.Add(this.label44);
+            this.groupBox3.Controls.Add(this.label53);
+            this.groupBox3.Controls.Add(this.dtpFechaFinSalud276);
+            this.groupBox3.Location = new System.Drawing.Point(10, 383);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(528, 100);
+            this.groupBox3.TabIndex = 29;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Sistema de Salud";
+            // 
+            // cboSalud276
+            // 
+            this.cboSalud276.FormattingEnabled = true;
+            this.cboSalud276.Location = new System.Drawing.Point(14, 39);
+            this.cboSalud276.Name = "cboSalud276";
+            this.cboSalud276.Size = new System.Drawing.Size(182, 21);
+            this.cboSalud276.TabIndex = 15;
+            // 
+            // dtpFechaInicioSalud276
+            // 
+            this.dtpFechaInicioSalud276.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicioSalud276.Location = new System.Drawing.Point(246, 41);
+            this.dtpFechaInicioSalud276.Name = "dtpFechaInicioSalud276";
+            this.dtpFechaInicioSalud276.Size = new System.Drawing.Size(102, 20);
+            this.dtpFechaInicioSalud276.TabIndex = 12;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(205, 47);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(35, 13);
+            this.label44.TabIndex = 11;
+            this.label44.Text = "Inicio:";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(367, 47);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(27, 13);
+            this.label53.TabIndex = 13;
+            this.label53.Text = "Fin :";
+            // 
+            // dtpFechaFinSalud276
+            // 
+            this.dtpFechaFinSalud276.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFinSalud276.Location = new System.Drawing.Point(415, 40);
+            this.dtpFechaFinSalud276.Name = "dtpFechaFinSalud276";
+            this.dtpFechaFinSalud276.Size = new System.Drawing.Size(98, 20);
+            this.dtpFechaFinSalud276.TabIndex = 14;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.txtFechaFinPension276);
+            this.groupBox4.Controls.Add(this.cboSistemaPension276);
+            this.groupBox4.Controls.Add(this.label54);
+            this.groupBox4.Controls.Add(this.dtpFechaInicioSistemaPension276);
+            this.groupBox4.Controls.Add(this.label55);
+            this.groupBox4.Controls.Add(this.label56);
+            this.groupBox4.Controls.Add(this.dtpFechaFinSistemaPension276);
+            this.groupBox4.Location = new System.Drawing.Point(10, 255);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(528, 100);
+            this.groupBox4.TabIndex = 28;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Sistema de Pension";
+            // 
+            // cboSistemaPension276
+            // 
+            this.cboSistemaPension276.FormattingEnabled = true;
+            this.cboSistemaPension276.Location = new System.Drawing.Point(14, 51);
+            this.cboSistemaPension276.Name = "cboSistemaPension276";
+            this.cboSistemaPension276.Size = new System.Drawing.Size(182, 21);
+            this.cboSistemaPension276.TabIndex = 12;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(23, 27);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(103, 13);
+            this.label54.TabIndex = 11;
+            this.label54.Text = "Sistema de Pension:";
+            // 
+            // dtpFechaInicioSistemaPension276
+            // 
+            this.dtpFechaInicioSistemaPension276.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicioSistemaPension276.Location = new System.Drawing.Point(246, 52);
+            this.dtpFechaInicioSistemaPension276.Name = "dtpFechaInicioSistemaPension276";
+            this.dtpFechaInicioSistemaPension276.Size = new System.Drawing.Size(102, 20);
+            this.dtpFechaInicioSistemaPension276.TabIndex = 8;
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(205, 58);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(35, 13);
+            this.label55.TabIndex = 7;
+            this.label55.Text = "Inicio:";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(367, 58);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(27, 13);
+            this.label56.TabIndex = 9;
+            this.label56.Text = "Fin :";
+            // 
+            // dtpFechaFinSistemaPension276
+            // 
+            this.dtpFechaFinSistemaPension276.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFinSistemaPension276.Location = new System.Drawing.Point(415, 51);
+            this.dtpFechaFinSistemaPension276.Name = "dtpFechaFinSistemaPension276";
+            this.dtpFechaFinSistemaPension276.Size = new System.Drawing.Size(98, 20);
+            this.dtpFechaFinSistemaPension276.TabIndex = 10;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.chkServidorConfianza);
+            this.groupBox2.Controls.Add(this.txtMonto276);
+            this.groupBox2.Controls.Add(this.label45);
+            this.groupBox2.Controls.Add(this.label46);
+            this.groupBox2.Controls.Add(this.cboPeriocidad276);
+            this.groupBox2.Controls.Add(this.dtpInicioContrato276);
+            this.groupBox2.Controls.Add(this.label47);
+            this.groupBox2.Controls.Add(this.label48);
+            this.groupBox2.Controls.Add(this.label49);
+            this.groupBox2.Controls.Add(this.cboTipoPago276);
+            this.groupBox2.Controls.Add(this.dtpFinContrato276);
+            this.groupBox2.Controls.Add(this.cboCargo276);
+            this.groupBox2.Controls.Add(this.label50);
+            this.groupBox2.Controls.Add(this.txtNumeroContrato276);
+            this.groupBox2.Controls.Add(this.label51);
+            this.groupBox2.Controls.Add(this.label52);
+            this.groupBox2.Controls.Add(this.cboMetaContrato);
+            this.groupBox2.Location = new System.Drawing.Point(10, 18);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(528, 231);
+            this.groupBox2.TabIndex = 26;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Periodo del Contrato";
+            // 
+            // txtMonto276
+            // 
+            this.txtMonto276.Location = new System.Drawing.Point(324, 194);
+            this.txtMonto276.Name = "txtMonto276";
+            this.txtMonto276.Size = new System.Drawing.Size(100, 20);
+            this.txtMonto276.TabIndex = 19;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(321, 162);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(43, 13);
+            this.label45.TabIndex = 18;
+            this.label45.Text = "Monto :";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(161, 162);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(115, 13);
+            this.label46.TabIndex = 17;
+            this.label46.Text = "Periocidad del Ingreso;";
+            // 
+            // cboPeriocidad276
+            // 
+            this.cboPeriocidad276.FormattingEnabled = true;
+            this.cboPeriocidad276.Location = new System.Drawing.Point(164, 194);
+            this.cboPeriocidad276.Name = "cboPeriocidad276";
+            this.cboPeriocidad276.Size = new System.Drawing.Size(121, 21);
+            this.cboPeriocidad276.TabIndex = 16;
+            // 
+            // dtpInicioContrato276
+            // 
+            this.dtpInicioContrato276.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpInicioContrato276.Location = new System.Drawing.Point(213, 123);
+            this.dtpInicioContrato276.Name = "dtpInicioContrato276";
+            this.dtpInicioContrato276.Size = new System.Drawing.Size(102, 20);
+            this.dtpInicioContrato276.TabIndex = 4;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(161, 130);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(35, 13);
+            this.label47.TabIndex = 3;
+            this.label47.Text = "Inicio:";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(20, 162);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(74, 13);
+            this.label48.TabIndex = 2;
+            this.label48.Text = "Tipo de Pago:";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(321, 129);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(27, 13);
+            this.label49.TabIndex = 5;
+            this.label49.Text = "Fin :";
+            // 
+            // cboTipoPago276
+            // 
+            this.cboTipoPago276.FormattingEnabled = true;
+            this.cboTipoPago276.Location = new System.Drawing.Point(23, 194);
+            this.cboTipoPago276.Name = "cboTipoPago276";
+            this.cboTipoPago276.Size = new System.Drawing.Size(121, 21);
+            this.cboTipoPago276.TabIndex = 0;
+            // 
+            // dtpFinContrato276
+            // 
+            this.dtpFinContrato276.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFinContrato276.Location = new System.Drawing.Point(361, 123);
+            this.dtpFinContrato276.Name = "dtpFinContrato276";
+            this.dtpFinContrato276.Size = new System.Drawing.Size(98, 20);
+            this.dtpFinContrato276.TabIndex = 6;
+            // 
+            // cboCargo276
+            // 
+            this.cboCargo276.FormattingEnabled = true;
+            this.cboCargo276.Location = new System.Drawing.Point(158, 87);
+            this.cboCargo276.Name = "cboCargo276";
+            this.cboCargo276.Size = new System.Drawing.Size(301, 21);
+            this.cboCargo276.TabIndex = 15;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(278, 26);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(90, 13);
+            this.label50.TabIndex = 13;
+            this.label50.Text = "Numero Contrato:";
+            // 
+            // txtNumeroContrato276
+            // 
+            this.txtNumeroContrato276.Location = new System.Drawing.Point(399, 19);
+            this.txtNumeroContrato276.Name = "txtNumeroContrato276";
+            this.txtNumeroContrato276.Size = new System.Drawing.Size(60, 20);
+            this.txtNumeroContrato276.TabIndex = 14;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(20, 96);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(41, 13);
+            this.label51.TabIndex = 1;
+            this.label51.Text = "Cargo :";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(20, 62);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(34, 13);
+            this.label52.TabIndex = 11;
+            this.label52.Text = "Meta:";
+            // 
+            // cboMetaContrato
+            // 
+            this.cboMetaContrato.FormattingEnabled = true;
+            this.cboMetaContrato.Location = new System.Drawing.Point(158, 53);
+            this.cboMetaContrato.Name = "cboMetaContrato";
+            this.cboMetaContrato.Size = new System.Drawing.Size(301, 21);
+            this.cboMetaContrato.TabIndex = 12;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.txtMontoNombrado);
+            this.tabPage3.Controls.Add(this.label63);
+            this.tabPage3.Controls.Add(this.groupBox5);
+            this.tabPage3.Controls.Add(this.groupBox6);
+            this.tabPage3.Controls.Add(this.txtNumeroResolucion);
+            this.tabPage3.Controls.Add(this.label57);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(694, 492);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "Nombrado";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // txtMontoNombrado
+            // 
+            this.txtMontoNombrado.Location = new System.Drawing.Point(337, 13);
+            this.txtMontoNombrado.Name = "txtMontoNombrado";
+            this.txtMontoNombrado.Size = new System.Drawing.Size(100, 20);
+            this.txtMontoNombrado.TabIndex = 33;
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(288, 16);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(43, 13);
+            this.label63.TabIndex = 32;
+            this.label63.Text = "Monto :";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.cboSaludNombrado);
+            this.groupBox5.Controls.Add(this.dtpFechaInicioSaludNombrado);
+            this.groupBox5.Controls.Add(this.label58);
+            this.groupBox5.Controls.Add(this.label59);
+            this.groupBox5.Controls.Add(this.dtpFechaFinSaludNombrado);
+            this.groupBox5.Location = new System.Drawing.Point(26, 232);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(528, 100);
+            this.groupBox5.TabIndex = 31;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Sistema de Salud";
+            // 
+            // cboSaludNombrado
+            // 
+            this.cboSaludNombrado.FormattingEnabled = true;
+            this.cboSaludNombrado.Location = new System.Drawing.Point(14, 39);
+            this.cboSaludNombrado.Name = "cboSaludNombrado";
+            this.cboSaludNombrado.Size = new System.Drawing.Size(182, 21);
+            this.cboSaludNombrado.TabIndex = 15;
+            // 
+            // dtpFechaInicioSaludNombrado
+            // 
+            this.dtpFechaInicioSaludNombrado.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicioSaludNombrado.Location = new System.Drawing.Point(246, 41);
+            this.dtpFechaInicioSaludNombrado.Name = "dtpFechaInicioSaludNombrado";
+            this.dtpFechaInicioSaludNombrado.Size = new System.Drawing.Size(102, 20);
+            this.dtpFechaInicioSaludNombrado.TabIndex = 12;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(205, 47);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(35, 13);
+            this.label58.TabIndex = 11;
+            this.label58.Text = "Inicio:";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(367, 47);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(27, 13);
+            this.label59.TabIndex = 13;
+            this.label59.Text = "Fin :";
+            // 
+            // dtpFechaFinSaludNombrado
+            // 
+            this.dtpFechaFinSaludNombrado.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFinSaludNombrado.Location = new System.Drawing.Point(415, 40);
+            this.dtpFechaFinSaludNombrado.Name = "dtpFechaFinSaludNombrado";
+            this.dtpFechaFinSaludNombrado.Size = new System.Drawing.Size(98, 20);
+            this.dtpFechaFinSaludNombrado.TabIndex = 14;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.cboPensionNombrado);
+            this.groupBox6.Controls.Add(this.label60);
+            this.groupBox6.Controls.Add(this.dateTimePicker11);
+            this.groupBox6.Controls.Add(this.label61);
+            this.groupBox6.Controls.Add(this.label62);
+            this.groupBox6.Controls.Add(this.dtpFechaFinPensionNombrado);
+            this.groupBox6.Location = new System.Drawing.Point(26, 104);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(528, 100);
+            this.groupBox6.TabIndex = 30;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Sistema de Pension";
+            // 
+            // cboPensionNombrado
+            // 
+            this.cboPensionNombrado.FormattingEnabled = true;
+            this.cboPensionNombrado.Location = new System.Drawing.Point(14, 51);
+            this.cboPensionNombrado.Name = "cboPensionNombrado";
+            this.cboPensionNombrado.Size = new System.Drawing.Size(182, 21);
+            this.cboPensionNombrado.TabIndex = 12;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(23, 27);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(103, 13);
+            this.label60.TabIndex = 11;
+            this.label60.Text = "Sistema de Pension:";
+            // 
+            // dateTimePicker11
+            // 
+            this.dateTimePicker11.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker11.Location = new System.Drawing.Point(246, 52);
+            this.dateTimePicker11.Name = "dateTimePicker11";
+            this.dateTimePicker11.Size = new System.Drawing.Size(102, 20);
+            this.dateTimePicker11.TabIndex = 8;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(205, 58);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(35, 13);
+            this.label61.TabIndex = 7;
+            this.label61.Text = "Inicio:";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(367, 58);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(27, 13);
+            this.label62.TabIndex = 9;
+            this.label62.Text = "Fin :";
+            // 
+            // dtpFechaFinPensionNombrado
+            // 
+            this.dtpFechaFinPensionNombrado.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFinPensionNombrado.Location = new System.Drawing.Point(415, 51);
+            this.dtpFechaFinPensionNombrado.Name = "dtpFechaFinPensionNombrado";
+            this.dtpFechaFinPensionNombrado.Size = new System.Drawing.Size(98, 20);
+            this.dtpFechaFinPensionNombrado.TabIndex = 10;
+            // 
+            // txtNumeroResolucion
+            // 
+            this.txtNumeroResolucion.Location = new System.Drawing.Point(151, 16);
+            this.txtNumeroResolucion.Name = "txtNumeroResolucion";
+            this.txtNumeroResolucion.Size = new System.Drawing.Size(100, 20);
+            this.txtNumeroResolucion.TabIndex = 1;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(23, 24);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(121, 13);
+            this.label57.TabIndex = 0;
+            this.label57.Text = "Numero de Resolucion :";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label41);
+            this.groupBox1.Controls.Add(this.cboMotivoFinPeriodo276);
+            this.groupBox1.Controls.Add(this.txtFechaFinPeriodo276);
+            this.groupBox1.Controls.Add(this.dateTimePicker5);
+            this.groupBox1.Controls.Add(this.label42);
+            this.groupBox1.Controls.Add(this.dateTimePicker6);
+            this.groupBox1.Controls.Add(this.label43);
+            this.groupBox1.Location = new System.Drawing.Point(21, 18);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(528, 69);
+            this.groupBox1.TabIndex = 25;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Periodo del Trabajador";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(264, 19);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(118, 13);
+            this.label41.TabIndex = 6;
+            this.label41.Text = "Motivo Fin del Periodo :";
+            // 
+            // cboMotivoFinPeriodo276
+            // 
+            this.cboMotivoFinPeriodo276.FormattingEnabled = true;
+            this.cboMotivoFinPeriodo276.Location = new System.Drawing.Point(264, 37);
+            this.cboMotivoFinPeriodo276.Name = "cboMotivoFinPeriodo276";
+            this.cboMotivoFinPeriodo276.Size = new System.Drawing.Size(241, 21);
+            this.cboMotivoFinPeriodo276.TabIndex = 5;
+            // 
+            // txtFechaFinPeriodo276
+            // 
+            this.txtFechaFinPeriodo276.Location = new System.Drawing.Point(136, 36);
+            this.txtFechaFinPeriodo276.Name = "txtFechaFinPeriodo276";
+            this.txtFechaFinPeriodo276.Size = new System.Drawing.Size(67, 20);
+            this.txtFechaFinPeriodo276.TabIndex = 4;
+            // 
+            // dateTimePicker5
+            // 
+            this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker5.Location = new System.Drawing.Point(136, 36);
+            this.dateTimePicker5.Name = "dateTimePicker5";
+            this.dateTimePicker5.Size = new System.Drawing.Size(96, 20);
+            this.dateTimePicker5.TabIndex = 3;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(133, 20);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(24, 13);
+            this.label42.TabIndex = 2;
+            this.label42.Text = "Fin:";
+            // 
+            // dateTimePicker6
+            // 
+            this.dateTimePicker6.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker6.Location = new System.Drawing.Point(14, 37);
+            this.dateTimePicker6.Name = "dateTimePicker6";
+            this.dateTimePicker6.Size = new System.Drawing.Size(96, 20);
+            this.dateTimePicker6.TabIndex = 1;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(11, 20);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(35, 13);
+            this.label43.TabIndex = 0;
+            this.label43.Text = "Inicio:";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(731, 629);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "::::::::Residente de Obra:::::::::::";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // ofdAbrirImagen
             // 
             this.ofdAbrirImagen.Filter = "\"Imagenes (*.jpg)|*.jpg|Todos los archivos (*.*)|*.*\"";
             // 
+            // txtFechaFinPension276
+            // 
+            this.txtFechaFinPension276.Location = new System.Drawing.Point(415, 51);
+            this.txtFechaFinPension276.Name = "txtFechaFinPension276";
+            this.txtFechaFinPension276.Size = new System.Drawing.Size(67, 20);
+            this.txtFechaFinPension276.TabIndex = 30;
+            // 
+            // txtFechaFinSalud276
+            // 
+            this.txtFechaFinSalud276.Location = new System.Drawing.Point(415, 39);
+            this.txtFechaFinSalud276.Name = "txtFechaFinSalud276";
+            this.txtFechaFinSalud276.Size = new System.Drawing.Size(67, 20);
+            this.txtFechaFinSalud276.TabIndex = 31;
+            // 
+            // chkServidorConfianza
+            // 
+            this.chkServidorConfianza.AutoSize = true;
+            this.chkServidorConfianza.Location = new System.Drawing.Point(23, 21);
+            this.chkServidorConfianza.Name = "chkServidorConfianza";
+            this.chkServidorConfianza.Size = new System.Drawing.Size(130, 17);
+            this.chkServidorConfianza.TabIndex = 20;
+            this.chkServidorConfianza.Text = "Servidor de Confianza";
+            this.chkServidorConfianza.UseVisualStyleBackColor = true;
+            // 
             // frmNuevoTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 655);
+            this.ClientSize = new System.Drawing.Size(739, 655);
             this.Controls.Add(this.tabTrabajador);
             this.Name = "frmNuevoTrabajador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1334,17 +1760,31 @@
             this.tabDatosGenerales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             this.tabDatosContrato.ResumeLayout(false);
-            this.tabDatosContrato.PerformLayout();
-            this.groupTipoTrabajador.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgTipoTrabajador)).EndInit();
-            this.groupTipoServidorPersonal.ResumeLayout(false);
-            this.groupTipoServidorPersonal.PerformLayout();
-            this.groupTipoContrato.ResumeLayout(false);
-            this.groupTipoContrato.PerformLayout();
+            this.gbSistemaSalud.ResumeLayout(false);
+            this.gbSistemaSalud.PerformLayout();
+            this.gpSistemaPension.ResumeLayout(false);
+            this.gpSistemaPension.PerformLayout();
+            this.gbPeriodoCOntrato.ResumeLayout(false);
+            this.gbPeriodoCOntrato.PerformLayout();
+            this.gbDetalle.ResumeLayout(false);
+            this.gbDetalle.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgContratos)).EndInit();
+            this.groupBox2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgPeriodos)).EndInit();
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1380,8 +1820,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabDatosContrato;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dtgPeriodos;
         private System.Windows.Forms.ComboBox cboEstadoCivil;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtNacionalidad;
@@ -1409,62 +1847,109 @@
         private System.Windows.Forms.TextBox txtTipoVia;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.OpenFileDialog ofdAbrirImagen;
-        private System.Windows.Forms.Button btnEliminarPeriodo;
-        private System.Windows.Forms.Button btnModificarPeriodo;
-        private System.Windows.Forms.Button btnNuevoPeriodo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoPeriodo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idTrabajador;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaInicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idtMotivoFinPeriodo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoSunat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaFin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MotivoFinPeriodo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idtmotivofinperiodo2;
         private System.Windows.Forms.DateTimePicker dtpFinContrato;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.DateTimePicker dtpInicioContrato;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.ComboBox cboTipoTrabajador;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dtgContratos;
         private System.Windows.Forms.ComboBox cboMeta;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox txtNumeroContrato;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idtContrato;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colnumero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idtsunattipotrabajador;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colfechainicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colFechaFinal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colidMeta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idtMeta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colidTrabajador;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Meses;
         private System.Windows.Forms.ComboBox cboListaCargos;
-        private System.Windows.Forms.GroupBox groupTipoServidorPersonal;
-        private System.Windows.Forms.RadioButton rdnPorPeriodo;
-        private System.Windows.Forms.RadioButton rdnNombrado;
-        private System.Windows.Forms.GroupBox groupTipoContrato;
-        private System.Windows.Forms.RadioButton rdnResidenteDeObra;
-        private System.Windows.Forms.RadioButton rdnServiciosNoPersonales;
-        private System.Windows.Forms.RadioButton rdnServiciosPersonales;
-        private System.Windows.Forms.ComboBox cboTipoContrato;
+        private System.Windows.Forms.GroupBox gbDetalle;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.ComboBox cboFinPeriodoCas;
+        private System.Windows.Forms.TextBox txtFechaFinPeriodo;
+        private System.Windows.Forms.DateTimePicker dtpFechaFinPeriodo;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicioPeriodo;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.GroupBox gbPeriodoCOntrato;
+        private System.Windows.Forms.GroupBox gbSistemaSalud;
+        private System.Windows.Forms.ComboBox cboSistemaSalud;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicioSaludCas;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.DateTimePicker dtpFechaFinSaludCas;
+        private System.Windows.Forms.GroupBox gpSistemaPension;
+        private System.Windows.Forms.ComboBox cboPension;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicioPensionCas;
+        private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.GroupBox groupTipoTrabajador;
-        private System.Windows.Forms.Button btnEliminarTipoTrabajador;
-        private System.Windows.Forms.Button btnModificarTipoTrabajador;
-        private System.Windows.Forms.Button btnNuevoTipoTrabajador;
-        private System.Windows.Forms.DataGridView dtgTipoTrabajador;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DateTimePicker dtpFechaFinPensionCas;
+        private System.Windows.Forms.TextBox txtPagoCas;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.ComboBox cboPeriocidadCas;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.ComboBox cboTipoPagoCas;
+        private System.Windows.Forms.TextBox txtRUCTrabajadorCAS;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.ComboBox cboMotivoFinPeriodo276;
+        private System.Windows.Forms.TextBox txtFechaFinPeriodo276;
+        private System.Windows.Forms.DateTimePicker dateTimePicker5;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.DateTimePicker dateTimePicker6;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtMonto276;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.ComboBox cboPeriocidad276;
+        private System.Windows.Forms.DateTimePicker dtpInicioContrato276;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.ComboBox cboTipoPago276;
+        private System.Windows.Forms.DateTimePicker dtpFinContrato276;
+        private System.Windows.Forms.ComboBox cboCargo276;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.TextBox txtNumeroContrato276;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.ComboBox cboMetaContrato;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ComboBox cboSalud276;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicioSalud276;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.DateTimePicker dtpFechaFinSalud276;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ComboBox cboSistemaPension276;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicioSistemaPension276;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.DateTimePicker dtpFechaFinSistemaPension276;
+        private System.Windows.Forms.TextBox txtMontoNombrado;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ComboBox cboSaludNombrado;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicioSaludNombrado;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.DateTimePicker dtpFechaFinSaludNombrado;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.ComboBox cboPensionNombrado;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.DateTimePicker dateTimePicker11;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.DateTimePicker dtpFechaFinPensionNombrado;
+        private System.Windows.Forms.TextBox txtNumeroResolucion;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.TextBox txtFechaFinSaludCas;
+        private System.Windows.Forms.TextBox txtFechaFinPensionCas;
+        private System.Windows.Forms.TextBox txtFechaFinSalud276;
+        private System.Windows.Forms.TextBox txtFechaFinPension276;
+        private System.Windows.Forms.CheckBox chkServidorConfianza;
     }
 }

@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="info.lundin.Math">
+      <HintPath>..\info.lundin.Math.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -89,6 +92,7 @@
     <Compile Include="Planillas\cDescuentos.cs" />
     <Compile Include="Planillas\cDetallePlanilla.cs" />
     <Compile Include="Planillas\cIngresos.cs" />
+    <Compile Include="Planillas\cMaestroIngresos.cs" />
     <Compile Include="Planillas\cPlanilla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResidenteMeta\cResidenteMeta.cs" />
