@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -109,8 +109,8 @@
             // 
             this.dgvTareo.AllowUserToAddRows = false;
             this.dgvTareo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvTareo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvTareo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTareo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -175,7 +175,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "frmMantenimientoMaestroIngresos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Mantenimiento MaestroIngresos";
+            this.Text = "Mantenimiento Maestro Ingresos";
             this.Load += new System.EventHandler(this.frmMantenimientoMaestroIngresos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTareo)).EndInit();
             this.groupBox2.ResumeLayout(false);
