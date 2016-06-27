@@ -79,7 +79,7 @@ namespace CapaUsuario.Sunat
                 MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (MessageBox.Show("Está seguro que desea eliminar el Cronograma asignado a la Meta", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+            if (MessageBox.Show("Está seguro que desea eliminar el Maestro Ingresos", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
             {
                 return;
             }
@@ -125,7 +125,7 @@ namespace CapaUsuario.Sunat
             srenta_5ta = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["renta_5ta"].Value);
             sessalud_pensionista = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["essalud_pensionista"].Value);
             scontrib_solidaria = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["contrib_solidaria"].Value);
-            scalculo = Convert.ToString(dgvMaestroIngresos.Rows[iFila].Cells["calculo"].Value); ;
+            scalculo = Convert.ToString(dgvMaestroIngresos.Rows[iFila].Cells["calculo"].Value);
         }
 
         private void CargarDatos()

@@ -191,5 +191,26 @@ namespace CapaUsuario
             fMantenimientoMaestroIngresos.MdiParent = this;
             fMantenimientoMaestroIngresos.Show();
         }
+
+        private void maestroAportacionesTrabajadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Sunat.frmMantenimientoMaestroAportacionesTrabajador fMantenimientoMaestroAportacionesTrabajador = new Sunat.frmMantenimientoMaestroAportacionesTrabajador();
+            fMantenimientoMaestroAportacionesTrabajador.MdiParent = this;
+            fMantenimientoMaestroAportacionesTrabajador.Show();
+        }
+
+        private void maestroDescuentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Sunat.frmMantenimientoMaestroAportacionesEmpleador fMantenimientoMaestroAportacionesEmpleador = new Sunat.frmMantenimientoMaestroAportacionesEmpleador();
+            fMantenimientoMaestroAportacionesEmpleador.MdiParent = this;
+            fMantenimientoMaestroAportacionesEmpleador.Show();
+        }
+
+        private void maestroDescuentosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Sunat.frmMantenimientoMaestroDescuentos fMantenimientoMaestroDescuentos = new Sunat.frmMantenimientoMaestroDescuentos();
+            fMantenimientoMaestroDescuentos.MdiParent = this;
+            fMantenimientoMaestroDescuentos.Show();
+        }
     }
 }

@@ -210,11 +210,47 @@
     <Compile Include="ResidenteMeta\frmResidenteMeta.designer.cs">
       <DependentUpon>frmResidenteMeta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sunat\frmMaestroAportacionesEmpleador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\frmMaestroAportacionesEmpleador.Designer.cs">
+      <DependentUpon>frmMaestroAportacionesEmpleador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sunat\frmMaestroAportacionesTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\frmMaestroAportacionesTrabajador.Designer.cs">
+      <DependentUpon>frmMaestroAportacionesTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sunat\frmMaestroDescuentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\frmMaestroDescuentos.Designer.cs">
+      <DependentUpon>frmMaestroDescuentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sunat\frmMaestroIngresos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Sunat\frmMaestroIngresos.Designer.cs">
       <DependentUpon>frmMaestroIngresos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sunat\frmMantenimientoMaestroAportacionesEmpleador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\frmMantenimientoMaestroAportacionesEmpleador.Designer.cs">
+      <DependentUpon>frmMantenimientoMaestroAportacionesEmpleador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sunat\frmMantenimientoMaestroAportacionesTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\frmMantenimientoMaestroAportacionesTrabajador.Designer.cs">
+      <DependentUpon>frmMantenimientoMaestroAportacionesTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sunat\frmMantenimientoMaestroDescuentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\frmMantenimientoMaestroDescuentos.Designer.cs">
+      <DependentUpon>frmMantenimientoMaestroDescuentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Sunat\frmMantenimientoMaestroIngresos.cs">
       <SubType>Form</SubType>
@@ -416,8 +452,26 @@
     <EmbeddedResource Include="ResidenteMeta\frmResidenteMeta.resx">
       <DependentUpon>frmResidenteMeta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\frmMaestroAportacionesEmpleador.resx">
+      <DependentUpon>frmMaestroAportacionesEmpleador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\frmMaestroAportacionesTrabajador.resx">
+      <DependentUpon>frmMaestroAportacionesTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\frmMaestroDescuentos.resx">
+      <DependentUpon>frmMaestroDescuentos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sunat\frmMaestroIngresos.resx">
       <DependentUpon>frmMaestroIngresos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\frmMantenimientoMaestroAportacionesEmpleador.resx">
+      <DependentUpon>frmMantenimientoMaestroAportacionesEmpleador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\frmMantenimientoMaestroAportacionesTrabajador.resx">
+      <DependentUpon>frmMantenimientoMaestroAportacionesTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\frmMantenimientoMaestroDescuentos.resx">
+      <DependentUpon>frmMantenimientoMaestroDescuentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sunat\frmMantenimientoMaestroIngresos.resx">
       <DependentUpon>frmMantenimientoMaestroIngresos.cs</DependentUpon>
