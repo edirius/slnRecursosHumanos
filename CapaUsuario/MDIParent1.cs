@@ -126,6 +126,7 @@ namespace CapaUsuario
             fComisionesAFP.miListaAFP.ObtenerListaAFP();
             fComisionesAFP.MdiParent = this;
             fComisionesAFP.Show();
+            //hh
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
