@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.dgvTareo = new System.Windows.Forms.DataGridView();
+            this.dgvMaestroIngresos = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnTipo = new System.Windows.Forms.Button();
-            this.cboMeta = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTareo)).BeginInit();
+            this.cboTipo = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMaestroIngresos)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,32 +105,33 @@
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // dgvTareo
+            // dgvMaestroIngresos
             // 
-            this.dgvTareo.AllowUserToAddRows = false;
-            this.dgvTareo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvTareo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvTareo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvMaestroIngresos.AllowUserToAddRows = false;
+            this.dgvMaestroIngresos.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvMaestroIngresos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvMaestroIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvTareo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTareo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvTareo.Location = new System.Drawing.Point(12, 66);
-            this.dgvTareo.MultiSelect = false;
-            this.dgvTareo.Name = "dgvTareo";
-            this.dgvTareo.ReadOnly = true;
-            this.dgvTareo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTareo.Size = new System.Drawing.Size(559, 310);
-            this.dgvTareo.TabIndex = 23;
-            this.dgvTareo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellContentClick);
+            this.dgvMaestroIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMaestroIngresos.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dgvMaestroIngresos.Location = new System.Drawing.Point(12, 66);
+            this.dgvMaestroIngresos.MultiSelect = false;
+            this.dgvMaestroIngresos.Name = "dgvMaestroIngresos";
+            this.dgvMaestroIngresos.ReadOnly = true;
+            this.dgvMaestroIngresos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMaestroIngresos.Size = new System.Drawing.Size(559, 310);
+            this.dgvMaestroIngresos.TabIndex = 23;
+            this.dgvMaestroIngresos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroIngresos_CellClick);
+            this.dgvMaestroIngresos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroIngresos_CellContentClick);
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.btnTipo);
-            this.groupBox2.Controls.Add(this.cboMeta);
+            this.groupBox2.Controls.Add(this.cboTipo);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(559, 48);
@@ -150,17 +151,26 @@
             this.btnTipo.UseVisualStyleBackColor = true;
             this.btnTipo.Click += new System.EventHandler(this.btnTipo_Click);
             // 
-            // cboMeta
+            // cboTipo
             // 
-            this.cboMeta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cboTipo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboMeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMeta.FormattingEnabled = true;
-            this.cboMeta.Location = new System.Drawing.Point(6, 19);
-            this.cboMeta.Name = "cboMeta";
-            this.cboMeta.Size = new System.Drawing.Size(477, 21);
-            this.cboMeta.TabIndex = 0;
-            this.cboMeta.SelectedIndexChanged += new System.EventHandler(this.cboMeta_SelectedIndexChanged);
+            this.cboTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipo.FormattingEnabled = true;
+            this.cboTipo.Items.AddRange(new object[] {
+            "INGRESOS (0100)",
+            "INGRESOS : ASIGNACIONES (0200)",
+            "INGRESOS : BONIFICACIONES (0300)",
+            "INGRESOS : GRATIFICACIONES / AGUINALDOS (0400)",
+            "INGRESOS : INDEMNIZACIONES (0500)",
+            "CONCEPTOS VARIOS (0900)",
+            "OTROS CONCEPTOS (1000)",
+            "RÉGIMEN LABORAL PÚBLICO (2000)"});
+            this.cboTipo.Location = new System.Drawing.Point(6, 19);
+            this.cboTipo.Name = "cboTipo";
+            this.cboTipo.Size = new System.Drawing.Size(477, 21);
+            this.cboTipo.TabIndex = 0;
+            this.cboTipo.SelectedIndexChanged += new System.EventHandler(this.cboTipo_SelectedIndexChanged);
             // 
             // frmMantenimientoMaestroIngresos
             // 
@@ -171,13 +181,13 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.dgvTareo);
+            this.Controls.Add(this.dgvMaestroIngresos);
             this.Controls.Add(this.groupBox2);
             this.Name = "frmMantenimientoMaestroIngresos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Maestro Ingresos";
             this.Load += new System.EventHandler(this.frmMantenimientoMaestroIngresos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTareo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMaestroIngresos)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -189,9 +199,9 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.DataGridView dgvTareo;
+        private System.Windows.Forms.DataGridView dgvMaestroIngresos;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnTipo;
-        private System.Windows.Forms.ComboBox cboMeta;
+        private System.Windows.Forms.ComboBox cboTipo;
     }
 }

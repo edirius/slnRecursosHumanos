@@ -183,5 +183,12 @@ namespace CapaUsuario
             fMantenimientoResidenteMeta.MdiParent = this;
             fMantenimientoResidenteMeta.Show();
         }
+
+        private void maestroIngresosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Sunat.frmMantenimientoMaestroIngresos fMantenimientoMaestroIngresos = new Sunat.frmMantenimientoMaestroIngresos();
+            fMantenimientoMaestroIngresos.MdiParent = this;
+            fMantenimientoMaestroIngresos.Show();
+        }
     }
 }

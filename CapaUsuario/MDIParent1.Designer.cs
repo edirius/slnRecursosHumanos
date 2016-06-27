@@ -52,6 +52,7 @@
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeTrabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeCargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.residenteMetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +85,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.residenteMetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.maestroIngresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -282,6 +283,13 @@
             this.mantenimientoDeCargosToolStripMenuItem.Text = "Mantenimiento de Cargos";
             this.mantenimientoDeCargosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeCargosToolStripMenuItem_Click);
             // 
+            // residenteMetaToolStripMenuItem
+            // 
+            this.residenteMetaToolStripMenuItem.Name = "residenteMetaToolStripMenuItem";
+            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.residenteMetaToolStripMenuItem.Text = "Residente Meta";
+            this.residenteMetaToolStripMenuItem.Click += new System.EventHandler(this.residenteMetaToolStripMenuItem_Click);
+            // 
             // toolsMenu
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -421,7 +429,8 @@
             // sUNATToolStripMenuItem
             // 
             this.sUNATToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.motivoFinPeriodoToolStripMenuItem});
+            this.motivoFinPeriodoToolStripMenuItem,
+            this.maestroIngresosToolStripMenuItem});
             this.sUNATToolStripMenuItem.Name = "sUNATToolStripMenuItem";
             this.sUNATToolStripMenuItem.Size = new System.Drawing.Size(171, 20);
             this.sUNATToolStripMenuItem.Text = "SUNAT - Tablas Parametricas";
@@ -531,12 +540,12 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // residenteMetaToolStripMenuItem
+            // maestroIngresosToolStripMenuItem
             // 
-            this.residenteMetaToolStripMenuItem.Name = "residenteMetaToolStripMenuItem";
-            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.residenteMetaToolStripMenuItem.Text = "Residente Meta";
-            this.residenteMetaToolStripMenuItem.Click += new System.EventHandler(this.residenteMetaToolStripMenuItem_Click);
+            this.maestroIngresosToolStripMenuItem.Name = "maestroIngresosToolStripMenuItem";
+            this.maestroIngresosToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.maestroIngresosToolStripMenuItem.Text = "Maestro Ingresos";
+            this.maestroIngresosToolStripMenuItem.Click += new System.EventHandler(this.maestroIngresosToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -621,6 +630,7 @@
         private System.Windows.Forms.ToolStripMenuItem motivoFinPeriodoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeCargosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem residenteMetaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem maestroIngresosToolStripMenuItem;
     }
 }
 

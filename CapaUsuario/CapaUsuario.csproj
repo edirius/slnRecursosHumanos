@@ -416,6 +416,9 @@
     <EmbeddedResource Include="ResidenteMeta\frmResidenteMeta.resx">
       <DependentUpon>frmResidenteMeta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\frmMaestroIngresos.resx">
+      <DependentUpon>frmMaestroIngresos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sunat\frmMantenimientoMaestroIngresos.resx">
       <DependentUpon>frmMantenimientoMaestroIngresos.cs</DependentUpon>
     </EmbeddedResource>
