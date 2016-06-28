@@ -32,7 +32,7 @@ namespace CapaUsuario.Sunat
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             CapaUsuario.Sunat.frmMaestroAportacionesEmpleador fMaestroAportacionesEmpleador = new CapaUsuario.Sunat.frmMaestroAportacionesEmpleador();
-            fMaestroAportacionesEmpleador.RecibirDatos(0, "", "", scalculo, 1);
+            fMaestroAportacionesEmpleador.RecibirDatos(0, "", "", "", 1);
             if (fMaestroAportacionesEmpleador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();

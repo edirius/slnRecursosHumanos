@@ -50,7 +50,7 @@ namespace CapaUsuario.Sunat
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             CapaUsuario.Sunat.frmMaestroIngresos fMaestroIngresos = new CapaUsuario.Sunat.frmMaestroIngresos();
-            fMaestroIngresos.RecibirDatos(0, "", "", false, false, false, false, false, false, false, false, false, false, false, false, scalculo, stipo, 1);
+            fMaestroIngresos.RecibirDatos(0, "", "", false, false, false, false, false, false, false, false, false, false, false, false, "", stipo, 1);
             if (fMaestroIngresos.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
