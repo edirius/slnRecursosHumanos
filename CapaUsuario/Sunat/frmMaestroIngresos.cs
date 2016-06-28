@@ -13,7 +13,6 @@ namespace CapaUsuario.Sunat
     public partial class frmMaestroIngresos : Form
     {
         int sidtmaestroingresos = 0;
-        string scalculo = "";
         int iAccion;
 
         public frmMaestroIngresos()
@@ -45,7 +44,7 @@ namespace CapaUsuario.Sunat
             miMaestroIngresos.Renta_5ta = chkRenta_5ta.Checked;
             miMaestroIngresos.Essalud_pensionista = chkEssalud_pensionista.Checked;
             miMaestroIngresos.Contrib_solidaria = chkContrib_solidaria.Checked;
-            miMaestroIngresos.Calculo = scalculo;
+            miMaestroIngresos.Calculo = txtFormula.Text;
             miMaestroIngresos.Tipo = txtTipo.Text;
 
             if (iAccion == 1)
@@ -90,7 +89,7 @@ namespace CapaUsuario.Sunat
             chkRenta_5ta.Checked = prenta_5ta;
             chkEssalud_pensionista.Checked = pessalud_pensionista;
             chkContrib_solidaria.Checked = pcontrib_solidaria;
-            scalculo = pcalculo;
+            txtFormula.Text = pcalculo;
             txtTipo.Text = ptipo;
             iAccion = piAccion;
         }

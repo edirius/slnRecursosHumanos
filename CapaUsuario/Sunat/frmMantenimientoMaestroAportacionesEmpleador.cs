@@ -72,12 +72,12 @@ namespace CapaUsuario.Sunat
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void dgvMaestroAportacionesEmpleador_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.Close();
+            
         }
 
         private void dgvMaestroAportacionesEmpleador_CellClick(object sender, DataGridViewCellEventArgs e)

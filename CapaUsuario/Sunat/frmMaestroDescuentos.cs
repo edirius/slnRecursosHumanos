@@ -13,7 +13,6 @@ namespace CapaUsuario.Sunat
     public partial class frmMaestroDescuentos : Form
     {
         int sidtmaestrodescuentos = 0;
-        string scalculo = "";
         int iAccion;
 
         public frmMaestroDescuentos()
@@ -33,7 +32,7 @@ namespace CapaUsuario.Sunat
             miMaestroDescuentos.IdtMaestroDescuentos = sidtmaestrodescuentos;
             miMaestroDescuentos.Codigo = txtCodigo.Text;
             miMaestroDescuentos.Descripcion = txtDescripcion.Text;
-            miMaestroDescuentos.Calculo = scalculo;
+            miMaestroDescuentos.Calculo = txtFormula.Text;
 
             if (iAccion == 1)
             {
@@ -65,7 +64,7 @@ namespace CapaUsuario.Sunat
             sidtmaestrodescuentos = pidtmaestrodescuentos;
             txtCodigo.Text = pcodigo;
             txtDescripcion.Text = pdescripcion;
-            scalculo = pcalculo;
+            txtFormula.Text = pcalculo;
             iAccion = piAccion;
         }
     }
