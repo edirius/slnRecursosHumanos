@@ -85,6 +85,7 @@
     <Compile Include="Obras\cFuncion.cs" />
     <Compile Include="Obras\cGrupoFuncional.cs" />
     <Compile Include="Obras\cMeta.cs" />
+    <Compile Include="Obras\cMetaJornal.cs" />
     <Compile Include="Obras\cObra.cs" />
     <Compile Include="Obras\cProductoProyecto.cs" />
     <Compile Include="Obras\cProgramaPresupuestal.cs" />

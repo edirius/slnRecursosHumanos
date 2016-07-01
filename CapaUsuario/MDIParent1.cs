@@ -164,6 +164,13 @@ namespace CapaUsuario
             fMeta.Show();
         }
 
+        private void metaJornalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResidenteMeta.frmMetaJornal fMetaJornal = new ResidenteMeta.frmMetaJornal();
+            fMetaJornal.MdiParent = this;
+            fMetaJornal.Show();
+        }
+
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AFP.frmListaAFPs fListaAFP = new AFP.frmListaAFPs();

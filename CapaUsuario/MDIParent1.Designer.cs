@@ -71,6 +71,7 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.plantillaPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sUNATToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.motivoFinPeriodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestroIngresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,7 +90,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.plantillaPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.metaJornalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -319,7 +320,8 @@
             this.closeAllToolStripMenuItem,
             this.arrangeIconsToolStripMenuItem,
             this.toolStripSeparator9,
-            this.toolStripMenuItem3});
+            this.toolStripMenuItem3,
+            this.metaJornalToolStripMenuItem});
             this.windowsMenu.Name = "windowsMenu";
             this.windowsMenu.Size = new System.Drawing.Size(46, 20);
             this.windowsMenu.Text = "Meta";
@@ -431,6 +433,13 @@
             this.planillasToolStripMenuItem.Name = "planillasToolStripMenuItem";
             this.planillasToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.planillasToolStripMenuItem.Text = "Planillas";
+            // 
+            // plantillaPlanillaToolStripMenuItem
+            // 
+            this.plantillaPlanillaToolStripMenuItem.Name = "plantillaPlanillaToolStripMenuItem";
+            this.plantillaPlanillaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.plantillaPlanillaToolStripMenuItem.Text = "Plantilla Planilla";
+            this.plantillaPlanillaToolStripMenuItem.Click += new System.EventHandler(this.plantillaPlanillaToolStripMenuItem_Click);
             // 
             // sUNATToolStripMenuItem
             // 
@@ -577,12 +586,12 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // plantillaPlanillaToolStripMenuItem
+            // metaJornalToolStripMenuItem
             // 
-            this.plantillaPlanillaToolStripMenuItem.Name = "plantillaPlanillaToolStripMenuItem";
-            this.plantillaPlanillaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.plantillaPlanillaToolStripMenuItem.Text = "Plantilla Planilla";
-            this.plantillaPlanillaToolStripMenuItem.Click += new System.EventHandler(this.plantillaPlanillaToolStripMenuItem_Click);
+            this.metaJornalToolStripMenuItem.Name = "metaJornalToolStripMenuItem";
+            this.metaJornalToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.metaJornalToolStripMenuItem.Text = "Meta Jornal";
+            this.metaJornalToolStripMenuItem.Click += new System.EventHandler(this.metaJornalToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -672,6 +681,7 @@
         private System.Windows.Forms.ToolStripMenuItem maestroDescuentosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maestroDescuentosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem plantillaPlanillaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem metaJornalToolStripMenuItem;
     }
 }
 
