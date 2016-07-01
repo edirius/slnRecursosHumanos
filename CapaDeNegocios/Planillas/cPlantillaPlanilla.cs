@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using System.Data;
 using CapaDeDatos;
-using CapaDeNegocios.Obras;
+using CapaDeNegocios.DatosLaborales;
 
 namespace CapaDeNegocios.Planillas
 {
@@ -32,27 +32,27 @@ namespace CapaDeNegocios.Planillas
             set { scodigo = value; }
         }
 
-        //public DataTable ListarResidenteMeta(cTrabajador miTrabajador)
-        //{
-        //    return Conexion.GDatos.TraerDataTable("spListarResidenteMeta", miTrabajador.IdTrabajador);
-        //}
+        public DataTable ListarPlantillaPlanilla(cTipoTrabajador miTipoTrabajador)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarPlantillaPlanilla", miTipoTrabajador.Codigo);
+        }
 
-        //public Boolean CrearResidenteMeta(cMeta miMeta, cTrabajador miTrabajador)
-        //{
-        //    Conexion.GDatos.Ejecutar("spCrearResidenteMeta", miMeta.Codigo, miTrabajador.IdTrabajador);
-        //    return true;
-        //}
+        public Boolean CrearPlantillaPlanilla(cTipoTrabajador miTipoTrabajador, cPlantillaPlanilla miPlantillaPlanilla)
+        {
+            Conexion.GDatos.Ejecutar("spCrearPlantillaPlanilla", miTipoTrabajador.Codigo, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo);
+            return true;
+        }
 
-        //public Boolean ModificarResidenteMeta(cResidenteMeta miResidenteMeta, cMeta miMeta, cTrabajador miTrabajador)
-        //{
-        //    Conexion.GDatos.Ejecutar("spModificarResidenteMeta", miResidenteMeta.IdtResidenteMeta, miMeta.Codigo, miTrabajador.IdTrabajador);
-        //    return true;
-        //}
+        public Boolean ModificarPlantillaPlanilla(cTipoTrabajador miTipoTrabajador, cPlantillaPlanilla miPlantillaPlanilla)
+        {
+            Conexion.GDatos.Ejecutar("spModificarPlantillaPlanilla", miPlantillaPlanilla.IdtPlantillaPlanilla, miTipoTrabajador.Codigo, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo);
+            return true;
+        }
 
-        //public Boolean EliminarResidenteMeta(cResidenteMeta miResidenteMeta)
-        //{
-        //    Conexion.GDatos.Ejecutar("spELiminarResidenteMeta", miResidenteMeta.IdtResidenteMeta);
-        //    return true;
-        //}
+        public Boolean EliminarPlantillaPlanilla(cPlantillaPlanilla miPlantillaPlanilla)
+        {
+            Conexion.GDatos.Ejecutar("spELiminarPlantillaPlanilla", miPlantillaPlanilla.IdtPlantillaPlanilla);
+            return true;
+        }
     }
 }

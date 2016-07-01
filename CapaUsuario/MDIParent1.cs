@@ -212,5 +212,12 @@ namespace CapaUsuario
             fMantenimientoMaestroDescuentos.MdiParent = this;
             fMantenimientoMaestroDescuentos.Show();
         }
+
+        private void plantillaPlanillaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Planilla.frmMantenimientoPlantillaPlanilla fPlantillaPlanilla = new Planilla.frmMantenimientoPlantillaPlanilla();
+            fPlantillaPlanilla.MdiParent = this;
+            fPlantillaPlanilla.Show();
+        }
     }
 }

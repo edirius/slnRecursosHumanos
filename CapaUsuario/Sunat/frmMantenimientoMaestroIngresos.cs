@@ -95,7 +95,7 @@ namespace CapaUsuario.Sunat
 
         private void cboTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboTipo.Text != "System.Data.DataRowView")
+            if (cboTipo.Text != "System.Data.DataRowView" && cboTipo.Text != "")
             {
                 stipo = cboTipo.Text;
                 CargarDatos();

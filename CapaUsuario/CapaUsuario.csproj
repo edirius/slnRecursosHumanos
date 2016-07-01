@@ -190,6 +190,24 @@
     <Compile Include="Navegador\frmNavegador.Designer.cs">
       <DependentUpon>frmNavegador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Planilla\frmMensajeIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\frmMensajeIngreso.Designer.cs">
+      <DependentUpon>frmMensajeIngreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planilla\frmMantenimientoPlantillaPlanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\frmMantenimientoPlantillaPlanilla.Designer.cs">
+      <DependentUpon>frmMantenimientoPlantillaPlanilla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planilla\frmPlantillaPlanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\frmPlantillaPlanilla.Designer.cs">
+      <DependentUpon>frmPlantillaPlanilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reportes\MostrarReportes.cs">
@@ -431,6 +449,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Navegador\frmNavegador.resx">
       <DependentUpon>frmNavegador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\frmMensajeIngreso.resx">
+      <DependentUpon>frmMensajeIngreso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\frmMantenimientoPlantillaPlanilla.resx">
+      <DependentUpon>frmMantenimientoPlantillaPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\frmPlantillaPlanilla.resx">
+      <DependentUpon>frmPlantillaPlanilla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
