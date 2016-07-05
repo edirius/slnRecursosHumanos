@@ -16,13 +16,13 @@ namespace CapaDeNegocios.DatosLaborales
             set { miTrabajador = value; }
         }
 
-        private cPeriodo[] listaPeriodos;
+        //private cPeriodo[] listaPeriodos;
 
-        public cPeriodo[] ListaPeriodos
-        {
-            get { return listaPeriodos; }
-            set { listaPeriodos = value; }
-        }
+        //public cPeriodo[] ListaPeriodos
+        //{
+        //    get { return listaPeriodos; }
+        //    set { listaPeriodos = value; }
+        //}
 
         private cTipoTrabajador miTipoTrabajador;
 

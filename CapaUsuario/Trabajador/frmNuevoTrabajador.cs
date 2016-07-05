@@ -18,7 +18,7 @@ namespace CapaUsuario.Trabajador
     public partial class frmNuevoTrabajador : Form
     {
         public cTrabajador miTrabajador;
-        public cPeriodo miPeriodo ;
+        //public cPeriodo miPeriodo ;
         
 
         public frmNuevoTrabajador()
@@ -34,7 +34,7 @@ namespace CapaUsuario.Trabajador
         #region CodigoTrabajador
         private void Iniciar()
         {
-            miPeriodo = new cPeriodo(miTrabajador);
+            //miPeriodo = new cPeriodo(miTrabajador);
             txtCodigo.Text = miTrabajador.IdTrabajador.ToString();
             txtDNI.Text = miTrabajador.Dni;
             txtNombres.Text = miTrabajador.Nombres;

@@ -57,9 +57,9 @@
     <Compile Include="Contrato\enumTipoContrato.cs" />
     <Compile Include="Contrato\enumTipoServidor.cs" />
     <Compile Include="ConvertirImagen.cs" />
-    <Compile Include="DatosLaborales\cPeriodo.cs" />
     <Compile Include="cProvincia.cs" />
     <Compile Include="cReglaNegociosException.cs" />
+    <Compile Include="DatosLaborales\cPeriodoTrabajador.cs" />
     <Compile Include="DatosLaborales\cTipoTrabajador.cs" />
     <Compile Include="cTipoVia.cs" />
     <Compile Include="cTipoZona.cs" />

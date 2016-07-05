@@ -13,6 +13,9 @@ namespace CapaUsuario.Trabajador
 {
     public partial class frmListaTrabajadores : Form
     {
+        int pidttrabajador = 0;
+        string trabajador = "";
+        
         public frmListaTrabajadores()
         {
             InitializeComponent();
@@ -97,6 +100,24 @@ namespace CapaUsuario.Trabajador
                 MessageBox.Show(h.Message);
             }
             
+        }
+
+        private void dtgListaTrabajadores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dtgListaTrabajadores_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            pidttrabajador = Convert.ToInt32(dtgListaTrabajadores.Rows[e.RowIndex].Cells[0].Value);
+            trabajador = Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[2].Value) + " " + Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[3].Value) + " " + Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[4].Value);
+        }
+
+        private void btnPeriodoTrabajador_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Trabajador.frmMantenimientoPeriodoTrabajador fPeriodoTrabajador = new CapaUsuario.Trabajador.frmMantenimientoPeriodoTrabajador();
+            fPeriodoTrabajador.RecibirDatos(pidttrabajador, trabajador);
+            fPeriodoTrabajador.ShowDialog();
         }
     }
 }

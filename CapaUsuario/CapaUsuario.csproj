@@ -324,12 +324,6 @@
     <Compile Include="Trabajador\frmListaDistritos.Designer.cs">
       <DependentUpon>frmListaDistritos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trabajador\frmListaPeriodos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Trabajador\frmListaPeriodos.Designer.cs">
-      <DependentUpon>frmListaPeriodos.cs</DependentUpon>
-    </Compile>
     <Compile Include="Trabajador\frmListaTrabajadores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,12 +342,6 @@
     <Compile Include="Trabajador\frmNuevoObrero.designer.cs">
       <DependentUpon>frmNuevoObrero.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trabajador\frmNuevoPeriodo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Trabajador\frmNuevoPeriodo.Designer.cs">
-      <DependentUpon>frmNuevoPeriodo.cs</DependentUpon>
-    </Compile>
     <Compile Include="Trabajador\frmNuevoTipoTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,6 +353,18 @@
     </Compile>
     <Compile Include="Trabajador\frmNuevoTrabajador.Designer.cs">
       <DependentUpon>frmNuevoTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmMantenimientoPeriodoTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmMantenimientoPeriodoTrabajador.Designer.cs">
+      <DependentUpon>frmMantenimientoPeriodoTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmPeriodoTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmPeriodoTrabajador.Designer.cs">
+      <DependentUpon>frmPeriodoTrabajador.cs</DependentUpon>
     </Compile>
     <Compile Include="Trabajador\frmProvincia.cs">
       <SubType>Form</SubType>
@@ -533,9 +533,6 @@
     <EmbeddedResource Include="Trabajador\frmListaDistritos.resx">
       <DependentUpon>frmListaDistritos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Trabajador\frmListaPeriodos.resx">
-      <DependentUpon>frmListaPeriodos.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmListaTrabajadores.resx">
       <DependentUpon>frmListaTrabajadores.cs</DependentUpon>
     </EmbeddedResource>
@@ -545,14 +542,17 @@
     <EmbeddedResource Include="Trabajador\frmNuevoObrero.resx">
       <DependentUpon>frmNuevoObrero.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Trabajador\frmNuevoPeriodo.resx">
-      <DependentUpon>frmNuevoPeriodo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmNuevoTipoTrabajador.resx">
       <DependentUpon>frmNuevoTipoTrabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmNuevoTrabajador.resx">
       <DependentUpon>frmNuevoTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmMantenimientoPeriodoTrabajador.resx">
+      <DependentUpon>frmMantenimientoPeriodoTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmPeriodoTrabajador.resx">
+      <DependentUpon>frmPeriodoTrabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmProvincia.resx">
       <DependentUpon>frmProvincia.cs</DependentUpon>

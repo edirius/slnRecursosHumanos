@@ -15,27 +15,27 @@ namespace CapaDeNegocios.Trabajadores
     {
         public cTrabajadorServidorPersonal()
         {
-            MiListaPeriodos = new List<cPeriodo>();
+            //MiListaPeriodos = new List<cPeriodo>();
             miListaPeriodosSistemaPension = new List<cPeriodoSistemaPension>();
         }
 
       
 
-        List<cPeriodo> miListaPeriodos;
+        //List<cPeriodo> miListaPeriodos;
         List<cPeriodoSistemaPension> miListaPeriodosSistemaPension;
 
-        public List<cPeriodo> MiListaPeriodos
-        {
-            get
-            {
-                return miListaPeriodos;
-            }
+        //public List<cPeriodo> MiListaPeriodos
+        //{
+        //    get
+        //    {
+        //        return miListaPeriodos;
+        //    }
 
-            set
-            {
-                miListaPeriodos = value;
-            }
-        }
+        //    set
+        //    {
+        //        miListaPeriodos = value;
+        //    }
+        //}
 
         public List<cPeriodoSistemaPension> MiListaPeriodosSistemaPension
         {
@@ -52,23 +52,23 @@ namespace CapaDeNegocios.Trabajadores
 
 
 
-        public void AgregarPeriodo(cPeriodo miNuevoPeriodo)
-        {
-            miNuevoPeriodo.Trabajador = this;
+        //public void AgregarPeriodo(cPeriodo miNuevoPeriodo)
+        //{
+        //    miNuevoPeriodo.Trabajador = this;
 
-            miListaPeriodos.Add(miNuevoPeriodo);
+        //    miListaPeriodos.Add(miNuevoPeriodo);
 
-        }
+        //}
 
-        public void ModificarPeriodo(cPeriodo miPeriodo)
-        {
+        //public void ModificarPeriodo(cPeriodo miPeriodo)
+        //{
 
-        }
+        //}
 
-        public void EliminarPeriodo(cPeriodo miPeriodo)
-        {
-            miListaPeriodos.Remove(miPeriodo);
-        }
+        //public void EliminarPeriodo(cPeriodo miPeriodo)
+        //{
+        //    miListaPeriodos.Remove(miPeriodo);
+        //}
 
 
         public new cTrabajadorServidorPersonal traerTrabajador(int codigoTrabajador)
