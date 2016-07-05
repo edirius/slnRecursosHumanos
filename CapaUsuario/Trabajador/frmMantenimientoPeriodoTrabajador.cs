@@ -14,8 +14,8 @@ namespace CapaUsuario.Trabajador
     {
         DataTable oDataPeriodoTrabajador = new DataTable();
         int sidtperiodotrabajador = 0;
-        DateTime sfechainicio;
-        DateTime sfechafin;
+        string sfechainicio;
+        string sfechafin;
         int sidtmotivofinperiodo = 0;
         string smotivofinperiodo = "";
         int sidttrabajador = 0;
@@ -36,7 +36,7 @@ namespace CapaUsuario.Trabajador
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             CapaUsuario.Trabajador.frmPeriodoTrabajador fPeriodoTrabajador = new frmPeriodoTrabajador();
-            fPeriodoTrabajador.RecibirDatos(0, DateTime.Today, DateTime.Today, 0, "", sidttrabajador, txtTrabajador.Text, 1);
+            fPeriodoTrabajador.RecibirDatos(0, "", "", 0, "", sidttrabajador, txtTrabajador.Text, 1);
             if (fPeriodoTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -87,8 +87,8 @@ namespace CapaUsuario.Trabajador
         private void dgvPeriodoTrabajador_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             sidtperiodotrabajador = Convert.ToInt32(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[0].Value);
-            sfechainicio = Convert.ToDateTime(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[1].Value);
-            sfechafin = Convert.ToDateTime(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[2].Value);
+            sfechainicio = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[1].Value);
+            sfechafin = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[2].Value);
             sidtmotivofinperiodo = Convert.ToInt32(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[3].Value);
             smotivofinperiodo = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[4].Value);
         }

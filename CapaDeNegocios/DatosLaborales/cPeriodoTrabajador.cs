@@ -13,20 +13,20 @@ namespace CapaDeNegocios.DatosLaborales
     public class cPeriodoTrabajador
     {
         int sidtperiodotrabajador;
-        DateTime sfechainicio;
-        DateTime sfechafin;
+        string sfechainicio;
+        string sfechafin;
 
         public int IdtPeriodoTrabajador
         {
             get { return sidtperiodotrabajador; }
             set { sidtperiodotrabajador = value; }
         }
-        public DateTime FechaInicio
+        public string FechaInicio
         {
             get { return sfechainicio; }
             set { sfechainicio = value; }
         }
-        public DateTime FechaFin
+        public string FechaFin
         {
             get { return sfechafin; }
             set { sfechafin = value; }
