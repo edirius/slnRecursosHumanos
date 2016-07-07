@@ -243,6 +243,7 @@
             this.btnRegimenTrabajador.Text = "&Regimen Laboral";
             this.btnRegimenTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRegimenTrabajador.UseVisualStyleBackColor = false;
+            this.btnRegimenTrabajador.Click += new System.EventHandler(this.btnRegimenTrabajador_Click);
             // 
             // btnDetalleTareo
             // 

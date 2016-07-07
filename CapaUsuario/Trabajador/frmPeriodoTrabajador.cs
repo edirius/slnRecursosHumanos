@@ -15,8 +15,8 @@ namespace CapaUsuario.Trabajador
         int iAccion = 0;
         int sidtperiodotrabajador = 0;
         int sidtmotivofinperiodo = 0;
-        string smotivofinperiodo = "";
         int sidttrabajador = 0;
+        string smotivofinperiodo = "";
 
         public frmPeriodoTrabajador()
         {
@@ -33,23 +33,21 @@ namespace CapaUsuario.Trabajador
         {
             bool bOk = false;
             CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
-            CapaDeNegocios.DatosLaborales.cMotivoFinPeriodo miMotivoFinPeriodo = new CapaDeNegocios.DatosLaborales.cMotivoFinPeriodo();
-            CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
             miPeriodoTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
             miPeriodoTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
             if (dtpFechaFin.Format == DateTimePickerFormat.Custom) { miPeriodoTrabajador.FechaFin = ""; }
             else { miPeriodoTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString(); }
-            miMotivoFinPeriodo.Codigo = sidtmotivofinperiodo;
-            miTrabajador.IdTrabajador = sidttrabajador;
+            miPeriodoTrabajador.IdtMotivoFinPeriodo = sidtmotivofinperiodo;
+            miPeriodoTrabajador.IdtTrabajador = sidttrabajador;
 
             if (iAccion == 1)
             {
-                miPeriodoTrabajador.CrearPeriodoTrabajador(miPeriodoTrabajador, miMotivoFinPeriodo, miTrabajador);
+                miPeriodoTrabajador.CrearPeriodoTrabajador(miPeriodoTrabajador);
                 bOk = true;
             }
             if (iAccion == 2)
             {
-                miPeriodoTrabajador.ModificarPeriodoTrabajador(miPeriodoTrabajador, miMotivoFinPeriodo, miTrabajador);
+                miPeriodoTrabajador.ModificarPeriodoTrabajador(miPeriodoTrabajador);
                 bOk = true;
             }
             if (bOk == true)
@@ -67,6 +65,18 @@ namespace CapaUsuario.Trabajador
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
+        private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
+        {
+            dtpFechaFin.MinDate = dtpFechaInicio.Value.AddDays(1);
+            dtpFechaFin.Format = DateTimePickerFormat.Custom;
+            dtpFechaFin.CustomFormat = " ";
+        }
+
+        private void dtpFechaFin_ValueChanged(object sender, EventArgs e)
+        {
+            dtpFechaFin.Format = DateTimePickerFormat.Long;
+        }
+
         private void cboFinPeriodo_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboFinPeriodo.Text != "System.Data.DataRowView" && cboFinPeriodo.ValueMember != "")
@@ -79,7 +89,15 @@ namespace CapaUsuario.Trabajador
         {
             sidtperiodotrabajador = pidtperiodotrabajador;
             if (pfechainicio == "") { dtpFechaInicio.Value = DateTime.Today; }
-            else { dtpFechaInicio.Value = Convert.ToDateTime(pfechainicio); }
+            else
+            {
+                if (pAccion == 1)
+                {
+                    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicio).AddDays(1);
+                    dtpFechaInicio.Value = DateTime.Today;
+                }
+                else { dtpFechaInicio.Value = Convert.ToDateTime(pfechainicio); }
+            }
             if (pfechafin == "")
             {
                 dtpFechaFin.Format = DateTimePickerFormat.Custom;
@@ -100,11 +118,6 @@ namespace CapaUsuario.Trabajador
             cboFinPeriodo.DisplayMember = "descripcion";
             cboFinPeriodo.ValueMember = "idtmotivofinperiodo";
             cboFinPeriodo.Text = smotivofinperiodo;
-        }
-
-        private void dtpFechaFin_ValueChanged(object sender, EventArgs e)
-        {
-            dtpFechaFin.Format = DateTimePickerFormat.Long;
         }
     }
 }

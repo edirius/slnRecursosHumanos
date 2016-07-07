@@ -12,15 +12,13 @@ namespace CapaUsuario.Trabajador
 {
     public partial class frmMantenimientoPeriodoTrabajador : Form
     {
-        DataTable oDataPeriodoTrabajador = new DataTable();
         int sidtperiodotrabajador = 0;
-        string sfechainicio;
-        string sfechafin;
+        string sfechainicio = "";
+        string sfechafin = "";
         int sidtmotivofinperiodo = 0;
-        string smotivofinperiodo = "";
         int sidttrabajador = 0;
+        string smotivofinperiodo = "";
 
-        CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
         CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
 
         public frmMantenimientoPeriodoTrabajador()
@@ -35,8 +33,17 @@ namespace CapaUsuario.Trabajador
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            if (dgvPeriodoTrabajador.Rows.Count > 0 && (Convert.ToString(dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[2].Value) == "" || Convert.ToString(dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[4].Value) == ""))
+            {
+                MessageBox.Show("No se puede agregar un nuevo periodo, hasta que el ultimo perido tenga un Fecha Fin y un Motivo de Fin de Periodo", "Mensaje Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             CapaUsuario.Trabajador.frmPeriodoTrabajador fPeriodoTrabajador = new frmPeriodoTrabajador();
-            fPeriodoTrabajador.RecibirDatos(0, "", "", 0, "", sidttrabajador, txtTrabajador.Text, 1);
+            if (dgvPeriodoTrabajador.Rows.Count == 0)
+            { sfechainicio = ""; }
+            else
+            { sfechainicio = Convert.ToString(dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[2].Value); }
+            fPeriodoTrabajador.RecibirDatos(0, sfechainicio, "", 0, "", sidttrabajador, txtTrabajador.Text, 1);
             if (fPeriodoTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -45,7 +52,7 @@ namespace CapaUsuario.Trabajador
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (sidtperiodotrabajador == 0 && dgvPeriodoTrabajador.SelectedRows.Count == 0)
+            if (sidtperiodotrabajador == 0)
             {
                 MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -60,7 +67,7 @@ namespace CapaUsuario.Trabajador
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (sidtperiodotrabajador == 0 && dgvPeriodoTrabajador.SelectedRows.Count == 0)
+            if (sidtperiodotrabajador == 0)
             {
                 MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -69,8 +76,7 @@ namespace CapaUsuario.Trabajador
             {
                 return;
             }
-            miPeriodoTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
-            miPeriodoTrabajador.EliminarPeriodoTrabajador(miPeriodoTrabajador);
+            miPeriodoTrabajador.EliminarPeriodoTrabajador(sidtperiodotrabajador);
             CargarDatos();
         }
 
@@ -101,18 +107,27 @@ namespace CapaUsuario.Trabajador
 
         public void CargarDatos()
         {
-            dgvPeriodoTrabajador.Rows.Clear();
+            DataTable oDataPeriodoTrabajador = new DataTable();
             DataTable oDataMotivoFinPeriodo = new DataTable();
-            miTrabajador.IdTrabajador = sidttrabajador;
-            oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(miTrabajador);
+
+            dgvPeriodoTrabajador.Rows.Clear();
+            oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(sidttrabajador);
+
             CapaDeNegocios.DatosLaborales.cMotivoFinPeriodo miMotivoFinPeriodo = new CapaDeNegocios.DatosLaborales.cMotivoFinPeriodo();
             oDataMotivoFinPeriodo = miMotivoFinPeriodo.ListaMotivosFinPeriodos();
+
             foreach (DataRow row in oDataPeriodoTrabajador.Rows)
             {
                 foreach (DataRow row1 in oDataMotivoFinPeriodo.Select("idtmotivofinperiodo ='" + row[3].ToString() + "'"))
                 {
                     dgvPeriodoTrabajador.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row1[0].ToString(), row1[2].ToString());
                 }
+            }
+            if (dgvPeriodoTrabajador.Rows.Count > 0)
+            {
+                dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Selected = true;
+                DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, dgvPeriodoTrabajador.Rows.Count - 1);
+                dgvPeriodoTrabajador_CellClick(dgvPeriodoTrabajador, cea);
             }
         }
     }

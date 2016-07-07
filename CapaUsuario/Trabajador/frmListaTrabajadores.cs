@@ -119,5 +119,12 @@ namespace CapaUsuario.Trabajador
             fPeriodoTrabajador.RecibirDatos(pidttrabajador, trabajador);
             fPeriodoTrabajador.ShowDialog();
         }
+
+        private void btnRegimenTrabajador_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Trabajador.frmMantenimientoRegimenTrabajador fRegimenTrabajador = new frmMantenimientoRegimenTrabajador();
+            fRegimenTrabajador.RecibirDatos(pidttrabajador, trabajador);
+            fRegimenTrabajador.ShowDialog();
+        }
     }
 }

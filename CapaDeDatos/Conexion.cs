@@ -8,7 +8,7 @@ namespace CapaDeDatos
 {
     public class Conexion
     {
-         public static GDatos GDatos;
+        public static GDatos GDatos;
         public static bool IniciarSesion(string nombreServidor, string baseDatos, string usuario, string password)
         {
             GDatos = new MySqlServer(nombreServidor, baseDatos, usuario, password);

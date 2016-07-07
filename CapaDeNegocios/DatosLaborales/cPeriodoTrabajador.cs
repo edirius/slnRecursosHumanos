@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 using System.Data;
 using CapaDeDatos;
-using CapaDeNegocios.Sunat;
 
 namespace CapaDeNegocios.DatosLaborales
 {
@@ -15,6 +14,8 @@ namespace CapaDeNegocios.DatosLaborales
         int sidtperiodotrabajador;
         string sfechainicio;
         string sfechafin;
+        int sidtmotivofinperiodo;
+        int sidttrabajador;
 
         public int IdtPeriodoTrabajador
         {
@@ -31,27 +32,37 @@ namespace CapaDeNegocios.DatosLaborales
             get { return sfechafin; }
             set { sfechafin = value; }
         }
-
-        public DataTable ListarPeriodoTrabajador(cTrabajador miTrabajador)
+        public int IdtMotivoFinPeriodo
         {
-            return Conexion.GDatos.TraerDataTable("spListarPeriodoTrabajador", miTrabajador.IdTrabajador);
+            get { return sidtmotivofinperiodo; }
+            set { sidtmotivofinperiodo = value; }
+        }
+        public int IdtTrabajador
+        {
+            get { return sidttrabajador; }
+            set { sidttrabajador = value; }
         }
 
-        public Boolean CrearPeriodoTrabajador(cPeriodoTrabajador miPeriodoTrabajador, cMotivoFinPeriodo miMotivoFinPeriodo, cTrabajador miTrabajador)
+        public DataTable ListarPeriodoTrabajador(int IdtTrabajador)
         {
-            Conexion.GDatos.Ejecutar("spCrearPeriodoTrabajador", miPeriodoTrabajador.FechaInicio, miPeriodoTrabajador.FechaFin, miMotivoFinPeriodo.Codigo, miTrabajador.IdTrabajador);
+            return Conexion.GDatos.TraerDataTable("spListarPeriodoTrabajador", IdtTrabajador);
+        }
+
+        public Boolean CrearPeriodoTrabajador(cPeriodoTrabajador miPeriodoTrabajador)
+        {
+            Conexion.GDatos.Ejecutar("spCrearPeriodoTrabajador", miPeriodoTrabajador.FechaInicio, miPeriodoTrabajador.FechaFin, miPeriodoTrabajador.IdtMotivoFinPeriodo, miPeriodoTrabajador.IdtTrabajador);
             return true;
         }
 
-        public Boolean ModificarPeriodoTrabajador(cPeriodoTrabajador miPeriodoTrabajador, cMotivoFinPeriodo miMotivoFinPeriodo, cTrabajador miTrabajador)
+        public Boolean ModificarPeriodoTrabajador(cPeriodoTrabajador miPeriodoTrabajador)
         {
-            Conexion.GDatos.Ejecutar("spModificarPeriodoTrabajador", miPeriodoTrabajador.IdtPeriodoTrabajador, miPeriodoTrabajador.FechaInicio, miPeriodoTrabajador.FechaFin, miMotivoFinPeriodo.Codigo, miTrabajador.IdTrabajador);
+            Conexion.GDatos.Ejecutar("spModificarPeriodoTrabajador", miPeriodoTrabajador.IdtPeriodoTrabajador, miPeriodoTrabajador.FechaInicio, miPeriodoTrabajador.FechaFin, miPeriodoTrabajador.IdtMotivoFinPeriodo, miPeriodoTrabajador.IdtTrabajador);
             return true;
         }
 
-        public Boolean EliminarPeriodoTrabajador(cPeriodoTrabajador miPeriodoTrabajador)
+        public Boolean EliminarPeriodoTrabajador(int IdtPeriodoTrabajador)
         {
-            Conexion.GDatos.Ejecutar("spELiminarPeriodoTrabajador", miPeriodoTrabajador.IdtPeriodoTrabajador);
+            Conexion.GDatos.Ejecutar("spELiminarPeriodoTrabajador", IdtPeriodoTrabajador);
             return true;
         }
     }
