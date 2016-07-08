@@ -45,8 +45,7 @@
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.btnPeriodoTrabajador = new System.Windows.Forms.Button();
-            this.btnRegimenTrabajador = new System.Windows.Forms.Button();
+            this.btnDatosLaborales = new System.Windows.Forms.Button();
             this.btnDetalleTareo = new System.Windows.Forms.Button();
             this.chkActivos = new System.Windows.Forms.CheckBox();
             this.btnBuscarAMaterno = new System.Windows.Forms.Button();
@@ -184,8 +183,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.btnPeriodoTrabajador);
-            this.splitContainer1.Panel2.Controls.Add(this.btnRegimenTrabajador);
+            this.splitContainer1.Panel2.Controls.Add(this.btnDatosLaborales);
             this.splitContainer1.Panel2.Controls.Add(this.btnDetalleTareo);
             this.splitContainer1.Panel2.Controls.Add(this.chkActivos);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarAMaterno);
@@ -213,37 +211,21 @@
             this.treeView1.Size = new System.Drawing.Size(163, 448);
             this.treeView1.TabIndex = 0;
             // 
-            // btnPeriodoTrabajador
+            // btnDatosLaborales
             // 
-            this.btnPeriodoTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnPeriodoTrabajador.BackColor = System.Drawing.Color.MintCream;
-            this.btnPeriodoTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnPeriodoTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnPeriodoTrabajador.ImageIndex = 1;
-            this.btnPeriodoTrabajador.Location = new System.Drawing.Point(471, 391);
-            this.btnPeriodoTrabajador.Name = "btnPeriodoTrabajador";
-            this.btnPeriodoTrabajador.Size = new System.Drawing.Size(114, 53);
-            this.btnPeriodoTrabajador.TabIndex = 31;
-            this.btnPeriodoTrabajador.Text = "&Periodo Laboral";
-            this.btnPeriodoTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnPeriodoTrabajador.UseVisualStyleBackColor = false;
-            this.btnPeriodoTrabajador.Click += new System.EventHandler(this.btnPeriodoTrabajador_Click);
-            // 
-            // btnRegimenTrabajador
-            // 
-            this.btnRegimenTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRegimenTrabajador.BackColor = System.Drawing.Color.MintCream;
-            this.btnRegimenTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnRegimenTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnRegimenTrabajador.ImageIndex = 1;
-            this.btnRegimenTrabajador.Location = new System.Drawing.Point(591, 391);
-            this.btnRegimenTrabajador.Name = "btnRegimenTrabajador";
-            this.btnRegimenTrabajador.Size = new System.Drawing.Size(114, 53);
-            this.btnRegimenTrabajador.TabIndex = 21;
-            this.btnRegimenTrabajador.Text = "&Regimen Laboral";
-            this.btnRegimenTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnRegimenTrabajador.UseVisualStyleBackColor = false;
-            this.btnRegimenTrabajador.Click += new System.EventHandler(this.btnRegimenTrabajador_Click);
+            this.btnDatosLaborales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDatosLaborales.BackColor = System.Drawing.Color.MintCream;
+            this.btnDatosLaborales.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDatosLaborales.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnDatosLaborales.ImageIndex = 1;
+            this.btnDatosLaborales.Location = new System.Drawing.Point(591, 391);
+            this.btnDatosLaborales.Name = "btnDatosLaborales";
+            this.btnDatosLaborales.Size = new System.Drawing.Size(114, 53);
+            this.btnDatosLaborales.TabIndex = 32;
+            this.btnDatosLaborales.Text = "&Datos Laborales";
+            this.btnDatosLaborales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDatosLaborales.UseVisualStyleBackColor = false;
+            this.btnDatosLaborales.Click += new System.EventHandler(this.btnDatosLaborales_Click);
             // 
             // btnDetalleTareo
             // 
@@ -506,8 +488,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPaterno;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoMaterno;
         private System.Windows.Forms.DataGridViewTextBoxColumn sexo;
-        private System.Windows.Forms.Button btnPeriodoTrabajador;
-        private System.Windows.Forms.Button btnRegimenTrabajador;
         private System.Windows.Forms.Button btnDetalleTareo;
+        private System.Windows.Forms.Button btnDatosLaborales;
     }
 }

@@ -336,6 +336,12 @@
     <Compile Include="Trabajador\frmMantenimientoRegimenTrabajador.Designer.cs">
       <DependentUpon>frmMantenimientoRegimenTrabajador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trabajador\frmMantenimientoSeguroSocial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmMantenimientoSeguroSocial.Designer.cs">
+      <DependentUpon>frmMantenimientoSeguroSocial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trabajador\frmNacionalidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -550,6 +556,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmMantenimientoRegimenTrabajador.resx">
       <DependentUpon>frmMantenimientoRegimenTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmMantenimientoSeguroSocial.resx">
+      <DependentUpon>frmMantenimientoSeguroSocial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmNacionalidad.resx">
       <DependentUpon>frmNacionalidad.cs</DependentUpon>

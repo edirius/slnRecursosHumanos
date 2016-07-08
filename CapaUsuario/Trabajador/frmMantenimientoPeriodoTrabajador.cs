@@ -33,7 +33,7 @@ namespace CapaUsuario.Trabajador
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            if (dgvPeriodoTrabajador.Rows.Count > 0 && (Convert.ToString(dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[2].Value) == "" || Convert.ToString(dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[4].Value) == ""))
+            if (dgvPeriodoTrabajador.Rows.Count > 0 && (Convert.ToString(dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[3].Value) == "" || Convert.ToString(dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[5].Value) == ""))
             {
                 MessageBox.Show("No se puede agregar un nuevo periodo, hasta que el ultimo perido tenga un Fecha Fin y un Motivo de Fin de Periodo", "Mensaje Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -42,7 +42,7 @@ namespace CapaUsuario.Trabajador
             if (dgvPeriodoTrabajador.Rows.Count == 0)
             { sfechainicio = ""; }
             else
-            { sfechainicio = Convert.ToString(dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[2].Value); }
+            { sfechainicio = Convert.ToString(dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[3].Value); }
             fPeriodoTrabajador.RecibirDatos(0, sfechainicio, "", 0, "", sidttrabajador, txtTrabajador.Text, 1);
             if (fPeriodoTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -65,21 +65,6 @@ namespace CapaUsuario.Trabajador
             }
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (sidtperiodotrabajador == 0)
-            {
-                MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (MessageBox.Show("Está seguro que desea eliminar el Periodo del Trabajador", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
-            {
-                return;
-            }
-            miPeriodoTrabajador.EliminarPeriodoTrabajador(sidtperiodotrabajador);
-            CargarDatos();
-        }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -92,11 +77,25 @@ namespace CapaUsuario.Trabajador
 
         private void dgvPeriodoTrabajador_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            sidtperiodotrabajador = Convert.ToInt32(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[0].Value);
-            sfechainicio = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[1].Value);
-            sfechafin = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[2].Value);
-            sidtmotivofinperiodo = Convert.ToInt32(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[3].Value);
-            smotivofinperiodo = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[4].Value);
+            sidtperiodotrabajador = Convert.ToInt32(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[1].Value);
+            sfechainicio = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[2].Value);
+            sfechafin = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[3].Value);
+            sidtmotivofinperiodo = Convert.ToInt32(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[4].Value);
+            smotivofinperiodo = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[5].Value);
+            if (dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[0].Selected == true)
+            {
+                if (sidtperiodotrabajador == 0)
+                {
+                    MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (MessageBox.Show("Está seguro que desea eliminar el Periodo del Trabajador", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                {
+                    return;
+                }
+                miPeriodoTrabajador.EliminarPeriodoTrabajador(sidtperiodotrabajador);
+                CargarDatos();
+            }
         }
 
         public void RecibirDatos(int pidttrabajador, string ptrabajador)
@@ -120,15 +119,27 @@ namespace CapaUsuario.Trabajador
             {
                 foreach (DataRow row1 in oDataMotivoFinPeriodo.Select("idtmotivofinperiodo ='" + row[3].ToString() + "'"))
                 {
-                    dgvPeriodoTrabajador.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row1[0].ToString(), row1[2].ToString());
+                    dgvPeriodoTrabajador.Rows.Add("",row[0].ToString(), row[1].ToString(), row[2].ToString(), row1[0].ToString(), row1[2].ToString());
                 }
             }
             if (dgvPeriodoTrabajador.Rows.Count > 0)
             {
-                dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Selected = true;
+                dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[2].Selected = true;
                 DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, dgvPeriodoTrabajador.Rows.Count - 1);
                 dgvPeriodoTrabajador_CellClick(dgvPeriodoTrabajador, cea);
             }
+        }
+
+        private void btnSeguridadSocial_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRegimenTrabajador_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Trabajador.frmMantenimientoRegimenTrabajador fRegimenTrabajador = new frmMantenimientoRegimenTrabajador();
+            fRegimenTrabajador.RecibirDatos(sidttrabajador, txtTrabajador.Text);
+            fRegimenTrabajador.ShowDialog();
         }
     }
 }

@@ -113,18 +113,11 @@ namespace CapaUsuario.Trabajador
             trabajador = Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[2].Value) + " " + Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[3].Value) + " " + Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[4].Value);
         }
 
-        private void btnPeriodoTrabajador_Click(object sender, EventArgs e)
+        private void btnDatosLaborales_Click(object sender, EventArgs e)
         {
             CapaUsuario.Trabajador.frmMantenimientoPeriodoTrabajador fPeriodoTrabajador = new CapaUsuario.Trabajador.frmMantenimientoPeriodoTrabajador();
             fPeriodoTrabajador.RecibirDatos(pidttrabajador, trabajador);
             fPeriodoTrabajador.ShowDialog();
-        }
-
-        private void btnRegimenTrabajador_Click(object sender, EventArgs e)
-        {
-            CapaUsuario.Trabajador.frmMantenimientoRegimenTrabajador fRegimenTrabajador = new frmMantenimientoRegimenTrabajador();
-            fRegimenTrabajador.RecibirDatos(pidttrabajador, trabajador);
-            fRegimenTrabajador.ShowDialog();
         }
     }
 }

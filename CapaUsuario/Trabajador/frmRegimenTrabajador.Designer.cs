@@ -362,7 +362,8 @@
             this.cboTipoRegimen.Items.AddRange(new object[] {
             "CONTRATO RH",
             "REGIMEN CAS",
-            "REGIMEN 276"});
+            "REGIMEN 276",
+            "REGIMEN 728"});
             this.cboTipoRegimen.Location = new System.Drawing.Point(78, 19);
             this.cboTipoRegimen.Name = "cboTipoRegimen";
             this.cboTipoRegimen.Size = new System.Drawing.Size(416, 21);
