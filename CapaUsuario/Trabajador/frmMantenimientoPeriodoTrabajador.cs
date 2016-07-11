@@ -31,6 +31,20 @@ namespace CapaUsuario.Trabajador
             CargarDatos();
         }
 
+        private void btnSeguridadSocial_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Trabajador.frmMantenimientoSeguroSocial fSeguroSocialTrabajador = new frmMantenimientoSeguroSocial();
+            fSeguroSocialTrabajador.RecibirDatos(sidtperiodotrabajador);
+            fSeguroSocialTrabajador.ShowDialog();
+        }
+
+        private void btnRegimenTrabajador_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Trabajador.frmMantenimientoRegimenTrabajador fRegimenTrabajador = new frmMantenimientoRegimenTrabajador();
+            fRegimenTrabajador.RecibirDatos(sidttrabajador, txtTrabajador.Text);
+            fRegimenTrabajador.ShowDialog();
+        }
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             if (dgvPeriodoTrabajador.Rows.Count > 0 && (Convert.ToString(dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[3].Value) == "" || Convert.ToString(dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[5].Value) == ""))
@@ -128,18 +142,6 @@ namespace CapaUsuario.Trabajador
                 DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, dgvPeriodoTrabajador.Rows.Count - 1);
                 dgvPeriodoTrabajador_CellClick(dgvPeriodoTrabajador, cea);
             }
-        }
-
-        private void btnSeguridadSocial_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRegimenTrabajador_Click(object sender, EventArgs e)
-        {
-            CapaUsuario.Trabajador.frmMantenimientoRegimenTrabajador fRegimenTrabajador = new frmMantenimientoRegimenTrabajador();
-            fRegimenTrabajador.RecibirDatos(sidttrabajador, txtTrabajador.Text);
-            fRegimenTrabajador.ShowDialog();
         }
     }
 }

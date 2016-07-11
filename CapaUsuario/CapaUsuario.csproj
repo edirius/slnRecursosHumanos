@@ -384,6 +384,18 @@
     <Compile Include="Trabajador\frmProvincia.Designer.cs">
       <DependentUpon>frmProvincia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trabajador\frmRegimenPensionarioTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmRegimenPensionarioTrabajador.Designer.cs">
+      <DependentUpon>frmRegimenPensionarioTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmRegimenSaludTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmRegimenSaludTrabajador.Designer.cs">
+      <DependentUpon>frmRegimenSaludTrabajador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trabajador\frmRegimenTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -580,6 +592,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmProvincia.resx">
       <DependentUpon>frmProvincia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmRegimenPensionarioTrabajador.resx">
+      <DependentUpon>frmRegimenPensionarioTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmRegimenSaludTrabajador.resx">
+      <DependentUpon>frmRegimenSaludTrabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmRegimenTrabajador.resx">
       <DependentUpon>frmRegimenTrabajador.cs</DependentUpon>

@@ -29,35 +29,40 @@
         private void InitializeComponent()
         {
             this.gbPeriodoCOntrato = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.nupMontoPago = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.cboCondicionLaboral = new System.Windows.Forms.ComboBox();
-            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
             this.chkServidorConfianza = new System.Windows.Forms.CheckBox();
             this.txtRUC = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.cboPeriodicidad = new System.Windows.Forms.ComboBox();
-            this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
-            this.label25 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
             this.cboTipoPago = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
+            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.cboCargo = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.cboMeta = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cboTipoContrato = new System.Windows.Forms.ComboBox();
             this.cboTipoRegimen = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboTipoContrato = new System.Windows.Forms.ComboBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.gbPeriodoCOntrato.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMontoPago)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -71,26 +76,41 @@
             this.gbPeriodoCOntrato.Controls.Add(this.nupMontoPago);
             this.gbPeriodoCOntrato.Controls.Add(this.label1);
             this.gbPeriodoCOntrato.Controls.Add(this.cboCondicionLaboral);
-            this.gbPeriodoCOntrato.Controls.Add(this.dtpFechaFin);
             this.gbPeriodoCOntrato.Controls.Add(this.chkServidorConfianza);
             this.gbPeriodoCOntrato.Controls.Add(this.txtRUC);
             this.gbPeriodoCOntrato.Controls.Add(this.label40);
             this.gbPeriodoCOntrato.Controls.Add(this.label39);
             this.gbPeriodoCOntrato.Controls.Add(this.label38);
             this.gbPeriodoCOntrato.Controls.Add(this.cboPeriodicidad);
-            this.gbPeriodoCOntrato.Controls.Add(this.dtpFechaInicio);
-            this.gbPeriodoCOntrato.Controls.Add(this.label25);
             this.gbPeriodoCOntrato.Controls.Add(this.label37);
-            this.gbPeriodoCOntrato.Controls.Add(this.label27);
             this.gbPeriodoCOntrato.Controls.Add(this.cboTipoPago);
             this.gbPeriodoCOntrato.Controls.Add(this.label29);
             this.gbPeriodoCOntrato.Controls.Add(this.txtNumero);
-            this.gbPeriodoCOntrato.Location = new System.Drawing.Point(12, 93);
+            this.gbPeriodoCOntrato.Location = new System.Drawing.Point(12, 64);
             this.gbPeriodoCOntrato.Name = "gbPeriodoCOntrato";
-            this.gbPeriodoCOntrato.Size = new System.Drawing.Size(500, 179);
+            this.gbPeriodoCOntrato.Size = new System.Drawing.Size(500, 152);
             this.gbPeriodoCOntrato.TabIndex = 26;
             this.gbPeriodoCOntrato.TabStop = false;
-            this.gbPeriodoCOntrato.Text = "Periodo";
+            this.gbPeriodoCOntrato.Text = "Condiciones";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(36, 131);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.TabIndex = 81;
+            this.label5.Text = "Ocupación :";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(107, 128);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(387, 21);
+            this.comboBox3.TabIndex = 70;
             // 
             // nupMontoPago
             // 
@@ -126,15 +146,6 @@
             this.cboCondicionLaboral.Size = new System.Drawing.Size(159, 21);
             this.cboCondicionLaboral.TabIndex = 2;
             // 
-            // dtpFechaFin
-            // 
-            this.dtpFechaFin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaFin.Location = new System.Drawing.Point(332, 125);
-            this.dtpFechaFin.Name = "dtpFechaFin";
-            this.dtpFechaFin.Size = new System.Drawing.Size(162, 20);
-            this.dtpFechaFin.TabIndex = 9;
-            // 
             // chkServidorConfianza
             // 
             this.chkServidorConfianza.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -150,7 +161,7 @@
             // 
             this.txtRUC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRUC.Location = new System.Drawing.Point(118, 152);
+            this.txtRUC.Location = new System.Drawing.Point(118, 126);
             this.txtRUC.MaxLength = 11;
             this.txtRUC.Name = "txtRUC";
             this.txtRUC.Size = new System.Drawing.Size(376, 20);
@@ -159,7 +170,7 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(76, 155);
+            this.label40.Location = new System.Drawing.Point(76, 129);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(36, 13);
             this.label40.TabIndex = 20;
@@ -200,25 +211,6 @@
             this.cboPeriodicidad.Size = new System.Drawing.Size(159, 21);
             this.cboPeriodicidad.TabIndex = 5;
             // 
-            // dtpFechaInicio
-            // 
-            this.dtpFechaInicio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(118, 126);
-            this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(159, 20);
-            this.dtpFechaInicio.TabIndex = 8;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(74, 132);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(38, 13);
-            this.label25.TabIndex = 65;
-            this.label25.Text = "Inicio :";
-            // 
             // label37
             // 
             this.label37.AutoSize = true;
@@ -227,16 +219,6 @@
             this.label37.Size = new System.Drawing.Size(62, 13);
             this.label37.TabIndex = 80;
             this.label37.Text = "Tipo Pago :";
-            // 
-            // label27
-            // 
-            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(299, 132);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(27, 13);
-            this.label27.TabIndex = 5;
-            this.label27.Text = "Fin :";
             // 
             // cboTipoPago
             // 
@@ -270,21 +252,59 @@
             this.txtNumero.Size = new System.Drawing.Size(159, 20);
             this.txtNumero.TabIndex = 4;
             // 
+            // dtpFechaFin
+            // 
+            this.dtpFechaFin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFin.Location = new System.Drawing.Point(332, 46);
+            this.dtpFechaFin.Name = "dtpFechaFin";
+            this.dtpFechaFin.Size = new System.Drawing.Size(162, 20);
+            this.dtpFechaFin.TabIndex = 9;
+            // 
+            // dtpFechaInicio
+            // 
+            this.dtpFechaInicio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicio.Location = new System.Drawing.Point(107, 46);
+            this.dtpFechaInicio.Name = "dtpFechaInicio";
+            this.dtpFechaInicio.Size = new System.Drawing.Size(159, 20);
+            this.dtpFechaInicio.TabIndex = 8;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(63, 52);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(38, 13);
+            this.label25.TabIndex = 65;
+            this.label25.Text = "Inicio :";
+            // 
+            // label27
+            // 
+            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(299, 52);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(27, 13);
+            this.label27.TabIndex = 5;
+            this.label27.Text = "Fin :";
+            // 
             // cboCargo
             // 
             this.cboCargo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboCargo.FormattingEnabled = true;
-            this.cboCargo.Location = new System.Drawing.Point(118, 19);
+            this.cboCargo.Location = new System.Drawing.Point(107, 155);
             this.cboCargo.Name = "cboCargo";
-            this.cboCargo.Size = new System.Drawing.Size(376, 21);
+            this.cboCargo.Size = new System.Drawing.Size(387, 21);
             this.cboCargo.TabIndex = 11;
             this.cboCargo.SelectedIndexChanged += new System.EventHandler(this.cboCargo_SelectedIndexChanged);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(71, 22);
+            this.label11.Location = new System.Drawing.Point(60, 158);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 13);
             this.label11.TabIndex = 50;
@@ -293,7 +313,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(75, 49);
+            this.label28.Location = new System.Drawing.Point(64, 185);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(37, 13);
             this.label28.TabIndex = 11;
@@ -304,9 +324,9 @@
             this.cboMeta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboMeta.FormattingEnabled = true;
-            this.cboMeta.Location = new System.Drawing.Point(118, 46);
+            this.cboMeta.Location = new System.Drawing.Point(107, 182);
             this.cboMeta.Name = "cboMeta";
-            this.cboMeta.Size = new System.Drawing.Size(376, 21);
+            this.cboMeta.Size = new System.Drawing.Size(387, 21);
             this.cboMeta.TabIndex = 12;
             this.cboMeta.SelectedIndexChanged += new System.EventHandler(this.cboMeta_SelectedIndexChanged);
             // 
@@ -314,45 +334,13 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cboTipoContrato);
             this.groupBox1.Controls.Add(this.cboTipoRegimen);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(500, 75);
+            this.groupBox1.Size = new System.Drawing.Size(500, 46);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Regimen Laboral";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2, 49);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 13);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Motivo / Fin :";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Tipo :";
-            // 
-            // cboTipoContrato
-            // 
-            this.cboTipoContrato.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboTipoContrato.FormattingEnabled = true;
-            this.cboTipoContrato.Location = new System.Drawing.Point(78, 46);
-            this.cboTipoContrato.Name = "cboTipoContrato";
-            this.cboTipoContrato.Size = new System.Drawing.Size(416, 21);
-            this.cboTipoContrato.TabIndex = 1;
-            this.cboTipoContrato.SelectedIndexChanged += new System.EventHandler(this.cboTipoContrato_SelectedIndexChanged);
             // 
             // cboTipoRegimen
             // 
@@ -364,10 +352,30 @@
             "REGIMEN CAS",
             "REGIMEN 276",
             "REGIMEN 728"});
-            this.cboTipoRegimen.Location = new System.Drawing.Point(78, 19);
+            this.cboTipoRegimen.Location = new System.Drawing.Point(6, 19);
             this.cboTipoRegimen.Name = "cboTipoRegimen";
-            this.cboTipoRegimen.Size = new System.Drawing.Size(416, 21);
+            this.cboTipoRegimen.Size = new System.Drawing.Size(488, 21);
             this.cboTipoRegimen.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(31, 75);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 13);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Motivo / Fin :";
+            // 
+            // cboTipoContrato
+            // 
+            this.cboTipoContrato.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboTipoContrato.FormattingEnabled = true;
+            this.cboTipoContrato.Location = new System.Drawing.Point(107, 72);
+            this.cboTipoContrato.Name = "cboTipoContrato";
+            this.cboTipoContrato.Size = new System.Drawing.Size(387, 21);
+            this.cboTipoContrato.TabIndex = 1;
+            this.cboTipoContrato.SelectedIndexChanged += new System.EventHandler(this.cboTipoContrato_SelectedIndexChanged);
             // 
             // btnCancelar
             // 
@@ -376,7 +384,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(437, 361);
+            this.btnCancelar.Location = new System.Drawing.Point(437, 437);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 61;
@@ -392,7 +400,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(356, 361);
+            this.btnAceptar.Location = new System.Drawing.Point(356, 437);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 60;
@@ -405,22 +413,72 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.comboBox3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.cboMeta);
             this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.cboTipoContrato);
             this.groupBox2.Controls.Add(this.label28);
+            this.groupBox2.Controls.Add(this.dtpFechaFin);
             this.groupBox2.Controls.Add(this.cboCargo);
-            this.groupBox2.Location = new System.Drawing.Point(12, 278);
+            this.groupBox2.Controls.Add(this.label25);
+            this.groupBox2.Controls.Add(this.dtpFechaInicio);
+            this.groupBox2.Controls.Add(this.label27);
+            this.groupBox2.Location = new System.Drawing.Point(12, 222);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(500, 77);
+            this.groupBox2.Size = new System.Drawing.Size(500, 209);
             this.groupBox2.TabIndex = 28;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalles";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 104);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(95, 13);
+            this.label4.TabIndex = 69;
+            this.label4.Text = "Cat. Ocupacional :";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(107, 101);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(387, 21);
+            this.comboBox2.TabIndex = 68;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 13);
+            this.label2.TabIndex = 67;
+            this.label2.Text = "Tipo Trabajdor :";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(107, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(387, 21);
+            this.comboBox1.TabIndex = 66;
             // 
             // frmRegimenTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 438);
+            this.ClientSize = new System.Drawing.Size(524, 514);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -434,7 +492,6 @@
             this.gbPeriodoCOntrato.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMontoPago)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -470,8 +527,13 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cboTipoContrato;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown nupMontoPago;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }
