@@ -14,11 +14,17 @@ namespace CapaUsuario.Trabajador
     {
         int iAccion = 0;
         int sidtregimentrabajador = 0;
+        int sidttipotrabajador = 0;
         int sidttipocontrato = 0;
+        int sidtcategoriaocupacional = 0;
+        int sidtocupacion = 0;
         int sidtcargo = 0;
         int sidtmeta = 0;
-        int sidttrabajador = 0;
+        int sidtperiodotrabajador = 0;
+        string stipotrabajador = "";
         string stipocontrato = "";
+        string scategoriaocupacional = "";
+        string socupacion = "";
         string scargo = "";
         string smeta = "";
 
@@ -29,10 +35,16 @@ namespace CapaUsuario.Trabajador
 
         private void frmRegimenTrabajador_Load(object sender, EventArgs e)
         {
+            CargarTipoTrabajador();
             CargarTipoContrato();
+            CargarCategoriaOcupacional();
+            CargarOcupacion();
             CargarCargo();
             CargarMeta();
+            cboTipoTrabajador_SelectedIndexChanged(sender, e);
             cboTipoContrato_SelectedIndexChanged(sender, e);
+            cboCategoriaOcupacional_SelectedIndexChanged(sender, e);
+            cboOcupacion_SelectedIndexChanged(sender, e);
             cboCargo_SelectedIndexChanged(sender, e);
             cboMeta_SelectedIndexChanged(sender, e);
         }
@@ -53,10 +65,13 @@ namespace CapaUsuario.Trabajador
             if (dtpFechaFin.Format == DateTimePickerFormat.Custom) { miRegimenTrabajador.FechaFin = ""; }
             else { miRegimenTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString(); }
             miRegimenTrabajador.RUC = txtRUC.Text;
+            miRegimenTrabajador.IdtTipoTrabajador = sidttipotrabajador;
             miRegimenTrabajador.IdtTipoContrato = sidttipocontrato;
+            miRegimenTrabajador.IdtCategoriaOcupacional = sidtcategoriaocupacional;
+            miRegimenTrabajador.IdtOcupacion = sidtocupacion;
             miRegimenTrabajador.IdtCargo = sidtcargo;
             miRegimenTrabajador.IdtMeta = sidtmeta;
-            miRegimenTrabajador.IdtTrabajador = sidttrabajador;
+            miRegimenTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
 
             if (iAccion == 1)
             {
@@ -83,11 +98,35 @@ namespace CapaUsuario.Trabajador
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
+        private void cboTipoTrabajador_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboTipoTrabajador.Text != "System.Data.DataRowView" && cboTipoTrabajador.ValueMember != "")
+            {
+                sidttipotrabajador = Convert.ToInt32(cboTipoTrabajador.SelectedValue);
+            }
+        }
+
         private void cboTipoContrato_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboTipoContrato.Text != "System.Data.DataRowView" && cboTipoContrato.ValueMember != "")
             {
                 sidttipocontrato = Convert.ToInt32(cboTipoContrato.SelectedValue);
+            }
+        }
+
+        private void cboCategoriaOcupacional_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCategoriaOcupacional.Text != "System.Data.DataRowView" && cboCategoriaOcupacional.ValueMember != "")
+            {
+                sidtcategoriaocupacional = Convert.ToInt32(cboCategoriaOcupacional.SelectedValue);
+            }
+        }
+
+        private void cboOcupacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboOcupacion.Text != "System.Data.DataRowView" && cboOcupacion.ValueMember != "")
+            {
+                sidtocupacion = Convert.ToInt32(cboOcupacion.SelectedValue);
             }
         }
 
@@ -107,7 +146,18 @@ namespace CapaUsuario.Trabajador
             }
         }
 
-        public void RecibirDatos(int pidtregimentrabajador, string ptipo, string pcondicion, bool pservidorconfianza, string pnumerodocumento, string pperiodicidad, string ptipopago, int pmontopago, string pfechainicio, string pfechafin, string pruc, int pidttipocontrato, string ptipocontrato, int pidtcargo, string pcargo, int pidtmeta, string pmeta, int pidttrabajador, int pAccion)
+        private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
+        {
+            dtpFechaFin.Format = DateTimePickerFormat.Custom;
+            dtpFechaFin.CustomFormat = " ";
+        }
+
+        private void dtpFechaFin_ValueChanged(object sender, EventArgs e)
+        {
+            dtpFechaFin.Format = DateTimePickerFormat.Long;
+        }
+
+        public void RecibirDatos(int pidtregimentrabajador, string ptipo, string pcondicion, bool pservidorconfianza, string pnumerodocumento, string pperiodicidad, string ptipopago, int pmontopago, string pfechainicio, string pfechafin, string pruc, int pidttipotrabajador, string ptipotrabajador, int pidttipocontrato, string ptipocontrato, int pidtcategoriaocupacional, string pcategoriaocupacional, int pidtocupacion, string pocupacion, int pidtcargo, string pcargo, int pidtmeta, string pmeta, int pidtperiodotrabajador, int pAccion)
         {
             sidtregimentrabajador = pidtregimentrabajador;
             cboTipoRegimen.Text = ptipo;
@@ -134,14 +184,29 @@ namespace CapaUsuario.Trabajador
             }
             else { dtpFechaFin.Value = Convert.ToDateTime(pfechafin); }
             txtRUC.Text = pruc;
+            sidttipotrabajador = pidttipotrabajador;
+            stipotrabajador = ptipotrabajador;
             sidttipocontrato = pidttipocontrato;
             stipocontrato = ptipocontrato;
+            sidtcategoriaocupacional = pidtcategoriaocupacional;
+            scategoriaocupacional = pcategoriaocupacional;
+            sidtocupacion = pidtocupacion;
+            socupacion = pocupacion;
             sidtcargo = pidtcargo;
             scargo = pcargo;
             sidtmeta = pidtmeta;
             smeta = pmeta;
-            sidttrabajador = pidttrabajador;
+            sidtperiodotrabajador = pidtperiodotrabajador;
             iAccion = pAccion;
+        }
+
+        private void CargarTipoTrabajador()
+        {
+            CapaDeNegocios.cTipoTrabajador miTipoTrabajador = new CapaDeNegocios.cTipoTrabajador();
+            cboTipoTrabajador.DataSource = miTipoTrabajador.ListarTiposDeTrabajadores();
+            cboTipoTrabajador.DisplayMember = "descripcion";
+            cboTipoTrabajador.ValueMember = "idtsunattipotrabajador";
+            cboTipoTrabajador.Text = stipotrabajador;
         }
 
         private void CargarTipoContrato()
@@ -151,6 +216,24 @@ namespace CapaUsuario.Trabajador
             cboTipoContrato.DisplayMember = "descripcion";
             cboTipoContrato.ValueMember = "idttipocontrato";
             cboTipoContrato.Text = stipocontrato;
+        }
+
+        private void CargarCategoriaOcupacional()
+        {
+            CapaDeNegocios.DatosLaborales.cCategoriaOcupacional miCategoriaOcupacional = new CapaDeNegocios.DatosLaborales.cCategoriaOcupacional();
+            cboCategoriaOcupacional.DataSource = miCategoriaOcupacional.ListarCategoriaOcupacional();
+            cboCategoriaOcupacional.DisplayMember = "descripcion";
+            cboCategoriaOcupacional.ValueMember = "idtcategoriaocupacional";
+            cboCategoriaOcupacional.Text = scategoriaocupacional;
+        }
+
+        private void CargarOcupacion()
+        {
+            CapaDeNegocios.DatosLaborales.cOcupacion miOcupacion = new CapaDeNegocios.DatosLaborales.cOcupacion();
+            cboOcupacion.DataSource = miOcupacion.ListarOcupacion();
+            cboOcupacion.DisplayMember = "descripcion";
+            cboOcupacion.ValueMember = "idtocupacion";
+            cboOcupacion.Text = socupacion;
         }
 
         private void CargarCargo()

@@ -41,7 +41,7 @@ namespace CapaUsuario.Trabajador
         private void btnRegimenTrabajador_Click(object sender, EventArgs e)
         {
             CapaUsuario.Trabajador.frmMantenimientoRegimenTrabajador fRegimenTrabajador = new frmMantenimientoRegimenTrabajador();
-            fRegimenTrabajador.RecibirDatos(sidttrabajador, txtTrabajador.Text);
+            fRegimenTrabajador.RecibirDatos(sidtperiodotrabajador, sfechainicio, sfechafin);
             fRegimenTrabajador.ShowDialog();
         }
 

@@ -8,7 +8,7 @@ using System.Data;
 using CapaDeDatos;
 using CapaDeNegocios.Obras;
 
-namespace CapaDeNegocios.Tareos
+namespace CapaDeNegocios.DatosLaborales
 {
     public class cOcupacion
     {
@@ -34,24 +34,24 @@ namespace CapaDeNegocios.Tareos
             set { sdescripcion = value; }
         }
 
-        public DataTable ListarTareo()
+        public DataTable ListarOcupacion()
         {
             return Conexion.GDatos.TraerDataTable("spListarOcupacion");
         }
 
-        public Boolean CrearTareo(cOcupacion miOcupacion)
+        public Boolean CrearOcupacion(cOcupacion miOcupacion)
         {
             Conexion.GDatos.Ejecutar("spCrearOcupacion", miOcupacion.Codigo, miOcupacion.Descripcion);
             return true;
         }
 
-        public Boolean ModificarTareo(cOcupacion miOcupacion)
+        public Boolean ModificarOcupacion(cOcupacion miOcupacion)
         {
             Conexion.GDatos.Ejecutar("spModificarOcupacion", miOcupacion.IdTOcupacion, miOcupacion.Codigo, miOcupacion.Descripcion);
             return true;
         }
 
-        public Boolean EliminarTareo(cOcupacion miOcupacion)
+        public Boolean EliminarOcupacion(cOcupacion miOcupacion)
         {
             Conexion.GDatos.Ejecutar("spELiminarOcupacion", miOcupacion.IdTOcupacion);
             return true;

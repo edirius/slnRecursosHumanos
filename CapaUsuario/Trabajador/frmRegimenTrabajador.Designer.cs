@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.gbPeriodoCOntrato = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.nupMontoPago = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.cboCondicionLaboral = new System.Windows.Forms.ComboBox();
@@ -44,6 +42,8 @@
             this.cboTipoPago = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboOcupacion = new System.Windows.Forms.ComboBox();
             this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.label25 = new System.Windows.Forms.Label();
@@ -60,9 +60,9 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cboCategoriaOcupacional = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboTipoTrabajador = new System.Windows.Forms.ComboBox();
             this.gbPeriodoCOntrato.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMontoPago)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -93,25 +93,6 @@
             this.gbPeriodoCOntrato.TabStop = false;
             this.gbPeriodoCOntrato.Text = "Condiciones";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 131);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 13);
-            this.label5.TabIndex = 81;
-            this.label5.Text = "Ocupación :";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(107, 128);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(387, 21);
-            this.comboBox3.TabIndex = 70;
-            // 
             // nupMontoPago
             // 
             this.nupMontoPago.Location = new System.Drawing.Point(332, 99);
@@ -122,7 +103,7 @@
             0});
             this.nupMontoPago.Name = "nupMontoPago";
             this.nupMontoPago.Size = new System.Drawing.Size(162, 20);
-            this.nupMontoPago.TabIndex = 7;
+            this.nupMontoPago.TabIndex = 5;
             // 
             // label1
             // 
@@ -144,7 +125,7 @@
             this.cboCondicionLaboral.Location = new System.Drawing.Point(118, 19);
             this.cboCondicionLaboral.Name = "cboCondicionLaboral";
             this.cboCondicionLaboral.Size = new System.Drawing.Size(159, 21);
-            this.cboCondicionLaboral.TabIndex = 2;
+            this.cboCondicionLaboral.TabIndex = 1;
             // 
             // chkServidorConfianza
             // 
@@ -165,7 +146,7 @@
             this.txtRUC.MaxLength = 11;
             this.txtRUC.Name = "txtRUC";
             this.txtRUC.Size = new System.Drawing.Size(376, 20);
-            this.txtRUC.TabIndex = 10;
+            this.txtRUC.TabIndex = 6;
             // 
             // label40
             // 
@@ -209,7 +190,7 @@
             this.cboPeriodicidad.Location = new System.Drawing.Point(118, 72);
             this.cboPeriodicidad.Name = "cboPeriodicidad";
             this.cboPeriodicidad.Size = new System.Drawing.Size(159, 21);
-            this.cboPeriodicidad.TabIndex = 5;
+            this.cboPeriodicidad.TabIndex = 3;
             // 
             // label37
             // 
@@ -232,7 +213,7 @@
             this.cboTipoPago.Location = new System.Drawing.Point(118, 99);
             this.cboTipoPago.Name = "cboTipoPago";
             this.cboTipoPago.Size = new System.Drawing.Size(159, 21);
-            this.cboTipoPago.TabIndex = 6;
+            this.cboTipoPago.TabIndex = 4;
             // 
             // label29
             // 
@@ -250,7 +231,27 @@
             this.txtNumero.Location = new System.Drawing.Point(118, 46);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(159, 20);
-            this.txtNumero.TabIndex = 4;
+            this.txtNumero.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(36, 131);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.TabIndex = 81;
+            this.label5.Text = "Ocupación :";
+            // 
+            // cboOcupacion
+            // 
+            this.cboOcupacion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboOcupacion.FormattingEnabled = true;
+            this.cboOcupacion.Location = new System.Drawing.Point(107, 128);
+            this.cboOcupacion.Name = "cboOcupacion";
+            this.cboOcupacion.Size = new System.Drawing.Size(387, 21);
+            this.cboOcupacion.TabIndex = 13;
+            this.cboOcupacion.SelectedIndexChanged += new System.EventHandler(this.cboOcupacion_SelectedIndexChanged);
             // 
             // dtpFechaFin
             // 
@@ -259,7 +260,8 @@
             this.dtpFechaFin.Location = new System.Drawing.Point(332, 46);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(162, 20);
-            this.dtpFechaFin.TabIndex = 9;
+            this.dtpFechaFin.TabIndex = 10;
+            this.dtpFechaFin.ValueChanged += new System.EventHandler(this.dtpFechaFin_ValueChanged);
             // 
             // dtpFechaInicio
             // 
@@ -269,7 +271,8 @@
             this.dtpFechaInicio.Location = new System.Drawing.Point(107, 46);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(159, 20);
-            this.dtpFechaInicio.TabIndex = 8;
+            this.dtpFechaInicio.TabIndex = 9;
+            this.dtpFechaInicio.ValueChanged += new System.EventHandler(this.dtpFechaInicio_ValueChanged);
             // 
             // label25
             // 
@@ -298,7 +301,7 @@
             this.cboCargo.Location = new System.Drawing.Point(107, 155);
             this.cboCargo.Name = "cboCargo";
             this.cboCargo.Size = new System.Drawing.Size(387, 21);
-            this.cboCargo.TabIndex = 11;
+            this.cboCargo.TabIndex = 14;
             this.cboCargo.SelectedIndexChanged += new System.EventHandler(this.cboCargo_SelectedIndexChanged);
             // 
             // label11
@@ -327,7 +330,7 @@
             this.cboMeta.Location = new System.Drawing.Point(107, 182);
             this.cboMeta.Name = "cboMeta";
             this.cboMeta.Size = new System.Drawing.Size(387, 21);
-            this.cboMeta.TabIndex = 12;
+            this.cboMeta.TabIndex = 15;
             this.cboMeta.SelectedIndexChanged += new System.EventHandler(this.cboMeta_SelectedIndexChanged);
             // 
             // groupBox1
@@ -374,7 +377,7 @@
             this.cboTipoContrato.Location = new System.Drawing.Point(107, 72);
             this.cboTipoContrato.Name = "cboTipoContrato";
             this.cboTipoContrato.Size = new System.Drawing.Size(387, 21);
-            this.cboTipoContrato.TabIndex = 1;
+            this.cboTipoContrato.TabIndex = 11;
             this.cboTipoContrato.SelectedIndexChanged += new System.EventHandler(this.cboTipoContrato_SelectedIndexChanged);
             // 
             // btnCancelar
@@ -415,10 +418,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.comboBox2);
-            this.groupBox2.Controls.Add(this.comboBox3);
+            this.groupBox2.Controls.Add(this.cboCategoriaOcupacional);
+            this.groupBox2.Controls.Add(this.cboOcupacion);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.cboTipoTrabajador);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.cboMeta);
             this.groupBox2.Controls.Add(this.label11);
@@ -445,15 +448,16 @@
             this.label4.TabIndex = 69;
             this.label4.Text = "Cat. Ocupacional :";
             // 
-            // comboBox2
+            // cboCategoriaOcupacional
             // 
-            this.comboBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cboCategoriaOcupacional.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(107, 101);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(387, 21);
-            this.comboBox2.TabIndex = 68;
+            this.cboCategoriaOcupacional.FormattingEnabled = true;
+            this.cboCategoriaOcupacional.Location = new System.Drawing.Point(107, 101);
+            this.cboCategoriaOcupacional.Name = "cboCategoriaOcupacional";
+            this.cboCategoriaOcupacional.Size = new System.Drawing.Size(387, 21);
+            this.cboCategoriaOcupacional.TabIndex = 12;
+            this.cboCategoriaOcupacional.SelectedIndexChanged += new System.EventHandler(this.cboCategoriaOcupacional_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -464,15 +468,16 @@
             this.label2.TabIndex = 67;
             this.label2.Text = "Tipo Trabajdor :";
             // 
-            // comboBox1
+            // cboTipoTrabajador
             // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cboTipoTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(107, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(387, 21);
-            this.comboBox1.TabIndex = 66;
+            this.cboTipoTrabajador.FormattingEnabled = true;
+            this.cboTipoTrabajador.Location = new System.Drawing.Point(107, 19);
+            this.cboTipoTrabajador.Name = "cboTipoTrabajador";
+            this.cboTipoTrabajador.Size = new System.Drawing.Size(387, 21);
+            this.cboTipoTrabajador.TabIndex = 8;
+            this.cboTipoTrabajador.SelectedIndexChanged += new System.EventHandler(this.cboTipoTrabajador_SelectedIndexChanged);
             // 
             // frmRegimenTrabajador
             // 
@@ -530,10 +535,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown nupMontoPago;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cboCategoriaOcupacional;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboTipoTrabajador;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cboOcupacion;
     }
 }

@@ -59,6 +59,7 @@
     <Compile Include="ConvertirImagen.cs" />
     <Compile Include="cProvincia.cs" />
     <Compile Include="cReglaNegociosException.cs" />
+    <Compile Include="DatosLaborales\cCategoriaOcupacional.cs" />
     <Compile Include="DatosLaborales\cPeriodoTrabajador.cs" />
     <Compile Include="DatosLaborales\cRegimenPensionarioTrabajador.cs" />
     <Compile Include="DatosLaborales\cRegimenSaludTrabajador.cs" />
@@ -108,7 +109,7 @@
     <Compile Include="Sunat\cMaestroIngresos.cs" />
     <Compile Include="Tareos\cDetalleTareo.cs" />
     <Compile Include="Tareos\cDiasTareo.cs" />
-    <Compile Include="Tareos\cOcupacion.cs" />
+    <Compile Include="DatosLaborales\cOcupacion.cs" />
     <Compile Include="Tareos\cTareo.cs" />
     <Compile Include="Trabajadores\cTrabajador276.cs" />
     <Compile Include="Trabajadores\cTrabajadorCas.cs" />
