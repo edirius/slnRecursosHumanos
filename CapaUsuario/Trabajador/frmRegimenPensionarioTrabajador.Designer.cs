@@ -31,8 +31,6 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtCUSPP = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
@@ -41,6 +39,7 @@
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.cboAFP = new System.Windows.Forms.ComboBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +50,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(389, 157);
+            this.btnCancelar.Location = new System.Drawing.Point(389, 168);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 81;
@@ -67,7 +66,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(308, 157);
+            this.btnAceptar.Location = new System.Drawing.Point(308, 168);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 80;
@@ -80,8 +79,6 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtCUSPP);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.dtpFechaFin);
@@ -90,32 +87,13 @@
             this.groupBox1.Controls.Add(this.dtpFechaInicio);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cboAFP);
+            this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(452, 139);
+            this.groupBox1.Size = new System.Drawing.Size(452, 150);
             this.groupBox1.TabIndex = 79;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label6.Location = new System.Drawing.Point(369, 121);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "web de la SBS";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(161, 121);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(215, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Obtenga el CUSPP accediendo a la página ";
             // 
             // txtCUSPP
             // 
@@ -192,11 +170,22 @@
             this.cboAFP.TabIndex = 0;
             this.cboAFP.SelectedIndexChanged += new System.EventHandler(this.cboFinPeriodo_SelectedIndexChanged);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(150, 121);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(285, 13);
+            this.linkLabel1.TabIndex = 82;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Obtenga el CUSPP accediendo a la página web de la SBS";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // frmRegimenPensionarioTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 234);
+            this.ClientSize = new System.Drawing.Size(476, 245);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.groupBox1);
@@ -223,7 +212,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboAFP;
         private System.Windows.Forms.TextBox txtCUSPP;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

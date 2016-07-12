@@ -101,6 +101,7 @@
             this.label4.Size = new System.Drawing.Size(142, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Entidad Prestadora de Salud";
+            this.label4.Visible = false;
             // 
             // cboEntidadPrestadoraSalud
             // 
@@ -119,6 +120,7 @@
             this.cboEntidadPrestadoraSalud.Name = "cboEntidadPrestadoraSalud";
             this.cboEntidadPrestadoraSalud.Size = new System.Drawing.Size(346, 21);
             this.cboEntidadPrestadoraSalud.TabIndex = 5;
+            this.cboEntidadPrestadoraSalud.Visible = false;
             // 
             // dtpFechaFin
             // 
@@ -181,6 +183,7 @@
             this.cboRegimenSalud.Name = "cboRegimenSalud";
             this.cboRegimenSalud.Size = new System.Drawing.Size(346, 21);
             this.cboRegimenSalud.TabIndex = 0;
+            this.cboRegimenSalud.SelectedIndexChanged += new System.EventHandler(this.cboRegimenSalud_SelectedIndexChanged);
             // 
             // frmRegimenSaludTrabajador
             // 

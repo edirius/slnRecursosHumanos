@@ -27,6 +27,7 @@ namespace CapaUsuario.Trabajador
         {
             CargarAFP();
             cboFinPeriodo_SelectedIndexChanged(sender, e);
+            linkLabel1.Links.Add(40,13,"www.google.com");
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -86,25 +87,54 @@ namespace CapaUsuario.Trabajador
             dtpFechaFin.Format = DateTimePickerFormat.Long;
         }
 
-        public void RecibirDatos(int pidtregimenpensionariotrabajador, string pfechainicio, string pfechafin, string pcuspp, int pidtafp, string pafp, int pidtperiodotrabajador, int pAccion)
+        public void RecibirDatos(int pidtregimenpensionariotrabajador, string pfechainicio, string pfechafin, string pcuspp, int pidtafp, string pafp, int pidtperiodotrabajador, int pAccion, string pfechainicioperiodo, string pfechafinperiodo)
         {
             sidtregimenpensionariotrabajador = pidtregimenpensionariotrabajador;
-            if (pfechainicio == "") { dtpFechaInicio.Value = DateTime.Today; }
+            if (pfechainicio == "")
+            {
+                dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicioperiodo);
+                dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechainicioperiodo);
+                dtpFechaInicio.Value = Convert.ToDateTime(pfechainicioperiodo);
+            }
             else
             {
                 if (pAccion == 1)
                 {
-                    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicio).AddDays(1);
-                    dtpFechaInicio.Value = DateTime.Today;
+                    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechafin).AddDays(1);
+                    dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechafin).AddDays(1);
+                    dtpFechaInicio.Value = Convert.ToDateTime(pfechafin).AddDays(1);
                 }
-                else { dtpFechaInicio.Value = Convert.ToDateTime(pfechainicio); }
+                else
+                {
+                    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicio);
+                    dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechainicio);
+                    dtpFechaInicio.Value = Convert.ToDateTime(pfechainicio);
+                }
             }
             if (pfechafin == "")
             {
+                dtpFechaFin.MinDate = Convert.ToDateTime(pfechainicioperiodo).AddDays(1);
+                if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
+                dtpFechaFin.Value = Convert.ToDateTime(pfechainicioperiodo).AddDays(1);
                 dtpFechaFin.Format = DateTimePickerFormat.Custom;
                 dtpFechaFin.CustomFormat = " ";
             }
-            else { dtpFechaFin.Value = Convert.ToDateTime(pfechafin); }
+            else
+            {
+                if (pAccion == 1)
+                {
+                    dtpFechaFin.MinDate = Convert.ToDateTime(pfechafin).AddDays(1);
+                    if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
+                    dtpFechaFin.Format = DateTimePickerFormat.Custom;
+                    dtpFechaFin.CustomFormat = " ";
+                }
+                else
+                {
+                    dtpFechaFin.MinDate = Convert.ToDateTime(pfechainicio).AddDays(1);
+                    if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
+                    dtpFechaFin.Value = Convert.ToDateTime(pfechafin);
+                }
+            }
             txtCUSPP.Text = pcuspp;
             sidtafp = pidtafp;
             safp = pafp;
@@ -119,6 +149,11 @@ namespace CapaUsuario.Trabajador
             cboAFP.DisplayMember = "nombre";
             cboAFP.ValueMember = "idtafp";
             cboAFP.Text = safp;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.Link.LinkData.ToString());
         }
     }
 }

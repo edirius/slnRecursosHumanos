@@ -34,7 +34,7 @@ namespace CapaUsuario.Trabajador
         private void btnSeguridadSocial_Click(object sender, EventArgs e)
         {
             CapaUsuario.Trabajador.frmMantenimientoSeguroSocial fSeguroSocialTrabajador = new frmMantenimientoSeguroSocial();
-            fSeguroSocialTrabajador.RecibirDatos(sidtperiodotrabajador);
+            fSeguroSocialTrabajador.RecibirDatos(sidtperiodotrabajador, sfechainicio, sfechafin);
             fSeguroSocialTrabajador.ShowDialog();
         }
 

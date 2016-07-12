@@ -63,9 +63,23 @@ namespace CapaUsuario.Trabajador
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
+        private void cboRegimenSalud_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboRegimenSalud.Text == "ESSALUD REGULAR Y EPS/SERV. PROPIOS")
+            {
+                label4.Visible = true;
+                cboEntidadPrestadoraSalud.Visible = true;
+            }
+            else
+            {
+                label4.Visible = false;
+                cboEntidadPrestadoraSalud.Visible = false;
+            }
+                cboEntidadPrestadoraSalud.SelectedIndex = -1;
+        }
+
         private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
         {
-            dtpFechaFin.MinDate = dtpFechaInicio.Value.AddDays(1);
             dtpFechaFin.Format = DateTimePickerFormat.Custom;
             dtpFechaFin.CustomFormat = " ";
         }
@@ -75,26 +89,55 @@ namespace CapaUsuario.Trabajador
             dtpFechaFin.Format = DateTimePickerFormat.Long;
         }
 
-        public void RecibirDatos(int pidtregimensaludtrabajador, string pregimensalud, string pfechainicio, string pfechafin, string pentidadprestadorasalud, int pidtperiodotrabajador, int pAccion)
+        public void RecibirDatos(int pidtregimensaludtrabajador, string pregimensalud, string pfechainicio, string pfechafin, string pentidadprestadorasalud, int pidtperiodotrabajador, int pAccion, string pfechainicioperiodo, string pfechafinperiodo)
         {
             sidtregimensaludtrabajador = pidtregimensaludtrabajador;
             cboRegimenSalud.Text = pregimensalud;
-            if (pfechainicio == "") { dtpFechaInicio.Value = DateTime.Today; }
+            if (pfechainicio == "")
+            {
+                dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicioperiodo);
+                dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechainicioperiodo);
+                dtpFechaInicio.Value = Convert.ToDateTime(pfechainicioperiodo);
+            }
             else
             {
                 if (pAccion == 1)
                 {
-                    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicio).AddDays(1);
-                    dtpFechaInicio.Value = DateTime.Today;
+                    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechafin).AddDays(1);
+                    dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechafin).AddDays(1);
+                    dtpFechaInicio.Value = Convert.ToDateTime(pfechafin).AddDays(1);
                 }
-                else { dtpFechaInicio.Value = Convert.ToDateTime(pfechainicio); }
+                else
+                {
+                    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicio);
+                    dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechainicio);
+                    dtpFechaInicio.Value = Convert.ToDateTime(pfechainicio);
+                }
             }
             if (pfechafin == "")
             {
+                dtpFechaFin.MinDate = Convert.ToDateTime(pfechainicioperiodo).AddDays(1);
+                if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
+                dtpFechaFin.Value = Convert.ToDateTime(pfechainicioperiodo).AddDays(1);
                 dtpFechaFin.Format = DateTimePickerFormat.Custom;
                 dtpFechaFin.CustomFormat = " ";
             }
-            else { dtpFechaFin.Value = Convert.ToDateTime(pfechafin); }
+            else
+            {
+                if (pAccion == 1)
+                {
+                    dtpFechaFin.MinDate = Convert.ToDateTime(pfechafin).AddDays(1);
+                    if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
+                    dtpFechaFin.Format = DateTimePickerFormat.Custom;
+                    dtpFechaFin.CustomFormat = " ";
+                }
+                else
+                {
+                    dtpFechaFin.MinDate = Convert.ToDateTime(pfechainicio).AddDays(1);
+                    if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
+                    dtpFechaFin.Value = Convert.ToDateTime(pfechafin);
+                }
+            }
             cboEntidadPrestadoraSalud.Text = pentidadprestadorasalud;
             sidtperiodotrabajador = pidtperiodotrabajador;
             iAccion = pAccion;

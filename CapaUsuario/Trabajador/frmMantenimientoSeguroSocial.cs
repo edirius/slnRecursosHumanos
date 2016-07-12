@@ -12,7 +12,10 @@ namespace CapaUsuario.Trabajador
 {
     public partial class frmMantenimientoSeguroSocial : Form
     {
+        string iSeleccion = "";
         int sidtperiodotrabajador = 0;
+        string sfechainicioperiodo = "";
+        string sfechafinperiodo = "";
 
         int sidtregimensaludtrabajador = 0;
         string sregimensalud = "";
@@ -38,30 +41,102 @@ namespace CapaUsuario.Trabajador
 
         private void frmMantenimientoSeguroSocial_Load(object sender, EventArgs e)
         {
-            CargarRegimenSaludTrabajador();
             CargarRegimenPensionarioTrabajador();
+            CargarRegimenSaludTrabajador();
+            if (dgvRegimenSalud.Rows.Count == 0 && dgvRegimenPensionario.Rows.Count == 0) { dgvRegimenSalud_Click(sender, e); }
+            else if (dgvRegimenSalud.Rows.Count > 0) { dgvRegimenSalud_Click(sender, e); }
+            else { dgvRegimenPensionario_Click(sender, e); }
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            //CapaUsuario.Trabajador.frmRegimenSaludTrabajador fRegimenSaludTrabajador = new frmRegimenSaludTrabajador();
-            //fRegimenSaludTrabajador.RecibirDatos(0, "", "", "", "", sidtperiodotrabajador, 1);
-            //if (fRegimenSaludTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            //{
-            //    CargarRegimenSaludTrabajador();
-            //}
-
-            CapaUsuario.Trabajador.frmRegimenPensionarioTrabajador fRegimenPensionarioTrabajador = new frmRegimenPensionarioTrabajador();
-            fRegimenPensionarioTrabajador.RecibirDatos(0, "", "", "", 0, "", sidtperiodotrabajador, 1);
-            if (fRegimenPensionarioTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            int i = 0;
+            if (iSeleccion == "SALUD")
             {
-                CargarRegimenPensionarioTrabajador();
+                if (dgvRegimenSalud.Rows.Count > 0)
+                {
+                    sfechainiciosalud = Convert.ToString(dgvRegimenSalud.Rows[dgvRegimenSalud.Rows.Count - 1].Cells[3].Value);
+                    sfechafinsalud = Convert.ToString(dgvRegimenSalud.Rows[dgvRegimenSalud.Rows.Count - 1].Cells[4].Value);
+                    if (sfechafinsalud == "")
+                    {
+                        MessageBox.Show("El ultimen regimen de salud debe tener una fecha final, no se puede agregar uno nuevo", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (sfechafinsalud == sfechafinperiodo)
+                    {
+                        MessageBox.Show("No quedan dias libres en el periodo, no se puede agregar uno nuevo", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                CapaUsuario.Trabajador.frmRegimenSaludTrabajador fRegimenSaludTrabajador = new frmRegimenSaludTrabajador();
+                fRegimenSaludTrabajador.RecibirDatos(0, "", sfechainiciosalud, sfechafinsalud, "", sidtperiodotrabajador, 1, sfechainicioperiodo, sfechafinperiodo);
+                if (fRegimenSaludTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    i = 1;
+                }
             }
+            else if (iSeleccion == "PENSIONARIO")
+            {
+                if (dgvRegimenPensionario.Rows.Count > 0)
+                {
+                    sfechainiciopensionario = Convert.ToString(dgvRegimenPensionario.Rows[dgvRegimenPensionario.Rows.Count - 1].Cells[4].Value);
+                    sfechafinpensionario = Convert.ToString(dgvRegimenPensionario.Rows[dgvRegimenPensionario.Rows.Count - 1].Cells[5].Value);
+                    if (sfechafinpensionario == "")
+                    {
+                        MessageBox.Show("El ultimen regimen de salud debe tener una fecha final, no se puede agregar uno nuevo", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (sfechafinpensionario == sfechafinperiodo)
+                    {
+                        MessageBox.Show("No quedan dias libres en el periodo, no se puede agregar uno nuevo", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                CapaUsuario.Trabajador.frmRegimenPensionarioTrabajador fRegimenPensionarioTrabajador = new frmRegimenPensionarioTrabajador();
+                fRegimenPensionarioTrabajador.RecibirDatos(0, sfechainiciopensionario, sfechafinpensionario, "", 0, "", sidtperiodotrabajador, 1, sfechainicioperiodo, sfechafinperiodo);
+                if (fRegimenPensionarioTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    i = 2;
+                }
+            }
+            if (i == 1) { CargarRegimenSaludTrabajador();}
+            else if (i == 2) {CargarRegimenPensionarioTrabajador(); }
+            
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-
+            int i = 0;
+            if (iSeleccion == "SALUD")
+            {
+                if (sidtregimensaludtrabajador == 0)
+                {
+                    MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                CapaUsuario.Trabajador.frmRegimenSaludTrabajador fRegimenSaludTrabajador = new frmRegimenSaludTrabajador();
+                fRegimenSaludTrabajador.RecibirDatos(sidtregimensaludtrabajador, sregimensalud, sfechainiciosalud, sfechafinsalud, sentidadprestadorasalud, sidtperiodotrabajador, 2, sfechainicioperiodo, sfechafinperiodo);
+                if (fRegimenSaludTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    i = 1;
+                }
+            }
+            else if (iSeleccion == "PENSIONARIO")
+            {
+                if (sidtregimenpensionariotrabajador == 0)
+                {
+                    MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                CapaUsuario.Trabajador.frmRegimenPensionarioTrabajador fRegimenPensionarioTrabajador = new frmRegimenPensionarioTrabajador();
+                fRegimenPensionarioTrabajador.RecibirDatos(sidtregimenpensionariotrabajador, sfechainiciopensionario, sfechafinpensionario, scuspp, sidtafp, safp, sidtperiodotrabajador, 2, sfechainicioperiodo, sfechafinperiodo);
+                if (fRegimenPensionarioTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    i = 2;
+                }
+            }
+            if (i == 1) { CargarRegimenSaludTrabajador(); }
+            else if (i == 2) { CargarRegimenPensionarioTrabajador(); }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -81,6 +156,30 @@ namespace CapaUsuario.Trabajador
             sfechainiciosalud = Convert.ToString(dgvRegimenSalud.Rows[e.RowIndex].Cells[3].Value);
             sfechafinsalud = Convert.ToString(dgvRegimenSalud.Rows[e.RowIndex].Cells[4].Value);
             sentidadprestadorasalud = Convert.ToString(dgvRegimenSalud.Rows[e.RowIndex].Cells[5].Value);
+            if (dgvRegimenSalud.Rows[e.RowIndex].Cells[0].Selected == true)
+            {
+                if (sidtregimensaludtrabajador == 0)
+                {
+                    MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (MessageBox.Show("Está seguro que desea eliminar el Regimen de Salud del Trabajador", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                {
+                    return;
+                }
+                miRegimenSaludTrabajador.EliminarRegimenSaludTrabajador(sidtregimensaludtrabajador);
+                CargarRegimenSaludTrabajador();
+            }
+        }
+
+        private void dgvRegimenSalud_Click(object sender, EventArgs e)
+        {
+            if (dgvRegimenPensionario.Rows.Count > 0)
+            {
+                dgvRegimenPensionario.Rows[0].Cells[3].Selected = true;
+                dgvRegimenPensionario.Rows[0].Cells[3].Selected = false;
+            }
+            iSeleccion = "SALUD";
         }
 
         private void dgvRegimenPensionario_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -96,11 +195,37 @@ namespace CapaUsuario.Trabajador
             sfechainiciopensionario = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[4].Value);
             sfechafinpensionario = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[5].Value);
             scuspp = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[6].Value);
+            if (dgvRegimenPensionario.Rows[e.RowIndex].Cells[0].Selected == true)
+            {
+                if (sidtregimenpensionariotrabajador == 0)
+                {
+                    MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (MessageBox.Show("Está seguro que desea eliminar el Regimen Pensionario del Trabajador", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                {
+                    return;
+                }
+                miRegimenPensionarioTrabajador.EliminarRegimenPensionarioTrabajador(sidtregimenpensionariotrabajador);
+                CargarRegimenPensionarioTrabajador();
+            }
         }
 
-        public void RecibirDatos(int pidttrabajador)
+        private void dgvRegimenPensionario_Click(object sender, EventArgs e)
+        {
+            if (dgvRegimenSalud.Rows.Count > 0)
+            {
+                dgvRegimenSalud.Rows[0].Cells[2].Selected = true;
+                dgvRegimenSalud.Rows[0].Cells[2].Selected = false;
+            }
+            iSeleccion = "PENSIONARIO";
+        }
+
+        public void RecibirDatos(int pidttrabajador, string pfechainicioperiodo, string pfechafinperiodo)
         {
             sidtperiodotrabajador = pidttrabajador;
+            sfechainicioperiodo = pfechainicioperiodo;
+            sfechafinperiodo = pfechafinperiodo;
         }
 
         private void CargarRegimenSaludTrabajador()
@@ -118,6 +243,11 @@ namespace CapaUsuario.Trabajador
                 dgvRegimenSalud.Rows[dgvRegimenSalud.Rows.Count - 1].Cells[2].Selected = true;
                 DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, dgvRegimenSalud.Rows.Count - 1);
                 dgvRegimenSalud_CellClick(dgvRegimenSalud, cea);
+            }
+            else
+            {
+                sfechainiciosalud = "";
+                sfechafinsalud = "";
             }
         }
 
@@ -139,9 +269,14 @@ namespace CapaUsuario.Trabajador
             }
             if (dgvRegimenPensionario.Rows.Count > 0)
             {
-                dgvRegimenPensionario.Rows[dgvRegimenPensionario.Rows.Count - 1].Cells[2].Selected = true;
+                dgvRegimenPensionario.Rows[dgvRegimenPensionario.Rows.Count - 1].Cells[3].Selected = true;
                 DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, dgvRegimenPensionario.Rows.Count - 1);
                 dgvRegimenPensionario_CellClick(dgvRegimenPensionario, cea);
+            }
+            else
+            {
+                sfechainiciopensionario= "";
+                sfechafinpensionario = "";
             }
         }
     }
