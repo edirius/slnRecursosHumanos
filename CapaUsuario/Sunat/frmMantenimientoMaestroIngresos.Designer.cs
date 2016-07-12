@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -109,8 +109,8 @@
             // 
             this.dgvMaestroIngresos.AllowUserToAddRows = false;
             this.dgvMaestroIngresos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvMaestroIngresos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvMaestroIngresos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMaestroIngresos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -161,11 +161,12 @@
             "INGRESOS (0100)",
             "INGRESOS : ASIGNACIONES (0200)",
             "INGRESOS : BONIFICACIONES (0300)",
-            "INGRESOS : GRATIFICACIONES / AGUINALDOS (0400)",
+            "INGRESOS : GRATIFICACIONES/AGUINALDOS (0400)",
             "INGRESOS : INDEMNIZACIONES (0500)",
             "CONCEPTOS VARIOS (0900)",
             "OTROS CONCEPTOS (1000)",
-            "RÉGIMEN LABORAL PÚBLICO (2000)"});
+            "RÉGIMEN LABORAL PÚBLICO (2000)",
+            "kkkk"});
             this.cboTipo.Location = new System.Drawing.Point(6, 19);
             this.cboTipo.Name = "cboTipo";
             this.cboTipo.Size = new System.Drawing.Size(477, 21);
