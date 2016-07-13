@@ -197,6 +197,12 @@
     <Compile Include="Navegador\frmNavegador.Designer.cs">
       <DependentUpon>frmNavegador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Planilla\frmMatenimientoPlanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\frmMatenimientoPlanilla.Designer.cs">
+      <DependentUpon>frmMatenimientoPlanilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Planilla\frmMensajeIngreso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -427,6 +433,30 @@
     <Compile Include="Trabajador\frnNuevoCargo.Designer.cs">
       <DependentUpon>frnNuevoCargo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Variables\frmFuenteFinanciamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Variables\frmFuenteFinanciamiento.Designer.cs">
+      <DependentUpon>frmFuenteFinanciamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Variables\frmMantenimientoFuenteFinanciamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Variables\frmMantenimientoFuenteFinanciamiento.Designer.cs">
+      <DependentUpon>frmMantenimientoFuenteFinanciamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Variables\frmMantenimientoVariables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Variables\frmMantenimientoVariables.Designer.cs">
+      <DependentUpon>frmMantenimientoVariables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Variables\frmVariables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Variables\frmVariables.Designer.cs">
+      <DependentUpon>frmVariables.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AFP\frmAFP.resx">
       <DependentUpon>frmAFP.cs</DependentUpon>
     </EmbeddedResource>
@@ -492,6 +522,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Navegador\frmNavegador.resx">
       <DependentUpon>frmNavegador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\frmMatenimientoPlanilla.resx">
+      <DependentUpon>frmMatenimientoPlanilla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Planilla\frmMensajeIngreso.resx">
       <DependentUpon>frmMensajeIngreso.cs</DependentUpon>
@@ -617,6 +650,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frnNuevoCargo.resx">
       <DependentUpon>frnNuevoCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Variables\frmFuenteFinanciamiento.resx">
+      <DependentUpon>frmFuenteFinanciamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Variables\frmMantenimientoFuenteFinanciamiento.resx">
+      <DependentUpon>frmMantenimientoFuenteFinanciamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Variables\frmMantenimientoVariables.resx">
+      <DependentUpon>frmMantenimientoVariables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Variables\frmVariables.resx">
+      <DependentUpon>frmVariables.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="bdpersonal.xsc">
       <DependentUpon>bdpersonal.xsd</DependentUpon>

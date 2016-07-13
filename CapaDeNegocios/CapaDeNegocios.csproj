@@ -49,6 +49,7 @@
     <Compile Include="cDistrito.cs" />
     <Compile Include="cEnumTipoDia.cs" />
     <Compile Include="AFPP\cListaAFP.cs" />
+    <Compile Include="cFuenteFinanciamiento.cs" />
     <Compile Include="cNacionalidad.cs" />
     <Compile Include="Contrato\cCargo.cs" />
     <Compile Include="Contrato\cContrato.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="ConvertirImagen.cs" />
     <Compile Include="cProvincia.cs" />
     <Compile Include="cReglaNegociosException.cs" />
+    <Compile Include="cVariables.cs" />
     <Compile Include="DatosLaborales\cCategoriaOcupacional.cs" />
     <Compile Include="DatosLaborales\cPeriodoTrabajador.cs" />
     <Compile Include="DatosLaborales\cRegimenPensionarioTrabajador.cs" />

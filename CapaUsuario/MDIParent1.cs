@@ -113,11 +113,6 @@ namespace CapaUsuario
             fDivisionFuncional.Show();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AFP.frmComisionesAFP fComisionesAFP = new AFP.frmComisionesAFP();
@@ -221,6 +216,13 @@ namespace CapaUsuario
             fMantenimientoMaestroDescuentos.Show();
         }
 
+        private void planillaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Planilla.frmMatenimientoPlanilla fPlanilla = new Planilla.frmMatenimientoPlanilla();
+            fPlanilla.MdiParent = this;
+            fPlanilla.Show();
+        }
+
         private void plantillaPlanillaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Planilla.frmMantenimientoPlantillaPlanilla fPlantillaPlanilla = new Planilla.frmMantenimientoPlantillaPlanilla();
@@ -244,6 +246,20 @@ namespace CapaUsuario
             cMiword.monto = "S/. 1500.00 (Mil quinientos Nuevos Soles)";
             cMiword.fecha = DateTime.Now.ToLongDateString();
             cMiword.Iniciar();
+        }
+
+        private void variablesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Variables.frmMantenimientoVariables fMantenimientoVariables = new Variables.frmMantenimientoVariables();
+            fMantenimientoVariables.MdiParent = this;
+            fMantenimientoVariables.Show();
+        }
+
+        private void fuenteFinanciamientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Variables.frmMantenimientoFuenteFinanciamiento fMantenimientoFuenteFinanciamiento = new Variables.frmMantenimientoFuenteFinanciamiento();
+            fMantenimientoFuenteFinanciamiento.MdiParent = this;
+            fMantenimientoFuenteFinanciamiento.Show();
         }
     }
 }

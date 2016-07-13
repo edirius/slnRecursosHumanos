@@ -33,7 +33,7 @@ namespace CapaUsuario.Planilla
 
         private void frmPlantillaPlanilla_Load(object sender, EventArgs e)
         {
-            CargarResidente();
+            CargarTipoTrabajador();
             cboTipoTrabajador_SelectedIndexChanged(sender, e);
         }
 
@@ -72,7 +72,7 @@ namespace CapaUsuario.Planilla
             }
         }
 
-        private void CargarResidente()
+        private void CargarTipoTrabajador()
         {
             cboTipoTrabajador.DataSource = miTipoTrabajador.ListarTiposDeTrabajadores();
             cboTipoTrabajador.DisplayMember = "descripcion";

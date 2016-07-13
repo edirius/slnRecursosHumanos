@@ -49,6 +49,8 @@
             this.AFPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.variablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fuenteFinanciamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeTrabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeCargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,6 +93,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -156,7 +159,6 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
             this.toolStripMenuItem1.Text = "AFP";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // openToolStripMenuItem
             // 
@@ -234,7 +236,9 @@
             this.editMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AFPToolStripMenuItem,
             this.undoToolStripMenuItem,
-            this.toolStripSeparator6});
+            this.toolStripSeparator6,
+            this.variablesToolStripMenuItem,
+            this.fuenteFinanciamientoToolStripMenuItem});
             this.editMenu.Name = "editMenu";
             this.editMenu.Size = new System.Drawing.Size(45, 20);
             this.editMenu.Text = "&AFPs";
@@ -263,6 +267,20 @@
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(198, 6);
+            // 
+            // variablesToolStripMenuItem
+            // 
+            this.variablesToolStripMenuItem.Name = "variablesToolStripMenuItem";
+            this.variablesToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.variablesToolStripMenuItem.Text = "Variables";
+            this.variablesToolStripMenuItem.Click += new System.EventHandler(this.variablesToolStripMenuItem_Click);
+            // 
+            // fuenteFinanciamientoToolStripMenuItem
+            // 
+            this.fuenteFinanciamientoToolStripMenuItem.Name = "fuenteFinanciamientoToolStripMenuItem";
+            this.fuenteFinanciamientoToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.fuenteFinanciamientoToolStripMenuItem.Text = "Fuente Financiamiento";
+            this.fuenteFinanciamientoToolStripMenuItem.Click += new System.EventHandler(this.fuenteFinanciamientoToolStripMenuItem_Click);
             // 
             // viewMenu
             // 
@@ -437,6 +455,7 @@
             // planillasToolStripMenuItem
             // 
             this.planillasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.planillaToolStripMenuItem,
             this.plantillaPlanillaToolStripMenuItem});
             this.planillasToolStripMenuItem.Name = "planillasToolStripMenuItem";
             this.planillasToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
@@ -594,6 +613,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // planillaToolStripMenuItem
+            // 
+            this.planillaToolStripMenuItem.Name = "planillaToolStripMenuItem";
+            this.planillaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.planillaToolStripMenuItem.Text = "Planilla";
+            this.planillaToolStripMenuItem.Click += new System.EventHandler(this.planillaToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -683,6 +709,9 @@
         private System.Windows.Forms.ToolStripMenuItem maestroDescuentosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem plantillaPlanillaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem metaJornalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem variablesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fuenteFinanciamientoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem planillaToolStripMenuItem;
     }
 }
 
