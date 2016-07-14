@@ -35,7 +35,6 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.dgvRegimenTrabajador = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +44,8 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -136,7 +137,6 @@
             this.dgvRegimenTrabajador.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRegimenTrabajador.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column6,
             this.Column7,
             this.Column8,
             this.Column9,
@@ -146,6 +146,8 @@
             this.Column2,
             this.Column3,
             this.Column13,
+            this.Column6,
+            this.Column24,
             this.Column18,
             this.Column19,
             this.Column5,
@@ -177,12 +179,6 @@
             this.Column1.ReadOnly = true;
             this.Column1.Visible = false;
             this.Column1.Width = 20;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Tipo";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
             // 
             // Column7
             // 
@@ -244,6 +240,21 @@
             this.Column13.Name = "Column13";
             this.Column13.ReadOnly = true;
             this.Column13.Visible = false;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "IdTRegimenLaboral";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Visible = false;
+            this.Column6.Width = 20;
+            // 
+            // Column24
+            // 
+            this.Column24.HeaderText = "Regimen Laboral";
+            this.Column24.Name = "Column24";
+            this.Column24.ReadOnly = true;
+            this.Column24.Width = 150;
             // 
             // Column18
             // 
@@ -322,7 +333,7 @@
             this.Column15.HeaderText = "Cargo";
             this.Column15.Name = "Column15";
             this.Column15.ReadOnly = true;
-            this.Column15.Width = 250;
+            this.Column15.Width = 200;
             // 
             // Column16
             // 
@@ -367,7 +378,6 @@
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.DataGridView dgvRegimenTrabajador;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
@@ -377,6 +387,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column18;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column19;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;

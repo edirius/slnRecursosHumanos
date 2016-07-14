@@ -63,6 +63,7 @@
     <Compile Include="cVariables.cs" />
     <Compile Include="DatosLaborales\cCategoriaOcupacional.cs" />
     <Compile Include="DatosLaborales\cPeriodoTrabajador.cs" />
+    <Compile Include="DatosLaborales\cRegimenLaboral.cs" />
     <Compile Include="DatosLaborales\cRegimenPensionarioTrabajador.cs" />
     <Compile Include="DatosLaborales\cRegimenSaludTrabajador.cs" />
     <Compile Include="DatosLaborales\cRegimenTrabajador.cs" />

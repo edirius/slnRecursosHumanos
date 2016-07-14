@@ -12,11 +12,10 @@ namespace CapaUsuario.Planilla
 {
     public partial class frmPlantillaPlanilla : Form
     {
-        int sIdTPlantillaPlanilla = 0;
-        int sIdTSunatTipoTrabajador = 0;
-        string sTipo = "";
-        int sCodigo = 0;
         int iAccion = 0;
+        int sIdTPlantillaPlanilla = 0;
+        string sTipo = "";
+        int sidtregimenlaboral = 0;
 
         DataTable oDataPlantillaPlanilla = new DataTable();
         DataTable oDataMaestroIngresos = new DataTable();
@@ -25,7 +24,6 @@ namespace CapaUsuario.Planilla
         DataTable oDataMaestroAEmpleador = new DataTable();
 
         CapaDeNegocios.Planillas.cPlantillaPlanilla miPlantillaPlanilla = new CapaDeNegocios.Planillas.cPlantillaPlanilla();
-        CapaDeNegocios.cTipoTrabajador miTipoTrabajador = new CapaDeNegocios.cTipoTrabajador();
 
         public frmPlantillaPlanilla()
         {
@@ -42,14 +40,14 @@ namespace CapaUsuario.Planilla
             bool bOk = false;
             if (iAccion == 1)
             {
-                miTipoTrabajador.Codigo = sIdTSunatTipoTrabajador;
                 miPlantillaPlanilla.Tipo = sTipo;
+                miPlantillaPlanilla.IdtRegimenLaboral = sidtregimenlaboral;
                 foreach (DataGridViewRow row in dgvMaestro.Rows)
                 {
                     if (Convert.ToInt32(row.Cells[3].Value) == 1)
                     {
                         miPlantillaPlanilla.Codigo = Convert.ToInt32(row.Cells[0].Value);
-                        miPlantillaPlanilla.CrearPlantillaPlanilla(miTipoTrabajador, miPlantillaPlanilla);
+                        miPlantillaPlanilla.CrearPlantillaPlanilla(miPlantillaPlanilla);
                     }
                 }
                 bOk = true;
@@ -69,11 +67,11 @@ namespace CapaUsuario.Planilla
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
-        public void RecibirDatos(int pidtsunattipotrabajador, string ptipo, string ptipotrabajador, int piAccion)
+        public void RecibirDatos(string ptipo, string pregimenlaboral, int pidtregimenlaboral, int piAccion)
         {
-            sIdTSunatTipoTrabajador = pidtsunattipotrabajador;
             sTipo = ptipo;
-            txtTipoTrabajador.Text = ptipotrabajador;
+            txtTipoTrabajador.Text = pregimenlaboral;
+            sidtregimenlaboral = pidtregimenlaboral;
             iAccion = piAccion;
         }
 
@@ -82,8 +80,7 @@ namespace CapaUsuario.Planilla
             int contador = 0;
             dgvMaestro.Rows.Clear();
 
-            miTipoTrabajador.Codigo = sIdTSunatTipoTrabajador;
-            oDataPlantillaPlanilla = miPlantillaPlanilla.ListarPlantillaPlanilla(miTipoTrabajador);
+            oDataPlantillaPlanilla = miPlantillaPlanilla.ListarPlantillaPlanilla(sidtregimenlaboral);
 
             CapaDeNegocios.Sunat.cMaestroIngresos miMaestroIngresos = new CapaDeNegocios.Sunat.cMaestroIngresos();
             miMaestroIngresos.Tipo = "";

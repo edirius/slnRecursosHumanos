@@ -40,7 +40,7 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnTipoTrabajador = new System.Windows.Forms.Button();
-            this.cboTipoTrabajador = new System.Windows.Forms.ComboBox();
+            this.cboRegimenLaboral = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvMaestroIngresos = new System.Windows.Forms.DataGridView();
             this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -113,13 +113,13 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.btnTipoTrabajador);
-            this.groupBox2.Controls.Add(this.cboTipoTrabajador);
+            this.groupBox2.Controls.Add(this.cboRegimenLaboral);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(799, 48);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Tipo Trabajador";
+            this.groupBox2.Text = "Regimen Laboral";
             // 
             // btnTipoTrabajador
             // 
@@ -133,17 +133,17 @@
             this.btnTipoTrabajador.UseVisualStyleBackColor = true;
             this.btnTipoTrabajador.Click += new System.EventHandler(this.btnTipoTrabajador_Click);
             // 
-            // cboTipoTrabajador
+            // cboRegimenLaboral
             // 
-            this.cboTipoTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cboRegimenLaboral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboTipoTrabajador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoTrabajador.FormattingEnabled = true;
-            this.cboTipoTrabajador.Location = new System.Drawing.Point(6, 19);
-            this.cboTipoTrabajador.Name = "cboTipoTrabajador";
-            this.cboTipoTrabajador.Size = new System.Drawing.Size(717, 21);
-            this.cboTipoTrabajador.TabIndex = 0;
-            this.cboTipoTrabajador.SelectedIndexChanged += new System.EventHandler(this.cboTipoTrabajador_SelectedIndexChanged);
+            this.cboRegimenLaboral.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRegimenLaboral.FormattingEnabled = true;
+            this.cboRegimenLaboral.Location = new System.Drawing.Point(6, 19);
+            this.cboRegimenLaboral.Name = "cboRegimenLaboral";
+            this.cboRegimenLaboral.Size = new System.Drawing.Size(717, 21);
+            this.cboRegimenLaboral.TabIndex = 0;
+            this.cboRegimenLaboral.SelectedIndexChanged += new System.EventHandler(this.cboTipoTrabajador_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -469,8 +469,7 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnTipoTrabajador;
-        private System.Windows.Forms.ComboBox cboTipoTrabajador;
+        private System.Windows.Forms.ComboBox cboRegimenLaboral;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -495,5 +494,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.Button btnTipoTrabajador;
     }
 }

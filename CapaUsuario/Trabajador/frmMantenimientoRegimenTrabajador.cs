@@ -14,7 +14,6 @@ namespace CapaUsuario.Trabajador
     {
         DataTable oDataPeriodoTrabajador = new DataTable();
         int sidtregimentrabajador = 0;
-        string stipo = "";
         string scondicion = "";
         bool sservidorconfianza = false;
         string snumerodocumento = "";
@@ -24,6 +23,7 @@ namespace CapaUsuario.Trabajador
         string sfechainicio = "";
         string sfechafin = "";
         string sruc = "";
+        int sidtregimenlaboral = 0;
         int sidttipotrabajador = 0;
         int sidttipocontrato = 0;
         int sidtcategoriaocupacional = 0;
@@ -31,6 +31,7 @@ namespace CapaUsuario.Trabajador
         int sidtcargo = 0;
         int sidtmeta = 0;
         int sidtperiodotrabajador = 0;
+        string sregimenlaboral = "";
         string stipotrabajador = "";
         string stipocontrato = "";
         string scategoriaocupacional = "";
@@ -64,7 +65,7 @@ namespace CapaUsuario.Trabajador
             //else
             //{ sfechainicio = Convert.ToString(dgvRegimenTrabajador.Rows[dgvRegimenTrabajador.Rows.Count - 1].Cells[2].Value); }
             CapaUsuario.Trabajador.frmRegimenTrabajador fRegimenTrabajador = new frmRegimenTrabajador();
-            fRegimenTrabajador.RecibirDatos(0, "", "", false, "", "", "", 0, "", "", "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, "", sidtperiodotrabajador, 1);
+            fRegimenTrabajador.RecibirDatos(0, "", false, "", "", "", 0, "", "", "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, "", sidtperiodotrabajador, 1);
             if (fRegimenTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -79,7 +80,7 @@ namespace CapaUsuario.Trabajador
                 return;
             }
             CapaUsuario.Trabajador.frmRegimenTrabajador fRegimenTrabajador = new frmRegimenTrabajador();
-            fRegimenTrabajador.RecibirDatos(sidtregimentrabajador, stipo, scondicion, sservidorconfianza, snumerodocumento, speriodicidad, stipopago, smontopago, sfechainicio, sfechafin, sruc, sidttipotrabajador, stipotrabajador, sidttipocontrato, stipocontrato, sidtcategoriaocupacional, scategoriaocupacional, sidtocupacion, socupacion, sidtcargo, scargo, sidtmeta, smeta, sidtperiodotrabajador, 2);
+            fRegimenTrabajador.RecibirDatos(sidtregimentrabajador, scondicion, sservidorconfianza, snumerodocumento, speriodicidad, stipopago, smontopago, sfechainicio, sfechafin, sruc, sidtregimenlaboral, sregimenlaboral, sidttipotrabajador, stipotrabajador, sidttipocontrato, stipocontrato, sidtcategoriaocupacional, scategoriaocupacional, sidtocupacion, socupacion, sidtcargo, scargo, sidtmeta, smeta, sidtperiodotrabajador, 2);
             if (fRegimenTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -114,30 +115,32 @@ namespace CapaUsuario.Trabajador
         private void dgvRegimenTrabajador_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             sidtregimentrabajador = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[0].Value);
-            stipo = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[1].Value);
-            scondicion = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[2].Value);
-            if (dgvRegimenTrabajador.Rows[e.RowIndex].Cells[3].Value.ToString() == "0")
+            scondicion = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[1].Value);
+            if (dgvRegimenTrabajador.Rows[e.RowIndex].Cells[2].Value.ToString() == "0")
             { sservidorconfianza = false; }
             else { sservidorconfianza = true; }
-            snumerodocumento = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[4].Value);
-            speriodicidad = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[5].Value);
-            stipopago = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[6].Value);
-            smontopago = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[7].Value);
-            sfechainicio = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[8].Value);
-            sfechafin = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[9].Value);
-            sruc = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[10].Value);
-            sidttipotrabajador = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[11].Value);
-            stipotrabajador = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[12].Value);
-            sidttipocontrato = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[13].Value);
-            stipocontrato = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[14].Value);
-            sidtcategoriaocupacional = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[15].Value);
-            scategoriaocupacional = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[16].Value);
-            sidtocupacion = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[17].Value);
-            socupacion = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[18].Value);
-            sidtcargo = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[19].Value);
-            scargo = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[20].Value);
-            sidtmeta = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[21].Value);
-            smeta = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[22].Value);
+            snumerodocumento = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[3].Value);
+            speriodicidad = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[4].Value);
+            stipopago = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[5].Value);
+            smontopago = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[6].Value);
+            sfechainicio = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[7].Value);
+            sfechafin = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[8].Value);
+            sruc = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[9].Value);
+
+            sidtregimenlaboral = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[10].Value);
+            sregimenlaboral = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[11].Value);
+            sidttipotrabajador = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[12].Value);
+            stipotrabajador = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[13].Value);
+            sidttipocontrato = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[14].Value);
+            stipocontrato = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[15].Value);
+            sidtcategoriaocupacional = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[16].Value);
+            scategoriaocupacional = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[17].Value);
+            sidtocupacion = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[18].Value);
+            socupacion = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[19].Value);
+            sidtcargo = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[20].Value);
+            scargo = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[21].Value);
+            sidtmeta = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[22].Value);
+            smeta = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[23].Value);
         }
 
         public void RecibirDatos(int pidttrabajador, string pfechainicioperiodo, string pfechafinperiodo)
@@ -152,6 +155,9 @@ namespace CapaUsuario.Trabajador
             dgvRegimenTrabajador.Rows.Clear();
             oDataPeriodoTrabajador = miRegimenTrabajador.ListarRegimenTrabajador(sidtperiodotrabajador);
 
+            DataTable oDataRegimenLaboral = new DataTable();
+            CapaDeNegocios.DatosLaborales.cRegimenLaboral miRegimenLaboral = new CapaDeNegocios.DatosLaborales.cRegimenLaboral();
+            oDataRegimenLaboral = miRegimenLaboral.ListarRegimenLaboral();
             DataTable oDataTipoTrabajador = new DataTable();
             CapaDeNegocios.cTipoTrabajador miTipoTrabajador = new CapaDeNegocios.cTipoTrabajador();
             oDataTipoTrabajador = miTipoTrabajador.ListarTiposDeTrabajadores();
@@ -173,6 +179,11 @@ namespace CapaUsuario.Trabajador
 
             foreach (DataRow row in oDataPeriodoTrabajador.Rows)
             {
+                foreach (DataRow roww in oDataRegimenLaboral.Select("idtregimenlaboral ='" + row[10].ToString() + "'"))
+                {
+                    sidtregimenlaboral = Convert.ToInt32(roww[0]);
+                    sregimenlaboral = roww[2].ToString();
+                }
                 foreach (DataRow roww in oDataTipoTrabajador.Select("idtsunattipotrabajador ='" + row[11].ToString() + "'"))
                 {
                     sidttipotrabajador = Convert.ToInt32(roww[0]);
@@ -203,7 +214,7 @@ namespace CapaUsuario.Trabajador
                     sidtmeta = Convert.ToInt32(roww[0]);
                     smeta = roww[2].ToString();
                 }
-                dgvRegimenTrabajador.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(), row[6].ToString(), row[7].ToString(), row[8].ToString(), row[9].ToString(), row[10].ToString(), sidttipotrabajador, stipotrabajador, sidttipocontrato, stipocontrato, sidtcategoriaocupacional, scategoriaocupacional, sidtocupacion, socupacion, sidtcargo, scargo, sidtmeta, smeta);
+                dgvRegimenTrabajador.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5].ToString(), row[6].ToString(), row[7].ToString(), row[8].ToString(), row[9].ToString(), sidtregimenlaboral, sregimenlaboral, sidttipotrabajador, stipotrabajador, sidttipocontrato, stipocontrato, sidtcategoriaocupacional, scategoriaocupacional, sidtocupacion, socupacion, sidtcargo, scargo, sidtmeta, smeta);
             }
             if (dgvRegimenTrabajador.Rows.Count > 0)
             {

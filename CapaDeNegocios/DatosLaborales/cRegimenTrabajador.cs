@@ -12,7 +12,6 @@ namespace CapaDeNegocios.DatosLaborales
     public class cRegimenTrabajador
     {
         int sidtregimentrabajador;
-        string stipo;
         string scondicion;
         bool sservidorconfianza;
         string snumerodocumento;
@@ -22,6 +21,7 @@ namespace CapaDeNegocios.DatosLaborales
         string sfechainicio;
         string sfechafin;
         string sruc;
+        int sidtregimenlaboral;
         int sidttipotrabajador;
         int sidttipocontrato;
         int sidtcategoriaocupacional;
@@ -34,11 +34,6 @@ namespace CapaDeNegocios.DatosLaborales
         {
             get { return sidtregimentrabajador; }
             set { sidtregimentrabajador = value; }
-        }
-        public string Tipo
-        {
-            get { return stipo; }
-            set { stipo = value; }
         }
         public string Condicion
         {
@@ -80,11 +75,15 @@ namespace CapaDeNegocios.DatosLaborales
             get { return sfechafin; }
             set { sfechafin = value; }
         }
-
         public string RUC
         {
             get { return sruc; }
             set { sruc = value; }
+        }
+        public int IdtRegimenLaboral
+        {
+            get { return sidtregimenlaboral; }
+            set { sidtregimenlaboral = value; }
         }
         public int IdtTipoTrabajador
         {
@@ -129,13 +128,13 @@ namespace CapaDeNegocios.DatosLaborales
 
         public Boolean CrearRegimenTrabajador(cRegimenTrabajador miRegimenTrabajador)
         {
-            Conexion.GDatos.Ejecutar("spCrearRegimenTrabajador", miRegimenTrabajador.Tipo, miRegimenTrabajador.Condicion, miRegimenTrabajador.ServidorConfianza, miRegimenTrabajador.NumeroDocumento, miRegimenTrabajador.Periodicidad, miRegimenTrabajador.TipoPago, miRegimenTrabajador.MontoPago, miRegimenTrabajador.FechaInicio, miRegimenTrabajador.FechaFin, miRegimenTrabajador.RUC, miRegimenTrabajador.IdtTipoTrabajador, miRegimenTrabajador.IdtTipoContrato, miRegimenTrabajador.IdtCategoriaOcupacional, miRegimenTrabajador.IdtOcupacion, miRegimenTrabajador.IdtCargo, miRegimenTrabajador.IdtMeta, miRegimenTrabajador.IdtPeriodoTrabajador);
+            Conexion.GDatos.Ejecutar("spCrearRegimenTrabajador", miRegimenTrabajador.Condicion, miRegimenTrabajador.ServidorConfianza, miRegimenTrabajador.NumeroDocumento, miRegimenTrabajador.Periodicidad, miRegimenTrabajador.TipoPago, miRegimenTrabajador.MontoPago, miRegimenTrabajador.FechaInicio, miRegimenTrabajador.FechaFin, miRegimenTrabajador.RUC, miRegimenTrabajador.IdtRegimenLaboral, miRegimenTrabajador.IdtTipoTrabajador, miRegimenTrabajador.IdtTipoContrato, miRegimenTrabajador.IdtCategoriaOcupacional, miRegimenTrabajador.IdtOcupacion, miRegimenTrabajador.IdtCargo, miRegimenTrabajador.IdtMeta, miRegimenTrabajador.IdtPeriodoTrabajador);
             return true;
         }
 
         public Boolean ModificarRegimenTrabajador(cRegimenTrabajador miRegimenTrabajador)
         {
-            Conexion.GDatos.Ejecutar("spModificarRegimenTrabajador", miRegimenTrabajador.IdtRegimenTrabajador, miRegimenTrabajador.Tipo, miRegimenTrabajador.Condicion, miRegimenTrabajador.ServidorConfianza, miRegimenTrabajador.NumeroDocumento, miRegimenTrabajador.Periodicidad, miRegimenTrabajador.TipoPago, miRegimenTrabajador.MontoPago, miRegimenTrabajador.FechaInicio, miRegimenTrabajador.FechaFin, miRegimenTrabajador.RUC, miRegimenTrabajador.IdtTipoTrabajador, miRegimenTrabajador.IdtTipoContrato, miRegimenTrabajador.IdtCategoriaOcupacional, miRegimenTrabajador.IdtOcupacion, miRegimenTrabajador.IdtCargo, miRegimenTrabajador.IdtMeta, miRegimenTrabajador.IdtPeriodoTrabajador);
+            Conexion.GDatos.Ejecutar("spModificarRegimenTrabajador", miRegimenTrabajador.IdtRegimenTrabajador, miRegimenTrabajador.Condicion, miRegimenTrabajador.ServidorConfianza, miRegimenTrabajador.NumeroDocumento, miRegimenTrabajador.Periodicidad, miRegimenTrabajador.TipoPago, miRegimenTrabajador.MontoPago, miRegimenTrabajador.FechaInicio, miRegimenTrabajador.FechaFin, miRegimenTrabajador.RUC, miRegimenTrabajador.IdtRegimenLaboral, miRegimenTrabajador.IdtTipoTrabajador, miRegimenTrabajador.IdtTipoContrato, miRegimenTrabajador.IdtCategoriaOcupacional, miRegimenTrabajador.IdtOcupacion, miRegimenTrabajador.IdtCargo, miRegimenTrabajador.IdtMeta, miRegimenTrabajador.IdtPeriodoTrabajador);
             return true;
         }
 

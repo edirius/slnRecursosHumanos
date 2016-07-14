@@ -50,9 +50,9 @@ namespace CapaDeNegocios.DatosLaborales
             return true;
         }
 
-        public Boolean EliminarCategoriaOcupacional(cCategoriaOcupacional miCategoriaOcupacional)
+        public Boolean EliminarCategoriaOcupacional(int IdTCategoriaOcupacional)
         {
-            Conexion.GDatos.Ejecutar("spELiminarCategoriaOcupacional", miCategoriaOcupacional.IdTCategoriaOcupacional);
+            Conexion.GDatos.Ejecutar("spELiminarCategoriaOcupacional", IdTCategoriaOcupacional);
             return true;
         }
     }

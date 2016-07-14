@@ -53,7 +53,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.cboMeta = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cboTipoRegimen = new System.Windows.Forms.ComboBox();
+            this.cboRegimenLaboral = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cboTipoContrato = new System.Windows.Forms.ComboBox();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -246,6 +246,7 @@
             // 
             this.cboOcupacion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboOcupacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOcupacion.FormattingEnabled = true;
             this.cboOcupacion.Location = new System.Drawing.Point(107, 128);
             this.cboOcupacion.Name = "cboOcupacion";
@@ -297,6 +298,7 @@
             // 
             this.cboCargo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCargo.FormattingEnabled = true;
             this.cboCargo.Location = new System.Drawing.Point(107, 155);
             this.cboCargo.Name = "cboCargo";
@@ -326,6 +328,7 @@
             // 
             this.cboMeta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboMeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMeta.FormattingEnabled = true;
             this.cboMeta.Location = new System.Drawing.Point(107, 182);
             this.cboMeta.Name = "cboMeta";
@@ -337,7 +340,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.cboTipoRegimen);
+            this.groupBox1.Controls.Add(this.cboRegimenLaboral);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(500, 46);
@@ -345,20 +348,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Regimen Laboral";
             // 
-            // cboTipoRegimen
+            // cboRegimenLaboral
             // 
-            this.cboTipoRegimen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cboRegimenLaboral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboTipoRegimen.FormattingEnabled = true;
-            this.cboTipoRegimen.Items.AddRange(new object[] {
-            "CONTRATO RH",
-            "REGIMEN CAS",
-            "REGIMEN 276",
-            "REGIMEN 728"});
-            this.cboTipoRegimen.Location = new System.Drawing.Point(6, 19);
-            this.cboTipoRegimen.Name = "cboTipoRegimen";
-            this.cboTipoRegimen.Size = new System.Drawing.Size(488, 21);
-            this.cboTipoRegimen.TabIndex = 0;
+            this.cboRegimenLaboral.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRegimenLaboral.FormattingEnabled = true;
+            this.cboRegimenLaboral.Location = new System.Drawing.Point(6, 19);
+            this.cboRegimenLaboral.Name = "cboRegimenLaboral";
+            this.cboRegimenLaboral.Size = new System.Drawing.Size(488, 21);
+            this.cboRegimenLaboral.TabIndex = 0;
+            this.cboRegimenLaboral.SelectedIndexChanged += new System.EventHandler(this.cboRegimenLaboral_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -373,6 +373,7 @@
             // 
             this.cboTipoContrato.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboTipoContrato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoContrato.FormattingEnabled = true;
             this.cboTipoContrato.Location = new System.Drawing.Point(107, 72);
             this.cboTipoContrato.Name = "cboTipoContrato";
@@ -452,6 +453,7 @@
             // 
             this.cboCategoriaOcupacional.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboCategoriaOcupacional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoriaOcupacional.FormattingEnabled = true;
             this.cboCategoriaOcupacional.Location = new System.Drawing.Point(107, 101);
             this.cboCategoriaOcupacional.Name = "cboCategoriaOcupacional";
@@ -472,6 +474,7 @@
             // 
             this.cboTipoTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboTipoTrabajador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoTrabajador.FormattingEnabled = true;
             this.cboTipoTrabajador.Location = new System.Drawing.Point(107, 19);
             this.cboTipoTrabajador.Name = "cboTipoTrabajador";
@@ -524,7 +527,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ComboBox cboMeta;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cboTipoRegimen;
+        private System.Windows.Forms.ComboBox cboRegimenLaboral;
         private System.Windows.Forms.CheckBox chkServidorConfianza;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboCondicionLaboral;

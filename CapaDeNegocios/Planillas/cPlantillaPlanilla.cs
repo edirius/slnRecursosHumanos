@@ -15,6 +15,7 @@ namespace CapaDeNegocios.Planillas
         int sidtplantillaplanilla;
         string stipo;
         int scodigo;
+        int sidtregimenlaboral;
 
         public int IdtPlantillaPlanilla
         {
@@ -31,27 +32,32 @@ namespace CapaDeNegocios.Planillas
             get { return scodigo; }
             set { scodigo = value; }
         }
-
-        public DataTable ListarPlantillaPlanilla(cTipoTrabajador miTipoTrabajador)
+        public int IdtRegimenLaboral
         {
-            return Conexion.GDatos.TraerDataTable("spListarPlantillaPlanilla", miTipoTrabajador.Codigo);
+            get { return sidtregimenlaboral; }
+            set { sidtregimenlaboral = value; }
         }
 
-        public Boolean CrearPlantillaPlanilla(cTipoTrabajador miTipoTrabajador, cPlantillaPlanilla miPlantillaPlanilla)
+        public DataTable ListarPlantillaPlanilla(int IdtRegimenLaboral)
         {
-            Conexion.GDatos.Ejecutar("spCrearPlantillaPlanilla", miTipoTrabajador.Codigo, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo);
+            return Conexion.GDatos.TraerDataTable("spListarPlantillaPlanilla", IdtRegimenLaboral);
+        }
+
+        public Boolean CrearPlantillaPlanilla(cPlantillaPlanilla miPlantillaPlanilla)
+        {
+            Conexion.GDatos.Ejecutar("spCrearPlantillaPlanilla", miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo, miPlantillaPlanilla.IdtRegimenLaboral);
             return true;
         }
 
-        public Boolean ModificarPlantillaPlanilla(cTipoTrabajador miTipoTrabajador, cPlantillaPlanilla miPlantillaPlanilla)
+        public Boolean ModificarPlantillaPlanilla(cPlantillaPlanilla miPlantillaPlanilla)
         {
-            Conexion.GDatos.Ejecutar("spModificarPlantillaPlanilla", miPlantillaPlanilla.IdtPlantillaPlanilla, miTipoTrabajador.Codigo, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo);
+            Conexion.GDatos.Ejecutar("spModificarPlantillaPlanilla", miPlantillaPlanilla.IdtPlantillaPlanilla, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo, miPlantillaPlanilla.IdtRegimenLaboral);
             return true;
         }
 
-        public Boolean EliminarPlantillaPlanilla(cPlantillaPlanilla miPlantillaPlanilla)
+        public Boolean EliminarPlantillaPlanilla(int IdtPlantillaPlanilla)
         {
-            Conexion.GDatos.Ejecutar("spELiminarPlantillaPlanilla", miPlantillaPlanilla.IdtPlantillaPlanilla);
+            Conexion.GDatos.Ejecutar("spELiminarPlantillaPlanilla", IdtPlantillaPlanilla);
             return true;
         }
     }

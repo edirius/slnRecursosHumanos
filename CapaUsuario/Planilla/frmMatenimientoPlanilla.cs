@@ -19,7 +19,7 @@ namespace CapaUsuario.Planilla
 
         private void frmMatenimientoPlanilla_Load(object sender, EventArgs e)
         {
-            CargarTipoTrabajador();
+            CargarRegimenLaboral();
         }
 
         private void btnTipoTrabajador_Click(object sender, EventArgs e)
@@ -72,12 +72,12 @@ namespace CapaUsuario.Planilla
 
         }
 
-        private void CargarTipoTrabajador()
+        private void CargarRegimenLaboral()
         {
-            CapaDeNegocios.cTipoTrabajador miTipoTrabajador = new CapaDeNegocios.cTipoTrabajador();
-            cboTipoTrabajador.DataSource = miTipoTrabajador.ListarTiposDeTrabajadores();
-            cboTipoTrabajador.DisplayMember = "descripcion";
-            cboTipoTrabajador.ValueMember = "idtsunattipotrabajador";
+            CapaDeNegocios.DatosLaborales.cRegimenLaboral miRegimenLaboral = new CapaDeNegocios.DatosLaborales.cRegimenLaboral();
+            cboRegimenLaboral.DataSource = miRegimenLaboral.ListarRegimenLaboral();
+            cboRegimenLaboral.DisplayMember = "descripcion";
+            cboRegimenLaboral.ValueMember = "idtregimenlaboral";
         }
 
         private void CargarDatos()

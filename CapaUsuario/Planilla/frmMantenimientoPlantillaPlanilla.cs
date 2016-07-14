@@ -13,9 +13,9 @@ namespace CapaUsuario.Planilla
     public partial class frmMantenimientoPlantillaPlanilla : Form
     {
         int sIdTPlantillaPlanilla = 0;
-        int sIdTSunatTipoTrabajador = 0;
         string sTipo = "";
         int sCodigo = 0;
+        int sidtregimenlaboral = 0;
 
         DataTable oDataPlantillaPlanilla = new DataTable();
         DataTable oDataMaestroIngresos = new DataTable();
@@ -24,7 +24,6 @@ namespace CapaUsuario.Planilla
         DataTable oDataMaestroAEmpleador = new DataTable();
 
         CapaDeNegocios.Planillas.cPlantillaPlanilla miPlantillaPlanilla = new CapaDeNegocios.Planillas.cPlantillaPlanilla();
-        CapaDeNegocios.cTipoTrabajador miTipoTrabajador = new CapaDeNegocios.cTipoTrabajador();
 
         public frmMantenimientoPlantillaPlanilla()
         {
@@ -33,7 +32,7 @@ namespace CapaUsuario.Planilla
 
         private void frmPlantillaPlanilla_Load(object sender, EventArgs e)
         {
-            CargarTipoTrabajador();
+            CargarRegimenLaboral();
             cboTipoTrabajador_SelectedIndexChanged(sender, e);
         }
 
@@ -50,7 +49,7 @@ namespace CapaUsuario.Planilla
                 sTipo = fMensaje.sMensaje;
                 
                 CapaUsuario.Planilla.frmPlantillaPlanilla fPlantillaPlanilla = new CapaUsuario.Planilla.frmPlantillaPlanilla();
-                fPlantillaPlanilla.RecibirDatos(sIdTSunatTipoTrabajador, sTipo, cboTipoTrabajador.Text, 1);
+                fPlantillaPlanilla.RecibirDatos(sTipo, cboRegimenLaboral.Text, sidtregimenlaboral, 1);
                 if (fPlantillaPlanilla.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     CargarDatos();
@@ -65,87 +64,10 @@ namespace CapaUsuario.Planilla
 
         private void cboTipoTrabajador_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboTipoTrabajador.Text != "System.Data.DataRowView" && cboTipoTrabajador.ValueMember != "")
+            if (cboRegimenLaboral.Text != "System.Data.DataRowView" && cboRegimenLaboral.ValueMember != "")
             {
-                sIdTSunatTipoTrabajador = Convert.ToInt32(cboTipoTrabajador.SelectedValue);
+                sidtregimenlaboral = Convert.ToInt32(cboRegimenLaboral.SelectedValue);
                 CargarDatos();
-            }
-        }
-
-        private void CargarTipoTrabajador()
-        {
-            cboTipoTrabajador.DataSource = miTipoTrabajador.ListarTiposDeTrabajadores();
-            cboTipoTrabajador.DisplayMember = "descripcion";
-            cboTipoTrabajador.ValueMember = "idtsunattipotrabajador";
-        }
-
-        private void CargarDatos()
-        {
-            int filaI = 0;
-            dgvMaestroIngresos.Rows.Clear();
-            dgvMaestroDescuentos.Rows.Clear();
-            dgvMaestroATrabajador.Rows.Clear();
-            dgvMaestroAEmpleador.Rows.Clear();
-
-            miTipoTrabajador.Codigo = sIdTSunatTipoTrabajador;
-            oDataPlantillaPlanilla = miPlantillaPlanilla.ListarPlantillaPlanilla(miTipoTrabajador);
-
-            CapaDeNegocios.Sunat.cMaestroIngresos miMaestroIngresos = new CapaDeNegocios.Sunat.cMaestroIngresos();
-            miMaestroIngresos.Tipo = "";
-            oDataMaestroIngresos = miMaestroIngresos.ListarMaestroIngresos(miMaestroIngresos);
-            CapaDeNegocios.Sunat.cMaestroDescuentos miMaestroDescuentos = new CapaDeNegocios.Sunat.cMaestroDescuentos();
-            oDataMaestroDescuentos = miMaestroDescuentos.ListarMaestroDescuentos();
-            CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador miMaestroATrabajador = new CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador();
-            oDataMaestroATrabajador = miMaestroATrabajador.ListarMaestroAportacionesTrabajador();
-            CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador miMaestroAEmpleador = new CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador();
-            oDataMaestroAEmpleador = miMaestroAEmpleador.ListarMaestroAportacionesEmpleador();
-
-            foreach (DataRow row in oDataPlantillaPlanilla.Rows)
-            {
-                if (row[2].ToString() == "INGRESOS")
-                {
-                    foreach (DataRow rowI in oDataMaestroIngresos.Select("idtmaestroingresos = '" + row[3].ToString() + "'"))
-                    {
-                        dgvMaestroIngresos.Rows.Add();
-                        filaI = dgvMaestroIngresos.RowCount - 1;
-                        dgvMaestroIngresos.Rows[filaI].Cells[1].Value = row[0].ToString();
-                        dgvMaestroIngresos.Rows[filaI].Cells[2].Value = rowI[1].ToString();
-                        dgvMaestroIngresos.Rows[filaI].Cells[3].Value = rowI[2].ToString();
-                    }
-                }
-                else if (row[2].ToString() == "DESCUENTOS")
-                {
-                    foreach (DataRow rowI in oDataMaestroDescuentos.Select("idtmaestrodescuentos = '" + row[3].ToString() + "'"))
-                    {
-                        dgvMaestroDescuentos.Rows.Add();
-                        filaI = dgvMaestroDescuentos.RowCount - 1;
-                        dgvMaestroDescuentos.Rows[filaI].Cells[1].Value = row[0].ToString();
-                        dgvMaestroDescuentos.Rows[filaI].Cells[2].Value = rowI[1].ToString();
-                        dgvMaestroDescuentos.Rows[filaI].Cells[3].Value = rowI[2].ToString();
-                    }
-                }
-                else if (row[2].ToString() == "A_TRABAJADOR")
-                {
-                    foreach (DataRow rowI in oDataMaestroATrabajador.Select("idtmaestroaportacionestrabajador = '" + row[3].ToString() + "'"))
-                    {
-                        dgvMaestroATrabajador.Rows.Add();
-                        filaI = dgvMaestroATrabajador.RowCount - 1;
-                        dgvMaestroATrabajador.Rows[filaI].Cells[1].Value = row[0].ToString();
-                        dgvMaestroATrabajador.Rows[filaI].Cells[2].Value = rowI[1].ToString();
-                        dgvMaestroATrabajador.Rows[filaI].Cells[3].Value = rowI[2].ToString();
-                    }
-                }
-                else if (row[2].ToString() == "A_EMPLEADOR")
-                {
-                    foreach (DataRow rowI in oDataMaestroAEmpleador.Select("idtmaestroaportacionesempleador = '" + row[3].ToString() + "'"))
-                    {
-                        dgvMaestroAEmpleador.Rows.Add();
-                        filaI = dgvMaestroAEmpleador.RowCount - 1;
-                        dgvMaestroAEmpleador.Rows[filaI].Cells[1].Value = row[0].ToString();
-                        dgvMaestroAEmpleador.Rows[filaI].Cells[2].Value = rowI[1].ToString();
-                        dgvMaestroAEmpleador.Rows[filaI].Cells[3].Value = rowI[2].ToString();
-                    }
-                }
             }
         }
 
@@ -167,8 +89,8 @@ namespace CapaUsuario.Planilla
                 {
                     return;
                 }
-                miPlantillaPlanilla.IdtPlantillaPlanilla = Convert.ToInt32(dgvMaestroIngresos.Rows[e.RowIndex].Cells[1].Value);
-                miPlantillaPlanilla.EliminarPlantillaPlanilla(miPlantillaPlanilla);
+                sIdTPlantillaPlanilla = Convert.ToInt32(dgvMaestroIngresos.Rows[e.RowIndex].Cells[1].Value);
+                miPlantillaPlanilla.EliminarPlantillaPlanilla(sIdTPlantillaPlanilla);
                 CargarDatos();
             }
         }
@@ -191,8 +113,8 @@ namespace CapaUsuario.Planilla
                 {
                     return;
                 }
-                miPlantillaPlanilla.IdtPlantillaPlanilla = Convert.ToInt32(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[1].Value);
-                miPlantillaPlanilla.EliminarPlantillaPlanilla(miPlantillaPlanilla);
+                sIdTPlantillaPlanilla = Convert.ToInt32(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[1].Value);
+                miPlantillaPlanilla.EliminarPlantillaPlanilla(sIdTPlantillaPlanilla);
                 CargarDatos();
             }
         }
@@ -215,8 +137,8 @@ namespace CapaUsuario.Planilla
                 {
                     return;
                 }
-                miPlantillaPlanilla.IdtPlantillaPlanilla = Convert.ToInt32(dgvMaestroATrabajador.Rows[e.RowIndex].Cells[1].Value);
-                miPlantillaPlanilla.EliminarPlantillaPlanilla(miPlantillaPlanilla);
+                sIdTPlantillaPlanilla = Convert.ToInt32(dgvMaestroATrabajador.Rows[e.RowIndex].Cells[1].Value);
+                miPlantillaPlanilla.EliminarPlantillaPlanilla(sIdTPlantillaPlanilla);
                 CargarDatos();
             }
         }
@@ -239,9 +161,86 @@ namespace CapaUsuario.Planilla
                 {
                     return;
                 }
-                miPlantillaPlanilla.IdtPlantillaPlanilla = Convert.ToInt32(dgvMaestroAEmpleador.Rows[e.RowIndex].Cells[1].Value);
-                miPlantillaPlanilla.EliminarPlantillaPlanilla(miPlantillaPlanilla);
+                sIdTPlantillaPlanilla = Convert.ToInt32(dgvMaestroAEmpleador.Rows[e.RowIndex].Cells[1].Value);
+                miPlantillaPlanilla.EliminarPlantillaPlanilla(sIdTPlantillaPlanilla);
                 CargarDatos();
+            }
+        }
+
+        private void CargarRegimenLaboral()
+        {
+            CapaDeNegocios.DatosLaborales.cRegimenLaboral miRegimenLaboral = new CapaDeNegocios.DatosLaborales.cRegimenLaboral();
+            cboRegimenLaboral.DataSource = miRegimenLaboral.ListarRegimenLaboral();
+            cboRegimenLaboral.DisplayMember = "descripcion";
+            cboRegimenLaboral.ValueMember = "idtregimenlaboral";
+        }
+
+        private void CargarDatos()
+        {
+            int filaI = 0;
+            dgvMaestroIngresos.Rows.Clear();
+            dgvMaestroDescuentos.Rows.Clear();
+            dgvMaestroATrabajador.Rows.Clear();
+            dgvMaestroAEmpleador.Rows.Clear();
+
+            oDataPlantillaPlanilla = miPlantillaPlanilla.ListarPlantillaPlanilla(sidtregimenlaboral);
+
+            CapaDeNegocios.Sunat.cMaestroIngresos miMaestroIngresos = new CapaDeNegocios.Sunat.cMaestroIngresos();
+            miMaestroIngresos.Tipo = "";
+            oDataMaestroIngresos = miMaestroIngresos.ListarMaestroIngresos(miMaestroIngresos);
+            CapaDeNegocios.Sunat.cMaestroDescuentos miMaestroDescuentos = new CapaDeNegocios.Sunat.cMaestroDescuentos();
+            oDataMaestroDescuentos = miMaestroDescuentos.ListarMaestroDescuentos();
+            CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador miMaestroATrabajador = new CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador();
+            oDataMaestroATrabajador = miMaestroATrabajador.ListarMaestroAportacionesTrabajador();
+            CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador miMaestroAEmpleador = new CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador();
+            oDataMaestroAEmpleador = miMaestroAEmpleador.ListarMaestroAportacionesEmpleador();
+
+            foreach (DataRow row in oDataPlantillaPlanilla.Rows)
+            {
+                if (row[1].ToString() == "INGRESOS")
+                {
+                    foreach (DataRow rowI in oDataMaestroIngresos.Select("idtmaestroingresos = '" + row[2].ToString() + "'"))
+                    {
+                        dgvMaestroIngresos.Rows.Add();
+                        filaI = dgvMaestroIngresos.RowCount - 1;
+                        dgvMaestroIngresos.Rows[filaI].Cells[1].Value = row[0].ToString();
+                        dgvMaestroIngresos.Rows[filaI].Cells[2].Value = rowI[1].ToString();
+                        dgvMaestroIngresos.Rows[filaI].Cells[3].Value = rowI[2].ToString();
+                    }
+                }
+                else if (row[1].ToString() == "DESCUENTOS")
+                {
+                    foreach (DataRow rowI in oDataMaestroDescuentos.Select("idtmaestrodescuentos = '" + row[2].ToString() + "'"))
+                    {
+                        dgvMaestroDescuentos.Rows.Add();
+                        filaI = dgvMaestroDescuentos.RowCount - 1;
+                        dgvMaestroDescuentos.Rows[filaI].Cells[1].Value = row[0].ToString();
+                        dgvMaestroDescuentos.Rows[filaI].Cells[2].Value = rowI[1].ToString();
+                        dgvMaestroDescuentos.Rows[filaI].Cells[3].Value = rowI[2].ToString();
+                    }
+                }
+                else if (row[1].ToString() == "A_TRABAJADOR")
+                {
+                    foreach (DataRow rowI in oDataMaestroATrabajador.Select("idtmaestroaportacionestrabajador = '" + row[2].ToString() + "'"))
+                    {
+                        dgvMaestroATrabajador.Rows.Add();
+                        filaI = dgvMaestroATrabajador.RowCount - 1;
+                        dgvMaestroATrabajador.Rows[filaI].Cells[1].Value = row[0].ToString();
+                        dgvMaestroATrabajador.Rows[filaI].Cells[2].Value = rowI[1].ToString();
+                        dgvMaestroATrabajador.Rows[filaI].Cells[3].Value = rowI[2].ToString();
+                    }
+                }
+                else if (row[1].ToString() == "A_EMPLEADOR")
+                {
+                    foreach (DataRow rowI in oDataMaestroAEmpleador.Select("idtmaestroaportacionesempleador = '" + row[2].ToString() + "'"))
+                    {
+                        dgvMaestroAEmpleador.Rows.Add();
+                        filaI = dgvMaestroAEmpleador.RowCount - 1;
+                        dgvMaestroAEmpleador.Rows[filaI].Cells[1].Value = row[0].ToString();
+                        dgvMaestroAEmpleador.Rows[filaI].Cells[2].Value = rowI[1].ToString();
+                        dgvMaestroAEmpleador.Rows[filaI].Cells[3].Value = rowI[2].ToString();
+                    }
+                }
             }
         }
     }
