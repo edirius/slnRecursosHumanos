@@ -201,44 +201,28 @@ namespace CapaUsuario.Planilla
                 {
                     foreach (DataRow rowI in oDataMaestroIngresos.Select("idtmaestroingresos = '" + row[2].ToString() + "'"))
                     {
-                        dgvMaestroIngresos.Rows.Add();
-                        filaI = dgvMaestroIngresos.RowCount - 1;
-                        dgvMaestroIngresos.Rows[filaI].Cells[1].Value = row[0].ToString();
-                        dgvMaestroIngresos.Rows[filaI].Cells[2].Value = rowI[1].ToString();
-                        dgvMaestroIngresos.Rows[filaI].Cells[3].Value = rowI[2].ToString();
+                        dgvMaestroIngresos.Rows.Add("", row[0].ToString(), rowI[1].ToString(), rowI[2].ToString());
                     }
                 }
                 else if (row[1].ToString() == "DESCUENTOS")
                 {
                     foreach (DataRow rowI in oDataMaestroDescuentos.Select("idtmaestrodescuentos = '" + row[2].ToString() + "'"))
                     {
-                        dgvMaestroDescuentos.Rows.Add();
-                        filaI = dgvMaestroDescuentos.RowCount - 1;
-                        dgvMaestroDescuentos.Rows[filaI].Cells[1].Value = row[0].ToString();
-                        dgvMaestroDescuentos.Rows[filaI].Cells[2].Value = rowI[1].ToString();
-                        dgvMaestroDescuentos.Rows[filaI].Cells[3].Value = rowI[2].ToString();
+                        dgvMaestroDescuentos.Rows.Add("", row[0].ToString(), rowI[1].ToString(), rowI[2].ToString());
                     }
                 }
                 else if (row[1].ToString() == "A_TRABAJADOR")
                 {
                     foreach (DataRow rowI in oDataMaestroATrabajador.Select("idtmaestroaportacionestrabajador = '" + row[2].ToString() + "'"))
                     {
-                        dgvMaestroATrabajador.Rows.Add();
-                        filaI = dgvMaestroATrabajador.RowCount - 1;
-                        dgvMaestroATrabajador.Rows[filaI].Cells[1].Value = row[0].ToString();
-                        dgvMaestroATrabajador.Rows[filaI].Cells[2].Value = rowI[1].ToString();
-                        dgvMaestroATrabajador.Rows[filaI].Cells[3].Value = rowI[2].ToString();
+                        dgvMaestroATrabajador.Rows.Add("", row[0].ToString(), rowI[1].ToString(), rowI[2].ToString());
                     }
                 }
                 else if (row[1].ToString() == "A_EMPLEADOR")
                 {
                     foreach (DataRow rowI in oDataMaestroAEmpleador.Select("idtmaestroaportacionesempleador = '" + row[2].ToString() + "'"))
                     {
-                        dgvMaestroAEmpleador.Rows.Add();
-                        filaI = dgvMaestroAEmpleador.RowCount - 1;
-                        dgvMaestroAEmpleador.Rows[filaI].Cells[1].Value = row[0].ToString();
-                        dgvMaestroAEmpleador.Rows[filaI].Cells[2].Value = rowI[1].ToString();
-                        dgvMaestroAEmpleador.Rows[filaI].Cells[3].Value = rowI[2].ToString();
+                        dgvMaestroAEmpleador.Rows.Add("", row[0].ToString(), rowI[1].ToString(), rowI[2].ToString());
                     }
                 }
             }

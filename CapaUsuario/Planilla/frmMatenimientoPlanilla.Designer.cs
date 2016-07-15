@@ -39,6 +39,15 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnTipoTrabajador = new System.Windows.Forms.Button();
             this.cboRegimenLaboral = new System.Windows.Forms.ComboBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -149,11 +158,22 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPlanilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPlanilla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9});
             this.dgvPlanilla.Cursor = System.Windows.Forms.Cursors.Default;
             this.dgvPlanilla.Location = new System.Drawing.Point(12, 66);
             this.dgvPlanilla.MultiSelect = false;
             this.dgvPlanilla.Name = "dgvPlanilla";
             this.dgvPlanilla.ReadOnly = true;
+            this.dgvPlanilla.RowHeadersVisible = false;
             this.dgvPlanilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlanilla.Size = new System.Drawing.Size(559, 310);
             this.dgvPlanilla.TabIndex = 23;
@@ -195,7 +215,75 @@
             this.cboRegimenLaboral.Name = "cboRegimenLaboral";
             this.cboRegimenLaboral.Size = new System.Drawing.Size(477, 21);
             this.cboRegimenLaboral.TabIndex = 0;
-            this.cboRegimenLaboral.SelectedIndexChanged += new System.EventHandler(this.cboTipoTrabajador_SelectedIndexChanged);
+            this.cboRegimenLaboral.SelectedIndexChanged += new System.EventHandler(this.cboRegimenLaboral_SelectedIndexChanged);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "IdtPlanilla";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            this.Column1.Width = 20;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Numero";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Visible = false;
+            this.Column2.Width = 50;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Mes";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 75;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Año";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 40;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Fecha";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Visible = false;
+            this.Column5.Width = 40;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "IdtMeta";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Visible = false;
+            this.Column6.Width = 20;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Meta";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 200;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "IdtFuenteFinanciamiento";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Visible = false;
+            this.Column8.Width = 20;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Fuente Financiamiento";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 225;
             // 
             // frmMatenimientoPlanilla
             // 
@@ -232,5 +320,14 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnTipoTrabajador;
         private System.Windows.Forms.ComboBox cboRegimenLaboral;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
     }
 }

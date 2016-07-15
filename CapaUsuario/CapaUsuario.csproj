@@ -215,6 +215,12 @@
     <Compile Include="Planilla\frmMantenimientoPlantillaPlanilla.Designer.cs">
       <DependentUpon>frmMantenimientoPlantillaPlanilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Planilla\frmPlanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\frmPlanilla.Designer.cs">
+      <DependentUpon>frmPlanilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Planilla\frmPlantillaPlanilla.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -531,6 +537,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Planilla\frmMantenimientoPlantillaPlanilla.resx">
       <DependentUpon>frmMantenimientoPlantillaPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\frmPlanilla.resx">
+      <DependentUpon>frmPlanilla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Planilla\frmPlantillaPlanilla.resx">
       <DependentUpon>frmPlantillaPlanilla.cs</DependentUpon>

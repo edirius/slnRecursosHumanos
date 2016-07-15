@@ -12,7 +12,6 @@ namespace CapaUsuario.Trabajador
 {
     public partial class frmMantenimientoRegimenTrabajador : Form
     {
-        DataTable oDataPeriodoTrabajador = new DataTable();
         int sidtregimentrabajador = 0;
         string scondicion = "";
         bool sservidorconfianza = false;
@@ -55,15 +54,6 @@ namespace CapaUsuario.Trabajador
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            //if (dgvRegimenTrabajador.Rows.Count > 0 && (Convert.ToString(dgvRegimenTrabajador.Rows[dgvRegimenTrabajador.Rows.Count - 1].Cells[2].Value) == "" || Convert.ToString(dgvRegimenTrabajador.Rows[dgvRegimenTrabajador.Rows.Count - 1].Cells[4].Value) == ""))
-            //{
-            //    MessageBox.Show("No se puede agregar un nuevo periodo, hasta que el ultimo perido tenga un Fecha Fin y un Motivo de Fin de Periodo", "Mensaje Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    return;
-            //}
-            //if (dgvRegimenTrabajador.Rows.Count == 0)
-            //{ sfechainicio = ""; }
-            //else
-            //{ sfechainicio = Convert.ToString(dgvRegimenTrabajador.Rows[dgvRegimenTrabajador.Rows.Count - 1].Cells[2].Value); }
             CapaUsuario.Trabajador.frmRegimenTrabajador fRegimenTrabajador = new frmRegimenTrabajador();
             fRegimenTrabajador.RecibirDatos(0, "", false, "", "", "", 0, "", "", "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, "", sidtperiodotrabajador, 1);
             if (fRegimenTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -153,6 +143,7 @@ namespace CapaUsuario.Trabajador
         public void CargarDatos()
         {
             dgvRegimenTrabajador.Rows.Clear();
+            DataTable oDataPeriodoTrabajador = new DataTable();
             oDataPeriodoTrabajador = miRegimenTrabajador.ListarRegimenTrabajador(sidtperiodotrabajador);
 
             DataTable oDataRegimenLaboral = new DataTable();
