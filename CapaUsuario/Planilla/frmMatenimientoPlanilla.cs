@@ -88,7 +88,12 @@ namespace CapaUsuario.Planilla
 
         private void btnDetallePlanilla_Click(object sender, EventArgs e)
         {
-
+            CapaUsuario.Planilla.frmMantenimientoDetallePlanilla fMantenimientoDetallePlanilla = new frmMantenimientoDetallePlanilla();
+            //fMantenimientoDetallePlanilla.RecibirDatos(sIdTTareo, sNumero, sFechaInicio, sFechaFin, sDescripcion, cboMeta.Text, sIdTMeta);
+            if (fMantenimientoDetallePlanilla.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                CargarDatos();
+            }
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)

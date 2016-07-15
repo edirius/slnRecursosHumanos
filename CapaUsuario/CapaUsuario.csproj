@@ -197,6 +197,12 @@
     <Compile Include="Navegador\frmNavegador.Designer.cs">
       <DependentUpon>frmNavegador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Planilla\frmMantenimientoDetallePlanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\frmMantenimientoDetallePlanilla.Designer.cs">
+      <DependentUpon>frmMantenimientoDetallePlanilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Planilla\frmMatenimientoPlanilla.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -528,6 +534,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Navegador\frmNavegador.resx">
       <DependentUpon>frmNavegador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\frmMantenimientoDetallePlanilla.resx">
+      <DependentUpon>frmMantenimientoDetallePlanilla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Planilla\frmMatenimientoPlanilla.resx">
       <DependentUpon>frmMatenimientoPlanilla.cs</DependentUpon>
