@@ -34,6 +34,10 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.dgvMaestroDescuentos = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaestroDescuentos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +48,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(488, 344);
+            this.btnSalir.Location = new System.Drawing.Point(389, 346);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 43;
@@ -60,7 +64,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEliminar.ImageKey = "118.png";
-            this.btnEliminar.Location = new System.Drawing.Point(399, 344);
+            this.btnEliminar.Location = new System.Drawing.Point(300, 346);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(83, 53);
             this.btnEliminar.TabIndex = 42;
@@ -76,7 +80,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificar.ImageKey = "13.png";
-            this.btnModificar.Location = new System.Drawing.Point(310, 344);
+            this.btnModificar.Location = new System.Drawing.Point(211, 346);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(83, 53);
             this.btnModificar.TabIndex = 41;
@@ -92,7 +96,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(221, 344);
+            this.btnNuevo.Location = new System.Drawing.Point(122, 346);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 40;
@@ -111,28 +115,63 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvMaestroDescuentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMaestroDescuentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
             this.dgvMaestroDescuentos.Cursor = System.Windows.Forms.Cursors.Default;
             this.dgvMaestroDescuentos.Location = new System.Drawing.Point(12, 12);
             this.dgvMaestroDescuentos.MultiSelect = false;
             this.dgvMaestroDescuentos.Name = "dgvMaestroDescuentos";
             this.dgvMaestroDescuentos.ReadOnly = true;
+            this.dgvMaestroDescuentos.RowHeadersVisible = false;
             this.dgvMaestroDescuentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaestroDescuentos.Size = new System.Drawing.Size(559, 326);
+            this.dgvMaestroDescuentos.Size = new System.Drawing.Size(460, 328);
             this.dgvMaestroDescuentos.TabIndex = 39;
             this.dgvMaestroDescuentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroDescuentos_CellClick);
             this.dgvMaestroDescuentos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroDescuentos_CellContentClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "idtmaestrodescuentos";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Codigo";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 50;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Descripcion";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 380;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Calculo";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Visible = false;
             // 
             // frmMantenimientoMaestroDescuentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(583, 409);
+            this.ClientSize = new System.Drawing.Size(484, 411);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dgvMaestroDescuentos);
             this.Name = "frmMantenimientoMaestroDescuentos";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Maestro Descuentos";
             this.Load += new System.EventHandler(this.frmMantenimientoMaestroDescuentos_Load);
@@ -148,5 +187,9 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.DataGridView dgvMaestroDescuentos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

@@ -169,7 +169,7 @@ namespace CapaUsuario.Trabajador
             dtpFechaFin.Format = DateTimePickerFormat.Long;
         }
 
-        public void RecibirDatos(int pidtregimentrabajador, string pcondicion, bool pservidorconfianza, string pnumerodocumento, string pperiodicidad, string ptipopago, int pmontopago, string pfechainicio, string pfechafin, string pruc, int pidtregimenlaboral, string pregimenlaboral, int pidttipotrabajador, string ptipotrabajador, int pidttipocontrato, string ptipocontrato, int pidtcategoriaocupacional, string pcategoriaocupacional, int pidtocupacion, string pocupacion, int pidtcargo, string pcargo, int pidtmeta, string pmeta, int pidtperiodotrabajador, int pAccion)
+        public void RecibirDatos(int pidtregimentrabajador, string pcondicion, bool pservidorconfianza, string pnumerodocumento, string pperiodicidad, string ptipopago, int pmontopago, string pfechainicio, string pfechafin, string pruc, int pidtregimenlaboral, string pregimenlaboral, int pidttipotrabajador, string ptipotrabajador, int pidttipocontrato, string ptipocontrato, int pidtcategoriaocupacional, string pcategoriaocupacional, int pidtocupacion, string pocupacion, int pidtcargo, string pcargo, int pidtmeta, string pmeta, int pidtperiodotrabajador, int pAccion, string pfechainicioperiodo, string pfechafinperiodo)
         {
             sidtregimentrabajador = pidtregimentrabajador;
             cboCondicionLaboral.Text = pcondicion;
@@ -178,22 +178,51 @@ namespace CapaUsuario.Trabajador
             cboPeriodicidad.Text = pperiodicidad;
             cboTipoPago.Text = ptipopago;
             nupMontoPago.Value = pmontopago;
-            if (pfechainicio == "") { dtpFechaInicio.Value = DateTime.Today; }
+            if (pfechainicio == "")
+            {
+                dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicioperiodo);
+                dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechainicioperiodo);
+                dtpFechaInicio.Value = Convert.ToDateTime(pfechainicioperiodo);
+            }
             else
             {
                 if (pAccion == 1)
                 {
-                    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicio).AddDays(1);
-                    dtpFechaInicio.Value = DateTime.Today;
+                    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechafin).AddDays(1);
+                    dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechafin).AddDays(1);
+                    dtpFechaInicio.Value = Convert.ToDateTime(pfechafin).AddDays(1);
                 }
-                else { dtpFechaInicio.Value = Convert.ToDateTime(pfechainicio); }
+                else
+                {
+                    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicio);
+                    dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechainicio);
+                    dtpFechaInicio.Value = Convert.ToDateTime(pfechainicio);
+                }
             }
             if (pfechafin == "")
             {
+                dtpFechaFin.MinDate = Convert.ToDateTime(pfechainicioperiodo).AddDays(1);
+                if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
+                dtpFechaFin.Value = Convert.ToDateTime(pfechainicioperiodo).AddDays(1);
                 dtpFechaFin.Format = DateTimePickerFormat.Custom;
                 dtpFechaFin.CustomFormat = " ";
             }
-            else { dtpFechaFin.Value = Convert.ToDateTime(pfechafin); }
+            else
+            {
+                if (pAccion == 1)
+                {
+                    dtpFechaFin.MinDate = Convert.ToDateTime(pfechafin).AddDays(1);
+                    if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
+                    dtpFechaFin.Format = DateTimePickerFormat.Custom;
+                    dtpFechaFin.CustomFormat = " ";
+                }
+                else
+                {
+                    dtpFechaFin.MinDate = Convert.ToDateTime(pfechainicio).AddDays(1);
+                    if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
+                    dtpFechaFin.Value = Convert.ToDateTime(pfechafin);
+                }
+            }
             txtRUC.Text = pruc;
             sidtregimenlaboral = pidtregimenlaboral;
             sregimenlaboral = pregimenlaboral;
@@ -219,7 +248,8 @@ namespace CapaUsuario.Trabajador
             cboRegimenLaboral.DataSource = miRegimenLaboral.ListarRegimenLaboral();
             cboRegimenLaboral.DisplayMember = "descripcion";
             cboRegimenLaboral.ValueMember = "idtregimenlaboral";
-            cboRegimenLaboral.Text = sregimenlaboral;
+            if (sregimenlaboral == "") { cboRegimenLaboral.SelectedIndex = -1; }
+            else { cboRegimenLaboral.Text = sregimenlaboral;}
         }
 
         private void CargarTipoTrabajador()
@@ -228,7 +258,8 @@ namespace CapaUsuario.Trabajador
             cboTipoTrabajador.DataSource = miTipoTrabajador.ListarTiposDeTrabajadores();
             cboTipoTrabajador.DisplayMember = "descripcion";
             cboTipoTrabajador.ValueMember = "idtsunattipotrabajador";
-            cboTipoTrabajador.Text = stipotrabajador;
+            if (stipotrabajador == "") { cboTipoTrabajador.SelectedIndex = -1; }
+            else { cboTipoTrabajador.Text = stipotrabajador; }
         }
 
         private void CargarTipoContrato()
@@ -237,7 +268,8 @@ namespace CapaUsuario.Trabajador
             cboTipoContrato.DataSource = miTipoContrato.ListaTipoContratos();
             cboTipoContrato.DisplayMember = "descripcion";
             cboTipoContrato.ValueMember = "idttipocontrato";
-            cboTipoContrato.Text = stipocontrato;
+            if (stipocontrato == "") { cboTipoContrato.SelectedIndex = -1; }
+            else { cboTipoContrato.Text = stipocontrato; }
         }
 
         private void CargarCategoriaOcupacional()
@@ -246,7 +278,8 @@ namespace CapaUsuario.Trabajador
             cboCategoriaOcupacional.DataSource = miCategoriaOcupacional.ListarCategoriaOcupacional();
             cboCategoriaOcupacional.DisplayMember = "descripcion";
             cboCategoriaOcupacional.ValueMember = "idtcategoriaocupacional";
-            cboCategoriaOcupacional.Text = scategoriaocupacional;
+            if (scategoriaocupacional == "") { cboCategoriaOcupacional.SelectedIndex = -1; }
+            else { cboCategoriaOcupacional.Text = scategoriaocupacional; }
         }
 
         private void CargarOcupacion()
@@ -255,7 +288,8 @@ namespace CapaUsuario.Trabajador
             cboOcupacion.DataSource = miOcupacion.ListarOcupacion();
             cboOcupacion.DisplayMember = "descripcion";
             cboOcupacion.ValueMember = "idtocupacion";
-            cboOcupacion.Text = socupacion;
+            if (socupacion == "") { cboOcupacion.SelectedIndex = -1; }
+            else { cboOcupacion.Text = socupacion; }
         }
 
         private void CargarCargo()
@@ -264,7 +298,8 @@ namespace CapaUsuario.Trabajador
             cboCargo.DataSource = miCargo.ListaCargos();
             cboCargo.DisplayMember = "descripcion";
             cboCargo.ValueMember = "idtcargo";
-            cboCargo.Text = scargo;
+            if (scargo == "") { cboCargo.SelectedIndex = -1; }
+            else { cboCargo.Text = scargo; }
         }
 
         private void CargarMeta()
@@ -273,7 +308,8 @@ namespace CapaUsuario.Trabajador
             cboMeta.DataSource = miMeta.ListarMetas();
             cboMeta.DisplayMember = "nombre";
             cboMeta.ValueMember = "idtmeta";
-            cboMeta.Text = smeta;
+            if (smeta == "") { cboMeta.SelectedIndex = -1; }
+            else { cboMeta.Text = smeta; }
         }
     }
 }

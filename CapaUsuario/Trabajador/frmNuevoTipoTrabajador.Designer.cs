@@ -127,6 +127,7 @@
             this.Controls.Add(this.dtpInicioPeriodo);
             this.Controls.Add(this.label1);
             this.Name = "frmNuevoTipoTrabajador";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento de Tipo Trabajador";
             this.Load += new System.EventHandler(this.frmNuevoTipoTrabajador_Load);

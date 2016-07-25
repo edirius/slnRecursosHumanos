@@ -144,6 +144,7 @@
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label1);
             this.Name = "frmMaestroAportacionesEmpleador";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Maestro Aportaciones Empleador";
             this.Load += new System.EventHandler(this.frmMaestroAportacionesEmpleador_Load);

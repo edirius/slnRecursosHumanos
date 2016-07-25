@@ -362,6 +362,7 @@
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dgvRegimenTrabajador);
             this.Name = "frmMantenimientoRegimenTrabajador";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Regimen Trabajador";
             this.Load += new System.EventHandler(this.frmMantenimientoRegimenTrabajador_Load);

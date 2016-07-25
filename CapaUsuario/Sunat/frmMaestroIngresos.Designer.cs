@@ -324,6 +324,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmMaestroIngresos";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Maestro Ingresos";
             this.Load += new System.EventHandler(this.frmMaestroIngresos_Load);

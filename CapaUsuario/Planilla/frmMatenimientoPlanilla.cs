@@ -88,12 +88,15 @@ namespace CapaUsuario.Planilla
 
         private void btnDetallePlanilla_Click(object sender, EventArgs e)
         {
+            CapaUsuario.frmPrincipal fPrincipal = new frmPrincipal();
             CapaUsuario.Planilla.frmMantenimientoDetallePlanilla fMantenimientoDetallePlanilla = new frmMantenimientoDetallePlanilla();
-            //fMantenimientoDetallePlanilla.RecibirDatos(sIdTTareo, sNumero, sFechaInicio, sFechaFin, sDescripcion, cboMeta.Text, sIdTMeta);
+            fMantenimientoDetallePlanilla.RecibirDatos(sidtplanilla, snumero, smes, saño, sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, sidtregimenlaboral, cboRegimenLaboral.Text);
+            //fMantenimientoDetallePlanilla.MdiParent = fPrincipal;
             if (fMantenimientoDetallePlanilla.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
             }
+            //fMantenimientoDetallePlanilla.Show();
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)

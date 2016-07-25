@@ -33,6 +33,11 @@ namespace CapaUsuario.Trabajador
 
         private void btnSeguridadSocial_Click(object sender, EventArgs e)
         {
+            if (sidtperiodotrabajador == 0)
+            {
+                MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             CapaUsuario.Trabajador.frmMantenimientoSeguroSocial fSeguroSocialTrabajador = new frmMantenimientoSeguroSocial();
             fSeguroSocialTrabajador.RecibirDatos(sidtperiodotrabajador, sfechainicio, sfechafin);
             fSeguroSocialTrabajador.ShowDialog();
@@ -40,6 +45,11 @@ namespace CapaUsuario.Trabajador
 
         private void btnRegimenTrabajador_Click(object sender, EventArgs e)
         {
+            if (sidtperiodotrabajador == 0)
+            {
+                MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             CapaUsuario.Trabajador.frmMantenimientoRegimenTrabajador fRegimenTrabajador = new frmMantenimientoRegimenTrabajador();
             fRegimenTrabajador.RecibirDatos(sidtperiodotrabajador, sfechainicio, sfechafin);
             fRegimenTrabajador.ShowDialog();

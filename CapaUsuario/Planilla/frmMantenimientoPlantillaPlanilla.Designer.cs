@@ -448,6 +448,7 @@
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.groupBox2);
             this.Name = "frmMantenimientoPlantillaPlanilla";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Plantilla Planilla";
             this.Load += new System.EventHandler(this.frmPlantillaPlanilla_Load);

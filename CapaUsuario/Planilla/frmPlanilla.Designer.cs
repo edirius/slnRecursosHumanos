@@ -29,8 +29,12 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboAño = new System.Windows.Forms.ComboBox();
+            this.cboMes = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboFuenteFinanciamiento = new System.Windows.Forms.ComboBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cboMeta = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
@@ -39,10 +43,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.cboMes = new System.Windows.Forms.ComboBox();
-            this.cboAño = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,6 +69,50 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalles";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(312, 48);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 86;
+            this.label1.Text = "Año :";
+            // 
+            // cboAño
+            // 
+            this.cboAño.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAño.FormattingEnabled = true;
+            this.cboAño.Location = new System.Drawing.Point(350, 45);
+            this.cboAño.Name = "cboAño";
+            this.cboAño.Size = new System.Drawing.Size(144, 21);
+            this.cboAño.TabIndex = 85;
+            // 
+            // cboMes
+            // 
+            this.cboMes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMes.FormattingEnabled = true;
+            this.cboMes.Items.AddRange(new object[] {
+            "ENERO",
+            "FEBRERO",
+            "MARZO",
+            "ABRIL",
+            "MAYO",
+            "JUNIO",
+            "JULIO",
+            "AGOSTO",
+            "SEPTIEMBRE",
+            "OCTUBRE",
+            "NOVIEMBRE",
+            "DICIEMBRE"});
+            this.cboMes.Location = new System.Drawing.Point(132, 45);
+            this.cboMes.Name = "cboMes";
+            this.cboMes.Size = new System.Drawing.Size(144, 21);
+            this.cboMes.TabIndex = 84;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -89,6 +133,16 @@
             this.cboFuenteFinanciamiento.Size = new System.Drawing.Size(362, 21);
             this.cboFuenteFinanciamiento.TabIndex = 12;
             this.cboFuenteFinanciamiento.SelectedIndexChanged += new System.EventHandler(this.cboFuenteFinanciamiento_SelectedIndexChanged);
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNumero.Location = new System.Drawing.Point(132, 19);
+            this.txtNumero.MaxLength = 11;
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(143, 20);
+            this.txtNumero.TabIndex = 6;
             // 
             // label2
             // 
@@ -180,60 +234,6 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // txtNumero
-            // 
-            this.txtNumero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNumero.Location = new System.Drawing.Point(132, 19);
-            this.txtNumero.MaxLength = 11;
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(143, 20);
-            this.txtNumero.TabIndex = 6;
-            // 
-            // cboMes
-            // 
-            this.cboMes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMes.FormattingEnabled = true;
-            this.cboMes.Items.AddRange(new object[] {
-            "ENERO",
-            "FEBRERO",
-            "MARZO",
-            "ABRIL",
-            "MAYO",
-            "JUNIO",
-            "JULIO",
-            "AGOSTO",
-            "SEPTIEMBRE",
-            "OCTUBRE",
-            "NOVIEMBRE",
-            "DICIEMBRE"});
-            this.cboMes.Location = new System.Drawing.Point(132, 45);
-            this.cboMes.Name = "cboMes";
-            this.cboMes.Size = new System.Drawing.Size(144, 21);
-            this.cboMes.TabIndex = 84;
-            // 
-            // cboAño
-            // 
-            this.cboAño.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAño.FormattingEnabled = true;
-            this.cboAño.Location = new System.Drawing.Point(350, 45);
-            this.cboAño.Name = "cboAño";
-            this.cboAño.Size = new System.Drawing.Size(144, 21);
-            this.cboAño.TabIndex = 85;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(312, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 86;
-            this.label1.Text = "Año :";
-            // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -243,6 +243,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Name = "frmPlanilla";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Planilla";
             this.Load += new System.EventHandler(this.frmPlanilla_Load);

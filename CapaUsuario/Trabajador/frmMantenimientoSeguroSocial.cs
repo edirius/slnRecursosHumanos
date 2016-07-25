@@ -27,9 +27,9 @@ namespace CapaUsuario.Trabajador
         string sfechainiciopensionario = "";
         string sfechafinpensionario = "";
         string scuspp = "";
+        string stipocomision = "";
         int sidtafp = 0;
         string safp = "";
-
 
         CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador miRegimenSaludTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador();
         CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
@@ -93,7 +93,7 @@ namespace CapaUsuario.Trabajador
                     }
                 }
                 CapaUsuario.Trabajador.frmRegimenPensionarioTrabajador fRegimenPensionarioTrabajador = new frmRegimenPensionarioTrabajador();
-                fRegimenPensionarioTrabajador.RecibirDatos(0, sfechainiciopensionario, sfechafinpensionario, "", 0, "", sidtperiodotrabajador, 1, sfechainicioperiodo, sfechafinperiodo);
+                fRegimenPensionarioTrabajador.RecibirDatos(0, sfechainiciopensionario, sfechafinpensionario, "", "", 0, "", sidtperiodotrabajador, 1, sfechainicioperiodo, sfechafinperiodo);
                 if (fRegimenPensionarioTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     i = 2;
@@ -129,7 +129,7 @@ namespace CapaUsuario.Trabajador
                     return;
                 }
                 CapaUsuario.Trabajador.frmRegimenPensionarioTrabajador fRegimenPensionarioTrabajador = new frmRegimenPensionarioTrabajador();
-                fRegimenPensionarioTrabajador.RecibirDatos(sidtregimenpensionariotrabajador, sfechainiciopensionario, sfechafinpensionario, scuspp, sidtafp, safp, sidtperiodotrabajador, 2, sfechainicioperiodo, sfechafinperiodo);
+                fRegimenPensionarioTrabajador.RecibirDatos(sidtregimenpensionariotrabajador, sfechainiciopensionario, sfechafinpensionario, scuspp, stipocomision, sidtafp, safp, sidtperiodotrabajador, 2, sfechainicioperiodo, sfechafinperiodo);
                 if (fRegimenPensionarioTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     i = 2;
@@ -195,6 +195,7 @@ namespace CapaUsuario.Trabajador
             sfechainiciopensionario = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[4].Value);
             sfechafinpensionario = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[5].Value);
             scuspp = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[6].Value);
+            stipocomision = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[7].Value);
             if (dgvRegimenPensionario.Rows[e.RowIndex].Cells[0].Selected == true)
             {
                 if (sidtregimenpensionariotrabajador == 0)
@@ -262,9 +263,9 @@ namespace CapaUsuario.Trabajador
             oDataAFP = miAFP.ObtenerListaAFP();
             foreach (DataRow row in oDataRegimenPensionario.Rows)
             {
-                foreach (DataRow row1 in oDataAFP.Select("idtafp ='" + row[4].ToString() + "'"))
+                foreach (DataRow row1 in oDataAFP.Select("idtafp ='" + row[5].ToString() + "'"))
                 {
-                    dgvRegimenPensionario.Rows.Add("", row[0].ToString(), row1[0].ToString(), row1[1].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString());
+                    dgvRegimenPensionario.Rows.Add("", row[0].ToString(), row1[0].ToString(), row1[1].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString());
                 }
             }
             if (dgvRegimenPensionario.Rows.Count > 0)

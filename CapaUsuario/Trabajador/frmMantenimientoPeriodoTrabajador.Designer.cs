@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
@@ -99,8 +99,8 @@
             // 
             this.dgvPeriodoTrabajador.AllowUserToAddRows = false;
             this.dgvPeriodoTrabajador.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvPeriodoTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvPeriodoTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPeriodoTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -233,6 +233,7 @@
             this.Controls.Add(this.dgvPeriodoTrabajador);
             this.Controls.Add(this.groupBox2);
             this.Name = "frmMantenimientoPeriodoTrabajador";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Periodo Trabajador";
             this.Load += new System.EventHandler(this.frmPeriodoTrabajador_Load);

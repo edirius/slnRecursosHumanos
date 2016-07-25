@@ -194,6 +194,7 @@
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmRegimenSaludTrabajador";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Regimen de Salud del Trabajador";
             this.Load += new System.EventHandler(this.frmRegimenSaludTrabajador_Load);

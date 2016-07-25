@@ -123,6 +123,7 @@
             this.Controls.Add(this.btnSalir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMensajeIngreso";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Selecciones lo que desea Agregar";
             this.Load += new System.EventHandler(this.frmMensajeIngreso_Load);

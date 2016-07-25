@@ -39,6 +39,7 @@ namespace CapaUsuario.Trabajador
             if (dtpFechaFin.Format == DateTimePickerFormat.Custom) { miRegimenPensionarioTrabajador.FechaFin = ""; }
             else { miRegimenPensionarioTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString(); }
             miRegimenPensionarioTrabajador.CUSPP = txtCUSPP.Text;
+            miRegimenPensionarioTrabajador.TipoComision = cboTipoComision.Text;
             miRegimenPensionarioTrabajador.IdtAFP = sidtafp;
             miRegimenPensionarioTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
 
@@ -87,7 +88,7 @@ namespace CapaUsuario.Trabajador
             dtpFechaFin.Format = DateTimePickerFormat.Long;
         }
 
-        public void RecibirDatos(int pidtregimenpensionariotrabajador, string pfechainicio, string pfechafin, string pcuspp, int pidtafp, string pafp, int pidtperiodotrabajador, int pAccion, string pfechainicioperiodo, string pfechafinperiodo)
+        public void RecibirDatos(int pidtregimenpensionariotrabajador, string pfechainicio, string pfechafin, string pcuspp, string ptipocomision, int pidtafp, string pafp, int pidtperiodotrabajador, int pAccion, string pfechainicioperiodo, string pfechafinperiodo)
         {
             sidtregimenpensionariotrabajador = pidtregimenpensionariotrabajador;
             if (pfechainicio == "")
@@ -136,6 +137,7 @@ namespace CapaUsuario.Trabajador
                 }
             }
             txtCUSPP.Text = pcuspp;
+            cboTipoComision.Text = ptipocomision;
             sidtafp = pidtafp;
             safp = pafp;
             sidtperiodotrabajador = pidtperiodotrabajador;
@@ -148,7 +150,8 @@ namespace CapaUsuario.Trabajador
             cboAFP.DataSource = miAFP.ObtenerListaAFP();
             cboAFP.DisplayMember = "nombre";
             cboAFP.ValueMember = "idtafp";
-            cboAFP.Text = safp;
+            if (safp == "") { cboAFP.SelectedIndex = -1; }
+            else { cboAFP.Text = safp; }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

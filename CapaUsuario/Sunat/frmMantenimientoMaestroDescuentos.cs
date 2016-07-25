@@ -82,18 +82,25 @@ namespace CapaUsuario.Sunat
 
         private void dgvMaestroDescuentos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int iFila = this.dgvMaestroDescuentos.CurrentRow.Index;
-            sidtmaestrodescuentos = Convert.ToInt32(dgvMaestroDescuentos.Rows[iFila].Cells["idtmaestrodescuentos"].Value);
-            scodigo = Convert.ToString(dgvMaestroDescuentos.Rows[iFila].Cells["codigo"].Value);
-            sdescripcion = Convert.ToString(dgvMaestroDescuentos.Rows[iFila].Cells["descripcion"].Value);
-            scalculo = Convert.ToString(dgvMaestroDescuentos.Rows[iFila].Cells["calculo"].Value);
+            sidtmaestrodescuentos = Convert.ToInt32(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[0].Value);
+            scodigo = Convert.ToString(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[1].Value);
+            sdescripcion = Convert.ToString(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[2].Value);
+            scalculo = Convert.ToString(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[3].Value);
         }
 
         private void CargarDatos()
         {
-            dgvMaestroDescuentos.DataSource = miMaestroDescuentos.ListarMaestroDescuentos();
-            dgvMaestroDescuentos.Columns[0].Visible = false;
-            dgvMaestroDescuentos.Columns[3].Visible = false;
+            dgvMaestroDescuentos.Rows.Clear();
+            foreach (DataRow row in miMaestroDescuentos.ListarMaestroDescuentos().Rows)
+            {
+                dgvMaestroDescuentos.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString());
+            }
+            if (dgvMaestroDescuentos.Rows.Count > 0)
+            {
+                dgvMaestroDescuentos.Rows[0].Selected = true;
+                DataGridViewCellEventArgs ceo = new DataGridViewCellEventArgs(0, 0);
+                dgvMaestroDescuentos_CellClick(dgvMaestroDescuentos, ceo);
+            }
         }
     }
 }

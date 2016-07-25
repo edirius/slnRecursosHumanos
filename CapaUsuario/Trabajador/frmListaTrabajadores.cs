@@ -26,6 +26,12 @@ namespace CapaUsuario.Trabajador
         private void Iniciar()
         {
             dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(true);
+            if (dtgListaTrabajadores.Rows.Count > 0)
+            {
+                DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, 0);
+                dtgListaTrabajadores.Rows[dtgListaTrabajadores.Rows.Count - 1].Selected = true;
+                dtgListaTrabajadores_CellClick(dtgListaTrabajadores, cea);
+            }
         }
 
           

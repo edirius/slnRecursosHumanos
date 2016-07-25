@@ -95,6 +95,7 @@
             // 
             // nupMontoPago
             // 
+            this.nupMontoPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nupMontoPago.Location = new System.Drawing.Point(332, 99);
             this.nupMontoPago.Maximum = new decimal(new int[] {
             100000,
@@ -493,6 +494,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbPeriodoCOntrato);
             this.Name = "frmRegimenTrabajador";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Regimen Trabajador";
             this.Load += new System.EventHandler(this.frmRegimenTrabajador_Load);

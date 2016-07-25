@@ -54,8 +54,23 @@ namespace CapaUsuario.Trabajador
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            if (dgvRegimenTrabajador.Rows.Count > 0)
+            {
+                sfechainicio = Convert.ToString(dgvRegimenTrabajador.Rows[dgvRegimenTrabajador.Rows.Count - 1].Cells[7].Value);
+                sfechafin = Convert.ToString(dgvRegimenTrabajador.Rows[dgvRegimenTrabajador.Rows.Count - 1].Cells[8].Value);
+                if (sfechafin == "")
+                {
+                    MessageBox.Show("El ultimen regimen de trabajador debe tener una fecha final, no se puede agregar uno nuevo", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (sfechafin == sfechafinperiodo)
+                {
+                    MessageBox.Show("No quedan dias libres en el periodo, no se puede agregar uno nuevo", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             CapaUsuario.Trabajador.frmRegimenTrabajador fRegimenTrabajador = new frmRegimenTrabajador();
-            fRegimenTrabajador.RecibirDatos(0, "", false, "", "", "", 0, "", "", "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, "", sidtperiodotrabajador, 1);
+            fRegimenTrabajador.RecibirDatos(0, "", false, "", "", "", 0, "", "", "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, "", sidtperiodotrabajador, 1, sfechainicioperiodo, sfechafinperiodo);
             if (fRegimenTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -70,7 +85,7 @@ namespace CapaUsuario.Trabajador
                 return;
             }
             CapaUsuario.Trabajador.frmRegimenTrabajador fRegimenTrabajador = new frmRegimenTrabajador();
-            fRegimenTrabajador.RecibirDatos(sidtregimentrabajador, scondicion, sservidorconfianza, snumerodocumento, speriodicidad, stipopago, smontopago, sfechainicio, sfechafin, sruc, sidtregimenlaboral, sregimenlaboral, sidttipotrabajador, stipotrabajador, sidttipocontrato, stipocontrato, sidtcategoriaocupacional, scategoriaocupacional, sidtocupacion, socupacion, sidtcargo, scargo, sidtmeta, smeta, sidtperiodotrabajador, 2);
+            fRegimenTrabajador.RecibirDatos(sidtregimentrabajador, scondicion, sservidorconfianza, snumerodocumento, speriodicidad, stipopago, smontopago, sfechainicio, sfechafin, sruc, sidtregimenlaboral, sregimenlaboral, sidttipotrabajador, stipotrabajador, sidttipocontrato, stipocontrato, sidtcategoriaocupacional, scategoriaocupacional, sidtocupacion, socupacion, sidtcargo, scargo, sidtmeta, smeta, sidtperiodotrabajador, 2, sfechainicioperiodo, sfechafinperiodo);
             if (fRegimenTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();

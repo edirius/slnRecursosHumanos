@@ -233,6 +233,12 @@
     <Compile Include="Planilla\frmPlantillaPlanilla.Designer.cs">
       <DependentUpon>frmPlantillaPlanilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Planilla\frmSeleccionTrabajadorPlanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\frmSeleccionTrabajadorPlanilla.Designer.cs">
+      <DependentUpon>frmSeleccionTrabajadorPlanilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reportes\MostrarReportes.cs">
@@ -552,6 +558,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Planilla\frmPlantillaPlanilla.resx">
       <DependentUpon>frmPlantillaPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\frmSeleccionTrabajadorPlanilla.resx">
+      <DependentUpon>frmSeleccionTrabajadorPlanilla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

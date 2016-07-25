@@ -82,18 +82,25 @@ namespace CapaUsuario.Sunat
 
         private void dgvMaestroAportacionesTrabajador_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int iFila = this.dgvMaestroAportacionesTrabajador.CurrentRow.Index;
-            sidtmaestroaportacionestrabajador = Convert.ToInt32(dgvMaestroAportacionesTrabajador.Rows[iFila].Cells["idtmaestroaportacionestrabajador"].Value);
-            scodigo = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[iFila].Cells["codigo"].Value);
-            sdescripcion = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[iFila].Cells["descripcion"].Value);
-            scalculo = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[iFila].Cells["calculo"].Value);
+            sidtmaestroaportacionestrabajador = Convert.ToInt32(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[0].Value);
+            scodigo = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[1].Value);
+            sdescripcion = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[2].Value);
+            scalculo = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[3].Value);
         }
 
         private void CargarDatos()
         {
-            dgvMaestroAportacionesTrabajador.DataSource = miMaestroAportacionesTrabajador.ListarMaestroAportacionesTrabajador();
-            dgvMaestroAportacionesTrabajador.Columns[0].Visible = false;
-            dgvMaestroAportacionesTrabajador.Columns[3].Visible = false;
+            dgvMaestroAportacionesTrabajador.Rows.Clear();
+            foreach (DataRow row in miMaestroAportacionesTrabajador.ListarMaestroAportacionesTrabajador().Rows)
+            {
+                dgvMaestroAportacionesTrabajador.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString());
+            }
+            if (dgvMaestroAportacionesTrabajador.Rows.Count > 0)
+            {
+                dgvMaestroAportacionesTrabajador.Rows[0].Selected = true;
+                DataGridViewCellEventArgs ceo = new DataGridViewCellEventArgs(0, 0);
+                dgvMaestroAportacionesTrabajador_CellClick(dgvMaestroAportacionesTrabajador, ceo);
+            }
         }
     }
 }

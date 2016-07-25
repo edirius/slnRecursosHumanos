@@ -36,9 +36,6 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.dgvPlanilla = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnTipoTrabajador = new System.Windows.Forms.Button();
-            this.cboRegimenLaboral = new System.Windows.Forms.ComboBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +45,9 @@
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnTipoTrabajador = new System.Windows.Forms.Button();
+            this.cboRegimenLaboral = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -180,43 +180,6 @@
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnTipoTrabajador);
-            this.groupBox2.Controls.Add(this.cboRegimenLaboral);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(586, 48);
-            this.groupBox2.TabIndex = 22;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Regimen Laboral";
-            // 
-            // btnTipoTrabajador
-            // 
-            this.btnTipoTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTipoTrabajador.Font = new System.Drawing.Font("Wide Latin", 9.75F);
-            this.btnTipoTrabajador.Location = new System.Drawing.Point(516, 19);
-            this.btnTipoTrabajador.Name = "btnTipoTrabajador";
-            this.btnTipoTrabajador.Size = new System.Drawing.Size(64, 23);
-            this.btnTipoTrabajador.TabIndex = 1;
-            this.btnTipoTrabajador.Text = "...";
-            this.btnTipoTrabajador.UseVisualStyleBackColor = true;
-            this.btnTipoTrabajador.Click += new System.EventHandler(this.btnTipoTrabajador_Click);
-            // 
-            // cboRegimenLaboral
-            // 
-            this.cboRegimenLaboral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboRegimenLaboral.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboRegimenLaboral.FormattingEnabled = true;
-            this.cboRegimenLaboral.Location = new System.Drawing.Point(6, 19);
-            this.cboRegimenLaboral.Name = "cboRegimenLaboral";
-            this.cboRegimenLaboral.Size = new System.Drawing.Size(504, 21);
-            this.cboRegimenLaboral.TabIndex = 0;
-            this.cboRegimenLaboral.SelectedIndexChanged += new System.EventHandler(this.cboRegimenLaboral_SelectedIndexChanged);
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "IdtPlanilla";
@@ -284,6 +247,43 @@
             this.Column9.ReadOnly = true;
             this.Column9.Width = 200;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnTipoTrabajador);
+            this.groupBox2.Controls.Add(this.cboRegimenLaboral);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(586, 48);
+            this.groupBox2.TabIndex = 22;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Regimen Laboral";
+            // 
+            // btnTipoTrabajador
+            // 
+            this.btnTipoTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTipoTrabajador.Font = new System.Drawing.Font("Wide Latin", 9.75F);
+            this.btnTipoTrabajador.Location = new System.Drawing.Point(516, 19);
+            this.btnTipoTrabajador.Name = "btnTipoTrabajador";
+            this.btnTipoTrabajador.Size = new System.Drawing.Size(64, 23);
+            this.btnTipoTrabajador.TabIndex = 1;
+            this.btnTipoTrabajador.Text = "...";
+            this.btnTipoTrabajador.UseVisualStyleBackColor = true;
+            this.btnTipoTrabajador.Click += new System.EventHandler(this.btnTipoTrabajador_Click);
+            // 
+            // cboRegimenLaboral
+            // 
+            this.cboRegimenLaboral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboRegimenLaboral.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRegimenLaboral.FormattingEnabled = true;
+            this.cboRegimenLaboral.Location = new System.Drawing.Point(6, 19);
+            this.cboRegimenLaboral.Name = "cboRegimenLaboral";
+            this.cboRegimenLaboral.Size = new System.Drawing.Size(504, 21);
+            this.cboRegimenLaboral.TabIndex = 0;
+            this.cboRegimenLaboral.SelectedIndexChanged += new System.EventHandler(this.cboRegimenLaboral_SelectedIndexChanged);
+            // 
             // frmMatenimientoPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,6 +298,7 @@
             this.Controls.Add(this.dgvPlanilla);
             this.Controls.Add(this.groupBox2);
             this.Name = "frmMatenimientoPlanilla";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Matenimiento Planilla";
             this.Load += new System.EventHandler(this.frmMatenimientoPlanilla_Load);

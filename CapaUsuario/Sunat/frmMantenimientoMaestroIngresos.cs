@@ -109,32 +109,38 @@ namespace CapaUsuario.Sunat
 
         private void dgvMaestroIngresos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int iFila = this.dgvMaestroIngresos.CurrentRow.Index;
-            sidtmaestroingresos = Convert.ToInt32(dgvMaestroIngresos.Rows[iFila].Cells["idtmaestroingresos"].Value);
-            scodigo = Convert.ToString(dgvMaestroIngresos.Rows[iFila].Cells["codigo"].Value);
-            sdescripcion = Convert.ToString(dgvMaestroIngresos.Rows[iFila].Cells["descripcion"].Value);
-            sessalud_trabajador = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["essalud_trabajador"].Value);
-            sessalud_cbssp = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["essalud_cbssp"].Value);
-            sessalud_agrario = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["essalud_agrario"].Value);
-            sessalud_sctr = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["essalud_sctr"].Value);
-            simpuesto_extraord = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["impuesto_extraord"].Value);
-            sderechos_sociales = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["derechos_sociales"].Value);
-            ssenati = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["senati"].Value);
-            ssnp = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["snp"].Value);
-            sspp = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["spp"].Value);
-            srenta_5ta = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["renta_5ta"].Value);
-            sessalud_pensionista = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["essalud_pensionista"].Value);
-            scontrib_solidaria = Convert.ToBoolean(dgvMaestroIngresos.Rows[iFila].Cells["contrib_solidaria"].Value);
-            scalculo = Convert.ToString(dgvMaestroIngresos.Rows[iFila].Cells["calculo"].Value);
+            sidtmaestroingresos = Convert.ToInt32(dgvMaestroIngresos.Rows[e.RowIndex].Cells[0].Value);
+            scodigo = Convert.ToString(dgvMaestroIngresos.Rows[e.RowIndex].Cells[1].Value);
+            sdescripcion = Convert.ToString(dgvMaestroIngresos.Rows[e.RowIndex].Cells[2].Value);
+            sessalud_trabajador = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[3].Value);
+            sessalud_cbssp = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[4].Value);
+            sessalud_agrario = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[5].Value);
+            sessalud_sctr = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[6].Value);
+            simpuesto_extraord = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[7].Value);
+            sderechos_sociales = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[8].Value);
+            ssenati = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[9].Value);
+            ssnp = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[10].Value);
+            sspp = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[11].Value);
+            srenta_5ta = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[12].Value);
+            sessalud_pensionista = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[13].Value);
+            scontrib_solidaria = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[14].Value);
+            scalculo = Convert.ToString(dgvMaestroIngresos.Rows[e.RowIndex].Cells[15].Value);
         }
 
         private void CargarDatos()
         {
+            dgvMaestroIngresos.Rows.Clear();
             miMaestroIngresos.Tipo = stipo;
-            dgvMaestroIngresos.DataSource = miMaestroIngresos.ListarMaestroIngresos(miMaestroIngresos);
-            dgvMaestroIngresos.Columns[0].Visible = false;
-            dgvMaestroIngresos.Columns[15].Visible = false;
-            dgvMaestroIngresos.Columns[16].Visible = false;
+            foreach (DataRow row in miMaestroIngresos.ListarMaestroIngresos(miMaestroIngresos).Rows)
+            {
+                dgvMaestroIngresos.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), Convert.ToBoolean(row[3]), Convert.ToBoolean(row[4]), Convert.ToBoolean(row[5]), Convert.ToBoolean(row[6]), Convert.ToBoolean(row[7]), Convert.ToBoolean(row[8]), Convert.ToBoolean(row[9]), Convert.ToBoolean(row[10]), Convert.ToBoolean(row[11]), Convert.ToBoolean(row[12]), Convert.ToBoolean(row[13]), Convert.ToBoolean(row[14]), row[15].ToString());
+            }
+            if (dgvMaestroIngresos.Rows.Count > 0)
+            {
+                dgvMaestroIngresos.Rows[0].Selected = true;
+                DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, 0);
+                dgvMaestroIngresos_CellClick(dgvMaestroIngresos, cea);
+            }
         }
     }
 }

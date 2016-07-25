@@ -15,6 +15,7 @@ namespace CapaDeNegocios.DatosLaborales
         string sfechainicio;
         string sfechafin;
         string scuspp;
+        string stipocomision;
         int sidtafp;
         int sidtperiodotrabajor;
 
@@ -38,6 +39,11 @@ namespace CapaDeNegocios.DatosLaborales
             get { return scuspp; }
             set { scuspp = value; }
         }
+        public string TipoComision
+        {
+            get { return stipocomision; }
+            set { stipocomision = value; }
+        }
         public int IdtAFP
         {
             get { return sidtafp; }
@@ -56,13 +62,13 @@ namespace CapaDeNegocios.DatosLaborales
 
         public Boolean CrearRegimenPensionarioTrabajador(cRegimenPensionarioTrabajador miRegimenPensionarioTrabajador)
         {
-            Conexion.GDatos.Ejecutar("spCrearRegimenPensionarioTrabajador", miRegimenPensionarioTrabajador.FechaInicio, miRegimenPensionarioTrabajador.FechaFin, miRegimenPensionarioTrabajador.CUSPP, miRegimenPensionarioTrabajador.IdtAFP, miRegimenPensionarioTrabajador.IdtPeriodoTrabajador);
+            Conexion.GDatos.Ejecutar("spCrearRegimenPensionarioTrabajador", miRegimenPensionarioTrabajador.FechaInicio, miRegimenPensionarioTrabajador.FechaFin, miRegimenPensionarioTrabajador.CUSPP, miRegimenPensionarioTrabajador.TipoComision, miRegimenPensionarioTrabajador.IdtAFP, miRegimenPensionarioTrabajador.IdtPeriodoTrabajador);
             return true;
         }
 
         public Boolean ModificarRegimenPensionarioTrabajador(cRegimenPensionarioTrabajador miRegimenPensionarioTrabajador)
         {
-            Conexion.GDatos.Ejecutar("spModificarRegimenPensionarioTrabajador", miRegimenPensionarioTrabajador.IdtRegimenPensionarioTrabajador, miRegimenPensionarioTrabajador.FechaInicio, miRegimenPensionarioTrabajador.FechaFin, miRegimenPensionarioTrabajador.CUSPP, miRegimenPensionarioTrabajador.IdtAFP, miRegimenPensionarioTrabajador.IdtPeriodoTrabajador);
+            Conexion.GDatos.Ejecutar("spModificarRegimenPensionarioTrabajador", miRegimenPensionarioTrabajador.IdtRegimenPensionarioTrabajador, miRegimenPensionarioTrabajador.FechaInicio, miRegimenPensionarioTrabajador.FechaFin, miRegimenPensionarioTrabajador.CUSPP, miRegimenPensionarioTrabajador.TipoComision, miRegimenPensionarioTrabajador.IdtAFP, miRegimenPensionarioTrabajador.IdtPeriodoTrabajador);
             return true;
         }
 
