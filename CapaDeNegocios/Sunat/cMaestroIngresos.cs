@@ -116,9 +116,9 @@ namespace CapaDeNegocios.Sunat
             set { stipo = value; }
         }
 
-        public DataTable ListarMaestroIngresos(cMaestroIngresos miMaestroIngresos)
+        public DataTable ListarMaestroIngresos(string Tipo)
         {
-            return Conexion.GDatos.TraerDataTable("spListarMaestroIngresos", miMaestroIngresos.Tipo);
+            return Conexion.GDatos.TraerDataTable("spListarMaestroIngresos", Tipo);
         }
 
         public Boolean CrearMaestroIngresos(cMaestroIngresos miMaestroIngresos)
@@ -133,9 +133,9 @@ namespace CapaDeNegocios.Sunat
             return true;
         }
 
-        public Boolean EliminarMaestroIngresos(cMaestroIngresos miMaestroIngresos)
+        public Boolean EliminarMaestroIngresos(int IdtMaestroIngresos)
         {
-            Conexion.GDatos.Ejecutar("spELiminarMaestroIngresos", miMaestroIngresos.IdtMaestroIngresos);
+            Conexion.GDatos.Ejecutar("spELiminarMaestroIngresos", IdtMaestroIngresos);
             return true;
         }
     }

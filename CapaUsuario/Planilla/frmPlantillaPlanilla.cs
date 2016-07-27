@@ -83,8 +83,7 @@ namespace CapaUsuario.Planilla
             oDataPlantillaPlanilla = miPlantillaPlanilla.ListarPlantillaPlanilla(sidtregimenlaboral);
 
             CapaDeNegocios.Sunat.cMaestroIngresos miMaestroIngresos = new CapaDeNegocios.Sunat.cMaestroIngresos();
-            miMaestroIngresos.Tipo = "";
-            oDataMaestroIngresos = miMaestroIngresos.ListarMaestroIngresos(miMaestroIngresos);
+            oDataMaestroIngresos = miMaestroIngresos.ListarMaestroIngresos("");
             CapaDeNegocios.Sunat.cMaestroDescuentos miMaestroDescuentos = new CapaDeNegocios.Sunat.cMaestroDescuentos();
             oDataMaestroDescuentos = miMaestroDescuentos.ListarMaestroDescuentos();
             CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador miMaestroATrabajador = new CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador();

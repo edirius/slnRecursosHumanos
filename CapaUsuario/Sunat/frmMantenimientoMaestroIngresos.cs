@@ -83,8 +83,7 @@ namespace CapaUsuario.Sunat
             {
                 return;
             }
-            miMaestroIngresos.IdtMaestroIngresos = sidtmaestroingresos;
-            miMaestroIngresos.EliminarMaestroIngresos(miMaestroIngresos);
+            miMaestroIngresos.EliminarMaestroIngresos(sidtmaestroingresos);
             CargarDatos();
         }
 
@@ -130,8 +129,7 @@ namespace CapaUsuario.Sunat
         private void CargarDatos()
         {
             dgvMaestroIngresos.Rows.Clear();
-            miMaestroIngresos.Tipo = stipo;
-            foreach (DataRow row in miMaestroIngresos.ListarMaestroIngresos(miMaestroIngresos).Rows)
+            foreach (DataRow row in miMaestroIngresos.ListarMaestroIngresos(stipo).Rows)
             {
                 dgvMaestroIngresos.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), Convert.ToBoolean(row[3]), Convert.ToBoolean(row[4]), Convert.ToBoolean(row[5]), Convert.ToBoolean(row[6]), Convert.ToBoolean(row[7]), Convert.ToBoolean(row[8]), Convert.ToBoolean(row[9]), Convert.ToBoolean(row[10]), Convert.ToBoolean(row[11]), Convert.ToBoolean(row[12]), Convert.ToBoolean(row[13]), Convert.ToBoolean(row[14]), row[15].ToString());
             }

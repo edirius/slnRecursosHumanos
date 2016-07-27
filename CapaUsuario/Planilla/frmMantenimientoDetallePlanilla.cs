@@ -20,6 +20,10 @@ namespace CapaUsuario.Planilla
         string smes = "";
         string saño = "";
         public string[,] sselecciontrabajadores;
+        string[,] smingresos;
+        string[,] smdescuentos;
+        string[,] sma_trabajador;
+        string[,] sma_empleador;
         int sfilasselecciontrabajadores;
 
         DataTable oDataTrabajador = new DataTable();
@@ -111,7 +115,6 @@ namespace CapaUsuario.Planilla
                     }
                 }
             }
-
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -258,17 +261,32 @@ namespace CapaUsuario.Planilla
             int j = dgvDetallePlanilla.ColumnCount;
             DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
 
-            DataTable oDataPLantillaPlanilla = new DataTable();
+            DataTable oDataPlantillaPlanilla = new DataTable();
             CapaDeNegocios.Planillas.cPlantillaPlanilla miPlantillaPlanilla = new CapaDeNegocios.Planillas.cPlantillaPlanilla();
-            oDataPLantillaPlanilla = miPlantillaPlanilla.ListarPlantillaPlanilla(sidtregimenlaboral);
-            foreach (DataRow row in oDataPLantillaPlanilla.Select("tipo='INGRESOS'"))
+            oDataPlantillaPlanilla = miPlantillaPlanilla.ListarPlantillaPlanilla(sidtregimenlaboral);
+
+            DataTable oDataMaestroIngresos = new DataTable();
+            CapaDeNegocios.Sunat.cMaestroIngresos miMaestroIngresos = new CapaDeNegocios.Sunat.cMaestroIngresos();
+            oDataMaestroIngresos = miMaestroIngresos.ListarMaestroIngresos("");
+
+            smingresos = new string[oDataPlantillaPlanilla.Rows.Count, 4];
+            foreach (DataRow row in oDataPlantillaPlanilla.Select("tipo='INGRESOS'"))
             {
+                foreach (DataRow rowmingresos in oDataMaestroIngresos.Select("idtmaestroingresos = '" + row[2].ToString() + "'"))
+                {
+                    smingresos[con_ingresos, 0] = rowmingresos[0].ToString();
+                    smingresos[con_ingresos, 1] = rowmingresos[1].ToString();
+                    smingresos[con_ingresos, 2] = rowmingresos[1].ToString();
+                    smingresos[con_ingresos, 3] = rowmingresos[15].ToString();
+                }
+
                 con_ingresos += 1;
                 col = new DataGridViewTextBoxColumn();
                 col.Name = "I" + con_ingresos;
                 col.HeaderText = row[1].ToString();
                 dgvDetallePlanilla.Columns.Add(col);
                 //dgvDetallePlanilla.Columns["I" + con_ingresos].DisplayIndex = 10 + con_ingresos;
+                dgvDetallePlanilla.Columns["I" + con_ingresos].Width = 65;
             }
             col = new DataGridViewTextBoxColumn();
             col.Name = "TOTAL_INGRESOS";
@@ -334,10 +352,25 @@ namespace CapaUsuario.Planilla
 
         private void CalcularIngresos()
         {
+            int total_ingresos = 0;
             double PagoDia = Math.Round(Convert.ToDouble(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[8].Value) / 30, 2);
             int DiasLaborados = 1 + DateTime.DaysInMonth(Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value).Year, Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value).Month) - Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value).Day;
 
-            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[14 + con_ingresos].Value = Math.Round(PagoDia * DiasLaborados,0);
+            for (int i = 0; i < con_ingresos; i++)
+            {
+                if (smingresos[i, 3].ToString() != "")
+                {
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[14 + i].ReadOnly = true;
+                    int number2 = 0;
+                    if (int.TryParse(smingresos[i, 3].ToString(), out number2) == true)
+                    {
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[14 + i].Value = smingresos[i, 3].ToString();
+                        total_ingresos += Convert.ToInt32(smingresos[i, 3].ToString());
+                    }
+                }
+            }
+
+            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[14 + con_ingresos].Value = Math.Round(PagoDia * DiasLaborados, 0) + total_ingresos;
             dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[15 + con_ingresos].Value = dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[14 + con_ingresos].Value;
             dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[16 + con_ingresos].Value = DiasLaborados;
         }
