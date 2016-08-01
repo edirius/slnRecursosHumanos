@@ -36,7 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnImportar = new System.Windows.Forms.Button();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -47,11 +46,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvDetallePlanilla = new System.Windows.Forms.DataGridView();
-            this.txtRegimenLaboral = new System.Windows.Forms.TextBox();
-            this.txtFuenteFinanciamiento = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnAgregarTrabajador = new System.Windows.Forms.Button();
             this.txtIdTDetalleTareo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnProceso = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -62,10 +56,14 @@
             this.txtDNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remuneracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Afiliacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cussp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DiasLaborados = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalRemuneracio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecFunc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtRegimenLaboral = new System.Windows.Forms.TextBox();
+            this.txtFuenteFinanciamiento = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnAgregarTrabajador = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,70 +201,17 @@
             this.txtDNI,
             this.Remuneracion,
             this.FechaInicio,
-            this.Column4,
-            this.Afiliacion,
-            this.Comision,
-            this.Cussp});
+            this.DiasLaborados,
+            this.TotalRemuneracio,
+            this.SecFunc});
             this.dgvDetallePlanilla.Location = new System.Drawing.Point(12, 90);
             this.dgvDetallePlanilla.Name = "dgvDetallePlanilla";
             this.dgvDetallePlanilla.RowHeadersVisible = false;
             this.dgvDetallePlanilla.RowHeadersWidth = 25;
             this.dgvDetallePlanilla.Size = new System.Drawing.Size(1011, 307);
             this.dgvDetallePlanilla.TabIndex = 79;
-            // 
-            // txtRegimenLaboral
-            // 
-            this.txtRegimenLaboral.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtRegimenLaboral.Enabled = false;
-            this.txtRegimenLaboral.Location = new System.Drawing.Point(135, 12);
-            this.txtRegimenLaboral.Name = "txtRegimenLaboral";
-            this.txtRegimenLaboral.Size = new System.Drawing.Size(219, 20);
-            this.txtRegimenLaboral.TabIndex = 92;
-            // 
-            // txtFuenteFinanciamiento
-            // 
-            this.txtFuenteFinanciamiento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFuenteFinanciamiento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtFuenteFinanciamiento.Enabled = false;
-            this.txtFuenteFinanciamiento.Location = new System.Drawing.Point(135, 64);
-            this.txtFuenteFinanciamiento.Name = "txtFuenteFinanciamiento";
-            this.txtFuenteFinanciamiento.Size = new System.Drawing.Size(628, 20);
-            this.txtFuenteFinanciamiento.TabIndex = 93;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(92, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
-            this.label1.TabIndex = 94;
-            this.label1.Text = "Meta :";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 13);
-            this.label2.TabIndex = 95;
-            this.label2.Text = "Fuente Financiamiento :";
-            // 
-            // btnAgregarTrabajador
-            // 
-            this.btnAgregarTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregarTrabajador.BackColor = System.Drawing.Color.MintCream;
-            this.btnAgregarTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAgregarTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAgregarTrabajador.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAgregarTrabajador.Location = new System.Drawing.Point(763, 403);
-            this.btnAgregarTrabajador.Name = "btnAgregarTrabajador";
-            this.btnAgregarTrabajador.Size = new System.Drawing.Size(83, 65);
-            this.btnAgregarTrabajador.TabIndex = 96;
-            this.btnAgregarTrabajador.Text = "&Agregar Trabajador";
-            this.btnAgregarTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAgregarTrabajador.UseVisualStyleBackColor = false;
-            this.btnAgregarTrabajador.Click += new System.EventHandler(this.btnAgregarTrabajador_Click);
+            this.dgvDetallePlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellContentClick);
+            this.dgvDetallePlanilla.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellEndEdit);
             // 
             // txtIdTDetalleTareo
             // 
@@ -327,6 +272,7 @@
             this.txtDNI.DefaultCellStyle = dataGridViewCellStyle3;
             this.txtDNI.HeaderText = "DNI";
             this.txtDNI.Name = "txtDNI";
+            this.txtDNI.ReadOnly = true;
             this.txtDNI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.txtDNI.Width = 60;
             // 
@@ -338,7 +284,7 @@
             this.Remuneracion.HeaderText = "REMUNER.";
             this.Remuneracion.Name = "Remuneracion";
             this.Remuneracion.ReadOnly = true;
-            this.Remuneracion.Width = 65;
+            this.Remuneracion.Width = 50;
             // 
             // FechaInicio
             // 
@@ -349,41 +295,86 @@
             this.FechaInicio.ReadOnly = true;
             this.FechaInicio.Width = 70;
             // 
-            // Column4
+            // DiasLaborados
             // 
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Column4.HeaderText = "SEC. FUNC.";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 40;
+            this.DiasLaborados.DefaultCellStyle = dataGridViewCellStyle6;
+            this.DiasLaborados.HeaderText = "DIAS LABOR.";
+            this.DiasLaborados.Name = "DiasLaborados";
+            this.DiasLaborados.ReadOnly = true;
+            this.DiasLaborados.Width = 40;
             // 
-            // Afiliacion
+            // TotalRemuneracio
             // 
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Afiliacion.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Afiliacion.HeaderText = "AFIL. AFP/SNP";
-            this.Afiliacion.Name = "Afiliacion";
-            this.Afiliacion.ReadOnly = true;
-            this.Afiliacion.Width = 85;
+            this.TotalRemuneracio.DefaultCellStyle = dataGridViewCellStyle7;
+            this.TotalRemuneracio.HeaderText = "TOTAL REMUNER.";
+            this.TotalRemuneracio.Name = "TotalRemuneracio";
+            this.TotalRemuneracio.ReadOnly = true;
+            this.TotalRemuneracio.Width = 50;
             // 
-            // Comision
+            // SecFunc
             // 
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Comision.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Comision.HeaderText = "COMISION";
-            this.Comision.Name = "Comision";
-            this.Comision.ReadOnly = true;
-            this.Comision.Width = 60;
+            this.SecFunc.DefaultCellStyle = dataGridViewCellStyle8;
+            this.SecFunc.HeaderText = "SEC. FUNC.";
+            this.SecFunc.Name = "SecFunc";
+            this.SecFunc.ReadOnly = true;
+            this.SecFunc.Width = 30;
             // 
-            // Cussp
+            // txtRegimenLaboral
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Cussp.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Cussp.HeaderText = "CUSSP";
-            this.Cussp.Name = "Cussp";
-            this.Cussp.ReadOnly = true;
-            this.Cussp.Width = 90;
+            this.txtRegimenLaboral.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtRegimenLaboral.Enabled = false;
+            this.txtRegimenLaboral.Location = new System.Drawing.Point(135, 12);
+            this.txtRegimenLaboral.Name = "txtRegimenLaboral";
+            this.txtRegimenLaboral.Size = new System.Drawing.Size(219, 20);
+            this.txtRegimenLaboral.TabIndex = 92;
+            // 
+            // txtFuenteFinanciamiento
+            // 
+            this.txtFuenteFinanciamiento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFuenteFinanciamiento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtFuenteFinanciamiento.Enabled = false;
+            this.txtFuenteFinanciamiento.Location = new System.Drawing.Point(135, 64);
+            this.txtFuenteFinanciamiento.Name = "txtFuenteFinanciamiento";
+            this.txtFuenteFinanciamiento.Size = new System.Drawing.Size(628, 20);
+            this.txtFuenteFinanciamiento.TabIndex = 93;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(92, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 94;
+            this.label1.Text = "Meta :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 67);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 13);
+            this.label2.TabIndex = 95;
+            this.label2.Text = "Fuente Financiamiento :";
+            // 
+            // btnAgregarTrabajador
+            // 
+            this.btnAgregarTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarTrabajador.BackColor = System.Drawing.Color.MintCream;
+            this.btnAgregarTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregarTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAgregarTrabajador.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnAgregarTrabajador.Location = new System.Drawing.Point(763, 403);
+            this.btnAgregarTrabajador.Name = "btnAgregarTrabajador";
+            this.btnAgregarTrabajador.Size = new System.Drawing.Size(83, 65);
+            this.btnAgregarTrabajador.TabIndex = 96;
+            this.btnAgregarTrabajador.Text = "&Agregar Trabajador";
+            this.btnAgregarTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarTrabajador.UseVisualStyleBackColor = false;
+            this.btnAgregarTrabajador.Click += new System.EventHandler(this.btnAgregarTrabajador_Click);
             // 
             // frmMantenimientoDetallePlanilla
             // 
@@ -443,9 +434,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txtDNI;
         private System.Windows.Forms.DataGridViewTextBoxColumn Remuneracion;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaInicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Afiliacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Comision;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cussp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DiasLaborados;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalRemuneracio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SecFunc;
     }
 }

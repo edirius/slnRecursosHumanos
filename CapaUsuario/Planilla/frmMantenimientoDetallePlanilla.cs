@@ -12,7 +12,7 @@ namespace CapaUsuario.Planilla
 {
     public partial class frmMantenimientoDetallePlanilla : Form
     {
-        int con_ingresos = 0, con_descuento = 0, con_trabajador = 0, con_empleador = 0;
+        int con_ingresos = 0, con_trabajador = 0, con_descuento = 0, con_empleador = 0;
         int contador = 0;
         int sidtplanilla;
         int sidtregimenlaboral;
@@ -21,8 +21,8 @@ namespace CapaUsuario.Planilla
         string saño = "";
         public string[,] sselecciontrabajadores;
         string[,] smingresos;
-        string[,] smdescuentos;
         string[,] sma_trabajador;
+        string[,] smdescuentos;
         string[,] sma_empleador;
         int sfilasselecciontrabajadores;
 
@@ -125,6 +125,34 @@ namespace CapaUsuario.Planilla
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void dgvDetallePlanilla_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvDetallePlanilla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            string x = dgvDetallePlanilla.Columns[e.ColumnIndex].Name.Substring(0, 1);
+            string y = dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(); ;
+            int z = 0;
+
+            int number2 = 0;
+            if (int.TryParse(y, out number2) != true)
+            {
+                dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
+                return;
+            }
+
+            if (x == "I")
+            {
+                for (int i = 0; i < con_ingresos - 1; i++)
+                {
+                    z += Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[13 + i].Value);
+                }
+                dgvDetallePlanilla.Rows[e.RowIndex].Cells[12 + con_ingresos].Value = z;
+            }
         }
 
         public void RecibirDatos(int pidtplanilla, string pnumero, string pmes, string paño, int pidtmeta, string pmeta, int pidtfuentefinanciamiento, string pfuentefinanciamiento, int pidtregimenlaboral, string pregimenlaboral)
@@ -243,16 +271,18 @@ namespace CapaUsuario.Planilla
                     foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
                     {
                         Cuspp = rowRegimenPensionarioTrabajador[3].ToString();
-                        TipoComision  = rowRegimenPensionarioTrabajador[4].ToString();
+                        TipoComision = rowRegimenPensionarioTrabajador[4].ToString();
                         foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()) + "'"))
                         {
                             AFP = rowAFP[1].ToString();
                         }
                     }
                     contador += 1;
-                    dgvDetallePlanilla.Rows.Add("", "", "", contador, pidtrabajador, Nombre, Cargo, DNI, MontoPago, FechaInicio, sidtmeta, AFP, TipoComision, Cuspp);
+                    dgvDetallePlanilla.Rows.Add("", "", "", contador, pidtrabajador, Nombre, Cargo, DNI, MontoPago, FechaInicio, "", "", sidtmeta);
+                    TotalRemuneracion();
+                    CalcularIngresos();
+                    CalcularA_Trabajador(AFP, TipoComision, Cuspp);
                 }
-                CalcularIngresos();
             }
         }
 
@@ -269,6 +299,10 @@ namespace CapaUsuario.Planilla
             CapaDeNegocios.Sunat.cMaestroIngresos miMaestroIngresos = new CapaDeNegocios.Sunat.cMaestroIngresos();
             oDataMaestroIngresos = miMaestroIngresos.ListarMaestroIngresos("");
 
+            DataTable oDataMaestroATrabajador = new DataTable();
+            CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador miMaestroATrabajador = new CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador();
+            oDataMaestroATrabajador = miMaestroATrabajador.ListarMaestroAportacionesTrabajador();
+
             smingresos = new string[oDataPlantillaPlanilla.Rows.Count, 4];
             foreach (DataRow row in oDataPlantillaPlanilla.Select("tipo='INGRESOS'"))
             {
@@ -276,39 +310,78 @@ namespace CapaUsuario.Planilla
                 {
                     smingresos[con_ingresos, 0] = rowmingresos[0].ToString();
                     smingresos[con_ingresos, 1] = rowmingresos[1].ToString();
-                    smingresos[con_ingresos, 2] = rowmingresos[1].ToString();
+                    smingresos[con_ingresos, 2] = rowmingresos[2].ToString();
                     smingresos[con_ingresos, 3] = rowmingresos[15].ToString();
                 }
-
                 con_ingresos += 1;
                 col = new DataGridViewTextBoxColumn();
                 col.Name = "I" + con_ingresos;
                 col.HeaderText = row[1].ToString();
                 dgvDetallePlanilla.Columns.Add(col);
+                dgvDetallePlanilla.Columns["I" + con_ingresos].Width = 50;
                 //dgvDetallePlanilla.Columns["I" + con_ingresos].DisplayIndex = 10 + con_ingresos;
-                dgvDetallePlanilla.Columns["I" + con_ingresos].Width = 65;
             }
-            col = new DataGridViewTextBoxColumn();
-            col.Name = "TOTAL_INGRESOS";
-            col.HeaderText = "TOTAL REMUNER.";
-            dgvDetallePlanilla.Columns.Add(col);
-            //dgvDetallePlanilla.Columns["TOTAL_INGRESOS"].DisplayIndex = 10 + con_ingresos;
-            dgvDetallePlanilla.Columns["TOTAL_INGRESOS"].ReadOnly = true;
-            dgvDetallePlanilla.Columns["TOTAL_INGRESOS"].Width = 65;
+            if (con_ingresos != 0)
+            {
+                con_ingresos += 1;
+                col = new DataGridViewTextBoxColumn();
+                col.Name = "TOTAL_INGRESOS";
+                col.HeaderText = "TOTAL INGRESOS";
+                dgvDetallePlanilla.Columns.Add(col);
+                dgvDetallePlanilla.Columns["TOTAL_INGRESOS"].ReadOnly = true;
+                dgvDetallePlanilla.Columns["TOTAL_INGRESOS"].Width = 50;
+            }
 
-            //foreach (DataRow row in oDataPLantillaPlanilla.Select("tipo='A_TRABAJADOR'"))
-            //{
-            //    con_ingresos += 1;
-            //    col = new DataGridViewTextBoxColumn();
-            //    //col.Name = "I" + I_FIN;
-            //    col.HeaderText = row[1].ToString();
-            //    dgvDetallePlanilla.Columns.Add(col);
-            //    //dgvDetallePlanilla.Columns["I" + I_FIN].DisplayIndex = 10 + I_FIN;
-            //}
-            //con_ingresos += 1;
-            //col = new DataGridViewTextBoxColumn();
-            //col.HeaderText = "TOTAL DESC. AFP/SNP";
-            //dgvDetallePlanilla.Columns.Add(col);
+            // AFP
+            col = new DataGridViewTextBoxColumn();
+            col.Name = "AFP";
+            col.HeaderText = "AFP";
+            dgvDetallePlanilla.Columns.Add(col);
+            dgvDetallePlanilla.Columns["AFP"].ReadOnly = true;
+            dgvDetallePlanilla.Columns["AFP"].Width = 80;
+            // TipoComision
+            col = new DataGridViewTextBoxColumn();
+            col.Name = "TipoComision";
+            col.HeaderText = "TIPO COMISION";
+            dgvDetallePlanilla.Columns.Add(col);
+            dgvDetallePlanilla.Columns["TipoComision"].ReadOnly = true;
+            dgvDetallePlanilla.Columns["TipoComision"].Width = 50;
+            // Cuspp
+            col = new DataGridViewTextBoxColumn();
+            col.Name = "Cuspp";
+            col.HeaderText = "Cuspp";
+            dgvDetallePlanilla.Columns.Add(col);
+            dgvDetallePlanilla.Columns["Cuspp"].ReadOnly = true;
+            dgvDetallePlanilla.Columns["Cuspp"].Width = 90;
+
+            sma_trabajador = new string[oDataPlantillaPlanilla.Rows.Count, 4];
+            foreach (DataRow row in oDataPlantillaPlanilla.Select("tipo='A_TRABAJADOR'"))
+            {
+                foreach (DataRow rowmatrabajador in oDataMaestroATrabajador.Select("idtmaestroaportacionestrabajador = '" + row[2].ToString() + "'"))
+                {
+                    sma_trabajador[con_trabajador, 0] = rowmatrabajador[0].ToString();
+                    sma_trabajador[con_trabajador, 1] = rowmatrabajador[1].ToString();
+                    sma_trabajador[con_trabajador, 2] = rowmatrabajador[2].ToString();
+                    sma_trabajador[con_trabajador, 3] = rowmatrabajador[3].ToString();
+                }
+                con_trabajador += 1;
+                col = new DataGridViewTextBoxColumn();
+                col.Name = "T" + con_trabajador;
+                col.HeaderText = row[1].ToString();
+                dgvDetallePlanilla.Columns.Add(col);
+                dgvDetallePlanilla.Columns["T" + con_trabajador].Width = 50;
+            }
+            if (con_trabajador != 0)
+            {
+                con_trabajador += 1;
+                col = new DataGridViewTextBoxColumn();
+                col.Name = "TOTAL_A_TRABAJADOR";
+                col.HeaderText = "TOTAL DESC. AFP/SNP";
+                dgvDetallePlanilla.Columns.Add(col);
+                dgvDetallePlanilla.Columns["TOTAL_A_TRABAJADOR"].ReadOnly = true;
+                dgvDetallePlanilla.Columns["TOTAL_A_TRABAJADOR"].Width = 50;
+            }
+
             //foreach (DataRow row in oDataPLantillaPlanilla.Select("tipo='DESCUENTOS'"))
             //{
             //    con_ingresos += 1;
@@ -336,43 +409,78 @@ namespace CapaUsuario.Planilla
             //col.HeaderText = "TOTAL REMUNER.";
             //dgvDetallePlanilla.Columns.Add(col);
 
-            col = new DataGridViewTextBoxColumn();
-            col.Name = "NETOACOBRAR";
-            col.HeaderText = "NETO A COBRAR";
-            dgvDetallePlanilla.Columns.Add(col);
-            dgvDetallePlanilla.Columns["NETOACOBRAR"].ReadOnly = true;
-            dgvDetallePlanilla.Columns["NETOACOBRAR"].Width = 65;
-            col = new DataGridViewTextBoxColumn();
-            col.Name = "DIASLABORADOS";
-            col.HeaderText = "DIAS LABORADOS";
-            dgvDetallePlanilla.Columns.Add(col);
-            dgvDetallePlanilla.Columns["DIASLABORADOS"].ReadOnly = true;
-            dgvDetallePlanilla.Columns["DIASLABORADOS"].Width = 65;
+            //col = new DataGridViewTextBoxColumn();
+            //col.Name = "NETOACOBRAR";
+            //col.HeaderText = "NETO A COBRAR";
+            //dgvDetallePlanilla.Columns.Add(col);
+            //dgvDetallePlanilla.Columns["NETOACOBRAR"].ReadOnly = true;
+            //dgvDetallePlanilla.Columns["NETOACOBRAR"].Width = 65;
+            //DIAS LABORADOS
+            //col = new DataGridViewTextBoxColumn();
+            //col.Name = "DIASLABORADOS";
+            //col.HeaderText = "DIAS LABORADOS";
+            //dgvDetallePlanilla.Columns.Add(col);
+            //dgvDetallePlanilla.Columns["DIASLABORADOS"].ReadOnly = true;
+            //dgvDetallePlanilla.Columns["DIASLABORADOS"].Width = 65;
+        }
+
+        private void TotalRemuneracion()
+        {
+            double PagoDia = Math.Round(Convert.ToDouble(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[8].Value) / 30, 2);
+            int DiasLaborados = 1 + DateTime.DaysInMonth(Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value).Year, Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value).Month) - Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value).Day;
+
+            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[10].Value = DiasLaborados;
+            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = Math.Round(PagoDia * DiasLaborados, 0);
         }
 
         private void CalcularIngresos()
         {
             int total_ingresos = 0;
-            double PagoDia = Math.Round(Convert.ToDouble(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[8].Value) / 30, 2);
-            int DiasLaborados = 1 + DateTime.DaysInMonth(Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value).Year, Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value).Month) - Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value).Day;
 
-            for (int i = 0; i < con_ingresos; i++)
+            for (int i = 0; i < con_ingresos - 1; i++)
             {
                 if (smingresos[i, 3].ToString() != "")
                 {
-                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[14 + i].ReadOnly = true;
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[13 + i].ReadOnly = true;
                     int number2 = 0;
                     if (int.TryParse(smingresos[i, 3].ToString(), out number2) == true)
                     {
-                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[14 + i].Value = smingresos[i, 3].ToString();
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[13 + i].Value = smingresos[i, 3].ToString();
                         total_ingresos += Convert.ToInt32(smingresos[i, 3].ToString());
                     }
                 }
             }
+            if (con_ingresos != 0)
+            {
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[12 + con_ingresos].Value = total_ingresos;
+            }
+        }
 
-            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[14 + con_ingresos].Value = Math.Round(PagoDia * DiasLaborados, 0) + total_ingresos;
-            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[15 + con_ingresos].Value = dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[14 + con_ingresos].Value;
-            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[16 + con_ingresos].Value = DiasLaborados;
+        private void CalcularA_Trabajador(string AFP, string TipoComision, string Cuspp)
+        {
+            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[13 + con_ingresos].Value = AFP;
+            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[14 + con_ingresos].Value = TipoComision;
+            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[15 + con_ingresos].Value = Cuspp;
+
+            //int total_atrabajador = 0;
+
+            //for (int i = 0; i < con_ingresos; i++)
+            //{
+            //    if (smingresos[i, 3].ToString() != "")
+            //    {
+            //        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[13 + i].ReadOnly = true;
+            //        int number2 = 0;
+            //        if (int.TryParse(smingresos[i, 3].ToString(), out number2) == true)
+            //        {
+            //            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[13 + i].Value = smingresos[i, 3].ToString();
+            //            total_atrabajador += Convert.ToInt32(smingresos[i, 3].ToString());
+            //        }
+            //    }
+            //}
+            //if (con_ingresos != 0)
+            //{
+            //    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[13 + con_ingresos].Value = total_ingresos;
+            //}
         }
     }
 }

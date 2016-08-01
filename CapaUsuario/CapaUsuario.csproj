@@ -265,6 +265,12 @@
     <Compile Include="ResidenteMeta\frmResidenteMeta.designer.cs">
       <DependentUpon>frmResidenteMeta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sunat\frmFormula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\frmFormula.Designer.cs">
+      <DependentUpon>frmFormula.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sunat\frmMaestroAportacionesEmpleador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -584,6 +590,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ResidenteMeta\frmResidenteMeta.resx">
       <DependentUpon>frmResidenteMeta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\frmFormula.resx">
+      <DependentUpon>frmFormula.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sunat\frmMaestroAportacionesEmpleador.resx">
       <DependentUpon>frmMaestroAportacionesEmpleador.cs</DependentUpon>
