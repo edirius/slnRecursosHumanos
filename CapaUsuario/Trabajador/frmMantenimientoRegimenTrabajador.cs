@@ -18,7 +18,7 @@ namespace CapaUsuario.Trabajador
         string snumerodocumento = "";
         string speriodicidad = "";
         string stipopago = "";
-        int smontopago = 0;
+        decimal smontopago = 0;
         string sfechainicio = "";
         string sfechafin = "";
         string sruc = "";
@@ -127,7 +127,7 @@ namespace CapaUsuario.Trabajador
             snumerodocumento = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[3].Value);
             speriodicidad = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[4].Value);
             stipopago = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[5].Value);
-            smontopago = Convert.ToInt32(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[6].Value);
+            smontopago = Convert.ToDecimal(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[6].Value);
             sfechainicio = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[7].Value);
             sfechafin = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[8].Value);
             sruc = Convert.ToString(dgvRegimenTrabajador.Rows[e.RowIndex].Cells[9].Value);

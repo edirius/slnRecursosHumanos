@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using info.lundin.math;
 
 namespace CapaUsuario.Planilla
 {
@@ -135,11 +136,11 @@ namespace CapaUsuario.Planilla
         private void dgvDetallePlanilla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             string x = dgvDetallePlanilla.Columns[e.ColumnIndex].Name.Substring(0, 1);
-            string y = dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(); ;
-            int z = 0;
+            string y = dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+            decimal z = 0;
 
-            int number2 = 0;
-            if (int.TryParse(y, out number2) != true)
+            decimal number2 = 0;
+            if (decimal.TryParse(y, out number2) != true)
             {
                 dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
                 return;
@@ -147,11 +148,12 @@ namespace CapaUsuario.Planilla
 
             if (x == "I")
             {
+                dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = String.Format("{0:0.00}", Convert.ToDecimal(y));
                 for (int i = 0; i < con_ingresos - 1; i++)
                 {
-                    z += Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[13 + i].Value);
+                    z += Convert.ToDecimal(dgvDetallePlanilla.Rows[e.RowIndex].Cells[13 + i].Value);
                 }
-                dgvDetallePlanilla.Rows[e.RowIndex].Cells[12 + con_ingresos].Value = z;
+                dgvDetallePlanilla.Rows[e.RowIndex].Cells[12 + con_ingresos].Value = String.Format("{0:0.00}", z);
             }
         }
 
@@ -426,33 +428,55 @@ namespace CapaUsuario.Planilla
 
         private void TotalRemuneracion()
         {
-            double PagoDia = Math.Round(Convert.ToDouble(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[8].Value) / 30, 2);
+            decimal PagoDia = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[8].Value) / 30, 2);
             int DiasLaborados = 1 + DateTime.DaysInMonth(Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value).Year, Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value).Month) - Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value).Day;
 
             dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[10].Value = DiasLaborados;
-            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = Math.Round(PagoDia * DiasLaborados, 0);
+            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", Math.Round(PagoDia * DiasLaborados, 0));
         }
 
         private void CalcularIngresos()
         {
-            int total_ingresos = 0;
+            decimal total_ingresos = 0;
 
             for (int i = 0; i < con_ingresos - 1; i++)
             {
                 if (smingresos[i, 3].ToString() != "")
                 {
                     dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[13 + i].ReadOnly = true;
-                    int number2 = 0;
-                    if (int.TryParse(smingresos[i, 3].ToString(), out number2) == true)
+                    //decimal xxx = Convert.ToDecimal(smingresos[i, 3].ToString());
+                    decimal number2 = 0;
+                    if (decimal.TryParse(smingresos[i, 3].ToString(), out number2) == true)
                     {
-                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[13 + i].Value = smingresos[i, 3].ToString();
-                        total_ingresos += Convert.ToInt32(smingresos[i, 3].ToString());
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[13 + i].Value = String.Format("{0:0.00}", number2);
+                        total_ingresos += decimal.Round(Convert.ToDecimal(smingresos[i, 3].ToString()), 2);
+                    }
+                    else
+                    {
+                        ExpressionParser parser = new ExpressionParser();
+                        DoubleValue sval = new DoubleValue();
+                        DoubleValue aoval = new DoubleValue();
+                        DoubleValue cfval = new DoubleValue();
+                        DoubleValue cmval = new DoubleValue();
+                        DoubleValue psval = new DoubleValue();
+                        parser.Values.Add("s", sval);
+                        parser.Values.Add("ao", aoval);
+                        parser.Values.Add("cf", cfval);
+                        parser.Values.Add("cm", cmval);
+                        parser.Values.Add("ps", psval);
+
+                        sval.Value = Convert.ToDouble(dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value);
+
+                        string formula = smingresos[i, 3].ToString();
+                        double result = parser.Parse(formula);
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[13 + i].Value = String.Format("{0:0.00}", result);
+                        total_ingresos += decimal.Round(Convert.ToDecimal(result), 2);
                     }
                 }
             }
             if (con_ingresos != 0)
             {
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[12 + con_ingresos].Value = total_ingresos;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[12 + con_ingresos].Value = String.Format("{0:0.00}", total_ingresos);
             }
         }
 

@@ -39,6 +39,7 @@ namespace CapaUsuario.Sunat
 
         private void frmMantenimientoMaestroIngresos_Load(object sender, EventArgs e)
         {
+            cboTipo.SelectedIndex = 0;
             cboTipo_SelectedIndexChanged(sender, e);
         }
 

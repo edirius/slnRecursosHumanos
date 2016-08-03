@@ -25,6 +25,16 @@ namespace CapaUsuario.Sunat
 
         }
 
+        private void btnFormula_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Sunat.frmFormula fFormula= new CapaUsuario.Sunat.frmFormula();
+            fFormula.RecibirDatos(txtFormula.Text);
+            if (fFormula.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                txtFormula.Text = fFormula.Formula();
+            }
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             bool bOk = false;

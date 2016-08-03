@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtFormula = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnFormula = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -114,7 +115,7 @@
             // 
             this.txtFormula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFormula.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtFormula.Enabled = false;
             this.txtFormula.Location = new System.Drawing.Point(87, 109);
             this.txtFormula.Name = "txtFormula";
             this.txtFormula.Size = new System.Drawing.Size(379, 20);
@@ -130,11 +131,28 @@
             this.label2.TabIndex = 100;
             this.label2.Text = "Formula :";
             // 
+            // btnFormula
+            // 
+            this.btnFormula.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFormula.BackColor = System.Drawing.Color.MintCream;
+            this.btnFormula.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnFormula.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnFormula.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnFormula.Location = new System.Drawing.Point(229, 135);
+            this.btnFormula.Name = "btnFormula";
+            this.btnFormula.Size = new System.Drawing.Size(75, 65);
+            this.btnFormula.TabIndex = 104;
+            this.btnFormula.Text = "&Formula";
+            this.btnFormula.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnFormula.UseVisualStyleBackColor = false;
+            this.btnFormula.Click += new System.EventHandler(this.btnFormula_Click);
+            // 
             // frmMaestroAportacionesEmpleador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 212);
+            this.Controls.Add(this.btnFormula);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFormula);
             this.Controls.Add(this.btnCancelar);
@@ -163,5 +181,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFormula;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnFormula;
     }
 }

@@ -17,7 +17,7 @@ namespace CapaDeNegocios.DatosLaborales
         string snumerodocumento;
         string speriodicidad;
         string stipopago;
-        int smontopago;
+        decimal smontopago;
         string sfechainicio;
         string sfechafin;
         string sruc;
@@ -60,7 +60,7 @@ namespace CapaDeNegocios.DatosLaborales
             get { return stipopago; }
             set { stipopago = value; }
         }
-        public int MontoPago
+        public decimal MontoPago
         {
             get { return smontopago; }
             set { smontopago = value; }

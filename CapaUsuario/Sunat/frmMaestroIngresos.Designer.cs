@@ -50,6 +50,7 @@
             this.chkDerechos_sociales = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtFormula = new System.Windows.Forms.TextBox();
+            this.btnFormula = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -290,17 +291,34 @@
             // 
             this.txtFormula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFormula.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtFormula.Enabled = false;
             this.txtFormula.Location = new System.Drawing.Point(86, 263);
             this.txtFormula.Name = "txtFormula";
             this.txtFormula.Size = new System.Drawing.Size(543, 20);
             this.txtFormula.TabIndex = 101;
+            // 
+            // btnFormula
+            // 
+            this.btnFormula.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFormula.BackColor = System.Drawing.Color.MintCream;
+            this.btnFormula.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnFormula.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnFormula.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnFormula.Location = new System.Drawing.Point(392, 289);
+            this.btnFormula.Name = "btnFormula";
+            this.btnFormula.Size = new System.Drawing.Size(75, 65);
+            this.btnFormula.TabIndex = 103;
+            this.btnFormula.Text = "&Formula";
+            this.btnFormula.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnFormula.UseVisualStyleBackColor = false;
+            this.btnFormula.Click += new System.EventHandler(this.btnFormula_Click);
             // 
             // frmMaestroIngresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 366);
+            this.Controls.Add(this.btnFormula);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtFormula);
             this.Controls.Add(this.chkContrib_solidaria);
@@ -356,5 +374,6 @@
         private System.Windows.Forms.CheckBox chkDerechos_sociales;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtFormula;
+        private System.Windows.Forms.Button btnFormula;
     }
 }
