@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CapaDeDatos;
+using System.Data;
 
 namespace CapaDeNegocios
 {
@@ -64,6 +66,10 @@ namespace CapaDeNegocios
             set { comisionMixta = value; }
         }
 
-       
+        public DataTable ListarComisionAFP(int IdtAFP)
+        {
+            return Conexion.GDatos.TraerDataTable("spComisionesXAFP", IdtAFP);
+        }
+        
     }
 }
