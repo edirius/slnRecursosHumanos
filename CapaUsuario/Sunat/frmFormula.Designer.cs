@@ -37,10 +37,9 @@
             this.btnAObligatorio = new System.Windows.Forms.Button();
             this.btnPSeguro = new System.Windows.Forms.Button();
             this.btnDeshacer = new System.Windows.Forms.Button();
-            this.btnCMixta = new System.Windows.Forms.Button();
             this.btnSueldo = new System.Windows.Forms.Button();
             this.btnPunto = new System.Windows.Forms.Button();
-            this.btnCFlujo = new System.Windows.Forms.Button();
+            this.btnComision = new System.Windows.Forms.Button();
             this.btnSuma = new System.Windows.Forms.Button();
             this.btnResta = new System.Windows.Forms.Button();
             this.btnMultiplicacion = new System.Windows.Forms.Button();
@@ -109,10 +108,9 @@
             this.groupBox1.Controls.Add(this.btnAObligatorio);
             this.groupBox1.Controls.Add(this.btnPSeguro);
             this.groupBox1.Controls.Add(this.btnDeshacer);
-            this.groupBox1.Controls.Add(this.btnCMixta);
             this.groupBox1.Controls.Add(this.btnSueldo);
             this.groupBox1.Controls.Add(this.btnPunto);
-            this.groupBox1.Controls.Add(this.btnCFlujo);
+            this.groupBox1.Controls.Add(this.btnComision);
             this.groupBox1.Controls.Add(this.btnSuma);
             this.groupBox1.Controls.Add(this.btnResta);
             this.groupBox1.Controls.Add(this.btnMultiplicacion);
@@ -189,7 +187,7 @@
             this.btnPSeguro.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnPSeguro.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnPSeguro.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnPSeguro.Location = new System.Drawing.Point(6, 142);
+            this.btnPSeguro.Location = new System.Drawing.Point(6, 101);
             this.btnPSeguro.Name = "btnPSeguro";
             this.btnPSeguro.Size = new System.Drawing.Size(129, 35);
             this.btnPSeguro.TabIndex = 128;
@@ -213,22 +211,6 @@
             this.btnDeshacer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDeshacer.UseVisualStyleBackColor = false;
             this.btnDeshacer.Click += new System.EventHandler(this.btnDeshacer_Click);
-            // 
-            // btnCMixta
-            // 
-            this.btnCMixta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCMixta.BackColor = System.Drawing.Color.MintCream;
-            this.btnCMixta.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnCMixta.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCMixta.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnCMixta.Location = new System.Drawing.Point(6, 101);
-            this.btnCMixta.Name = "btnCMixta";
-            this.btnCMixta.Size = new System.Drawing.Size(129, 35);
-            this.btnCMixta.TabIndex = 126;
-            this.btnCMixta.Text = "Comisión Mixta";
-            this.btnCMixta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCMixta.UseVisualStyleBackColor = false;
-            this.btnCMixta.Click += new System.EventHandler(this.btnCMixta_Click);
             // 
             // btnSueldo
             // 
@@ -262,21 +244,21 @@
             this.btnPunto.UseVisualStyleBackColor = false;
             this.btnPunto.Click += new System.EventHandler(this.btnPunto_Click);
             // 
-            // btnCFlujo
+            // btnComision
             // 
-            this.btnCFlujo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCFlujo.BackColor = System.Drawing.Color.MintCream;
-            this.btnCFlujo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnCFlujo.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCFlujo.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnCFlujo.Location = new System.Drawing.Point(6, 60);
-            this.btnCFlujo.Name = "btnCFlujo";
-            this.btnCFlujo.Size = new System.Drawing.Size(129, 35);
-            this.btnCFlujo.TabIndex = 125;
-            this.btnCFlujo.Text = "Comisión Flujo";
-            this.btnCFlujo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCFlujo.UseVisualStyleBackColor = false;
-            this.btnCFlujo.Click += new System.EventHandler(this.btnCFlujo_Click);
+            this.btnComision.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnComision.BackColor = System.Drawing.Color.MintCream;
+            this.btnComision.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnComision.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnComision.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnComision.Location = new System.Drawing.Point(6, 60);
+            this.btnComision.Name = "btnComision";
+            this.btnComision.Size = new System.Drawing.Size(129, 35);
+            this.btnComision.TabIndex = 125;
+            this.btnComision.Text = "Comisión";
+            this.btnComision.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnComision.UseVisualStyleBackColor = false;
+            this.btnComision.Click += new System.EventHandler(this.btnComision_Click);
             // 
             // btnSuma
             // 
@@ -527,8 +509,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnCMixta;
-        private System.Windows.Forms.Button btnCFlujo;
+        private System.Windows.Forms.Button btnComision;
         private System.Windows.Forms.Button btnSuma;
         private System.Windows.Forms.Button btnResta;
         private System.Windows.Forms.Button btnMultiplicacion;

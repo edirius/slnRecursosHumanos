@@ -46,11 +46,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvDetallePlanilla = new System.Windows.Forms.DataGridView();
-            this.txtRegimenLaboral = new System.Windows.Forms.TextBox();
-            this.txtFuenteFinanciamiento = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnAgregarTrabajador = new System.Windows.Forms.Button();
             this.txtIdTDetalleTareo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnProceso = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -64,6 +59,11 @@
             this.DiasLaborados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalRemuneracio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SecFunc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtRegimenLaboral = new System.Windows.Forms.TextBox();
+            this.txtFuenteFinanciamiento = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnAgregarTrabajador = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -189,7 +189,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDetallePlanilla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDetallePlanilla.ColumnHeadersHeight = 35;
+            this.dgvDetallePlanilla.ColumnHeadersHeight = 45;
             this.dgvDetallePlanilla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.txtIdTDetalleTareo,
             this.txtAccion,
@@ -212,60 +212,6 @@
             this.dgvDetallePlanilla.TabIndex = 79;
             this.dgvDetallePlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellContentClick);
             this.dgvDetallePlanilla.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellEndEdit);
-            // 
-            // txtRegimenLaboral
-            // 
-            this.txtRegimenLaboral.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtRegimenLaboral.Enabled = false;
-            this.txtRegimenLaboral.Location = new System.Drawing.Point(135, 12);
-            this.txtRegimenLaboral.Name = "txtRegimenLaboral";
-            this.txtRegimenLaboral.Size = new System.Drawing.Size(219, 20);
-            this.txtRegimenLaboral.TabIndex = 92;
-            // 
-            // txtFuenteFinanciamiento
-            // 
-            this.txtFuenteFinanciamiento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFuenteFinanciamiento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtFuenteFinanciamiento.Enabled = false;
-            this.txtFuenteFinanciamiento.Location = new System.Drawing.Point(135, 64);
-            this.txtFuenteFinanciamiento.Name = "txtFuenteFinanciamiento";
-            this.txtFuenteFinanciamiento.Size = new System.Drawing.Size(628, 20);
-            this.txtFuenteFinanciamiento.TabIndex = 93;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(92, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
-            this.label1.TabIndex = 94;
-            this.label1.Text = "Meta :";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 13);
-            this.label2.TabIndex = 95;
-            this.label2.Text = "Fuente Financiamiento :";
-            // 
-            // btnAgregarTrabajador
-            // 
-            this.btnAgregarTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregarTrabajador.BackColor = System.Drawing.Color.MintCream;
-            this.btnAgregarTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAgregarTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAgregarTrabajador.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAgregarTrabajador.Location = new System.Drawing.Point(763, 403);
-            this.btnAgregarTrabajador.Name = "btnAgregarTrabajador";
-            this.btnAgregarTrabajador.Size = new System.Drawing.Size(83, 65);
-            this.btnAgregarTrabajador.TabIndex = 96;
-            this.btnAgregarTrabajador.Text = "&Agregar Trabajador";
-            this.btnAgregarTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAgregarTrabajador.UseVisualStyleBackColor = false;
-            this.btnAgregarTrabajador.Click += new System.EventHandler(this.btnAgregarTrabajador_Click);
             // 
             // txtIdTDetalleTareo
             // 
@@ -375,6 +321,60 @@
             this.SecFunc.Name = "SecFunc";
             this.SecFunc.ReadOnly = true;
             this.SecFunc.Width = 30;
+            // 
+            // txtRegimenLaboral
+            // 
+            this.txtRegimenLaboral.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtRegimenLaboral.Enabled = false;
+            this.txtRegimenLaboral.Location = new System.Drawing.Point(135, 12);
+            this.txtRegimenLaboral.Name = "txtRegimenLaboral";
+            this.txtRegimenLaboral.Size = new System.Drawing.Size(219, 20);
+            this.txtRegimenLaboral.TabIndex = 92;
+            // 
+            // txtFuenteFinanciamiento
+            // 
+            this.txtFuenteFinanciamiento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFuenteFinanciamiento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtFuenteFinanciamiento.Enabled = false;
+            this.txtFuenteFinanciamiento.Location = new System.Drawing.Point(135, 64);
+            this.txtFuenteFinanciamiento.Name = "txtFuenteFinanciamiento";
+            this.txtFuenteFinanciamiento.Size = new System.Drawing.Size(628, 20);
+            this.txtFuenteFinanciamiento.TabIndex = 93;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(92, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 94;
+            this.label1.Text = "Meta :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 67);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 13);
+            this.label2.TabIndex = 95;
+            this.label2.Text = "Fuente Financiamiento :";
+            // 
+            // btnAgregarTrabajador
+            // 
+            this.btnAgregarTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarTrabajador.BackColor = System.Drawing.Color.MintCream;
+            this.btnAgregarTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregarTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAgregarTrabajador.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnAgregarTrabajador.Location = new System.Drawing.Point(763, 403);
+            this.btnAgregarTrabajador.Name = "btnAgregarTrabajador";
+            this.btnAgregarTrabajador.Size = new System.Drawing.Size(83, 65);
+            this.btnAgregarTrabajador.TabIndex = 96;
+            this.btnAgregarTrabajador.Text = "&Agregar Trabajador";
+            this.btnAgregarTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarTrabajador.UseVisualStyleBackColor = false;
+            this.btnAgregarTrabajador.Click += new System.EventHandler(this.btnAgregarTrabajador_Click);
             // 
             // frmMantenimientoDetallePlanilla
             // 

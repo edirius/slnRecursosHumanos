@@ -30,7 +30,7 @@ namespace CapaUsuario.Sunat
                 if (txtFormula.Text.Length >= 2)
                 {
                     string x = txtFormula.Text.Substring(txtFormula.Text.Length - 2);
-                    if (x == "ao" || x == "cf" || x == "cm" || x == "ps")
+                    if (x == "ao" || x == "ps")
                     {
                         i = txtFormula.Text.Length - 2;
                     }
@@ -127,14 +127,9 @@ namespace CapaUsuario.Sunat
             txtFormula.Text = txtFormula.Text + "ao";
         }
 
-        private void btnCFlujo_Click(object sender, EventArgs e)
+        private void btnComision_Click(object sender, EventArgs e)
         {
-            txtFormula.Text = txtFormula.Text + "cf";
-        }
-
-        private void btnCMixta_Click(object sender, EventArgs e)
-        {
-            txtFormula.Text = txtFormula.Text + "cm";
+            txtFormula.Text = txtFormula.Text + "c";
         }
 
         private void btnPSeguro_Click(object sender, EventArgs e)
