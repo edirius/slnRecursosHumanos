@@ -14,8 +14,8 @@ namespace CapaUsuario.Tareo
     {
         int sIdTTareo = 0;
         int sNumero = 0;
-        DateTime sFechaInicio;
-        DateTime sFechaFin;
+        DateTime sFechaInicio= DateTime.Now;
+        DateTime sFechaFin= DateTime.Now;
         string sDescripcion = "";
         bool sEstado = false;
         int sIdTMeta = 0;
@@ -62,7 +62,10 @@ namespace CapaUsuario.Tareo
                 return;
             }
             CapaUsuario.Tareo.frmTareo fTareo = new CapaUsuario.Tareo.frmTareo();
+
+
             fTareo.RecibirDatos(sIdTTareo, sNumero, sFechaInicio, sFechaFin, sDescripcion, sEstado, sIdTMeta, cboMeta.Text, 2);
+
             if (fTareo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -131,13 +134,18 @@ namespace CapaUsuario.Tareo
 
         private void dgvCronogramaTareo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int iFila = this.dgvTareo.CurrentRow.Index;
-            sIdTTareo = Convert.ToInt32(dgvTareo.Rows[iFila].Cells["idttareo"].Value);
-            sNumero = Convert.ToInt32(dgvTareo.Rows[iFila].Cells["numero"].Value);
-            sFechaInicio = Convert.ToDateTime(dgvTareo.Rows[iFila].Cells["fechainicio"].Value);
-            sFechaFin = Convert.ToDateTime(dgvTareo.Rows[iFila].Cells["fechafin"].Value);
-            sDescripcion = Convert.ToString(dgvTareo.Rows[iFila].Cells["descripcion"].Value);
-            sEstado = Convert.ToBoolean(dgvTareo.Rows[iFila].Cells["estado"].Value);
+            //int iFila = this.dgvTareo.CurrentRow.Index;
+
+            int iFila = Convert.ToInt32( e.RowIndex );
+
+            if (iFila != -1){ 
+                sIdTTareo = Convert.ToInt32(dgvTareo.Rows[iFila].Cells["idttareo"].Value);
+                sNumero = Convert.ToInt32(dgvTareo.Rows[iFila].Cells["numero"].Value);
+                sFechaInicio = Convert.ToDateTime(dgvTareo.Rows[iFila].Cells["fechainicio"].Value);
+                sFechaFin = Convert.ToDateTime(dgvTareo.Rows[iFila].Cells["fechafin"].Value);
+                sDescripcion = Convert.ToString(dgvTareo.Rows[iFila].Cells["descripcion"].Value);
+                sEstado = Convert.ToBoolean(dgvTareo.Rows[iFila].Cells["estado"].Value);
+            }
         }
 
         private void CargarMeta()
