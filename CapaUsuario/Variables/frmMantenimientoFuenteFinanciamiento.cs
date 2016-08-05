@@ -80,9 +80,11 @@ namespace CapaUsuario.Variables
 
         private void dgvFuenteFinanciamiento_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            sidtfuentefinanciamiento = Convert.ToInt32(dgvFuenteFinanciamiento.Rows[e.RowIndex].Cells[0].Value);
-            scodigo = Convert.ToString(dgvFuenteFinanciamiento.Rows[e.RowIndex].Cells[1].Value);
-            sdescripcion = Convert.ToString(dgvFuenteFinanciamiento.Rows[e.RowIndex].Cells[2].Value);
+            if (e.RowIndex != -1){
+                sidtfuentefinanciamiento = Convert.ToInt32(dgvFuenteFinanciamiento.Rows[e.RowIndex].Cells[0].Value);
+                scodigo = Convert.ToString(dgvFuenteFinanciamiento.Rows[e.RowIndex].Cells[1].Value);
+                sdescripcion = Convert.ToString(dgvFuenteFinanciamiento.Rows[e.RowIndex].Cells[2].Value);
+            }
         }
 
         private void CargarDatos()

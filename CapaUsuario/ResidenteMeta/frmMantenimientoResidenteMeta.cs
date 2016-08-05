@@ -80,9 +80,11 @@ namespace CapaUsuario.ResidenteMeta
 
         private void dgvResidenteMeta_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int iFila = this.dgvResidenteMeta.CurrentRow.Index;
-            sIdTResidenteMeta = Convert.ToInt32(dgvResidenteMeta.Rows[iFila].Cells["IdTResidenteMeta"].Value);
-            sIdTMeta = Convert.ToInt32(dgvResidenteMeta.Rows[iFila].Cells["IdTMeta"].Value);
+            if (e.RowIndex != -1) { 
+                int iFila = this.dgvResidenteMeta.CurrentRow.Index;
+                sIdTResidenteMeta = Convert.ToInt32(dgvResidenteMeta.Rows[iFila].Cells["IdTResidenteMeta"].Value);
+                sIdTMeta = Convert.ToInt32(dgvResidenteMeta.Rows[iFila].Cells["IdTMeta"].Value);
+            }
         }
 
         private void CargarResidente()

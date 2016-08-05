@@ -115,8 +115,10 @@ namespace CapaUsuario.Trabajador
 
         private void dtgListaTrabajadores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            pidttrabajador = Convert.ToInt32(dtgListaTrabajadores.Rows[e.RowIndex].Cells[0].Value);
-            trabajador = Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[2].Value) + " " + Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[3].Value) + " " + Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[4].Value);
+            if (e.RowIndex != -1 ) { 
+                pidttrabajador = Convert.ToInt32(dtgListaTrabajadores.Rows[e.RowIndex].Cells[0].Value);
+                trabajador = Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[2].Value) + " " + Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[3].Value) + " " + Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[4].Value);
+            }
         }
 
         private void btnDatosLaborales_Click(object sender, EventArgs e)

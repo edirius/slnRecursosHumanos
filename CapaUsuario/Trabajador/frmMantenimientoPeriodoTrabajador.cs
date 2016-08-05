@@ -101,24 +101,26 @@ namespace CapaUsuario.Trabajador
 
         private void dgvPeriodoTrabajador_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            sidtperiodotrabajador = Convert.ToInt32(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[1].Value);
-            sfechainicio = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[2].Value);
-            sfechafin = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[3].Value);
-            sidtmotivofinperiodo = Convert.ToInt32(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[4].Value);
-            smotivofinperiodo = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[5].Value);
-            if (dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[0].Selected == true)
-            {
-                if (sidtperiodotrabajador == 0)
+            if (e.RowIndex != -1) { 
+                sidtperiodotrabajador = Convert.ToInt32(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[1].Value);
+                sfechainicio = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[2].Value);
+                sfechafin = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[3].Value);
+                sidtmotivofinperiodo = Convert.ToInt32(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[4].Value);
+                smotivofinperiodo = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[5].Value);
+                if (dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[0].Selected == true)
                 {
-                    MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (sidtperiodotrabajador == 0)
+                    {
+                        MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (MessageBox.Show("Está seguro que desea eliminar el Periodo del Trabajador", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                    {
+                        return;
+                    }
+                    miPeriodoTrabajador.EliminarPeriodoTrabajador(sidtperiodotrabajador);
+                    CargarDatos();
                 }
-                if (MessageBox.Show("Está seguro que desea eliminar el Periodo del Trabajador", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
-                {
-                    return;
-                }
-                miPeriodoTrabajador.EliminarPeriodoTrabajador(sidtperiodotrabajador);
-                CargarDatos();
             }
         }
 

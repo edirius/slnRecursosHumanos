@@ -59,7 +59,7 @@
             // btnMeta
             // 
             this.btnMeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMeta.Font = new System.Drawing.Font("Wide Latin", 9.75F);
+            this.btnMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.btnMeta.Location = new System.Drawing.Point(489, 19);
             this.btnMeta.Name = "btnMeta";
             this.btnMeta.Size = new System.Drawing.Size(64, 23);
@@ -84,6 +84,7 @@
             // 
             this.dgvTareo.AllowUserToAddRows = false;
             this.dgvTareo.AllowUserToDeleteRows = false;
+            this.dgvTareo.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
             this.dgvTareo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTareo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -105,7 +106,7 @@
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalir.BackColor = System.Drawing.Color.MintCream;
-            this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
             this.btnSalir.Location = new System.Drawing.Point(488, 382);
@@ -121,7 +122,7 @@
             // 
             this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEliminar.BackColor = System.Drawing.Color.MintCream;
-            this.btnEliminar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEliminar.ImageKey = "118.png";
             this.btnEliminar.Location = new System.Drawing.Point(399, 382);
@@ -137,7 +138,7 @@
             // 
             this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModificar.BackColor = System.Drawing.Color.MintCream;
-            this.btnModificar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificar.ImageKey = "13.png";
             this.btnModificar.Location = new System.Drawing.Point(310, 382);
@@ -153,7 +154,7 @@
             // 
             this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNuevo.BackColor = System.Drawing.Color.MintCream;
-            this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
             this.btnNuevo.Location = new System.Drawing.Point(221, 382);
@@ -169,7 +170,7 @@
             // 
             this.btnDetalleTareo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDetalleTareo.BackColor = System.Drawing.Color.MintCream;
-            this.btnDetalleTareo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDetalleTareo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnDetalleTareo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDetalleTareo.ImageIndex = 1;
             this.btnDetalleTareo.Location = new System.Drawing.Point(12, 382);
@@ -185,7 +186,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.MintCream;
-            this.button1.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.button1.ImageIndex = 1;
             this.button1.Location = new System.Drawing.Point(132, 382);

@@ -17,7 +17,7 @@ namespace CapaDeDatos
             builder.Server = "localhost";
             builder.UserID = "root";
             builder.Password = "bahamut";
-            builder.Database = "mydb01";
+            builder.Database = "bdpersonal";
         }
         
     }

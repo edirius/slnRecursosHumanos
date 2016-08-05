@@ -151,24 +151,27 @@ namespace CapaUsuario.Trabajador
 
         private void dgvRegimenSalud_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            sidtregimensaludtrabajador = Convert.ToInt32(dgvRegimenSalud.Rows[e.RowIndex].Cells[1].Value);
-            sregimensalud = Convert.ToString(dgvRegimenSalud.Rows[e.RowIndex].Cells[2].Value);
-            sfechainiciosalud = Convert.ToString(dgvRegimenSalud.Rows[e.RowIndex].Cells[3].Value);
-            sfechafinsalud = Convert.ToString(dgvRegimenSalud.Rows[e.RowIndex].Cells[4].Value);
-            sentidadprestadorasalud = Convert.ToString(dgvRegimenSalud.Rows[e.RowIndex].Cells[5].Value);
-            if (dgvRegimenSalud.Rows[e.RowIndex].Cells[0].Selected == true)
-            {
-                if (sidtregimensaludtrabajador == 0)
+            //Solo para indices diferentes a -1
+            if (e.RowIndex != -1){
+                sidtregimensaludtrabajador = Convert.ToInt32(dgvRegimenSalud.Rows[e.RowIndex].Cells[1].Value);
+                sregimensalud = Convert.ToString(dgvRegimenSalud.Rows[e.RowIndex].Cells[2].Value);
+                sfechainiciosalud = Convert.ToString(dgvRegimenSalud.Rows[e.RowIndex].Cells[3].Value);
+                sfechafinsalud = Convert.ToString(dgvRegimenSalud.Rows[e.RowIndex].Cells[4].Value);
+                sentidadprestadorasalud = Convert.ToString(dgvRegimenSalud.Rows[e.RowIndex].Cells[5].Value);
+                if (dgvRegimenSalud.Rows[e.RowIndex].Cells[0].Selected == true)
                 {
-                    MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (sidtregimensaludtrabajador == 0)
+                    {
+                        MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (MessageBox.Show("Está seguro que desea eliminar el Regimen de Salud del Trabajador", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                    {
+                        return;
+                    }
+                    miRegimenSaludTrabajador.EliminarRegimenSaludTrabajador(sidtregimensaludtrabajador);
+                    CargarRegimenSaludTrabajador();
                 }
-                if (MessageBox.Show("Está seguro que desea eliminar el Regimen de Salud del Trabajador", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
-                {
-                    return;
-                }
-                miRegimenSaludTrabajador.EliminarRegimenSaludTrabajador(sidtregimensaludtrabajador);
-                CargarRegimenSaludTrabajador();
             }
         }
 
@@ -189,26 +192,28 @@ namespace CapaUsuario.Trabajador
 
         private void dgvRegimenPensionario_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            sidtregimenpensionariotrabajador = Convert.ToInt32(dgvRegimenPensionario.Rows[e.RowIndex].Cells[1].Value);
-            sidtafp = Convert.ToInt32(dgvRegimenPensionario.Rows[e.RowIndex].Cells[2].Value);
-            safp = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[3].Value);
-            sfechainiciopensionario = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[4].Value);
-            sfechafinpensionario = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[5].Value);
-            scuspp = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[6].Value);
-            stipocomision = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[7].Value);
-            if (dgvRegimenPensionario.Rows[e.RowIndex].Cells[0].Selected == true)
-            {
-                if (sidtregimenpensionariotrabajador == 0)
+            if (e.RowIndex != -1) { 
+                sidtregimenpensionariotrabajador = Convert.ToInt32(dgvRegimenPensionario.Rows[e.RowIndex].Cells[1].Value);
+                sidtafp = Convert.ToInt32(dgvRegimenPensionario.Rows[e.RowIndex].Cells[2].Value);
+                safp = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[3].Value);
+                sfechainiciopensionario = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[4].Value);
+                sfechafinpensionario = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[5].Value);
+                scuspp = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[6].Value);
+                stipocomision = Convert.ToString(dgvRegimenPensionario.Rows[e.RowIndex].Cells[7].Value);
+                if (dgvRegimenPensionario.Rows[e.RowIndex].Cells[0].Selected == true)
                 {
-                    MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (sidtregimenpensionariotrabajador == 0)
+                    {
+                        MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (MessageBox.Show("Está seguro que desea eliminar el Regimen Pensionario del Trabajador", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                    {
+                        return;
+                    }
+                    miRegimenPensionarioTrabajador.EliminarRegimenPensionarioTrabajador(sidtregimenpensionariotrabajador);
+                    CargarRegimenPensionarioTrabajador();
                 }
-                if (MessageBox.Show("Está seguro que desea eliminar el Regimen Pensionario del Trabajador", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
-                {
-                    return;
-                }
-                miRegimenPensionarioTrabajador.EliminarRegimenPensionarioTrabajador(sidtregimenpensionariotrabajador);
-                CargarRegimenPensionarioTrabajador();
             }
         }
 

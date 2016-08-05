@@ -81,10 +81,15 @@ namespace CapaUsuario.Variables
 
         private void dgvVariables_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            sidtvariables = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[0].Value);
-            saño = Convert.ToString(dgvVariables.Rows[e.RowIndex].Cells[1].Value);
-            ssueldominimo = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[2].Value);
-            suit = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[3].Value);
+
+            if (e.RowIndex!=-1) { 
+                sidtvariables = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[0].Value);
+                saño = Convert.ToString(dgvVariables.Rows[e.RowIndex].Cells[1].Value);
+                ssueldominimo = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[2].Value);
+                suit = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[3].Value);
+            }
+
+
         }
 
         private void CargarDatos()

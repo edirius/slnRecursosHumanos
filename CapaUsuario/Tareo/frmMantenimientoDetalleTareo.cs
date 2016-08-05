@@ -199,33 +199,35 @@ namespace CapaUsuario.Tareo
 
         private void dgvDetalleTareo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDetalleTareo.Rows[e.RowIndex].Cells[9].Selected == true)
-            {
-                //string xxx = Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[9].Value);
-                //object xxxxx = dgvDetalleTareo.Rows[e.RowIndex].Cells[9].Value ;
-                for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+            if (e.RowIndex != -1) { 
+                if (dgvDetalleTareo.Rows[e.RowIndex].Cells[9].Selected == true)
                 {
-                    auxiliar = miTareo.FechaInicio.AddDays(i);
-                    if (auxiliar.DayOfWeek != DayOfWeek.Sunday)
+                    //string xxx = Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[9].Value);
+                    //object xxxxx = dgvDetalleTareo.Rows[e.RowIndex].Cells[9].Value ;
+                    for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
                     {
-                        dgvDetalleTareo.Rows[e.RowIndex].Cells[10 + i].Value = "x";
+                        auxiliar = miTareo.FechaInicio.AddDays(i);
+                        if (auxiliar.DayOfWeek != DayOfWeek.Sunday)
+                        {
+                            dgvDetalleTareo.Rows[e.RowIndex].Cells[10 + i].Value = "x";
+                        }
                     }
                 }
-            }
-            else if (dgvDetalleTareo.Rows[e.RowIndex].Cells[2].Selected == true)
-            {
-                if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value) == "")
+                else if (dgvDetalleTareo.Rows[e.RowIndex].Cells[2].Selected == true)
                 {
-                    MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value) == "")
+                    {
+                        MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (MessageBox.Show("Está seguro que desea eliminar al Trabajador del Tareo de Obra", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    {
+                        return;
+                    }
+                    miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value);
+                    miDetalleTareo.EliminarDetalleTareo(miDetalleTareo);
+                    CargarDatos();
                 }
-                if (MessageBox.Show("Está seguro que desea eliminar al Trabajador del Tareo de Obra", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
-                {
-                    return;
-                }
-                miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value);
-                miDetalleTareo.EliminarDetalleTareo(miDetalleTareo);
-                CargarDatos();
             }
         }
 
