@@ -54,7 +54,5 @@ namespace CapaDeNegocios.DatosLaborales
         {
             return Conexion.GDatos.TraerDataTable("spListaMotivosFinPeriodos"); 
         }
-
-        
     }
 }

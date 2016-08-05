@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="info.lundin.Math">
+      <HintPath>..\info.lundin.Math.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -40,23 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cAfectaciones.cs" />
-    <Compile Include="cAFP.cs" />
-    <Compile Include="cComisionesAFP.cs" />
-    <Compile Include="cConceptoAporte.cs" />
-    <Compile Include="cConceptoIngreso.cs" />
-    <Compile Include="cConceptoTributo.cs" />
+    <Compile Include="AFPP\cAFP.cs" />
+    <Compile Include="AFPP\cComisionesAFP.cs" />
     <Compile Include="cDepartamento.cs" />
-    <Compile Include="cDetallePlanilla.cs" />
     <Compile Include="cDistrito.cs" />
     <Compile Include="cEnumTipoDia.cs" />
-    <Compile Include="cGerencia.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="cListaAFP.cs" />
-    <Compile Include="cListaTrabajadores.cs" />
+    <Compile Include="AFPP\cListaAFP.cs" />
+    <Compile Include="cFuenteFinanciamiento.cs" />
     <Compile Include="cNacionalidad.cs" />
-    <Compile Include="cObrero.cs" />
-    <Compile Include="conceptos.cs" />
     <Compile Include="Contrato\cCargo.cs" />
     <Compile Include="Contrato\cContrato.cs" />
     <Compile Include="Contrato\cTipoContrato.cs" />
@@ -64,26 +58,25 @@
     <Compile Include="Contrato\enumTipoContrato.cs" />
     <Compile Include="Contrato\enumTipoServidor.cs" />
     <Compile Include="ConvertirImagen.cs" />
-    <Compile Include="cPeriodo.cs" />
-    <Compile Include="cPeriodoTipoTrabajador.cs" />
-    <Compile Include="cPLanilla.cs" />
     <Compile Include="cProvincia.cs" />
     <Compile Include="cReglaNegociosException.cs" />
-    <Compile Include="Contrato\cTipoTrabajador.cs" />
+    <Compile Include="cVariables.cs" />
+    <Compile Include="DatosLaborales\cCategoriaOcupacional.cs" />
+    <Compile Include="DatosLaborales\cPeriodoTrabajador.cs" />
+    <Compile Include="DatosLaborales\cRegimenLaboral.cs" />
+    <Compile Include="DatosLaborales\cRegimenPensionarioTrabajador.cs" />
+    <Compile Include="DatosLaborales\cRegimenSaludTrabajador.cs" />
+    <Compile Include="DatosLaborales\cRegimenTrabajador.cs" />
+    <Compile Include="DatosLaborales\cTipoTrabajador.cs" />
     <Compile Include="cTipoVia.cs" />
     <Compile Include="cTipoZona.cs" />
     <Compile Include="cTrabajador.cs" />
-    <Compile Include="cTrabajador276.cs" />
-    <Compile Include="cTrabajadorCas.cs" />
-    <Compile Include="cTrabajadorServicios.cs" />
     <Compile Include="DatosLaborales\cDatosLaborales.cs" />
     <Compile Include="DatosLaborales\cFinPeriodo.cs" />
     <Compile Include="DatosLaborales\cMotivoFinPeriodo.cs" />
     <Compile Include="DatosLaborales\cPeriodoAFP.cs" />
     <Compile Include="DatosLaborales\cPeriodoSistemaPension.cs" />
     <Compile Include="DatosLaborales\cPeriodoTipoTrabajador.cs" />
-    <Compile Include="DatosLaborales\cRegimenLaboral.cs" />
-    <Compile Include="DatosLaborales\cRegimenLaboralCas.cs" />
     <Compile Include="DatosLaborales\cSistema20530.cs" />
     <Compile Include="DatosLaborales\cSistemaAFP.cs" />
     <Compile Include="DatosLaborales\cSistemaONP.cs" />
@@ -99,6 +92,7 @@
     <Compile Include="Obras\cFuncion.cs" />
     <Compile Include="Obras\cGrupoFuncional.cs" />
     <Compile Include="Obras\cMeta.cs" />
+    <Compile Include="Obras\cMetaJornal.cs" />
     <Compile Include="Obras\cObra.cs" />
     <Compile Include="Obras\cProductoProyecto.cs" />
     <Compile Include="Obras\cProgramaPresupuestal.cs" />
@@ -106,16 +100,27 @@
     <Compile Include="Planillas\cDescuentos.cs" />
     <Compile Include="Planillas\cDetallePlanilla.cs" />
     <Compile Include="Planillas\cIngresos.cs" />
+    <Compile Include="Planillas\cMaestroIngresos.cs" />
     <Compile Include="Planillas\cPlanilla.cs" />
+    <Compile Include="Planillas\cPlantillaPlanilla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResidenteMeta\cResidenteMeta.cs" />
     <Compile Include="Sexo.cs" />
-    <Compile Include="Tareos\cCatalogoTareos.cs" />
-    <Compile Include="Tareos\cCategoria.cs" />
+    <Compile Include="Sunat\cMaestroAportacionesEmpleador.cs" />
+    <Compile Include="Sunat\cMaestroAportacionesTrabajador.cs" />
+    <Compile Include="Sunat\cMaestroDescuentos.cs" />
+    <Compile Include="Sunat\cMaestroIngresos.cs" />
     <Compile Include="Tareos\cDetalleTareo.cs" />
-    <Compile Include="Tareos\cDiaTareo.cs" />
-    <Compile Include="Tareos\cObrero.cs" />
+    <Compile Include="Tareos\cDiasTareo.cs" />
+    <Compile Include="DatosLaborales\cOcupacion.cs" />
     <Compile Include="Tareos\cTareo.cs" />
-    <Compile Include="Tareos\enumTipoTareo.cs" />
+    <Compile Include="Trabajadores\cTrabajador276.cs" />
+    <Compile Include="Trabajadores\cTrabajadorCas.cs" />
+    <Compile Include="Trabajadores\cTrabajadorEventual.cs" />
+    <Compile Include="Trabajadores\cTrabajadorObrero.cs" />
+    <Compile Include="Trabajadores\cTrabajadorPermanente.cs" />
+    <Compile Include="Trabajadores\cTrabajadorServidorNoPersonal.cs" />
+    <Compile Include="Trabajadores\cTrabajadorServidorPersonal.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

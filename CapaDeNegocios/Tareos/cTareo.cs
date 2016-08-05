@@ -3,89 +3,79 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CapaDeNegocios.Obras;
+
 using System.Data;
 using CapaDeDatos;
+using CapaDeNegocios.Obras;
 
 namespace CapaDeNegocios.Tareos
 {
     public class cTareo
     {
-        int codigo;
+        int sidttareo;
+        int snumero;
+        DateTime sfechainicio;
+        DateTime sfechafin;
+        string sdescripcion;
+        bool sestado = false;
 
-        public int Codigo
+        public int IdTTareo
         {
-            get { return codigo; }
-            set { codigo = value; }
+            get { return sidttareo; }
+            set { sidttareo = value; }
         }
-        DateTime fechaInicio;
+
+        public int Numero
+        {
+            get { return snumero; }
+            set { snumero = value; }
+        }
 
         public DateTime FechaInicio
         {
-            get { return fechaInicio; }
-            set { fechaInicio = value; }
-        }
-        DateTime fechaFinal;
-
-        public DateTime FechaFinal
-        {
-            get { return fechaFinal; }
-            set { fechaFinal = value; }
+            get { return sfechainicio; }
+            set { sfechainicio = value; }
         }
 
-        private cTrabajador ingenieroResponsable;
-
-        public cTrabajador IngenieroResponsable
+        public DateTime FechaFin
         {
-            get { return ingenieroResponsable; }
-            set { ingenieroResponsable = value; }
+            get { return sfechafin; }
+            set { sfechafin = value; }
         }
 
-
-        private cMeta meta;
-
-        public cMeta Meta
+        public string Descripcion
         {
-            get { return meta; }
-            set { meta = value; }
+            get { return sdescripcion; }
+            set { sdescripcion = value; }
         }
 
-        enumTipoTareo tipoTareo;
-
-        public enumTipoTareo TipoTareo
+        public bool Estado
         {
-            get { return tipoTareo; }
-            set { tipoTareo = value; }
+            get { return sestado; }
+            set { sestado = value; }
         }
 
-        private cDetalleTareo miDetalleTareo;
-
-        public cDetalleTareo MiDetalleTareo
+        public DataTable ListarTareo(cMeta miMeta)
         {
-            get { return miDetalleTareo; }
-            set { miDetalleTareo = value; }
+            return Conexion.GDatos.TraerDataTable("spListarTareo", miMeta.Codigo);
         }
-        
 
-        public Boolean AgregarDetalleTareo(cDetalleTareo miDetalleTareo)
+        public Boolean CrearTareo(cTareo miTareo, cMeta miMeta)
         {
-            Conexion.GDatos.Ejecutar("spCrearDetalleTareo", miDetalleTareo.Obrero.IdTrabajador, this.codigo);
+            Conexion.GDatos.Ejecutar("spCrearTareo", miTareo.Numero, miTareo.FechaInicio, miTareo.FechaFin, miTareo.Descripcion, miTareo.Estado, miMeta.Codigo);
             return true;
         }
 
-        public Boolean ModificarDetalleTareo(cDetalleTareo miDetalleTareo)
+        public Boolean ModificarTareo(cTareo miTareo, cMeta miMeta)
         {
-            Conexion.GDatos.Ejecutar("spModificarDetalleTareo", miDetalleTareo.Codigo, miDetalleTareo.Obrero.IdTrabajador, this.codigo);
+            Conexion.GDatos.Ejecutar("spModificarTareo", miTareo.IdTTareo, miTareo.Numero, miTareo.FechaInicio, miTareo.FechaFin, miTareo.Descripcion, miTareo.Estado, miMeta.Codigo);
             return true;
         }
 
-        public Boolean EliminarDetalleTareo(cDetalleTareo miDetalleTareo)
+        public Boolean EliminarTareo(cTareo miTareo)
         {
-            Conexion.GDatos.Ejecutar("spEliminarDetalleTareo", miDetalleTareo.Codigo);
+            Conexion.GDatos.Ejecutar("spELiminarTareo", miTareo.IdTTareo);
             return true;
         }
-
-
     }
-
 }

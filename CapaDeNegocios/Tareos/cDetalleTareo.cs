@@ -1,90 +1,63 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Data;
 using CapaDeDatos;
+using CapaDeNegocios.Obras;
 
 namespace CapaDeNegocios.Tareos
 {
     public class cDetalleTareo
     {
-        int codigo;
+        int sidtdetalletareo;
+        string scategoria;
+        string sdiastareo;
 
-        public int Codigo
+        public int IdTDetalleTareo
         {
-            get { return codigo; }
-            set { codigo = value; }
-        }
-        cTareo tareo;
-
-        public cTareo Tareo
-        {
-            get { return tareo; }
-            set { tareo = value; }
-        }
-        cObrero obrero;
-
-        public cObrero Obrero
-        {
-            get { return obrero; }
-            set { obrero = value; }
-        }
-        List<cDiaTareo> dias;
-
-        public List<cDiaTareo> Dias
-        {
-            get { return dias; }
-            set { dias = value; }
+            get { return sidtdetalletareo; }
+            set { sidtdetalletareo = value; }
         }
 
-        public void LLenarDiasTareo()
+        public string Categoria
         {
-            TimeSpan miTiempo = tareo.FechaFinal - tareo.FechaInicio;
-            int auxiliarDias;
-            auxiliarDias = miTiempo.Days;
-            DateTime auxiliar = new DateTime();
-            auxiliar = this.tareo.FechaInicio;
-            for (int i = 0; i < auxiliarDias; i++)
-            {
-                cDiaTareo miDia = new cDiaTareo();
-                miDia.Fecha = auxiliar;
-                miDia.TipoDia = cEnumTipoDia.Laborado;
-                auxiliar = auxiliar.AddDays(1);
-                dias.Add(miDia);
-            }
+            get { return scategoria; }
+            set { scategoria = value; }
         }
 
-        public Boolean marcarDiaLaborado(cDiaTareo midia )
+        public string DiasTareo
         {
-            midia.TipoDia = cEnumTipoDia.Laborado;
+            get { return sdiastareo; }
+            set { sdiastareo = value; }
+        }
+
+        public DataTable ListarDetalleTareo(cTareo miTareo)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarDetalleTareo", miTareo.IdTTareo);
+        }
+
+        public Boolean CrearDetalleTareo(cDetalleTareo miDetalleTareo, cTrabajador miTrabajador, cTareo miTareo)
+        {
+            Conexion.GDatos.Ejecutar("spCrearDetalleTareo", miDetalleTareo.Categoria, miDetalleTareo.DiasTareo, miTrabajador.IdTrabajador, miTareo.IdTTareo);
+            return true;
+
+        }
+
+        public Boolean ModificarDetalleTareo(cDetalleTareo miDetalleTareo, cTrabajador miTrabajador, cTareo miTareo)
+        {
+            Conexion.GDatos.Ejecutar("spModificarDetalleTareo", miDetalleTareo.IdTDetalleTareo, miDetalleTareo.Categoria, miDetalleTareo.DiasTareo, miTrabajador.IdTrabajador, miTareo.IdTTareo);
             return true;
         }
 
-        public Boolean marcarDiaNoLaborado(cDiaTareo midia)
+        public Boolean EliminarDetalleTareo(cDetalleTareo miDetalleTareo)
         {
-            midia.TipoDia = cEnumTipoDia.NoLaborado;
+            Conexion.GDatos.Ejecutar("spEliminarDetalleTareo", miDetalleTareo.IdTDetalleTareo);
             return true;
         }
 
-        public Boolean NuevoDiatareo(cDiaTareo miDia)
-        {
-            Conexion.GDatos.Ejecutar("spCrearDiaTareo", miDia.Fecha, miDia.TipoDia.ToString(), this.codigo);
-            return true;
-        }
 
-        public Boolean ModificarDiaTareo(cDiaTareo miDia)
-        {
-            Conexion.GDatos.Ejecutar("spModificarDiasTareo", miDia.Codigo, miDia.Fecha, miDia.TipoDia.ToString(), this.codigo);
-            return true;
-        }
-
-        public Boolean ELiminarDiaTareo(cDiaTareo miDia)
-        {
-            Conexion.GDatos.Ejecutar("spEliminarDiaTareo", miDia.Codigo);
-            return true;
-        }
     }
 }

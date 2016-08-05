@@ -8,6 +8,12 @@ namespace CapaDeNegocios.DatosLaborales
 {
     public class cPeriodoSistemaPension
     {
+        public cPeriodoSistemaPension()
+        {
+            fechaFinal = new cFinPeriodo();
+            miSistemaPension = new cSistemaPension();
+        }
+
         DateTime fechaInicio;
 
         public DateTime FechaInicio
@@ -25,5 +31,17 @@ namespace CapaDeNegocios.DatosLaborales
             set { miSistemaPension = value; }
         }
 
+        public cFinPeriodo FechaFinal
+        {
+            get
+            {
+                return fechaFinal;
+            }
+
+            set
+            {
+                fechaFinal = value;
+            }
+        }
     }
 }

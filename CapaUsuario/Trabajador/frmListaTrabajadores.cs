@@ -13,16 +13,25 @@ namespace CapaUsuario.Trabajador
 {
     public partial class frmListaTrabajadores : Form
     {
+        int pidttrabajador = 0;
+        string trabajador = "";
+        
         public frmListaTrabajadores()
         {
             InitializeComponent();
         }
 
-        public cListaTrabajadores miListaTrabajadores = new cListaTrabajadores();
+        public cTrabajador miListaTrabajadores = new cTrabajador();
 
         private void Iniciar()
         {
             dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(true);
+            if (dtgListaTrabajadores.Rows.Count > 0)
+            {
+                DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, 0);
+                dtgListaTrabajadores.Rows[dtgListaTrabajadores.Rows.Count - 1].Selected = true;
+                dtgListaTrabajadores_CellClick(dtgListaTrabajadores, cea);
+            }
         }
 
           
@@ -42,7 +51,7 @@ namespace CapaUsuario.Trabajador
             try
             {
                 Trabajador.frmNuevoTrabajador fNuevoTrabajador = new frmNuevoTrabajador();
-                fNuevoTrabajador.miTrabajador = new cTrabajador();
+                fNuevoTrabajador.miTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorServidorPersonal();
                 fNuevoTrabajador.miTrabajador.FechaNacimiento = DateTime.Now;
                 if (fNuevoTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -62,7 +71,7 @@ namespace CapaUsuario.Trabajador
             try
             {
                 Trabajador.frmNuevoTrabajador fModificarTrabajador = new frmNuevoTrabajador();
-                fModificarTrabajador.miTrabajador = new cTrabajador();
+                fModificarTrabajador.miTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorServidorPersonal();
                 fModificarTrabajador.miTrabajador = fModificarTrabajador.miTrabajador.traerTrabajador(Convert.ToInt16(dtgListaTrabajadores.SelectedRows[0].Cells[0].Value.ToString()));
 
                 if (fModificarTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -97,6 +106,24 @@ namespace CapaUsuario.Trabajador
                 MessageBox.Show(h.Message);
             }
             
+        }
+
+        private void dtgListaTrabajadores_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dtgListaTrabajadores_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            pidttrabajador = Convert.ToInt32(dtgListaTrabajadores.Rows[e.RowIndex].Cells[0].Value);
+            trabajador = Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[2].Value) + " " + Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[3].Value) + " " + Convert.ToString(dtgListaTrabajadores.Rows[e.RowIndex].Cells[4].Value);
+        }
+
+        private void btnDatosLaborales_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Trabajador.frmMantenimientoPeriodoTrabajador fPeriodoTrabajador = new CapaUsuario.Trabajador.frmMantenimientoPeriodoTrabajador();
+            fPeriodoTrabajador.RecibirDatos(pidttrabajador, trabajador);
+            fPeriodoTrabajador.ShowDialog();
         }
     }
 }

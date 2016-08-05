@@ -45,6 +45,8 @@
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.btnDatosLaborales = new System.Windows.Forms.Button();
+            this.btnDetalleTareo = new System.Windows.Forms.Button();
             this.chkActivos = new System.Windows.Forms.CheckBox();
             this.btnBuscarAMaterno = new System.Windows.Forms.Button();
             this.btnBuscarAPaterno = new System.Windows.Forms.Button();
@@ -80,7 +82,7 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 430);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 480);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(902, 22);
             this.statusStrip1.TabIndex = 1;
@@ -181,6 +183,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnDatosLaborales);
+            this.splitContainer1.Panel2.Controls.Add(this.btnDetalleTareo);
             this.splitContainer1.Panel2.Controls.Add(this.chkActivos);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarAMaterno);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarAPaterno);
@@ -195,7 +199,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.textBox1);
             this.splitContainer1.Panel2.Controls.Add(this.dtgListaTrabajadores);
-            this.splitContainer1.Size = new System.Drawing.Size(902, 398);
+            this.splitContainer1.Size = new System.Drawing.Size(902, 448);
             this.splitContainer1.SplitterDistance = 163;
             this.splitContainer1.TabIndex = 3;
             // 
@@ -204,8 +208,39 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(163, 398);
+            this.treeView1.Size = new System.Drawing.Size(163, 448);
             this.treeView1.TabIndex = 0;
+            // 
+            // btnDatosLaborales
+            // 
+            this.btnDatosLaborales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDatosLaborales.BackColor = System.Drawing.Color.MintCream;
+            this.btnDatosLaborales.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDatosLaborales.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnDatosLaborales.ImageIndex = 1;
+            this.btnDatosLaborales.Location = new System.Drawing.Point(591, 391);
+            this.btnDatosLaborales.Name = "btnDatosLaborales";
+            this.btnDatosLaborales.Size = new System.Drawing.Size(114, 53);
+            this.btnDatosLaborales.TabIndex = 32;
+            this.btnDatosLaborales.Text = "&Datos Laborales";
+            this.btnDatosLaborales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDatosLaborales.UseVisualStyleBackColor = false;
+            this.btnDatosLaborales.Click += new System.EventHandler(this.btnDatosLaborales_Click);
+            // 
+            // btnDetalleTareo
+            // 
+            this.btnDetalleTareo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDetalleTareo.BackColor = System.Drawing.Color.MintCream;
+            this.btnDetalleTareo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDetalleTareo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnDetalleTareo.ImageIndex = 1;
+            this.btnDetalleTareo.Location = new System.Drawing.Point(591, 466);
+            this.btnDetalleTareo.Name = "btnDetalleTareo";
+            this.btnDetalleTareo.Size = new System.Drawing.Size(114, 53);
+            this.btnDetalleTareo.TabIndex = 30;
+            this.btnDetalleTareo.Text = "&Detalle Tareo";
+            this.btnDetalleTareo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDetalleTareo.UseVisualStyleBackColor = false;
             // 
             // chkActivos
             // 
@@ -340,6 +375,8 @@
             this.dtgListaTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListaTrabajadores.Size = new System.Drawing.Size(690, 252);
             this.dtgListaTrabajadores.TabIndex = 13;
+            this.dtgListaTrabajadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellClick);
+            this.dtgListaTrabajadores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellContentClick);
             // 
             // idTrabajador
             // 
@@ -393,7 +430,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 452);
+            this.ClientSize = new System.Drawing.Size(902, 502);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
@@ -451,7 +488,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPaterno;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoMaterno;
         private System.Windows.Forms.DataGridViewTextBoxColumn sexo;
-
-
+        private System.Windows.Forms.Button btnDetalleTareo;
+        private System.Windows.Forms.Button btnDatosLaborales;
     }
 }

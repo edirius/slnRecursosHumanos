@@ -7,16 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDeNegocios;
-using CapaDeNegocios.Tareos;
-using CapaDeNegocios.Obras;
 
 namespace CapaUsuario.Tareo
 {
     public partial class frmTareo : Form
     {
-        cCatalogoTareos oCatalogoTareos = new cCatalogoTareos();
-        cCadenaProgramaticaFuncional miCadena = new cCadenaProgramaticaFuncional();        
+        int sIdTTareo = 0;
+        int sIdTMeta = 0;
+        int iAccion;
 
         public frmTareo()
         {
@@ -25,41 +23,58 @@ namespace CapaUsuario.Tareo
 
         private void frmTareo_Load(object sender, EventArgs e)
         {
-            Iniciar();
-        }
-
-        private void Iniciar()
-        {
-            dtgTareos.DataSource = oCatalogoTareos.ListarTareos();
-            cboListaMetas.DisplayMember = "nombre";
-            cboListaMetas.ValueMember = "idMeta";
-            cboListaMetas.DataSource = miCadena.ListarMetas();
 
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
+        private void Btn_Aceptar_Click(object sender, EventArgs e)
         {
-            frmNuevoTareo fNuevoTareo = new frmNuevoTareo();
-            fNuevoTareo.miTareo = new cTareo();
-            fNuevoTareo.miTareo.FechaInicio = DateTime.Now;
-            fNuevoTareo.miTareo.FechaFinal = DateTime.Now.AddDays(30);
+            bool bOk = false;
+            CapaDeNegocios.Tareos.cTareo miTareo = new CapaDeNegocios.Tareos.cTareo();
+            CapaDeNegocios.Obras.cMeta miMeta = new CapaDeNegocios.Obras.cMeta();
+            miTareo.IdTTareo = sIdTTareo;
+            miTareo.Numero = Convert.ToInt32(txtNumero.Text);
+            miTareo.FechaInicio = dptFechaInicio.Value;
+            miTareo.FechaFin = dptFechaFin.Value;
+            miTareo.Descripcion = txtDescripcion.Text;
+            miTareo.Estado = chkActivo.Checked;
+            miMeta.Codigo = sIdTMeta;
 
-            fNuevoTareo.miTareo.MiDetalleTareo = new cDetalleTareo();
-            fNuevoTareo.miTareo.MiDetalleTareo.Tareo = fNuevoTareo.miTareo;
-            fNuevoTareo.miTareo.MiDetalleTareo.Dias = new List<cDiaTareo>();
-
-            
-            if (fNuevoTareo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (iAccion == 1)
             {
-
-
+                miTareo.CrearTareo(miTareo, miMeta);
+                bOk = true;
             }
-	    
+            if (iAccion == 2)
+            {
+                miTareo.ModificarTareo(miTareo, miMeta);
+                bOk = true;
+            }
+            if (bOk == true)
+            {
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("No se puede registrar estos datos", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void cboListaMetas_SelectedIndexChanged(object sender, EventArgs e)
+        private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
+            DialogResult = System.Windows.Forms.DialogResult.Cancel;
+        }
 
+        public void RecibirDatos(int pIdTTareo, int  pNumero, DateTime pFechaInicio, DateTime pFechaFin, string pDescripcion, bool pEstado, int pIdTMeta, string pNombre, int piAccion)
+        {
+            sIdTTareo = pIdTTareo;
+            txtNumero.Text = Convert.ToString(pNumero);
+            dptFechaInicio.Value = pFechaInicio;
+            dptFechaFin.Value = pFechaFin;
+            txtDescripcion.Text = pDescripcion;
+            chkActivo.Checked = pEstado;
+            sIdTMeta = pIdTMeta;
+            txtMeta.Text = pNombre;
+            iAccion = piAccion;
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDeDatos;
 using CapaDeNegocios.Obras;
+using cWord;
 
 namespace CapaUsuario
 {
@@ -112,11 +113,6 @@ namespace CapaUsuario
             fDivisionFuncional.Show();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AFP.frmComisionesAFP fComisionesAFP = new AFP.frmComisionesAFP();
@@ -126,13 +122,14 @@ namespace CapaUsuario
             fComisionesAFP.miListaAFP.ObtenerListaAFP();
             fComisionesAFP.MdiParent = this;
             fComisionesAFP.Show();
+            //hh
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             try
             {
-                Conexion.IniciarSesion("localhost", "bdPersonal", "root", "bahamut");
+                Conexion.IniciarSesion("192.168.1.133", "bdPersonal", "root", "bahamut");
                 MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
             }
             catch (Exception ex)
@@ -151,7 +148,7 @@ namespace CapaUsuario
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Tareo.frmTareo fTareo = new Tareo.frmTareo();
+            Tareo.frmMantenimientoTareo fTareo = new Tareo.frmMantenimientoTareo();
             fTareo.MdiParent = this;
             fTareo.Show();
         }
@@ -161,6 +158,13 @@ namespace CapaUsuario
             Metas.frmMantenimientoMetas fMeta = new Metas.frmMantenimientoMetas();
             fMeta.MdiParent = this;
             fMeta.Show();
+        }
+
+        private void metaJornalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResidenteMeta.frmMetaJornal fMetaJornal = new ResidenteMeta.frmMetaJornal();
+            fMetaJornal.MdiParent = this;
+            fMetaJornal.Show();
         }
 
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -175,6 +179,87 @@ namespace CapaUsuario
         {
             Trabajador.frmListaCargo miListaCargos = new Trabajador.frmListaCargo();
             miListaCargos.Show();
+        }
+
+        private void residenteMetaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();
+            fMantenimientoResidenteMeta.MdiParent = this;
+            fMantenimientoResidenteMeta.Show();
+        }
+
+        private void maestroIngresosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Sunat.frmMantenimientoMaestroIngresos fMantenimientoMaestroIngresos = new Sunat.frmMantenimientoMaestroIngresos();
+            fMantenimientoMaestroIngresos.MdiParent = this;
+            fMantenimientoMaestroIngresos.Show();
+        }
+
+        private void maestroAportacionesTrabajadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Sunat.frmMantenimientoMaestroAportacionesTrabajador fMantenimientoMaestroAportacionesTrabajador = new Sunat.frmMantenimientoMaestroAportacionesTrabajador();
+            fMantenimientoMaestroAportacionesTrabajador.MdiParent = this;
+            fMantenimientoMaestroAportacionesTrabajador.Show();
+        }
+
+        private void maestroDescuentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Sunat.frmMantenimientoMaestroAportacionesEmpleador fMantenimientoMaestroAportacionesEmpleador = new Sunat.frmMantenimientoMaestroAportacionesEmpleador();
+            fMantenimientoMaestroAportacionesEmpleador.MdiParent = this;
+            fMantenimientoMaestroAportacionesEmpleador.Show();
+        }
+
+        private void maestroDescuentosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Sunat.frmMantenimientoMaestroDescuentos fMantenimientoMaestroDescuentos = new Sunat.frmMantenimientoMaestroDescuentos();
+            fMantenimientoMaestroDescuentos.MdiParent = this;
+            fMantenimientoMaestroDescuentos.Show();
+        }
+
+        private void planillaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Planilla.frmMatenimientoPlanilla fPlanilla = new Planilla.frmMatenimientoPlanilla();
+            fPlanilla.MdiParent = this;
+            fPlanilla.Show();
+        }
+
+        private void plantillaPlanillaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Planilla.frmMantenimientoPlantillaPlanilla fPlantillaPlanilla = new Planilla.frmMantenimientoPlantillaPlanilla();
+            fPlantillaPlanilla.MdiParent = this;
+            fPlantillaPlanilla.Show();
+        }
+
+        cDocumentoWord cMiword;
+
+        private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cMiword = new cDocumentoWord();
+            cMiword.trabajador = "Edward Crisologo Roman Castro";
+            cMiword.dni = "41919785";
+            cMiword.direccion = "Urb.Balconcillo B-1";
+            cMiword.distrito = "Cusco";
+            cMiword.provincia = "Cusco";
+            cMiword.departamento = "Cusco";
+            cMiword.direccion = "Urb. Balconcillo B-1";
+            cMiword.cargo = "Jefe de la Unidad de Recursos Humanos";
+            cMiword.monto = "S/. 1500.00 (Mil quinientos Nuevos Soles)";
+            cMiword.fecha = DateTime.Now.ToLongDateString();
+            cMiword.Iniciar();
+        }
+
+        private void variablesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Variables.frmMantenimientoVariables fMantenimientoVariables = new Variables.frmMantenimientoVariables();
+            fMantenimientoVariables.MdiParent = this;
+            fMantenimientoVariables.Show();
+        }
+
+        private void fuenteFinanciamientoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Variables.frmMantenimientoFuenteFinanciamiento fMantenimientoFuenteFinanciamiento = new Variables.frmMantenimientoFuenteFinanciamiento();
+            fMantenimientoFuenteFinanciamiento.MdiParent = this;
+            fMantenimientoFuenteFinanciamiento.Show();
         }
     }
 }

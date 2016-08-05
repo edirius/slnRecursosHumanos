@@ -4,31 +4,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Data;
+using CapaDeDatos;
+
 namespace CapaDeNegocios.DatosLaborales
 {
     public class cRegimenLaboral
     {
-        int codigo;
+        int sidtregimenlaboral;
+        string scodigo;
+        string sdescripcion;
 
-        public int Codigo
+        public int IdTRegimenLaboral
         {
-            get { return codigo; }
-            set { codigo = value; }
+            get { return sidtregimenlaboral; }
+            set { sidtregimenlaboral = value; }
         }
-        string nombre;
-
-        public string Nombre
+        public string Codigo
         {
-            get { return nombre; }
-            set { nombre = value; }
+            get { return scodigo; }
+            set { scodigo = value; }
         }
-        string codigoSunat;
-
-        public string CodigoSunat
+        public string Descripcion
         {
-            get { return codigoSunat; }
-            set { codigoSunat = value; }
+            get { return sdescripcion; }
+            set { sdescripcion = value; }
         }
 
+        public DataTable ListarRegimenLaboral()
+        {
+            return Conexion.GDatos.TraerDataTable("spListarRegimenLaboral");
+        }
+
+        public Boolean CrearRegimenLaboral(cRegimenLaboral miRegimenLaboral)
+        {
+            Conexion.GDatos.Ejecutar("spCrearRegimenLaboral", miRegimenLaboral.Codigo, miRegimenLaboral.Descripcion);
+            return true;
+        }
+
+        public Boolean ModificarRegimenLaboral(cRegimenLaboral miRegimenLaboral)
+        {
+            Conexion.GDatos.Ejecutar("spModificarRegimenLaboral", miRegimenLaboral.IdTRegimenLaboral, miRegimenLaboral.Codigo, miRegimenLaboral.Descripcion);
+            return true;
+        }
+
+        public Boolean EliminarRegimenLaboral(int IdTRegimenLaboral)
+        {
+            Conexion.GDatos.Ejecutar("spELiminarRegimenLaboral", IdTRegimenLaboral);
+            return true;
+        }
     }
 }

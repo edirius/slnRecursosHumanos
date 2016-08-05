@@ -5,38 +5,84 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaDeNegocios.Obras;
 
+using System.Data;
+using CapaDeDatos;
+
 namespace CapaDeNegocios.Planillas
 {
     public class cPlanilla
     {
-        int codigo;
+        int sidtplanilla;
+        string snumero;
+        string smes;
+        string saño;
+        DateTime sfecha;
+        int sidtmeta;
+        int sidtfuentefinanciamiento;
+        int sidtregimenlaboral;
 
-        public int Codigo
+        public int IdtPlanilla
         {
-            get { return codigo; }
-            set { codigo = value; }
+            get { return sidtplanilla; }
+            set { sidtplanilla = value; }
         }
-        cMeta meta;
-
-        public cMeta Meta
+        public string Numero
         {
-            get { return meta; }
-            set { meta = value; }
+            get { return snumero; }
+            set { snumero = value; }
         }
-        DateTime fecha;
-
+        public string Mes
+        {
+            get { return smes; }
+            set { smes = value; }
+        }
+        public string Año
+        {
+            get { return saño; }
+            set { saño = value; }
+        }
         public DateTime Fecha
         {
-            get { return fecha; }
-            set { fecha = value; }
+            get { return sfecha; }
+            set { sfecha = value; }
         }
-        int numero;
-
-        public int Numero
+        public int IdtMeta
         {
-            get { return numero; }
-            set { numero = value; }
+            get { return sidtmeta; }
+            set { sidtmeta = value; }
+        }
+        public int IdtFuenteFinanciamiento
+        {
+            get { return sidtfuentefinanciamiento; }
+            set { sidtfuentefinanciamiento = value; }
+        }
+        public int IdtRegimenLaboral
+        {
+            get { return sidtregimenlaboral; }
+            set { sidtregimenlaboral = value; }
         }
 
+        public DataTable ListarPlanilla(int IdtRegimenLaboral)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarPlanilla", IdtRegimenLaboral);
+        }
+
+        public Boolean CrearPlanilla(cPlanilla miPlanilla)
+        {
+            Conexion.GDatos.Ejecutar("spCrearPlanilla", miPlanilla.Numero, miPlanilla.Mes, miPlanilla.Año, miPlanilla.Fecha, miPlanilla.IdtMeta, miPlanilla.IdtFuenteFinanciamiento, miPlanilla.IdtRegimenLaboral);
+            return true;
+        }
+
+        public Boolean ModificarPlanilla(cPlanilla miPlanilla)
+        {
+            Conexion.GDatos.Ejecutar("spModificarPlanilla", miPlanilla.IdtPlanilla, miPlanilla.Numero, miPlanilla.Mes,miPlanilla.Año, miPlanilla.Fecha, miPlanilla.IdtMeta, miPlanilla.IdtFuenteFinanciamiento, miPlanilla.IdtRegimenLaboral);
+            return true;
+        }
+
+        public Boolean EliminarPlanilla(int IdtPlanilla)
+        {
+            Conexion.GDatos.Ejecutar("spELiminarPlanilla", IdtPlanilla);
+            return true;
+        }
     }
 }
