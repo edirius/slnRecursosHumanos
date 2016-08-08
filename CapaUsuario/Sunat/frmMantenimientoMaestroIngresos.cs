@@ -29,6 +29,7 @@ namespace CapaUsuario.Sunat
         bool scontrib_solidaria = false;
         string scalculo = "";
         string stipo = "";
+        string sabreviacion = "";
 
         CapaDeNegocios.Sunat.cMaestroIngresos miMaestroIngresos = new CapaDeNegocios.Sunat.cMaestroIngresos();
 
@@ -51,7 +52,7 @@ namespace CapaUsuario.Sunat
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             CapaUsuario.Sunat.frmMaestroIngresos fMaestroIngresos = new CapaUsuario.Sunat.frmMaestroIngresos();
-            fMaestroIngresos.RecibirDatos(0, "", "", false, false, false, false, false, false, false, false, false, false, false, false, "", stipo, 1);
+            fMaestroIngresos.RecibirDatos(0, "", "", false, false, false, false, false, false, false, false, false, false, false, false, "",stipo,"", 1);
             if (fMaestroIngresos.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -66,7 +67,7 @@ namespace CapaUsuario.Sunat
                 return;
             }
             CapaUsuario.Sunat.frmMaestroIngresos fMaestroIngresos = new CapaUsuario.Sunat.frmMaestroIngresos();
-            fMaestroIngresos.RecibirDatos(sidtmaestroingresos, scodigo, sdescripcion, sessalud_trabajador, sessalud_cbssp, sessalud_agrario, sessalud_sctr, simpuesto_extraord, sderechos_sociales, ssenati, ssnp, sspp, srenta_5ta, sessalud_pensionista, scontrib_solidaria, scalculo, stipo, 2);
+            fMaestroIngresos.RecibirDatos(sidtmaestroingresos, scodigo, sdescripcion, sessalud_trabajador, sessalud_cbssp, sessalud_agrario, sessalud_sctr, simpuesto_extraord, sderechos_sociales, ssenati, ssnp, sspp, srenta_5ta, sessalud_pensionista, scontrib_solidaria, scalculo, stipo, sabreviacion, 2);
             if (fMaestroIngresos.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -109,22 +110,26 @@ namespace CapaUsuario.Sunat
 
         private void dgvMaestroIngresos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            sidtmaestroingresos = Convert.ToInt32(dgvMaestroIngresos.Rows[e.RowIndex].Cells[0].Value);
-            scodigo = Convert.ToString(dgvMaestroIngresos.Rows[e.RowIndex].Cells[1].Value);
-            sdescripcion = Convert.ToString(dgvMaestroIngresos.Rows[e.RowIndex].Cells[2].Value);
-            sessalud_trabajador = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[3].Value);
-            sessalud_cbssp = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[4].Value);
-            sessalud_agrario = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[5].Value);
-            sessalud_sctr = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[6].Value);
-            simpuesto_extraord = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[7].Value);
-            sderechos_sociales = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[8].Value);
-            ssenati = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[9].Value);
-            ssnp = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[10].Value);
-            sspp = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[11].Value);
-            srenta_5ta = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[12].Value);
-            sessalud_pensionista = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[13].Value);
-            scontrib_solidaria = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[14].Value);
-            scalculo = Convert.ToString(dgvMaestroIngresos.Rows[e.RowIndex].Cells[15].Value);
+            if (e.RowIndex != -1){ 
+                sidtmaestroingresos = Convert.ToInt32(dgvMaestroIngresos.Rows[e.RowIndex].Cells[0].Value);
+                scodigo = Convert.ToString(dgvMaestroIngresos.Rows[e.RowIndex].Cells[1].Value);
+                sdescripcion = Convert.ToString(dgvMaestroIngresos.Rows[e.RowIndex].Cells[2].Value);
+                sessalud_trabajador = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[3].Value);
+                sessalud_cbssp = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[4].Value);
+                sessalud_agrario = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[5].Value);
+                sessalud_sctr = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[6].Value);
+                simpuesto_extraord = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[7].Value);
+                sderechos_sociales = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[8].Value);
+                ssenati = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[9].Value);
+                ssnp = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[10].Value);
+                sspp = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[11].Value);
+                srenta_5ta = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[12].Value);
+                sessalud_pensionista = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[13].Value);
+                scontrib_solidaria = Convert.ToBoolean(dgvMaestroIngresos.Rows[e.RowIndex].Cells[14].Value);
+                scalculo = Convert.ToString(dgvMaestroIngresos.Rows[e.RowIndex].Cells[15].Value);
+                sabreviacion = Convert.ToString(dgvMaestroIngresos.Rows[e.RowIndex].Cells[16].Value);
+
+            }
         }
 
         private void CargarDatos()
@@ -132,7 +137,7 @@ namespace CapaUsuario.Sunat
             dgvMaestroIngresos.Rows.Clear();
             foreach (DataRow row in miMaestroIngresos.ListarMaestroIngresos(stipo).Rows)
             {
-                dgvMaestroIngresos.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), Convert.ToBoolean(row[3]), Convert.ToBoolean(row[4]), Convert.ToBoolean(row[5]), Convert.ToBoolean(row[6]), Convert.ToBoolean(row[7]), Convert.ToBoolean(row[8]), Convert.ToBoolean(row[9]), Convert.ToBoolean(row[10]), Convert.ToBoolean(row[11]), Convert.ToBoolean(row[12]), Convert.ToBoolean(row[13]), Convert.ToBoolean(row[14]), row[15].ToString());
+                dgvMaestroIngresos.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), Convert.ToBoolean(row[3]), Convert.ToBoolean(row[4]), Convert.ToBoolean(row[5]), Convert.ToBoolean(row[6]), Convert.ToBoolean(row[7]), Convert.ToBoolean(row[8]), Convert.ToBoolean(row[9]), Convert.ToBoolean(row[10]), Convert.ToBoolean(row[11]), Convert.ToBoolean(row[12]), Convert.ToBoolean(row[13]), Convert.ToBoolean(row[14]), row[15].ToString(), row[16].ToString());
             }
             if (dgvMaestroIngresos.Rows.Count > 0)
             {

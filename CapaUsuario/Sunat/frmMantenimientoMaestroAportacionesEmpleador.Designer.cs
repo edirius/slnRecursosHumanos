@@ -38,6 +38,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.abreviacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaestroAportacionesEmpleador)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,10 +46,10 @@
             // 
             this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSalir.BackColor = System.Drawing.Color.MintCream;
-            this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(389, 346);
+            this.btnSalir.Location = new System.Drawing.Point(509, 346);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 38;
@@ -61,10 +62,10 @@
             // 
             this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEliminar.BackColor = System.Drawing.Color.MintCream;
-            this.btnEliminar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEliminar.ImageKey = "118.png";
-            this.btnEliminar.Location = new System.Drawing.Point(300, 346);
+            this.btnEliminar.Location = new System.Drawing.Point(420, 346);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(83, 53);
             this.btnEliminar.TabIndex = 37;
@@ -77,10 +78,10 @@
             // 
             this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModificar.BackColor = System.Drawing.Color.MintCream;
-            this.btnModificar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificar.ImageKey = "13.png";
-            this.btnModificar.Location = new System.Drawing.Point(211, 346);
+            this.btnModificar.Location = new System.Drawing.Point(331, 346);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(83, 53);
             this.btnModificar.TabIndex = 36;
@@ -93,10 +94,10 @@
             // 
             this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNuevo.BackColor = System.Drawing.Color.MintCream;
-            this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(122, 346);
+            this.btnNuevo.Location = new System.Drawing.Point(242, 346);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 35;
@@ -119,7 +120,8 @@
             this.Column1,
             this.Column2,
             this.Column3,
-            this.Column4});
+            this.Column4,
+            this.abreviacion});
             this.dgvMaestroAportacionesEmpleador.Cursor = System.Windows.Forms.Cursors.Default;
             this.dgvMaestroAportacionesEmpleador.Location = new System.Drawing.Point(12, 12);
             this.dgvMaestroAportacionesEmpleador.MultiSelect = false;
@@ -127,7 +129,7 @@
             this.dgvMaestroAportacionesEmpleador.ReadOnly = true;
             this.dgvMaestroAportacionesEmpleador.RowHeadersVisible = false;
             this.dgvMaestroAportacionesEmpleador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaestroAportacionesEmpleador.Size = new System.Drawing.Size(460, 328);
+            this.dgvMaestroAportacionesEmpleador.Size = new System.Drawing.Size(580, 328);
             this.dgvMaestroAportacionesEmpleador.TabIndex = 34;
             this.dgvMaestroAportacionesEmpleador.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroAportacionesEmpleador_CellClick);
             this.dgvMaestroAportacionesEmpleador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroAportacionesEmpleador_CellContentClick);
@@ -160,11 +162,17 @@
             this.Column4.ReadOnly = true;
             this.Column4.Visible = false;
             // 
+            // abreviacion
+            // 
+            this.abreviacion.HeaderText = "Abreviación";
+            this.abreviacion.Name = "abreviacion";
+            this.abreviacion.ReadOnly = true;
+            // 
             // frmMantenimientoMaestroAportacionesEmpleador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 411);
+            this.ClientSize = new System.Drawing.Size(604, 411);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
@@ -191,5 +199,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn abreviacion;
     }
 }

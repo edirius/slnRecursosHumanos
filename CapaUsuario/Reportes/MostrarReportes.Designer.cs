@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.spTareoObrasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bdpersonal = new CapaUsuario.bdpersonal();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -54,10 +53,7 @@
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "TareoObras";
             reportDataSource1.Value = this.spTareoObrasBindingSource;
-            reportDataSource2.Name = "DiasTareo";
-            reportDataSource2.Value = null;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "CapaUsuario.Reportes.TareoObras.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";

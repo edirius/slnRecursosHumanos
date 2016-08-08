@@ -43,6 +43,7 @@ namespace CapaUsuario.Sunat
             miMaestroDescuentos.Codigo = txtCodigo.Text;
             miMaestroDescuentos.Descripcion = txtDescripcion.Text;
             miMaestroDescuentos.Calculo = txtFormula.Text;
+            miMaestroDescuentos.Abreviacion = txtAbreviacion.Text;
 
             if (iAccion == 1)
             {
@@ -69,12 +70,13 @@ namespace CapaUsuario.Sunat
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
-        public void RecibirDatos(int pidtmaestrodescuentos, string pcodigo, string pdescripcion, string pcalculo, int piAccion)
+        public void RecibirDatos(int pidtmaestrodescuentos, string pcodigo, string pdescripcion, string pcalculo,string pAbreviacion, int piAccion)
         {
             sidtmaestrodescuentos = pidtmaestrodescuentos;
             txtCodigo.Text = pcodigo;
             txtDescripcion.Text = pdescripcion;
             txtFormula.Text = pcalculo;
+            txtAbreviacion.Text = pAbreviacion;
             iAccion = piAccion;
         }
     }

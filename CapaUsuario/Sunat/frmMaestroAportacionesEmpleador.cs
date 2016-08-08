@@ -43,6 +43,7 @@ namespace CapaUsuario.Sunat
             miMaestroAportacionesEmpleador.Codigo = txtCodigo.Text;
             miMaestroAportacionesEmpleador.Descripcion = txtDescripcion.Text;
             miMaestroAportacionesEmpleador.Calculo = txtFormula.Text;
+            miMaestroAportacionesEmpleador.Abreviacion = txtAbreviacion.Text;
 
             if (iAccion == 1)
             {
@@ -69,13 +70,19 @@ namespace CapaUsuario.Sunat
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
-        public void RecibirDatos(int pidtmaestroaportacionesempleador, string pcodigo, string pdescripcion, string pcalculo, int piAccion)
+        public void RecibirDatos(int pidtmaestroaportacionesempleador, string pcodigo, string pdescripcion, string pcalculo,string pabreviacion,int piAccion) 
         {
             sidtmaestroaportacionesempleador = pidtmaestroaportacionesempleador;
             txtCodigo.Text = pcodigo;
             txtDescripcion.Text = pdescripcion;
             txtFormula.Text = pcalculo;
+            txtAbreviacion.Text = pabreviacion;
             iAccion = piAccion;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

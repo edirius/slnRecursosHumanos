@@ -16,6 +16,7 @@ namespace CapaDeNegocios.Sunat
         string scodigo;
         string sdescripcion;
         string scalculo;
+        string sAbreviacion;
 
         public int IdtMaestroAportacionesEmpleador
         {
@@ -37,6 +38,11 @@ namespace CapaDeNegocios.Sunat
             get { return scalculo; }
             set { scalculo = value; }
         }
+        public string Abreviacion
+        {
+            get { return sAbreviacion; }
+            set { sAbreviacion = value; }
+        }
 
         public DataTable ListarMaestroAportacionesEmpleador()
         {
@@ -45,13 +51,13 @@ namespace CapaDeNegocios.Sunat
 
         public Boolean CrearMaestroAportacionesEmpleador(cMaestroAportacionesEmpleador miMaestroAportacionesEmpleador)
         {
-            Conexion.GDatos.Ejecutar("spCrearMaestroAportacionesEmpleador", miMaestroAportacionesEmpleador.Codigo, miMaestroAportacionesEmpleador.Descripcion, miMaestroAportacionesEmpleador.Calculo);
+            Conexion.GDatos.Ejecutar("spCrearMaestroAportacionesEmpleador", miMaestroAportacionesEmpleador.Codigo, miMaestroAportacionesEmpleador.Descripcion, miMaestroAportacionesEmpleador.Calculo,miMaestroAportacionesEmpleador.Abreviacion);
             return true;
         }
 
         public Boolean ModificarMaestroAportacionesEmpleador(cMaestroAportacionesEmpleador miMaestroAportacionesEmpleador)
         {
-            Conexion.GDatos.Ejecutar("spModificarMaestroAportacionesEmpleador", miMaestroAportacionesEmpleador.IdtMaestroAportacionesEmpleador, miMaestroAportacionesEmpleador.Codigo, miMaestroAportacionesEmpleador.Descripcion, miMaestroAportacionesEmpleador.Calculo);
+            Conexion.GDatos.Ejecutar("spModificarMaestroAportacionesEmpleador", miMaestroAportacionesEmpleador.IdtMaestroAportacionesEmpleador, miMaestroAportacionesEmpleador.Codigo, miMaestroAportacionesEmpleador.Descripcion, miMaestroAportacionesEmpleador.Calculo, miMaestroAportacionesEmpleador.Abreviacion);
             return true;
         }
 

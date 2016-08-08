@@ -16,6 +16,7 @@ namespace CapaUsuario.Sunat
         string scodigo = "";
         string sdescripcion = "";
         string scalculo = "";
+        string sabreviacion = "";
 
         CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador miMaestroAportacionesEmpleador = new CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador();
 
@@ -32,7 +33,7 @@ namespace CapaUsuario.Sunat
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             CapaUsuario.Sunat.frmMaestroAportacionesEmpleador fMaestroAportacionesEmpleador = new CapaUsuario.Sunat.frmMaestroAportacionesEmpleador();
-            fMaestroAportacionesEmpleador.RecibirDatos(0, "", "", "", 1);
+            fMaestroAportacionesEmpleador.RecibirDatos(0, "", "", "","", 1);
             if (fMaestroAportacionesEmpleador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -47,7 +48,7 @@ namespace CapaUsuario.Sunat
                 return;
             }
             CapaUsuario.Sunat.frmMaestroAportacionesEmpleador fMaestroAportacionesEmpleador = new CapaUsuario.Sunat.frmMaestroAportacionesEmpleador();
-            fMaestroAportacionesEmpleador.RecibirDatos(sidtmaestroaportacionesempleador, scodigo, sdescripcion, scalculo, 2);
+            fMaestroAportacionesEmpleador.RecibirDatos(sidtmaestroaportacionesempleador, scodigo, sdescripcion, scalculo, sabreviacion, 2);
             if (fMaestroAportacionesEmpleador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -86,6 +87,7 @@ namespace CapaUsuario.Sunat
             scodigo = Convert.ToString(dgvMaestroAportacionesEmpleador.Rows[e.RowIndex].Cells[1].Value);
             sdescripcion = Convert.ToString(dgvMaestroAportacionesEmpleador.Rows[e.RowIndex].Cells[2].Value);
             scalculo = Convert.ToString(dgvMaestroAportacionesEmpleador.Rows[e.RowIndex].Cells[3].Value);
+            sabreviacion = Convert.ToString(dgvMaestroAportacionesEmpleador.Rows[e.RowIndex].Cells[4].Value);
         }
 
         private void CargarDatos()
@@ -93,7 +95,7 @@ namespace CapaUsuario.Sunat
             dgvMaestroAportacionesEmpleador.Rows.Clear();
             foreach (DataRow row in miMaestroAportacionesEmpleador.ListarMaestroAportacionesEmpleador().Rows)
             {
-                dgvMaestroAportacionesEmpleador.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString());
+                dgvMaestroAportacionesEmpleador.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString());
             }
             if (dgvMaestroAportacionesEmpleador.Rows.Count > 0)
             {

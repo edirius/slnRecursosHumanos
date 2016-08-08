@@ -37,16 +37,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtFormula = new System.Windows.Forms.TextBox();
             this.btnFormula = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtAbreviacion = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelar.BackColor = System.Drawing.Color.MintCream;
-            this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(391, 141);
+            this.btnCancelar.Location = new System.Drawing.Point(391, 227);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 92;
@@ -59,10 +61,10 @@
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAceptar.BackColor = System.Drawing.Color.MintCream;
-            this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(310, 141);
+            this.btnAceptar.Location = new System.Drawing.Point(310, 227);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 91;
@@ -89,7 +91,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(87, 38);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(379, 71);
+            this.txtDescripcion.Size = new System.Drawing.Size(379, 96);
             this.txtDescripcion.TabIndex = 88;
             // 
             // txtCodigo
@@ -115,7 +117,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 118);
+            this.label2.Location = new System.Drawing.Point(31, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 102;
@@ -126,7 +128,7 @@
             this.txtFormula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFormula.Enabled = false;
-            this.txtFormula.Location = new System.Drawing.Point(87, 115);
+            this.txtFormula.Location = new System.Drawing.Point(87, 140);
             this.txtFormula.Name = "txtFormula";
             this.txtFormula.Size = new System.Drawing.Size(379, 20);
             this.txtFormula.TabIndex = 101;
@@ -135,10 +137,10 @@
             // 
             this.btnFormula.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFormula.BackColor = System.Drawing.Color.MintCream;
-            this.btnFormula.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnFormula.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnFormula.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnFormula.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnFormula.Location = new System.Drawing.Point(229, 141);
+            this.btnFormula.Location = new System.Drawing.Point(229, 227);
             this.btnFormula.Name = "btnFormula";
             this.btnFormula.Size = new System.Drawing.Size(75, 65);
             this.btnFormula.TabIndex = 104;
@@ -147,12 +149,31 @@
             this.btnFormula.UseVisualStyleBackColor = false;
             this.btnFormula.Click += new System.EventHandler(this.btnFormula_Click);
             // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 169);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.TabIndex = 102;
+            this.label4.Text = "Abreviación :";
+            // 
+            // txtAbreviacion
+            // 
+            this.txtAbreviacion.Location = new System.Drawing.Point(87, 166);
+            this.txtAbreviacion.Name = "txtAbreviacion";
+            this.txtAbreviacion.Size = new System.Drawing.Size(379, 20);
+            this.txtAbreviacion.TabIndex = 105;
+            // 
             // frmMaestroAportacionesTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 218);
+            this.ClientSize = new System.Drawing.Size(478, 304);
+            this.Controls.Add(this.txtAbreviacion);
             this.Controls.Add(this.btnFormula);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFormula);
             this.Controls.Add(this.btnCancelar);
@@ -182,5 +203,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtFormula;
         private System.Windows.Forms.Button btnFormula;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtAbreviacion;
     }
 }
