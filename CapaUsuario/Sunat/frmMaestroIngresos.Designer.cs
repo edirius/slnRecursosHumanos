@@ -283,7 +283,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 316);
+            this.label4.Location = new System.Drawing.Point(30, 291);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 102;
@@ -294,7 +294,8 @@
             this.txtFormula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFormula.Enabled = false;
-            this.txtFormula.Location = new System.Drawing.Point(86, 313);
+            this.txtFormula.Location = new System.Drawing.Point(86, 288);
+            this.txtFormula.MaxLength = 10;
             this.txtFormula.Name = "txtFormula";
             this.txtFormula.Size = new System.Drawing.Size(543, 20);
             this.txtFormula.TabIndex = 101;
@@ -318,7 +319,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 287);
+            this.label5.Location = new System.Drawing.Point(11, 314);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 13);
             this.label5.TabIndex = 104;
@@ -327,7 +328,7 @@
             // 
             // txtAbreviacion
             // 
-            this.txtAbreviacion.Location = new System.Drawing.Point(86, 287);
+            this.txtAbreviacion.Location = new System.Drawing.Point(86, 314);
             this.txtAbreviacion.Name = "txtAbreviacion";
             this.txtAbreviacion.Size = new System.Drawing.Size(543, 20);
             this.txtAbreviacion.TabIndex = 105;

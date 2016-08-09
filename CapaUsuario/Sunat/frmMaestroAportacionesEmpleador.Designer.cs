@@ -119,6 +119,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFormula.Enabled = false;
             this.txtFormula.Location = new System.Drawing.Point(87, 115);
+            this.txtFormula.MaxLength = 100;
             this.txtFormula.Name = "txtFormula";
             this.txtFormula.Size = new System.Drawing.Size(379, 20);
             this.txtFormula.TabIndex = 99;
@@ -162,6 +163,7 @@
             // txtAbreviacion
             // 
             this.txtAbreviacion.Location = new System.Drawing.Point(87, 141);
+            this.txtAbreviacion.MaxLength = 10;
             this.txtAbreviacion.Name = "txtAbreviacion";
             this.txtAbreviacion.Size = new System.Drawing.Size(379, 20);
             this.txtAbreviacion.TabIndex = 106;
