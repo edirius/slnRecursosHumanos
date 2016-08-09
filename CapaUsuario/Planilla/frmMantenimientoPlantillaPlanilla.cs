@@ -78,20 +78,23 @@ namespace CapaUsuario.Planilla
 
         private void dgvMaestroIngresos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvMaestroIngresos.Rows[e.RowIndex].Cells[0].Selected == true)
+            if (e.RowIndex != -1)
             {
-                if (Convert.ToString(dgvMaestroIngresos.Rows[e.RowIndex].Cells[1].Value) == "")
+                if (dgvMaestroIngresos.Rows[e.RowIndex].Cells[0].Selected == true)
                 {
-                    MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (Convert.ToString(dgvMaestroIngresos.Rows[e.RowIndex].Cells[1].Value) == "")
+                    {
+                        MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (MessageBox.Show("Está seguro que desea eliminar el Ingreso de la Plantilla de Planilla", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    {
+                        return;
+                    }
+                    sIdTPlantillaPlanilla = Convert.ToInt32(dgvMaestroIngresos.Rows[e.RowIndex].Cells[1].Value);
+                    miPlantillaPlanilla.EliminarPlantillaPlanilla(sIdTPlantillaPlanilla);
+                    CargarDatos();
                 }
-                if (MessageBox.Show("Está seguro que desea eliminar el Ingreso de la Plantilla de Planilla", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
-                {
-                    return;
-                }
-                sIdTPlantillaPlanilla = Convert.ToInt32(dgvMaestroIngresos.Rows[e.RowIndex].Cells[1].Value);
-                miPlantillaPlanilla.EliminarPlantillaPlanilla(sIdTPlantillaPlanilla);
-                CargarDatos();
             }
         }
 
@@ -102,20 +105,23 @@ namespace CapaUsuario.Planilla
 
         private void dgvMaestroDescuentos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvMaestroDescuentos.Rows[e.RowIndex].Cells[0].Selected == true)
+            if (e.RowIndex != -1)
             {
-                if (Convert.ToString(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[1].Value) == "")
+                if (dgvMaestroDescuentos.Rows[e.RowIndex].Cells[0].Selected == true)
                 {
-                    MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (Convert.ToString(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[1].Value) == "")
+                    {
+                        MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (MessageBox.Show("Está seguro que desea eliminar el Descuento de la Plantilla de Planilla", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    {
+                        return;
+                    }
+                    sIdTPlantillaPlanilla = Convert.ToInt32(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[1].Value);
+                    miPlantillaPlanilla.EliminarPlantillaPlanilla(sIdTPlantillaPlanilla);
+                    CargarDatos();
                 }
-                if (MessageBox.Show("Está seguro que desea eliminar el Descuento de la Plantilla de Planilla", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
-                {
-                    return;
-                }
-                sIdTPlantillaPlanilla = Convert.ToInt32(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[1].Value);
-                miPlantillaPlanilla.EliminarPlantillaPlanilla(sIdTPlantillaPlanilla);
-                CargarDatos();
             }
         }
 
@@ -126,20 +132,23 @@ namespace CapaUsuario.Planilla
 
         private void dgvMaestroATrabajador_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvMaestroATrabajador.Rows[e.RowIndex].Cells[0].Selected == true)
+            if (e.RowIndex != -1)
             {
-                if (Convert.ToString(dgvMaestroATrabajador.Rows[e.RowIndex].Cells[1].Value) == "")
+                if (dgvMaestroATrabajador.Rows[e.RowIndex].Cells[0].Selected == true)
                 {
-                    MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (Convert.ToString(dgvMaestroATrabajador.Rows[e.RowIndex].Cells[1].Value) == "")
+                    {
+                        MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (MessageBox.Show("Está seguro que desea eliminar las Aportaciones del Trabajador de la Plantilla de Planilla", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    {
+                        return;
+                    }
+                    sIdTPlantillaPlanilla = Convert.ToInt32(dgvMaestroATrabajador.Rows[e.RowIndex].Cells[1].Value);
+                    miPlantillaPlanilla.EliminarPlantillaPlanilla(sIdTPlantillaPlanilla);
+                    CargarDatos();
                 }
-                if (MessageBox.Show("Está seguro que desea eliminar las Aportaciones del Trabajador de la Plantilla de Planilla", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
-                {
-                    return;
-                }
-                sIdTPlantillaPlanilla = Convert.ToInt32(dgvMaestroATrabajador.Rows[e.RowIndex].Cells[1].Value);
-                miPlantillaPlanilla.EliminarPlantillaPlanilla(sIdTPlantillaPlanilla);
-                CargarDatos();
             }
         }
 
@@ -150,20 +159,23 @@ namespace CapaUsuario.Planilla
 
         private void dgvMaestroAEmpleador_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvMaestroAEmpleador.Rows[e.RowIndex].Cells[0].Selected == true)
+            if (e.RowIndex != -1)
             {
-                if (Convert.ToString(dgvMaestroAEmpleador.Rows[e.RowIndex].Cells[1].Value) == "")
+                if (dgvMaestroAEmpleador.Rows[e.RowIndex].Cells[0].Selected == true)
                 {
-                    MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (Convert.ToString(dgvMaestroAEmpleador.Rows[e.RowIndex].Cells[1].Value) == "")
+                    {
+                        MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (MessageBox.Show("Está seguro que desea eliminar las Aportacion del Empleador de la Plantilla de Planilla", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    {
+                        return;
+                    }
+                    sIdTPlantillaPlanilla = Convert.ToInt32(dgvMaestroAEmpleador.Rows[e.RowIndex].Cells[1].Value);
+                    miPlantillaPlanilla.EliminarPlantillaPlanilla(sIdTPlantillaPlanilla);
+                    CargarDatos();
                 }
-                if (MessageBox.Show("Está seguro que desea eliminar las Aportacion del Empleador de la Plantilla de Planilla", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
-                {
-                    return;
-                }
-                sIdTPlantillaPlanilla = Convert.ToInt32(dgvMaestroAEmpleador.Rows[e.RowIndex].Cells[1].Value);
-                miPlantillaPlanilla.EliminarPlantillaPlanilla(sIdTPlantillaPlanilla);
-                CargarDatos();
             }
         }
 

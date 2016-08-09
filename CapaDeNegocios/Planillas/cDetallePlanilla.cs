@@ -4,46 +4,78 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Data;
+using CapaDeDatos;
+
 namespace CapaDeNegocios.Planillas
 {
     public class cDetallePlanilla
     {
-        int codigo;
+        int sidtdetalleplanilla;
+        decimal ssueldo;
+        DateTime sfechainicio;
+        int sdiaslaborados;
+        int sidtcargo;
+        int sidttrabajador;
+        int sidtplanilla;
 
-        public int Codigo
+        public int IdtDetallePlanilla
         {
-            get { return codigo; }
-            set { codigo = value; }
+            get { return sidtdetalleplanilla; }
+            set { sidtdetalleplanilla = value; }
         }
-        cTrabajador trabajador;
-
-        public cTrabajador Trabajador
+        public decimal Sueldo
         {
-            get { return trabajador; }
-            set { trabajador = value; }
+            get { return ssueldo; }
+            set { ssueldo = value; }
         }
-        cDescuentos[] listaDescuentos;
-
-        public cDescuentos[] ListaDescuentos
+        public DateTime FechaInicio
         {
-            get { return listaDescuentos; }
-            set { listaDescuentos = value; }
+            get { return sfechainicio; }
+            set { sfechainicio = value; }
         }
-        cAportaciones[] listaAportaciones;
-
-        public cAportaciones[] ListaAportaciones
+        public int DiasLaborados
         {
-            get { return listaAportaciones; }
-            set { listaAportaciones = value; }
+            get { return sdiaslaborados; }
+            set { sdiaslaborados = value; }
         }
-        cIngresos[] listaIngresos;
-
-        public cIngresos[] ListaIngresos
+        public int IdtCargo
         {
-            get { return listaIngresos; }
-            set { listaIngresos = value; }
+            get { return sidtcargo; }
+            set { sidtcargo = value; }
+        }
+        public int IdtTrabajador
+        {
+            get { return sidttrabajador; }
+            set { sidttrabajador = value; }
+        }
+        public int IdtPlanilla
+        {
+            get { return sidtplanilla; }
+            set { sidtplanilla = value; }
         }
 
+        public DataTable ListarDetallePlanilla(int IdtPlanilla)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarDetallePlanilla", IdtPlanilla);
+        }
 
+        public Boolean CrearDetallePlanilla(cDetallePlanilla miDetallePlanilla)
+        {
+            Conexion.GDatos.Ejecutar("spCrearDetallePlanilla", miDetallePlanilla.Sueldo, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.IdtCargo, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla);
+            return true;
+        }
+
+        public Boolean ModificarDetallePlanilla(cDetallePlanilla miDetallePlanilla)
+        {
+            Conexion.GDatos.Ejecutar("spModificarDetallePlanilla", miDetallePlanilla.IdtDetallePlanilla, miDetallePlanilla.Sueldo, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.IdtCargo, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla);
+            return true;
+        }
+
+        public Boolean EliminarDetallePlanilla(int IdtDetallePlanilla)
+        {
+            Conexion.GDatos.Ejecutar("spELiminarDetallePlanilla", IdtDetallePlanilla);
+            return true;
+        }
     }
 }
