@@ -117,7 +117,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 176);
+            this.label2.Location = new System.Drawing.Point(31, 148);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 106;
@@ -128,7 +128,8 @@
             this.txtFormula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFormula.Enabled = false;
-            this.txtFormula.Location = new System.Drawing.Point(87, 173);
+            this.txtFormula.Location = new System.Drawing.Point(87, 145);
+            this.txtFormula.MaxLength = 300;
             this.txtFormula.Name = "txtFormula";
             this.txtFormula.Size = new System.Drawing.Size(379, 20);
             this.txtFormula.TabIndex = 105;
@@ -153,7 +154,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 151);
+            this.label4.Location = new System.Drawing.Point(12, 175);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 106;
@@ -161,8 +162,8 @@
             // 
             // txtAbreviacion
             // 
-            this.txtAbreviacion.Location = new System.Drawing.Point(87, 147);
-            this.txtAbreviacion.MaxLength = 10;
+            this.txtAbreviacion.Location = new System.Drawing.Point(87, 171);
+            this.txtAbreviacion.MaxLength = 30;
             this.txtAbreviacion.Name = "txtAbreviacion";
             this.txtAbreviacion.Size = new System.Drawing.Size(379, 20);
             this.txtAbreviacion.TabIndex = 108;

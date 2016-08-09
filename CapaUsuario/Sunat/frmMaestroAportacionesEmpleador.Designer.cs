@@ -163,7 +163,7 @@
             // txtAbreviacion
             // 
             this.txtAbreviacion.Location = new System.Drawing.Point(87, 141);
-            this.txtAbreviacion.MaxLength = 10;
+            this.txtAbreviacion.MaxLength = 30;
             this.txtAbreviacion.Name = "txtAbreviacion";
             this.txtAbreviacion.Size = new System.Drawing.Size(379, 20);
             this.txtAbreviacion.TabIndex = 106;
