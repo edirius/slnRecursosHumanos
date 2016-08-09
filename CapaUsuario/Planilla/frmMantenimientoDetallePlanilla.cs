@@ -607,6 +607,12 @@ namespace CapaUsuario.Planilla
             //}
         }
 
+        private void btn5taCategoria_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Planilla.frm5taCategoria frm5ta = new frm5taCategoria();
+            frm5ta.Show();
+        }
+
         private void CalcularNetoaCobrar()
         {
             decimal T = 0;

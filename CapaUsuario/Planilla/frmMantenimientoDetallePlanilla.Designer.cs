@@ -64,6 +64,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAgregarTrabajador = new System.Windows.Forms.Button();
+            this.btn5taCategoria = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +75,7 @@
             this.btnImportar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImportar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImportar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImportar.Location = new System.Drawing.Point(769, 38);
+            this.btnImportar.Location = new System.Drawing.Point(768, 38);
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(238, 46);
             this.btnImportar.TabIndex = 91;
@@ -100,7 +101,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(933, 403);
+            this.btnCancelar.Location = new System.Drawing.Point(932, 421);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(74, 65);
             this.btnCancelar.TabIndex = 86;
@@ -116,7 +117,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(852, 403);
+            this.btnAceptar.Location = new System.Drawing.Point(851, 421);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 85;
@@ -133,7 +134,7 @@
             this.txtMeta.Enabled = false;
             this.txtMeta.Location = new System.Drawing.Point(135, 38);
             this.txtMeta.Name = "txtMeta";
-            this.txtMeta.Size = new System.Drawing.Size(628, 20);
+            this.txtMeta.Size = new System.Drawing.Size(627, 20);
             this.txtMeta.TabIndex = 84;
             // 
             // label6
@@ -204,11 +205,11 @@
             this.DiasLaborados,
             this.TotalRemuneracio,
             this.SecFunc});
-            this.dgvDetallePlanilla.Location = new System.Drawing.Point(12, 90);
+            this.dgvDetallePlanilla.Location = new System.Drawing.Point(12, 99);
             this.dgvDetallePlanilla.Name = "dgvDetallePlanilla";
             this.dgvDetallePlanilla.RowHeadersVisible = false;
             this.dgvDetallePlanilla.RowHeadersWidth = 25;
-            this.dgvDetallePlanilla.Size = new System.Drawing.Size(1011, 307);
+            this.dgvDetallePlanilla.Size = new System.Drawing.Size(1010, 318);
             this.dgvDetallePlanilla.TabIndex = 79;
             this.dgvDetallePlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellContentClick);
             this.dgvDetallePlanilla.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellEndEdit);
@@ -339,7 +340,7 @@
             this.txtFuenteFinanciamiento.Enabled = false;
             this.txtFuenteFinanciamiento.Location = new System.Drawing.Point(135, 64);
             this.txtFuenteFinanciamiento.Name = "txtFuenteFinanciamiento";
-            this.txtFuenteFinanciamiento.Size = new System.Drawing.Size(628, 20);
+            this.txtFuenteFinanciamiento.Size = new System.Drawing.Size(627, 20);
             this.txtFuenteFinanciamiento.TabIndex = 93;
             // 
             // label1
@@ -367,7 +368,7 @@
             this.btnAgregarTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAgregarTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAgregarTrabajador.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAgregarTrabajador.Location = new System.Drawing.Point(763, 403);
+            this.btnAgregarTrabajador.Location = new System.Drawing.Point(762, 421);
             this.btnAgregarTrabajador.Name = "btnAgregarTrabajador";
             this.btnAgregarTrabajador.Size = new System.Drawing.Size(83, 65);
             this.btnAgregarTrabajador.TabIndex = 96;
@@ -376,11 +377,28 @@
             this.btnAgregarTrabajador.UseVisualStyleBackColor = false;
             this.btnAgregarTrabajador.Click += new System.EventHandler(this.btnAgregarTrabajador_Click);
             // 
+            // btn5taCategoria
+            // 
+            this.btn5taCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn5taCategoria.BackColor = System.Drawing.Color.MintCream;
+            this.btn5taCategoria.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btn5taCategoria.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btn5taCategoria.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btn5taCategoria.Location = new System.Drawing.Point(661, 421);
+            this.btn5taCategoria.Name = "btn5taCategoria";
+            this.btn5taCategoria.Size = new System.Drawing.Size(92, 65);
+            this.btn5taCategoria.TabIndex = 97;
+            this.btn5taCategoria.Text = "5ta Categoria";
+            this.btn5taCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn5taCategoria.UseVisualStyleBackColor = false;
+            this.btn5taCategoria.Click += new System.EventHandler(this.btn5taCategoria_Click);
+            // 
             // frmMantenimientoDetallePlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 480);
+            this.ClientSize = new System.Drawing.Size(1018, 491);
+            this.Controls.Add(this.btn5taCategoria);
             this.Controls.Add(this.btnAgregarTrabajador);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -437,5 +455,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiasLaborados;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalRemuneracio;
         private System.Windows.Forms.DataGridViewTextBoxColumn SecFunc;
+        private System.Windows.Forms.Button btn5taCategoria;
     }
 }
