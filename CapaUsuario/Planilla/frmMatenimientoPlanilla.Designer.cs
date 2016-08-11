@@ -59,7 +59,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageIndex = 1;
-            this.btnImprimir.Location = new System.Drawing.Point(159, 382);
+            this.btnImprimir.Location = new System.Drawing.Point(162, 384);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(83, 53);
             this.btnImprimir.TabIndex = 29;
@@ -75,7 +75,7 @@
             this.btnDetallePlanilla.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDetallePlanilla.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDetallePlanilla.ImageIndex = 1;
-            this.btnDetallePlanilla.Location = new System.Drawing.Point(12, 382);
+            this.btnDetallePlanilla.Location = new System.Drawing.Point(12, 384);
             this.btnDetallePlanilla.Name = "btnDetallePlanilla";
             this.btnDetallePlanilla.Size = new System.Drawing.Size(114, 53);
             this.btnDetallePlanilla.TabIndex = 28;
@@ -91,7 +91,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(515, 382);
+            this.btnSalir.Location = new System.Drawing.Point(518, 384);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 27;
@@ -107,7 +107,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEliminar.ImageKey = "118.png";
-            this.btnEliminar.Location = new System.Drawing.Point(426, 382);
+            this.btnEliminar.Location = new System.Drawing.Point(429, 384);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(83, 53);
             this.btnEliminar.TabIndex = 26;
@@ -123,7 +123,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificar.ImageKey = "13.png";
-            this.btnModificar.Location = new System.Drawing.Point(337, 382);
+            this.btnModificar.Location = new System.Drawing.Point(340, 384);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(83, 53);
             this.btnModificar.TabIndex = 25;
@@ -139,7 +139,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(248, 382);
+            this.btnNuevo.Location = new System.Drawing.Point(251, 384);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 24;
@@ -175,7 +175,7 @@
             this.dgvPlanilla.ReadOnly = true;
             this.dgvPlanilla.RowHeadersVisible = false;
             this.dgvPlanilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPlanilla.Size = new System.Drawing.Size(586, 310);
+            this.dgvPlanilla.Size = new System.Drawing.Size(589, 312);
             this.dgvPlanilla.TabIndex = 23;
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick);
@@ -255,7 +255,7 @@
             this.groupBox2.Controls.Add(this.cboRegimenLaboral);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(586, 48);
+            this.groupBox2.Size = new System.Drawing.Size(589, 48);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Regimen Laboral";
@@ -264,7 +264,7 @@
             // 
             this.btnTipoTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTipoTrabajador.Font = new System.Drawing.Font("Wide Latin", 9.75F);
-            this.btnTipoTrabajador.Location = new System.Drawing.Point(516, 19);
+            this.btnTipoTrabajador.Location = new System.Drawing.Point(519, 19);
             this.btnTipoTrabajador.Name = "btnTipoTrabajador";
             this.btnTipoTrabajador.Size = new System.Drawing.Size(64, 23);
             this.btnTipoTrabajador.TabIndex = 1;
@@ -280,7 +280,7 @@
             this.cboRegimenLaboral.FormattingEnabled = true;
             this.cboRegimenLaboral.Location = new System.Drawing.Point(6, 19);
             this.cboRegimenLaboral.Name = "cboRegimenLaboral";
-            this.cboRegimenLaboral.Size = new System.Drawing.Size(504, 21);
+            this.cboRegimenLaboral.Size = new System.Drawing.Size(507, 21);
             this.cboRegimenLaboral.TabIndex = 0;
             this.cboRegimenLaboral.SelectedIndexChanged += new System.EventHandler(this.cboRegimenLaboral_SelectedIndexChanged);
             // 
@@ -288,7 +288,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 447);
+            this.ClientSize = new System.Drawing.Size(613, 449);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnDetallePlanilla);
             this.Controls.Add(this.btnSalir);
