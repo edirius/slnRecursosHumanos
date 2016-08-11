@@ -274,12 +274,14 @@
             this.txtIdTDetallePlanilla.HeaderText = "IdTDetallePlanilla";
             this.txtIdTDetallePlanilla.Name = "txtIdTDetallePlanilla";
             this.txtIdTDetallePlanilla.ReadOnly = true;
+            this.txtIdTDetallePlanilla.Visible = false;
             this.txtIdTDetallePlanilla.Width = 30;
             // 
             // txtAccion
             // 
             this.txtAccion.HeaderText = "Accion";
             this.txtAccion.Name = "txtAccion";
+            this.txtAccion.Visible = false;
             this.txtAccion.Width = 30;
             // 
             // btnProceso
@@ -302,6 +304,7 @@
             this.txtIdTTrabajador.HeaderText = "IdTTrabajador";
             this.txtIdTTrabajador.Name = "txtIdTTrabajador";
             this.txtIdTTrabajador.ReadOnly = true;
+            this.txtIdTTrabajador.Visible = false;
             this.txtIdTTrabajador.Width = 50;
             // 
             // txtApellidosNombres
@@ -316,6 +319,7 @@
             this.txtIdTCargo.HeaderText = "IdTCargo";
             this.txtIdTCargo.Name = "txtIdTCargo";
             this.txtIdTCargo.ReadOnly = true;
+            this.txtIdTCargo.Visible = false;
             this.txtIdTCargo.Width = 30;
             // 
             // txtSistemaPensiones

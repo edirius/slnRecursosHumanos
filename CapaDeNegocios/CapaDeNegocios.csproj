@@ -99,6 +99,10 @@
     <Compile Include="Planillas\cAportaciones.cs" />
     <Compile Include="Planillas\cDescuentos.cs" />
     <Compile Include="Planillas\cDetallePlanilla.cs" />
+    <Compile Include="Planillas\cDetallePlanillaAEmpleador.cs" />
+    <Compile Include="Planillas\cDetallePlanillaATrabajador.cs" />
+    <Compile Include="Planillas\cDetallePlanillaDescuentos.cs" />
+    <Compile Include="Planillas\cDetallePlanillaIngresos.cs" />
     <Compile Include="Planillas\cIngresos.cs" />
     <Compile Include="Planillas\cMaestroIngresos.cs" />
     <Compile Include="Planillas\cPlanilla.cs" />
