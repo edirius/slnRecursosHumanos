@@ -147,9 +147,14 @@ namespace CapaUsuario.Planilla
             foreach (DataGridViewRow row in dgvDetallePlanilla.Rows)
             {
                 miDetallePlanilla.IdtDetallePlanilla = Convert.ToInt32(row.Cells[0].Value);
-                miDetallePlanilla.Sueldo = Convert.ToDecimal(row.Cells[9].Value);
+                miDetallePlanilla.Remuneracion = Convert.ToDecimal(row.Cells[9].Value);
                 miDetallePlanilla.FechaInicio = Convert.ToDateTime(row.Cells[10].Value);
                 miDetallePlanilla.DiasLaborados = Convert.ToInt32(row.Cells[11].Value);
+                miDetallePlanilla.RemuneracionTotal = Convert.ToDecimal(row.Cells[12].Value);
+                miDetallePlanilla.TotalIngresos = Convert.ToDecimal(row.Cells[13 + con_ingresos].Value);
+                miDetallePlanilla.TotalATrabajador = Convert.ToDecimal(row.Cells[16 + con_ingresos + con_trabajador].Value);
+                miDetallePlanilla.TotalDescuentos = Convert.ToDecimal(row.Cells[16 + con_ingresos + con_trabajador + con_descuento].Value);
+                miDetallePlanilla.TotalAEmpleador = Convert.ToDecimal(row.Cells[16 + con_ingresos + con_trabajador + con_empleador].Value);
                 miDetallePlanilla.IdtCargo = Convert.ToInt32(row.Cells[6].Value);
                 miDetallePlanilla.IdtTrabajador = Convert.ToInt32(row.Cells[4].Value);
                 miDetallePlanilla.IdtPlanilla = sidtplanilla;
@@ -337,7 +342,7 @@ namespace CapaUsuario.Planilla
             oDataDetallePlanilla = miDetallePlanilla.ListarDetallePlanilla(sidtplanilla);
             foreach (DataRow row in oDataDetallePlanilla.Rows)
             {
-                CargarTrabajador(Convert.ToInt32(row[5].ToString()));
+                CargarTrabajador(Convert.ToInt32(row[10].ToString()));
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[0].Value = row[0].ToString();
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[1].Value = "M";
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[9].Value = row[1].ToString();
