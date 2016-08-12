@@ -16,6 +16,7 @@ namespace CapaUsuario.Sunat
         string scodigo = "";
         string sdescripcion = "";
         string scalculo = "";
+        string sabreviacion = "";
 
         CapaDeNegocios.Sunat.cMaestroDescuentos miMaestroDescuentos = new CapaDeNegocios.Sunat.cMaestroDescuentos();
 
@@ -32,7 +33,7 @@ namespace CapaUsuario.Sunat
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             CapaUsuario.Sunat.frmMaestroDescuentos fMaestroDescuentos = new CapaUsuario.Sunat.frmMaestroDescuentos();
-            fMaestroDescuentos.RecibirDatos(0, "", "", "", 1);
+            fMaestroDescuentos.RecibirDatos(0, "", "", "","", 1);
             if (fMaestroDescuentos.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -47,7 +48,7 @@ namespace CapaUsuario.Sunat
                 return;
             }
             CapaUsuario.Sunat.frmMaestroDescuentos fMaestroDescuentos = new CapaUsuario.Sunat.frmMaestroDescuentos();
-            fMaestroDescuentos.RecibirDatos(sidtmaestrodescuentos, scodigo, sdescripcion, scalculo, 2);
+            fMaestroDescuentos.RecibirDatos(sidtmaestrodescuentos, scodigo, sdescripcion, scalculo,sabreviacion, 2);
             if (fMaestroDescuentos.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -86,6 +87,7 @@ namespace CapaUsuario.Sunat
             scodigo = Convert.ToString(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[1].Value);
             sdescripcion = Convert.ToString(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[2].Value);
             scalculo = Convert.ToString(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[3].Value);
+            sabreviacion = Convert.ToString(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[4].Value);
         }
 
         private void CargarDatos()
@@ -93,7 +95,7 @@ namespace CapaUsuario.Sunat
             dgvMaestroDescuentos.Rows.Clear();
             foreach (DataRow row in miMaestroDescuentos.ListarMaestroDescuentos().Rows)
             {
-                dgvMaestroDescuentos.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString());
+                dgvMaestroDescuentos.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString());
             }
             if (dgvMaestroDescuentos.Rows.Count > 0)
             {

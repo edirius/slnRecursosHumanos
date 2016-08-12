@@ -51,5 +51,10 @@ namespace CapaUsuario.Reportes
 
             this.reportViewer1.RefreshReport();
         }
+
+        private void spTareoObrasBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

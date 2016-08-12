@@ -51,16 +51,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtFormula = new System.Windows.Forms.TextBox();
             this.btnFormula = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtAbreviacion = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnCancelar
             // 
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancelar.BackColor = System.Drawing.Color.MintCream;
-            this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(554, 289);
+            this.btnCancelar.Location = new System.Drawing.Point(554, 383);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 72;
@@ -73,10 +75,10 @@
             // 
             this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAceptar.BackColor = System.Drawing.Color.MintCream;
-            this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(473, 289);
+            this.btnAceptar.Location = new System.Drawing.Point(473, 383);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 71;
@@ -114,7 +116,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(86, 64);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(543, 55);
+            this.txtDescripcion.Size = new System.Drawing.Size(543, 75);
             this.txtDescripcion.TabIndex = 64;
             // 
             // txtCodigo
@@ -149,7 +151,7 @@
             // 
             this.chkEssalud_trabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkEssalud_trabajador.AutoSize = true;
-            this.chkEssalud_trabajador.Location = new System.Drawing.Point(86, 125);
+            this.chkEssalud_trabajador.Location = new System.Drawing.Point(86, 150);
             this.chkEssalud_trabajador.Name = "chkEssalud_trabajador";
             this.chkEssalud_trabajador.Size = new System.Drawing.Size(255, 17);
             this.chkEssalud_trabajador.TabIndex = 73;
@@ -160,7 +162,7 @@
             // 
             this.chkEssalud_cbssp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkEssalud_cbssp.AutoSize = true;
-            this.chkEssalud_cbssp.Location = new System.Drawing.Point(86, 148);
+            this.chkEssalud_cbssp.Location = new System.Drawing.Point(86, 173);
             this.chkEssalud_cbssp.Name = "chkEssalud_cbssp";
             this.chkEssalud_cbssp.Size = new System.Drawing.Size(246, 17);
             this.chkEssalud_cbssp.TabIndex = 74;
@@ -171,7 +173,7 @@
             // 
             this.chkSenati.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkSenati.AutoSize = true;
-            this.chkSenati.Location = new System.Drawing.Point(374, 125);
+            this.chkSenati.Location = new System.Drawing.Point(374, 150);
             this.chkSenati.Name = "chkSenati";
             this.chkSenati.Size = new System.Drawing.Size(65, 17);
             this.chkSenati.TabIndex = 75;
@@ -182,7 +184,7 @@
             // 
             this.chkSnp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chkSnp.AutoSize = true;
-            this.chkSnp.Location = new System.Drawing.Point(374, 148);
+            this.chkSnp.Location = new System.Drawing.Point(374, 173);
             this.chkSnp.Name = "chkSnp";
             this.chkSnp.Size = new System.Drawing.Size(246, 17);
             this.chkSnp.TabIndex = 76;
@@ -193,7 +195,7 @@
             // 
             this.chkSpp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chkSpp.AutoSize = true;
-            this.chkSpp.Location = new System.Drawing.Point(374, 171);
+            this.chkSpp.Location = new System.Drawing.Point(374, 196);
             this.chkSpp.Name = "chkSpp";
             this.chkSpp.Size = new System.Drawing.Size(207, 17);
             this.chkSpp.TabIndex = 78;
@@ -204,7 +206,7 @@
             // 
             this.chkEssalud_agrario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkEssalud_agrario.AutoSize = true;
-            this.chkEssalud_agrario.Location = new System.Drawing.Point(86, 171);
+            this.chkEssalud_agrario.Location = new System.Drawing.Point(86, 196);
             this.chkEssalud_agrario.Name = "chkEssalud_agrario";
             this.chkEssalud_agrario.Size = new System.Drawing.Size(257, 17);
             this.chkEssalud_agrario.TabIndex = 77;
@@ -215,7 +217,7 @@
             // 
             this.chkRenta_5ta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chkRenta_5ta.AutoSize = true;
-            this.chkRenta_5ta.Location = new System.Drawing.Point(374, 194);
+            this.chkRenta_5ta.Location = new System.Drawing.Point(374, 219);
             this.chkRenta_5ta.Name = "chkRenta_5ta";
             this.chkRenta_5ta.Size = new System.Drawing.Size(231, 17);
             this.chkRenta_5ta.TabIndex = 80;
@@ -226,7 +228,7 @@
             // 
             this.chkEssalud_sctr.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkEssalud_sctr.AutoSize = true;
-            this.chkEssalud_sctr.Location = new System.Drawing.Point(86, 194);
+            this.chkEssalud_sctr.Location = new System.Drawing.Point(86, 219);
             this.chkEssalud_sctr.Name = "chkEssalud_sctr";
             this.chkEssalud_sctr.Size = new System.Drawing.Size(108, 17);
             this.chkEssalud_sctr.TabIndex = 79;
@@ -237,7 +239,7 @@
             // 
             this.chkEssalud_pensionista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chkEssalud_pensionista.AutoSize = true;
-            this.chkEssalud_pensionista.Location = new System.Drawing.Point(374, 217);
+            this.chkEssalud_pensionista.Location = new System.Drawing.Point(374, 242);
             this.chkEssalud_pensionista.Name = "chkEssalud_pensionista";
             this.chkEssalud_pensionista.Size = new System.Drawing.Size(255, 17);
             this.chkEssalud_pensionista.TabIndex = 82;
@@ -248,7 +250,7 @@
             // 
             this.chkImpuesto_extraord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkImpuesto_extraord.AutoSize = true;
-            this.chkImpuesto_extraord.Location = new System.Drawing.Point(86, 217);
+            this.chkImpuesto_extraord.Location = new System.Drawing.Point(86, 242);
             this.chkImpuesto_extraord.Name = "chkImpuesto_extraord";
             this.chkImpuesto_extraord.Size = new System.Drawing.Size(276, 17);
             this.chkImpuesto_extraord.TabIndex = 81;
@@ -259,7 +261,7 @@
             // 
             this.chkContrib_solidaria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.chkContrib_solidaria.AutoSize = true;
-            this.chkContrib_solidaria.Location = new System.Drawing.Point(374, 240);
+            this.chkContrib_solidaria.Location = new System.Drawing.Point(374, 265);
             this.chkContrib_solidaria.Name = "chkContrib_solidaria";
             this.chkContrib_solidaria.Size = new System.Drawing.Size(248, 17);
             this.chkContrib_solidaria.TabIndex = 84;
@@ -270,7 +272,7 @@
             // 
             this.chkDerechos_sociales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkDerechos_sociales.AutoSize = true;
-            this.chkDerechos_sociales.Location = new System.Drawing.Point(86, 240);
+            this.chkDerechos_sociales.Location = new System.Drawing.Point(86, 265);
             this.chkDerechos_sociales.Name = "chkDerechos_sociales";
             this.chkDerechos_sociales.Size = new System.Drawing.Size(255, 17);
             this.chkDerechos_sociales.TabIndex = 83;
@@ -281,7 +283,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 266);
+            this.label4.Location = new System.Drawing.Point(30, 291);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 102;
@@ -292,7 +294,8 @@
             this.txtFormula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFormula.Enabled = false;
-            this.txtFormula.Location = new System.Drawing.Point(86, 263);
+            this.txtFormula.Location = new System.Drawing.Point(86, 288);
+            this.txtFormula.MaxLength = 100;
             this.txtFormula.Name = "txtFormula";
             this.txtFormula.Size = new System.Drawing.Size(543, 20);
             this.txtFormula.TabIndex = 101;
@@ -301,10 +304,10 @@
             // 
             this.btnFormula.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFormula.BackColor = System.Drawing.Color.MintCream;
-            this.btnFormula.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnFormula.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnFormula.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnFormula.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnFormula.Location = new System.Drawing.Point(392, 289);
+            this.btnFormula.Location = new System.Drawing.Point(392, 383);
             this.btnFormula.Name = "btnFormula";
             this.btnFormula.Size = new System.Drawing.Size(75, 65);
             this.btnFormula.TabIndex = 103;
@@ -313,11 +316,31 @@
             this.btnFormula.UseVisualStyleBackColor = false;
             this.btnFormula.Click += new System.EventHandler(this.btnFormula_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 314);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 13);
+            this.label5.TabIndex = 104;
+            this.label5.Text = "Abreviacion :";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // txtAbreviacion
+            // 
+            this.txtAbreviacion.Location = new System.Drawing.Point(86, 314);
+            this.txtAbreviacion.MaxLength = 30;
+            this.txtAbreviacion.Name = "txtAbreviacion";
+            this.txtAbreviacion.Size = new System.Drawing.Size(543, 20);
+            this.txtAbreviacion.TabIndex = 105;
+            // 
             // frmMaestroIngresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 366);
+            this.ClientSize = new System.Drawing.Size(641, 460);
+            this.Controls.Add(this.txtAbreviacion);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnFormula);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtFormula);
@@ -375,5 +398,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtFormula;
         private System.Windows.Forms.Button btnFormula;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtAbreviacion;
     }
 }

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="66d2cb2902964bfd8f803e47adbf10ef" Name="Diagram1">
+        <EntityTypeShape EntityType="bdpersonalModel.tactividadobra" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tafp" Width="1.5" PointX="8.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.taportaciones" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tcargo" Width="1.5" PointX="3.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tcategoriaocupacional" Width="1.5" PointX="3.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tcomisiones" Width="1.5" PointX="11" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tcontrato" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tdepartamento" Width="1.5" PointX="1.5" PointY="45.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tdetalleplanilla" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tdetalleplantillaaportaciones" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tdetalleplantillaplanillaegresos" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tdetalleplantillaplanillaingresos" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tdetalletareo" Width="1.5" PointX="5.25" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tdistrito" Width="1.5" PointX="1.5" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tdivisionfuncional" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tegresos" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tfuentefinanciamiento" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tfuncion" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tgrupofuncional" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tingresos" Width="1.5" PointX="8.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tmaestroaportaciones" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tmaestroaportacionesempleador" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tmaestroaportacionestrabajador" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tmaestrodescuentos" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tmaestroegresos" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tmaestroingresos" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tmeta" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tmetajornal" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tmotivofinperiodo" Width="1.5" PointX="1.5" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tnacionalidad" Width="1.5" PointX="1.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tocupacion" Width="1.5" PointX="3.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tperiodotrabajador" Width="1.5" PointX="3.75" PointY="31.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tplanilla" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tplantillaplanilla" Width="1.5" PointX="6" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tproductoproyecto" Width="1.5" PointX="14.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tprogramapresupuestal" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tprovincia" Width="1.5" PointX="1.5" PointY="42" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tregimenlaboral" Width="1.5" PointX="3.75" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tregimenpensionariotrabajador" Width="1.5" PointX="11" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tregimensaludtrabajador" Width="1.5" PointX="6" PointY="32.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tregimentrabajador" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tresidentemeta" Width="1.5" PointX="6" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tsunattipotrabajador" Width="1.5" PointX="3.75" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.ttareo" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.ttipocontrato" Width="1.5" PointX="3.75" PointY="39.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.ttipovia" Width="1.5" PointX="1.5" PointY="48.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.ttipozona" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.ttrabajador" Width="1.5" PointX="1.5" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tvariables" Width="1.5" PointX="7.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bdpersonalModel.tzona" Width="1.5" PointX="13.75" PointY="15.75" IsExpanded="true" />
+        <AssociationConnector Association="bdpersonalModel.fk_afp" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tregimenpensionariotrabajador_tafp" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tdetalleplanilla_tcargo" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tregimentrabajador_tcargo" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tregimentrabajador_tcategoriaocupacional" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tprovincia_tdepartamento" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tdetalleplanilla_tplanilla" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tdetalleplanilla_ttrabajador" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tdetalletareo_ttareo" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tdetalletareo_ttrabajador" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tdistrito_tprovincia" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_ttrabajador_tdistrito" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tplanilla_tfuentefinanciamiento" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tmetajornal_tmeta" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tplanilla_tmeta" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tregimentrabajador_tmeta" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tresidentemeta_tmeta" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_ttareo_tmeta" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tperiodotrabajador_ttmotivofinperiodo" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_ttrabajador_tnacionalidad" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tregimentrabajador_tocupacion" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tperiodotrabajador_ttrabajador" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tregimenpensionariotrabajador_tperiodotrabajador" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tregimensaludtrabajador_tperiodotrabajador" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tregimentrabajador_tperiodotrabajador" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tplanilla_tregimenlaboral" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tplantillaplanilla_tregimenlaboral" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tregimentrabajador_tregimenlaboral" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tregimentrabajador_tsunattipotrabajador" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tregimentrabajador_ttipocontrato" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_tresidentemeta_ttrabajador" ManuallyRouted="false" />
+        <AssociationConnector Association="bdpersonalModel.fk_ttrabajador_ttipovia" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

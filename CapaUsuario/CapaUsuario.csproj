@@ -33,9 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="cWord">
       <HintPath>..\cWord.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="info.lundin.Math">
       <HintPath>..\info.lundin.Math.dll</HintPath>
     </Reference>
@@ -43,11 +52,16 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -88,7 +102,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bdpersonal.xsd</DependentUpon>
     </Compile>
+    <Compile Include="bdpersonalDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bdpersonalDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="bdpersonalDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bdpersonalDataSet11.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ConvertImage.cs" />
+    <Compile Include="Reportes\crPlanilla.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crPlanilla.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\DataSetPlanilla.cs">
+      <DependentUpon>DataSetPlanilla.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\DataSetPlanilla.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetPlanilla.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\listarAFP_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
     <Compile Include="MDIParent1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +232,21 @@
     <Compile Include="Metas\frmProgramaPresupuestal.Designer.cs">
       <DependentUpon>frmProgramaPresupuestal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\modPersonal.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>modPersonal.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\modPersonal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\modPersonal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>modPersonal.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Navegador\frmNavegador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +309,12 @@
     <Compile Include="Reportes\MostrarReportes.Designer.cs">
       <DependentUpon>MostrarReportes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\frmPlanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmPlanilla.Designer.cs">
+      <DependentUpon>frmPlanilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="ResidenteMeta\frmMantenimientoResidenteMeta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -270,6 +332,159 @@
     </Compile>
     <Compile Include="ResidenteMeta\frmResidenteMeta.designer.cs">
       <DependentUpon>frmResidenteMeta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spComisionesxAFP_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spCrearAFP_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListaMotivosFinPeriodos_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarActividadObra_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarCargos_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarCategoriaOcupacional_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarContratos_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarDepartamentos_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarDetallePlanilla_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarDetalleTareo_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarDistritos_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarDivisionFuncional_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarFuenteFinanciamiento_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarFuncion_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarGrupoFuncional_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarMaestroAportacionesEmpleador_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarMaestroAportacionesTrabajador_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarMaestroDescuentos_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarMaestroIngresos_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarMetaJornal_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarMetas_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarNacionalidades_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarOcupacion_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarPeriodoTrabajador_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarPlanilla_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarPlantillaPlanilla_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarProductoProyecto_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarProgramaPresupuestal_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarProvincias_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarRegimenLaboral_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarRegimenPensionarioTrabajador_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarRegimenSaludTrabajador_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarRegimenTrabajador_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarResidenteMeta_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarSistemasPension_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarTareo_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarTipoContrato_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarTiposVia_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarTiposZona_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarTrabajadores_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListarVariables_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spListaTiposVia_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spTareoObras_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spTraerDepartamento_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spTraerDistrito_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spTraerMotivoFinPeriodo_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spTraerNacionalidad_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spTraerProvincia_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spTraerTipoVia_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spTraerTipoZona_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\spTraerTrabajador_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
     </Compile>
     <Compile Include="Sunat\frmFormula.cs">
       <SubType>Form</SubType>
@@ -325,6 +540,15 @@
     <Compile Include="Sunat\frmMantenimientoMaestroIngresos.Designer.cs">
       <DependentUpon>frmMantenimientoMaestroIngresos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\tactividadobra.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tafp.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\taportaciones.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tareo\frmMantenimientoDetalleTareo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,6 +566,108 @@
     </Compile>
     <Compile Include="Tareo\frmTareo.designer.cs">
       <DependentUpon>frmTareo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tcargo.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tcategoriaocupacional.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tcomisiones.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tcontrato.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tdepartamento.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tdetalleplanilla.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tdetalleplantillaaportaciones.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tdetalleplantillaplanillaegresos.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tdetalleplantillaplanillaingresos.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tdetalletareo.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tdistrito.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tdivisionfuncional.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tegresos.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tfuentefinanciamiento.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tfuncion.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tgrupofuncional.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tingresos.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tmaestroaportaciones.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tmaestroaportacionesempleador.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tmaestroaportacionestrabajador.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tmaestrodescuentos.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tmaestroegresos.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tmaestroingresos.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tmeta.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tmetajornal.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tmotivofinperiodo.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tnacionalidad.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tocupacion.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tperiodotrabajador.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tplanilla.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tplantillaplanilla.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tproductoproyecto.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tprogramapresupuestal.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tprovincia.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
     </Compile>
     <Compile Include="Trabajador\frmDepartamento.cs">
       <SubType>Form</SubType>
@@ -462,6 +788,51 @@
     </Compile>
     <Compile Include="Trabajador\frnNuevoCargo.Designer.cs">
       <DependentUpon>frnNuevoCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\traerProvincia_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tregimenlaboral.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tregimenpensionariotrabajador.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tregimensaludtrabajador.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tregimentrabajador.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tresidentemeta.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tsunattipotrabajador.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ttareo.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ttipocontrato.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ttipovia.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ttipozona.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ttrabajador.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tvariables.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\tzona.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\uspListarTiposDeTrabajador_Result.cs">
+      <DependentUpon>modPersonal.tt</DependentUpon>
     </Compile>
     <Compile Include="Variables\frmFuenteFinanciamiento.cs">
       <SubType>Form</SubType>
@@ -587,8 +958,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reportes\crPlanilla.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPlanilla.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\MostrarReportes.resx">
       <DependentUpon>MostrarReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmPlanilla.resx">
+      <DependentUpon>frmPlanilla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\TareoObras.rdlc" />
     <EmbeddedResource Include="ResidenteMeta\frmMantenimientoResidenteMeta.resx">
@@ -719,6 +1097,47 @@
     <None Include="bdpersonal.xss">
       <DependentUpon>bdpersonal.xsd</DependentUpon>
     </None>
+    <EntityDeploy Include="Reportes\modPersonal.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>modPersonal.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="bdpersonalDataSet.xsc">
+      <DependentUpon>bdpersonalDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="bdpersonalDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bdpersonalDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bdpersonalDataSet.xss">
+      <DependentUpon>bdpersonalDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="bdpersonalDataSet11.xsc">
+      <DependentUpon>bdpersonalDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="bdpersonalDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bdpersonalDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bdpersonalDataSet11.xss">
+      <DependentUpon>bdpersonalDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\DataSetPlanilla.xsc">
+      <DependentUpon>DataSetPlanilla.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\DataSetPlanilla.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetPlanilla.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\DataSetPlanilla.xss">
+      <DependentUpon>DataSetPlanilla.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\modPersonal.edmx.diagram">
+      <DependentUpon>modPersonal.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -760,7 +1179,22 @@
   <ItemGroup>
     <None Include="Resources\internet.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reportes\modPersonal.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>modPersonal.edmx</DependentUpon>
+      <LastGenOutput>modPersonal.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Reportes\modPersonal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>modPersonal.edmx</DependentUpon>
+      <LastGenOutput>modPersonal.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

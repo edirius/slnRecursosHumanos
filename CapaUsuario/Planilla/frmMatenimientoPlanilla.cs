@@ -23,6 +23,8 @@ namespace CapaUsuario.Planilla
         string smeta = "";
         string sfuentefinanciamiento = "";
 
+        CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
+
         CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
 
         public frmMatenimientoPlanilla()
@@ -101,7 +103,7 @@ namespace CapaUsuario.Planilla
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-
+            fPlanilla.ShowDialog();
         }
 
         private void cboRegimenLaboral_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,15 +122,19 @@ namespace CapaUsuario.Planilla
 
         private void dgvPlanilla_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            sidtplanilla = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[0].Value);
-            snumero = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value);
-            smes = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[2].Value);
-            saño = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[3].Value);
-            sfecha = Convert.ToDateTime(dgvPlanilla.Rows[e.RowIndex].Cells[4].Value);
-            sidtmeta = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[5].Value);
-            smeta = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[6].Value);
-            sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[7].Value);
-            sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[8].Value);
+            if (e.RowIndex != -1)
+            {
+                sidtplanilla = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[0].Value);
+                snumero = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value);
+                smes = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[2].Value);
+                saño = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[3].Value);
+                sfecha = Convert.ToDateTime(dgvPlanilla.Rows[e.RowIndex].Cells[4].Value);
+                sidtmeta = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[5].Value);
+                smeta = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[6].Value);
+                sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[7].Value);
+                sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[8].Value);
+                fPlanilla.RecibirDatos(Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value) );
+            }
         }
 
         private void CargarRegimenLaboral()
@@ -165,6 +171,7 @@ namespace CapaUsuario.Planilla
                     sfuentefinanciamiento = roww[2].ToString();
                 }
                 dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento);
+                
             }
             if (dgvPlanilla.Rows.Count > 0)
             {

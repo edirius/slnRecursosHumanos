@@ -62,7 +62,7 @@ namespace CapaDeNegocios.DatosLaborales
 
         public Boolean EliminarPeriodoTrabajador(int IdtPeriodoTrabajador)
         {
-            Conexion.GDatos.Ejecutar("spELiminarPeriodoTrabajador", IdtPeriodoTrabajador);
+            Conexion.GDatos.Ejecutar("spEliminarPeriodoTrabajador", IdtPeriodoTrabajador);
             return true;
         }
     }
