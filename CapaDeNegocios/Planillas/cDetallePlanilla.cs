@@ -12,6 +12,7 @@ namespace CapaDeNegocios.Planillas
     public class cDetallePlanilla
     {
         int sidtdetalleplanilla;
+        string scargo;
         decimal sremuneracion;
         DateTime sfechainicio;
         int sdiaslaborados;
@@ -20,7 +21,6 @@ namespace CapaDeNegocios.Planillas
         decimal stotalatrabajador;
         decimal stotaldescuentos;
         decimal stotalaempleador;
-        int sidtcargo;
         int sidttrabajador;
         int sidtplanilla;
 
@@ -28,6 +28,11 @@ namespace CapaDeNegocios.Planillas
         {
             get { return sidtdetalleplanilla; }
             set { sidtdetalleplanilla = value; }
+        }
+        public string Cargo
+        {
+            get { return scargo; }
+            set { scargo = value; }
         }
         public decimal Remuneracion
         {
@@ -69,11 +74,6 @@ namespace CapaDeNegocios.Planillas
             get { return stotalaempleador; }
             set { stotalaempleador = value; }
         }
-        public int IdtCargo
-        {
-            get { return sidtcargo; }
-            set { sidtcargo = value; }
-        }
         public int IdtTrabajador
         {
             get { return sidttrabajador; }
@@ -92,13 +92,13 @@ namespace CapaDeNegocios.Planillas
 
         public Boolean CrearDetallePlanilla(cDetallePlanilla miDetallePlanilla)
         {
-            Conexion.GDatos.Ejecutar("spCrearDetallePlanilla", miDetallePlanilla.Remuneracion, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.RemuneracionTotal, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.IdtCargo, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla);
+            Conexion.GDatos.Ejecutar("spCrearDetallePlanilla", miDetallePlanilla.Cargo, miDetallePlanilla.Remuneracion, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.RemuneracionTotal, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla);
             return true;
         }
 
         public Boolean ModificarDetallePlanilla(cDetallePlanilla miDetallePlanilla)
         {
-            Conexion.GDatos.Ejecutar("spModificarDetallePlanilla", miDetallePlanilla.IdtDetallePlanilla, miDetallePlanilla.Remuneracion, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.RemuneracionTotal, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.IdtCargo, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla);
+            Conexion.GDatos.Ejecutar("spModificarDetallePlanilla", miDetallePlanilla.IdtDetallePlanilla, miDetallePlanilla.Cargo, miDetallePlanilla.Remuneracion, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.RemuneracionTotal, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla);
             return true;
         }
 

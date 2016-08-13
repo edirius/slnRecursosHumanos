@@ -147,6 +147,7 @@ namespace CapaUsuario.Planilla
             foreach (DataGridViewRow row in dgvDetallePlanilla.Rows)
             {
                 miDetallePlanilla.IdtDetallePlanilla = Convert.ToInt32(row.Cells[0].Value);
+                miDetallePlanilla.Cargo = Convert.ToString(row.Cells[7].Value);
                 miDetallePlanilla.Remuneracion = Convert.ToDecimal(row.Cells[9].Value);
                 miDetallePlanilla.FechaInicio = Convert.ToDateTime(row.Cells[10].Value);
                 miDetallePlanilla.DiasLaborados = Convert.ToInt32(row.Cells[11].Value);
@@ -155,7 +156,6 @@ namespace CapaUsuario.Planilla
                 miDetallePlanilla.TotalATrabajador = Convert.ToDecimal(row.Cells[16 + con_ingresos + con_trabajador].Value);
                 miDetallePlanilla.TotalDescuentos = Convert.ToDecimal(row.Cells[16 + con_ingresos + con_trabajador + con_descuento].Value);
                 miDetallePlanilla.TotalAEmpleador = Convert.ToDecimal(row.Cells[16 + con_ingresos + con_trabajador + con_empleador].Value);
-                miDetallePlanilla.IdtCargo = Convert.ToInt32(row.Cells[6].Value);
                 miDetallePlanilla.IdtTrabajador = Convert.ToInt32(row.Cells[4].Value);
                 miDetallePlanilla.IdtPlanilla = sidtplanilla;
                 if (Convert.ToString(row.Cells[1].Value) == "I")
@@ -345,11 +345,11 @@ namespace CapaUsuario.Planilla
                 CargarTrabajador(Convert.ToInt32(row[10].ToString()));
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[0].Value = row[0].ToString();
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[1].Value = "M";
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[9].Value = row[1].ToString();
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[10].Value = row[2].ToString();
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[11].Value = row[3].ToString();
-
                 //dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[7].Value = row[1].ToString();
+                //dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[9].Value = row[2].ToString();
+                //dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[10].Value = row[3].ToString();
+                //dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[11].Value = row[4].ToString();
+                
                 TotalRemuneracion();
                 CalcularIngresos(AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta);
                 CalcularA_Trabajador(AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta);

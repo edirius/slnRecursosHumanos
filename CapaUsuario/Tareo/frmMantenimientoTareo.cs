@@ -51,11 +51,11 @@ namespace CapaUsuario.Tareo
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (sEstado == true)
-            {
-                MessageBox.Show("El Tareo ya no se puede Modificar.", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (sEstado == true)
+            //{
+            //    MessageBox.Show("El Tareo ya no se puede Modificar.", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
             if (sIdTTareo == 0 && dgvTareo.SelectedRows.Count > 0)
             {
                 MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -127,12 +127,12 @@ namespace CapaUsuario.Tareo
             }
         }
 
-        private void dgvCronogramaTareo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvTareo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void dgvCronogramaTareo_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvTareo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //int iFila = this.dgvTareo.CurrentRow.Index;
 
@@ -162,6 +162,13 @@ namespace CapaUsuario.Tareo
             dgvTareo.DataSource = miTareo.ListarTareo(miMeta);
             dgvTareo.Columns[0].Visible = false;
             dgvTareo.Columns[6].Visible = false;
+
+            if (dgvTareo.Rows.Count > 0)
+            {
+                DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, dgvTareo.Rows.Count - 1);
+                dgvTareo.Rows[dgvTareo.Rows.Count - 1].Selected = true;
+                dgvTareo_CellClick(dgvTareo, cea);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

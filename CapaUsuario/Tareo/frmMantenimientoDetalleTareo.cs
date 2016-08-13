@@ -114,7 +114,8 @@ namespace CapaUsuario.Tareo
             Trabajador.frmNuevoObrero fNuevoObrero = new Trabajador.frmNuevoObrero();
             if (fNuevoObrero.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                //CargarTrabajador();
+                oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
+                oDataAFP = miAFP.ObtenerListaAFP();
             }
         }
 
@@ -356,6 +357,7 @@ namespace CapaUsuario.Tareo
                             k = i - contadordias - 1;
                             dgvDetalleTareo.Rows[fila].Cells["col" + k.ToString()].Style.BackColor = Color.Red;
                             dgvDetalleTareo.Rows[fila].Cells[9 + i - contadordias].Value = "D";
+                            if (j != 0) { j += 1; }
                         }
                     }
                     else
