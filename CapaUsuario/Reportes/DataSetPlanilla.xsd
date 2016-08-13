@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetPlanilla" targetNamespace="http://tempuri.org/DataSetPlanilla.xsd" xmlns:mstns="http://tempuri.org/DataSetPlanilla.xsd" xmlns="http://tempuri.org/DataSetPlanilla.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetPlanilla" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetPlanilla" msprop:Generator_UserDSName="DataSetPlanilla">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="planilla" msprop:Generator_TableClassName="planillaDataTable" msprop:Generator_TableVarName="tableplanilla" msprop:Generator_RowChangedName="planillaRowChanged" msprop:Generator_TablePropName="planilla" msprop:Generator_RowDeletingName="planillaRowDeleting" msprop:Generator_RowChangingName="planillaRowChanging" msprop:Generator_RowEvHandlerName="planillaRowChangeEventHandler" msprop:Generator_RowDeletedName="planillaRowDeleted" msprop:Generator_RowClassName="planillaRow" msprop:Generator_UserTableName="planilla" msprop:Generator_RowEvArgName="planillaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" minOccurs="0" />
+              <xs:element name="numero" msprop:Generator_ColumnVarNameInTable="columnnumero" msprop:Generator_ColumnPropNameInRow="numero" msprop:Generator_ColumnPropNameInTable="numeroColumn" msprop:Generator_UserColumnName="numero" type="xs:string" minOccurs="0" />
+              <xs:element name="regimenLaboral" msprop:Generator_ColumnVarNameInTable="columnregimenLaboral" msprop:Generator_ColumnPropNameInRow="regimenLaboral" msprop:Generator_ColumnPropNameInTable="regimenLaboralColumn" msprop:Generator_UserColumnName="regimenLaboral" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

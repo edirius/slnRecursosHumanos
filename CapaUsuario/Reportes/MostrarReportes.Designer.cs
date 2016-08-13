@@ -42,6 +42,7 @@
             // 
             this.spTareoObrasBindingSource.DataMember = "spTareoObras";
             this.spTareoObrasBindingSource.DataSource = this.bdpersonal;
+            this.spTareoObrasBindingSource.CurrentChanged += new System.EventHandler(this.spTareoObrasBindingSource_CurrentChanged);
             // 
             // bdpersonal
             // 
@@ -57,7 +58,7 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "CapaUsuario.Reportes.TareoObras.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(651, 439);
+            this.reportViewer1.Size = new System.Drawing.Size(1129, 533);
             this.reportViewer1.TabIndex = 0;
             // 
             // spTareoObrasTableAdapter
@@ -68,7 +69,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 439);
+            this.ClientSize = new System.Drawing.Size(1129, 533);
             this.Controls.Add(this.reportViewer1);
             this.Name = "MostrarReportes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -70,7 +70,7 @@ namespace CapaDeNegocios.Obras
 
         public Boolean EliminarGrupoFuncional(cGrupoFuncional miGrupoFuncional)
         {
-            Conexion.GDatos.Ejecutar("spElimianrGrupoFuncional", miGrupoFuncional.DivisionFuncional.Codigo );
+            Conexion.GDatos.Ejecutar("spEliminarGrupoFuncional", miGrupoFuncional.DivisionFuncional.Codigo );
             return true;
         }
 
