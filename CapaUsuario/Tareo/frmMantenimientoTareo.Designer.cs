@@ -99,8 +99,8 @@
             this.dgvTareo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTareo.Size = new System.Drawing.Size(559, 310);
             this.dgvTareo.TabIndex = 1;
-            this.dgvTareo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCronogramaTareo_CellClick);
-            this.dgvTareo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCronogramaTareo_CellContentClick);
+            this.dgvTareo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellClick);
+            this.dgvTareo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellContentClick);
             // 
             // btnSalir
             // 
@@ -210,6 +210,7 @@
             this.Controls.Add(this.dgvTareo);
             this.Controls.Add(this.groupBox2);
             this.Name = "frmMantenimientoTareo";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimineto de Tareos";
             this.Load += new System.EventHandler(this.frmMantenimientoCronogramaTareo_Load);

@@ -31,6 +31,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDetalleTareo = new System.Windows.Forms.DataGridView();
+            this.txtIdTDetalleTareo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnProceso = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.txtNro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtIdTTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtApellidosNombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtSistemaPensiones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboCategoria = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.chkMarca = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.txtMeta = new System.Windows.Forms.TextBox();
@@ -44,16 +54,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnImportar = new System.Windows.Forms.Button();
             this.btnNuevoTrabajador = new System.Windows.Forms.Button();
-            this.txtIdTDetalleTareo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnProceso = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.txtNro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtIdTTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtApellidosNombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtDNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtSistemaPensiones = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboCategoria = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.chkMarca = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleTareo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,6 +97,81 @@
             this.dgvDetalleTareo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleTareo_CellEndEdit);
             this.dgvDetalleTareo.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDetalleTareo_EditingControlShowing);
             this.dgvDetalleTareo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvDetalleTareo_KeyPress);
+            // 
+            // txtIdTDetalleTareo
+            // 
+            this.txtIdTDetalleTareo.HeaderText = "ID";
+            this.txtIdTDetalleTareo.Name = "txtIdTDetalleTareo";
+            this.txtIdTDetalleTareo.ReadOnly = true;
+            this.txtIdTDetalleTareo.Visible = false;
+            this.txtIdTDetalleTareo.Width = 30;
+            // 
+            // txtAccion
+            // 
+            this.txtAccion.HeaderText = "Accion";
+            this.txtAccion.Name = "txtAccion";
+            this.txtAccion.Visible = false;
+            this.txtAccion.Width = 30;
+            // 
+            // btnProceso
+            // 
+            this.btnProceso.HeaderText = "";
+            this.btnProceso.Name = "btnProceso";
+            this.btnProceso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnProceso.Width = 30;
+            // 
+            // txtNro
+            // 
+            this.txtNro.HeaderText = "NRO";
+            this.txtNro.Name = "txtNro";
+            this.txtNro.ReadOnly = true;
+            this.txtNro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtNro.Width = 30;
+            // 
+            // txtIdTTrabajador
+            // 
+            this.txtIdTTrabajador.HeaderText = "IdTTrabajador";
+            this.txtIdTTrabajador.Name = "txtIdTTrabajador";
+            this.txtIdTTrabajador.ReadOnly = true;
+            this.txtIdTTrabajador.Visible = false;
+            this.txtIdTTrabajador.Width = 50;
+            // 
+            // txtApellidosNombres
+            // 
+            this.txtApellidosNombres.HeaderText = "APELLIDOS Y NOMBRES";
+            this.txtApellidosNombres.Name = "txtApellidosNombres";
+            this.txtApellidosNombres.ReadOnly = true;
+            this.txtApellidosNombres.Width = 275;
+            // 
+            // txtDNI
+            // 
+            this.txtDNI.HeaderText = "DNI";
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtDNI.Width = 75;
+            // 
+            // txtSistemaPensiones
+            // 
+            this.txtSistemaPensiones.HeaderText = "SIS PENSIONES";
+            this.txtSistemaPensiones.Name = "txtSistemaPensiones";
+            this.txtSistemaPensiones.ReadOnly = true;
+            this.txtSistemaPensiones.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // cboCategoria
+            // 
+            this.cboCategoria.HeaderText = "CATEGORIA";
+            this.cboCategoria.Items.AddRange(new object[] {
+            "PEON",
+            "OPERARIO",
+            "OFICIAL",
+            "MAESTRO DE OBRA"});
+            this.cboCategoria.Name = "cboCategoria";
+            // 
+            // chkMarca
+            // 
+            this.chkMarca.HeaderText = "Marcar Todo";
+            this.chkMarca.Name = "chkMarca";
+            this.chkMarca.Width = 45;
             // 
             // btnCancelar
             // 
@@ -256,81 +331,6 @@
             this.btnNuevoTrabajador.UseVisualStyleBackColor = false;
             this.btnNuevoTrabajador.Click += new System.EventHandler(this.btnNuevoTrabajador_Click);
             // 
-            // txtIdTDetalleTareo
-            // 
-            this.txtIdTDetalleTareo.HeaderText = "ID";
-            this.txtIdTDetalleTareo.Name = "txtIdTDetalleTareo";
-            this.txtIdTDetalleTareo.ReadOnly = true;
-            this.txtIdTDetalleTareo.Visible = false;
-            this.txtIdTDetalleTareo.Width = 30;
-            // 
-            // txtAccion
-            // 
-            this.txtAccion.HeaderText = "Accion";
-            this.txtAccion.Name = "txtAccion";
-            this.txtAccion.Visible = false;
-            this.txtAccion.Width = 30;
-            // 
-            // btnProceso
-            // 
-            this.btnProceso.HeaderText = "";
-            this.btnProceso.Name = "btnProceso";
-            this.btnProceso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnProceso.Width = 30;
-            // 
-            // txtNro
-            // 
-            this.txtNro.HeaderText = "NRO";
-            this.txtNro.Name = "txtNro";
-            this.txtNro.ReadOnly = true;
-            this.txtNro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.txtNro.Width = 30;
-            // 
-            // txtIdTTrabajador
-            // 
-            this.txtIdTTrabajador.HeaderText = "IdTTrabajador";
-            this.txtIdTTrabajador.Name = "txtIdTTrabajador";
-            this.txtIdTTrabajador.ReadOnly = true;
-            this.txtIdTTrabajador.Visible = false;
-            this.txtIdTTrabajador.Width = 50;
-            // 
-            // txtApellidosNombres
-            // 
-            this.txtApellidosNombres.HeaderText = "APELLIDOS Y NOMBRES";
-            this.txtApellidosNombres.Name = "txtApellidosNombres";
-            this.txtApellidosNombres.ReadOnly = true;
-            this.txtApellidosNombres.Width = 275;
-            // 
-            // txtDNI
-            // 
-            this.txtDNI.HeaderText = "DNI";
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.txtDNI.Width = 75;
-            // 
-            // txtSistemaPensiones
-            // 
-            this.txtSistemaPensiones.HeaderText = "SIS PENSIONES";
-            this.txtSistemaPensiones.Name = "txtSistemaPensiones";
-            this.txtSistemaPensiones.ReadOnly = true;
-            this.txtSistemaPensiones.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // cboCategoria
-            // 
-            this.cboCategoria.HeaderText = "CATEGORIA";
-            this.cboCategoria.Items.AddRange(new object[] {
-            "PEON",
-            "OPERARIO",
-            "OFICIAL",
-            "MAESTRO DE OBRA"});
-            this.cboCategoria.Name = "cboCategoria";
-            // 
-            // chkMarca
-            // 
-            this.chkMarca.HeaderText = "Marcar Todo";
-            this.chkMarca.Name = "chkMarca";
-            this.chkMarca.Width = 45;
-            // 
             // frmMantenimientoDetalleTareo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -351,6 +351,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dgvDetalleTareo);
             this.Name = "frmMantenimientoDetalleTareo";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle Tareo";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

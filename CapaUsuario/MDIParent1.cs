@@ -129,7 +129,7 @@ namespace CapaUsuario
         {
             try
             {
-                Conexion.IniciarSesion("192.168.1.133", "bdPersonal", "root", "bahamut");
+                Conexion.IniciarSesion("192.168.1.40", "bdpersonal", "root", "root");
                 MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
             }
             catch (Exception ex)
@@ -260,6 +260,13 @@ namespace CapaUsuario
             Variables.frmMantenimientoFuenteFinanciamiento fMantenimientoFuenteFinanciamiento = new Variables.frmMantenimientoFuenteFinanciamiento();
             fMantenimientoFuenteFinanciamiento.MdiParent = this;
             fMantenimientoFuenteFinanciamiento.Show();
+        }
+
+        private void IR5taCategoriatoolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Planilla.frmImpuestoAlaRentaDe5taCategoria frmIR5taCategoria = new CapaUsuario.Planilla.frmImpuestoAlaRentaDe5taCategoria();
+            frmIR5taCategoria.MdiParent = this;
+            frmIR5taCategoria.Show();
         }
     }
 }
