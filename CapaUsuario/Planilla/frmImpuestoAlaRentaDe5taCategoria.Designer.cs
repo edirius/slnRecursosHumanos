@@ -230,7 +230,7 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtT8);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(602, 228);
+            this.groupBox1.Location = new System.Drawing.Point(528, 436);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(306, 213);
             this.groupBox1.TabIndex = 35;
@@ -330,7 +330,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 339);
+            this.ClientSize = new System.Drawing.Size(560, 362);
             this.Controls.Add(this.cbUIT);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtIRM);
