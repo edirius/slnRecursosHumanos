@@ -24,6 +24,10 @@ namespace CapaDeNegocios
                 {
                     pE.Handled = false;
                 }
+                else if (char.IsPunctuation(pE.KeyChar))
+                {
+                    pE.Handled = false;
+                }
                 else
                 {
                     pE.Handled = true;
