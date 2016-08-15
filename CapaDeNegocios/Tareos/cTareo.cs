@@ -55,9 +55,9 @@ namespace CapaDeNegocios.Tareos
             set { sestado = value; }
         }
 
-        public DataTable ListarTareo(cMeta miMeta)
+        public DataTable ListarTareo(int IdtMeta)
         {
-            return Conexion.GDatos.TraerDataTable("spListarTareo", miMeta.Codigo);
+            return Conexion.GDatos.TraerDataTable("spListarTareo", IdtMeta);
         }
 
         public Boolean CrearTareo(cTareo miTareo, cMeta miMeta)
@@ -72,9 +72,9 @@ namespace CapaDeNegocios.Tareos
             return true;
         }
 
-        public Boolean EliminarTareo(cTareo miTareo)
+        public Boolean EliminarTareo(int IdTTareo)
         {
-            Conexion.GDatos.Ejecutar("spELiminarTareo", miTareo.IdTTareo);
+            Conexion.GDatos.Ejecutar("spELiminarTareo", IdTTareo);
             return true;
         }
     }

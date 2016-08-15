@@ -199,6 +199,7 @@
             // 
             // cboDepartamento
             // 
+            this.cboDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDepartamento.FormattingEnabled = true;
             this.cboDepartamento.Location = new System.Drawing.Point(117, 191);
             this.cboDepartamento.Name = "cboDepartamento";
@@ -208,6 +209,7 @@
             // 
             // cboProvincia
             // 
+            this.cboProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProvincia.FormattingEnabled = true;
             this.cboProvincia.Location = new System.Drawing.Point(117, 218);
             this.cboProvincia.Name = "cboProvincia";
@@ -285,6 +287,7 @@
             // 
             // cboDistrito
             // 
+            this.cboDistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDistrito.FormattingEnabled = true;
             this.cboDistrito.Location = new System.Drawing.Point(117, 245);
             this.cboDistrito.Name = "cboDistrito";

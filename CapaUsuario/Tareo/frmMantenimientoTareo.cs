@@ -88,8 +88,7 @@ namespace CapaUsuario.Tareo
             {
                 return;
             }
-            miTareo.IdTTareo = sIdTTareo;
-            miTareo.EliminarTareo(miTareo);
+            miTareo.EliminarTareo(sIdTTareo);
             CargarDatos();
         }
 
@@ -158,8 +157,7 @@ namespace CapaUsuario.Tareo
 
         private void CargarDatos()
         {
-            miMeta.Codigo = sIdTMeta;
-            dgvTareo.DataSource = miTareo.ListarTareo(miMeta);
+            dgvTareo.DataSource = miTareo.ListarTareo(sIdTMeta);
             dgvTareo.Columns[0].Visible = false;
             dgvTareo.Columns[6].Visible = false;
 
