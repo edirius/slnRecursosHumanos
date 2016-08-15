@@ -65,7 +65,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(444, 10);
+            this.label14.Location = new System.Drawing.Point(434, 9);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(28, 13);
             this.label14.TabIndex = 33;
@@ -73,15 +73,15 @@
             // 
             // txtIRM
             // 
-            this.txtIRM.Location = new System.Drawing.Point(399, 491);
+            this.txtIRM.Location = new System.Drawing.Point(443, 276);
             this.txtIRM.Name = "txtIRM";
-            this.txtIRM.Size = new System.Drawing.Size(65, 20);
+            this.txtIRM.Size = new System.Drawing.Size(77, 20);
             this.txtIRM.TabIndex = 39;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(245, 491);
+            this.label13.Location = new System.Drawing.Point(289, 276);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(148, 13);
             this.label13.TabIndex = 38;
@@ -89,15 +89,15 @@
             // 
             // txtIRA
             // 
-            this.txtIRA.Location = new System.Drawing.Point(399, 465);
+            this.txtIRA.Location = new System.Drawing.Point(443, 250);
             this.txtIRA.Name = "txtIRA";
-            this.txtIRA.Size = new System.Drawing.Size(65, 20);
+            this.txtIRA.Size = new System.Drawing.Size(77, 20);
             this.txtIRA.TabIndex = 36;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(258, 468);
+            this.label12.Location = new System.Drawing.Point(302, 253);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(135, 13);
             this.label12.TabIndex = 34;
@@ -151,7 +151,7 @@
             // 
             this.txtReMesAnteriores.Location = new System.Drawing.Point(224, 68);
             this.txtReMesAnteriores.Name = "txtReMesAnteriores";
-            this.txtReMesAnteriores.Size = new System.Drawing.Size(65, 20);
+            this.txtReMesAnteriores.Size = new System.Drawing.Size(81, 20);
             this.txtReMesAnteriores.TabIndex = 23;
             // 
             // label10
@@ -167,23 +167,23 @@
             // 
             this.txtRN.Location = new System.Drawing.Point(223, 159);
             this.txtRN.Name = "txtRN";
-            this.txtRN.Size = new System.Drawing.Size(65, 20);
+            this.txtRN.Size = new System.Drawing.Size(82, 20);
             this.txtRN.TabIndex = 10;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(149, 162);
+            this.label5.Location = new System.Drawing.Point(44, 166);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.Size = new System.Drawing.Size(170, 13);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Renta Neta:";
+            this.label5.Text = "Renta Neta(Deducción de 7UITs):";
             // 
             // txtRb
             // 
             this.txtRb.Location = new System.Drawing.Point(223, 124);
             this.txtRb.Name = "txtRb";
-            this.txtRb.Size = new System.Drawing.Size(65, 20);
+            this.txtRb.Size = new System.Drawing.Size(82, 20);
             this.txtRb.TabIndex = 8;
             // 
             // label4
@@ -199,7 +199,7 @@
             // 
             this.txtGrati.Location = new System.Drawing.Point(224, 96);
             this.txtGrati.Name = "txtGrati";
-            this.txtGrati.Size = new System.Drawing.Size(65, 20);
+            this.txtGrati.Size = new System.Drawing.Size(81, 20);
             this.txtGrati.TabIndex = 6;
             this.txtGrati.Text = "600";
             // 
@@ -249,9 +249,9 @@
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtT8);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(45, 237);
+            this.groupBox1.Location = new System.Drawing.Point(602, 228);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(463, 213);
+            this.groupBox1.Size = new System.Drawing.Size(306, 213);
             this.groupBox1.TabIndex = 35;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tasas Aplicables ";
@@ -339,7 +339,7 @@
             // cbUIT
             // 
             this.cbUIT.FormattingEnabled = true;
-            this.cbUIT.Location = new System.Drawing.Point(478, 7);
+            this.cbUIT.Location = new System.Drawing.Point(468, 6);
             this.cbUIT.Name = "cbUIT";
             this.cbUIT.Size = new System.Drawing.Size(76, 21);
             this.cbUIT.TabIndex = 41;
@@ -348,7 +348,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(583, 523);
+            this.ClientSize = new System.Drawing.Size(556, 310);
             this.Controls.Add(this.cbUIT);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtIRM);

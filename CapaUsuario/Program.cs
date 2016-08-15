@@ -16,7 +16,7 @@ namespace CapaUsuario
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CapaUsuario.Planilla.frmImpuestoAlaRentaDe5taCategoria());
+            Application.Run(new frmPrincipal());
         }
     }
 }

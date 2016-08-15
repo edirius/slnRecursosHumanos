@@ -133,11 +133,12 @@ namespace CapaUsuario.Planilla
             }
             else if (RentaBruta > UIT7)
             {
-                if (RentaBruta <= UIT5)
+                if (RentaNeta <= UIT5)
                 {
+                    txtRb.Text = RentaBruta.ToString();
+                    txtRN.Text = RentaNeta.ToString();
                     ImpuestoRentaAnual = (RentaNeta * 8) / 100;
                     txtIRA.Text = ImpuestoRentaAnual.ToString();
-                    MessageBox.Show("GEGEGE");
                 }
                 else if (RentaNeta > UIT5 && RentaNeta <= UIT20)
                 {
@@ -191,7 +192,7 @@ namespace CapaUsuario.Planilla
 
                         int mes = 12;
                         CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                        txtIRM.Text = Convert.ToString(int.Parse(txtIRA.Text) / 12);
+                        txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 12);
                         break;
                     }
                 case "Febrero":
