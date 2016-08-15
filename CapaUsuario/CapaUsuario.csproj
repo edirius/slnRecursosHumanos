@@ -127,6 +127,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetPlanilla.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\fPrueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\fPrueba.Designer.cs">
+      <DependentUpon>fPrueba.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\listarAFP_Result.cs">
       <DependentUpon>modPersonal.tt</DependentUpon>
     </Compile>
@@ -952,6 +958,9 @@
     <EmbeddedResource Include="Reportes\crPlanilla.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crPlanilla.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\fPrueba.resx">
+      <DependentUpon>fPrueba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\MostrarReportes.resx">
       <DependentUpon>MostrarReportes.cs</DependentUpon>

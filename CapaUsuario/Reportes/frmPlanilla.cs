@@ -52,9 +52,10 @@ namespace CapaUsuario.Reportes
             this.crvPlanilla.ParameterFieldInfo = oPfs;
             oRep.Load("C:/Users/ADVANCE/Source/Repos/slnRecursosHumanos/CapaUsuario/Reportes/crPlanilla.rpt");
             //this.crvPlanilla.ReportSource = oRep;
-            this.crvPlanilla.ReportSource = cr1;
+            //this.crvPlanilla.ReportSource = cr1;
 
             //plantilla datos usuario
+
 
             //plantilla ingresos 
 
@@ -79,5 +80,9 @@ namespace CapaUsuario.Reportes
             this.numeroPlanilla = pnumeroPlanilla;
         }
 
+        private void crystalReportViewer1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
