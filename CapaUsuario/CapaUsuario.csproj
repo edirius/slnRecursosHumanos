@@ -840,6 +840,12 @@
     <Compile Include="Reportes\uspListarTiposDeTrabajador_Result.cs">
       <DependentUpon>modPersonal.tt</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Variables\frmFuenteFinanciamiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1082,6 +1088,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frnNuevoCargo.resx">
       <DependentUpon>frnNuevoCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Variables\frmFuenteFinanciamiento.resx">
       <DependentUpon>frmFuenteFinanciamiento.cs</DependentUpon>
