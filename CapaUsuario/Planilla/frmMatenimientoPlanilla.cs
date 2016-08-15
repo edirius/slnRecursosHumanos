@@ -103,7 +103,12 @@ namespace CapaUsuario.Planilla
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            fPlanilla.ShowDialog();
+            //fPlanilla.ShowDialog();
+
+            CapaUsuario.Reportes.fPrueba fPrueba = new CapaUsuario.Reportes.fPrueba();
+
+            fPrueba.ShowDialog();
+
         }
 
         private void cboRegimenLaboral_SelectedIndexChanged(object sender, EventArgs e)

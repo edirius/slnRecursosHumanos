@@ -113,6 +113,12 @@
       <DependentUpon>bdpersonalDataSet11.xsd</DependentUpon>
     </Compile>
     <Compile Include="ConvertImage.cs" />
+    <Compile Include="Planilla\frmImpuestoAlaRentaDe5taCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\frmImpuestoAlaRentaDe5taCategoria.Designer.cs">
+      <DependentUpon>frmImpuestoAlaRentaDe5taCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\crPlanilla.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,6 +132,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetPlanilla.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\fPrueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\fPrueba.Designer.cs">
+      <DependentUpon>fPrueba.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\listarAFP_Result.cs">
       <DependentUpon>modPersonal.tt</DependentUpon>
@@ -834,6 +846,12 @@
     <Compile Include="Reportes\uspListarTiposDeTrabajador_Result.cs">
       <DependentUpon>modPersonal.tt</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Variables\frmFuenteFinanciamiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -927,6 +945,9 @@
     <EmbeddedResource Include="Planilla\frm5taCategoria.resx">
       <DependentUpon>frm5taCategoria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\frmImpuestoAlaRentaDe5taCategoria.resx">
+      <DependentUpon>frmImpuestoAlaRentaDe5taCategoria.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Planilla\frmMantenimientoDetallePlanilla.resx">
       <DependentUpon>frmMantenimientoDetallePlanilla.cs</DependentUpon>
     </EmbeddedResource>
@@ -961,6 +982,9 @@
     <EmbeddedResource Include="Reportes\crPlanilla.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crPlanilla.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\fPrueba.resx">
+      <DependentUpon>fPrueba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\MostrarReportes.resx">
       <DependentUpon>MostrarReportes.cs</DependentUpon>
@@ -1073,6 +1097,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frnNuevoCargo.resx">
       <DependentUpon>frnNuevoCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Variables\frmFuenteFinanciamiento.resx">
       <DependentUpon>frmFuenteFinanciamiento.cs</DependentUpon>

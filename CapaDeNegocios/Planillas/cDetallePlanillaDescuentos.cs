@@ -37,6 +37,10 @@ namespace CapaDeNegocios.Planillas
             set { sidtdetalleplanilla = value; }
         }
 
+        public DataTable spListarPlanillaXDescuentos(string pmes, int idRegimenLaboral, int idTrabajador){
+            return Conexion.GDatos.TraerDataTable("spListarPlanillaXDescuentos", pmes, idRegimenLaboral, idTrabajador);
+        }
+
         public DataTable ListarDetallePlanillaDescuentos(int IdtDetallePlanilla)
         {
             return Conexion.GDatos.TraerDataTable("spListarDetallePlanillaDescuentos", IdtDetallePlanilla);
