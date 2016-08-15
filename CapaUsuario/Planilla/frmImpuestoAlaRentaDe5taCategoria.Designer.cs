@@ -35,8 +35,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbMes = new System.Windows.Forms.ComboBox();
-            this.txtReMesAnteriores = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtRN = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRb = new System.Windows.Forms.TextBox();
@@ -106,8 +104,6 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.cbMes);
-            this.groupBox2.Controls.Add(this.txtReMesAnteriores);
-            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.txtRN);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtRb);
@@ -141,39 +137,23 @@
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.cbMes.Location = new System.Drawing.Point(220, 41);
+            this.cbMes.Location = new System.Drawing.Point(220, 75);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(121, 21);
             this.cbMes.TabIndex = 24;
             this.cbMes.SelectedIndexChanged += new System.EventHandler(this.cbMes_SelectedIndexChanged);
             // 
-            // txtReMesAnteriores
-            // 
-            this.txtReMesAnteriores.Location = new System.Drawing.Point(224, 68);
-            this.txtReMesAnteriores.Name = "txtReMesAnteriores";
-            this.txtReMesAnteriores.Size = new System.Drawing.Size(81, 20);
-            this.txtReMesAnteriores.TabIndex = 23;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(36, 71);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(178, 13);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "Remuneración de Meses Anteriores:";
-            // 
             // txtRN
             // 
-            this.txtRN.Location = new System.Drawing.Point(223, 159);
+            this.txtRN.Location = new System.Drawing.Point(223, 132);
             this.txtRN.Name = "txtRN";
-            this.txtRN.Size = new System.Drawing.Size(82, 20);
+            this.txtRN.Size = new System.Drawing.Size(97, 20);
             this.txtRN.TabIndex = 10;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(44, 166);
+            this.label5.Location = new System.Drawing.Point(44, 139);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(170, 13);
             this.label5.TabIndex = 9;
@@ -181,15 +161,15 @@
             // 
             // txtRb
             // 
-            this.txtRb.Location = new System.Drawing.Point(223, 124);
+            this.txtRb.Location = new System.Drawing.Point(220, 106);
             this.txtRb.Name = "txtRb";
-            this.txtRb.Size = new System.Drawing.Size(82, 20);
+            this.txtRb.Size = new System.Drawing.Size(100, 20);
             this.txtRb.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(147, 124);
+            this.label4.Location = new System.Drawing.Point(147, 113);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 7;
@@ -197,16 +177,15 @@
             // 
             // txtGrati
             // 
-            this.txtGrati.Location = new System.Drawing.Point(224, 96);
+            this.txtGrati.Location = new System.Drawing.Point(220, 41);
             this.txtGrati.Name = "txtGrati";
-            this.txtGrati.Size = new System.Drawing.Size(81, 20);
+            this.txtGrati.Size = new System.Drawing.Size(100, 20);
             this.txtGrati.TabIndex = 6;
-            this.txtGrati.Text = "600";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(138, 99);
+            this.label3.Location = new System.Drawing.Point(134, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 5;
@@ -215,11 +194,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(184, 49);
+            this.label2.Location = new System.Drawing.Point(86, 70);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.Size = new System.Drawing.Size(128, 26);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Mes:";
+            this.label2.Text = "Mes que falta:\r\n(Incluido el de Retención)";
             // 
             // txtIngresos
             // 
@@ -231,11 +210,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(164, 21);
+            this.label1.Location = new System.Drawing.Point(92, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.Size = new System.Drawing.Size(122, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Ingresos:";
+            this.label1.Text = "Remuneración Mensual:";
             // 
             // groupBox1
             // 
@@ -348,7 +327,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 310);
+            this.ClientSize = new System.Drawing.Size(560, 310);
             this.Controls.Add(this.cbUIT);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtIRM);
@@ -377,8 +356,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cbMes;
-        private System.Windows.Forms.TextBox txtReMesAnteriores;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtRN;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtRb;

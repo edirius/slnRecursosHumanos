@@ -19,6 +19,10 @@ namespace CapaUsuario.Planilla
             InitializeComponent();
             //ListarUITs();
         }
+        public void Limpiar()
+        {
+
+        }
         public void ListarUITs()
         { 
             cbUIT.ValueMember = "idtvariables";
@@ -200,14 +204,14 @@ namespace CapaUsuario.Planilla
                         //
                         int mes = 11;
                         CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                        txtIRM.Text = Convert.ToString(int.Parse(txtIRA.Text) / 12);
+                        txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 12);
                         break;
                     }
                 case "Marzo":
                     {
                         int mes = 10;
                         CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                        txtIRM.Text = Convert.ToString(int.Parse(txtIRA.Text) / 12);
+                        txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 12);
                         break;
                     }
                 case "Abril":
@@ -215,7 +219,7 @@ namespace CapaUsuario.Planilla
                         //
                         int mes = 9;
                         CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                        txtIRM.Text = Convert.ToString(int.Parse(txtIRA.Text) / 9);
+                        txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 9);
                         break;
                     }
                 case "Mayo":
@@ -223,7 +227,7 @@ namespace CapaUsuario.Planilla
                         //
                         int mes = 8;
                         CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                        txtIRM.Text = Convert.ToString(int.Parse(txtIRA.Text) / 8);
+                        txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 8);
                         break;
                     }
                 case "Junio":
@@ -231,7 +235,7 @@ namespace CapaUsuario.Planilla
                         //
                         int mes = 7;
                         CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                        txtIRM.Text = Convert.ToString(int.Parse(txtIRA.Text) / 8);
+                        txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 8);
                         break;
                     }
                 case "Julio":
@@ -239,7 +243,7 @@ namespace CapaUsuario.Planilla
                         //
                         int mes = 6;
                         CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                        txtIRM.Text = Convert.ToString(int.Parse(txtIRA.Text) / 12);
+                        txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 12);
                         break;
                     }
                 case "Agosto":
@@ -247,7 +251,7 @@ namespace CapaUsuario.Planilla
                         //
                         int mes = 5;
                         CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                        txtIRM.Text = Convert.ToString(int.Parse(txtIRA.Text) / 5);
+                        txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 5);
                         break;
                     }
                 case "Setiembre":
@@ -255,7 +259,7 @@ namespace CapaUsuario.Planilla
                         //
                         int mes = 4;
                         CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                        txtIRM.Text = Convert.ToString(int.Parse(txtIRA.Text) / 4);
+                        txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 4);
                         break;
                     }
                 case "Octubre":
@@ -263,7 +267,7 @@ namespace CapaUsuario.Planilla
                         //
                         int mes = 3;
                         CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                        txtIRM.Text = Convert.ToString(int.Parse(txtIRA.Text) / 4);
+                        txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 4);
                         break;
                     }
                 case "Noviembre":
@@ -271,7 +275,7 @@ namespace CapaUsuario.Planilla
                         //
                         int mes = 2;
                         CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                        txtIRM.Text = Convert.ToString(int.Parse(txtIRA.Text) / 4);
+                        txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 4);
                         break;
                     }
                 case "Diciembre":
@@ -279,7 +283,7 @@ namespace CapaUsuario.Planilla
                         //
                         int mes = 1;
                         CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                        txtIRM.Text = Convert.ToString(int.Parse(txtIRA.Text) / 12);
+                        txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 12);
                         break;
                     }
                 default:
