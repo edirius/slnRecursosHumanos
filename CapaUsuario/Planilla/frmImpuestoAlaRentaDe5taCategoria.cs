@@ -137,15 +137,18 @@ namespace CapaUsuario.Planilla
             }
             else if (RentaBruta > UIT7)
             {
+                txtRb.Text = RentaBruta.ToString();
+
                 if (RentaNeta <= UIT5)
                 {
-                    txtRb.Text = RentaBruta.ToString();
                     txtRN.Text = RentaNeta.ToString();
                     ImpuestoRentaAnual = (RentaNeta * 8) / 100;
                     txtIRA.Text = ImpuestoRentaAnual.ToString();
                 }
                 else if (RentaNeta > UIT5 && RentaNeta <= UIT20)
                 {
+                    txtRb.Text = RentaBruta.ToString();
+                    txtRN.Text = RentaNeta.ToString();
                     T8 = (UIT5 * 8) / 100;
                     T14 = ((RentaNeta - UIT5) * 14) / 100;
                     ImpuestoRentaAnual = T8 + T14;
@@ -154,6 +157,8 @@ namespace CapaUsuario.Planilla
                 }
                 else if (RentaNeta > UIT20 && RentaNeta <= UIT35)
                 {
+                    txtRb.Text = RentaBruta.ToString();
+                    txtRN.Text = RentaNeta.ToString();
                     T8 = (UIT5 * 8) / 100;
                     T14 = ((UIT20 - UIT5) * 14) / 100;
                     T17 = ((RentaNeta - UIT20) * 17) / 100;
@@ -162,6 +167,8 @@ namespace CapaUsuario.Planilla
                 }
                 else if (RentaNeta > UIT35 && RentaNeta <= UIT45)
                 {
+                    txtRb.Text = RentaBruta.ToString();
+                    txtRN.Text = RentaNeta.ToString();
                     T8 = (UIT5 * 8) / 100;
                     T14 = ((UIT20 - UIT5) * 14) / 100;
                     T17 = ((UIT20 - UIT5) * 17) / 100;
@@ -171,6 +178,8 @@ namespace CapaUsuario.Planilla
                 }
                 else if (RentaNeta > UIT45)
                 {
+                    txtRb.Text = RentaBruta.ToString();
+                    txtRN.Text = RentaNeta.ToString();
                     T8 = (UIT5 * 8) / 100;
                     T14 = ((UIT20 - UIT5) * 14) / 100;
                     T17 = ((UIT20 - UIT5) * 17) / 100;

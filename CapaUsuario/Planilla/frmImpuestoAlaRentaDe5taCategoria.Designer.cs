@@ -71,7 +71,7 @@
             // 
             // txtIRM
             // 
-            this.txtIRM.Location = new System.Drawing.Point(443, 276);
+            this.txtIRM.Location = new System.Drawing.Point(443, 300);
             this.txtIRM.Name = "txtIRM";
             this.txtIRM.Size = new System.Drawing.Size(77, 20);
             this.txtIRM.TabIndex = 39;
@@ -79,15 +79,15 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(289, 276);
+            this.label13.Location = new System.Drawing.Point(289, 304);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(148, 13);
             this.label13.TabIndex = 38;
-            this.label13.Text = "Impuesto a la Renta Mensual.";
+            this.label13.Text = "Impuesto a la Renta Mensual:";
             // 
             // txtIRA
             // 
-            this.txtIRA.Location = new System.Drawing.Point(443, 250);
+            this.txtIRA.Location = new System.Drawing.Point(443, 274);
             this.txtIRA.Name = "txtIRA";
             this.txtIRA.Size = new System.Drawing.Size(77, 20);
             this.txtIRA.TabIndex = 36;
@@ -95,7 +95,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(302, 253);
+            this.label12.Location = new System.Drawing.Point(302, 277);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(135, 13);
             this.label12.TabIndex = 34;
@@ -113,12 +113,12 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtIngresos);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(45, 33);
+            this.groupBox2.Location = new System.Drawing.Point(21, 26);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(463, 195);
+            this.groupBox2.Size = new System.Drawing.Size(487, 216);
             this.groupBox2.TabIndex = 37;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "...";
+            this.groupBox2.Text = "CALCULO DEL IMPUESTO";
             // 
             // cbMes
             // 
@@ -137,7 +137,7 @@
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.cbMes.Location = new System.Drawing.Point(220, 75);
+            this.cbMes.Location = new System.Drawing.Point(258, 101);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(121, 21);
             this.cbMes.TabIndex = 24;
@@ -145,7 +145,7 @@
             // 
             // txtRN
             // 
-            this.txtRN.Location = new System.Drawing.Point(223, 132);
+            this.txtRN.Location = new System.Drawing.Point(259, 160);
             this.txtRN.Name = "txtRN";
             this.txtRN.Size = new System.Drawing.Size(97, 20);
             this.txtRN.TabIndex = 10;
@@ -153,7 +153,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(44, 139);
+            this.label5.Location = new System.Drawing.Point(82, 165);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(170, 13);
             this.label5.TabIndex = 9;
@@ -161,7 +161,7 @@
             // 
             // txtRb
             // 
-            this.txtRb.Location = new System.Drawing.Point(220, 106);
+            this.txtRb.Location = new System.Drawing.Point(258, 135);
             this.txtRb.Name = "txtRb";
             this.txtRb.Size = new System.Drawing.Size(100, 20);
             this.txtRb.TabIndex = 8;
@@ -169,7 +169,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(147, 113);
+            this.label4.Location = new System.Drawing.Point(185, 139);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 7;
@@ -177,7 +177,7 @@
             // 
             // txtGrati
             // 
-            this.txtGrati.Location = new System.Drawing.Point(220, 41);
+            this.txtGrati.Location = new System.Drawing.Point(258, 67);
             this.txtGrati.Name = "txtGrati";
             this.txtGrati.Size = new System.Drawing.Size(100, 20);
             this.txtGrati.TabIndex = 6;
@@ -185,7 +185,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(134, 44);
+            this.label3.Location = new System.Drawing.Point(172, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 5;
@@ -194,7 +194,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(86, 70);
+            this.label2.Location = new System.Drawing.Point(124, 96);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 26);
             this.label2.TabIndex = 4;
@@ -202,7 +202,7 @@
             // 
             // txtIngresos
             // 
-            this.txtIngresos.Location = new System.Drawing.Point(220, 15);
+            this.txtIngresos.Location = new System.Drawing.Point(258, 41);
             this.txtIngresos.Name = "txtIngresos";
             this.txtIngresos.Size = new System.Drawing.Size(100, 20);
             this.txtIngresos.TabIndex = 1;
@@ -210,7 +210,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(92, 22);
+            this.label1.Location = new System.Drawing.Point(130, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 13);
             this.label1.TabIndex = 0;
@@ -327,7 +327,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 310);
+            this.ClientSize = new System.Drawing.Size(556, 339);
             this.Controls.Add(this.cbUIT);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.txtIRM);
@@ -337,6 +337,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmImpuestoAlaRentaDe5taCategoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmImpuestoAlaRentaDe5taCategoria";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
