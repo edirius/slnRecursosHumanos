@@ -181,6 +181,7 @@
             this.txtGrati.Name = "txtGrati";
             this.txtGrati.Size = new System.Drawing.Size(100, 20);
             this.txtGrati.TabIndex = 6;
+            this.txtGrati.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGrati_KeyPress);
             // 
             // label3
             // 
@@ -206,6 +207,7 @@
             this.txtIngresos.Name = "txtIngresos";
             this.txtIngresos.Size = new System.Drawing.Size(100, 20);
             this.txtIngresos.TabIndex = 1;
+            this.txtIngresos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIngresos_KeyPress);
             // 
             // label1
             // 
@@ -317,6 +319,7 @@
             // 
             // cbUIT
             // 
+            this.cbUIT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUIT.FormattingEnabled = true;
             this.cbUIT.Location = new System.Drawing.Point(468, 6);
             this.cbUIT.Name = "cbUIT";
