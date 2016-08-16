@@ -133,6 +133,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetPlanilla.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\dsPlanilla.cs">
+      <DependentUpon>dsPlanilla.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\dsPlanilla.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPlanilla.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\fPrueba.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1160,6 +1168,17 @@
     </None>
     <None Include="Reportes\DataSetPlanilla.xss">
       <DependentUpon>DataSetPlanilla.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsPlanilla.xsc">
+      <DependentUpon>dsPlanilla.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\dsPlanilla.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPlanilla.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\dsPlanilla.xss">
+      <DependentUpon>dsPlanilla.xsd</DependentUpon>
     </None>
     <None Include="Reportes\modPersonal.edmx.diagram">
       <DependentUpon>modPersonal.edmx</DependentUpon>

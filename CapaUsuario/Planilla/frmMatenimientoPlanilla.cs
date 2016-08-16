@@ -103,11 +103,11 @@ namespace CapaUsuario.Planilla
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            fPlanilla.ShowDialog();
+            //fPlanilla.ShowDialog();
 
-            //CapaUsuario.Reportes.fPrueba fPrueba = new CapaUsuario.Reportes.fPrueba();
+            CapaUsuario.Reportes.fPrueba fPrueba = new CapaUsuario.Reportes.fPrueba();
 
-            //fPrueba.ShowDialog();
+            fPrueba.ShowDialog();
 
         }
 

@@ -12,6 +12,9 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.ReportSource;
 using CrystalDecisions.Shared;
 
+using System.Data;
+using System.Data.SqlClient;
+
 
 namespace CapaUsuario.Reportes
 {
@@ -229,39 +232,6 @@ namespace CapaUsuario.Reportes
                 //insertar monto total de descuentos a la planilla
                 drFila[indice_descuento] = row[14].ToString();
 
-                //Determinar en base al id del trabajador sus aportaciones del empleador
-                odtPlanillaAEmpleador = oPlanillaEmpleador.ListarPlanillaAEmpleador(pMes, pRegimenLaboral, pidTrabajador);
-
-                foreach (DataRow row_e in odtPlanillaAEmpleador.Rows)
-                {
-                    // si no existe columna agregar titulo
-                    if (!ExisteColumna(odtPrueba, row_e))
-                    {
-                        odtPrueba.Columns.Add(row_e[9].ToString().Trim(), typeof(string));
-                        total_tipo_a_empleador++;
-                    }
-                    //Buscar indice del titulo respectivo al monto
-                    indice_a_empleador = BuscarIndiceColumna(odtPrueba, row_e[9].ToString());
-
-                    //insertar monto de ingresos a la planilla
-                    if (row_e[10].ToString() == "")
-                        drFila[indice_a_empleador] = 0.00;
-                    else
-                        drFila[indice_a_empleador] = row_e[10];
-
-                }
-
-                //Insertando la sumatoria total de Aportaciones Empleador
-                // Insertando la descripcion de columna del total de Empleador
-                if (!ExisteColumnaTexto(odtPrueba, "TOTAL APORTACIONES EMPLEADOR"))
-                    odtPrueba.Columns.Add("TOTAL APORTACIONES EMPLEADOR", typeof(string));
-
-                //Buscar indice del titulo respectivo al monto
-                indice_a_empleador = BuscarIndiceColumna(odtPrueba, "TOTAL APORTACIONES EMPLEADOR");
-
-                //insertar monto total de Empleador a la planilla
-                drFila[indice_a_empleador] = row[12].ToString();
-
                 //Determinar en base al id del trabajador sus aportaciones del trabajador
                 odtPlanillaATrabajador = oPlanillaTrabajador.ListarPlanillaATrabajador(pMes, pRegimenLaboral, pidTrabajador);
 
@@ -295,6 +265,39 @@ namespace CapaUsuario.Reportes
                 //insertar monto total de Empleador a la planilla
                 drFila[indice_a_trabajador] = row[13].ToString();
 
+                //Determinar en base al id del trabajador sus aportaciones del empleador
+                odtPlanillaAEmpleador = oPlanillaEmpleador.ListarPlanillaAEmpleador(pMes, pRegimenLaboral, pidTrabajador);
+
+                foreach (DataRow row_e in odtPlanillaAEmpleador.Rows)
+                {
+                    // si no existe columna agregar titulo
+                    if (!ExisteColumna(odtPrueba, row_e))
+                    {
+                        odtPrueba.Columns.Add(row_e[9].ToString().Trim(), typeof(string));
+                        total_tipo_a_empleador++;
+                    }
+                    //Buscar indice del titulo respectivo al monto
+                    indice_a_empleador = BuscarIndiceColumna(odtPrueba, row_e[9].ToString());
+
+                    //insertar monto de ingresos a la planilla
+                    if (row_e[10].ToString() == "")
+                        drFila[indice_a_empleador] = 0.00;
+                    else
+                        drFila[indice_a_empleador] = row_e[10];
+
+                }
+
+                //Insertando la sumatoria total de Aportaciones Empleador
+                // Insertando la descripcion de columna del total de Empleador
+                if (!ExisteColumnaTexto(odtPrueba, "TOTAL APORTACIONES EMPLEADOR"))
+                    odtPrueba.Columns.Add("TOTAL APORTACIONES EMPLEADOR", typeof(string));
+
+                //Buscar indice del titulo respectivo al monto
+                indice_a_empleador = BuscarIndiceColumna(odtPrueba, "TOTAL APORTACIONES EMPLEADOR");
+
+                //insertar monto total de Empleador a la planilla
+                drFila[indice_a_empleador] = row[12].ToString();
+
                 //insertar datos personales de la planilla al datatable
 
                 drFila[0] = row[0]; drFila[3] = row[3]; drFila[6] = row[6];
@@ -322,23 +325,27 @@ namespace CapaUsuario.Reportes
 
             //Establecer origen de datos: odtPrueba a crystal report 
             //Crear dataset con los campos respectivos de odtPrueba
-            DataSet odsPrueba = new DataSet("Reporte_Planilla");
+            DataSet odsPrueba = new DataSet("Planilla");
+
+            //dsPlanilla odsPrueba = new dsPlanilla();
 
             //for (int m = 0; m < odtPrueba.Columns.Count; m++)
             //{}
             odsPrueba.Tables.Add(odtPrueba);
-            odsPrueba.Namespace = "y";
-            odsPrueba.Prefix = "x";
+            //odsPrueba.Namespace = "y";
+            //odsPrueba.Prefix = "x";
 
-             //dgvPrueba.DataSource = odtPrueba;
+            //dgvPrueba.DataSource = odtPrueba;
 
-             /*Fin reporte en datatable de plantilla*/
+            /*Fin reporte en datatable de plantilla*/
 
 
-             /* Titulo y numero de planilla */
+            /* Titulo y numero de planilla */
 
             bdpersonalEntities pe = new bdpersonalEntities();
             crPlanilla cr1 = new crPlanilla();
+            ReportDocument rd = new ReportDocument();
+
             //numero de planilla
             CrystalDecisions.CrystalReports.Engine.TextObject to = (CrystalDecisions.CrystalReports.Engine.TextObject)cr1.ReportDefinition.ReportObjects["toNumero"];
             to.Text = numeroPlanilla;
@@ -356,16 +363,21 @@ namespace CapaUsuario.Reportes
             oPfs.Add(oPf);
             this.crvPlanilla.ParameterFieldInfo = oPfs;
             oRep.Load("C:/Users/ADVANCE/Source/Repos/slnRecursosHumanos/CapaUsuario/Reportes/crPlanilla.rpt");
-            this.crvPlanilla.ReportSource = oRep;
+            //this.crvPlanilla.ReportSource = oRep;
             //this.crvPlanilla.ReportSource = cr1;
 
-            cr1.SetDataSource( odsPrueba.Tables[0] );
-            //this.crvPlanilla.ReportSource = cr1;
+            //ReportDocument ordPrueba = new ReportDocument();
+
+            //ordPrueba.Load();
+            //ordPrueba.Database.Tables[0].SetDataSource(odsPrueba.Tables[0]);
+
+            cr1.SetDataSource(odsPrueba);
+            this.crvPlanilla.ReportSource = cr1;
             
+            this.crvPlanilla.Refresh();
+
             /*Fin titulo y numero de planilla*/
-            
-            
-               
+
             /*
             cr1.SetDataSource(pe.tplanilla.Select(c => new
             {
