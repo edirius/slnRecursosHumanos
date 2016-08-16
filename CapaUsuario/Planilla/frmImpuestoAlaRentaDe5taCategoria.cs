@@ -15,11 +15,12 @@ namespace CapaUsuario.Planilla
     {
         cValidaciones oValidar = new cValidaciones();
         cVariables oVariables = new cVariables();
+        string Años = "";
         public frmImpuestoAlaRentaDe5taCategoria()
         {
             InitializeComponent();
-            ListarUITs();
             ConfInicial();
+            CargarAños();
         }
         public void Limpiar()
         {
@@ -42,9 +43,9 @@ namespace CapaUsuario.Planilla
         {
             cbUIT.ValueMember = "idtvariables";
             cbUIT.DisplayMember = "UIT";
-            cbUIT.DataSource = oVariables.ListarUIT();
-
+            cbUIT.DataSource = oVariables.ListarUIT(cbAños.Text);
         }
+        
         public void CalcularImpuestoRenta5ta(decimal Remuneracion, int NroMes, decimal Gratificaciones, decimal UIT)
         {
 
@@ -260,6 +261,14 @@ namespace CapaUsuario.Planilla
         private void txtGrati_KeyPress(object sender, KeyPressEventArgs e)
         {
             oValidar.SoloNumeros(e);
+        }
+        private void CargarAños()
+        {
+            for (int i = DateTime.Now.Year; i >= 2000; i--)
+            {
+                cbAños.Items.Add(i);
+            }
+            cbAños.Text = Años;
         }
     }
 }

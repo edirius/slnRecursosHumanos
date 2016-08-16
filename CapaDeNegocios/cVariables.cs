@@ -41,9 +41,9 @@ namespace CapaDeNegocios
         {
             return Conexion.GDatos.TraerDataTable("spListarVariables");
         }
-        public DataTable ListarUIT()
+        public DataTable ListarUIT(string año)
         {
-            return Conexion.GDatos.TraerDataTable("spListarUIT");
+            return Conexion.GDatos.TraerDataTable("spListarUIT", año);
         }
 
 

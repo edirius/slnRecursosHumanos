@@ -261,5 +261,12 @@ namespace CapaUsuario
             fMantenimientoFuenteFinanciamiento.MdiParent = this;
             fMantenimientoFuenteFinanciamiento.Show();
         }
+
+        private void IR5taCategoriatoolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            Planilla.frmImpuestoAlaRentaDe5taCategoria f5ta = new Planilla.frmImpuestoAlaRentaDe5taCategoria();
+            f5ta.MdiParent = this;
+            f5ta.Show();
+        }
     }
 }
