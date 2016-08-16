@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnImportar = new System.Windows.Forms.Button();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -65,6 +65,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAgregarTrabajador = new System.Windows.Forms.Button();
+            this.btnIR5taCategoria = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@
             this.btnImportar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImportar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImportar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImportar.Location = new System.Drawing.Point(769, 38);
+            this.btnImportar.Location = new System.Drawing.Point(679, 38);
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(238, 46);
             this.btnImportar.TabIndex = 91;
@@ -100,7 +101,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(933, 403);
+            this.btnCancelar.Location = new System.Drawing.Point(843, 391);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(74, 65);
             this.btnCancelar.TabIndex = 86;
@@ -116,7 +117,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(852, 403);
+            this.btnAceptar.Location = new System.Drawing.Point(762, 391);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 85;
@@ -133,7 +134,7 @@
             this.txtMeta.Enabled = false;
             this.txtMeta.Location = new System.Drawing.Point(135, 38);
             this.txtMeta.Name = "txtMeta";
-            this.txtMeta.Size = new System.Drawing.Size(628, 20);
+            this.txtMeta.Size = new System.Drawing.Size(538, 20);
             this.txtMeta.TabIndex = 84;
             // 
             // label6
@@ -176,19 +177,19 @@
             // 
             this.dgvDetallePlanilla.AllowUserToAddRows = false;
             this.dgvDetallePlanilla.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvDetallePlanilla.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvDetallePlanilla.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDetallePlanilla.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Cambria", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetallePlanilla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Cambria", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetallePlanilla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDetallePlanilla.ColumnHeadersHeight = 45;
             this.dgvDetallePlanilla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.txtIdTDetallePlanilla,
@@ -209,7 +210,7 @@
             this.dgvDetallePlanilla.Name = "dgvDetallePlanilla";
             this.dgvDetallePlanilla.RowHeadersVisible = false;
             this.dgvDetallePlanilla.RowHeadersWidth = 25;
-            this.dgvDetallePlanilla.Size = new System.Drawing.Size(1011, 307);
+            this.dgvDetallePlanilla.Size = new System.Drawing.Size(921, 295);
             this.dgvDetallePlanilla.TabIndex = 79;
             this.dgvDetallePlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellContentClick);
             this.dgvDetallePlanilla.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellEndEdit);
@@ -277,8 +278,8 @@
             // 
             // txtDNI
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.txtDNI.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.txtDNI.DefaultCellStyle = dataGridViewCellStyle3;
             this.txtDNI.HeaderText = "DNI";
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.ReadOnly = true;
@@ -287,9 +288,9 @@
             // 
             // Remuneracion
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.NullValue = null;
-            this.Remuneracion.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.NullValue = null;
+            this.Remuneracion.DefaultCellStyle = dataGridViewCellStyle4;
             this.Remuneracion.HeaderText = "REMUNER.";
             this.Remuneracion.Name = "Remuneracion";
             this.Remuneracion.ReadOnly = true;
@@ -297,8 +298,8 @@
             // 
             // FechaInicio
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FechaInicio.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FechaInicio.DefaultCellStyle = dataGridViewCellStyle5;
             this.FechaInicio.HeaderText = "FEC. INICIO";
             this.FechaInicio.Name = "FechaInicio";
             this.FechaInicio.ReadOnly = true;
@@ -306,8 +307,8 @@
             // 
             // DiasLaborados
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.DiasLaborados.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DiasLaborados.DefaultCellStyle = dataGridViewCellStyle6;
             this.DiasLaborados.HeaderText = "DIAS LABOR.";
             this.DiasLaborados.Name = "DiasLaborados";
             this.DiasLaborados.ReadOnly = true;
@@ -315,8 +316,8 @@
             // 
             // TotalRemuneracio
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.TotalRemuneracio.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.TotalRemuneracio.DefaultCellStyle = dataGridViewCellStyle7;
             this.TotalRemuneracio.HeaderText = "TOTAL REMUNER.";
             this.TotalRemuneracio.Name = "TotalRemuneracio";
             this.TotalRemuneracio.ReadOnly = true;
@@ -324,8 +325,8 @@
             // 
             // SecFunc
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SecFunc.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SecFunc.DefaultCellStyle = dataGridViewCellStyle8;
             this.SecFunc.HeaderText = "SEC. FUNC.";
             this.SecFunc.Name = "SecFunc";
             this.SecFunc.ReadOnly = true;
@@ -348,7 +349,7 @@
             this.txtFuenteFinanciamiento.Enabled = false;
             this.txtFuenteFinanciamiento.Location = new System.Drawing.Point(135, 64);
             this.txtFuenteFinanciamiento.Name = "txtFuenteFinanciamiento";
-            this.txtFuenteFinanciamiento.Size = new System.Drawing.Size(628, 20);
+            this.txtFuenteFinanciamiento.Size = new System.Drawing.Size(538, 20);
             this.txtFuenteFinanciamiento.TabIndex = 93;
             // 
             // label1
@@ -376,7 +377,7 @@
             this.btnAgregarTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAgregarTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAgregarTrabajador.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAgregarTrabajador.Location = new System.Drawing.Point(763, 403);
+            this.btnAgregarTrabajador.Location = new System.Drawing.Point(673, 391);
             this.btnAgregarTrabajador.Name = "btnAgregarTrabajador";
             this.btnAgregarTrabajador.Size = new System.Drawing.Size(83, 65);
             this.btnAgregarTrabajador.TabIndex = 96;
@@ -385,11 +386,28 @@
             this.btnAgregarTrabajador.UseVisualStyleBackColor = false;
             this.btnAgregarTrabajador.Click += new System.EventHandler(this.btnAgregarTrabajador_Click);
             // 
+            // btnIR5taCategoria
+            // 
+            this.btnIR5taCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnIR5taCategoria.BackColor = System.Drawing.Color.MintCream;
+            this.btnIR5taCategoria.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnIR5taCategoria.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnIR5taCategoria.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnIR5taCategoria.Location = new System.Drawing.Point(557, 391);
+            this.btnIR5taCategoria.Name = "btnIR5taCategoria";
+            this.btnIR5taCategoria.Size = new System.Drawing.Size(110, 65);
+            this.btnIR5taCategoria.TabIndex = 97;
+            this.btnIR5taCategoria.Text = "&Impuesto a la\r\nRenta de 5ta\r\nCategoría";
+            this.btnIR5taCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnIR5taCategoria.UseVisualStyleBackColor = false;
+            this.btnIR5taCategoria.Click += new System.EventHandler(this.btnIR5taCategoria_Click);
+            // 
             // frmMantenimientoDetallePlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1019, 480);
+            this.ClientSize = new System.Drawing.Size(929, 468);
+            this.Controls.Add(this.btnIR5taCategoria);
             this.Controls.Add(this.btnAgregarTrabajador);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -447,5 +465,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiasLaborados;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalRemuneracio;
         private System.Windows.Forms.DataGridViewTextBoxColumn SecFunc;
+        private System.Windows.Forms.Button btnIR5taCategoria;
     }
 }

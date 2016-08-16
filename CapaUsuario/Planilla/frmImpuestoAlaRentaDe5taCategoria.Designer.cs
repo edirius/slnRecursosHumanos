@@ -34,6 +34,10 @@
             this.txtIRA = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtRetencionesAnteriores = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtRemAnteriores = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.cbMes = new System.Windows.Forms.ComboBox();
             this.txtRN = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,10 +50,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbUIT = new System.Windows.Forms.ComboBox();
             this.dgvIR5 = new System.Windows.Forms.DataGridView();
-            this.txtRemAnteriores = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtRetencionesAnteriores = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cbAños = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
@@ -59,7 +59,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(541, 9);
+            this.label14.Location = new System.Drawing.Point(618, 23);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(28, 13);
             this.label14.TabIndex = 33;
@@ -117,12 +117,44 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtIngresos);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(21, 38);
+            this.groupBox2.Location = new System.Drawing.Point(23, 65);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(419, 315);
+            this.groupBox2.Size = new System.Drawing.Size(424, 350);
             this.groupBox2.TabIndex = 37;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Calculo del Impuesto";
+            // 
+            // txtRetencionesAnteriores
+            // 
+            this.txtRetencionesAnteriores.Location = new System.Drawing.Point(319, 251);
+            this.txtRetencionesAnteriores.Name = "txtRetencionesAnteriores";
+            this.txtRetencionesAnteriores.Size = new System.Drawing.Size(77, 20);
+            this.txtRetencionesAnteriores.TabIndex = 43;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(143, 256);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(169, 13);
+            this.label7.TabIndex = 42;
+            this.label7.Text = "Retenciones de Meses Anteriores:";
+            // 
+            // txtRemAnteriores
+            // 
+            this.txtRemAnteriores.Location = new System.Drawing.Point(200, 89);
+            this.txtRemAnteriores.Name = "txtRemAnteriores";
+            this.txtRemAnteriores.Size = new System.Drawing.Size(100, 20);
+            this.txtRemAnteriores.TabIndex = 41;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(17, 92);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(178, 13);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "Remuneración de Meses Anteriores:";
             // 
             // cbMes
             // 
@@ -224,57 +256,25 @@
             // 
             // cbUIT
             // 
-            this.cbUIT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUIT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.cbUIT.FormattingEnabled = true;
-            this.cbUIT.Location = new System.Drawing.Point(575, 6);
+            this.cbUIT.Location = new System.Drawing.Point(653, 19);
             this.cbUIT.Name = "cbUIT";
-            this.cbUIT.Size = new System.Drawing.Size(76, 21);
+            this.cbUIT.Size = new System.Drawing.Size(91, 21);
             this.cbUIT.TabIndex = 41;
             // 
             // dgvIR5
             // 
             this.dgvIR5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvIR5.Location = new System.Drawing.Point(476, 46);
+            this.dgvIR5.Location = new System.Drawing.Point(489, 73);
             this.dgvIR5.Name = "dgvIR5";
-            this.dgvIR5.Size = new System.Drawing.Size(178, 315);
+            this.dgvIR5.Size = new System.Drawing.Size(258, 342);
             this.dgvIR5.TabIndex = 42;
-            // 
-            // txtRemAnteriores
-            // 
-            this.txtRemAnteriores.Location = new System.Drawing.Point(200, 89);
-            this.txtRemAnteriores.Name = "txtRemAnteriores";
-            this.txtRemAnteriores.Size = new System.Drawing.Size(100, 20);
-            this.txtRemAnteriores.TabIndex = 41;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 92);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(178, 13);
-            this.label6.TabIndex = 40;
-            this.label6.Text = "Remuneración de Meses Anteriores:";
-            // 
-            // txtRetencionesAnteriores
-            // 
-            this.txtRetencionesAnteriores.Location = new System.Drawing.Point(319, 251);
-            this.txtRetencionesAnteriores.Name = "txtRetencionesAnteriores";
-            this.txtRetencionesAnteriores.Size = new System.Drawing.Size(77, 20);
-            this.txtRetencionesAnteriores.TabIndex = 43;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(143, 256);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(169, 13);
-            this.label7.TabIndex = 42;
-            this.label7.Text = "Retenciones de Meses Anteriores:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(283, 9);
+            this.label8.Location = new System.Drawing.Point(472, 24);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 13);
             this.label8.TabIndex = 44;
@@ -284,16 +284,17 @@
             // 
             this.cbAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAños.FormattingEnabled = true;
-            this.cbAños.Location = new System.Drawing.Point(318, 6);
+            this.cbAños.Location = new System.Drawing.Point(508, 19);
             this.cbAños.Name = "cbAños";
-            this.cbAños.Size = new System.Drawing.Size(109, 21);
+            this.cbAños.Size = new System.Drawing.Size(88, 21);
             this.cbAños.TabIndex = 45;
+            this.cbAños.SelectedIndexChanged += new System.EventHandler(this.cbAños_SelectedIndexChanged);
             // 
             // frmImpuestoAlaRentaDe5taCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 391);
+            this.ClientSize = new System.Drawing.Size(767, 434);
             this.Controls.Add(this.cbAños);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dgvIR5);

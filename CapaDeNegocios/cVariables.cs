@@ -41,12 +41,19 @@ namespace CapaDeNegocios
         {
             return Conexion.GDatos.TraerDataTable("spListarVariables");
         }
-        public DataTable ListarUIT(string año)
+        public DataTable ListarTextBox(string año)
         {
             return Conexion.GDatos.TraerDataTable("spListarUIT", año);
         }
-
-
+        public DataTable ListarUIT(string año)
+        {
+            
+            return Conexion.GDatos.TraerDataTable("spListarUIT", año);
+        }
+        public DataTable ListarAños()
+        {
+            return Conexion.GDatos.TraerDataTable("spListarAños");
+        }
         public Boolean CrearVariables(cVariables miVariables)
         {
             Conexion.GDatos.Ejecutar("spCrearVariables", miVariables.Año, miVariables.SueldoMinimo, miVariables.UIT);

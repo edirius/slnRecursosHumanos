@@ -15,11 +15,13 @@ namespace CapaUsuario.Planilla
     {
         cValidaciones oValidar = new cValidaciones();
         cVariables oVariables = new cVariables();
-        string Años = "";
+        string años = "";
+        
         public frmImpuestoAlaRentaDe5taCategoria()
         {
             InitializeComponent();
             ConfInicial();
+            //ListarAños();
             CargarAños();
         }
         public void Limpiar()
@@ -39,14 +41,7 @@ namespace CapaUsuario.Planilla
             txtIRA.Enabled = false;
             txtIRM.Enabled = false;
         }
-        public void ListarUITs()
-        {
-            cbUIT.ValueMember = "idtvariables";
-            cbUIT.DisplayMember = "UIT";
-            cbUIT.DataSource = oVariables.ListarUIT(cbAños.Text);
-        }
-        
-        public void CalcularImpuestoRenta5ta(decimal Remuneracion, int NroMes, decimal Gratificaciones, decimal UIT)
+        public void CalcularImpuestoRenta5ta(decimal Remuneracion, decimal RemMesAnt, int NroMes, decimal Gratificaciones, decimal UIT)
         {
 
             decimal ImpuestoRentaAnual;
@@ -58,7 +53,7 @@ namespace CapaUsuario.Planilla
             UIT35 = UIT * 35;
             UIT45 = UIT * 45;
             decimal RentaBruta, RentaNeta;
-            RentaBruta = ((Remuneracion * NroMes) + Gratificaciones);
+            RentaBruta = ((Remuneracion * NroMes) + Gratificaciones + RemMesAnt);
             RentaNeta = (RentaBruta - UIT7);
 
             if (RentaBruta <= (UIT7))
@@ -74,7 +69,7 @@ namespace CapaUsuario.Planilla
                 if (RentaNeta <= UIT5)
                 {
                     txtRN.Text = RentaNeta.ToString();
-                    ImpuestoRentaAnual = (RentaNeta * 8) / 100;
+                    ImpuestoRentaAnual = ((RentaNeta * 8) / 100);
                     txtIRA.Text = decimal.Round(ImpuestoRentaAnual,2).ToString();
                 }
                 else if (RentaNeta > UIT5 && RentaNeta <= UIT20)
@@ -122,12 +117,13 @@ namespace CapaUsuario.Planilla
                 }
             }
         }
-
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (txtIngresos.Text != "" && txtGrati.Text != "" && cbUIT.Text != "")
             {
                 string opcion = cbMes.Text;
+                decimal RemMesAnteriores = Convert.ToDecimal(txtRemAnteriores.Text);
+                decimal RetMesAnteriores = Convert.ToDecimal(txtRetencionesAnteriores.Text);
                 decimal Gratificaciones = Convert.ToDecimal(txtGrati.Text);
                 decimal Remuneracion = Convert.ToDecimal(txtIngresos.Text);
                 decimal UIT = Convert.ToDecimal(cbUIT.Text);
@@ -138,7 +134,7 @@ namespace CapaUsuario.Planilla
                         {
 
                             int mes = 12;
-                            CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
+                            CalcularImpuestoRenta5ta(Remuneracion, RemMesAnteriores, mes, Gratificaciones, UIT);
                             decimal IRM = Convert.ToDecimal(txtIRA.Text);
                             txtIRM.Text = Convert.ToString(decimal.Round((IRM / 12), 2));
                             //txtIRM.Text = Convert.ToString(Convert.ToDecimal(txtIRA.Text) / 12);
@@ -148,16 +144,16 @@ namespace CapaUsuario.Planilla
                         {
                             //
                             int mes = 11;
-                            CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                            decimal IRM = Convert.ToDecimal(txtIRA.Text);
+                            CalcularImpuestoRenta5ta(Remuneracion, RemMesAnteriores, mes, Gratificaciones, UIT);
+                            decimal IRM = (Convert.ToDecimal(txtIRA.Text) - RetMesAnteriores);
                             txtIRM.Text = Convert.ToString(decimal.Round((IRM / 12), 2));
                             break;
                         }
                     case "Marzo":
                         {
                             int mes = 10;
-                            CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                            decimal IRM = Convert.ToDecimal(txtIRA.Text);
+                            CalcularImpuestoRenta5ta(Remuneracion, RemMesAnteriores, mes, Gratificaciones, UIT);
+                            decimal IRM = (Convert.ToDecimal(txtIRA.Text) - RetMesAnteriores);
                             txtIRM.Text = Convert.ToString(decimal.Round((IRM / 12), 2));
                             break;
                         }
@@ -165,8 +161,8 @@ namespace CapaUsuario.Planilla
                         {
                             //
                             int mes = 9;
-                            CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                            decimal IRM = Convert.ToDecimal(txtIRA.Text);
+                            CalcularImpuestoRenta5ta(Remuneracion, RemMesAnteriores, mes, Gratificaciones, UIT);
+                            decimal IRM = (Convert.ToDecimal(txtIRA.Text) - RetMesAnteriores);
                             txtIRM.Text = Convert.ToString(decimal.Round((IRM / 9), 2));
                             break;
                         }
@@ -174,8 +170,8 @@ namespace CapaUsuario.Planilla
                         {
                             //
                             int mes = 8;
-                            CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                            decimal IRM = Convert.ToDecimal(txtIRA.Text);
+                            CalcularImpuestoRenta5ta(Remuneracion, RemMesAnteriores, mes, Gratificaciones, UIT);
+                            decimal IRM = (Convert.ToDecimal(txtIRA.Text) - RetMesAnteriores);
                             txtIRM.Text = Convert.ToString(decimal.Round((IRM / 8), 2));
                             break;
                         }
@@ -183,8 +179,8 @@ namespace CapaUsuario.Planilla
                         {
                             //
                             int mes = 7;
-                            CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                            decimal IRM = Convert.ToDecimal(txtIRA.Text);
+                            CalcularImpuestoRenta5ta(Remuneracion, RemMesAnteriores, mes, Gratificaciones, UIT);
+                            decimal IRM = (Convert.ToDecimal(txtIRA.Text) - RetMesAnteriores);
                             txtIRM.Text = Convert.ToString(decimal.Round((IRM / 8), 2));
                             break;
                         }
@@ -192,8 +188,8 @@ namespace CapaUsuario.Planilla
                         {
                             //
                             int mes = 6;
-                            CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                            decimal IRM = Convert.ToDecimal(txtIRA.Text);
+                            CalcularImpuestoRenta5ta(Remuneracion, RemMesAnteriores, mes, Gratificaciones, UIT);
+                            decimal IRM = (Convert.ToDecimal(txtIRA.Text) - RetMesAnteriores);
                             txtIRM.Text = Convert.ToString(decimal.Round((IRM / 8), 2));
                             break;
                         }
@@ -201,8 +197,8 @@ namespace CapaUsuario.Planilla
                         {
                             //
                             int mes = 5;
-                            CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                            decimal IRM = Convert.ToDecimal(txtIRA.Text);
+                            CalcularImpuestoRenta5ta(Remuneracion, RemMesAnteriores, mes, Gratificaciones, UIT);
+                            decimal IRM = (Convert.ToDecimal(txtIRA.Text) - RetMesAnteriores);
                             txtIRM.Text = Convert.ToString(decimal.Round((IRM / 5), 2));
                             break;
                         }
@@ -210,8 +206,8 @@ namespace CapaUsuario.Planilla
                         {
                             //
                             int mes = 4;
-                            CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                            decimal IRM = Convert.ToDecimal(txtIRA.Text);
+                            CalcularImpuestoRenta5ta(Remuneracion, RemMesAnteriores, mes, Gratificaciones, UIT);
+                            decimal IRM = (Convert.ToDecimal(txtIRA.Text) - RetMesAnteriores);
                             txtIRM.Text = Convert.ToString(decimal.Round((IRM / 4), 2));
                             break;
                         }
@@ -219,8 +215,8 @@ namespace CapaUsuario.Planilla
                         {
                             //
                             int mes = 3;
-                            CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                            decimal IRM = Convert.ToDecimal(txtIRA.Text);
+                            CalcularImpuestoRenta5ta(Remuneracion, RemMesAnteriores, mes, Gratificaciones, UIT);
+                            decimal IRM = (Convert.ToDecimal(txtIRA.Text) - RetMesAnteriores);
                             txtIRM.Text = Convert.ToString(decimal.Round((IRM / 4), 2));
                             break;
                         }
@@ -228,8 +224,8 @@ namespace CapaUsuario.Planilla
                         {
                             //
                             int mes = 2;
-                            CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                            decimal IRM = Convert.ToDecimal(txtIRA.Text);
+                            CalcularImpuestoRenta5ta(Remuneracion, RemMesAnteriores, mes, Gratificaciones, UIT);
+                            decimal IRM = (Convert.ToDecimal(txtIRA.Text) - RetMesAnteriores);
                             txtIRM.Text = Convert.ToString(decimal.Round((IRM / 4), 2));
                             break;
                         }
@@ -237,8 +233,8 @@ namespace CapaUsuario.Planilla
                         {
                             //
                             int mes = 1;
-                            CalcularImpuestoRenta5ta(Remuneracion, mes, Gratificaciones, UIT);
-                            decimal IRM = Convert.ToDecimal(txtIRA.Text);
+                            CalcularImpuestoRenta5ta(Remuneracion, RemMesAnteriores, mes, Gratificaciones, UIT);
+                            decimal IRM = (Convert.ToDecimal(txtIRA.Text) - RetMesAnteriores);
                             txtIRM.Text = Convert.ToString(decimal.Round((IRM), 2));
                             break;
                         }
@@ -252,15 +248,19 @@ namespace CapaUsuario.Planilla
             else
                 MessageBox.Show("Llene los datos necesarios para el calculo");
         }
-
         private void txtIngresos_KeyPress(object sender, KeyPressEventArgs e)
         {
             oValidar.SoloNumeros(e);
         }
-
         private void txtGrati_KeyPress(object sender, KeyPressEventArgs e)
         {
             oValidar.SoloNumeros(e);
+        }
+        private void ListarAños()
+        {
+            cbAños.ValueMember = "idtvariables";
+            cbAños.DisplayMember = "año";
+            cbAños.DataSource = oVariables.ListarAños();
         }
         private void CargarAños()
         {
@@ -268,7 +268,13 @@ namespace CapaUsuario.Planilla
             {
                 cbAños.Items.Add(i);
             }
-            cbAños.Text = Años;
+            cbAños.Text = años;
+        }
+        private void cbAños_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbAños.ValueMember = "año";
+            cbUIT.DisplayMember = "UIT";
+            cbUIT.DataSource = oVariables.ListarUIT(cbAños.Text);
         }
     }
 }

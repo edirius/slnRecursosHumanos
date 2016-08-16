@@ -36,6 +36,10 @@ namespace CapaUsuario.Planilla
         decimal ComisionFlujo = 0;
         decimal ComisionMixta = 0;
 
+        //
+        decimal remuneracion;
+        decimal gratificaciones;
+
         DataTable oDataDetallePlanilla = new DataTable();
         DataTable oDataTrabajador = new DataTable();
         DataTable oDataPeriodoTrabajador = new DataTable();
@@ -698,11 +702,18 @@ namespace CapaUsuario.Planilla
             //    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[16 + con_ingresos + con_trabajador + con_descuento + con_empleador].Value = String.Format("{0:0.00}", total_aempleador);
             //}
         }
+        
 
-        private void btn5taCategoria_Click(object sender, EventArgs e)
+        private void btnIR5taCategoria_Click(object sender, EventArgs e)
         {
-            CapaUsuario.Planilla.frm5taCategoria frm5ta = new frm5taCategoria();
-            frm5ta.Show();
+            //CapaUsuario.Planilla.frmImpuestoAlaRentaDe5taCategoria fMantenimientoIR5taCategoria = new frmImpuestoAlaRentaDe5taCategoria();
+            //fMantenimientoIR5taCategoria.RecibirDatos(remuneracion, gratificaciones);
+            ////fMantenimientoDetallePlanilla.MdiParent = fPrincipal;
+            //if (fMantenimientoIR5taCategoria.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    CargarDatos();
+            //}
+            ////fMantenimientoDetallePlanilla.Show();
         }
 
         private void CalcularNetoaCobrar()
