@@ -325,7 +325,8 @@ namespace CapaUsuario.Reportes
 
             //Establecer origen de datos: odtPrueba a crystal report 
             //Crear dataset con los campos respectivos de odtPrueba
-            DataSet odsPrueba = new DataSet("Planilla");
+            //DataSet odsPrueba = new DataSet("Planilla");
+            DataSet odsPrueba = new DataSet();
 
             //dsPlanilla odsPrueba = new dsPlanilla();
 

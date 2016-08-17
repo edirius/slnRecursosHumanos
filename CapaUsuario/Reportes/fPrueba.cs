@@ -134,7 +134,7 @@ namespace CapaUsuario.Reportes
             int k = 0;
             int t = 0;
             DataRow drFila = odtPrueba.NewRow();
-            DataRow drFilaCorta = odtPlanillaCorta.NewRow();
+            DataRow drFilaCorta = odtPruebaCorta.NewRow();
 
             //Establecer titulos de la planilla
 
@@ -336,11 +336,11 @@ namespace CapaUsuario.Reportes
             //Unir descripciones de trabajador en maximo dos columnas
 
 
-
+            /*
             int DivisionTrabajador = Convert.ToInt32( total_tipo_a_trabajador / 2 );
             for (int m=0 ; m<  ; )
             odtPruebaCorta.
-
+            */
 
 
             this.dgvPrueba.DataSource = odtPrueba;

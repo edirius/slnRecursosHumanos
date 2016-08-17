@@ -63,6 +63,7 @@
     <Compile Include="cReglaNegociosException.cs" />
     <Compile Include="cValidaciones.cs" />
     <Compile Include="cVariables.cs" />
+    <Compile Include="DataGridViewPrinter.cs" />
     <Compile Include="DatosLaborales\cCategoriaOcupacional.cs" />
     <Compile Include="DatosLaborales\cPeriodoTrabajador.cs" />
     <Compile Include="DatosLaborales\cRegimenLaboral.cs" />
@@ -132,6 +133,7 @@
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
     <None Include="Contrato\diagramaClasesContratos.cd" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.csproj">

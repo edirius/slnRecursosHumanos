@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnDetallePlanilla = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -48,8 +48,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnTipoTrabajador = new System.Windows.Forms.Button();
             this.cboRegimenLaboral = new System.Windows.Forms.ComboBox();
+            this.dgvPrueba = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -152,8 +154,8 @@
             // 
             this.dgvPlanilla.AllowUserToAddRows = false;
             this.dgvPlanilla.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvPlanilla.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvPlanilla.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPlanilla.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -284,11 +286,20 @@
             this.cboRegimenLaboral.TabIndex = 0;
             this.cboRegimenLaboral.SelectedIndexChanged += new System.EventHandler(this.cboRegimenLaboral_SelectedIndexChanged);
             // 
+            // dgvPrueba
+            // 
+            this.dgvPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrueba.Location = new System.Drawing.Point(18, 210);
+            this.dgvPrueba.Name = "dgvPrueba";
+            this.dgvPrueba.Size = new System.Drawing.Size(577, 156);
+            this.dgvPrueba.TabIndex = 30;
+            // 
             // frmMatenimientoPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 449);
+            this.Controls.Add(this.dgvPrueba);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnDetallePlanilla);
             this.Controls.Add(this.btnSalir);
@@ -304,6 +315,7 @@
             this.Load += new System.EventHandler(this.frmMatenimientoPlanilla_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -329,5 +341,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridView dgvPrueba;
     }
 }
