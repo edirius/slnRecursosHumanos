@@ -62,6 +62,11 @@ namespace CapaDeNegocios.Planillas
             set { sidtregimenlaboral = value; }
         }
 
+        public DataTable ListarRegimenLaboralPlanilla(string pNumeroPlanilla)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarRegimenLaboralPlanilla", pNumeroPlanilla);
+        }
+
         public DataTable ListarPlanilla(int IdtRegimenLaboral)
         {
             return Conexion.GDatos.TraerDataTable("spListarPlanilla", IdtRegimenLaboral);
