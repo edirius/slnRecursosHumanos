@@ -13,7 +13,7 @@ namespace CapaDeNegocios.Planillas
 
         public decimal CalculoRentade5ta(decimal Remuneracion, decimal RemMesAnt, int NroMes, decimal Gratificaciones, decimal UIT)
         {
-            decimal ImpuestoRentaAnual = 1;
+            decimal ImpuestoRentaAnual = 0;
             decimal T8, T14, T17, T20, T30;
             decimal UIT5, UIT7, UIT20, UIT35, UIT45;
             UIT5 = UIT * 5;
@@ -82,80 +82,91 @@ namespace CapaDeNegocios.Planillas
 
         public decimal CalculoRentaMensual(decimal Remuneracion, decimal RemMesAnt, int NroMes, decimal Gratificaciones, decimal UIT, decimal RetMesAnteriores)
         {
-            decimal ImpuestoRentaMensual = 1;
+            decimal ImpuestoRentaMensual = 0;
             switch (NroMes)
             {
 
-                case 12:
+                case 1:
                     {
-                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        int nromes = 12;
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
                         ImpuestoRentaMensual = ImpuestoRentaAnual / 12;
                         break;
                     }
-                case 11:
+                case 2:
                     {
-                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        int nromes = 11;
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
                         ImpuestoRentaMensual = ImpuestoRentaAnual / 12;
                         break;
                     }
-                case 10:
+                case 3:
                     {
-                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        int nromes = 10;
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
                         ImpuestoRentaMensual = ImpuestoRentaAnual / 12;
                         break;
                     }
-                case 9:
+                case 4:
                     {
-
-                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        int nromes = 9;
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
                         ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 9;
                         break;
                     }
-                case 8:
+                case 5:
                     {
-                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 8;
-                        break;
-                    }
-                case 7:
-                    {
-                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        int nromes = 8;
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
                         ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 8;
                         break;
                     }
                 case 6:
                     {
-                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        int nromes = 7;
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
                         ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 8;
                         break;
                     }
-                case 5:
+                case 7:
                     {
-                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        int nromes = 6;
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 8;
+                        break;
+                    }
+                case 8:
+                    {
+                        int nromes = 5;
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
                         ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 5;
                         break;
                     }
-                case 4:
+                case 9:
                     {
-                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        int nromes = 4;
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
                         ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 4;
                         break;
                     }
-                case 3:
+                case 10:
                     {
-                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        int nromes = 3;
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
                         ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 4;
                         break;
                     }
-                case 2:
+                case 11:
                     {
-                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        int nromes = 2;
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
                         ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 4;
                         break;
                     }
-                case 1:
+                case 12:
                     {
-                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        int nromes = 1;
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
                         ImpuestoRentaMensual = ImpuestoRentaAnual - RetMesAnteriores;
                         break;
                     }
