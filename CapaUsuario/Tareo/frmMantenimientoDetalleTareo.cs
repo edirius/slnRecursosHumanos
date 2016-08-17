@@ -59,7 +59,7 @@ namespace CapaUsuario.Tareo
                 dgvDetalleTareo.Rows[fila].Cells[1].Value = "I";
                 dgvDetalleTareo.Rows[fila].Cells[3].Value = contador;
                 dgvDetalleTareo.Rows[fila].Cells[8].Value = row[1].ToString();
-                foreach (DataRow row1 in oDataTrabajador.Select("id_trabajador = '" + row[3].ToString() + "'"))
+                foreach (DataRow row1 in oDataTrabajador.Select("id_trabajador = '" + row[4].ToString() + "'"))
                 {
                     dgvDetalleTareo.Rows[fila].Cells[4].Value = row1[0].ToString();
                     dgvDetalleTareo.Rows[fila].Cells[5].Value = row1[3].ToString() + " " + row1[4].ToString() + ", " + row1[2].ToString();

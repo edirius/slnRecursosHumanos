@@ -41,6 +41,7 @@ namespace CapaUsuario.Planilla
             txtIRA.Enabled = false;
             txtIRM.Enabled = false;
         }
+        
         public void CalcularImpuestoRenta5ta(decimal Remuneracion, decimal RemMesAnt, int NroMes, decimal Gratificaciones, decimal UIT)
         {
 
