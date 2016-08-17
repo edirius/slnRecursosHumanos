@@ -117,6 +117,25 @@ namespace CapaUsuario.Planilla
                 }
             }
         }
+        //public void CalcularIRMensual(string mes)
+        //{
+        //    string opcion = mes;
+        //    int MES;
+        //    switch (opcion)
+        //    {
+        //        case "Enero":
+        //            {
+        //                MES = 12;
+        //                CalcularImpuestoRenta5ta();
+        //                break;
+        //            }
+        //        case "Febrero":
+        //            {
+        //                MES = 11;
+        //                break;
+        //            }
+        //    } 
+        //}
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (txtIngresos.Text != "" && txtGrati.Text != "" && cbUIT.Text != "")
