@@ -10,121 +10,163 @@ namespace CapaDeNegocios.Planillas
 {
     public class cCalculo5taCategoria
     {
-        string mensaje = "";
-        decimal ingreso; //Gratificaciones, remuneraciones y otros ingresos del oficio
-        decimal sueldo; //Remuneracion mensual
-        int mes; // N° de meses que falta incluido el de retencion
-        decimal uit;
-        decimal tasa; // 8%, %14, %17, %20 y %30 
-        decimal impuestoAnual; 
-        decimal gratificaciones;
-        #region Constructores
-        public decimal Ingreso
-        {
-            get { return ingreso; }
-            set { ingreso = value; }
-        }
 
-        public decimal Sueldo
+        public decimal CalculoRentade5ta(decimal Remuneracion, decimal RemMesAnt, int NroMes, decimal Gratificaciones, decimal UIT)
         {
-            get { return sueldo; }
-            set { sueldo = value; }
-        }
+            decimal ImpuestoRentaAnual = 1;
+            decimal T8, T14, T17, T20, T30;
+            decimal UIT5, UIT7, UIT20, UIT35, UIT45;
+            UIT5 = UIT * 5;
+            UIT7 = UIT * 7;
+            UIT20 = UIT * 20;
+            UIT35 = UIT * 35;
+            UIT45 = UIT * 45;
+            decimal RentaBruta, RentaNeta;
+            RentaBruta = ((Remuneracion * NroMes) + Gratificaciones + RemMesAnt);
+            RentaNeta = (RentaBruta - UIT7);
 
-        public int Mes
-        {
-            get { return mes; }
-            set { mes = value; }
-        }
-        public decimal UIT
-        {
-            get { return uit; }
-            set { uit = value; }
-        }
-        public decimal Gratificaciones
-        {
-            get { return gratificaciones; }
-            set { gratificaciones = value; }
-        }
-        public decimal Tasa
-        {
-            get { return tasa; }
-            set { tasa = value; }
-        }
-        public decimal ImpuestoAnual
-        {
-            get { return impuestoAnual; }
-            set { impuestoAnual = value; }
-
-        }
-        public string Mensaje
-        {
-            get { return mensaje; }
-            set { mensaje = value; }
-        }
-        #endregion
-
-        decimal remProyectada;  //Remuneración proyectada es la Remuneración básico por el nr0 de meses que tiene un año
-        decimal rentaBruta;     //Es la suma de la remuneración proyectada + las gratificaciones
-        decimal rentaNeta;      //Es la Resta de la Renta bruta - 7 UITS
-        decimal irAnual;        //Impuesto a la renta anual
-        decimal iR1;
-        decimal iR2;
-        decimal iR3;
-        decimal iR4;
-        decimal iR5;
-        /// /////////////////////////////////////////////////////////////////////////////
-        public void CalcularIR5()
-        {
-            remProyectada = ingreso * Convert.ToDecimal(mes);
-            rentaBruta = remProyectada + gratificaciones;
-            if (rentaBruta < (7 * uit))
+            if (RentaBruta <= (UIT7))
             {
-                mensaje = "NO SE APLICA RETENCIÓN";
+                ImpuestoRentaAnual = 0;
             }
-            else
+            else if (RentaBruta > UIT7)
             {
-                rentaNeta = rentaBruta - (7 * uit);
 
-                if (rentaNeta <= (5 * uit))
+                if (RentaNeta <= UIT5)
                 {
-                    irAnual = rentaNeta * 8 / 100;
-                }
 
-                if ((rentaNeta > (5 * uit)) && (rentaNeta <= (20 * uit)))
-                {
-                    iR1 = (5 * uit) * 8 / 100;
-                    iR2 = (rentaNeta - (5 * uit)) * 14 / 100;
-                    irAnual = iR1 + iR2;
-                }
-                if ((rentaNeta > (20 * uit)) && (rentaNeta <= (35 * uit)))
-                {
-                    iR1 = (5 * uit) * 8 / 100;
-                    iR2 = ((20 * uit) - (5 * uit)) * 14 / 100;
-                    iR3 = rentaNeta - (20 * uit) * 17 / 100;
-                    irAnual = iR1 + iR2 + iR3;
-                }
-                if ((rentaNeta > (35 * uit)) && (rentaNeta <= (45 * uit)))
-                {
-                    iR1 = (5 * uit) * 8 / 100;
-                    iR2 = ((20 * uit) - (5 * uit)) * 14 / 100;
-                    iR3 = ((20 * uit) - (5 * uit)) * 17 / 100;
-                    iR4 = (rentaNeta - (35 * uit)) * 20 / 100;
-                    irAnual = iR1 + iR2 + iR3 + iR4;
-                }
+                    ImpuestoRentaAnual = ((RentaNeta * 8) / 100);
 
-                if ((rentaNeta > (45 * uit)))
-                {
-                    iR1 = (5 * uit) * 8 / 100;
-                    iR2 = ((20 * uit) - (5 * uit)) * 14 / 100;
-                    iR3 = ((20 * uit) - (5 * uit)) * 17 / 100;
-                    iR4 = ((45 * uit) - (35 * uit)) * 20 / 100;
-                    iR5 = rentaNeta - (45 * uit) * 30 / 100;
-                    irAnual = iR1 + iR2 + iR3 + iR4;
                 }
+                else if (RentaNeta > UIT5 && RentaNeta <= UIT20)
+                {
 
+                    T8 = (UIT5 * 8) / 100;
+                    T14 = ((RentaNeta - UIT5) * 14) / 100;
+                    ImpuestoRentaAnual = T8 + T14;
+
+                }
+                else if (RentaNeta > UIT20 && RentaNeta <= UIT35)
+                {
+
+                    T8 = (UIT5 * 8) / 100;
+                    T14 = ((UIT20 - UIT5) * 14) / 100;
+                    T17 = ((RentaNeta - UIT20) * 17) / 100;
+                    ImpuestoRentaAnual = T8 + T14 + T17;
+                }
+                else if (RentaNeta > UIT35 && RentaNeta <= UIT45)
+                {
+
+                    T8 = (UIT5 * 8) / 100;
+                    T14 = ((UIT20 - UIT5) * 14) / 100;
+                    T17 = ((UIT20 - UIT5) * 17) / 100;
+                    T20 = ((RentaNeta - UIT35) * 20) / 100;
+                    ImpuestoRentaAnual = T8 + T14 + T17 + T20;
+
+                }
+                else if (RentaNeta > UIT45)
+                {
+
+                    T8 = (UIT5 * 8) / 100;
+                    T14 = ((UIT20 - UIT5) * 14) / 100;
+                    T17 = ((UIT20 - UIT5) * 17) / 100;
+                    T20 = ((UIT45 - UIT35) * 20) / 100;
+                    T30 = ((RentaNeta - UIT35) * 30) / 100;
+                    ImpuestoRentaAnual = T8 + T14 + T17 + T20 + T30;
+
+                }
             }
+            return ImpuestoRentaAnual;
 
         }
+
+        public decimal CalculoRentaMensual(decimal Remuneracion, decimal RemMesAnt, int NroMes, decimal Gratificaciones, decimal UIT, decimal RetMesAnteriores)
+        {
+            decimal ImpuestoRentaMensual = 1;
+            switch (NroMes)
+            {
+
+                case 12:
+                    {
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = ImpuestoRentaAnual / 12;
+                        break;
+                    }
+                case 11:
+                    {
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = ImpuestoRentaAnual / 12;
+                        break;
+                    }
+                case 10:
+                    {
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = ImpuestoRentaAnual / 12;
+                        break;
+                    }
+                case 9:
+                    {
+
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 9;
+                        break;
+                    }
+                case 8:
+                    {
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 8;
+                        break;
+                    }
+                case 7:
+                    {
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 8;
+                        break;
+                    }
+                case 6:
+                    {
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 8;
+                        break;
+                    }
+                case 5:
+                    {
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 5;
+                        break;
+                    }
+                case 4:
+                    {
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 4;
+                        break;
+                    }
+                case 3:
+                    {
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 4;
+                        break;
+                    }
+                case 2:
+                    {
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 4;
+                        break;
+                    }
+                case 1:
+                    {
+                        decimal ImpuestoRentaAnual = CalculoRentade5ta(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT);
+                        ImpuestoRentaMensual = ImpuestoRentaAnual - RetMesAnteriores;
+                        break;
+                    }
+                default:
+                    {
+                        //no se  encontró ese mes
+                        break;
+                    }
+            }
+            return ImpuestoRentaMensual;
+        }
+
     }
 }
