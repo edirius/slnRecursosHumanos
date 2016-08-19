@@ -31,35 +31,28 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtIRM = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtIRA = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btncalcular = new System.Windows.Forms.Button();
             this.txtRetencionesAnteriores = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtRemAnteriores = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbMes = new System.Windows.Forms.ComboBox();
-            this.txtRN = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtRb = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtGrati = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIngresos = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbUIT = new System.Windows.Forms.ComboBox();
-            this.dgvIR5 = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.cbAños = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIR5)).BeginInit();
             this.SuspendLayout();
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(618, 23);
+            this.label14.Location = new System.Drawing.Point(344, 17);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(28, 13);
             this.label14.TabIndex = 33;
@@ -67,7 +60,7 @@
             // 
             // txtIRM
             // 
-            this.txtIRM.Location = new System.Drawing.Point(319, 282);
+            this.txtIRM.Location = new System.Drawing.Point(202, 276);
             this.txtIRM.Name = "txtIRM";
             this.txtIRM.Size = new System.Drawing.Size(77, 20);
             this.txtIRM.TabIndex = 39;
@@ -75,58 +68,47 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(165, 286);
+            this.label13.Location = new System.Drawing.Point(40, 279);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(148, 13);
             this.label13.TabIndex = 38;
             this.label13.Text = "Impuesto a la Renta Mensual:";
             // 
-            // txtIRA
-            // 
-            this.txtIRA.Location = new System.Drawing.Point(319, 223);
-            this.txtIRA.Name = "txtIRA";
-            this.txtIRA.Size = new System.Drawing.Size(77, 20);
-            this.txtIRA.TabIndex = 36;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(178, 226);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(135, 13);
-            this.label12.TabIndex = 34;
-            this.label12.Text = "Impuesto a la Renta Anual:";
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btncalcular);
             this.groupBox2.Controls.Add(this.txtRetencionesAnteriores);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtRemAnteriores);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.cbMes);
-            this.groupBox2.Controls.Add(this.txtRN);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtIRM);
-            this.groupBox2.Controls.Add(this.txtRb);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.txtIRA);
             this.groupBox2.Controls.Add(this.txtGrati);
-            this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtIngresos);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(23, 65);
+            this.groupBox2.Location = new System.Drawing.Point(26, 40);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(424, 350);
+            this.groupBox2.Size = new System.Drawing.Size(444, 321);
             this.groupBox2.TabIndex = 37;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Calculo del Impuesto";
             // 
+            // btncalcular
+            // 
+            this.btncalcular.Location = new System.Drawing.Point(156, 202);
+            this.btncalcular.Name = "btncalcular";
+            this.btncalcular.Size = new System.Drawing.Size(144, 38);
+            this.btncalcular.TabIndex = 46;
+            this.btncalcular.Text = "Calcular";
+            this.btncalcular.UseVisualStyleBackColor = true;
+            this.btncalcular.Click += new System.EventHandler(this.btncalcular_Click);
+            // 
             // txtRetencionesAnteriores
             // 
-            this.txtRetencionesAnteriores.Location = new System.Drawing.Point(319, 251);
+            this.txtRetencionesAnteriores.Location = new System.Drawing.Point(202, 158);
             this.txtRetencionesAnteriores.Name = "txtRetencionesAnteriores";
             this.txtRetencionesAnteriores.Size = new System.Drawing.Size(77, 20);
             this.txtRetencionesAnteriores.TabIndex = 43;
@@ -134,7 +116,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(143, 256);
+            this.label7.Location = new System.Drawing.Point(19, 161);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(169, 13);
             this.label7.TabIndex = 42;
@@ -161,55 +143,22 @@
             this.cbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMes.FormattingEnabled = true;
             this.cbMes.Items.AddRange(new object[] {
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Setiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"});
-            this.cbMes.Location = new System.Drawing.Point(198, 122);
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cbMes.Location = new System.Drawing.Point(202, 122);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(121, 21);
             this.cbMes.TabIndex = 24;
-            this.cbMes.SelectedIndexChanged += new System.EventHandler(this.cbMes_SelectedIndexChanged);
-            // 
-            // txtRN
-            // 
-            this.txtRN.Location = new System.Drawing.Point(203, 181);
-            this.txtRN.Name = "txtRN";
-            this.txtRN.Size = new System.Drawing.Size(97, 20);
-            this.txtRN.TabIndex = 10;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 187);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(170, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Renta Neta(Deducción de 7UITs):";
-            // 
-            // txtRb
-            // 
-            this.txtRb.Location = new System.Drawing.Point(202, 154);
-            this.txtRb.Name = "txtRb";
-            this.txtRb.Size = new System.Drawing.Size(100, 20);
-            this.txtRb.TabIndex = 8;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(129, 158);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Renta Bruta:";
             // 
             // txtGrati
             // 
@@ -231,11 +180,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(65, 120);
+            this.label2.Location = new System.Drawing.Point(161, 125);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 26);
+            this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Meses que faltan:\r\n(Incluido el de Retención)";
+            this.label2.Text = "Mes:";
             // 
             // txtIngresos
             // 
@@ -258,23 +207,15 @@
             // 
             this.cbUIT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
             this.cbUIT.FormattingEnabled = true;
-            this.cbUIT.Location = new System.Drawing.Point(653, 19);
+            this.cbUIT.Location = new System.Drawing.Point(379, 13);
             this.cbUIT.Name = "cbUIT";
             this.cbUIT.Size = new System.Drawing.Size(91, 21);
             this.cbUIT.TabIndex = 41;
             // 
-            // dgvIR5
-            // 
-            this.dgvIR5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvIR5.Location = new System.Drawing.Point(489, 73);
-            this.dgvIR5.Name = "dgvIR5";
-            this.dgvIR5.Size = new System.Drawing.Size(258, 342);
-            this.dgvIR5.TabIndex = 42;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(472, 24);
+            this.label8.Location = new System.Drawing.Point(198, 18);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 13);
             this.label8.TabIndex = 44;
@@ -284,7 +225,7 @@
             // 
             this.cbAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAños.FormattingEnabled = true;
-            this.cbAños.Location = new System.Drawing.Point(508, 19);
+            this.cbAños.Location = new System.Drawing.Point(234, 13);
             this.cbAños.Name = "cbAños";
             this.cbAños.Size = new System.Drawing.Size(88, 21);
             this.cbAños.TabIndex = 45;
@@ -294,10 +235,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(767, 434);
+            this.ClientSize = new System.Drawing.Size(513, 377);
             this.Controls.Add(this.cbAños);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.dgvIR5);
             this.Controls.Add(this.cbUIT);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.groupBox2);
@@ -306,7 +246,6 @@
             this.Text = "frmImpuestoAlaRentaDe5taCategoria";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIR5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -317,14 +256,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtIRM;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtIRA;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cbMes;
-        private System.Windows.Forms.TextBox txtRN;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtRb;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtGrati;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -335,8 +268,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtRemAnteriores;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dgvIR5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbAños;
+        private System.Windows.Forms.Button btncalcular;
     }
 }
