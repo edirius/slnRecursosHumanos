@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using System.Reflection;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using iTextSharp;
 //using iTextSharp.text.pdf.PdfWriter;
 
 namespace CapaUsuario.Planilla
@@ -31,6 +32,7 @@ namespace CapaUsuario.Planilla
         string sfuentefinanciamiento = "";
         string sNumeroPlanilla = "";
         string sRegimenLaboral = "";
+        //int idTRegimenLaboral = -1;
 
         CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
         CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
@@ -180,39 +182,45 @@ namespace CapaUsuario.Planilla
             return fIngreso;
         }
 
-        protected virtual bool IsFileinUse(FileInfo file)
+        protected virtual bool IsFileinUse(FileInfo file,string path)
         {
             FileStream stream = null;
 
-            try
+            if (!File.Exists(path))
             {
-                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+                return false;
             }
-            catch (IOException)
-            {
-                //the file is unavailable because it is:
-                //still being written to
-                //or being processed by another thread
-                //or does not exist (has already been processed)
-                return true;
+            else { 
+                try
+                {
+                    stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+                
+                }
+                catch (IOException)
+                {
+                    //the file is unavailable because it is:
+                    //still being written to
+                    //or being processed by another thread
+                    //or does not exist (has already been processed)
+                    return true;
+                
+                }
+                finally
+                {
+                    if (stream != null)
+                        stream.Close();
+                }
+                return false;
             }
-            finally
-            {
-                if (stream != null)
-                    stream.Close();
-            }
-            return false;
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             FileInfo file = new FileInfo("C:\\PDFs\\DataGridViewExport.pdf");
-            bool estaAbierto = IsFileinUse(file);
+            bool estaAbierto = IsFileinUse(file, "C:\\PDFs\\DataGridViewExport.pdf");
             if (!estaAbierto)
             {
-
-
-
+                 
                 DataTable odtPrueba = new DataTable();
                 DataTable odtPruebaCorta = new DataTable();
 
@@ -231,11 +239,25 @@ namespace CapaUsuario.Planilla
 
                 //Mes  y Regimen laboral
 
-                int pRegimenLaboral = 1;
-                string pMes = "ENERO";
+                decimal renumeracion = 0;
+                decimal total_ingresos = 0;
+                decimal total_descuentos = 0;
+                decimal total_trabajador = 0;
+                decimal total_empleador = 0;
+
+
+                string pMes = smes;
+                int pRegimenLaboral = sidtregimenlaboral;
+
+                int indice_neto_cobrar = 0;
+                int indice_prueba_neto_cobrar = 0;
+                int indice_prueba_corta_neto_cobrar = 0;
+                
+
                 int pidTrabajador = 0;
                 int indice_ingreso = 0;
                 int indice_descuento = 0;
+                
                 int indice_a_empleador = 0;
                 int indice_a_trabajador = 0;
 
@@ -243,6 +265,9 @@ namespace CapaUsuario.Planilla
                 decimal total_tipo_descuento = 0;
                 decimal total_tipo_a_empleador = 0;
                 decimal total_tipo_a_trabajador = 0;
+
+                int indice_prueba_dias_laborados = 0;
+                int indice_prueba_corta_dias_laborados = 0;
 
                 string[] arr_ingresos = new string[160];
                 string[] arr_descuento = new string[160];
@@ -298,6 +323,8 @@ namespace CapaUsuario.Planilla
                         {
                             odtPrueba.Columns.Add(row_i[9].ToString().Trim(), typeof(string));
                             total_tipo_ingreso++;
+                            arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
+                            t++;
 
                         }
                         //Buscar indice del titulo respectivo al monto
@@ -311,17 +338,22 @@ namespace CapaUsuario.Planilla
                     }
 
                     //Insertando la sumatoria total de ingresos
-                    // Insertando la descripcion de columna del total de ingresos
-                    if (!ExisteColumnaTexto(odtPrueba, "TOTAL INGRESOS"))
-                        odtPrueba.Columns.Add("TOTAL INGRESOS", typeof(string));
-
                     //Buscar indice del titulo respectivo al monto
                     indice_ingreso = BuscarIndiceColumna(odtPrueba, "TOTAL INGRESOS");
+
+                    // Insertando la descripcion de columna del total de ingresos
+                    if (!ExisteColumnaTexto(odtPrueba, "TOTAL INGRESOS"))
+                    {
+                        odtPrueba.Columns.Add("TOTAL INGRESOS", typeof(string));
+                        indice_ingreso = BuscarIndiceColumna(odtPrueba, "TOTAL INGRESOS");
+                        arr_ingresos[t] = indice_ingreso.ToString();
+                        total_tipo_ingreso++;
+                    }
 
                     //insertar monto total de ingresos a la planilla
                     drFila[indice_ingreso] = row[15].ToString();
 
-
+                    t = 0;
                     //Determinar en base al id del trabajador sus descuentos
                     odtPlanillaXDescuentos = oPlanillaDescuentos.spListarPlanillaXDescuentos(pMes, pRegimenLaboral, pidTrabajador);
 
@@ -332,6 +364,9 @@ namespace CapaUsuario.Planilla
                         {
                             odtPrueba.Columns.Add(row_d[9].ToString().Trim(), typeof(string));
                             total_tipo_descuento++;
+ 
+                            arr_descuento[t] = (odtPrueba.Columns.Count - 1).ToString();
+                            t++;
                         }
                         //Buscar indice del titulo respectivo al monto
                         indice_descuento = BuscarIndiceColumna(odtPrueba, row_d[9].ToString());
@@ -346,9 +381,12 @@ namespace CapaUsuario.Planilla
 
                     //Insertando la sumatoria total de descuentos
                     // Insertando la descripcion de columna del total de descuentos
-                    if (!ExisteColumnaTexto(odtPrueba, "TOTAL DESCUENTOS"))
+                    if (!ExisteColumnaTexto(odtPrueba, "TOTAL DESCUENTOS")) { 
                         odtPrueba.Columns.Add("TOTAL DESCUENTOS", typeof(string));
-
+                        indice_descuento = BuscarIndiceColumna(odtPrueba, "TOTAL DESCUENTOS");
+                        arr_descuento[t] = indice_descuento.ToString();
+                        total_tipo_descuento++;
+                    }
                     //Buscar indice del titulo respectivo al monto
                     indice_descuento = BuscarIndiceColumna(odtPrueba, "TOTAL DESCUENTOS");
 
@@ -358,6 +396,8 @@ namespace CapaUsuario.Planilla
 
                     //Determinar en base al id del trabajador sus aportaciones del trabajador
                     odtPlanillaATrabajador = oPlanillaTrabajador.ListarPlanillaATrabajador(pMes, pRegimenLaboral, pidTrabajador);
+
+                    t = 0;
 
                     foreach (DataRow row_t in odtPlanillaATrabajador.Rows)
                     {
@@ -383,17 +423,22 @@ namespace CapaUsuario.Planilla
                     //Insertando la sumatoria total de Aportaciones Empleador
                     // Insertando la descripcion de columna del total de Empleador
                     if (!ExisteColumnaTexto(odtPrueba, "TOTAL APORTACIONES TRABAJADOR"))
+                    {
                         odtPrueba.Columns.Add("TOTAL APORTACIONES TRABAJADOR", typeof(string));
+                        indice_a_trabajador = BuscarIndiceColumna(odtPrueba, "TOTAL APORTACIONES TRABAJADOR");
+                        arr_a_trabajador[t] = indice_a_trabajador.ToString();
+                        total_tipo_a_trabajador++;
 
-                    //Buscar indice del titulo respectivo al monto
-                    indice_a_trabajador = BuscarIndiceColumna(odtPrueba, "TOTAL APORTACIONES TRABAJADOR");
+                    }
+                        //Buscar indice del titulo respectivo al monto
+                        indice_a_trabajador = BuscarIndiceColumna(odtPrueba, "TOTAL APORTACIONES TRABAJADOR");
 
                     //insertar monto total de Empleador a la planilla
                     drFila[indice_a_trabajador] = row[13].ToString();
 
                     //Determinar en base al id del trabajador sus aportaciones del empleador
                     odtPlanillaAEmpleador = oPlanillaEmpleador.ListarPlanillaAEmpleador(pMes, pRegimenLaboral, pidTrabajador);
-
+                    t = 0;
                     foreach (DataRow row_e in odtPlanillaAEmpleador.Rows)
                     {
                         // si no existe columna agregar titulo
@@ -401,6 +446,8 @@ namespace CapaUsuario.Planilla
                         {
                             odtPrueba.Columns.Add(row_e[9].ToString().Trim(), typeof(string));
                             total_tipo_a_empleador++;
+                            arr_a_empleador[t] = (odtPrueba.Columns.Count - 1).ToString();
+                            t++;
                         }
                         //Buscar indice del titulo respectivo al monto
                         indice_a_empleador = BuscarIndiceColumna(odtPrueba, row_e[9].ToString());
@@ -415,9 +462,12 @@ namespace CapaUsuario.Planilla
 
                     //Insertando la sumatoria total de Aportaciones Empleador
                     // Insertando la descripcion de columna del total de Empleador
-                    if (!ExisteColumnaTexto(odtPrueba, "TOTAL APORTACIONES EMPLEADOR"))
+                    if (!ExisteColumnaTexto(odtPrueba, "TOTAL APORTACIONES EMPLEADOR")) {
                         odtPrueba.Columns.Add("TOTAL APORTACIONES EMPLEADOR", typeof(string));
-
+                        indice_a_empleador = BuscarIndiceColumna(odtPrueba, "TOTAL APORTACIONES EMPLEADOR");
+                        arr_a_empleador[t] = indice_a_empleador.ToString();
+                        total_tipo_a_empleador++;
+                    }
                     //Buscar indice del titulo respectivo al monto
                     indice_a_empleador = BuscarIndiceColumna(odtPrueba, "TOTAL APORTACIONES EMPLEADOR");
 
@@ -426,10 +476,30 @@ namespace CapaUsuario.Planilla
 
                     //insertar datos personales de la planilla al datatable
 
-                    drFila[0] = row[0]; drFila[3] = row[3]; drFila[6] = row[6];
-                    drFila[1] = row[1]; drFila[4] = row[4]; drFila[7] = row[7];
-                    drFila[2] = row[2]; drFila[5] = row[5]; drFila[8] = row[8]; drFila[9] = row[9];
+                    drFila[0] = row[0]; drFila[3] = row[3]; drFila[6] = row[8];
+                    drFila[1] = row[1]; drFila[4] = row[4]; drFila[7] = row[9];
+                    drFila[2] = row[2]; drFila[5] = row[7]; drFila[8] = row[10]; drFila[9] = row[11];
 
+                    renumeracion = Convert.ToDecimal(row[7]);
+                    total_ingresos = Convert.ToDecimal(row[15]);
+                    total_descuentos = Convert.ToDecimal(row[14]);
+                    total_trabajador = Convert.ToDecimal(row[13]);
+                    total_empleador = Convert.ToDecimal(row[12]);
+
+                    if (!ExisteColumnaTexto(odtPrueba, "NETO A COBRAR"))
+                    {
+                        odtPrueba.Columns.Add("NETO A COBRAR", typeof(string));
+                        indice_neto_cobrar = BuscarIndiceColumna(odtPrueba, "NETO A COBRAR");
+                    }
+
+                    if (!ExisteColumnaTexto(odtPrueba, "DIAS LABORADOS"))
+                    {
+                        odtPrueba.Columns.Add("DIAS LABORADOS", typeof(string));
+                        indice_prueba_dias_laborados = BuscarIndiceColumna(odtPrueba, "DIAS LABORADOS");
+                    }
+
+                    drFila[indice_neto_cobrar] = renumeracion - total_descuentos + total_ingresos + total_trabajador + total_empleador;
+                    drFila[indice_prueba_dias_laborados] = row[16];
                     //odtPrueba.Rows.Add(drFila);
                     odtPrueba.Rows.InsertAt(drFila, k);
 
@@ -449,6 +519,7 @@ namespace CapaUsuario.Planilla
 
                 //Establecer titulos de la planilla
 
+                odtPruebaCorta.Columns.Add("Nº", typeof(string));
                 odtPruebaCorta.Columns.Add("NOMBRE COMPLETO", typeof(string));
                 odtPruebaCorta.Columns.Add("CARGO", typeof(string));
                 odtPruebaCorta.Columns.Add("DNI", typeof(string));
@@ -459,27 +530,115 @@ namespace CapaUsuario.Planilla
                 odtPruebaCorta.Columns.Add("AFIL. AFP/SNP", typeof(string));
                 odtPruebaCorta.Columns.Add("COMISION", typeof(string));
                 odtPruebaCorta.Columns.Add("CUSP", typeof(string));
-
-                //Unir descripciones de trabajador en maximo dos columnas
-                                               
+                                                               
                 
-                decimal DivisionTrabajador =   Math.Ceiling(total_tipo_a_trabajador / 2);
+                decimal DivisionTrabajador =   Math.Ceiling(total_tipo_a_trabajador/2);
+                decimal DivisionEmpleador = Math.Ceiling( total_tipo_a_empleador/2 );
+                decimal DivisionIngresos = Math.Ceiling( total_tipo_ingreso/2 );
+                decimal DivisionDescuentos = Math.Ceiling( total_tipo_descuento/2 );
+
+                int cantidad_total_ingresos = 0;
+                int cantidad_total_descuentos = 0;
+                int cantidad_total_a_trabajador = 0;
+                int cantidad_total_a_empleador = 0;
+
+                int nro_max_filas_x_columna = 0;
+
+                string columna = "";
+
                 string nueva_columna="";
                 string nueva_celda = "";
-                int columna_indice_trabajador = 0;
+                int columna_indice = 0;
                 int c = 0;
                 int cc = 0;
-                int x = 0;
-                int xx = 0;
+ 
 
-                for (int a=0; a < 2 ; a++)
+                //Determinar el numero maximo de filas por columna.
+                nro_max_filas_x_columna = mayor(Convert.ToInt16(DivisionIngresos), mayor(mayor( Convert.ToInt16(DivisionTrabajador), Convert.ToInt16( DivisionEmpleador)), Convert.ToInt16(DivisionDescuentos)));
+
+                //Unir descripciones de ingresos en maximo dos columnas
+
+                if (total_tipo_ingreso > 2)
+                    cantidad_total_ingresos = 2;
+                else
+                    cantidad_total_ingresos = 1;
+                   
+
+                for (int a = 0; a < cantidad_total_ingresos ; a++)
                 {
                     nueva_columna = "";
-                    for (int b = 0; b < DivisionTrabajador; b++)
+                    for (int b = 0; b < nro_max_filas_x_columna; b++)
+                    {
+                        if (arr_ingresos[c] != null)
+                        {
+                            // Añade la columna de total de ingresos
+                            columna = odtPrueba.Columns[Convert.ToInt32(arr_ingresos[c])].ToString();
+
+                            if (c == 0 || c == nro_max_filas_x_columna) nueva_columna = columna;
+                            else nueva_columna = nueva_columna + "\n\n" + columna;
+
+
+
+                            c++;
+                        }
+                    }
+                    odtPruebaCorta.Columns.Add(nueva_columna);
+                    arr_ingresos_max_2[cc] = (odtPruebaCorta.Columns.Count - 1).ToString();
+                    cc++;
+                }
+
+                //Unir descripciones de descuentos en maximo dos columnas
+
+                c = 0; cc = 0;
+
+                if (total_tipo_descuento > 2)
+                    cantidad_total_descuentos = 2;
+                else
+                    cantidad_total_descuentos = 1;
+
+
+                for (int a = 0; a < cantidad_total_descuentos; a++)
+                {
+                    nueva_columna = "";
+                    for (int b = 0; b < nro_max_filas_x_columna; b++)
+                    {
+                        if (arr_descuento[c] != null)
+                        {
+                            // Añade la columna de total de ingresos
+                            columna = odtPrueba.Columns[Convert.ToInt32(arr_descuento[c])].ToString();
+
+                            if (c == 0 || c == nro_max_filas_x_columna) nueva_columna = columna;
+                            else nueva_columna = nueva_columna + "\n\n" + columna;
+
+                            c++;
+                        }
+                    }
+                    odtPruebaCorta.Columns.Add(nueva_columna);
+                    arr_descuento_max_2[cc] = (odtPruebaCorta.Columns.Count - 1).ToString();
+                    cc++;
+                }
+
+
+                //Unir descripciones de trabajador en maximo dos columnas
+                c = 0; cc = 0;
+                if (total_tipo_a_trabajador > 2)
+                    cantidad_total_a_trabajador = 2;
+                else
+                    cantidad_total_a_trabajador = 1;
+ 
+
+                for (int a=0; a < cantidad_total_a_trabajador; a++)
+                {
+                    nueva_columna = "";
+                    for (int b = 0; b < nro_max_filas_x_columna; b++)
                     {
                         if ( arr_a_trabajador[c] != null)
                         {
-                            nueva_columna = nueva_columna + "\n\n" + odtPrueba.Columns[Convert.ToInt32(arr_a_trabajador[c])].ToString();
+                            columna = odtPrueba.Columns[Convert.ToInt32(arr_a_trabajador[c])].ToString();
+
+                            if (c == 0 || c == nro_max_filas_x_columna) nueva_columna = columna;
+                            else nueva_columna = nueva_columna + "\n\n" + columna;
+
                             c++;
                         }
                     }
@@ -487,39 +646,174 @@ namespace CapaUsuario.Planilla
                     arr_a_trabajador_max_2[cc] = (odtPruebaCorta.Columns.Count - 1).ToString();
                     cc++;
                 }
-                //escribir datos a sus respectivas celdas de aportaciones del trabajador
 
-                x = 0;
-                for (int d=0; d < 1; d++)
+                //Unir descripciones de empleador en maximo dos columnas
+                c = 0; cc = 0;
+                if (total_tipo_a_empleador > 2)
+                    cantidad_total_a_empleador = 2;
+                else
+                    cantidad_total_a_empleador = 1;
+
+
+                for (int a = 0; a < cantidad_total_a_empleador; a++)
                 {
-                    c = 0; 
-                    for (int a = 0; a < 2; a++)
+                    nueva_columna = "";
+                    for (int b = 0; b < nro_max_filas_x_columna; b++)
+                    {
+                        if (arr_a_empleador[c] != null)
+                        {
+                            columna = odtPrueba.Columns[Convert.ToInt32(arr_a_empleador[c])].ToString();
+
+                            if(c == 0 || c == nro_max_filas_x_columna) nueva_columna = columna;
+                            else nueva_columna = nueva_columna + "\n\n" + columna;
+
+
+                            c++;
+                        }
+                    }
+                    odtPruebaCorta.Columns.Add(nueva_columna);
+                    arr_a_empleador_max_2[cc] = (odtPruebaCorta.Columns.Count - 1).ToString();
+                    cc++;
+                }
+
+                //esribir datos de planilla
+
+                for (int d=0; d < odtPrueba.Rows.Count ; d++)
+                {
+                    drFilaCorta = odtPruebaCorta.NewRow();
+                    drFilaCorta.Delete();
+
+
+                    //Obteniendo los montos respectivos de la descripcion de ingresos agrupados en un maximo de dos columnas
+                    c = 0;
+                    for (int a = 0; a < cantidad_total_ingresos; a++)
                     {
                         nueva_celda = "";
-                        for (int b = 0; b < DivisionTrabajador; b++)
+                        for (int b = 0; b < nro_max_filas_x_columna; b++)
                         {
-                            if (arr_a_trabajador[c] != null)
+                            if (arr_ingresos[c] != null)
                             {
-                                nueva_celda = nueva_celda + "\n\n" + odtPrueba.Rows[d][Convert.ToInt32(arr_a_trabajador[c])] ;
+                                if (c == 0 || c == nro_max_filas_x_columna) nueva_celda = nueva_celda + odtPrueba.Rows[d][Convert.ToInt32(arr_ingresos[c])];
+                                else nueva_celda = nueva_celda + "\n\n" + odtPrueba.Rows[d][Convert.ToInt32(arr_ingresos[c])] ;
                                 c++;
                             }
 
                         }
                                                 
-                        if (arr_a_trabajador_max_2[x] != null)
+                        if (arr_ingresos_max_2[a] != null)
                         {
-                            columna_indice_trabajador = Convert.ToInt16(arr_a_trabajador_max_2[x]) ;
-                            drFilaCorta[columna_indice_trabajador] = nueva_celda;
+                            columna_indice = Convert.ToInt16(arr_ingresos_max_2[a]) ;
+                            drFilaCorta[columna_indice] = nueva_celda;
                         }
-                        x++;
+ 
                     }
-                    odtPruebaCorta.Rows.InsertAt(drFilaCorta, d);
-                    //MessageBox.Show("indice de odtPrueba "+ d, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    xx++;
-                }
-                
 
-                
+                    //Obteniendo los montos respectivos de la descripcion de descuentos agrupados en un maximo de dos columnas
+                    c = 0;
+                    for (int a = 0; a < cantidad_total_descuentos; a++)
+                    {
+                        nueva_celda = "";
+                        for (int b = 0; b < nro_max_filas_x_columna; b++)
+                        {
+                            if (arr_descuento[c] != null)
+                            {
+                                if (c == 0 || c == nro_max_filas_x_columna) nueva_celda = nueva_celda + odtPrueba.Rows[d][Convert.ToInt32(arr_descuento[c])];
+                                else nueva_celda = nueva_celda + "\n\n" + odtPrueba.Rows[d][Convert.ToInt32(arr_descuento[c])];
+                                c++;
+                            }
+
+                        }
+
+                        if (arr_descuento_max_2[a] != null)
+                        {
+                            columna_indice = Convert.ToInt16(arr_descuento_max_2[a]);
+                            drFilaCorta[columna_indice] = nueva_celda;
+                        }
+
+                    }
+
+                    //Obteniendo los montos respectivos de la descripcion de aportaciones del trabajador agrupados en un maximo de dos columnas
+                    c = 0;
+                    for (int a = 0; a < cantidad_total_a_trabajador; a++)
+                    {
+                        nueva_celda = "";
+                        for (int b = 0; b < nro_max_filas_x_columna; b++)
+                        {
+                            if (arr_a_trabajador[c] != null)
+                            {
+                                if (c == 0 || c == nro_max_filas_x_columna) nueva_celda = nueva_celda + odtPrueba.Rows[d][Convert.ToInt32(arr_a_trabajador[c])];
+                                else nueva_celda = nueva_celda + "\n\n" + odtPrueba.Rows[d][Convert.ToInt32(arr_a_trabajador[c])];
+                                c++;
+                            }
+
+                        }
+
+                        if (arr_a_trabajador_max_2[a] != null)
+                        {
+                            columna_indice = Convert.ToInt16(arr_a_trabajador_max_2[a]);
+                            drFilaCorta[columna_indice] = nueva_celda;
+                        }
+
+                    }
+
+                    //Obteniendo los montos respectivos de la descripcion de aportaciones del empleador agrupados en un maximo de dos columnas
+                    c = 0;
+                    for (int a = 0; a < cantidad_total_a_empleador ; a++)
+                    {
+                        nueva_celda = "";
+                        for (int b = 0; b < nro_max_filas_x_columna; b++)
+                        {
+                            if (arr_a_empleador[c] != null)
+                            {
+                                if (c==0 || c== nro_max_filas_x_columna) nueva_celda = nueva_celda + odtPrueba.Rows[d][Convert.ToInt32(arr_a_empleador[c])];
+                                else    nueva_celda = nueva_celda + "\n\n" + odtPrueba.Rows[d][Convert.ToInt32(arr_a_empleador[c])];
+                                c++;
+                            }
+
+                        }
+
+                        if (arr_a_empleador_max_2[a] != null)
+                        {
+                            columna_indice = Convert.ToInt16(arr_a_empleador_max_2[a]);
+                            drFilaCorta[columna_indice] = nueva_celda;
+                        }
+
+                    }
+
+
+                    //insertar datos personales de la planilla al datatable
+
+                    drFilaCorta[0] = (d + 1); drFilaCorta[3] = odtPrueba.Rows[d][2]; drFilaCorta[6] = odtPrueba.Rows[d][5];
+                    drFilaCorta[1] = odtPrueba.Rows[d][0]; drFilaCorta[4] = odtPrueba.Rows[d][3]; drFilaCorta[7] = odtPrueba.Rows[d][6];
+                    drFilaCorta[2] = odtPrueba.Rows[d][1]; drFilaCorta[8] = odtPrueba.Rows[d][7];
+
+                    drFilaCorta[5] = Convert.ToDateTime(odtPrueba.Rows[d][4]).Date.ToString("MM/dd/yyyy");
+
+                    drFilaCorta[9] = odtPrueba.Rows[d][8]; drFilaCorta[10] = odtPrueba.Rows[d][9];
+
+                    if (!ExisteColumnaTexto(odtPruebaCorta, "NETO A COBRAR"))
+                    {
+                        odtPruebaCorta.Columns.Add("NETO A COBRAR", typeof(string));
+                        indice_prueba_corta_neto_cobrar = BuscarIndiceColumna(odtPruebaCorta, "NETO A COBRAR");
+                        indice_prueba_neto_cobrar = BuscarIndiceColumna(odtPrueba, "NETO A COBRAR");
+                    }
+
+                    if (!ExisteColumnaTexto(odtPruebaCorta, "DIAS LABORADOS"))
+                    {
+                        odtPruebaCorta.Columns.Add("DIAS LABORADOS", typeof(string));
+                        indice_prueba_corta_dias_laborados = BuscarIndiceColumna(odtPruebaCorta, "DIAS LABORADOS");
+                        indice_prueba_dias_laborados = BuscarIndiceColumna(odtPrueba, "DIAS LABORADOS");
+                    }
+
+                    drFilaCorta[indice_prueba_corta_dias_laborados] = odtPrueba.Rows[d][indice_prueba_dias_laborados];
+                    drFilaCorta[indice_prueba_corta_neto_cobrar] = odtPrueba.Rows[d][indice_prueba_neto_cobrar];
+                    odtPruebaCorta.Rows.InsertAt(drFilaCorta, d);
+
+                }
+
+
+                odtPruebaCorta.Columns.Add("FIRMA", typeof(string));
+
                 this.dgvPrueba.DataSource = odtPruebaCorta;
                 exportar_a_pdf();
             }
@@ -528,12 +822,25 @@ namespace CapaUsuario.Planilla
 
         }
 
+        public int mayor(int a, int b) {
+            int mayor = 0;
+
+            if (a > b)
+                mayor = a;
+            else
+                mayor = b;
+
+            return mayor;
+        }
+
         public float[] GetTamañoColumnas(DataGridView dg)
         {
             float[] values = new float[dg.ColumnCount];
             for (int i = 0; i < dg.ColumnCount; i++)
             {
                 values[i] = (float)dg.Columns[i].Width;
+                if (i == 0) values[i] = 50;
+                if (i == 1) values[i] =200;
             }
             return values;
         }
@@ -542,19 +849,28 @@ namespace CapaUsuario.Planilla
         {
             //Creating iTextSharp Table from the DataTable data
             iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);
-            iTextSharp.text.Font fuenteTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 8);
+            iTextSharp.text.Font fuenteTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 9,1, iTextSharp.text.Color.BLUE);
+            
+
+
 
             PdfPTable pdfTable = new PdfPTable(dgvPrueba.ColumnCount);
 
             Phrase objP = new Phrase("A", fuente);
-            Phrase objH = new Phrase("A", fuenteTitulo);
+            //Phrase objH = new Phrase("A", fuenteTitulo);
+            PdfPCell cell;
+
+            
+
+
             pdfTable.DefaultCell.Padding = 1;
             pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
             pdfTable.DefaultCell.BorderWidth = 1;
 
             float[] headerwidths = GetTamañoColumnas(dgvPrueba);
+            //float[] headerwidths = { 2f, 6f, 6f, 3f, 5f, 8f, 5f, 5f, 5f, 5f };
 
-            
+            //cell.BackgroundColor = new BaseColor(System.Drawing.ColorTranslator.FromHtml("#d1dbe0"));
 
             pdfTable.SetWidths(headerwidths);
             pdfTable.WidthPercentage = 100;
@@ -562,11 +878,16 @@ namespace CapaUsuario.Planilla
             //Adding Header row
             foreach (DataGridViewColumn column in dgvPrueba.Columns)
             {
+                cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font( iTextSharp.text.Font.BOLD , 7f, iTextSharp.text.Font.BOLD , iTextSharp.text.Color.BLACK ))));
+                //cell = new PdfPCell(new Phrase(column.HeaderText));
                 //PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-                //cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+                cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+                 
 
-                objH = new Phrase(column.HeaderText, fuenteTitulo);
-                pdfTable.AddCell(objH);
+                // objH = new Phrase(column.HeaderText, fuenteTitulo);
+
+
+                pdfTable.AddCell(cell);
             }
 
             
