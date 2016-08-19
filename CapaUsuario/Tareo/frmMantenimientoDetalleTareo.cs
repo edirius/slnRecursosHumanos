@@ -18,12 +18,16 @@ namespace CapaUsuario.Tareo
         DataTable oDataAFP = new DataTable();
         DataTable oDataDetalleTareo = new DataTable();
         DataTable oDataTareo = new DataTable();
+        DataTable oDataPeriodoTrabajador = new DataTable();
+        DataTable oDataRegimenPensionarioTrabajador = new DataTable();
 
         CapaDeNegocios.Tareos.cTareo miTareo = new CapaDeNegocios.Tareos.cTareo();
         CapaDeNegocios.Tareos.cDetalleTareo miDetalleTareo = new CapaDeNegocios.Tareos.cDetalleTareo();
         CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
         CapaDeNegocios.cListaAFP miAFP = new CapaDeNegocios.cListaAFP();
         CapaDeNegocios.Obras.cMeta miMeta = new CapaDeNegocios.Obras.cMeta();
+        CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+        CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miRegimenPensionarioTrabajor = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
 
         public frmMantenimientoDetalleTareo()
         {
@@ -35,6 +39,8 @@ namespace CapaUsuario.Tareo
             DibujarDataGrid(miTareo.FechaFin.Day - miTareo.FechaInicio.Day);
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
             oDataAFP = miAFP.ObtenerListaAFP();
+            oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
+            oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
             CargarDatos();
         }
 
@@ -112,10 +118,13 @@ namespace CapaUsuario.Tareo
         private void btnNuevoTrabajador_Click(object sender, EventArgs e)
         {
             Trabajador.frmNuevoObrero fNuevoObrero = new Trabajador.frmNuevoObrero();
+            fNuevoObrero.RecibirDatos(miMeta.Codigo);
             if (fNuevoObrero.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
                 oDataAFP = miAFP.ObtenerListaAFP();
+                oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
+                oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
             }
         }
 
@@ -229,9 +238,16 @@ namespace CapaUsuario.Tareo
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[3].Value = e.RowIndex + 1;
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[4].Value = row[0].ToString();
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[5].Value = row[3].ToString() + " " + row[4].ToString() + ", " + row[2].ToString();
-                    foreach (DataRow row1 in oDataAFP.Select("idtafp = '1'"))
+
+                    foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + Convert.ToInt32(row[0].ToString()) + "'")) 
                     {
-                        dgvDetalleTareo.Rows[e.RowIndex].Cells[7].Value = row1[1].ToString();
+                        foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                        {
+                            foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()) + "'"))
+                            {
+                                dgvDetalleTareo.Rows[e.RowIndex].Cells[7].Value = rowAFP[1].ToString();
+                            }
+                        }
                     }
                 }
                 if (contador == 0)

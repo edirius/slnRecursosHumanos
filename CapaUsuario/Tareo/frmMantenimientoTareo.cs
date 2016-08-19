@@ -104,7 +104,7 @@ namespace CapaUsuario.Tareo
                 MessageBox.Show("El Detalle del Tareo ya no se puede Modificar.", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (sIdTTareo == 0 && dgvTareo.SelectedRows.Count > 0)
+            if (sIdTTareo == 0 || dgvTareo.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

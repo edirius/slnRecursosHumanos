@@ -12,6 +12,7 @@ namespace CapaUsuario.Trabajador
 {
     public partial class frmNuevoObrero : Form
     {
+        int sidtmeta = 0;
         int sidtafp = 0;
         int sidttrabajador = 0;
         int sidtperiodotrabajador = 0;
@@ -34,13 +35,19 @@ namespace CapaUsuario.Trabajador
 
         private void frmNuevoObrero_Load(object sender, EventArgs e)
         {
+            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
             CargarDepartamento();
             CargarAFP();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (txtDNI.Text == "" || txtNombre.Text == "" || txtApePaterno.Text == "" || txtApeMaterno.Text == "" || cboDepartamento.Text == "" || cboProvincia.Text == "" || cboDistrito.Text == "" || cboAFP.Text == "" || cboTipoComision.Text == "")
+            if (txtDNI.Text.Length != 8)
+            {
+                MessageBox.Show("El DNI no es correcto, no se puede Guardar al nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (txtDNI.Text == "" || txtNombre.Text == "" || txtApePaterno.Text == "" || txtApeMaterno.Text == "" || cboDepartamento.Text == "" || cboProvincia.Text == "" || cboDistrito.Text == "" || cboAFP.Text == "")
             {
                 MessageBox.Show("Existen datos en Blanco, no se puede Guardar al nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -72,8 +79,7 @@ namespace CapaUsuario.Trabajador
             CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
             miPeriodoTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
             miPeriodoTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
-            //if (dtpFechaFin.Format == DateTimePickerFormat.Custom) { miPeriodoTrabajador.FechaFin = ""; }
-            //else { miPeriodoTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString(); }
+            miPeriodoTrabajador.FechaFin = "";
             miPeriodoTrabajador.IdtMotivoFinPeriodo = 1;
             miPeriodoTrabajador.IdtTrabajador = sidttrabajador;
             miPeriodoTrabajador.CrearPeriodoTrabajador(miPeriodoTrabajador);
@@ -83,9 +89,8 @@ namespace CapaUsuario.Trabajador
             CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
             miRegimenPensionarioTrabajador.IdtRegimenPensionarioTrabajador = 0;
             miRegimenPensionarioTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
-            //if (dtpFechaFin.Format == DateTimePickerFormat.Custom) { miRegimenPensionarioTrabajador.FechaFin = ""; }
-            //else { miRegimenPensionarioTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString(); }
-            //miRegimenPensionarioTrabajador.CUSPP = txtCUSPP.Text;
+            miRegimenPensionarioTrabajador.FechaFin = "";
+            miRegimenPensionarioTrabajador.CUSPP = "";
             miRegimenPensionarioTrabajador.TipoComision = cboTipoComision.Text;
             miRegimenPensionarioTrabajador.IdtAFP = sidtafp;
             miRegimenPensionarioTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
@@ -95,31 +100,29 @@ namespace CapaUsuario.Trabajador
             miRegimenSaludTrabajador.IdtRegimenSaludTrabajador = 0;
             miRegimenSaludTrabajador.RegimenSalud = "ESSALUD REGULAR (Exclusivamente)";
             miRegimenSaludTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
-            //if (dtpFechaFin.Format == DateTimePickerFormat.Custom) { miRegimenSaludTrabajador.FechaFin = ""; }
-            //else { miRegimenSaludTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString(); }
-            //miRegimenSaludTrabajador.EntidadPrestadoraSalud = cboEntidadPrestadoraSalud.Text;
+            miRegimenSaludTrabajador.FechaFin = "";
+            miRegimenSaludTrabajador.EntidadPrestadoraSalud = "";
             miRegimenSaludTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
             miRegimenSaludTrabajador.CrearRegimenSaludTrabajador(miRegimenSaludTrabajador);
 
             CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
             miRegimenTrabajador.IdtRegimenTrabajador = 0;
             miRegimenTrabajador.Condicion = "CONTRATADO";
-            //miRegimenTrabajador.ServidorConfianza = chkServidorConfianza.Checked;
-            //miRegimenTrabajador.NumeroDocumento = txtNumero.Text;
-            //miRegimenTrabajador.Periodicidad = cboPeriodicidad.Text;
-            //miRegimenTrabajador.TipoPago = cboTipoPago.Text;
-            //miRegimenTrabajador.MontoPago = Convert.ToInt32(nupMontoPago.Value);
+            miRegimenTrabajador.ServidorConfianza = false;
+            miRegimenTrabajador.NumeroDocumento = "";
+            miRegimenTrabajador.Periodicidad = "";
+            miRegimenTrabajador.TipoPago = "";
+            miRegimenTrabajador.MontoPago = 0;
             miRegimenTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
-            //if (dtpFechaFin.Format == DateTimePickerFormat.Custom) { miRegimenTrabajador.FechaFin = ""; }
-            //else { miRegimenTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString(); }
-            //miRegimenTrabajador.RUC = txtRUC.Text;
+            miRegimenTrabajador.FechaFin = ""; 
+            miRegimenTrabajador.RUC = "";
             miRegimenTrabajador.IdtRegimenLaboral = 3;
             miRegimenTrabajador.IdtTipoTrabajador = 2;
             miRegimenTrabajador.IdtTipoContrato = 15;
             miRegimenTrabajador.IdtCategoriaOcupacional = 5;
             miRegimenTrabajador.IdtOcupacion = 1;
-            //miRegimenTrabajador.IdtCargo = sidtcargo;
-            //miRegimenTrabajador.IdtMeta = sidtmeta;
+            miRegimenTrabajador.IdtCargo = 49;
+            miRegimenTrabajador.IdtMeta = sidtmeta;
             miRegimenTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
             miRegimenTrabajador.CrearRegimenTrabajador(miRegimenTrabajador);
 
@@ -137,6 +140,19 @@ namespace CapaUsuario.Trabajador
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
+        }
+
+        private void txtDNI_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDNI.Text.Length == 8)
+            {
+                foreach (DataRow row in oDataTrabajador.Select("dni = '" + txtDNI.Text + "'"))
+                {
+                    MessageBox.Show("El DNI ingresado ya pertenece a otro Obrero.", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtDNI.Text = "";
+                    return;
+                }
+            }
         }
 
         private void cboDepartamento_SelectedIndexChanged(object sender, EventArgs e)
@@ -171,6 +187,11 @@ namespace CapaUsuario.Trabajador
             {
                 sidtafp = Convert.ToInt32(cboAFP.SelectedValue);
             }
+        }
+
+        public void RecibirDatos(int pidtmeta)
+        {
+            sidtmeta = pidtmeta;
         }
 
         private void CargarDepartamento()

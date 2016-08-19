@@ -103,7 +103,7 @@
             this.txtApePaterno.Location = new System.Drawing.Point(117, 64);
             this.txtApePaterno.Name = "txtApePaterno";
             this.txtApePaterno.Size = new System.Drawing.Size(501, 20);
-            this.txtApePaterno.TabIndex = 2;
+            this.txtApePaterno.TabIndex = 4;
             // 
             // label5
             // 
@@ -129,7 +129,7 @@
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(117, 139);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(214, 20);
-            this.dtpFechaNacimiento.TabIndex = 6;
+            this.dtpFechaNacimiento.TabIndex = 7;
             // 
             // txtNombre
             // 
@@ -140,7 +140,7 @@
             this.txtNombre.Location = new System.Drawing.Point(117, 38);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(501, 20);
-            this.txtNombre.TabIndex = 1;
+            this.txtNombre.TabIndex = 3;
             // 
             // txtDNI
             // 
@@ -149,7 +149,8 @@
             this.txtDNI.MaxLength = 8;
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(215, 20);
-            this.txtDNI.TabIndex = 7;
+            this.txtDNI.TabIndex = 0;
+            this.txtDNI.TextChanged += new System.EventHandler(this.txtDNI_TextChanged);
             // 
             // label2
             // 
@@ -177,7 +178,7 @@
             this.txtApeMaterno.Location = new System.Drawing.Point(117, 90);
             this.txtApeMaterno.Name = "txtApeMaterno";
             this.txtApeMaterno.Size = new System.Drawing.Size(501, 20);
-            this.txtApeMaterno.TabIndex = 3;
+            this.txtApeMaterno.TabIndex = 5;
             // 
             // label4
             // 
@@ -243,7 +244,7 @@
             this.rbtMasculino.Location = new System.Drawing.Point(117, 116);
             this.rbtMasculino.Name = "rbtMasculino";
             this.rbtMasculino.Size = new System.Drawing.Size(73, 17);
-            this.rbtMasculino.TabIndex = 4;
+            this.rbtMasculino.TabIndex = 6;
             this.rbtMasculino.TabStop = true;
             this.rbtMasculino.Text = "Masculino";
             this.rbtMasculino.UseVisualStyleBackColor = true;
@@ -274,7 +275,7 @@
             this.txtCelular.Location = new System.Drawing.Point(403, 12);
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(215, 20);
-            this.txtCelular.TabIndex = 8;
+            this.txtCelular.TabIndex = 2;
             // 
             // label9
             // 
@@ -350,7 +351,7 @@
             this.cboTipoComision.Location = new System.Drawing.Point(119, 46);
             this.cboTipoComision.Name = "cboTipoComision";
             this.cboTipoComision.Size = new System.Drawing.Size(214, 21);
-            this.cboTipoComision.TabIndex = 83;
+            this.cboTipoComision.TabIndex = 14;
             // 
             // label14
             // 
@@ -370,7 +371,7 @@
             this.cboAFP.Location = new System.Drawing.Point(119, 19);
             this.cboAFP.Name = "cboAFP";
             this.cboAFP.Size = new System.Drawing.Size(214, 21);
-            this.cboAFP.TabIndex = 0;
+            this.cboAFP.TabIndex = 13;
             this.cboAFP.SelectedIndexChanged += new System.EventHandler(this.cboAFP_SelectedIndexChanged);
             // 
             // label13
@@ -388,7 +389,7 @@
             this.dtpFechaInicio.Location = new System.Drawing.Point(414, 138);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(204, 20);
-            this.dtpFechaInicio.TabIndex = 89;
+            this.dtpFechaInicio.TabIndex = 8;
             // 
             // frmNuevoObrero
             // 
