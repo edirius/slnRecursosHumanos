@@ -88,8 +88,7 @@ namespace CapaUsuario.Tareo
             {
                 return;
             }
-            miTareo.IdTTareo = sIdTTareo;
-            miTareo.EliminarTareo(miTareo);
+            miTareo.EliminarTareo(sIdTTareo);
             CargarDatos();
         }
 
@@ -105,7 +104,7 @@ namespace CapaUsuario.Tareo
                 MessageBox.Show("El Detalle del Tareo ya no se puede Modificar.", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (sIdTTareo == 0 && dgvTareo.SelectedRows.Count > 0)
+            if (sIdTTareo == 0 || dgvTareo.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -158,8 +157,7 @@ namespace CapaUsuario.Tareo
 
         private void CargarDatos()
         {
-            miMeta.Codigo = sIdTMeta;
-            dgvTareo.DataSource = miTareo.ListarTareo(miMeta);
+            dgvTareo.DataSource = miTareo.ListarTareo(sIdTMeta);
             dgvTareo.Columns[0].Visible = false;
             dgvTareo.Columns[6].Visible = false;
 

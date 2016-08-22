@@ -129,7 +129,7 @@ namespace CapaUsuario
         {
             try
             {
-                Conexion.IniciarSesion("192.168.1.40", "bdpersonal", "root", "root");
+                Conexion.IniciarSesion("192.168.1.40", "bdPersonal", "root", "root");
                 MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
             }
             catch (Exception ex)
@@ -264,9 +264,9 @@ namespace CapaUsuario
 
         private void IR5taCategoriatoolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            CapaUsuario.Planilla.frmImpuestoAlaRentaDe5taCategoria frmIR5taCategoria = new CapaUsuario.Planilla.frmImpuestoAlaRentaDe5taCategoria();
-            frmIR5taCategoria.MdiParent = this;
-            frmIR5taCategoria.Show();
+            Planilla.frmImpuestoAlaRentaDe5taCategoria f5ta = new Planilla.frmImpuestoAlaRentaDe5taCategoria();
+            f5ta.MdiParent = this;
+            f5ta.Show();
         }
     }
 }

@@ -182,6 +182,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Name = "frmPeriodoTrabajador";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Periodo Trabajador";
             this.Load += new System.EventHandler(this.frmPeriodoTrabajador_Load);

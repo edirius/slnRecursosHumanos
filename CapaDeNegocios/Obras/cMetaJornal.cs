@@ -32,9 +32,9 @@ namespace CapaDeNegocios.Obras
             set { sjornal = value; }
         }
 
-        public DataTable ListarMetaJornal(cMeta miMeta)
+        public DataTable ListarMetaJornal(int Codigo)
         {
-            return Conexion.GDatos.TraerDataTable("spListarMetaJornal", miMeta.Codigo);
+            return Conexion.GDatos.TraerDataTable("spListarMetaJornal", Codigo);
         }
 
         public Boolean CrearMetaJornal(cMetaJornal miMetaJornal, cMeta miMeta)
@@ -49,9 +49,9 @@ namespace CapaDeNegocios.Obras
             return true;
         }
 
-        public Boolean EliminarMetaJornal(cMetaJornal miMetaJornal)
+        public Boolean EliminarMetaJornal(int IdtMetaJornal)
         {
-            Conexion.GDatos.Ejecutar("spELiminarMetaJornal", miMetaJornal.IdtMetaJornal);
+            Conexion.GDatos.Ejecutar("spELiminarMetaJornal", IdtMetaJornal);
             return true;
         }
     }

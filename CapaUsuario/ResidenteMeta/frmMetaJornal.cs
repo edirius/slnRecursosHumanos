@@ -42,10 +42,11 @@ namespace CapaUsuario.ResidenteMeta
                 miMejaJornal.IdtMetaJornal = Convert.ToInt32(row.Cells[1].Value);
                 miMejaJornal.Categoria = Convert.ToString(row.Cells[2].Value);
                 miMejaJornal.Jornal = Convert.ToInt32(row.Cells[3].Value);
+                miMeta.Codigo = sidtmeta;
                 if (Convert.ToString(row.Cells[0].Value) == "I")
                 {
                     miMejaJornal.CrearMetaJornal(miMejaJornal, miMeta);
-                    oDataMetaJornal = miMejaJornal.ListarMetaJornal(miMeta);
+                    oDataMetaJornal = miMejaJornal.ListarMetaJornal(miMeta.Codigo);
                     miMejaJornal.IdtMetaJornal = Convert.ToInt32(oDataMetaJornal.Compute("MAX(idtmetajornal)", ""));
                     row.Cells[1].Value = miMejaJornal.IdtMetaJornal.ToString();
                     row.Cells[0].Value = "M";
@@ -92,8 +93,7 @@ namespace CapaUsuario.ResidenteMeta
         private void CargarDatos()
         {
             dgvMetaJornal.Rows.Clear();
-            miMeta.Codigo = sidtmeta;
-            oDataMetaJornal = miMejaJornal.ListarMetaJornal(miMeta);
+            oDataMetaJornal = miMejaJornal.ListarMetaJornal(sidtmeta);
             int x = oDataMetaJornal.Rows.Count;
             if (oDataMetaJornal.Rows.Count == 0)
             {
