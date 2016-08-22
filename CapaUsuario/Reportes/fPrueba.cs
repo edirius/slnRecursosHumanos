@@ -115,6 +115,7 @@ namespace CapaUsuario.Reportes
 
             int pRegimenLaboral = 1;
             string pMes = "ENERO";
+            string pAño = "" ;
             int pidTrabajador = 0;
             int indice_ingreso = 0;
             int indice_descuento = 0;
@@ -154,7 +155,7 @@ namespace CapaUsuario.Reportes
 
             //odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(pMes, pRegimenLaboral);
             //Determinar si la consulta esta vacio
-            odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(pMes, pRegimenLaboral);
+            odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(pAño, pMes, pRegimenLaboral);
 
             odtPrueba.Clear();
 
@@ -166,7 +167,7 @@ namespace CapaUsuario.Reportes
                 drFila.Delete();
                 //Determinar en base al id del trabajador sus ingresos
                 pidTrabajador = Convert.ToInt32(row[6]);
-                odtPlanillaXIngresos = oPlanillaIngresos.spListarPlanillaXIngresos(pMes, pRegimenLaboral, pidTrabajador);
+                odtPlanillaXIngresos = oPlanillaIngresos.spListarPlanillaXIngresos(pAño,pMes, pRegimenLaboral, pidTrabajador);
 
                 foreach (DataRow row_i in odtPlanillaXIngresos.Rows)
                 {
@@ -199,7 +200,7 @@ namespace CapaUsuario.Reportes
 
 
                 //Determinar en base al id del trabajador sus descuentos
-                odtPlanillaXDescuentos = oPlanillaDescuentos.spListarPlanillaXDescuentos(pMes, pRegimenLaboral, pidTrabajador);
+                odtPlanillaXDescuentos = oPlanillaDescuentos.spListarPlanillaXDescuentos(pAño,pMes, pRegimenLaboral, pidTrabajador);
 
                 foreach (DataRow row_d in odtPlanillaXDescuentos.Rows){
                     // si no existe columna agregar titulo
@@ -231,7 +232,7 @@ namespace CapaUsuario.Reportes
 
                 
                 //Determinar en base al id del trabajador sus aportaciones del trabajador
-                odtPlanillaATrabajador = oPlanillaTrabajador.ListarPlanillaATrabajador(pMes, pRegimenLaboral, pidTrabajador);
+                odtPlanillaATrabajador = oPlanillaTrabajador.ListarPlanillaATrabajador(pAño,pMes, pRegimenLaboral, pidTrabajador);
 
                 foreach (DataRow row_t in odtPlanillaATrabajador.Rows)
                 {
@@ -265,7 +266,7 @@ namespace CapaUsuario.Reportes
                 drFila[indice_a_trabajador] = row[13].ToString();
 
                 //Determinar en base al id del trabajador sus aportaciones del empleador
-                odtPlanillaAEmpleador = oPlanillaEmpleador.ListarPlanillaAEmpleador(pMes, pRegimenLaboral, pidTrabajador);
+                odtPlanillaAEmpleador = oPlanillaEmpleador.ListarPlanillaAEmpleador(pAño,pMes, pRegimenLaboral, pidTrabajador);
 
                 foreach (DataRow row_e in odtPlanillaAEmpleador.Rows)
                 {
