@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.crvPlanilla = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.crPlanilla1 = new CapaUsuario.Reportes.crPlanilla();
             this.SuspendLayout();
             // 
             // crvPlanilla
@@ -41,28 +39,15 @@
             this.crvPlanilla.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvPlanilla.Location = new System.Drawing.Point(0, 0);
             this.crvPlanilla.Name = "crvPlanilla";
-            this.crvPlanilla.Size = new System.Drawing.Size(758, 578);
+            this.crvPlanilla.Size = new System.Drawing.Size(994, 542);
             this.crvPlanilla.TabIndex = 0;
             this.crvPlanilla.Load += new System.EventHandler(this.crvPlanilla_Load);
-            // 
-            // crystalReportViewer1
-            // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(758, 578);
-            this.crystalReportViewer1.TabIndex = 2;
-            this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
             // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(758, 578);
-            this.Controls.Add(this.crystalReportViewer1);
+            this.ClientSize = new System.Drawing.Size(994, 542);
             this.Controls.Add(this.crvPlanilla);
             this.IsMdiContainer = true;
             this.Name = "frmPlanilla";
@@ -75,7 +60,5 @@
         #endregion
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvPlanilla;
-        private CapaUsuario.Reportes.crPlanilla crPlanilla1;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
     }
 }
