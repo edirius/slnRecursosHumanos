@@ -53,6 +53,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.cboDistrito = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cboTipoComision = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cboAFP = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -62,7 +70,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(543, 198);
+            this.btnCancelar.Location = new System.Drawing.Point(543, 252);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 14;
@@ -78,7 +86,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(462, 198);
+            this.btnAceptar.Location = new System.Drawing.Point(462, 252);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 13;
@@ -92,15 +100,15 @@
             this.txtApePaterno.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtApePaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApePaterno.Location = new System.Drawing.Point(117, 38);
+            this.txtApePaterno.Location = new System.Drawing.Point(117, 64);
             this.txtApePaterno.Name = "txtApePaterno";
             this.txtApePaterno.Size = new System.Drawing.Size(501, 20);
-            this.txtApePaterno.TabIndex = 2;
+            this.txtApePaterno.TabIndex = 4;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 119);
+            this.label5.Location = new System.Drawing.Point(12, 145);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 13);
             this.label5.TabIndex = 67;
@@ -109,7 +117,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(56, 15);
+            this.label3.Location = new System.Drawing.Point(56, 41);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 66;
@@ -117,10 +125,11 @@
             // 
             // dtpFechaNacimiento
             // 
-            this.dtpFechaNacimiento.Location = new System.Drawing.Point(117, 113);
+            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(117, 139);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(215, 20);
-            this.dtpFechaNacimiento.TabIndex = 6;
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(214, 20);
+            this.dtpFechaNacimiento.TabIndex = 7;
             // 
             // txtNombre
             // 
@@ -128,23 +137,25 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNombre.Location = new System.Drawing.Point(117, 12);
+            this.txtNombre.Location = new System.Drawing.Point(117, 38);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(501, 20);
-            this.txtNombre.TabIndex = 1;
+            this.txtNombre.TabIndex = 3;
             // 
             // txtDNI
             // 
             this.txtDNI.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDNI.Location = new System.Drawing.Point(117, 139);
+            this.txtDNI.Location = new System.Drawing.Point(117, 12);
+            this.txtDNI.MaxLength = 8;
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(215, 20);
-            this.txtDNI.TabIndex = 7;
+            this.txtDNI.TabIndex = 0;
+            this.txtDNI.TextChanged += new System.EventHandler(this.txtDNI_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 41);
+            this.label2.Location = new System.Drawing.Point(21, 67);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 13);
             this.label2.TabIndex = 62;
@@ -153,7 +164,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(79, 142);
+            this.label1.Location = new System.Drawing.Point(79, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 61;
@@ -164,15 +175,15 @@
             this.txtApeMaterno.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtApeMaterno.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtApeMaterno.Location = new System.Drawing.Point(117, 64);
+            this.txtApeMaterno.Location = new System.Drawing.Point(117, 90);
             this.txtApeMaterno.Name = "txtApeMaterno";
             this.txtApeMaterno.Size = new System.Drawing.Size(501, 20);
-            this.txtApeMaterno.TabIndex = 3;
+            this.txtApeMaterno.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 67);
+            this.label4.Location = new System.Drawing.Point(19, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 13);
             this.label4.TabIndex = 73;
@@ -211,7 +222,7 @@
             // 
             this.cboProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProvincia.FormattingEnabled = true;
-            this.cboProvincia.Location = new System.Drawing.Point(117, 218);
+            this.cboProvincia.Location = new System.Drawing.Point(403, 191);
             this.cboProvincia.Name = "cboProvincia";
             this.cboProvincia.Size = new System.Drawing.Size(215, 21);
             this.cboProvincia.TabIndex = 11;
@@ -230,10 +241,10 @@
             // 
             this.rbtMasculino.AutoSize = true;
             this.rbtMasculino.Checked = true;
-            this.rbtMasculino.Location = new System.Drawing.Point(117, 90);
+            this.rbtMasculino.Location = new System.Drawing.Point(117, 116);
             this.rbtMasculino.Name = "rbtMasculino";
             this.rbtMasculino.Size = new System.Drawing.Size(73, 17);
-            this.rbtMasculino.TabIndex = 4;
+            this.rbtMasculino.TabIndex = 6;
             this.rbtMasculino.TabStop = true;
             this.rbtMasculino.Text = "Masculino";
             this.rbtMasculino.UseVisualStyleBackColor = true;
@@ -241,7 +252,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(74, 92);
+            this.label8.Location = new System.Drawing.Point(74, 118);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 81;
@@ -250,7 +261,7 @@
             // rbtFemenino
             // 
             this.rbtFemenino.AutoSize = true;
-            this.rbtFemenino.Location = new System.Drawing.Point(261, 90);
+            this.rbtFemenino.Location = new System.Drawing.Point(261, 114);
             this.rbtFemenino.Name = "rbtFemenino";
             this.rbtFemenino.Size = new System.Drawing.Size(71, 17);
             this.rbtFemenino.TabIndex = 5;
@@ -261,16 +272,16 @@
             // 
             this.txtCelular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCelular.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCelular.Location = new System.Drawing.Point(403, 139);
+            this.txtCelular.Location = new System.Drawing.Point(403, 12);
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(215, 20);
-            this.txtCelular.TabIndex = 8;
+            this.txtCelular.TabIndex = 2;
             // 
             // label9
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(352, 142);
+            this.label9.Location = new System.Drawing.Point(352, 15);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(45, 13);
             this.label9.TabIndex = 83;
@@ -279,7 +290,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(54, 221);
+            this.label10.Location = new System.Drawing.Point(340, 194);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 13);
             this.label10.TabIndex = 85;
@@ -289,7 +300,7 @@
             // 
             this.cboDistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDistrito.FormattingEnabled = true;
-            this.cboDistrito.Location = new System.Drawing.Point(117, 245);
+            this.cboDistrito.Location = new System.Drawing.Point(117, 218);
             this.cboDistrito.Name = "cboDistrito";
             this.cboDistrito.Size = new System.Drawing.Size(215, 21);
             this.cboDistrito.TabIndex = 12;
@@ -298,17 +309,96 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(66, 248);
+            this.label11.Location = new System.Drawing.Point(66, 221);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(45, 13);
             this.label11.TabIndex = 87;
             this.label11.Text = "Distrito :";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.cboTipoComision);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.cboAFP);
+            this.groupBox1.Location = new System.Drawing.Point(117, 245);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(339, 72);
+            this.groupBox1.TabIndex = 88;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "AFP";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(40, 49);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(73, 13);
+            this.label12.TabIndex = 84;
+            this.label12.Text = "Tipo Comision";
+            // 
+            // cboTipoComision
+            // 
+            this.cboTipoComision.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboTipoComision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoComision.FormattingEnabled = true;
+            this.cboTipoComision.Items.AddRange(new object[] {
+            "FLUJO",
+            "MIXTA"});
+            this.cboTipoComision.Location = new System.Drawing.Point(119, 46);
+            this.cboTipoComision.Name = "cboTipoComision";
+            this.cboTipoComision.Size = new System.Drawing.Size(214, 21);
+            this.cboTipoComision.TabIndex = 14;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 22);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(107, 13);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Regimen Pensionario";
+            // 
+            // cboAFP
+            // 
+            this.cboAFP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboAFP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAFP.FormattingEnabled = true;
+            this.cboAFP.Location = new System.Drawing.Point(119, 19);
+            this.cboAFP.Name = "cboAFP";
+            this.cboAFP.Size = new System.Drawing.Size(214, 21);
+            this.cboAFP.TabIndex = 13;
+            this.cboAFP.SelectedIndexChanged += new System.EventHandler(this.cboAFP_SelectedIndexChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(337, 144);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(71, 13);
+            this.label13.TabIndex = 90;
+            this.label13.Text = "Fecha Inicio :";
+            // 
+            // dtpFechaInicio
+            // 
+            this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicio.Location = new System.Drawing.Point(414, 138);
+            this.dtpFechaInicio.Name = "dtpFechaInicio";
+            this.dtpFechaInicio.Size = new System.Drawing.Size(204, 20);
+            this.dtpFechaInicio.TabIndex = 8;
+            // 
             // frmNuevoObrero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 275);
+            this.ClientSize = new System.Drawing.Size(630, 329);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.dtpFechaInicio);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cboDistrito);
             this.Controls.Add(this.label10);
@@ -339,6 +429,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Obrero";
             this.Load += new System.EventHandler(this.frmNuevoObrero_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,5 +462,12 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cboDistrito;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cboTipoComision;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cboAFP;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicio;
     }
 }

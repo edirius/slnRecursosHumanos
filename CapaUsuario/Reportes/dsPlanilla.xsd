@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPlanilla" targetNamespace="http://tempuri.org/dsPlanilla.xsd" xmlns:mstns="http://tempuri.org/dsPlanilla.xsd" xmlns="http://tempuri.org/dsPlanilla.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPlanilla" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsPlanilla" msprop:Generator_UserDSName="dsPlanilla">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Planilla" msprop:Generator_TableClassName="PlanillaDataTable" msprop:Generator_TableVarName="tablePlanilla" msprop:Generator_TablePropName="Planilla" msprop:Generator_RowDeletingName="PlanillaRowDeleting" msprop:Generator_RowChangingName="PlanillaRowChanging" msprop:Generator_RowEvHandlerName="PlanillaRowChangeEventHandler" msprop:Generator_RowDeletedName="PlanillaRowDeleted" msprop:Generator_UserTableName="Planilla" msprop:Generator_RowChangedName="PlanillaRowChanged" msprop:Generator_RowEvArgName="PlanillaRowChangeEvent" msprop:Generator_RowClassName="PlanillaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NOMBRE_x0020_COMPLETO" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_COMPLETO" msprop:Generator_ColumnPropNameInRow="NOMBRE_COMPLETO" msprop:Generator_ColumnPropNameInTable="NOMBRE_COMPLETOColumn" msprop:Generator_UserColumnName="NOMBRE COMPLETO" type="xs:string" minOccurs="0" />
+              <xs:element name="CARGO" msprop:Generator_ColumnVarNameInTable="columnCARGO" msprop:Generator_ColumnPropNameInRow="CARGO" msprop:Generator_ColumnPropNameInTable="CARGOColumn" msprop:Generator_UserColumnName="CARGO" type="xs:string" minOccurs="0" />
+              <xs:element name="DNI" msprop:Generator_ColumnVarNameInTable="columnDNI" msprop:Generator_ColumnPropNameInRow="DNI" msprop:Generator_ColumnPropNameInTable="DNIColumn" msprop:Generator_UserColumnName="DNI" type="xs:string" minOccurs="0" />
+              <xs:element name="RENUMERACION" msprop:Generator_ColumnVarNameInTable="columnRENUMERACION" msprop:Generator_ColumnPropNameInRow="RENUMERACION" msprop:Generator_ColumnPropNameInTable="RENUMERACIONColumn" msprop:Generator_UserColumnName="RENUMERACION" type="xs:string" minOccurs="0" />
+              <xs:element name="FECHA_x0020_INICIO" msprop:Generator_ColumnVarNameInTable="columnFECHA_INICIO" msprop:Generator_ColumnPropNameInRow="FECHA_INICIO" msprop:Generator_ColumnPropNameInTable="FECHA_INICIOColumn" msprop:Generator_UserColumnName="FECHA INICIO" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

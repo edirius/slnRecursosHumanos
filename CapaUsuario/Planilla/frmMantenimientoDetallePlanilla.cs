@@ -84,6 +84,7 @@ namespace CapaUsuario.Planilla
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
+            bool sexistsmetajornal = false;
             dgvDetallePlanilla.Rows.Clear();
             DataTable oDataTareo = new DataTable();
             DataTable oDataDetalleTareo = new DataTable();
@@ -96,17 +97,23 @@ namespace CapaUsuario.Planilla
             oDataTareo = miTareo.ListarTareo(sidtmeta);
             oDataMejaJornal = miMetaJornal.ListarMetaJornal(sidtmeta);
             oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "")));
-            foreach (DataRow rowtareo in oDataDetalleTareo.Select("idttareo = '" + Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "")) + "'"))
+            foreach (DataRow rowdetalletareo in oDataDetalleTareo.Select("idttareo = '" + Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "")) + "'"))
             {
-                CargarTrabajador(Convert.ToInt32(rowtareo[4].ToString()));
-                foreach (DataRow rowmetajornal in oDataMejaJornal.Select("categoria = '" + rowtareo[1].ToString() + "'"))
+                foreach (DataRow rowmetajornal in oDataMejaJornal.Select("categoria = '" + rowdetalletareo[1].ToString() + "'"))
                 {
-                    if (dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[4].Value.ToString() == rowtareo[4].ToString())
+                    sexistsmetajornal = true;
+                    CargarTrabajador(Convert.ToInt32(rowdetalletareo[4].ToString()));
+                    if (dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[4].Value.ToString() == rowdetalletareo[4].ToString())
                     {
-                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[7].Value = rowtareo[1].ToString();
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[7].Value = rowdetalletareo[1].ToString();
                         dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[9].Value = String.Format("{0:0.00}", Convert.ToDecimal(rowmetajornal[2].ToString()));
-                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = rowtareo[3].ToString();
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = rowdetalletareo[3].ToString();
                     }
+                }
+                if (sexistsmetajornal == false)
+                {
+                    MessageBox.Show("La Remuneración de los Obreros no existe, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
                 TotalRemuneracion();
                 CalcularIngresos(AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta);
@@ -381,6 +388,7 @@ namespace CapaUsuario.Planilla
                 CalcularDescuentos(AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta);
                 CalcularA_Empleador(AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta);
                 CalcularNetoaCobrar();
+                btnImportar.Enabled = false;
             }
         }
 

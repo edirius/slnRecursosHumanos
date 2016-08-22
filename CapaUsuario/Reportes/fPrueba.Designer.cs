@@ -35,9 +35,9 @@
             // dgvPrueba
             // 
             this.dgvPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrueba.Location = new System.Drawing.Point(12, 12);
+            this.dgvPrueba.Location = new System.Drawing.Point(-1, 0);
             this.dgvPrueba.Name = "dgvPrueba";
-            this.dgvPrueba.Size = new System.Drawing.Size(857, 417);
+            this.dgvPrueba.Size = new System.Drawing.Size(1179, 573);
             this.dgvPrueba.TabIndex = 0;
             this.dgvPrueba.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrueba_CellContentClick);
             // 
@@ -45,7 +45,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 571);
+            this.ClientSize = new System.Drawing.Size(1177, 571);
             this.Controls.Add(this.dgvPrueba);
             this.Name = "fPrueba";
             this.Text = "fPrueba";
