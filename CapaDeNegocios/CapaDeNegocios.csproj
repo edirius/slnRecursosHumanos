@@ -117,6 +117,7 @@
     <Compile Include="Sunat\cMaestroAportacionesTrabajador.cs" />
     <Compile Include="Sunat\cMaestroDescuentos.cs" />
     <Compile Include="Sunat\cMaestroIngresos.cs" />
+    <Compile Include="TablasParametricas\cExportarTextoSunat.cs" />
     <Compile Include="Tareos\cDetalleTareo.cs" />
     <Compile Include="Tareos\cDiasTareo.cs" />
     <Compile Include="DatosLaborales\cOcupacion.cs" />
