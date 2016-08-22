@@ -15,7 +15,6 @@ namespace CapaDeNegocios
         string saño;
         int ssueldominimo;
         int suit;
-        
         public int IdtVariables
         {
             get { return sidtvariables; }
@@ -47,7 +46,6 @@ namespace CapaDeNegocios
         }
         public DataTable ListarUIT(string año)
         {
-            
             return Conexion.GDatos.TraerDataTable("spListarUIT", año);
         }
         public DataTable ListarAños()

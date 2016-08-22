@@ -107,6 +107,7 @@
             this.cboAño.Name = "cboAño";
             this.cboAño.Size = new System.Drawing.Size(159, 21);
             this.cboAño.TabIndex = 81;
+            this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
             // 
             // nudSueldoMinimo
             // 
