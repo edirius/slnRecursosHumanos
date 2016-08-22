@@ -39,7 +39,7 @@ namespace CapaUsuario.AFP
 
         private void btnNavegador_Click_1(object sender, EventArgs e)
         {
-            this.Size = new Size(1200, 364);
+            this.Size = new Size(1350, 479);
             webSBS.Navigate("http://www.sbs.gob.pe/usuarios/categoria/comisiones-y-primas-de-seguro-del-spp/277/c-277");
             this.StartPosition = FormStartPosition.CenterScreen;
             //Navegador.frmNavegador miNavegador = new Navegador.frmNavegador();
@@ -62,6 +62,11 @@ namespace CapaUsuario.AFP
         private void btnSalir_Click_1(object sender, EventArgs e)
         {
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+        }
+
+        private void lblAFP_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

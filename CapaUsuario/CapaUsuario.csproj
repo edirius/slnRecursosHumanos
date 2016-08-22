@@ -1212,6 +1212,11 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\chart.png" />
+    <None Include="Resources\delete_page.png" />
+    <None Include="Resources\add_to_folder.png" />
+    <None Include="Resources\add1.png" />
+    <None Include="Resources\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

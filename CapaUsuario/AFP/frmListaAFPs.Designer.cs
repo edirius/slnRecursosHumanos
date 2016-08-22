@@ -135,7 +135,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListaAFPs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Lista AFPs";
+            this.Text = "Lista AFPs y ONP";
             this.Load += new System.EventHandler(this.frmListaAFPs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaAFPs)).EndInit();
             this.ResumeLayout(false);

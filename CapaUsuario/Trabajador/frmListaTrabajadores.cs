@@ -127,5 +127,11 @@ namespace CapaUsuario.Trabajador
             fPeriodoTrabajador.RecibirDatos(pidttrabajador, trabajador);
             fPeriodoTrabajador.ShowDialog();
         }
+
+        private void btnBuscarDNI_Click(object sender, EventArgs e)
+        {
+            DataTable r = new DataTable();
+           
+        }
     }
 }
