@@ -516,12 +516,16 @@ namespace CapaUsuario.Planilla
 
         private void TotalRemuneracion(int fila)
         {
-            decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[9].Value) / 30;
+            decimal PagoTotal = 0;
+            int DiasLaborados = 0;
             int AñoInicio = Convert.ToDateTime(dgvDetallePlanilla.Rows[fila].Cells[10].Value).Year;
             int MesInicio = Convert.ToDateTime(dgvDetallePlanilla.Rows[fila].Cells[10].Value).Month;
             int DiaInicio = Convert.ToDateTime(dgvDetallePlanilla.Rows[fila].Cells[10].Value).Day;
-            int DiasLaborados = 0;
-            decimal PagoTotal = 0;
+            int DiasMes = DateTime.DaysInMonth(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)));
+            int sMes = Convert.ToInt32(Mes(smes));
+
+            decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[9].Value) / 30;
+            DiasLaborados = 1 + DateTime.DaysInMonth(AñoInicio, MesInicio) - DiaInicio;
             if (sidtregimenlaboral == 3)
             {
                 DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
@@ -529,15 +533,21 @@ namespace CapaUsuario.Planilla
             }
             else
             {
-                if (MesInicio < Convert.ToInt32(Mes(smes)))
+                if (sMes > MesInicio)
                 {
-                    DiasLaborados = DateTime.DaysInMonth(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)));
-                    PagoTotal = Math.Round(PagoDia * 30, 2);
+                    DiasLaborados = DiasMes;
+                    PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[9].Value);
                 }
                 else
                 {
-                    DiasLaborados = 1 + DateTime.DaysInMonth(AñoInicio, MesInicio) - DiaInicio;
-                    PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                    if (DiasLaborados == DiasMes)
+                    {
+                        PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[9].Value);
+                    }
+                    else
+                    {
+                        PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                    }
                 }
             }
             dgvDetallePlanilla.Rows[fila].Cells[11].Value = DiasLaborados;
@@ -641,7 +651,12 @@ namespace CapaUsuario.Planilla
 
                         string formula = sma_trabajador[i, 3].ToString();
                         double result = parser.Parse(formula);
-
+                        //renta 4ta Categoria
+                        if (sma_trabajador[i, 1].ToString() == "0618" && sval.Value <= 1500)
+                        {
+                            result = 0;
+                        }
+                        //
                         if (AFP == "SNP" && dgvDetallePlanilla.Columns[17 + con_ingresos + i].Name != "T9")
                         {
                             dgvDetallePlanilla.Rows[fila].Cells[17 + con_ingresos + i].Value = String.Format("{0:0.00}", 0);
@@ -712,6 +727,12 @@ namespace CapaUsuario.Planilla
 
                         string formula = smdescuentos[i, 3].ToString();
                         double result = parser.Parse(formula);
+                        //renta 4ta Categoria
+                        if (smdescuentos[i, 1].ToString() == "0618" && sval.Value <= 1500)
+                        {
+                            result = 0;
+                        }
+                        //
                         dgvDetallePlanilla.Rows[fila].Cells[17 + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", result);
                         total_descuentos += decimal.Round(Convert.ToDecimal(result), 2);
                     }

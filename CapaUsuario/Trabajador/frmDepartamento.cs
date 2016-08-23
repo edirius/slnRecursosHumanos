@@ -34,5 +34,15 @@ namespace CapaUsuario.Trabajador
         {
             dtgListaDepartamento.DataSource = miDepartamento.ListaDepartamentos();
         }
+
+        private void dtgListaDepartamento_Enter(object sender, EventArgs e)
+        {
+            toolDepartamento.Show("Presione ENTER para seleccionar el Departamento", dtgListaDepartamento);
+        }
+
+        private void dtgListaDepartamento_MouseEnter(object sender, EventArgs e)
+        {
+            toolDepartamento.Show("Presione ENTER para seleccionar el Departamento", dtgListaDepartamento);
+        }
     }
 }

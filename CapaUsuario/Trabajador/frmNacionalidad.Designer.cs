@@ -38,6 +38,8 @@
             // 
             // dtgNacionalidad
             // 
+            this.dtgNacionalidad.AllowUserToAddRows = false;
+            this.dtgNacionalidad.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
             this.dtgNacionalidad.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgNacionalidad.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -46,7 +48,9 @@
             this.codigoSunat,
             this.descripcion});
             this.dtgNacionalidad.Location = new System.Drawing.Point(12, 12);
+            this.dtgNacionalidad.MultiSelect = false;
             this.dtgNacionalidad.Name = "dtgNacionalidad";
+            this.dtgNacionalidad.ReadOnly = true;
             this.dtgNacionalidad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgNacionalidad.Size = new System.Drawing.Size(370, 263);
             this.dtgNacionalidad.TabIndex = 0;
@@ -57,6 +61,7 @@
             this.idtNacionalidad.DataPropertyName = "idtNacionalidad";
             this.idtNacionalidad.HeaderText = "codigo";
             this.idtNacionalidad.Name = "idtNacionalidad";
+            this.idtNacionalidad.ReadOnly = true;
             this.idtNacionalidad.Width = 50;
             // 
             // codigoSunat
@@ -64,6 +69,7 @@
             this.codigoSunat.DataPropertyName = "codigoSunat";
             this.codigoSunat.HeaderText = "Codigo Sunat";
             this.codigoSunat.Name = "codigoSunat";
+            this.codigoSunat.ReadOnly = true;
             this.codigoSunat.Width = 50;
             // 
             // descripcion
@@ -71,6 +77,7 @@
             this.descripcion.DataPropertyName = "descripcion";
             this.descripcion.HeaderText = "Descripcion";
             this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
             this.descripcion.Width = 200;
             // 
             // frmNacionalidad

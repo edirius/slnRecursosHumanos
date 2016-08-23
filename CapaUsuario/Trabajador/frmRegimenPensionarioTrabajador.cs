@@ -107,7 +107,7 @@ namespace CapaUsuario.Trabajador
                 }
                 else
                 {
-                    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicio);
+                    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicioperiodo);
                     //dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechainicio);
                     dtpFechaInicio.Value = Convert.ToDateTime(pfechainicio);
                 }
