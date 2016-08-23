@@ -268,5 +268,12 @@ namespace CapaUsuario
             f5ta.MdiParent = this;
             f5ta.Show();
         }
+
+        private void tributosYDescuentosDelTrabajadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmExportarTributosDescuentosTrabajador frmExportarTDT = new ExportarSunat.frmExportarTributosDescuentosTrabajador();
+            frmExportarTDT.MdiParent = this;
+            frmExportarTDT.Show();
+        }
     }
 }

@@ -116,6 +116,12 @@
       <DependentUpon>bdpersonalDataSet11.xsd</DependentUpon>
     </Compile>
     <Compile Include="ConvertImage.cs" />
+    <Compile Include="ExportarSunat\frmExportarTributosDescuentosTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarSunat\frmExportarTributosDescuentosTrabajador.Designer.cs">
+      <DependentUpon>frmExportarTributosDescuentosTrabajador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Planilla\frmImpuestoAlaRentaDe5taCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -566,12 +572,6 @@
     <Compile Include="Reportes\taportaciones.cs">
       <DependentUpon>modPersonal.tt</DependentUpon>
     </Compile>
-    <Compile Include="TablasParametricas\frmTributosyDescuentosTrabajador.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TablasParametricas\frmTributosyDescuentosTrabajador.Designer.cs">
-      <DependentUpon>frmTributosyDescuentosTrabajador.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tareo\frmMantenimientoDetalleTareo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -899,6 +899,9 @@
     <EmbeddedResource Include="AFP\frmListaAFPs.resx">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExportarSunat\frmExportarTributosDescuentosTrabajador.resx">
+      <DependentUpon>frmExportarTributosDescuentosTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MDIParent1.resx">
       <DependentUpon>MDIParent1.cs</DependentUpon>
     </EmbeddedResource>
@@ -1036,9 +1039,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sunat\frmMantenimientoMaestroIngresos.resx">
       <DependentUpon>frmMantenimientoMaestroIngresos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TablasParametricas\frmTributosyDescuentosTrabajador.resx">
-      <DependentUpon>frmTributosyDescuentosTrabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmMantenimientoDetalleTareo.resx">
       <DependentUpon>frmMantenimientoDetalleTareo.cs</DependentUpon>
