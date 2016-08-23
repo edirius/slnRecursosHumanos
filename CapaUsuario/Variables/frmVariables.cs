@@ -26,6 +26,11 @@ namespace CapaUsuario.Variables
             CargarAños();
         }
 
+        private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             bool bOk = false;
