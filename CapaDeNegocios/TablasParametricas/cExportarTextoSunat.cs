@@ -23,5 +23,11 @@ namespace CapaDeNegocios.TablasParametricas
             }
             return Texto;
         }
+
+        public DataTable ListarTrabajadoresPorPlanilla(int idplanilla)
+        {
+    
+            return Conexion.GDatos.TraerDataTable("spListarTrabajadoresPorPlanilla", idplanilla);
+        }
     }
 }

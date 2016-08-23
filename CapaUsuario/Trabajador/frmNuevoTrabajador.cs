@@ -347,10 +347,7 @@ namespace CapaUsuario.Trabajador
             //    dtgTipoTrabajador.DataSource = miTipoTrabajador.ListarPeriodoTipoTrabajador();
             //}
         }
-        private void dtpInicioContrato_ValueChanged(object sender, EventArgs e)
-        {
-            dtpFinContrato.MinDate = dtpInicioContrato.Value; 
-        }
+       
 
         #endregion
 
@@ -398,12 +395,119 @@ namespace CapaUsuario.Trabajador
             //}  
         }
 
-        private void dtpFechaFinPeriodo_ValueChanged(object sender, EventArgs e)
+        #region Codigo Para Facilitar al Usuario
+        private void txtNacionalidad_Enter(object sender, EventArgs e)
         {
-            txtFechaFinPeriodo.Text = dtpFechaFinPeriodo.Value.ToShortDateString(); 
+            toolTrabajador.ToolTipTitle = "TIP";
+            toolTrabajador.Show("Presione F2 para seleccionar la nacionalidad", txtNacionalidad);
         }
 
-       
+        private void txtDepartamento_Enter(object sender, EventArgs e)
+        {
+            toolTrabajador.ToolTipTitle = "TIP";
+            toolTrabajador.Show("Presione F2 para seleccionar el Departamento", txtDepartamento);
+        }
+
+        private void txtProvincia_Enter(object sender, EventArgs e)
+        {
+            toolTrabajador.ToolTipTitle = "TIP";
+            toolTrabajador.Show("Presione F2 para seleccionar la Provincia", txtProvincia);
+        }
+
+        private void txtDistrito_Enter(object sender, EventArgs e)
+        {
+            toolTrabajador.ToolTipTitle = "TIP";
+            toolTrabajador.Show("Presione F2 para seleccionar el distrito", txtDistrito);
+        }
+
+        private void txtTipoVia_Enter(object sender, EventArgs e)
+        {
+            toolTrabajador.ToolTipTitle = "TIP";
+            toolTrabajador.Show("Presione F2 para seleccionar el tipo de via", txtTipoVia);
+        }
+
+        private void txtTipoZona_Enter(object sender, EventArgs e)
+        {
+            toolTrabajador.ToolTipTitle = "TIP";
+            toolTrabajador.Show("Presione F2 para seleccionar el tipo de zona", txtTipoZona);
+        }
+
+        private void btnNacionalidad_Click(object sender, EventArgs e)
+        {
+            frmNacionalidad fNacionalidad = new frmNacionalidad();
+            if (fNacionalidad.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                miTrabajador.MiNacionalidad = fNacionalidad.miNacionalidad;
+                txtNacionalidad.Text = miTrabajador.MiNacionalidad.Descripcion;
+            }
+        }
+
+        private void btnApartamento_Click(object sender, EventArgs e)
+        {
+            frmDepartamento fDepartamento = new frmDepartamento();
+            if (fDepartamento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                miTrabajador.MiDepartamento = fDepartamento.miDepartamento;
+                txtDepartamento.Text = miTrabajador.MiDepartamento.Descripcion;
+            }
+        }
+
+        private void btnProvincia_Click(object sender, EventArgs e)
+        {
+            if (txtDepartamento.Text.Length > 0)
+            {
+                frmProvincia fProvincia = new frmProvincia();
+                fProvincia.miProvincia = new cProvincia();
+                fProvincia.miProvincia.MiDepartamento = miTrabajador.MiDepartamento;
+                if (fProvincia.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    miTrabajador.MiProvincia = fProvincia.miProvincia;
+                    txtProvincia.Text = miTrabajador.MiProvincia.Descripcion;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione primero el departamento");
+            }
+        }
+
+        private void btnDistrito_Click(object sender, EventArgs e)
+        {
+            if (txtProvincia.Text.Length > 0)
+            {
+                frmListaDistritos fListaDistritos = new frmListaDistritos();
+                fListaDistritos.miDistrito = new cDistrito();
+                fListaDistritos.miDistrito.MiProvincia = miTrabajador.MiProvincia;
+                if (fListaDistritos.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    miTrabajador.MiDistrito = fListaDistritos.miDistrito;
+                    txtDistrito.Text = miTrabajador.MiDistrito.Descripcion;
+                }
+            }
+        }
+
+        private void btnTipoVia_Click(object sender, EventArgs e)
+        {
+            frmTipoVia fTipoVia = new frmTipoVia();
+            if (fTipoVia.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                miTrabajador.MiTipoVia = fTipoVia.miTipoVia;
+                txtTipoVia.Text = miTrabajador.MiTipoVia.Descripcion;
+            }
+        }
+
+        private void btnTipoZona_Click(object sender, EventArgs e)
+        {
+            frmTipoZona fTipoZona = new frmTipoZona();
+            if (fTipoZona.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                miTrabajador.MiTipoZOna = fTipoZona.miTipoZona;
+                txtTipoZona.Text = miTrabajador.MiTipoZOna.Descripcion;
+            }
+        }
+        #endregion
+
+
     }
 
 
