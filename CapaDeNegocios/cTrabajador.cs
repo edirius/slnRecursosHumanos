@@ -192,6 +192,20 @@ namespace CapaDeNegocios
             set { correoElectronico = value; }
         }
 
+        public bool Essaludvida
+        {
+            get
+            {
+                return essaludvida;
+            }
+
+            set
+            {
+                essaludvida = value;
+            }
+        }
+
+        private Boolean essaludvida;
 
         public cTrabajador traerTrabajador(int codigoTrabajador)
         {
@@ -260,6 +274,7 @@ namespace CapaDeNegocios
                 miTrabajador.miDistrito.Codigo = Convert.ToInt16(dt.Rows[0][20]);
                 miTrabajador.miNacionalidad = new cNacionalidad();
                 miTrabajador.miNacionalidad.Codigo = Convert.ToInt16(dt.Rows[0][21]);
+                miTrabajador.essaludvida  = Convert.ToBoolean(dt.Rows[0][22]);
 
                 miTrabajador.miTipoVia = miTrabajador.miTipoVia.TraerTipoVia(miTrabajador.miTipoVia.Codigo);
                 miTrabajador.miTipoZOna = miTrabajador.miTipoZOna.TraerTipoZona(miTrabajador.miTipoZOna.Codigo);
@@ -281,6 +296,7 @@ namespace CapaDeNegocios
         public Boolean AgregarTrabajador(cTrabajador trabajador)
         {
             string sexo = "";
+            int essalud= 0;
 
             switch (trabajador.Sexo)
             {
@@ -294,7 +310,19 @@ namespace CapaDeNegocios
 
                     break;
             }
-            Conexion.GDatos.Ejecutar("spCrearTrabajador", trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo);
+
+            switch (trabajador.essaludvida)     
+            {
+                case true:
+                    essalud = 1;
+                    break;
+                case false:
+                    essalud = 0;
+                    break;
+                default:
+                    break;
+            }
+            Conexion.GDatos.Ejecutar("spCrearTrabajador", trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud);
 
             return true;
         }
@@ -302,7 +330,7 @@ namespace CapaDeNegocios
         public Boolean ModificarTrabajador(cTrabajador trabajador)
         {
             string sexo = "";
-
+            int essalud = 0;
             switch (trabajador.Sexo)
             {
                 case EnumSexo.Masculino:
@@ -316,7 +344,19 @@ namespace CapaDeNegocios
                     break;
             }
 
-            Conexion.GDatos.Ejecutar("spModificarTrabajador", trabajador.IdTrabajador, trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo);
+            switch (trabajador.essaludvida)
+            {
+                case true:
+                    essalud = 1;
+                    break;
+                case false:
+                    essalud = 0;
+                    break;
+                default:
+                    break;
+            }
+
+            Conexion.GDatos.Ejecutar("spModificarTrabajador", trabajador.IdTrabajador, trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud);
             return true;
         }
 

@@ -87,6 +87,7 @@
     <Compile Include="enumCategoriaObrero.cs" />
     <Compile Include="enumEstadoCivil.cs" />
     <Compile Include="enumPlanilla.cs" />
+    <Compile Include="ExportarSunat\cExportarSunat.cs" />
     <Compile Include="Institucion.cs" />
     <Compile Include="Obras\cActividadObra.cs" />
     <Compile Include="Obras\cCadenaProgramaticaFuncional.cs" />
@@ -118,7 +119,6 @@
     <Compile Include="Sunat\cMaestroAportacionesTrabajador.cs" />
     <Compile Include="Sunat\cMaestroDescuentos.cs" />
     <Compile Include="Sunat\cMaestroIngresos.cs" />
-    <Compile Include="TablasParametricas\cExportarTextoSunat.cs" />
     <Compile Include="Tareos\cDetalleTareo.cs" />
     <Compile Include="Tareos\cDiasTareo.cs" />
     <Compile Include="DatosLaborales\cOcupacion.cs" />
@@ -130,6 +130,7 @@
     <Compile Include="Trabajadores\cTrabajadorPermanente.cs" />
     <Compile Include="Trabajadores\cTrabajadorServidorNoPersonal.cs" />
     <Compile Include="Trabajadores\cTrabajadorServidorPersonal.cs" />
+    <Compile Include="Usuario\cUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

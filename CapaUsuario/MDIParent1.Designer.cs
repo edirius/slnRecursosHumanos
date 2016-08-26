@@ -83,6 +83,8 @@
             this.maestroDescuentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestroDescuentosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.IR5taCategoriatoolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportarTextoSUNATToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -111,11 +113,12 @@
             this.helpMenu,
             this.planillasToolStripMenuItem,
             this.sUNATToolStripMenuItem,
-            this.IR5taCategoriatoolStripMenuItem4});
+            this.IR5taCategoriatoolStripMenuItem4,
+            this.exportarTextoSUNATToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(763, 24);
+            this.menuStrip.Size = new System.Drawing.Size(952, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -291,27 +294,27 @@
             this.mantenimientoDeCargosToolStripMenuItem,
             this.residenteMetaToolStripMenuItem});
             this.viewMenu.Name = "viewMenu";
-            this.viewMenu.Size = new System.Drawing.Size(86, 20);
+            this.viewMenu.Size = new System.Drawing.Size(87, 20);
             this.viewMenu.Text = "&Trabajadores";
             // 
             // mantenimientoDeTrabajadoresToolStripMenuItem
             // 
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Name = "mantenimientoDeTrabajadoresToolStripMenuItem";
-            this.mantenimientoDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.mantenimientoDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Text = "Mantenimiento de Trabajadores";
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeTrabajadoresToolStripMenuItem_Click);
             // 
             // mantenimientoDeCargosToolStripMenuItem
             // 
             this.mantenimientoDeCargosToolStripMenuItem.Name = "mantenimientoDeCargosToolStripMenuItem";
-            this.mantenimientoDeCargosToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.mantenimientoDeCargosToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
             this.mantenimientoDeCargosToolStripMenuItem.Text = "Mantenimiento de Cargos";
             this.mantenimientoDeCargosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeCargosToolStripMenuItem_Click);
             // 
             // residenteMetaToolStripMenuItem
             // 
             this.residenteMetaToolStripMenuItem.Name = "residenteMetaToolStripMenuItem";
-            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
             this.residenteMetaToolStripMenuItem.Text = "Residente Meta";
             this.residenteMetaToolStripMenuItem.Click += new System.EventHandler(this.residenteMetaToolStripMenuItem_Click);
             // 
@@ -320,13 +323,13 @@
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
-            this.toolsMenu.Size = new System.Drawing.Size(53, 20);
+            this.toolsMenu.Size = new System.Drawing.Size(54, 20);
             this.toolsMenu.Text = "Tareos";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.optionsToolStripMenuItem.Text = "Tareo de Obras";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
@@ -486,7 +489,7 @@
             this.maestroDescuentosToolStripMenuItem,
             this.maestroDescuentosToolStripMenuItem1});
             this.sUNATToolStripMenuItem.Name = "sUNATToolStripMenuItem";
-            this.sUNATToolStripMenuItem.Size = new System.Drawing.Size(171, 20);
+            this.sUNATToolStripMenuItem.Size = new System.Drawing.Size(173, 20);
             this.sUNATToolStripMenuItem.Text = "SUNAT - Tablas Parametricas";
             // 
             // motivoFinPeriodoToolStripMenuItem
@@ -530,6 +533,22 @@
             this.IR5taCategoriatoolStripMenuItem4.Text = "Calculo de Impuesto 5ta Categoria";
             this.IR5taCategoriatoolStripMenuItem4.Click += new System.EventHandler(this.IR5taCategoriatoolStripMenuItem4_Click);
             // 
+            // exportarTextoSUNATToolStripMenuItem
+            // 
+            this.exportarTextoSUNATToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem});
+            this.exportarTextoSUNATToolStripMenuItem.Name = "exportarTextoSUNATToolStripMenuItem";
+            this.exportarTextoSUNATToolStripMenuItem.Size = new System.Drawing.Size(135, 20);
+            this.exportarTextoSUNATToolStripMenuItem.Text = "Exportar Texto SUNAT";
+           
+            // 
+            // tributosYDescuentosDelTrabajadorToolStripMenuItem
+            // 
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Name = "tributosYDescuentosDelTrabajadorToolStripMenuItem";
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Text = "Tributos y Descuentos del Trabajador";
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Click += new System.EventHandler(this.tributosYDescuentosDelTrabajadorToolStripMenuItem_Click);
+            // 
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -543,7 +562,7 @@
             this.helpToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(763, 25);
+            this.toolStrip.Size = new System.Drawing.Size(952, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
@@ -619,7 +638,7 @@
             this.toolStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 431);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(763, 22);
+            this.statusStrip.Size = new System.Drawing.Size(952, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -633,7 +652,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 453);
+            this.ClientSize = new System.Drawing.Size(952, 453);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -722,6 +741,8 @@
         private System.Windows.Forms.ToolStripMenuItem fuenteFinanciamientoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planillaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem IR5taCategoriatoolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem exportarTextoSUNATToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tributosYDescuentosDelTrabajadorToolStripMenuItem;
     }
 }
 

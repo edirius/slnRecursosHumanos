@@ -62,7 +62,8 @@ namespace CapaUsuario.Trabajador
             {
                 pbFoto.Image = ConvertImage.ByteArrayToImage(miTrabajador.Foto);
             }
-            
+
+            chkEssaludVida.Checked = miTrabajador.Essaludvida;
            
         }
 
@@ -126,8 +127,9 @@ namespace CapaUsuario.Trabajador
             {
                 miTrabajador.Foto = null;
             }
-        
-            
+
+            miTrabajador.Essaludvida = chkEssaludVida.Checked;
+
             DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
@@ -505,9 +507,13 @@ namespace CapaUsuario.Trabajador
                 txtTipoZona.Text = miTrabajador.MiTipoZOna.Descripcion;
             }
         }
+
         #endregion
 
+        private void chkEssaludVida_CheckedChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 
 
