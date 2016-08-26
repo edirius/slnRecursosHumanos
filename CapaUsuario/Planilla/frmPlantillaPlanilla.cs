@@ -12,18 +12,14 @@ namespace CapaUsuario.Planilla
 {
     public partial class frmPlantillaPlanilla : Form
     {
-        int iAccion = 0;
-        int sIdTPlantillaPlanilla = 0;
         string sTipo = "";
-        int sidtregimenlaboral = 0;
+        public string[,] smaestro;
+        public int sfilasseleccionmaestro = 0;
 
-        DataTable oDataPlantillaPlanilla = new DataTable();
         DataTable oDataMaestroIngresos = new DataTable();
         DataTable oDataMaestroDescuentos = new DataTable();
         DataTable oDataMaestroATrabajador = new DataTable();
         DataTable oDataMaestroAEmpleador = new DataTable();
-
-        CapaDeNegocios.Planillas.cPlantillaPlanilla miPlantillaPlanilla = new CapaDeNegocios.Planillas.cPlantillaPlanilla();
 
         public frmPlantillaPlanilla()
         {
@@ -37,29 +33,26 @@ namespace CapaUsuario.Planilla
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            bool bOk = false;
-            if (iAccion == 1)
+            int i = 0, j = 0;
+            foreach (DataGridViewRow row in dgvMaestro.Rows)
             {
-                miPlantillaPlanilla.Tipo = sTipo;
-                miPlantillaPlanilla.IdtRegimenLaboral = sidtregimenlaboral;
-                foreach (DataGridViewRow row in dgvMaestro.Rows)
+                if (Convert.ToInt32(row.Cells[3].Value) == 1)
                 {
-                    if (Convert.ToInt32(row.Cells[3].Value) == 1)
-                    {
-                        miPlantillaPlanilla.Codigo = Convert.ToInt32(row.Cells[0].Value);
-                        miPlantillaPlanilla.CrearPlantillaPlanilla(miPlantillaPlanilla);
-                    }
+                    sfilasseleccionmaestro += 1;
                 }
-                bOk = true;
             }
-            if (bOk == true)
+            smaestro = new string[sfilasseleccionmaestro, 3];
+            for (i = 0; i < dgvMaestro.Rows.Count; i++)
             {
-                DialogResult = System.Windows.Forms.DialogResult.OK;
+                if (Convert.ToInt32(dgvMaestro.Rows[i].Cells[3].Value) == 1)
+                {
+                    smaestro[j, 0] = dgvMaestro.Rows[i].Cells[0].Value.ToString();
+                    smaestro[j, 1] = dgvMaestro.Rows[i].Cells[1].Value.ToString();
+                    smaestro[j, 2] = dgvMaestro.Rows[i].Cells[2].Value.ToString();
+                    j += 1;
+                }
             }
-            else
-            {
-                MessageBox.Show("No se puede registrar estos datos", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -67,20 +60,14 @@ namespace CapaUsuario.Planilla
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
-        public void RecibirDatos(string ptipo, string pregimenlaboral, int pidtregimenlaboral, int piAccion)
+        public void RecibirDatos(string ptipo)
         {
             sTipo = ptipo;
-            txtTipoTrabajador.Text = pregimenlaboral;
-            sidtregimenlaboral = pidtregimenlaboral;
-            iAccion = piAccion;
         }
 
         private void CargarDatos()
         {
-            int contador = 0;
             dgvMaestro.Rows.Clear();
-
-            oDataPlantillaPlanilla = miPlantillaPlanilla.ListarPlantillaPlanilla(sidtregimenlaboral);
 
             CapaDeNegocios.Sunat.cMaestroIngresos miMaestroIngresos = new CapaDeNegocios.Sunat.cMaestroIngresos();
             oDataMaestroIngresos = miMaestroIngresos.ListarMaestroIngresos("");
@@ -95,60 +82,28 @@ namespace CapaUsuario.Planilla
             {
                 foreach (DataRow row in oDataMaestroIngresos.Rows)
                 {
-                    contador = 0;
-                    foreach (DataRow row1 in oDataPlantillaPlanilla.Select("codigo = '" + row[0].ToString() + "' AND tipo = '" + sTipo + "'"))
-                    {
-                        contador += 1;
-                    }
-                    if (contador == 0)
-                    {
-                        dgvMaestro.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString());
-                    }
+                    dgvMaestro.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString());
                 }
             }
             else if (sTipo == "DESCUENTOS")
             {
                 foreach (DataRow row in oDataMaestroDescuentos.Rows)
                 {
-                    contador = 0;
-                    foreach (DataRow row1 in oDataPlantillaPlanilla.Select("codigo = '" + row[0].ToString() + "' AND tipo = '" + sTipo + "'"))
-                    {
-                        contador += 1;
-                    }
-                    if (contador == 0)
-                    {
-                        dgvMaestro.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString());
-                    }
+                    dgvMaestro.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString());
                 }
             }
             else if (sTipo == "A_TRABAJADOR")
             {
                 foreach (DataRow row in oDataMaestroATrabajador.Rows)
                 {
-                    contador = 0;
-                    foreach (DataRow row1 in oDataPlantillaPlanilla.Select("codigo = '" + row[0].ToString() + "' AND tipo = '" + sTipo + "'"))
-                    {
-                        contador += 1;
-                    }
-                    if (contador == 0)
-                    {
-                        dgvMaestro.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString());
-                    }
+                    dgvMaestro.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString());
                 }
             }
             else if (sTipo == "A_EMPLEADOR")
             {
                 foreach (DataRow row in oDataMaestroAEmpleador.Rows)
                 {
-                    contador = 0;
-                    foreach (DataRow row1 in oDataPlantillaPlanilla.Select("codigo = '" + row[0].ToString() + "' AND tipo = '" + sTipo + "'"))
-                    {
-                        contador += 1;
-                    }
-                    if (contador == 0)
-                    {
-                        dgvMaestro.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString());
-                    }
+                    dgvMaestro.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString());
                 }
             }
         }

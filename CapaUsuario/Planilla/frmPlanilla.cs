@@ -19,7 +19,9 @@ namespace CapaUsuario.Planilla
         int sidtregimenlaboral;
         string smeta;
         string sfuentefinanciamiento;
+        string sregimenlaboral;
         string saño;
+        string splantilla;
 
         public frmPlanilla()
         {
@@ -31,6 +33,8 @@ namespace CapaUsuario.Planilla
             CargarAños();
             CargarMeta();
             CargarFuenteFinanciamiento();
+            CargarRegimenLaboral();
+            CargarPlantilla();
             cboMeta_SelectedIndexChanged(sender, e);
             cboFuenteFinanciamiento_SelectedIndexChanged(sender, e);
         }
@@ -47,7 +51,8 @@ namespace CapaUsuario.Planilla
             miPlanilla.IdtMeta = sidtmeta;
             miPlanilla.IdtFuenteFinanciamiento = sidtfuentefinanciamiento;
             miPlanilla.IdtRegimenLaboral = sidtregimenlaboral;
-
+            miPlanilla.Descripcion = txtDescripcion.Text;
+            miPlanilla.Plantilla = cboPlantilla.Text;
             if (iAccion == 1)
             {
                 miPlanilla.CrearPlanilla(miPlanilla);
@@ -73,6 +78,14 @@ namespace CapaUsuario.Planilla
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
+        private void cboRegimenLaboral_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboRegimenLaboral.Text != "System.Data.DataRowView" && cboRegimenLaboral.ValueMember != "")
+            {
+                sidtregimenlaboral = Convert.ToInt32(cboRegimenLaboral.SelectedValue);
+            }
+        }
+
         private void cboMeta_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboMeta.Text != "System.Data.DataRowView" && cboMeta.ValueMember != "")
@@ -89,7 +102,7 @@ namespace CapaUsuario.Planilla
             }
         }
 
-        public void RecibirDatos(int pidtplanilla, string pnumero, string pmes, string paño, DateTime pfecha, int pidtmeta, string pmeta, int pidtfuentefinanciamiento, string pfuentefinanciamiento, int pidtregimenlaboral, int pAccion)
+        public void RecibirDatos(int pidtplanilla, string pnumero, string pmes, string paño, DateTime pfecha, int pidtmeta, string pmeta, int pidtfuentefinanciamiento, string pfuentefinanciamiento, int pidtregimenlaboral, string pregimenlaboral, string pdescripcion, string pplanilla, int pAccion)
         {
             sidtplanilla = pidtplanilla;
             txtNumero.Text = pnumero;
@@ -101,6 +114,9 @@ namespace CapaUsuario.Planilla
             sidtfuentefinanciamiento = pidtfuentefinanciamiento;
             sfuentefinanciamiento = pfuentefinanciamiento;
             sidtregimenlaboral = pidtregimenlaboral;
+            sregimenlaboral = pregimenlaboral;
+            txtDescripcion.Text = pdescripcion;
+            splantilla = pplanilla;
             iAccion = pAccion;
         }
 
@@ -131,7 +147,26 @@ namespace CapaUsuario.Planilla
             cboFuenteFinanciamiento.DisplayMember = "descripcion";
             cboFuenteFinanciamiento.ValueMember = "idtfuentefinanciamiento";
             if (sfuentefinanciamiento == "") { cboFuenteFinanciamiento.SelectedIndex = -1; }
-            else { cboFuenteFinanciamiento.Text = smeta; }
+            else { cboFuenteFinanciamiento.Text = sfuentefinanciamiento; }
+        }
+
+        private void CargarRegimenLaboral()
+        {
+            CapaDeNegocios.DatosLaborales.cRegimenLaboral miRegimenLaboral = new CapaDeNegocios.DatosLaborales.cRegimenLaboral();
+            cboRegimenLaboral.DataSource = miRegimenLaboral.ListarRegimenLaboral();
+            cboRegimenLaboral.DisplayMember = "descripcion";
+            cboRegimenLaboral.ValueMember = "idtregimenlaboral";
+            if (sregimenlaboral == "") { cboRegimenLaboral.SelectedIndex = -1; }
+            else { cboRegimenLaboral.Text = sregimenlaboral; }
+        }
+
+        private void CargarPlantilla()
+        {
+            CapaDeNegocios.Planillas.cPlantillaPlanilla miPlantillaPlanilla = new CapaDeNegocios.Planillas.cPlantillaPlanilla();
+            cboPlantilla.DataSource = miPlantillaPlanilla.ListarDescripcionPlantillaPlanilla();
+            cboPlantilla.DisplayMember = "descripcion";
+            if (splantilla == "") { cboPlantilla.SelectedIndex = -1; }
+            else { cboPlantilla.Text = splantilla; }
         }
     }
 }

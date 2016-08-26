@@ -20,6 +20,7 @@ namespace CapaUsuario.Planilla
         int sidtmeta;
         string smes = "";
         string saño = "";
+        string splantilla = "";
         public string[,] sselecciontrabajadores;
         string[,] smingresos;
         string[,] sma_trabajador;
@@ -347,7 +348,7 @@ namespace CapaUsuario.Planilla
             }
         }
 
-        public void RecibirDatos(int pidtplanilla, string pnumero, string pmes, string paño, int pidtmeta, string pmeta, int pidtfuentefinanciamiento, string pfuentefinanciamiento, int pidtregimenlaboral, string pregimenlaboral)
+        public void RecibirDatos(int pidtplanilla, string pnumero, string pmes, string paño, int pidtmeta, string pmeta, int pidtfuentefinanciamiento, string pfuentefinanciamiento, int pidtregimenlaboral, string pregimenlaboral, string pplantilla)
         {
             sidtplanilla = pidtplanilla;
             txtNumero.Text = pnumero;
@@ -360,6 +361,7 @@ namespace CapaUsuario.Planilla
             txtFuenteFinanciamiento.Text = pfuentefinanciamiento;
             sidtregimenlaboral = pidtregimenlaboral;
             txtRegimenLaboral.Text = pregimenlaboral;
+            splantilla = pplantilla;
             if (pregimenlaboral == "REGIMEN 728")
             {
                 btnAgregarTrabajador.Visible = false;
@@ -900,7 +902,7 @@ namespace CapaUsuario.Planilla
 
             DataTable oDataPlantillaPlanilla = new DataTable();
             CapaDeNegocios.Planillas.cPlantillaPlanilla miPlantillaPlanilla = new CapaDeNegocios.Planillas.cPlantillaPlanilla();
-            oDataPlantillaPlanilla = miPlantillaPlanilla.ListarPlantillaPlanilla(sidtregimenlaboral);
+            oDataPlantillaPlanilla = miPlantillaPlanilla.ListarPlantillaPlanilla(splantilla);
 
             DataTable oDataMaestroIngresos = new DataTable();
             CapaDeNegocios.Sunat.cMaestroIngresos miMaestroIngresos = new CapaDeNegocios.Sunat.cMaestroIngresos();
@@ -917,14 +919,14 @@ namespace CapaUsuario.Planilla
             DataTable oDataMaestroAEmpleador = new DataTable();
             CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador miMaestroAEmpleador = new CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador();
             oDataMaestroAEmpleador = miMaestroAEmpleador.ListarMaestroAportacionesEmpleador();
-
+            
             smingresos = new string[oDataPlantillaPlanilla.Rows.Count, 4];
             foreach (DataRow row in oDataPlantillaPlanilla.Select("tipo='INGRESOS'"))
             {
-                foreach (DataRow rowmingresos in oDataMaestroIngresos.Select("idtmaestroingresos = '" + row[2].ToString() + "'"))
+                foreach (DataRow rowmingresos in oDataMaestroIngresos.Select("idtmaestroingresos = '" + row[4].ToString() + "'"))
                 {
                     smingresos[con_ingresos, 0] = rowmingresos[0].ToString();
-                    id_ingresos= rowmingresos[0].ToString();
+                    id_ingresos = rowmingresos[0].ToString();
                     smingresos[con_ingresos, 1] = rowmingresos[1].ToString();
                     smingresos[con_ingresos, 2] = rowmingresos[2].ToString();
                     smingresos[con_ingresos, 3] = rowmingresos[15].ToString();
@@ -979,7 +981,7 @@ namespace CapaUsuario.Planilla
             sma_trabajador = new string[oDataPlantillaPlanilla.Rows.Count, 4];
             foreach (DataRow row in oDataPlantillaPlanilla.Select("tipo='A_TRABAJADOR'"))
             {
-                foreach (DataRow rowmatrabajador in oDataMaestroATrabajador.Select("idtmaestroaportacionestrabajador = '" + row[2].ToString() + "'"))
+                foreach (DataRow rowmatrabajador in oDataMaestroATrabajador.Select("idtmaestroaportacionestrabajador = '" + row[4].ToString() + "'"))
                 {
                     sma_trabajador[con_trabajador, 0] = rowmatrabajador[0].ToString();
                     id_atrabajador = rowmatrabajador[0].ToString();
@@ -1011,7 +1013,7 @@ namespace CapaUsuario.Planilla
             smdescuentos = new string[oDataPlantillaPlanilla.Rows.Count, 4];
             foreach (DataRow row in oDataPlantillaPlanilla.Select("tipo='DESCUENTOS'"))
             {
-                foreach (DataRow rowmdescuentos in oDataMaestroDescuentos.Select("idtmaestrodescuentos = '" + row[2].ToString() + "'"))
+                foreach (DataRow rowmdescuentos in oDataMaestroDescuentos.Select("idtmaestrodescuentos = '" + row[4].ToString() + "'"))
                 {
                     smdescuentos[con_descuento, 0] = rowmdescuentos[0].ToString();
                     id_descuentos = rowmdescuentos[0].ToString();
@@ -1043,7 +1045,7 @@ namespace CapaUsuario.Planilla
             sma_empleador= new string[oDataPlantillaPlanilla.Rows.Count, 4];
             foreach (DataRow row in oDataPlantillaPlanilla.Select("tipo='A_EMPLEADOR'"))
             {
-                foreach (DataRow rowmaempleador in oDataMaestroAEmpleador.Select("idtmaestroaportacionesempleador = '" + row[2].ToString() + "'"))
+                foreach (DataRow rowmaempleador in oDataMaestroAEmpleador.Select("idtmaestroaportacionesempleador = '" + row[4].ToString() + "'"))
                 {
                     sma_empleador[con_empleador, 0] = rowmaempleador[0].ToString();
                     id_aempleador = rowmaempleador[0].ToString();

@@ -466,15 +466,15 @@
             // planillaToolStripMenuItem
             // 
             this.planillaToolStripMenuItem.Name = "planillaToolStripMenuItem";
-            this.planillaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.planillaToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.planillaToolStripMenuItem.Text = "Planilla";
             this.planillaToolStripMenuItem.Click += new System.EventHandler(this.planillaToolStripMenuItem_Click);
             // 
             // plantillaPlanillaToolStripMenuItem
             // 
             this.plantillaPlanillaToolStripMenuItem.Name = "plantillaPlanillaToolStripMenuItem";
-            this.plantillaPlanillaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.plantillaPlanillaToolStripMenuItem.Text = "Plantilla Planilla";
+            this.plantillaPlanillaToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.plantillaPlanillaToolStripMenuItem.Text = "Formatos de Planillas";
             this.plantillaPlanillaToolStripMenuItem.Click += new System.EventHandler(this.plantillaPlanillaToolStripMenuItem_Click);
             // 
             // sUNATToolStripMenuItem

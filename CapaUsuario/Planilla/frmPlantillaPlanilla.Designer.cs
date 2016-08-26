@@ -37,8 +37,6 @@
             this.Estado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.txtTipoTrabajador = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaestro)).BeginInit();
             this.SuspendLayout();
@@ -49,12 +47,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dgvMaestro);
-            this.groupBox1.Location = new System.Drawing.Point(12, 38);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(479, 310);
+            this.groupBox1.Size = new System.Drawing.Size(479, 336);
             this.groupBox1.TabIndex = 79;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Seleccionar Metas";
+            this.groupBox1.Text = "Seleccionar";
             // 
             // dgvMaestro
             // 
@@ -76,7 +74,7 @@
             this.dgvMaestro.Name = "dgvMaestro";
             this.dgvMaestro.RowHeadersVisible = false;
             this.dgvMaestro.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaestro.Size = new System.Drawing.Size(467, 285);
+            this.dgvMaestro.Size = new System.Drawing.Size(467, 311);
             this.dgvMaestro.TabIndex = 22;
             // 
             // IdTMeta
@@ -137,26 +135,6 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // txtTipoTrabajador
-            // 
-            this.txtTipoTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTipoTrabajador.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtTipoTrabajador.Enabled = false;
-            this.txtTipoTrabajador.Location = new System.Drawing.Point(103, 12);
-            this.txtTipoTrabajador.Name = "txtTipoTrabajador";
-            this.txtTipoTrabajador.Size = new System.Drawing.Size(388, 20);
-            this.txtTipoTrabajador.TabIndex = 76;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(88, 13);
-            this.label2.TabIndex = 75;
-            this.label2.Text = "Tipo Trabajador :";
-            // 
             // frmPlantillaPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,8 +143,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.txtTipoTrabajador);
-            this.Controls.Add(this.label2);
             this.Name = "frmPlantillaPlanilla";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -175,7 +151,6 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaestro)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -185,8 +160,6 @@
         private System.Windows.Forms.DataGridView dgvMaestro;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.TextBox txtTipoTrabajador;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdTMeta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Año;
         private System.Windows.Forms.DataGridViewTextBoxColumn Meta;
