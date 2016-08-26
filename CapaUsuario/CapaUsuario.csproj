@@ -122,6 +122,12 @@
     <Compile Include="ExportarSunat\frmExportarTributosDescuentosTrabajador.Designer.cs">
       <DependentUpon>frmExportarTributosDescuentosTrabajador.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExportarSunat\frmIngresosTributosDescuentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarSunat\frmIngresosTributosDescuentos.Designer.cs">
+      <DependentUpon>frmIngresosTributosDescuentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Planilla\frmImpuestoAlaRentaDe5taCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -901,6 +907,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmExportarTributosDescuentosTrabajador.resx">
       <DependentUpon>frmExportarTributosDescuentosTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportarSunat\frmIngresosTributosDescuentos.resx">
+      <DependentUpon>frmIngresosTributosDescuentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIParent1.resx">
       <DependentUpon>MDIParent1.cs</DependentUpon>
