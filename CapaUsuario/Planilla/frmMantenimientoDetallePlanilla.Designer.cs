@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnImportar = new System.Windows.Forms.Button();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -46,6 +46,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvDetallePlanilla = new System.Windows.Forms.DataGridView();
+            this.txtRegimenLaboral = new System.Windows.Forms.TextBox();
+            this.txtFuenteFinanciamiento = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnAgregarTrabajador = new System.Windows.Forms.Button();
+            this.btnCalcular = new System.Windows.Forms.Button();
+            this.btnAprobacion = new System.Windows.Forms.Button();
             this.txtIdTDetallePlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnProceso = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -55,18 +62,11 @@
             this.txtIdTCargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSistemaPensiones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Remuneracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SecFunc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Remuneracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiasLaborados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalRemuneracio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SecFunc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtRegimenLaboral = new System.Windows.Forms.TextBox();
-            this.txtFuenteFinanciamiento = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnAgregarTrabajador = new System.Windows.Forms.Button();
-            this.btnCalcular = new System.Windows.Forms.Button();
-            this.btnAprobacion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -178,19 +178,19 @@
             // 
             this.dgvDetallePlanilla.AllowUserToAddRows = false;
             this.dgvDetallePlanilla.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvDetallePlanilla.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvDetallePlanilla.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDetallePlanilla.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Cambria", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetallePlanilla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Cambria", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetallePlanilla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDetallePlanilla.ColumnHeadersHeight = 45;
             this.dgvDetallePlanilla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.txtIdTDetallePlanilla,
@@ -202,11 +202,11 @@
             this.txtIdTCargo,
             this.txtSistemaPensiones,
             this.txtDNI,
-            this.Remuneracion,
+            this.SecFunc,
             this.FechaInicio,
+            this.Remuneracion,
             this.DiasLaborados,
-            this.TotalRemuneracio,
-            this.SecFunc});
+            this.TotalRemuneracio});
             this.dgvDetallePlanilla.Location = new System.Drawing.Point(12, 90);
             this.dgvDetallePlanilla.Name = "dgvDetallePlanilla";
             this.dgvDetallePlanilla.RowHeadersVisible = false;
@@ -215,123 +215,6 @@
             this.dgvDetallePlanilla.TabIndex = 79;
             this.dgvDetallePlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellContentClick);
             this.dgvDetallePlanilla.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellEndEdit);
-            // 
-            // txtIdTDetallePlanilla
-            // 
-            this.txtIdTDetallePlanilla.HeaderText = "IdTDetallePlanilla";
-            this.txtIdTDetallePlanilla.Name = "txtIdTDetallePlanilla";
-            this.txtIdTDetallePlanilla.ReadOnly = true;
-            this.txtIdTDetallePlanilla.Visible = false;
-            this.txtIdTDetallePlanilla.Width = 30;
-            // 
-            // txtAccion
-            // 
-            this.txtAccion.HeaderText = "Accion";
-            this.txtAccion.Name = "txtAccion";
-            this.txtAccion.Visible = false;
-            this.txtAccion.Width = 30;
-            // 
-            // btnProceso
-            // 
-            this.btnProceso.HeaderText = "";
-            this.btnProceso.Name = "btnProceso";
-            this.btnProceso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnProceso.Width = 30;
-            // 
-            // txtNro
-            // 
-            this.txtNro.HeaderText = "NRO";
-            this.txtNro.Name = "txtNro";
-            this.txtNro.ReadOnly = true;
-            this.txtNro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.txtNro.Width = 30;
-            // 
-            // txtIdTTrabajador
-            // 
-            this.txtIdTTrabajador.HeaderText = "IdTTrabajador";
-            this.txtIdTTrabajador.Name = "txtIdTTrabajador";
-            this.txtIdTTrabajador.ReadOnly = true;
-            this.txtIdTTrabajador.Visible = false;
-            this.txtIdTTrabajador.Width = 50;
-            // 
-            // txtApellidosNombres
-            // 
-            this.txtApellidosNombres.HeaderText = "APELLIDOS Y NOMBRES";
-            this.txtApellidosNombres.Name = "txtApellidosNombres";
-            this.txtApellidosNombres.ReadOnly = true;
-            this.txtApellidosNombres.Width = 200;
-            // 
-            // txtIdTCargo
-            // 
-            this.txtIdTCargo.HeaderText = "IdTCargo";
-            this.txtIdTCargo.Name = "txtIdTCargo";
-            this.txtIdTCargo.ReadOnly = true;
-            this.txtIdTCargo.Visible = false;
-            this.txtIdTCargo.Width = 30;
-            // 
-            // txtSistemaPensiones
-            // 
-            this.txtSistemaPensiones.HeaderText = "CARGO";
-            this.txtSistemaPensiones.Name = "txtSistemaPensiones";
-            this.txtSistemaPensiones.ReadOnly = true;
-            this.txtSistemaPensiones.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.txtSistemaPensiones.Width = 150;
-            // 
-            // txtDNI
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.txtDNI.DefaultCellStyle = dataGridViewCellStyle11;
-            this.txtDNI.HeaderText = "DNI";
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.ReadOnly = true;
-            this.txtDNI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.txtDNI.Width = 60;
-            // 
-            // Remuneracion
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.NullValue = null;
-            this.Remuneracion.DefaultCellStyle = dataGridViewCellStyle12;
-            this.Remuneracion.HeaderText = "REMUNER.";
-            this.Remuneracion.Name = "Remuneracion";
-            this.Remuneracion.ReadOnly = true;
-            this.Remuneracion.Width = 50;
-            // 
-            // FechaInicio
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FechaInicio.DefaultCellStyle = dataGridViewCellStyle13;
-            this.FechaInicio.HeaderText = "FEC. INICIO";
-            this.FechaInicio.Name = "FechaInicio";
-            this.FechaInicio.ReadOnly = true;
-            this.FechaInicio.Width = 75;
-            // 
-            // DiasLaborados
-            // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.DiasLaborados.DefaultCellStyle = dataGridViewCellStyle14;
-            this.DiasLaborados.HeaderText = "DIAS LABOR.";
-            this.DiasLaborados.Name = "DiasLaborados";
-            this.DiasLaborados.ReadOnly = true;
-            this.DiasLaborados.Width = 40;
-            // 
-            // TotalRemuneracio
-            // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.TotalRemuneracio.DefaultCellStyle = dataGridViewCellStyle15;
-            this.TotalRemuneracio.HeaderText = "TOTAL REMUNER.";
-            this.TotalRemuneracio.Name = "TotalRemuneracio";
-            this.TotalRemuneracio.ReadOnly = true;
-            this.TotalRemuneracio.Width = 50;
-            // 
-            // SecFunc
-            // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SecFunc.DefaultCellStyle = dataGridViewCellStyle16;
-            this.SecFunc.HeaderText = "SEC. FUNC.";
-            this.SecFunc.Name = "SecFunc";
-            this.SecFunc.ReadOnly = true;
-            this.SecFunc.Width = 30;
             // 
             // txtRegimenLaboral
             // 
@@ -418,6 +301,123 @@
             this.btnAprobacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAprobacion.UseVisualStyleBackColor = false;
             // 
+            // txtIdTDetallePlanilla
+            // 
+            this.txtIdTDetallePlanilla.HeaderText = "IdTDetallePlanilla";
+            this.txtIdTDetallePlanilla.Name = "txtIdTDetallePlanilla";
+            this.txtIdTDetallePlanilla.ReadOnly = true;
+            this.txtIdTDetallePlanilla.Visible = false;
+            this.txtIdTDetallePlanilla.Width = 30;
+            // 
+            // txtAccion
+            // 
+            this.txtAccion.HeaderText = "Accion";
+            this.txtAccion.Name = "txtAccion";
+            this.txtAccion.Visible = false;
+            this.txtAccion.Width = 30;
+            // 
+            // btnProceso
+            // 
+            this.btnProceso.HeaderText = "";
+            this.btnProceso.Name = "btnProceso";
+            this.btnProceso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnProceso.Width = 30;
+            // 
+            // txtNro
+            // 
+            this.txtNro.HeaderText = "NRO";
+            this.txtNro.Name = "txtNro";
+            this.txtNro.ReadOnly = true;
+            this.txtNro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtNro.Width = 30;
+            // 
+            // txtIdTTrabajador
+            // 
+            this.txtIdTTrabajador.HeaderText = "IdTTrabajador";
+            this.txtIdTTrabajador.Name = "txtIdTTrabajador";
+            this.txtIdTTrabajador.ReadOnly = true;
+            this.txtIdTTrabajador.Visible = false;
+            this.txtIdTTrabajador.Width = 50;
+            // 
+            // txtApellidosNombres
+            // 
+            this.txtApellidosNombres.HeaderText = "APELLIDOS Y NOMBRES";
+            this.txtApellidosNombres.Name = "txtApellidosNombres";
+            this.txtApellidosNombres.ReadOnly = true;
+            this.txtApellidosNombres.Width = 200;
+            // 
+            // txtIdTCargo
+            // 
+            this.txtIdTCargo.HeaderText = "IdTCargo";
+            this.txtIdTCargo.Name = "txtIdTCargo";
+            this.txtIdTCargo.ReadOnly = true;
+            this.txtIdTCargo.Visible = false;
+            this.txtIdTCargo.Width = 30;
+            // 
+            // txtSistemaPensiones
+            // 
+            this.txtSistemaPensiones.HeaderText = "CARGO";
+            this.txtSistemaPensiones.Name = "txtSistemaPensiones";
+            this.txtSistemaPensiones.ReadOnly = true;
+            this.txtSistemaPensiones.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.txtSistemaPensiones.Width = 150;
+            // 
+            // txtDNI
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.txtDNI.DefaultCellStyle = dataGridViewCellStyle3;
+            this.txtDNI.HeaderText = "DNI";
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.ReadOnly = true;
+            this.txtDNI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtDNI.Width = 60;
+            // 
+            // SecFunc
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SecFunc.DefaultCellStyle = dataGridViewCellStyle4;
+            this.SecFunc.HeaderText = "SEC. FUNC.";
+            this.SecFunc.Name = "SecFunc";
+            this.SecFunc.ReadOnly = true;
+            this.SecFunc.Width = 30;
+            // 
+            // FechaInicio
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FechaInicio.DefaultCellStyle = dataGridViewCellStyle5;
+            this.FechaInicio.HeaderText = "FEC. INICIO";
+            this.FechaInicio.Name = "FechaInicio";
+            this.FechaInicio.ReadOnly = true;
+            this.FechaInicio.Width = 75;
+            // 
+            // Remuneracion
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.NullValue = null;
+            this.Remuneracion.DefaultCellStyle = dataGridViewCellStyle6;
+            this.Remuneracion.HeaderText = "REMUNER.";
+            this.Remuneracion.Name = "Remuneracion";
+            this.Remuneracion.ReadOnly = true;
+            this.Remuneracion.Width = 50;
+            // 
+            // DiasLaborados
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DiasLaborados.DefaultCellStyle = dataGridViewCellStyle7;
+            this.DiasLaborados.HeaderText = "DIAS LABOR.";
+            this.DiasLaborados.Name = "DiasLaborados";
+            this.DiasLaborados.ReadOnly = true;
+            this.DiasLaborados.Width = 40;
+            // 
+            // TotalRemuneracio
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.TotalRemuneracio.DefaultCellStyle = dataGridViewCellStyle8;
+            this.TotalRemuneracio.HeaderText = "TOTAL REMUNER.";
+            this.TotalRemuneracio.Name = "TotalRemuneracio";
+            this.TotalRemuneracio.ReadOnly = true;
+            this.TotalRemuneracio.Width = 50;
+            // 
             // frmMantenimientoDetallePlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -469,6 +469,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAgregarTrabajador;
         private System.Windows.Forms.Button btnCalcular;
+        private System.Windows.Forms.Button btnAprobacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtIdTDetallePlanilla;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtAccion;
         private System.Windows.Forms.DataGridViewButtonColumn btnProceso;
@@ -478,11 +479,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txtIdTCargo;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtSistemaPensiones;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtDNI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Remuneracion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SecFunc;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaInicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Remuneracion;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiasLaborados;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalRemuneracio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SecFunc;
-        private System.Windows.Forms.Button btnAprobacion;
     }
 }
