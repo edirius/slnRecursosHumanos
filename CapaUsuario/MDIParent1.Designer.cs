@@ -97,6 +97,8 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.holaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -536,16 +538,17 @@
             // exportarTextoSUNATToolStripMenuItem
             // 
             this.exportarTextoSUNATToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tributosYDescuentosDelTrabajadorToolStripMenuItem});
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem,
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem,
+            this.holaToolStripMenuItem});
             this.exportarTextoSUNATToolStripMenuItem.Name = "exportarTextoSUNATToolStripMenuItem";
             this.exportarTextoSUNATToolStripMenuItem.Size = new System.Drawing.Size(135, 20);
             this.exportarTextoSUNATToolStripMenuItem.Text = "Exportar Texto SUNAT";
-           
             // 
             // tributosYDescuentosDelTrabajadorToolStripMenuItem
             // 
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Name = "tributosYDescuentosDelTrabajadorToolStripMenuItem";
-            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Size = new System.Drawing.Size(375, 22);
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Text = "Tributos y Descuentos del Trabajador";
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Click += new System.EventHandler(this.tributosYDescuentosDelTrabajadorToolStripMenuItem_Click);
             // 
@@ -648,6 +651,19 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem
+            // 
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Name = "datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem";
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Size = new System.Drawing.Size(375, 22);
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Text = "Datos del Trabajador, Pensionista y prestador de servicios";
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Click += new System.EventHandler(this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem_Click);
+            // 
+            // holaToolStripMenuItem
+            // 
+            this.holaToolStripMenuItem.Name = "holaToolStripMenuItem";
+            this.holaToolStripMenuItem.Size = new System.Drawing.Size(375, 22);
+            this.holaToolStripMenuItem.Text = "Hola";
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -743,6 +759,8 @@
         private System.Windows.Forms.ToolStripMenuItem IR5taCategoriatoolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem exportarTextoSUNATToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tributosYDescuentosDelTrabajadorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem holaToolStripMenuItem;
     }
 }
 

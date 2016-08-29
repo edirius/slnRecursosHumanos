@@ -185,12 +185,6 @@ namespace CapaUsuario.ExportarSunat
             
         }
 
-        private void txtTributos_Click(object sender, EventArgs e)
-        {
-            CapaUsuario.ExportarSunat.frmIngresosTributosDescuentos frmTributos = new frmIngresosTributosDescuentos();
-            frmTributos.Show();
-        }
-
         private void dgvListaPlanillas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int Valor = dgvListaPlanillas.CurrentCell.RowIndex;

@@ -275,5 +275,12 @@ namespace CapaUsuario
             frmExportarTDT.MdiParent = this;
             frmExportarTDT.Show();
         }
+
+        private void datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmExportarDatosTrabajadores frmExportarDT = new ExportarSunat.frmExportarDatosTrabajadores();
+            frmExportarDT.MdiParent = this;
+            frmExportarDT.Show();
+        }
     }
 }
