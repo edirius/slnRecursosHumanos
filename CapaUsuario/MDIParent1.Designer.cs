@@ -564,6 +564,7 @@
             this.holaToolStripMenuItem.Name = "holaToolStripMenuItem";
             this.holaToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
             this.holaToolStripMenuItem.Text = "Datos del Trabajador (.TRA)";
+            this.holaToolStripMenuItem.Click += new System.EventHandler(this.holaToolStripMenuItem_Click);
             // 
             // toolStrip
             // 

@@ -282,5 +282,12 @@ namespace CapaUsuario
             frmExportarDT.MdiParent = this;
             frmExportarDT.Show();
         }
+
+        private void holaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmDatosDelTrabajador frmExportarDatosdelTrabajador = new ExportarSunat.frmDatosDelTrabajador();
+            frmExportarDatosdelTrabajador.MdiParent = this;
+            frmExportarDatosdelTrabajador.Show();
+        }
     }
 }

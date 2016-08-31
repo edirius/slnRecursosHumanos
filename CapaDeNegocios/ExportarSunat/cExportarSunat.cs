@@ -44,6 +44,10 @@ namespace CapaDeNegocios.ExportarSunat
         {
             return Conexion.GDatos.TraerDataTable("spBuscarPlanillas", mes, año);
         }
+        public DataTable ListarDatosDelTrabajador()
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarDatosTrabajadores");
+        }
 
         ////////EXPORTAR DATOS DE LOS TRABAJADORES A LA SUNAT//////
         public DataTable ListarTrabajadores()
