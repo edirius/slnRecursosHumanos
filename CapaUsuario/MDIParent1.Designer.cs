@@ -85,6 +85,8 @@
             this.IR5taCategoriatoolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarTextoSUNATToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.holaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -97,8 +99,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.holaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -548,9 +548,22 @@
             // tributosYDescuentosDelTrabajadorToolStripMenuItem
             // 
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Name = "tributosYDescuentosDelTrabajadorToolStripMenuItem";
-            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Size = new System.Drawing.Size(375, 22);
-            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Text = "Tributos y Descuentos del Trabajador";
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Text = "Tributos y Descuentos del Trabajador(.REM)";
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Click += new System.EventHandler(this.tributosYDescuentosDelTrabajadorToolStripMenuItem_Click);
+            // 
+            // datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem
+            // 
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Name = "datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem";
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Text = "Datos personales del trabajador, pensionista, persona en información(.IDE)";
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Click += new System.EventHandler(this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem_Click);
+            // 
+            // holaToolStripMenuItem
+            // 
+            this.holaToolStripMenuItem.Name = "holaToolStripMenuItem";
+            this.holaToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
+            this.holaToolStripMenuItem.Text = "Datos del Trabajador (.TRA)";
             // 
             // toolStrip
             // 
@@ -650,19 +663,6 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
-            // 
-            // datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem
-            // 
-            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Name = "datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem";
-            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Size = new System.Drawing.Size(375, 22);
-            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Text = "Datos del Trabajador, Pensionista y prestador de servicios";
-            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Click += new System.EventHandler(this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem_Click);
-            // 
-            // holaToolStripMenuItem
-            // 
-            this.holaToolStripMenuItem.Name = "holaToolStripMenuItem";
-            this.holaToolStripMenuItem.Size = new System.Drawing.Size(375, 22);
-            this.holaToolStripMenuItem.Text = "Hola";
             // 
             // frmPrincipal
             // 

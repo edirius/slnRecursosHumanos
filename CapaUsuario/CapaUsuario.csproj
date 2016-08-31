@@ -116,6 +116,12 @@
       <DependentUpon>bdpersonalDataSet11.xsd</DependentUpon>
     </Compile>
     <Compile Include="ConvertImage.cs" />
+    <Compile Include="ExportarSunat\frmDatosDelTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarSunat\frmDatosDelTrabajador.Designer.cs">
+      <DependentUpon>frmDatosDelTrabajador.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportarSunat\frmExportarDatosTrabajadores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -904,6 +910,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AFP\frmListaAFPs.resx">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportarSunat\frmDatosDelTrabajador.resx">
+      <DependentUpon>frmDatosDelTrabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmExportarDatosTrabajadores.resx">
       <DependentUpon>frmExportarDatosTrabajadores.cs</DependentUpon>
