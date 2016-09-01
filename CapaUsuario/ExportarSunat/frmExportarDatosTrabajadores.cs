@@ -133,7 +133,7 @@ namespace CapaUsuario.ExportarSunat
             string Titulo = rp + RUC + tipoArchivo;
             Guardar.FileName = Titulo;
             string Ruta = "";
-                if (Guardar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (Guardar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
 
                     if (File.Exists(Guardar.FileName))

@@ -28,48 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnExportar = new System.Windows.Forms.Button();
-            this.dgvListarDatosTrabajadores = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListarDatosTrabajadores)).BeginInit();
+            this.dgvListar = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListar)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnExportar
+            // dgvListar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(998, 389);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(75, 23);
-            this.btnExportar.TabIndex = 32;
-            this.btnExportar.Text = "Exportar";
-            this.btnExportar.UseVisualStyleBackColor = true;
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            this.dgvListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListar.Location = new System.Drawing.Point(72, 56);
+            this.dgvListar.Name = "dgvListar";
+            this.dgvListar.Size = new System.Drawing.Size(708, 329);
+            this.dgvListar.TabIndex = 0;
             // 
-            // dgvListarDatosTrabajadores
+            // button1
             // 
-            this.dgvListarDatosTrabajadores.AllowUserToAddRows = false;
-            this.dgvListarDatosTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListarDatosTrabajadores.Location = new System.Drawing.Point(14, 36);
-            this.dgvListarDatosTrabajadores.Name = "dgvListarDatosTrabajadores";
-            this.dgvListarDatosTrabajadores.RowHeadersVisible = false;
-            this.dgvListarDatosTrabajadores.Size = new System.Drawing.Size(1058, 334);
-            this.dgvListarDatosTrabajadores.TabIndex = 31;
+            this.button1.Location = new System.Drawing.Point(737, 412);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Exportar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmDatosDelTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 435);
-            this.Controls.Add(this.btnExportar);
-            this.Controls.Add(this.dgvListarDatosTrabajadores);
+            this.ClientSize = new System.Drawing.Size(851, 456);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dgvListar);
             this.Name = "frmDatosDelTrabajador";
             this.Text = "frmDatosDelTrabajador";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListarDatosTrabajadores)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListar)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnExportar;
-        private System.Windows.Forms.DataGridView dgvListarDatosTrabajadores;
+        private System.Windows.Forms.DataGridView dgvListar;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -7,84 +7,117 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDeNegocios;
 using System.IO;
 using System.Collections;
+using CapaDeNegocios;
 
 namespace CapaUsuario.ExportarSunat
 {
     public partial class frmDatosDelTrabajador : Form
     {
-        CapaDeNegocios.ExportarSunat.cExportarSunat oExportar = new CapaDeNegocios.ExportarSunat.cExportarSunat();
-        string TP="";
+        CapaDeNegocios.ExportarSunat.cExportarSunat oExp = new CapaDeNegocios.ExportarSunat.cExportarSunat();
+        ArrayList milista = new ArrayList();
+        string nroTipoPago = "";
+        string nroPeriodicidad = "";
 
         public frmDatosDelTrabajador()
         {
             InitializeComponent();
-            Cargargrid();
+            CargarGrid();
         }
-        public void Cargargrid()
+        private void CargarGrid()
         {
-            dgvListarDatosTrabajadores.DataSource = oExportar.ListarDatosDelTrabajador();
+            dgvListar.DataSource = oExp.ListarDatosDelTrabajador();
         }
-        public void ConvertiraNumero(string tipoPago)
+        private void ConvertiraNumero(string tipoPago)
         {
             switch (tipoPago)
             {
                 case "EFECTIVO":
                     {
-                        TP = "1";
+                        nroTipoPago = "1";
                         break;
                     }
                 case "DEPOSITO":
                     {
-                        TP = "2";
+                        nroTipoPago = "2";
                         break;
                     }
                 case "OTROS":
                     {
-                        TP = "3";
+                        nroTipoPago = "3";
                         break;
                     }
             }
         }
-        public void concatenarDatos()
+        private void ConvertiraNumero2(string periodicidad)
         {
-            ArrayList milista = new ArrayList();
+            switch (periodicidad)
+            {
+                case "MENSUAL":
+                    {
+                        nroPeriodicidad = "1";
+                        break;
+                    }
+                case "QUINCENAL":
+                    {
+                        nroPeriodicidad = "2";
+                        break;
+                    }
+                case "SEMANAL":
+                    {
+                        nroPeriodicidad = "3";
+                        break;
+                    }
+                case "DIARIA":
+                    {
+                        nroPeriodicidad = "4";
+                        break;
+                    }
+                case "OTROS":
+                    {
+                        nroPeriodicidad = "5";
+                        break;
+                    }
+            }
+        }
+        private void ConcatenarDatos()
+        {
+            
 
             try
             {
-                for (int i = 0; i <= dgvListarDatosTrabajadores.Rows.Count; i++)
+                for (int i = 0; i <= dgvListar.Rows.Count; i++)
                 {
-                    //obtenemos los datos de las columnas que queremos
                     string tipoDoc = "01";
-                    string dni = dgvListarDatosTrabajadores[0, i].Value.ToString();
+                    string dni = dgvListar[0, i].Value.ToString();
                     string paisDoc = "604";
-                    string RegimenLaboral = dgvListarDatosTrabajadores[1, i].Value.ToString();
+                    string RegimenLaboral = dgvListar[1, i].Value.ToString();
                     string SituacionEdu = "07";
-                    string Ocupacion = dgvListarDatosTrabajadores[3, i].Value.ToString();
+                    string Ocupacion = dgvListar[2, i].Value.ToString();
                     string Discapacidad = "0";
                     string CUSPP = "";
                     string SCTR = "0";
-                    string tipoContrato = dgvListarDatosTrabajadores[4, i].Value.ToString();
+                    string tipoContrato = dgvListar[3, i].Value.ToString();
                     string regimenAlternativo = "0";
                     string jornadaTrabajo = "0";
                     string horarioNocturno = "0";
-                    string sindicalizado = "0"; 
-                    string periodicidad = dgvListarDatosTrabajadores[5, i].Value.ToString();
-                    string remBasica = dgvListarDatosTrabajadores[6, i].Value.ToString();
+                    string sindicalizado = "0";
+                    string periodicidad = dgvListar[4, i].Value.ToString();
+                    ConvertiraNumero2(periodicidad);
+                    string remBasica = dgvListar[5, i].Value.ToString();
                     string situacion = "1";
                     string Renta5ta = "0";
                     string situacionEsp = "0";
-                    string tipoPago = dgvListarDatosTrabajadores[7, i].Value.ToString();
+                    string tipoPago = dgvListar[6, i].Value.ToString();
                     ConvertiraNumero(tipoPago);
-                    string catOcupacional = dgvListarDatosTrabajadores[8, i].Value.ToString();
+                    string catOcupacional = dgvListar[7, i].Value.ToString();
                     string convenio = "";
-                    string RUC = dgvListarDatosTrabajadores[9, i].Value.ToString();
-                    string Contenido = "";
-                    Contenido = oExportar.ExportarDatosTrabajador2( tipoDoc, dni, paisDoc, RegimenLaboral, SituacionEdu, Ocupacion, Discapacidad,  CUSPP,  SCTR, tipoContrato, regimenAlternativo, jornadaTrabajo, horarioNocturno, sindicalizado, periodicidad, remBasica, situacion, Renta5ta, situacionEsp, TP, catOcupacional, convenio, RUC);
+                    string RUC = "";
+                    //dgvListarDatosTrabajadores[9, i].Value.ToString();
+                    string Contenido = oExp.ExportarDatosTrabajador2(tipoDoc, dni, paisDoc, RegimenLaboral, SituacionEdu, Ocupacion, Discapacidad, CUSPP, SCTR, tipoContrato, regimenAlternativo, jornadaTrabajo, horarioNocturno, sindicalizado, nroPeriodicidad, remBasica, situacion, Renta5ta, situacionEsp, nroTipoPago, catOcupacional, convenio, RUC);
+                    //MessageBox.Show(Contenido);
                     milista.Add(Contenido);
-
                 }
             }
             catch
@@ -92,10 +125,10 @@ namespace CapaUsuario.ExportarSunat
             }
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
-            string Ruc = "20226560824";
+            string ruc = "20226560824";
             string tipoArchivo = ".TRA";
             string rp = "RP_";
-            string Titulo = rp + Ruc + tipoArchivo;
+            string Titulo = rp + ruc + tipoArchivo;
             Guardar.FileName = Titulo;
             string Ruta = "";
             if (Guardar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -119,17 +152,12 @@ namespace CapaUsuario.ExportarSunat
 
                 }
             }
+
         }
 
-        private void btnExportar_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (dgvListarDatosTrabajadores.Columns.Count != 0)
-            {
-                concatenarDatos();
-            }
-            else
-                
-                MessageBox.Show("No hay datos para Exportar");
+            ConcatenarDatos();
         }
     }
 }
