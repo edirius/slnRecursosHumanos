@@ -73,6 +73,26 @@ namespace CapaDeNegocios.ExportarSunat
             string ConcatenarDatos = tipoDoc + Palo + dni + Palo + paisDoc + Palo + regimenlaboral + Palo + situacionEdu + Palo + ocupacion + Palo + discapacidad + Palo + CUSPP + Palo + SCTRpension + Palo + tipoContrato + Palo + regimenAlternativo + Palo + jornadaTrabajo + Palo + horarioNocturno + Palo + sindicalizado + Palo + periodicidad + Palo + remBasica + Palo + situacion + Palo + Renta5ta + Palo + situacionEsp + Palo + tipoPago + Palo + catOcupacional + Palo + convenio + Palo + RUC + Palo;
             return ConcatenarDatos;
         }
-
+        public DataTable ListarPeriodos1()
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarDatosPeriodos1");
+        }
+        public string ExportarPeriodos(string tipoDoc, string dni, string paisDoc, string tipoRegistro, string fechainicio, string fechafin, string indicadorTipoRegistro, string EPS)
+        {
+            string Concatenar = tipoDoc + Palo + dni + Palo + paisDoc + Palo + tipoRegistro + Palo + fechainicio + Palo + fechafin + Palo + indicadorTipoRegistro + Palo + EPS + Palo;
+            return Concatenar;
+        }
+        public DataTable ListarPeriodos2()
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarDatosPeriodos2");
+        }
+        public DataTable ListarPeriodos3()
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarDatosPeriodos3");
+        }
+        public DataTable ListarPeriodos4()
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarDatosPeriodos4");
+        }
     }
 }
