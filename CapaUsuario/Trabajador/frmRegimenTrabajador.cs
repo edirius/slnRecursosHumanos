@@ -63,7 +63,7 @@ namespace CapaUsuario.Trabajador
             miRegimenTrabajador.NumeroDocumento = txtNumero.Text;
             miRegimenTrabajador.Periodicidad = cboPeriodicidad.Text;
             miRegimenTrabajador.TipoPago = cboTipoPago.Text;
-            miRegimenTrabajador.MontoPago = Convert.ToInt32(nupMontoPago.Value);
+            miRegimenTrabajador.MontoPago = Convert.ToDecimal(nupMontoPago.Value);
             miRegimenTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
             if (dtpFechaFin.Format == DateTimePickerFormat.Custom) { miRegimenTrabajador.FechaFin = ""; }
             else { miRegimenTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString(); }

@@ -413,7 +413,7 @@
             // 
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.TotalRemuneracio.DefaultCellStyle = dataGridViewCellStyle8;
-            this.TotalRemuneracio.HeaderText = "TOTAL REMUNER.";
+            this.TotalRemuneracio.HeaderText = "REMUNER. TOTAL";
             this.TotalRemuneracio.Name = "TotalRemuneracio";
             this.TotalRemuneracio.ReadOnly = true;
             this.TotalRemuneracio.Width = 50;
