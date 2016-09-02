@@ -395,7 +395,7 @@
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle6.NullValue = null;
             this.Remuneracion.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Remuneracion.HeaderText = "REMUNER.";
+            this.Remuneracion.HeaderText = "REMUNER. CONTRATO";
             this.Remuneracion.Name = "Remuneracion";
             this.Remuneracion.ReadOnly = true;
             this.Remuneracion.Width = 50;
@@ -413,7 +413,7 @@
             // 
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.TotalRemuneracio.DefaultCellStyle = dataGridViewCellStyle8;
-            this.TotalRemuneracio.HeaderText = "REMUNER. TOTAL";
+            this.TotalRemuneracio.HeaderText = "REMUNER.";
             this.TotalRemuneracio.Name = "TotalRemuneracio";
             this.TotalRemuneracio.ReadOnly = true;
             this.TotalRemuneracio.Width = 50;
