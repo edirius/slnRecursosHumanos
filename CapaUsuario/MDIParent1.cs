@@ -275,5 +275,12 @@ namespace CapaUsuario
             frmExportarTDT.MdiParent = this;
             frmExportarTDT.Show();
         }
+
+        private void boletaDePagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Reportes.frmBoletaPago fBoletaPago = new CapaUsuario.Reportes.frmBoletaPago();
+            fBoletaPago.MdiParent = this;
+            fBoletaPago.Show();
+        }
     }
 }
