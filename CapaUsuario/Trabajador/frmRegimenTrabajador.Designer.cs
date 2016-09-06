@@ -96,6 +96,12 @@
             // nupMontoPago
             // 
             this.nupMontoPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nupMontoPago.DecimalPlaces = 2;
+            this.nupMontoPago.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
             this.nupMontoPago.Location = new System.Drawing.Point(332, 99);
             this.nupMontoPago.Maximum = new decimal(new int[] {
             100000,

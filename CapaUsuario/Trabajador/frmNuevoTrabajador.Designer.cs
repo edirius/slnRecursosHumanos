@@ -31,6 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.tabTrabajador = new System.Windows.Forms.TabControl();
             this.tabDatosGenerales = new System.Windows.Forms.TabPage();
+            this.btnTipoZona = new System.Windows.Forms.Button();
+            this.btnTipoVia = new System.Windows.Forms.Button();
+            this.btnDistrito = new System.Windows.Forms.Button();
+            this.btnProvincia = new System.Windows.Forms.Button();
+            this.btnApartamento = new System.Windows.Forms.Button();
+            this.btnNacionalidad = new System.Windows.Forms.Button();
             this.txtDistrito = new System.Windows.Forms.TextBox();
             this.txtProvincia = new System.Windows.Forms.TextBox();
             this.txtDepartamento = new System.Windows.Forms.TextBox();
@@ -84,12 +90,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
             this.toolTrabajador = new System.Windows.Forms.ToolTip(this.components);
-            this.btnNacionalidad = new System.Windows.Forms.Button();
-            this.btnApartamento = new System.Windows.Forms.Button();
-            this.btnProvincia = new System.Windows.Forms.Button();
-            this.btnDistrito = new System.Windows.Forms.Button();
-            this.btnTipoVia = new System.Windows.Forms.Button();
-            this.btnTipoZona = new System.Windows.Forms.Button();
+            this.chkEssaludVida = new System.Windows.Forms.CheckBox();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
@@ -107,6 +108,7 @@
             // 
             // tabDatosGenerales
             // 
+            this.tabDatosGenerales.Controls.Add(this.chkEssaludVida);
             this.tabDatosGenerales.Controls.Add(this.btnTipoZona);
             this.tabDatosGenerales.Controls.Add(this.btnTipoVia);
             this.tabDatosGenerales.Controls.Add(this.btnDistrito);
@@ -171,6 +173,66 @@
             this.tabDatosGenerales.TabIndex = 0;
             this.tabDatosGenerales.Text = "Datos Generales";
             this.tabDatosGenerales.UseVisualStyleBackColor = true;
+            // 
+            // btnTipoZona
+            // 
+            this.btnTipoZona.Location = new System.Drawing.Point(720, 430);
+            this.btnTipoZona.Name = "btnTipoZona";
+            this.btnTipoZona.Size = new System.Drawing.Size(29, 23);
+            this.btnTipoZona.TabIndex = 102;
+            this.btnTipoZona.Text = "...";
+            this.btnTipoZona.UseVisualStyleBackColor = true;
+            this.btnTipoZona.Click += new System.EventHandler(this.btnTipoZona_Click);
+            // 
+            // btnTipoVia
+            // 
+            this.btnTipoVia.Location = new System.Drawing.Point(673, 295);
+            this.btnTipoVia.Name = "btnTipoVia";
+            this.btnTipoVia.Size = new System.Drawing.Size(29, 23);
+            this.btnTipoVia.TabIndex = 101;
+            this.btnTipoVia.Text = "...";
+            this.btnTipoVia.UseVisualStyleBackColor = true;
+            this.btnTipoVia.Click += new System.EventHandler(this.btnTipoVia_Click);
+            // 
+            // btnDistrito
+            // 
+            this.btnDistrito.Location = new System.Drawing.Point(333, 558);
+            this.btnDistrito.Name = "btnDistrito";
+            this.btnDistrito.Size = new System.Drawing.Size(29, 23);
+            this.btnDistrito.TabIndex = 100;
+            this.btnDistrito.Text = "...";
+            this.btnDistrito.UseVisualStyleBackColor = true;
+            this.btnDistrito.Click += new System.EventHandler(this.btnDistrito_Click);
+            // 
+            // btnProvincia
+            // 
+            this.btnProvincia.Location = new System.Drawing.Point(332, 526);
+            this.btnProvincia.Name = "btnProvincia";
+            this.btnProvincia.Size = new System.Drawing.Size(29, 23);
+            this.btnProvincia.TabIndex = 99;
+            this.btnProvincia.Text = "...";
+            this.btnProvincia.UseVisualStyleBackColor = true;
+            this.btnProvincia.Click += new System.EventHandler(this.btnProvincia_Click);
+            // 
+            // btnApartamento
+            // 
+            this.btnApartamento.Location = new System.Drawing.Point(332, 494);
+            this.btnApartamento.Name = "btnApartamento";
+            this.btnApartamento.Size = new System.Drawing.Size(29, 23);
+            this.btnApartamento.TabIndex = 98;
+            this.btnApartamento.Text = "...";
+            this.btnApartamento.UseVisualStyleBackColor = true;
+            this.btnApartamento.Click += new System.EventHandler(this.btnApartamento_Click);
+            // 
+            // btnNacionalidad
+            // 
+            this.btnNacionalidad.Location = new System.Drawing.Point(330, 449);
+            this.btnNacionalidad.Name = "btnNacionalidad";
+            this.btnNacionalidad.Size = new System.Drawing.Size(29, 23);
+            this.btnNacionalidad.TabIndex = 97;
+            this.btnNacionalidad.Text = "...";
+            this.btnNacionalidad.UseVisualStyleBackColor = true;
+            this.btnNacionalidad.Click += new System.EventHandler(this.btnNacionalidad_Click);
             // 
             // txtDistrito
             // 
@@ -643,65 +705,16 @@
             this.toolTrabajador.ForeColor = System.Drawing.Color.RoyalBlue;
             this.toolTrabajador.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // btnNacionalidad
+            // chkEssaludVida
             // 
-            this.btnNacionalidad.Location = new System.Drawing.Point(330, 449);
-            this.btnNacionalidad.Name = "btnNacionalidad";
-            this.btnNacionalidad.Size = new System.Drawing.Size(29, 23);
-            this.btnNacionalidad.TabIndex = 97;
-            this.btnNacionalidad.Text = "...";
-            this.btnNacionalidad.UseVisualStyleBackColor = true;
-            this.btnNacionalidad.Click += new System.EventHandler(this.btnNacionalidad_Click);
-            // 
-            // btnApartamento
-            // 
-            this.btnApartamento.Location = new System.Drawing.Point(332, 494);
-            this.btnApartamento.Name = "btnApartamento";
-            this.btnApartamento.Size = new System.Drawing.Size(29, 23);
-            this.btnApartamento.TabIndex = 98;
-            this.btnApartamento.Text = "...";
-            this.btnApartamento.UseVisualStyleBackColor = true;
-            this.btnApartamento.Click += new System.EventHandler(this.btnApartamento_Click);
-            // 
-            // btnProvincia
-            // 
-            this.btnProvincia.Location = new System.Drawing.Point(332, 526);
-            this.btnProvincia.Name = "btnProvincia";
-            this.btnProvincia.Size = new System.Drawing.Size(29, 23);
-            this.btnProvincia.TabIndex = 99;
-            this.btnProvincia.Text = "...";
-            this.btnProvincia.UseVisualStyleBackColor = true;
-            this.btnProvincia.Click += new System.EventHandler(this.btnProvincia_Click);
-            // 
-            // btnDistrito
-            // 
-            this.btnDistrito.Location = new System.Drawing.Point(333, 558);
-            this.btnDistrito.Name = "btnDistrito";
-            this.btnDistrito.Size = new System.Drawing.Size(29, 23);
-            this.btnDistrito.TabIndex = 100;
-            this.btnDistrito.Text = "...";
-            this.btnDistrito.UseVisualStyleBackColor = true;
-            this.btnDistrito.Click += new System.EventHandler(this.btnDistrito_Click);
-            // 
-            // btnTipoVia
-            // 
-            this.btnTipoVia.Location = new System.Drawing.Point(673, 295);
-            this.btnTipoVia.Name = "btnTipoVia";
-            this.btnTipoVia.Size = new System.Drawing.Size(29, 23);
-            this.btnTipoVia.TabIndex = 101;
-            this.btnTipoVia.Text = "...";
-            this.btnTipoVia.UseVisualStyleBackColor = true;
-            this.btnTipoVia.Click += new System.EventHandler(this.btnTipoVia_Click);
-            // 
-            // btnTipoZona
-            // 
-            this.btnTipoZona.Location = new System.Drawing.Point(720, 430);
-            this.btnTipoZona.Name = "btnTipoZona";
-            this.btnTipoZona.Size = new System.Drawing.Size(29, 23);
-            this.btnTipoZona.TabIndex = 102;
-            this.btnTipoZona.Text = "...";
-            this.btnTipoZona.UseVisualStyleBackColor = true;
-            this.btnTipoZona.Click += new System.EventHandler(this.btnTipoZona_Click);
+            this.chkEssaludVida.AutoSize = true;
+            this.chkEssaludVida.Location = new System.Drawing.Point(536, 545);
+            this.chkEssaludVida.Name = "chkEssaludVida";
+            this.chkEssaludVida.Size = new System.Drawing.Size(87, 17);
+            this.chkEssaludVida.TabIndex = 103;
+            this.chkEssaludVida.Text = "Essalud Vida";
+            this.chkEssaludVida.UseVisualStyleBackColor = true;
+            this.chkEssaludVida.CheckedChanged += new System.EventHandler(this.chkEssaludVida_CheckedChanged);
             // 
             // frmNuevoTrabajador
             // 
@@ -784,5 +797,6 @@
         private System.Windows.Forms.Button btnDistrito;
         private System.Windows.Forms.Button btnTipoVia;
         private System.Windows.Forms.Button btnTipoZona;
+        private System.Windows.Forms.CheckBox chkEssaludVida;
     }
 }

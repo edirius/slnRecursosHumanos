@@ -494,6 +494,7 @@
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtFormula);
             this.Name = "frmFormula";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formula";
             this.Load += new System.EventHandler(this.frmFormula_Load);

@@ -43,6 +43,12 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboRegimenLaboral = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboPlantilla = new System.Windows.Forms.ComboBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +56,12 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.txtDescripcion);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.cboPlantilla);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.cboRegimenLaboral);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cboAño);
             this.groupBox2.Controls.Add(this.cboMes);
@@ -64,7 +76,7 @@
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(500, 126);
+            this.groupBox2.Size = new System.Drawing.Size(500, 206);
             this.groupBox2.TabIndex = 64;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalles";
@@ -72,7 +84,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(312, 48);
+            this.label1.Location = new System.Drawing.Point(312, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 86;
@@ -84,7 +96,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAño.FormattingEnabled = true;
-            this.cboAño.Location = new System.Drawing.Point(350, 45);
+            this.cboAño.Location = new System.Drawing.Point(350, 71);
             this.cboAño.Name = "cboAño";
             this.cboAño.Size = new System.Drawing.Size(144, 21);
             this.cboAño.TabIndex = 85;
@@ -108,7 +120,7 @@
             "OCTUBRE",
             "NOVIEMBRE",
             "DICIEMBRE"});
-            this.cboMes.Location = new System.Drawing.Point(132, 45);
+            this.cboMes.Location = new System.Drawing.Point(132, 71);
             this.cboMes.Name = "cboMes";
             this.cboMes.Size = new System.Drawing.Size(144, 21);
             this.cboMes.TabIndex = 84;
@@ -116,7 +128,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 102);
+            this.label4.Location = new System.Drawing.Point(6, 155);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 13);
             this.label4.TabIndex = 69;
@@ -128,7 +140,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboFuenteFinanciamiento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFuenteFinanciamiento.FormattingEnabled = true;
-            this.cboFuenteFinanciamiento.Location = new System.Drawing.Point(132, 99);
+            this.cboFuenteFinanciamiento.Location = new System.Drawing.Point(132, 152);
             this.cboFuenteFinanciamiento.Name = "cboFuenteFinanciamiento";
             this.cboFuenteFinanciamiento.Size = new System.Drawing.Size(362, 21);
             this.cboFuenteFinanciamiento.TabIndex = 12;
@@ -159,7 +171,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboMeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMeta.FormattingEnabled = true;
-            this.cboMeta.Location = new System.Drawing.Point(132, 72);
+            this.cboMeta.Location = new System.Drawing.Point(132, 125);
             this.cboMeta.Name = "cboMeta";
             this.cboMeta.Size = new System.Drawing.Size(362, 21);
             this.cboMeta.TabIndex = 15;
@@ -168,7 +180,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(89, 75);
+            this.label28.Location = new System.Drawing.Point(89, 128);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(37, 13);
             this.label28.TabIndex = 11;
@@ -186,7 +198,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(93, 48);
+            this.label25.Location = new System.Drawing.Point(93, 74);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(33, 13);
             this.label25.TabIndex = 65;
@@ -209,7 +221,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(437, 144);
+            this.btnCancelar.Location = new System.Drawing.Point(437, 222);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 66;
@@ -225,7 +237,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(356, 144);
+            this.btnAceptar.Location = new System.Drawing.Point(356, 222);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 65;
@@ -234,11 +246,71 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(33, 101);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 13);
+            this.label3.TabIndex = 88;
+            this.label3.Text = "Regimen Laboral :";
+            // 
+            // cboRegimenLaboral
+            // 
+            this.cboRegimenLaboral.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboRegimenLaboral.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRegimenLaboral.FormattingEnabled = true;
+            this.cboRegimenLaboral.Location = new System.Drawing.Point(132, 98);
+            this.cboRegimenLaboral.Name = "cboRegimenLaboral";
+            this.cboRegimenLaboral.Size = new System.Drawing.Size(362, 21);
+            this.cboRegimenLaboral.TabIndex = 87;
+            this.cboRegimenLaboral.SelectedIndexChanged += new System.EventHandler(this.cboRegimenLaboral_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(24, 182);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(102, 13);
+            this.label5.TabIndex = 90;
+            this.label5.Text = "Formato de Planilla :";
+            // 
+            // cboPlantilla
+            // 
+            this.cboPlantilla.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboPlantilla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPlantilla.FormattingEnabled = true;
+            this.cboPlantilla.Location = new System.Drawing.Point(132, 179);
+            this.cboPlantilla.Name = "cboPlantilla";
+            this.cboPlantilla.Size = new System.Drawing.Size(362, 21);
+            this.cboPlantilla.TabIndex = 89;
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDescripcion.Location = new System.Drawing.Point(132, 45);
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(362, 20);
+            this.txtDescripcion.TabIndex = 91;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(57, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(69, 13);
+            this.label6.TabIndex = 92;
+            this.label6.Text = "Descripción :";
+            // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 221);
+            this.ClientSize = new System.Drawing.Size(524, 299);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -270,5 +342,11 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cboPlantilla;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboRegimenLaboral;
     }
 }

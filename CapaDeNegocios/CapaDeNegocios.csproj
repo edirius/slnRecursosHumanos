@@ -130,6 +130,7 @@
     <Compile Include="Trabajadores\cTrabajadorPermanente.cs" />
     <Compile Include="Trabajadores\cTrabajadorServidorNoPersonal.cs" />
     <Compile Include="Trabajadores\cTrabajadorServidorPersonal.cs" />
+    <Compile Include="Usuario\cUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

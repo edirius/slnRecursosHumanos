@@ -20,6 +20,8 @@ namespace CapaDeNegocios.Planillas
         int sidtmeta;
         int sidtfuentefinanciamiento;
         int sidtregimenlaboral;
+        string sdescripcion;
+        string splantilla;
 
         public int IdtPlanilla
         {
@@ -61,26 +63,36 @@ namespace CapaDeNegocios.Planillas
             get { return sidtregimenlaboral; }
             set { sidtregimenlaboral = value; }
         }
+        public string Descripcion
+        {
+            get { return sdescripcion; }
+            set { sdescripcion = value; }
+        }
+        public string Plantilla
+        {
+            get { return splantilla; }
+            set { splantilla = value; }
+        }
 
         public DataTable ListarRegimenLaboralPlanilla(string pNumeroPlanilla)
         {
             return Conexion.GDatos.TraerDataTable("spListarRegimenLaboralPlanilla", pNumeroPlanilla);
         }
 
-        public DataTable ListarPlanilla(int IdtRegimenLaboral)
+        public DataTable ListarPlanilla()
         {
-            return Conexion.GDatos.TraerDataTable("spListarPlanilla", IdtRegimenLaboral);
+            return Conexion.GDatos.TraerDataTable("spListarPlanilla");
         }
 
         public Boolean CrearPlanilla(cPlanilla miPlanilla)
         {
-            Conexion.GDatos.Ejecutar("spCrearPlanilla", miPlanilla.Numero, miPlanilla.Mes, miPlanilla.Año, miPlanilla.Fecha, miPlanilla.IdtMeta, miPlanilla.IdtFuenteFinanciamiento, miPlanilla.IdtRegimenLaboral);
+            Conexion.GDatos.Ejecutar("spCrearPlanilla", miPlanilla.Numero, miPlanilla.Mes, miPlanilla.Año, miPlanilla.Fecha, miPlanilla.IdtMeta, miPlanilla.IdtFuenteFinanciamiento, miPlanilla.IdtRegimenLaboral, miPlanilla.Descripcion, miPlanilla.Plantilla);
             return true;
         }
 
         public Boolean ModificarPlanilla(cPlanilla miPlanilla)
         {
-            Conexion.GDatos.Ejecutar("spModificarPlanilla", miPlanilla.IdtPlanilla, miPlanilla.Numero, miPlanilla.Mes,miPlanilla.Año, miPlanilla.Fecha, miPlanilla.IdtMeta, miPlanilla.IdtFuenteFinanciamiento, miPlanilla.IdtRegimenLaboral);
+            Conexion.GDatos.Ejecutar("spModificarPlanilla", miPlanilla.IdtPlanilla, miPlanilla.Numero, miPlanilla.Mes,miPlanilla.Año, miPlanilla.Fecha, miPlanilla.IdtMeta, miPlanilla.IdtFuenteFinanciamiento, miPlanilla.IdtRegimenLaboral, miPlanilla.Descripcion, miPlanilla.Plantilla);
             return true;
         }
 
