@@ -41,9 +41,11 @@
             // 
             // dgv1
             // 
+            this.dgv1.AllowUserToAddRows = false;
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv1.Location = new System.Drawing.Point(12, 33);
             this.dgv1.Name = "dgv1";
+            this.dgv1.RowHeadersVisible = false;
             this.dgv1.Size = new System.Drawing.Size(661, 76);
             this.dgv1.TabIndex = 0;
             // 
@@ -59,25 +61,31 @@
             // 
             // dgv2
             // 
+            this.dgv2.AllowUserToAddRows = false;
             this.dgv2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv2.Location = new System.Drawing.Point(12, 137);
             this.dgv2.Name = "dgv2";
+            this.dgv2.RowHeadersVisible = false;
             this.dgv2.Size = new System.Drawing.Size(661, 76);
             this.dgv2.TabIndex = 2;
             // 
             // dgv3
             // 
+            this.dgv3.AllowUserToAddRows = false;
             this.dgv3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv3.Location = new System.Drawing.Point(12, 253);
             this.dgv3.Name = "dgv3";
+            this.dgv3.RowHeadersVisible = false;
             this.dgv3.Size = new System.Drawing.Size(661, 76);
             this.dgv3.TabIndex = 3;
             // 
             // dgv4
             // 
+            this.dgv4.AllowUserToAddRows = false;
             this.dgv4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv4.Location = new System.Drawing.Point(12, 355);
             this.dgv4.Name = "dgv4";
+            this.dgv4.RowHeadersVisible = false;
             this.dgv4.Size = new System.Drawing.Size(661, 76);
             this.dgv4.TabIndex = 4;
             // 
@@ -85,13 +93,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(686, 502);
+            this.ClientSize = new System.Drawing.Size(687, 502);
             this.Controls.Add(this.dgv4);
             this.Controls.Add(this.dgv3);
             this.Controls.Add(this.dgv2);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.dgv1);
             this.Name = "frmExportarPeriodos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmExportarPeriodos";
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv2)).EndInit();

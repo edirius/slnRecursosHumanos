@@ -77,9 +77,9 @@ namespace CapaDeNegocios.ExportarSunat
         {
             return Conexion.GDatos.TraerDataTable("spExportarDatosPeriodos1");
         }
-        public string ExportarPeriodos(string tipoDoc, string dni, string paisDoc, string tipoRegistro, string fechainicio, string fechafin, string indicadorTipoRegistro, string EPS)
+        public string ExportarPeriodos(string tipoDoc, string dni, string paisDoc, string Categoria, string tipoRegistro, string fechainicio, string fechafin, string indicadorTipoRegistro, string EPS)
         {
-            string Concatenar = tipoDoc + Palo + dni + Palo + paisDoc + Palo + tipoRegistro + Palo + fechainicio + Palo + fechafin + Palo + indicadorTipoRegistro + Palo + EPS + Palo;
+            string Concatenar = tipoDoc + Palo + dni + Palo + paisDoc + Palo + Categoria + Palo + tipoRegistro + Palo + fechainicio + Palo + fechafin + Palo + indicadorTipoRegistro + Palo + EPS + Palo;
             return Concatenar;
         }
         public DataTable ListarPeriodos2()
@@ -93,6 +93,11 @@ namespace CapaDeNegocios.ExportarSunat
         public DataTable ListarPeriodos4()
         {
             return Conexion.GDatos.TraerDataTable("spExportarDatosPeriodos4");
+        }
+        public string ExportarEstablecimiento(string tipoDoc, string dni, string paisDoc, string ruc, string codEstab)
+        {
+            string Concatenar = tipoDoc + Palo + dni + Palo + paisDoc + Palo + ruc + Palo + codEstab + Palo;
+            return Concatenar;
         }
     }
 }

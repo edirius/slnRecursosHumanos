@@ -296,5 +296,19 @@ namespace CapaUsuario
             frmExportarPeriodos.MdiParent = this;
             frmExportarPeriodos.Show();
         }
+
+        private void datosDelEstablecimientoDelTrabajadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmDatosDelEstablecimiento frmEstablecimiento = new ExportarSunat.frmDatosDelEstablecimiento();
+            frmEstablecimiento.MdiParent = this;
+            frmEstablecimiento.Show();
+        }
+
+        private void datosDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmExportarDatosDeEstudiosConcluidos frmEstudios = new ExportarSunat.frmExportarDatosDeEstudiosConcluidos();
+            frmEstudios.MdiParent = this;
+            frmEstudios.Show();
+        }
     }
 }
