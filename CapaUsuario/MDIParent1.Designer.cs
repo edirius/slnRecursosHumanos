@@ -85,6 +85,11 @@
             this.IR5taCategoriatoolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarTextoSUNATToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.holaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.datosDelPeríodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.datosDelEstablecimientoDelTrabajadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.datosDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -97,6 +102,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.exportarAExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -536,18 +542,58 @@
             // exportarTextoSUNATToolStripMenuItem
             // 
             this.exportarTextoSUNATToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tributosYDescuentosDelTrabajadorToolStripMenuItem});
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem,
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem,
+            this.holaToolStripMenuItem,
+            this.datosDelPeríodoToolStripMenuItem,
+            this.datosDelEstablecimientoDelTrabajadorToolStripMenuItem,
+            this.datosDeToolStripMenuItem,
+            this.exportarAExcelToolStripMenuItem});
             this.exportarTextoSUNATToolStripMenuItem.Name = "exportarTextoSUNATToolStripMenuItem";
             this.exportarTextoSUNATToolStripMenuItem.Size = new System.Drawing.Size(135, 20);
             this.exportarTextoSUNATToolStripMenuItem.Text = "Exportar Texto SUNAT";
-           
             // 
             // tributosYDescuentosDelTrabajadorToolStripMenuItem
             // 
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Name = "tributosYDescuentosDelTrabajadorToolStripMenuItem";
-            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
-            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Text = "Tributos y Descuentos del Trabajador";
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Text = "Tributos y Descuentos del Trabajador(.REM)";
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Click += new System.EventHandler(this.tributosYDescuentosDelTrabajadorToolStripMenuItem_Click);
+            // 
+            // datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem
+            // 
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Name = "datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem";
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Text = "Datos personales del trabajador, pensionista, persona en información(.IDE)";
+            this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem.Click += new System.EventHandler(this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem_Click);
+            // 
+            // holaToolStripMenuItem
+            // 
+            this.holaToolStripMenuItem.Name = "holaToolStripMenuItem";
+            this.holaToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
+            this.holaToolStripMenuItem.Text = "Datos del Trabajador (.TRA)";
+            this.holaToolStripMenuItem.Click += new System.EventHandler(this.holaToolStripMenuItem_Click);
+            // 
+            // datosDelPeríodoToolStripMenuItem
+            // 
+            this.datosDelPeríodoToolStripMenuItem.Name = "datosDelPeríodoToolStripMenuItem";
+            this.datosDelPeríodoToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
+            this.datosDelPeríodoToolStripMenuItem.Text = "Datos del Períodos(.PER)";
+            this.datosDelPeríodoToolStripMenuItem.Click += new System.EventHandler(this.datosDelPeríodoToolStripMenuItem_Click);
+            // 
+            // datosDelEstablecimientoDelTrabajadorToolStripMenuItem
+            // 
+            this.datosDelEstablecimientoDelTrabajadorToolStripMenuItem.Name = "datosDelEstablecimientoDelTrabajadorToolStripMenuItem";
+            this.datosDelEstablecimientoDelTrabajadorToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
+            this.datosDelEstablecimientoDelTrabajadorToolStripMenuItem.Text = "Datos del Establecimiento del Trabajador(.EST)";
+            this.datosDelEstablecimientoDelTrabajadorToolStripMenuItem.Click += new System.EventHandler(this.datosDelEstablecimientoDelTrabajadorToolStripMenuItem_Click);
+            // 
+            // datosDeToolStripMenuItem
+            // 
+            this.datosDeToolStripMenuItem.Name = "datosDeToolStripMenuItem";
+            this.datosDeToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
+            this.datosDeToolStripMenuItem.Text = "Datos de Estudios Concluidos(.EDU)";
+            this.datosDeToolStripMenuItem.Click += new System.EventHandler(this.datosDeToolStripMenuItem_Click);
             // 
             // toolStrip
             // 
@@ -648,6 +694,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // exportarAExcelToolStripMenuItem
+            // 
+            this.exportarAExcelToolStripMenuItem.Name = "exportarAExcelToolStripMenuItem";
+            this.exportarAExcelToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
+            this.exportarAExcelToolStripMenuItem.Text = "Exportar a Excel";
+            this.exportarAExcelToolStripMenuItem.Click += new System.EventHandler(this.exportarAExcelToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -743,6 +796,12 @@
         private System.Windows.Forms.ToolStripMenuItem IR5taCategoriatoolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem exportarTextoSUNATToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tributosYDescuentosDelTrabajadorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem holaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datosDelPeríodoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datosDelEstablecimientoDelTrabajadorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datosDeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportarAExcelToolStripMenuItem;
     }
 }
 

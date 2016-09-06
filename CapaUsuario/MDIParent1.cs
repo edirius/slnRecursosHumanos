@@ -275,5 +275,47 @@ namespace CapaUsuario
             frmExportarTDT.MdiParent = this;
             frmExportarTDT.Show();
         }
+
+        private void datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmExportarDatosTrabajadores frmExportarDT = new ExportarSunat.frmExportarDatosTrabajadores();
+            frmExportarDT.MdiParent = this;
+            frmExportarDT.Show();
+        }
+
+        private void holaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmDatosDelTrabajador frmExportarDatosdelTrabajador = new ExportarSunat.frmDatosDelTrabajador();
+            frmExportarDatosdelTrabajador.MdiParent = this;
+            frmExportarDatosdelTrabajador.Show();
+        }
+
+        private void datosDelPeríodoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmExportarPeriodos frmExportarPeriodos = new ExportarSunat.frmExportarPeriodos();
+            frmExportarPeriodos.MdiParent = this;
+            frmExportarPeriodos.Show();
+        }
+
+        private void datosDelEstablecimientoDelTrabajadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmDatosDelEstablecimiento frmEstablecimiento = new ExportarSunat.frmDatosDelEstablecimiento();
+            frmEstablecimiento.MdiParent = this;
+            frmEstablecimiento.Show();
+        }
+
+        private void datosDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmExportarDatosDeEstudiosConcluidos frmEstudios = new ExportarSunat.frmExportarDatosDeEstudiosConcluidos();
+            frmEstudios.MdiParent = this;
+            frmEstudios.Show();
+        }
+
+        private void exportarAExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmExportarExcel frmExcel = new ExportarSunat.frmExportarExcel();
+            frmExcel.MdiParent = this;
+            frmExcel.Show();
+        }
     }
 }
