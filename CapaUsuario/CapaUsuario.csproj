@@ -51,6 +51,11 @@
     <Reference Include="iTextSharp">
       <HintPath>..\packages\iTextSharp-LGPL.4.1.6\lib\iTextSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\Program Files\Microsoft Office\Office14\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
@@ -139,6 +144,12 @@
     </Compile>
     <Compile Include="ExportarSunat\frmExportarDatosTrabajadores.Designer.cs">
       <DependentUpon>frmExportarDatosTrabajadores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportarSunat\frmExportarExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarSunat\frmExportarExcel.Designer.cs">
+      <DependentUpon>frmExportarExcel.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportarSunat\frmExportarPeriodos.cs">
       <SubType>Form</SubType>
@@ -940,6 +951,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmExportarDatosTrabajadores.resx">
       <DependentUpon>frmExportarDatosTrabajadores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportarSunat\frmExportarExcel.resx">
+      <DependentUpon>frmExportarExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmExportarPeriodos.resx">
       <DependentUpon>frmExportarPeriodos.cs</DependentUpon>

@@ -310,5 +310,12 @@ namespace CapaUsuario
             frmEstudios.MdiParent = this;
             frmEstudios.Show();
         }
+
+        private void exportarAExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmExportarExcel frmExcel = new ExportarSunat.frmExportarExcel();
+            frmExcel.MdiParent = this;
+            frmExcel.Show();
+        }
     }
 }
