@@ -54,6 +54,7 @@
             this.Column15 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.abreviacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Informativa = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaestroIngresos)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -149,7 +150,8 @@
             this.Column14,
             this.Column15,
             this.Column16,
-            this.abreviacion});
+            this.abreviacion,
+            this.Informativa});
             this.dgvMaestroIngresos.Cursor = System.Windows.Forms.Cursors.Default;
             this.dgvMaestroIngresos.Location = new System.Drawing.Point(12, 66);
             this.dgvMaestroIngresos.MultiSelect = false;
@@ -351,6 +353,13 @@
             this.abreviacion.Name = "abreviacion";
             this.abreviacion.ReadOnly = true;
             // 
+            // Informativa
+            // 
+            this.Informativa.HeaderText = "informativa";
+            this.Informativa.Name = "Informativa";
+            this.Informativa.ReadOnly = true;
+            this.Informativa.Visible = false;
+            // 
             // frmMantenimientoMaestroIngresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,5 +409,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column15;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column16;
         private System.Windows.Forms.DataGridViewTextBoxColumn abreviacion;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Informativa;
     }
 }

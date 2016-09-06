@@ -311,11 +311,11 @@ namespace CapaUsuario
             frmEstudios.Show();
         }
 
-        private void boletaPagoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exportarAExcelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CapaUsuario.Reportes.frmBoletaPago fBoletaPago = new CapaUsuario.Reportes.frmBoletaPago();
-            fBoletaPago.MdiParent = this;
-            fBoletaPago.Show();
+            ExportarSunat.frmExportarExcel frmExcel = new ExportarSunat.frmExportarExcel();
+            frmExcel.MdiParent = this;
+            frmExcel.Show();
         }
     }
 }

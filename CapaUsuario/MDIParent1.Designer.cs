@@ -102,7 +102,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.boletaPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportarAExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -120,12 +120,11 @@
             this.planillasToolStripMenuItem,
             this.sUNATToolStripMenuItem,
             this.IR5taCategoriatoolStripMenuItem4,
-            this.exportarTextoSUNATToolStripMenuItem,
-            this.boletaPagoToolStripMenuItem});
+            this.exportarTextoSUNATToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1084, 24);
+            this.menuStrip.Size = new System.Drawing.Size(952, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -301,27 +300,27 @@
             this.mantenimientoDeCargosToolStripMenuItem,
             this.residenteMetaToolStripMenuItem});
             this.viewMenu.Name = "viewMenu";
-            this.viewMenu.Size = new System.Drawing.Size(86, 20);
+            this.viewMenu.Size = new System.Drawing.Size(87, 20);
             this.viewMenu.Text = "&Trabajadores";
             // 
             // mantenimientoDeTrabajadoresToolStripMenuItem
             // 
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Name = "mantenimientoDeTrabajadoresToolStripMenuItem";
-            this.mantenimientoDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.mantenimientoDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Text = "Mantenimiento de Trabajadores";
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeTrabajadoresToolStripMenuItem_Click);
             // 
             // mantenimientoDeCargosToolStripMenuItem
             // 
             this.mantenimientoDeCargosToolStripMenuItem.Name = "mantenimientoDeCargosToolStripMenuItem";
-            this.mantenimientoDeCargosToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.mantenimientoDeCargosToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
             this.mantenimientoDeCargosToolStripMenuItem.Text = "Mantenimiento de Cargos";
             this.mantenimientoDeCargosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeCargosToolStripMenuItem_Click);
             // 
             // residenteMetaToolStripMenuItem
             // 
             this.residenteMetaToolStripMenuItem.Name = "residenteMetaToolStripMenuItem";
-            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
             this.residenteMetaToolStripMenuItem.Text = "Residente Meta";
             this.residenteMetaToolStripMenuItem.Click += new System.EventHandler(this.residenteMetaToolStripMenuItem_Click);
             // 
@@ -330,13 +329,13 @@
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
-            this.toolsMenu.Size = new System.Drawing.Size(53, 20);
+            this.toolsMenu.Size = new System.Drawing.Size(54, 20);
             this.toolsMenu.Text = "Tareos";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.optionsToolStripMenuItem.Text = "Tareo de Obras";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
@@ -496,7 +495,7 @@
             this.maestroDescuentosToolStripMenuItem,
             this.maestroDescuentosToolStripMenuItem1});
             this.sUNATToolStripMenuItem.Name = "sUNATToolStripMenuItem";
-            this.sUNATToolStripMenuItem.Size = new System.Drawing.Size(171, 20);
+            this.sUNATToolStripMenuItem.Size = new System.Drawing.Size(173, 20);
             this.sUNATToolStripMenuItem.Text = "SUNAT - Tablas Parametricas";
             // 
             // motivoFinPeriodoToolStripMenuItem
@@ -548,9 +547,10 @@
             this.holaToolStripMenuItem,
             this.datosDelPeríodoToolStripMenuItem,
             this.datosDelEstablecimientoDelTrabajadorToolStripMenuItem,
-            this.datosDeToolStripMenuItem});
+            this.datosDeToolStripMenuItem,
+            this.exportarAExcelToolStripMenuItem});
             this.exportarTextoSUNATToolStripMenuItem.Name = "exportarTextoSUNATToolStripMenuItem";
-            this.exportarTextoSUNATToolStripMenuItem.Size = new System.Drawing.Size(133, 20);
+            this.exportarTextoSUNATToolStripMenuItem.Size = new System.Drawing.Size(135, 20);
             this.exportarTextoSUNATToolStripMenuItem.Text = "Exportar Texto SUNAT";
             // 
             // tributosYDescuentosDelTrabajadorToolStripMenuItem
@@ -608,7 +608,7 @@
             this.helpToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1084, 25);
+            this.toolStrip.Size = new System.Drawing.Size(952, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
@@ -684,7 +684,7 @@
             this.toolStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 431);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1084, 22);
+            this.statusStrip.Size = new System.Drawing.Size(952, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -694,18 +694,18 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // boletaPagoToolStripMenuItem
+            // exportarAExcelToolStripMenuItem
             // 
-            this.boletaPagoToolStripMenuItem.Name = "boletaPagoToolStripMenuItem";
-            this.boletaPagoToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-            this.boletaPagoToolStripMenuItem.Text = "Boleta Pago";
-            this.boletaPagoToolStripMenuItem.Click += new System.EventHandler(this.boletaPagoToolStripMenuItem_Click);
+            this.exportarAExcelToolStripMenuItem.Name = "exportarAExcelToolStripMenuItem";
+            this.exportarAExcelToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
+            this.exportarAExcelToolStripMenuItem.Text = "Exportar a Excel";
+            this.exportarAExcelToolStripMenuItem.Click += new System.EventHandler(this.exportarAExcelToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 453);
+            this.ClientSize = new System.Drawing.Size(952, 453);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -801,7 +801,7 @@
         private System.Windows.Forms.ToolStripMenuItem datosDelPeríodoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem datosDelEstablecimientoDelTrabajadorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem datosDeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem boletaPagoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportarAExcelToolStripMenuItem;
     }
 }
 
