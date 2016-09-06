@@ -37,9 +37,14 @@ namespace CapaDeNegocios.Planillas
             set { sidtdetalleplanilla = value; }
         }
 
-        public DataTable ListarPlanillaAEmpleador(string paño,string pmes, int pidRegimenLaboral, int pidTrabajador)
+        public DataTable ListarPlanillaAEmpleadorXBoletaPago(int pidPlanilla, int pidRegimenLaboral, int pidTrabajador)
         {
-            return Conexion.GDatos.TraerDataTable("spListarPlanillaAEmpleador",paño, pmes, pidRegimenLaboral, pidTrabajador);
+            return Conexion.GDatos.TraerDataTable("spListarPlanillaAEmpleadorXBoletaPago", pidPlanilla, pidRegimenLaboral, pidTrabajador);
+        }
+
+        public DataTable ListarPlanillaAEmpleador(int pidPlanilla, int pidRegimenLaboral, int pidTrabajador)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarPlanillaAEmpleador", pidPlanilla, pidRegimenLaboral, pidTrabajador);
         }
 
         public DataTable ListarDetallePlanillaAEmpleador(int IdtDetallePlanilla)

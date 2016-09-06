@@ -36,7 +36,6 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.dgvPlanilla = new System.Windows.Forms.DataGridView();
-            this.dgvPrueba = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,8 +48,11 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdtRegimenLaboral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPrueba = new System.Windows.Forms.DataGridView();
+            this.dgvAFP = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -184,15 +186,6 @@
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick);
             // 
-            // dgvPrueba
-            // 
-            this.dgvPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrueba.Location = new System.Drawing.Point(18, 210);
-            this.dgvPrueba.Name = "dgvPrueba";
-            this.dgvPrueba.Size = new System.Drawing.Size(577, 156);
-            this.dgvPrueba.TabIndex = 30;
-            this.dgvPrueba.Visible = false;
-            // 
             // Column1
             // 
             this.Column1.HeaderText = "IdtPlanilla";
@@ -282,11 +275,30 @@
             this.Plantilla.ReadOnly = true;
             this.Plantilla.Visible = false;
             // 
+            // dgvPrueba
+            // 
+            this.dgvPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrueba.Location = new System.Drawing.Point(18, 210);
+            this.dgvPrueba.Name = "dgvPrueba";
+            this.dgvPrueba.Size = new System.Drawing.Size(156, 156);
+            this.dgvPrueba.TabIndex = 30;
+            this.dgvPrueba.Visible = false;
+            // 
+            // dgvAFP
+            // 
+            this.dgvAFP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAFP.Location = new System.Drawing.Point(180, 210);
+            this.dgvAFP.Name = "dgvAFP";
+            this.dgvAFP.Size = new System.Drawing.Size(156, 156);
+            this.dgvAFP.TabIndex = 30;
+            this.dgvAFP.Visible = false;
+            // 
             // frmMatenimientoPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 449);
+            this.Controls.Add(this.dgvAFP);
             this.Controls.Add(this.dgvPrueba);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnDetallePlanilla);
@@ -302,6 +314,7 @@
             this.Load += new System.EventHandler(this.frmMatenimientoPlanilla_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -328,5 +341,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdtRegimenLaboral;
         private System.Windows.Forms.DataGridViewTextBoxColumn Plantilla;
+        private System.Windows.Forms.DataGridView dgvAFP;
     }
 }

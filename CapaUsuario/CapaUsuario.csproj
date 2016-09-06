@@ -197,6 +197,12 @@
     <Compile Include="Reportes\fPrueba.Designer.cs">
       <DependentUpon>fPrueba.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\frmBoletaPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmBoletaPago.designer.cs">
+      <DependentUpon>frmBoletaPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\listarAFP_Result.cs">
       <DependentUpon>modPersonal.tt</DependentUpon>
     </Compile>
@@ -1055,6 +1061,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\fPrueba.resx">
       <DependentUpon>fPrueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmBoletaPago.resx">
+      <DependentUpon>frmBoletaPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\MostrarReportes.resx">
       <DependentUpon>MostrarReportes.cs</DependentUpon>
