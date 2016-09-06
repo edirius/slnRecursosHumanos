@@ -769,11 +769,12 @@ namespace CapaUsuario.Planilla
 
 
                     //Determinar el numero maximo de filas por columna.
+                    //nro_max_filas_x_columna = mayor(Convert.ToInt16(DivisionIngresos), mayor(mayor(Convert.ToInt16(DivisionTrabajador), Convert.ToInt16(DivisionEmpleador)), Convert.ToInt16(DivisionDescuentos)));
                     nro_max_filas_x_columna = mayor(Convert.ToInt16(DivisionIngresos), mayor(mayor(Convert.ToInt16(DivisionTrabajador), Convert.ToInt16(DivisionEmpleador)), Convert.ToInt16(DivisionDescuentos)));
-
+                    if (nro_max_filas_x_columna == 3) nro_max_filas_x_columna = 4;
                     //Unir descripciones de ingresos en maximo dos columnas
                     c = 0; cc = 0;
-                    if (DivisionIngresos >= 2)
+                    if ( total_tipo_ingreso > nro_max_filas_x_columna )
                         cantidad_total_ingresos = 2;
                     else
                         cantidad_total_ingresos = 1;
@@ -808,7 +809,7 @@ namespace CapaUsuario.Planilla
 
                     //Unir descripciones de aportes trabajador en maximo dos columnas
                     c = 0; cc = 0;
-                    if (DivisionTrabajador >= 2)
+                    if (total_tipo_a_trabajador > nro_max_filas_x_columna)
                         cantidad_total_a_trabajador = 2;
                     else
                         cantidad_total_a_trabajador = 1;
@@ -845,7 +846,7 @@ namespace CapaUsuario.Planilla
 
                     c = 0; cc = 0;
 
-                    if (DivisionDescuentos >= 2)
+                    if (total_tipo_descuento > nro_max_filas_x_columna)
                         cantidad_total_descuentos = 2;
                     else
                         cantidad_total_descuentos = 1;
@@ -883,7 +884,7 @@ namespace CapaUsuario.Planilla
 
                     //Unir descripciones de empleador en maximo dos columnas
                     c = 0; cc = 0;
-                    if (DivisionEmpleador >= 2)
+                    if (total_tipo_a_empleador > nro_max_filas_x_columna)
                         cantidad_total_a_empleador = 2;
                     else
                         cantidad_total_a_empleador = 1;
@@ -1227,6 +1228,8 @@ namespace CapaUsuario.Planilla
                 values[i] = (float)dg.Columns[i].Width;
                 if (i == 0) values[i] = 50;
                 if (i == 1) values[i] =200;
+
+                if (i== dg.ColumnCount-1) values[i] = 150;
             }
             return values;
         }
