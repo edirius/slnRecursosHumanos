@@ -317,5 +317,12 @@ namespace CapaUsuario
             frmExcel.MdiParent = this;
             frmExcel.Show();
         }
+
+        private void boletaPagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Reportes.frmBoletaPago fBoletaPago = new CapaUsuario.Reportes.frmBoletaPago();
+            fBoletaPago.MdiParent = this;
+            fBoletaPago.Show();
+        }
     }
 }

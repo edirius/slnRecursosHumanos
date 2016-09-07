@@ -32,6 +32,7 @@ namespace CapaUsuario.Planilla
         string sfuentefinanciamiento = "";
         string sdescripcion = "";
         string splantilla = "";
+
         string sNumeroPlanilla = "";
         string sRegimenLaboral = "";
 
@@ -125,25 +126,23 @@ namespace CapaUsuario.Planilla
             if (e.RowIndex != -1)
             {
                 sidtplanilla = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[0].Value);
-                sdescripcion = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value);
-                //sdescripcion = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[2].Value);
-                smes = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[2].Value);
-                saño = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[3].Value);
-                //sfecha = Convert.ToDateTime(dgvPlanilla.Rows[e.RowIndex].Cells[5].Value);
+                snumero = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value);
+                sdescripcion = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[2].Value);
+                smes = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[3].Value);
+                saño = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[4].Value);
+                sfecha = Convert.ToDateTime(dgvPlanilla.Rows[e.RowIndex].Cells[5].Value);
                 sidtmeta = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[6].Value);
                 smeta = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[7].Value);
                 sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[8].Value);
                 sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[9].Value);
                 sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[10].Value);
                 splantilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[11].Value);
+
                 sNumeroPlanilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value);
-
-                //DataTable odtPrueba = new DataTable();
-                //odtPrueba = oPlanilla.ListarRegimenLaboralPlanilla(sNumeroPlanilla);
-
-                //foreach (DataRow row in odtPrueba.Rows)
-                //      sRegimenLaboral = row[0].ToString();
-
+                DataTable odtPrueba = new DataTable();
+                odtPrueba = oPlanilla.ListarRegimenLaboralPlanilla(sNumeroPlanilla);
+                foreach (DataRow row in odtPrueba.Rows)
+                    sRegimenLaboral = row[0].ToString();
             }
         }
 
@@ -173,7 +172,6 @@ namespace CapaUsuario.Planilla
                     sfuentefinanciamiento = roww[2].ToString();
                 }
                 dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString());
-
             }
             if (dgvPlanilla.Rows.Count > 0)
             {
@@ -769,11 +767,12 @@ namespace CapaUsuario.Planilla
 
 
                     //Determinar el numero maximo de filas por columna.
+                    //nro_max_filas_x_columna = mayor(Convert.ToInt16(DivisionIngresos), mayor(mayor(Convert.ToInt16(DivisionTrabajador), Convert.ToInt16(DivisionEmpleador)), Convert.ToInt16(DivisionDescuentos)));
                     nro_max_filas_x_columna = mayor(Convert.ToInt16(DivisionIngresos), mayor(mayor(Convert.ToInt16(DivisionTrabajador), Convert.ToInt16(DivisionEmpleador)), Convert.ToInt16(DivisionDescuentos)));
-
+                    if (nro_max_filas_x_columna == 3) nro_max_filas_x_columna = 4;
                     //Unir descripciones de ingresos en maximo dos columnas
                     c = 0; cc = 0;
-                    if (DivisionIngresos >= 2)
+                    if ( total_tipo_ingreso > nro_max_filas_x_columna )
                         cantidad_total_ingresos = 2;
                     else
                         cantidad_total_ingresos = 1;
@@ -808,7 +807,7 @@ namespace CapaUsuario.Planilla
 
                     //Unir descripciones de aportes trabajador en maximo dos columnas
                     c = 0; cc = 0;
-                    if (DivisionTrabajador >= 2)
+                    if (total_tipo_a_trabajador > nro_max_filas_x_columna)
                         cantidad_total_a_trabajador = 2;
                     else
                         cantidad_total_a_trabajador = 1;
@@ -845,7 +844,7 @@ namespace CapaUsuario.Planilla
 
                     c = 0; cc = 0;
 
-                    if (DivisionDescuentos >= 2)
+                    if (total_tipo_descuento > nro_max_filas_x_columna)
                         cantidad_total_descuentos = 2;
                     else
                         cantidad_total_descuentos = 1;
@@ -883,7 +882,7 @@ namespace CapaUsuario.Planilla
 
                     //Unir descripciones de empleador en maximo dos columnas
                     c = 0; cc = 0;
-                    if (DivisionEmpleador >= 2)
+                    if (total_tipo_a_empleador > nro_max_filas_x_columna)
                         cantidad_total_a_empleador = 2;
                     else
                         cantidad_total_a_empleador = 1;
@@ -1227,6 +1226,8 @@ namespace CapaUsuario.Planilla
                 values[i] = (float)dg.Columns[i].Width;
                 if (i == 0) values[i] = 50;
                 if (i == 1) values[i] =200;
+
+                if (i== dg.ColumnCount-1) values[i] = 150;
             }
             return values;
         }
