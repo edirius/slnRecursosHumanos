@@ -48,11 +48,20 @@ namespace CapaDeNegocios.ExportarSunat
         {
             return Conexion.GDatos.TraerDataTable("spExportarDatosTrabajadores");
         }
+        
+        public DataTable ListarDatosDelTrabajadorporFecha(DateTime fecha1, DateTime fecha2)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarDatosTrabajadoresporFecha", fecha1, fecha2);
+        }
 
         ////////EXPORTAR DATOS DE LOS TRABAJADORES A LA SUNAT//////
         public DataTable ListarTrabajadores()
         {
             return Conexion.GDatos.TraerDataTable("spListarTrabajadoresaExportar");
+        }
+        public DataTable ListarTrabajadoresporFechaInicio(DateTime fecha1, DateTime fecha2)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarTrabajadoresporFecha", fecha1, fecha2);
         }
         public string ExportarDatosTrabajador(string tipoDoc, string dni, string paisEmisor, string fechaNac, string apPaterno, string apMaterno,
         string nombres, string sexo, string nacionalidad, string telLargaDis, string tel, string correo, string tipoVia, string nombreVia, string nroVia,

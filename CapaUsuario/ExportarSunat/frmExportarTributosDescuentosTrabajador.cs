@@ -33,9 +33,6 @@ namespace CapaUsuario.ExportarSunat
             label5.Visible = false;
             txtCodForm.Visible = false;
             txtRuc.Visible = false;
-            
-            
-
         }
         private void ConvertirMes(string MES)
         {

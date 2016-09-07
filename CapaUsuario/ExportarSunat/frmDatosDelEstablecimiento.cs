@@ -24,7 +24,7 @@ namespace CapaUsuario.ExportarSunat
 
         public void CargarGrid()
         {
-            dgvDatosEstablecimiento.DataSource = oExpo.ListarTrabajadores();
+            //dgvDatosEstablecimiento.DataSource = oExpo.ListarTrabajadores();
         }
         public void concatenarDatos()
         {

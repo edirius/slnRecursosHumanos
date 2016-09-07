@@ -43,15 +43,15 @@
             // 
             this.dgv1.AllowUserToAddRows = false;
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv1.Location = new System.Drawing.Point(12, 33);
+            this.dgv1.Location = new System.Drawing.Point(23, 105);
             this.dgv1.Name = "dgv1";
             this.dgv1.RowHeadersVisible = false;
-            this.dgv1.Size = new System.Drawing.Size(661, 76);
+            this.dgv1.Size = new System.Drawing.Size(397, 170);
             this.dgv1.TabIndex = 0;
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(598, 446);
+            this.btnExportar.Location = new System.Drawing.Point(794, 39);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(75, 44);
             this.btnExportar.TabIndex = 1;
@@ -63,37 +63,37 @@
             // 
             this.dgv2.AllowUserToAddRows = false;
             this.dgv2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv2.Location = new System.Drawing.Point(12, 137);
+            this.dgv2.Location = new System.Drawing.Point(472, 105);
             this.dgv2.Name = "dgv2";
             this.dgv2.RowHeadersVisible = false;
-            this.dgv2.Size = new System.Drawing.Size(661, 76);
+            this.dgv2.Size = new System.Drawing.Size(397, 170);
             this.dgv2.TabIndex = 2;
             // 
             // dgv3
             // 
             this.dgv3.AllowUserToAddRows = false;
             this.dgv3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv3.Location = new System.Drawing.Point(12, 253);
+            this.dgv3.Location = new System.Drawing.Point(23, 306);
             this.dgv3.Name = "dgv3";
             this.dgv3.RowHeadersVisible = false;
-            this.dgv3.Size = new System.Drawing.Size(661, 76);
+            this.dgv3.Size = new System.Drawing.Size(397, 170);
             this.dgv3.TabIndex = 3;
             // 
             // dgv4
             // 
             this.dgv4.AllowUserToAddRows = false;
             this.dgv4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv4.Location = new System.Drawing.Point(12, 355);
+            this.dgv4.Location = new System.Drawing.Point(472, 306);
             this.dgv4.Name = "dgv4";
             this.dgv4.RowHeadersVisible = false;
-            this.dgv4.Size = new System.Drawing.Size(661, 76);
+            this.dgv4.Size = new System.Drawing.Size(397, 170);
             this.dgv4.TabIndex = 4;
             // 
             // frmExportarPeriodos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 502);
+            this.ClientSize = new System.Drawing.Size(892, 495);
             this.Controls.Add(this.dgv4);
             this.Controls.Add(this.dgv3);
             this.Controls.Add(this.dgv2);

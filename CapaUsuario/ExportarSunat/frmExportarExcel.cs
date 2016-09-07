@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using CapaDeNegocios;
 
 namespace CapaUsuario.ExportarSunat
 {
@@ -29,13 +31,13 @@ namespace CapaUsuario.ExportarSunat
         {
             
         }
-
-        private void btnExport_Click_1(object sender, EventArgs e)
+        private void ExportarExcel()
         {
             Microsoft.Office.Interop.Excel.Application Excel = new Microsoft.Office.Interop.Excel.Application();
             Workbook wb = Excel.Workbooks.Add(XlSheetType.xlWorksheet);
             Worksheet ws = (Worksheet)Excel.ActiveSheet;
             Excel.Visible = true;
+            //Para poner Título en la cabecera de las Columnas del Excel
             ws.Cells[1, 1] = "";
             ws.Cells[1, 2] = "";
             ws.Cells[1, 3] = "";
@@ -62,8 +64,17 @@ namespace CapaUsuario.ExportarSunat
                 }
 
             }
-
-
+        }
+        private void btnExport_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView.Rows.Count != 0)
+            {
+                MessageBox.Show("Los datos fueron exportados exitosamente.");
+                ExportarExcel();
+            }
+            else
+            MessageBox.Show("No se encontraron datos para la exportación.");
+            
         }
     }
 }
