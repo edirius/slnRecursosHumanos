@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaDeDatos;
 using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace CapaDeNegocios.Usuario
 {
@@ -53,10 +54,32 @@ namespace CapaDeNegocios.Usuario
             }
         }
 
+        public static bool Autenticar(cUsuario Usuario)
+        {
+            return (Convert.ToBoolean (Conexion.GDatos.TraerValorEscalar("spBuscarUsuario", Usuario.Nombre, Usuario.Password)));
+        }
 
-        public DataTable ListaDepartamentos()
+
+        public DataTable ListaUsuarios()
         {
             return Conexion.GDatos.TraerDataTable("spListarUsuarios");
         }
+
+        public Boolean  CrearUsuario(cUsuario UsuarioNuevo)
+        {   
+            return Convert.ToBoolean ( Conexion.GDatos.Ejecutar("spCrearUsuario", UsuarioNuevo.nombre, UsuarioNuevo.password));
+        }
+
+        public Boolean ModificarUsuario(cUsuario UsuarioAModificar)
+        {
+            return Convert.ToBoolean(Conexion.GDatos.Ejecutar("spModificarUsuario", UsuarioAModificar.codigo, UsuarioAModificar.nombre, UsuarioAModificar.password));
+        }
+
+        public Boolean EliminarUsuario(cUsuario UsuarioAEliminar)
+        {
+            return Convert.ToBoolean(Conexion.GDatos.Ejecutar("spEliminarUsuario", UsuarioAEliminar.codigo));
+        }
+
+
     }
 }
