@@ -32,6 +32,7 @@ namespace CapaUsuario.Planilla
         string sfuentefinanciamiento = "";
         string sdescripcion = "";
         string splantilla = "";
+
         string sNumeroPlanilla = "";
         string sRegimenLaboral = "";
 
@@ -125,25 +126,23 @@ namespace CapaUsuario.Planilla
             if (e.RowIndex != -1)
             {
                 sidtplanilla = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[0].Value);
-                sdescripcion = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value);
-                //sdescripcion = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[2].Value);
-                smes = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[2].Value);
-                saño = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[3].Value);
-                //sfecha = Convert.ToDateTime(dgvPlanilla.Rows[e.RowIndex].Cells[5].Value);
+                snumero = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value);
+                sdescripcion = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[2].Value);
+                smes = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[3].Value);
+                saño = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[4].Value);
+                sfecha = Convert.ToDateTime(dgvPlanilla.Rows[e.RowIndex].Cells[5].Value);
                 sidtmeta = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[6].Value);
                 smeta = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[7].Value);
                 sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[8].Value);
                 sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[9].Value);
                 sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[10].Value);
                 splantilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[11].Value);
+
                 sNumeroPlanilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value);
-
-                //DataTable odtPrueba = new DataTable();
-                //odtPrueba = oPlanilla.ListarRegimenLaboralPlanilla(sNumeroPlanilla);
-
-                //foreach (DataRow row in odtPrueba.Rows)
-                //      sRegimenLaboral = row[0].ToString();
-
+                DataTable odtPrueba = new DataTable();
+                odtPrueba = oPlanilla.ListarRegimenLaboralPlanilla(sNumeroPlanilla);
+                foreach (DataRow row in odtPrueba.Rows)
+                    sRegimenLaboral = row[0].ToString();
             }
         }
 
@@ -173,7 +172,6 @@ namespace CapaUsuario.Planilla
                     sfuentefinanciamiento = roww[2].ToString();
                 }
                 dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString());
-
             }
             if (dgvPlanilla.Rows.Count > 0)
             {
