@@ -28,6 +28,18 @@ namespace CapaUsuario.ExportarSunat
         private void CargarGrid()
         {
             dgvListar.DataSource = oExp.ListarDatosDelTrabajador();
+            dgvListar.Columns[0].Width = 75;
+            dgvListar.Columns[1].Width = 75;
+            dgvListar.Columns[2].Width = 90;
+            dgvListar.Columns[3].Width = 65;
+            dgvListar.Columns[4].Width = 75;
+            dgvListar.Columns[5].Width = 75;
+            dgvListar.Columns[6].Width = 75;
+            dgvListar.Columns[7].Width = 120;
+            //dgvListar.Columns[4].Width = 120;
+            //dgvListar.Columns[5].Width = 75;
+            //dgvListar.Columns[6].Width = 35;
+            //dgvListar.Columns[7].Width = 75;
         }
         private void ConvertiraNumero(string tipoPago)
         {
@@ -43,7 +55,7 @@ namespace CapaUsuario.ExportarSunat
                         nroTipoPago = "2";
                         break;
                     }
-                case "OTROS":
+                case "CHEQUE":
                     {
                         nroTipoPago = "3";
                         break;
@@ -90,22 +102,22 @@ namespace CapaUsuario.ExportarSunat
                 for (int i = 0; i <= dgvListar.Rows.Count; i++)
                 {
                     string tipoDoc = "01";
-                    string dni = dgvListar[0, i].Value.ToString();
+                    string dni = dgvListar[1, i].Value.ToString();
                     string paisDoc = "604";
-                    string RegimenLaboral = dgvListar[1, i].Value.ToString();
+                    string RegimenLaboral = dgvListar[2, i].Value.ToString();
                     string SituacionEdu = "07";
-                    string Ocupacion = dgvListar[2, i].Value.ToString();
+                    string Ocupacion = dgvListar[3, i].Value.ToString();
                     string Discapacidad = "0";
                     string CUSPP = "";
-                    string SCTR = "0";
-                    string tipoContrato = dgvListar[3, i].Value.ToString();
+                    string SCTR = "";
+                    string tipoContrato = dgvListar[4, i].Value.ToString();
                     string regimenAlternativo = "0";
                     string jornadaTrabajo = "0";
                     string horarioNocturno = "0";
                     string sindicalizado = "0";
-                    string periodicidad = dgvListar[4, i].Value.ToString();
+                    string periodicidad = dgvListar[5, i].Value.ToString();
                     ConvertiraNumero2(periodicidad);
-                    string remBasica = dgvListar[5, i].Value.ToString();
+                    string remBasica = "";
                     string situacion = "1";
                     string Renta5ta = "0";
                     string situacionEsp = "0";
@@ -157,7 +169,22 @@ namespace CapaUsuario.ExportarSunat
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ConcatenarDatos();
+            if (dgvListar.Rows.Count != 0)
+            {
+                ConcatenarDatos();
+            }
+            else MessageBox.Show("No se encontraron datos para la exportación.");
+            
+        }
+
+        private void DtHasta_ValueChanged(object sender, EventArgs e)
+        {
+            dgvListar.DataSource = oExp.ListarDatosDelTrabajadorporFecha(DtDesde.Value, DtHasta.Value);
+        }
+
+        private void DtDesde_ValueChanged(object sender, EventArgs e)
+        {
+            dgvListar.DataSource = oExp.ListarDatosDelTrabajadorporFecha(DtDesde.Value, DtHasta.Value);
         }
     }
 }
