@@ -53,6 +53,8 @@
             this.btnFormula = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.txtAbreviacion = new System.Windows.Forms.TextBox();
+            this.chkInformativa = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -324,7 +326,6 @@
             this.label5.Size = new System.Drawing.Size(69, 13);
             this.label5.TabIndex = 104;
             this.label5.Text = "Abreviacion :";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtAbreviacion
             // 
@@ -334,11 +335,32 @@
             this.txtAbreviacion.Size = new System.Drawing.Size(543, 20);
             this.txtAbreviacion.TabIndex = 105;
             // 
+            // chkInformativa
+            // 
+            this.chkInformativa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkInformativa.AutoSize = true;
+            this.chkInformativa.Location = new System.Drawing.Point(126, 343);
+            this.chkInformativa.Name = "chkInformativa";
+            this.chkInformativa.Size = new System.Drawing.Size(15, 14);
+            this.chkInformativa.TabIndex = 106;
+            this.chkInformativa.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(11, 343);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(109, 13);
+            this.label6.TabIndex = 107;
+            this.label6.Text = "Columna Informativa :";
+            // 
             // frmMaestroIngresos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 460);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.chkInformativa);
             this.Controls.Add(this.txtAbreviacion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnFormula);
@@ -400,5 +422,7 @@
         private System.Windows.Forms.Button btnFormula;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtAbreviacion;
+        private System.Windows.Forms.CheckBox chkInformativa;
+        private System.Windows.Forms.Label label6;
     }
 }

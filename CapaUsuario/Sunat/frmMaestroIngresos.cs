@@ -56,6 +56,7 @@ namespace CapaUsuario.Sunat
             miMaestroIngresos.Contrib_solidaria = chkContrib_solidaria.Checked;
             miMaestroIngresos.Calculo = txtFormula.Text;
             miMaestroIngresos.Abreviacion = txtAbreviacion.Text;
+            miMaestroIngresos.Informativa = chkInformativa.Checked;
             miMaestroIngresos.Tipo = txtTipo.Text;
 
             if (iAccion == 1)
@@ -83,7 +84,7 @@ namespace CapaUsuario.Sunat
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
-        public void RecibirDatos(int pidtmaestroingresos, string pcodigo, string pdescripcion, bool pessalud_trabajador, bool pessalud_cbssp, bool pessalud_agrario, bool pessalud_sctr, bool pimpuesto_extraord, bool pderechos_sociales, bool psenati, bool psnp, bool pspp, bool prenta_5ta, bool pessalud_pensionista, bool pcontrib_solidaria, string pcalculo, string ptipo,string pAbreviacion, int piAccion)
+        public void RecibirDatos(int pidtmaestroingresos, string pcodigo, string pdescripcion, bool pessalud_trabajador, bool pessalud_cbssp, bool pessalud_agrario, bool pessalud_sctr, bool pimpuesto_extraord, bool pderechos_sociales, bool psenati, bool psnp, bool pspp, bool prenta_5ta, bool pessalud_pensionista, bool pcontrib_solidaria, string pcalculo, string ptipo,string pabreviacion, bool pinformativa, int piAccion)
         {
             sidtmaestroingresos = pidtmaestroingresos;
             txtCodigo.Text = pcodigo;
@@ -102,13 +103,9 @@ namespace CapaUsuario.Sunat
             chkContrib_solidaria.Checked = pcontrib_solidaria;
             txtFormula.Text = pcalculo;
             txtTipo.Text = ptipo;
-            txtAbreviacion.Text = pAbreviacion;
+            txtAbreviacion.Text = pabreviacion;
+            chkInformativa.Checked = pinformativa;
             iAccion = piAccion;
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
