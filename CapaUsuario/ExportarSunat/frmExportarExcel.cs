@@ -24,7 +24,7 @@ namespace CapaUsuario.ExportarSunat
         }
         private void cargargrid()
         {
-            dataGridView.DataSource = oexp.ListarTrabajadores();
+            //dataGridView.DataSource = oexp.ListarTrabajadores();
         }
 
         private void frmExportarExcel_Load(object sender, EventArgs e)

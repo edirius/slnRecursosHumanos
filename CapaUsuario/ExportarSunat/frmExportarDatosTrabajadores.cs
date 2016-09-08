@@ -25,7 +25,8 @@ namespace CapaUsuario.ExportarSunat
         }
         public void Cargargrid()
         {
-            dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadores();
+            dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadoresporFechaInicio(DtDesde.Value, DtHasta.Value);
+            //dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadores();
             dgvListarTrabajadores.Columns[0].Width = 75;
             dgvListarTrabajadores.Columns[1].Width = 63;
             dgvListarTrabajadores.Columns[4].Width = 120;
