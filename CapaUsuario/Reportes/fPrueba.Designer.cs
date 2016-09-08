@@ -39,7 +39,7 @@
             this.dgvPrueba.Name = "dgvPrueba";
             this.dgvPrueba.Size = new System.Drawing.Size(1179, 573);
             this.dgvPrueba.TabIndex = 0;
-            this.dgvPrueba.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrueba_CellContentClick);
+ 
             // 
             // fPrueba
             // 

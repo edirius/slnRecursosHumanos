@@ -19,32 +19,7 @@ namespace CapaUsuario.Reportes
             InitializeComponent();
         }
 
-        private void dgvPrueba_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-
-        public int BuscarIndiceColumna(DataTable odtPrueba, string titulo_columna)
-        {
-            int k = 0;
-            //reseteando contador de indice de ingreso
-            k = 0;
-            int indice_titulo_buscado = -1;
-            //Determinar si existe el tipo de ingreso en las columnas de odtPrueba
-            foreach (DataColumn column in odtPrueba.Columns)
-            {
-                //comparar si el nombre de columna del datatable es igual a la descripcion del ingreso
-                if (column.ColumnName.ToString().Trim() == titulo_columna.Trim())
-                {
-                    //guardar indice de tipo ingreso
-                    indice_titulo_buscado = k;
-                }
-                k++;
-            }
-
-            return indice_titulo_buscado;
-        }
+ 
 
         public bool ExisteColumna(DataTable odtPrueba, DataRow row_i)
         {

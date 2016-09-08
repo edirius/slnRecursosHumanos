@@ -53,7 +53,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimir.Location = new System.Drawing.Point(104, 371);
+            this.btnImprimir.Location = new System.Drawing.Point(12, 371);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 65);
             this.btnImprimir.TabIndex = 86;
@@ -65,54 +65,54 @@
             // dgvBoletaPago_A
             // 
             this.dgvBoletaPago_A.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBoletaPago_A.Location = new System.Drawing.Point(189, 359);
+            this.dgvBoletaPago_A.Location = new System.Drawing.Point(190, 350);
             this.dgvBoletaPago_A.Name = "dgvBoletaPago_A";
-            this.dgvBoletaPago_A.Size = new System.Drawing.Size(64, 32);
+            this.dgvBoletaPago_A.Size = new System.Drawing.Size(64, 14);
             this.dgvBoletaPago_A.TabIndex = 89;
             this.dgvBoletaPago_A.Visible = false;
             // 
             // dgvBoletaPago_B
             // 
             this.dgvBoletaPago_B.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBoletaPago_B.Location = new System.Drawing.Point(259, 359);
+            this.dgvBoletaPago_B.Location = new System.Drawing.Point(260, 350);
             this.dgvBoletaPago_B.Name = "dgvBoletaPago_B";
-            this.dgvBoletaPago_B.Size = new System.Drawing.Size(64, 32);
+            this.dgvBoletaPago_B.Size = new System.Drawing.Size(64, 14);
             this.dgvBoletaPago_B.TabIndex = 89;
             this.dgvBoletaPago_B.Visible = false;
             // 
             // dgvBoletaPago_C
             // 
             this.dgvBoletaPago_C.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBoletaPago_C.Location = new System.Drawing.Point(329, 359);
+            this.dgvBoletaPago_C.Location = new System.Drawing.Point(330, 350);
             this.dgvBoletaPago_C.Name = "dgvBoletaPago_C";
-            this.dgvBoletaPago_C.Size = new System.Drawing.Size(64, 32);
+            this.dgvBoletaPago_C.Size = new System.Drawing.Size(64, 14);
             this.dgvBoletaPago_C.TabIndex = 89;
             this.dgvBoletaPago_C.Visible = false;
             // 
             // dgvBoletaPago_D
             // 
             this.dgvBoletaPago_D.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBoletaPago_D.Location = new System.Drawing.Point(399, 359);
+            this.dgvBoletaPago_D.Location = new System.Drawing.Point(400, 350);
             this.dgvBoletaPago_D.Name = "dgvBoletaPago_D";
-            this.dgvBoletaPago_D.Size = new System.Drawing.Size(64, 32);
+            this.dgvBoletaPago_D.Size = new System.Drawing.Size(64, 14);
             this.dgvBoletaPago_D.TabIndex = 89;
             this.dgvBoletaPago_D.Visible = false;
             // 
             // dgvBoletaPago_E
             // 
             this.dgvBoletaPago_E.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBoletaPago_E.Location = new System.Drawing.Point(469, 359);
+            this.dgvBoletaPago_E.Location = new System.Drawing.Point(470, 350);
             this.dgvBoletaPago_E.Name = "dgvBoletaPago_E";
-            this.dgvBoletaPago_E.Size = new System.Drawing.Size(64, 32);
+            this.dgvBoletaPago_E.Size = new System.Drawing.Size(64, 14);
             this.dgvBoletaPago_E.TabIndex = 89;
             this.dgvBoletaPago_E.Visible = false;
             // 
             // dgvBoletaPago_F
             // 
             this.dgvBoletaPago_F.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBoletaPago_F.Location = new System.Drawing.Point(539, 359);
+            this.dgvBoletaPago_F.Location = new System.Drawing.Point(540, 350);
             this.dgvBoletaPago_F.Name = "dgvBoletaPago_F";
-            this.dgvBoletaPago_F.Size = new System.Drawing.Size(64, 32);
+            this.dgvBoletaPago_F.Size = new System.Drawing.Size(64, 14);
             this.dgvBoletaPago_F.TabIndex = 89;
             this.dgvBoletaPago_F.Visible = false;
             // 
