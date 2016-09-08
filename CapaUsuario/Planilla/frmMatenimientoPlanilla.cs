@@ -175,8 +175,8 @@ namespace CapaUsuario.Planilla
             }
             if (dgvPlanilla.Rows.Count > 0)
             {
-                DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, dgvPlanilla.Rows.Count - 1);
-                dgvPlanilla.Rows[dgvPlanilla.Rows.Count - 1].Selected = true;
+                DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, 0);
+                dgvPlanilla.Rows[0].Selected = true;
                 dgvPlanilla_CellClick(dgvPlanilla, cea);
             }
         }

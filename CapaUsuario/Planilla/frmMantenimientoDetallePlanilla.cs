@@ -71,7 +71,7 @@ namespace CapaUsuario.Planilla
         private void frmMantenimientoDetallePlanilla_Load(object sender, EventArgs e)
         {
             DibujarDataGrid();
-            //MostrarColumnas();
+            MostrarColumnas();
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
             oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
@@ -786,7 +786,7 @@ namespace CapaUsuario.Planilla
             sRemuneracion = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[13].Value);
             sRemMesAnt = 0;//suma de las remuneraciones totales
             sNroMes = Convert.ToInt32(Mes(smes));
-            sGratificaciones = 600 + 400;
+            sGratificaciones = 600;
             sRetMesAnteriores = 0;
             CapaDeNegocios.Planillas.cCalculo5taCategoria miCalculo5ta = new CapaDeNegocios.Planillas.cCalculo5taCategoria();
             sRenta5ta = miCalculo5ta.CalculoRentaMensual(sRemuneracion, sRemMesAnt, sNroMes, sGratificaciones, sUIT, sRetMesAnteriores);
