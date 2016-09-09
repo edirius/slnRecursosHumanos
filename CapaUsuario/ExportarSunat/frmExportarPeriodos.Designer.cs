@@ -28,94 +28,127 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgv1 = new System.Windows.Forms.DataGridView();
             this.btnExportar = new System.Windows.Forms.Button();
-            this.dgv2 = new System.Windows.Forms.DataGridView();
-            this.dgv3 = new System.Windows.Forms.DataGridView();
-            this.dgv4 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv4)).BeginInit();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.DtHasta = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.DtDesde = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dgvExportarPeriodos = new System.Windows.Forms.DataGridView();
+            this.groupBox1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExportarPeriodos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgv1
-            // 
-            this.dgv1.AllowUserToAddRows = false;
-            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv1.Location = new System.Drawing.Point(12, 33);
-            this.dgv1.Name = "dgv1";
-            this.dgv1.RowHeadersVisible = false;
-            this.dgv1.Size = new System.Drawing.Size(661, 76);
-            this.dgv1.TabIndex = 0;
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(598, 446);
+            this.btnExportar.Location = new System.Drawing.Point(772, 11);
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(75, 44);
+            this.btnExportar.Size = new System.Drawing.Size(149, 52);
             this.btnExportar.TabIndex = 1;
-            this.btnExportar.Text = "Exportar \r\nDatos";
+            this.btnExportar.Text = "&Exportar\r\nDatos";
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
-            // dgv2
+            // groupBox1
             // 
-            this.dgv2.AllowUserToAddRows = false;
-            this.dgv2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv2.Location = new System.Drawing.Point(12, 137);
-            this.dgv2.Name = "dgv2";
-            this.dgv2.RowHeadersVisible = false;
-            this.dgv2.Size = new System.Drawing.Size(661, 76);
-            this.dgv2.TabIndex = 2;
+            this.groupBox1.Controls.Add(this.dgvExportarPeriodos);
+            this.groupBox1.Location = new System.Drawing.Point(9, 92);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1251, 475);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Período de los trabajadores:";
             // 
-            // dgv3
+            // groupBox5
             // 
-            this.dgv3.AllowUserToAddRows = false;
-            this.dgv3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv3.Location = new System.Drawing.Point(12, 253);
-            this.dgv3.Name = "dgv3";
-            this.dgv3.RowHeadersVisible = false;
-            this.dgv3.Size = new System.Drawing.Size(661, 76);
-            this.dgv3.TabIndex = 3;
+            this.groupBox5.Controls.Add(this.DtHasta);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.DtDesde);
+            this.groupBox5.Controls.Add(this.label1);
+            this.groupBox5.Controls.Add(this.btnExportar);
+            this.groupBox5.Location = new System.Drawing.Point(9, 12);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1241, 74);
+            this.groupBox5.TabIndex = 9;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Buscar trabajadores por Fecha:";
             // 
-            // dgv4
+            // DtHasta
             // 
-            this.dgv4.AllowUserToAddRows = false;
-            this.dgv4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv4.Location = new System.Drawing.Point(12, 355);
-            this.dgv4.Name = "dgv4";
-            this.dgv4.RowHeadersVisible = false;
-            this.dgv4.Size = new System.Drawing.Size(661, 76);
-            this.dgv4.TabIndex = 4;
+            this.DtHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtHasta.Location = new System.Drawing.Point(603, 25);
+            this.DtHasta.Name = "DtHasta";
+            this.DtHasta.Size = new System.Drawing.Size(109, 20);
+            this.DtHasta.TabIndex = 40;
+            this.DtHasta.ValueChanged += new System.EventHandler(this.DtHasta_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(562, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 42;
+            this.label2.Text = "Hasta:";
+            // 
+            // DtDesde
+            // 
+            this.DtDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtDesde.Location = new System.Drawing.Point(417, 25);
+            this.DtDesde.Name = "DtDesde";
+            this.DtDesde.Size = new System.Drawing.Size(109, 20);
+            this.DtDesde.TabIndex = 39;
+            this.DtDesde.Value = new System.DateTime(2014, 9, 7, 12, 37, 0, 0);
+            this.DtDesde.ValueChanged += new System.EventHandler(this.DtDesde_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(371, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "Desde:";
+            // 
+            // dgvExportarPeriodos
+            // 
+            this.dgvExportarPeriodos.AllowUserToAddRows = false;
+            this.dgvExportarPeriodos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExportarPeriodos.Location = new System.Drawing.Point(6, 19);
+            this.dgvExportarPeriodos.Name = "dgvExportarPeriodos";
+            this.dgvExportarPeriodos.RowHeadersVisible = false;
+            this.dgvExportarPeriodos.Size = new System.Drawing.Size(1235, 450);
+            this.dgvExportarPeriodos.TabIndex = 1;
             // 
             // frmExportarPeriodos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 502);
-            this.Controls.Add(this.dgv4);
-            this.Controls.Add(this.dgv3);
-            this.Controls.Add(this.dgv2);
-            this.Controls.Add(this.btnExportar);
-            this.Controls.Add(this.dgv1);
+            this.ClientSize = new System.Drawing.Size(1262, 579);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox1);
             this.Name = "frmExportarPeriodos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmExportarPeriodos";
-            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv4)).EndInit();
+            this.Load += new System.EventHandler(this.frmExportarPeriodos_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExportarPeriodos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgv1;
         private System.Windows.Forms.Button btnExportar;
-        private System.Windows.Forms.DataGridView dgv2;
-        private System.Windows.Forms.DataGridView dgv3;
-        private System.Windows.Forms.DataGridView dgv4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.DateTimePicker DtHasta;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker DtDesde;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgvExportarPeriodos;
     }
 }
