@@ -91,6 +91,8 @@
             this.datosDelEstablecimientoDelTrabajadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datosDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarAExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.boletaPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.planillaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -103,7 +105,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.boletaPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -122,11 +124,13 @@
             this.sUNATToolStripMenuItem,
             this.IR5taCategoriatoolStripMenuItem4,
             this.exportarTextoSUNATToolStripMenuItem,
-            this.boletaPagoToolStripMenuItem});
+            this.boletaPagoToolStripMenuItem,
+            this.planillaToolStripMenuItem1,
+            this.reportesToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1024, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1150, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
@@ -604,6 +608,20 @@
             this.exportarAExcelToolStripMenuItem.Text = "Exportar a Excel";
             this.exportarAExcelToolStripMenuItem.Click += new System.EventHandler(this.exportarAExcelToolStripMenuItem_Click);
             // 
+            // boletaPagoToolStripMenuItem
+            // 
+            this.boletaPagoToolStripMenuItem.Name = "boletaPagoToolStripMenuItem";
+            this.boletaPagoToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.boletaPagoToolStripMenuItem.Text = "Boleta Pago";
+            this.boletaPagoToolStripMenuItem.Click += new System.EventHandler(this.boletaPagoToolStripMenuItem_Click);
+            // 
+            // planillaToolStripMenuItem1
+            // 
+            this.planillaToolStripMenuItem1.Name = "planillaToolStripMenuItem1";
+            this.planillaToolStripMenuItem1.Size = new System.Drawing.Size(57, 20);
+            this.planillaToolStripMenuItem1.Text = "Planilla";
+            this.planillaToolStripMenuItem1.Click += new System.EventHandler(this.planillaToolStripMenuItem1_Click);
+            // 
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -617,7 +635,7 @@
             this.helpToolStripButton});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1024, 25);
+            this.toolStrip.Size = new System.Drawing.Size(1150, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
@@ -693,7 +711,7 @@
             this.toolStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 431);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1024, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1150, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -703,18 +721,18 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // boletaPagoToolStripMenuItem
+            // reportesToolStripMenuItem
             // 
-            this.boletaPagoToolStripMenuItem.Name = "boletaPagoToolStripMenuItem";
-            this.boletaPagoToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-            this.boletaPagoToolStripMenuItem.Text = "Boleta Pago";
-            this.boletaPagoToolStripMenuItem.Click += new System.EventHandler(this.boletaPagoToolStripMenuItem_Click);
+            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
+            this.reportesToolStripMenuItem.Size = new System.Drawing.Size(86, 20);
+            this.reportesToolStripMenuItem.Text = "Trabajadores";
+            this.reportesToolStripMenuItem.Click += new System.EventHandler(this.reportesToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 453);
+            this.ClientSize = new System.Drawing.Size(1150, 453);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
@@ -812,6 +830,8 @@
         private System.Windows.Forms.ToolStripMenuItem datosDeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportarAExcelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem boletaPagoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem planillaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
     }
 }
 

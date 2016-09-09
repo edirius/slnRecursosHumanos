@@ -278,7 +278,7 @@
             // dgvPrueba
             // 
             this.dgvPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrueba.Location = new System.Drawing.Point(18, 210);
+            this.dgvPrueba.Location = new System.Drawing.Point(25, 202);
             this.dgvPrueba.Name = "dgvPrueba";
             this.dgvPrueba.Size = new System.Drawing.Size(156, 156);
             this.dgvPrueba.TabIndex = 30;
@@ -287,7 +287,7 @@
             // dgvAFP
             // 
             this.dgvAFP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAFP.Location = new System.Drawing.Point(180, 210);
+            this.dgvAFP.Location = new System.Drawing.Point(187, 202);
             this.dgvAFP.Name = "dgvAFP";
             this.dgvAFP.Size = new System.Drawing.Size(156, 156);
             this.dgvAFP.TabIndex = 30;
