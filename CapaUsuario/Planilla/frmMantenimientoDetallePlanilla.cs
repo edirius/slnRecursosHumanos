@@ -71,7 +71,7 @@ namespace CapaUsuario.Planilla
         private void frmMantenimientoDetallePlanilla_Load(object sender, EventArgs e)
         {
             DibujarDataGrid();
-            MostrarColumnas();
+            //MostrarColumnas();
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
             oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
@@ -526,7 +526,7 @@ namespace CapaUsuario.Planilla
                 if (dgvDetallePlanilla.Rows[fila].Cells[12].Value != "")
                 {
                     DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[12].Value);
-                    PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[09].Value) * DiasLaborados, 0);
+                    PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 0);
                 }
             }
             else

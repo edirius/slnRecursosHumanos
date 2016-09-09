@@ -35,7 +35,7 @@ namespace CapaUsuario.Tareo
             miTareo.Numero = Convert.ToInt32(txtNumero.Text);
             miTareo.FechaInicio = dptFechaInicio.Value;
             miTareo.FechaFin = dptFechaFin.Value;
-            miTareo.Descripcion = txtDescripcion.Text;
+            miTareo.Descripcion = cboDescripcion.Text;
             miTareo.Estado = chkActivo.Checked;
             miMeta.Codigo = sIdTMeta;
 
@@ -70,7 +70,7 @@ namespace CapaUsuario.Tareo
             txtNumero.Text = Convert.ToString(pNumero);
             dptFechaInicio.Value = pFechaInicio;
             dptFechaFin.Value = pFechaFin;
-            txtDescripcion.Text = pDescripcion;
+            cboDescripcion.Text = pDescripcion;
             chkActivo.Checked = pEstado;
             sIdTMeta = pIdTMeta;
             txtMeta.Text = pNombre;
