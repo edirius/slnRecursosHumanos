@@ -92,7 +92,7 @@
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(673, 26);
+            this.btnExportar.Location = new System.Drawing.Point(673, 19);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(107, 40);
             this.btnExportar.TabIndex = 24;
@@ -128,7 +128,7 @@
             "OCTUBRE",
             "NOVIEMBRE",
             "DICIEMBRE"});
-            this.cbMes.Location = new System.Drawing.Point(235, 37);
+            this.cbMes.Location = new System.Drawing.Point(235, 30);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(121, 21);
             this.cbMes.TabIndex = 29;
@@ -138,7 +138,7 @@
             // 
             this.cbAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAños.FormattingEnabled = true;
-            this.cbAños.Location = new System.Drawing.Point(415, 37);
+            this.cbAños.Location = new System.Drawing.Point(415, 30);
             this.cbAños.Name = "cbAños";
             this.cbAños.Size = new System.Drawing.Size(74, 21);
             this.cbAños.TabIndex = 30;
@@ -147,7 +147,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(185, 40);
+            this.label1.Location = new System.Drawing.Point(185, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 31;
@@ -156,7 +156,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(380, 40);
+            this.label3.Location = new System.Drawing.Point(380, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 32;
@@ -164,7 +164,7 @@
             // 
             // bntListarTodo
             // 
-            this.bntListarTodo.Location = new System.Drawing.Point(512, 26);
+            this.bntListarTodo.Location = new System.Drawing.Point(512, 19);
             this.bntListarTodo.Name = "bntListarTodo";
             this.bntListarTodo.Size = new System.Drawing.Size(137, 40);
             this.bntListarTodo.TabIndex = 33;
