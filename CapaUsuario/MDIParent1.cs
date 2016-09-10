@@ -320,23 +320,52 @@ namespace CapaUsuario
 
         private void boletaPagoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void planillaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void boletaPagoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
             CapaUsuario.Reportes.frmBoletaPago fBoletaPago = new CapaUsuario.Reportes.frmBoletaPago();
             fBoletaPago.MdiParent = this;
             fBoletaPago.Show();
         }
 
-        private void planillaToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void planillaToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
             fPlanilla.MdiParent = this;
             fPlanilla.Show();
         }
 
-        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void trabajadoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CapaUsuario.Reportes.frmTrabajadores fTrabajador = new CapaUsuario.Reportes.frmTrabajadores();
             fTrabajador.MdiParent = this;
             fTrabajador.Show();
+        }
+
+        private void boletaPagoPorPlanillaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Reportes.frmBoletaPagoXPlanilla fBoletaPagoXPlanilla = new CapaUsuario.Reportes.frmBoletaPagoXPlanilla();
+            fBoletaPagoXPlanilla.MdiParent = this;
+            fBoletaPagoXPlanilla.Show();
+        }
+
+        private void personalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Reportes.frmPersonal fPersonal = new CapaUsuario.Reportes.frmPersonal();
+            fPersonal.MdiParent = this;
+            fPersonal.Show();
         }
     }
 }

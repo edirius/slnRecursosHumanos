@@ -169,6 +169,24 @@
     <Compile Include="Planilla\frmImpuestoAlaRentaDe5taCategoria.Designer.cs">
       <DependentUpon>frmImpuestoAlaRentaDe5taCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\crPersonal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crPersonal.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crPersonal2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crPersonal2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\crPersonal3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crPersonal3.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\crReporteTrabajador.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -220,6 +238,18 @@
     </Compile>
     <Compile Include="Reportes\frmBoletaPago.designer.cs">
       <DependentUpon>frmBoletaPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\frmBoletaPagoXPlanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmBoletaPagoXPlanilla.Designer.cs">
+      <DependentUpon>frmBoletaPagoXPlanilla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\frmPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmPersonal.Designer.cs">
+      <DependentUpon>frmPersonal.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\frmTrabajadores.cs">
       <SubType>Form</SubType>
@@ -1079,6 +1109,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reportes\crPersonal.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPersonal.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crPersonal2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPersonal2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crPersonal3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPersonal3.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\crReporteTrabajador.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crReporteTrabajador.cs</LastGenOutput>
@@ -1100,6 +1142,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmBoletaPago.resx">
       <DependentUpon>frmBoletaPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmBoletaPagoXPlanilla.resx">
+      <DependentUpon>frmBoletaPagoXPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmPersonal.resx">
+      <DependentUpon>frmPersonal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmTrabajadores.resx">
       <DependentUpon>frmTrabajadores.cs</DependentUpon>
