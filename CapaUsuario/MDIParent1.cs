@@ -24,9 +24,13 @@ namespace CapaUsuario
 
         private void ShowNewForm(object sender, EventArgs e)
         {
-            Metas.frmProgramaPresupuestal fProgramaPresupuestal = new Metas.frmProgramaPresupuestal();
-            fProgramaPresupuestal.MdiParent = this;
-            fProgramaPresupuestal.Show();
+            Usuarios.frmListaTrabajadores fMantenimientoUsuarios = new Usuarios.frmListaTrabajadores();
+            fMantenimientoUsuarios.MdiParent = this;
+            fMantenimientoUsuarios.Show();
+
+            //Metas.frmProgramaPresupuestal fProgramaPresupuestal = new Metas.frmProgramaPresupuestal();
+            //fProgramaPresupuestal.MdiParent = this;
+            //fProgramaPresupuestal.Show();
         }
 
         private void OpenFile(object sender, EventArgs e)
