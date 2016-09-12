@@ -136,8 +136,7 @@ namespace CapaUsuario.ExportarSunat
                     string año = dgvIngresos[2, i].Value.ToString();
                     string dni = dgvIngresos[3, i].Value.ToString();
                     string codigo = dgvIngresos[4, i].Value.ToString();
-                    string MontoDevengado = "";
-                    //string MontoDevengado = dgvPlanilla[5, i].Value.ToString();
+                    string MontoDevengado = dgvIngresos[5, i].Value.ToString();
                     string Monto = dgvIngresos[5, i].Value.ToString();
                     string TipoDoc = "02";
                     string codigoform = txtCodForm.Text;
@@ -160,9 +159,8 @@ namespace CapaUsuario.ExportarSunat
                     string año = dgvDescuentos[2, i].Value.ToString();
                     string dni = dgvDescuentos[3, i].Value.ToString();
                     string codigo = dgvDescuentos[4, i].Value.ToString();
-                    string MontoDevengado = "";
-                    //string MontoDevengado = dgvPlanilla[5, i].Value.ToString();
-                    string Monto = dgvIngresos[5, i].Value.ToString();
+                    string MontoDevengado = dgvDescuentos[5, i].Value.ToString();
+                    string Monto = dgvDescuentos[5, i].Value.ToString();
                     string TipoDoc = "02";
                     Descuentos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
                     milista.Add(Descuentos);//agregamos los datos concatenados al arreglo(ArrayList)
@@ -180,8 +178,7 @@ namespace CapaUsuario.ExportarSunat
                     string año = dgvAportaciones[2, i].Value.ToString();
                     string dni = dgvAportaciones[3, i].Value.ToString();
                     string codigo = dgvAportaciones[4, i].Value.ToString();
-                    string MontoDevengado = "";
-                    //string MontoDevengado = dgvPlanilla[5, i].Value.ToString();
+                    string MontoDevengado = dgvAportaciones[5, i].Value.ToString();
                     string Monto = dgvAportaciones[5, i].Value.ToString();
                     string TipoDoc = "02";
                     string codigoform = txtCodForm.Text;
