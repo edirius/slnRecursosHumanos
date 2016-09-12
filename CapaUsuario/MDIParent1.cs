@@ -129,7 +129,7 @@ namespace CapaUsuario
         {
             try
             {
-                Conexion.IniciarSesion("192.168.1.40", "bdPersonal", "root", "root");
+                Conexion.IniciarSesion("192.168.1.60", "bdPersonal", "root", "root");
                 MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
             }
             catch (Exception ex)
