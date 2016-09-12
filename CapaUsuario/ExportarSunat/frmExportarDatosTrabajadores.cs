@@ -17,7 +17,6 @@ namespace CapaUsuario.ExportarSunat
     {
         ArrayList milista = new ArrayList();
         int nroSexo = 0;
-        int nroEssalud = 0;
         CapaDeNegocios.ExportarSunat.cExportarSunat oExportar = new CapaDeNegocios.ExportarSunat.cExportarSunat();
         public frmExportarDatosTrabajadores()
         {
@@ -26,18 +25,34 @@ namespace CapaUsuario.ExportarSunat
         }
         public void Cargargrid()
         {
-            dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadores();
+            dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadoresporFechaInicio(DtDesde.Value, DtHasta.Value);
+            //dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadores();
+            dgvListarTrabajadores.Columns[0].Width = 75;
+            dgvListarTrabajadores.Columns[1].Width = 63;
+            dgvListarTrabajadores.Columns[4].Width = 120;
+            dgvListarTrabajadores.Columns[5].Width = 75;
+            dgvListarTrabajadores.Columns[6].Width = 35;
+            dgvListarTrabajadores.Columns[7].Width = 75;
+            dgvListarTrabajadores.Columns[8].Width = 65;
+            dgvListarTrabajadores.Columns[9].Width = 120;
+            dgvListarTrabajadores.Columns[10].Width = 70;
+            dgvListarTrabajadores.Columns[12].Width = 50;
+            dgvListarTrabajadores.Columns[13].Width = 75;
+            dgvListarTrabajadores.Columns[14].Width = 75;
+            dgvListarTrabajadores.Columns[15].Width = 75;
+            dgvListarTrabajadores.Columns[16].Width = 75;
+            dgvListarTrabajadores.Columns[17].Width = 70;
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
 
-            if (dgvListarTrabajadores.Columns.Count != 0)
+            if (dgvListarTrabajadores.Rows.Count != 0)
             {
                 concatenarDatos();
             }
             else
-                MessageBox.Show("No hay datos para Exportar");
+                MessageBox.Show("No se encontraron datos para la exportación.");
 
         }
         private void Sexo(string Sexo)
@@ -56,50 +71,32 @@ namespace CapaUsuario.ExportarSunat
                     }
             }
         }
-        private void Essalud(string Essalud)
-        {
-            switch (Essalud)
-            {
-                case "TRUE":
-                    {
-                        nroEssalud = 1;
-                        break;
-                    }
-                case "FALSE":
-                    {
-                        nroEssalud = 0;
-                        break;
-                    }
-            }
-        }
         public void concatenarDatos()
         {
             ArrayList milista = new ArrayList();
-            
+
             try
             {
-                for (int i = 0; i <= dgvListarTrabajadores.Rows.Count; i++)
+                for (int i = 0; i < dgvListarTrabajadores.Rows.Count; i++)
                 {
-                    string tipoVia2 = "", nombreVia2 ="", nroVia2="", departamento2="", interior2="", manzana2="", lote2="",
-                    kilometro2="", block2="", etapa2="", tipoZona2="", nombreZona2="", referencia2="",
-                    ubigeo2="", indicadorAsistenciaESSALUD = "";
+                    string tipoVia2 = "", nombreVia2 = "", nroVia2 = "", departamento2 = "", interior2 = "", manzana2 = "", lote2 = "",
+                    kilometro2 = "", block2 = "", etapa2 = "", tipoZona2 = "", nombreZona2 = "", referencia2 = "",
+                    ubigeo2 = "", indicadorAsistenciaESSALUD = "";
                     //obtenemos los datos de las columnas que queremos
                     string tipoDoc = "01";
-                    string dni = dgvListarTrabajadores[0, i].Value.ToString();
+                    string dni = dgvListarTrabajadores[1, i].Value.ToString();
                     string paisDoc = "604";
-                    string apPaterno = dgvListarTrabajadores[1, i].Value.ToString();
-                    string apMaterno = dgvListarTrabajadores[2, i].Value.ToString();
-                    string nombres = dgvListarTrabajadores[3, i].Value.ToString();
-                    DateTime fechaNac = Convert.ToDateTime(dgvListarTrabajadores[4, i].Value.ToString());
+                    string apPaterno = dgvListarTrabajadores[2, i].Value.ToString();
+                    string apMaterno = dgvListarTrabajadores[3, i].Value.ToString();
+                    string nombres = dgvListarTrabajadores[4, i].Value.ToString();
+                    DateTime fechaNac = Convert.ToDateTime(dgvListarTrabajadores[5, i].Value.ToString());
 
-                    string sexo = dgvListarTrabajadores[5, i].Value.ToString();
+                    string sexo = dgvListarTrabajadores[6, i].Value.ToString();
                     Sexo(sexo);
-                    string nacionalidad = dgvListarTrabajadores[6, i].Value.ToString();
+                    string nacionalidad = dgvListarTrabajadores[7, i].Value.ToString();
                     string telLargaDistancia = "84";
-                    string telefono = dgvListarTrabajadores[7, i].Value.ToString();
-                    string correo = dgvListarTrabajadores[8, i].Value.ToString();
-                    //string essalud = dgvListarTrabajadores[9, i].Value.ToString();
-                    //Essalud(essalud);
+                    string telefono = dgvListarTrabajadores[8, i].Value.ToString();
+                    string correo = dgvListarTrabajadores[9, i].Value.ToString();
                     string tipoVia = dgvListarTrabajadores[10, i].Value.ToString();
                     string nombreVia = dgvListarTrabajadores[11, i].Value.ToString();
                     string nroVia = dgvListarTrabajadores[12, i].Value.ToString();
@@ -117,13 +114,14 @@ namespace CapaUsuario.ExportarSunat
                     string ubigeo = dgvListarTrabajadores[17, i].Value.ToString();
 
                     string Contenido = "";
-                    Contenido = oExportar.ExportarDatosTrabajador(tipoDoc, dni, paisDoc, fechaNac.ToShortDateString(), apPaterno, apMaterno, nombres,  nroSexo.ToString(), nacionalidad, telLargaDistancia, telefono, correo, tipoVia, nombreVia, nroVia, departamento, interior, manzana, lote, kilometro, block, etapa, tipoZona, nombreZona, referencia, ubigeo, tipoVia2, nombreVia2, nroVia2, departamento2, interior2, manzana2, lote2, kilometro2, block2, etapa2, tipoZona2, nombreZona2, referencia2, ubigeo2, indicadorAsistenciaESSALUD);
+                    Contenido = oExportar.ExportarDatosTrabajador(tipoDoc, dni, paisDoc, fechaNac.ToShortDateString(), apPaterno, apMaterno, nombres, nroSexo.ToString(), nacionalidad, telLargaDistancia, telefono, correo, tipoVia, nombreVia, nroVia, departamento, interior, manzana, lote, kilometro, block, etapa, tipoZona, nombreZona, referencia, ubigeo, tipoVia2, nombreVia2, nroVia2, departamento2, interior2, manzana2, lote2, kilometro2, block2, etapa2, tipoZona2, nombreZona2, referencia2, ubigeo2, indicadorAsistenciaESSALUD);
                     milista.Add(Contenido);
-                    
+
                 }
             }
             catch
             {
+               
             }
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
@@ -157,5 +155,17 @@ namespace CapaUsuario.ExportarSunat
             
 
         }
+
+        private void DtHasta_ValueChanged(object sender, EventArgs e)
+        {
+            dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadoresporFechaInicio(DtDesde.Value, DtHasta.Value);
+        }
+
+        private void DtDesde_ValueChanged(object sender, EventArgs e)
+        {
+            dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadoresporFechaInicio(DtDesde.Value, DtHasta.Value);
+        }
+
+        
     }
 }

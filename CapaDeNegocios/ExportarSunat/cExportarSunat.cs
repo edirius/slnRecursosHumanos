@@ -40,19 +40,26 @@ namespace CapaDeNegocios.ExportarSunat
         {
             return Conexion.GDatos.TraerDataTable("spListarPlanillas");
         }
+        
+        public DataTable ListarExportarAFPaExcel(string mes, string año)
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarAFPaExcel", mes, año);
+        }
         public DataTable BuscarPlanillas(string mes, string año)
         {
             return Conexion.GDatos.TraerDataTable("spBuscarPlanillas", mes, año);
         }
-        public DataTable ListarDatosDelTrabajador()
+        
+        public DataTable ListarDatosDelTrabajadorporFecha(DateTime fecha1, DateTime fecha2)
         {
-            return Conexion.GDatos.TraerDataTable("spExportarDatosTrabajadores");
+            return Conexion.GDatos.TraerDataTable("spListarDatosTrabajadoresporFecha", fecha1, fecha2);
         }
 
         ////////EXPORTAR DATOS DE LOS TRABAJADORES A LA SUNAT//////
-        public DataTable ListarTrabajadores()
+        
+        public DataTable ListarTrabajadoresporFechaInicio(DateTime fecha1, DateTime fecha2)
         {
-            return Conexion.GDatos.TraerDataTable("spListarTrabajadoresaExportar");
+            return Conexion.GDatos.TraerDataTable("spListarTrabajadoresporFecha", fecha1, fecha2);
         }
         public string ExportarDatosTrabajador(string tipoDoc, string dni, string paisEmisor, string fechaNac, string apPaterno, string apMaterno,
         string nombres, string sexo, string nacionalidad, string telLargaDis, string tel, string correo, string tipoVia, string nombreVia, string nroVia,
@@ -73,31 +80,23 @@ namespace CapaDeNegocios.ExportarSunat
             string ConcatenarDatos = tipoDoc + Palo + dni + Palo + paisDoc + Palo + regimenlaboral + Palo + situacionEdu + Palo + ocupacion + Palo + discapacidad + Palo + CUSPP + Palo + SCTRpension + Palo + tipoContrato + Palo + regimenAlternativo + Palo + jornadaTrabajo + Palo + horarioNocturno + Palo + sindicalizado + Palo + periodicidad + Palo + remBasica + Palo + situacion + Palo + Renta5ta + Palo + situacionEsp + Palo + tipoPago + Palo + catOcupacional + Palo + convenio + Palo + RUC + Palo;
             return ConcatenarDatos;
         }
-        public DataTable ListarPeriodos1()
-        {
-            return Conexion.GDatos.TraerDataTable("spExportarDatosPeriodos1");
-        }
         public string ExportarPeriodos(string tipoDoc, string dni, string paisDoc, string Categoria, string tipoRegistro, string fechainicio, string fechafin, string indicadorTipoRegistro, string EPS)
         {
             string Concatenar = tipoDoc + Palo + dni + Palo + paisDoc + Palo + Categoria + Palo + tipoRegistro + Palo + fechainicio + Palo + fechafin + Palo + indicadorTipoRegistro + Palo + EPS + Palo;
             return Concatenar;
         }
-        public DataTable ListarPeriodos2()
-        {
-            return Conexion.GDatos.TraerDataTable("spExportarDatosPeriodos2");
-        }
-        public DataTable ListarPeriodos3()
-        {
-            return Conexion.GDatos.TraerDataTable("spExportarDatosPeriodos3");
-        }
-        public DataTable ListarPeriodos4()
-        {
-            return Conexion.GDatos.TraerDataTable("spExportarDatosPeriodos4");
-        }
         public string ExportarEstablecimiento(string tipoDoc, string dni, string paisDoc, string ruc, string codEstab)
         {
             string Concatenar = tipoDoc + Palo + dni + Palo + paisDoc + Palo + ruc + Palo + codEstab + Palo;
             return Concatenar;
+        }
+        public DataTable ListarPeriodos(DateTime fecha1, DateTime fecha2)
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarPeriodos", fecha1, fecha2);
+        }
+        public DataTable ListarEstablecimientos(DateTime fecha1, DateTime fecha2)
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarEstablecimientos", fecha1, fecha2);
         }
     }
 }

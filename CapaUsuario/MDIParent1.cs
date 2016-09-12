@@ -328,5 +328,19 @@ namespace CapaUsuario
             fBoletaPago.MdiParent = this;
             fBoletaPago.Show();
         }
+
+        private void planillaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
+            fPlanilla.MdiParent = this;
+            fPlanilla.Show();
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Reportes.frmTrabajadores fTrabajador = new CapaUsuario.Reportes.frmTrabajadores();
+            fTrabajador.MdiParent = this;
+            fTrabajador.Show();
+        }
     }
 }

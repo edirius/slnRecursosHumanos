@@ -40,8 +40,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.bntListarTodo = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvPlanilla
@@ -90,9 +92,9 @@
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(914, 392);
+            this.btnExportar.Location = new System.Drawing.Point(673, 19);
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(75, 23);
+            this.btnExportar.Size = new System.Drawing.Size(107, 40);
             this.btnExportar.TabIndex = 24;
             this.btnExportar.Text = "Exportar";
             this.btnExportar.UseVisualStyleBackColor = true;
@@ -102,7 +104,7 @@
             // 
             this.dgvListaPlanillas.AllowUserToAddRows = false;
             this.dgvListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaPlanillas.Location = new System.Drawing.Point(11, 46);
+            this.dgvListaPlanillas.Location = new System.Drawing.Point(11, 93);
             this.dgvListaPlanillas.Name = "dgvListaPlanillas";
             this.dgvListaPlanillas.RowHeadersVisible = false;
             this.dgvListaPlanillas.Size = new System.Drawing.Size(978, 335);
@@ -126,7 +128,7 @@
             "OCTUBRE",
             "NOVIEMBRE",
             "DICIEMBRE"});
-            this.cbMes.Location = new System.Drawing.Point(77, 14);
+            this.cbMes.Location = new System.Drawing.Point(235, 30);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(121, 21);
             this.cbMes.TabIndex = 29;
@@ -136,7 +138,7 @@
             // 
             this.cbAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAños.FormattingEnabled = true;
-            this.cbAños.Location = new System.Drawing.Point(257, 14);
+            this.cbAños.Location = new System.Drawing.Point(415, 30);
             this.cbAños.Name = "cbAños";
             this.cbAños.Size = new System.Drawing.Size(74, 21);
             this.cbAños.TabIndex = 30;
@@ -145,7 +147,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 17);
+            this.label1.Location = new System.Drawing.Point(185, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 31;
@@ -154,7 +156,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(222, 17);
+            this.label3.Location = new System.Drawing.Point(380, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 32;
@@ -162,26 +164,36 @@
             // 
             // bntListarTodo
             // 
-            this.bntListarTodo.Location = new System.Drawing.Point(383, 12);
+            this.bntListarTodo.Location = new System.Drawing.Point(512, 19);
             this.bntListarTodo.Name = "bntListarTodo";
-            this.bntListarTodo.Size = new System.Drawing.Size(117, 23);
+            this.bntListarTodo.Size = new System.Drawing.Size(137, 40);
             this.bntListarTodo.TabIndex = 33;
             this.bntListarTodo.Text = "Listar Todo";
             this.bntListarTodo.UseVisualStyleBackColor = true;
             this.bntListarTodo.Click += new System.EventHandler(this.bntListarTodo_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.bntListarTodo);
+            this.groupBox1.Controls.Add(this.btnExportar);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cbMes);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.cbAños);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(976, 75);
+            this.groupBox1.TabIndex = 40;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Buscar trabajadores por fecha:";
+            // 
             // frmExportarTributosDescuentosTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 423);
-            this.Controls.Add(this.bntListarTodo);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbAños);
-            this.Controls.Add(this.cbMes);
+            this.ClientSize = new System.Drawing.Size(1001, 440);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvListaPlanillas);
-            this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtRuc);
             this.Controls.Add(this.label2);
@@ -193,6 +205,8 @@
             this.Load += new System.EventHandler(this.frmExportarTributosDescuentosTrabajador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,5 +226,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button bntListarTodo;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

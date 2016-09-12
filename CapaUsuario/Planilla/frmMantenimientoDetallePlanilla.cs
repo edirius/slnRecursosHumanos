@@ -71,6 +71,7 @@ namespace CapaUsuario.Planilla
         private void frmMantenimientoDetallePlanilla_Load(object sender, EventArgs e)
         {
             DibujarDataGrid();
+            //MostrarColumnas();
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
             oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
@@ -163,10 +164,10 @@ namespace CapaUsuario.Planilla
             foreach (DataGridViewRow row in dgvDetallePlanilla.Rows)
             {
                 DatosAFP(row.Index);
-                CalcularIngresos(row.Index, AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta);
-                CalcularA_Trabajador(row.Index, AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta);
-                CalcularDescuentos(row.Index, AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta);
-                CalcularA_Empleador(row.Index, AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta);
+                CalcularIngresos(row.Index);
+                CalcularA_Trabajador(row.Index);
+                CalcularDescuentos(row.Index);
+                CalcularA_Empleador(row.Index);
                 CalcularTotalDescuentos(row.Index);
                 CalcularNetoaCobrar(row.Index);
             }
@@ -295,44 +296,15 @@ namespace CapaUsuario.Planilla
                 dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = String.Format("{0:0.00}", 0);
                 return;
             }
-
             dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = String.Format("{0:0.00}", Convert.ToDecimal(y));
-            if (x == "I")
-            {
-                for (int i = 0; i < con_ingresos; i++)
-                {
-                    z += Convert.ToDecimal(dgvDetallePlanilla.Rows[e.RowIndex].Cells[14 + i].Value);
-                }
-                dgvDetallePlanilla.Rows[e.RowIndex].Cells[14 + con_ingresos].Value = String.Format("{0:0.00}", z);
-            }
-
-            if (x == "T")
-            {
-                for (int i = 0; i < con_trabajador; i++)
-                {
-                    z += Convert.ToDecimal(dgvDetallePlanilla.Rows[e.RowIndex].Cells[18 + con_ingresos + i].Value);
-                }
-                dgvDetallePlanilla.Rows[e.RowIndex].Cells[18 + con_ingresos + con_trabajador].Value = String.Format("{0:0.00}", z);
-            }
-
-            if (x == "D")
-            {
-                z = 0;
-                for (int i = 0; i < con_descuento; i++)
-                {
-                    z += Convert.ToDecimal(dgvDetallePlanilla.Rows[e.RowIndex].Cells[19 + con_ingresos + con_trabajador + i].Value);
-                }
-                dgvDetallePlanilla.Rows[e.RowIndex].Cells[19 + con_ingresos + con_trabajador + con_descuento].Value = String.Format("{0:0.00}", z);
-            }
-
-            if (x == "E")
-            {
-                for (int i = 0; i < con_empleador; i++)
-                {
-                    z += Convert.ToDecimal(dgvDetallePlanilla.Rows[e.RowIndex].Cells[21 + con_ingresos + con_trabajador + con_descuento + i].Value);
-                }
-                dgvDetallePlanilla.Rows[e.RowIndex].Cells[21 + con_ingresos + con_trabajador + con_descuento + con_empleador].Value = String.Format("{0:0.00}", z);
-            }
+            
+            DatosAFP(e.RowIndex);
+            CalcularIngresos(e.RowIndex);
+            CalcularA_Trabajador(e.RowIndex);
+            CalcularDescuentos(e.RowIndex);
+            CalcularA_Empleador(e.RowIndex);
+            CalcularTotalDescuentos(e.RowIndex);
+            CalcularNetoaCobrar(e.RowIndex);
             CalcularTotalDescuentos(e.RowIndex);
             CalcularNetoaCobrar(e.RowIndex);
         }
@@ -421,7 +393,6 @@ namespace CapaUsuario.Planilla
                     }
                     contador += 1;
                     dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, sidtmeta, FechaInicio, MontoPago, "", "");
-                    //DatosAFP(dgvDetallePlanilla.Rows.Count - 1);
                 }
             }
         }
@@ -552,8 +523,11 @@ namespace CapaUsuario.Planilla
             DiasLaborados = 1 + DateTime.DaysInMonth(AñoInicio, MesInicio) - DiaInicio;
             if (sidtregimenlaboral == 3)
             {
-                DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[12].Value);
-                PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[09].Value) * DiasLaborados, 0);
+                if (dgvDetallePlanilla.Rows[fila].Cells[12].Value != "")
+                {
+                    DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[12].Value);
+                    PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 0);
+                }
             }
             else
             {
@@ -578,20 +552,20 @@ namespace CapaUsuario.Planilla
             dgvDetallePlanilla.Rows[fila].Cells[13].Value = String.Format("{0:0.00}", PagoTotal);
         }
 
-        private void CalcularIngresos(int fila, string AFP, string TipoComision, string Cuspp, decimal PrimaSeguros, decimal AporteObligatorio, decimal RemuneracionAsegurable, decimal ComisionFlujo, decimal ComisionMixta)
+        private void CalcularIngresos(int fila)
         {
-            int celda_inicio = 14;
+            int inicio_ingresos = 14;
             decimal total_ingresos = 0;
 
             for (int i = 0; i < con_ingresos; i++)
             {
-                if (smingresos[i, 3].ToString() != "")
+                if (smingresos[i, 3].ToString() != "")//Verficamos que no tenga Formula
                 {
-                    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + i].ReadOnly = true;
+                    dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].ReadOnly = true;
                     decimal number2 = 0;
-                    if (decimal.TryParse(smingresos[i, 3].ToString(), out number2) == true)
+                    if (decimal.TryParse(smingresos[i, 3].ToString(), out number2) == true)//Verificamos si la formula es un Numero
                     {
-                        dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + i].Value = String.Format("{0:0.00}", number2);
+                        dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].Value = String.Format("{0:0.00}", number2);
                         if (smingresos[i, 17].ToString() == "0")
                         {
                             total_ingresos += decimal.Round(Convert.ToDecimal(smingresos[i, 3].ToString()), 2);
@@ -599,9 +573,10 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        double result = CalcularFormula(fila, AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta, Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value), smingresos[i, 3].ToString());
-                        dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + i].Value = String.Format("{0:0.00}", result);
-                        if (smingresos[i, 17].ToString() == "0")
+                        double result = CalcularFormula(fila, Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value), smingresos[i, 3].ToString());
+                        dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].Value = String.Format("{0:0.00}", result);
+
+                        if (smingresos[i, 17].ToString() == "0")//Verificamos que la columna no sea Informativa.
                         {
                             total_ingresos += decimal.Round(Convert.ToDecimal(result), 2);
                         }
@@ -609,29 +584,30 @@ namespace CapaUsuario.Planilla
                 }
                 else
                 {
-                    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + i].Value = String.Format("{0:0.00}", 0);
+                    if (dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].Value == null)//Verificamos si hay datos en Datagridview
+                    {
+                        dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].Value = String.Format("{0:0.00}", 0);
+                    }
+                    else
+                    {
+                        if (smingresos[i, 17].ToString() == "0")//Verificamos que la columna no sea Informativa.
+                        {
+                            total_ingresos += decimal.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].Value), 2);
+                        }
+                    }
                 }
-
             }
-            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos].Value = String.Format("{0:0.00}", total_ingresos);
+            dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + con_ingresos].Value = String.Format("{0:0.00}", total_ingresos);
         }
 
-        private void CalcularA_Trabajador(int fila, string AFP, string TipoComision, string Cuspp, decimal PrimaSeguros, decimal AporteObligatorio, decimal RemuneracionAsegurable, decimal ComisionFlujo, decimal ComisionMixta)
+        private void CalcularA_Trabajador(int fila)
         {
             int celda_inicio = 18;
             decimal total_atrabajador = 0;
 
             for (int i = 0; i < con_trabajador; i++)
             {
-                string xxxx = sma_trabajador[i, 1].ToString();
-                if (sma_trabajador[i, 1].ToString() == "0605")
-                {
-                    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].ReadOnly = true;
-                    decimal renta5ta = CalculoRenta5ta(fila);
-                    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = String.Format("{0:0.00}", renta5ta);
-                    total_atrabajador += decimal.Round(Convert.ToDecimal(renta5ta), 2);
-                }
-                else if (sma_trabajador[i, 3].ToString() != "")
+                if (sma_trabajador[i, 3].ToString() != "")
                 {
                     dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].ReadOnly = true;
                     decimal number2 = 0;
@@ -642,7 +618,15 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        double result = CalcularFormula(fila, AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta, Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value), sma_trabajador[i, 3].ToString());
+                        double result = CalcularFormula(fila, Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value), sma_trabajador[i, 3].ToString());
+                        //renta de 5ta Categoria
+                        if (sma_trabajador[i, 1].ToString() == "0605")
+                        {
+                            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].ReadOnly = true;
+                            decimal renta5ta = CalculoRenta5ta(fila);
+                            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = String.Format("{0:0.00}", renta5ta);
+                            total_atrabajador += decimal.Round(Convert.ToDecimal(renta5ta), 2);
+                        }
                         //renta 4ta Categoria
                         if (sma_trabajador[i, 1].ToString() == "0618" && Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value) <= 1500)
                         {
@@ -666,13 +650,20 @@ namespace CapaUsuario.Planilla
                 }
                 else
                 {
-                    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = String.Format("{0:0.00}", 0);
+                    if (dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value == null)//Verificamos si hay datos en Datagridview
+                    {
+                        dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = String.Format("{0:0.00}", 0);
+                    }
+                    else
+                    {
+                        total_atrabajador += decimal.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value), 2);
+                    }
                 }
             }
             dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador].Value = String.Format("{0:0.00}", total_atrabajador);
         }
 
-        private void CalcularDescuentos(int fila, string AFP, string TipoComision, string Cuspp, decimal PrimaSeguros, decimal AporteObligatorio, decimal RemuneracionAsegurable, decimal ComisionFlujo, decimal ComisionMixta)
+        private void CalcularDescuentos(int fila)
         {
             int celda_inicio = 19;
             decimal total_descuentos = 0;
@@ -697,7 +688,7 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        double result = CalcularFormula(fila, AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta, Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value), smdescuentos[i, 3].ToString());
+                        double result = CalcularFormula(fila, Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value), smdescuentos[i, 3].ToString());
                         //renta 4ta Categoria
                         if (smdescuentos[i, 1].ToString() == "0618" && Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value) <= 1500)
                         {
@@ -710,14 +701,21 @@ namespace CapaUsuario.Planilla
                 }
                 else
                 {
-                    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", 0);
+                    object xxx = dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value;
+                    if (dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value == null)//Verificamos si hay datos en Datagridview
+                    {
+                        dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", 0);
+                    }
+                    else
+                    {
+                        total_descuentos += decimal.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value), 2);
+                    }
                 }
             }
-            //dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento].Value = String.Format("{0:0.00}", total_descuentos + Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[16 + con_ingresos + con_trabajador].Value));
             dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento].Value = String.Format("{0:0.00}", total_descuentos);
         }
 
-        private void CalcularA_Empleador(int fila, string AFP, string TipoComision, string Cuspp, decimal PrimaSeguros, decimal AporteObligatorio, decimal RemuneracionAsegurable, decimal ComisionFlujo, decimal ComisionMixta)
+        private void CalcularA_Empleador(int fila)
         {
             int celda_inicio = 21;
             decimal total_aempleador = 0;
@@ -742,14 +740,22 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        double result = CalcularFormula(fila, AFP, TipoComision, Cuspp, PrimaSeguros, AporteObligatorio, RemuneracionAsegurable, ComisionFlujo, ComisionMixta, Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value), sma_empleador[i, 3].ToString());
+                        double result = CalcularFormula(fila, Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value), sma_empleador[i, 3].ToString());
                         dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value = String.Format("{0:0.00}", result);
                         total_aempleador += decimal.Round(Convert.ToDecimal(result), 2);
                     }
                 }
                 else
                 {
-                    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value = String.Format("{0:0.00}", 0);
+                    object xxx = dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value;
+                    if (dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value == null)//Verificamos si hay datos en Datagridview
+                    {
+                        dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value = String.Format("{0:0.00}", 0);
+                    }
+                    else
+                    {
+                        total_aempleador += decimal.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value), 2);
+                    }
                 }
             }
             dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + con_empleador].Value = String.Format("{0:0.00}", total_aempleador);
@@ -780,7 +786,7 @@ namespace CapaUsuario.Planilla
             sRemuneracion = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[13].Value);
             sRemMesAnt = 0;//suma de las remuneraciones totales
             sNroMes = Convert.ToInt32(Mes(smes));
-            sGratificaciones = 600 + 400;
+            sGratificaciones = 600;
             sRetMesAnteriores = 0;
             CapaDeNegocios.Planillas.cCalculo5taCategoria miCalculo5ta = new CapaDeNegocios.Planillas.cCalculo5taCategoria();
             sRenta5ta = miCalculo5ta.CalculoRentaMensual(sRemuneracion, sRemMesAnt, sNroMes, sGratificaciones, sUIT, sRetMesAnteriores);
@@ -821,8 +827,9 @@ namespace CapaUsuario.Planilla
             return sEssalud;
         }
 
-        double CalcularFormula(int fila, string AFP, string TipoComision, string Cuspp, decimal PrimaSeguros, decimal AporteObligatorio, decimal RemuneracionAsegurable, decimal ComisionFlujo, decimal ComisionMixta, double remuneracion, string formula)
+        double CalcularFormula(int fila, double remuneracion, string formula)
         {
+            DatosAFP(fila);
             ExpressionParser parser = new ExpressionParser();
             DoubleValue sval = new DoubleValue();
             DoubleValue aoval = new DoubleValue();
@@ -1009,7 +1016,6 @@ namespace CapaUsuario.Planilla
             dgvDetallePlanilla.Columns["SUMA_DESCUENTOS"].ReadOnly = true;
             dgvDetallePlanilla.Columns["SUMA_DESCUENTOS"].Width = 60;
             dgvDetallePlanilla.Columns["SUMA_DESCUENTOS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvDetallePlanilla.Columns["SUMA_DESCUENTOS"].Visible = false;
             //TOTAL A_TRABAJADOR + DESCUENTOS
             col = new DataGridViewTextBoxColumn();
             col.Name = "TOTAL_DESCUENTOS";
@@ -1047,7 +1053,6 @@ namespace CapaUsuario.Planilla
             dgvDetallePlanilla.Columns["TOTAL_A_EMPLEADOR"].ReadOnly = true;
             dgvDetallePlanilla.Columns["TOTAL_A_EMPLEADOR"].Width = 50;
             dgvDetallePlanilla.Columns["TOTAL_A_EMPLEADOR"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvDetallePlanilla.Columns["TOTAL_A_EMPLEADOR"].Visible = false;
             //NETO A COBRAR
             col = new DataGridViewTextBoxColumn();
             col.Name = "NETOACOBRAR";
@@ -1056,6 +1061,25 @@ namespace CapaUsuario.Planilla
             dgvDetallePlanilla.Columns["NETOACOBRAR"].ReadOnly = true;
             dgvDetallePlanilla.Columns["NETOACOBRAR"].Width = 65;
             dgvDetallePlanilla.Columns["NETOACOBRAR"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
+
+        private void MostrarColumnas()
+        {
+            dgvDetallePlanilla.Columns[11].Visible = false;
+            dgvDetallePlanilla.Columns[13].Visible = false;
+            dgvDetallePlanilla.Columns["SUMA_DESCUENTOS"].Visible = false;
+            dgvDetallePlanilla.Columns["TOTAL_A_EMPLEADOR"].Visible = false;
+            if (splantilla == "CESANTES")
+            {
+                dgvDetallePlanilla.Columns[7].Visible = false;
+                dgvDetallePlanilla.Columns[9].Visible = false;
+                dgvDetallePlanilla.Columns[10].Visible = false;
+                dgvDetallePlanilla.Columns[12].Visible = false;
+                dgvDetallePlanilla.Columns["AFP"].Visible = false;
+                dgvDetallePlanilla.Columns["TipoComision"].Visible = false;
+                dgvDetallePlanilla.Columns["Cuspp"].Visible = false;
+                dgvDetallePlanilla.Columns["SUMA_A_TRABAJADOR"].Visible = false;
+            }
         }
 
         string Mes(string pmes)

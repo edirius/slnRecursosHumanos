@@ -24,7 +24,10 @@ namespace CapaUsuario.ExportarSunat
 
         public void CargarGrid()
         {
-            dgvDatosEstablecimiento.DataSource = oExpo.ListarTrabajadores();
+            dgvDatosEstablecimiento.DataSource = oExpo.ListarEstablecimientos(DtDesde.Value, DtHasta.Value);
+            dgvDatosEstablecimiento.Columns[0].Width = 270;
+            dgvDatosEstablecimiento.Columns[1].Width = 75;
+            dgvDatosEstablecimiento.Columns[2].Width = 75;
         }
         public void concatenarDatos()
         {
@@ -35,7 +38,7 @@ namespace CapaUsuario.ExportarSunat
                 for (int i = 0; i < dgvDatosEstablecimiento.Rows.Count; i++)
                 {
                     string tipoDoc = "01";
-                    string dni = dgvDatosEstablecimiento[0,i].Value.ToString();
+                    string dni = dgvDatosEstablecimiento[2,i].Value.ToString();
                     string paisDoc = "604";
                     string ruc = "20226560824";
                     string Contenido = "";
@@ -91,6 +94,16 @@ namespace CapaUsuario.ExportarSunat
             else
                 MessageBox.Show("No hay datos para exportar");
             
+        }
+
+        private void DtDesde_ValueChanged(object sender, EventArgs e)
+        {
+            dgvDatosEstablecimiento.DataSource = oExpo.ListarEstablecimientos(DtDesde.Value, DtHasta.Value);
+        }
+
+        private void DtHasta_ValueChanged(object sender, EventArgs e)
+        {
+            dgvDatosEstablecimiento.DataSource = oExpo.ListarEstablecimientos(DtDesde.Value, DtHasta.Value);
         }
     }
 }
