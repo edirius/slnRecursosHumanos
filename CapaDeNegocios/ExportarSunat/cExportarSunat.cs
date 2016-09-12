@@ -60,7 +60,7 @@ namespace CapaDeNegocios.ExportarSunat
         }
         public DataTable BuscarPlanillas(string mes, string año)
         {
-            return Conexion.GDatos.TraerDataTable("spBuscarPlanillas", mes, año);
+            return Conexion.GDatos.TraerDataTable("spBuscarPlanillasExportar", mes, año);
         }
         
         public DataTable ListarDatosDelTrabajadorporFecha(DateTime fecha1, DateTime fecha2)
