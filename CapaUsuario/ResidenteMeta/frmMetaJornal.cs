@@ -101,6 +101,8 @@ namespace CapaUsuario.ResidenteMeta
                 dgvMetaJornal.Rows.Add("I", "0", "OPERARIO", "0");
                 dgvMetaJornal.Rows.Add("I", "0", "OFICIAL", "0");
                 dgvMetaJornal.Rows.Add("I", "0", "PEON", "0");
+                dgvMetaJornal.Rows.Add("I", "0", "ALMACENERO", "0");
+                dgvMetaJornal.Rows.Add("I", "0", "GUARDIAN", "0");
             }
             else
             {

@@ -36,11 +36,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dptFechaInicio = new System.Windows.Forms.DateTimePicker();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.chkActivo = new System.Windows.Forms.CheckBox();
+            this.cboDescripcion = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -50,7 +50,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(456, 120);
+            this.btnCancelar.Location = new System.Drawing.Point(363, 94);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 59;
@@ -66,7 +66,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(375, 120);
+            this.btnAceptar.Location = new System.Drawing.Point(282, 94);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 58;
@@ -77,9 +77,8 @@
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(371, 41);
+            this.label9.Location = new System.Drawing.Point(28, 120);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 13);
             this.label9.TabIndex = 55;
@@ -87,11 +86,12 @@
             // 
             // dptFechaFin
             // 
-            this.dptFechaFin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dptFechaFin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dptFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dptFechaFin.Location = new System.Drawing.Point(428, 38);
+            this.dptFechaFin.Location = new System.Drawing.Point(85, 117);
             this.dptFechaFin.Name = "dptFechaFin";
-            this.dptFechaFin.Size = new System.Drawing.Size(103, 20);
+            this.dptFechaFin.Size = new System.Drawing.Size(188, 20);
             this.dptFechaFin.TabIndex = 54;
             // 
             // txtMeta
@@ -102,14 +102,13 @@
             this.txtMeta.Enabled = false;
             this.txtMeta.Location = new System.Drawing.Point(85, 12);
             this.txtMeta.Name = "txtMeta";
-            this.txtMeta.Size = new System.Drawing.Size(446, 20);
+            this.txtMeta.Size = new System.Drawing.Size(353, 20);
             this.txtMeta.TabIndex = 52;
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(194, 41);
+            this.label5.Location = new System.Drawing.Point(17, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 13);
             this.label5.TabIndex = 49;
@@ -118,32 +117,21 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 67);
+            this.label3.Location = new System.Drawing.Point(45, 67);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 13);
+            this.label3.Size = new System.Drawing.Size(34, 13);
             this.label3.TabIndex = 47;
-            this.label3.Text = "Descripción :";
+            this.label3.Text = "Tipo :";
             // 
             // dptFechaInicio
             // 
-            this.dptFechaInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dptFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dptFechaInicio.Location = new System.Drawing.Point(262, 38);
-            this.dptFechaInicio.Name = "dptFechaInicio";
-            this.dptFechaInicio.Size = new System.Drawing.Size(103, 20);
-            this.dptFechaInicio.TabIndex = 46;
-            // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dptFechaInicio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDescripcion.Location = new System.Drawing.Point(85, 64);
-            this.txtDescripcion.Multiline = true;
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(446, 50);
-            this.txtDescripcion.TabIndex = 44;
+            this.dptFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dptFechaInicio.Location = new System.Drawing.Point(85, 91);
+            this.dptFechaInicio.Name = "dptFechaInicio";
+            this.dptFechaInicio.Size = new System.Drawing.Size(188, 20);
+            this.dptFechaInicio.TabIndex = 46;
             // 
             // txtNumero
             // 
@@ -152,7 +140,7 @@
             this.txtNumero.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNumero.Location = new System.Drawing.Point(85, 38);
             this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(103, 20);
+            this.txtNumero.Size = new System.Drawing.Size(188, 20);
             this.txtNumero.TabIndex = 43;
             // 
             // label2
@@ -177,18 +165,34 @@
             // 
             this.chkActivo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkActivo.AutoSize = true;
-            this.chkActivo.Location = new System.Drawing.Point(85, 120);
+            this.chkActivo.Location = new System.Drawing.Point(85, 142);
             this.chkActivo.Name = "chkActivo";
             this.chkActivo.Size = new System.Drawing.Size(56, 17);
             this.chkActivo.TabIndex = 60;
             this.chkActivo.Text = "Activo";
             this.chkActivo.UseVisualStyleBackColor = true;
+            this.chkActivo.Visible = false;
+            // 
+            // cboDescripcion
+            // 
+            this.cboDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboDescripcion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDescripcion.FormattingEnabled = true;
+            this.cboDescripcion.Items.AddRange(new object[] {
+            "PERSONAL TECNICO",
+            "PERSONAL OBRERO"});
+            this.cboDescripcion.Location = new System.Drawing.Point(85, 64);
+            this.cboDescripcion.Name = "cboDescripcion";
+            this.cboDescripcion.Size = new System.Drawing.Size(354, 21);
+            this.cboDescripcion.TabIndex = 61;
             // 
             // frmTareo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 197);
+            this.ClientSize = new System.Drawing.Size(450, 171);
+            this.Controls.Add(this.cboDescripcion);
             this.Controls.Add(this.chkActivo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -198,7 +202,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dptFechaInicio);
-            this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -222,10 +225,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dptFechaInicio;
-        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkActivo;
+        private System.Windows.Forms.ComboBox cboDescripcion;
     }
 }

@@ -958,11 +958,35 @@
     <Compile Include="Reportes\uspListarTiposDeTrabajador_Result.cs">
       <DependentUpon>modPersonal.tt</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios\frmCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmCategoria.Designer.cs">
+      <DependentUpon>frmCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\frmListaPrivilegios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmListaPrivilegios.Designer.cs">
+      <DependentUpon>frmListaPrivilegios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\frmListaTrabajadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmListaTrabajadores.Designer.cs">
+      <DependentUpon>frmListaTrabajadores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usuarios\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Usuarios\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\frmMantenimientoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmMantenimientoUsuarios.Designer.cs">
+      <DependentUpon>frmMantenimientoUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Variables\frmFuenteFinanciamiento.cs">
       <SubType>Form</SubType>
@@ -1264,8 +1288,20 @@
     <EmbeddedResource Include="Trabajador\frnNuevoCargo.resx">
       <DependentUpon>frnNuevoCargo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\frmCategoria.resx">
+      <DependentUpon>frmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\frmListaPrivilegios.resx">
+      <DependentUpon>frmListaPrivilegios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\frmListaTrabajadores.resx">
+      <DependentUpon>frmListaTrabajadores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\frmMantenimientoUsuarios.resx">
+      <DependentUpon>frmMantenimientoUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Variables\frmFuenteFinanciamiento.resx">
       <DependentUpon>frmFuenteFinanciamiento.cs</DependentUpon>
