@@ -101,7 +101,7 @@
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(107, 40);
             this.btnExportar.TabIndex = 24;
-            this.btnExportar.Text = "Exportar";
+            this.btnExportar.Text = "&Exportar Datos";
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
@@ -173,7 +173,7 @@
             this.bntListarTodo.Name = "bntListarTodo";
             this.bntListarTodo.Size = new System.Drawing.Size(137, 40);
             this.bntListarTodo.TabIndex = 33;
-            this.bntListarTodo.Text = "Listar Todo";
+            this.bntListarTodo.Text = "Listar Todas las Planillas";
             this.bntListarTodo.UseVisualStyleBackColor = true;
             this.bntListarTodo.Click += new System.EventHandler(this.bntListarTodo_Click);
             // 

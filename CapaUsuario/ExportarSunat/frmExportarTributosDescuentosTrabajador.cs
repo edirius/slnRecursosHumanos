@@ -20,13 +20,15 @@ namespace CapaUsuario.ExportarSunat
         string Ingresos, Descuentos, Aportaciones = ""; 
         string Titulo = "";
         string Nromes = "";
+        string FechaTexto = "";
         ArrayList milista = new ArrayList();
         public frmExportarTributosDescuentosTrabajador()
         {
             InitializeComponent();
-            cbMes.Text = "ENERO";
+            DateTime Ahora = DateTime.Today;
+            CargarMes(Ahora);
+            cbMes.Text = FechaTexto;
             CargarAños();
-            cbAños.Text = "2015";
             CargarPlanillas();
             //dgvPlanilla.Visible = false;
             label2.Visible = false;
@@ -107,10 +109,81 @@ namespace CapaUsuario.ExportarSunat
 
             }
         }
+
+        private void CargarMes(DateTime FechaActual)
+        {
+            string Ahora = Convert.ToString(FechaActual.Date.Month);
+            switch (Ahora)
+            {
+                case "1":
+                    {
+                        FechaTexto = "ENERO";
+                        break;
+                    }
+                case "2":
+                    {
+                        FechaTexto = "FEBRERO";
+                        break;
+                    }
+                case "3":
+                    {
+                        FechaTexto = "MARZO";
+                        break;
+                    }
+                case "4":
+                    {
+                        FechaTexto = "ABRIL";
+                        break;
+                    }
+                case "5":
+                    {
+                        FechaTexto = "MAYO";
+                        break;
+                    }
+                case "6":
+                    {
+                        FechaTexto = "JUNIO";
+                        break;
+                    }
+                case "7":
+                    {
+                        FechaTexto = "JULIO";
+                        break;
+                    }
+                case "8":
+                    {
+                        FechaTexto = "AGOSTO";
+                        break;
+                    }
+                case "9":
+                    {
+                        FechaTexto = "SETIEMBRE";
+                        break;
+                    }
+                case "10":
+                    {
+                        FechaTexto = "OCTUBRE";
+                        break;
+                    }
+                case "11":
+                    {
+                        FechaTexto = "NOVIEMBRE";
+                        break;
+                    }
+                case "12":
+                    {
+                        FechaTexto = "DICIEMBRE";
+                        break;
+                    }
+
+            }
+        }
+
+
         private void CargarPlanillas()
         {
             
-            dgvListaPlanillas.DataSource = oExportar.ListarPlanillas();
+            //dgvListaPlanillas.DataSource = oExportar.ListarPlanillas();
             
         }
         private void btnExportar_Click(object sender, EventArgs e)
@@ -266,6 +339,7 @@ namespace CapaUsuario.ExportarSunat
                 cbAños.Items.Add(i);
             }
             cbAños.Text = años;
+            cbAños.Text = Convert.ToString(DateTime.Now.Year);
         }
     }
 }
