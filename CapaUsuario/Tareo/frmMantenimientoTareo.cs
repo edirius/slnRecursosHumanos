@@ -133,17 +133,14 @@ namespace CapaUsuario.Tareo
 
         private void dgvTareo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //int iFila = this.dgvTareo.CurrentRow.Index;
-
-            int iFila = Convert.ToInt32( e.RowIndex );
-
-            if (iFila != -1){ 
-                sIdTTareo = Convert.ToInt32(dgvTareo.Rows[iFila].Cells["idttareo"].Value);
-                sNumero = Convert.ToInt32(dgvTareo.Rows[iFila].Cells["numero"].Value);
-                sFechaInicio = Convert.ToDateTime(dgvTareo.Rows[iFila].Cells["fechainicio"].Value);
-                sFechaFin = Convert.ToDateTime(dgvTareo.Rows[iFila].Cells["fechafin"].Value);
-                sDescripcion = Convert.ToString(dgvTareo.Rows[iFila].Cells["descripcion"].Value);
-                sEstado = Convert.ToBoolean(dgvTareo.Rows[iFila].Cells["estado"].Value);
+            if (e.RowIndex != -1)
+            { 
+                sIdTTareo = Convert.ToInt32(dgvTareo.Rows[e.RowIndex].Cells[0].Value);
+                sNumero = Convert.ToInt32(dgvTareo.Rows[e.RowIndex].Cells[1].Value);
+                sDescripcion = Convert.ToString(dgvTareo.Rows[e.RowIndex].Cells[2].Value);
+                sFechaInicio = Convert.ToDateTime(dgvTareo.Rows[e.RowIndex].Cells[3].Value);
+                sFechaFin = Convert.ToDateTime(dgvTareo.Rows[e.RowIndex].Cells[4].Value);
+                sEstado = Convert.ToBoolean(dgvTareo.Rows[e.RowIndex].Cells[5].Value);
             }
         }
 
@@ -157,14 +154,15 @@ namespace CapaUsuario.Tareo
 
         private void CargarDatos()
         {
-            dgvTareo.DataSource = miTareo.ListarTareo(sIdTMeta);
-            dgvTareo.Columns[0].Visible = false;
-            dgvTareo.Columns[6].Visible = false;
-
+            dgvTareo.Rows.Clear();
+            foreach (DataRow row in miTareo.ListarTareo(sIdTMeta).Rows)
+            {
+                dgvTareo.Rows.Add(row[0].ToString(), row[1].ToString(), row[4].ToString(), row[2].ToString(), row[3].ToString(), Convert.ToBoolean(row[5]));
+            }
             if (dgvTareo.Rows.Count > 0)
             {
-                DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, dgvTareo.Rows.Count - 1);
-                dgvTareo.Rows[dgvTareo.Rows.Count - 1].Selected = true;
+                DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, 0);
+                dgvTareo.Rows[0].Selected = true;
                 dgvTareo_CellClick(dgvTareo, cea);
             }
         }

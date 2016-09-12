@@ -73,6 +73,7 @@ namespace CapaUsuario.Trabajador
             if (cboAFP.Text != "System.Data.DataRowView" && cboAFP.ValueMember != "")
             {
                 sidtafp = Convert.ToInt32(cboAFP.SelectedValue);
+                //cboTipoComision.SelectedIndex = -1;
             }
         }
 
