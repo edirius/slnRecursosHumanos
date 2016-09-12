@@ -34,10 +34,7 @@ namespace CapaUsuario.Reportes
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         private void frmBoletaPago_Load(object sender, EventArgs e)
         {
@@ -58,10 +55,7 @@ namespace CapaUsuario.Reportes
             
         }
 
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
+     
 
         protected virtual bool IsFileinUse(FileInfo file, string path)
         {
@@ -737,7 +731,7 @@ namespace CapaUsuario.Reportes
             PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(folderPath + "BoletaPago.pdf", FileMode.Create));
 
             pdfDoc.Open();
-            PdfContentByte cb = writer.DirectContent;
+            //PdfContentByte cb = writer.DirectContent;
 
             /*
             cb.MoveTo(pdfDoc.PageSize.Width / 2,0);

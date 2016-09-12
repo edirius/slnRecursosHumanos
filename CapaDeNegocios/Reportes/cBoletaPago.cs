@@ -12,6 +12,8 @@ namespace CapaDeNegocios.Reportes
     public class cBoletaPago
     {
 
+
+
         public DataTable ListarPlanillaXMesYRegimenLaboralYTrabajadorA(int pidPlanilla, int pidRegimenLaboral, int pidtrabajador)
         {
             return Conexion.GDatos.TraerDataTable("spListarPlanillaXMesYRegimenLaboralYTrabajadorA", pidPlanilla, pidRegimenLaboral,pidtrabajador);

@@ -9,6 +9,17 @@ namespace CapaDeNegocios
 {
     public class cTrabajador
     {
+
+        public cTrabajador()
+        {
+            this.miDepartamento = new cDepartamento();
+            this.MiDistrito = new cDistrito();
+            this.miNacionalidad = new cNacionalidad();
+            this.miProvincia = new cProvincia();
+            this.miTipoVia = new cTipoVia();
+            this.miTipoZOna = new cTipoZona();
+            
+        }
         private string dni;
 
         public string Dni
