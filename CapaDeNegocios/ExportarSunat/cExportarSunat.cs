@@ -17,7 +17,7 @@ namespace CapaDeNegocios.ExportarSunat
         {
             
             string ConcatenarCuerpo = "";
-            ConcatenarCuerpo = tipoDoc + "|" + dni + "|" + codigo + "|" + montodevengado + "|" + monto + '\n';
+            ConcatenarCuerpo = tipoDoc + "|" + dni + "|" + codigo + "|" + montodevengado + "|" + monto + Palo;
             
             return ConcatenarCuerpo;
             

@@ -41,7 +41,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.bntListarTodo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.dgvDescuentos = new System.Windows.Forms.DataGridView();
             this.dgvAportaciones = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).BeginInit();
@@ -108,10 +107,12 @@
             // dgvListaPlanillas
             // 
             this.dgvListaPlanillas.AllowUserToAddRows = false;
+            this.dgvListaPlanillas.AllowUserToResizeColumns = false;
             this.dgvListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaPlanillas.Location = new System.Drawing.Point(11, 93);
             this.dgvListaPlanillas.Name = "dgvListaPlanillas";
             this.dgvListaPlanillas.RowHeadersVisible = false;
+            this.dgvListaPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaPlanillas.Size = new System.Drawing.Size(1226, 376);
             this.dgvListaPlanillas.TabIndex = 28;
             this.dgvListaPlanillas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaPlanillas_CellClick);
@@ -143,7 +144,7 @@
             // 
             this.cbAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAños.FormattingEnabled = true;
-            this.cbAños.Location = new System.Drawing.Point(512, 30);
+            this.cbAños.Location = new System.Drawing.Point(505, 30);
             this.cbAños.Name = "cbAños";
             this.cbAños.Size = new System.Drawing.Size(74, 21);
             this.cbAños.TabIndex = 30;
@@ -161,7 +162,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(477, 33);
+            this.label3.Location = new System.Drawing.Point(470, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 32;
@@ -192,15 +193,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar trabajadores por fecha:";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1055, 42);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(16, 13);
-            this.label4.TabIndex = 41;
-            this.label4.Text = "...";
-            // 
             // dgvDescuentos
             // 
             this.dgvDescuentos.AllowUserToAddRows = false;
@@ -226,7 +218,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1249, 489);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvListaPlanillas);
             this.Controls.Add(this.label5);
@@ -266,7 +257,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button bntListarTodo;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgvDescuentos;
         private System.Windows.Forms.DataGridView dgvAportaciones;
     }
