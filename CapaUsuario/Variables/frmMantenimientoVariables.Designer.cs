@@ -133,6 +133,7 @@
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.dgvVariables);
             this.Name = "frmMantenimientoVariables";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento de Variables";
             this.Load += new System.EventHandler(this.frmMantenimientoVariables_Load);

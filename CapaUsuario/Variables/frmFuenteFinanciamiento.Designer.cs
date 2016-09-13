@@ -112,6 +112,7 @@
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.label1);
             this.Name = "frmFuenteFinanciamiento";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fuente Financiamiento";
             this.Load += new System.EventHandler(this.frmFuenteFinanciamiento_Load);

@@ -39,6 +39,7 @@ namespace CapaUsuario.Variables
             miVariables.Año = cboAño.Text; ;
             miVariables.SueldoMinimo = Convert.ToInt32(nudSueldoMinimo.Value);
             miVariables.UIT = Convert.ToInt32(nudUIT.Value);
+            miVariables.Dieta = Convert.ToInt32(nudDieta.Value);
 
             if (iAccion == 1)
             {
@@ -65,12 +66,13 @@ namespace CapaUsuario.Variables
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
-        public void RecibirDatos(int pidtvariables, string paño, int psueldominimo, int puit, int pAccion)
+        public void RecibirDatos(int pidtvariables, string paño, decimal psueldominimo, decimal puit, decimal pdieta, int pAccion)
         {
             sidtvariables = pidtvariables;
             saño = paño;
             nudSueldoMinimo.Value = psueldominimo;
             nudUIT.Value = puit;
+            nudDieta.Value = pdieta;
             iAccion = pAccion;
         }
 

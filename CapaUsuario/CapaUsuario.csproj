@@ -169,6 +169,12 @@
     <Compile Include="Planilla\frmImpuestoAlaRentaDe5taCategoria.Designer.cs">
       <DependentUpon>frmImpuestoAlaRentaDe5taCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Planilla\frmMantenimientoDetallePlanillaRegidores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\frmMantenimientoDetallePlanillaRegidores.Designer.cs">
+      <DependentUpon>frmMantenimientoDetallePlanillaRegidores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\crPersonal.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1101,6 +1107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Planilla\frmImpuestoAlaRentaDe5taCategoria.resx">
       <DependentUpon>frmImpuestoAlaRentaDe5taCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\frmMantenimientoDetallePlanillaRegidores.resx">
+      <DependentUpon>frmMantenimientoDetallePlanillaRegidores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Planilla\frmMantenimientoDetallePlanilla.resx">
       <DependentUpon>frmMantenimientoDetallePlanilla.cs</DependentUpon>
