@@ -17,18 +17,30 @@ namespace CapaUsuario.ExportarSunat
     public partial class frmExportarExcel : Form
     {
         CapaDeNegocios.ExportarSunat.cExportarSunat oexp = new CapaDeNegocios.ExportarSunat.cExportarSunat();
+        string FechaTexto = "";
         public frmExportarExcel()
         {
             InitializeComponent();
-            cbAños.Text = "2015";
-            cbMes.Text = "ENERO";
+            DateTime Ahora = DateTime.Today;
+            CargarMes(Ahora);
+            cbMes.Text = FechaTexto;
             CargarAños();
-            cargargrid();
+            CargarGrid();
         }
-        private void cargargrid()
+        private void CargarGrid()
         {
-            //dataGridView.DataSource = oexp.ListarExportarAFPaExcel(cbMes.ToString(), cbAños.ToString());
-            //dataGridView.Columns[3].Width = 400;
+            dataGridView.DataSource = oexp.ListarExportarAFPaExcel(cbMes.Text, cbAños.Text);
+            dataGridView.Columns[0].Width = 50;
+            dataGridView.Columns[1].Width = 90;
+            dataGridView.Columns[2].Width = 50;
+            dataGridView.Columns[3].Width = 70;
+            dataGridView.Columns[4].Width = 150;
+            dataGridView.Columns[5].Width = 150;
+            dataGridView.Columns[6].Width = 150;
+            dataGridView.Columns[7].Width = 90;
+            dataGridView.Columns[8].Width = 90;
+            dataGridView.Columns[9].Width = 90;
+            dataGridView.Columns[10].Width = 90;
         }
 
         private void frmExportarExcel_Load(object sender, EventArgs e)
@@ -43,7 +55,7 @@ namespace CapaUsuario.ExportarSunat
                 cbAños.Items.Add(i);
             }
             cbAños.Text = años;
-            cbAños.Text = "2015";
+            cbAños.Text = Convert.ToString(DateTime.Now.Year);
         }
         private void ExportarDataGridViewExcel(DataGridView datagrid)
         {
@@ -82,8 +94,8 @@ namespace CapaUsuario.ExportarSunat
                 }
                 libros_trabajo.SaveAs(fichero.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
                 libros_trabajo.Close(true);
+                MessageBox.Show("Los datos fueron exportados exitosamente.");
                 aplicacion.Quit();
-                MessageBox.Show("Exitoso");
             }
         }
         private void ExportarExcel()
@@ -93,24 +105,7 @@ namespace CapaUsuario.ExportarSunat
             Worksheet ws = (Worksheet)Excel.ActiveSheet;
             Excel.Visible = true;
             //Para poner Título en la cabecera de las Columnas del Excel
-            ws.Cells[1, 1] = "TipoDoc";
-            ws.Cells[1, 2] = "NroDoc";
-            ws.Cells[1, 3] = "Titulo2";
-            ws.Cells[1, 4] = "";
-            ws.Cells[1, 5] = "";
-            ws.Cells[1, 6] = "";
-            ws.Cells[1, 7] = "";
-            ws.Cells[1, 8] = "";
-            ws.Cells[1, 9] = "";
-            ws.Cells[1, 10] = "";
-            ws.Cells[1, 11] = "";
-            ws.Cells[1, 12] = "";
-            ws.Cells[1, 13] = "";
-            ws.Cells[1, 14] = "";
-            ws.Cells[1, 15] = "";
-            ws.Cells[1, 16] = "";
-            ws.Cells[1, 17] = "";
-            ws.Cells[1, 18] = "";
+            ws.Cells[1, 1] = "";
             for (int j = 2; j <= dataGridView.Rows.Count; j++)//J debe ser igual a 2 en caso de que tenga titulo en las columnas
             {
                 for (int i = 1; i <= dataGridView.Columns.Count; i++)
@@ -122,14 +117,14 @@ namespace CapaUsuario.ExportarSunat
         }
         private void btnExport_Click_1(object sender, EventArgs e)
         {
-            ExportarDataGridViewExcel(dataGridView);
-            //if (dataGridView.Rows.Count != 0)
-            //{
-            //    MessageBox.Show("Los datos fueron exportados exitosamente.");
-            //    ExportarExcel();
-            //}
-            //else
-            //    MessageBox.Show("No se encontraron datos para la exportación.");
+            
+            if (dataGridView.Rows.Count != 0)
+            {
+                ExportarDataGridViewExcel(dataGridView);
+                
+            }
+            else
+                MessageBox.Show("No se encontraron datos para la exportación.");
 
         }
 
@@ -142,5 +137,74 @@ namespace CapaUsuario.ExportarSunat
         {
             dataGridView.DataSource = oexp.ListarExportarAFPaExcel(cbMes.Text, cbAños.Text);
         }
+        private void CargarMes(DateTime FechaActual)
+        {
+            string Ahora = Convert.ToString(FechaActual.Date.Month);
+            switch (Ahora)
+            {
+                case "1":
+                    {
+                        FechaTexto = "ENERO";
+                        break;
+                    }
+                case "2":
+                    {
+                        FechaTexto = "FEBRERO";
+                        break;
+                    }
+                case "3":
+                    {
+                        FechaTexto = "MARZO";
+                        break;
+                    }
+                case "4":
+                    {
+                        FechaTexto = "ABRIL";
+                        break;
+                    }
+                case "5":
+                    {
+                        FechaTexto = "MAYO";
+                        break;
+                    }
+                case "6":
+                    {
+                        FechaTexto = "JUNIO";
+                        break;
+                    }
+                case "7":
+                    {
+                        FechaTexto = "JULIO";
+                        break;
+                    }
+                case "8":
+                    {
+                        FechaTexto = "AGOSTO";
+                        break;
+                    }
+                case "9":
+                    {
+                        FechaTexto = "SETIEMBRE";
+                        break;
+                    }
+                case "10":
+                    {
+                        FechaTexto = "OCTUBRE";
+                        break;
+                    }
+                case "11":
+                    {
+                        FechaTexto = "NOVIEMBRE";
+                        break;
+                    }
+                case "12":
+                    {
+                        FechaTexto = "DICIEMBRE";
+                        break;
+                    }
+
+            }
+        }
+
     }
 }

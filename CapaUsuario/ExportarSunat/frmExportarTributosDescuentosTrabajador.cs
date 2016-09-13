@@ -17,22 +17,30 @@ namespace CapaUsuario.ExportarSunat
     {
         CapaDeNegocios.ExportarSunat.cExportarSunat oExportar = new CapaDeNegocios.ExportarSunat.cExportarSunat();
         
-        string Cuerpo = "";
+        string Ingresos, Descuentos, Aportaciones = ""; 
         string Titulo = "";
         string Nromes = "";
+        string FechaTexto = "";
         ArrayList milista = new ArrayList();
         public frmExportarTributosDescuentosTrabajador()
         {
             InitializeComponent();
-            cbMes.Text = "ENERO";
+            DateTime Ahora = DateTime.Today;
+            CargarMes(Ahora);
+            cbMes.Text = FechaTexto;
             CargarAños();
-            cbAños.Text = "2015";
             CargarPlanillas();
             //dgvPlanilla.Visible = false;
             label2.Visible = false;
             label5.Visible = false;
             txtCodForm.Visible = false;
             txtRuc.Visible = false;
+            dgvListaPlanillas.Columns[0].Width = 50;
+            dgvListaPlanillas.Columns[1].Width = 75;
+            dgvListaPlanillas.Columns[2].Width = 50;
+            dgvListaPlanillas.Columns[3].Width = 500;
+            dgvListaPlanillas.Columns[4].Width = 330;
+            dgvListaPlanillas.Columns[5].Width = 217;
         }
         private void ConvertirMes(string MES)
         {
@@ -95,26 +103,94 @@ namespace CapaUsuario.ExportarSunat
                     }
                 case "DICIEMBRE":
                     {
-                        Nromes = "02";
+                        Nromes = "12";
                         break;
                     }
 
             }
         }
+
+        private void CargarMes(DateTime FechaActual)
+        {
+            string Ahora = Convert.ToString(FechaActual.Date.Month);
+            switch (Ahora)
+            {
+                case "1":
+                    {
+                        FechaTexto = "ENERO";
+                        break;
+                    }
+                case "2":
+                    {
+                        FechaTexto = "FEBRERO";
+                        break;
+                    }
+                case "3":
+                    {
+                        FechaTexto = "MARZO";
+                        break;
+                    }
+                case "4":
+                    {
+                        FechaTexto = "ABRIL";
+                        break;
+                    }
+                case "5":
+                    {
+                        FechaTexto = "MAYO";
+                        break;
+                    }
+                case "6":
+                    {
+                        FechaTexto = "JUNIO";
+                        break;
+                    }
+                case "7":
+                    {
+                        FechaTexto = "JULIO";
+                        break;
+                    }
+                case "8":
+                    {
+                        FechaTexto = "AGOSTO";
+                        break;
+                    }
+                case "9":
+                    {
+                        FechaTexto = "SETIEMBRE";
+                        break;
+                    }
+                case "10":
+                    {
+                        FechaTexto = "OCTUBRE";
+                        break;
+                    }
+                case "11":
+                    {
+                        FechaTexto = "NOVIEMBRE";
+                        break;
+                    }
+                case "12":
+                    {
+                        FechaTexto = "DICIEMBRE";
+                        break;
+                    }
+
+            }
+        }
+
+
         private void CargarPlanillas()
         {
             
-            dgvListaPlanillas.DataSource = oExportar.ListarPlanillas();
-            dgvListaPlanillas.Columns[0].Width = 50;
-            dgvListaPlanillas.Columns[1].Width = 75;
-            dgvListaPlanillas.Columns[2].Width = 50;
-            dgvListaPlanillas.Columns[3].Width = 500;
-            dgvListaPlanillas.Columns[4].Width = 300;
+            //dgvListaPlanillas.DataSource = oExportar.ListarPlanillas();
+            
         }
         private void btnExportar_Click(object sender, EventArgs e)
-        {   if (dgvPlanilla.Columns.Count != 0)
+        {   if (dgvIngresos.Columns.Count != 0)
             {
                 concatenarDatos();
+                milista.Clear();
             }
             else
                 MessageBox.Show("No hay datos para Exportar");
@@ -128,22 +204,63 @@ namespace CapaUsuario.ExportarSunat
             
             try
             {
-                for (int i = 0; i <= dgvPlanilla.Rows.Count; i++)
+                for (int i = 0; i < dgvIngresos.Rows.Count; i++)
                 {
                     //obtenemos los datos de las columnas que queremos
-                    string mes = dgvPlanilla[1, i].Value.ToString();
-                    string año = dgvPlanilla[2, i].Value.ToString();
-                    string dni = dgvPlanilla[3, i].Value.ToString();
-                    string codigo = dgvPlanilla[4, i].Value.ToString();
-                    string MontoDevengado = dgvPlanilla[5, i].Value.ToString();
-                    string Monto = dgvPlanilla[5, i].Value.ToString();
+                    string mes = dgvIngresos[1, i].Value.ToString();
+                    string año = dgvIngresos[2, i].Value.ToString();
+                    string dni = dgvIngresos[3, i].Value.ToString();
+                    string codigo = dgvIngresos[4, i].Value.ToString();
+                    string MontoDevengado = dgvIngresos[5, i].Value.ToString();
+                    string Monto = dgvIngresos[5, i].Value.ToString();
                     string TipoDoc = "02";
                     string codigoform = txtCodForm.Text;
                     string Ruc = txtRuc.Text;
                     ConvertirMes(mes);
-                    Cuerpo = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
+                    Ingresos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
                     Titulo = oExportar.ExportarTitulo(codigoform, año, Nromes, Ruc);
-                    milista.Add(Cuerpo);//agregamos los datos concatenados al arreglo(ArrayList)
+                    milista.Add(Ingresos);//agregamos los datos concatenados al arreglo(ArrayList)
+                }
+            }
+            catch
+            {
+            }
+            try
+            {
+                for (int i = 0; i < dgvDescuentos.Rows.Count; i++)
+                {
+                    //obtenemos los datos de las columnas que queremos
+                    string mes = dgvDescuentos[1, i].Value.ToString();
+                    string año = dgvDescuentos[2, i].Value.ToString();
+                    string dni = dgvDescuentos[3, i].Value.ToString();
+                    string codigo = dgvDescuentos[4, i].Value.ToString();
+                    string MontoDevengado = dgvDescuentos[5, i].Value.ToString();
+                    string Monto = dgvDescuentos[5, i].Value.ToString();
+                    string TipoDoc = "02";
+                    Descuentos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
+                    milista.Add(Descuentos);//agregamos los datos concatenados al arreglo(ArrayList)
+                }
+            }
+            catch
+            {
+            }
+            try
+            {
+                for (int i = 0; i < dgvAportaciones.Rows.Count; i++)
+                {
+                    //obtenemos los datos de las columnas que queremos
+                    string mes = dgvAportaciones[1, i].Value.ToString();
+                    string año = dgvAportaciones[2, i].Value.ToString();
+                    string dni = dgvAportaciones[3, i].Value.ToString();
+                    string codigo = dgvAportaciones[4, i].Value.ToString();
+                    string MontoDevengado = dgvAportaciones[5, i].Value.ToString();
+                    string Monto = dgvAportaciones[5, i].Value.ToString();
+                    string TipoDoc = "02";
+                    string codigoform = txtCodForm.Text;
+                    string Ruc = txtRuc.Text;
+                    ConvertirMes(mes);
+                    Aportaciones = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
+                    milista.Add(Aportaciones);//agregamos los datos concatenados al arreglo(ArrayList)
                 }
             }
             catch
@@ -187,25 +304,10 @@ namespace CapaUsuario.ExportarSunat
             int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
             string numero = "";
             numero = dgvListaPlanillas[0, Valor].Value.ToString();
-            dgvPlanilla.DataSource = oExportar.ListarTrabajadoresPorPlanilla(numero);
+            dgvIngresos.DataSource = oExportar.ListarTrabajadoresPorPlanillaIngresos(numero);
+            dgvDescuentos.DataSource = oExportar.ListarTrabajadoresPorPlanillaDescuentos(numero);
+            dgvAportaciones.DataSource = oExportar.ListarTrabajadoresPorPlanillaAportaciones(numero);
         }
-        private void Filtrar()
-        {
-            string CantEncuentro = "";
-            for (int i = 0; i < dgvListaPlanillas.Rows.Count; i++)
-            {
-                if (dgvListaPlanillas[1, i].Value.ToString() != cbMes.Text)
-                {
-                    dgvListaPlanillas.Rows[i].Visible = false;
-                }
-                else if (dgvListaPlanillas[1, i].Value.ToString() == cbMes.Text)
-                {
-                    dgvListaPlanillas.Rows[i].Visible = true;
-                    CantEncuentro = CantEncuentro + 1;
-                }
-            }
-        }
-
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Buscar();
@@ -237,6 +339,7 @@ namespace CapaUsuario.ExportarSunat
                 cbAños.Items.Add(i);
             }
             cbAños.Text = años;
+            cbAños.Text = Convert.ToString(DateTime.Now.Year);
         }
     }
 }

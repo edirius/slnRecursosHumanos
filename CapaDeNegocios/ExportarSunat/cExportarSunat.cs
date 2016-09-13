@@ -27,9 +27,17 @@ namespace CapaDeNegocios.ExportarSunat
             string ConcatenarTitulo = codigoform + año + mes + ruc + ".rem";
             return ConcatenarTitulo;
         }
-        public DataTable ListarTrabajadoresPorPlanilla(string numero)
+        public DataTable ListarTrabajadoresPorPlanillaIngresos(string numero)
         {
-            return Conexion.GDatos.TraerDataTable("spExportarTributosTrabajadores", numero);
+            return Conexion.GDatos.TraerDataTable("spExportarIngresos", numero);
+        }
+        public DataTable ListarTrabajadoresPorPlanillaDescuentos(string numero)
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarDescuentos", numero);
+        }
+        public DataTable ListarTrabajadoresPorPlanillaAportaciones(string numero)
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarAportaciones", numero);
         }
         //spListarMaestroIngresosporTipo
         public DataTable ListarMaestroIngresosxTipo(string Tipo)
@@ -38,16 +46,21 @@ namespace CapaDeNegocios.ExportarSunat
         }
         public DataTable ListarPlanillas()
         {
-            return Conexion.GDatos.TraerDataTable("spListarPlanillas");
+            return Conexion.GDatos.TraerDataTable("spListarPlanillasExportar");
         }
         
         public DataTable ListarExportarAFPaExcel(string mes, string año)
         {
             return Conexion.GDatos.TraerDataTable("spExportarAFPaExcel", mes, año);
         }
+        
+        public DataTable ListarTodoExportarAFPaExcel()
+        {
+            return Conexion.GDatos.TraerDataTable("spListarTodoExportarAFP");
+        }
         public DataTable BuscarPlanillas(string mes, string año)
         {
-            return Conexion.GDatos.TraerDataTable("spBuscarPlanillas", mes, año);
+            return Conexion.GDatos.TraerDataTable("spBuscarPlanillasExportar", mes, año);
         }
         
         public DataTable ListarDatosDelTrabajadorporFecha(DateTime fecha1, DateTime fecha2)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvPlanilla = new System.Windows.Forms.DataGridView();
+            this.dgvIngresos = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodForm = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -41,20 +41,25 @@
             this.label3 = new System.Windows.Forms.Label();
             this.bntListarTodo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dgvDescuentos = new System.Windows.Forms.DataGridView();
+            this.dgvAportaciones = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDescuentos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAportaciones)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvPlanilla
+            // dgvIngresos
             // 
-            this.dgvPlanilla.AllowUserToAddRows = false;
-            this.dgvPlanilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPlanilla.Location = new System.Drawing.Point(11, 236);
-            this.dgvPlanilla.Name = "dgvPlanilla";
-            this.dgvPlanilla.RowHeadersVisible = false;
-            this.dgvPlanilla.Size = new System.Drawing.Size(977, 145);
-            this.dgvPlanilla.TabIndex = 0;
+            this.dgvIngresos.AllowUserToAddRows = false;
+            this.dgvIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIngresos.Location = new System.Drawing.Point(12, 297);
+            this.dgvIngresos.Name = "dgvIngresos";
+            this.dgvIngresos.RowHeadersVisible = false;
+            this.dgvIngresos.Size = new System.Drawing.Size(384, 172);
+            this.dgvIngresos.TabIndex = 0;
             // 
             // label2
             // 
@@ -92,11 +97,11 @@
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(673, 19);
+            this.btnExportar.Location = new System.Drawing.Point(764, 19);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(107, 40);
             this.btnExportar.TabIndex = 24;
-            this.btnExportar.Text = "Exportar";
+            this.btnExportar.Text = "&Exportar Datos";
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
@@ -107,7 +112,7 @@
             this.dgvListaPlanillas.Location = new System.Drawing.Point(11, 93);
             this.dgvListaPlanillas.Name = "dgvListaPlanillas";
             this.dgvListaPlanillas.RowHeadersVisible = false;
-            this.dgvListaPlanillas.Size = new System.Drawing.Size(978, 335);
+            this.dgvListaPlanillas.Size = new System.Drawing.Size(1226, 376);
             this.dgvListaPlanillas.TabIndex = 28;
             this.dgvListaPlanillas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaPlanillas_CellClick);
             // 
@@ -128,7 +133,7 @@
             "OCTUBRE",
             "NOVIEMBRE",
             "DICIEMBRE"});
-            this.cbMes.Location = new System.Drawing.Point(235, 30);
+            this.cbMes.Location = new System.Drawing.Point(316, 30);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(121, 21);
             this.cbMes.TabIndex = 29;
@@ -138,7 +143,7 @@
             // 
             this.cbAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAños.FormattingEnabled = true;
-            this.cbAños.Location = new System.Drawing.Point(415, 30);
+            this.cbAños.Location = new System.Drawing.Point(512, 30);
             this.cbAños.Name = "cbAños";
             this.cbAños.Size = new System.Drawing.Size(74, 21);
             this.cbAños.TabIndex = 30;
@@ -147,7 +152,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(185, 33);
+            this.label1.Location = new System.Drawing.Point(282, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 31;
@@ -156,7 +161,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(380, 33);
+            this.label3.Location = new System.Drawing.Point(477, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 32;
@@ -164,11 +169,11 @@
             // 
             // bntListarTodo
             // 
-            this.bntListarTodo.Location = new System.Drawing.Point(512, 19);
+            this.bntListarTodo.Location = new System.Drawing.Point(619, 19);
             this.bntListarTodo.Name = "bntListarTodo";
             this.bntListarTodo.Size = new System.Drawing.Size(137, 40);
             this.bntListarTodo.TabIndex = 33;
-            this.bntListarTodo.Text = "Listar Todo";
+            this.bntListarTodo.Text = "Listar Todas las Planillas";
             this.bntListarTodo.UseVisualStyleBackColor = true;
             this.bntListarTodo.Click += new System.EventHandler(this.bntListarTodo_Click);
             // 
@@ -182,31 +187,65 @@
             this.groupBox1.Controls.Add(this.cbAños);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(976, 75);
+            this.groupBox1.Size = new System.Drawing.Size(1225, 75);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar trabajadores por fecha:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1055, 42);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(16, 13);
+            this.label4.TabIndex = 41;
+            this.label4.Text = "...";
+            // 
+            // dgvDescuentos
+            // 
+            this.dgvDescuentos.AllowUserToAddRows = false;
+            this.dgvDescuentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDescuentos.Location = new System.Drawing.Point(427, 297);
+            this.dgvDescuentos.Name = "dgvDescuentos";
+            this.dgvDescuentos.RowHeadersVisible = false;
+            this.dgvDescuentos.Size = new System.Drawing.Size(385, 172);
+            this.dgvDescuentos.TabIndex = 42;
+            // 
+            // dgvAportaciones
+            // 
+            this.dgvAportaciones.AllowUserToAddRows = false;
+            this.dgvAportaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAportaciones.Location = new System.Drawing.Point(852, 297);
+            this.dgvAportaciones.Name = "dgvAportaciones";
+            this.dgvAportaciones.RowHeadersVisible = false;
+            this.dgvAportaciones.Size = new System.Drawing.Size(385, 172);
+            this.dgvAportaciones.TabIndex = 43;
             // 
             // frmExportarTributosDescuentosTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1001, 440);
+            this.ClientSize = new System.Drawing.Size(1249, 489);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvListaPlanillas);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtRuc);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCodForm);
-            this.Controls.Add(this.dgvPlanilla);
+            this.Controls.Add(this.dgvIngresos);
+            this.Controls.Add(this.dgvDescuentos);
+            this.Controls.Add(this.dgvAportaciones);
             this.Name = "frmExportarTributosDescuentosTrabajador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmExportarTributosDescuentosTrabajador";
             this.Load += new System.EventHandler(this.frmExportarTributosDescuentosTrabajador_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDescuentos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAportaciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,7 +253,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvPlanilla;
+        private System.Windows.Forms.DataGridView dgvIngresos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCodForm;
         private System.Windows.Forms.Label label5;
@@ -227,5 +266,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button bntListarTodo;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dgvDescuentos;
+        private System.Windows.Forms.DataGridView dgvAportaciones;
     }
 }
