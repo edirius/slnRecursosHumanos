@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvListarTrabajadores = new System.Windows.Forms.DataGridView();
             this.btnExportar = new System.Windows.Forms.Button();
             this.DtDesde = new System.Windows.Forms.DateTimePicker();
@@ -42,17 +43,23 @@
             // dgvListarTrabajadores
             // 
             this.dgvListarTrabajadores.AllowUserToAddRows = false;
+            this.dgvListarTrabajadores.AllowUserToResizeColumns = false;
+            this.dgvListarTrabajadores.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListarTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListarTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListarTrabajadores.GridColor = System.Drawing.Color.White;
             this.dgvListarTrabajadores.Location = new System.Drawing.Point(13, 79);
             this.dgvListarTrabajadores.Name = "dgvListarTrabajadores";
+            this.dgvListarTrabajadores.ReadOnly = true;
             this.dgvListarTrabajadores.RowHeadersVisible = false;
             this.dgvListarTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListarTrabajadores.Size = new System.Drawing.Size(1225, 400);
+            this.dgvListarTrabajadores.Size = new System.Drawing.Size(564, 400);
             this.dgvListarTrabajadores.TabIndex = 29;
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(720, 19);
+            this.btnExportar.Location = new System.Drawing.Point(411, 16);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(126, 41);
             this.btnExportar.TabIndex = 30;
@@ -63,7 +70,7 @@
             // DtDesde
             // 
             this.DtDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtDesde.Location = new System.Drawing.Point(405, 30);
+            this.DtDesde.Location = new System.Drawing.Point(65, 30);
             this.DtDesde.Name = "DtDesde";
             this.DtDesde.Size = new System.Drawing.Size(109, 20);
             this.DtDesde.TabIndex = 31;
@@ -73,7 +80,7 @@
             // DtHasta
             // 
             this.DtHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtHasta.Location = new System.Drawing.Point(591, 30);
+            this.DtHasta.Location = new System.Drawing.Point(251, 30);
             this.DtHasta.Name = "DtHasta";
             this.DtHasta.Size = new System.Drawing.Size(109, 20);
             this.DtHasta.TabIndex = 32;
@@ -82,7 +89,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(359, 33);
+            this.label1.Location = new System.Drawing.Point(19, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 33;
@@ -91,7 +98,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(550, 33);
+            this.label2.Location = new System.Drawing.Point(210, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 34;
@@ -106,7 +113,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(14, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1223, 68);
+            this.groupBox1.Size = new System.Drawing.Size(563, 68);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar datos personales del trabajador:";
@@ -115,7 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1245, 490);
+            this.ClientSize = new System.Drawing.Size(590, 490);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvListarTrabajadores);
             this.Name = "frmExportarDatosTrabajadores";

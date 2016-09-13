@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnExportar = new System.Windows.Forms.Button();
             this.dgvDatosEstudios = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -52,10 +53,16 @@
             // dgvDatosEstudios
             // 
             this.dgvDatosEstudios.AllowUserToAddRows = false;
-            this.dgvDatosEstudios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatosEstudios.AllowUserToResizeColumns = false;
+            this.dgvDatosEstudios.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvDatosEstudios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDatosEstudios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvDatosEstudios.Location = new System.Drawing.Point(12, 90);
             this.dgvDatosEstudios.Name = "dgvDatosEstudios";
+            this.dgvDatosEstudios.ReadOnly = true;
             this.dgvDatosEstudios.RowHeadersVisible = false;
+            this.dgvDatosEstudios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDatosEstudios.Size = new System.Drawing.Size(441, 344);
             this.dgvDatosEstudios.TabIndex = 2;
             // 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.btnExport = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -42,16 +43,23 @@
             // dataGridView
             // 
             this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeColumns = false;
+            this.dataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Location = new System.Drawing.Point(12, 89);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.Size = new System.Drawing.Size(956, 390);
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(691, 405);
             this.dataGridView.TabIndex = 5;
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(683, 16);
+            this.btnExport.Location = new System.Drawing.Point(408, 21);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(138, 40);
             this.btnExport.TabIndex = 4;
@@ -68,7 +76,7 @@
             this.groupBox2.Controls.Add(this.cbAños);
             this.groupBox2.Location = new System.Drawing.Point(12, 9);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(956, 71);
+            this.groupBox2.Size = new System.Drawing.Size(691, 71);
             this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Buscar trabajadores por mes:";
@@ -76,7 +84,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(332, 32);
+            this.label3.Location = new System.Drawing.Point(271, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 32;
@@ -99,7 +107,7 @@
             "OCTUBRE",
             "NOVIEMBRE",
             "DICIEMBRE"});
-            this.cbMes.Location = new System.Drawing.Point(165, 27);
+            this.cbMes.Location = new System.Drawing.Point(134, 30);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(121, 21);
             this.cbMes.TabIndex = 29;
@@ -108,7 +116,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(129, 32);
+            this.label1.Location = new System.Drawing.Point(98, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 31;
@@ -118,7 +126,7 @@
             // 
             this.cbAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAños.FormattingEnabled = true;
-            this.cbAños.Location = new System.Drawing.Point(364, 27);
+            this.cbAños.Location = new System.Drawing.Point(306, 30);
             this.cbAños.Name = "cbAños";
             this.cbAños.Size = new System.Drawing.Size(74, 21);
             this.cbAños.TabIndex = 30;
@@ -128,7 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(980, 491);
+            this.ClientSize = new System.Drawing.Size(717, 506);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView);
             this.Name = "frmExportarExcel";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvIngresos = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodForm = new System.Windows.Forms.TextBox();
@@ -100,7 +101,7 @@
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(107, 40);
             this.btnExportar.TabIndex = 24;
-            this.btnExportar.Text = "&Exportar Datos";
+            this.btnExportar.Text = "&Exportar Datos (.REM)";
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
@@ -108,9 +109,13 @@
             // 
             this.dgvListaPlanillas.AllowUserToAddRows = false;
             this.dgvListaPlanillas.AllowUserToResizeColumns = false;
+            this.dgvListaPlanillas.AllowUserToResizeRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaPlanillas.Location = new System.Drawing.Point(11, 93);
             this.dgvListaPlanillas.Name = "dgvListaPlanillas";
+            this.dgvListaPlanillas.ReadOnly = true;
             this.dgvListaPlanillas.RowHeadersVisible = false;
             this.dgvListaPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaPlanillas.Size = new System.Drawing.Size(1226, 376);
@@ -172,9 +177,9 @@
             // 
             this.bntListarTodo.Location = new System.Drawing.Point(619, 19);
             this.bntListarTodo.Name = "bntListarTodo";
-            this.bntListarTodo.Size = new System.Drawing.Size(154, 40);
+            this.bntListarTodo.Size = new System.Drawing.Size(179, 40);
             this.bntListarTodo.TabIndex = 33;
-            this.bntListarTodo.Text = "&Listar todas las\r\n planillas por año";
+            this.bntListarTodo.Text = "&Listar todas las planillas\r\n por año";
             this.bntListarTodo.UseVisualStyleBackColor = true;
             this.bntListarTodo.Click += new System.EventHandler(this.bntListarTodo_Click);
             // 

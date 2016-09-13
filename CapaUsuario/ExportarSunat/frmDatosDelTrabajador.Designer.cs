@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvListar = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,10 +44,16 @@
             // 
             this.dgvListar.AllowUserToAddRows = false;
             this.dgvListar.AllowUserToDeleteRows = false;
+            this.dgvListar.AllowUserToResizeColumns = false;
+            this.dgvListar.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListar.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListar.Location = new System.Drawing.Point(12, 79);
             this.dgvListar.Name = "dgvListar";
+            this.dgvListar.ReadOnly = true;
             this.dgvListar.RowHeadersVisible = false;
+            this.dgvListar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListar.Size = new System.Drawing.Size(1020, 399);
             this.dgvListar.TabIndex = 0;
             // 

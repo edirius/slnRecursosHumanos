@@ -41,6 +41,16 @@ namespace CapaUsuario.ExportarSunat
             dataGridView.Columns[8].Width = 90;
             dataGridView.Columns[9].Width = 90;
             dataGridView.Columns[10].Width = 90;
+            dataGridView.Columns[1].Visible = false;
+            dataGridView.Columns[2].Visible = false;
+            dataGridView.Columns[7].Visible = false;
+            dataGridView.Columns[8].Visible = false;
+            dataGridView.Columns[9].Visible = false;
+            dataGridView.Columns[10].Visible = false;
+            dataGridView.Columns[12].Visible = false;
+            dataGridView.Columns[13].Visible = false;
+            dataGridView.Columns[14].Visible = false;
+            dataGridView.Columns[15].Visible = false;
         }
 
         private void frmExportarExcel_Load(object sender, EventArgs e)

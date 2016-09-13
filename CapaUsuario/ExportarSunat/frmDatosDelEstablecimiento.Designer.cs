@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDatosEstablecimiento = new System.Windows.Forms.DataGridView();
             this.btnExportar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -42,10 +43,18 @@
             // dgvDatosEstablecimiento
             // 
             this.dgvDatosEstablecimiento.AllowUserToAddRows = false;
+            this.dgvDatosEstablecimiento.AllowUserToResizeColumns = false;
+            this.dgvDatosEstablecimiento.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvDatosEstablecimiento.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDatosEstablecimiento.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvDatosEstablecimiento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatosEstablecimiento.GridColor = System.Drawing.Color.White;
             this.dgvDatosEstablecimiento.Location = new System.Drawing.Point(9, 91);
             this.dgvDatosEstablecimiento.Name = "dgvDatosEstablecimiento";
+            this.dgvDatosEstablecimiento.ReadOnly = true;
             this.dgvDatosEstablecimiento.RowHeadersVisible = false;
+            this.dgvDatosEstablecimiento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDatosEstablecimiento.Size = new System.Drawing.Size(441, 398);
             this.dgvDatosEstablecimiento.TabIndex = 0;
             // 

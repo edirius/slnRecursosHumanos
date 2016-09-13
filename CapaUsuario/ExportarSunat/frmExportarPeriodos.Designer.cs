@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnExportar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvExportarPeriodos = new System.Windows.Forms.DataGridView();
@@ -63,11 +64,17 @@
             // dgvExportarPeriodos
             // 
             this.dgvExportarPeriodos.AllowUserToAddRows = false;
+            this.dgvExportarPeriodos.AllowUserToResizeColumns = false;
+            this.dgvExportarPeriodos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvExportarPeriodos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvExportarPeriodos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvExportarPeriodos.Location = new System.Drawing.Point(6, 14);
             this.dgvExportarPeriodos.Name = "dgvExportarPeriodos";
+            this.dgvExportarPeriodos.ReadOnly = true;
             this.dgvExportarPeriodos.RowHeadersVisible = false;
-            this.dgvExportarPeriodos.Size = new System.Drawing.Size(1229, 493);
+            this.dgvExportarPeriodos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvExportarPeriodos.Size = new System.Drawing.Size(1229, 475);
             this.dgvExportarPeriodos.TabIndex = 1;
             // 
             // groupBox5

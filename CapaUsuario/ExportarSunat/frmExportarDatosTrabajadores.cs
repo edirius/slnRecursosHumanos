@@ -27,21 +27,24 @@ namespace CapaUsuario.ExportarSunat
         {
             dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadoresporFechaInicio(DtDesde.Value, DtHasta.Value);
             //dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadores();
-            dgvListarTrabajadores.Columns[0].Width = 75;
-            dgvListarTrabajadores.Columns[1].Width = 63;
-            dgvListarTrabajadores.Columns[4].Width = 120;
-            dgvListarTrabajadores.Columns[5].Width = 75;
-            dgvListarTrabajadores.Columns[6].Width = 35;
-            dgvListarTrabajadores.Columns[7].Width = 75;
-            dgvListarTrabajadores.Columns[8].Width = 65;
-            dgvListarTrabajadores.Columns[9].Width = 120;
-            dgvListarTrabajadores.Columns[10].Width = 70;
-            dgvListarTrabajadores.Columns[12].Width = 50;
-            dgvListarTrabajadores.Columns[13].Width = 75;
-            dgvListarTrabajadores.Columns[14].Width = 75;
-            dgvListarTrabajadores.Columns[15].Width = 75;
-            dgvListarTrabajadores.Columns[16].Width = 75;
-            dgvListarTrabajadores.Columns[17].Width = 70;
+            dgvListarTrabajadores.Columns[0].Width = 50;
+            dgvListarTrabajadores.Columns[1].Width = 75;
+            dgvListarTrabajadores.Columns[2].Width = 63;
+            dgvListarTrabajadores.Columns[5].Width = 120;
+            dgvListarTrabajadores.Columns[6].Visible = false;
+            dgvListarTrabajadores.Columns[7].Width = 35;
+            dgvListarTrabajadores.Columns[8].Visible = false;
+            dgvListarTrabajadores.Columns[9].Visible = false;
+            dgvListarTrabajadores.Columns[10].Visible = false;
+            dgvListarTrabajadores.Columns[11].Visible = false;
+            dgvListarTrabajadores.Columns[12].Visible = false;
+            dgvListarTrabajadores.Columns[13].Visible = false;
+            dgvListarTrabajadores.Columns[14].Visible = false;
+            dgvListarTrabajadores.Columns[15].Visible = false;
+            dgvListarTrabajadores.Columns[16].Visible = false;
+            dgvListarTrabajadores.Columns[17].Visible = false;
+            dgvListarTrabajadores.Columns[18].Visible = false;
+            //dgvListarTrabajadores.Columns[19].Visible = false;
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
