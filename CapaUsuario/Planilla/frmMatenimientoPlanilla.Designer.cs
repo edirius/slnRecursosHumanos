@@ -36,6 +36,8 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.dgvPlanilla = new System.Windows.Forms.DataGridView();
+            this.dgvPrueba = new System.Windows.Forms.DataGridView();
+            this.dgvAFP = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +50,10 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdtRegimenLaboral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvPrueba = new System.Windows.Forms.DataGridView();
-            this.dgvAFP = new System.Windows.Forms.DataGridView();
+            this.cboAño = new System.Windows.Forms.ComboBox();
+            this.cboMes = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
@@ -62,7 +66,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageIndex = 1;
-            this.btnImprimir.Location = new System.Drawing.Point(285, 384);
+            this.btnImprimir.Location = new System.Drawing.Point(285, 404);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(83, 53);
             this.btnImprimir.TabIndex = 29;
@@ -78,7 +82,7 @@
             this.btnDetallePlanilla.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDetallePlanilla.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDetallePlanilla.ImageIndex = 1;
-            this.btnDetallePlanilla.Location = new System.Drawing.Point(12, 384);
+            this.btnDetallePlanilla.Location = new System.Drawing.Point(12, 404);
             this.btnDetallePlanilla.Name = "btnDetallePlanilla";
             this.btnDetallePlanilla.Size = new System.Drawing.Size(114, 53);
             this.btnDetallePlanilla.TabIndex = 28;
@@ -94,7 +98,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(641, 384);
+            this.btnSalir.Location = new System.Drawing.Point(641, 404);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 27;
@@ -110,7 +114,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEliminar.ImageKey = "118.png";
-            this.btnEliminar.Location = new System.Drawing.Point(552, 384);
+            this.btnEliminar.Location = new System.Drawing.Point(552, 404);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(83, 53);
             this.btnEliminar.TabIndex = 26;
@@ -126,7 +130,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificar.ImageKey = "13.png";
-            this.btnModificar.Location = new System.Drawing.Point(463, 384);
+            this.btnModificar.Location = new System.Drawing.Point(463, 404);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(83, 53);
             this.btnModificar.TabIndex = 25;
@@ -142,7 +146,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(374, 384);
+            this.btnNuevo.Location = new System.Drawing.Point(374, 404);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 24;
@@ -175,16 +179,34 @@
             this.IdtRegimenLaboral,
             this.Plantilla});
             this.dgvPlanilla.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvPlanilla.Location = new System.Drawing.Point(12, 12);
+            this.dgvPlanilla.Location = new System.Drawing.Point(12, 39);
             this.dgvPlanilla.MultiSelect = false;
             this.dgvPlanilla.Name = "dgvPlanilla";
             this.dgvPlanilla.ReadOnly = true;
             this.dgvPlanilla.RowHeadersVisible = false;
             this.dgvPlanilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPlanilla.Size = new System.Drawing.Size(712, 366);
+            this.dgvPlanilla.Size = new System.Drawing.Size(712, 359);
             this.dgvPlanilla.TabIndex = 23;
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick);
+            // 
+            // dgvPrueba
+            // 
+            this.dgvPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrueba.Location = new System.Drawing.Point(25, 202);
+            this.dgvPrueba.Name = "dgvPrueba";
+            this.dgvPrueba.Size = new System.Drawing.Size(156, 156);
+            this.dgvPrueba.TabIndex = 30;
+            this.dgvPrueba.Visible = false;
+            // 
+            // dgvAFP
+            // 
+            this.dgvAFP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAFP.Location = new System.Drawing.Point(187, 202);
+            this.dgvAFP.Name = "dgvAFP";
+            this.dgvAFP.Size = new System.Drawing.Size(156, 156);
+            this.dgvAFP.TabIndex = 30;
+            this.dgvAFP.Visible = false;
             // 
             // Column1
             // 
@@ -206,13 +228,14 @@
             this.txtDescripcion.HeaderText = "Descripción";
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ReadOnly = true;
-            this.txtDescripcion.Width = 125;
+            this.txtDescripcion.Width = 240;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Mes";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
             this.Column3.Width = 75;
             // 
             // Column4
@@ -220,6 +243,7 @@
             this.Column4.HeaderText = "Año";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
+            this.Column4.Visible = false;
             this.Column4.Width = 40;
             // 
             // Column5
@@ -275,29 +299,66 @@
             this.Plantilla.ReadOnly = true;
             this.Plantilla.Visible = false;
             // 
-            // dgvPrueba
+            // cboAño
             // 
-            this.dgvPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrueba.Location = new System.Drawing.Point(25, 202);
-            this.dgvPrueba.Name = "dgvPrueba";
-            this.dgvPrueba.Size = new System.Drawing.Size(156, 156);
-            this.dgvPrueba.TabIndex = 30;
-            this.dgvPrueba.Visible = false;
+            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAño.FormattingEnabled = true;
+            this.cboAño.Location = new System.Drawing.Point(41, 12);
+            this.cboAño.Name = "cboAño";
+            this.cboAño.Size = new System.Drawing.Size(140, 21);
+            this.cboAño.TabIndex = 31;
+            this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
             // 
-            // dgvAFP
+            // cboMes
             // 
-            this.dgvAFP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAFP.Location = new System.Drawing.Point(187, 202);
-            this.dgvAFP.Name = "dgvAFP";
-            this.dgvAFP.Size = new System.Drawing.Size(156, 156);
-            this.dgvAFP.TabIndex = 30;
-            this.dgvAFP.Visible = false;
+            this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMes.FormattingEnabled = true;
+            this.cboMes.Items.AddRange(new object[] {
+            "ENERO",
+            "FEBRERO",
+            "MARZO",
+            "ABRIL",
+            "MAYO",
+            "JUNIO",
+            "JULIO",
+            "AGOSTO",
+            "SETIEMBRE",
+            "OCTUBRE",
+            "NOVIEMBRE",
+            "DICIEMBRE"});
+            this.cboMes.Location = new System.Drawing.Point(220, 12);
+            this.cboMes.Name = "cboMes";
+            this.cboMes.Size = new System.Drawing.Size(121, 21);
+            this.cboMes.TabIndex = 32;
+            this.cboMes.SelectedIndexChanged += new System.EventHandler(this.cboMes_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 13);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Año";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(187, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "Mes";
             // 
             // frmMatenimientoPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 449);
+            this.ClientSize = new System.Drawing.Size(736, 469);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cboMes);
+            this.Controls.Add(this.cboAño);
             this.Controls.Add(this.dgvAFP);
             this.Controls.Add(this.dgvPrueba);
             this.Controls.Add(this.btnImprimir);
@@ -316,6 +377,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -329,6 +391,7 @@
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.DataGridView dgvPlanilla;
         private System.Windows.Forms.DataGridView dgvPrueba;
+        private System.Windows.Forms.DataGridView dgvAFP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtDescripcion;
@@ -341,6 +404,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdtRegimenLaboral;
         private System.Windows.Forms.DataGridViewTextBoxColumn Plantilla;
-        private System.Windows.Forms.DataGridView dgvAFP;
+        private System.Windows.Forms.ComboBox cboAño;
+        private System.Windows.Forms.ComboBox cboMes;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -39,14 +39,22 @@ namespace CapaUsuario.Planilla
         CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
         CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
 
-        
-
         public frmMatenimientoPlanilla()
         {
             InitializeComponent();
         }
 
         private void frmMatenimientoPlanilla_Load(object sender, EventArgs e)
+        {
+            CargarAños();
+        }
+
+        private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboMes.SelectedIndex = -1;
+        }
+
+        private void cboMes_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarDatos();
         }
@@ -149,6 +157,15 @@ namespace CapaUsuario.Planilla
             }
         }
 
+        private void CargarAños()
+        {
+            for (int i = DateTime.Now.Year; i >= 2000; i--)
+            {
+                cboAño.Items.Add(i);
+            }
+            cboAño.Text = saño;
+        }
+
         private void CargarDatos()
         {
             dgvPlanilla.Rows.Clear();
@@ -162,7 +179,7 @@ namespace CapaUsuario.Planilla
             CapaDeNegocios.cFuenteFinanciamiento miFuenteFinanciamietno = new CapaDeNegocios.cFuenteFinanciamiento();
             oDataFuenteFinanciamiento = miFuenteFinanciamietno.ListarFuenteFinanciamiento();
 
-            foreach (DataRow row in oDataPlanilla.Rows)
+            foreach (DataRow row in oDataPlanilla.Select("año ='" + cboAño.Text + "' AND mes ='" + cboMes.Text + "'"))
             {
                 foreach (DataRow roww in oDataMeta.Select("idtmeta ='" + row[5].ToString() + "'"))
                 {
@@ -1377,12 +1394,10 @@ namespace CapaUsuario.Planilla
                 pdfDoc.Close();
                 stream.Close();
             }
-
             System.Diagnostics.Process proc = new System.Diagnostics.Process();
             proc.EnableRaisingEvents = false;
             proc.StartInfo.FileName = "C:\\PDFs\\DataGridViewExport.pdf";
             proc.Start();
-
         }
     }
 }
