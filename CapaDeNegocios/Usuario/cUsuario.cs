@@ -118,12 +118,12 @@ namespace CapaDeNegocios.Usuario
 
         public Boolean  CrearUsuario(cUsuario UsuarioNuevo)
         {   
-            return Convert.ToBoolean ( Conexion.GDatos.Ejecutar("spCrearUsuario", UsuarioNuevo.nombre, UsuarioNuevo.password));
+            return Convert.ToBoolean ( Conexion.GDatos.Ejecutar("spCrearUsuario", UsuarioNuevo.nombre, UsuarioNuevo.password, UsuarioNuevo.Privilegio.Codigo, UsuarioNuevo.trabajador.IdTrabajador, Habilitado));
         }
 
         public Boolean ModificarUsuario(cUsuario UsuarioAModificar)
         {
-            return Convert.ToBoolean(Conexion.GDatos.Ejecutar("spModificarUsuario", UsuarioAModificar.codigo, UsuarioAModificar.nombre, UsuarioAModificar.password));
+            return Convert.ToBoolean(Conexion.GDatos.Ejecutar("spModificarUsuario", UsuarioAModificar.codigo, UsuarioAModificar.nombre, UsuarioAModificar.password, UsuarioAModificar.privilegio.Codigo, UsuarioAModificar.trabajador.IdTrabajador, Habilitado ));
         }
 
         public Boolean EliminarUsuario(cUsuario UsuarioAEliminar)

@@ -40,11 +40,12 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.btnCategoria = new System.Windows.Forms.Button();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
+            this.chkHabilitado = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(54, 225);
+            this.btnGuardar.Location = new System.Drawing.Point(54, 263);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 16;
@@ -54,7 +55,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(304, 225);
+            this.btnSalir.Location = new System.Drawing.Point(304, 263);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 17;
@@ -148,11 +149,22 @@
             this.cboCategoria.Size = new System.Drawing.Size(225, 21);
             this.cboCategoria.TabIndex = 29;
             // 
+            // chkHabilitado
+            // 
+            this.chkHabilitado.AutoSize = true;
+            this.chkHabilitado.Location = new System.Drawing.Point(154, 225);
+            this.chkHabilitado.Name = "chkHabilitado";
+            this.chkHabilitado.Size = new System.Drawing.Size(79, 17);
+            this.chkHabilitado.TabIndex = 30;
+            this.chkHabilitado.Text = "Habilitado?";
+            this.chkHabilitado.UseVisualStyleBackColor = true;
+            // 
             // frmMantenimientoUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 276);
+            this.ClientSize = new System.Drawing.Size(507, 307);
+            this.Controls.Add(this.chkHabilitado);
             this.Controls.Add(this.cboCategoria);
             this.Controls.Add(this.btnCategoria);
             this.Controls.Add(this.lblNombre);
@@ -187,5 +199,6 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Button btnCategoria;
         private System.Windows.Forms.ComboBox cboCategoria;
+        private System.Windows.Forms.CheckBox chkHabilitado;
     }
 }
