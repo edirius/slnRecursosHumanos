@@ -103,15 +103,18 @@ namespace CapaUsuario.Planilla
 
         private void btnDetallePlanilla_Click(object sender, EventArgs e)
         {
-            CapaUsuario.frmPrincipal fPrincipal = new frmPrincipal();
-            CapaUsuario.Planilla.frmMantenimientoDetallePlanilla fMantenimientoDetallePlanilla = new frmMantenimientoDetallePlanilla();
-            fMantenimientoDetallePlanilla.RecibirDatos(sidtplanilla, snumero, smes, saño, sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, sidtregimenlaboral, sRegimenLaboral, splantilla);
-            //fMantenimientoDetallePlanilla.MdiParent = fPrincipal;
-            if (fMantenimientoDetallePlanilla.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (splantilla == "REGIDORES")
             {
-                CargarDatos();
+                CapaUsuario.Planilla.frmMantenimientoDetallePlanillaRegidores fMantenimientoDetallePlanillaRegidores = new frmMantenimientoDetallePlanillaRegidores();
+                fMantenimientoDetallePlanillaRegidores.RecibirDatos(sidtplanilla, snumero, smes, saño, sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, sidtregimenlaboral, sRegimenLaboral, splantilla);
+                fMantenimientoDetallePlanillaRegidores.ShowDialog();
             }
-            //fMantenimientoDetallePlanilla.Show();
+            else
+            {
+                CapaUsuario.Planilla.frmMantenimientoDetallePlanilla fMantenimientoDetallePlanilla = new frmMantenimientoDetallePlanilla();
+                fMantenimientoDetallePlanilla.RecibirDatos(sidtplanilla, snumero, smes, saño, sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, sidtregimenlaboral, sRegimenLaboral, splantilla);
+                fMantenimientoDetallePlanilla.ShowDialog();
+            }
         }
 
         private void dgvPlanilla_CellContentClick(object sender, DataGridViewCellEventArgs e)

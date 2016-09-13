@@ -13,8 +13,10 @@ namespace CapaDeNegocios
     {
         int sidtvariables;
         string saño;
-        int ssueldominimo;
-        int suit;
+        decimal ssueldominimo;
+        decimal suit;
+        decimal sdieta;
+
         public int IdtVariables
         {
             get { return sidtvariables; }
@@ -25,15 +27,20 @@ namespace CapaDeNegocios
             get { return saño; }
             set { saño = value; }
         }
-        public int SueldoMinimo
+        public decimal SueldoMinimo
         {
             get { return ssueldominimo; }
             set { ssueldominimo = value; }
         }
-        public int UIT
+        public decimal UIT
         {
             get { return suit; }
             set { suit = value; }
+        }
+        public decimal Dieta
+        {
+            get { return sdieta; }
+            set { sdieta = value; }
         }
 
         public DataTable ListarVariables()
@@ -54,13 +61,13 @@ namespace CapaDeNegocios
         }
         public Boolean CrearVariables(cVariables miVariables)
         {
-            Conexion.GDatos.Ejecutar("spCrearVariables", miVariables.Año, miVariables.SueldoMinimo, miVariables.UIT);
+            Conexion.GDatos.Ejecutar("spCrearVariables", miVariables.Año, miVariables.SueldoMinimo, miVariables.UIT, miVariables.Dieta);
             return true;
         }
 
         public Boolean ModificarVariables(cVariables miVariables)
         {
-            Conexion.GDatos.Ejecutar("spModificarVariables", miVariables.IdtVariables, miVariables.Año, miVariables.SueldoMinimo, miVariables.UIT);
+            Conexion.GDatos.Ejecutar("spModificarVariables", miVariables.IdtVariables, miVariables.Año, miVariables.SueldoMinimo, miVariables.UIT, miVariables.Dieta);
             return true;
         }
 

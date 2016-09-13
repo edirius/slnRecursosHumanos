@@ -133,6 +133,7 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.dgvFuenteFinanciamiento);
             this.Name = "frmMantenimientoFuenteFinanciamiento";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Fuente Financiamiento";
             this.Load += new System.EventHandler(this.frmMantenimientoFuenteFinanciamiento_Load);

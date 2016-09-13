@@ -14,8 +14,9 @@ namespace CapaUsuario.Variables
     {
         int sidtvariables = 0;
         string saño = "";
-        int ssueldominimo = 0;
-        int suit = 0;
+        decimal ssueldominimo = 0;
+        decimal suit = 0;
+        decimal sdieta = 0;
 
         CapaDeNegocios.cVariables miVariables = new CapaDeNegocios.cVariables();
 
@@ -32,7 +33,7 @@ namespace CapaUsuario.Variables
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             CapaUsuario.Variables.frmVariables fVariables = new frmVariables();
-            fVariables.RecibirDatos(0, "", 0, 0, 1);
+            fVariables.RecibirDatos(0, "", 0, 0, 0, 1);
             if (fVariables.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -47,7 +48,7 @@ namespace CapaUsuario.Variables
                 return;
             }
             CapaUsuario.Variables.frmVariables fVariables = new frmVariables();
-            fVariables.RecibirDatos(sidtvariables, saño, ssueldominimo, suit, 2);
+            fVariables.RecibirDatos(sidtvariables, saño, ssueldominimo, suit, sdieta, 2);
             if (fVariables.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -81,15 +82,13 @@ namespace CapaUsuario.Variables
 
         private void dgvVariables_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
             if (e.RowIndex!=-1) { 
                 sidtvariables = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[0].Value);
                 saño = Convert.ToString(dgvVariables.Rows[e.RowIndex].Cells[1].Value);
                 ssueldominimo = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[2].Value);
                 suit = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[3].Value);
+                sdieta = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[4].Value);
             }
-
-
         }
 
         private void CargarDatos()

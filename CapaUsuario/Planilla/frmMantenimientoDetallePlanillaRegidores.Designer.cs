@@ -1,6 +1,6 @@
 ﻿namespace CapaUsuario.Planilla
 {
-    partial class frmMantenimientoDetallePlanilla
+    partial class frmMantenimientoDetallePlanillaRegidores
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnImportar = new System.Windows.Forms.Button();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -45,6 +44,11 @@
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.txtRegimenLaboral = new System.Windows.Forms.TextBox();
+            this.txtFuenteFinanciamiento = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnAprobacion = new System.Windows.Forms.Button();
             this.dgvDetallePlanilla = new System.Windows.Forms.DataGridView();
             this.txtIdTDetallePlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,31 +64,9 @@
             this.Remuneracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiasLaborados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalRemuneracio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtRegimenLaboral = new System.Windows.Forms.TextBox();
-            this.txtFuenteFinanciamiento = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnAgregarTrabajador = new System.Windows.Forms.Button();
-            this.btnCalcular = new System.Windows.Forms.Button();
-            this.btnAprobacion = new System.Windows.Forms.Button();
+            this.btnRegidores = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnImportar
-            // 
-            this.btnImportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImportar.BackColor = System.Drawing.Color.MintCream;
-            this.btnImportar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnImportar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnImportar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImportar.Location = new System.Drawing.Point(679, 38);
-            this.btnImportar.Name = "btnImportar";
-            this.btnImportar.Size = new System.Drawing.Size(238, 46);
-            this.btnImportar.TabIndex = 91;
-            this.btnImportar.Text = "&Importar Tareo";
-            this.btnImportar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnImportar.UseVisualStyleBackColor = false;
-            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 
             // txtFecha
             // 
@@ -135,7 +117,7 @@
             this.txtMeta.Enabled = false;
             this.txtMeta.Location = new System.Drawing.Point(135, 38);
             this.txtMeta.Name = "txtMeta";
-            this.txtMeta.Size = new System.Drawing.Size(538, 20);
+            this.txtMeta.Size = new System.Drawing.Size(628, 20);
             this.txtMeta.TabIndex = 84;
             // 
             // label6
@@ -173,6 +155,59 @@
             this.label10.Size = new System.Drawing.Size(50, 13);
             this.label10.TabIndex = 80;
             this.label10.Text = "Numero :";
+            // 
+            // txtRegimenLaboral
+            // 
+            this.txtRegimenLaboral.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtRegimenLaboral.Enabled = false;
+            this.txtRegimenLaboral.Location = new System.Drawing.Point(135, 12);
+            this.txtRegimenLaboral.Name = "txtRegimenLaboral";
+            this.txtRegimenLaboral.Size = new System.Drawing.Size(219, 20);
+            this.txtRegimenLaboral.TabIndex = 92;
+            // 
+            // txtFuenteFinanciamiento
+            // 
+            this.txtFuenteFinanciamiento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFuenteFinanciamiento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtFuenteFinanciamiento.Enabled = false;
+            this.txtFuenteFinanciamiento.Location = new System.Drawing.Point(135, 64);
+            this.txtFuenteFinanciamiento.Name = "txtFuenteFinanciamiento";
+            this.txtFuenteFinanciamiento.Size = new System.Drawing.Size(628, 20);
+            this.txtFuenteFinanciamiento.TabIndex = 93;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(92, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 94;
+            this.label1.Text = "Meta :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 67);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(120, 13);
+            this.label2.TabIndex = 95;
+            this.label2.Text = "Fuente Financiamiento :";
+            // 
+            // btnAprobacion
+            // 
+            this.btnAprobacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAprobacion.BackColor = System.Drawing.Color.MintCream;
+            this.btnAprobacion.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAprobacion.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAprobacion.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnAprobacion.Location = new System.Drawing.Point(12, 391);
+            this.btnAprobacion.Name = "btnAprobacion";
+            this.btnAprobacion.Size = new System.Drawing.Size(153, 65);
+            this.btnAprobacion.TabIndex = 98;
+            this.btnAprobacion.Text = "&Poner en Aprobacion";
+            this.btnAprobacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAprobacion.UseVisualStyleBackColor = false;
             // 
             // dgvDetallePlanilla
             // 
@@ -212,7 +247,7 @@
             this.dgvDetallePlanilla.RowHeadersVisible = false;
             this.dgvDetallePlanilla.RowHeadersWidth = 25;
             this.dgvDetallePlanilla.Size = new System.Drawing.Size(905, 295);
-            this.dgvDetallePlanilla.TabIndex = 79;
+            this.dgvDetallePlanilla.TabIndex = 100;
             this.dgvDetallePlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellContentClick);
             this.dgvDetallePlanilla.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellEndEdit);
             // 
@@ -333,104 +368,34 @@
             this.TotalRemuneracio.ReadOnly = true;
             this.TotalRemuneracio.Width = 50;
             // 
-            // txtRegimenLaboral
+            // btnRegidores
             // 
-            this.txtRegimenLaboral.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtRegimenLaboral.Enabled = false;
-            this.txtRegimenLaboral.Location = new System.Drawing.Point(135, 12);
-            this.txtRegimenLaboral.Name = "txtRegimenLaboral";
-            this.txtRegimenLaboral.Size = new System.Drawing.Size(219, 20);
-            this.txtRegimenLaboral.TabIndex = 92;
+            this.btnRegidores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRegidores.BackColor = System.Drawing.Color.MintCream;
+            this.btnRegidores.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnRegidores.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnRegidores.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnRegidores.Location = new System.Drawing.Point(673, 391);
+            this.btnRegidores.Name = "btnRegidores";
+            this.btnRegidores.Size = new System.Drawing.Size(83, 65);
+            this.btnRegidores.TabIndex = 101;
+            this.btnRegidores.Text = "&Cargar Regidores";
+            this.btnRegidores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRegidores.UseVisualStyleBackColor = false;
+            this.btnRegidores.Click += new System.EventHandler(this.btnRegidores_Click);
             // 
-            // txtFuenteFinanciamiento
-            // 
-            this.txtFuenteFinanciamiento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFuenteFinanciamiento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtFuenteFinanciamiento.Enabled = false;
-            this.txtFuenteFinanciamiento.Location = new System.Drawing.Point(135, 64);
-            this.txtFuenteFinanciamiento.Name = "txtFuenteFinanciamiento";
-            this.txtFuenteFinanciamiento.Size = new System.Drawing.Size(538, 20);
-            this.txtFuenteFinanciamiento.TabIndex = 93;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(92, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
-            this.label1.TabIndex = 94;
-            this.label1.Text = "Meta :";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 13);
-            this.label2.TabIndex = 95;
-            this.label2.Text = "Fuente Financiamiento :";
-            // 
-            // btnAgregarTrabajador
-            // 
-            this.btnAgregarTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregarTrabajador.BackColor = System.Drawing.Color.MintCream;
-            this.btnAgregarTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAgregarTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAgregarTrabajador.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAgregarTrabajador.Location = new System.Drawing.Point(584, 391);
-            this.btnAgregarTrabajador.Name = "btnAgregarTrabajador";
-            this.btnAgregarTrabajador.Size = new System.Drawing.Size(83, 65);
-            this.btnAgregarTrabajador.TabIndex = 96;
-            this.btnAgregarTrabajador.Text = "&Agregar Trabajador";
-            this.btnAgregarTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAgregarTrabajador.UseVisualStyleBackColor = false;
-            this.btnAgregarTrabajador.Click += new System.EventHandler(this.btnAgregarTrabajador_Click);
-            // 
-            // btnCalcular
-            // 
-            this.btnCalcular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCalcular.BackColor = System.Drawing.Color.MintCream;
-            this.btnCalcular.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnCalcular.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCalcular.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnCalcular.Location = new System.Drawing.Point(673, 391);
-            this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(83, 65);
-            this.btnCalcular.TabIndex = 97;
-            this.btnCalcular.Text = "&Calcular Planilla";
-            this.btnCalcular.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCalcular.UseVisualStyleBackColor = false;
-            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
-            // 
-            // btnAprobacion
-            // 
-            this.btnAprobacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAprobacion.BackColor = System.Drawing.Color.MintCream;
-            this.btnAprobacion.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAprobacion.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAprobacion.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAprobacion.Location = new System.Drawing.Point(12, 391);
-            this.btnAprobacion.Name = "btnAprobacion";
-            this.btnAprobacion.Size = new System.Drawing.Size(153, 65);
-            this.btnAprobacion.TabIndex = 98;
-            this.btnAprobacion.Text = "&Poner en Aprobacion";
-            this.btnAprobacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAprobacion.UseVisualStyleBackColor = false;
-            // 
-            // frmMantenimientoDetallePlanilla
+            // frmMantenimientoDetallePlanillaRegidores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(929, 468);
+            this.Controls.Add(this.btnRegidores);
+            this.Controls.Add(this.dgvDetallePlanilla);
             this.Controls.Add(this.btnAprobacion);
-            this.Controls.Add(this.btnCalcular);
-            this.Controls.Add(this.btnAgregarTrabajador);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtFuenteFinanciamiento);
             this.Controls.Add(this.txtRegimenLaboral);
-            this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -439,8 +404,7 @@
             this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.dgvDetallePlanilla);
-            this.Name = "frmMantenimientoDetallePlanilla";
+            this.Name = "frmMantenimientoDetallePlanillaRegidores";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Detalle Planilla";
@@ -453,7 +417,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnImportar;
         private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
@@ -462,14 +425,12 @@
         private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridView dgvDetallePlanilla;
         private System.Windows.Forms.TextBox txtRegimenLaboral;
         private System.Windows.Forms.TextBox txtFuenteFinanciamiento;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnAgregarTrabajador;
-        private System.Windows.Forms.Button btnCalcular;
         private System.Windows.Forms.Button btnAprobacion;
+        private System.Windows.Forms.DataGridView dgvDetallePlanilla;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtIdTDetallePlanilla;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtAccion;
         private System.Windows.Forms.DataGridViewButtonColumn btnProceso;
@@ -484,5 +445,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Remuneracion;
         private System.Windows.Forms.DataGridViewTextBoxColumn DiasLaborados;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalRemuneracio;
+        private System.Windows.Forms.Button btnRegidores;
     }
 }
