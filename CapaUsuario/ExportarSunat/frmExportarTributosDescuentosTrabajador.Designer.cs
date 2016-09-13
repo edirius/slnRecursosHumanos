@@ -96,7 +96,7 @@
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(764, 19);
+            this.btnExportar.Location = new System.Drawing.Point(804, 19);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(107, 40);
             this.btnExportar.TabIndex = 24;
@@ -172,9 +172,9 @@
             // 
             this.bntListarTodo.Location = new System.Drawing.Point(619, 19);
             this.bntListarTodo.Name = "bntListarTodo";
-            this.bntListarTodo.Size = new System.Drawing.Size(137, 40);
+            this.bntListarTodo.Size = new System.Drawing.Size(154, 40);
             this.bntListarTodo.TabIndex = 33;
-            this.bntListarTodo.Text = "Listar Todas las Planillas";
+            this.bntListarTodo.Text = "&Listar todas las\r\n planillas por año";
             this.bntListarTodo.UseVisualStyleBackColor = true;
             this.bntListarTodo.Click += new System.EventHandler(this.bntListarTodo_Click);
             // 

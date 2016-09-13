@@ -43,26 +43,27 @@
             // 
             this.dgvListarTrabajadores.AllowUserToAddRows = false;
             this.dgvListarTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListarTrabajadores.Location = new System.Drawing.Point(13, 72);
+            this.dgvListarTrabajadores.Location = new System.Drawing.Point(13, 79);
             this.dgvListarTrabajadores.Name = "dgvListarTrabajadores";
             this.dgvListarTrabajadores.RowHeadersVisible = false;
-            this.dgvListarTrabajadores.Size = new System.Drawing.Size(1225, 407);
+            this.dgvListarTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvListarTrabajadores.Size = new System.Drawing.Size(1225, 400);
             this.dgvListarTrabajadores.TabIndex = 29;
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(721, 15);
+            this.btnExportar.Location = new System.Drawing.Point(720, 19);
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(105, 38);
+            this.btnExportar.Size = new System.Drawing.Size(126, 41);
             this.btnExportar.TabIndex = 30;
-            this.btnExportar.Text = "&EXPORTAR";
+            this.btnExportar.Text = "&EXPORTAR (.IDE)";
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // DtDesde
             // 
             this.DtDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtDesde.Location = new System.Drawing.Point(405, 22);
+            this.DtDesde.Location = new System.Drawing.Point(405, 30);
             this.DtDesde.Name = "DtDesde";
             this.DtDesde.Size = new System.Drawing.Size(109, 20);
             this.DtDesde.TabIndex = 31;
@@ -72,7 +73,7 @@
             // DtHasta
             // 
             this.DtHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtHasta.Location = new System.Drawing.Point(591, 22);
+            this.DtHasta.Location = new System.Drawing.Point(591, 30);
             this.DtHasta.Name = "DtHasta";
             this.DtHasta.Size = new System.Drawing.Size(109, 20);
             this.DtHasta.TabIndex = 32;
@@ -81,7 +82,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(359, 25);
+            this.label1.Location = new System.Drawing.Point(359, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 33;
@@ -90,7 +91,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(550, 25);
+            this.label2.Location = new System.Drawing.Point(550, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 34;
@@ -103,12 +104,12 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.DtDesde);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(14, 7);
+            this.groupBox1.Location = new System.Drawing.Point(14, 5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1223, 59);
+            this.groupBox1.Size = new System.Drawing.Size(1223, 68);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Buscar trabajadores por fecha:";
+            this.groupBox1.Text = "Buscar datos personales del trabajador:";
             // 
             // frmExportarDatosTrabajadores
             // 

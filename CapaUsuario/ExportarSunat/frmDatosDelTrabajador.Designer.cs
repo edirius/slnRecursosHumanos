@@ -44,26 +44,26 @@
             this.dgvListar.AllowUserToAddRows = false;
             this.dgvListar.AllowUserToDeleteRows = false;
             this.dgvListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListar.Location = new System.Drawing.Point(12, 100);
+            this.dgvListar.Location = new System.Drawing.Point(12, 79);
             this.dgvListar.Name = "dgvListar";
             this.dgvListar.RowHeadersVisible = false;
-            this.dgvListar.Size = new System.Drawing.Size(1020, 378);
+            this.dgvListar.Size = new System.Drawing.Size(1020, 399);
             this.dgvListar.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(666, 19);
+            this.button1.Location = new System.Drawing.Point(609, 15);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 50);
+            this.button1.Size = new System.Drawing.Size(129, 43);
             this.button1.TabIndex = 1;
-            this.button1.Text = "&Exportar";
+            this.button1.Text = "&EXPORTAR (.TRA)";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(432, 38);
+            this.label2.Location = new System.Drawing.Point(432, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 38;
@@ -72,7 +72,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(241, 38);
+            this.label1.Location = new System.Drawing.Point(241, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 37;
@@ -81,7 +81,7 @@
             // DtHasta
             // 
             this.DtHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtHasta.Location = new System.Drawing.Point(473, 35);
+            this.DtHasta.Location = new System.Drawing.Point(473, 30);
             this.DtHasta.Name = "DtHasta";
             this.DtHasta.Size = new System.Drawing.Size(109, 20);
             this.DtHasta.TabIndex = 36;
@@ -90,7 +90,7 @@
             // DtDesde
             // 
             this.DtDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtDesde.Location = new System.Drawing.Point(287, 35);
+            this.DtDesde.Location = new System.Drawing.Point(287, 30);
             this.DtDesde.Name = "DtDesde";
             this.DtDesde.Size = new System.Drawing.Size(109, 20);
             this.DtDesde.TabIndex = 35;
@@ -104,9 +104,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.DtDesde);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1020, 75);
+            this.groupBox1.Size = new System.Drawing.Size(1020, 70);
             this.groupBox1.TabIndex = 39;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar trabajadores por fecha:";

@@ -46,16 +46,16 @@
             this.dgvDatosEstablecimiento.Location = new System.Drawing.Point(9, 91);
             this.dgvDatosEstablecimiento.Name = "dgvDatosEstablecimiento";
             this.dgvDatosEstablecimiento.RowHeadersVisible = false;
-            this.dgvDatosEstablecimiento.Size = new System.Drawing.Size(441, 331);
+            this.dgvDatosEstablecimiento.Size = new System.Drawing.Size(441, 398);
             this.dgvDatosEstablecimiento.TabIndex = 0;
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(329, 19);
+            this.btnExportar.Location = new System.Drawing.Point(329, 13);
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(99, 39);
+            this.btnExportar.Size = new System.Drawing.Size(106, 50);
             this.btnExportar.TabIndex = 1;
-            this.btnExportar.Text = "&Exportar Datos";
+            this.btnExportar.Text = "&Exportar Datos (.EST)";
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 433);
+            this.ClientSize = new System.Drawing.Size(463, 501);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvDatosEstablecimiento);
             this.Name = "frmDatosDelEstablecimiento";

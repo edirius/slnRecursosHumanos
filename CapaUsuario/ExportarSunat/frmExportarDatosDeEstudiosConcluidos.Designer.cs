@@ -41,11 +41,11 @@
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(323, 19);
+            this.btnExportar.Location = new System.Drawing.Point(323, 14);
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(99, 39);
+            this.btnExportar.Size = new System.Drawing.Size(112, 50);
             this.btnExportar.TabIndex = 3;
-            this.btnExportar.Text = "&Exportar Datos";
+            this.btnExportar.Text = "&Exportar Datos (.EDU)";
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 

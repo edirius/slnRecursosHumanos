@@ -329,7 +329,7 @@ namespace CapaUsuario.ExportarSunat
 
         private void bntListarTodo_Click(object sender, EventArgs e)
         {
-            dgvListaPlanillas.DataSource = oExportar.ListarPlanillas();
+            dgvListaPlanillas.DataSource = oExportar.ListarPlanillas(cbAños.Text);
         }
         private void CargarAños()
         {
