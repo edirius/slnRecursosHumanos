@@ -175,6 +175,7 @@ namespace CapaUsuario.ExportarSunat
             if (dgvListar.Rows.Count != 0)
             {
                 ConcatenarDatos();
+                milista.Clear();
             }
             else MessageBox.Show("No se encontraron datos para la exportación.");
             

@@ -35,6 +35,7 @@ namespace CapaUsuario.ExportarSunat
         string rp = "RP_";
         string NroRegimenSalud = "";
         string Categoria = "1";
+        ArrayList milista = new ArrayList();
         public frmExportarPeriodos()
         {
             InitializeComponent();
@@ -43,8 +44,22 @@ namespace CapaUsuario.ExportarSunat
         public void Cargargrid()
         {
             dgvExportarPeriodos.DataSource = oexp.ListarPeriodos(DtDesde.Value, DtHasta.Value);
+            dgvExportarPeriodos.Columns[0].Width = 200;
+            dgvExportarPeriodos.Columns[1].Width = 75;
+            dgvExportarPeriodos.Columns[2].Width = 75;
+            dgvExportarPeriodos.Columns[3].Width = 75;
+            dgvExportarPeriodos.Columns[4].Visible = false;
+            dgvExportarPeriodos.Columns[5].Width = 350;
+            dgvExportarPeriodos.Columns[6].Visible = false;
+            dgvExportarPeriodos.Columns[7].Width = 150;
+            dgvExportarPeriodos.Columns[8].Width = 100;
+            dgvExportarPeriodos.Columns[9].Width = 100;
+            dgvExportarPeriodos.Columns[10].Width = 200;
+            dgvExportarPeriodos.Columns[11].Width = 150;
+            dgvExportarPeriodos.Columns[12].Width = 150;
+            dgvExportarPeriodos.Columns[13].Visible = false;
             //dgv1.Columns[0].Visible = false;
-            
+
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
@@ -52,6 +67,7 @@ namespace CapaUsuario.ExportarSunat
             if (dgvExportarPeriodos.Columns.Count != 0)
             {
                 concatenarDatos();
+                milista.Clear();
             }
             else
                 MessageBox.Show("No hay datos para Exportar");
@@ -80,7 +96,7 @@ namespace CapaUsuario.ExportarSunat
         }
         public void concatenarDatos()
         {
-            ArrayList milista = new ArrayList();
+            
             try
             {
                 for (int i = 0; i < dgvExportarPeriodos.Rows.Count; i++)//Perido

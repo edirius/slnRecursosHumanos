@@ -127,14 +127,21 @@ namespace CapaUsuario.ExportarSunat
         }
         private void btnExport_Click_1(object sender, EventArgs e)
         {
-            
-            if (dataGridView.Rows.Count != 0)
+            try
             {
-                ExportarDataGridViewExcel(dataGridView);
-                
+                if (dataGridView.Rows.Count != 0)
+                {
+                    ExportarDataGridViewExcel(dataGridView);
+                }
+                else
+                    MessageBox.Show("No se encontraron datos para la exportación.");
+
             }
-            else
-                MessageBox.Show("No se encontraron datos para la exportación.");
+            catch
+            {
+                MessageBox.Show("Cierre antes el otro archivo Excel.");
+            }
+            
 
         }
 

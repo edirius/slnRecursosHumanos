@@ -16,6 +16,7 @@ namespace CapaUsuario.ExportarSunat
     public partial class frmDatosDelEstablecimiento : Form
     {
         CapaDeNegocios.ExportarSunat.cExportarSunat oExpo = new CapaDeNegocios.ExportarSunat.cExportarSunat();
+        ArrayList milista = new ArrayList();
         public frmDatosDelEstablecimiento()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace CapaUsuario.ExportarSunat
         }
         public void concatenarDatos()
         {
-            ArrayList milista = new ArrayList();
+            
 
             try
             {
@@ -90,6 +91,7 @@ namespace CapaUsuario.ExportarSunat
             if (dgvDatosEstablecimiento.Rows.Count != 0)
             {
                 concatenarDatos();
+                milista.Clear();
             }
             else
                 MessageBox.Show("No hay datos para exportar");

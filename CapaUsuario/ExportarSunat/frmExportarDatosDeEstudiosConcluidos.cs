@@ -16,6 +16,7 @@ namespace CapaUsuario.ExportarSunat
     public partial class frmExportarDatosDeEstudiosConcluidos : Form
     {
         CapaDeNegocios.ExportarSunat.cExportarSunat oexp = new CapaDeNegocios.ExportarSunat.cExportarSunat();
+        ArrayList milista = new ArrayList();
         public frmExportarDatosDeEstudiosConcluidos()
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace CapaUsuario.ExportarSunat
         }
         public void concatenarDatos()
         {
-            ArrayList milista = new ArrayList();
+            
             try
             {
                 for (int i = 0; i < dgvDatosEstudios.Rows.Count; i++)
@@ -86,7 +87,14 @@ namespace CapaUsuario.ExportarSunat
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            concatenarDatos();
+            if (dgvDatosEstudios.Rows.Count != 2)
+            {
+                concatenarDatos();
+                milista.Clear();
+            }
+            else
+                MessageBox.Show("No se encontraron datos para exportar");
+            
         }
 
         private void DtDesde_ValueChanged(object sender, EventArgs e)
