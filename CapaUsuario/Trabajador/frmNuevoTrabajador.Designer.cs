@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabTrabajador = new System.Windows.Forms.TabControl();
             this.tabDatosGenerales = new System.Windows.Forms.TabPage();
+            this.chkEssaludVida = new System.Windows.Forms.CheckBox();
             this.btnTipoZona = new System.Windows.Forms.Button();
             this.btnTipoVia = new System.Windows.Forms.Button();
             this.btnDistrito = new System.Windows.Forms.Button();
@@ -90,7 +91,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
             this.toolTrabajador = new System.Windows.Forms.ToolTip(this.components);
-            this.chkEssaludVida = new System.Windows.Forms.CheckBox();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
@@ -173,6 +173,17 @@
             this.tabDatosGenerales.TabIndex = 0;
             this.tabDatosGenerales.Text = "Datos Generales";
             this.tabDatosGenerales.UseVisualStyleBackColor = true;
+            // 
+            // chkEssaludVida
+            // 
+            this.chkEssaludVida.AutoSize = true;
+            this.chkEssaludVida.Location = new System.Drawing.Point(536, 545);
+            this.chkEssaludVida.Name = "chkEssaludVida";
+            this.chkEssaludVida.Size = new System.Drawing.Size(87, 17);
+            this.chkEssaludVida.TabIndex = 103;
+            this.chkEssaludVida.Text = "Essalud Vida";
+            this.chkEssaludVida.UseVisualStyleBackColor = true;
+            this.chkEssaludVida.CheckedChanged += new System.EventHandler(this.chkEssaludVida_CheckedChanged);
             // 
             // btnTipoZona
             // 
@@ -705,17 +716,6 @@
             this.toolTrabajador.ForeColor = System.Drawing.Color.RoyalBlue;
             this.toolTrabajador.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // chkEssaludVida
-            // 
-            this.chkEssaludVida.AutoSize = true;
-            this.chkEssaludVida.Location = new System.Drawing.Point(536, 545);
-            this.chkEssaludVida.Name = "chkEssaludVida";
-            this.chkEssaludVida.Size = new System.Drawing.Size(87, 17);
-            this.chkEssaludVida.TabIndex = 103;
-            this.chkEssaludVida.Text = "Essalud Vida";
-            this.chkEssaludVida.UseVisualStyleBackColor = true;
-            this.chkEssaludVida.CheckedChanged += new System.EventHandler(this.chkEssaludVida_CheckedChanged);
-            // 
             // frmNuevoTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -723,6 +723,7 @@
             this.ClientSize = new System.Drawing.Size(769, 655);
             this.Controls.Add(this.tabTrabajador);
             this.Name = "frmNuevoTrabajador";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Trabajador";
             this.Load += new System.EventHandler(this.frmNuevoTrabajador_Load);

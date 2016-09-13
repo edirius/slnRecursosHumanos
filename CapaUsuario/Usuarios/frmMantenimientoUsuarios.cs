@@ -32,6 +32,7 @@ namespace CapaUsuario.Usuarios
         {
             lblNombre.Text = miUsuario.Trabajador.Nombres + " " + miUsuario.Trabajador.ApellidoPaterno + " " + miUsuario.Trabajador.ApellidoMaterno;
             txtUsuario.Text = miUsuario.Nombre;
+            chkHabilitado.Checked = miUsuario.Habilitado1;
             cboCategoria.DisplayMember = "nombre";
             cboCategoria.ValueMember = "idtPrivilegios";
             cboCategoria.DataSource = miUsuario.Privilegio.ListaPrivilegios();
@@ -55,6 +56,7 @@ namespace CapaUsuario.Usuarios
                 miUsuario.Nombre = txtUsuario.Text;
                 miUsuario.Password = txtPassword.Text;
                 miUsuario.Privilegio.Codigo = Convert.ToInt16(cboCategoria.SelectedValue);
+                miUsuario.Habilitado1 = chkHabilitado.Checked;
                 this.DialogResult = DialogResult.OK;
             }
            

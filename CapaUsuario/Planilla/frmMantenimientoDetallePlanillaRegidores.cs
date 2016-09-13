@@ -11,7 +11,7 @@ using info.lundin.math;
 
 namespace CapaUsuario.Planilla
 {
-    public partial class frmMantenimientoDetallePlanilla : Form
+    public partial class frmMantenimientoDetallePlanillaRegidores : Form
     {
         int con_ingresos = 0, con_trabajador = 0, con_descuento = 0, con_empleador = 0;
         int contador = 0;
@@ -29,6 +29,7 @@ namespace CapaUsuario.Planilla
         int sfilasselecciontrabajadores;
         decimal sUIT = 0;
         decimal sRemuneracionBasica = 0;
+        decimal sDieta = 0;
 
         string AFP = "";
         string Cuspp = "";
@@ -63,7 +64,7 @@ namespace CapaUsuario.Planilla
         CapaDeNegocios.cListaAFP miAFP = new CapaDeNegocios.cListaAFP(); 
         CapaDeNegocios.cComisionesAFP miComisionAFP = new CapaDeNegocios.cComisionesAFP();
 
-        public frmMantenimientoDetallePlanilla()
+        public frmMantenimientoDetallePlanillaRegidores()
         {
             InitializeComponent();
         }
@@ -127,7 +128,6 @@ namespace CapaUsuario.Planilla
                 }
                 TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
             }
-            btnImportar.Enabled = false;
         }
 
         private void btnAgregarTrabajador_Click(object sender, EventArgs e)
@@ -161,6 +161,11 @@ namespace CapaUsuario.Planilla
                     }
                 }
             }
+        }
+
+        private void btnRegidores_Click(object sender, EventArgs e)
+        {
+            CargarRegidores();
         }
 
         private void btnCalcular_Click(object sender, EventArgs e)
@@ -295,9 +300,7 @@ namespace CapaUsuario.Planilla
 
         private void dgvDetallePlanilla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            string x = dgvDetallePlanilla.Columns[e.ColumnIndex].Name.Substring(0, 1);
             string y = dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-            decimal z = 0;
 
             decimal number2 = 0;
             if (decimal.TryParse(y, out number2) != true)
@@ -305,8 +308,16 @@ namespace CapaUsuario.Planilla
                 dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = String.Format("{0:0.00}", 0);
                 return;
             }
-            dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = String.Format("{0:0.00}", Convert.ToDecimal(y));
-            
+
+            if (splantilla == "REGIDORES")
+            {
+                TotalRemuneracion(e.RowIndex);
+            }
+            else
+            {
+                dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = String.Format("{0:0.00}", Convert.ToDecimal(y));
+            }
+
             DatosAFP(e.RowIndex);
             CalcularIngresos(e.RowIndex);
             CalcularA_Trabajador(e.RowIndex);
@@ -332,16 +343,6 @@ namespace CapaUsuario.Planilla
             sidtregimenlaboral = pidtregimenlaboral;
             txtRegimenLaboral.Text = pregimenlaboral;
             splantilla = pplantilla;
-            if (pregimenlaboral == "REGIMEN 728")
-            {
-                btnAgregarTrabajador.Visible = false;
-                btnImportar.Visible = true;
-            }
-            else
-            {
-                btnAgregarTrabajador.Visible = true;
-                btnImportar.Visible = false;
-            }
         }
 
         private void CargarDatos()
@@ -370,8 +371,6 @@ namespace CapaUsuario.Planilla
                 CargarAEmpleador(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
                 DatosAFP(dgvDetallePlanilla.RowCount - 1);
                 CalcularTotalDescuentos(dgvDetallePlanilla.RowCount - 1);
-                btnImportar.Enabled = false;
-                btnCalcular.Text = "Volver a Calcular";
             }
         }
 
@@ -401,7 +400,27 @@ namespace CapaUsuario.Planilla
                         }
                     }
                     contador += 1;
+                    if (splantilla == "REGIDORES")
+                    { MontoPago = sDieta.ToString(); }
                     dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, sidtmeta, FechaInicio, MontoPago, "", "");
+                }
+            }
+        }
+
+        private void CargarRegidores()
+        {
+            dgvDetallePlanilla.Rows.Clear();
+            foreach (DataRow rowCargo in oDataCargo.Select("descripcion = 'REGIDOR'"))
+            {
+                foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtmeta = '" + sidtmeta + "' and idtregimenlaboral = '" + sidtregimenlaboral + "' and fechainicio <= '31/" + smes + "/" + saño + "' and (fechafin >= '01/" + smes + "/" + saño + "' or fechafin>='') and idtcargo='" + rowCargo[0].ToString() + "'"))
+                {
+                    foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idtperiodotrabajador = '" + rowRegimenTrabajador[17].ToString() + "'"))
+                    {
+                        foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + rowPeriodoTrabajador[4].ToString() + "'"))
+                        {
+                            CargarTrabajador(Convert.ToInt32(rowTrabajador[0].ToString()));
+                        }
+                    }
                 }
             }
         }
@@ -532,6 +551,14 @@ namespace CapaUsuario.Planilla
             decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
             DiasLaborados = 1 + DateTime.DaysInMonth(AñoInicio, MesInicio) - DiaInicio;
             if (sidtregimenlaboral == 3 && splantilla == "PERSONAL OBRERO")
+            {
+                if (dgvDetallePlanilla.Rows[fila].Cells[12].Value != "")
+                {
+                    DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[12].Value);
+                    PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 0);
+                }
+            }
+            if (sidtregimenlaboral == 2 && splantilla == "REGIDORES")
             {
                 if (dgvDetallePlanilla.Rows[fila].Cells[12].Value != "")
                 {
@@ -870,6 +897,7 @@ namespace CapaUsuario.Planilla
             {
                 sRemuneracionBasica = Convert.ToDecimal(rowvariables[2].ToString());
                 sUIT = Convert.ToDecimal(rowvariables[3].ToString());
+                sDieta = Convert.ToDecimal(rowvariables[4].ToString());
             }
         }
 
@@ -1085,6 +1113,20 @@ namespace CapaUsuario.Planilla
                 dgvDetallePlanilla.Columns[9].Visible = false;
                 dgvDetallePlanilla.Columns[10].Visible = false;
                 dgvDetallePlanilla.Columns[12].Visible = false;
+                dgvDetallePlanilla.Columns["AFP"].Visible = false;
+                dgvDetallePlanilla.Columns["TipoComision"].Visible = false;
+                dgvDetallePlanilla.Columns["Cuspp"].Visible = false;
+                dgvDetallePlanilla.Columns["SUMA_A_TRABAJADOR"].Visible = false;
+            }
+            if (splantilla == "REGIDORES")
+            {
+                dgvDetallePlanilla.Columns[11].Visible = true;
+                dgvDetallePlanilla.Columns[11].HeaderText = "DIETA POR SESION";
+                dgvDetallePlanilla.Columns[12].HeaderText = "SESION ASISTIDA";
+                dgvDetallePlanilla.Columns[12].ReadOnly = false;
+
+                dgvDetallePlanilla.Columns[9].Visible = false;
+                dgvDetallePlanilla.Columns[10].Visible = false;
                 dgvDetallePlanilla.Columns["AFP"].Visible = false;
                 dgvDetallePlanilla.Columns["TipoComision"].Visible = false;
                 dgvDetallePlanilla.Columns["Cuspp"].Visible = false;
