@@ -71,7 +71,7 @@ namespace CapaUsuario.Planilla
         private void frmMantenimientoDetallePlanilla_Load(object sender, EventArgs e)
         {
             DibujarDataGrid();
-            //MostrarColumnas();
+            MostrarColumnas();
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
             oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
