@@ -213,7 +213,7 @@ namespace CapaUsuario.ExportarSunat
                     string codigo = dgvIngresos[4, i].Value.ToString();
                     string MontoDevengado = dgvIngresos[5, i].Value.ToString();
                     string Monto = dgvIngresos[5, i].Value.ToString();
-                    string TipoDoc = "02";
+                    string TipoDoc = "01";
                     string codigoform = txtCodForm.Text;
                     string Ruc = txtRuc.Text;
                     ConvertirMes(mes);
@@ -236,7 +236,7 @@ namespace CapaUsuario.ExportarSunat
                     string codigo = dgvDescuentos[4, i].Value.ToString();
                     string MontoDevengado = dgvDescuentos[5, i].Value.ToString();
                     string Monto = dgvDescuentos[5, i].Value.ToString();
-                    string TipoDoc = "02";
+                    string TipoDoc = "01";
                     Descuentos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
                     milista.Add(Descuentos);//agregamos los datos concatenados al arreglo(ArrayList)
                 }
@@ -255,7 +255,7 @@ namespace CapaUsuario.ExportarSunat
                     string codigo = dgvAportaciones[4, i].Value.ToString();
                     string MontoDevengado = dgvAportaciones[5, i].Value.ToString();
                     string Monto = dgvAportaciones[5, i].Value.ToString();
-                    string TipoDoc = "02";
+                    string TipoDoc = "01";
                     string codigoform = txtCodForm.Text;
                     string Ruc = txtRuc.Text;
                     ConvertirMes(mes);
