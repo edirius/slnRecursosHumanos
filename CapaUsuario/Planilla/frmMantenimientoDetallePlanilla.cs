@@ -86,7 +86,6 @@ namespace CapaUsuario.Planilla
         private void btnImportar_Click(object sender, EventArgs e)
         {
             decimal pagoobrero = 0;
-            bool sexistsmetajornal = false;
             dgvDetallePlanilla.Rows.Clear();
             DataTable oDataTareo = new DataTable();
             DataTable oDataDetalleTareo = new DataTable();
@@ -102,7 +101,7 @@ namespace CapaUsuario.Planilla
                 if (splantilla == "PERSONAL OBRERO")
                 {
                     pagoobrero = MetaJornal(rowdetalletareo[1].ToString(), sidtmeta);
-                    if (sexistsmetajornal == false)
+                    if (pagoobrero == 0)
                     {
                         MessageBox.Show("La Remuneración de los Obreros no existe, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
