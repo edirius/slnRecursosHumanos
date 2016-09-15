@@ -642,7 +642,7 @@ namespace CapaUsuario.Planilla
                         double result = IngresosAfectos(fila, sma_trabajador[i, 1].ToString(), sma_trabajador[i, 3].ToString());
                         dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = String.Format("{0:0.00}", result);
                         total_atrabajador += decimal.Round(Convert.ToDecimal(result), 2);
-                        if (AFP == "SNP" && dgvDetallePlanilla.Columns[celda_inicio + con_ingresos + i].Name != "T9")
+                        if (AFP == "SNP" && dgvDetallePlanilla.Columns[celda_inicio + con_ingresos + i].Name != "T9" && dgvDetallePlanilla.Columns[celda_inicio + con_ingresos + i].Name != "T12")
                         {
                             dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = String.Format("{0:0.00}", 0);
                         }
