@@ -39,9 +39,9 @@ namespace CapaUsuario.ExportarSunat
             dgvListaPlanillas.Columns[1].Width = 50;
             dgvListaPlanillas.Columns[2].Width = 75;
             dgvListaPlanillas.Columns[3].Width = 50;
-            dgvListaPlanillas.Columns[4].Width = 500;
-            dgvListaPlanillas.Columns[5].Width = 330;
-            dgvListaPlanillas.Columns[6].Width = 217;
+            dgvListaPlanillas.Columns[4].Width = 130;
+            dgvListaPlanillas.Columns[5].Width = 637;
+            dgvListaPlanillas.Columns[6].Width = 280;
         }
         private void ConvertirMes(string MES)
         {
@@ -326,6 +326,16 @@ namespace CapaUsuario.ExportarSunat
         private void frmExportarTributosDescuentosTrabajador_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvListaPlanillas_SelectionChanged(object sender, EventArgs e)
+        {
+            int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
+            string numero = "";
+            numero = dgvListaPlanillas[0, Valor].Value.ToString();
+            dgvIngresos.DataSource = oExportar.ListarTrabajadoresPorPlanillaIngresos(numero);
+            dgvDescuentos.DataSource = oExportar.ListarTrabajadoresPorPlanillaDescuentos(numero);
+            dgvAportaciones.DataSource = oExportar.ListarTrabajadoresPorPlanillaAportaciones(numero);
         }
 
         private void bntListarTodo_Click(object sender, EventArgs e)
