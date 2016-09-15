@@ -423,7 +423,7 @@ namespace CapaUsuario.Planilla
                         AFP = rowAFP[1].ToString();
                     }
                     oDataComisionAFP = miComisionAFP.ListarComisionAFP(Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()));
-                    foreach (DataRow rowComisionAFP in oDataComisionAFP.Select(string.Format("mes=#{0:MM/dd/yyyy}#", "" + Mes(smes) + "/01/" + saño)))
+                    foreach (DataRow rowComisionAFP in oDataComisionAFP.Select("mes >= '01/" + Mes(smes) + "/" + saño + "' AND mes <= '31/" + Mes(smes) + "/" + saño + "'"))
                     {
                         PrimaSeguros = Convert.ToDecimal(rowComisionAFP[3].ToString());
                         AporteObligatorio = Convert.ToDecimal(rowComisionAFP[4].ToString());
