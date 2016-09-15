@@ -157,9 +157,11 @@ namespace CapaUsuario.Planilla
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             if (dgvDetallePlanilla.Rows.Count == 0)
             {
                 MessageBox.Show("No existen datos que se puedan calcular.", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Cursor = Cursors.Default;
                 return;
             }
             foreach (DataGridViewRow row in dgvDetallePlanilla.Rows)
@@ -172,6 +174,7 @@ namespace CapaUsuario.Planilla
                 CalcularTotalDescuentos(row.Index);
                 CalcularNetoaCobrar(row.Index);
             }
+            Cursor = Cursors.Default;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -297,7 +300,10 @@ namespace CapaUsuario.Planilla
                 dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = String.Format("{0:0.00}", 0);
                 return;
             }
-            dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = String.Format("{0:0.00}", Convert.ToDecimal(y));
+            if (dgvDetallePlanilla.Rows[e.RowIndex].Cells[12].Selected != true)
+            {
+                dgvDetallePlanilla.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = String.Format("{0:0.00}", Convert.ToDecimal(y));
+            }
             
             DatosAFP(e.RowIndex);
             CalcularIngresos(e.RowIndex);
@@ -355,7 +361,6 @@ namespace CapaUsuario.Planilla
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[1].Value = "M";
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[7].Value = row[1].ToString();//Cargo
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[10].Value = row[2].ToString();//Fecha Inicio
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[12].Value = row[3].ToString();//Dias Laborados
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[14 + con_ingresos].Value = row[4].ToString();
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[18 + con_ingresos + con_trabajador].Value = row[5].ToString();
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[19 + con_ingresos + con_trabajador + con_descuento].Value = row[6].ToString();
@@ -366,6 +371,7 @@ namespace CapaUsuario.Planilla
                 CargarDescuentos(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
                 CargarAEmpleador(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
                 TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[12].Value = row[3].ToString();//Dias Laborados
                 DatosAFP(dgvDetallePlanilla.RowCount - 1);
                 CalcularTotalDescuentos(dgvDetallePlanilla.RowCount - 1);
                 btnImportar.Enabled = false;
