@@ -416,7 +416,6 @@ namespace CapaUsuario.Planilla
                     {
                         AFP = rowAFP[1].ToString();
                     }
-                    int xxx = Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString());
                     oDataComisionAFP = miComisionAFP.ListarComisionAFP(Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()));
                     foreach (DataRow rowComisionAFP in oDataComisionAFP.Select(string.Format("mes=#{0:MM/dd/yyyy}#", "" + Mes(smes) + "/01/" + saño)))
                     {
@@ -685,48 +684,50 @@ namespace CapaUsuario.Planilla
                     //{
                     //    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + i].Value = Convert.ToDecimal(rowingresos[1].ToString());
                     //}
-
-                    if (codigo == "0804" && smingresos[i, 4].ToString() == "1")
+                    if (smingresos[i, 17].ToString() == "0")
                     {
-                        remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        if (codigo == "0804" && smingresos[i, 4].ToString() == "1")
+                        {
+                            remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        }
+                        if (codigo == "0806" && smingresos[i, 7].ToString() == "1")
+                        {
+                            remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        }
+                        if (codigo == "0808" && smingresos[i, 8].ToString() == "1")
+                        {
+                            remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        }
+                        if (codigo == "0802" && smingresos[i, 9].ToString() == "1")
+                        {
+                            remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        }
+                        if (codigo == "0807" && smingresos[i, 10].ToString() == "1")
+                        {
+                            remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        }
+                        if (codigo == "0607" && smingresos[i, 11].ToString() == "1" && AFP == "SNP")
+                        {
+                            remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        }
+                        if ((codigo == "0608" || codigo == "0601" || codigo == "0606" || codigo == "9998" || codigo == "9999") && smingresos[i, 12].ToString() == "1" && AFP != "SNP")
+                        {
+                            remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        }
+                        if (codigo == "0605" && smingresos[i, 13].ToString() == "1")
+                        {
+                            remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        }
+                        if (codigo == "0610" && smingresos[i, 14].ToString() == "1")
+                        {
+                            remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        }
+                        if (codigo == "0603" && smingresos[i, 15].ToString() == "1")
+                        {
+                            remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        }
+                        suma_ingresos += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
                     }
-                    if (codigo == "0806" && smingresos[i, 7].ToString() == "1")
-                    {
-                        remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
-                    }
-                    if (codigo == "0808" && smingresos[i, 8].ToString() == "1")
-                    {
-                        remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
-                    }
-                    if (codigo == "0802" && smingresos[i, 9].ToString() == "1")
-                    {
-                        remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
-                    }
-                    if (codigo == "0807" && smingresos[i, 10].ToString() == "1")
-                    {
-                        remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
-                    }
-                    if (codigo == "0607" && smingresos[i, 11].ToString() == "1" && AFP == "SNP")
-                    {
-                        remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
-                    }
-                    if ((codigo == "0608" || codigo == "0601" || codigo == "0606" || codigo == "9998" || codigo == "9999") && smingresos[i, 12].ToString() == "1" && AFP != "SNP")
-                    {
-                        remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
-                    }
-                    if (codigo == "0605" && smingresos[i, 13].ToString() == "1")
-                    {
-                        remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
-                    }
-                    if (codigo == "0610" && smingresos[i, 14].ToString() == "1")
-                    {
-                        remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
-                    }
-                    if (codigo == "0603" && smingresos[i, 15].ToString() == "1")
-                    {
-                        remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
-                    }
-                    suma_ingresos += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
                 }
             }
             else
