@@ -49,8 +49,15 @@ namespace CapaUsuario.Reportes
                 dgvBoletaPago.Columns[0].Visible = false;
                 dgvBoletaPago.Columns[1].Visible = false;
                 dgvBoletaPago.Columns[2].Visible = false;
-                dgvBoletaPago.MultiSelect = false;
-                dgvBoletaPago.Rows[0].Selected = false;
+                //dgvBoletaPago.MultiSelect = false;
+                //dgvBoletaPago.Rows[0].Selected = false;
+                dgvBoletaPago.Rows[0].Cells[4].Selected = true;
+  
+                sidtplanilla = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[0].Value);
+                sidttrabajador = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[1].Value);
+                sidtregimenlaboral = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[2].Value);
+                sMes = dgvBoletaPago.Rows[0].Cells[5].Value.ToString();
+                sAño = dgvBoletaPago.Rows[0].Cells[6].Value.ToString();
             }
             
         }
@@ -131,13 +138,22 @@ namespace CapaUsuario.Reportes
             return dias_mes;
         }
 
+        public void CreateHeaderFooter(ref Document _document)
+        {
+            var headerfooter = FontFactory.GetFont("Arial", 8);
+            HeaderFooter header = (new HeaderFooter(new Phrase("Boleta de Pago", headerfooter), false));
+            header.BorderColorTop = new iTextSharp.text.Color(System.Drawing.Color.Red);
+            header.BorderWidthTop = 0f;
+            _document.Header = header;
+            HeaderFooter Footer = new HeaderFooter(new Phrase(" ", headerfooter), true);
+            Footer.BorderWidthBottom = 0f;
+            _document.Footer = Footer;
+        }
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             FileInfo file = new FileInfo("C:\\PDFs\\BoletaPago.pdf");
             bool estaAbierto = IsFileinUse(file, "C:\\PDFs\\BoletaPago.pdf");
-
-
 
             DataTable odtA = new DataTable();
             DataTable odtB = new DataTable();
@@ -152,14 +168,11 @@ namespace CapaUsuario.Reportes
             DataRow drFilaD = odtD.NewRow();
             DataRow drFilaF = odtF.NewRow();
 
-
-
             CapaDeNegocios.Reportes.cBoletaPago oBoletaPago = new CapaDeNegocios.Reportes.cBoletaPago();
             CapaDeNegocios.Planillas.cDetallePlanillaIngresos oDetallePlanillaIngresos = new CapaDeNegocios.Planillas.cDetallePlanillaIngresos();
             CapaDeNegocios.Planillas.cDetallePlanillaDescuentos oDetallePlanillaDescuentos = new CapaDeNegocios.Planillas.cDetallePlanillaDescuentos();
             CapaDeNegocios.Planillas.cDetallePlanillaATrabajador oDetallePlanillaATrabajador = new CapaDeNegocios.Planillas.cDetallePlanillaATrabajador();
             CapaDeNegocios.Planillas.cDetallePlanillaAEmpleador oDetallePlanillaAEmpleador = new CapaDeNegocios.Planillas.cDetallePlanillaAEmpleador();
-
 
             int dias_laborados = 0;
             int mes_dias = 0;
@@ -359,14 +372,13 @@ namespace CapaUsuario.Reportes
             }
             /*------------Fin Aportaciones del Empleador*/
 
-                /*----------------Fin de obligaciones de boleta de pago - Ingresos*/
+            /*----------------Fin de obligaciones de boleta de pago - Ingresos*/
 
-                dgvBoletaPago_D.DataSource = odtD;
+            dgvBoletaPago_D.DataSource = odtD;
             dgvBoletaPago_A.DataSource = odtA;
             dgvBoletaPago_B.DataSource = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorB(sidtplanilla, sidtregimenlaboral, sidttrabajador);
             dgvBoletaPago_C.DataSource = odtC;
             dgvBoletaPago_E.DataSource = odtF;
-
 
             if (!estaAbierto)
             {
@@ -729,7 +741,7 @@ namespace CapaUsuario.Reportes
 
 
             PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(folderPath + "BoletaPago.pdf", FileMode.Create));
-
+            CreateHeaderFooter(ref pdfDoc);
             pdfDoc.Open();
             //PdfContentByte cb = writer.DirectContent;
 

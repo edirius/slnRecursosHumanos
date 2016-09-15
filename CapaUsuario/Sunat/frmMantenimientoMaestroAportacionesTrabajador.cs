@@ -83,11 +83,14 @@ namespace CapaUsuario.Sunat
 
         private void dgvMaestroAportacionesTrabajador_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            sidtmaestroaportacionestrabajador = Convert.ToInt32(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[0].Value);
-            scodigo = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[1].Value);
-            sdescripcion = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[2].Value);
-            scalculo = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[3].Value);
-            sabreviacion = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[4].Value);
+            if (e.RowIndex != -1)
+            {
+                sidtmaestroaportacionestrabajador = Convert.ToInt32(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[0].Value);
+                scodigo = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[1].Value);
+                sdescripcion = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[2].Value);
+                scalculo = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[3].Value);
+                sabreviacion = Convert.ToString(dgvMaestroAportacionesTrabajador.Rows[e.RowIndex].Cells[4].Value);
+            }
         }
 
         private void CargarDatos()
