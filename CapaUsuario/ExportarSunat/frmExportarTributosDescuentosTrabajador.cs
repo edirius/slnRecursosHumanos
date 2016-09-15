@@ -35,12 +35,13 @@ namespace CapaUsuario.ExportarSunat
             label5.Visible = false;
             txtCodForm.Visible = false;
             txtRuc.Visible = false;
-            dgvListaPlanillas.Columns[0].Width = 50;
-            dgvListaPlanillas.Columns[1].Width = 75;
-            dgvListaPlanillas.Columns[2].Width = 50;
-            dgvListaPlanillas.Columns[3].Width = 500;
-            dgvListaPlanillas.Columns[4].Width = 330;
-            dgvListaPlanillas.Columns[5].Width = 217;
+            dgvListaPlanillas.Columns[0].Visible = false;
+            dgvListaPlanillas.Columns[1].Width = 50;
+            dgvListaPlanillas.Columns[2].Width = 75;
+            dgvListaPlanillas.Columns[3].Width = 50;
+            dgvListaPlanillas.Columns[4].Width = 500;
+            dgvListaPlanillas.Columns[5].Width = 330;
+            dgvListaPlanillas.Columns[6].Width = 217;
         }
         private void ConvertirMes(string MES)
         {
@@ -187,7 +188,7 @@ namespace CapaUsuario.ExportarSunat
             
         }
         private void btnExportar_Click(object sender, EventArgs e)
-        {   if (dgvIngresos.Columns.Count != 0)
+        {   if (dgvIngresos.Columns.Count != 0 & dgvAportaciones.Columns.Count != 0 & dgvDescuentos.Columns.Count != 0)
             {
                 concatenarDatos();
                 milista.Clear();

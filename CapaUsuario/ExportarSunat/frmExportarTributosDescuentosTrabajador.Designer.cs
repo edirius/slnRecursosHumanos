@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvIngresos = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodForm = new System.Windows.Forms.TextBox();
@@ -110,8 +110,8 @@
             this.dgvListaPlanillas.AllowUserToAddRows = false;
             this.dgvListaPlanillas.AllowUserToResizeColumns = false;
             this.dgvListaPlanillas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaPlanillas.Location = new System.Drawing.Point(11, 93);
             this.dgvListaPlanillas.Name = "dgvListaPlanillas";
