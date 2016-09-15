@@ -21,6 +21,15 @@ namespace CapaUsuario.Reportes
 {
     public partial class frmPlanilla : Form
     {
+        DataTable odtPrueba = new DataTable();
+        DataTable odtPruebaCorta = new DataTable();
+        DataTable odtATrabajador = new DataTable();
+
+        DataTable odtPlanilla = new DataTable();
+        DataTable odtPlanillaXIngresos = new DataTable();
+        DataTable odtPlanillaXDescuentos = new DataTable();
+        DataTable odtPlanillaAEmpleador = new DataTable();
+        DataTable odtPlanillaATrabajador = new DataTable();
 
         int sidtplanilla = 0;
         string snumero = "";
@@ -261,15 +270,7 @@ namespace CapaUsuario.Reportes
             if (!estaAbierto)
             {
 
-                DataTable odtPrueba = new DataTable();
-                DataTable odtPruebaCorta = new DataTable();
-                DataTable odtATrabajador = new DataTable();
-
-                DataTable odtPlanilla = new DataTable();
-                DataTable odtPlanillaXIngresos = new DataTable();
-                DataTable odtPlanillaXDescuentos = new DataTable();
-                DataTable odtPlanillaAEmpleador = new DataTable();
-                DataTable odtPlanillaATrabajador = new DataTable();
+                
 
 
                 CapaDeNegocios.Planillas.cDetallePlanilla oPlanilla = new CapaDeNegocios.Planillas.cDetallePlanilla();
@@ -878,8 +879,9 @@ namespace CapaUsuario.Reportes
 
                     int ll = 0;
                     //esribir datos de planilla
+                    int total_prueba_corta = odtPrueba.Rows.Count;
 
-                    for (int d = 0; d < odtPrueba.Rows.Count; d++)
+                    for (int d = 0; d < total_prueba_corta ; d++)
                     {
                         drFilaCorta = odtPruebaCorta.NewRow();
                         drFilaCorta.Delete();
@@ -1021,9 +1023,12 @@ namespace CapaUsuario.Reportes
                         }
 
 
-                        //insertar datos personales de la planilla al datatable
 
-                        drFilaCorta[0] = (d + 1);
+
+                        //insertar datos personales de la planilla al datatable
+                        if ( d != total_prueba_corta-1 )
+                            drFilaCorta[0] = (d + 1);
+
                         drFilaCorta[1] = odtPrueba.Rows[d][0];
                         drFilaCorta[2] = odtPrueba.Rows[d][1];
                         drFilaCorta[3] = odtPrueba.Rows[d][2];
@@ -1147,16 +1152,12 @@ namespace CapaUsuario.Reportes
                         odtPruebaCorta.Rows.InsertAt(drFilaCorta, d);
                         ll++;
                     }
-
-
-
-
+                     
 
                     odtPruebaCorta.Columns.Add("FIRMA", typeof(string));
 
                     this.dgvPrueba.DataSource = odtPruebaCorta;
-
-
+                     
 
                     //Agregando columnas al cuadro de AFP
                     odtATrabajador.Columns.Add("DESCUENTOS", typeof(string));
@@ -1325,10 +1326,17 @@ namespace CapaUsuario.Reportes
             pdfTable2.SetWidths(headerwidths2);
             pdfTable2.WidthPercentage = 30;
 
+ 
+            int iindice_nombre = 0;
+            int iindice_cargo = 0;
+            int iindice_fecha = 0;
+            int iindice_afi_com_cus = 0;
+
+
             //Adding Header row
             foreach (DataGridViewColumn column in dgvPrueba.Columns)
             {
-                cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                cell = new PdfPCell((new Phrase( column.HeaderText , new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
                 //cell = new PdfPCell(new Phrase(column.HeaderText));
                 //PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
                 cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
@@ -1336,12 +1344,26 @@ namespace CapaUsuario.Reportes
                 pdfTable.AddCell(cell);
             }
 
+            /*Indices de la secciones alineadas*/
+            iindice_nombre = BuscarIndiceColumna(odtPruebaCorta, "NOMBRE COMPLETO");
+            iindice_cargo = BuscarIndiceColumna(odtPruebaCorta, "CARGO");
+            iindice_fecha = BuscarIndiceColumna(odtPruebaCorta, "FECHA INICIO");
+            iindice_afi_com_cus = BuscarIndiceColumna(odtPruebaCorta, "AFIL. AFP/SNP \n\n COMISION \n\n CUSP ");
+
             for (int i = 0; i < dgvPrueba.RowCount - 1; i++)
             {
                 for (int j = 0; j < dgvPrueba.ColumnCount; j++)
                 {
-                    objP = new Phrase(dgvPrueba[j, i].Value.ToString(), fuente);
-                    pdfTable.AddCell(objP);
+                    //objP = new Phrase(dgvPrueba[j, i].Value.ToString(), fuente);
+                    cell = new PdfPCell((new Phrase(dgvPrueba[j, i].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+
+                    //Alineando a la derecha la columna nº
+                    cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+
+                    if ( j == iindice_nombre || j == iindice_cargo || j == iindice_fecha || j == iindice_afi_com_cus)
+                        cell.HorizontalAlignment = Element.ALIGN_LEFT;
+ 
+                    pdfTable.AddCell(cell);
                 }
                 pdfTable.CompleteRow();
             }

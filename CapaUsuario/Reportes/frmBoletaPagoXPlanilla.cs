@@ -14,6 +14,7 @@ using System.Reflection;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp;
+using System.Runtime.InteropServices;
 
 namespace CapaUsuario.Reportes
 {
@@ -28,18 +29,20 @@ namespace CapaUsuario.Reportes
         int sidttrabajador = 0;
         int sidtplanilla = 0;
 
+        string plantilla = "";
         int iii = 0;
         int total_trabajadores = 0;
 
-        string folderPath = "C:\\PDFs\\";
+        int total_lineas_hoja = 0;
+        float ftotal_lineas_hoja = 0;
+        bool boleta_pago_vacia = false;
 
-        Document pdfDoc = new Document(PageSize.A4, 9, 9, 10, 10);
+        string folderPath = "C:\\PDFs\\";
  
         PdfPCell cell;
 
-        Paragraph paragraph = new Paragraph();
-        Paragraph paragraph2 = new Paragraph();
-        Paragraph paragraph3 = new Paragraph();
+        const int ERROR_SHARING_VIOLATION = 32;
+        const int ERROR_LOCK_VIOLATION = 33;
 
 
         //PdfWriter writer = PdfWriter.GetInstance(new Document(PageSize.A4, 9, 9, 10, 10), new FileStream("C:\\PDFs\\" + "BoletaPago.pdf", FileMode.Create));
@@ -49,6 +52,64 @@ namespace CapaUsuario.Reportes
             InitializeComponent();
         }
 
+ 
+
+        public bool IsFileLocked(string filename)
+        {
+            bool Locked = false;
+            try
+            {
+                FileStream fs =
+                    File.Open(filename, FileMode.OpenOrCreate,
+                    FileAccess.ReadWrite, FileShare.None);
+                fs.Close();
+            }
+            catch (IOException ex)
+            {
+                Locked = true;
+            }
+            return Locked;
+        }
+
+        protected virtual bool IsFileinUse2(FileInfo file)
+        {
+            FileStream stream = null;
+
+            try
+            {
+                stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
+            }
+            catch (IOException)
+            {
+                //the file is unavailable because it is:
+                //still being written to
+                //or being processed by another thread
+                //or does not exist (has already been processed)
+                return true;
+            }
+            finally
+            {
+                if (stream != null)
+                    stream.Close();
+            }
+            return false;
+        }
+
+        Boolean isInUse(String filename)
+        {
+            try
+            {
+                using (Stream stream = new FileStream(filename, FileMode.Open))
+                {
+                    stream.Close();
+                    return false;
+                }
+            }
+            catch
+            {
+                return true;
+            }
+        }
 
         protected virtual bool IsFileinUse(FileInfo file, string path)
         {
@@ -127,19 +188,104 @@ namespace CapaUsuario.Reportes
             return dias_mes;
         }
 
+
+        private bool LockedFile(FileInfo file)
+        {
+            try
+            {
+                //string filePath = file.FullName;
+                string filePath = "C:\\PDFs\\BoletaPagoPlanilla.pdf";
+                FileStream fs = File.OpenWrite(filePath);
+                fs.Close();
+                return false;
+            }
+            catch (Exception) { return true; }
+        }
+
+        protected virtual bool IsFileLocked2(FileInfo file)
+        {
+            FileStream stream = null;
+
+            try
+            {
+                stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
+            }
+            catch (IOException)
+            {
+                //the file is unavailable because it is:
+                //still being written to
+                //or being processed by another thread
+                //or does not exist (has already been processed)
+                return true;
+            }
+            finally
+            {
+                if (stream != null)
+                    stream.Close();
+            }
+
+            //file is not locked
+            return false;
+        }
+
+        public static bool IsFileLocked2(string file)
+        {
+            try
+            {
+                using (var stream = File.OpenRead(file))
+                    return false;
+            }
+            catch (IOException)
+            {
+                return true;
+            }
+        }
+
+        public static bool IsLocked(FileInfo f)
+        {
+            try
+            {
+                string fpath = f.FullName;
+                FileStream fs = File.OpenWrite(fpath);
+                fs.Close();
+                return false;
+            }
+
+            catch (Exception) { return true; }
+        }
+
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            FileInfo file = new FileInfo("C:\\PDFs\\BPP.pdf");
-            bool estaAbierto = IsFileinUse(file, "C:\\PDFs\\BPP.pdf");
- 
-            if (!estaAbierto)
+            FileInfo file = new FileInfo(@"C:\PDFs\BoletaPagoPlanilla.pdf");
+
+            bool estaAbierto = false;
+
+            estaAbierto = IsFileinUse(file, @"C:\PDFs\BoletaPagoPlanilla.pdf");
+            //estaAbierto = IsFileLocked2("C:\\PDFs\\BoletaPagoPlanilla.pdf");
+            //estaAbierto = IsFileinUse2(file);
+            //estaAbierto = CanReadFile("C:\\PDFs\\BoletaPagoPlanilla.pdf");
+            //estaAbierto = esta_en_uso(file,"C:\\PDFs\\BPP.pdf");
+            //estaAbierto = IsExecutingApplication();
+            //estaAbierto = esta_abierto();
+
+
+
+
+            if (plantilla != "REGIDORES")
             {
-                //datagridviews_boleta_pago();
-                exportar_a_pdf();
+                if (!estaAbierto)
+                {
+                    exportar_a_pdf();
+                }
+                else
+                {
+                    MessageBox.Show("Por favor cerrar BoletaPagoPlanilla.pdf", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
             }
-            else
-                MessageBox.Show("Por favor cerrar BoletaPagoPlanilla.pdf", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
+            else {
+                   MessageBox.Show("Por favor cerrar BoletaPagoPlanilla.pdf", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public int mayor(int a, int b)
@@ -176,13 +322,18 @@ namespace CapaUsuario.Reportes
             return values;
         }
 
-        private void exportar_a_pdf()
+        public void exportar_a_pdf()
         {
+            CapaDeNegocios.Reportes.cBoletaPago oBoletaPago = new CapaDeNegocios.Reportes.cBoletaPago();
+            DataTable odtA = new DataTable();
 
-            
             //PdfWriter.GetInstance(pdfDoc, stream);
             DataTable odtPlanilla = new DataTable();
             CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
+
+            Paragraph paragraph = new Paragraph();
+            Paragraph paragraph2 = new Paragraph();
+            Paragraph paragraph3 = new Paragraph();
 
             if (!Directory.Exists(folderPath))
                 Directory.CreateDirectory(folderPath);
@@ -193,7 +344,7 @@ namespace CapaUsuario.Reportes
 
             // Add a new page to the pdf file
             //pdfDoc.NewPage();
-
+            Document pdfDoc = new Document(PageSize.A4, 9, 9, 10, 10);
             pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4);
 
             paragraph.Alignment = Element.ALIGN_CENTER;
@@ -211,10 +362,8 @@ namespace CapaUsuario.Reportes
             paragraph3.Add("               EMPLEADOR                                          TRABAJADOR");
 
 
-            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(folderPath + "BPP.pdf", System.IO.FileMode.Create));
-            int total_paginas_pdf = writer.PageNumber - 1;
-            CreateHeaderFooter(ref pdfDoc, total_paginas_pdf);
-            pdfDoc.Open();
+
+            
             //PdfContentByte cb = writer.DirectContent;
 
             //pdfDoc.Open();
@@ -226,95 +375,112 @@ namespace CapaUsuario.Reportes
             cb.LineTo(pdfDoc.PageSize.Width, pdfDoc.PageSize.Height / 2);
             cb.Stroke();
             */
-
-            /*     Llenar datagrids   */
+            bool dgv_vacio = false;
+            /*              Llenar datagrids            */
             odtPlanilla = oPlanilla.ListarDetallePlanillaX(sidtplanilla);
 
-            
 
-            for (int jjj=0; jjj<odtPlanilla.Rows.Count ; jjj++)
-            {
-                
-                
-                //recorrer trabajadores de una planilla
-                sidttrabajador = Convert.ToInt16(odtPlanilla.Rows[jjj][1]);
-                
-                //obtener datagridview de trabajador
-                datagridviews_boleta_pago();
+            if (odtPlanilla.Rows.Count > 0) {
 
-                //instanciando pdfTable A , B , C , D , E
-                PdfPTable pdfTableD = new PdfPTable(dgvBoletaPago_D.ColumnCount);
-                PdfPTable pdfTableA = new PdfPTable(dgvBoletaPago_A.ColumnCount);
-                PdfPTable pdfTableB = new PdfPTable(dgvBoletaPago_B.ColumnCount);
-                PdfPTable pdfTableC = new PdfPTable(dgvBoletaPago_C.ColumnCount);
-                PdfPTable pdfTableE = new PdfPTable(dgvBoletaPago_E.ColumnCount);
-
-                //obtener pdfTableA,B,C,D,E 
-                /*
-                if (jjj % 2 == 0) {
-                    pdfTableD = pdf_d(0);
-                    pdfTableA = pdf_a(0);
-                    pdfTableB = pdf_b(0);
-                    pdfTableC = pdf_c(0);
-                    pdfTableE = pdf_e(0);
-                }
-                else {
-                    pdfTableD = pdf_d(2);
-                    pdfTableA = pdf_a(2);
-                    pdfTableB = pdf_b(2);
-                    pdfTableC = pdf_c(2);
-                    pdfTableE = pdf_e(2);
-                }*/
-
-                pdfTableD = pdf_d(0,100);
-                pdfTableA = pdf_a(0,100);
-                pdfTableB = pdf_b(0,100);
-                pdfTableC = pdf_c(0,100);
-                pdfTableE = pdf_e(0,100);
-
-                //Nueva pagina
-                
-                //if (jjj % 2 == 0)
-                    pdfDoc.NewPage();
-                //Columnas 
-                MultiColumnText columns = new MultiColumnText();
-                columns.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 2);
-
+                FileStream fs = new FileStream(folderPath + "BoletaPagoPlanilla.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, fs);
+                CreateHeaderFooter(ref pdfDoc);
                 //Abrir pagina
- 
-                //Agregando pdfTable A, B, C, D, E a pdfDoc
-                columns.AddElement(paragraph);
-                columns.AddElement(pdfTableA);
-                columns.AddElement(pdfTableB);
-                columns.AddElement(pdfTableC);
-                columns.AddElement(paragraph);
-                columns.AddElement(pdfTableE);
-                columns.AddElement(paragraph2);
-                columns.AddElement(paragraph3);
-                pdfDoc.Add(columns);
+                pdfDoc.Open();
 
-                
-     
+                for (int jjj=0; jjj<odtPlanilla.Rows.Count ; jjj++)
+                {
+                    //recorrer trabajadores de una planilla
+                    sidttrabajador = Convert.ToInt16(odtPlanilla.Rows[jjj][1]);
+                    
+                    //obtener datagridview de trabajador
+                    datagridviews_boleta_pago();
+
+                    if (boleta_pago_vacia)
+                    {
+                        MessageBox.Show("Boleta de pago vacia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    }
+
+                    //Total de filas en dgvBoletaPago_A, si es mayor a 0 procede a reporte
+                    //instanciando pdfTable A , B , C , D , E
+                    PdfPTable pdfTableD = new PdfPTable(dgvBoletaPago_D.ColumnCount);
+                    PdfPTable pdfTableA = new PdfPTable(dgvBoletaPago_A.ColumnCount);
+                    PdfPTable pdfTableB = new PdfPTable(dgvBoletaPago_B.ColumnCount);
+                    PdfPTable pdfTableC = new PdfPTable(dgvBoletaPago_C.ColumnCount);
+                    PdfPTable pdfTableE = new PdfPTable(dgvBoletaPago_E.ColumnCount);
+ 
+                    //Nueva pagina
+                    pdfDoc.NewPage();
+ 
+                    //obtener pdfTableA,B,C,D,E 
+                    pdfTableD = pdf_d(0,100);
+                    pdfTableA = pdf_a(0,100);
+                    pdfTableB = pdf_b(0,100);
+                    pdfTableC = pdf_c(0,100);
+                    pdfTableE = pdf_e(0,100);
+                    
+                    //Columnas 
+                    MultiColumnText columns = new MultiColumnText();
+                    columns.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 2);
+
+                    //columns.AddSimpleColumn(36f, 170f);
+                    //columns.AddSimpleColumn(194f, pdfDoc.PageSize.Width - 36f);
+
+                    //Agregando pdfTable A, B, C, D, E a pdfDoc
+                    columns.AddElement(paragraph);
+                    columns.AddElement(pdfTableA);
+                    columns.AddElement(pdfTableB);
+                    columns.AddElement(pdfTableC);
+                    columns.AddElement(paragraph);
+                    columns.AddElement(pdfTableE);
+                    columns.AddElement(paragraph2);
+                    columns.AddElement(paragraph3);
+
+                    //Agregando pdfTable A, B, C, D, E a pdfDoc como copia
+                    columns.AddElement(paragraph);
+                    columns.AddElement(pdfTableA);
+                    columns.AddElement(pdfTableB);
+                    columns.AddElement(pdfTableC);
+                    columns.AddElement(paragraph);
+                    columns.AddElement(pdfTableE);
+                    columns.AddElement(paragraph2);
+                    columns.AddElement(paragraph3);
+
+                    pdfDoc.Add(columns);
+                    /* fin llenar datagrids */
+                    
+                    /*}
+                    else { 
+                        MessageBox.Show("Planilla vacia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dgv_vacio = true;
+                    }*/
+
+                }
+ 
+                if (!boleta_pago_vacia)
+                {
+                    //int numero_pagina = writer.PageNumber;
+                    //pdfDoc.Open();
+                    pdfDoc.Close();
+                    //stream.Close();
+                    writer.Close();
+                    System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                    proc.EnableRaisingEvents = false;
+                    proc.StartInfo.FileName = "C:\\PDFs\\BoletaPagoPlanilla.pdf";
+                    proc.Start();
+                }
 
             }
-            /*  fin llenar datagrids */
-
-                //pdfDoc.Open();
-                pdfDoc.Close();
-                //stream.Close();
-                writer.Close();
-                System.Diagnostics.Process proc = new System.Diagnostics.Process();
-                proc.EnableRaisingEvents = false;
-                proc.StartInfo.FileName = "C:\\PDFs\\BPP.pdf";
-                proc.Start();                
-
- 
+            else{ 
+                MessageBox.Show("Planilla vacia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
  
 
-        public void CreateHeaderFooter(ref Document _document, int total_paginas )
+        public void CreateHeaderFooter(ref Document _document )
         {
             var headerfooter = FontFactory.GetFont("Arial", 8);
             HeaderFooter header = (new HeaderFooter(new Phrase("Boleta de Pago", headerfooter), false));
@@ -328,6 +494,8 @@ namespace CapaUsuario.Reportes
 
         private void datagridviews_boleta_pago()
         {
+            //bool dgv_boleta_pago = true;
+
             DataTable odtA = new DataTable();
             DataTable odtB = new DataTable();
             DataTable odtC = new DataTable();
@@ -342,9 +510,7 @@ namespace CapaUsuario.Reportes
 
             DataRow drFilaD = odtD.NewRow();
             DataRow drFilaF = odtF.NewRow();
-
-
-
+ 
             CapaDeNegocios.Reportes.cBoletaPago oBoletaPago = new CapaDeNegocios.Reportes.cBoletaPago();
             CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
             CapaDeNegocios.Planillas.cDetallePlanillaIngresos oDetallePlanillaIngresos = new CapaDeNegocios.Planillas.cDetallePlanillaIngresos();
@@ -391,201 +557,201 @@ namespace CapaUsuario.Reportes
                 odtA.Columns.Add("DOCUMENTO DE IDENTIDAD", typeof(string)).SetOrdinal(0);
                 odtA.Columns.Add("SITUACION", typeof(string));
 
-                if (odtA.Rows.Count > 0)
+            if (odtA.Rows.Count > 0)
+            {
+
+                odtA.Rows[0][3] = "ACTIVO O SUBSIDIADO";
+                odtA.Rows[0][0] = "DNI";
+
+                /*---------fin de parte a de boleta de pago */
+
+
+                /*--------- inicio de parte c de boleta de pago, donde se aumentan columnas y se calcula dias no laborados asi como total de horas y minutos */
+                odtC.Columns.Clear();
+                odtC.Rows.Clear();
+                odtC = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorC(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+
+                odtC.Columns.Add("DIAS NO LABORADOS", typeof(string));
+                odtC.Columns.Add("DIAS SUBSIDIADOS", typeof(string));
+                odtC.Columns.Add("CONDICION", typeof(string));
+                odtC.Columns.Add("TOTAL HORAS", typeof(string));
+                odtC.Columns.Add("MINUTOS", typeof(string));
+                odtC.Columns.Add("TOTAL HORAS ", typeof(string));
+                odtC.Columns.Add("MINUTOS ", typeof(string));
+
+                dias_laborados = Convert.ToInt32(odtC.Rows[0][0]);
+
+                mes_dias = nro_dias_mes(8, 2016);
+
+                odtC.Rows[0][1] = mes_dias - dias_laborados;
+                odtC.Rows[0][2] = 0;
+                odtC.Rows[0][3] = "Domiciliado";
+                odtC.Rows[0][4] = dias_laborados * 8;
+                odtC.Rows[0][5] = dias_laborados * 8 * 60;
+                /*------------fin parte c de boleta de pago*/
+
+                /*---------------Inicio de Obligaciones de boleta de pago - Ingresos*/
+                odtE.Columns.Clear();
+                odtE.Rows.Clear();
+                odtE = oDetallePlanillaIngresos.ListarPlanillaXIngresosXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+
+                odtF.Columns.Clear();
+                odtF.Rows.Clear();
+
+                odtF.Columns.Add("Conceptos", typeof(string));
+                odtF.Columns.Add("Ingresos S/.", typeof(string));
+                odtF.Columns.Add("Descuentos S/.", typeof(string));
+                odtF.Columns.Add("Neto S/.", typeof(string));
+
+                int jj = 0;
+
+                if (odtE.Rows.Count > 0)
                 {
-
-                    odtA.Rows[0][3] = "ACTIVO O SUBSIDIADO";
-                    odtA.Rows[0][0] = "DNI";
-
-                    /*---------fin de parte a de boleta de pago */
-
-
-                    /*--------- inicio de parte c de boleta de pago, donde se aumentan columnas y se calcula dias no laborados asi como total de horas y minutos */
-                    odtC.Columns.Clear();
-                    odtC.Rows.Clear();
-                    odtC = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorC(sidtplanilla, sidtregimenlaboral, sidttrabajador);
-
-                    odtC.Columns.Add("DIAS NO LABORADOS", typeof(string));
-                    odtC.Columns.Add("DIAS SUBSIDIADOS", typeof(string));
-                    odtC.Columns.Add("CONDICION", typeof(string));
-                    odtC.Columns.Add("TOTAL HORAS", typeof(string));
-                    odtC.Columns.Add("MINUTOS", typeof(string));
-                    odtC.Columns.Add("TOTAL HORAS ", typeof(string));
-                    odtC.Columns.Add("MINUTOS ", typeof(string));
-
-                    dias_laborados = Convert.ToInt32(odtC.Rows[0][0]);
-
-                    mes_dias = nro_dias_mes(8, 2016);
-
-                    odtC.Rows[0][1] = mes_dias - dias_laborados;
-                    odtC.Rows[0][2] = 0;
-                    odtC.Rows[0][3] = "Domiciliado";
-                    odtC.Rows[0][4] = dias_laborados * 8;
-                    odtC.Rows[0][5] = dias_laborados * 8 * 60;
-                    /*------------fin parte c de boleta de pago*/
-
-                    /*---------------Inicio de Obligaciones de boleta de pago - Ingresos*/
-                    odtE.Columns.Clear();
-                    odtE.Rows.Clear();
-                    odtE = oDetallePlanillaIngresos.ListarPlanillaXIngresosXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
-
-                    odtF.Columns.Clear();
-                    odtF.Rows.Clear();
-
-                    odtF.Columns.Add("Conceptos", typeof(string));
-                    odtF.Columns.Add("Ingresos S/.", typeof(string));
-                    odtF.Columns.Add("Descuentos S/.", typeof(string));
-                    odtF.Columns.Add("Neto S/.", typeof(string));
-
-                    int jj = 0;
-
-                    if (odtE.Rows.Count > 0)
-                    {
-                        drFilaF = odtF.NewRow();
-                        drFilaF.Delete();
-                        drFilaF[0] = "Ingresos";
-                        odtF.Rows.InsertAt(drFilaF, jj);
-                        jj++;
-
-                        for (int k = 0; k < odtE.Rows.Count; k++)
-                        {
-                            drFilaF = odtF.NewRow();
-                            drFilaF.Delete();
-                            drFilaF[0] = odtE.Rows[k][0];
-                            drFilaF[1] = odtE.Rows[k][1];
-                            odtF.Rows.InsertAt(drFilaF, jj);
-                            jj++;
-                        }
-                    }
-
-                    odtG.Columns.Clear();
-                    odtG.Rows.Clear();
-                    odtG = oDetallePlanillaDescuentos.ListarPlanillaXDescuentosXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
-
-                    if (odtG.Rows.Count > 0)
-                    {
-                        drFilaF = odtF.NewRow();
-                        drFilaF.Delete();
-                        drFilaF[0] = "Descuentos";
-                        odtF.Rows.InsertAt(drFilaF, jj);
-                        jj++;
-
-                        for (int k = 0; k < odtG.Rows.Count; k++)
-                        {
-                            drFilaF = odtF.NewRow();
-                            drFilaF.Delete();
-                            drFilaF[0] = odtG.Rows[k][0];
-                            drFilaF[2] = odtG.Rows[k][1];
-                            odtF.Rows.InsertAt(drFilaF, jj);
-                            jj++;
-                        }
-                    }
-
-                    odtH.Columns.Clear();
-                    odtH.Rows.Clear();
-                    odtH = oDetallePlanillaATrabajador.ListarPlanillaATrabajadorXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
-
-                    if (odtH.Rows.Count > 0)
-                    {
-                        drFilaF = odtF.NewRow();
-                        drFilaF.Delete();
-                        drFilaF[0] = "Aportaciones de Trabajador";
-                        odtF.Rows.InsertAt(drFilaF, jj);
-                        jj++;
-
-                        for (int k = 0; k < odtH.Rows.Count; k++)
-                        {
-                            drFilaF = odtF.NewRow();
-                            drFilaF.Delete();
-                            drFilaF[0] = odtH.Rows[k][0];
-                            drFilaF[2] = odtH.Rows[k][1];
-                            odtF.Rows.InsertAt(drFilaF, jj);
-                            jj++;
-                        }
-                    }
-
-                    /*------------Calculando el Neto S/.*/
-
-                    decimal dIngresos = 0;
-                    decimal dIngresosParcial = 0;
-                    decimal dEgresos = 0;
-                    decimal dEgresosParcial = 0;
-                    decimal dNeto = 0;
-
-                    for (int k = 0; k < odtF.Rows.Count; k++)
-                    {
-                        if (odtF.Rows[k][1].ToString() == "")
-                            dIngresosParcial = 0;
-                        else
-                            dIngresosParcial = Convert.ToDecimal(odtF.Rows[k][1].ToString());
-
-                        if (odtF.Rows[k][2].ToString() == "")
-                            dEgresosParcial = 0;
-                        else
-                            dEgresosParcial = Convert.ToDecimal(odtF.Rows[k][2].ToString());
-
-                        dIngresos += dIngresosParcial;
-                        dEgresos += dEgresosParcial;
-                    }
-
-                    dNeto = dIngresos - dEgresos;
-
                     drFilaF = odtF.NewRow();
                     drFilaF.Delete();
-                    drFilaF[0] = "Neto a Pagar";
-                    drFilaF[3] = dNeto.ToString();
+                    drFilaF[0] = "Ingresos";
                     odtF.Rows.InsertAt(drFilaF, jj);
                     jj++;
 
-                    /*-----------Fin Calculando el Neto*/
-
-                    drFilaF = odtF.NewRow();
-                    drFilaF.Delete();
-                    drFilaF[0] = " ";
-                    drFilaF[1] = " ";
-                    drFilaF[2] = " ";
-                    drFilaF[3] = " ";
-                    odtF.Rows.InsertAt(drFilaF, jj);
-                    jj++;
-                    /*-----------Inicio Aportaciones del Empleador*/
-                    odtI = oDetallePlanillaAEmpleador.ListarPlanillaAEmpleadorXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
-
-                    if (odtI.Rows.Count > 0)
+                    for (int k = 0; k < odtE.Rows.Count; k++)
                     {
                         drFilaF = odtF.NewRow();
                         drFilaF.Delete();
-                        drFilaF[0] = "Aportaciones de Empleador";
+                        drFilaF[0] = odtE.Rows[k][0];
+                        drFilaF[1] = odtE.Rows[k][1];
                         odtF.Rows.InsertAt(drFilaF, jj);
                         jj++;
-
-                        for (int k = 0; k < odtI.Rows.Count; k++)
-                        {
-                            drFilaF = odtF.NewRow();
-                            drFilaF.Delete();
-                            drFilaF[0] = odtI.Rows[k][0];
-                            drFilaF[3] = odtI.Rows[k][1];
-                            odtF.Rows.InsertAt(drFilaF, jj);
-                            jj++;
-                        }
                     }
-                    /*------------Fin Aportaciones del Empleador*/
-
-                    /*----------------Fin de obligaciones de boleta de pago - Ingresos*/
-
-                    dgvBoletaPago_D.DataSource = odtD;
-                    dgvBoletaPago_A.DataSource = odtA;
-                    dgvBoletaPago_B.DataSource = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorB(sidtplanilla, sidtregimenlaboral, sidttrabajador);
-                    dgvBoletaPago_C.DataSource = odtC;
-                    dgvBoletaPago_E.DataSource = odtF;
-
-                     
                 }
-                else
-                    MessageBox.Show("Boleta de pago vacia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
-        }
 
- 
+                odtG.Columns.Clear();
+                odtG.Rows.Clear();
+                odtG = oDetallePlanillaDescuentos.ListarPlanillaXDescuentosXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+
+                if (odtG.Rows.Count > 0)
+                {
+                    drFilaF = odtF.NewRow();
+                    drFilaF.Delete();
+                    drFilaF[0] = "Descuentos";
+                    odtF.Rows.InsertAt(drFilaF, jj);
+                    jj++;
+
+                    for (int k = 0; k < odtG.Rows.Count; k++)
+                    {
+                        drFilaF = odtF.NewRow();
+                        drFilaF.Delete();
+                        drFilaF[0] = odtG.Rows[k][0];
+                        drFilaF[2] = odtG.Rows[k][1];
+                        odtF.Rows.InsertAt(drFilaF, jj);
+                        jj++;
+                    }
+                }
+
+                odtH.Columns.Clear();
+                odtH.Rows.Clear();
+                odtH = oDetallePlanillaATrabajador.ListarPlanillaATrabajadorXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+
+                if (odtH.Rows.Count > 0)
+                {
+                    drFilaF = odtF.NewRow();
+                    drFilaF.Delete();
+                    drFilaF[0] = "Aportaciones de Trabajador";
+                    odtF.Rows.InsertAt(drFilaF, jj);
+                    jj++;
+
+                    for (int k = 0; k < odtH.Rows.Count; k++)
+                    {
+                        drFilaF = odtF.NewRow();
+                        drFilaF.Delete();
+                        drFilaF[0] = odtH.Rows[k][0];
+                        drFilaF[2] = odtH.Rows[k][1];
+                        odtF.Rows.InsertAt(drFilaF, jj);
+                        jj++;
+                    }
+                }
+
+                /*------------Calculando el Neto S/.*/
+
+                decimal dIngresos = 0;
+                decimal dIngresosParcial = 0;
+                decimal dEgresos = 0;
+                decimal dEgresosParcial = 0;
+                decimal dNeto = 0;
+
+                for (int k = 0; k < odtF.Rows.Count; k++)
+                {
+                    if (odtF.Rows[k][1].ToString() == "")
+                        dIngresosParcial = 0;
+                    else
+                        dIngresosParcial = Convert.ToDecimal(odtF.Rows[k][1].ToString());
+
+                    if (odtF.Rows[k][2].ToString() == "")
+                        dEgresosParcial = 0;
+                    else
+                        dEgresosParcial = Convert.ToDecimal(odtF.Rows[k][2].ToString());
+
+                    dIngresos += dIngresosParcial;
+                    dEgresos += dEgresosParcial;
+                }
+
+                dNeto = dIngresos - dEgresos;
+
+                drFilaF = odtF.NewRow();
+                drFilaF.Delete();
+                drFilaF[0] = "Neto a Pagar";
+                drFilaF[3] = dNeto.ToString();
+                odtF.Rows.InsertAt(drFilaF, jj);
+                jj++;
+
+                /*-----------Fin Calculando el Neto*/
+
+                drFilaF = odtF.NewRow();
+                drFilaF.Delete();
+                drFilaF[0] = " ";
+                drFilaF[1] = " ";
+                drFilaF[2] = " ";
+                drFilaF[3] = " ";
+                odtF.Rows.InsertAt(drFilaF, jj);
+                jj++;
+                /*-----------Inicio Aportaciones del Empleador*/
+                odtI = oDetallePlanillaAEmpleador.ListarPlanillaAEmpleadorXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+
+                if (odtI.Rows.Count > 0)
+                {
+                    drFilaF = odtF.NewRow();
+                    drFilaF.Delete();
+                    drFilaF[0] = "Aportaciones de Empleador";
+                    odtF.Rows.InsertAt(drFilaF, jj);
+                    jj++;
+
+                    for (int k = 0; k < odtI.Rows.Count; k++)
+                    {
+                        drFilaF = odtF.NewRow();
+                        drFilaF.Delete();
+                        drFilaF[0] = odtI.Rows[k][0];
+                        drFilaF[3] = odtI.Rows[k][1];
+                        odtF.Rows.InsertAt(drFilaF, jj);
+                        jj++;
+                    }
+                }
+                /*------------Fin Aportaciones del Empleador*/
+
+                /*----------------Fin de obligaciones de boleta de pago - Ingresos*/
+
+                dgvBoletaPago_D.DataSource = odtD;
+                dgvBoletaPago_A.DataSource = odtA;
+                dgvBoletaPago_B.DataSource = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorB(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+                //dgvBoletaPago_B.DataSource = odtA;
+                dgvBoletaPago_C.DataSource = odtC;
+                dgvBoletaPago_E.DataSource = odtF;
+
+            }         
+            else
+            {
+                //MessageBox.Show("Boleta de pago vacia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                boleta_pago_vacia = true;
+            }
+        }
 
         private PdfPTable pdf_d( int alineacion, int ancho  )
         {
@@ -625,6 +791,7 @@ namespace CapaUsuario.Reportes
                         pdfTableD.AddCell(cell);
                     }
                     pdfTableD.CompleteRow();
+                    total_lineas_hoja++;
                 }
                 /* -------------------------------FIN DGVBOLETA_D */
             }
@@ -719,6 +886,7 @@ namespace CapaUsuario.Reportes
                         pdfTableA.AddCell(objP_A);
                     }
                     pdfTableA.CompleteRow();
+                    total_lineas_hoja++;
                 }
                 /* -------------------------------FIN DGVBOLETA_A */
             }
@@ -760,6 +928,7 @@ namespace CapaUsuario.Reportes
                         pdfTableB.AddCell(objP_B);
                     }
                     pdfTableB.CompleteRow();
+                    total_lineas_hoja++;
                 }
                 /* -------------------------------FIN DGVBOLETA_B */
             }
@@ -851,6 +1020,7 @@ namespace CapaUsuario.Reportes
                         pdfTableC.AddCell(objP_C);
                     }
                     pdfTableC.CompleteRow();
+                    total_lineas_hoja++;
                 }
                 /* -------------------------------FIN DGVBOLETA_C */
             }
@@ -877,6 +1047,14 @@ namespace CapaUsuario.Reportes
                 pdfTableE.DefaultCell.BorderWidth = 1;
                 pdfTableE.SetWidths(headerwidths_E);
                 pdfTableE.WidthPercentage = ancho;
+                int iindice_ingresos = 0;
+                int iindice_descuentos = 0;
+                int iindice_a_empleador_i = 0;
+                int iindice_a_empleador_j = 0;
+                int iindice_a_trabajador = 0;
+
+                bool fAportacionesEmpleador = false;
+
 
                 /* -------------------------------INICIO DGVBOLETA_E */
 
@@ -891,10 +1069,50 @@ namespace CapaUsuario.Reportes
                 {
                     for (int j = 0; j < dgvBoletaPago_E.ColumnCount; j++)
                     {
-                        objP_E = new Phrase(dgvBoletaPago_E[j, i].Value.ToString(), fuente);
-                        pdfTableE.AddCell(objP_E);
+                        cell = new PdfPCell((new Phrase(dgvBoletaPago_E[j, i].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+
+                        if (dgvBoletaPago_E[j, i].Value.ToString() == "Aportaciones de Empleador")
+                        {
+                            iindice_a_empleador_i = i;
+                            iindice_a_empleador_j = j;
+                            fAportacionesEmpleador = true;
+
+                            cell.Colspan = 1;
+                            cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+                        }
+                        if (dgvBoletaPago_E[j, i].Value.ToString() == "Aportaciones de Trabajador")
+                        {
+                            cell.Colspan = 1;
+                            cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+                        }
+                        if (dgvBoletaPago_E[j, i].Value.ToString() == "Descuentos")
+                        {
+                            cell.Colspan = 1;
+                            cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+                        }
+                        if (dgvBoletaPago_E[j, i].Value.ToString() == "Ingresos")
+                        {
+                            cell.Colspan = 1;
+                            cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+                        }
+                        if (dgvBoletaPago_E[j, i].Value.ToString() == "Neto a Pagar")
+                        {
+                            cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+                        }
+                        //Alineando a la derecha la columna de ingresos, egresos y neto
+                        if (j == 1 || j ==2 || j==3)
+                            cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+
+                        //cell.FixedHeight = 25f;
+                        pdfTableE.AddCell(cell);
+                        
+
                     }
+                    //float total_altura = pdfTableE.CalculateHeights(true);
+                    //ftotal_lineas_hoja += cell.GetMaxHeight();
+                    ftotal_lineas_hoja = pdfTableE.TotalHeight;
                     pdfTableE.CompleteRow();
+                    total_lineas_hoja++;
                 }
                 /* -------------------------------FIN DGVBOLETA_E */
 
@@ -904,47 +1122,22 @@ namespace CapaUsuario.Reportes
 
             return pdfTableE;
         }
-
-        private void pdfTable_todos()
-        {
-            
-
-            PdfPTable pdfTableD = new PdfPTable(dgvBoletaPago_D.ColumnCount);
-            PdfPTable pdfTableA = new PdfPTable(dgvBoletaPago_A.ColumnCount);
-            PdfPTable pdfTableB = new PdfPTable(dgvBoletaPago_B.ColumnCount);
-            PdfPTable pdfTableC = new PdfPTable(dgvBoletaPago_C.ColumnCount);
-            PdfPTable pdfTableE = new PdfPTable(dgvBoletaPago_E.ColumnCount);
-  
-            //Exporting to PDF
-
-            //use a variable to let my code fit across the page...
-            //string path = Server.MapPath("PDFs");
-            //PdfWriter.GetInstance(doc1, new FileStream(path + "/Doc1.pdf", FileMode.Create));
-
-            
-
-        }
-
-        /*
-        private void dgvBoletaPago_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int numero_filas = dgvBoletaPago.Rows.Count;
-            if (e.RowIndex != -1)
-            {
-                sidtplanilla = Convert.ToInt32(dgvBoletaPago.Rows[e.RowIndex].Cells[0].Value);
-                sidtregimenlaboral = Convert.ToInt32(dgvBoletaPago.Rows[e.RowIndex].Cells[1].Value);
-                sMes = dgvBoletaPago.Rows[e.RowIndex].Cells[3].Value.ToString();
-                sAño = dgvBoletaPago.Rows[e.RowIndex].Cells[4].Value.ToString();
-            }
-        }
-        */
-
+ 
         private void frmBoletaPagoXPlanilla_Load(object sender, EventArgs e)
         {
-            int numero_boleta_pago = 0;
+            DataTable odtA = new DataTable();
+            DataTable odtPlanilla = new DataTable();
+
+            CapaDeNegocios.Reportes.cBoletaPago oBoletaPago = new CapaDeNegocios.Reportes.cBoletaPago();
             CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
 
+            int numero_boleta_pago = 0;
+
             //dgvBoletaPago.DataSource = oPlanilla.ListarBoletaPagoXMesYRegimenLaboral() ;
+
+
+            //Llenar data table BoletaPago verificando que tenga mas de un registro
+
             dgvBoletaPago.DataSource = oPlanilla.ListarPlanillaX();
 
             numero_boleta_pago = dgvBoletaPago.Rows.Count;
@@ -952,9 +1145,17 @@ namespace CapaUsuario.Reportes
             if (numero_boleta_pago > 0) { 
                 dgvBoletaPago.Columns[0].Visible = false;
                 dgvBoletaPago.Columns[1].Visible = false;
+                dgvBoletaPago.Rows[0].Cells[3].Selected = true;
 
+                sidtplanilla = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[0].Value);
+                sidtregimenlaboral = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[1].Value);
+                sMes = dgvBoletaPago.Rows[0].Cells[3].Value.ToString();
+                sAño = dgvBoletaPago.Rows[0].Cells[4].Value.ToString();
+                plantilla = dgvBoletaPago.Rows[0].Cells[10].Value.ToString();
             }
         }
+
+
 
         private void dgvBoletaPago_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -965,6 +1166,7 @@ namespace CapaUsuario.Reportes
                 sidtregimenlaboral = Convert.ToInt32(dgvBoletaPago.Rows[e.RowIndex].Cells[1].Value);
                 sMes = dgvBoletaPago.Rows[e.RowIndex].Cells[3].Value.ToString();
                 sAño = dgvBoletaPago.Rows[e.RowIndex].Cells[4].Value.ToString();
+                plantilla = dgvBoletaPago.Rows[e.RowIndex].Cells[10].Value.ToString();
             }
         }
     }
