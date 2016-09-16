@@ -127,6 +127,12 @@
     <Compile Include="ExportarSunat\frmDatosDelEstablecimiento.Designer.cs">
       <DependentUpon>frmDatosDelEstablecimiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExportarSunat\frmDatosDelPensionista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarSunat\frmDatosDelPensionista.Designer.cs">
+      <DependentUpon>frmDatosDelPensionista.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportarSunat\frmDatosDelTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1032,6 +1038,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmDatosDelEstablecimiento.resx">
       <DependentUpon>frmDatosDelEstablecimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportarSunat\frmDatosDelPensionista.resx">
+      <DependentUpon>frmDatosDelPensionista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmDatosDelTrabajador.resx">
       <DependentUpon>frmDatosDelTrabajador.cs</DependentUpon>
