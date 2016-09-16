@@ -28,22 +28,31 @@ namespace CapaUsuario.ExportarSunat
         private void CargarGrid()
         {
             dgvListar.DataSource = oExp.ListarDatosDelTrabajadorporFecha(DtDesde.Value, DtHasta.Value);
-            dgvListar.Columns[0].Width = 230;
-            dgvListar.Columns[1].Width = 70;
-            dgvListar.Columns[2].Width = 70;
-            dgvListar.Columns[3].Visible = false;
-            dgvListar.Columns[4].Width = 110;
+            dgvListar.Columns[0].Width = 300;
+            dgvListar.Columns[1].Width = 75;
+            dgvListar.Columns[2].Visible = false;
+            dgvListar.Columns[3].Width = 75;
+            dgvListar.Columns[4].Visible = false;
             dgvListar.Columns[5].Visible = false;
-            dgvListar.Columns[6].Width = 100;
+            dgvListar.Columns[6].Visible = false;
             dgvListar.Columns[7].Visible = false;
-            dgvListar.Columns[8].Width = 150;
-            dgvListar.Columns[9].Width = 75;
-            dgvListar.Columns[10].Width = 75;
+            dgvListar.Columns[8].Visible = false;
+            dgvListar.Columns[9].Visible = false;
+            dgvListar.Columns[10].Visible = false;
             dgvListar.Columns[11].Visible = false;
-            dgvListar.Columns[12].Width = 120;
-
-
-
+            dgvListar.Columns[12].Visible = false;
+            dgvListar.Columns[13].Visible = false;
+            dgvListar.Columns[14].Visible = false;
+            dgvListar.Columns[15].Visible = false;
+            dgvListar.Columns[16].Visible = false;
+            dgvListar.Columns[17].Visible = false;
+            dgvListar.Columns[18].Visible = false;
+            dgvListar.Columns[19].Visible = false;
+            dgvListar.Columns[20].Visible = false;
+            dgvListar.Columns[21].Visible = false;
+            dgvListar.Columns[22].Visible = false;
+            dgvListar.Columns[23].Visible = false;
+            dgvListar.Columns[24].Visible = false;
         }
         private void ConvertiraNumero(string tipoPago)
         {
@@ -104,32 +113,31 @@ namespace CapaUsuario.ExportarSunat
             {
                 for (int i = 0; i <= dgvListar.Rows.Count; i++)
                 {
-                    string tipoDoc = "01";
-                    string dni = dgvListar[2, i].Value.ToString();
-                    string paisDoc = "604";
-                    string RegimenLaboral = dgvListar[3, i].Value.ToString();
-                    string SituacionEdu = "07";
-                    string Ocupacion = dgvListar[5, i].Value.ToString();
-                    string Discapacidad = "0";
-                    string CUSPP = "";
-                    string SCTR = "";
-                    string tipoContrato = dgvListar[7, i].Value.ToString();
-                    string regimenAlternativo = "0";
-                    string jornadaTrabajo = "0";
-                    string horarioNocturno = "0";
-                    string sindicalizado = "0";
-                    string periodicidad = dgvListar[9, i].Value.ToString();
+                    string tipoDoc = dgvListar[2, i].Value.ToString();
+                    string dni = dgvListar[3, i].Value.ToString();
+                    string paisDoc = dgvListar[4, i].Value.ToString();
+                    string RegimenLaboral = dgvListar[5, i].Value.ToString();
+                    string SituacionEdu = dgvListar[6, i].Value.ToString();
+                    string Ocupacion = dgvListar[7, i].Value.ToString();
+                    string Discapacidad = dgvListar[8, i].Value.ToString();
+                    string CUSPP = dgvListar[9, i].Value.ToString();
+                    string SCTR = dgvListar[10, i].Value.ToString();
+                    string tipoContrato = dgvListar[11, i].Value.ToString();
+                    string regimenAlternativo = dgvListar[12, i].Value.ToString();
+                    string jornadaTrabajo = dgvListar[13, i].Value.ToString();
+                    string horarioNocturno = dgvListar[14, i].Value.ToString();
+                    string sindicalizado = dgvListar[15, i].Value.ToString();
+                    string periodicidad = dgvListar[16, i].Value.ToString();
                     ConvertiraNumero2(periodicidad);
-                    string remBasica = "";
-                    string situacion = "1";
-                    string Renta5ta = "0";
-                    string situacionEsp = "0";
-                    string tipoPago = dgvListar[10, i].Value.ToString();
+                    string remBasica = dgvListar[17, i].Value.ToString();
+                    string situacion = dgvListar[18, i].Value.ToString();
+                    string Renta5ta = dgvListar[19, i].Value.ToString();
+                    string situacionEsp = dgvListar[20, i].Value.ToString();
+                    string tipoPago = dgvListar[21, i].Value.ToString();
                     ConvertiraNumero(tipoPago);
-                    string catOcupacional = dgvListar[11, i].Value.ToString();
-                    string convenio = "";
-                    string RUC = "";
-                    //dgvListarDatosTrabajadores[9, i].Value.ToString();
+                    string catOcupacional = dgvListar[22, i].Value.ToString();
+                    string convenio = dgvListar[23, i].Value.ToString(); ;
+                    string RUC = dgvListar[24, i].Value.ToString(); ;
                     string Contenido = oExp.ExportarDatosTrabajador2(tipoDoc, dni, paisDoc, RegimenLaboral, SituacionEdu, Ocupacion, Discapacidad, CUSPP, SCTR, tipoContrato, regimenAlternativo, jornadaTrabajo, horarioNocturno, sindicalizado, nroPeriodicidad, remBasica, situacion, Renta5ta, situacionEsp, nroTipoPago, catOcupacional, convenio, RUC);
                     //MessageBox.Show(Contenido);
                     milista.Add(Contenido);

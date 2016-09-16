@@ -65,11 +65,15 @@ namespace CapaDeNegocios.ExportarSunat
         
         public DataTable ListarDatosDelTrabajadorporFecha(DateTime fecha1, DateTime fecha2)
         {
-            return Conexion.GDatos.TraerDataTable("spListarDatosTrabajadoresporFecha", fecha1, fecha2);
+            return Conexion.GDatos.TraerDataTable("spExportarDatosTrabajador", fecha1, fecha2);
+        }
+        public DataTable ListarDatosDelPensionistaporFecha(DateTime fecha1, DateTime fecha2)
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarPensionistas", fecha1, fecha2);
         }
 
         ////////EXPORTAR DATOS DE LOS TRABAJADORES A LA SUNAT//////
-        
+
         public DataTable ListarTrabajadoresporFechaInicio(DateTime fecha1, DateTime fecha2)
         {
             return Conexion.GDatos.TraerDataTable("spListarTrabajadoresporFecha", fecha1, fecha2);
