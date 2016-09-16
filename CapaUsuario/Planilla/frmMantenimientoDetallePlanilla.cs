@@ -558,20 +558,28 @@ namespace CapaUsuario.Planilla
             }
             else
             {
-                if (sMes > MesInicio)
+                if (Convert.ToInt32(saño) > AñoInicio)
                 {
                     DiasLaborados = DiasMes;
                     PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
                 }
                 else
                 {
-                    if (DiasLaborados == DiasMes)
+                    if (sMes > MesInicio)
                     {
+                        DiasLaborados = DiasMes;
                         PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
                     }
                     else
                     {
-                        PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                        if (DiasLaborados == DiasMes)
+                        {
+                            PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                        }
+                        else
+                        {
+                            PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                        }
                     }
                 }
             }

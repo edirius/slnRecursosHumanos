@@ -370,11 +370,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 75);
+            this.label3.Location = new System.Drawing.Point(27, 75);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 13);
+            this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 18;
-            this.label3.Text = "Motivo / Fin :";
+            this.label3.Text = "Tipo Contrato:";
             // 
             // cboTipoContrato
             // 
