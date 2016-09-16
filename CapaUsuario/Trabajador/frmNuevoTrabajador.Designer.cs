@@ -91,6 +91,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
             this.toolTrabajador = new System.Windows.Forms.ToolTip(this.components);
+            this.chkRenta4ta = new System.Windows.Forms.CheckBox();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
@@ -108,6 +109,7 @@
             // 
             // tabDatosGenerales
             // 
+            this.tabDatosGenerales.Controls.Add(this.chkRenta4ta);
             this.tabDatosGenerales.Controls.Add(this.chkEssaludVida);
             this.tabDatosGenerales.Controls.Add(this.btnTipoZona);
             this.tabDatosGenerales.Controls.Add(this.btnTipoVia);
@@ -716,6 +718,16 @@
             this.toolTrabajador.ForeColor = System.Drawing.Color.RoyalBlue;
             this.toolTrabajador.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // chkRenta4ta
+            // 
+            this.chkRenta4ta.AutoSize = true;
+            this.chkRenta4ta.Location = new System.Drawing.Point(536, 568);
+            this.chkRenta4ta.Name = "chkRenta4ta";
+            this.chkRenta4ta.Size = new System.Drawing.Size(195, 17);
+            this.chkRenta4ta.TabIndex = 104;
+            this.chkRenta4ta.Text = "Suspención Renta de 4ta Categoria";
+            this.chkRenta4ta.UseVisualStyleBackColor = true;
+            // 
             // frmNuevoTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -799,5 +811,6 @@
         private System.Windows.Forms.Button btnTipoVia;
         private System.Windows.Forms.Button btnTipoZona;
         private System.Windows.Forms.CheckBox chkEssaludVida;
+        private System.Windows.Forms.CheckBox chkRenta4ta;
     }
 }

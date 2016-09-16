@@ -39,6 +39,8 @@ namespace CapaUsuario.Planilla
         decimal ComisionFlujo = 0;
         decimal ComisionMixta = 0;
 
+        bool ssuspencionrenta4ta;
+
         DataTable oDataDetallePlanilla = new DataTable();
         DataTable oDataTrabajador = new DataTable();
         DataTable oDataPeriodoTrabajador = new DataTable();
@@ -407,6 +409,14 @@ namespace CapaUsuario.Planilla
                     contador += 1;
                     dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, sidtmeta, FechaInicio, MontoPago, "", "");
                 }
+            }
+        }
+
+        private void SuspencionRenta4ta(int pidtrabajador)
+        {
+            foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + pidtrabajador + "'"))
+            {
+                ssuspencionrenta4ta = Convert.ToBoolean(rowTrabajador[6]);
             }
         }
 
@@ -859,7 +869,15 @@ namespace CapaUsuario.Planilla
             //renta 4ta Categoria
             if (codigo == "0618" && suma_ingresos <= 1500)
             {
-                result = 0;
+                SuspencionRenta4ta(Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
+                if (ssuspencionrenta4ta == false)
+                {
+                    result = CalcularFormula(fila, remuneracion_afecta, formula);
+                }
+                else
+                {
+                    result = 0;
+                }
             }
             //renta de 5ta Categoria A_Trabajador
             if (codigo == "0605")
