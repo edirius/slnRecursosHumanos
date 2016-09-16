@@ -25,33 +25,40 @@ namespace CapaUsuario.ExportarSunat
             CargarMes(Ahora);
             cbMes.Text = FechaTexto;
             CargarAños();
-            CargarGrid();
+            //CargarGrid();
+            dgvListaPlanillas.Columns[0].Visible = false;
+            dgvListaPlanillas.Columns[1].Width = 50;
+            dgvListaPlanillas.Columns[2].Width = 75;
+            dgvListaPlanillas.Columns[3].Width = 50;
+            dgvListaPlanillas.Columns[4].Width = 130;
+            dgvListaPlanillas.Columns[5].Width = 637;
+            dgvListaPlanillas.Columns[6].Width = 280;
         }
-        private void CargarGrid()
-        {
-            dataGridView.DataSource = oexp.ListarExportarAFPaExcel(cbMes.Text, cbAños.Text);
-            dataGridView.Columns[0].Width = 50;
-            dataGridView.Columns[1].Width = 90;
-            dataGridView.Columns[2].Width = 50;
-            dataGridView.Columns[3].Width = 70;
-            dataGridView.Columns[4].Width = 150;
-            dataGridView.Columns[5].Width = 150;
-            dataGridView.Columns[6].Width = 150;
-            dataGridView.Columns[7].Width = 90;
-            dataGridView.Columns[8].Width = 90;
-            dataGridView.Columns[9].Width = 90;
-            dataGridView.Columns[10].Width = 90;
-            dataGridView.Columns[1].Visible = false;
-            dataGridView.Columns[2].Visible = false;
-            dataGridView.Columns[7].Visible = false;
-            dataGridView.Columns[8].Visible = false;
-            dataGridView.Columns[9].Visible = false;
-            dataGridView.Columns[10].Visible = false;
-            dataGridView.Columns[12].Visible = false;
-            dataGridView.Columns[13].Visible = false;
-            dataGridView.Columns[14].Visible = false;
-            dataGridView.Columns[15].Visible = false;
-        }
+        //private void CargarGrid()
+        //{
+        //    dataGridView.Columns[0].Width = 50;
+        //    dataGridView.Columns[1].Width = 90;
+        //    dataGridView.Columns[2].Width = 50;
+        //    dataGridView.Columns[3].Width = 70;
+        //    dataGridView.Columns[4].Width = 150;
+        //    dataGridView.Columns[5].Width = 150;
+        //    dataGridView.Columns[6].Width = 150;
+        //    dataGridView.Columns[7].Width = 90;
+        //    dataGridView.Columns[8].Width = 90;
+        //    dataGridView.Columns[9].Width = 90;
+        //    dataGridView.Columns[10].Width = 90;
+        //    dataGridView.Columns[1].Visible = false;
+        //    dataGridView.Columns[2].Visible = false;
+        //    dataGridView.Columns[7].Visible = false;
+        //    dataGridView.Columns[8].Visible = false;
+        //    dataGridView.Columns[9].Visible = false;
+        //    dataGridView.Columns[10].Visible = false;
+        //    dataGridView.Columns[12].Visible = false;
+        //    dataGridView.Columns[13].Visible = false;
+        //    dataGridView.Columns[14].Visible = false;
+        //    dataGridView.Columns[15].Visible = false;
+
+        //}
 
         private void frmExportarExcel_Load(object sender, EventArgs e)
         {
@@ -144,15 +151,19 @@ namespace CapaUsuario.ExportarSunat
             
 
         }
+        private void Buscar()
+        {
+            dgvListaPlanillas.DataSource = oexp.BuscarPlanillas(cbMes.Text, cbAños.Text);
+        }
 
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridView.DataSource = oexp.ListarExportarAFPaExcel(cbMes.Text, cbAños.Text);
+            Buscar();
         }
 
         private void cbAños_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridView.DataSource = oexp.ListarExportarAFPaExcel(cbMes.Text, cbAños.Text);
+            Buscar();
         }
         private void CargarMes(DateTime FechaActual)
         {
@@ -223,5 +234,25 @@ namespace CapaUsuario.ExportarSunat
             }
         }
 
+        private void dgvListaPlanillas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
+            string numero = "";
+            numero = dgvListaPlanillas[0, Valor].Value.ToString();
+            dataGridView.DataSource = oexp.ListarExportarAFPaExcel(numero.ToString());
+        }
+
+        private void dgvListaPlanillas_SelectionChanged(object sender, EventArgs e)
+        {
+            int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
+            string numero = "";
+            numero = dgvListaPlanillas[0, Valor].Value.ToString();
+            dataGridView.DataSource = oexp.ListarExportarAFPaExcel(numero.ToString());
+        }
+
+        private void bntListarTodo_Click(object sender, EventArgs e)
+        {
+            dgvListaPlanillas.DataSource = oexp.ListarPlanillas(cbAños.Text);
+        }
     }
 }
