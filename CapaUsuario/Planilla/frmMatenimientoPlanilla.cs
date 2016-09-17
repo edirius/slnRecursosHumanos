@@ -51,11 +51,13 @@ namespace CapaUsuario.Planilla
 
         private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
         {
+            sidtplanilla = 0;
             cboMes.SelectedIndex = -1;
         }
 
         private void cboMes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            sidtplanilla = 0;
             CargarDatos();
         }
 
@@ -111,6 +113,11 @@ namespace CapaUsuario.Planilla
 
         private void btnDetallePlanilla_Click(object sender, EventArgs e)
         {
+            if (sidtplanilla == 0)
+            {
+                MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (splantilla == "REGIDORES")
             {
                 CapaUsuario.Planilla.frmMantenimientoDetallePlanillaRegidores fMantenimientoDetallePlanillaRegidores = new frmMantenimientoDetallePlanillaRegidores();
@@ -200,8 +207,6 @@ namespace CapaUsuario.Planilla
                 dgvPlanilla_CellClick(dgvPlanilla, cea);
             }
         }
-
-
 
         public int BuscarIndiceColumna(DataTable odtPrueba, string titulo_columna)
         {

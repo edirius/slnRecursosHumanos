@@ -109,6 +109,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.datosDelPensionistaPENToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -552,6 +553,7 @@
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem,
             this.datosDelTrabajadorPensionistaYPrestadorDeServiciosToolStripMenuItem,
             this.holaToolStripMenuItem,
+            this.datosDelPensionistaPENToolStripMenuItem,
             this.datosDelPeríodoToolStripMenuItem,
             this.datosDelEstablecimientoDelTrabajadorToolStripMenuItem,
             this.datosDeToolStripMenuItem,
@@ -755,6 +757,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
+            // datosDelPensionistaPENToolStripMenuItem
+            // 
+            this.datosDelPensionistaPENToolStripMenuItem.Name = "datosDelPensionistaPENToolStripMenuItem";
+            this.datosDelPensionistaPENToolStripMenuItem.Size = new System.Drawing.Size(465, 22);
+            this.datosDelPensionistaPENToolStripMenuItem.Text = "Datos del Pensionista(.PEN)";
+            this.datosDelPensionistaPENToolStripMenuItem.Click += new System.EventHandler(this.datosDelPensionistaPENToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -862,6 +871,7 @@
         private System.Windows.Forms.ToolStripMenuItem planillaToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem trabajadoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem personalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datosDelPensionistaPENToolStripMenuItem;
     }
 }
 

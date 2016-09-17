@@ -81,13 +81,31 @@ namespace CapaUsuario.Planilla
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
 
-            foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtmeta = '" + sidtmeta + "' and idtregimenlaboral = '" + sidtregimenlaboral + "' and fechainicio <= '31/" + smes + "/" + saño + "' and (fechafin >= '01/" + smes + "/" + saño + "' or fechafin>='')", "idtcargo"))
+            foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtmeta = '" + sidtmeta + "' and idtregimenlaboral = '" + sidtregimenlaboral + "'", "idtcargo"))
             {
-                foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idtperiodotrabajador = '" + rowRegimenTrabajador[17].ToString() + "'"))
+                int dia_fechainicio = Convert.ToInt32(rowRegimenTrabajador[7].ToString().Substring(0, 2));
+                int mes_fechainicio = Convert.ToInt32(rowRegimenTrabajador[7].ToString().Substring(3, 2));
+                int año_fechainicio = Convert.ToInt32(rowRegimenTrabajador[7].ToString().Substring(6, 4));
+                int dia_fechafin = 0;
+                int mes_fechafin = 0;
+                int año_fechafin = 0;
+                if (rowRegimenTrabajador[8].ToString() != "")
                 {
-                    foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + rowPeriodoTrabajador[4].ToString() + "'"))
+                    dia_fechafin = Convert.ToInt32(rowRegimenTrabajador[8].ToString().Substring(0, 2));
+                    mes_fechafin = Convert.ToInt32(rowRegimenTrabajador[8].ToString().Substring(3, 2));
+                    año_fechafin = Convert.ToInt32(rowRegimenTrabajador[8].ToString().Substring(6, 4));
+                }
+                if (dia_fechainicio <= 31 && mes_fechainicio <= Convert.ToInt32(smes) && año_fechainicio <= Convert.ToInt32(saño))
+                {
+                    if (rowRegimenTrabajador[8].ToString() == "" || (dia_fechafin >= 01 && mes_fechafin >= Convert.ToInt32(smes) && año_fechafin >= Convert.ToInt32(saño)))
                     {
-                        dgvTrabajador.Rows.Add(rowTrabajador[0].ToString(), rowTrabajador[1].ToString(), rowTrabajador[2].ToString() + " " + rowTrabajador[3].ToString() + " " + rowTrabajador[4].ToString());
+                        foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idtperiodotrabajador = '" + rowRegimenTrabajador[17].ToString() + "'"))
+                        {
+                            foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + rowPeriodoTrabajador[4].ToString() + "'"))
+                            {
+                                dgvTrabajador.Rows.Add(rowTrabajador[0].ToString(), rowTrabajador[1].ToString(), rowTrabajador[2].ToString() + " " + rowTrabajador[3].ToString() + " " + rowTrabajador[4].ToString());
+                            }
+                        }
                     }
                 }
             }

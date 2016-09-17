@@ -202,21 +202,21 @@ namespace CapaDeNegocios
             get { return correoElectronico; }
             set { correoElectronico = value; }
         }
+        private Boolean essaludvida;
 
         public bool Essaludvida
         {
-            get
-            {
-                return essaludvida;
-            }
+            get { return essaludvida; }
+            set { essaludvida = value; }
+        }
+        private Boolean ssuspencionrenta4ta;
 
-            set
-            {
-                essaludvida = value;
-            }
+        public bool Suspencionrenta4ta
+        {
+            get { return ssuspencionrenta4ta; }
+            set { ssuspencionrenta4ta = value; }
         }
 
-        private Boolean essaludvida;
 
         public cTrabajador traerTrabajador(int codigoTrabajador)
         {
@@ -286,6 +286,7 @@ namespace CapaDeNegocios
                 miTrabajador.miNacionalidad = new cNacionalidad();
                 miTrabajador.miNacionalidad.Codigo = Convert.ToInt16(dt.Rows[0][21]);
                 miTrabajador.essaludvida  = Convert.ToBoolean(dt.Rows[0][22]);
+                miTrabajador.ssuspencionrenta4ta = Convert.ToBoolean(dt.Rows[0][23]);
 
                 miTrabajador.miTipoVia = miTrabajador.miTipoVia.TraerTipoVia(miTrabajador.miTipoVia.Codigo);
                 miTrabajador.miTipoZOna = miTrabajador.miTipoZOna.TraerTipoZona(miTrabajador.miTipoZOna.Codigo);
@@ -333,7 +334,7 @@ namespace CapaDeNegocios
                 default:
                     break;
             }
-            Conexion.GDatos.Ejecutar("spCrearTrabajador", trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud);
+            Conexion.GDatos.Ejecutar("spCrearTrabajador", trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud, trabajador.Suspencionrenta4ta);
 
             return true;
         }
@@ -367,7 +368,7 @@ namespace CapaDeNegocios
                     break;
             }
 
-            Conexion.GDatos.Ejecutar("spModificarTrabajador", trabajador.IdTrabajador, trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud);
+            Conexion.GDatos.Ejecutar("spModificarTrabajador", trabajador.IdTrabajador, trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud, trabajador.Suspencionrenta4ta);
             return true;
         }
 

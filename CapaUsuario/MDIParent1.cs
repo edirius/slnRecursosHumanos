@@ -371,5 +371,12 @@ namespace CapaUsuario
             fPersonal.MdiParent = this;
             fPersonal.Show();
         }
+
+        private void datosDelPensionistaPENToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmDatosDelPensionista frmDatosdelPensionista = new ExportarSunat.frmDatosDelPensionista();
+            frmDatosdelPensionista.MdiParent = this;
+            frmDatosdelPensionista.Show();
+        }
     }
 }
