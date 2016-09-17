@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvBoletaPago = new System.Windows.Forms.DataGridView();
             this.dgvBoletaPago_F = new System.Windows.Forms.DataGridView();
             this.dgvBoletaPago_E = new System.Windows.Forms.DataGridView();
@@ -37,6 +37,12 @@
             this.dgvBoletaPago_B = new System.Windows.Forms.DataGridView();
             this.dgvBoletaPago_A = new System.Windows.Forms.DataGridView();
             this.btnImprimir = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboMes = new System.Windows.Forms.ComboBox();
+            this.cboAño = new System.Windows.Forms.ComboBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_E)).BeginInit();
@@ -44,33 +50,34 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_C)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_A)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvBoletaPago
             // 
             this.dgvBoletaPago.AllowUserToAddRows = false;
             this.dgvBoletaPago.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBoletaPago.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBoletaPago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBoletaPago.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvBoletaPago.Location = new System.Drawing.Point(12, 12);
+            this.dgvBoletaPago.Location = new System.Drawing.Point(12, 67);
             this.dgvBoletaPago.MultiSelect = false;
             this.dgvBoletaPago.Name = "dgvBoletaPago";
             this.dgvBoletaPago.ReadOnly = true;
             this.dgvBoletaPago.RowHeadersVisible = false;
             this.dgvBoletaPago.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBoletaPago.Size = new System.Drawing.Size(689, 332);
+            this.dgvBoletaPago.Size = new System.Drawing.Size(822, 441);
             this.dgvBoletaPago.TabIndex = 98;
             this.dgvBoletaPago.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBoletaPago_CellClick);
             // 
             // dgvBoletaPago_F
             // 
             this.dgvBoletaPago_F.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBoletaPago_F.Location = new System.Drawing.Point(454, 371);
+            this.dgvBoletaPago_F.Location = new System.Drawing.Point(450, 402);
             this.dgvBoletaPago_F.Name = "dgvBoletaPago_F";
             this.dgvBoletaPago_F.Size = new System.Drawing.Size(64, 14);
             this.dgvBoletaPago_F.TabIndex = 92;
@@ -79,7 +86,7 @@
             // dgvBoletaPago_E
             // 
             this.dgvBoletaPago_E.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBoletaPago_E.Location = new System.Drawing.Point(384, 371);
+            this.dgvBoletaPago_E.Location = new System.Drawing.Point(380, 402);
             this.dgvBoletaPago_E.Name = "dgvBoletaPago_E";
             this.dgvBoletaPago_E.Size = new System.Drawing.Size(64, 14);
             this.dgvBoletaPago_E.TabIndex = 93;
@@ -88,7 +95,7 @@
             // dgvBoletaPago_D
             // 
             this.dgvBoletaPago_D.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBoletaPago_D.Location = new System.Drawing.Point(314, 371);
+            this.dgvBoletaPago_D.Location = new System.Drawing.Point(310, 402);
             this.dgvBoletaPago_D.Name = "dgvBoletaPago_D";
             this.dgvBoletaPago_D.Size = new System.Drawing.Size(64, 14);
             this.dgvBoletaPago_D.TabIndex = 94;
@@ -97,7 +104,7 @@
             // dgvBoletaPago_C
             // 
             this.dgvBoletaPago_C.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBoletaPago_C.Location = new System.Drawing.Point(244, 371);
+            this.dgvBoletaPago_C.Location = new System.Drawing.Point(240, 402);
             this.dgvBoletaPago_C.Name = "dgvBoletaPago_C";
             this.dgvBoletaPago_C.Size = new System.Drawing.Size(64, 14);
             this.dgvBoletaPago_C.TabIndex = 95;
@@ -106,7 +113,7 @@
             // dgvBoletaPago_B
             // 
             this.dgvBoletaPago_B.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBoletaPago_B.Location = new System.Drawing.Point(174, 371);
+            this.dgvBoletaPago_B.Location = new System.Drawing.Point(170, 402);
             this.dgvBoletaPago_B.Name = "dgvBoletaPago_B";
             this.dgvBoletaPago_B.Size = new System.Drawing.Size(64, 14);
             this.dgvBoletaPago_B.TabIndex = 96;
@@ -115,7 +122,7 @@
             // dgvBoletaPago_A
             // 
             this.dgvBoletaPago_A.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBoletaPago_A.Location = new System.Drawing.Point(104, 371);
+            this.dgvBoletaPago_A.Location = new System.Drawing.Point(100, 402);
             this.dgvBoletaPago_A.Name = "dgvBoletaPago_A";
             this.dgvBoletaPago_A.Size = new System.Drawing.Size(64, 14);
             this.dgvBoletaPago_A.TabIndex = 97;
@@ -128,7 +135,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimir.Location = new System.Drawing.Point(12, 371);
+            this.btnImprimir.Location = new System.Drawing.Point(12, 525);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 65);
             this.btnImprimir.TabIndex = 91;
@@ -137,11 +144,72 @@
             this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnBuscar);
+            this.groupBox1.Controls.Add(this.cboAño);
+            this.groupBox1.Controls.Add(this.cboMes);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(471, 55);
+            this.groupBox1.TabIndex = 99;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtrar por:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mes:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(193, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Año:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // cboMes
+            // 
+            this.cboMes.FormattingEnabled = true;
+            this.cboMes.Location = new System.Drawing.Point(42, 22);
+            this.cboMes.Name = "cboMes";
+            this.cboMes.Size = new System.Drawing.Size(121, 21);
+            this.cboMes.TabIndex = 2;
+            // 
+            // cboAño
+            // 
+            this.cboAño.FormattingEnabled = true;
+            this.cboAño.Location = new System.Drawing.Point(228, 22);
+            this.cboAño.Name = "cboAño";
+            this.cboAño.Size = new System.Drawing.Size(121, 21);
+            this.cboAño.TabIndex = 3;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(380, 22);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 4;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // frmBoletaPagoXPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 499);
+            this.ClientSize = new System.Drawing.Size(846, 611);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvBoletaPago);
             this.Controls.Add(this.dgvBoletaPago_F);
             this.Controls.Add(this.dgvBoletaPago_E);
@@ -160,6 +228,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_C)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_B)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_A)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -174,5 +244,11 @@
         private System.Windows.Forms.DataGridView dgvBoletaPago_B;
         private System.Windows.Forms.DataGridView dgvBoletaPago_A;
         private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.ComboBox cboAño;
+        private System.Windows.Forms.ComboBox cboMes;
     }
 }
