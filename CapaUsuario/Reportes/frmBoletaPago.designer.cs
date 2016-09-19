@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.dgvBoletaPago_A = new System.Windows.Forms.DataGridView();
             this.dgvBoletaPago_B = new System.Windows.Forms.DataGridView();
@@ -37,6 +37,12 @@
             this.dgvBoletaPago_E = new System.Windows.Forms.DataGridView();
             this.dgvBoletaPago_F = new System.Windows.Forms.DataGridView();
             this.dgvBoletaPago = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.cboAño = new System.Windows.Forms.ComboBox();
+            this.cboMes = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_A)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_C)).BeginInit();
@@ -44,6 +50,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_E)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -53,7 +60,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimir.Location = new System.Drawing.Point(12, 371);
+            this.btnImprimir.Location = new System.Drawing.Point(12, 488);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 65);
             this.btnImprimir.TabIndex = 86;
@@ -120,28 +127,87 @@
             // 
             this.dgvBoletaPago.AllowUserToAddRows = false;
             this.dgvBoletaPago.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBoletaPago.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBoletaPago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBoletaPago.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvBoletaPago.Location = new System.Drawing.Point(12, 12);
+            this.dgvBoletaPago.Location = new System.Drawing.Point(12, 84);
             this.dgvBoletaPago.MultiSelect = false;
             this.dgvBoletaPago.Name = "dgvBoletaPago";
             this.dgvBoletaPago.ReadOnly = true;
             this.dgvBoletaPago.RowHeadersVisible = false;
             this.dgvBoletaPago.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBoletaPago.Size = new System.Drawing.Size(618, 332);
+            this.dgvBoletaPago.Size = new System.Drawing.Size(728, 377);
             this.dgvBoletaPago.TabIndex = 90;
             this.dgvBoletaPago.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBoletaPago_CellContentClick_1);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnBuscar);
+            this.groupBox1.Controls.Add(this.cboAño);
+            this.groupBox1.Controls.Add(this.cboMes);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(471, 55);
+            this.groupBox1.TabIndex = 100;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtrar por:";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(380, 22);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 4;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // cboAño
+            // 
+            this.cboAño.FormattingEnabled = true;
+            this.cboAño.Location = new System.Drawing.Point(228, 22);
+            this.cboAño.Name = "cboAño";
+            this.cboAño.Size = new System.Drawing.Size(121, 21);
+            this.cboAño.TabIndex = 3;
+            // 
+            // cboMes
+            // 
+            this.cboMes.FormattingEnabled = true;
+            this.cboMes.Location = new System.Drawing.Point(42, 22);
+            this.cboMes.Name = "cboMes";
+            this.cboMes.Size = new System.Drawing.Size(121, 21);
+            this.cboMes.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(193, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Año:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mes:";
             // 
             // frmBoletaPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 448);
+            this.ClientSize = new System.Drawing.Size(752, 565);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvBoletaPago);
             this.Controls.Add(this.dgvBoletaPago_F);
             this.Controls.Add(this.dgvBoletaPago_E);
@@ -160,6 +226,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_E)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_F)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -173,5 +241,11 @@
         private System.Windows.Forms.DataGridView dgvBoletaPago_E;
         private System.Windows.Forms.DataGridView dgvBoletaPago_F;
         private System.Windows.Forms.DataGridView dgvBoletaPago;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.ComboBox cboAño;
+        private System.Windows.Forms.ComboBox cboMes;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

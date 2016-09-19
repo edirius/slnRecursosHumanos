@@ -20,8 +20,11 @@ namespace CapaUsuario.Reportes
 {
     public partial class frmBoletaPagoXPlanilla : Form
     {
-
         int sidtregimenlaboral = 0;
+
+        string pmes = "";
+        string pmes_nro = "";
+        string paño = "";
 
         string sMes = "";
         string sAño = "";
@@ -284,7 +287,7 @@ namespace CapaUsuario.Reportes
                 }
             }
             else {
-                   MessageBox.Show("Por favor cerrar BoletaPagoPlanilla.pdf", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   MessageBox.Show("La plantilla regidores no cuenta con Boleta de Pago.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -322,6 +325,61 @@ namespace CapaUsuario.Reportes
             return values;
         }
 
+        public float[] GetTamañoColumnas_D(DataGridView dg)
+        {
+            float[] values = new float[dg.ColumnCount];
+            for (int i = 0; i < dg.ColumnCount; i++)
+            {
+                values[i] = (float)dg.Columns[i].Width;
+                if (i == 2) values[i] = 10;
+            }
+            return values;
+        }
+
+        public float[] GetTamañoColumnas_A(DataGridView dg)
+        {
+            float[] values = new float[dg.ColumnCount];
+            for (int i = 0; i < dg.ColumnCount; i++)
+            {
+                values[i] = (float)dg.Columns[i].Width;
+                if (i == 3) values[i] = 17;
+            }
+            return values;
+        }
+
+        public float[] GetTamañoColumnas_B(DataGridView dg)
+        {
+            float[] values = new float[dg.ColumnCount];
+            for (int i = 0; i < dg.ColumnCount; i++)
+            {
+                values[i] = (float)dg.Columns[i].Width;
+                if (i == 4) values[i] = 22;
+            }
+            return values;
+        }
+
+        public float[] GetTamañoColumnas_C(DataGridView dg)
+        {
+            float[] values = new float[dg.ColumnCount];
+            for (int i = 0; i < dg.ColumnCount; i++)
+            {
+                values[i] = (float)dg.Columns[i].Width;
+                if (i == 8) values[i] = 45;
+            }
+            return values;
+        }
+
+        public float[] GetTamañoColumnas_E(DataGridView dg)
+        {
+            float[] values = new float[dg.ColumnCount];
+            for (int i = 0; i < dg.ColumnCount; i++)
+            {
+                values[i] = (float)dg.Columns[i].Width;
+                if (i == 4) values[i] = 22;
+            }
+            return values;
+        }
+
         public void exportar_a_pdf()
         {
             CapaDeNegocios.Reportes.cBoletaPago oBoletaPago = new CapaDeNegocios.Reportes.cBoletaPago();
@@ -354,15 +412,12 @@ namespace CapaUsuario.Reportes
 
             paragraph2.Alignment = Element.ALIGN_LEFT;
             paragraph2.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
-            paragraph2.Add("\n\n             ......................................                              ......................................");
+            paragraph2.Add("\n\n             ......................................                              ......................................                                ......................................                              ......................................");
 
 
             paragraph3.Alignment = Element.ALIGN_LEFT;
             paragraph3.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
-            paragraph3.Add("               EMPLEADOR                                          TRABAJADOR");
-
-
-
+            paragraph3.Add("                  EMPLEADOR                                          TRABAJADOR                                          EMPLEADOR                                          TRABAJADOR");
             
             //PdfContentByte cb = writer.DirectContent;
 
@@ -422,12 +477,15 @@ namespace CapaUsuario.Reportes
                     
                     //Columnas 
                     MultiColumnText columns = new MultiColumnText();
-                    columns.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 2);
+                    //columns.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 2);
+
+                    columns.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 1);
 
                     //columns.AddSimpleColumn(36f, 170f);
                     //columns.AddSimpleColumn(194f, pdfDoc.PageSize.Width - 36f);
 
                     //Agregando pdfTable A, B, C, D, E a pdfDoc
+                    columns.AddElement(pdfTableD);
                     columns.AddElement(paragraph);
                     columns.AddElement(pdfTableA);
                     columns.AddElement(pdfTableB);
@@ -438,6 +496,7 @@ namespace CapaUsuario.Reportes
                     columns.AddElement(paragraph3);
 
                     //Agregando pdfTable A, B, C, D, E a pdfDoc como copia
+                    /*
                     columns.AddElement(paragraph);
                     columns.AddElement(pdfTableA);
                     columns.AddElement(pdfTableB);
@@ -446,6 +505,7 @@ namespace CapaUsuario.Reportes
                     columns.AddElement(pdfTableE);
                     columns.AddElement(paragraph2);
                     columns.AddElement(paragraph3);
+                    */
 
                     pdfDoc.Add(columns);
                     /* fin llenar datagrids */
@@ -492,6 +552,30 @@ namespace CapaUsuario.Reportes
             _document.Footer = Footer;
         }
 
+        public static DataTable MergeTablesByIndex(DataTable t1, DataTable t2)
+        {
+            if (t1 == null || t2 == null) throw new ArgumentNullException("t1 or t2", "Both tables must not be null");
+
+            DataTable t3 = t1.Clone();  // first add columns from table1
+            foreach (DataColumn col in t2.Columns)
+            {
+                string newColumnName = col.ColumnName;
+                int colNum = 1;
+                while (t3.Columns.Contains(newColumnName))
+                {
+                    //newColumnName = string.Format("{0}_{1}", col.ColumnName, ++colNum);
+                    newColumnName = string.Format("{0} {1}", col.ColumnName, "  ");
+                }
+                t3.Columns.Add(newColumnName, col.DataType);
+            }
+            var mergedRows = t1.AsEnumerable().Zip(t2.AsEnumerable(),
+                (r1, r2) => r1.ItemArray.Concat(r2.ItemArray).ToArray());
+            foreach (object[] rowFields in mergedRows)
+                t3.Rows.Add(rowFields);
+
+            return t3;
+        }
+
         private void datagridviews_boleta_pago()
         {
             //bool dgv_boleta_pago = true;
@@ -505,12 +589,30 @@ namespace CapaUsuario.Reportes
             DataTable odtG = new DataTable();
             DataTable odtH = new DataTable();
             DataTable odtI = new DataTable();
+            DataTable odtD2 = new DataTable();
+            DataTable odtEB = new DataTable();
+            DataTable odtAB = new DataTable();
+            DataTable odtA2 = new DataTable();
+            DataTable odtBB = new DataTable();
+            DataTable odtB2 = new DataTable();
+            DataTable odtCB = new DataTable();
+            DataTable odtC2 = new DataTable();
+            DataTable odtOB = new DataTable();
+            DataTable odtE2 = new DataTable();
+
+            DataTable odtC3 = new DataTable();
 
             DataTable odtPlanilla = new DataTable();
 
             DataRow drFilaD = odtD.NewRow();
             DataRow drFilaF = odtF.NewRow();
- 
+            DataRow drFilaEB = odtEB.NewRow();
+            DataRow drFilaAB = odtAB.NewRow();
+            DataRow drFilaBB = odtBB.NewRow();
+            DataRow drFilaCB = odtCB.NewRow();
+            DataRow drFilaOB = odtOB.NewRow();
+            DataRow drFilaC3 = odtC3.NewRow();
+
             CapaDeNegocios.Reportes.cBoletaPago oBoletaPago = new CapaDeNegocios.Reportes.cBoletaPago();
             CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
             CapaDeNegocios.Planillas.cDetallePlanillaIngresos oDetallePlanillaIngresos = new CapaDeNegocios.Planillas.cDetallePlanillaIngresos();
@@ -529,8 +631,13 @@ namespace CapaUsuario.Reportes
                 odtD.Columns.Clear();
                 odtD.Rows.Clear();
 
-                odtD.Columns.Add("RUC:", typeof(string));
-                odtD.Columns.Add("20226560824", typeof(string));
+                odtD.Columns.Add(" ", typeof(string));
+                odtD.Columns.Add("  ", typeof(string));
+
+                drFilaD = odtD.NewRow();
+                drFilaD.Delete();
+                drFilaD[0] = "RUC:"; drFilaD[1] = "20226560824";
+                odtD.Rows.InsertAt(drFilaD, 0);
 
                 drFilaD = odtD.NewRow();
                 drFilaD.Delete();
@@ -546,30 +653,83 @@ namespace CapaUsuario.Reportes
                 drFilaD.Delete();
                 drFilaD[0] = "PDT PLANILLA ELECTRONICA - PLAME "; drFilaD[1] = "NUMERO DE ORDEN:";
                 odtD.Rows.InsertAt(drFilaD, 3);
-                /*------------Fin primera parte de la boleta de pago */
+
+                odtEB.Columns.Clear();
+                odtEB.Rows.Clear();
+
+                odtEB.Columns.Add("   ");
+                drFilaEB[0] = " ";
+                odtEB.Rows.InsertAt(drFilaEB,0);
+                drFilaEB = odtEB.NewRow();
+                drFilaEB[0] = " ";
+                odtEB.Rows.InsertAt(drFilaEB, 1);
+                drFilaEB = odtEB.NewRow();
+                drFilaEB[0] = " ";
+                odtEB.Rows.InsertAt(drFilaEB, 2);
+                drFilaEB = odtEB.NewRow();
+                drFilaEB[0] = " ";
+                odtEB.Rows.InsertAt(drFilaEB, 3);
+
+                odtD2 = MergeTablesByIndex(odtD,odtEB );
+                odtD2 = MergeTablesByIndex(odtD2, odtD);
+
+            /*------------Fin primera parte de la boleta de pago */
 
 
-                /*---------inicio parte a de boleta de pago */
+            /*---------inicio parte a de boleta de pago */
                 odtA.Columns.Clear();
                 odtA.Rows.Clear();
-                odtA = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorA(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+                odtA = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorA(sidtplanilla, sidtregimenlaboral,sidttrabajador, pmes,pmes_nro, paño);
 
-                odtA.Columns.Add("DOCUMENTO DE IDENTIDAD", typeof(string)).SetOrdinal(0);
-                odtA.Columns.Add("SITUACION", typeof(string));
+                odtA.Columns.Add("SITUACION", typeof(string));  
 
             if (odtA.Rows.Count > 0)
             {
 
-                odtA.Rows[0][3] = "ACTIVO O SUBSIDIADO";
-                odtA.Rows[0][0] = "DNI";
+                odtA.Rows[0][2] = "ACTIVO O SUBSIDIADO";
+
+                odtAB.Columns.Clear();
+                odtAB.Rows.Clear();
+                odtAB.Columns.Add(" ");
+                for (int kkk = 0; kkk < odtA.Rows.Count; kkk++) {
+                    drFilaAB = odtAB.NewRow();
+                    drFilaAB[0] = "";
+                    odtAB.Rows.InsertAt(drFilaAB,kkk);
+                }
+
+                odtA2 = MergeTablesByIndex(odtA, odtAB);
+                odtA2 = MergeTablesByIndex(odtA2, odtA);
 
                 /*---------fin de parte a de boleta de pago */
+
+                /* Parte B  */
+
+                odtB.Columns.Clear();
+                odtB.Rows.Clear();
+                odtB = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorB(sidtplanilla ,  sidtregimenlaboral, sidttrabajador ,pmes,pmes_nro, paño);
+
+                odtBB.Columns.Clear();
+                odtBB.Rows.Clear();
+
+                odtBB.Columns.Add(" ");
+
+                for (int kkk = 0; kkk < odtB.Rows.Count; kkk++)
+                {
+                    drFilaBB = odtBB.NewRow();
+                    drFilaBB[0] = "";
+                    odtBB.Rows.InsertAt(drFilaBB, kkk);
+                }
+
+                odtB2 = MergeTablesByIndex(odtB, odtBB);
+                odtB2 = MergeTablesByIndex(odtB2, odtB);
+
+                /* Fin Parte B */
 
 
                 /*--------- inicio de parte c de boleta de pago, donde se aumentan columnas y se calcula dias no laborados asi como total de horas y minutos */
                 odtC.Columns.Clear();
                 odtC.Rows.Clear();
-                odtC = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorC(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+                odtC = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorC(sidtplanilla,sidtregimenlaboral,sidttrabajador,pmes,pmes_nro, paño);
 
                 odtC.Columns.Add("DIAS NO LABORADOS", typeof(string));
                 odtC.Columns.Add("DIAS SUBSIDIADOS", typeof(string));
@@ -588,12 +748,28 @@ namespace CapaUsuario.Reportes
                 odtC.Rows[0][3] = "Domiciliado";
                 odtC.Rows[0][4] = dias_laborados * 8;
                 odtC.Rows[0][5] = dias_laborados * 8 * 60;
+
+                odtCB.Columns.Clear();
+                odtCB.Rows.Clear();
+
+                odtCB.Columns.Add(" ");
+
+                for (int kkk = 0; kkk < odtC.Rows.Count; kkk++)
+                {
+                    drFilaCB = odtCB.NewRow();
+                    drFilaCB[0] = "";
+                    odtCB.Rows.InsertAt(drFilaCB, kkk);
+                }
+
+                odtC2 = MergeTablesByIndex(odtC, odtCB);
+                odtC2 = MergeTablesByIndex(odtC2, odtC);
+
                 /*------------fin parte c de boleta de pago*/
 
                 /*---------------Inicio de Obligaciones de boleta de pago - Ingresos*/
                 odtE.Columns.Clear();
                 odtE.Rows.Clear();
-                odtE = oDetallePlanillaIngresos.ListarPlanillaXIngresosXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+                odtE = oDetallePlanillaIngresos.ListarPlanillaXIngresosXBoletaPago(sidtplanilla ,sidtregimenlaboral,sidttrabajador);
 
                 odtF.Columns.Clear();
                 odtF.Rows.Clear();
@@ -626,7 +802,7 @@ namespace CapaUsuario.Reportes
 
                 odtG.Columns.Clear();
                 odtG.Rows.Clear();
-                odtG = oDetallePlanillaDescuentos.ListarPlanillaXDescuentosXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+                odtG = oDetallePlanillaDescuentos.ListarPlanillaXDescuentosXBoletaPago(sidtplanilla ,sidtregimenlaboral,sidttrabajador);
 
                 if (odtG.Rows.Count > 0)
                 {
@@ -649,7 +825,7 @@ namespace CapaUsuario.Reportes
 
                 odtH.Columns.Clear();
                 odtH.Rows.Clear();
-                odtH = oDetallePlanillaATrabajador.ListarPlanillaATrabajadorXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+                odtH = oDetallePlanillaATrabajador.ListarPlanillaATrabajadorXBoletaPago(sidtplanilla,sidtregimenlaboral,sidttrabajador );
 
                 if (odtH.Rows.Count > 0)
                 {
@@ -714,7 +890,7 @@ namespace CapaUsuario.Reportes
                 odtF.Rows.InsertAt(drFilaF, jj);
                 jj++;
                 /*-----------Inicio Aportaciones del Empleador*/
-                odtI = oDetallePlanillaAEmpleador.ListarPlanillaAEmpleadorXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+                odtI = oDetallePlanillaAEmpleador.ListarPlanillaAEmpleadorXBoletaPago(sidtplanilla,sidtregimenlaboral,sidttrabajador );
 
                 if (odtI.Rows.Count > 0)
                 {
@@ -736,14 +912,31 @@ namespace CapaUsuario.Reportes
                 }
                 /*------------Fin Aportaciones del Empleador*/
 
+                odtOB.Columns.Clear();
+                odtOB.Rows.Clear();
+
+                odtOB.Columns.Add(" ");
+
+                for (int kkk = 0; kkk < odtF.Rows.Count; kkk++)
+                {
+                    drFilaOB = odtOB.NewRow();
+                    drFilaOB[0] = "";
+                    odtOB.Rows.InsertAt(drFilaOB, kkk);
+                }
+
+                odtE2 = MergeTablesByIndex(odtF, odtOB);
+                odtE2 = MergeTablesByIndex(odtE2, odtF);
+
                 /*----------------Fin de obligaciones de boleta de pago - Ingresos*/
 
-                dgvBoletaPago_D.DataSource = odtD;
-                dgvBoletaPago_A.DataSource = odtA;
-                dgvBoletaPago_B.DataSource = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorB(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+                //dgvBoletaPago_D.DataSource = odtD;
+                dgvBoletaPago_D.DataSource = odtD2;
+                //dgvBoletaPago_A.DataSource = odtA;
+                dgvBoletaPago_A.DataSource = odtA2;
+                dgvBoletaPago_B.DataSource = odtB2;
                 //dgvBoletaPago_B.DataSource = odtA;
-                dgvBoletaPago_C.DataSource = odtC;
-                dgvBoletaPago_E.DataSource = odtF;
+                dgvBoletaPago_C.DataSource = odtC2;
+                dgvBoletaPago_E.DataSource = odtE2;
 
             }         
             else
@@ -755,6 +948,7 @@ namespace CapaUsuario.Reportes
 
         private PdfPTable pdf_d( int alineacion, int ancho  )
         {
+            string texto = "";
             PdfPTable pdfTableD = new PdfPTable(dgvBoletaPago_D.ColumnCount);
             //Creating iTextSharp Table from the DataTable data
             iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);
@@ -765,29 +959,36 @@ namespace CapaUsuario.Reportes
 
                 Phrase objH_D = new Phrase("A", fuente);
                 Phrase objP_D = new Phrase("A", fuente);
-                float[] headerwidths_D = GetTamañoColumnas(dgvBoletaPago_D);
+                float[] headerwidths_D = GetTamañoColumnas_D(dgvBoletaPago_D);
                 pdfTableD.DefaultCell.Padding = 0;
                 pdfTableD.HorizontalAlignment = alineacion;
                 
                 pdfTableD.DefaultCell.BorderWidth = 1;
                 pdfTableD.SetWidths(headerwidths_D);
                 pdfTableD.WidthPercentage = ancho;
-                
+
 
                 /* -------------------------------INICIO DGVBOLETA_D */
-                foreach (DataGridViewColumn column in dgvBoletaPago_D.Columns)
-                {
-                    cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
-                    cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
-                    pdfTableD.AddCell(cell);
-                }
-
+ 
                 for (int i = 0; i < dgvBoletaPago_D.RowCount - 1; i++)
                 {
                     for (int j = 0; j < dgvBoletaPago_D.ColumnCount; j++)
                     {
-                        cell = new PdfPCell((new Phrase(dgvBoletaPago_D[j, i].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                        texto = dgvBoletaPago_D[j, i].Value.ToString();
+                        cell = new PdfPCell((new Phrase(texto , new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
                         cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+
+                        if (j == 2) { 
+                            cell.BorderColorLeft = CMYKColor.BLACK;
+                            cell.BorderColorRight = CMYKColor.BLACK;
+                            cell.BorderColorTop = CMYKColor.WHITE;
+                            cell.BorderColorBottom = CMYKColor.WHITE;
+                            cell.BorderWidthLeft = 1f;
+                            cell.BorderWidthRight = 1f;
+                            cell.BorderWidthTop = 0f;
+                            cell.BorderWidthBottom = 0f;
+                            cell.BackgroundColor = CMYKColor.WHITE;
+                        }
                         pdfTableD.AddCell(cell);
                     }
                     pdfTableD.CompleteRow();
@@ -813,7 +1014,7 @@ namespace CapaUsuario.Reportes
 
                 Phrase objH_A = new Phrase("A", fuenteTitulo);
                 Phrase objP_A = new Phrase("A", fuente);
-                float[] headerwidths_A = GetTamañoColumnas(dgvBoletaPago_A);
+                float[] headerwidths_A = GetTamañoColumnas_A(dgvBoletaPago_A);
                 pdfTableA.DefaultCell.Padding = 0;
                 pdfTableA.HorizontalAlignment = alineacion;
                 pdfTableA.DefaultCell.BorderWidth = 1;
@@ -831,59 +1032,48 @@ namespace CapaUsuario.Reportes
                     cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
                     cell.Colspan = 1;
                     cell.Rowspan = 1;
-                    if (k == 0)
+                    cell.HorizontalAlignment = 1;
+
+                    if (k == 3)
                     {
-                        cell.Colspan = 2;
-                        cell.HorizontalAlignment = 1;
+                        cell.BorderColorLeft = CMYKColor.BLACK;
+                        cell.BorderColorRight = CMYKColor.BLACK;
+                        cell.BorderColorTop = CMYKColor.WHITE;
+                        cell.BorderColorBottom = CMYKColor.WHITE;
+                        cell.BorderWidthLeft = 1f;
+                        cell.BorderWidthRight = 1f;
+                        cell.BorderWidthTop = 0f;
+                        cell.BorderWidthBottom = 0f;
+                        cell.BackgroundColor = CMYKColor.WHITE;
                     }
-
-                    if (k != 1)
-                    {
-                        if (k > 1)
-                            cell.Rowspan = 2;
-
-                        cell.HorizontalAlignment = 1;
-                        pdfTableA.AddCell(cell);
-                    }
-
+                    pdfTableA.AddCell(cell);
                     k++;
                 }
-
-                foreach (DataGridViewColumn column in dgvBoletaPago_A.Columns)
-                {
-
-                    if (o == 0)
-                    {
-                        cell = new PdfPCell((new Phrase("TIPO", new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
-                        cell.Rowspan = 1;
-                        cell.Colspan = 1;
-                        cell.HorizontalAlignment = 1;
-                        cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
-                        pdfTableA.AddCell(cell);
-                    }
-
-                    if (o == 1)
-                    {
-                        cell = new PdfPCell((new Phrase("NUMERO", new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
-                        cell.Rowspan = 1;
-                        cell.Colspan = 1;
-                        cell.HorizontalAlignment = 1;
-                        cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
-                        pdfTableA.AddCell(cell);
-                    }
-
-
-
-                    o++;
-
-                }
+ 
 
                 for (int i = 0; i < dgvBoletaPago_A.RowCount - 1; i++)
                 {
                     for (int j = 0; j < dgvBoletaPago_A.ColumnCount; j++)
                     {
-                        objP_A = new Phrase(dgvBoletaPago_A[j, i].Value.ToString(), fuente);
-                        pdfTableA.AddCell(objP_A);
+                        //objP_A = new Phrase(dgvBoletaPago_A[j, i].Value.ToString(), fuente);
+                        cell = new PdfPCell((new Phrase(dgvBoletaPago_A[j, i].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+
+                        if (j == 3)
+                        {
+                            cell.BorderColorLeft = CMYKColor.BLACK;
+                            cell.BorderColorRight = CMYKColor.BLACK;
+                            cell.BorderColorTop = CMYKColor.WHITE;
+                            cell.BorderColorBottom = CMYKColor.WHITE;
+                            cell.BorderWidthLeft = 1f;
+                            cell.BorderWidthRight = 1f;
+                            cell.BorderWidthTop = 0f;
+                            cell.BorderWidthBottom = 0f;
+                            cell.BackgroundColor = CMYKColor.WHITE;
+                        }
+
+                        pdfTableA.AddCell(cell);
+
+
                     }
                     pdfTableA.CompleteRow();
                     total_lineas_hoja++;
@@ -899,13 +1089,13 @@ namespace CapaUsuario.Reportes
             //Creating iTextSharp Table from the DataTable data
             iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);
             iTextSharp.text.Font fuenteTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 9, 1, iTextSharp.text.Color.BLUE);
-
+            int k = 0;
             if (dgvBoletaPago_B.ColumnCount > 0)
             {
 
                 Phrase objH_B = new Phrase("A", fuenteTitulo);
                 Phrase objP_B = new Phrase("A", fuente);
-                float[] headerwidths_B = GetTamañoColumnas(dgvBoletaPago_B);
+                float[] headerwidths_B = GetTamañoColumnas_B(dgvBoletaPago_B);
                 pdfTableB.DefaultCell.Padding = 0;
                 pdfTableB.HorizontalAlignment = alineacion;
                 pdfTableB.DefaultCell.BorderWidth = 1;
@@ -917,15 +1107,41 @@ namespace CapaUsuario.Reportes
                 {
                     cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
                     cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+                    if (k ==4)
+                    {
+                        cell.BorderColorLeft = CMYKColor.BLACK;
+                        cell.BorderColorRight = CMYKColor.BLACK;
+                        cell.BorderColorTop = CMYKColor.WHITE;
+                        cell.BorderColorBottom = CMYKColor.WHITE;
+                        cell.BorderWidthLeft = 1f;
+                        cell.BorderWidthRight = 1f;
+                        cell.BorderWidthTop = 0f;
+                        cell.BorderWidthBottom = 0f;
+                        cell.BackgroundColor = CMYKColor.WHITE;
+                    }
                     pdfTableB.AddCell(cell);
+                    k++;
                 }
 
                 for (int i = 0; i < dgvBoletaPago_B.RowCount - 1; i++)
                 {
                     for (int j = 0; j < dgvBoletaPago_B.ColumnCount; j++)
                     {
-                        objP_B = new Phrase(dgvBoletaPago_B[j, i].Value.ToString(), fuente);
-                        pdfTableB.AddCell(objP_B);
+
+                        cell = new PdfPCell((new Phrase(dgvBoletaPago_B[j, i].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                        if (j == 4)
+                        {
+                            cell.BorderColorLeft = CMYKColor.BLACK;
+                            cell.BorderColorRight = CMYKColor.BLACK;
+                            cell.BorderColorTop = CMYKColor.WHITE;
+                            cell.BorderColorBottom = CMYKColor.WHITE;
+                            cell.BorderWidthLeft = 1f;
+                            cell.BorderWidthRight = 1f;
+                            cell.BorderWidthTop = 0f;
+                            cell.BorderWidthBottom = 0f;
+                            cell.BackgroundColor = CMYKColor.WHITE;
+                        }
+                        pdfTableB.AddCell(cell);
                     }
                     pdfTableB.CompleteRow();
                     total_lineas_hoja++;
@@ -949,7 +1165,7 @@ namespace CapaUsuario.Reportes
 
                 Phrase objH_C = new Phrase("A", fuenteTitulo);
                 Phrase objP_C = new Phrase("A", fuente);
-                float[] headerwidths_C = GetTamañoColumnas2(dgvBoletaPago_C);
+                float[] headerwidths_C = GetTamañoColumnas_C(dgvBoletaPago_C);
                 pdfTableC.DefaultCell.Padding = 0;
                 pdfTableC.HorizontalAlignment = alineacion;
                 pdfTableC.DefaultCell.BorderWidth = 1;
@@ -958,10 +1174,25 @@ namespace CapaUsuario.Reportes
                 /* -------------------------------INICIO DGVBOLETA_C */
 
                 o = 0;
+                
                 foreach (DataGridViewColumn column in dgvBoletaPago_C.Columns)
                 {
+                    if (o == 8)
+                    {
+                        cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                        cell.BorderColorLeft = CMYKColor.BLACK;
+                        cell.BorderColorRight = CMYKColor.BLACK;
+                        cell.BorderColorTop = CMYKColor.WHITE;
+                        cell.BorderColorBottom = CMYKColor.WHITE;
+                        cell.BorderWidthLeft = 1f;
+                        cell.BorderWidthRight = 1f;
+                        cell.BorderWidthTop = 0f;
+                        cell.BorderWidthBottom = 0f;
+                        cell.BackgroundColor = CMYKColor.WHITE;
+                        pdfTableC.AddCell(cell);
+                    }
 
-                    if (o == 4)
+                    if (o == 4 || o == 13 ) 
                     {
                         cell = new PdfPCell((new Phrase("JORNADA ORDINARIA", new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
                         cell.Colspan = 2;
@@ -970,8 +1201,8 @@ namespace CapaUsuario.Reportes
                         cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
                         pdfTableC.AddCell(cell);
                     }
-
-                    if (o == 6)
+                    
+                    if (o == 6 || o==15 )
                     {
                         cell = new PdfPCell((new Phrase("SOBRE TIEMPO", new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
                         cell.Colspan = 2;
@@ -981,7 +1212,7 @@ namespace CapaUsuario.Reportes
                         pdfTableC.AddCell(cell);
                     }
 
-                    if (o < 4 || o > 7)
+                    if (o == 0 || o == 1 || o == 2 || o == 3 || o == 9 || o == 10 || o == 11 || o == 12 )
                     {
                         cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
                         cell.Rowspan = 2;
@@ -992,18 +1223,34 @@ namespace CapaUsuario.Reportes
 
                     o++;
                 }
+                
 
                 k = 0;
 
                 foreach (DataGridViewColumn column in dgvBoletaPago_C.Columns)
                 {
+                    if (k == 8)
+                    {
+                        cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                        cell.BorderColorLeft = CMYKColor.BLACK;
+                        cell.BorderColorRight = CMYKColor.BLACK;
+                        cell.BorderColorTop = CMYKColor.WHITE;
+                        cell.BorderColorBottom = CMYKColor.WHITE;
+                        cell.BorderWidthLeft = 1f;
+                        cell.BorderWidthRight = 1f;
+                        cell.BorderWidthTop = 0f;
+                        cell.BorderWidthBottom = 0f;
+                        cell.BackgroundColor = CMYKColor.WHITE;
+                        pdfTableC.AddCell(cell);
+                    }
 
-                    if (k == 4 || k == 5 || k == 6 || k == 7)
+                    if (k == 4 || k == 5 || k == 6 || k == 7 || k== 13 || k==14 || k==15 || k==16)
                     {
                         cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
                         cell.Colspan = 1;
                         cell.Rowspan = 1;
                         cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+   
                         pdfTableC.AddCell(cell);
                     }
 
@@ -1016,8 +1263,20 @@ namespace CapaUsuario.Reportes
                 {
                     for (int j = 0; j < dgvBoletaPago_C.ColumnCount; j++)
                     {
-                        objP_C = new Phrase(dgvBoletaPago_C[j, i].Value.ToString(), fuente);
-                        pdfTableC.AddCell(objP_C);
+                        cell = new PdfPCell((new Phrase(dgvBoletaPago_C[j, i].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                        if (j == 8)
+                        {
+                            cell.BorderColorLeft = CMYKColor.BLACK;
+                            cell.BorderColorRight = CMYKColor.BLACK;
+                            cell.BorderColorTop = CMYKColor.WHITE;
+                            cell.BorderColorBottom = CMYKColor.WHITE;
+                            cell.BorderWidthLeft = 1f;
+                            cell.BorderWidthRight = 1f;
+                            cell.BorderWidthTop = 0f;
+                            cell.BorderWidthBottom = 0f;
+                            cell.BackgroundColor = CMYKColor.WHITE;
+                        }
+                        pdfTableC.AddCell(cell);
                     }
                     pdfTableC.CompleteRow();
                     total_lineas_hoja++;
@@ -1041,7 +1300,7 @@ namespace CapaUsuario.Reportes
 
                 Phrase objH_E = new Phrase("A", fuenteTitulo);
                 Phrase objP_E = new Phrase("A", fuente);
-                float[] headerwidths_E = GetTamañoColumnas2(dgvBoletaPago_E);
+                float[] headerwidths_E = GetTamañoColumnas_E(dgvBoletaPago_E);
                 pdfTableE.DefaultCell.Padding = 0;
                 pdfTableE.HorizontalAlignment = alineacion;
                 pdfTableE.DefaultCell.BorderWidth = 1;
@@ -1057,12 +1316,27 @@ namespace CapaUsuario.Reportes
 
 
                 /* -------------------------------INICIO DGVBOLETA_E */
-
+                int k = 0;
                 foreach (DataGridViewColumn column in dgvBoletaPago_E.Columns)
                 {
                     cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
                     cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+
+                    if (k == 4)
+                    {
+                        cell.BorderColorLeft = CMYKColor.BLACK;
+                        cell.BorderColorRight = CMYKColor.BLACK;
+                        cell.BorderColorTop = CMYKColor.WHITE;
+                        cell.BorderColorBottom = CMYKColor.WHITE;
+                        cell.BorderWidthLeft = 1f;
+                        cell.BorderWidthRight = 1f;
+                        cell.BorderWidthTop = 0f;
+                        cell.BorderWidthBottom = 0f;
+                        cell.BackgroundColor = CMYKColor.WHITE;
+                    }
+
                     pdfTableE.AddCell(cell);
+                    k++;
                 }
 
                 for (int i = 0; i < dgvBoletaPago_E.RowCount - 1; i++)
@@ -1070,6 +1344,19 @@ namespace CapaUsuario.Reportes
                     for (int j = 0; j < dgvBoletaPago_E.ColumnCount; j++)
                     {
                         cell = new PdfPCell((new Phrase(dgvBoletaPago_E[j, i].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+
+                        if (j == 4)
+                        {
+                            cell.BorderColorLeft = CMYKColor.BLACK;
+                            cell.BorderColorRight = CMYKColor.BLACK;
+                            cell.BorderColorTop = CMYKColor.WHITE;
+                            cell.BorderColorBottom = CMYKColor.WHITE;
+                            cell.BorderWidthLeft = 1f;
+                            cell.BorderWidthRight = 1f;
+                            cell.BorderWidthTop = 0f;
+                            cell.BorderWidthBottom = 0f;
+                            cell.BackgroundColor = CMYKColor.WHITE;
+                        }
 
                         if (dgvBoletaPago_E[j, i].Value.ToString() == "Aportaciones de Empleador")
                         {
@@ -1100,7 +1387,7 @@ namespace CapaUsuario.Reportes
                             cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
                         }
                         //Alineando a la derecha la columna de ingresos, egresos y neto
-                        if (j == 1 || j ==2 || j==3)
+                        if (j == 1 || j ==2 || j==3 || j == 5 || j == 6 || j == 7)
                             cell.HorizontalAlignment = Element.ALIGN_RIGHT;
 
                         //cell.FixedHeight = 25f;
@@ -1126,6 +1413,7 @@ namespace CapaUsuario.Reportes
         private void frmBoletaPagoXPlanilla_Load(object sender, EventArgs e)
         {
             DataTable odtA = new DataTable();
+            DataTable odtAños = new DataTable();
             DataTable odtPlanilla = new DataTable();
 
             CapaDeNegocios.Reportes.cBoletaPago oBoletaPago = new CapaDeNegocios.Reportes.cBoletaPago();
@@ -1133,26 +1421,30 @@ namespace CapaUsuario.Reportes
 
             int numero_boleta_pago = 0;
 
-            //dgvBoletaPago.DataSource = oPlanilla.ListarBoletaPagoXMesYRegimenLaboral() ;
+            //dgvBoletaPago.DataSource = oPlanilla.ListarBoletaPagoXMesYRegimenLaboral();
+            //Llenando combobox mes y año
+            cboMes.DisplayMember = "Name";
+            cboMes.ValueMember = "Id";
 
+            cboMes.Items.Add(new Item("ENERO", 1));
+            cboMes.Items.Add(new Item("FEBRERO", 2));
+            cboMes.Items.Add(new Item("MARZO", 3));
+            cboMes.Items.Add(new Item("ABRIL", 4));
+            cboMes.Items.Add(new Item("MAYO", 5));
+            cboMes.Items.Add(new Item("JUNIO", 6));
+            cboMes.Items.Add(new Item("JULIO", 7));
+            cboMes.Items.Add(new Item("AGOSTO", 8));
+            cboMes.Items.Add(new Item("SETIEMBRE", 9));
+            cboMes.Items.Add(new Item("OCTUBRE", 10));
+            cboMes.Items.Add(new Item("NOVIEMBRE", 11));
+            cboMes.Items.Add(new Item("DICIEMBRE", 12));
 
-            //Llenar data table BoletaPago verificando que tenga mas de un registro
+            cboMes.SelectedIndex = 0;
+            odtAños = oPlanilla.ListarAñosPlanilla();
+            cboAño.DataSource = odtAños;
+            cboAño.DisplayMember = "añó";
+            cboAño.ValueMember = "año";
 
-            dgvBoletaPago.DataSource = oPlanilla.ListarPlanillaX();
-
-            numero_boleta_pago = dgvBoletaPago.Rows.Count;
-
-            if (numero_boleta_pago > 0) { 
-                dgvBoletaPago.Columns[0].Visible = false;
-                dgvBoletaPago.Columns[1].Visible = false;
-                dgvBoletaPago.Rows[0].Cells[3].Selected = true;
-
-                sidtplanilla = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[0].Value);
-                sidtregimenlaboral = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[1].Value);
-                sMes = dgvBoletaPago.Rows[0].Cells[3].Value.ToString();
-                sAño = dgvBoletaPago.Rows[0].Cells[4].Value.ToString();
-                plantilla = dgvBoletaPago.Rows[0].Cells[10].Value.ToString();
-            }
         }
 
 
@@ -1168,6 +1460,95 @@ namespace CapaUsuario.Reportes
                 sAño = dgvBoletaPago.Rows[e.RowIndex].Cells[4].Value.ToString();
                 plantilla = dgvBoletaPago.Rows[e.RowIndex].Cells[10].Value.ToString();
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        class Item
+        {
+            string _Name;
+            int _Id;
+
+
+
+            public Item(string name, int id)
+            {
+                _Name = name;
+                _Id = id;
+            }
+
+            public string Name
+            {
+                get { return _Name; }
+                set { _Name = value; }
+            }
+
+
+            public int Id
+            {
+                get { return _Id; }
+                set { _Id = value; }
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            //PdfWriter.GetInstance(pdfDoc, stream);
+            CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
+
+            pmes = cboMes.GetItemText(this.cboMes.SelectedItem); ;
+            paño = cboAño.GetItemText(this.cboAño.SelectedItem); ;
+
+            switch (pmes) {
+                case "ENERO": pmes_nro = "1"; break;
+                case "FEBRERO": pmes_nro = "2"; break;
+                case "MARZO": pmes_nro = "3"; break;
+                case "ABRIL": pmes_nro = "4"; break;
+                case "MAYO": pmes_nro = "5"; break;
+                case "JUNIO": pmes_nro = "6"; break;
+                case "JULIO": pmes_nro = "7"; break;
+                case "AGOSTO": pmes_nro = "8"; break;
+                case "SETIEMBRE": pmes_nro = "9"; break;
+                case "OCTUBRE": pmes_nro = "10"; break;
+                case "NOVIEMBRE": pmes_nro = "11"; break;
+                case "DICIEMBRE": pmes_nro = "12"; break;
+            }
+
+
+
+            //Llenar data table BoletaPago verificando que tenga mas de un registro
+
+            dgvBoletaPago.DataSource = oPlanilla.ListarPlanillaX(pmes,paño );
+
+            int numero_boleta_pago = dgvBoletaPago.Rows.Count;
+            
+            if (numero_boleta_pago > 0)
+            {
+                dgvBoletaPago.Columns[0].Visible = true;
+                dgvBoletaPago.Columns[1].Visible = true;
+                dgvBoletaPago.Columns[3].Visible = true;
+                dgvBoletaPago.Columns[4].Visible = true;
+
+                dgvBoletaPago.Rows[0].Cells[5].Selected = true;
+
+                sidtplanilla = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[0].Value);
+                sidtregimenlaboral = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[1].Value);
+                sMes = dgvBoletaPago.Rows[0].Cells[3].Value.ToString();
+                sAño = dgvBoletaPago.Rows[0].Cells[4].Value.ToString();
+                plantilla = dgvBoletaPago.Rows[0].Cells[10].Value.ToString();
+            }
+            
+            if (numero_boleta_pago==0)
+                MessageBox.Show("No hay datos para esta consulta.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
     }
 }

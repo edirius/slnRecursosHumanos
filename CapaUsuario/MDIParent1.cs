@@ -33,16 +33,13 @@ namespace CapaUsuario
             //fProgramaPresupuestal.Show();
         }
 
-        private void OpenFile(object sender, EventArgs e)
+        private void ShowProgramaPresupuestal(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = openFileDialog.FileName;
-            }
+            Metas.frmProgramaPresupuestal fProgramaPresupuestal = new Metas.frmProgramaPresupuestal();
+            fProgramaPresupuestal.MdiParent = this;
+            fProgramaPresupuestal.Show();
         }
+       
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -377,6 +374,16 @@ namespace CapaUsuario
             ExportarSunat.frmDatosDelPensionista frmDatosdelPensionista = new ExportarSunat.frmDatosDelPensionista();
             frmDatosdelPensionista.MdiParent = this;
             frmDatosdelPensionista.Show();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
