@@ -30,8 +30,7 @@ namespace CapaUsuario.Tareo
 
         private void frmMantenimientoCronogramaTareo_Load(object sender, EventArgs e)
         {
-            CargarMeta();
-            cboMeta_SelectedIndexChanged(sender, e);
+            CargarAños();
         }
 
         private void btnMeta_Click(object sender, EventArgs e)
@@ -117,9 +116,15 @@ namespace CapaUsuario.Tareo
             }
         }
 
+        private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarMeta();
+            cboMeta_SelectedIndexChanged(sender, e);
+        }
+
         private void cboMeta_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboMeta.Text != "System.Data.DataRowView" && cboMeta.ValueMember != "")
+            if (cboMeta.Text != "(Colección)" && cboMeta.ValueMember != "")
             {
                 sIdTMeta = Convert.ToInt32(cboMeta.SelectedValue);
                 CargarDatos();
@@ -144,12 +149,28 @@ namespace CapaUsuario.Tareo
             }
         }
 
+        private void CargarAños()
+        {
+            for (int i = DateTime.Now.Year; i >= 2000; i--)
+            {
+                cboAño.Items.Add(i);
+            }
+            cboAño.SelectedIndex = 0;
+        }
+
         private void CargarMeta()
         {
+            DataTable oDataMeta = new DataTable();
             CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miCadena = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
-            cboMeta.DataSource = miCadena.ListarMetas();
-            cboMeta.DisplayMember = "nombre";
-            cboMeta.ValueMember = "idtmeta";
+            oDataMeta = miCadena.ListarMetas();
+            Dictionary<string, string> test = new Dictionary<string, string>();
+            foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+            {
+                test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+            }
+            cboMeta.DataSource = new BindingSource(test, null);
+            cboMeta.DisplayMember = "Value";
+            cboMeta.ValueMember = "Key";
         }
 
         private void CargarDatos()
@@ -173,6 +194,17 @@ namespace CapaUsuario.Tareo
             fMostrarReportes.IdTMeta = sIdTMeta;
             fMostrarReportes.IdTTareo = sIdTTareo;
             fMostrarReportes.ShowDialog();
+        }
+
+        public class ComboboxItem
+        {
+            public string Text { get; set; }
+            public object Value { get; set; }
+
+            public override string ToString()
+            {
+                return Text;
+            }
         }
     }
 }

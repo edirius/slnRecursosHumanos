@@ -177,7 +177,7 @@
             "JUNIO",
             "JULIO",
             "AGOSTO",
-            "SEPTIEMBRE",
+            "SETIEMBRE",
             "OCTUBRE",
             "NOVIEMBRE",
             "DICIEMBRE"});
