@@ -29,15 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTrabajadores));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnNuevoTrabajador = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnModificarTrabajador = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnEliminarTrabajador = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnImprimirLista = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.btnDatosLaborales = new System.Windows.Forms.Button();
@@ -62,11 +67,6 @@
             this.apellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnNuevoTrabajador = new System.Windows.Forms.ToolStripButton();
-            this.btnModificarTrabajador = new System.Windows.Forms.ToolStripButton();
-            this.btnEliminarTrabajador = new System.Windows.Forms.ToolStripButton();
-            this.btnImprimirLista = new System.Windows.Forms.ToolStripButton();
-            this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -106,25 +106,70 @@
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnNuevoTrabajador
+            // 
+            this.btnNuevoTrabajador.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoTrabajador.Image = global::CapaUsuario.Properties.Resources.add1;
+            this.btnNuevoTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNuevoTrabajador.Name = "btnNuevoTrabajador";
+            this.btnNuevoTrabajador.Size = new System.Drawing.Size(155, 25);
+            this.btnNuevoTrabajador.Text = "Nuevo Trabajador";
+            this.btnNuevoTrabajador.Click += new System.EventHandler(this.btnNuevoTrabajador_Click_1);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
+            // btnModificarTrabajador
+            // 
+            this.btnModificarTrabajador.Image = global::CapaUsuario.Properties.Resources.add_to_folder;
+            this.btnModificarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnModificarTrabajador.Name = "btnModificarTrabajador";
+            this.btnModificarTrabajador.Size = new System.Drawing.Size(138, 25);
+            this.btnModificarTrabajador.Text = "Modificar Trabajador";
+            this.btnModificarTrabajador.Click += new System.EventHandler(this.btnModificarTrabajador_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
+            // btnEliminarTrabajador
+            // 
+            this.btnEliminarTrabajador.Image = global::CapaUsuario.Properties.Resources.delete_page;
+            this.btnEliminarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEliminarTrabajador.Name = "btnEliminarTrabajador";
+            this.btnEliminarTrabajador.Size = new System.Drawing.Size(130, 25);
+            this.btnEliminarTrabajador.Text = "Eliminar Trabajador";
+            this.btnEliminarTrabajador.Click += new System.EventHandler(this.btnEliminarTrabajador_Click_1);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             // 
+            // btnImprimirLista
+            // 
+            this.btnImprimirLista.Image = global::CapaUsuario.Properties.Resources.chart;
+            this.btnImprimirLista.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImprimirLista.Name = "btnImprimirLista";
+            this.btnImprimirLista.Size = new System.Drawing.Size(100, 25);
+            this.btnImprimirLista.Text = "Imprimir Lista";
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
+            this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(49, 25);
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // splitContainer1
             // 
@@ -381,51 +426,6 @@
             this.sexo.Name = "sexo";
             this.sexo.ReadOnly = true;
             this.sexo.Width = 50;
-            // 
-            // btnNuevoTrabajador
-            // 
-            this.btnNuevoTrabajador.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoTrabajador.Image = global::CapaUsuario.Properties.Resources.add1;
-            this.btnNuevoTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNuevoTrabajador.Name = "btnNuevoTrabajador";
-            this.btnNuevoTrabajador.Size = new System.Drawing.Size(154, 25);
-            this.btnNuevoTrabajador.Text = "Nuevo Trabajador";
-            this.btnNuevoTrabajador.Click += new System.EventHandler(this.btnNuevoTrabajador_Click_1);
-            // 
-            // btnModificarTrabajador
-            // 
-            this.btnModificarTrabajador.Image = global::CapaUsuario.Properties.Resources.add_to_folder;
-            this.btnModificarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnModificarTrabajador.Name = "btnModificarTrabajador";
-            this.btnModificarTrabajador.Size = new System.Drawing.Size(137, 25);
-            this.btnModificarTrabajador.Text = "Modificar Trabajador";
-            this.btnModificarTrabajador.Click += new System.EventHandler(this.btnModificarTrabajador_Click);
-            // 
-            // btnEliminarTrabajador
-            // 
-            this.btnEliminarTrabajador.Image = global::CapaUsuario.Properties.Resources.delete_page;
-            this.btnEliminarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEliminarTrabajador.Name = "btnEliminarTrabajador";
-            this.btnEliminarTrabajador.Size = new System.Drawing.Size(129, 25);
-            this.btnEliminarTrabajador.Text = "Eliminar Trabajador";
-            this.btnEliminarTrabajador.Click += new System.EventHandler(this.btnEliminarTrabajador_Click_1);
-            // 
-            // btnImprimirLista
-            // 
-            this.btnImprimirLista.Image = global::CapaUsuario.Properties.Resources.chart;
-            this.btnImprimirLista.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImprimirLista.Name = "btnImprimirLista";
-            this.btnImprimirLista.Size = new System.Drawing.Size(100, 25);
-            this.btnImprimirLista.Text = "Imprimir Lista";
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
-            this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(49, 25);
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmListaTrabajadores
             // 

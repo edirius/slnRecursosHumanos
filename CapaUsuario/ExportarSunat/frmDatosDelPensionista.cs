@@ -53,14 +53,14 @@ namespace CapaUsuario.ExportarSunat
             string palo = "|";
             try
             {
-                for (int i = 0; i <= dgvListarPensionistas.Rows.Count; i++)
+                for (int i = 0; i < dgvListarPensionistas.Rows.Count; i++)
                 {
                     string tipoDoc = dgvListarPensionistas[2, i].Value.ToString();
                     string dni = dgvListarPensionistas[3, i].Value.ToString();
                     string paisDoc = dgvListarPensionistas[4, i].Value.ToString();
                     string tipoPen = dgvListarPensionistas[5, i].Value.ToString();
-                    string RegPen = dgvListarPensionistas[8, i].Value.ToString();
-                    string CUSPP = dgvListarPensionistas[7, i].Value.ToString();
+                    string RegPen = dgvListarPensionistas[7, i].Value.ToString();
+                    string CUSPP = dgvListarPensionistas[8, i].Value.ToString();
                     string tipoPago = dgvListarPensionistas[10, i].Value.ToString();
                     ConvertiraNumero(tipoPago);
                     string Contenido = tipoDoc + palo + dni + palo + paisDoc + palo + tipoPen + palo + RegPen + palo + CUSPP + palo + nroTipoPago + palo;

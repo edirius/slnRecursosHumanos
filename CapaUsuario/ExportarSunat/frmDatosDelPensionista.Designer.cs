@@ -49,7 +49,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(5, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(470, 70);
+            this.groupBox1.Size = new System.Drawing.Size(953, 70);
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar pensionistas por fecha:";
@@ -57,7 +57,7 @@
             // DtHasta
             // 
             this.DtHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtHasta.Location = new System.Drawing.Point(212, 34);
+            this.DtHasta.Location = new System.Drawing.Point(451, 34);
             this.DtHasta.Name = "DtHasta";
             this.DtHasta.Size = new System.Drawing.Size(109, 20);
             this.DtHasta.TabIndex = 36;
@@ -65,7 +65,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(332, 19);
+            this.button1.Location = new System.Drawing.Point(571, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 43);
             this.button1.TabIndex = 1;
@@ -76,7 +76,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(171, 37);
+            this.label2.Location = new System.Drawing.Point(410, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 38;
@@ -85,7 +85,7 @@
             // DtDesde
             // 
             this.DtDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtDesde.Location = new System.Drawing.Point(49, 34);
+            this.DtDesde.Location = new System.Drawing.Point(288, 34);
             this.DtDesde.Name = "DtDesde";
             this.DtDesde.Size = new System.Drawing.Size(109, 20);
             this.DtDesde.TabIndex = 35;
@@ -95,7 +95,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 37);
+            this.label1.Location = new System.Drawing.Point(247, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 37;
@@ -115,14 +115,14 @@
             this.dgvListarPensionistas.ReadOnly = true;
             this.dgvListarPensionistas.RowHeadersVisible = false;
             this.dgvListarPensionistas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListarPensionistas.Size = new System.Drawing.Size(470, 423);
+            this.dgvListarPensionistas.Size = new System.Drawing.Size(953, 423);
             this.dgvListarPensionistas.TabIndex = 40;
             // 
             // frmDatosDelPensionista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 508);
+            this.ClientSize = new System.Drawing.Size(970, 508);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvListarPensionistas);
             this.Name = "frmDatosDelPensionista";
