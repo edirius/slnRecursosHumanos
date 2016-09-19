@@ -39,6 +39,8 @@ namespace CapaUsuario.Planilla
         decimal ComisionFlujo = 0;
         decimal ComisionMixta = 0;
 
+        bool ssuspencionrenta4ta;
+
         DataTable oDataDetallePlanilla = new DataTable();
         DataTable oDataTrabajador = new DataTable();
         DataTable oDataPeriodoTrabajador = new DataTable();
@@ -71,7 +73,7 @@ namespace CapaUsuario.Planilla
         private void frmMantenimientoDetallePlanilla_Load(object sender, EventArgs e)
         {
             DibujarDataGrid();
-            MostrarColumnas();
+            //MostrarColumnas();
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
             oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
@@ -370,8 +372,8 @@ namespace CapaUsuario.Planilla
                 CargarATrabajador(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
                 CargarDescuentos(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
                 CargarAEmpleador(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
-                TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[12].Value = row[3].ToString();//Dias Laborados
+                TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
                 DatosAFP(dgvDetallePlanilla.RowCount - 1);
                 CalcularTotalDescuentos(dgvDetallePlanilla.RowCount - 1);
                 btnImportar.Enabled = false;
@@ -410,8 +412,16 @@ namespace CapaUsuario.Planilla
             }
         }
 
-        private void DatosAFP(int fila)
+        private void SuspencionRenta4ta(int pidtrabajador)
         {
+            foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + pidtrabajador + "'"))
+            {
+                ssuspencionrenta4ta = Convert.ToBoolean(rowTrabajador[6]);
+            }
+        }
+
+        private void DatosAFP(int fila)
+        {   
             foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + dgvDetallePlanilla.Rows[fila].Cells[4].Value.ToString() + "'"))
             {
                 foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
@@ -423,7 +433,8 @@ namespace CapaUsuario.Planilla
                         AFP = rowAFP[1].ToString();
                     }
                     oDataComisionAFP = miComisionAFP.ListarComisionAFP(Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()));
-                    foreach (DataRow rowComisionAFP in oDataComisionAFP.Select("mes >= '01/" + Mes(smes) + "/" + saño + "' AND mes <= '31/" + Mes(smes) + "/" + saño + "'"))
+                    int DiasMes = DateTime.DaysInMonth(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)));
+                    foreach (DataRow rowComisionAFP in oDataComisionAFP.Select("mes >= '01/" + Mes(smes) + "/" + saño + "' AND mes <= '" + DiasMes + "/" + Mes(smes) + "/" + saño + "'"))
                     {
                         PrimaSeguros = Convert.ToDecimal(rowComisionAFP[3].ToString());
                         AporteObligatorio = Convert.ToDecimal(rowComisionAFP[4].ToString());
@@ -558,20 +569,28 @@ namespace CapaUsuario.Planilla
             }
             else
             {
-                if (sMes > MesInicio)
+                if (Convert.ToInt32(saño) > AñoInicio)
                 {
                     DiasLaborados = DiasMes;
                     PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
                 }
                 else
                 {
-                    if (DiasLaborados == DiasMes)
+                    if (sMes > MesInicio)
                     {
+                        DiasLaborados = DiasMes;
                         PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
                     }
                     else
                     {
-                        PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                        if (DiasLaborados == DiasMes)
+                        {
+                            PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                        }
+                        else
+                        {
+                            PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                        }
                     }
                 }
             }
@@ -851,7 +870,15 @@ namespace CapaUsuario.Planilla
             //renta 4ta Categoria
             if (codigo == "0618" && suma_ingresos <= 1500)
             {
-                result = 0;
+                SuspencionRenta4ta(Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
+                if (ssuspencionrenta4ta == false)
+                {
+                    result = CalcularFormula(fila, remuneracion_afecta, formula);
+                }
+                else
+                {
+                    result = 0;
+                }
             }
             //renta de 5ta Categoria A_Trabajador
             if (codigo == "0605")
@@ -1219,7 +1246,7 @@ namespace CapaUsuario.Planilla
                 case "AGOSTO":
                     x = "08";
                     break;
-                case "SEPTIEMBRE":
+                case "SETIEMBRE":
                     x = "09";
                     break;
                 case "OCTUBRE":

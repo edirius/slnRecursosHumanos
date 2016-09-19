@@ -21,6 +21,10 @@ namespace CapaUsuario.Reportes
     {
  
         int sidtregimenlaboral = 0;
+         string plantilla = "";
+        string pmes = "";
+        string pmes_nro = "";
+        string paño = "";
 
         string sMes = "";
         string sAño = "";
@@ -34,32 +38,68 @@ namespace CapaUsuario.Reportes
             InitializeComponent();
         }
 
- 
+        class Item
+        {
+            string _Name;
+            int _Id;
+
+
+
+            public Item(string name, int id)
+            {
+                _Name = name;
+                _Id = id;
+            }
+
+            public string Name
+            {
+                get { return _Name; }
+                set { _Name = value; }
+            }
+
+
+            public int Id
+            {
+                get { return _Id; }
+                set { _Id = value; }
+            }
+        }
 
         private void frmBoletaPago_Load(object sender, EventArgs e)
         {
-            int numero_boleta_pago = 0;
+            DataTable odtA = new DataTable();
+            DataTable odtAños = new DataTable();
+            DataTable odtPlanilla = new DataTable();
+
+            CapaDeNegocios.Reportes.cBoletaPago oBoletaPago = new CapaDeNegocios.Reportes.cBoletaPago();
             CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
 
-            dgvBoletaPago.DataSource = oPlanilla.ListarBoletaPagoXMesYRegimenLaboral() ;
+            int numero_boleta_pago = 0;
 
-            numero_boleta_pago = dgvBoletaPago.Rows.Count;
+            //dgvBoletaPago.DataSource = oPlanilla.ListarBoletaPagoXMesYRegimenLaboral();
+            //Llenando combobox mes y año
+            cboMes.DisplayMember = "Name";
+            cboMes.ValueMember = "Id";
 
-            if (numero_boleta_pago > 0) { 
-                dgvBoletaPago.Columns[0].Visible = false;
-                dgvBoletaPago.Columns[1].Visible = false;
-                dgvBoletaPago.Columns[2].Visible = false;
-                //dgvBoletaPago.MultiSelect = false;
-                //dgvBoletaPago.Rows[0].Selected = false;
-                dgvBoletaPago.Rows[0].Cells[4].Selected = true;
+            cboMes.Items.Add(new Item("ENERO", 1));
+            cboMes.Items.Add(new Item("FEBRERO", 2));
+            cboMes.Items.Add(new Item("MARZO", 3));
+            cboMes.Items.Add(new Item("ABRIL", 4));
+            cboMes.Items.Add(new Item("MAYO", 5));
+            cboMes.Items.Add(new Item("JUNIO", 6));
+            cboMes.Items.Add(new Item("JULIO", 7));
+            cboMes.Items.Add(new Item("AGOSTO", 8));
+            cboMes.Items.Add(new Item("SETIEMBRE", 9));
+            cboMes.Items.Add(new Item("OCTUBRE", 10));
+            cboMes.Items.Add(new Item("NOVIEMBRE", 11));
+            cboMes.Items.Add(new Item("DICIEMBRE", 12));
+
+            cboMes.SelectedIndex = 0;
+            odtAños = oPlanilla.ListarAñosPlanilla();
+            cboAño.DataSource = odtAños;
+            cboAño.DisplayMember = "añó";
+            cboAño.ValueMember = "año";
   
-                sidtplanilla = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[0].Value);
-                sidttrabajador = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[1].Value);
-                sidtregimenlaboral = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[2].Value);
-                sMes = dgvBoletaPago.Rows[0].Cells[5].Value.ToString();
-                sAño = dgvBoletaPago.Rows[0].Cells[6].Value.ToString();
-            }
-            
         }
 
      
@@ -200,7 +240,7 @@ namespace CapaUsuario.Reportes
 
 
             /*---------inicio parte a de boleta de pago */
-            odtA = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorA(sidtplanilla, sidtregimenlaboral , sidttrabajador );
+            odtA = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorA(sidtplanilla, sidtregimenlaboral , sidttrabajador, pmes, pmes_nro, paño);
 
             odtA.Columns.Add("DOCUMENTO DE IDENTIDAD", typeof(string)).SetOrdinal(0);
             odtA.Columns.Add("SITUACION", typeof(string));
@@ -214,7 +254,7 @@ namespace CapaUsuario.Reportes
 
 
             /*--------- inicio de parte c de boleta de pago, donde se aumentan columnas y se calcula dias no laborados asi como total de horas y minutos */
-            odtC = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorC(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+            odtC = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorC(sidtplanilla, sidtregimenlaboral, sidttrabajador, pmes,pmes_nro, paño);
 
             odtC.Columns.Add("DIAS NO LABORADOS", typeof(string));
             odtC.Columns.Add("DIAS SUBSIDIADOS", typeof(string));
@@ -376,7 +416,7 @@ namespace CapaUsuario.Reportes
 
             dgvBoletaPago_D.DataSource = odtD;
             dgvBoletaPago_A.DataSource = odtA;
-            dgvBoletaPago_B.DataSource = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorB(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+            dgvBoletaPago_B.DataSource = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorB(sidtplanilla, sidtregimenlaboral, sidttrabajador,pmes,pmes_nro, paño);
             dgvBoletaPago_C.DataSource = odtC;
             dgvBoletaPago_E.DataSource = odtF;
 
@@ -801,5 +841,56 @@ namespace CapaUsuario.Reportes
                 sAño = dgvBoletaPago.Rows[e.RowIndex].Cells[6].Value.ToString();
             }
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            //PdfWriter.GetInstance(pdfDoc, stream);
+            CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
+
+            pmes = cboMes.GetItemText(this.cboMes.SelectedItem); ;
+            paño = cboAño.GetItemText(this.cboAño.SelectedItem); ;
+
+            switch (pmes)
+            {
+                case "ENERO": pmes_nro = "1"; break;
+                case "FEBRERO": pmes_nro = "2"; break;
+                case "MARZO": pmes_nro = "3"; break;
+                case "ABRIL": pmes_nro = "4"; break;
+                case "MAYO": pmes_nro = "5"; break;
+                case "JUNIO": pmes_nro = "6"; break;
+                case "JULIO": pmes_nro = "7"; break;
+                case "AGOSTO": pmes_nro = "8"; break;
+                case "SETIEMBRE": pmes_nro = "9"; break;
+                case "OCTUBRE": pmes_nro = "10"; break;
+                case "NOVIEMBRE": pmes_nro = "11"; break;
+                case "DICIEMBRE": pmes_nro = "12"; break;
+            }
+ 
+            //Llenar data table BoletaPago verificando que tenga mas de un registro
+            dgvBoletaPago.DataSource = oPlanilla.ListarPlanillaX(pmes, paño);
+
+            int numero_boleta_pago = dgvBoletaPago.Rows.Count;
+
+            if (numero_boleta_pago > 0)
+            {
+                dgvBoletaPago.Columns[0].Visible = true;
+                dgvBoletaPago.Columns[1].Visible = true;
+                dgvBoletaPago.Columns[3].Visible = true;
+                dgvBoletaPago.Columns[4].Visible = true;
+
+                dgvBoletaPago.Rows[0].Cells[5].Selected = true;
+
+                sidtplanilla = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[0].Value);
+                sidtregimenlaboral = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[1].Value);
+                sMes = dgvBoletaPago.Rows[0].Cells[3].Value.ToString();
+                sAño = dgvBoletaPago.Rows[0].Cells[4].Value.ToString();
+                plantilla = dgvBoletaPago.Rows[0].Cells[10].Value.ToString();
+            }
+
+            if (numero_boleta_pago == 0)
+                MessageBox.Show("No hay datos para esta consulta.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        }
+    
     }
 }

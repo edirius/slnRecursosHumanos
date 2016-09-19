@@ -45,9 +45,11 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdtRegimenLaboral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvRedondear = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRedondear)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -207,11 +209,21 @@
             this.Plantilla.Name = "Plantilla";
             this.Plantilla.ReadOnly = true;
             // 
+            // dgvRedondear
+            // 
+            this.dgvRedondear.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRedondear.Location = new System.Drawing.Point(440, 465);
+            this.dgvRedondear.Name = "dgvRedondear";
+            this.dgvRedondear.Size = new System.Drawing.Size(157, 65);
+            this.dgvRedondear.TabIndex = 95;
+            this.dgvRedondear.Visible = false;
+            // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 542);
+            this.Controls.Add(this.dgvRedondear);
             this.Controls.Add(this.dgvPlanilla);
             this.Controls.Add(this.dgvAFP);
             this.Controls.Add(this.dgvPrueba);
@@ -222,6 +234,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRedondear)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -244,5 +257,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdtRegimenLaboral;
         private System.Windows.Forms.DataGridViewTextBoxColumn Plantilla;
+        private System.Windows.Forms.DataGridView dgvRedondear;
     }
 }

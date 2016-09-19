@@ -52,6 +52,7 @@
     <Compile Include="cEnumTipoDia.cs" />
     <Compile Include="AFPP\cListaAFP.cs" />
     <Compile Include="cFuenteFinanciamiento.cs" />
+    <Compile Include="cItem.cs" />
     <Compile Include="cNacionalidad.cs" />
     <Compile Include="Contrato\cCargo.cs" />
     <Compile Include="Contrato\cContrato.cs" />

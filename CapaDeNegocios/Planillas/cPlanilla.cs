@@ -74,15 +74,19 @@ namespace CapaDeNegocios.Planillas
             set { splantilla = value; }
         }
 
-        
+        public DataTable ListarAñosPlanilla()
+        {
+            return Conexion.GDatos.TraerDataTable("spListarAñosPlanilla");
+        }
+
         public DataTable ListarDetallePlanillaX(int pidtplanilla)
         {
             return Conexion.GDatos.TraerDataTable("spListarDetallePlanillaX" , pidtplanilla);
         }
 
-        public DataTable ListarPlanillaX()
+        public DataTable ListarPlanillaX(string pMes, string pAño)
         {
-            return Conexion.GDatos.TraerDataTable("spListarPlanillaX");
+            return Conexion.GDatos.TraerDataTable("spListarPlanillaX",pMes,pAño);
         }
 
         public DataTable ListarBoletaPagoXMesYRegimenLaboral()

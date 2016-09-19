@@ -64,7 +64,8 @@ namespace CapaUsuario.Trabajador
             }
 
             chkEssaludVida.Checked = miTrabajador.Essaludvida;
-           
+            chkRenta4ta.Checked = miTrabajador.Suspencionrenta4ta;
+
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -129,6 +130,7 @@ namespace CapaUsuario.Trabajador
             }
 
             miTrabajador.Essaludvida = chkEssaludVida.Checked;
+            miTrabajador.Suspencionrenta4ta = chkRenta4ta.Checked;
 
             DialogResult = System.Windows.Forms.DialogResult.OK;
         }
