@@ -100,6 +100,11 @@ namespace CapaUsuario.ExportarSunat
                     string nacionalidad = dgvListarTrabajadores[8, i].Value.ToString();
                     string telLargaDistancia = "84";
                     string telefono = dgvListarTrabajadores[9, i].Value.ToString();
+                    if (telefono == "")
+                    {
+                        telefono = "000000000";
+                    }
+                    else ;
                     string correo = dgvListarTrabajadores[10, i].Value.ToString();
                     string tipoVia = dgvListarTrabajadores[11, i].Value.ToString();
                     string nombreVia = dgvListarTrabajadores[12, i].Value.ToString();
