@@ -434,6 +434,7 @@ namespace CapaUsuario.Planilla
                     }
                     oDataComisionAFP = miComisionAFP.ListarComisionAFP(Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()));
                     foreach (DataRow rowComisionAFP in oDataComisionAFP.Select("mes >= '01/" + Mes(smes) + "/" + saño + "' AND mes <= '31/" + Mes(smes) + "/" + saño + "'"))
+                    //foreach (DataRow rowComisionAFP in oDataComisionAFP.Select("mes > #01/09/2016# AND mes < #31/09/2016#"))
                     {
                         PrimaSeguros = Convert.ToDecimal(rowComisionAFP[3].ToString());
                         AporteObligatorio = Convert.ToDecimal(rowComisionAFP[4].ToString());
@@ -1245,7 +1246,7 @@ namespace CapaUsuario.Planilla
                 case "AGOSTO":
                     x = "08";
                     break;
-                case "SEPTIEMBRE":
+                case "SETIEMBRE":
                     x = "09";
                     break;
                 case "OCTUBRE":
