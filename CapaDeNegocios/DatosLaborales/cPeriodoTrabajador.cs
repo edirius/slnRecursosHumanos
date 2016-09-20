@@ -65,5 +65,11 @@ namespace CapaDeNegocios.DatosLaborales
             Conexion.GDatos.Ejecutar("spEliminarPeriodoTrabajador", IdtPeriodoTrabajador);
             return true;
         }
+
+        public Boolean BajaPeriodoTrabajador(string fechafin, int IdtPeriodoTrabajador)
+        {
+            Conexion.GDatos.Ejecutar("spBajaPeriodoTrabajador", fechafin, IdtPeriodoTrabajador);
+            return true;
+        }
     }
 }

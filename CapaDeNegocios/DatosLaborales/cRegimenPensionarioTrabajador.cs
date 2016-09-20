@@ -77,5 +77,11 @@ namespace CapaDeNegocios.DatosLaborales
             Conexion.GDatos.Ejecutar("spELiminarRegimenPensionarioTrabajador", IdtRegimenPensionarioTrabajador);
             return true;
         }
+
+        public Boolean BajaRegimenPensionarioTrabajador(string fechafin, int IdtPeriodoTrabajador)
+        {
+            Conexion.GDatos.Ejecutar("spBajaRegimenPensionarioTrabajador", fechafin, IdtPeriodoTrabajador);
+            return true;
+        }
     }
 }
