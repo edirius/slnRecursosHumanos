@@ -43,7 +43,7 @@ namespace CapaUsuario.ExportarSunat
                     string paisDoc = "604";
                     string ruc = "20226560824";
                     string Contenido = "";
-                    string codEstab = "0004";
+                    string codEstab = "0000";
                     Contenido = oExpo.ExportarEstablecimiento(tipoDoc, dni, paisDoc, ruc, codEstab);
                     milista.Add(Contenido);
 

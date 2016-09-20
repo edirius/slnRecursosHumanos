@@ -135,7 +135,8 @@ namespace CapaUsuario.ExportarSunat
                     string situacionEsp = dgvListar[20, i].Value.ToString();
                     string tipoPago = dgvListar[21, i].Value.ToString();
                     ConvertiraNumero(tipoPago);
-                    string catOcupacional = dgvListar[22, i].Value.ToString();
+                    string catOcupacional = "14";
+                    //string catOcupacional = dgvListar[22, i].Value.ToString();
                     string convenio = dgvListar[23, i].Value.ToString(); ;
                     string RUC = dgvListar[24, i].Value.ToString(); ;
                     string Contenido = oExp.ExportarDatosTrabajador2(tipoDoc, dni, paisDoc, RegimenLaboral, SituacionEdu, Ocupacion, Discapacidad, CUSPP, SCTR, tipoContrato, regimenAlternativo, jornadaTrabajo, horarioNocturno, sindicalizado, nroPeriodicidad, remBasica, situacion, Renta5ta, situacionEsp, nroTipoPago, catOcupacional, convenio, RUC);

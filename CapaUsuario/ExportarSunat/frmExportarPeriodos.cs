@@ -166,23 +166,23 @@ namespace CapaUsuario.ExportarSunat
             {
                 MessageBox.Show(ex.Message);
             }
-            //try
-            //{
-            //    for (int g = 0; g < dgvExportarPeriodos.Rows.Count; g++) //Régimen Pensionario
-            //    {
-            //        string tipoRegistro = "5";
-            //        string dni5 = dgvExportarPeriodos[3, g].Value.ToString();
-            //        DateTime fechainicio5 = Convert.ToDateTime(dgvExportarPeriodos[1, g].Value.ToString());
-            //        string fechafin5 = dgvExportarPeriodos[2, g].Value.ToString();
-            //        string indicadorTipoRegistro5 = "1";
-            //        SCTR = oexp.ExportarPeriodos(tipoDoc, dni5, paisDoc, Categoria, tipoRegistro, fechainicio5.ToShortDateString(), fechafin5, indicadorTipoRegistro5, EPS);
-            //        milista.Add(SCTR);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            try
+            {
+                for (int g = 0; g < dgvExportarPeriodos.Rows.Count; g++) //Régimen Pensionario
+                {
+                    string tipoRegistro = "5";
+                    string dni5 = dgvExportarPeriodos[3, g].Value.ToString();
+                    DateTime fechainicio5 = Convert.ToDateTime(dgvExportarPeriodos[1, g].Value.ToString());
+                    string fechafin5 = dgvExportarPeriodos[2, g].Value.ToString();
+                    string indicadorTipoRegistro5 = "1";
+                    SCTR = oexp.ExportarPeriodos(tipoDoc, dni5, paisDoc, Categoria, tipoRegistro, fechainicio5.ToShortDateString(), fechafin5, indicadorTipoRegistro5, EPS);
+                    milista.Add(SCTR);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();

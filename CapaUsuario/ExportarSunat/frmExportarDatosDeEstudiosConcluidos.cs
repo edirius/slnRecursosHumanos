@@ -39,7 +39,7 @@ namespace CapaUsuario.ExportarSunat
                     string tipoDoc = "01";
                     string dni = dgvDatosEstudios[2, i].Value.ToString();
                     string paisDoc = "604";
-                    string situacionEdu = "13";
+                    string situacionEdu = "11";
                     string indicador = "0";
                     string Contenido = "";
                     string palo = "|";
