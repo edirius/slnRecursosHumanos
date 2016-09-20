@@ -85,7 +85,7 @@ namespace CapaUsuario.ExportarSunat
                 {
                     string tipoVia2 = "", nombreVia2 = "", nroVia2 = "", departamento2 = "", interior2 = "", manzana2 = "", lote2 = "",
                     kilometro2 = "", block2 = "", etapa2 = "", tipoZona2 = "", nombreZona2 = "", referencia2 = "",
-                    ubigeo2 = "", indicadorAsistenciaESSALUD = "";
+                    ubigeo2 = "", indicadorAsistenciaESSALUD = "1";
                     //obtenemos los datos de las columnas que queremos
                     string tipoDoc = "01";
                     string dni = dgvListarTrabajadores[2, i].Value.ToString();
