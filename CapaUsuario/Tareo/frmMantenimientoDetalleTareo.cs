@@ -255,7 +255,7 @@ namespace CapaUsuario.Tareo
                         {
                             PeriodoTrabajador(e.RowIndex);
                             CapaUsuario.Tareo.frmBajaTrabajador fBajaTrabajador = new CapaUsuario.Tareo.frmBajaTrabajador();
-                            fBajaTrabajador.RecibirDatos(sidtperiodotrabajador);
+                            fBajaTrabajador.RecibirDatos(miTareo.FechaInicio, sidtperiodotrabajador);
                             if (fBajaTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                             {
                                 dgvDetalleTareo.Rows.RemoveAt(e.RowIndex);

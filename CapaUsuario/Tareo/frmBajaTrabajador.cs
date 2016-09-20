@@ -19,6 +19,11 @@ namespace CapaUsuario.Tareo
             InitializeComponent();
         }
 
+        private void frmBajaTrabajador_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
             sfechafin = monthCalendar1.SelectionRange.Start.ToShortDateString();
@@ -50,9 +55,14 @@ namespace CapaUsuario.Tareo
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
-        public void RecibirDatos(int pidtperiodotrabajador)
+        public void RecibirDatos(DateTime fechainicio, int pidtperiodotrabajador)
         {
             sidtperiodotrabajador = pidtperiodotrabajador;
+            int AñoInicio = fechainicio.Year;
+            int MesInicio = fechainicio.Month - 1;
+            int DiasMes = DateTime.DaysInMonth(AñoInicio, MesInicio);
+            string fechafin = DiasMes + "/" + MesInicio + "/" + AñoInicio;
+            monthCalendar1.MaxDate = Convert.ToDateTime(fechafin);
         }
     }
 }

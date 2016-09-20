@@ -96,6 +96,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baja Trabajador";
+            this.Load += new System.EventHandler(this.frmBajaTrabajador_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
