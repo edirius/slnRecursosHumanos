@@ -73,7 +73,10 @@ namespace CapaDeNegocios.Planillas
             get { return splantilla; }
             set { splantilla = value; }
         }
-
+        public DataTable ListarMetaDePlanilla(int pidtplanilla)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarMetaDePlanilla", pidtplanilla);
+        }
         public DataTable ListarAñosPlanilla()
         {
             return Conexion.GDatos.TraerDataTable("spListarAñosPlanilla");
@@ -82,6 +85,11 @@ namespace CapaDeNegocios.Planillas
         public DataTable ListarDetallePlanillaX(int pidtplanilla)
         {
             return Conexion.GDatos.TraerDataTable("spListarDetallePlanillaX" , pidtplanilla);
+        }
+
+        public DataTable ListarPlanillaTrabajadorX(string pMes, string pAño)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarPlanillaTrabajadorX", pMes, pAño);
         }
 
         public DataTable ListarPlanillaX(string pMes, string pAño)

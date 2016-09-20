@@ -46,10 +46,12 @@
             this.IdtRegimenLaboral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvRedondear = new System.Windows.Forms.DataGridView();
+            this.dgvEEFF = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRedondear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEEFF)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -116,7 +118,7 @@
             this.dgvPlanilla.ReadOnly = true;
             this.dgvPlanilla.RowHeadersVisible = false;
             this.dgvPlanilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPlanilla.Size = new System.Drawing.Size(758, 447);
+            this.dgvPlanilla.Size = new System.Drawing.Size(822, 447);
             this.dgvPlanilla.TabIndex = 94;
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick_1);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick_1);
@@ -218,11 +220,21 @@
             this.dgvRedondear.TabIndex = 95;
             this.dgvRedondear.Visible = false;
             // 
+            // dgvEEFF
+            // 
+            this.dgvEEFF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEEFF.Location = new System.Drawing.Point(603, 465);
+            this.dgvEEFF.Name = "dgvEEFF";
+            this.dgvEEFF.Size = new System.Drawing.Size(157, 65);
+            this.dgvEEFF.TabIndex = 96;
+            this.dgvEEFF.Visible = false;
+            // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 542);
+            this.ClientSize = new System.Drawing.Size(846, 542);
+            this.Controls.Add(this.dgvEEFF);
             this.Controls.Add(this.dgvRedondear);
             this.Controls.Add(this.dgvPlanilla);
             this.Controls.Add(this.dgvAFP);
@@ -235,6 +247,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRedondear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEEFF)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -258,5 +271,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdtRegimenLaboral;
         private System.Windows.Forms.DataGridViewTextBoxColumn Plantilla;
         private System.Windows.Forms.DataGridView dgvRedondear;
+        private System.Windows.Forms.DataGridView dgvEEFF;
     }
 }
