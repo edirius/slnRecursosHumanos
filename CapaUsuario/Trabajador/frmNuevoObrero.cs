@@ -110,8 +110,8 @@ namespace CapaUsuario.Trabajador
             miRegimenTrabajador.Condicion = "CONTRATADO";
             miRegimenTrabajador.ServidorConfianza = false;
             miRegimenTrabajador.NumeroDocumento = "";
-            miRegimenTrabajador.Periodicidad = "";
-            miRegimenTrabajador.TipoPago = "";
+            miRegimenTrabajador.Periodicidad = "MENSUAL";
+            miRegimenTrabajador.TipoPago = "EFECTIVO";
             miRegimenTrabajador.MontoPago = 0;
             miRegimenTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
             miRegimenTrabajador.FechaFin = ""; 

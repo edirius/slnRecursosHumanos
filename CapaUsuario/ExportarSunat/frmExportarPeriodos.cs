@@ -44,20 +44,20 @@ namespace CapaUsuario.ExportarSunat
         public void Cargargrid()
         {
             dgvExportarPeriodos.DataSource = oexp.ListarPeriodos(DtDesde.Value, DtHasta.Value);
-            dgvExportarPeriodos.Columns[0].Width = 200;
-            dgvExportarPeriodos.Columns[1].Width = 75;
-            dgvExportarPeriodos.Columns[2].Width = 75;
-            dgvExportarPeriodos.Columns[3].Width = 75;
-            dgvExportarPeriodos.Columns[4].Visible = false;
-            dgvExportarPeriodos.Columns[5].Width = 350;
-            dgvExportarPeriodos.Columns[6].Visible = false;
-            dgvExportarPeriodos.Columns[7].Width = 150;
-            dgvExportarPeriodos.Columns[8].Width = 100;
-            dgvExportarPeriodos.Columns[9].Width = 100;
-            dgvExportarPeriodos.Columns[10].Width = 200;
-            dgvExportarPeriodos.Columns[11].Width = 150;
-            dgvExportarPeriodos.Columns[12].Width = 150;
-            dgvExportarPeriodos.Columns[13].Visible = false;
+            //dgvExportarPeriodos.Columns[0].Width = 200;
+            //dgvExportarPeriodos.Columns[1].Width = 75;
+            //dgvExportarPeriodos.Columns[2].Width = 75;
+            //dgvExportarPeriodos.Columns[3].Width = 75;
+            //dgvExportarPeriodos.Columns[4].Visible = false;
+            //dgvExportarPeriodos.Columns[5].Width = 350;
+            //dgvExportarPeriodos.Columns[6].Visible = false;
+            //dgvExportarPeriodos.Columns[7].Width = 150;
+            //dgvExportarPeriodos.Columns[8].Width = 100;
+            //dgvExportarPeriodos.Columns[9].Width = 100;
+            //dgvExportarPeriodos.Columns[10].Width = 200;
+            //dgvExportarPeriodos.Columns[11].Width = 150;
+            //dgvExportarPeriodos.Columns[12].Width = 150;
+            //dgvExportarPeriodos.Columns[13].Visible = false;
             //dgv1.Columns[0].Visible = false;
 
         }
@@ -137,9 +137,9 @@ namespace CapaUsuario.ExportarSunat
                 {
                     string tipoRegistro = "3";
                     string dni3 = dgvExportarPeriodos[3, f].Value.ToString();
-                    string fechainicio3 = dgvExportarPeriodos[8, f].Value.ToString();
-                    string fechafin3 = dgvExportarPeriodos[9, f].Value.ToString();
-                    string indicadorTipoRegistro3 = dgvExportarPeriodos[10, f].Value.ToString();
+                    string fechainicio3 = dgvExportarPeriodos[7, f].Value.ToString();
+                    string fechafin3 = dgvExportarPeriodos[8, f].Value.ToString();
+                    string indicadorTipoRegistro3 = dgvExportarPeriodos[9, f].Value.ToString();
                     ConvertiraNumero(indicadorTipoRegistro3);
                     RegimenAseguramiento = oexp.ExportarPeriodos(tipoDoc, dni3, paisDoc, Categoria, tipoRegistro, fechainicio3, fechafin3, NroRegimenSalud, EPS);
                     milista.Add(RegimenAseguramiento);
@@ -155,9 +155,9 @@ namespace CapaUsuario.ExportarSunat
                 {
                     string tipoRegistro = "4";
                     string dni4 = dgvExportarPeriodos[3, g].Value.ToString();
-                    string fechainicio4 = dgvExportarPeriodos[11, g].Value.ToString();
-                    string fechafin4 = dgvExportarPeriodos[12, g].Value.ToString();
-                    string indicadorTipoRegistro4 = dgvExportarPeriodos[13, g].Value.ToString();
+                    string fechainicio4 = dgvExportarPeriodos[10, g].Value.ToString();
+                    string fechafin4 = dgvExportarPeriodos[11, g].Value.ToString();
+                    string indicadorTipoRegistro4 = dgvExportarPeriodos[12, g].Value.ToString();
                     RegimenPensionario = oexp.ExportarPeriodos(tipoDoc, dni4, paisDoc, Categoria, tipoRegistro, fechainicio4, fechafin4, indicadorTipoRegistro4, EPS);
                     milista.Add(RegimenPensionario);
                 }

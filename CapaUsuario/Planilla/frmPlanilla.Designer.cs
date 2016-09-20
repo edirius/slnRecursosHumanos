@@ -161,6 +161,7 @@
             this.cboAño.Name = "cboAño";
             this.cboAño.Size = new System.Drawing.Size(144, 21);
             this.cboAño.TabIndex = 85;
+            this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
             // 
             // cboMes
             // 
@@ -177,7 +178,7 @@
             "JUNIO",
             "JULIO",
             "AGOSTO",
-            "SEPTIEMBRE",
+            "SETIEMBRE",
             "OCTUBRE",
             "NOVIEMBRE",
             "DICIEMBRE"});

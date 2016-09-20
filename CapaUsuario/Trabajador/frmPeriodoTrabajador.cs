@@ -47,6 +47,20 @@ namespace CapaUsuario.Trabajador
             }
             if (iAccion == 2)
             {
+                if (MessageBox.Show("Desea dar de baja ESSALUD - AFP/SNP.", "Gestión del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    //Regimen Trabajador
+                    CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                    miRegimenTrabajador.BajaRegimenTrabajador(miPeriodoTrabajador.FechaFin, miPeriodoTrabajador.IdtPeriodoTrabajador);
+
+                    //Regimen Salud Trabajador
+                    CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador miRegimenSaludTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador();
+                    miRegimenSaludTrabajador.BajaRegimenSaludTrabajador(miPeriodoTrabajador.FechaFin, miPeriodoTrabajador.IdtPeriodoTrabajador);
+
+                    //Regimen Trabajador
+                    CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+                    miRegimenPensionarioTrabajador.BajaRegimenPensionarioTrabajador(miPeriodoTrabajador.FechaFin, miPeriodoTrabajador.IdtPeriodoTrabajador);
+                }
                 miPeriodoTrabajador.ModificarPeriodoTrabajador(miPeriodoTrabajador);
                 bOk = true;
             }

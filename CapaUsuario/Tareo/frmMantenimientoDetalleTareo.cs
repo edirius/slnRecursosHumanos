@@ -12,6 +12,7 @@ namespace CapaUsuario.Tareo
 {
     public partial class frmMantenimientoDetalleTareo : Form
     {
+        int sidtperiodotrabajador = 0;
         DateTime auxiliar;
 
         DataTable oDataTrabajador = new DataTable();
@@ -250,7 +251,16 @@ namespace CapaUsuario.Tareo
                 {
                     if (dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value == null)
                     {
-                        dgvDetalleTareo.Rows.RemoveAt(e.RowIndex);
+                        if (MessageBox.Show("Desea dar de baja al Trabajador.", "Gestión del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            PeriodoTrabajador(e.RowIndex);
+                            CapaUsuario.Tareo.frmBajaTrabajador fBajaTrabajador = new CapaUsuario.Tareo.frmBajaTrabajador();
+                            fBajaTrabajador.RecibirDatos(sidtperiodotrabajador);
+                            if (fBajaTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                            {
+                                dgvDetalleTareo.Rows.RemoveAt(e.RowIndex);
+                            }
+                        }
                         return;
                     }
                     if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value) == "")
@@ -593,6 +603,14 @@ namespace CapaUsuario.Tareo
                 }
             }
             return contadordias;
+        }
+
+        private void PeriodoTrabajador(int fila)
+        {
+            foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + Convert.ToInt32(dgvDetalleTareo.Rows[fila].Cells[4].Value.ToString()) + "'"))
+            {
+                sidtperiodotrabajador = Convert.ToInt32(rowPeriodoTrabajador[0].ToString());
+            }
         }
     }
 }

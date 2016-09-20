@@ -290,6 +290,36 @@ namespace CapaUsuario.Planilla
 
         }
 
+        private void dgvDetallePlanilla_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                if (dgvDetallePlanilla.Rows[e.RowIndex].Cells[2].Selected == true)
+                {
+                    if (dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value == null)
+                    {
+                        dgvDetallePlanilla.Rows.RemoveAt(e.RowIndex);
+                        return;
+                    }
+                    if (Convert.ToString(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value) == "")
+                    {
+                        MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (MessageBox.Show("Está seguro que desea eliminar al Trabajador de la Planilla", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    {
+                        return;
+                    }
+                    miDetallePlanillaIngresos.EliminarDetallePlanillaIngresos(Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value));
+                    miDetallePlanillaATrabajador.EliminarDetallePlanillaATrabajador(Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value));
+                    miDetallePlanillaDescuentos.EliminarDetallePlanillaDescuentos(Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value));
+                    miDetallePlanillaAEmpleador.EliminarDetallePlanillaAEmpleador(Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value));
+                    miDetallePlanilla.EliminarDetallePlanilla(Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value));
+                    CargarDatos();
+                }
+            }
+        }
+
         private void dgvDetallePlanilla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             string x = dgvDetallePlanilla.Columns[e.ColumnIndex].Name.Substring(0, 1);
@@ -372,8 +402,8 @@ namespace CapaUsuario.Planilla
                 CargarATrabajador(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
                 CargarDescuentos(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
                 CargarAEmpleador(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
-                TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[12].Value = row[3].ToString();//Dias Laborados
+                TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
                 DatosAFP(dgvDetallePlanilla.RowCount - 1);
                 CalcularTotalDescuentos(dgvDetallePlanilla.RowCount - 1);
                 btnImportar.Enabled = false;
@@ -421,7 +451,7 @@ namespace CapaUsuario.Planilla
         }
 
         private void DatosAFP(int fila)
-        {
+        {   
             foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + dgvDetallePlanilla.Rows[fila].Cells[4].Value.ToString() + "'"))
             {
                 foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
@@ -433,7 +463,8 @@ namespace CapaUsuario.Planilla
                         AFP = rowAFP[1].ToString();
                     }
                     oDataComisionAFP = miComisionAFP.ListarComisionAFP(Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()));
-                    foreach (DataRow rowComisionAFP in oDataComisionAFP.Select("mes >= '01/" + Mes(smes) + "/" + saño + "' AND mes <= '31/" + Mes(smes) + "/" + saño + "'"))
+                    int DiasMes = DateTime.DaysInMonth(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)));
+                    foreach (DataRow rowComisionAFP in oDataComisionAFP.Select("mes >= '01/" + Mes(smes) + "/" + saño + "' AND mes <= '" + DiasMes + "/" + Mes(smes) + "/" + saño + "'"))
                     {
                         PrimaSeguros = Convert.ToDecimal(rowComisionAFP[3].ToString());
                         AporteObligatorio = Convert.ToDecimal(rowComisionAFP[4].ToString());
@@ -1245,7 +1276,7 @@ namespace CapaUsuario.Planilla
                 case "AGOSTO":
                     x = "08";
                     break;
-                case "SEPTIEMBRE":
+                case "SETIEMBRE":
                     x = "09";
                     break;
                 case "OCTUBRE":

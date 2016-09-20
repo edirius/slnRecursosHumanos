@@ -71,5 +71,11 @@ namespace CapaDeNegocios.DatosLaborales
             Conexion.GDatos.Ejecutar("spELiminarRegimenSaludTrabajador", IdtRegimenSaludTrabajador);
             return true;
         }
+
+        public Boolean BajaRegimenSaludTrabajador(string fechafin, int IdtPeriodoTrabajador)
+        {
+            Conexion.GDatos.Ejecutar("spBajaRegimenSaludTrabajador", fechafin, IdtPeriodoTrabajador);
+            return true;
+        }
     }
 }
