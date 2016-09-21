@@ -35,7 +35,7 @@ namespace CapaUsuario.Trabajador
 
         private void frmNuevoObrero_Load(object sender, EventArgs e)
         {
-            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
+            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
             CargarDepartamento();
             CargarAFP();
         }
@@ -73,7 +73,7 @@ namespace CapaUsuario.Trabajador
             miTrabajador.MiNacionalidad.Codigo = 1;
 
             miTrabajador.AgregarTrabajador(miTrabajador);
-            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
+            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
             sidttrabajador = Convert.ToInt32(oDataTrabajador.Compute("MAX(id_trabajador)", ""));
 
             CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();

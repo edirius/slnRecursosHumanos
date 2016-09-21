@@ -378,9 +378,25 @@ namespace CapaDeNegocios
             return true;
         }
 
-        public DataTable ObtenerListaTrabajadores(Boolean Activo)
+        public DataTable ObtenerListaTrabajadores(string FiltroTrabajadores)
         {
-            return Conexion.GDatos.TraerDataTable("spListarTrabajadores", Activo);
+            string filtro = "t";
+            switch (FiltroTrabajadores)
+            {
+                case "Activos":
+                    filtro = "a";
+                    break;
+                case "Inactivos":
+                    filtro = "i";
+                    break;
+                case "Todos":
+                    filtro = "t";
+                    break;
+                case "Sin Periodo Laboral":
+                    filtro = "s";
+                    break;
+            }
+            return Conexion.GDatos.TraerDataTable("spListarTrabajadores", filtro);
         }
       
 

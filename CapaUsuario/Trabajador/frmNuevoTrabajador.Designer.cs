@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNuevoTrabajador));
             this.tabTrabajador = new System.Windows.Forms.TabControl();
             this.tabDatosGenerales = new System.Windows.Forms.TabPage();
+            this.chkRenta4ta = new System.Windows.Forms.CheckBox();
             this.chkEssaludVida = new System.Windows.Forms.CheckBox();
             this.btnTipoZona = new System.Windows.Forms.Button();
             this.btnTipoVia = new System.Windows.Forms.Button();
@@ -91,7 +93,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
             this.toolTrabajador = new System.Windows.Forms.ToolTip(this.components);
-            this.chkRenta4ta = new System.Windows.Forms.CheckBox();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
@@ -175,6 +176,16 @@
             this.tabDatosGenerales.TabIndex = 0;
             this.tabDatosGenerales.Text = "Datos Generales";
             this.tabDatosGenerales.UseVisualStyleBackColor = true;
+            // 
+            // chkRenta4ta
+            // 
+            this.chkRenta4ta.AutoSize = true;
+            this.chkRenta4ta.Location = new System.Drawing.Point(536, 568);
+            this.chkRenta4ta.Name = "chkRenta4ta";
+            this.chkRenta4ta.Size = new System.Drawing.Size(195, 17);
+            this.chkRenta4ta.TabIndex = 104;
+            this.chkRenta4ta.Text = "Suspención Renta de 4ta Categoria";
+            this.chkRenta4ta.UseVisualStyleBackColor = true;
             // 
             // chkEssaludVida
             // 
@@ -311,6 +322,7 @@
             this.txtReferencia.Name = "txtReferencia";
             this.txtReferencia.Size = new System.Drawing.Size(178, 20);
             this.txtReferencia.TabIndex = 90;
+            this.txtReferencia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtReferencia_KeyDown);
             // 
             // label21
             // 
@@ -327,6 +339,7 @@
             this.txtNombreZona.Name = "txtNombreZona";
             this.txtNombreZona.Size = new System.Drawing.Size(100, 20);
             this.txtNombreZona.TabIndex = 88;
+            this.txtNombreZona.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreZona_KeyDown);
             // 
             // label20
             // 
@@ -363,6 +376,7 @@
             this.txtDepartamentoInterior.Name = "txtDepartamentoInterior";
             this.txtDepartamentoInterior.Size = new System.Drawing.Size(100, 20);
             this.txtDepartamentoInterior.TabIndex = 84;
+            this.txtDepartamentoInterior.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDepartamentoInterior_KeyDown);
             // 
             // label18
             // 
@@ -379,6 +393,7 @@
             this.txtNumeroVia.Name = "txtNumeroVia";
             this.txtNumeroVia.Size = new System.Drawing.Size(100, 20);
             this.txtNumeroVia.TabIndex = 82;
+            this.txtNumeroVia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumeroVia_KeyDown);
             // 
             // label17
             // 
@@ -395,6 +410,7 @@
             this.txtNombreVia.Name = "txtNombreVia";
             this.txtNombreVia.Size = new System.Drawing.Size(100, 20);
             this.txtNombreVia.TabIndex = 80;
+            this.txtNombreVia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreVia_KeyDown);
             // 
             // label16
             // 
@@ -431,7 +447,7 @@
             this.txtNacionalidad.Location = new System.Drawing.Point(136, 451);
             this.txtNacionalidad.Name = "txtNacionalidad";
             this.txtNacionalidad.ReadOnly = true;
-            this.txtNacionalidad.Size = new System.Drawing.Size(180, 20);
+            this.txtNacionalidad.Size = new System.Drawing.Size(188, 20);
             this.txtNacionalidad.TabIndex = 76;
             this.txtNacionalidad.TextChanged += new System.EventHandler(this.txtNacionalidad_TextChanged);
             this.txtNacionalidad.Enter += new System.EventHandler(this.txtNacionalidad_Enter);
@@ -453,6 +469,7 @@
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(223, 20);
             this.txtCorreo.TabIndex = 74;
+            this.txtCorreo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCorreo_KeyDown);
             // 
             // label13
             // 
@@ -465,6 +482,7 @@
             // 
             // cboEstadoCivil
             // 
+            this.cboEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboEstadoCivil.FormattingEnabled = true;
             this.cboEstadoCivil.Items.AddRange(new object[] {
             "Casado",
@@ -475,6 +493,7 @@
             this.cboEstadoCivil.Name = "cboEstadoCivil";
             this.cboEstadoCivil.Size = new System.Drawing.Size(121, 21);
             this.cboEstadoCivil.TabIndex = 72;
+            this.cboEstadoCivil.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboEstadoCivil_KeyDown);
             // 
             // label12
             // 
@@ -544,6 +563,8 @@
             this.txtDNI.Size = new System.Drawing.Size(71, 20);
             this.txtDNI.TabIndex = 65;
             this.txtDNI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDNI.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDNI_KeyDown);
+            this.txtDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDNI_KeyPress);
             // 
             // label10
             // 
@@ -561,6 +582,7 @@
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
             this.dtpFechaNacimiento.Size = new System.Drawing.Size(100, 20);
             this.dtpFechaNacimiento.TabIndex = 63;
+            this.dtpFechaNacimiento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpFechaNacimiento_KeyDown);
             // 
             // label9
             // 
@@ -577,6 +599,7 @@
             this.txtCelularPersonal.Name = "txtCelularPersonal";
             this.txtCelularPersonal.Size = new System.Drawing.Size(100, 20);
             this.txtCelularPersonal.TabIndex = 61;
+            this.txtCelularPersonal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCelularPersonal_KeyDown);
             // 
             // label8
             // 
@@ -593,6 +616,7 @@
             this.txtCelularTrabajo.Name = "txtCelularTrabajo";
             this.txtCelularTrabajo.Size = new System.Drawing.Size(100, 20);
             this.txtCelularTrabajo.TabIndex = 59;
+            this.txtCelularTrabajo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCelularTrabajo_KeyDown);
             // 
             // label7
             // 
@@ -609,6 +633,7 @@
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(296, 20);
             this.txtDireccion.TabIndex = 57;
+            this.txtDireccion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDireccion_KeyDown);
             // 
             // label6
             // 
@@ -629,6 +654,7 @@
             this.cboSexo.Name = "cboSexo";
             this.cboSexo.Size = new System.Drawing.Size(121, 21);
             this.cboSexo.TabIndex = 55;
+            this.cboSexo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboSexo_KeyDown);
             // 
             // label5
             // 
@@ -646,6 +672,7 @@
             this.txtApellidoMaterno.Name = "txtApellidoMaterno";
             this.txtApellidoMaterno.Size = new System.Drawing.Size(260, 20);
             this.txtApellidoMaterno.TabIndex = 53;
+            this.txtApellidoMaterno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtApellidoMaterno_KeyDown);
             // 
             // label4
             // 
@@ -663,6 +690,7 @@
             this.txtApellidoPaterno.Name = "txtApellidoPaterno";
             this.txtApellidoPaterno.Size = new System.Drawing.Size(260, 20);
             this.txtApellidoPaterno.TabIndex = 51;
+            this.txtApellidoPaterno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtApellidoPaterno_KeyDown);
             // 
             // label3
             // 
@@ -680,6 +708,7 @@
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(260, 20);
             this.txtNombres.TabIndex = 49;
+            this.txtNombres.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombres_KeyDown);
             // 
             // label2
             // 
@@ -718,22 +747,13 @@
             this.toolTrabajador.ForeColor = System.Drawing.Color.RoyalBlue;
             this.toolTrabajador.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // chkRenta4ta
-            // 
-            this.chkRenta4ta.AutoSize = true;
-            this.chkRenta4ta.Location = new System.Drawing.Point(536, 568);
-            this.chkRenta4ta.Name = "chkRenta4ta";
-            this.chkRenta4ta.Size = new System.Drawing.Size(195, 17);
-            this.chkRenta4ta.TabIndex = 104;
-            this.chkRenta4ta.Text = "Suspención Renta de 4ta Categoria";
-            this.chkRenta4ta.UseVisualStyleBackColor = true;
-            // 
             // frmNuevoTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(769, 655);
             this.Controls.Add(this.tabTrabajador);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmNuevoTrabajador";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

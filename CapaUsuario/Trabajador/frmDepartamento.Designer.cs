@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDepartamento));
             this.dtgListaDepartamento = new System.Windows.Forms.DataGridView();
             this.idtdepartamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoUbigeo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,9 +57,11 @@
             this.dtgListaDepartamento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListaDepartamento.Size = new System.Drawing.Size(467, 229);
             this.dtgListaDepartamento.TabIndex = 0;
+            this.dtgListaDepartamento.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaDepartamento_CellContentClick);
             this.dtgListaDepartamento.Enter += new System.EventHandler(this.dtgListaDepartamento_Enter);
             this.dtgListaDepartamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgListaDepartamento_KeyDown);
             this.dtgListaDepartamento.MouseEnter += new System.EventHandler(this.dtgListaDepartamento_MouseEnter);
+            this.dtgListaDepartamento.MouseHover += new System.EventHandler(this.dtgListaDepartamento_MouseHover);
             // 
             // idtdepartamento
             // 
@@ -90,7 +93,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(489, 254);
             this.Controls.Add(this.dtgListaDepartamento);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDepartamento";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de Departamentos";
             this.Load += new System.EventHandler(this.frmDepartamento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaDepartamento)).EndInit();

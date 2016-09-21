@@ -90,7 +90,7 @@ namespace CapaUsuario.ResidenteMeta
         private void CargarResidente()
         {
             CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
-            cboResidente.DataSource = miTrabajador.ObtenerListaTrabajadores(true);
+            cboResidente.DataSource = miTrabajador.ObtenerListaTrabajadores("Todos");
             cboResidente.DisplayMember = "nombres";
             cboResidente.ValueMember = "id_trabajador";
         }

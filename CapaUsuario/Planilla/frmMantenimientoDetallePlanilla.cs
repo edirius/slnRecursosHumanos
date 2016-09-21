@@ -74,7 +74,7 @@ namespace CapaUsuario.Planilla
         {
             DibujarDataGrid();
             MostrarColumnas();
-            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
+            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
             oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
             oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
@@ -884,6 +884,7 @@ namespace CapaUsuario.Planilla
             {
                 for (int i = 0; i < con_descuento; i++)
                 {
+                    string xxx = smdescuentos[i, 1].ToString();
                     if (smdescuentos[i, 1].ToString() == "0704" || smdescuentos[i, 1].ToString() == "0705")
                     {
                         remuneracion_afecta -= Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_descuentos + con_ingresos + con_trabajador + i].Value);

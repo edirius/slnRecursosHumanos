@@ -25,7 +25,7 @@ namespace CapaUsuario.Trabajador
 
         private void Iniciar()
         {
-            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(true);
+            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text);
             if (dtgListaTrabajadores.Rows.Count > 0)
             {
                 DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, 0);
@@ -56,7 +56,7 @@ namespace CapaUsuario.Trabajador
                 if (fNuevoTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     miListaTrabajadores.AgregarTrabajador(fNuevoTrabajador.miTrabajador);
-                    dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(true);
+                    dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text);
                 }
             }
             catch (Exception f)
@@ -77,7 +77,7 @@ namespace CapaUsuario.Trabajador
                 if (fModificarTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     miListaTrabajadores.ModificarTrabajador(fModificarTrabajador.miTrabajador);
-                    dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(true);
+                    dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text);
                 }
             }
             catch (Exception g)
@@ -98,7 +98,7 @@ namespace CapaUsuario.Trabajador
                     cTrabajador miTrabajador = new cTrabajador();
                     miTrabajador.IdTrabajador = Convert.ToInt16(dtgListaTrabajadores.SelectedRows[0].Cells[0].Value.ToString());
                     miListaTrabajadores.EliminarTrabajador(miTrabajador);
-                    dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(true);
+                    dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text);
                 }
             }
             catch (Exception h)
@@ -132,6 +132,11 @@ namespace CapaUsuario.Trabajador
         {
             DataTable r = new DataTable();
            
+        }
+
+        private void cboFiltroTrabajadores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text);
         }
     }
 }
