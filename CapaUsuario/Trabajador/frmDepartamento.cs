@@ -44,5 +44,25 @@ namespace CapaUsuario.Trabajador
         {
             toolDepartamento.Show("Presione ENTER para seleccionar el Departamento", dtgListaDepartamento);
         }
+
+        private void dtgListaDepartamento_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgListaDepartamento.SelectedRows.Count > 0)
+            {
+                miDepartamento.Codigo = Convert.ToInt16(dtgListaDepartamento.SelectedRows[0].Cells[0].Value.ToString());
+                miDepartamento.CodigoUbigeo = dtgListaDepartamento.SelectedRows[0].Cells[1].Value.ToString();
+                miDepartamento.Descripcion = dtgListaDepartamento.SelectedRows[0].Cells[2].Value.ToString();
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un departamento de la lista.");
+            }
+        }
+
+        private void dtgListaDepartamento_MouseHover(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -151,6 +151,17 @@ namespace CapaUsuario.Trabajador
                     txtNacionalidad.Text = miTrabajador.MiNacionalidad.Descripcion; 
                 }
             }
+            else
+            {
+                if (txtNacionalidad.Text == "")
+                {
+                    MessageBox.Show("Debe seleccionar la nacionalidad.");
+                }
+                else
+                {
+                    txtDepartamento.Focus();
+                }
+            }
         }
 
         private void txtNacionalidad_TextChanged(object sender, EventArgs e)
@@ -167,6 +178,17 @@ namespace CapaUsuario.Trabajador
                 {
                     miTrabajador.MiTipoVia = fTipoVia.miTipoVia;
                     txtTipoVia.Text = miTrabajador.MiTipoVia.Descripcion;
+                }
+            }
+            else
+            {
+                if (txtTipoVia.Text == "")
+                {
+                    MessageBox.Show("Debe seleccionar el Tipo de Via.");
+                }
+                else
+                {
+                    txtNombreVia.Focus();
                 }
             }
         }
@@ -192,6 +214,17 @@ namespace CapaUsuario.Trabajador
                     txtTipoZona.Text = miTrabajador.MiTipoZOna.Descripcion;
                 }
             }
+            else
+            {
+                if (txtTipoZona.Text == "")
+                {
+                    MessageBox.Show("Seleccione el tipo de zona (F2).");
+                }
+                else
+                {
+                    txtNombreZona.Focus();
+                }
+            }
         }
 
         private void txtDepartamento_KeyDown(object sender, KeyEventArgs e)
@@ -203,6 +236,17 @@ namespace CapaUsuario.Trabajador
                 {
                     miTrabajador.MiDepartamento = fDepartamento.miDepartamento;
                     txtDepartamento.Text = miTrabajador.MiDepartamento.Descripcion;
+                }
+            }
+            else
+            {
+                if (txtDepartamento.Text == "")
+                {
+                    MessageBox.Show("Debe seleccionar el departamento.");
+                }
+                else
+                {
+                    txtProvincia.Focus();
                 }
             }
         }
@@ -232,6 +276,17 @@ namespace CapaUsuario.Trabajador
                     MessageBox.Show("Seleccione primero el departamento");
                 }
             }
+            else
+            {
+                if (txtProvincia.Text == "")
+                {
+                    MessageBox.Show("Debe seleccionar la provincia (F2).");
+                }
+                else
+                {
+                    txtDistrito.Focus();
+                }
+            }
         }
 
         private void txtDistrito_KeyDown(object sender, KeyEventArgs e)
@@ -248,6 +303,21 @@ namespace CapaUsuario.Trabajador
                         miTrabajador.MiDistrito = fListaDistritos.miDistrito;
                         txtDistrito.Text = miTrabajador.MiDistrito.Descripcion;
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione primero la provincia");
+                }
+            }
+            else
+            {
+                if (txtDistrito.Text == "")
+                {
+                    MessageBox.Show("Debe seleccionar el distrito (F2).");
+                }
+                else
+                {
+                    txtTipoVia.Focus();
                 }
             }
         }
@@ -510,12 +580,147 @@ namespace CapaUsuario.Trabajador
             }
         }
 
+        private void txtDNI_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtNombres.Focus();
+            }
+        }
+
+        private void txtNombres_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtApellidoPaterno.Focus();
+            }
+        }
+
+        private void txtApellidoPaterno_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtApellidoMaterno.Focus();
+            }
+        }
+        private void txtApellidoMaterno_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                cboEstadoCivil.Focus();
+                cboEstadoCivil.DroppedDown = true;
+            }
+        }
+
+        private void cboSexo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtDireccion.Focus();
+            }
+        }
+
+        private void cboEstadoCivil_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                cboSexo.Focus();
+                cboSexo.DroppedDown = true;
+            }
+        }
+
+        private void txtDireccion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtCelularTrabajo.Focus();
+            }
+        }
+
+        private void txtCelularTrabajo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtCelularPersonal.Focus();
+            }
+        }
+
+        private void txtCelularPersonal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dtpFechaNacimiento.Focus();
+            }
+        }
+
+        private void dtpFechaNacimiento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtCorreo.Focus();
+            }
+        }
+
+        private void txtCorreo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtNacionalidad.Focus();
+            }
+        }
+
+        private void txtNombreVia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtNumeroVia.Focus();
+            }
+        }
+
+        private void txtNumeroVia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtDepartamentoInterior.Focus();
+            }
+        }
+
+        private void txtDepartamentoInterior_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtTipoZona.Focus();
+            }
+        }
+
+        private void txtNombreZona_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtReferencia.Focus();
+            }
+        }
+
+        private void txtReferencia_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnAceptar.Focus();
+            }
+        }
         #endregion
 
         private void chkEssaludVida_CheckedChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+       
     }
 
 

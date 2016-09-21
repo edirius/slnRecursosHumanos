@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTrabajadores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -67,6 +67,7 @@
             this.apellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboFiltroTrabajadores = new System.Windows.Forms.ComboBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -112,7 +113,7 @@
             this.btnNuevoTrabajador.Image = global::CapaUsuario.Properties.Resources.add1;
             this.btnNuevoTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNuevoTrabajador.Name = "btnNuevoTrabajador";
-            this.btnNuevoTrabajador.Size = new System.Drawing.Size(155, 25);
+            this.btnNuevoTrabajador.Size = new System.Drawing.Size(154, 25);
             this.btnNuevoTrabajador.Text = "Nuevo Trabajador";
             this.btnNuevoTrabajador.Click += new System.EventHandler(this.btnNuevoTrabajador_Click_1);
             // 
@@ -126,7 +127,7 @@
             this.btnModificarTrabajador.Image = global::CapaUsuario.Properties.Resources.add_to_folder;
             this.btnModificarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnModificarTrabajador.Name = "btnModificarTrabajador";
-            this.btnModificarTrabajador.Size = new System.Drawing.Size(138, 25);
+            this.btnModificarTrabajador.Size = new System.Drawing.Size(137, 25);
             this.btnModificarTrabajador.Text = "Modificar Trabajador";
             this.btnModificarTrabajador.Click += new System.EventHandler(this.btnModificarTrabajador_Click);
             // 
@@ -140,7 +141,7 @@
             this.btnEliminarTrabajador.Image = global::CapaUsuario.Properties.Resources.delete_page;
             this.btnEliminarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEliminarTrabajador.Name = "btnEliminarTrabajador";
-            this.btnEliminarTrabajador.Size = new System.Drawing.Size(130, 25);
+            this.btnEliminarTrabajador.Size = new System.Drawing.Size(129, 25);
             this.btnEliminarTrabajador.Text = "Eliminar Trabajador";
             this.btnEliminarTrabajador.Click += new System.EventHandler(this.btnEliminarTrabajador_Click_1);
             // 
@@ -183,6 +184,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.cboFiltroTrabajadores);
             this.splitContainer1.Panel2.Controls.Add(this.btnDatosLaborales);
             this.splitContainer1.Panel2.Controls.Add(this.btnDetalleTareo);
             this.splitContainer1.Panel2.Controls.Add(this.chkActivos);
@@ -359,8 +361,8 @@
             // 
             this.dtgListaTrabajadores.AllowUserToAddRows = false;
             this.dtgListaTrabajadores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgListaTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaTrabajadores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idTrabajador,
@@ -427,6 +429,21 @@
             this.sexo.ReadOnly = true;
             this.sexo.Width = 50;
             // 
+            // cboFiltroTrabajadores
+            // 
+            this.cboFiltroTrabajadores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFiltroTrabajadores.FormattingEnabled = true;
+            this.cboFiltroTrabajadores.Items.AddRange(new object[] {
+            "Todos",
+            "Activos",
+            "Inactivos",
+            "Sin Periodo Laboral"});
+            this.cboFiltroTrabajadores.Location = new System.Drawing.Point(539, 69);
+            this.cboFiltroTrabajadores.Name = "cboFiltroTrabajadores";
+            this.cboFiltroTrabajadores.Size = new System.Drawing.Size(121, 21);
+            this.cboFiltroTrabajadores.TabIndex = 33;
+            this.cboFiltroTrabajadores.SelectedIndexChanged += new System.EventHandler(this.cboFiltroTrabajadores_SelectedIndexChanged);
+            // 
             // frmListaTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -491,5 +508,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sexo;
         private System.Windows.Forms.Button btnDetalleTareo;
         private System.Windows.Forms.Button btnDatosLaborales;
+        private System.Windows.Forms.ComboBox cboFiltroTrabajadores;
     }
 }

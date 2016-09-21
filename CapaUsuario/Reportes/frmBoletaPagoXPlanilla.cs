@@ -260,19 +260,10 @@ namespace CapaUsuario.Reportes
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             FileInfo file = new FileInfo(@"C:\PDFs\BoletaPagoPlanilla.pdf");
-
             bool estaAbierto = false;
-
             estaAbierto = IsFileinUse(file, @"C:\PDFs\BoletaPagoPlanilla.pdf");
-            //estaAbierto = IsFileLocked2("C:\\PDFs\\BoletaPagoPlanilla.pdf");
-            //estaAbierto = IsFileinUse2(file);
-            //estaAbierto = CanReadFile("C:\\PDFs\\BoletaPagoPlanilla.pdf");
-            //estaAbierto = esta_en_uso(file,"C:\\PDFs\\BPP.pdf");
-            //estaAbierto = IsExecutingApplication();
-            //estaAbierto = esta_abierto();
 
-
-
+            boleta_pago_vacia = false;
 
             if (plantilla != "REGIDORES")
             {
@@ -376,6 +367,8 @@ namespace CapaUsuario.Reportes
             {
                 values[i] = (float)dg.Columns[i].Width;
                 if (i == 4) values[i] = 22;
+                if (i == 0) values[i] = 150;
+                if (i == 5) values[i] = 150;
             }
             return values;
         }
@@ -434,7 +427,6 @@ namespace CapaUsuario.Reportes
             /*              Llenar datagrids            */
             odtPlanilla = oPlanilla.ListarDetallePlanillaX(sidtplanilla);
 
-
             if (odtPlanilla.Rows.Count > 0) {
 
                 FileStream fs = new FileStream(folderPath + "BoletaPagoPlanilla.pdf", FileMode.Create, FileAccess.Write, FileShare.None);
@@ -453,7 +445,15 @@ namespace CapaUsuario.Reportes
 
                     if (boleta_pago_vacia)
                     {
+
                         MessageBox.Show("Boleta de pago vacia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MultiColumnText columns2 = new MultiColumnText();
+                        columns2.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 1);
+                        columns2.AddElement(paragraph);
+                        pdfDoc.Add(columns2);
+                        pdfDoc.Close();
+                        //stream.Close();
+                        writer.Close();
                         break;
                     }
 
@@ -674,8 +674,7 @@ namespace CapaUsuario.Reportes
                 odtD2 = MergeTablesByIndex(odtD2, odtD);
 
             /*------------Fin primera parte de la boleta de pago */
-
-
+            
             /*---------inicio parte a de boleta de pago */
                 odtA.Columns.Clear();
                 odtA.Rows.Clear();
@@ -1119,6 +1118,7 @@ namespace CapaUsuario.Reportes
                         cell.BorderWidthBottom = 0f;
                         cell.BackgroundColor = CMYKColor.WHITE;
                     }
+                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
                     pdfTableB.AddCell(cell);
                     k++;
                 }
@@ -1334,7 +1334,7 @@ namespace CapaUsuario.Reportes
                         cell.BorderWidthBottom = 0f;
                         cell.BackgroundColor = CMYKColor.WHITE;
                     }
-
+                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
                     pdfTableE.AddCell(cell);
                     k++;
                 }
@@ -1384,11 +1384,17 @@ namespace CapaUsuario.Reportes
                         }
                         if (dgvBoletaPago_E[j, i].Value.ToString() == "Neto a Pagar")
                         {
+                            cell.HorizontalAlignment = 1;
                             cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
                         }
                         //Alineando a la derecha la columna de ingresos, egresos y neto
                         if (j == 1 || j ==2 || j==3 || j == 5 || j == 6 || j == 7)
                             cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+
+                        //Alineando a la derecha la columna de ingresos, egresos y neto
+                        if (j == 0 || j == 5 )
+                            cell.HorizontalAlignment = Element.ALIGN_LEFT;
+
 
                         //cell.FixedHeight = 25f;
                         pdfTableE.AddCell(cell);
@@ -1532,10 +1538,10 @@ namespace CapaUsuario.Reportes
             
             if (numero_boleta_pago > 0)
             {
-                dgvBoletaPago.Columns[0].Visible = true;
-                dgvBoletaPago.Columns[1].Visible = true;
-                dgvBoletaPago.Columns[3].Visible = true;
-                dgvBoletaPago.Columns[4].Visible = true;
+                dgvBoletaPago.Columns[0].Visible = false;
+                dgvBoletaPago.Columns[1].Visible = false;
+                dgvBoletaPago.Columns[3].Visible = false;
+                dgvBoletaPago.Columns[4].Visible = false;
 
                 dgvBoletaPago.Rows[0].Cells[5].Selected = true;
 

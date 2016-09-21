@@ -78,6 +78,12 @@ namespace CapaUsuario.Planilla
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
+        private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarMeta();
+            cboMeta_SelectedIndexChanged(sender, e);
+        }
+
         private void cboRegimenLaboral_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboRegimenLaboral.Text != "System.Data.DataRowView" && cboRegimenLaboral.ValueMember != "")
@@ -88,7 +94,7 @@ namespace CapaUsuario.Planilla
 
         private void cboMeta_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboMeta.Text != "System.Data.DataRowView" && cboMeta.ValueMember != "")
+            if (cboMeta.Text != "System.Data.DataRowView" && cboMeta.Text != "(Colección)" && cboMeta.ValueMember != "")
             {
                 sidtmeta = Convert.ToInt32(cboMeta.SelectedValue);
             }
@@ -132,10 +138,20 @@ namespace CapaUsuario.Planilla
 
         private void CargarMeta()
         {
-            CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
-            cboMeta.DataSource = miMeta.ListarMetas();
-            cboMeta.DisplayMember = "nombre";
-            cboMeta.ValueMember = "idtmeta";
+            if (cboAño.Text != "")
+            {
+                DataTable oDataMeta = new DataTable();
+                CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
+                oDataMeta = miMeta.ListarMetas();
+                Dictionary<string, string> test = new Dictionary<string, string>();
+                foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+                {
+                    test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+                }
+                cboMeta.DataSource = new BindingSource(test, null);
+                cboMeta.DisplayMember = "Value";
+                cboMeta.ValueMember = "Key";
+            }
             if (smeta == "") { cboMeta.SelectedIndex = -1; }
             else { cboMeta.Text = smeta; }
         }

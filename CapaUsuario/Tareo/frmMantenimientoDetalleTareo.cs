@@ -12,6 +12,7 @@ namespace CapaUsuario.Tareo
 {
     public partial class frmMantenimientoDetalleTareo : Form
     {
+        int sidtperiodotrabajador = 0;
         DateTime auxiliar;
 
         DataTable oDataTrabajador = new DataTable();
@@ -42,7 +43,7 @@ namespace CapaUsuario.Tareo
         {
             DibujarDataGrid(miTareo.FechaFin.Day - miTareo.FechaInicio.Day);
             MostrarColumnas();
-            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
+            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
             oDataAFP = miAFP.ObtenerListaAFP();
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
             oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
@@ -160,7 +161,7 @@ namespace CapaUsuario.Tareo
             fNuevoObrero.RecibirDatos(miMeta.Codigo);
             if (fNuevoObrero.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
+                oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
                 oDataAFP = miAFP.ObtenerListaAFP();
                 oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
                 oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
@@ -250,7 +251,16 @@ namespace CapaUsuario.Tareo
                 {
                     if (dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value == null)
                     {
-                        dgvDetalleTareo.Rows.RemoveAt(e.RowIndex);
+                        if (MessageBox.Show("Desea dar de baja al Trabajador.", "Gestión del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            PeriodoTrabajador(e.RowIndex);
+                            CapaUsuario.Tareo.frmBajaTrabajador fBajaTrabajador = new CapaUsuario.Tareo.frmBajaTrabajador();
+                            fBajaTrabajador.RecibirDatos(miTareo.FechaInicio, sidtperiodotrabajador);
+                            if (fBajaTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                            {
+                                dgvDetalleTareo.Rows.RemoveAt(e.RowIndex);
+                            }
+                        }
                         return;
                     }
                     if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value) == "")
@@ -593,6 +603,14 @@ namespace CapaUsuario.Tareo
                 }
             }
             return contadordias;
+        }
+
+        private void PeriodoTrabajador(int fila)
+        {
+            foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + Convert.ToInt32(dgvDetalleTareo.Rows[fila].Cells[4].Value.ToString()) + "'"))
+            {
+                sidtperiodotrabajador = Convert.ToInt32(rowPeriodoTrabajador[0].ToString());
+            }
         }
     }
 }

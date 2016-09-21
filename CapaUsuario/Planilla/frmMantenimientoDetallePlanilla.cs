@@ -73,8 +73,8 @@ namespace CapaUsuario.Planilla
         private void frmMantenimientoDetallePlanilla_Load(object sender, EventArgs e)
         {
             DibujarDataGrid();
-            //MostrarColumnas();
-            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
+            MostrarColumnas();
+            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
             oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
             oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
@@ -288,6 +288,36 @@ namespace CapaUsuario.Planilla
         private void dgvDetallePlanilla_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dgvDetallePlanilla_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                if (dgvDetallePlanilla.Rows[e.RowIndex].Cells[2].Selected == true)
+                {
+                    if (dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value == null)
+                    {
+                        dgvDetallePlanilla.Rows.RemoveAt(e.RowIndex);
+                        return;
+                    }
+                    if (Convert.ToString(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value) == "")
+                    {
+                        MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    if (MessageBox.Show("Está seguro que desea eliminar al Trabajador de la Planilla", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    {
+                        return;
+                    }
+                    miDetallePlanillaIngresos.EliminarDetallePlanillaIngresos(Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value));
+                    miDetallePlanillaATrabajador.EliminarDetallePlanillaATrabajador(Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value));
+                    miDetallePlanillaDescuentos.EliminarDetallePlanillaDescuentos(Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value));
+                    miDetallePlanillaAEmpleador.EliminarDetallePlanillaAEmpleador(Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value));
+                    miDetallePlanilla.EliminarDetallePlanilla(Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value));
+                    CargarDatos();
+                }
+            }
         }
 
         private void dgvDetallePlanilla_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -854,6 +884,7 @@ namespace CapaUsuario.Planilla
             {
                 for (int i = 0; i < con_descuento; i++)
                 {
+                    string xxx = smdescuentos[i, 1].ToString();
                     if (smdescuentos[i, 1].ToString() == "0704" || smdescuentos[i, 1].ToString() == "0705")
                     {
                         remuneracion_afecta -= Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_descuentos + con_ingresos + con_trabajador + i].Value);
