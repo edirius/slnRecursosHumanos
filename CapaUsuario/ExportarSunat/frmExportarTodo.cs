@@ -288,12 +288,12 @@ namespace CapaUsuario.ExportarSunat
                     DateTime fechaNac = Convert.ToDateTime(fila.Cells["FechaNac"].Value.ToString());
                     string sexo = fila.Cells["Sexo"].Value.ToString();
                     Sexo(sexo);
-                    string nacionalidad = fila.Cells["DNI"].Value.ToString();
-                    string telLargaDistancia = "CodNac";
+                    string nacionalidad = fila.Cells["CodNac"].Value.ToString();
+                    string telLargaDistancia = "84";
                     string telefono = fila.Cells["Celular"].Value.ToString();
                     if (telefono == "")
                     {
-                        telefono = "00000";
+                        telefono = "000000000";
                     }
                     else;
                     string correo = fila.Cells["Email"].Value.ToString();
