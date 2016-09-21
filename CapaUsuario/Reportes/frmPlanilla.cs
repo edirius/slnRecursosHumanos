@@ -38,12 +38,10 @@ namespace CapaUsuario.Reportes
         DataTable odtPlanillaATrabajador = new DataTable();
         DataTable odtMeta = new DataTable();
 
-        decimal monto_essalud_vida = 0;
-        decimal monto_essalud_seguro_regular = 0;
-        decimal monto_essalud_cbbsp = 0;
-        decimal monto_essalud_seguro_complementario = 0;
+        string pmes = "";
+        string paño = "";
+        string pmes_nro = "";
 
-        decimal monto_snp_dl = 0;
         decimal monto_renta_quinta = 0;
 
         int iindice_essalud_vida = 0;
@@ -154,33 +152,67 @@ namespace CapaUsuario.Reportes
              
         }
 
+        class Item
+        {
+            string _Name;
+            int _Id;
+
+
+
+            public Item(string name, int id)
+            {
+                _Name = name;
+                _Id = id;
+            }
+
+            public string Name
+            {
+                get { return _Name; }
+                set { _Name = value; }
+            }
+
+
+            public int Id
+            {
+                get { return _Id; }
+                set { _Id = value; }
+            }
+        }
+
         private void frmPlanilla_Load(object sender, EventArgs e)
         {
-            CargarDatos();
+            DataTable odtA = new DataTable();
+            DataTable odtAños = new DataTable();
+            DataTable odtPlanilla = new DataTable();
 
-            dgvPlanilla.Rows[0].Selected = true;
-
+            CapaDeNegocios.Reportes.cBoletaPago oBoletaPago = new CapaDeNegocios.Reportes.cBoletaPago();
             CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
 
-            sidtplanilla = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[0].Value);
-            snumero = Convert.ToString(dgvPlanilla.Rows[0].Cells[1].Value);
-            sdescripcion = Convert.ToString(dgvPlanilla.Rows[0].Cells[2].Value);
-            smes = Convert.ToString(dgvPlanilla.Rows[0].Cells[3].Value);
-            saño = Convert.ToString(dgvPlanilla.Rows[0].Cells[4].Value);
-            sfecha = Convert.ToDateTime(dgvPlanilla.Rows[0].Cells[5].Value);
-            sidtmeta = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[6].Value);
-            smeta = Convert.ToString(dgvPlanilla.Rows[0].Cells[7].Value);
-            sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[8].Value);
-            sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[0].Cells[9].Value);
-            sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[10].Value);
-            splantilla = Convert.ToString(dgvPlanilla.Rows[0].Cells[11].Value);
+            int numero_boleta_pago = 0;
 
-            sNumeroPlanilla = Convert.ToString(dgvPlanilla.Rows[0].Cells[1].Value);
-            DataTable odtPrueba = new DataTable();
+            //dgvBoletaPago.DataSource = oPlanilla.ListarBoletaPagoXMesYRegimenLaboral();
+            //Llenando combobox mes y año
+            cboMes.DisplayMember = "Name";
+            cboMes.ValueMember = "Id";
 
-            odtPrueba = oPlanilla.ListarRegimenLaboralPlanilla(sNumeroPlanilla);
-            foreach (DataRow row in odtPrueba.Rows)
-                sRegimenLaboral = row[0].ToString();
+            cboMes.Items.Add(new Item("ENERO", 1));
+            cboMes.Items.Add(new Item("FEBRERO", 2));
+            cboMes.Items.Add(new Item("MARZO", 3));
+            cboMes.Items.Add(new Item("ABRIL", 4));
+            cboMes.Items.Add(new Item("MAYO", 5));
+            cboMes.Items.Add(new Item("JUNIO", 6));
+            cboMes.Items.Add(new Item("JULIO", 7));
+            cboMes.Items.Add(new Item("AGOSTO", 8));
+            cboMes.Items.Add(new Item("SETIEMBRE", 9));
+            cboMes.Items.Add(new Item("OCTUBRE", 10));
+            cboMes.Items.Add(new Item("NOVIEMBRE", 11));
+            cboMes.Items.Add(new Item("DICIEMBRE", 12));
+
+            cboMes.SelectedIndex = 0;
+            odtAños = oPlanilla.ListarAñosPlanilla();
+            cboAño.DataSource = odtAños;
+            cboAño.DisplayMember = "añó";
+            cboAño.ValueMember = "año";
         }
 
         public void RecibirDatos(string pnumeroPlanilla)
@@ -197,7 +229,7 @@ namespace CapaUsuario.Reportes
         {
             dgvPlanilla.Rows.Clear();
             DataTable oDataPlanilla = new DataTable();
-            oDataPlanilla = miPlanilla.ListarPlanilla();
+            oDataPlanilla = miPlanilla.ListarPlanillaXmesYaño(pmes, paño);
 
             DataTable oDataMeta = new DataTable();
             CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
@@ -317,7 +349,51 @@ namespace CapaUsuario.Reportes
             bool estaAbierto = IsFileinUse(file, "C:\\PDFs\\DataGridViewExport.pdf");
             if (!estaAbierto)
             {
- 
+
+                int iindice_snp_13 = 0;
+                int iindice_afp = 0;
+                int iindice_neto_cobrar = 0;
+                int iindice_aportacion_entidad = 0;
+                int iindice_ad = 0;
+                int iindice_cs = 0;
+                int iindice_daomj = 0;
+                int iindice_ta = 0;
+                int iindice_in = 0;
+                int iindice_odndbm = 0;
+                int iindice_oddbi = 0;
+                int iindice_desc_caja = 0;
+                int iindice_renta_5ta_cat = 0;
+                int iindice_renta_4ta_cat = 0;
+                int iindice_desc_judi = 0;
+                int iindice_desc_rimac = 0;
+                int iindice_faltas_sanciones = 0;
+                int iindice_aporte_essalud = 0;
+                decimal haber_total = 0;
+
+
+                int ultima_fila_planilla = 0;
+                int ultima_fila_prueba = 0;
+
+
+                decimal snp_total = 0;
+                decimal afp_total = 0;
+                decimal neto_cobrar_total = 0;
+                decimal aportacion_entidad_total = 0;
+                decimal ad_total = 0;
+                decimal cs_total = 0;
+                decimal daomj_total = 0;
+                decimal ta_total = 0;
+                decimal in_total = 0;
+                decimal odndbm_total = 0;
+                decimal oddbi_total = 0;
+                decimal desc_caja_total = 0;
+                decimal renta_5ta_cat_total = 0;
+                decimal renta_4ta_cat_total = 0;
+                decimal desc_judi_total = 0;
+                decimal desc_rimac_total = 0;
+                decimal faltas_sanciones_total = 0;
+                decimal aporte_essalud_total = 0;
+
                 CapaDeNegocios.Planillas.cDetallePlanilla oPlanilla = new CapaDeNegocios.Planillas.cDetallePlanilla();
                 CapaDeNegocios.Planillas.cDetallePlanillaIngresos oPlanillaIngresos = new CapaDeNegocios.Planillas.cDetallePlanillaIngresos();
                 CapaDeNegocios.Planillas.cDetallePlanillaDescuentos oPlanillaDescuentos = new CapaDeNegocios.Planillas.cDetallePlanillaDescuentos();
@@ -350,6 +426,13 @@ namespace CapaUsuario.Reportes
 
                 int indice_a_empleador = 0;
                 int indice_a_trabajador = 0;
+
+                decimal monto_essalud_vida = 0;
+                decimal monto_essalud_seguro_regular = 0;
+                decimal monto_essalud_cbbsp = 0;
+                decimal monto_essalud_seguro_complementario = 0;
+
+                decimal monto_snp_dl = 0;
 
                 decimal total_tipo_ingreso = 0;
                 decimal total_tipo_descuento = 0;
@@ -401,6 +484,27 @@ namespace CapaUsuario.Reportes
                 odtPrueba.Columns.Add("AFIL. AFP/SNP", typeof(string));
                 odtPrueba.Columns.Add("COMISION", typeof(string));
                 odtPrueba.Columns.Add("CUSP", typeof(string));
+
+                decimal monto = 0;
+
+                decimal monto_ingresos = 0;
+                decimal sumatoria_ingresos = 0;
+                decimal monto_descuentos = 0;
+                decimal sumatoria_descuentos = 0;
+                decimal monto_a_empleador = 0;
+                decimal sumatoria_a_empleador = 0;
+                decimal monto_a_trabajador = 0;
+                decimal sumatoria_a_trabajador = 0;
+                decimal monto_aporte_entidad = 0;
+                decimal monto_dec_afp = 0;
+                decimal sumatoria_dec_afp = 0;
+
+                int iindice_ingresos = 0;
+                int iindice_descuentos = 0;
+                int iindice_a_empleador = 0;
+                int iindice_a_trabajador = 0;
+                int iindice_dec_afp = 0;
+                int iindice_aporte_entidad = 0;
 
                 //realizar consulta para planilla por mes y regimen laboral
 
@@ -1079,28 +1183,7 @@ namespace CapaUsuario.Reportes
                             }
                         }
 
-                        decimal monto = 0;
-
-                        decimal monto_ingresos = 0;
-                        decimal sumatoria_ingresos = 0;
-                        decimal monto_descuentos = 0;
-                        decimal sumatoria_descuentos = 0;
-                        decimal monto_a_empleador = 0;
-                        decimal sumatoria_a_empleador = 0;
-                        decimal monto_a_trabajador = 0;
-                        decimal sumatoria_a_trabajador = 0;
-
-                        decimal monto_aporte_entidad = 0;
-
-
-
-                        int iindice_ingresos = 0;
-                        int iindice_descuentos = 0;
-                        int iindice_a_empleador = 0;
-                        int iindice_a_trabajador = 0;
-                        int iindice_dec_afp = 0;
-                        int iindice_aporte_entidad = 0;
-
+                        
 
                         //insertar datos personales de la planilla al datatable
                         if (d != total_prueba_corta - 1)
@@ -1160,13 +1243,20 @@ namespace CapaUsuario.Reportes
                         iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, "APORTE ESSALUD");
                         iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtPrueba, "ESSALUD-SCTR");
 
+                        iindice_aporte_entidad = BuscarIndiceColumna(odtPrueba, "APORT. ENTIDAD");
+
                         iindice_snp_dl = BuscarIndiceColumna(odtPrueba, "SNP 13%");
                         iindice_renta_quinta = BuscarIndiceColumna(odtPrueba, "RENTA 5TA CAT");
+
+                        iindice_dec_afp = BuscarIndiceColumna(odtPruebaCorta, "DEC. AFP");
 
                         if (ll == odtPrueba.Rows.Count - 1)
                         {
                             for (int l = 0; l < odtPrueba.Rows.Count - 1; l++)
                             {
+                                if (iindice_aporte_entidad != -1)
+                                    monto_aporte_entidad = Convert.ToDecimal(odtPrueba.Rows[l][iindice_aporte_entidad]);
+
                                 monto = Convert.ToDecimal(odtPrueba.Rows[l][indice_prueba_corta_neto_cobrar]);
                                 sumatoria = sumatoria + monto;
 
@@ -1181,6 +1271,12 @@ namespace CapaUsuario.Reportes
 
                                 monto_a_trabajador = Convert.ToDecimal(odtPlanilla.Rows[l][iindice_a_trabajador]);
                                 sumatoria_a_trabajador += monto_a_trabajador;
+
+                                monto_dec_afp = monto_a_trabajador + monto_aporte_entidad;
+                                sumatoria_dec_afp += monto_dec_afp;
+
+                                /* DEC. AFP para cada registro*/
+                                odtPruebaCorta.Rows[l][iindice_dec_afp] = monto_dec_afp;
 
                                 //sumatoria ESSALUD
                                 if (iindice_essalud_vida != -1)
@@ -1208,7 +1304,6 @@ namespace CapaUsuario.Reportes
                             drFilaCorta[indice_prueba_corta_neto_cobrar] = sumatoria.ToString();
 
                             //Si no existe total ingresos .no agrega a drFilaCorta
-
                             iindice_ingresos = BuscarIndiceColumna(odtPruebaCorta, "TOTAL INGRESOS");
                             if (iindice_ingresos != -1)
                                 drFilaCorta[iindice_ingresos] = sumatoria_ingresos.ToString();
@@ -1225,10 +1320,11 @@ namespace CapaUsuario.Reportes
                             if (iindice_a_empleador != -1)
                                 drFilaCorta[iindice_a_empleador] = sumatoria_a_empleador.ToString();
 
-
+                            iindice_dec_afp = BuscarIndiceColumna(odtPruebaCorta, "DEC. AFP");
+                            if (iindice_dec_afp != -1)
+                                drFilaCorta[iindice_dec_afp] = sumatoria_dec_afp.ToString();
 
                             iindice_aporte_entidad = BuscarIndiceColumna(odtPruebaCorta, "APORT. ENTIDAD");
-
                             if (iindice_aporte_entidad != -1)
                             {
                                 monto_aporte_entidad = Convert.ToDecimal(odtPruebaCorta.Rows[d][iindice_aporte_entidad]);
@@ -1237,6 +1333,8 @@ namespace CapaUsuario.Reportes
 
                         }
                         //Planilla 728 ------ DEC. AFP = total aportaciones trabajador + aportaciones entidad
+
+                        /* DEC. AFP --- llenando datos  */
 
                         //Insertando una fila al datatable odtPruebaCorta
                         odtPruebaCorta.Rows.InsertAt(drFilaCorta, d);
@@ -1265,7 +1363,38 @@ namespace CapaUsuario.Reportes
                     bool AFP = false;
                     string prueba_afp = "";
                     string arr_prueba_trabajador = "";
+                    int indice_dec_afp = 0;
 
+                    /* Agregando SNP 13% y AFP */
+                    int indice_snp = 0;
+                    int indice_afp = 0;
+
+                    indice_snp = BuscarIndiceColumna(odtPrueba, "SNP 13%");
+                    indice_afp = BuscarIndiceColumna(odtPrueba, "DEC. AFP");
+
+                    if (indice_snp != -1)
+                    {
+                        drFilaATrabajador = odtATrabajador.NewRow();
+                        drFilaATrabajador.Delete();
+                        drFilaATrabajador[0] = "SNP 13%";
+                        drFilaATrabajador[1] = monto_snp_dl;
+                        odtATrabajador.Rows.InsertAt(drFilaATrabajador, nn);
+                        nn++;
+                    }
+
+                    if (indice_afp != -1)
+                    {
+                        drFilaATrabajador = odtATrabajador.NewRow();
+                        drFilaATrabajador.Delete();
+                        drFilaATrabajador[0] = "AFP";
+                        drFilaATrabajador[1] = sumatoria_dec_afp;
+                        odtATrabajador.Rows.InsertAt(drFilaATrabajador, nn);
+                        nn++;
+                    }
+
+                    /* Fin SNP y AFP */
+
+                    /*Hallando AFP*/
                     for (k = 0; k < odtPrueba.Rows.Count; k++)
                     {
                         afp = odtPrueba.Rows[k][5].ToString();
@@ -1277,6 +1406,8 @@ namespace CapaUsuario.Reportes
                         }
                     }
 
+                    
+
                     //Calcular la sumatoria por cada AFP encontrada.
                     for (k = 0; k < contarItems(arr_aportaciones_trabajador); k++)
                     {
@@ -1285,25 +1416,28 @@ namespace CapaUsuario.Reportes
                         sumatoria_afp = 0;
                         for (int l = 0; l < odtPrueba.Rows.Count; l++)
                         {
-                            prueba_afp = odtPrueba.Rows[l][7].ToString().Trim();
+                            indice_dec_afp = BuscarIndiceColumna(odtPruebaCorta, "DEC. AFP");
+                            prueba_afp = odtPrueba.Rows[l][5].ToString().Trim();
                             arr_prueba_trabajador = arr_aportaciones_trabajador[k].ToString().Trim();
 
                             if (prueba_afp == arr_prueba_trabajador)
                             {
-                                sumatoria_afp_parcial = Convert.ToDecimal(odtPrueba.Rows[l][13].ToString().Trim());
+                                
+                                sumatoria_afp_parcial = Convert.ToDecimal(odtPruebaCorta.Rows[l][indice_dec_afp].ToString().Trim());
                                 sumatoria_afp += sumatoria_afp_parcial;
                             }
                         }
                         drFilaATrabajador[0] = arr_aportaciones_trabajador[k];
                         drFilaATrabajador[1] = sumatoria_afp;
-                        odtATrabajador.Rows.InsertAt(drFilaATrabajador, k);
+                        odtATrabajador.Rows.InsertAt(drFilaATrabajador, nn);
                         nn++;
                     }
 
+                   
 
                     //Calcular la sumatoria total del cuadro AFP
                     sumatoria_afp = 0;
-                    for (int m = 0; m < contarItems(arr_aportaciones_trabajador); m++)
+                    for (int m = 0; m < odtATrabajador.Rows.Count ; m++)
                     {
                         sumatoria_afp_parcial = Convert.ToDecimal(odtATrabajador.Rows[m][1]);
                         sumatoria_afp += sumatoria_afp_parcial;
@@ -1402,6 +1536,10 @@ namespace CapaUsuario.Reportes
                     int iindice_ingresos_cas = 0;
                     int iindice_aportacion_trabajador = 0;
 
+                    int iindice_total_ingresos = 0;
+                    int iindice_total_a_empleador = 0;
+                    int ultima_fila_prueba_corta = 0;
+
                     int ultima_fila = 0;
                     decimal remuneracion_jornal_total = 0;
                     decimal remuneracion_permanente_total = 0;
@@ -1412,17 +1550,45 @@ namespace CapaUsuario.Reportes
                     decimal essalud_cbbsp_total = 0;
                     decimal essalud_seguro_complementario_total = 0;
                     decimal aportacion_trabajador_total = 0;
+                    decimal total_ingresos_total = 0;
+                    decimal total_a_empleador_total = 0;
+                    decimal total_debe = 0;
 
                     /*Agregando Remuneración total*/
 
                     /*DEBE */
+                    iindice_total_ingresos = BuscarIndiceColumna(odtPruebaCorta, "TOTAL INGRESOS");
+                    iindice_total_a_empleador = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES EMPLEADOR");
 
+                    if (iindice_total_ingresos != -1)
+                    {
+                        ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
+                        total_ingresos_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_total_ingresos]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "TOTAL INGRESOS";
+                        drFilaEEFF[1] = total_ingresos_total;
+                        total_debe += total_ingresos_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+                    if (iindice_total_a_empleador != -1)
+                    {
+                        ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
+                        total_a_empleador_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_total_a_empleador]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "TOTAL APORTACIONES EMPLEADOR";
+                        drFilaEEFF[1] = total_a_empleador_total;
+                        total_debe += total_a_empleador_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    /*
                     iindice_remuneracion = BuscarIndiceColumna(odtPrueba, "REMUNER.");
                     ultima_fila = odtPrueba.Rows.Count - 1;
-                    remuneracion_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila][iindice_remuneracion]);
-                    drFilaEEFF[0] = "Remuneración total";
-                    drFilaEEFF[1] = remuneracion_total;
-
+                     
                     iindice_essalud_vida = BuscarIndiceColumna(odtPrueba, "ESSALUDV");
                     iindice_essalud_seguro_regular = BuscarIndiceColumna(odtPrueba, "ESSALUD-SR-P");
                     
@@ -1432,6 +1598,13 @@ namespace CapaUsuario.Reportes
                     iindice_ingresos_cas = BuscarIndiceColumna(odtPrueba, "REMUNER. TOTAL");
 
                     iindice_aportacion_trabajador = BuscarIndiceColumna(odtPrueba, "APORT. TRABAJ.");
+
+                    if (iindice_remuneracion != -1)
+                    {
+                        remuneracion_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila][iindice_remuneracion]);
+                        drFilaEEFF[0] = "Remuneración total";
+                        drFilaEEFF[1] = remuneracion_total;
+                    }
 
                     if (iindice_aportacion_trabajador != -1)
                     {
@@ -1473,64 +1646,309 @@ namespace CapaUsuario.Reportes
                         drFilaEEFF[0] = "ESSALUD-SR-P";
                         drFilaEEFF[1] = essalud_seguro_regular_total;
                     }
- 
+                    */
+
                     /*FIN DEBE */
 
                     /* HABER */
-                    int iindice_snp_13 = 0;
-                    int iindice_afp = 0;
-                    int iindice_neto_cobrar = 0;
-                    int ultima_fila_planilla = 0;
-                    int ultima_fila_prueba_corta = 0;
- 
-                    decimal snp_total = 0;
-                    decimal afp_total = 0;
-                    decimal neto_cobrar_total = 0;
                     
+
+                    iindice_ad = BuscarIndiceColumna(odtPrueba, "AD");
+                    iindice_cs = BuscarIndiceColumna(odtPrueba, "CS");
+                    iindice_daomj = BuscarIndiceColumna(odtPrueba, "DAOMJ");
+                    iindice_ta = BuscarIndiceColumna(odtPrueba, "TA");
+                    iindice_in = BuscarIndiceColumna(odtPrueba, "IN");
+                    iindice_odndbm = BuscarIndiceColumna(odtPrueba, "ODNDBM");
+                    iindice_oddbi = BuscarIndiceColumna(odtPrueba, "ODDBI");
+                    iindice_desc_caja = BuscarIndiceColumna(odtPrueba, "DESC CAJA");
+                    iindice_renta_5ta_cat = BuscarIndiceColumna(odtPrueba, "RENTA 5TA CAT");
+                    iindice_renta_4ta_cat = BuscarIndiceColumna(odtPrueba, "RENTA 4TA CAT");
+                    iindice_desc_judi = BuscarIndiceColumna(odtPrueba, "DESC JUDI");
+                    iindice_desc_rimac = BuscarIndiceColumna(odtPrueba, "DESC RIMAC");
+                    iindice_faltas_sanciones = BuscarIndiceColumna(odtPrueba, "FALTAS/SANCIONES");
+                    iindice_aporte_essalud = BuscarIndiceColumna(odtPrueba, "APORTE ESSALUD");
+
                     iindice_snp_13 = BuscarIndiceColumna(odtPrueba, "SNP 13%");
                     iindice_afp = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES TRABAJADOR");
+                    iindice_aportacion_entidad = BuscarIndiceColumna(odtPrueba, "APORT. ENTIDAD");
                     iindice_neto_cobrar = BuscarIndiceColumna(odtPruebaCorta, "NETO A COBRAR");
 
                     iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, "APORTE ESSALUD");
                     iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtPrueba, "ESSALUD-SCTR");
 
-                    if (iindice_neto_cobrar != -1)
-                    {
-                        ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
-                        neto_cobrar_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_neto_cobrar]);
-                        drFilaEEFF[0] = "NETO A COBRAR";
-                        drFilaEEFF[2] = neto_cobrar_total;
-                    }
+                    if (odtPruebaCorta.Rows.Count > 0) ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
+                    if (odtPrueba.Rows.Count > 0) ultima_fila_prueba = odtPrueba.Rows.Count - 1;
+
 
                     if (iindice_snp_13 != -1)
                     {
-                        snp_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila][iindice_snp_13]);
+                        snp_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_snp_13]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
                         drFilaEEFF[0] = "SNP 13%";
                         drFilaEEFF[2] = snp_total;
+                        haber_total += snp_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
                     }
+
+
+                    if (iindice_aportacion_entidad != -1)
+                        aportacion_entidad_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba_corta][iindice_aportacion_entidad]);
+
 
                     if (iindice_afp != -1)
                     {
-                        ultima_fila_planilla = odtPruebaCorta.Rows.Count - 1;
-                        afp_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_planilla][iindice_afp]);
+                        afp_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_afp]);
+                        afp_total = afp_total + aportacion_entidad_total;
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
                         drFilaEEFF[0] = "AFP";
                         drFilaEEFF[2] = afp_total;
+                        haber_total += afp_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
                     }
 
-                    if (iindice_essalud_cbbsp != -1)
+                    if (iindice_neto_cobrar != -1)
                     {
-                        essalud_vida_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila][iindice_essalud_cbbsp]);
+                        neto_cobrar_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_neto_cobrar]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "NETO A COBRAR";
+                        drFilaEEFF[2] = neto_cobrar_total;
+                        haber_total += neto_cobrar_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    CapaDeNegocios.Sunat.cMaestroDescuentos oMaestroDescuentos = new CapaDeNegocios.Sunat.cMaestroDescuentos();
+                    DataTable odtMaestroDescuentos = new DataTable();
+                    string titulo_maestro_descuento = "";
+
+                    odtMaestroDescuentos = oMaestroDescuentos.ListarMaestroDescuentos();
+
+                    for (int i = 0; i < odtMaestroDescuentos.Rows.Count; i++) {
+
+                        titulo_maestro_descuento = odtMaestroDescuentos.Rows[i][4].ToString() ;
+                        iindice_ad = BuscarIndiceColumna(odtPrueba, titulo_maestro_descuento );
+
+                        if (iindice_ad != -1)
+                        {
+                            ad_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_ad]);
+                            drFilaEEFF = odtEEFF.NewRow();
+                            drFilaEEFF.Delete();
+                            drFilaEEFF[0] = titulo_maestro_descuento ;
+                            drFilaEEFF[2] = ad_total;
+                            haber_total += ad_total;
+                            odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                            lll++;
+                        }
+                    }
+
+                    /*
+                    if (iindice_ad != -1)
+                    {
+                        ad_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_ad]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "AD";
+                        drFilaEEFF[2] = ad_total;
+                        haber_total += ad_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_cs != -1)
+                    {
+                        cs_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_cs]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "CS";
+                        drFilaEEFF[2] = cs_total;
+                        haber_total += cs_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_daomj != -1)
+                    {
+                        daomj_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_daomj]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "DAOMJ";
+                        drFilaEEFF[2] = daomj_total;
+                        haber_total += daomj_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_ta != -1)
+                    {
+                        ta_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_ta]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "TA";
+                        drFilaEEFF[2] = ta_total;
+                        haber_total += ta_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_in != -1)
+                    {
+                        in_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_in]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "IN";
+                        drFilaEEFF[2] = in_total;
+                        haber_total += in_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_odndbm != -1)
+                    {
+                        odndbm_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_odndbm]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "ODNDBM";
+                        drFilaEEFF[2] = odndbm_total;
+                        haber_total += odndbm_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_oddbi != -1)
+                    {
+                        oddbi_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_oddbi]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "ODDBI";
+                        drFilaEEFF[2] = oddbi_total;
+                        haber_total += oddbi_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_desc_caja != -1)
+                    {
+                        desc_caja_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_desc_caja]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "DESC CAJA";
+                        drFilaEEFF[2] = desc_caja_total;
+                        haber_total += desc_caja_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_renta_5ta_cat != -1)
+                    {
+                        renta_5ta_cat_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_renta_5ta_cat]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "RENTA 5TA CAT";
+                        drFilaEEFF[2] = renta_5ta_cat_total;
+                        haber_total += renta_5ta_cat_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_renta_4ta_cat != -1)
+                    {
+                        renta_4ta_cat_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_renta_4ta_cat]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "RENTA 4TA CAT";
+                        drFilaEEFF[2] = renta_4ta_cat_total;
+                        haber_total += renta_4ta_cat_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_desc_judi != -1)
+                    {
+                        desc_judi_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_desc_judi]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "DESC JUDI";
+                        drFilaEEFF[2] = desc_judi_total;
+                        haber_total += desc_judi_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_desc_rimac != -1)
+                    {
+                        desc_rimac_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_desc_rimac]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "DESC RIMAC";
+                        drFilaEEFF[2] = desc_rimac_total;
+                        haber_total += desc_rimac_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_desc_rimac != -1)
+                    {
+                        desc_rimac_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_desc_rimac]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "DESC RIMAC";
+                        drFilaEEFF[2] = desc_rimac_total;
+                        haber_total += desc_rimac_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_faltas_sanciones != -1)
+                    {
+                        faltas_sanciones_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_faltas_sanciones]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
+                        drFilaEEFF[0] = "FALTAS/SANCIONES";
+                        drFilaEEFF[2] = faltas_sanciones_total;
+                        haber_total += faltas_sanciones_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }
+
+                    if (iindice_aporte_essalud != -1)
+                    {
+                        aporte_essalud_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_aporte_essalud]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
                         drFilaEEFF[0] = "APORTE ESSALUD";
-                        drFilaEEFF[2] = essalud_cbbsp_total;
+                        drFilaEEFF[2] = aporte_essalud_total;
+                        haber_total += aporte_essalud_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
                     }
 
                     if (iindice_essalud_seguro_complementario != -1)
                     {
-                        essalud_vida_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila][iindice_essalud_seguro_complementario]);
+                        essalud_vida_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_essalud_seguro_complementario]);
+                        drFilaEEFF = odtEEFF.NewRow();
+                        drFilaEEFF.Delete();
                         drFilaEEFF[0] = "ESSALUD-SCTR";
                         drFilaEEFF[2] = essalud_seguro_complementario_total;
-                    }
+                        haber_total += essalud_seguro_complementario_total;
+                        odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                        lll++;
+                    }/*
 
+                    /* Insertando totales de debe y haber*/
+
+                    drFilaEEFF = odtEEFF.NewRow();
+                    drFilaEEFF.Delete();
+                    drFilaEEFF[0] = "TOTAL";
+                    drFilaEEFF[1] = total_debe ;
+                    drFilaEEFF[2] = haber_total;
+                    odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+
+                    dgvEEFF.DataSource = odtEEFF;
                     /* FIN HABER */
 
                     /*Fin del 3er cuadro de la ultima parte de la planilla*/
@@ -1609,6 +2027,7 @@ namespace CapaUsuario.Reportes
             PdfPTable pdfTable = new PdfPTable(dgvPrueba.ColumnCount);
             PdfPTable pdfTable2 = new PdfPTable(dgvAFP.ColumnCount);
             PdfPTable pdfTableRedondear = new PdfPTable(dgvRedondear.ColumnCount);
+            PdfPTable pdfTableEEFF = new PdfPTable(dgvEEFF.ColumnCount);
 
             Phrase objP = new Phrase("A", fuente);
             Phrase objP2 = new Phrase("A", fuente);
@@ -1617,6 +2036,7 @@ namespace CapaUsuario.Reportes
             PdfPCell cell;
             PdfPCell cell2;
             PdfPCell cell3;
+            PdfPCell cell4;
 
             pdfTable.DefaultCell.Padding = 1;
             pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -1630,9 +2050,14 @@ namespace CapaUsuario.Reportes
             pdfTableRedondear.HorizontalAlignment = Element.ALIGN_LEFT;
             pdfTableRedondear.DefaultCell.BorderWidth = 1;
 
+            pdfTableEEFF.DefaultCell.Padding = 1;
+            pdfTableEEFF.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTableEEFF.DefaultCell.BorderWidth = 1;
+
             float[] headerwidths = GetTamañoColumnas(dgvPrueba);
             float[] headerwidths2 = GetTamañoColumnas2(dgvAFP);
             float[] headerwidths3 = GetTamañoColumnas2(dgvRedondear);
+            float[] headerwidths4 = GetTamañoColumnas2(dgvEEFF);
             //float[] headerwidths = { 2f, 6f, 6f, 3f, 5f, 8f, 5f, 5f, 5f, 5f };
 
             //cell.BackgroundColor = new BaseColor(System.Drawing.ColorTranslator.FromHtml("#d1dbe0"));
@@ -1645,6 +2070,9 @@ namespace CapaUsuario.Reportes
 
             pdfTableRedondear.SetWidths(headerwidths3);
             pdfTableRedondear.WidthPercentage = 100;
+
+            pdfTableEEFF.SetWidths(headerwidths4);
+            pdfTableEEFF.WidthPercentage = 100;
 
             int iindice_nombre = 0;
             int iindice_cargo = 0;
@@ -1736,6 +2164,27 @@ namespace CapaUsuario.Reportes
 
             /* -------------fin dgvRedondear ----------*/
 
+            /* ---------------- dgvEEFF */
+
+            //Adding Header row
+            foreach (DataGridViewColumn column in dgvEEFF.Columns)
+            {
+                cell2 = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                cell2.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+                pdfTableEEFF.AddCell(cell2);
+            }
+
+            for (int k = 0; k < dgvEEFF.RowCount - 1; k++)
+            {
+                for (int l = 0; l < dgvEEFF.ColumnCount; l++)
+                {
+                    cell2 = new PdfPCell((new Phrase(dgvEEFF[l, k].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                    pdfTableEEFF.AddCell(cell2);
+                }
+            }
+
+            /*----------------fin dgvEEFF*/
+
             //Exporting to PDF
             string folderPath = "C:\\PDFs\\";
 
@@ -1780,6 +2229,13 @@ namespace CapaUsuario.Reportes
                 paragraph5.Alignment = Element.ALIGN_CENTER;
                 paragraph5.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
                 paragraph5.Add("\n");
+
+                DateTime fecha = DateTime.Now;
+
+                Paragraph paragraph6 = new Paragraph();
+                paragraph6.Alignment = Element.ALIGN_CENTER;
+                paragraph6.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                paragraph6.Add("CCATCCA, " + String.Format("{0:dd}" , fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
 
                 //FIRMAS
                 Paragraph p_rrhh = new Paragraph();
@@ -1829,7 +2285,7 @@ namespace CapaUsuario.Reportes
                 //Agrupando tabla titular
                 tabla_bonus.AddCell(pdfTable2);
                 tabla_bonus.AddCell(pdfTableRedondear);
-                tabla_bonus.AddCell(paragraph5);
+                tabla_bonus.AddCell(pdfTableEEFF);
 
                 //aÑADIENDO FIRMAS A LA TABLA FIRMAS
                 tabla_firmas.AddCell(p_rrhh);
@@ -1845,6 +2301,7 @@ namespace CapaUsuario.Reportes
                 column_one.AddElement(paragraph4);
                 column_one.AddElement(pdfTable);
                 column_one.AddElement(paragraph5);
+                column_one.AddElement(paragraph6);
                 column_one.AddElement(tabla_bonus);
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph5);
@@ -1897,6 +2354,61 @@ namespace CapaUsuario.Reportes
                 foreach (DataRow row in odtPrueba.Rows)
                     sRegimenLaboral = row[0].ToString();
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
+
+            pmes = cboMes.GetItemText(this.cboMes.SelectedItem); ;
+            paño = cboAño.GetItemText(this.cboAño.SelectedItem); ;
+
+            switch (pmes)
+            {
+                case "ENERO": pmes_nro = "1"; break;
+                case "FEBRERO": pmes_nro = "2"; break;
+                case "MARZO": pmes_nro = "3"; break;
+                case "ABRIL": pmes_nro = "4"; break;
+                case "MAYO": pmes_nro = "5"; break;
+                case "JUNIO": pmes_nro = "6"; break;
+                case "JULIO": pmes_nro = "7"; break;
+                case "AGOSTO": pmes_nro = "8"; break;
+                case "SETIEMBRE": pmes_nro = "9"; break;
+                case "OCTUBRE": pmes_nro = "10"; break;
+                case "NOVIEMBRE": pmes_nro = "11"; break;
+                case "DICIEMBRE": pmes_nro = "12"; break;
+            }
+
+            //Llenar data table BoletaPago verificando que tenga mas de un registro
+            
+            int numero_boleta_pago = dgvPlanilla.Rows.Count;
+ 
+            CargarDatos();
+
+            if (dgvPlanilla.Rows.Count > 0) {
+                dgvPlanilla.Rows[0].Selected = true;
+
+                sidtplanilla = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[0].Value);
+                snumero = Convert.ToString(dgvPlanilla.Rows[0].Cells[1].Value);
+                sdescripcion = Convert.ToString(dgvPlanilla.Rows[0].Cells[2].Value);
+                smes = Convert.ToString(dgvPlanilla.Rows[0].Cells[3].Value);
+                saño = Convert.ToString(dgvPlanilla.Rows[0].Cells[4].Value);
+                sfecha = Convert.ToDateTime(dgvPlanilla.Rows[0].Cells[5].Value);
+                sidtmeta = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[6].Value);
+                smeta = Convert.ToString(dgvPlanilla.Rows[0].Cells[7].Value);
+                sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[8].Value);
+                sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[0].Cells[9].Value);
+                sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[10].Value);
+                splantilla = Convert.ToString(dgvPlanilla.Rows[0].Cells[11].Value);
+
+                sNumeroPlanilla = Convert.ToString(dgvPlanilla.Rows[0].Cells[1].Value);
+                DataTable odtPrueba = new DataTable();
+
+                odtPrueba = oPlanilla.ListarRegimenLaboralPlanilla(sNumeroPlanilla);
+                foreach (DataRow row in odtPrueba.Rows)
+                    sRegimenLaboral = row[0].ToString();
+            }
+            
         }
     }
 }
