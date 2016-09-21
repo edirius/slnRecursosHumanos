@@ -130,13 +130,27 @@ namespace CapaUsuario.Trabajador
 
         private void btnBuscarDNI_Click(object sender, EventArgs e)
         {
-            DataTable r = new DataTable();
-           
+            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text );
         }
 
         private void cboFiltroTrabajadores_SelectedIndexChanged(object sender, EventArgs e)
         {
             dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text);
+        }
+
+        private void btnBuscarNombre_Click(object sender, EventArgs e)
+        {
+            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text);
+        }
+
+        private void btnBuscarAPaterno_Click(object sender, EventArgs e)
+        {
+            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text);
+        }
+
+        private void btnBuscarAMaterno_Click(object sender, EventArgs e)
+        {
+            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text);
         }
     }
 }
