@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTrabajadores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -47,13 +47,12 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.btnDatosLaborales = new System.Windows.Forms.Button();
             this.btnDetalleTareo = new System.Windows.Forms.Button();
-            this.chkActivos = new System.Windows.Forms.CheckBox();
             this.btnBuscarAMaterno = new System.Windows.Forms.Button();
             this.btnBuscarAPaterno = new System.Windows.Forms.Button();
             this.btnBuscarNombre = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBuscarApellidoMaterno = new System.Windows.Forms.TextBox();
+            this.txtBuscarApellidoPaterno = new System.Windows.Forms.TextBox();
+            this.txtBuscarNombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -187,13 +186,12 @@
             this.splitContainer1.Panel2.Controls.Add(this.cboFiltroTrabajadores);
             this.splitContainer1.Panel2.Controls.Add(this.btnDatosLaborales);
             this.splitContainer1.Panel2.Controls.Add(this.btnDetalleTareo);
-            this.splitContainer1.Panel2.Controls.Add(this.chkActivos);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarAMaterno);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarAPaterno);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarNombre);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox4);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox3);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox2);
+            this.splitContainer1.Panel2.Controls.Add(this.txtBuscarApellidoMaterno);
+            this.splitContainer1.Panel2.Controls.Add(this.txtBuscarApellidoPaterno);
+            this.splitContainer1.Panel2.Controls.Add(this.txtBuscarNombre);
             this.splitContainer1.Panel2.Controls.Add(this.label4);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
@@ -244,18 +242,6 @@
             this.btnDetalleTareo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDetalleTareo.UseVisualStyleBackColor = false;
             // 
-            // chkActivos
-            // 
-            this.chkActivos.AutoSize = true;
-            this.chkActivos.Checked = true;
-            this.chkActivos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkActivos.Location = new System.Drawing.Point(539, 101);
-            this.chkActivos.Name = "chkActivos";
-            this.chkActivos.Size = new System.Drawing.Size(99, 17);
-            this.chkActivos.TabIndex = 29;
-            this.chkActivos.Text = "Mostrar Activos";
-            this.chkActivos.UseVisualStyleBackColor = true;
-            // 
             // btnBuscarAMaterno
             // 
             this.btnBuscarAMaterno.Location = new System.Drawing.Point(348, 101);
@@ -264,6 +250,7 @@
             this.btnBuscarAMaterno.TabIndex = 28;
             this.btnBuscarAMaterno.Text = "Buscar por Apellido Materno";
             this.btnBuscarAMaterno.UseVisualStyleBackColor = true;
+            this.btnBuscarAMaterno.Click += new System.EventHandler(this.btnBuscarAMaterno_Click);
             // 
             // btnBuscarAPaterno
             // 
@@ -273,6 +260,7 @@
             this.btnBuscarAPaterno.TabIndex = 27;
             this.btnBuscarAPaterno.Text = "Buscar por Apellido Paterno";
             this.btnBuscarAPaterno.UseVisualStyleBackColor = true;
+            this.btnBuscarAPaterno.Click += new System.EventHandler(this.btnBuscarAPaterno_Click);
             // 
             // btnBuscarNombre
             // 
@@ -282,27 +270,28 @@
             this.btnBuscarNombre.TabIndex = 26;
             this.btnBuscarNombre.Text = "Buscar por Nombres";
             this.btnBuscarNombre.UseVisualStyleBackColor = true;
+            this.btnBuscarNombre.Click += new System.EventHandler(this.btnBuscarNombre_Click);
             // 
-            // textBox4
+            // txtBuscarApellidoMaterno
             // 
-            this.textBox4.Location = new System.Drawing.Point(113, 105);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(216, 20);
-            this.textBox4.TabIndex = 25;
+            this.txtBuscarApellidoMaterno.Location = new System.Drawing.Point(113, 105);
+            this.txtBuscarApellidoMaterno.Name = "txtBuscarApellidoMaterno";
+            this.txtBuscarApellidoMaterno.Size = new System.Drawing.Size(216, 20);
+            this.txtBuscarApellidoMaterno.TabIndex = 25;
             // 
-            // textBox3
+            // txtBuscarApellidoPaterno
             // 
-            this.textBox3.Location = new System.Drawing.Point(113, 74);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(216, 20);
-            this.textBox3.TabIndex = 24;
+            this.txtBuscarApellidoPaterno.Location = new System.Drawing.Point(113, 74);
+            this.txtBuscarApellidoPaterno.Name = "txtBuscarApellidoPaterno";
+            this.txtBuscarApellidoPaterno.Size = new System.Drawing.Size(216, 20);
+            this.txtBuscarApellidoPaterno.TabIndex = 24;
             // 
-            // textBox2
+            // txtBuscarNombre
             // 
-            this.textBox2.Location = new System.Drawing.Point(113, 43);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 20);
-            this.textBox2.TabIndex = 23;
+            this.txtBuscarNombre.Location = new System.Drawing.Point(113, 43);
+            this.txtBuscarNombre.Name = "txtBuscarNombre";
+            this.txtBuscarNombre.Size = new System.Drawing.Size(216, 20);
+            this.txtBuscarNombre.TabIndex = 23;
             // 
             // label4
             // 
@@ -361,8 +350,8 @@
             // 
             this.dtgListaTrabajadores.AllowUserToAddRows = false;
             this.dtgListaTrabajadores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgListaTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaTrabajadores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idTrabajador,
@@ -438,7 +427,7 @@
             "Activos",
             "Inactivos",
             "Sin Periodo Laboral"});
-            this.cboFiltroTrabajadores.Location = new System.Drawing.Point(539, 69);
+            this.cboFiltroTrabajadores.Location = new System.Drawing.Point(567, 98);
             this.cboFiltroTrabajadores.Name = "cboFiltroTrabajadores";
             this.cboFiltroTrabajadores.Size = new System.Drawing.Size(121, 21);
             this.cboFiltroTrabajadores.TabIndex = 33;
@@ -477,9 +466,9 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBuscarApellidoMaterno;
+        private System.Windows.Forms.TextBox txtBuscarApellidoPaterno;
+        private System.Windows.Forms.TextBox txtBuscarNombre;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -499,7 +488,6 @@
         private System.Windows.Forms.Button btnBuscarAMaterno;
         private System.Windows.Forms.Button btnBuscarAPaterno;
         private System.Windows.Forms.Button btnBuscarNombre;
-        private System.Windows.Forms.CheckBox chkActivos;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTrabajador;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombres;
