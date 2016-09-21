@@ -43,7 +43,7 @@ namespace CapaUsuario.Tareo
         {
             DibujarDataGrid(miTareo.FechaFin.Day - miTareo.FechaInicio.Day);
             MostrarColumnas();
-            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
+            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
             oDataAFP = miAFP.ObtenerListaAFP();
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
             oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
@@ -161,7 +161,7 @@ namespace CapaUsuario.Tareo
             fNuevoObrero.RecibirDatos(miMeta.Codigo);
             if (fNuevoObrero.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
+                oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
                 oDataAFP = miAFP.ObtenerListaAFP();
                 oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
                 oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);

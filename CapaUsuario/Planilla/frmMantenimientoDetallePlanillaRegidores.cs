@@ -73,7 +73,7 @@ namespace CapaUsuario.Planilla
         {
             DibujarDataGrid();
             MostrarColumnas();
-            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
+            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
             oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
             oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);

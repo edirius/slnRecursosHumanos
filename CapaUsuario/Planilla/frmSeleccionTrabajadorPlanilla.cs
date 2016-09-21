@@ -79,7 +79,7 @@ namespace CapaUsuario.Planilla
 
             oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
-            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores(true);
+            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
 
             foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtmeta = '" + sidtmeta + "' and idtregimenlaboral = '" + sidtregimenlaboral + "'", "idtcargo"))
             {
