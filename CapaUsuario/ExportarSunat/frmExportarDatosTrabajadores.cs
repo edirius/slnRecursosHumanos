@@ -17,15 +17,20 @@ namespace CapaUsuario.ExportarSunat
     {
         ArrayList milista = new ArrayList();
         int nroSexo = 0;
+        string FechaTexto = "";
         CapaDeNegocios.ExportarSunat.cExportarSunat oExportar = new CapaDeNegocios.ExportarSunat.cExportarSunat();
         public frmExportarDatosTrabajadores()
         {
             InitializeComponent();
+            DateTime Ahora = DateTime.Today;
+            CargarMes(Ahora);
+            cbMes.Text = FechaTexto;
+            CargarAños();
             Cargargrid();
         }
         public void Cargargrid()
         {
-            dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadoresporFechaInicio(DtDesde.Value, DtHasta.Value);
+            dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadoresporFechaInicio(cbMes.Text, cbAños.Text);
             //dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadores();
             dgvListarTrabajadores.Columns[0].Width = 50;
             dgvListarTrabajadores.Columns[1].Width = 75;
@@ -46,7 +51,84 @@ namespace CapaUsuario.ExportarSunat
             dgvListarTrabajadores.Columns[18].Visible = false;
             //dgvListarTrabajadores.Columns[19].Visible = false;
         }
+        private void CargarMes(DateTime FechaActual)
+        {
+            string Ahora = Convert.ToString(FechaActual.Date.Month);
+            switch (Ahora)
+            {
+                case "1":
+                    {
+                        FechaTexto = "ENERO";
+                        break;
+                    }
+                case "2":
+                    {
+                        FechaTexto = "FEBRERO";
+                        break;
+                    }
+                case "3":
+                    {
+                        FechaTexto = "MARZO";
+                        break;
+                    }
+                case "4":
+                    {
+                        FechaTexto = "ABRIL";
+                        break;
+                    }
+                case "5":
+                    {
+                        FechaTexto = "MAYO";
+                        break;
+                    }
+                case "6":
+                    {
+                        FechaTexto = "JUNIO";
+                        break;
+                    }
+                case "7":
+                    {
+                        FechaTexto = "JULIO";
+                        break;
+                    }
+                case "8":
+                    {
+                        FechaTexto = "AGOSTO";
+                        break;
+                    }
+                case "9":
+                    {
+                        FechaTexto = "SEPTIEMBRE";
+                        break;
+                    }
+                case "10":
+                    {
+                        FechaTexto = "OCTUBRE";
+                        break;
+                    }
+                case "11":
+                    {
+                        FechaTexto = "NOVIEMBRE";
+                        break;
+                    }
+                case "12":
+                    {
+                        FechaTexto = "DICIEMBRE";
+                        break;
+                    }
 
+            }
+        }
+        private void CargarAños()
+        {
+            string años = "";
+            for (int i = DateTime.Now.Year; i >= 2000; i--)
+            {
+                cbAños.Items.Add(i);
+            }
+            cbAños.Text = años;
+            cbAños.Text = Convert.ToString(DateTime.Now.Year);
+        }
         private void btnExportar_Click(object sender, EventArgs e)
         {
 
@@ -165,16 +247,14 @@ namespace CapaUsuario.ExportarSunat
 
         }
 
-        private void DtHasta_ValueChanged(object sender, EventArgs e)
+        private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadoresporFechaInicio(DtDesde.Value, DtHasta.Value);
+            Cargargrid();
         }
 
-        private void DtDesde_ValueChanged(object sender, EventArgs e)
+        private void cbAños_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dgvListarTrabajadores.DataSource = oExportar.ListarTrabajadoresporFechaInicio(DtDesde.Value, DtHasta.Value);
+            Cargargrid();
         }
-
-        
     }
 }

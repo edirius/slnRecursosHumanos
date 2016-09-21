@@ -63,9 +63,9 @@ namespace CapaDeNegocios.ExportarSunat
             return Conexion.GDatos.TraerDataTable("spBuscarPlanillasExportar", mes, año);
         }
         
-        public DataTable ListarDatosDelTrabajadorporFecha(DateTime fecha1, DateTime fecha2)
+        public DataTable ListarDatosDelTrabajadorporFecha(string mes, string año)
         {
-            return Conexion.GDatos.TraerDataTable("spExportarDatosTrabajador", fecha1, fecha2);
+            return Conexion.GDatos.TraerDataTable("spExportarDatosTrabajador", mes, año);
         }
         public DataTable ListarDatosDelPensionistaporFecha(DateTime fecha1, DateTime fecha2)
         {
@@ -74,9 +74,9 @@ namespace CapaDeNegocios.ExportarSunat
 
         ////////EXPORTAR DATOS DE LOS TRABAJADORES A LA SUNAT//////
 
-        public DataTable ListarTrabajadoresporFechaInicio(DateTime fecha1, DateTime fecha2)
+        public DataTable ListarTrabajadoresporFechaInicio(string aMes, string aAño)
         {
-            return Conexion.GDatos.TraerDataTable("spListarTrabajadoresporFecha", fecha1, fecha2);
+            return Conexion.GDatos.TraerDataTable("spListarTrabajadoresporFecha", aMes, aAño);
         }
         public string ExportarDatosTrabajador(string tipoDoc, string dni, string paisEmisor, string fechaNac, string apPaterno, string apMaterno,
         string nombres, string sexo, string nacionalidad, string telLargaDis, string tel, string correo, string tipoVia, string nombreVia, string nroVia,
@@ -107,13 +107,17 @@ namespace CapaDeNegocios.ExportarSunat
             string Concatenar = tipoDoc + Palo + dni + Palo + paisDoc + Palo + ruc + Palo + codEstab + Palo;
             return Concatenar;
         }
-        public DataTable ListarPeriodos(DateTime fecha1, DateTime fecha2)
+        public DataTable ListarPeriodos(string mes, string año)
         {
-            return Conexion.GDatos.TraerDataTable("spExportarPeriodos", fecha1, fecha2);
+            return Conexion.GDatos.TraerDataTable("spExportarPeriodos", mes, año);
         }
-        public DataTable ListarEstablecimientos(DateTime fecha1, DateTime fecha2)
+        public DataTable ListarEstablecimientos(string mes, string año)
         {
-            return Conexion.GDatos.TraerDataTable("spExportarEstablecimientos", fecha1, fecha2);
+            return Conexion.GDatos.TraerDataTable("spExportarEstablecimientos", mes, año);
+        }
+        public DataTable EXPORTARTODO(string aMes, string aAño)
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarTodo", aMes, aAño);
         }
     }
 }
