@@ -17,17 +17,100 @@ namespace CapaUsuario.ExportarSunat
     {
         CapaDeNegocios.ExportarSunat.cExportarSunat oexp = new CapaDeNegocios.ExportarSunat.cExportarSunat();
         ArrayList milista = new ArrayList();
+        string FechaTexto = "";
         public frmExportarDatosDeEstudiosConcluidos()
         {
             InitializeComponent();
+            CargarAños();
             CargarGrid();
+            DateTime Ahora = DateTime.Today;
+            CargarMes(Ahora);
+            cbMes.Text = FechaTexto;
         }
         public void CargarGrid()
         {
-            dgvDatosEstudios.DataSource = oexp.ListarEstablecimientos(DtDesde.Value, DtHasta.Value);
+            dgvDatosEstudios.DataSource = oexp.ListarEstablecimientos(cbMes.Text, cbAños.Text);
             dgvDatosEstudios.Columns[0].Width = 270;
             dgvDatosEstudios.Columns[1].Width = 75;
             dgvDatosEstudios.Columns[2].Width = 75;
+        }
+        private void CargarMes(DateTime FechaActual)
+        {
+            string Ahora = Convert.ToString(FechaActual.Date.Month);
+            switch (Ahora)
+            {
+                case "1":
+                    {
+                        FechaTexto = "ENERO";
+                        break;
+                    }
+                case "2":
+                    {
+                        FechaTexto = "FEBRERO";
+                        break;
+                    }
+                case "3":
+                    {
+                        FechaTexto = "MARZO";
+                        break;
+                    }
+                case "4":
+                    {
+                        FechaTexto = "ABRIL";
+                        break;
+                    }
+                case "5":
+                    {
+                        FechaTexto = "MAYO";
+                        break;
+                    }
+                case "6":
+                    {
+                        FechaTexto = "JUNIO";
+                        break;
+                    }
+                case "7":
+                    {
+                        FechaTexto = "JULIO";
+                        break;
+                    }
+                case "8":
+                    {
+                        FechaTexto = "AGOSTO";
+                        break;
+                    }
+                case "9":
+                    {
+                        FechaTexto = "SEPTIEMBRE";
+                        break;
+                    }
+                case "10":
+                    {
+                        FechaTexto = "OCTUBRE";
+                        break;
+                    }
+                case "11":
+                    {
+                        FechaTexto = "NOVIEMBRE";
+                        break;
+                    }
+                case "12":
+                    {
+                        FechaTexto = "DICIEMBRE";
+                        break;
+                    }
+
+            }
+        }
+        private void CargarAños()
+        {
+            string años = "";
+            for (int i = DateTime.Now.Year; i >= 2000; i--)
+            {
+                cbAños.Items.Add(i);
+            }
+            cbAños.Text = años;
+            cbAños.Text = Convert.ToString(DateTime.Now.Year);
         }
         public void concatenarDatos()
         {
@@ -96,15 +179,15 @@ namespace CapaUsuario.ExportarSunat
                 MessageBox.Show("No se encontraron datos para exportar");
             
         }
-
-        private void DtDesde_ValueChanged(object sender, EventArgs e)
+        
+        private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dgvDatosEstudios.DataSource = oexp.ListarEstablecimientos(DtDesde.Value, DtHasta.Value);
+            CargarGrid();
         }
 
-        private void DtHasta_ValueChanged(object sender, EventArgs e)
+        private void cbAños_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dgvDatosEstudios.DataSource = oexp.ListarEstablecimientos(DtDesde.Value, DtHasta.Value);
+            CargarGrid();
         }
     }
 }

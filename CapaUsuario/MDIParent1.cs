@@ -385,5 +385,12 @@ namespace CapaUsuario
         {
 
         }
+
+        private void exportarTodoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmExportarTodo frmTodo = new ExportarSunat.frmExportarTodo();
+            frmTodo.MdiParent = this;
+            frmTodo.Show();
+        }
     }
 }

@@ -36,29 +36,124 @@ namespace CapaUsuario.ExportarSunat
         string NroRegimenSalud = "";
         string Categoria = "1";
         ArrayList milista = new ArrayList();
+        string FechaTexto = "";
         public frmExportarPeriodos()
         {
             InitializeComponent();
+            CargarAños();
             Cargargrid();
+            DateTime Ahora = DateTime.Today;
+            CargarMes(Ahora);
+            cbMes.Text = FechaTexto;
+        }
+        private void CargarMes(DateTime FechaActual)
+        {
+            string Ahora = Convert.ToString(FechaActual.Date.Month);
+            switch (Ahora)
+            {
+                case "1":
+                    {
+                        FechaTexto = "ENERO";
+                        break;
+                    }
+                case "2":
+                    {
+                        FechaTexto = "FEBRERO";
+                        break;
+                    }
+                case "3":
+                    {
+                        FechaTexto = "MARZO";
+                        break;
+                    }
+                case "4":
+                    {
+                        FechaTexto = "ABRIL";
+                        break;
+                    }
+                case "5":
+                    {
+                        FechaTexto = "MAYO";
+                        break;
+                    }
+                case "6":
+                    {
+                        FechaTexto = "JUNIO";
+                        break;
+                    }
+                case "7":
+                    {
+                        FechaTexto = "JULIO";
+                        break;
+                    }
+                case "8":
+                    {
+                        FechaTexto = "AGOSTO";
+                        break;
+                    }
+                case "9":
+                    {
+                        FechaTexto = "SEPTIEMBRE";
+                        break;
+                    }
+                case "10":
+                    {
+                        FechaTexto = "OCTUBRE";
+                        break;
+                    }
+                case "11":
+                    {
+                        FechaTexto = "NOVIEMBRE";
+                        break;
+                    }
+                case "12":
+                    {
+                        FechaTexto = "DICIEMBRE";
+                        break;
+                    }
+
+            }
+        }
+        private void CargarAños()
+        {
+            string años = "";
+            for (int i = DateTime.Now.Year; i >= 2000; i--)
+            {
+                cbAños.Items.Add(i);
+            }
+            cbAños.Text = años;
+            cbAños.Text = Convert.ToString(DateTime.Now.Year);
         }
         public void Cargargrid()
         {
-            dgvExportarPeriodos.DataSource = oexp.ListarPeriodos(DtDesde.Value, DtHasta.Value);
-            //dgvExportarPeriodos.Columns[0].Width = 200;
-            //dgvExportarPeriodos.Columns[1].Width = 75;
-            //dgvExportarPeriodos.Columns[2].Width = 75;
-            //dgvExportarPeriodos.Columns[3].Width = 75;
+            dgvExportarPeriodos.DataSource = oexp.ListarPeriodos(cbMes.Text, cbAños.Text);
+            dgvExportarPeriodos.Columns[0].Width = 325;
+            dgvExportarPeriodos.Columns[1].Width = 75;
+            dgvExportarPeriodos.Columns[2].Visible = false;
+            dgvExportarPeriodos.Columns[3].Width = 75;
+
+            dgvExportarPeriodos.Columns[4].Visible = false;
+            dgvExportarPeriodos.Columns[5].Visible = false;
+            dgvExportarPeriodos.Columns[6].Visible = false;
+            dgvExportarPeriodos.Columns[7].Visible = false;
+            dgvExportarPeriodos.Columns[8].Visible = false;
+            dgvExportarPeriodos.Columns[9].Visible = false;
+            dgvExportarPeriodos.Columns[10].Visible = false;
+            dgvExportarPeriodos.Columns[11].Visible = false;
+            dgvExportarPeriodos.Columns[12].Visible = false;
+            dgvExportarPeriodos.Columns[13].Visible = false;
+
             //dgvExportarPeriodos.Columns[4].Visible = false;
             //dgvExportarPeriodos.Columns[5].Width = 350;
-            //dgvExportarPeriodos.Columns[6].Visible = false;
-            //dgvExportarPeriodos.Columns[7].Width = 150;
-            //dgvExportarPeriodos.Columns[8].Width = 100;
-            //dgvExportarPeriodos.Columns[9].Width = 100;
-            //dgvExportarPeriodos.Columns[10].Width = 200;
-            //dgvExportarPeriodos.Columns[11].Width = 150;
-            //dgvExportarPeriodos.Columns[12].Width = 150;
-            //dgvExportarPeriodos.Columns[13].Visible = false;
-            //dgv1.Columns[0].Visible = false;
+            ////dgvExportarPeriodos.Columns[6].Visible = false;
+            ////dgvExportarPeriodos.Columns[7].Width = 150;
+            ////dgvExportarPeriodos.Columns[8].Width = 100;
+            ////dgvExportarPeriodos.Columns[9].Width = 100;
+            ////dgvExportarPeriodos.Columns[10].Width = 200;
+            ////dgvExportarPeriodos.Columns[11].Width = 150;
+            ////dgvExportarPeriodos.Columns[12].Width = 150;
+            ////dgvExportarPeriodos.Columns[13].Visible = false;
+            ////dgvExportarPeriodos.Columns[0].Visible = false;
 
         }
 
@@ -166,23 +261,23 @@ namespace CapaUsuario.ExportarSunat
             {
                 MessageBox.Show(ex.Message);
             }
-            try
-            {
-                for (int g = 0; g < dgvExportarPeriodos.Rows.Count; g++) //Régimen Pensionario
-                {
-                    string tipoRegistro = "5";
-                    string dni5 = dgvExportarPeriodos[3, g].Value.ToString();
-                    DateTime fechainicio5 = Convert.ToDateTime(dgvExportarPeriodos[1, g].Value.ToString());
-                    string fechafin5 = dgvExportarPeriodos[2, g].Value.ToString();
-                    string indicadorTipoRegistro5 = "1";
-                    SCTR = oexp.ExportarPeriodos(tipoDoc, dni5, paisDoc, Categoria, tipoRegistro, fechainicio5.ToShortDateString(), fechafin5, indicadorTipoRegistro5, EPS);
-                    milista.Add(SCTR);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //try
+            //{
+            //    for (int g = 0; g < dgvExportarPeriodos.Rows.Count; g++) //Régimen Pensionario
+            //    {
+            //        string tipoRegistro = "5";
+            //        string dni5 = dgvExportarPeriodos[3, g].Value.ToString();
+            //        DateTime fechainicio5 = Convert.ToDateTime(dgvExportarPeriodos[1, g].Value.ToString());
+            //        string fechafin5 = dgvExportarPeriodos[2, g].Value.ToString();
+            //        string indicadorTipoRegistro5 = "1";
+            //        SCTR = oexp.ExportarPeriodos(tipoDoc, dni5, paisDoc, Categoria, tipoRegistro, fechainicio5.ToShortDateString(), fechafin5, indicadorTipoRegistro5, EPS);
+            //        milista.Add(SCTR);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
 
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
@@ -210,19 +305,14 @@ namespace CapaUsuario.ExportarSunat
             }
         }
 
-        private void frmExportarPeriodos_Load(object sender, EventArgs e)
+        private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Cargargrid();
         }
 
-        private void DtDesde_ValueChanged(object sender, EventArgs e)
+        private void cbAños_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dgvExportarPeriodos.DataSource = oexp.ListarPeriodos(DtDesde.Value, DtHasta.Value);
-        }
-
-        private void DtHasta_ValueChanged(object sender, EventArgs e)
-        {
-            dgvExportarPeriodos.DataSource = oexp.ListarPeriodos(DtDesde.Value, DtHasta.Value);
+            Cargargrid();
         }
     }
 }

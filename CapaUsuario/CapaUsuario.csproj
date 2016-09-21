@@ -163,6 +163,12 @@
     <Compile Include="ExportarSunat\frmExportarPeriodos.Designer.cs">
       <DependentUpon>frmExportarPeriodos.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExportarSunat\frmExportarTodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarSunat\frmExportarTodo.Designer.cs">
+      <DependentUpon>frmExportarTodo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportarSunat\frmExportarTributosDescuentosTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1056,6 +1062,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmExportarPeriodos.resx">
       <DependentUpon>frmExportarPeriodos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportarSunat\frmExportarTodo.resx">
+      <DependentUpon>frmExportarTodo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmExportarTributosDescuentosTrabajador.resx">
       <DependentUpon>frmExportarTributosDescuentosTrabajador.cs</DependentUpon>
