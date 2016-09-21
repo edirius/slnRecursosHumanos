@@ -1558,7 +1558,7 @@ namespace CapaUsuario.Reportes
 
                     /*DEBE */
                     iindice_total_ingresos = BuscarIndiceColumna(odtPruebaCorta, "TOTAL INGRESOS");
-                    iindice_total_a_empleador = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES TRABAJADOR");
+                    iindice_total_a_empleador = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES EMPLEADOR");
 
                     if (iindice_total_ingresos != -1)
                     {
@@ -1578,7 +1578,7 @@ namespace CapaUsuario.Reportes
                         total_a_empleador_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_total_a_empleador]);
                         drFilaEEFF = odtEEFF.NewRow();
                         drFilaEEFF.Delete();
-                        drFilaEEFF[0] = "TOTAL APORTACIONES TRABAJADOR";
+                        drFilaEEFF[0] = "TOTAL APORTACIONES EMPLEADOR";
                         drFilaEEFF[1] = total_a_empleador_total;
                         total_debe += total_a_empleador_total;
                         odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
