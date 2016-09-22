@@ -112,9 +112,14 @@ namespace CapaDeNegocios.Planillas
             return Conexion.GDatos.TraerDataTable("spListarRegimenLaboralPlanilla", pNumeroPlanilla);
         }
 
-        public DataTable ListarPlanilla()
+        public DataTable ListarPlanillaXmesYaño(string pmes, string paño )
         {
-            return Conexion.GDatos.TraerDataTable("spListarPlanilla");
+            return Conexion.GDatos.TraerDataTable("ListarPlanillaXmesYaño", pmes,paño);
+        }
+
+        public DataTable ListarPlanilla( )
+        {
+            return Conexion.GDatos.TraerDataTable("spListarPlanilla" );
         }
 
         public Boolean CrearPlanilla(cPlanilla miPlanilla)
