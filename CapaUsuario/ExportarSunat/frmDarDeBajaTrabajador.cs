@@ -8,17 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDeNegocios;
-using System.IO;
 using System.Collections;
+using System.IO;
 
 namespace CapaUsuario.ExportarSunat
 {
-    public partial class frmExportarDatosDeEstudiosConcluidos : Form
+    public partial class frmDarDeBajaTrabajador : Form
     {
-        CapaDeNegocios.ExportarSunat.cExportarSunat oexp = new CapaDeNegocios.ExportarSunat.cExportarSunat();
+        CapaDeNegocios.ExportarSunat.cExportarSunat oExpo = new CapaDeNegocios.ExportarSunat.cExportarSunat();
         ArrayList milista = new ArrayList();
         string FechaTexto = "";
-        public frmExportarDatosDeEstudiosConcluidos()
+        string Periodos="";
+        public frmDarDeBajaTrabajador()
         {
             InitializeComponent();
             CargarAños();
@@ -29,10 +30,40 @@ namespace CapaUsuario.ExportarSunat
         }
         public void CargarGrid()
         {
-            dgvDatosEstudios.DataSource = oexp.ListarEstablecimientos(cbMes.Text, cbAños.Text);
-            dgvDatosEstudios.Columns[0].Width = 270;
-            dgvDatosEstudios.Columns[1].Width = 75;
-            dgvDatosEstudios.Columns[2].Width = 75;
+            dgvDarDeBaja.DataSource = oExpo.DarDeBajaTrabajador(cbMes.Text, cbAños.Text);
+            DataGridViewCheckBoxColumn Check = new DataGridViewCheckBoxColumn();//creamos un objeto check
+            {
+                Check.Name = "☑";//le damos un nombre de cabecera
+                dgvDarDeBaja.Columns.Add(Check);//agregamos los check a cada items
+
+            }
+            dgvDarDeBaja.Columns["☑"].DisplayIndex = 0;
+            dgvDarDeBaja.Columns["☑"].ReadOnly = false;
+            for (int i = 0; i < dgvDarDeBaja.Columns.Count; i++)
+            {
+                dgvDarDeBaja.Columns[i].Visible = false;
+                dgvDarDeBaja.Columns["☑"].Visible = true;
+                dgvDarDeBaja.Columns["☑"].Width = 30;
+                dgvDarDeBaja.Columns["Nro"].Visible = true;
+                dgvDarDeBaja.Columns["Nro"].Width = 40;
+                dgvDarDeBaja.Columns["Nro"].ReadOnly = true;
+                dgvDarDeBaja.Columns["Nombres"].Visible = true;
+                dgvDarDeBaja.Columns["Nombres"].Width = 250;
+                dgvDarDeBaja.Columns["Nombres"].DisplayIndex = 4;
+                dgvDarDeBaja.Columns["Nombres"].ReadOnly = true;
+                dgvDarDeBaja.Columns["DNI"].Visible = true;
+                dgvDarDeBaja.Columns["DNI"].Width = 75;
+                dgvDarDeBaja.Columns["DNI"].ReadOnly = true;
+                dgvDarDeBaja.Columns["Sexo"].Visible = true;
+                dgvDarDeBaja.Columns["Sexo"].Width = 50;
+                dgvDarDeBaja.Columns["Sexo"].ReadOnly = true;
+                dgvDarDeBaja.Columns["FechaFin"].Visible = true;
+                dgvDarDeBaja.Columns["FechaFin"].Width = 78;
+                dgvDarDeBaja.Columns["FechaFin"].ReadOnly = true;
+                dgvDarDeBaja.Columns["DescripcionMotivoFin"].Visible = true;
+                dgvDarDeBaja.Columns["DescripcionMotivoFin"].Width = 350;
+                dgvDarDeBaja.Columns["DescripcionMotivoFin"].ReadOnly = true;
+            }
         }
         private void CargarMes(DateTime FechaActual)
         {
@@ -114,31 +145,29 @@ namespace CapaUsuario.ExportarSunat
         }
         public void concatenarDatos()
         {
-            
-            try
+            foreach (DataGridViewRow fila in dgvDarDeBaja.Rows)
             {
-                for (int i = 0; i < dgvDatosEstudios.Rows.Count; i++)
+                if (Convert.ToBoolean(fila.Cells["☑"].Value) == true)
                 {
-                    string tipoDoc = "01";
-                    string dni = dgvDatosEstudios[2, i].Value.ToString();
-                    string paisDoc = "604";
-                    string situacionEdu = "11";
-                    string indicador = "0";
-                    string Contenido = "";
-                    string palo = "|";
-                    Contenido = tipoDoc + palo + dni + palo + paisDoc + palo + situacionEdu + palo + indicador + palo + palo + palo + palo;
-                    milista.Add(Contenido);
+                    //Periodos
+                    string tipoDoc = fila.Cells["@tipoDoc"].Value.ToString();
+                    string dni = fila.Cells["DNI"].Value.ToString();
+                    string paisDoc = fila.Cells["@PaisEmisor"].Value.ToString();
+                    string Categoria = fila.Cells["@Categoria"].Value.ToString();
+                    string TipoRegistro = fila.Cells["@TipoRegistro"].Value.ToString();
+                    string fechainicio = "";
+                    DateTime fechafin = Convert.ToDateTime(fila.Cells["FechaFin"].Value.ToString());
+                    string indicadorTipoRegistro = fila.Cells["codigosunat"].Value.ToString();
+                    string EPS = "";
+                    Periodos = oExpo.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, TipoRegistro, fechainicio, fechafin.ToShortDateString(), indicadorTipoRegistro, EPS);
+                    milista.Add(Periodos);
 
                 }
-            }
-            catch
-            {
-
             }
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
             string RUC = "20226560824";
-            string tipoArchivo = ".EDU";
+            string tipoArchivo = ".PER";
             string rp = "RP_";
             string Titulo = rp + RUC + tipoArchivo;
             Guardar.FileName = Titulo;
@@ -168,26 +197,41 @@ namespace CapaUsuario.ExportarSunat
 
         }
 
-        private void btnExportar_Click(object sender, EventArgs e)
-        {
-            if (dgvDatosEstudios.Rows.Count != 2)
-            {
-                concatenarDatos();
-                milista.Clear();
-            }
-            else
-                MessageBox.Show("No se encontraron datos para exportar");
-            
-        }
-        
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargarGrid();
+            dgvDarDeBaja.DataSource = oExpo.DarDeBajaTrabajador(cbMes.Text, cbAños.Text);
         }
 
         private void cbAños_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CargarGrid();
+            dgvDarDeBaja.DataSource = oExpo.DarDeBajaTrabajador(cbMes.Text, cbAños.Text);
+        }
+
+        private void checkSeleccionar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkSeleccionar.Checked == true)
+            {
+                for (int i = 0; i < dgvDarDeBaja.Rows.Count; i++)
+                {
+                    dgvDarDeBaja[0, i].Value = true;
+                }
+            }
+            else
+                for (int i = 0; i < dgvDarDeBaja.Rows.Count; i++)
+                {
+                    dgvDarDeBaja[0, i].Value = false;
+                }
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            concatenarDatos();
+            milista.Clear();
+        }
+
+        private void frmDarDeBajaTrabajador_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

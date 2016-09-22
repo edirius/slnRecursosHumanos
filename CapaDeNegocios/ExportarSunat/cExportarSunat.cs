@@ -15,10 +15,8 @@ namespace CapaDeNegocios.ExportarSunat
         string Palo = "|";
         public string ExportarTexto(string tipoDoc, string dni, string codigo, string montodevengado, string monto)
         {
-            
             string ConcatenarCuerpo = "";
-            ConcatenarCuerpo = tipoDoc + "|" + dni + "|" + codigo + "|" + montodevengado + "|" + monto + Palo;
-            
+            ConcatenarCuerpo = tipoDoc + Palo + dni + Palo + codigo + Palo + montodevengado + Palo + monto + Palo;
             return ConcatenarCuerpo;
             
         }
@@ -85,11 +83,11 @@ namespace CapaDeNegocios.ExportarSunat
         string kilometro2, string block2, string etapa2, string tipoZona2, string nombreZona2, string referencia2,
         string ubigeo2, string indicadorAsistenciaESSALUD)
         {
-            string ConcatenarContenido = tipoDoc + Palo + dni + "|" + paisEmisor + "|" + fechaNac + "|" + apPaterno + "|" + apMaterno + "|" + nombres +
-                "|" + sexo + "|" + nacionalidad + "|" + telLargaDis + "|" + tel + "|" + correo + "|" + tipoVia + "|" + nombreVia + "|" + nroVia + "|" +
-                 departamento + "|" + interior + "|" + manzana + "|" + lote + "|" + kilometro + "|" + block + "|" + etapa + "|" + tipoZona + "|" + nombreZona + "|" + referencia + "|" + 
-                ubigeo + "|" + tipoVia2 + "|" + nombreVia2 + "|" + nroVia2 + "|" + departamento2 + "|" + interior2 + "|" + manzana2 + "|" + lote2 + "|" +
-                  kilometro2 + "|" + block2 + "|" + etapa2 + "|" + tipoZona2 + "|" + nombreZona2 + "|" + referencia2 + "|" + ubigeo2 + "|" + indicadorAsistenciaESSALUD + "|";
+            string ConcatenarContenido = tipoDoc + Palo + dni + Palo + paisEmisor + Palo + fechaNac + Palo + apPaterno + Palo + apMaterno + Palo + nombres +
+                Palo + sexo + Palo + nacionalidad + Palo + telLargaDis + Palo + tel + Palo + correo + Palo + tipoVia + Palo + nombreVia + Palo + nroVia + Palo +
+                 departamento + Palo + interior + Palo + manzana + Palo + lote + Palo + kilometro + Palo + block + Palo + etapa + Palo + tipoZona + Palo + nombreZona + Palo + referencia + Palo + 
+                ubigeo + Palo + tipoVia2 + Palo + nombreVia2 + Palo + nroVia2 + Palo + departamento2 + Palo + interior2 + Palo + manzana2 + Palo + lote2 + Palo +
+                  kilometro2 + Palo + block2 + Palo + etapa2 + Palo + tipoZona2 + Palo + nombreZona2 + Palo + referencia2 + Palo + ubigeo2 + Palo + indicadorAsistenciaESSALUD + Palo;
             return ConcatenarContenido;
         }
         public string ExportarDatosTrabajador2(string tipoDoc, string dni, string paisDoc, string regimenlaboral, string situacionEdu, string ocupacion, string discapacidad, string CUSPP, string SCTRpension, string tipoContrato, string regimenAlternativo, string jornadaTrabajo, string horarioNocturno, string sindicalizado, string periodicidad, string remBasica, string situacion, string Renta5ta, string situacionEsp, string tipoPago, string catOcupacional, string convenio, string RUC)
@@ -111,9 +109,9 @@ namespace CapaDeNegocios.ExportarSunat
         {
             return Conexion.GDatos.TraerDataTable("spExportarPeriodos", mes, año);
         }
-        public DataTable ListarEstablecimientos(string mes, string año)
+        public DataTable DarDeBajaTrabajador(string mes, string año)
         {
-            return Conexion.GDatos.TraerDataTable("spExportarEstablecimientos", mes, año);
+            return Conexion.GDatos.TraerDataTable("spDardebajatrabajador", mes, año);
         }
         public DataTable EXPORTARTODO(string aMes, string aAño)
         {
