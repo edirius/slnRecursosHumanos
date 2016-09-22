@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvListarTrabajadores = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.cbMes = new System.Windows.Forms.ComboBox();
@@ -36,12 +36,12 @@
             this.cbAños = new System.Windows.Forms.ComboBox();
             this.btnExportar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkSelectAll = new System.Windows.Forms.CheckBox();
             this.checkEDU = new System.Windows.Forms.CheckBox();
             this.checkEST = new System.Windows.Forms.CheckBox();
+            this.checkIDE = new System.Windows.Forms.CheckBox();
             this.checkPER = new System.Windows.Forms.CheckBox();
             this.checkTRA = new System.Windows.Forms.CheckBox();
-            this.checkIDE = new System.Windows.Forms.CheckBox();
+            this.checkSelectAll = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarTrabajadores)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -51,8 +51,8 @@
             this.dgvListarTrabajadores.AllowUserToAddRows = false;
             this.dgvListarTrabajadores.AllowUserToResizeColumns = false;
             this.dgvListarTrabajadores.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListarTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListarTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListarTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListarTrabajadores.GridColor = System.Drawing.Color.White;
             this.dgvListarTrabajadores.Location = new System.Drawing.Point(7, 118);
@@ -115,6 +115,7 @@
             // 
             // btnExportar
             // 
+            this.btnExportar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExportar.Location = new System.Drawing.Point(550, 19);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(106, 50);
@@ -142,17 +143,6 @@
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
             // 
-            // checkSelectAll
-            // 
-            this.checkSelectAll.AutoSize = true;
-            this.checkSelectAll.Location = new System.Drawing.Point(500, 90);
-            this.checkSelectAll.Name = "checkSelectAll";
-            this.checkSelectAll.Size = new System.Drawing.Size(188, 17);
-            this.checkSelectAll.TabIndex = 43;
-            this.checkSelectAll.Text = "Seleccionar todos los trabajadores";
-            this.checkSelectAll.UseVisualStyleBackColor = true;
-            this.checkSelectAll.CheckedChanged += new System.EventHandler(this.checkSelectAll_CheckedChanged);
-            // 
             // checkEDU
             // 
             this.checkEDU.AutoSize = true;
@@ -172,6 +162,16 @@
             this.checkEST.TabIndex = 41;
             this.checkEST.Text = "EST";
             this.checkEST.UseVisualStyleBackColor = true;
+            // 
+            // checkIDE
+            // 
+            this.checkIDE.AutoSize = true;
+            this.checkIDE.Location = new System.Drawing.Point(30, 90);
+            this.checkIDE.Name = "checkIDE";
+            this.checkIDE.Size = new System.Drawing.Size(44, 17);
+            this.checkIDE.TabIndex = 38;
+            this.checkIDE.Text = "IDE";
+            this.checkIDE.UseVisualStyleBackColor = true;
             // 
             // checkPER
             // 
@@ -193,26 +193,27 @@
             this.checkTRA.Text = "TRA";
             this.checkTRA.UseVisualStyleBackColor = true;
             // 
-            // checkIDE
+            // checkSelectAll
             // 
-            this.checkIDE.AutoSize = true;
-            this.checkIDE.Location = new System.Drawing.Point(30, 90);
-            this.checkIDE.Name = "checkIDE";
-            this.checkIDE.Size = new System.Drawing.Size(44, 17);
-            this.checkIDE.TabIndex = 38;
-            this.checkIDE.Text = "IDE";
-            this.checkIDE.UseVisualStyleBackColor = true;
+            this.checkSelectAll.AutoSize = true;
+            this.checkSelectAll.Location = new System.Drawing.Point(500, 90);
+            this.checkSelectAll.Name = "checkSelectAll";
+            this.checkSelectAll.Size = new System.Drawing.Size(188, 17);
+            this.checkSelectAll.TabIndex = 43;
+            this.checkSelectAll.Text = "Seleccionar todos los trabajadores";
+            this.checkSelectAll.UseVisualStyleBackColor = true;
+            this.checkSelectAll.CheckedChanged += new System.EventHandler(this.checkSelectAll_CheckedChanged);
             // 
             // frmExportarTodo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 567);
+            this.ClientSize = new System.Drawing.Size(756, 567);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvListarTrabajadores);
             this.Name = "frmExportarTodo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmExportarTodo";
+            this.Text = "Dar de alta al trabajador(T-REGISTRO)";
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarTrabajadores)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

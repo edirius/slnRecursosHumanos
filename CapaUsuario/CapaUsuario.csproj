@@ -121,11 +121,11 @@
       <DependentUpon>bdpersonalDataSet11.xsd</DependentUpon>
     </Compile>
     <Compile Include="ConvertImage.cs" />
-    <Compile Include="ExportarSunat\frmDatosDelEstablecimiento.cs">
+    <Compile Include="ExportarSunat\frmDarDeBajaTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ExportarSunat\frmDatosDelEstablecimiento.Designer.cs">
-      <DependentUpon>frmDatosDelEstablecimiento.cs</DependentUpon>
+    <Compile Include="ExportarSunat\frmDarDeBajaTrabajador.Designer.cs">
+      <DependentUpon>frmDarDeBajaTrabajador.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportarSunat\frmDatosDelPensionista.cs">
       <SubType>Form</SubType>
@@ -133,35 +133,11 @@
     <Compile Include="ExportarSunat\frmDatosDelPensionista.Designer.cs">
       <DependentUpon>frmDatosDelPensionista.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExportarSunat\frmDatosDelTrabajador.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ExportarSunat\frmDatosDelTrabajador.Designer.cs">
-      <DependentUpon>frmDatosDelTrabajador.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ExportarSunat\frmExportarDatosDeEstudiosConcluidos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ExportarSunat\frmExportarDatosDeEstudiosConcluidos.Designer.cs">
-      <DependentUpon>frmExportarDatosDeEstudiosConcluidos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ExportarSunat\frmExportarDatosTrabajadores.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ExportarSunat\frmExportarDatosTrabajadores.Designer.cs">
-      <DependentUpon>frmExportarDatosTrabajadores.cs</DependentUpon>
-    </Compile>
     <Compile Include="ExportarSunat\frmExportarExcel.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ExportarSunat\frmExportarExcel.Designer.cs">
       <DependentUpon>frmExportarExcel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ExportarSunat\frmExportarPeriodos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ExportarSunat\frmExportarPeriodos.Designer.cs">
-      <DependentUpon>frmExportarPeriodos.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportarSunat\frmExportarTodo.cs">
       <SubType>Form</SubType>
@@ -1048,26 +1024,14 @@
     <EmbeddedResource Include="AFP\frmListaAFPs.resx">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExportarSunat\frmDatosDelEstablecimiento.resx">
-      <DependentUpon>frmDatosDelEstablecimiento.cs</DependentUpon>
+    <EmbeddedResource Include="ExportarSunat\frmDarDeBajaTrabajador.resx">
+      <DependentUpon>frmDarDeBajaTrabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmDatosDelPensionista.resx">
       <DependentUpon>frmDatosDelPensionista.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExportarSunat\frmDatosDelTrabajador.resx">
-      <DependentUpon>frmDatosDelTrabajador.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ExportarSunat\frmExportarDatosDeEstudiosConcluidos.resx">
-      <DependentUpon>frmExportarDatosDeEstudiosConcluidos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ExportarSunat\frmExportarDatosTrabajadores.resx">
-      <DependentUpon>frmExportarDatosTrabajadores.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmExportarExcel.resx">
       <DependentUpon>frmExportarExcel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ExportarSunat\frmExportarPeriodos.resx">
-      <DependentUpon>frmExportarPeriodos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmExportarTodo.resx">
       <DependentUpon>frmExportarTodo.cs</DependentUpon>
