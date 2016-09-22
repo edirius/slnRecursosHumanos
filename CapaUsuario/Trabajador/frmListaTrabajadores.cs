@@ -13,9 +13,14 @@ namespace CapaUsuario.Trabajador
 {
     public partial class frmListaTrabajadores : Form
     {
+        CapaDeNegocios.Obras.cCadenaProgramaticaFuncional oCadena = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional(); 
+
         int pidttrabajador = 0;
         string trabajador = "";
-        
+
+        private string filtroRegimeLaboral = "Todos";
+        private string filtroSituacionLaboral = "Todos";
+
         public frmListaTrabajadores()
         {
             InitializeComponent();
@@ -32,6 +37,17 @@ namespace CapaUsuario.Trabajador
                 dtgListaTrabajadores.Rows[dtgListaTrabajadores.Rows.Count - 1].Selected = true;
                 dtgListaTrabajadores_CellClick(dtgListaTrabajadores, cea);
             }
+
+            for (int i = DateTime.Now.Year; i >= 2000; i--)
+            {
+                cboAño.Items.Add(i);
+            }
+            cboAño.Text = DateTime.Now.Year.ToString();
+            cboMeta.DisplayMember = "nombreMeta";
+            cboMeta.ValueMember = "idtmeta";
+            cboMeta.DataSource = oCadena.ListarMetas(Convert.ToInt16(cboAño.Text));
+
+            
         }
 
           
@@ -130,7 +146,7 @@ namespace CapaUsuario.Trabajador
 
         private void btnBuscarDNI_Click(object sender, EventArgs e)
         {
-            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text );
+            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral , "Todos" );
         }
 
         private void cboFiltroTrabajadores_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,17 +156,89 @@ namespace CapaUsuario.Trabajador
 
         private void btnBuscarNombre_Click(object sender, EventArgs e)
         {
-            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text);
+            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
         }
 
         private void btnBuscarAPaterno_Click(object sender, EventArgs e)
         {
-            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text);
+            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
         }
 
         private void btnBuscarAMaterno_Click(object sender, EventArgs e)
         {
-            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text);
+            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+        }
+
+        private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboMeta.DisplayMember = "nombreMeta";
+            cboMeta.ValueMember = "idtmeta";
+            cboMeta.DataSource = oCadena.ListarMetas(Convert.ToInt16(cboAño.Text));
+        }
+
+        private void treeFiltro_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Parent != null)
+            {
+                switch (e.Node.Parent.Text)
+                {
+                    case "Situacion Laboral":
+                        switch (e.Node.Text)
+                        {
+                            case "Todos":
+                                e.Node.BackColor = Color.Aquamarine;
+                                filtroSituacionLaboral = "Todos";
+                                break;
+                            case "Activos":
+                                e.Node.BackColor = Color.Aquamarine;
+                                filtroSituacionLaboral = "Activos";
+                                break;
+                            case "Inactivos":
+                                e.Node.BackColor = Color.Aquamarine;
+                                filtroSituacionLaboral = "Inactivos";
+                                break;
+                            case "Sin Periodo Laboral":
+                                e.Node.BackColor = Color.Aquamarine;
+                                filtroSituacionLaboral = "Sin Periodo Laboral";
+                                break;
+                        }
+                        
+                        break;
+                        
+                    case "Regimen Laboral":
+                        switch (e.Node.Text)
+                        {
+                            case "Todos":
+                                e.Node.BackColor = Color.Aquamarine;
+                                filtroRegimeLaboral = "Todos";
+                                break;
+                            case "Regimen CAS":
+                                e.Node.BackColor = Color.Aquamarine;
+                                filtroRegimeLaboral = "CAS";
+                                break;
+                            case "DL. 276":
+                                e.Node.BackColor = Color.Aquamarine;
+                                filtroRegimeLaboral = "276";
+                                break;
+                            case "DL. 728":
+                                e.Node.BackColor = Color.Aquamarine;
+                                filtroRegimeLaboral = "728";
+                                break;
+                        }
+                        break;
+                }
+                dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, "","","","",filtroRegimeLaboral, "Todos");
+            }
+            
+        }
+
+        private void btnBuscarXMeta_Click(object sender, EventArgs e)
+        {
+            if (cboMeta.SelectedIndex >= 0)
+            {
+                dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, cboMeta.SelectedValue.ToString() );
+            }
+            
         }
     }
 }
