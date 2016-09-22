@@ -1371,7 +1371,7 @@ namespace CapaUsuario.Reportes
 
                     indice_snp = BuscarIndiceColumna(odtPrueba, "SNP 13%");
                     indice_afp = BuscarIndiceColumna(odtPrueba, "DEC. AFP");
-
+                    /*
                     if (indice_snp != -1)
                     {
                         drFilaATrabajador = odtATrabajador.NewRow();
@@ -1391,7 +1391,7 @@ namespace CapaUsuario.Reportes
                         odtATrabajador.Rows.InsertAt(drFilaATrabajador, nn);
                         nn++;
                     }
-
+                    */
                     /* Fin SNP y AFP */
 
                     /*Hallando AFP*/
@@ -1679,7 +1679,8 @@ namespace CapaUsuario.Reportes
                     if (odtPruebaCorta.Rows.Count > 0) ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
                     if (odtPrueba.Rows.Count > 0) ultima_fila_prueba = odtPrueba.Rows.Count - 1;
 
-
+                   
+                    
                     if (iindice_snp_13 != -1)
                     {
                         snp_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_snp_13]);
@@ -1692,10 +1693,10 @@ namespace CapaUsuario.Reportes
                         lll++;
                     }
 
-
                     if (iindice_aportacion_entidad != -1)
                         aportacion_entidad_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba_corta][iindice_aportacion_entidad]);
 
+                    
 
                     if (iindice_afp != -1)
                     {
@@ -1709,6 +1710,7 @@ namespace CapaUsuario.Reportes
                         odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
                         lll++;
                     }
+                    
 
                     if (iindice_neto_cobrar != -1)
                     {
@@ -2000,7 +2002,9 @@ namespace CapaUsuario.Reportes
                 if (i == 0) values[i] = 50;
                 if (i == 1) values[i] = 200;
 
-                if (i == dg.ColumnCount - 1) values[i] = 200;
+                if (i == dg.ColumnCount - 1) values[i] = 300;
+                if (i == dg.ColumnCount - 2) values[i] = 50;
+                if (i == 5) values[i] = 50;
             }
             return values;
         }
@@ -2132,8 +2136,13 @@ namespace CapaUsuario.Reportes
             {
                 for (int l = 0; l < dgvAFP.ColumnCount; l++)
                 {
-                    objP2 = new Phrase(dgvAFP[l, k].Value.ToString(), fuente);
-                    pdfTable2.AddCell(objP2);
+                    cell = new PdfPCell((new Phrase(dgvAFP[l, k].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+
+                    if (l == 1)
+                        cell.HorizontalAlignment = Element.ALIGN_RIGHT;
+
+                    pdfTable2.AddCell(cell);
+
                 }
                 pdfTable2.CompleteRow();
             }
@@ -2156,8 +2165,9 @@ namespace CapaUsuario.Reportes
             {
                 for (int l = 0; l < dgvRedondear.ColumnCount; l++)
                 {
-                    objP3 = new Phrase(dgvRedondear[l, k].Value.ToString(), fuente);
-                    pdfTableRedondear.AddCell(objP3);
+                    cell3 = new PdfPCell((new Phrase(dgvRedondear[l, k].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                    cell3.HorizontalAlignment = Element.ALIGN_RIGHT;
+                    pdfTableRedondear.AddCell(cell3);
                 }
                 pdfTableRedondear.CompleteRow();
             }
@@ -2179,6 +2189,8 @@ namespace CapaUsuario.Reportes
                 for (int l = 0; l < dgvEEFF.ColumnCount; l++)
                 {
                     cell2 = new PdfPCell((new Phrase(dgvEEFF[l, k].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                    if (l == 1 || l == 2)
+                        cell2.HorizontalAlignment = Element.ALIGN_RIGHT;
                     pdfTableEEFF.AddCell(cell2);
                 }
             }
@@ -2262,7 +2274,20 @@ namespace CapaUsuario.Reportes
                 pdfDoc.Open();
 
                 string imageURL = "C:\\Users\\ADVANCE\\Source\\Repos\\slnRecursosHumanos\\slnRecursosHumanos\\Recursos Varios\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
-                iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(imageURL);
+                string ruta = Directory.GetCurrentDirectory();
+                string ruta2 = Application.StartupPath;
+                string ruta3 = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+
+                string[] palabras = ruta.Split('\\');
+
+                string ruta_imagen = palabras[0] + '\\' + palabras[1] + '\\' + palabras[2] + '\\' +
+                                     palabras[3] + '\\' + palabras[4] + '\\' + palabras[5] + '\\' + palabras[6] + '\\';
+
+                string ruta_carpeta = "Recursos Varios\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
+
+                ruta_imagen = ruta_imagen + ruta_carpeta ;
+
+                iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
                 logo.ScalePercent(64f);
                 logo.SetAbsolutePosition(12f, pdfDoc.PageSize.Height-36f-100f);
 
@@ -2271,7 +2296,7 @@ namespace CapaUsuario.Reportes
                 tabla_bonus.DefaultCell.BorderWidth = 0;
 
                 //tabla que continene rrhh, gerencia municipal, presupuesto y contabilidad
-                PdfPTable tabla_firmas = new PdfPTable(4);
+                PdfPTable tabla_firmas = new PdfPTable(3);
                 tabla_firmas.DefaultCell.BorderWidth = 0;
 
                 //instanciando una columna y 3 columnas
@@ -2291,7 +2316,7 @@ namespace CapaUsuario.Reportes
                 tabla_firmas.AddCell(p_rrhh);
                 tabla_firmas.AddCell(p_gm);
                 tabla_firmas.AddCell(p_pre);
-                tabla_firmas.AddCell(p_con);
+                //tabla_firmas.AddCell(p_con);
                 
                 //Agregando una columna 
                 column_one.AddElement(paragraph);
