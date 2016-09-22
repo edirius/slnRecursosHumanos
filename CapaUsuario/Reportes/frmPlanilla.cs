@@ -1704,8 +1704,8 @@ namespace CapaUsuario.Reportes
                         drFilaEEFF = odtEEFF.NewRow();
                         drFilaEEFF.Delete();
                         drFilaEEFF[0] = "AFP";
-                        drFilaEEFF[2] = afp_total;
-                        haber_total += afp_total;
+                        drFilaEEFF[2] = afp_total - snp_total ;
+                        haber_total += afp_total - snp_total;
                         odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
                         lll++;
                     }
