@@ -182,9 +182,9 @@
             this.chkRenta4ta.AutoSize = true;
             this.chkRenta4ta.Location = new System.Drawing.Point(536, 568);
             this.chkRenta4ta.Name = "chkRenta4ta";
-            this.chkRenta4ta.Size = new System.Drawing.Size(195, 17);
+            this.chkRenta4ta.Size = new System.Drawing.Size(202, 17);
             this.chkRenta4ta.TabIndex = 104;
-            this.chkRenta4ta.Text = "Suspención Renta de 4ta Categoria";
+            this.chkRenta4ta.Text = "Esta afecto a Renta de 4ta Categoria";
             this.chkRenta4ta.UseVisualStyleBackColor = true;
             // 
             // chkEssaludVida
