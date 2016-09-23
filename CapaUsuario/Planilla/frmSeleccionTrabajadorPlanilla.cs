@@ -95,8 +95,8 @@ namespace CapaUsuario.Planilla
                     mes_fechafin = Convert.ToInt32(rowRegimenTrabajador[8].ToString().Substring(3, 2));
                     año_fechafin = Convert.ToInt32(rowRegimenTrabajador[8].ToString().Substring(6, 4));
                 }
-                if (dia_fechainicio <= 31 && mes_fechainicio <= Convert.ToInt32(smes) && año_fechainicio <= Convert.ToInt32(saño))
-                {
+                //if (dia_fechainicio <= 31 && mes_fechainicio <= Convert.ToInt32(smes) && año_fechainicio <= Convert.ToInt32(saño))
+                //{
                     if (rowRegimenTrabajador[8].ToString() == "" || (dia_fechafin >= 01 && mes_fechafin >= Convert.ToInt32(smes) && año_fechafin >= Convert.ToInt32(saño)))
                     {
                         foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idtperiodotrabajador = '" + rowRegimenTrabajador[17].ToString() + "'"))
@@ -107,7 +107,7 @@ namespace CapaUsuario.Planilla
                             }
                         }
                     }
-                }
+                //}
             }
         }
 

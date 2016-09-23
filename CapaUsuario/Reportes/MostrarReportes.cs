@@ -37,7 +37,7 @@ namespace CapaUsuario.Reportes
 
         private void MostrarReportes_Load(object sender, EventArgs e)
         {
-            this.spTareoObrasTableAdapter.Fill(this.bdpersonal.spTareoObras, sidtmeta, IdTTareo);
+            //this.spTareoObrasTableAdapter.Fill(this.bdpersonal.spTareoObras, sidtmeta, IdTTareo);
 
             //ReportDataSource NuevaFuenteDatos = new ReportDataSource();
             ////reportViewer1.LocalReport.DataSources.Clear();
@@ -50,11 +50,6 @@ namespace CapaUsuario.Reportes
             //}
 
             this.reportViewer1.RefreshReport();
-        }
-
-        private void spTareoObrasBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
