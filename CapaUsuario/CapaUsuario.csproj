@@ -105,21 +105,6 @@
     <Compile Include="AFP\frmListaAFPs.Designer.cs">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </Compile>
-    <Compile Include="bdpersonal.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>bdpersonal.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="bdpersonalDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>bdpersonalDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="bdpersonalDataSet11.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>bdpersonalDataSet11.xsd</DependentUpon>
-    </Compile>
     <Compile Include="ConvertImage.cs" />
     <Compile Include="ExportarSunat\frmDarDeBajaTrabajador.cs">
       <SubType>Form</SubType>
@@ -1324,43 +1309,11 @@
     <EmbeddedResource Include="Variables\frmVariables.resx">
       <DependentUpon>frmVariables.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="bdpersonal.xsc">
-      <DependentUpon>bdpersonal.xsd</DependentUpon>
-    </None>
-    <None Include="bdpersonal.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>bdpersonal.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="bdpersonal.xss">
-      <DependentUpon>bdpersonal.xsd</DependentUpon>
-    </None>
+    <None Include="app.config" />
     <EntityDeploy Include="Reportes\modPersonal.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>modPersonal.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="bdpersonalDataSet.xsc">
-      <DependentUpon>bdpersonalDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="bdpersonalDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>bdpersonalDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="bdpersonalDataSet.xss">
-      <DependentUpon>bdpersonalDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="bdpersonalDataSet11.xsc">
-      <DependentUpon>bdpersonalDataSet11.xsd</DependentUpon>
-    </None>
-    <None Include="bdpersonalDataSet11.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>bdpersonalDataSet11.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="bdpersonalDataSet11.xss">
-      <DependentUpon>bdpersonalDataSet11.xsd</DependentUpon>
-    </None>
     <None Include="Reportes\DataSetPlanilla.xsc">
       <DependentUpon>DataSetPlanilla.xsd</DependentUpon>
     </None>
@@ -1386,7 +1339,6 @@
     <None Include="Reportes\modPersonal.edmx.diagram">
       <DependentUpon>modPersonal.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1396,9 +1348,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.csproj">
@@ -1443,6 +1392,7 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\WinXPSetV4 Icon 17.ico" />
     <None Include="Resources\chart.png" />
     <None Include="Resources\delete_page.png" />
     <None Include="Resources\add_to_folder.png" />

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDeDatos", "CapaDeDatos\CapaDeDatos.csproj", "{0AD70875-403B-44AD-B9C7-47F27BBEBB5D}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaUsuario", "CapaUsuario\CapaUsuario.csproj", "{F5BE2ECA-7819-4539-956B-E545D8C97507}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "capaWeb", "capaWeb\capaWeb.csproj", "{1B0E520C-4FBD-4687-808D-A69DFFF58608}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RecursosHumanos", "RecursosHumanos\RecursosHumanos.vdproj", "{8FB585B4-88AD-4A0D-81D9-834F191EA9C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,8 @@ Global
 		{1B0E520C-4FBD-4687-808D-A69DFFF58608}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B0E520C-4FBD-4687-808D-A69DFFF58608}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B0E520C-4FBD-4687-808D-A69DFFF58608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FB585B4-88AD-4A0D-81D9-834F191EA9C1}.Debug|Any CPU.ActiveCfg = Debug
+		{8FB585B4-88AD-4A0D-81D9-834F191EA9C1}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

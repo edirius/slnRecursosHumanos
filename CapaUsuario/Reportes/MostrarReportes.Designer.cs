@@ -31,23 +31,16 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.spTareoObrasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bdpersonal = new CapaUsuario.bdpersonal();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.spTareoObrasTableAdapter = new CapaUsuario.bdpersonalTableAdapters.spTareoObrasTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.spTareoObrasBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdpersonal)).BeginInit();
             this.SuspendLayout();
             // 
             // spTareoObrasBindingSource
             // 
             this.spTareoObrasBindingSource.DataMember = "spTareoObras";
-            this.spTareoObrasBindingSource.DataSource = this.bdpersonal;
-            this.spTareoObrasBindingSource.CurrentChanged += new System.EventHandler(this.spTareoObrasBindingSource_CurrentChanged);
             // 
             // bdpersonal
             // 
-            this.bdpersonal.DataSetName = "bdpersonal";
-            this.bdpersonal.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -63,7 +56,6 @@
             // 
             // spTareoObrasTableAdapter
             // 
-            this.spTareoObrasTableAdapter.ClearBeforeFill = true;
             // 
             // MostrarReportes
             // 
@@ -77,15 +69,12 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MostrarReportes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.spTareoObrasBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdpersonal)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private bdpersonal bdpersonal;
         private System.Windows.Forms.BindingSource spTareoObrasBindingSource;
-        private bdpersonalTableAdapters.spTareoObrasTableAdapter spTareoObrasTableAdapter;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

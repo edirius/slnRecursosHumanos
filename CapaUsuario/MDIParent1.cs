@@ -10,16 +10,28 @@ using System.Windows.Forms;
 using CapaDeDatos;
 using CapaDeNegocios.Obras;
 using cWord;
+using CapaUsuario.Properties;
 
 namespace CapaUsuario
 {
     public partial class frmPrincipal : Form
     {
-        
-
         public frmPrincipal()
         {
             InitializeComponent();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                Conexion.IniciarSesion(Settings.Default.ConexionMySql, "bdPersonal", "root", "root");
+                MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -124,19 +136,6 @@ namespace CapaUsuario
             fComisionesAFP.MdiParent = this;
             fComisionesAFP.Show();
             //hh
-        }
-
-        private void frmPrincipal_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                Conexion.IniciarSesion("192.168.1.60", "bdPersonal", "root", "root");
-                MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void mantenimientoDeTrabajadoresToolStripMenuItem_Click(object sender, EventArgs e)

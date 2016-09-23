@@ -169,5 +169,10 @@ namespace CapaDeNegocios.Obras
         {
             return Conexion.GDatos.TraerDataTable("spListarMetas");
         }
+
+        public DataTable ListarMetas(int año)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarMetasXAño", año); 
+        }
     }
 }
