@@ -29,29 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTrabajadores));
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Todos");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Activos");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Inactivos");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Sin Periodo Laboral");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Situacion Laboral", new System.Windows.Forms.TreeNode[] {
-            treeNode12,
-            treeNode13,
-            treeNode14,
-            treeNode15});
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Todos");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Regimen CAS");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("DL. 276");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("DL. 728");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Regimen Laboral", new System.Windows.Forms.TreeNode[] {
-            treeNode17,
-            treeNode18,
-            treeNode19,
-            treeNode20});
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", new System.Windows.Forms.TreeNode[] {
-            treeNode16,
-            treeNode21});
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Todos");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Activos");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Inactivos");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Sin Periodo Laboral");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Situacion Laboral", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Todos");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Regimen CAS");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("DL. 276");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("DL. 728");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Regimen Laboral", new System.Windows.Forms.TreeNode[] {
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode10});
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -71,8 +70,6 @@
             this.cboMeta = new System.Windows.Forms.ComboBox();
             this.cboAño = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cboFiltroTrabajadores = new System.Windows.Forms.ComboBox();
             this.btnDatosLaborales = new System.Windows.Forms.Button();
             this.btnDetalleTareo = new System.Windows.Forms.Button();
             this.btnBuscarAMaterno = new System.Windows.Forms.Button();
@@ -94,6 +91,8 @@
             this.apellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.suspensionrenta4ta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechafin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -191,7 +190,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Image = ((System.Drawing.Image)(resources.GetObject("btnSalir.Image")));
+            this.btnSalir.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_17;
             this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(49, 25);
@@ -215,8 +214,6 @@
             this.splitContainer1.Panel2.Controls.Add(this.cboMeta);
             this.splitContainer1.Panel2.Controls.Add(this.cboAño);
             this.splitContainer1.Panel2.Controls.Add(this.label6);
-            this.splitContainer1.Panel2.Controls.Add(this.label5);
-            this.splitContainer1.Panel2.Controls.Add(this.cboFiltroTrabajadores);
             this.splitContainer1.Panel2.Controls.Add(this.btnDatosLaborales);
             this.splitContainer1.Panel2.Controls.Add(this.btnDetalleTareo);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarAMaterno);
@@ -241,33 +238,35 @@
             this.treeFiltro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeFiltro.Location = new System.Drawing.Point(0, 0);
             this.treeFiltro.Name = "treeFiltro";
-            treeNode12.Name = "Node3";
-            treeNode12.Text = "Todos";
-            treeNode13.Name = "Node4";
-            treeNode13.Text = "Activos";
-            treeNode14.Name = "Node5";
-            treeNode14.Text = "Inactivos";
-            treeNode15.Name = "Node6";
-            treeNode15.Text = "Sin Periodo Laboral";
-            treeNode16.Checked = true;
-            treeNode16.Name = "Node1";
-            treeNode16.Text = "Situacion Laboral";
-            treeNode17.Name = "Node0";
-            treeNode17.Text = "Todos";
-            treeNode18.Name = "Node9";
-            treeNode18.Text = "Regimen CAS";
-            treeNode19.Name = "Node10";
-            treeNode19.Text = "DL. 276";
-            treeNode20.Name = "Node11";
-            treeNode20.Text = "DL. 728";
-            treeNode21.Checked = true;
-            treeNode21.Name = "Node8";
-            treeNode21.Text = "Regimen Laboral";
-            treeNode22.Checked = true;
-            treeNode22.Name = "Node0";
-            treeNode22.Text = "FILTRO DE TRABAJADORES";
+            treeNode1.BackColor = System.Drawing.Color.Teal;
+            treeNode1.Name = "Node3";
+            treeNode1.Text = "Todos";
+            treeNode2.Name = "Node4";
+            treeNode2.Text = "Activos";
+            treeNode3.Name = "Node5";
+            treeNode3.Text = "Inactivos";
+            treeNode4.Name = "Node6";
+            treeNode4.Text = "Sin Periodo Laboral";
+            treeNode5.Checked = true;
+            treeNode5.Name = "Node1";
+            treeNode5.Text = "Situacion Laboral";
+            treeNode6.BackColor = System.Drawing.Color.Teal;
+            treeNode6.Name = "Node0";
+            treeNode6.Text = "Todos";
+            treeNode7.Name = "Node9";
+            treeNode7.Text = "Regimen CAS";
+            treeNode8.Name = "Node10";
+            treeNode8.Text = "DL. 276";
+            treeNode9.Name = "Node11";
+            treeNode9.Text = "DL. 728";
+            treeNode10.Checked = true;
+            treeNode10.Name = "Node8";
+            treeNode10.Text = "Regimen Laboral";
+            treeNode11.Checked = true;
+            treeNode11.Name = "Node0";
+            treeNode11.Text = "FILTRO DE TRABAJADORES";
             this.treeFiltro.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode22});
+            treeNode11});
             this.treeFiltro.Size = new System.Drawing.Size(205, 550);
             this.treeFiltro.TabIndex = 0;
             this.treeFiltro.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeFiltro_NodeMouseClick);
@@ -317,30 +316,6 @@
             this.label6.TabIndex = 35;
             this.label6.Text = "Meta :";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(456, 18);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 13);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "Situacion Laboral :";
-            // 
-            // cboFiltroTrabajadores
-            // 
-            this.cboFiltroTrabajadores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFiltroTrabajadores.FormattingEnabled = true;
-            this.cboFiltroTrabajadores.Items.AddRange(new object[] {
-            "Todos",
-            "Activos",
-            "Inactivos",
-            "Sin Periodo Laboral"});
-            this.cboFiltroTrabajadores.Location = new System.Drawing.Point(557, 12);
-            this.cboFiltroTrabajadores.Name = "cboFiltroTrabajadores";
-            this.cboFiltroTrabajadores.Size = new System.Drawing.Size(148, 21);
-            this.cboFiltroTrabajadores.TabIndex = 33;
-            this.cboFiltroTrabajadores.SelectedIndexChanged += new System.EventHandler(this.cboFiltroTrabajadores_SelectedIndexChanged);
-            // 
             // btnDatosLaborales
             // 
             this.btnDatosLaborales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -348,7 +323,7 @@
             this.btnDatosLaborales.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDatosLaborales.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDatosLaborales.ImageIndex = 1;
-            this.btnDatosLaborales.Location = new System.Drawing.Point(591, 489);
+            this.btnDatosLaborales.Location = new System.Drawing.Point(689, 494);
             this.btnDatosLaborales.Name = "btnDatosLaborales";
             this.btnDatosLaborales.Size = new System.Drawing.Size(114, 53);
             this.btnDatosLaborales.TabIndex = 32;
@@ -480,8 +455,8 @@
             // 
             this.dtgListaTrabajadores.AllowUserToAddRows = false;
             this.dtgListaTrabajadores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgListaTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaTrabajadores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idTrabajador,
@@ -489,13 +464,15 @@
             this.nombres,
             this.apellidoPaterno,
             this.apellidoMaterno,
-            this.sexo});
+            this.sexo,
+            this.suspensionrenta4ta,
+            this.fechafin});
             this.dtgListaTrabajadores.Location = new System.Drawing.Point(15, 212);
             this.dtgListaTrabajadores.MultiSelect = false;
             this.dtgListaTrabajadores.Name = "dtgListaTrabajadores";
             this.dtgListaTrabajadores.ReadOnly = true;
             this.dtgListaTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaTrabajadores.Size = new System.Drawing.Size(690, 271);
+            this.dtgListaTrabajadores.Size = new System.Drawing.Size(788, 271);
             this.dtgListaTrabajadores.TabIndex = 13;
             this.dtgListaTrabajadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellClick);
             this.dtgListaTrabajadores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellContentClick);
@@ -522,7 +499,7 @@
             this.nombres.HeaderText = "Nombres";
             this.nombres.Name = "nombres";
             this.nombres.ReadOnly = true;
-            this.nombres.Width = 150;
+            this.nombres.Width = 180;
             // 
             // apellidoPaterno
             // 
@@ -530,7 +507,7 @@
             this.apellidoPaterno.HeaderText = "Apellido Paterno";
             this.apellidoPaterno.Name = "apellidoPaterno";
             this.apellidoPaterno.ReadOnly = true;
-            this.apellidoPaterno.Width = 150;
+            this.apellidoPaterno.Width = 180;
             // 
             // apellidoMaterno
             // 
@@ -538,7 +515,7 @@
             this.apellidoMaterno.HeaderText = "Apellido Materno";
             this.apellidoMaterno.Name = "apellidoMaterno";
             this.apellidoMaterno.ReadOnly = true;
-            this.apellidoMaterno.Width = 150;
+            this.apellidoMaterno.Width = 180;
             // 
             // sexo
             // 
@@ -547,6 +524,22 @@
             this.sexo.Name = "sexo";
             this.sexo.ReadOnly = true;
             this.sexo.Width = 50;
+            // 
+            // suspensionrenta4ta
+            // 
+            this.suspensionrenta4ta.DataPropertyName = "suspencionrenta4ta";
+            this.suspensionrenta4ta.HeaderText = "Renta4ta";
+            this.suspensionrenta4ta.Name = "suspensionrenta4ta";
+            this.suspensionrenta4ta.ReadOnly = true;
+            this.suspensionrenta4ta.Visible = false;
+            // 
+            // fechafin
+            // 
+            this.fechafin.DataPropertyName = "fechafin";
+            this.fechafin.HeaderText = "fechafin";
+            this.fechafin.Name = "fechafin";
+            this.fechafin.ReadOnly = true;
+            this.fechafin.Visible = false;
             // 
             // frmListaTrabajadores
             // 
@@ -603,20 +596,20 @@
         private System.Windows.Forms.Button btnBuscarAMaterno;
         private System.Windows.Forms.Button btnBuscarAPaterno;
         private System.Windows.Forms.Button btnBuscarNombre;
+        private System.Windows.Forms.Button btnDetalleTareo;
+        private System.Windows.Forms.Button btnDatosLaborales;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cboAño;
+        private System.Windows.Forms.ComboBox cboMeta;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnBuscarXMeta;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTrabajador;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombres;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPaterno;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoMaterno;
         private System.Windows.Forms.DataGridViewTextBoxColumn sexo;
-        private System.Windows.Forms.Button btnDetalleTareo;
-        private System.Windows.Forms.Button btnDatosLaborales;
-        private System.Windows.Forms.ComboBox cboFiltroTrabajadores;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cboAño;
-        private System.Windows.Forms.ComboBox cboMeta;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnBuscarXMeta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suspensionrenta4ta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechafin;
     }
 }

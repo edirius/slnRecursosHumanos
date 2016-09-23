@@ -1439,6 +1439,7 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\WinXPSetV4 Icon 17.ico" />
     <None Include="Resources\chart.png" />
     <None Include="Resources\delete_page.png" />
     <None Include="Resources\add_to_folder.png" />

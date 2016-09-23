@@ -30,7 +30,7 @@ namespace CapaUsuario.Trabajador
 
         private void Iniciar()
         {
-            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text);
+            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
             if (dtgListaTrabajadores.Rows.Count > 0)
             {
                 DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, 0);
@@ -46,7 +46,7 @@ namespace CapaUsuario.Trabajador
             cboMeta.DisplayMember = "nombreMeta";
             cboMeta.ValueMember = "idtmeta";
             cboMeta.DataSource = oCadena.ListarMetas(Convert.ToInt16(cboAño.Text));
-
+            treeFiltro.ExpandAll();
             
         }
 
@@ -72,7 +72,7 @@ namespace CapaUsuario.Trabajador
                 if (fNuevoTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     miListaTrabajadores.AgregarTrabajador(fNuevoTrabajador.miTrabajador);
-                    dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text);
+                    dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
                 }
             }
             catch (Exception f)
@@ -93,7 +93,7 @@ namespace CapaUsuario.Trabajador
                 if (fModificarTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     miListaTrabajadores.ModificarTrabajador(fModificarTrabajador.miTrabajador);
-                    dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text);
+                    dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
                 }
             }
             catch (Exception g)
@@ -114,7 +114,7 @@ namespace CapaUsuario.Trabajador
                     cTrabajador miTrabajador = new cTrabajador();
                     miTrabajador.IdTrabajador = Convert.ToInt16(dtgListaTrabajadores.SelectedRows[0].Cells[0].Value.ToString());
                     miListaTrabajadores.EliminarTrabajador(miTrabajador);
-                    dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text);
+                    dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
                 }
             }
             catch (Exception h)
@@ -149,11 +149,6 @@ namespace CapaUsuario.Trabajador
             dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral , "Todos" );
         }
 
-        private void cboFiltroTrabajadores_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(cboFiltroTrabajadores.Text);
-        }
-
         private void btnBuscarNombre_Click(object sender, EventArgs e)
         {
             dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
@@ -183,22 +178,26 @@ namespace CapaUsuario.Trabajador
                 switch (e.Node.Parent.Text)
                 {
                     case "Situacion Laboral":
+                        foreach (TreeNode fnode in e.Node.Parent.Nodes)
+                        {
+                            fnode.BackColor = Color.White;
+                        }
                         switch (e.Node.Text)
                         {
                             case "Todos":
-                                e.Node.BackColor = Color.Aquamarine;
+                                e.Node.BackColor = Color.Teal;
                                 filtroSituacionLaboral = "Todos";
                                 break;
                             case "Activos":
-                                e.Node.BackColor = Color.Aquamarine;
+                                e.Node.BackColor = Color.Teal;
                                 filtroSituacionLaboral = "Activos";
                                 break;
                             case "Inactivos":
-                                e.Node.BackColor = Color.Aquamarine;
+                                e.Node.BackColor = Color.Teal;
                                 filtroSituacionLaboral = "Inactivos";
                                 break;
                             case "Sin Periodo Laboral":
-                                e.Node.BackColor = Color.Aquamarine;
+                                e.Node.BackColor = Color.Teal;
                                 filtroSituacionLaboral = "Sin Periodo Laboral";
                                 break;
                         }
@@ -206,22 +205,26 @@ namespace CapaUsuario.Trabajador
                         break;
                         
                     case "Regimen Laboral":
+                        foreach (TreeNode fnode in e.Node.Parent.Nodes )
+                        {
+                            fnode.BackColor = Color.White;
+                        }
                         switch (e.Node.Text)
                         {
                             case "Todos":
-                                e.Node.BackColor = Color.Aquamarine;
+                                e.Node.BackColor = Color.Teal;
                                 filtroRegimeLaboral = "Todos";
                                 break;
                             case "Regimen CAS":
-                                e.Node.BackColor = Color.Aquamarine;
+                                e.Node.BackColor = Color.Teal;
                                 filtroRegimeLaboral = "CAS";
                                 break;
                             case "DL. 276":
-                                e.Node.BackColor = Color.Aquamarine;
+                                e.Node.BackColor = Color.Teal;
                                 filtroRegimeLaboral = "276";
                                 break;
                             case "DL. 728":
-                                e.Node.BackColor = Color.Aquamarine;
+                                e.Node.BackColor = Color.Teal;
                                 filtroRegimeLaboral = "728";
                                 break;
                         }
