@@ -11,7 +11,6 @@ using CapaDeDatos;
 using CapaDeNegocios.Obras;
 using cWord;
 using CapaUsuario.Properties;
-using System.Configuration;
 
 namespace CapaUsuario
 {
@@ -24,10 +23,9 @@ namespace CapaUsuario
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            string ip = Settings.Default.ConexionMySql;
             try
             {
-                Conexion.IniciarSesion(ip, "bdPersonal", "root", "root");
+                Conexion.IniciarSesion(Settings.Default.ConexionMySql, "bdPersonal", "root", "root");
                 MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
             }
             catch (Exception ex)
