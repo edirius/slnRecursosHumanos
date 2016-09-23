@@ -139,7 +139,7 @@ namespace CapaUsuario.Planilla
                 case "AGOSTO":
                     smes = "08";
                     break;
-                case "SEPTIEMBRE":
+                case "SETIEMBRE":
                     smes = "09";
                     break;
                 case "OCTUBRE":
