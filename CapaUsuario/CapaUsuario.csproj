@@ -1324,6 +1324,7 @@
     <EmbeddedResource Include="Variables\frmVariables.resx">
       <DependentUpon>frmVariables.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="bdpersonal.xsc">
       <DependentUpon>bdpersonal.xsd</DependentUpon>
     </None>
