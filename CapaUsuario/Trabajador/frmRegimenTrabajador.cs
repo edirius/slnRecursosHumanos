@@ -44,6 +44,7 @@ namespace CapaUsuario.Trabajador
             CargarOcupacion();
             CargarCargo();
             CargarAños();
+            AñoMeta();
             cboRegimenLaboral_SelectedIndexChanged(sender, e);
             cboTipoTrabajador_SelectedIndexChanged(sender, e);
             cboTipoContrato_SelectedIndexChanged(sender, e);
@@ -152,7 +153,7 @@ namespace CapaUsuario.Trabajador
 
         private void cboMeta_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboMeta.Text != "System.Data.DataRowView" && cboMeta.ValueMember != "")
+            if (cboMeta.Text != "System.Data.DataRowView" && cboMeta.ValueMember != "" && cboMeta.SelectedValue != "0")
             {
                 sidtmeta = Convert.ToInt32(cboMeta.SelectedValue);
             }
@@ -325,8 +326,8 @@ namespace CapaUsuario.Trabajador
                 cboMeta.DisplayMember = "Value";
                 cboMeta.ValueMember = "Key";
             }
-            if (smeta == "") { cboMeta.SelectedIndex = -1; }
-            else { cboMeta.Text = smeta; }
+            if (sidtmeta == 0) { cboMeta.SelectedIndex = -1; }
+            else { cboMeta.SelectedValue = sidtmeta.ToString(); }
         }
 
         private void CargarAños()
@@ -335,12 +336,25 @@ namespace CapaUsuario.Trabajador
             {
                 cboAño.Items.Add(i);
             }
-            cboAño.SelectedIndex = 0;
         }
 
         private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarMeta();
+        }
+
+        private void AñoMeta()
+        {
+            if (sidtmeta != 0)
+            {
+                DataTable oDataMeta = new DataTable();
+                CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
+                oDataMeta = miMeta.ListarMetas();
+                foreach (DataRow row in oDataMeta.Select("idtmeta = '" + sidtmeta + "'"))
+                {
+                    cboAño.Text = row[1].ToString();
+                }
+            }
         }
     }
 }
