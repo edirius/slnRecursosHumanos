@@ -75,7 +75,7 @@ namespace CapaUsuario.ExportarSunat
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
             string ruc = "20226560824";
-            string tipoArchivo = ".PEN";
+            string tipoArchivo = ".xls";
             string rp = "RP_";
             string Titulo = rp + ruc + tipoArchivo;
             Guardar.FileName = Titulo;

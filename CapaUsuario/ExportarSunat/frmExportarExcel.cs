@@ -25,41 +25,28 @@ namespace CapaUsuario.ExportarSunat
             CargarMes(Ahora);
             cbMes.Text = FechaTexto;
             CargarAños();
-            //CargarGrid();
+            CargarGrid();
+            DataGridViewCheckBoxColumn Check = new DataGridViewCheckBoxColumn();//creamos un objeto check
+            {
+                Check.Name = "☑";//le damos un nombre de cabecera
+                dgvListaPlanillas.Columns.Add(Check);//agregamos los check a cada items
+
+            }
+            dgvListaPlanillas.Columns["☑"].DisplayIndex = 0;
+            dgvListaPlanillas.Columns["☑"].ReadOnly = false;
+            dgvListaPlanillas.Columns["☑"].Width = 30;
+        }
+        private void CargarGrid()
+        {
+            dgvListaPlanillas.DataSource = oexp.BuscarPlanillas(cbMes.Text, cbAños.Text);
             dgvListaPlanillas.Columns[0].Visible = false;
             dgvListaPlanillas.Columns[1].Width = 50;
             dgvListaPlanillas.Columns[2].Width = 75;
             dgvListaPlanillas.Columns[3].Width = 50;
             dgvListaPlanillas.Columns[4].Width = 130;
             dgvListaPlanillas.Columns[5].Width = 637;
-            dgvListaPlanillas.Columns[6].Width = 280;
+            dgvListaPlanillas.Columns[6].Width = 300;
         }
-        //private void CargarGrid()
-        //{
-        //    dataGridView.Columns[0].Width = 50;
-        //    dataGridView.Columns[1].Width = 90;
-        //    dataGridView.Columns[2].Width = 50;
-        //    dataGridView.Columns[3].Width = 70;
-        //    dataGridView.Columns[4].Width = 150;
-        //    dataGridView.Columns[5].Width = 150;
-        //    dataGridView.Columns[6].Width = 150;
-        //    dataGridView.Columns[7].Width = 90;
-        //    dataGridView.Columns[8].Width = 90;
-        //    dataGridView.Columns[9].Width = 90;
-        //    dataGridView.Columns[10].Width = 90;
-        //    dataGridView.Columns[1].Visible = false;
-        //    dataGridView.Columns[2].Visible = false;
-        //    dataGridView.Columns[7].Visible = false;
-        //    dataGridView.Columns[8].Visible = false;
-        //    dataGridView.Columns[9].Visible = false;
-        //    dataGridView.Columns[10].Visible = false;
-        //    dataGridView.Columns[12].Visible = false;
-        //    dataGridView.Columns[13].Visible = false;
-        //    dataGridView.Columns[14].Visible = false;
-        //    dataGridView.Columns[15].Visible = false;
-
-        //}
-
         private void frmExportarExcel_Load(object sender, EventArgs e)
         {
             
@@ -78,7 +65,6 @@ namespace CapaUsuario.ExportarSunat
         {
             //añadir la siguiente referencia al proyecto de tipo COM:
             //Microsoft Excel 12.0 Object Library
-
             SaveFileDialog fichero = new SaveFileDialog();
             fichero.Filter = "Excel (*.xls)|*.xls";
             fichero.FileName = "AFP.xls";
@@ -90,13 +76,12 @@ namespace CapaUsuario.ExportarSunat
                 aplicacion = new Microsoft.Office.Interop.Excel.Application();
                 libros_trabajo = aplicacion.Workbooks.Add();
                 hoja_trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
-
                 int headr = 1;
                 //Recorremos el DataGridView rellenando la hoja de trabajo
-                for (int i = 0; i < datagrid.Rows.Count; i++)
+                for (int i = 0; i < dgv2.Rows.Count; i++)
                 {
 
-                    for (int j = 0; j < datagrid.Columns.Count; j++)
+                    for (int j = 0; j < dgv2.Columns.Count; j++)
                     {
                         //if (headr <= datagrid.Columns.Count)//añadimos cabecera de excel
                         //{
@@ -105,7 +90,7 @@ namespace CapaUsuario.ExportarSunat
                         //    headr++;
                         //}
                         //añadimos contenido de excel
-                        hoja_trabajo.Cells[i + 1, j + 1] = datagrid.Rows[i].Cells[j].Value.ToString();
+                        hoja_trabajo.Cells[i + 1, j + 1] = dgv2.Rows[i].Cells[j].Value.ToString();
                     }
 
                 }
@@ -115,30 +100,31 @@ namespace CapaUsuario.ExportarSunat
                 aplicacion.Quit();
             }
         }
-        private void ExportarExcel()
-        {
-            Microsoft.Office.Interop.Excel.Application Excel = new Microsoft.Office.Interop.Excel.Application();
-            Workbook wb = Excel.Workbooks.Add(XlSheetType.xlWorksheet);
-            Worksheet ws = (Worksheet)Excel.ActiveSheet;
-            Excel.Visible = true;
-            //Para poner Título en la cabecera de las Columnas del Excel
-            ws.Cells[1, 1] = "";
-            for (int j = 2; j <= dataGridView.Rows.Count; j++)//J debe ser igual a 2 en caso de que tenga titulo en las columnas
-            {
-                for (int i = 1; i <= dataGridView.Columns.Count; i++)
-                {
-                    ws.Cells[j, i] = dataGridView.Rows[j - 1].Cells[i - 1].Value;
-                }
+        //private void ExportarExcel()
+        //{
+        //    Microsoft.Office.Interop.Excel.Application Excel = new Microsoft.Office.Interop.Excel.Application();
+        //    Workbook wb = Excel.Workbooks.Add(XlSheetType.xlWorksheet);
+        //    Worksheet ws = (Worksheet)Excel.ActiveSheet;
+        //    Excel.Visible = true;
+        //    //Para poner Título en la cabecera de las Columnas del Excel
+        //    ws.Cells[1, 1] = "";
+        //    for (int j = 2; j <= dgv2.Rows.Count; j++)//J debe ser igual a 2 en caso de que tenga titulo en las columnas
+        //    {
+        //        for (int i = 1; i <= dgv2.Columns.Count; i++)
+        //        {
+        //            ws.Cells[j, i] = dgv2.Rows[j - 1].Cells[i - 1].Value;
+        //        }
 
-            }
-        }
+        //    }
+        //}
         private void btnExport_Click_1(object sender, EventArgs e)
         {
+            ListarTrabajadores();
             try
             {
-                if (dataGridView.Rows.Count != 0)
+                if (dgv2.Rows.Count != 0)
                 {
-                    ExportarDataGridViewExcel(dataGridView);
+                    ExportarDataGridViewExcel(dgv2);
                 }
                 else
                     MessageBox.Show("No se encontraron datos para la exportación.");
@@ -154,16 +140,19 @@ namespace CapaUsuario.ExportarSunat
         private void Buscar()
         {
             dgvListaPlanillas.DataSource = oexp.BuscarPlanillas(cbMes.Text, cbAños.Text);
+            
         }
 
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
             Buscar();
+            dgvListaPlanillas.Columns["Nro"].Width = 50;
         }
 
         private void cbAños_SelectedIndexChanged(object sender, EventArgs e)
         {
             Buscar();
+            dgvListaPlanillas.Columns["Nro"].Width = 50;
         }
         private void CargarMes(DateTime FechaActual)
         {
@@ -230,29 +219,85 @@ namespace CapaUsuario.ExportarSunat
                         FechaTexto = "DICIEMBRE";
                         break;
                     }
-
             }
         }
-
         private void dgvListaPlanillas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
             string numero = "";
-            numero = dgvListaPlanillas[0, Valor].Value.ToString();
+            numero = dgvListaPlanillas[1, Valor].Value.ToString();
             dataGridView.DataSource = oexp.ListarExportarAFPaExcel(numero.ToString());
         }
 
         private void dgvListaPlanillas_SelectionChanged(object sender, EventArgs e)
         {
-            int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
-            string numero = "";
-            numero = dgvListaPlanillas[0, Valor].Value.ToString();
-            dataGridView.DataSource = oexp.ListarExportarAFPaExcel(numero.ToString());
+            //int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
+            //string numero = "";
+            //numero = dgvListaPlanillas[1, Valor].Value.ToString();
+            //dataGridView.DataSource = oexp.ListarExportarAFPaExcel(numero.ToString());
         }
 
         private void bntListarTodo_Click(object sender, EventArgs e)
         {
             dgvListaPlanillas.DataSource = oexp.ListarPlanillas(cbAños.Text);
+            dgvListaPlanillas.Columns["Nro"].Width = 50;
+
         }
+        private void ListarTrabajadores()
+        {
+            LimpiarGrid();
+            foreach (DataGridViewRow fila in dgvListaPlanillas.Rows)
+            {
+                if (Convert.ToBoolean(fila.Cells["☑"].Value) == true)
+                {
+                    string Valor = fila.Cells["idtplanilla"].Value.ToString();
+                    dataGridView.DataSource = oexp.ListarExportarAFPaExcel(Valor);
+                    AgregarTrabajadores();
+
+                }
+
+            }
+        }
+        private void AgregarTrabajadores()
+        {
+            
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+            {
+                dgv2.Rows.Add(new string[]
+                {  Convert.ToString(dataGridView[0, i].Value),
+                   Convert.ToString(dataGridView[1, i].Value),
+                   Convert.ToString(dataGridView[2, i].Value),
+                   Convert.ToString(dataGridView[3, i].Value),
+                   Convert.ToString(dataGridView[4, i].Value),
+                   Convert.ToString(dataGridView[5, i].Value),
+                   Convert.ToString(dataGridView[6, i].Value),
+                   Convert.ToString(dataGridView[7, i].Value),
+                   Convert.ToString(dataGridView[8, i].Value),
+                   Convert.ToString(dataGridView[9, i].Value),
+                   Convert.ToString(dataGridView[10, i].Value),
+                   Convert.ToString(dataGridView[11, i].Value),
+                   Convert.ToString(dataGridView[12, i].Value),
+                   Convert.ToString(dataGridView[13, i].Value),
+                   Convert.ToString(dataGridView[14, i].Value),
+                   Convert.ToString(dataGridView[15, i].Value)
+                });
+            }
+            numerar();
+            cont = 1;
+        }
+        private void LimpiarGrid()
+        {
+            dgv2.Rows.Clear();
+        }
+        private void numerar()
+        {
+            for (int i = 0; i < dgv2.Rows.Count; i++)
+            {
+                dgv2.Rows[i].Cells["Numero"].Value = cont;
+                cont = cont + 1;
+            }
+        }
+        int cont = 1;
     }
 }
+//

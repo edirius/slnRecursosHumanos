@@ -77,6 +77,7 @@
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarAExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarTodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datosDelPensionistaPENToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.boletaPagoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +95,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultaMasivaAFPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -458,7 +459,8 @@
             this.exportarAExcelToolStripMenuItem,
             this.exportarTodoToolStripMenuItem,
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem,
-            this.datosDelPensionistaPENToolStripMenuItem});
+            this.datosDelPensionistaPENToolStripMenuItem,
+            this.consultaMasivaAFPToolStripMenuItem});
             this.exportarTextoSUNATToolStripMenuItem.Name = "exportarTextoSUNATToolStripMenuItem";
             this.exportarTextoSUNATToolStripMenuItem.Size = new System.Drawing.Size(143, 20);
             this.exportarTextoSUNATToolStripMenuItem.Text = "Exportar datos - SUNAT";
@@ -483,6 +485,13 @@
             this.exportarTodoToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
             this.exportarTodoToolStripMenuItem.Text = "Dar de alta al trabajador(T-REGISTRO)";
             this.exportarTodoToolStripMenuItem.Click += new System.EventHandler(this.exportarTodoToolStripMenuItem_Click);
+            // 
+            // darDeBajaAlTrabajadorTREGISTROToolStripMenuItem
+            // 
+            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Name = "darDeBajaAlTrabajadorTREGISTROToolStripMenuItem";
+            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Text = "Dar de baja al trabajador(T-REGISTRO)";
+            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Click += new System.EventHandler(this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem_Click);
             // 
             // datosDelPensionistaPENToolStripMenuItem
             // 
@@ -616,12 +625,12 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // darDeBajaAlTrabajadorTREGISTROToolStripMenuItem
+            // consultaMasivaAFPToolStripMenuItem
             // 
-            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Name = "darDeBajaAlTrabajadorTREGISTROToolStripMenuItem";
-            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
-            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Text = "Dar de baja al trabajador(T-REGISTRO)";
-            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Click += new System.EventHandler(this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem_Click);
+            this.consultaMasivaAFPToolStripMenuItem.Name = "consultaMasivaAFPToolStripMenuItem";
+            this.consultaMasivaAFPToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.consultaMasivaAFPToolStripMenuItem.Text = "Consulta Masiva -  AFP";
+            this.consultaMasivaAFPToolStripMenuItem.Click += new System.EventHandler(this.consultaMasivaAFPToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -716,6 +725,7 @@
         private System.Windows.Forms.ToolStripMenuItem datosDelPensionistaPENToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportarTodoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darDeBajaAlTrabajadorTREGISTROToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem consultaMasivaAFPToolStripMenuItem;
     }
 }
 

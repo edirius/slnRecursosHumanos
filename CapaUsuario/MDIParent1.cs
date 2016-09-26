@@ -364,5 +364,12 @@ namespace CapaUsuario
             FRMDEBAJA.MdiParent = this;
             FRMDEBAJA.Show();
         }
+
+        private void consultaMasivaAFPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmConsultaMasivaSunat frmMASIVA = new ExportarSunat.frmConsultaMasivaSunat();
+            frmMASIVA.MdiParent = this;
+            frmMASIVA.Show();
+        }
     }
 }
