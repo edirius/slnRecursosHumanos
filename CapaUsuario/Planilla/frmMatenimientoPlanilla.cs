@@ -422,6 +422,7 @@ namespace CapaUsuario.Planilla
                 string[] arr_a_empleador_max_2 = new string[80];
                 string[] arr_a_trabajador_max_2 = new string[80];
 
+                string pMes_Nro = "";
                 int k = 0;
                 int t = 0;
                 DataRow drFila = odtPrueba.NewRow();
@@ -443,10 +444,25 @@ namespace CapaUsuario.Planilla
 
                 //realizar consulta para planilla por mes y regimen laboral
 
-
                 //odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(pMes, pRegimenLaboral);
                 //Determinar si la consulta esta vacio
-                odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(sidtplanilla, pRegimenLaboral);
+
+                switch (pMes) {
+                    case "ENERO": pMes_Nro = "1"; break;
+                    case "FEBRERO": pMes_Nro = "2"; break;
+                    case "MARZO": pMes_Nro = "3"; break;
+                    case "ABRIL": pMes_Nro = "4"; break;
+                    case "MAYO": pMes_Nro = "5"; break;
+                    case "JUNIO": pMes_Nro = "6"; break;
+                    case "JULIO": pMes_Nro = "7"; break;
+                    case "AGOSTO": pMes_Nro = "8"; break;
+                    case "SETIEMBRE": pMes_Nro = "9"; break;
+                    case "OCTUBRE": pMes_Nro = "10"; break;
+                    case "NOVIEMBRE": pMes_Nro = "11"; break;
+                    case "DICIEMBRE": pMes_Nro = "12"; break;
+                }
+
+                odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(sidtplanilla, pRegimenLaboral,pMes_Nro, pAño);
 
                 odtPrueba.Clear();
 
