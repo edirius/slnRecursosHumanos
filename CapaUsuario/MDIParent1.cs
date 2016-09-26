@@ -363,5 +363,17 @@ namespace CapaUsuario
             FRMDEBAJA.MdiParent = this;
             FRMDEBAJA.Show();
         }
+
+        private void reportesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void declaraciónJuradaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Reportes.frmDeclaracionJurada frmDeclaracionJurada = new CapaUsuario.Reportes.frmDeclaracionJurada();
+            frmDeclaracionJurada.MdiParent = this;
+            frmDeclaracionJurada.Show();
+        }
     }
 }
