@@ -2829,7 +2829,7 @@ namespace CapaUsuario.Reportes
             return values;
         }
 
-        private void exportar_a_pdf_cesantes()
+        private void exportar_a_pdf()
         {
             //Creating iTextSharp Table from the DataTable data
             iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);
