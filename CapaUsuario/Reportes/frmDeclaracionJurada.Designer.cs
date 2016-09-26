@@ -64,6 +64,8 @@
             this.dgvDeclaracionJurada.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDeclaracionJurada.Size = new System.Drawing.Size(714, 419);
             this.dgvDeclaracionJurada.TabIndex = 99;
+            this.dgvDeclaracionJurada.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeclaracionJurada_CellClick);
+            this.dgvDeclaracionJurada.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeclaracionJurada_CellContentClick);
             // 
             // groupBox1
             // 
@@ -139,6 +141,7 @@
             this.dgvCabeza.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCabeza.Size = new System.Drawing.Size(82, 65);
             this.dgvCabeza.TabIndex = 102;
+            this.dgvCabeza.Visible = false;
             // 
             // dgvCuerpo
             // 
@@ -159,6 +162,7 @@
             this.dgvCuerpo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCuerpo.Size = new System.Drawing.Size(82, 65);
             this.dgvCuerpo.TabIndex = 103;
+            this.dgvCuerpo.Visible = false;
             // 
             // frmDeclaracionJurada
             // 
