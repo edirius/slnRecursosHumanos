@@ -958,13 +958,17 @@ namespace CapaUsuario.Planilla
             int z = 0;
             foreach (DataRow rowingresos in oDataIngresos5taCategoria.Rows)
             {
-                if (z == 0)
+                if (rowingresos[0].ToString() != "")
                 {
-                    sRemMesAnt = Convert.ToDecimal(rowingresos[0]);//suma de las remuneraciones totales
-                }
-                if (z == 1)
-                {
-                    sRetMesAnteriores = Convert.ToDecimal(rowingresos[0]);//suma de las retenciones de 5tacategoria totales
+                    if (z == 0)
+                    {
+                        sRemMesAnt = Convert.ToDecimal(rowingresos[0]);//suma de las remuneraciones totales
+                    }
+
+                    if (z == 1)
+                    {
+                        sRetMesAnteriores = Convert.ToDecimal(rowingresos[0]);//suma de las retenciones de 5tacategoria totales
+                    }
                 }
                 z += 1;
             }

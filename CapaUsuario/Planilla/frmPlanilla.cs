@@ -31,11 +31,9 @@ namespace CapaUsuario.Planilla
         private void frmPlanilla_Load(object sender, EventArgs e)
         {
             CargarAños();
-            CargarMeta();
             CargarFuenteFinanciamiento();
             CargarRegimenLaboral();
             CargarPlantilla();
-            cboMeta_SelectedIndexChanged(sender, e);
             cboFuenteFinanciamiento_SelectedIndexChanged(sender, e);
         }
 
@@ -94,7 +92,7 @@ namespace CapaUsuario.Planilla
 
         private void cboMeta_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboMeta.Text != "System.Data.DataRowView" && cboMeta.Text != "(Colección)" && cboMeta.ValueMember != "")
+            if (cboMeta.Text != "System.Data.DataRowView" && cboMeta.ValueMember != "" && cboMeta.SelectedValue != "0")
             {
                 sidtmeta = Convert.ToInt32(cboMeta.SelectedValue);
             }
@@ -152,8 +150,8 @@ namespace CapaUsuario.Planilla
                 cboMeta.DisplayMember = "Value";
                 cboMeta.ValueMember = "Key";
             }
-            if (smeta == "") { cboMeta.SelectedIndex = -1; }
-            else { cboMeta.Text = smeta; }
+            if (sidtmeta == 0) { cboMeta.SelectedIndex = -1; }
+            else { cboMeta.SelectedValue = sidtmeta.ToString(); }
         }
 
         private void CargarFuenteFinanciamiento()
