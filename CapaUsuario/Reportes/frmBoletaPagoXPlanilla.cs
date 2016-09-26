@@ -1510,8 +1510,8 @@ namespace CapaUsuario.Reportes
             //PdfWriter.GetInstance(pdfDoc, stream);
             CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
 
-            pmes = cboMes.GetItemText(this.cboMes.SelectedItem); ;
-            paño = cboAño.GetItemText(this.cboAño.SelectedItem); ;
+            pmes = cboMes.GetItemText(this.cboMes.SelectedItem);
+            paño = cboAño.GetItemText(this.cboAño.SelectedItem);
 
             switch (pmes) {
                 case "ENERO": pmes_nro = "1"; break;

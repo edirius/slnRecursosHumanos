@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using CapaDeDatos;
 
 namespace CapaDeNegocios.Trabajadores
 {
@@ -23,5 +25,18 @@ namespace CapaDeNegocios.Trabajadores
                 ruc = value;
             }
         }
+
+
+
+        public DataTable ListarAlcalde()
+        {
+            return Conexion.GDatos.TraerDataTable("spListarAlcalde");
+        }
+
+        public DataTable ListarTrabajadoresParaDeclaracionJurada(string paño)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarTrabajadoresParaDeclaracionJurada", paño);
+        }
+
     }
 }

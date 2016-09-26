@@ -10,16 +10,28 @@ using System.Windows.Forms;
 using CapaDeDatos;
 using CapaDeNegocios.Obras;
 using cWord;
+using CapaUsuario.Properties;
 
 namespace CapaUsuario
 {
     public partial class frmPrincipal : Form
     {
-        
-
         public frmPrincipal()
         {
             InitializeComponent();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                Conexion.IniciarSesion(Settings.Default.ConexionMySql, "bdPersonal", "root", "root");
+                MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -124,19 +136,6 @@ namespace CapaUsuario
             fComisionesAFP.MdiParent = this;
             fComisionesAFP.Show();
             //hh
-        }
-
-        private void frmPrincipal_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                Conexion.IniciarSesion("192.168.1.60", "bdPersonal", "root", "root");
-                MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
         private void mantenimientoDeTrabajadoresToolStripMenuItem_Click(object sender, EventArgs e)
@@ -365,11 +364,16 @@ namespace CapaUsuario
             FRMDEBAJA.Show();
         }
 
-        private void consultaMasivaAFPToolStripMenuItem_Click(object sender, EventArgs e)
+        private void reportesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ExportarSunat.frmConsultaMasivaSunat frmMASIVA = new ExportarSunat.frmConsultaMasivaSunat();
-            frmMASIVA.MdiParent = this;
-            frmMASIVA.Show();
+
+        }
+
+        private void declaraciónJuradaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Reportes.frmDeclaracionJurada frmDeclaracionJurada = new CapaUsuario.Reportes.frmDeclaracionJurada();
+            frmDeclaracionJurada.MdiParent = this;
+            frmDeclaracionJurada.Show();
         }
     }
 }

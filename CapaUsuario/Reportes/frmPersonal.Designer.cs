@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.crPersonal31 = new CapaUsuario.Reportes.crPersonal3();
             this.crPersonal1 = new CapaUsuario.Reportes.crPersonal();
             this.crPersonal21 = new CapaUsuario.Reportes.crPersonal2();
-            this.crPersonal31 = new CapaUsuario.Reportes.crPersonal3();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -45,6 +45,9 @@
             this.crystalReportViewer1.ReportSource = this.crPersonal31;
             this.crystalReportViewer1.Size = new System.Drawing.Size(1057, 515);
             this.crystalReportViewer1.TabIndex = 0;
+            // 
+            // crPersonal1
+            // 
             // 
             // frmPersonal
             // 

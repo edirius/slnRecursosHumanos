@@ -143,6 +143,7 @@ namespace CapaUsuario.Trabajador
 
             foreach (DataRow row in oDataPeriodoTrabajador.Rows)
             {
+                string xxxx = row[3].ToString();
                 foreach (DataRow row1 in oDataMotivoFinPeriodo.Select("idtmotivofinperiodo ='" + row[3].ToString() + "'"))
                 {
                     dgvPeriodoTrabajador.Rows.Add("",row[0].ToString(), row[1].ToString(), row[2].ToString(), row1[0].ToString(), row1[2].ToString());

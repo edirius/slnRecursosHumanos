@@ -424,7 +424,7 @@ namespace CapaUsuario.Planilla
             {
                 Nombre = rowTrabajador[2].ToString() + " " + rowTrabajador[3].ToString() + " " + rowTrabajador[4].ToString();
                 DNI = rowTrabajador[1].ToString();
-                foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + pidtrabajador + "'")) //and fechainicio <= '" + saño + "" + smes + "31' and(fechafin >= '" + saño + "" + smes + "01' or fechafin >= '')
+                foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + pidtrabajador + "' and fechafin=''")) //and fechainicio <= '" + saño + "" + smes + "31' and(fechafin >= '" + saño + "" + smes + "01' or fechafin >= '')
                 {
                     FechaInicio = rowPeriodoTrabajador[1].ToString();
                     foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
@@ -914,7 +914,7 @@ namespace CapaUsuario.Planilla
             //renta de 5ta Categoria A_Trabajador
             if (codigo == "0605")
             {
-                decimal renta5ta = CalculoRenta5ta(remuneracion_5ta, ingresos_5ta);
+                decimal renta5ta = CalculoRenta5ta(fila, remuneracion_5ta, ingresos_5ta);
                 //result = decimal.Round(Convert.ToDecimal(renta5ta), 2);
                 result = Convert.ToDouble(renta5ta);
             }
@@ -942,7 +942,7 @@ namespace CapaUsuario.Planilla
             dgvDetallePlanilla.Rows[fila].Cells[22 + con_ingresos + con_trabajador + con_descuento + con_empleador].Value = String.Format("{0:0.00}", T);
         }
 
-        private decimal CalculoRenta5ta(double remuneracion_5ta, double ingresos_5ta)
+        private decimal CalculoRenta5ta(int fila, double remuneracion_5ta, double ingresos_5ta)
         {
             decimal sRenta5ta = 0;
             decimal sRemuneracion = 0;
@@ -950,11 +950,31 @@ namespace CapaUsuario.Planilla
             int sNroMes = 0;
             decimal sGratificaciones = 0;
             decimal sRetMesAnteriores = 0;
+
+            int idttrabajador = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value);
+            CapaDeNegocios.Planillas.cIngresos5taCategoria miIngresos5taCategoria = new CapaDeNegocios.Planillas.cIngresos5taCategoria();
+            DataTable oDataIngresos5taCategoria = new DataTable();
+            oDataIngresos5taCategoria = miIngresos5taCategoria.Ingresos5taCategoria(sidtplanilla, smes, saño, Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
+            int z = 0;
+            foreach (DataRow rowingresos in oDataIngresos5taCategoria.Rows)
+            {
+                if (rowingresos[0].ToString() != "")
+                {
+                    if (z == 0)
+                    {
+                        sRemMesAnt = Convert.ToDecimal(rowingresos[0]);//suma de las remuneraciones totales
+                    }
+
+                    if (z == 1)
+                    {
+                        sRetMesAnteriores = Convert.ToDecimal(rowingresos[0]);//suma de las retenciones de 5tacategoria totales
+                    }
+                }
+                z += 1;
+            }
             sRemuneracion = Convert.ToDecimal(remuneracion_5ta);
-            sRemMesAnt = 0;//suma de las remuneraciones totales
             sNroMes = Convert.ToInt32(Mes(smes));
             sGratificaciones = Convert.ToDecimal(600 + ingresos_5ta);
-            sRetMesAnteriores = 0;
             CapaDeNegocios.Planillas.cCalculo5taCategoria miCalculo5ta = new CapaDeNegocios.Planillas.cCalculo5taCategoria();
             sRenta5ta = miCalculo5ta.CalculoRentaMensual(sRemuneracion, sRemMesAnt, sNroMes, sGratificaciones, sUIT, sRetMesAnteriores);
             return sRenta5ta;

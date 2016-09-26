@@ -399,9 +399,11 @@ namespace CapaDeNegocios
             return Conexion.GDatos.TraerDataTable("spListarTrabajadores", filtro);
         }
 
-        public DataTable ObtenerListaTrabajadores(string FiltroTrabajadores, string fnombres, string fapellidoPaterno, string fapellidoMaterno, string fdni)
+        public DataTable ObtenerListaTrabajadores(string FiltroTrabajadores, string fnombres, string fapellidoPaterno, string fapellidoMaterno, string fdni, string fRegimen, string fmeta)
         {
             string filtro = "t";
+            string regimenfiltro = "%";
+            string filtroMeta = "%";
             switch (FiltroTrabajadores)
             {
                 case "Activos":
@@ -417,7 +419,32 @@ namespace CapaDeNegocios
                     filtro = "s";
                     break;
             }
-            return Conexion.GDatos.TraerDataTable("spListarTrabajadoresFiltro", filtro, fnombres + '%', fapellidoPaterno + '%', fapellidoMaterno + '%', fdni + '%');
+
+            switch (fRegimen)
+            {
+                case "Todos":
+                    regimenfiltro = "%";
+                    break;
+                case "CAS":
+                    regimenfiltro = "15";
+                    break;
+                case "728":
+                    regimenfiltro = "01";
+                    break;
+                case "276":
+                    regimenfiltro = "02";
+                    break;
+            }
+
+            if (fmeta != "Todos")
+            {
+                filtroMeta = fmeta; 
+            }
+            else
+            {
+                filtroMeta = "%";
+            }
+            return Conexion.GDatos.TraerDataTable("spListarTrabajadoresFiltro", filtro, fnombres + '%', fapellidoPaterno + '%', fapellidoMaterno + '%', fdni + '%', regimenfiltro, filtroMeta);
         }
     }
 }

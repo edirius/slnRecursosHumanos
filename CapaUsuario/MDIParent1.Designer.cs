@@ -95,7 +95,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.consultaMasivaAFPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.declaraciónJuradaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -213,27 +213,27 @@
             this.mantenimientoDeCargosToolStripMenuItem,
             this.residenteMetaToolStripMenuItem});
             this.viewMenu.Name = "viewMenu";
-            this.viewMenu.Size = new System.Drawing.Size(87, 20);
+            this.viewMenu.Size = new System.Drawing.Size(86, 20);
             this.viewMenu.Text = "&Trabajadores";
             // 
             // mantenimientoDeTrabajadoresToolStripMenuItem
             // 
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Name = "mantenimientoDeTrabajadoresToolStripMenuItem";
-            this.mantenimientoDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.mantenimientoDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Text = "Mantenimiento de Trabajadores";
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeTrabajadoresToolStripMenuItem_Click);
             // 
             // mantenimientoDeCargosToolStripMenuItem
             // 
             this.mantenimientoDeCargosToolStripMenuItem.Name = "mantenimientoDeCargosToolStripMenuItem";
-            this.mantenimientoDeCargosToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.mantenimientoDeCargosToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.mantenimientoDeCargosToolStripMenuItem.Text = "Mantenimiento de Cargos";
             this.mantenimientoDeCargosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeCargosToolStripMenuItem_Click);
             // 
             // residenteMetaToolStripMenuItem
             // 
             this.residenteMetaToolStripMenuItem.Name = "residenteMetaToolStripMenuItem";
-            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.residenteMetaToolStripMenuItem.Text = "Residente Meta";
             this.residenteMetaToolStripMenuItem.Click += new System.EventHandler(this.residenteMetaToolStripMenuItem_Click);
             // 
@@ -242,13 +242,13 @@
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
-            this.toolsMenu.Size = new System.Drawing.Size(54, 20);
+            this.toolsMenu.Size = new System.Drawing.Size(53, 20);
             this.toolsMenu.Text = "Tareos";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.optionsToolStripMenuItem.Text = "Tareo de Obras";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
@@ -408,7 +408,7 @@
             this.maestroDescuentosToolStripMenuItem,
             this.maestroDescuentosToolStripMenuItem1});
             this.sUNATToolStripMenuItem.Name = "sUNATToolStripMenuItem";
-            this.sUNATToolStripMenuItem.Size = new System.Drawing.Size(173, 20);
+            this.sUNATToolStripMenuItem.Size = new System.Drawing.Size(171, 20);
             this.sUNATToolStripMenuItem.Text = "SUNAT - Tablas Parametricas";
             // 
             // motivoFinPeriodoToolStripMenuItem
@@ -459,44 +459,43 @@
             this.exportarAExcelToolStripMenuItem,
             this.exportarTodoToolStripMenuItem,
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem,
-            this.datosDelPensionistaPENToolStripMenuItem,
-            this.consultaMasivaAFPToolStripMenuItem});
+            this.datosDelPensionistaPENToolStripMenuItem});
             this.exportarTextoSUNATToolStripMenuItem.Name = "exportarTextoSUNATToolStripMenuItem";
-            this.exportarTextoSUNATToolStripMenuItem.Size = new System.Drawing.Size(143, 20);
+            this.exportarTextoSUNATToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
             this.exportarTextoSUNATToolStripMenuItem.Text = "Exportar datos - SUNAT";
             // 
             // tributosYDescuentosDelTrabajadorToolStripMenuItem
             // 
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Name = "tributosYDescuentosDelTrabajadorToolStripMenuItem";
-            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Text = "Tributos y Descuentos del Trabajador(.REM)";
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Click += new System.EventHandler(this.tributosYDescuentosDelTrabajadorToolStripMenuItem_Click);
             // 
             // exportarAExcelToolStripMenuItem
             // 
             this.exportarAExcelToolStripMenuItem.Name = "exportarAExcelToolStripMenuItem";
-            this.exportarAExcelToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.exportarAExcelToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
             this.exportarAExcelToolStripMenuItem.Text = "Exportar AFP a Excel";
             this.exportarAExcelToolStripMenuItem.Click += new System.EventHandler(this.exportarAExcelToolStripMenuItem_Click);
             // 
             // exportarTodoToolStripMenuItem
             // 
             this.exportarTodoToolStripMenuItem.Name = "exportarTodoToolStripMenuItem";
-            this.exportarTodoToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.exportarTodoToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
             this.exportarTodoToolStripMenuItem.Text = "Dar de alta al trabajador(T-REGISTRO)";
             this.exportarTodoToolStripMenuItem.Click += new System.EventHandler(this.exportarTodoToolStripMenuItem_Click);
             // 
             // darDeBajaAlTrabajadorTREGISTROToolStripMenuItem
             // 
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Name = "darDeBajaAlTrabajadorTREGISTROToolStripMenuItem";
-            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Text = "Dar de baja al trabajador(T-REGISTRO)";
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Click += new System.EventHandler(this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem_Click);
             // 
             // datosDelPensionistaPENToolStripMenuItem
             // 
             this.datosDelPensionistaPENToolStripMenuItem.Name = "datosDelPensionistaPENToolStripMenuItem";
-            this.datosDelPensionistaPENToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
+            this.datosDelPensionistaPENToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
             this.datosDelPensionistaPENToolStripMenuItem.Text = "Datos del Pensionista(.PEN)";
             this.datosDelPensionistaPENToolStripMenuItem.Click += new System.EventHandler(this.datosDelPensionistaPENToolStripMenuItem_Click);
             // 
@@ -507,10 +506,12 @@
             this.boletaPagoPorPlanillaToolStripMenuItem,
             this.planillaToolStripMenuItem2,
             this.trabajadoresToolStripMenuItem,
-            this.personalToolStripMenuItem});
+            this.personalToolStripMenuItem,
+            this.declaraciónJuradaDeToolStripMenuItem});
             this.reportesToolStripMenuItem1.Name = "reportesToolStripMenuItem1";
             this.reportesToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
             this.reportesToolStripMenuItem1.Text = "Reportes";
+            this.reportesToolStripMenuItem1.Click += new System.EventHandler(this.reportesToolStripMenuItem1_Click);
             // 
             // boletaPagoToolStripMenuItem1
             // 
@@ -625,12 +626,12 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // consultaMasivaAFPToolStripMenuItem
+            // declaraciónJuradaDeToolStripMenuItem
             // 
-            this.consultaMasivaAFPToolStripMenuItem.Name = "consultaMasivaAFPToolStripMenuItem";
-            this.consultaMasivaAFPToolStripMenuItem.Size = new System.Drawing.Size(305, 22);
-            this.consultaMasivaAFPToolStripMenuItem.Text = "Consulta Masiva -  AFP";
-            this.consultaMasivaAFPToolStripMenuItem.Click += new System.EventHandler(this.consultaMasivaAFPToolStripMenuItem_Click);
+            this.declaraciónJuradaDeToolStripMenuItem.Name = "declaraciónJuradaDeToolStripMenuItem";
+            this.declaraciónJuradaDeToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.declaraciónJuradaDeToolStripMenuItem.Text = "Declaración Jurada de Nombramientos de Contraloria";
+            this.declaraciónJuradaDeToolStripMenuItem.Click += new System.EventHandler(this.declaraciónJuradaDeToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -725,7 +726,7 @@
         private System.Windows.Forms.ToolStripMenuItem datosDelPensionistaPENToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportarTodoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darDeBajaAlTrabajadorTREGISTROToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultaMasivaAFPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem declaraciónJuradaDeToolStripMenuItem;
     }
 }
 

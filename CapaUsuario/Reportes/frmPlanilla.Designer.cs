@@ -33,14 +33,6 @@
             this.dgvAFP = new System.Windows.Forms.DataGridView();
             this.dgvPrueba = new System.Windows.Forms.DataGridView();
             this.dgvPlanilla = new System.Windows.Forms.DataGridView();
-            this.dgvRedondear = new System.Windows.Forms.DataGridView();
-            this.dgvEEFF = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.cboAño = new System.Windows.Forms.ComboBox();
-            this.cboMes = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +45,14 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdtRegimenLaboral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvRedondear = new System.Windows.Forms.DataGridView();
+            this.dgvEEFF = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.cboAño = new System.Windows.Forms.ComboBox();
+            this.cboMes = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
@@ -68,7 +68,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimir.Location = new System.Drawing.Point(12, 465);
+            this.btnImprimir.Location = new System.Drawing.Point(27, 460);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 65);
             this.btnImprimir.TabIndex = 87;
@@ -125,86 +125,10 @@
             this.dgvPlanilla.ReadOnly = true;
             this.dgvPlanilla.RowHeadersVisible = false;
             this.dgvPlanilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPlanilla.Size = new System.Drawing.Size(822, 385);
+            this.dgvPlanilla.Size = new System.Drawing.Size(837, 380);
             this.dgvPlanilla.TabIndex = 94;
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick_1);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick_1);
-            // 
-            // dgvRedondear
-            // 
-            this.dgvRedondear.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRedondear.Location = new System.Drawing.Point(440, 465);
-            this.dgvRedondear.Name = "dgvRedondear";
-            this.dgvRedondear.Size = new System.Drawing.Size(157, 65);
-            this.dgvRedondear.TabIndex = 95;
-            this.dgvRedondear.Visible = false;
-            // 
-            // dgvEEFF
-            // 
-            this.dgvEEFF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEEFF.Location = new System.Drawing.Point(603, 465);
-            this.dgvEEFF.Name = "dgvEEFF";
-            this.dgvEEFF.Size = new System.Drawing.Size(157, 65);
-            this.dgvEEFF.TabIndex = 96;
-            this.dgvEEFF.Visible = false;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnBuscar);
-            this.groupBox1.Controls.Add(this.cboAño);
-            this.groupBox1.Controls.Add(this.cboMes);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 13);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(471, 55);
-            this.groupBox1.TabIndex = 101;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtrar por:";
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Location = new System.Drawing.Point(380, 22);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 4;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // cboAño
-            // 
-            this.cboAño.FormattingEnabled = true;
-            this.cboAño.Location = new System.Drawing.Point(228, 22);
-            this.cboAño.Name = "cboAño";
-            this.cboAño.Size = new System.Drawing.Size(121, 21);
-            this.cboAño.TabIndex = 3;
-            // 
-            // cboMes
-            // 
-            this.cboMes.FormattingEnabled = true;
-            this.cboMes.Location = new System.Drawing.Point(42, 22);
-            this.cboMes.Name = "cboMes";
-            this.cboMes.Size = new System.Drawing.Size(121, 21);
-            this.cboMes.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(193, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Año:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mes:";
             // 
             // Column1
             // 
@@ -294,11 +218,87 @@
             this.Plantilla.Name = "Plantilla";
             this.Plantilla.ReadOnly = true;
             // 
+            // dgvRedondear
+            // 
+            this.dgvRedondear.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRedondear.Location = new System.Drawing.Point(440, 465);
+            this.dgvRedondear.Name = "dgvRedondear";
+            this.dgvRedondear.Size = new System.Drawing.Size(157, 65);
+            this.dgvRedondear.TabIndex = 95;
+            this.dgvRedondear.Visible = false;
+            // 
+            // dgvEEFF
+            // 
+            this.dgvEEFF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEEFF.Location = new System.Drawing.Point(603, 465);
+            this.dgvEEFF.Name = "dgvEEFF";
+            this.dgvEEFF.Size = new System.Drawing.Size(157, 65);
+            this.dgvEEFF.TabIndex = 96;
+            this.dgvEEFF.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnBuscar);
+            this.groupBox1.Controls.Add(this.cboAño);
+            this.groupBox1.Controls.Add(this.cboMes);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(471, 55);
+            this.groupBox1.TabIndex = 101;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filtrar por:";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(380, 22);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 4;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // cboAño
+            // 
+            this.cboAño.FormattingEnabled = true;
+            this.cboAño.Location = new System.Drawing.Point(228, 22);
+            this.cboAño.Name = "cboAño";
+            this.cboAño.Size = new System.Drawing.Size(121, 21);
+            this.cboAño.TabIndex = 3;
+            // 
+            // cboMes
+            // 
+            this.cboMes.FormattingEnabled = true;
+            this.cboMes.Location = new System.Drawing.Point(42, 22);
+            this.cboMes.Name = "cboMes";
+            this.cboMes.Size = new System.Drawing.Size(121, 21);
+            this.cboMes.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(193, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Año:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mes:";
+            // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 542);
+            this.ClientSize = new System.Drawing.Size(861, 537);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvEEFF);
             this.Controls.Add(this.dgvRedondear);
