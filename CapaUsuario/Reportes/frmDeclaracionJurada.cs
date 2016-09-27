@@ -84,8 +84,8 @@ namespace CapaUsuario.Reportes
             CapaDeNegocios.Trabajadores.cTrabajadorCas oTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorCas();
             paño = cboAño.GetItemText(this.cboAño.SelectedItem);
             dgvDeclaracionJurada.DataSource = oTrabajador.ListarTrabajadoresParaDeclaracionJurada(paño);
-            dgvDeclaracionJurada.Columns[1].Visible = true;
-            dgvDeclaracionJurada.Columns[7].Visible = true;
+            dgvDeclaracionJurada.Columns[1].Visible = false;
+            dgvDeclaracionJurada.Columns[7].Visible = false;
 
 
         }
@@ -113,6 +113,9 @@ namespace CapaUsuario.Reportes
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+            FileInfo file = new FileInfo("C:\\PDFs\\DeclaracionJurada.pdf");
+            bool estaAbierto = IsFileinUse(file, "C:\\PDFs\\DeclaracionJurada.pdf");
+
             DataTable odtCabeza = new DataTable();
             DataTable odtDeclaracionJurada = new DataTable();
             DataTable odtAlcalde = new DataTable();
@@ -149,7 +152,7 @@ namespace CapaUsuario.Reportes
             string monto_0405 = "";
             string monto_0406 = "";
             string monto_0407 = "";
-
+            string alcalde = "";
 
             DataRow odrCabeza = odtCabeza.NewRow();
 
@@ -174,9 +177,12 @@ namespace CapaUsuario.Reportes
             odrCabeza[1] = "PLAZA DE ARMAS S/N DISTRITO DE CCATCCA";
             odtCabeza.Rows.InsertAt(odrCabeza, 1);
 
+            if (odtAlcalde.Rows.Count > 0)
+                alcalde = odtAlcalde.Rows[0][0].ToString();
+
             odrCabeza = odtCabeza.NewRow();
             odrCabeza[0] = "NOMBRE DEL TITULAR DEL PLIEGO PRESUPUESTAL";
-            odrCabeza[1] = odtAlcalde.Rows[0][0] ;
+            odrCabeza[1] = alcalde ;
             odtCabeza.Rows.InsertAt(odrCabeza, 2);
 
             odrCabeza = odtCabeza.NewRow();
@@ -196,153 +202,161 @@ namespace CapaUsuario.Reportes
 
             odtDeclaracionJurada = oTrabajador.ListarDeclaracionJuradaNombramientoContraloria(id_trabajador, Convert.ToInt32(paño) );
 
-            odt2039 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño),"2039");
-
-            if (odt2039.Rows.Count > 0) {
-                monto_2039 = odt2039.Rows[0][4].ToString();
-                if (monto_2039 != "")
-                {
-                    odtDeclaracionJurada.Columns.Add(odt2039.Rows[0][3].ToString(), typeof(string));
-                    indice_2039 = BuscarIndiceColumna(odtDeclaracionJurada, "REMUNER. TOTAL");
-                    if (indice_2039 != -1)
-                        odtDeclaracionJurada.Rows[0][indice_2039] = monto_2039;
-                } 
-            }
-
-            odt_121 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "121");
-
-            if (odt_121.Rows.Count > 0)
+            if (odtDeclaracionJurada.Rows.Count > 0)
             {
-                monto_121 = odt_121.Rows[0][4].ToString();
-                if (monto_121 != "")
+
+                odt2039 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "2039");
+
+                if (odt2039.Rows.Count > 0)
                 {
-                    odtDeclaracionJurada.Columns.Add(odt_121.Rows[0][3].ToString(), typeof(string));
-                    indice_121 = BuscarIndiceColumna(odtDeclaracionJurada, "REMUNER.");
-                    if (indice_121 != -1)
-                        odtDeclaracionJurada.Rows[0][indice_121] = monto_121;
+                    monto_2039 = odt2039.Rows[0][4].ToString();
+                    if (monto_2039 != "")
+                    {
+                        odtDeclaracionJurada.Columns.Add(odt2039.Rows[0][3].ToString(), typeof(string));
+                        indice_2039 = BuscarIndiceColumna(odtDeclaracionJurada, "REMUNER. TOTAL");
+                        if (indice_2039 != -1)
+                            odtDeclaracionJurada.Rows[0][indice_2039] = monto_2039;
+                    }
                 }
-            }
 
-            odt_122 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "122");
+                odt_121 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "121");
 
-            if (odt_122.Rows.Count > 0)
-            {
-                monto_122 = odt_122.Rows[0][4].ToString();
-                if (monto_122 != "")
+                if (odt_121.Rows.Count > 0)
                 {
-                    odtDeclaracionJurada.Columns.Add(odt_122.Rows[0][3].ToString(), typeof(string));
-                    indice_122 = BuscarIndiceColumna(odtDeclaracionJurada, "REMUNER. PERMAN.");
-                    if (indice_122 != -1)
-                        odtDeclaracionJurada.Rows[0][indice_122] = monto_122;
-                    
+                    monto_121 = odt_121.Rows[0][4].ToString();
+                    if (monto_121 != "")
+                    {
+                        odtDeclaracionJurada.Columns.Add(odt_121.Rows[0][3].ToString(), typeof(string));
+                        indice_121 = BuscarIndiceColumna(odtDeclaracionJurada, "REMUNER.");
+                        if (indice_121 != -1)
+                            odtDeclaracionJurada.Rows[0][indice_121] = monto_121;
+                    }
                 }
-            }
 
-            odt_0401 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0401");
+                odt_122 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "122");
 
-            if (odt_0401.Rows.Count > 0)
-            {
-                monto_0401 = odt_0401.Rows[0][4].ToString();
-                if (monto_0401 != "")
+                if (odt_122.Rows.Count > 0)
                 {
-                    odtDeclaracionJurada.Columns.Add(odt_0401.Rows[0][3].ToString(), typeof(string));
-                    indice_0401 = BuscarIndiceColumna(odtDeclaracionJurada, "GRAT. FPYN");
-                    if (indice_0401 != -1)
-                        odtDeclaracionJurada.Rows[0][indice_0401] = monto_0401;
+                    monto_122 = odt_122.Rows[0][4].ToString();
+                    if (monto_122 != "")
+                    {
+                        odtDeclaracionJurada.Columns.Add(odt_122.Rows[0][3].ToString(), typeof(string));
+                        indice_122 = BuscarIndiceColumna(odtDeclaracionJurada, "REMUNER. PERMAN.");
+                        if (indice_122 != -1)
+                            odtDeclaracionJurada.Rows[0][indice_122] = monto_122;
+
+                    }
                 }
-            }
 
-            odt_0402 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0402");
+                odt_0401 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0401");
 
-            if (odt_0402.Rows.Count > 0)
-            {
-                monto_0402 = odt_0402.Rows[0][4].ToString();
-                if (monto_0402 != "")
+                if (odt_0401.Rows.Count > 0)
                 {
-                    odtDeclaracionJurada.Columns.Add(odt_0402.Rows[0][3].ToString(), typeof(string));
-                    indice_0402 = BuscarIndiceColumna(odtDeclaracionJurada, "OTRAS GRAT. ORD.");
-                    if (indice_0402 != -1)
-                        odtDeclaracionJurada.Rows[0][indice_0402] = monto_0402;
+                    monto_0401 = odt_0401.Rows[0][4].ToString();
+                    if (monto_0401 != "")
+                    {
+                        odtDeclaracionJurada.Columns.Add(odt_0401.Rows[0][3].ToString(), typeof(string));
+                        indice_0401 = BuscarIndiceColumna(odtDeclaracionJurada, "GRAT. FPYN");
+                        if (indice_0401 != -1)
+                            odtDeclaracionJurada.Rows[0][indice_0401] = monto_0401;
+                    }
                 }
-            }
 
-            odt_0403 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0403");
+                odt_0402 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0402");
 
-            if (odt_0403.Rows.Count > 0)
-            {
-                monto_0403 =  odt_0403.Rows[0][4].ToString();
-                if (monto_0403 != "")
+                if (odt_0402.Rows.Count > 0)
                 {
-                    odtDeclaracionJurada.Columns.Add(odt_0403.Rows[0][3].ToString(), typeof(string));
-                    indice_0403 = BuscarIndiceColumna(odtDeclaracionJurada, "GRAT. EXTRAORD.");
-                    if (indice_0403 != -1)
-                        odtDeclaracionJurada.Rows[0][indice_0403] = monto_0403;
+                    monto_0402 = odt_0402.Rows[0][4].ToString();
+                    if (monto_0402 != "")
+                    {
+                        odtDeclaracionJurada.Columns.Add(odt_0402.Rows[0][3].ToString(), typeof(string));
+                        indice_0402 = BuscarIndiceColumna(odtDeclaracionJurada, "OTRAS GRAT. ORD.");
+                        if (indice_0402 != -1)
+                            odtDeclaracionJurada.Rows[0][indice_0402] = monto_0402;
+                    }
                 }
-            }
 
-            odt_0404 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0404");
+                odt_0403 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0403");
 
-            if (odt_0404.Rows.Count > 0)
-            {
-                monto_0404 =  odt_0404.Rows[0][4].ToString();
-                if (monto_0404 != "")
+                if (odt_0403.Rows.Count > 0)
                 {
-                    odtDeclaracionJurada.Columns.Add(odt_0404.Rows[0][3].ToString(), typeof(string));
-                    indice_0404 = BuscarIndiceColumna(odtDeclaracionJurada, "AGUI. JUL Y DIC");
-                    if (indice_0404 != -1)
-                        odtDeclaracionJurada.Rows[0][indice_0404] = monto_0404;
+                    monto_0403 = odt_0403.Rows[0][4].ToString();
+                    if (monto_0403 != "")
+                    {
+                        odtDeclaracionJurada.Columns.Add(odt_0403.Rows[0][3].ToString(), typeof(string));
+                        indice_0403 = BuscarIndiceColumna(odtDeclaracionJurada, "GRAT. EXTRAORD.");
+                        if (indice_0403 != -1)
+                            odtDeclaracionJurada.Rows[0][indice_0403] = monto_0403;
+                    }
                 }
-            }
 
-            odt_0405 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0405");
+                odt_0404 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0404");
 
-            if (odt_0405.Rows.Count > 0)
-            {
-                monto_0405 = odt_0405.Rows[0][4].ToString();
-                if (monto_0405 != "")
+                if (odt_0404.Rows.Count > 0)
                 {
-                    odtDeclaracionJurada.Columns.Add(odt_0405.Rows[0][3].ToString(), typeof(string));
-                    indice_0405 = BuscarIndiceColumna(odtDeclaracionJurada, "GRAT. PROPOR.");
-                    if (indice_0405 != -1)
-                        odtDeclaracionJurada.Rows[0][indice_0405] = monto_0405;
+                    monto_0404 = odt_0404.Rows[0][4].ToString();
+                    if (monto_0404 != "")
+                    {
+                        odtDeclaracionJurada.Columns.Add(odt_0404.Rows[0][3].ToString(), typeof(string));
+                        indice_0404 = BuscarIndiceColumna(odtDeclaracionJurada, "AGUI. JUL Y DIC");
+                        if (indice_0404 != -1)
+                            odtDeclaracionJurada.Rows[0][indice_0404] = monto_0404;
+                    }
                 }
-            }
 
-            odt_0406 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0406");
+                odt_0405 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0405");
 
-            if (odt_0406.Rows.Count > 0)
-            {
-                monto_0406 =  odt_0406.Rows[0][4].ToString();
-                if (monto_0406 != "")
+                if (odt_0405.Rows.Count > 0)
                 {
-                    odtDeclaracionJurada.Columns.Add(odt_0406.Rows[0][3].ToString(), typeof(string));
-                    indice_0406 = BuscarIndiceColumna(odtDeclaracionJurada, "GRAT. FPYN LEY 29351");
-                    if (indice_0406 != -1)
-                        odtDeclaracionJurada.Rows[0][indice_0406] = monto_0406;
+                    monto_0405 = odt_0405.Rows[0][4].ToString();
+                    if (monto_0405 != "")
+                    {
+                        odtDeclaracionJurada.Columns.Add(odt_0405.Rows[0][3].ToString(), typeof(string));
+                        indice_0405 = BuscarIndiceColumna(odtDeclaracionJurada, "GRAT. PROPOR.");
+                        if (indice_0405 != -1)
+                            odtDeclaracionJurada.Rows[0][indice_0405] = monto_0405;
+                    }
                 }
-            }
 
-            odt_0407 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0407");
+                odt_0406 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0406");
 
-            if (odt_0407.Rows.Count > 0)
-            {
-                monto_0407 = odt_0407.Rows[0][4].ToString();
-                if (monto_0407 != "")
+                if (odt_0406.Rows.Count > 0)
                 {
-                    odtDeclaracionJurada.Columns.Add(odt_0407.Rows[0][3].ToString(), typeof(string));
-                    indice_0407 = BuscarIndiceColumna(odtDeclaracionJurada, "GRAT. PROPORC. LEY 29351");
-                    if (indice_0407 != -1)
-                        odtDeclaracionJurada.Rows[0][indice_0407] = monto_0406;
+                    monto_0406 = odt_0406.Rows[0][4].ToString();
+                    if (monto_0406 != "")
+                    {
+                        odtDeclaracionJurada.Columns.Add(odt_0406.Rows[0][3].ToString(), typeof(string));
+                        indice_0406 = BuscarIndiceColumna(odtDeclaracionJurada, "GRAT. FPYN LEY 29351");
+                        if (indice_0406 != -1)
+                            odtDeclaracionJurada.Rows[0][indice_0406] = monto_0406;
+                    }
                 }
+
+                odt_0407 = oTrabajador.ListarDeclaracionJNC(id_trabajador, Convert.ToInt32(paño), "0407");
+
+                if (odt_0407.Rows.Count > 0)
+                {
+                    monto_0407 = odt_0407.Rows[0][4].ToString();
+                    if (monto_0407 != "")
+                    {
+                        odtDeclaracionJurada.Columns.Add(odt_0407.Rows[0][3].ToString(), typeof(string));
+                        indice_0407 = BuscarIndiceColumna(odtDeclaracionJurada, "GRAT. PROPORC. LEY 29351");
+                        if (indice_0407 != -1)
+                            odtDeclaracionJurada.Rows[0][indice_0407] = monto_0406;
+                    }
+                }
+
+                dgvCuerpo.DataSource = odtDeclaracionJurada;
+
+                if (!estaAbierto) exportar_a_pdf();
+                else MessageBox.Show("Cerrar porfavor DeclaracionJurada.pdf", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+                /*Fin cuadro 2*/
+                /*Fin de formato de declaracion jurada de nombramientos a contraloria */
             }
-
-            dgvCuerpo.DataSource = odtDeclaracionJurada;
-
-            exportar_a_pdf();
-
-            /*Fin cuadro 2*/
-            /*Fin de formato de declaracion jurada de nombramientos a contraloria */
-
+            else
+                MessageBox.Show("Declaración jurada de nombramientos a contraloria vacia.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 
         }
