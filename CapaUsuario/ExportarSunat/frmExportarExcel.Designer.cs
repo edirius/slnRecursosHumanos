@@ -30,18 +30,37 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.btnExport = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.bntListarTodo = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cbMes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbAños = new System.Windows.Forms.ComboBox();
             this.dgvListaPlanillas = new System.Windows.Forms.DataGridView();
-            this.bntListarTodo = new System.Windows.Forms.Button();
+            this.dgv2 = new System.Windows.Forms.DataGridView();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
@@ -53,12 +72,12 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 343);
+            this.dataGridView.Location = new System.Drawing.Point(12, 219);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1226, 151);
+            this.dataGridView.Size = new System.Drawing.Size(1226, 124);
             this.dataGridView.TabIndex = 5;
             // 
             // btnExport
@@ -81,10 +100,20 @@
             this.groupBox2.Controls.Add(this.cbAños);
             this.groupBox2.Location = new System.Drawing.Point(12, 9);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1226, 71);
+            this.groupBox2.Size = new System.Drawing.Size(1292, 71);
             this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Buscar trabajadores por mes:";
+            // 
+            // bntListarTodo
+            // 
+            this.bntListarTodo.Location = new System.Drawing.Point(589, 17);
+            this.bntListarTodo.Name = "bntListarTodo";
+            this.bntListarTodo.Size = new System.Drawing.Size(179, 40);
+            this.bntListarTodo.TabIndex = 33;
+            this.bntListarTodo.Text = "&Listar todas las planillas\r\n por año";
+            this.bntListarTodo.UseVisualStyleBackColor = true;
+            this.bntListarTodo.Click += new System.EventHandler(this.bntListarTodo_Click);
             // 
             // label3
             // 
@@ -147,32 +176,152 @@
             this.dgvListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaPlanillas.Location = new System.Drawing.Point(12, 86);
             this.dgvListaPlanillas.Name = "dgvListaPlanillas";
-            this.dgvListaPlanillas.ReadOnly = true;
             this.dgvListaPlanillas.RowHeadersVisible = false;
             this.dgvListaPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaPlanillas.Size = new System.Drawing.Size(1226, 408);
+            this.dgvListaPlanillas.Size = new System.Drawing.Size(1292, 418);
             this.dgvListaPlanillas.TabIndex = 42;
             this.dgvListaPlanillas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaPlanillas_CellClick);
             this.dgvListaPlanillas.SelectionChanged += new System.EventHandler(this.dgvListaPlanillas_SelectionChanged);
             // 
-            // bntListarTodo
+            // dgv2
             // 
-            this.bntListarTodo.Location = new System.Drawing.Point(589, 17);
-            this.bntListarTodo.Name = "bntListarTodo";
-            this.bntListarTodo.Size = new System.Drawing.Size(179, 40);
-            this.bntListarTodo.TabIndex = 33;
-            this.bntListarTodo.Text = "&Listar todas las planillas\r\n por año";
-            this.bntListarTodo.UseVisualStyleBackColor = true;
-            this.bntListarTodo.Click += new System.EventHandler(this.bntListarTodo_Click);
+            this.dgv2.AllowUserToAddRows = false;
+            this.dgv2.AllowUserToDeleteRows = false;
+            this.dgv2.AllowUserToResizeColumns = false;
+            this.dgv2.AllowUserToResizeRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgv2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Numero,
+            this.txt1,
+            this.txt2,
+            this.txt3,
+            this.txt4,
+            this.txt5,
+            this.txt6,
+            this.txt7,
+            this.txt8,
+            this.txt9,
+            this.txt10,
+            this.txt11,
+            this.txt12,
+            this.txt13,
+            this.txt14,
+            this.txt15});
+            this.dgv2.Location = new System.Drawing.Point(12, 349);
+            this.dgv2.Name = "dgv2";
+            this.dgv2.ReadOnly = true;
+            this.dgv2.RowHeadersVisible = false;
+            this.dgv2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv2.Size = new System.Drawing.Size(1226, 135);
+            this.dgv2.TabIndex = 43;
+            // 
+            // Numero
+            // 
+            this.Numero.HeaderText = "N°";
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            // 
+            // txt1
+            // 
+            this.txt1.HeaderText = "Column1";
+            this.txt1.Name = "txt1";
+            this.txt1.ReadOnly = true;
+            // 
+            // txt2
+            // 
+            this.txt2.HeaderText = "Column1";
+            this.txt2.Name = "txt2";
+            this.txt2.ReadOnly = true;
+            // 
+            // txt3
+            // 
+            this.txt3.HeaderText = "Column1";
+            this.txt3.Name = "txt3";
+            this.txt3.ReadOnly = true;
+            // 
+            // txt4
+            // 
+            this.txt4.HeaderText = "Column1";
+            this.txt4.Name = "txt4";
+            this.txt4.ReadOnly = true;
+            // 
+            // txt5
+            // 
+            this.txt5.HeaderText = "Column1";
+            this.txt5.Name = "txt5";
+            this.txt5.ReadOnly = true;
+            // 
+            // txt6
+            // 
+            this.txt6.HeaderText = "Column1";
+            this.txt6.Name = "txt6";
+            this.txt6.ReadOnly = true;
+            // 
+            // txt7
+            // 
+            this.txt7.HeaderText = "Column1";
+            this.txt7.Name = "txt7";
+            this.txt7.ReadOnly = true;
+            // 
+            // txt8
+            // 
+            this.txt8.HeaderText = "Column1";
+            this.txt8.Name = "txt8";
+            this.txt8.ReadOnly = true;
+            // 
+            // txt9
+            // 
+            this.txt9.HeaderText = "Column1";
+            this.txt9.Name = "txt9";
+            this.txt9.ReadOnly = true;
+            // 
+            // txt10
+            // 
+            this.txt10.HeaderText = "Column1";
+            this.txt10.Name = "txt10";
+            this.txt10.ReadOnly = true;
+            // 
+            // txt11
+            // 
+            this.txt11.HeaderText = "Column1";
+            this.txt11.Name = "txt11";
+            this.txt11.ReadOnly = true;
+            // 
+            // txt12
+            // 
+            this.txt12.HeaderText = "Column1";
+            this.txt12.Name = "txt12";
+            this.txt12.ReadOnly = true;
+            // 
+            // txt13
+            // 
+            this.txt13.HeaderText = "Column1";
+            this.txt13.Name = "txt13";
+            this.txt13.ReadOnly = true;
+            // 
+            // txt14
+            // 
+            this.txt14.HeaderText = "Column1";
+            this.txt14.Name = "txt14";
+            this.txt14.ReadOnly = true;
+            // 
+            // txt15
+            // 
+            this.txt15.HeaderText = "Column1";
+            this.txt15.Name = "txt15";
+            this.txt15.ReadOnly = true;
             // 
             // frmExportarExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1247, 506);
+            this.ClientSize = new System.Drawing.Size(1308, 506);
             this.Controls.Add(this.dgvListaPlanillas);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.dgv2);
             this.Name = "frmExportarExcel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmExportarExcel";
@@ -181,6 +330,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -195,5 +345,22 @@
         private System.Windows.Forms.ComboBox cbAños;
         private System.Windows.Forms.DataGridView dgvListaPlanillas;
         private System.Windows.Forms.Button bntListarTodo;
+        private System.Windows.Forms.DataGridView dgv2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txt15;
     }
 }

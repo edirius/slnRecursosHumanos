@@ -111,7 +111,8 @@ namespace CapaUsuario.ExportarSunat
                         break;
                     }
             }
-        }        private void ConvertiraNumero2(string periodicidad)
+        }
+        private void ConvertiraNumero2(string periodicidad)
         {
             switch (periodicidad)
             {

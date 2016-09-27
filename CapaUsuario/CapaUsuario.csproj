@@ -106,6 +106,12 @@
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </Compile>
     <Compile Include="ConvertImage.cs" />
+    <Compile Include="ExportarSunat\frmConsultaMasivaSunat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarSunat\frmConsultaMasivaSunat.Designer.cs">
+      <DependentUpon>frmConsultaMasivaSunat.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportarSunat\frmDarDeBajaTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1014,6 +1020,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AFP\frmListaAFPs.resx">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportarSunat\frmConsultaMasivaSunat.resx">
+      <DependentUpon>frmConsultaMasivaSunat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmDarDeBajaTrabajador.resx">
       <DependentUpon>frmDarDeBajaTrabajador.cs</DependentUpon>
