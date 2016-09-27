@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkSeleccionar = new System.Windows.Forms.CheckBox();
             this.btnExportar = new System.Windows.Forms.Button();
@@ -132,8 +132,8 @@
             this.dgvDarDeBaja.AllowUserToAddRows = false;
             this.dgvDarDeBaja.AllowUserToResizeColumns = false;
             this.dgvDarDeBaja.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvDarDeBaja.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvDarDeBaja.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDarDeBaja.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvDarDeBaja.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDarDeBaja.GridColor = System.Drawing.Color.White;
@@ -153,7 +153,7 @@
             this.Controls.Add(this.dgvDarDeBaja);
             this.Name = "frmDarDeBajaTrabajador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dar de baja al trabajador";
+            this.Text = "Dar de baja al trabajador(T-REGISTRO)";
             this.Load += new System.EventHandler(this.frmDarDeBajaTrabajador_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
