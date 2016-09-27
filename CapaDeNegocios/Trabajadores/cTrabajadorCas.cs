@@ -38,5 +38,15 @@ namespace CapaDeNegocios.Trabajadores
             return Conexion.GDatos.TraerDataTable("spListarTrabajadoresParaDeclaracionJurada", paño);
         }
 
+        public DataTable ListarDeclaracionJuradaNombramientoContraloria(int id_trabajador, int paño)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarDeclaracionJuradaNombramientoContraloria", id_trabajador, paño);
+        }
+
+        public DataTable ListarDeclaracionJNC(int id_trabajador, int paño, string pcodigo)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarDeclaracionJNC2039", id_trabajador, paño, pcodigo);
+        }
+         
     }
 }
