@@ -3088,14 +3088,16 @@ namespace CapaUsuario.Reportes
                 string ruta2 = Application.StartupPath;
                 string ruta3 = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
 
-                string[] palabras = ruta.Split('\\');
+                //string[] palabras = ruta.Split('\\');
 
-                string ruta_imagen = palabras[0] + '\\' + palabras[1] + '\\' + palabras[2] + '\\' +
-                                     palabras[3] + '\\' + palabras[4] + '\\' + palabras[5] + '\\' + palabras[6] + '\\';
+                //string ruta_imagen = palabras[0] + '\\' + palabras[1] + '\\' + palabras[2] + '\\' +
+                                     //palabras[3] + '\\' + palabras[4] + '\\' + palabras[5] + '\\' + palabras[6] + '\\';
 
-                string ruta_carpeta = "Recursos Varios\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
+                //string ruta_carpeta = "Recursos Varios\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
 
-                ruta_imagen = ruta_imagen + ruta_carpeta ;
+                //ruta_imagen = ruta_imagen + ruta_carpeta ;
+
+                string ruta_imagen = ruta + "\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
 
                 iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
                 logo.ScalePercent(64f);
