@@ -192,9 +192,9 @@
             this.groupBox1.Controls.Add(this.cbMes);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cbAños);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1291, 75);
+            this.groupBox1.Size = new System.Drawing.Size(1291, 85);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar trabajadores por fecha:";
@@ -235,7 +235,8 @@
             this.Controls.Add(this.dgvAportaciones);
             this.Name = "frmExportarTributosDescuentosTrabajador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmExportarTributosDescuentosTrabajador";
+            this.Text = "Generar archivos de importación de tributos y descuentos del trabajador(PDT-PLAME" +
+    ")";
             this.Load += new System.EventHandler(this.frmExportarTributosDescuentosTrabajador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).EndInit();

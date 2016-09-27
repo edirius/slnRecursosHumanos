@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbAños = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExportar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cbMes = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkSeleccionar = new System.Windows.Forms.CheckBox();
             this.bntListarTodo = new System.Windows.Forms.Button();
             this.dgvListarPlanillas = new System.Windows.Forms.DataGridView();
             this.dgv1 = new System.Windows.Forms.DataGridView();
             this.dgv2 = new System.Windows.Forms.DataGridView();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.checkSeleccionar = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarPlanillas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
@@ -128,6 +128,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // checkSeleccionar
+            // 
+            this.checkSeleccionar.AutoSize = true;
+            this.checkSeleccionar.Location = new System.Drawing.Point(6, 65);
+            this.checkSeleccionar.Name = "checkSeleccionar";
+            this.checkSeleccionar.Size = new System.Drawing.Size(167, 17);
+            this.checkSeleccionar.TabIndex = 46;
+            this.checkSeleccionar.Text = "Seleccionar todas las planillas";
+            this.checkSeleccionar.UseVisualStyleBackColor = true;
+            this.checkSeleccionar.CheckedChanged += new System.EventHandler(this.checkSeleccionar_CheckedChanged);
+            // 
             // bntListarTodo
             // 
             this.bntListarTodo.Location = new System.Drawing.Point(667, 24);
@@ -143,8 +154,8 @@
             this.dgvListarPlanillas.AllowUserToAddRows = false;
             this.dgvListarPlanillas.AllowUserToResizeColumns = false;
             this.dgvListarPlanillas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListarPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListarPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListarPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListarPlanillas.Location = new System.Drawing.Point(12, 93);
             this.dgvListarPlanillas.Name = "dgvListarPlanillas";
@@ -160,8 +171,8 @@
             this.dgv1.AllowUserToDeleteRows = false;
             this.dgv1.AllowUserToResizeColumns = false;
             this.dgv1.AllowUserToResizeRows = false;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv1.Location = new System.Drawing.Point(12, 230);
             this.dgv1.Name = "dgv1";
@@ -177,8 +188,8 @@
             this.dgv2.AllowUserToDeleteRows = false;
             this.dgv2.AllowUserToResizeColumns = false;
             this.dgv2.AllowUserToResizeRows = false;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgv2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgv2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Numero,
@@ -203,17 +214,6 @@
             this.txt1.Name = "txt1";
             this.txt1.ReadOnly = true;
             // 
-            // checkSeleccionar
-            // 
-            this.checkSeleccionar.AutoSize = true;
-            this.checkSeleccionar.Location = new System.Drawing.Point(6, 65);
-            this.checkSeleccionar.Name = "checkSeleccionar";
-            this.checkSeleccionar.Size = new System.Drawing.Size(167, 17);
-            this.checkSeleccionar.TabIndex = 46;
-            this.checkSeleccionar.Text = "Seleccionar todas las planillas";
-            this.checkSeleccionar.UseVisualStyleBackColor = true;
-            this.checkSeleccionar.CheckedChanged += new System.EventHandler(this.checkSeleccionar_CheckedChanged);
-            // 
             // frmConsultaMasivaSunat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,7 +225,7 @@
             this.Controls.Add(this.dgv1);
             this.Name = "frmConsultaMasivaSunat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmConsultaMasivaSunat";
+            this.Text = "Generar archivo excel para la consulta masiva de AFP";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarPlanillas)).EndInit();
