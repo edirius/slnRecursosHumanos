@@ -52,6 +52,7 @@
             this.dtpMesComision = new System.Windows.Forms.DateTimePicker();
             this.lblAFP = new System.Windows.Forms.Label();
             this.webSBS = new System.Windows.Forms.WebBrowser();
+            this.btnIngresarDatosMesAnterior = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -72,6 +73,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnIngresarDatosMesAnterior);
             this.splitContainer1.Panel1.Controls.Add(this.btnNavegador);
             this.splitContainer1.Panel1.Controls.Add(this.label11);
             this.splitContainer1.Panel1.Controls.Add(this.label10);
@@ -159,22 +161,28 @@
             // 
             // btnSalir
             // 
+            this.btnSalir.BackColor = System.Drawing.Color.MintCream;
+            this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.Location = new System.Drawing.Point(168, 345);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(93, 30);
+            this.btnSalir.Size = new System.Drawing.Size(93, 53);
             this.btnSalir.TabIndex = 38;
             this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
             // btnGuardar
             // 
+            this.btnGuardar.BackColor = System.Drawing.Color.MintCream;
+            this.btnGuardar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnGuardar.Location = new System.Drawing.Point(25, 345);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(93, 30);
+            this.btnGuardar.Size = new System.Drawing.Size(93, 53);
             this.btnGuardar.TabIndex = 37;
             this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click_1);
             // 
             // numRemuneracion
@@ -337,6 +345,19 @@
             this.webSBS.Size = new System.Drawing.Size(1023, 415);
             this.webSBS.TabIndex = 46;
             // 
+            // btnIngresarDatosMesAnterior
+            // 
+            this.btnIngresarDatosMesAnterior.BackColor = System.Drawing.Color.MintCream;
+            this.btnIngresarDatosMesAnterior.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresarDatosMesAnterior.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnIngresarDatosMesAnterior.Location = new System.Drawing.Point(25, 283);
+            this.btnIngresarDatosMesAnterior.Name = "btnIngresarDatosMesAnterior";
+            this.btnIngresarDatosMesAnterior.Size = new System.Drawing.Size(236, 48);
+            this.btnIngresarDatosMesAnterior.TabIndex = 1;
+            this.btnIngresarDatosMesAnterior.Text = "Ingresar los datos del ultimo mes:";
+            this.btnIngresarDatosMesAnterior.UseVisualStyleBackColor = false;
+            this.btnIngresarDatosMesAnterior.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmComisiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,5 +409,6 @@
         private System.Windows.Forms.DateTimePicker dtpMesComision;
         private System.Windows.Forms.Label lblAFP;
         private System.Windows.Forms.WebBrowser webSBS;
+        private System.Windows.Forms.Button btnIngresarDatosMesAnterior;
     }
 }

@@ -382,5 +382,10 @@ namespace CapaUsuario
             frmMASIVA.MdiParent = this;
             frmMASIVA.Show();
         }
+
+        private void toolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

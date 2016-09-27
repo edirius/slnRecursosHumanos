@@ -13,6 +13,7 @@ namespace CapaUsuario.AFP
     public partial class frmComisiones : Form
     {
         public cComisionesAFP miComisionAFP;
+        public cComisionesAFP cComisioneMesAnterior;
 
         public frmComisiones()
         {
@@ -67,6 +68,22 @@ namespace CapaUsuario.AFP
         private void lblAFP_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (cComisioneMesAnterior != null)
+            {
+                numAporteO.Value = cComisioneMesAnterior.AporteObligatorio;
+                numComisionF.Value = cComisioneMesAnterior.ComisionFlujo;
+                numComisionM.Value = cComisioneMesAnterior.ComisionMixta;
+                numComisionP.Value = cComisioneMesAnterior.PrimaSeguros;
+                numRemuneracion.Value = cComisioneMesAnterior.RemuneracionAsegurable;
+            }
+            else
+            {
+                MessageBox.Show("No existe datos del ultimo mes.");
+            }
         }
     }
 }

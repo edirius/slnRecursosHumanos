@@ -43,32 +43,41 @@
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(19, 220);
+            this.btnNuevo.BackColor = System.Drawing.Color.MintCream;
+            this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnNuevo.Location = new System.Drawing.Point(19, 211);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(80, 29);
+            this.btnNuevo.Size = new System.Drawing.Size(80, 53);
             this.btnNuevo.TabIndex = 1;
             this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(373, 220);
+            this.btnEliminar.BackColor = System.Drawing.Color.MintCream;
+            this.btnEliminar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnEliminar.Location = new System.Drawing.Point(265, 211);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(86, 29);
+            this.btnEliminar.Size = new System.Drawing.Size(86, 53);
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(180, 220);
+            this.btnModificar.BackColor = System.Drawing.Color.MintCream;
+            this.btnModificar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnModificar.Location = new System.Drawing.Point(139, 211);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(86, 29);
+            this.btnModificar.Size = new System.Drawing.Size(86, 53);
             this.btnModificar.TabIndex = 3;
             this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // dtgListaAFPs
@@ -88,16 +97,16 @@
             this.dtgListaAFPs.Name = "dtgListaAFPs";
             this.dtgListaAFPs.ReadOnly = true;
             this.dtgListaAFPs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaAFPs.Size = new System.Drawing.Size(440, 186);
+            this.dtgListaAFPs.Size = new System.Drawing.Size(333, 186);
             this.dtgListaAFPs.TabIndex = 4;
             // 
             // codigoAfp
             // 
             this.codigoAfp.DataPropertyName = "idtAFP";
-            this.codigoAfp.HeaderText = "codigo";
+            this.codigoAfp.HeaderText = "Codigo";
             this.codigoAfp.Name = "codigoAfp";
             this.codigoAfp.ReadOnly = true;
-            this.codigoAfp.Width = 70;
+            this.codigoAfp.Width = 50;
             // 
             // NombreAfp
             // 
@@ -105,7 +114,7 @@
             this.NombreAfp.HeaderText = "AFP";
             this.NombreAfp.Name = "NombreAfp";
             this.NombreAfp.ReadOnly = true;
-            this.NombreAfp.Width = 300;
+            this.NombreAfp.Width = 200;
             // 
             // codigosunat
             // 
@@ -127,7 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 261);
+            this.ClientSize = new System.Drawing.Size(373, 282);
             this.Controls.Add(this.dtgListaAFPs);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnEliminar);

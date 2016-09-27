@@ -72,8 +72,29 @@ namespace CapaUsuario.AFP
             {
                 frmComisiones fComisiones = new frmComisiones();
                 fComisiones.miComisionAFP = new cComisionesAFP();
+                fComisiones.cComisioneMesAnterior = new cComisionesAFP();
+                fComisiones.cComisioneMesAnterior.Afp = miAFPSeleccionada;
                 fComisiones.miComisionAFP.Afp = miAFPSeleccionada;
                 fComisiones.miComisionAFP.Mes = DateTime.Now;
+
+                //Codigo para llenar la Comision del ultimo mes.
+                if (dtgComisiones.Rows.Count > 0)
+                {
+                    fComisiones.cComisioneMesAnterior.CodigoComision = Convert.ToInt16(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[0].Value.ToString());
+                    fComisiones.cComisioneMesAnterior.Afp.CodigoAFP = Convert.ToInt16(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[1].Value.ToString());
+                    fComisiones.cComisioneMesAnterior.Mes = Convert.ToDateTime(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[2].Value.ToString());
+                    fComisiones.cComisioneMesAnterior.PrimaSeguros = Convert.ToDecimal(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[3].Value.ToString());
+                    fComisiones.cComisioneMesAnterior.AporteObligatorio = Convert.ToDecimal(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[4].Value.ToString());
+                    fComisiones.cComisioneMesAnterior.RemuneracionAsegurable = Convert.ToDecimal(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[5].Value.ToString());
+                    fComisiones.cComisioneMesAnterior.ComisionFlujo = Convert.ToDecimal(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[6].Value.ToString());
+                    fComisiones.cComisioneMesAnterior.ComisionMixta = Convert.ToDecimal(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[7].Value.ToString());
+                }
+
+                else
+                {
+                    fComisiones.cComisioneMesAnterior = null;
+                }
+
                 if (fComisiones.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
 
@@ -102,6 +123,26 @@ namespace CapaUsuario.AFP
                 fComisionesAModificar.miComisionAFP.Afp = new cAFP();
                 fComisionesAModificar.miComisionAFP.Afp = miAFPSeleccionada;
 
+                fComisionesAModificar.cComisioneMesAnterior = new cComisionesAFP();
+                fComisionesAModificar.cComisioneMesAnterior.Afp = miAFPSeleccionada;
+
+                //Codigo para llenar la Comision del ultimo mes.
+                if (dtgComisiones.Rows.Count > 0)
+                {
+                    fComisionesAModificar.cComisioneMesAnterior.CodigoComision = Convert.ToInt16(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[0].Value.ToString());
+                    fComisionesAModificar.cComisioneMesAnterior.Afp.CodigoAFP = Convert.ToInt16(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[1].Value.ToString());
+                    fComisionesAModificar.cComisioneMesAnterior.Mes = Convert.ToDateTime(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[2].Value.ToString());
+                    fComisionesAModificar.cComisioneMesAnterior.PrimaSeguros = Convert.ToDecimal(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[3].Value.ToString());
+                    fComisionesAModificar.cComisioneMesAnterior.AporteObligatorio = Convert.ToDecimal(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[4].Value.ToString());
+                    fComisionesAModificar.cComisioneMesAnterior.RemuneracionAsegurable = Convert.ToDecimal(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[5].Value.ToString());
+                    fComisionesAModificar.cComisioneMesAnterior.ComisionFlujo = Convert.ToDecimal(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[6].Value.ToString());
+                    fComisionesAModificar.cComisioneMesAnterior.ComisionMixta = Convert.ToDecimal(dtgComisiones.Rows[dtgComisiones.Rows.Count - 1].Cells[7].Value.ToString());
+                }
+
+                else
+                {
+                    fComisionesAModificar.cComisioneMesAnterior = null;
+                }
                 if (dtgComisiones.SelectedRows.Count > 0)
                 {
                     fComisionesAModificar.miComisionAFP.CodigoComision = Convert.ToInt16(dtgComisiones.SelectedRows[0].Cells[0].Value.ToString());

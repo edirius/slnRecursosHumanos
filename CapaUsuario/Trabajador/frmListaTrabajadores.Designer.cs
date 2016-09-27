@@ -85,7 +85,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtDNI = new System.Windows.Forms.TextBox();
             this.dtgListaTrabajadores = new System.Windows.Forms.DataGridView();
-            this.idTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_trabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,12 +93,19 @@
             this.sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.suspensionrenta4ta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechafin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuAuxiliar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuCopiarDNI = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCopiarNombreCompleto = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCopiarNombre = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCopiarPaterno = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuApellidoMaterno = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaTrabajadores)).BeginInit();
+            this.menuAuxiliar.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -459,7 +466,7 @@
             this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgListaTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaTrabajadores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idTrabajador,
+            this.id_trabajador,
             this.dni,
             this.nombres,
             this.apellidoPaterno,
@@ -467,6 +474,7 @@
             this.sexo,
             this.suspensionrenta4ta,
             this.fechafin});
+            this.dtgListaTrabajadores.ContextMenuStrip = this.menuAuxiliar;
             this.dtgListaTrabajadores.Location = new System.Drawing.Point(15, 212);
             this.dtgListaTrabajadores.MultiSelect = false;
             this.dtgListaTrabajadores.Name = "dtgListaTrabajadores";
@@ -477,13 +485,13 @@
             this.dtgListaTrabajadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellClick);
             this.dtgListaTrabajadores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellContentClick);
             // 
-            // idTrabajador
+            // id_trabajador
             // 
-            this.idTrabajador.DataPropertyName = "id_trabajador";
-            this.idTrabajador.HeaderText = "Codigo";
-            this.idTrabajador.Name = "idTrabajador";
-            this.idTrabajador.ReadOnly = true;
-            this.idTrabajador.Width = 50;
+            this.id_trabajador.DataPropertyName = "id_trabajador";
+            this.id_trabajador.HeaderText = "Codigo";
+            this.id_trabajador.Name = "id_trabajador";
+            this.id_trabajador.ReadOnly = true;
+            this.id_trabajador.Width = 50;
             // 
             // dni
             // 
@@ -541,6 +549,52 @@
             this.fechafin.ReadOnly = true;
             this.fechafin.Visible = false;
             // 
+            // menuAuxiliar
+            // 
+            this.menuAuxiliar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuCopiarDNI,
+            this.menuCopiarNombreCompleto,
+            this.menuCopiarNombre,
+            this.menuCopiarPaterno,
+            this.menuApellidoMaterno});
+            this.menuAuxiliar.Name = "menuAuxiliar";
+            this.menuAuxiliar.Size = new System.Drawing.Size(213, 136);
+            // 
+            // menuCopiarDNI
+            // 
+            this.menuCopiarDNI.Name = "menuCopiarDNI";
+            this.menuCopiarDNI.Size = new System.Drawing.Size(212, 22);
+            this.menuCopiarDNI.Text = "CopiarDNI";
+            this.menuCopiarDNI.Click += new System.EventHandler(this.menuCopiarDNI_Click);
+            // 
+            // menuCopiarNombreCompleto
+            // 
+            this.menuCopiarNombreCompleto.Name = "menuCopiarNombreCompleto";
+            this.menuCopiarNombreCompleto.Size = new System.Drawing.Size(212, 22);
+            this.menuCopiarNombreCompleto.Text = "Copiar Nombre Completo";
+            this.menuCopiarNombreCompleto.Click += new System.EventHandler(this.menuCopiarNombreCompleto_Click);
+            // 
+            // menuCopiarNombre
+            // 
+            this.menuCopiarNombre.Name = "menuCopiarNombre";
+            this.menuCopiarNombre.Size = new System.Drawing.Size(212, 22);
+            this.menuCopiarNombre.Text = "Copiar Nombre";
+            this.menuCopiarNombre.Click += new System.EventHandler(this.menuCopiarNombre_Click);
+            // 
+            // menuCopiarPaterno
+            // 
+            this.menuCopiarPaterno.Name = "menuCopiarPaterno";
+            this.menuCopiarPaterno.Size = new System.Drawing.Size(212, 22);
+            this.menuCopiarPaterno.Text = "Copiar Apellido Paterno";
+            this.menuCopiarPaterno.Click += new System.EventHandler(this.menuCopiarPaterno_Click);
+            // 
+            // menuApellidoMaterno
+            // 
+            this.menuApellidoMaterno.Name = "menuApellidoMaterno";
+            this.menuApellidoMaterno.Size = new System.Drawing.Size(212, 22);
+            this.menuApellidoMaterno.Text = "Copiar Apellido Materno";
+            this.menuApellidoMaterno.Click += new System.EventHandler(this.menuApellidoMaterno_Click);
+            // 
             // frmListaTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -562,6 +616,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaTrabajadores)).EndInit();
+            this.menuAuxiliar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -603,7 +658,7 @@
         private System.Windows.Forms.ComboBox cboMeta;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnBuscarXMeta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idTrabajador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_trabajador;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombres;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPaterno;
@@ -611,5 +666,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sexo;
         private System.Windows.Forms.DataGridViewTextBoxColumn suspensionrenta4ta;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechafin;
+        private System.Windows.Forms.ContextMenuStrip menuAuxiliar;
+        private System.Windows.Forms.ToolStripMenuItem menuCopiarDNI;
+        private System.Windows.Forms.ToolStripMenuItem menuCopiarNombreCompleto;
+        private System.Windows.Forms.ToolStripMenuItem menuCopiarNombre;
+        private System.Windows.Forms.ToolStripMenuItem menuCopiarPaterno;
+        private System.Windows.Forms.ToolStripMenuItem menuApellidoMaterno;
     }
 }
