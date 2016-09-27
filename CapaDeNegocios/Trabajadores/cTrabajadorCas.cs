@@ -45,7 +45,7 @@ namespace CapaDeNegocios.Trabajadores
 
         public DataTable ListarDeclaracionJNC(int id_trabajador, int paño, string pcodigo)
         {
-            return Conexion.GDatos.TraerDataTable("spListarDeclaracionJNC2039", id_trabajador, paño, pcodigo);
+            return Conexion.GDatos.TraerDataTable("spListarDeclaracionJNC", id_trabajador, paño, pcodigo);
         }
          
     }
