@@ -83,9 +83,18 @@ namespace CapaUsuario.Reportes
         {
             CapaDeNegocios.Trabajadores.cTrabajadorCas oTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorCas();
             paño = cboAño.GetItemText(this.cboAño.SelectedItem);
-            dgvDeclaracionJurada.DataSource = oTrabajador.ListarTrabajadoresParaDeclaracionJurada(paño);
+            DataTable odtTrabajadoresDeclaracionJurada = new DataTable();
+
+            odtTrabajadoresDeclaracionJurada = oTrabajador.ListarTrabajadoresParaDeclaracionJurada(paño);
+
+            for (int i = 0; i < odtTrabajadoresDeclaracionJurada.Rows.Count ; i++) {
+                odtTrabajadoresDeclaracionJurada.Rows[i][0] = i + 1;
+            }
+
+            dgvDeclaracionJurada.DataSource = odtTrabajadoresDeclaracionJurada;
             dgvDeclaracionJurada.Columns[1].Visible = false;
             dgvDeclaracionJurada.Columns[7].Visible = false;
+
 
 
         }
@@ -164,6 +173,8 @@ namespace CapaUsuario.Reportes
             odtAlcalde = oTrabajador.ListarAlcalde();
 
             odtCabeza.Columns.Clear();
+            odtCabeza.Rows.Clear();
+
             odtCabeza.Columns.Add("DATOS GENERAL DE LA ENTIDAD", typeof(string));
             odtCabeza.Columns.Add(" ", typeof(string));
 
