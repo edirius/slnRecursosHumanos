@@ -140,6 +140,7 @@ namespace CapaUsuario.ExportarSunat
         private void Buscar()
         {
             dgvListaPlanillas.DataSource = oexp.BuscarPlanillas(cbMes.Text, cbAños.Text);
+            checkSeleccionar.Checked = false;
             
         }
 
@@ -241,6 +242,7 @@ namespace CapaUsuario.ExportarSunat
         {
             dgvListaPlanillas.DataSource = oexp.ListarPlanillas(cbAños.Text);
             dgvListaPlanillas.Columns["Nro"].Width = 50;
+            checkSeleccionar.Checked = false;
 
         }
         private void ListarTrabajadores()
@@ -298,6 +300,22 @@ namespace CapaUsuario.ExportarSunat
             }
         }
         int cont = 1;
+
+        private void checkSeleccionar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkSeleccionar.Checked == true)
+            {
+                for (int i = 0; i < dgvListaPlanillas.Rows.Count; i++)
+                {
+                    dgvListaPlanillas[0, i].Value = true;
+                }
+            }
+            else
+                for (int i = 0; i < dgvListaPlanillas.Rows.Count; i++)
+                {
+                    dgvListaPlanillas[0, i].Value = false;
+                }
+        }
     }
 }
 //

@@ -57,6 +57,7 @@
             this.txt13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkSeleccionar = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
@@ -82,9 +83,9 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(786, 17);
+            this.btnExport.Location = new System.Drawing.Point(886, 20);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(138, 40);
+            this.btnExport.Size = new System.Drawing.Size(138, 39);
             this.btnExport.TabIndex = 4;
             this.btnExport.Text = "&Exportar AFP a Excel";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -92,24 +93,25 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.checkSeleccionar);
             this.groupBox2.Controls.Add(this.bntListarTodo);
             this.groupBox2.Controls.Add(this.btnExport);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.cbMes);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cbAños);
-            this.groupBox2.Location = new System.Drawing.Point(12, 9);
+            this.groupBox2.Location = new System.Drawing.Point(8, 1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1292, 71);
+            this.groupBox2.Size = new System.Drawing.Size(1292, 81);
             this.groupBox2.TabIndex = 41;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Buscar trabajadores por mes:";
             // 
             // bntListarTodo
             // 
-            this.bntListarTodo.Location = new System.Drawing.Point(589, 17);
+            this.bntListarTodo.Location = new System.Drawing.Point(659, 20);
             this.bntListarTodo.Name = "bntListarTodo";
-            this.bntListarTodo.Size = new System.Drawing.Size(179, 40);
+            this.bntListarTodo.Size = new System.Drawing.Size(179, 39);
             this.bntListarTodo.TabIndex = 33;
             this.bntListarTodo.Text = "&Listar todas las planillas\r\n por año";
             this.bntListarTodo.UseVisualStyleBackColor = true;
@@ -118,7 +120,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(461, 31);
+            this.label3.Location = new System.Drawing.Point(489, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 32;
@@ -141,7 +143,7 @@
             "OCTUBRE",
             "NOVIEMBRE",
             "DICIEMBRE"});
-            this.cbMes.Location = new System.Drawing.Point(324, 28);
+            this.cbMes.Location = new System.Drawing.Point(352, 34);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(121, 21);
             this.cbMes.TabIndex = 29;
@@ -150,7 +152,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(288, 33);
+            this.label1.Location = new System.Drawing.Point(316, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 31;
@@ -160,7 +162,7 @@
             // 
             this.cbAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAños.FormattingEnabled = true;
-            this.cbAños.Location = new System.Drawing.Point(496, 28);
+            this.cbAños.Location = new System.Drawing.Point(524, 34);
             this.cbAños.Name = "cbAños";
             this.cbAños.Size = new System.Drawing.Size(74, 21);
             this.cbAños.TabIndex = 30;
@@ -174,11 +176,11 @@
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaPlanillas.Location = new System.Drawing.Point(12, 86);
+            this.dgvListaPlanillas.Location = new System.Drawing.Point(9, 88);
             this.dgvListaPlanillas.Name = "dgvListaPlanillas";
             this.dgvListaPlanillas.RowHeadersVisible = false;
             this.dgvListaPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaPlanillas.Size = new System.Drawing.Size(1292, 418);
+            this.dgvListaPlanillas.Size = new System.Drawing.Size(1292, 434);
             this.dgvListaPlanillas.TabIndex = 42;
             this.dgvListaPlanillas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaPlanillas_CellClick);
             this.dgvListaPlanillas.SelectionChanged += new System.EventHandler(this.dgvListaPlanillas_SelectionChanged);
@@ -313,11 +315,22 @@
             this.txt15.Name = "txt15";
             this.txt15.ReadOnly = true;
             // 
+            // checkSeleccionar
+            // 
+            this.checkSeleccionar.AutoSize = true;
+            this.checkSeleccionar.Location = new System.Drawing.Point(6, 62);
+            this.checkSeleccionar.Name = "checkSeleccionar";
+            this.checkSeleccionar.Size = new System.Drawing.Size(167, 17);
+            this.checkSeleccionar.TabIndex = 47;
+            this.checkSeleccionar.Text = "Seleccionar todas las planillas";
+            this.checkSeleccionar.UseVisualStyleBackColor = true;
+            this.checkSeleccionar.CheckedChanged += new System.EventHandler(this.checkSeleccionar_CheckedChanged);
+            // 
             // frmExportarExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1308, 506);
+            this.ClientSize = new System.Drawing.Size(1310, 532);
             this.Controls.Add(this.dgvListaPlanillas);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView);
@@ -362,5 +375,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txt13;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt14;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt15;
+        private System.Windows.Forms.CheckBox checkSeleccionar;
     }
 }

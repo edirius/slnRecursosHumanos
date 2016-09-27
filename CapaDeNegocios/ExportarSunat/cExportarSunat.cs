@@ -117,9 +117,9 @@ namespace CapaDeNegocios.ExportarSunat
         {
             return Conexion.GDatos.TraerDataTable("spExportarTodo", aMes, aAño);
         }
-        public DataTable ConsultaMasivaAFP(string aMes, string aAño)
+        public DataTable ConsultaMasivaAFP(string idPlanilla)
         {
-            return Conexion.GDatos.TraerDataTable("spCargaMasivaAFP", aMes, aAño);
+            return Conexion.GDatos.TraerDataTable("spCargaMasivaAFP", idPlanilla);
         }
     }
 }

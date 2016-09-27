@@ -24,13 +24,28 @@ namespace CapaUsuario.ExportarSunat
             CargarMes(Ahora);
             cbMes.Text = FechaTexto;
             CargarAños();
-            
+            DataGridViewCheckBoxColumn Check = new DataGridViewCheckBoxColumn();//creamos un objeto check
+            {
+                Check.Name = "☑";//le damos un nombre de cabecera
+                dgvListarPlanillas.Columns.Add(Check);//agregamos los check a cada items
+
+            }
+            dgvListarPlanillas.Columns["☑"].DisplayIndex = 0;
+            dgvListarPlanillas.Columns["☑"].ReadOnly = false;
+            dgvListarPlanillas.Columns["☑"].Width = 30;
+
         }
 
         private void CargarGrid()
         {
-            dgvConsultaMasivaAFP.DataSource = oEXP.ConsultaMasivaAFP(cbMes.Text, cbAños.Text);
-            dgvListarTrabajadores.DataSource = oEXP.ListarTrabajadoresporFechaInicio(cbMes.Text, cbAños.Text);
+            dgvListarPlanillas.DataSource = oEXP.BuscarPlanillas(cbMes.Text, cbAños.Text);
+            dgvListarPlanillas.Columns[0].Visible = false;
+            dgvListarPlanillas.Columns[1].Width = 50;
+            dgvListarPlanillas.Columns[2].Width = 75;
+            dgvListarPlanillas.Columns[3].Width = 50;
+            dgvListarPlanillas.Columns[4].Width = 130;
+            dgvListarPlanillas.Columns[5].Width = 637;
+            dgvListarPlanillas.Columns[6].Width = 300;
         }
         private void CargarAños()
         {
@@ -89,7 +104,7 @@ namespace CapaUsuario.ExportarSunat
                     }
                 case "9":
                     {
-                        FechaTexto = "SEPTIEMBRE";
+                        FechaTexto = "SETIEMBRE";
                         break;
                     }
                 case "10":
@@ -117,7 +132,7 @@ namespace CapaUsuario.ExportarSunat
 
             SaveFileDialog fichero = new SaveFileDialog();
             fichero.Filter = "Excel (*.xls)|*.xls";
-            fichero.FileName = "AFP.xls";
+            fichero.FileName = "AFPCargaMasiva.xls";
             if (fichero.ShowDialog() == DialogResult.OK)
             {
                 Microsoft.Office.Interop.Excel.Application aplicacion;
@@ -153,23 +168,100 @@ namespace CapaUsuario.ExportarSunat
         }
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            if (dgvConsultaMasivaAFP.Rows.Count != 0)
+            ListarTrabajadores();
+            try
             {
-                ExportarDataGridViewExcel(dgvConsultaMasivaAFP);
-            }
-            else MessageBox.Show("No se encontraron datos para la exportacion");
-        }
+                if (dgv2.Rows.Count != 0)
+                {
+                    ExportarDataGridViewExcel(dgv2);
+                }
+                else
+                    MessageBox.Show("No se encontraron datos para la exportación.");
 
+            }
+            catch
+            {
+                MessageBox.Show("Cierre antes el otro archivo Excel.");
+            }
+        }
+        private void Buscar()
+        {
+            dgvListarPlanillas.DataSource = oEXP.BuscarPlanillas(cbMes.Text, cbAños.Text);
+            checkSeleccionar.Checked = false;
+
+        }
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dgvConsultaMasivaAFP.DataSource = oEXP.ConsultaMasivaAFP(cbMes.Text, cbAños.Text);
-            dgvListarTrabajadores.DataSource = oEXP.ListarTrabajadoresporFechaInicio(cbMes.Text, cbAños.Text);
+            Buscar();
+            dgvListarPlanillas.Columns["Nro"].Width = 50;
         }
 
         private void cbAños_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dgvConsultaMasivaAFP.DataSource = oEXP.ConsultaMasivaAFP(cbMes.Text, cbAños.Text);
-            dgvListarTrabajadores.DataSource = oEXP.ListarTrabajadoresporFechaInicio(cbMes.Text, cbAños.Text);
+            Buscar();
+            dgvListarPlanillas.Columns["Nro"].Width = 50;
+        }
+
+        private void bntListarTodo_Click(object sender, EventArgs e)
+        {
+            dgvListarPlanillas.DataSource = oEXP.ListarPlanillas(cbAños.Text);
+            dgvListarPlanillas.Columns["Nro"].Width = 50;
+            checkSeleccionar.Checked = false;
+        }
+        private void ListarTrabajadores()
+        {
+            LimpiarGrid();
+            foreach (DataGridViewRow fila in dgvListarPlanillas.Rows)
+            {
+                if (Convert.ToBoolean(fila.Cells["☑"].Value) == true)
+                {
+                    string Valor = fila.Cells["idtplanilla"].Value.ToString();
+                    dgv1.DataSource = oEXP.ConsultaMasivaAFP(Valor);
+                    AgregarTrabajadores();
+
+                }
+
+            }
+        }
+        private void AgregarTrabajadores()
+        {
+
+            for (int i = 0; i < dgv1.Rows.Count; i++)
+            {
+                dgv2.Rows.Add(new string[]
+                {  Convert.ToString(dgv1[0, i].Value),
+                   Convert.ToString(dgv1[1, i].Value)
+                });
+            }
+            
+        }
+        private void LimpiarGrid()
+        {
+            dgv2.Rows.Clear();
+        }
+
+        private void dgvListarPlanillas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int Valor = dgvListarPlanillas.CurrentCell.RowIndex;
+            string numero = "";
+            numero = dgvListarPlanillas[1, Valor].Value.ToString();
+            dgv1.DataSource = oEXP.ConsultaMasivaAFP(numero.ToString());
+        }
+
+        private void checkSeleccionar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkSeleccionar.Checked == true)
+            {
+                for (int i = 0; i < dgvListarPlanillas.Rows.Count; i++)
+                {
+                    dgvListarPlanillas[0, i].Value = true;
+                }
+            }
+            else
+                for (int i = 0; i < dgvListarPlanillas.Rows.Count; i++)
+                {
+                    dgvListarPlanillas[0, i].Value = false;
+                }
         }
     }
 }

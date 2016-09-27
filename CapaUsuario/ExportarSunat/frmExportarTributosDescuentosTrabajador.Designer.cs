@@ -118,7 +118,7 @@
             this.dgvListaPlanillas.ReadOnly = true;
             this.dgvListaPlanillas.RowHeadersVisible = false;
             this.dgvListaPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaPlanillas.Size = new System.Drawing.Size(1226, 376);
+            this.dgvListaPlanillas.Size = new System.Drawing.Size(1292, 376);
             this.dgvListaPlanillas.TabIndex = 28;
             this.dgvListaPlanillas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaPlanillas_CellClick);
             this.dgvListaPlanillas.SelectionChanged += new System.EventHandler(this.dgvListaPlanillas_SelectionChanged);
@@ -194,7 +194,7 @@
             this.groupBox1.Controls.Add(this.cbAños);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1225, 75);
+            this.groupBox1.Size = new System.Drawing.Size(1291, 75);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar trabajadores por fecha:";
@@ -223,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1249, 489);
+            this.ClientSize = new System.Drawing.Size(1315, 489);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvListaPlanillas);
             this.Controls.Add(this.label5);

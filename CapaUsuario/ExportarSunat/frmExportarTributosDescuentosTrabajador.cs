@@ -41,7 +41,7 @@ namespace CapaUsuario.ExportarSunat
             dgvListaPlanillas.Columns[3].Width = 50;
             dgvListaPlanillas.Columns[4].Width = 130;
             dgvListaPlanillas.Columns[5].Width = 637;
-            dgvListaPlanillas.Columns[6].Width = 280;
+            dgvListaPlanillas.Columns[6].Width = 330;
         }
         private void ConvertirMes(string MES)
         {
