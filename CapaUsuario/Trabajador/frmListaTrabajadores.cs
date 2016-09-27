@@ -88,7 +88,7 @@ namespace CapaUsuario.Trabajador
             {
                 Trabajador.frmNuevoTrabajador fModificarTrabajador = new frmNuevoTrabajador();
                 fModificarTrabajador.miTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorServidorPersonal();
-                fModificarTrabajador.miTrabajador = fModificarTrabajador.miTrabajador.traerTrabajador(Convert.ToInt16(dtgListaTrabajadores.SelectedRows[0].Cells[0].Value.ToString()));
+                fModificarTrabajador.miTrabajador = fModificarTrabajador.miTrabajador.traerTrabajador(Convert.ToInt16(dtgListaTrabajadores.SelectedRows[0].Cells["id_trabajador"].Value.ToString()));
 
                 if (fModificarTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -112,7 +112,7 @@ namespace CapaUsuario.Trabajador
                 if (MessageBox.Show("Eliminar", "¿Desea eliminar al trabajador?", MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     cTrabajador miTrabajador = new cTrabajador();
-                    miTrabajador.IdTrabajador = Convert.ToInt16(dtgListaTrabajadores.SelectedRows[0].Cells[0].Value.ToString());
+                    miTrabajador.IdTrabajador = Convert.ToInt16(dtgListaTrabajadores.SelectedRows[0].Cells["id_trabajador"].Value.ToString());
                     miListaTrabajadores.EliminarTrabajador(miTrabajador);
                     dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
                 }
@@ -242,6 +242,46 @@ namespace CapaUsuario.Trabajador
                 dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, cboMeta.SelectedValue.ToString() );
             }
             
+        }
+
+        private void menuCopiarDNI_Click(object sender, EventArgs e)
+        {
+            if (dtgListaTrabajadores.SelectedRows.Count> 0 )
+            {
+                Clipboard.SetDataObject(dtgListaTrabajadores.SelectedRows[0].Cells["dni"].Value.ToString() );
+            }
+        }
+
+        private void menuCopiarNombreCompleto_Click(object sender, EventArgs e)
+        {
+            if (dtgListaTrabajadores.SelectedRows.Count > 0)
+            {
+                Clipboard.SetDataObject(dtgListaTrabajadores.SelectedRows[0].Cells["nombres"].Value.ToString() + ' ' + dtgListaTrabajadores.SelectedRows[0].Cells["apellidoPaterno"].Value.ToString() + ' ' + dtgListaTrabajadores.SelectedRows[0].Cells["apellidoMaterno"].Value.ToString());
+            }
+        }
+
+        private void menuCopiarNombre_Click(object sender, EventArgs e)
+        {
+            if (dtgListaTrabajadores.SelectedRows.Count > 0)
+            {
+                Clipboard.SetDataObject(dtgListaTrabajadores.SelectedRows[0].Cells["nombres"].Value.ToString());
+            }
+        }
+
+        private void menuCopiarPaterno_Click(object sender, EventArgs e)
+        {
+            if (dtgListaTrabajadores.SelectedRows.Count > 0)
+            {
+                Clipboard.SetDataObject(dtgListaTrabajadores.SelectedRows[0].Cells["apellidoPaterno"].Value.ToString() );
+            }
+        }
+
+        private void menuApellidoMaterno_Click(object sender, EventArgs e)
+        {
+            if (dtgListaTrabajadores.SelectedRows.Count > 0)
+            {
+                Clipboard.SetDataObject(dtgListaTrabajadores.SelectedRows[0].Cells["apellidoMaterno"].Value.ToString());
+            }
         }
     }
 }

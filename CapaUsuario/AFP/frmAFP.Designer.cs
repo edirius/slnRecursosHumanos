@@ -47,28 +47,35 @@
             // txtNOmbreAFP
             // 
             this.txtNOmbreAFP.Location = new System.Drawing.Point(115, 29);
+            this.txtNOmbreAFP.MaxLength = 45;
             this.txtNOmbreAFP.Name = "txtNOmbreAFP";
             this.txtNOmbreAFP.Size = new System.Drawing.Size(261, 20);
             this.txtNOmbreAFP.TabIndex = 1;
             // 
             // btnGuardar
             // 
+            this.btnGuardar.BackColor = System.Drawing.Color.MintCream;
+            this.btnGuardar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnGuardar.Location = new System.Drawing.Point(31, 80);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(96, 33);
+            this.btnGuardar.Size = new System.Drawing.Size(96, 53);
             this.btnGuardar.TabIndex = 2;
             this.btnGuardar.Text = "Guardar";
-            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.Color.MintCream;
+            this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.Location = new System.Drawing.Point(280, 80);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(96, 33);
+            this.btnCancelar.Size = new System.Drawing.Size(96, 53);
             this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmAFP

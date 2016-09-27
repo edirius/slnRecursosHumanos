@@ -38,11 +38,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComisionesAFP));
             this.dtgComisiones = new System.Windows.Forms.DataGridView();
-            this.cboListaAFP = new System.Windows.Forms.ComboBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.CodigoComision = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AFP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +46,11 @@
             this.ComisionMixta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrimaSeguros = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RemuneracionAsegurable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboListaAFP = new System.Windows.Forms.ComboBox();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgComisiones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,57 +86,6 @@
             this.dtgComisiones.Size = new System.Drawing.Size(466, 191);
             this.dtgComisiones.TabIndex = 0;
             this.dtgComisiones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgComisiones_CellContentClick);
-            // 
-            // cboListaAFP
-            // 
-            this.cboListaAFP.FormattingEnabled = true;
-            this.cboListaAFP.Location = new System.Drawing.Point(119, 40);
-            this.cboListaAFP.Name = "cboListaAFP";
-            this.cboListaAFP.Size = new System.Drawing.Size(237, 21);
-            this.cboListaAFP.TabIndex = 1;
-            this.cboListaAFP.SelectedIndexChanged += new System.EventHandler(this.cboListaAFP_SelectedIndexChanged);
-            this.cboListaAFP.SelectionChangeCommitted += new System.EventHandler(this.cboListaAFP_SelectionChangeCommitted);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(30, 299);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(96, 33);
-            this.btnAgregar.TabIndex = 2;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(215, 298);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(96, 33);
-            this.btnModificar.TabIndex = 3;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(400, 298);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(96, 33);
-            this.btnEliminar.TabIndex = 4;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(26, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(330, 19);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Seleccione la AFP para mostrar sus Comisiones:";
             // 
             // CodigoComision
             // 
@@ -228,6 +177,67 @@
             this.RemuneracionAsegurable.HeaderText = "Remuneracion Asegurable";
             this.RemuneracionAsegurable.Name = "RemuneracionAsegurable";
             this.RemuneracionAsegurable.ReadOnly = true;
+            // 
+            // cboListaAFP
+            // 
+            this.cboListaAFP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboListaAFP.FormattingEnabled = true;
+            this.cboListaAFP.Location = new System.Drawing.Point(119, 40);
+            this.cboListaAFP.Name = "cboListaAFP";
+            this.cboListaAFP.Size = new System.Drawing.Size(237, 21);
+            this.cboListaAFP.TabIndex = 1;
+            this.cboListaAFP.SelectedIndexChanged += new System.EventHandler(this.cboListaAFP_SelectedIndexChanged);
+            this.cboListaAFP.SelectionChangeCommitted += new System.EventHandler(this.cboListaAFP_SelectionChangeCommitted);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackColor = System.Drawing.Color.MintCream;
+            this.btnAgregar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAgregar.Location = new System.Drawing.Point(30, 281);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(96, 48);
+            this.btnAgregar.TabIndex = 2;
+            this.btnAgregar.Text = "&Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.BackColor = System.Drawing.Color.MintCream;
+            this.btnModificar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnModificar.Location = new System.Drawing.Point(215, 280);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(96, 48);
+            this.btnModificar.TabIndex = 3;
+            this.btnModificar.Text = "&Modificar";
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.MintCream;
+            this.btnEliminar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnEliminar.Location = new System.Drawing.Point(400, 280);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(96, 48);
+            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.Text = "&Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Candara", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(26, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(330, 19);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Seleccione la AFP para mostrar sus Comisiones:";
             // 
             // frmComisionesAFP
             // 

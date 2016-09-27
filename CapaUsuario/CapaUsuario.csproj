@@ -1401,6 +1401,13 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\17.ICO" />
+    <None Include="Resources\112.ICO" />
+    <None Include="Resources\WinXPSetV4 Icon 61.ico" />
+    <None Include="Resources\WinXPSetV4 Icon 62.ico" />
+    <None Include="Resources\161.ICO" />
+    <None Include="Resources\98.ICO" />
+    <None Include="Resources\99.ICO" />
     <None Include="Resources\WinXPSetV4 Icon 17.ico" />
     <None Include="Resources\chart.png" />
     <None Include="Resources\delete_page.png" />
