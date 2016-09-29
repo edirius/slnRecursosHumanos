@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.dgvBoletaPago_A = new System.Windows.Forms.DataGridView();
             this.dgvBoletaPago_B = new System.Windows.Forms.DataGridView();
@@ -43,6 +43,9 @@
             this.cboMes = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdbHorizontal = new System.Windows.Forms.RadioButton();
+            this.rdbVertical = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_A)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_C)).BeginInit();
@@ -51,6 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -60,7 +64,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimir.Location = new System.Drawing.Point(12, 488);
+            this.btnImprimir.Location = new System.Drawing.Point(125, 19);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 65);
             this.btnImprimir.TabIndex = 86;
@@ -127,8 +131,8 @@
             // 
             this.dgvBoletaPago.AllowUserToAddRows = false;
             this.dgvBoletaPago.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBoletaPago.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -202,11 +206,46 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mes:";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rdbHorizontal);
+            this.groupBox2.Controls.Add(this.rdbVertical);
+            this.groupBox2.Controls.Add(this.btnImprimir);
+            this.groupBox2.Location = new System.Drawing.Point(12, 467);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(225, 93);
+            this.groupBox2.TabIndex = 101;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Impresion de reporte.";
+            // 
+            // rdbHorizontal
+            // 
+            this.rdbHorizontal.AutoSize = true;
+            this.rdbHorizontal.Location = new System.Drawing.Point(18, 55);
+            this.rdbHorizontal.Name = "rdbHorizontal";
+            this.rdbHorizontal.Size = new System.Drawing.Size(72, 17);
+            this.rdbHorizontal.TabIndex = 93;
+            this.rdbHorizontal.Text = "Horizontal";
+            this.rdbHorizontal.UseVisualStyleBackColor = true;
+            // 
+            // rdbVertical
+            // 
+            this.rdbVertical.AutoSize = true;
+            this.rdbVertical.Checked = true;
+            this.rdbVertical.Location = new System.Drawing.Point(18, 31);
+            this.rdbVertical.Name = "rdbVertical";
+            this.rdbVertical.Size = new System.Drawing.Size(60, 17);
+            this.rdbVertical.TabIndex = 92;
+            this.rdbVertical.TabStop = true;
+            this.rdbVertical.Text = "Vertical";
+            this.rdbVertical.UseVisualStyleBackColor = true;
+            // 
             // frmBoletaPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(752, 565);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvBoletaPago);
             this.Controls.Add(this.dgvBoletaPago_F);
@@ -215,7 +254,6 @@
             this.Controls.Add(this.dgvBoletaPago_C);
             this.Controls.Add(this.dgvBoletaPago_B);
             this.Controls.Add(this.dgvBoletaPago_A);
-            this.Controls.Add(this.btnImprimir);
             this.Name = "frmBoletaPago";
             this.Text = "Boleta de Pago";
             this.Load += new System.EventHandler(this.frmBoletaPago_Load);
@@ -228,6 +266,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -247,5 +287,8 @@
         private System.Windows.Forms.ComboBox cboMes;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rdbHorizontal;
+        private System.Windows.Forms.RadioButton rdbVertical;
     }
 }

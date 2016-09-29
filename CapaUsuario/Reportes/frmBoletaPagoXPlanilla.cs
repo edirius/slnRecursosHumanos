@@ -367,8 +367,8 @@ namespace CapaUsuario.Reportes
             {
                 values[i] = (float)dg.Columns[i].Width;
                 if (i == 4) values[i] = 22;
-                if (i == 0) values[i] = 150;
-                if (i == 5) values[i] = 150;
+                if (i == 0) values[i] = 180;
+                if (i == 5) values[i] = 180;
             }
             return values;
         }
@@ -396,22 +396,36 @@ namespace CapaUsuario.Reportes
             // Add a new page to the pdf file
             //pdfDoc.NewPage();
             Document pdfDoc = new Document(PageSize.A4, 9, 9, 10, 10);
-            pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4);
+
+            if ( rdbVertical.Checked == true )
+                pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4);
+            else
+                pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+
 
             paragraph.Alignment = Element.ALIGN_CENTER;
             paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
             paragraph.Add(" ");
 
+            if (rdbVertical.Checked == true)
+            {
+                paragraph2.Alignment = Element.ALIGN_LEFT;
+                paragraph2.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
+                paragraph2.Add("\n\n             ......................................                              ......................................                                ......................................                              ......................................");
+                paragraph3.Alignment = Element.ALIGN_LEFT;
+                paragraph3.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
+                paragraph3.Add("                  EMPLEADOR                                          TRABAJADOR                                          EMPLEADOR                                          TRABAJADOR");
+            }
+            else {
+                paragraph2.Alignment = Element.ALIGN_LEFT;
+                paragraph2.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
+                paragraph2.Add("\n\n             ......................................                              ......................................                                                                                                                                ......................................                              ......................................");
+                paragraph3.Alignment = Element.ALIGN_LEFT;
+                paragraph3.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
+                paragraph3.Add("                  EMPLEADOR                                          TRABAJADOR                                                                                                                                          EMPLEADOR                                          TRABAJADOR");
+            }
 
-            paragraph2.Alignment = Element.ALIGN_LEFT;
-            paragraph2.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
-            paragraph2.Add("\n\n             ......................................                              ......................................                                ......................................                              ......................................");
 
-
-            paragraph3.Alignment = Element.ALIGN_LEFT;
-            paragraph3.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
-            paragraph3.Add("                  EMPLEADOR                                          TRABAJADOR                                          EMPLEADOR                                          TRABAJADOR");
-            
             //PdfContentByte cb = writer.DirectContent;
 
             //pdfDoc.Open();
@@ -423,7 +437,7 @@ namespace CapaUsuario.Reportes
             cb.LineTo(pdfDoc.PageSize.Width, pdfDoc.PageSize.Height / 2);
             cb.Stroke();
             */
-            bool dgv_vacio = false;
+
             /*              Llenar datagrids            */
             odtPlanilla = oPlanilla.ListarDetallePlanillaX(sidtplanilla);
 
@@ -477,13 +491,7 @@ namespace CapaUsuario.Reportes
                     
                     //Columnas 
                     MultiColumnText columns = new MultiColumnText();
-                    //columns.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 2);
-
                     columns.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 1);
-
-                    //columns.AddSimpleColumn(36f, 170f);
-                    //columns.AddSimpleColumn(194f, pdfDoc.PageSize.Width - 36f);
-
                     //Agregando pdfTable A, B, C, D, E a pdfDoc
                     columns.AddElement(pdfTableD);
                     columns.AddElement(paragraph);
@@ -494,28 +502,9 @@ namespace CapaUsuario.Reportes
                     columns.AddElement(pdfTableE);
                     columns.AddElement(paragraph2);
                     columns.AddElement(paragraph3);
-
-                    //Agregando pdfTable A, B, C, D, E a pdfDoc como copia
-                    /*
-                    columns.AddElement(paragraph);
-                    columns.AddElement(pdfTableA);
-                    columns.AddElement(pdfTableB);
-                    columns.AddElement(pdfTableC);
-                    columns.AddElement(paragraph);
-                    columns.AddElement(pdfTableE);
-                    columns.AddElement(paragraph2);
-                    columns.AddElement(paragraph3);
-                    */
-
+ 
                     pdfDoc.Add(columns);
-                    /* fin llenar datagrids */
-                    
-                    /*}
-                    else { 
-                        MessageBox.Show("Planilla vacia.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        dgv_vacio = true;
-                    }*/
-
+ 
                 }
  
                 if (!boleta_pago_vacia)
@@ -548,7 +537,11 @@ namespace CapaUsuario.Reportes
             header.BorderWidthTop = 0f;
             _document.Header = header;
             HeaderFooter Footer = new HeaderFooter(new Phrase(" ", headerfooter), true);
-            Footer.BorderWidthBottom = 0f;
+            //Footer.BorderWidthBottom = 0f;
+            Footer.BorderWidthBottom =  0f;
+            Footer.BorderWidthTop = 0f;
+            Footer.BorderWidthLeft = 0f;
+            Footer.BorderWidthRight = 0f;
             _document.Footer = Footer;
         }
 
@@ -1224,6 +1217,7 @@ namespace CapaUsuario.Reportes
                     if (o == 0 || o == 1 || o == 2 || o == 3 || o == 9 || o == 10 || o == 11 || o == 12 )
                     {
                         cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
                         cell.Rowspan = 2;
                         cell.Colspan = 1;
                         cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvBoletaPago = new System.Windows.Forms.DataGridView();
             this.dgvBoletaPago_F = new System.Windows.Forms.DataGridView();
             this.dgvBoletaPago_E = new System.Windows.Forms.DataGridView();
@@ -38,11 +38,14 @@
             this.dgvBoletaPago_A = new System.Windows.Forms.DataGridView();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cboMes = new System.Windows.Forms.ComboBox();
-            this.cboAño = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.cboAño = new System.Windows.Forms.ComboBox();
+            this.cboMes = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdbVertical = new System.Windows.Forms.RadioButton();
+            this.rdbHorizontal = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_E)).BeginInit();
@@ -51,14 +54,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_A)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvBoletaPago
             // 
             this.dgvBoletaPago.AllowUserToAddRows = false;
             this.dgvBoletaPago.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBoletaPago.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -70,7 +74,7 @@
             this.dgvBoletaPago.ReadOnly = true;
             this.dgvBoletaPago.RowHeadersVisible = false;
             this.dgvBoletaPago.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBoletaPago.Size = new System.Drawing.Size(822, 441);
+            this.dgvBoletaPago.Size = new System.Drawing.Size(822, 418);
             this.dgvBoletaPago.TabIndex = 98;
             this.dgvBoletaPago.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBoletaPago_CellClick);
             // 
@@ -135,7 +139,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimir.Location = new System.Drawing.Point(12, 525);
+            this.btnImprimir.Location = new System.Drawing.Point(129, 22);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 65);
             this.btnImprimir.TabIndex = 91;
@@ -158,15 +162,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtrar por:";
             // 
-            // label1
+            // btnBuscar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mes:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.btnBuscar.Location = new System.Drawing.Point(380, 22);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 4;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // cboAño
+            // 
+            this.cboAño.FormattingEnabled = true;
+            this.cboAño.Location = new System.Drawing.Point(228, 22);
+            this.cboAño.Name = "cboAño";
+            this.cboAño.Size = new System.Drawing.Size(121, 21);
+            this.cboAño.TabIndex = 3;
+            // 
+            // cboMes
+            // 
+            this.cboMes.FormattingEnabled = true;
+            this.cboMes.Location = new System.Drawing.Point(42, 22);
+            this.cboMes.Name = "cboMes";
+            this.cboMes.Size = new System.Drawing.Size(121, 21);
+            this.cboMes.TabIndex = 2;
             // 
             // label2
             // 
@@ -178,37 +198,56 @@
             this.label2.Text = "Año:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // cboMes
+            // label1
             // 
-            this.cboMes.FormattingEnabled = true;
-            this.cboMes.Location = new System.Drawing.Point(42, 22);
-            this.cboMes.Name = "cboMes";
-            this.cboMes.Size = new System.Drawing.Size(121, 21);
-            this.cboMes.TabIndex = 2;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mes:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // cboAño
+            // groupBox2
             // 
-            this.cboAño.FormattingEnabled = true;
-            this.cboAño.Location = new System.Drawing.Point(228, 22);
-            this.cboAño.Name = "cboAño";
-            this.cboAño.Size = new System.Drawing.Size(121, 21);
-            this.cboAño.TabIndex = 3;
+            this.groupBox2.Controls.Add(this.rdbHorizontal);
+            this.groupBox2.Controls.Add(this.rdbVertical);
+            this.groupBox2.Controls.Add(this.btnImprimir);
+            this.groupBox2.Location = new System.Drawing.Point(21, 506);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(225, 93);
+            this.groupBox2.TabIndex = 100;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Impresion de reporte.";
             // 
-            // btnBuscar
+            // rdbVertical
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(380, 22);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 4;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.rdbVertical.AutoSize = true;
+            this.rdbVertical.Checked = true;
+            this.rdbVertical.Location = new System.Drawing.Point(18, 31);
+            this.rdbVertical.Name = "rdbVertical";
+            this.rdbVertical.Size = new System.Drawing.Size(60, 17);
+            this.rdbVertical.TabIndex = 92;
+            this.rdbVertical.TabStop = true;
+            this.rdbVertical.Text = "Vertical";
+            this.rdbVertical.UseVisualStyleBackColor = true;
+            // 
+            // rdbHorizontal
+            // 
+            this.rdbHorizontal.AutoSize = true;
+            this.rdbHorizontal.Location = new System.Drawing.Point(18, 55);
+            this.rdbHorizontal.Name = "rdbHorizontal";
+            this.rdbHorizontal.Size = new System.Drawing.Size(72, 17);
+            this.rdbHorizontal.TabIndex = 93;
+            this.rdbHorizontal.Text = "Horizontal";
+            this.rdbHorizontal.UseVisualStyleBackColor = true;
             // 
             // frmBoletaPagoXPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 611);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvBoletaPago);
             this.Controls.Add(this.dgvBoletaPago_F);
@@ -217,7 +256,6 @@
             this.Controls.Add(this.dgvBoletaPago_C);
             this.Controls.Add(this.dgvBoletaPago_B);
             this.Controls.Add(this.dgvBoletaPago_A);
-            this.Controls.Add(this.btnImprimir);
             this.Name = "frmBoletaPagoXPlanilla";
             this.Text = "frmBoletaPagoXPlanilla";
             this.Load += new System.EventHandler(this.frmBoletaPagoXPlanilla_Load);
@@ -230,6 +268,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_A)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -250,5 +290,8 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ComboBox cboAño;
         private System.Windows.Forms.ComboBox cboMes;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton rdbHorizontal;
+        private System.Windows.Forms.RadioButton rdbVertical;
     }
 }

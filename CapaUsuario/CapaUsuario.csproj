@@ -955,6 +955,7 @@
     <Compile Include="Reportes\uspListarTiposDeTrabajador_Result.cs">
       <DependentUpon>modPersonal.tt</DependentUpon>
     </Compile>
+    <Compile Include="TwoColumnHeaderFooter.cs" />
     <Compile Include="Usuarios\frmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
