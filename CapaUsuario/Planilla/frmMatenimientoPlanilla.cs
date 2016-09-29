@@ -38,21 +38,93 @@ namespace CapaUsuario.Planilla
 
         CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
         CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
-
+        string FechaTexto = "";
         public frmMatenimientoPlanilla()
         {
             InitializeComponent();
+            DateTime Ahora = DateTime.Today;
+            CargarMes(Ahora);
         }
-
         private void frmMatenimientoPlanilla_Load(object sender, EventArgs e)
         {
+           
+            cboMes.Text = FechaTexto;
             CargarAños();
+        }
+        public void CargarMes(DateTime FechaActual)
+        {
+            string Ahora = Convert.ToString(FechaActual.Date.Month);
+            switch (Ahora)
+            {
+                case "1":
+                    {
+                        FechaTexto = "ENERO";
+                        break;
+                    }
+                case "2":
+                    {
+                        FechaTexto = "FEBRERO";
+                        break;
+                    }
+                case "3":
+                    {
+                        FechaTexto = "MARZO";
+                        break;
+                    }
+                case "4":
+                    {
+                        FechaTexto = "ABRIL";
+                        break;
+                    }
+                case "5":
+                    {
+                        FechaTexto = "MAYO";
+                        break;
+                    }
+                case "6":
+                    {
+                        FechaTexto = "JUNIO";
+                        break;
+                    }
+                case "7":
+                    {
+                        FechaTexto = "JULIO";
+                        break;
+                    }
+                case "8":
+                    {
+                        FechaTexto = "AGOSTO";
+                        break;
+                    }
+                case "9":
+                    {
+                        FechaTexto = "SETIEMBRE";
+                        break;
+                    }
+                case "10":
+                    {
+                        FechaTexto = "OCTUBRE";
+                        break;
+                    }
+                case "11":
+                    {
+                        FechaTexto = "NOVIEMBRE";
+                        break;
+                    }
+                case "12":
+                    {
+                        FechaTexto = "DICIEMBRE";
+                        break;
+                    }
+
+            }
+            
         }
 
         private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
         {
             sidtplanilla = 0;
-            cboMes.SelectedIndex = -1;
+            CargarDatos();
         }
 
         private void cboMes_SelectedIndexChanged(object sender, EventArgs e)
@@ -171,6 +243,7 @@ namespace CapaUsuario.Planilla
                 cboAño.Items.Add(i);
             }
             cboAño.Text = saño;
+            cboAño.Text = Convert.ToString(DateTime.Now.Year);
         }
 
         private void CargarDatos()
@@ -1419,6 +1492,27 @@ namespace CapaUsuario.Planilla
             proc.EnableRaisingEvents = false;
             proc.StartInfo.FileName = "C:\\PDFs\\DataGridViewExport.pdf";
             proc.Start();
+        }
+
+        private void dgvPlanilla_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (sidtplanilla == 0)
+            {
+                MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (splantilla == "REGIDORES")
+            {
+                CapaUsuario.Planilla.frmMantenimientoDetallePlanillaRegidores fMantenimientoDetallePlanillaRegidores = new frmMantenimientoDetallePlanillaRegidores();
+                fMantenimientoDetallePlanillaRegidores.RecibirDatos(sidtplanilla, snumero, smes, saño, sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, sidtregimenlaboral, sRegimenLaboral, splantilla);
+                fMantenimientoDetallePlanillaRegidores.ShowDialog();
+            }
+            else
+            {
+                CapaUsuario.Planilla.frmMantenimientoDetallePlanilla fMantenimientoDetallePlanilla = new frmMantenimientoDetallePlanilla();
+                fMantenimientoDetallePlanilla.RecibirDatos(sidtplanilla, snumero, smes, saño, sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, sidtregimenlaboral, sRegimenLaboral, splantilla);
+                fMantenimientoDetallePlanilla.ShowDialog();
+            }
         }
     }
 }

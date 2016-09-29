@@ -38,6 +38,10 @@
             this.dgvPlanilla = new System.Windows.Forms.DataGridView();
             this.dgvPrueba = new System.Windows.Forms.DataGridView();
             this.dgvAFP = new System.Windows.Forms.DataGridView();
+            this.cboAño = new System.Windows.Forms.ComboBox();
+            this.cboMes = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,10 +54,6 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdtRegimenLaboral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboAño = new System.Windows.Forms.ComboBox();
-            this.cboMes = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
@@ -66,7 +66,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageIndex = 1;
-            this.btnImprimir.Location = new System.Drawing.Point(285, 404);
+            this.btnImprimir.Location = new System.Drawing.Point(794, 499);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(83, 53);
             this.btnImprimir.TabIndex = 29;
@@ -82,7 +82,7 @@
             this.btnDetallePlanilla.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDetallePlanilla.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDetallePlanilla.ImageIndex = 1;
-            this.btnDetallePlanilla.Location = new System.Drawing.Point(12, 404);
+            this.btnDetallePlanilla.Location = new System.Drawing.Point(12, 499);
             this.btnDetallePlanilla.Name = "btnDetallePlanilla";
             this.btnDetallePlanilla.Size = new System.Drawing.Size(114, 53);
             this.btnDetallePlanilla.TabIndex = 28;
@@ -98,7 +98,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(641, 404);
+            this.btnSalir.Location = new System.Drawing.Point(1150, 499);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 27;
@@ -114,7 +114,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEliminar.ImageKey = "118.png";
-            this.btnEliminar.Location = new System.Drawing.Point(552, 404);
+            this.btnEliminar.Location = new System.Drawing.Point(1061, 499);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(83, 53);
             this.btnEliminar.TabIndex = 26;
@@ -130,7 +130,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificar.ImageKey = "13.png";
-            this.btnModificar.Location = new System.Drawing.Point(463, 404);
+            this.btnModificar.Location = new System.Drawing.Point(972, 499);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(83, 53);
             this.btnModificar.TabIndex = 25;
@@ -146,7 +146,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(374, 404);
+            this.btnNuevo.Location = new System.Drawing.Point(883, 499);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 24;
@@ -185,10 +185,11 @@
             this.dgvPlanilla.ReadOnly = true;
             this.dgvPlanilla.RowHeadersVisible = false;
             this.dgvPlanilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPlanilla.Size = new System.Drawing.Size(712, 359);
+            this.dgvPlanilla.Size = new System.Drawing.Size(1221, 454);
             this.dgvPlanilla.TabIndex = 23;
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick);
+            this.dgvPlanilla.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellDoubleClick);
             // 
             // dgvPrueba
             // 
@@ -207,97 +208,6 @@
             this.dgvAFP.Size = new System.Drawing.Size(156, 156);
             this.dgvAFP.TabIndex = 30;
             this.dgvAFP.Visible = false;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "IdtPlanilla";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            this.Column1.Width = 20;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Numero";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 50;
-            // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.HeaderText = "Descripción";
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.ReadOnly = true;
-            this.txtDescripcion.Width = 240;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Mes";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Visible = false;
-            this.Column3.Width = 75;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Año";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Visible = false;
-            this.Column4.Width = 40;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Fecha";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Visible = false;
-            this.Column5.Width = 40;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "IdtMeta";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Visible = false;
-            this.Column6.Width = 20;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Meta";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 200;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "IdtFuenteFinanciamiento";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Visible = false;
-            this.Column8.Width = 20;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Fuente Financiamiento";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Width = 200;
-            // 
-            // IdtRegimenLaboral
-            // 
-            this.IdtRegimenLaboral.HeaderText = "IdtRegimenLaboral";
-            this.IdtRegimenLaboral.Name = "IdtRegimenLaboral";
-            this.IdtRegimenLaboral.ReadOnly = true;
-            this.IdtRegimenLaboral.Visible = false;
-            this.IdtRegimenLaboral.Width = 20;
-            // 
-            // Plantilla
-            // 
-            this.Plantilla.HeaderText = "Plantilla";
-            this.Plantilla.Name = "Plantilla";
-            this.Plantilla.ReadOnly = true;
-            this.Plantilla.Visible = false;
             // 
             // cboAño
             // 
@@ -350,11 +260,102 @@
             this.label2.TabIndex = 34;
             this.label2.Text = "Mes";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "IdtPlanilla";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            this.Column1.Width = 20;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Numero";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 50;
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.HeaderText = "Descripción";
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.ReadOnly = true;
+            this.txtDescripcion.Width = 400;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Mes";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Visible = false;
+            this.Column3.Width = 75;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Año";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Visible = false;
+            this.Column4.Width = 40;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Fecha";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Visible = false;
+            this.Column5.Width = 40;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "IdtMeta";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Visible = false;
+            this.Column6.Width = 20;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Meta";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 550;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "IdtFuenteFinanciamiento";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Visible = false;
+            this.Column8.Width = 20;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Fuente Financiamiento";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 200;
+            // 
+            // IdtRegimenLaboral
+            // 
+            this.IdtRegimenLaboral.HeaderText = "IdtRegimenLaboral";
+            this.IdtRegimenLaboral.Name = "IdtRegimenLaboral";
+            this.IdtRegimenLaboral.ReadOnly = true;
+            this.IdtRegimenLaboral.Visible = false;
+            this.IdtRegimenLaboral.Width = 20;
+            // 
+            // Plantilla
+            // 
+            this.Plantilla.HeaderText = "Plantilla";
+            this.Plantilla.Name = "Plantilla";
+            this.Plantilla.ReadOnly = true;
+            this.Plantilla.Visible = false;
+            // 
             // frmMatenimientoPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 469);
+            this.ClientSize = new System.Drawing.Size(1245, 564);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboMes);
@@ -392,6 +393,10 @@
         private System.Windows.Forms.DataGridView dgvPlanilla;
         private System.Windows.Forms.DataGridView dgvPrueba;
         private System.Windows.Forms.DataGridView dgvAFP;
+        private System.Windows.Forms.ComboBox cboAño;
+        private System.Windows.Forms.ComboBox cboMes;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtDescripcion;
@@ -404,9 +409,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdtRegimenLaboral;
         private System.Windows.Forms.DataGridViewTextBoxColumn Plantilla;
-        private System.Windows.Forms.ComboBox cboAño;
-        private System.Windows.Forms.ComboBox cboMes;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
     }
 }
