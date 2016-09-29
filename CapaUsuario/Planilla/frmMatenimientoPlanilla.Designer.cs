@@ -66,7 +66,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageIndex = 1;
-            this.btnImprimir.Location = new System.Drawing.Point(794, 499);
+            this.btnImprimir.Location = new System.Drawing.Point(694, 471);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(83, 53);
             this.btnImprimir.TabIndex = 29;
@@ -82,7 +82,7 @@
             this.btnDetallePlanilla.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDetallePlanilla.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDetallePlanilla.ImageIndex = 1;
-            this.btnDetallePlanilla.Location = new System.Drawing.Point(12, 499);
+            this.btnDetallePlanilla.Location = new System.Drawing.Point(12, 471);
             this.btnDetallePlanilla.Name = "btnDetallePlanilla";
             this.btnDetallePlanilla.Size = new System.Drawing.Size(114, 53);
             this.btnDetallePlanilla.TabIndex = 28;
@@ -98,7 +98,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(1150, 499);
+            this.btnSalir.Location = new System.Drawing.Point(1050, 471);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 27;
@@ -114,7 +114,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEliminar.ImageKey = "118.png";
-            this.btnEliminar.Location = new System.Drawing.Point(1061, 499);
+            this.btnEliminar.Location = new System.Drawing.Point(961, 471);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(83, 53);
             this.btnEliminar.TabIndex = 26;
@@ -130,7 +130,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificar.ImageKey = "13.png";
-            this.btnModificar.Location = new System.Drawing.Point(972, 499);
+            this.btnModificar.Location = new System.Drawing.Point(872, 471);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(83, 53);
             this.btnModificar.TabIndex = 25;
@@ -146,7 +146,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(883, 499);
+            this.btnNuevo.Location = new System.Drawing.Point(783, 471);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 24;
@@ -185,7 +185,7 @@
             this.dgvPlanilla.ReadOnly = true;
             this.dgvPlanilla.RowHeadersVisible = false;
             this.dgvPlanilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPlanilla.Size = new System.Drawing.Size(1221, 454);
+            this.dgvPlanilla.Size = new System.Drawing.Size(1121, 426);
             this.dgvPlanilla.TabIndex = 23;
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick);
@@ -213,7 +213,7 @@
             // 
             this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAño.FormattingEnabled = true;
-            this.cboAño.Location = new System.Drawing.Point(41, 12);
+            this.cboAño.Location = new System.Drawing.Point(43, 12);
             this.cboAño.Name = "cboAño";
             this.cboAño.Size = new System.Drawing.Size(140, 21);
             this.cboAño.TabIndex = 31;
@@ -236,7 +236,7 @@
             "OCTUBRE",
             "NOVIEMBRE",
             "DICIEMBRE"});
-            this.cboMes.Location = new System.Drawing.Point(220, 12);
+            this.cboMes.Location = new System.Drawing.Point(222, 12);
             this.cboMes.Name = "cboMes";
             this.cboMes.Size = new System.Drawing.Size(121, 21);
             this.cboMes.TabIndex = 32;
@@ -245,7 +245,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 15);
+            this.label1.Location = new System.Drawing.Point(11, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 33;
@@ -254,7 +254,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(187, 15);
+            this.label2.Location = new System.Drawing.Point(189, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 13);
             this.label2.TabIndex = 34;
@@ -280,7 +280,7 @@
             this.txtDescripcion.HeaderText = "Descripción";
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ReadOnly = true;
-            this.txtDescripcion.Width = 400;
+            this.txtDescripcion.Width = 300;
             // 
             // Column3
             // 
@@ -355,7 +355,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1245, 564);
+            this.ClientSize = new System.Drawing.Size(1145, 536);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboMes);
