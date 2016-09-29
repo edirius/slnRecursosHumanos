@@ -44,6 +44,11 @@ namespace CapaDeNegocios.Sunat
             set { sAbreviacion = value; }
         }
 
+        public DataTable ListarAbreviacionDeIdtmaestroaempleador(int pidtmaestroaempleador)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarAbreviacionDeIdtmaestroaempleador", pidtmaestroaempleador);
+        }
+
         public DataTable ListarMaestroAportacionesEmpleador()
         {
             return Conexion.GDatos.TraerDataTable("spListarMaestroAportacionesEmpleador");

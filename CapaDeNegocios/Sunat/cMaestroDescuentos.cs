@@ -50,6 +50,11 @@ namespace CapaDeNegocios.Sunat
             return Conexion.GDatos.TraerDataTable("spListarMaestroDescuentos");
         }
 
+        public DataTable ListarAbreviacionDeIdtmaestrodescuentos(int pidtmaestrodescuentos)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarAbreviacionDeIdtmaestrodescuentos",pidtmaestrodescuentos);
+        }
+
         public Boolean CrearMaestroDescuentos(cMaestroDescuentos miMaestroDescuentos)
         {
             Conexion.GDatos.Ejecutar("spCrearMaestroDescuentos", miMaestroDescuentos.Codigo, miMaestroDescuentos.Descripcion, miMaestroDescuentos.Calculo, miMaestroDescuentos.Abreviacion);

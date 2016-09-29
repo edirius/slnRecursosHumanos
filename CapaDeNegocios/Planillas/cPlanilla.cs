@@ -73,6 +73,12 @@ namespace CapaDeNegocios.Planillas
             get { return splantilla; }
             set { splantilla = value; }
         }
+
+        public DataTable ListarFechaPlanilla(int pidtplanilla)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarFechaPlanilla", pidtplanilla);
+        }
+
         public DataTable ListarMetaDePlanilla(int pidtplanilla)
         {
             return Conexion.GDatos.TraerDataTable("spListarMetaDePlanilla", pidtplanilla);
