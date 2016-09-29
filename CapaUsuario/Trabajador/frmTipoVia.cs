@@ -35,5 +35,20 @@ namespace CapaUsuario.Trabajador
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }
         }
+
+        private void dtgListaTipoVia_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgListaTipoVia.SelectedRows.Count > 0)
+            {
+                miTipoVia.Codigo = Convert.ToInt16(dtgListaTipoVia.SelectedRows[0].Cells[0].Value.ToString());
+                miTipoVia.CodigoSunat = dtgListaTipoVia.SelectedRows[0].Cells[1].Value.ToString();
+                miTipoVia.Descripcion = dtgListaTipoVia.SelectedRows[0].Cells[2].Value.ToString();
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una provincia de la lista.");
+            }
+        }
     }
 }

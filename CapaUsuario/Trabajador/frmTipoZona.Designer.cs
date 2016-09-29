@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgListaTipoZonas = new System.Windows.Forms.DataGridView();
             this.idttipozona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigosunat = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,8 +38,10 @@
             // 
             // dtgListaTipoZonas
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dtgListaTipoZonas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgListaTipoZonas.AllowUserToAddRows = false;
+            this.dtgListaTipoZonas.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dtgListaTipoZonas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgListaTipoZonas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaTipoZonas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idttipozona,
@@ -48,6 +50,7 @@
             this.dtgListaTipoZonas.Location = new System.Drawing.Point(12, 12);
             this.dtgListaTipoZonas.MultiSelect = false;
             this.dtgListaTipoZonas.Name = "dtgListaTipoZonas";
+            this.dtgListaTipoZonas.ReadOnly = true;
             this.dtgListaTipoZonas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListaTipoZonas.Size = new System.Drawing.Size(471, 214);
             this.dtgListaTipoZonas.TabIndex = 0;
@@ -59,6 +62,7 @@
             this.idttipozona.DataPropertyName = "idttipozona";
             this.idttipozona.HeaderText = "Codigo";
             this.idttipozona.Name = "idttipozona";
+            this.idttipozona.ReadOnly = true;
             this.idttipozona.Width = 50;
             // 
             // codigosunat
@@ -66,6 +70,7 @@
             this.codigosunat.DataPropertyName = "codigosunat";
             this.codigosunat.HeaderText = "Codigo Sunat";
             this.codigosunat.Name = "codigosunat";
+            this.codigosunat.ReadOnly = true;
             this.codigosunat.Width = 50;
             // 
             // descripcion
@@ -73,6 +78,7 @@
             this.descripcion.DataPropertyName = "descripcion";
             this.descripcion.HeaderText = "Descripcion";
             this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
             this.descripcion.Width = 300;
             // 
             // frmTipoZona
