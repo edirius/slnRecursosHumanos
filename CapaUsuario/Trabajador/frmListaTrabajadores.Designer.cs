@@ -42,7 +42,7 @@
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Regimen CAS", 2, 2);
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("DL. 276", 2, 2);
             System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("DL. 728", 2, 2);
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Regimen Laboral", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Regimen Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
             treeNode6,
             treeNode7,
             treeNode8,
@@ -53,7 +53,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTrabajadores));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusTrabajadores = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnNuevoTrabajador = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -101,6 +101,8 @@
             this.menuCopiarPaterno = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApellidoMaterno = new System.Windows.Forms.ToolStripMenuItem();
             this.imageLista = new System.Windows.Forms.ImageList(this.components);
+            this.lblNumeroTrabajadores = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusTrabajadores.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -115,13 +117,15 @@
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
-            // statusStrip1
+            // statusTrabajadores
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 578);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1043, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
+            this.statusTrabajadores.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblNumeroTrabajadores});
+            this.statusTrabajadores.Location = new System.Drawing.Point(0, 578);
+            this.statusTrabajadores.Name = "statusTrabajadores";
+            this.statusTrabajadores.Size = new System.Drawing.Size(1043, 22);
+            this.statusTrabajadores.TabIndex = 1;
+            this.statusTrabajadores.Text = "statusStrip1";
             // 
             // toolStrip1
             // 
@@ -288,6 +292,7 @@
             treeNode9.SelectedImageIndex = 2;
             treeNode9.Text = "DL. 728";
             treeNode10.Checked = true;
+            treeNode10.ImageIndex = 2;
             treeNode10.Name = "Node8";
             treeNode10.SelectedImageIndex = 2;
             treeNode10.Text = "Regimen Laboral";
@@ -296,11 +301,13 @@
             treeNode11.Name = "Node0";
             treeNode11.SelectedImageIndex = 2;
             treeNode11.Text = "FILTRO DE TRABAJADORES";
+            treeNode11.ToolTipText = "Seleccione abajo para filtrar la lista de trabajadores.";
             this.treeFiltro.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode11});
             this.treeFiltro.SelectedImageIndex = 0;
             this.treeFiltro.Size = new System.Drawing.Size(205, 550);
             this.treeFiltro.TabIndex = 0;
+            this.treeFiltro.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeFiltro_AfterSelect);
             this.treeFiltro.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeFiltro_NodeMouseClick);
             // 
             // label7
@@ -314,12 +321,16 @@
             // 
             // btnBuscarXMeta
             // 
+            this.btnBuscarXMeta.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnBuscarXMeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarXMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarXMeta.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnBuscarXMeta.Location = new System.Drawing.Point(557, 167);
             this.btnBuscarXMeta.Name = "btnBuscarXMeta";
             this.btnBuscarXMeta.Size = new System.Drawing.Size(164, 23);
             this.btnBuscarXMeta.TabIndex = 38;
             this.btnBuscarXMeta.Text = "Buscar por Meta";
-            this.btnBuscarXMeta.UseVisualStyleBackColor = true;
+            this.btnBuscarXMeta.UseVisualStyleBackColor = false;
             this.btnBuscarXMeta.Click += new System.EventHandler(this.btnBuscarXMeta_Click);
             // 
             // cboMeta
@@ -381,54 +392,72 @@
             // 
             // btnBuscarAMaterno
             // 
+            this.btnBuscarAMaterno.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnBuscarAMaterno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarAMaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarAMaterno.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnBuscarAMaterno.Location = new System.Drawing.Point(348, 101);
             this.btnBuscarAMaterno.Name = "btnBuscarAMaterno";
             this.btnBuscarAMaterno.Size = new System.Drawing.Size(164, 23);
             this.btnBuscarAMaterno.TabIndex = 28;
             this.btnBuscarAMaterno.Text = "Buscar por Apellido Materno";
-            this.btnBuscarAMaterno.UseVisualStyleBackColor = true;
+            this.btnBuscarAMaterno.UseVisualStyleBackColor = false;
             this.btnBuscarAMaterno.Click += new System.EventHandler(this.btnBuscarAMaterno_Click);
             // 
             // btnBuscarAPaterno
             // 
+            this.btnBuscarAPaterno.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnBuscarAPaterno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarAPaterno.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarAPaterno.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnBuscarAPaterno.Location = new System.Drawing.Point(348, 70);
             this.btnBuscarAPaterno.Name = "btnBuscarAPaterno";
             this.btnBuscarAPaterno.Size = new System.Drawing.Size(164, 23);
             this.btnBuscarAPaterno.TabIndex = 27;
             this.btnBuscarAPaterno.Text = "Buscar por Apellido Paterno";
-            this.btnBuscarAPaterno.UseVisualStyleBackColor = true;
+            this.btnBuscarAPaterno.UseVisualStyleBackColor = false;
             this.btnBuscarAPaterno.Click += new System.EventHandler(this.btnBuscarAPaterno_Click);
             // 
             // btnBuscarNombre
             // 
+            this.btnBuscarNombre.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnBuscarNombre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarNombre.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnBuscarNombre.Location = new System.Drawing.Point(348, 43);
             this.btnBuscarNombre.Name = "btnBuscarNombre";
             this.btnBuscarNombre.Size = new System.Drawing.Size(164, 23);
             this.btnBuscarNombre.TabIndex = 26;
             this.btnBuscarNombre.Text = "Buscar por Nombres";
-            this.btnBuscarNombre.UseVisualStyleBackColor = true;
+            this.btnBuscarNombre.UseVisualStyleBackColor = false;
             this.btnBuscarNombre.Click += new System.EventHandler(this.btnBuscarNombre_Click);
             // 
             // txtBuscarApellidoMaterno
             // 
             this.txtBuscarApellidoMaterno.Location = new System.Drawing.Point(113, 105);
+            this.txtBuscarApellidoMaterno.MaxLength = 49;
             this.txtBuscarApellidoMaterno.Name = "txtBuscarApellidoMaterno";
             this.txtBuscarApellidoMaterno.Size = new System.Drawing.Size(216, 20);
             this.txtBuscarApellidoMaterno.TabIndex = 25;
+            this.txtBuscarApellidoMaterno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarApellidoMaterno_KeyDown);
             // 
             // txtBuscarApellidoPaterno
             // 
             this.txtBuscarApellidoPaterno.Location = new System.Drawing.Point(113, 74);
+            this.txtBuscarApellidoPaterno.MaxLength = 49;
             this.txtBuscarApellidoPaterno.Name = "txtBuscarApellidoPaterno";
             this.txtBuscarApellidoPaterno.Size = new System.Drawing.Size(216, 20);
             this.txtBuscarApellidoPaterno.TabIndex = 24;
+            this.txtBuscarApellidoPaterno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarApellidoPaterno_KeyDown);
             // 
             // txtBuscarNombre
             // 
             this.txtBuscarNombre.Location = new System.Drawing.Point(113, 43);
+            this.txtBuscarNombre.MaxLength = 49;
             this.txtBuscarNombre.Name = "txtBuscarNombre";
             this.txtBuscarNombre.Size = new System.Drawing.Size(216, 20);
             this.txtBuscarNombre.TabIndex = 23;
+            this.txtBuscarNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarNombre_KeyDown);
             // 
             // label4
             // 
@@ -459,12 +488,16 @@
             // 
             // btnBuscarDNI
             // 
+            this.btnBuscarDNI.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnBuscarDNI.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscarDNI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarDNI.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnBuscarDNI.Location = new System.Drawing.Point(236, 8);
             this.btnBuscarDNI.Name = "btnBuscarDNI";
             this.btnBuscarDNI.Size = new System.Drawing.Size(104, 23);
             this.btnBuscarDNI.TabIndex = 19;
             this.btnBuscarDNI.Text = "Buscar por DNI";
-            this.btnBuscarDNI.UseVisualStyleBackColor = true;
+            this.btnBuscarDNI.UseVisualStyleBackColor = false;
             this.btnBuscarDNI.Click += new System.EventHandler(this.btnBuscarDNI_Click);
             // 
             // label1
@@ -483,6 +516,9 @@
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(100, 20);
             this.txtDNI.TabIndex = 17;
+            this.txtDNI.Enter += new System.EventHandler(this.txtDNI_Enter);
+            this.txtDNI.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDNI_KeyDown);
+            this.txtDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDNI_KeyPress);
             // 
             // dtgListaTrabajadores
             // 
@@ -629,6 +665,12 @@
             this.imageLista.Images.SetKeyName(1, "WinXPSetV4 Icon 23.ico");
             this.imageLista.Images.SetKeyName(2, "123.ICO");
             // 
+            // lblNumeroTrabajadores
+            // 
+            this.lblNumeroTrabajadores.Name = "lblNumeroTrabajadores";
+            this.lblNumeroTrabajadores.Size = new System.Drawing.Size(100, 17);
+            this.lblNumeroTrabajadores.Text = "Nro Trabajadores:";
+            // 
             // frmListaTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -636,12 +678,14 @@
             this.ClientSize = new System.Drawing.Size(1043, 600);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.statusTrabajadores);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmListaTrabajadores";
             this.Text = "Lista de Trabajadores";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmListaTrabajadores_Load);
+            this.statusTrabajadores.ResumeLayout(false);
+            this.statusTrabajadores.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -659,7 +703,7 @@
         #endregion
 
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip statusTrabajadores;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView treeFiltro;
@@ -707,5 +751,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuCopiarPaterno;
         private System.Windows.Forms.ToolStripMenuItem menuApellidoMaterno;
         private System.Windows.Forms.ImageList imageLista;
+        private System.Windows.Forms.ToolStripStatusLabel lblNumeroTrabajadores;
     }
 }

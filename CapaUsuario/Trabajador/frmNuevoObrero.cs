@@ -73,7 +73,7 @@ namespace CapaUsuario.Trabajador
             miTrabajador.MiNacionalidad.Codigo = 1;
 
             miTrabajador.AgregarTrabajador(miTrabajador);
-            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
+            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Sin Periodo Laboral", "", "", "", "", "Todos", "Todos");
             sidttrabajador = Convert.ToInt32(oDataTrabajador.Compute("MAX(id_trabajador)", ""));
 
             CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
