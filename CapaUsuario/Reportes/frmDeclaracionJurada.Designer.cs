@@ -62,7 +62,7 @@
             this.dgvDeclaracionJurada.ReadOnly = true;
             this.dgvDeclaracionJurada.RowHeadersVisible = false;
             this.dgvDeclaracionJurada.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDeclaracionJurada.Size = new System.Drawing.Size(714, 419);
+            this.dgvDeclaracionJurada.Size = new System.Drawing.Size(811, 408);
             this.dgvDeclaracionJurada.TabIndex = 99;
             this.dgvDeclaracionJurada.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeclaracionJurada_CellClick);
             this.dgvDeclaracionJurada.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeclaracionJurada_CellContentClick);
@@ -113,7 +113,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimir.Location = new System.Drawing.Point(12, 498);
+            this.btnImprimir.Location = new System.Drawing.Point(12, 497);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 65);
             this.btnImprimir.TabIndex = 101;
@@ -133,13 +133,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCabeza.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCabeza.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvCabeza.Location = new System.Drawing.Point(110, 498);
+            this.dgvCabeza.Location = new System.Drawing.Point(128, 519);
             this.dgvCabeza.MultiSelect = false;
             this.dgvCabeza.Name = "dgvCabeza";
             this.dgvCabeza.ReadOnly = true;
             this.dgvCabeza.RowHeadersVisible = false;
             this.dgvCabeza.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCabeza.Size = new System.Drawing.Size(82, 65);
+            this.dgvCabeza.Size = new System.Drawing.Size(72, 24);
             this.dgvCabeza.TabIndex = 102;
             this.dgvCabeza.Visible = false;
             // 
@@ -154,13 +154,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvCuerpo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCuerpo.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvCuerpo.Location = new System.Drawing.Point(198, 498);
+            this.dgvCuerpo.Location = new System.Drawing.Point(206, 519);
             this.dgvCuerpo.MultiSelect = false;
             this.dgvCuerpo.Name = "dgvCuerpo";
             this.dgvCuerpo.ReadOnly = true;
             this.dgvCuerpo.RowHeadersVisible = false;
             this.dgvCuerpo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCuerpo.Size = new System.Drawing.Size(82, 65);
+            this.dgvCuerpo.Size = new System.Drawing.Size(72, 24);
             this.dgvCuerpo.TabIndex = 103;
             this.dgvCuerpo.Visible = false;
             // 
@@ -168,7 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(738, 575);
+            this.ClientSize = new System.Drawing.Size(835, 608);
             this.Controls.Add(this.dgvCuerpo);
             this.Controls.Add(this.dgvCabeza);
             this.Controls.Add(this.btnImprimir);

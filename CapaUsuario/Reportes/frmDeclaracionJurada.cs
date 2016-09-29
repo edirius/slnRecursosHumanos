@@ -82,9 +82,12 @@ namespace CapaUsuario.Reportes
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             CapaDeNegocios.Trabajadores.cTrabajadorCas oTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorCas();
-            paño = cboAño.GetItemText(this.cboAño.SelectedItem);
             DataTable odtTrabajadoresDeclaracionJurada = new DataTable();
+            DataGridViewCheckBoxColumn dgvcbc = new DataGridViewCheckBoxColumn();
 
+
+            paño = cboAño.GetItemText(this.cboAño.SelectedItem);
+             
             odtTrabajadoresDeclaracionJurada = oTrabajador.ListarTrabajadoresParaDeclaracionJurada(paño);
 
             for (int i = 0; i < odtTrabajadoresDeclaracionJurada.Rows.Count ; i++) {
@@ -95,6 +98,11 @@ namespace CapaUsuario.Reportes
             dgvDeclaracionJurada.Columns[1].Visible = false;
             dgvDeclaracionJurada.Columns[7].Visible = false;
 
+
+            dgvcbc.HeaderText = "Seleccionar";
+            dgvcbc.Width = 70;
+            dgvcbc.Name = "cbc";
+            dgvDeclaracionJurada.Columns.Insert(0, dgvcbc);
 
 
         }
@@ -139,6 +147,7 @@ namespace CapaUsuario.Reportes
             DataTable odt_0405 = new DataTable();
             DataTable odt_0406 = new DataTable();
             DataTable odt_0407 = new DataTable();
+            DataTable odtTrabajador = new DataTable();
 
             int indice_2039 = 0;
             int indice_121 = 0;
@@ -150,6 +159,7 @@ namespace CapaUsuario.Reportes
             int indice_0405 = 0;
             int indice_0406 = 0;
             int indice_0407 = 0;
+            int k = 0;
 
             string monto_2039 ="";
             string monto_121 = "";
@@ -166,7 +176,6 @@ namespace CapaUsuario.Reportes
             DataRow odrCabeza = odtCabeza.NewRow();
 
             CapaDeNegocios.Trabajadores.cTrabajadorCas oTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorCas();
-            CapaDeNegocios.Trabajadores.cTrabajadorCas oTrabajador2 = new CapaDeNegocios.Trabajadores.cTrabajadorCas();
 
             /*Inicio de formato de declaracion jurada de nombramientos a contraloria */
             /*Cuadro 1 :*/
@@ -210,6 +219,24 @@ namespace CapaUsuario.Reportes
 
             /* Fin cuadro 1  */
             /* Inicio cuadro 2 */
+            odtTrabajador.Columns.Clear();
+            odtTrabajador.Columns.Add("Trabajador",typeof(string));
+
+            string message = "";
+
+            foreach (DataGridViewRow row in dgvDeclaracionJurada.Rows)
+            {
+                bool isSelected = Convert.ToBoolean(row.Cells["cbc"].Value);
+                if (isSelected)
+                {
+                    odtTrabajador.Rows[k][0] = dgvDeclaracionJurada.Rows[k].Cells[1] ;
+                    message += Environment.NewLine;
+                    message += row.Cells["Name"].Value.ToString();
+
+                }
+                k++;
+            }
+            MessageBox.Show("Selected Values" + message);
 
             odtDeclaracionJurada = oTrabajador.ListarDeclaracionJuradaNombramientoContraloria(id_trabajador, Convert.ToInt32(paño) );
 
