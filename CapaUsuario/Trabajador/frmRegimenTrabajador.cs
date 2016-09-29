@@ -276,9 +276,17 @@ namespace CapaUsuario.Trabajador
         private void CargarCategoriaOcupacional()
         {
             CapaDeNegocios.DatosLaborales.cCategoriaOcupacional miCategoriaOcupacional = new CapaDeNegocios.DatosLaborales.cCategoriaOcupacional();
+            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            foreach (DataRow row in miCategoriaOcupacional.ListarCategoriaOcupacional().Rows)
+            {
+                coleccion.Add(Convert.ToString(row["descripcion"]));
+            }
             cboCategoriaOcupacional.DataSource = miCategoriaOcupacional.ListarCategoriaOcupacional();
             cboCategoriaOcupacional.DisplayMember = "descripcion";
             cboCategoriaOcupacional.ValueMember = "idtcategoriaocupacional";
+            cboCategoriaOcupacional.AutoCompleteCustomSource = coleccion;
+            cboCategoriaOcupacional.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboCategoriaOcupacional.AutoCompleteSource = AutoCompleteSource.CustomSource;
             if (scategoriaocupacional == "") { cboCategoriaOcupacional.SelectedIndex = -1; }
             else { cboCategoriaOcupacional.Text = scategoriaocupacional; }
         }
@@ -286,9 +294,17 @@ namespace CapaUsuario.Trabajador
         private void CargarOcupacion()
         {
             CapaDeNegocios.DatosLaborales.cOcupacion miOcupacion = new CapaDeNegocios.DatosLaborales.cOcupacion();
+            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            foreach (DataRow row in miOcupacion.ListarOcupacion().Rows)
+            {
+                coleccion.Add(Convert.ToString(row["descripcion"]));
+            }
             cboOcupacion.DataSource = miOcupacion.ListarOcupacion();
             cboOcupacion.DisplayMember = "descripcion";
             cboOcupacion.ValueMember = "idtocupacion";
+            cboOcupacion.AutoCompleteCustomSource = coleccion;
+            cboOcupacion.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboOcupacion.AutoCompleteSource = AutoCompleteSource.CustomSource;
             if (socupacion == "") { cboOcupacion.SelectedIndex = -1; }
             else { cboOcupacion.Text = socupacion; }
         }
@@ -296,9 +312,17 @@ namespace CapaUsuario.Trabajador
         private void CargarCargo()
         {
             CapaDeNegocios.Contrato.cCargo miCargo = new CapaDeNegocios.Contrato.cCargo();
+            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            foreach (DataRow row in miCargo.ListaCargos().Rows)
+            {
+                coleccion.Add(Convert.ToString(row["descripcion"]));
+            }
             cboCargo.DataSource = miCargo.ListaCargos();
             cboCargo.DisplayMember = "descripcion";
             cboCargo.ValueMember = "idtcargo";
+            cboCargo.AutoCompleteCustomSource = coleccion;
+            cboCargo.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboCargo.AutoCompleteSource = AutoCompleteSource.CustomSource;
             if (scargo == "") { cboCargo.SelectedIndex = -1; }
             else { cboCargo.Text = scargo; }
         }
@@ -356,5 +380,30 @@ namespace CapaUsuario.Trabajador
                 }
             }
         }
+
+        //public static class AutoCompleClass
+        //{
+        //    //metodo para cargar los datos de la bd
+        //    public static DataTable Datos()
+        //    {
+        //        DataTable dt = new DataTable();
+        //        CapaDeNegocios.DatosLaborales.cOcupacion miOcupacion = new CapaDeNegocios.DatosLaborales.cOcupacion();
+        //        dt = miOcupacion.ListarOcupacion();
+        //        return dt;
+        //    }
+
+        //    //metodo para cargar la coleccion de datos para el autocomplete
+        //    public static AutoCompleteStringCollection Autocomplete()
+        //    {
+        //        DataTable dt = Datos();
+        //        AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+        //        //recorrer y cargar los items para el autocompletado
+        //        foreach (DataRow row in dt.Rows)
+        //        {
+        //            coleccion.Add(Convert.ToString(row["pais"]));
+        //        }
+        //        return coleccion;
+        //    }
+        //}
     }
 }
