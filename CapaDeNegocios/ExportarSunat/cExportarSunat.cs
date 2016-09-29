@@ -18,7 +18,7 @@ namespace CapaDeNegocios.ExportarSunat
             string ConcatenarCuerpo = "";
             ConcatenarCuerpo = tipoDoc + Palo + dni + Palo + codigo + Palo + montodevengado + Palo + monto + Palo;
             return ConcatenarCuerpo;
-            
+
         }
         public string ExportarTitulo(string codigoform, string año, string mes, string ruc)
         {
@@ -36,6 +36,10 @@ namespace CapaDeNegocios.ExportarSunat
         public DataTable ListarTrabajadoresPorPlanillaAportaciones(string numero)
         {
             return Conexion.GDatos.TraerDataTable("spExportarAportaciones", numero);
+        }
+        public DataTable ListarJornadaLaboralTrabajadores(string numero)
+        {
+            return Conexion.GDatos.TraerDataTable("spJornadaLaboralTrabajadores", numero);
         }
         //spListarMaestroIngresosporTipo
         public DataTable ListarMaestroIngresosxTipo(string Tipo)
