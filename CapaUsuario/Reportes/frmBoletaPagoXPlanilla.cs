@@ -748,7 +748,8 @@ namespace CapaUsuario.Reportes
                 odtC.Rows[0][2] = 0;
                 odtC.Rows[0][3] = "Domiciliado";
                 odtC.Rows[0][4] = dias_laborados * 8;
-                odtC.Rows[0][5] = dias_laborados * 8 * 60;
+                //odtC.Rows[0][5] = dias_laborados * 8 * 60;
+                odtC.Rows[0][5] = 0;
 
                 odtCB.Columns.Clear();
                 odtCB.Rows.Clear();

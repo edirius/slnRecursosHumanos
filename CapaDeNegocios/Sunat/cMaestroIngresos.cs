@@ -128,6 +128,11 @@ namespace CapaDeNegocios.Sunat
             set { stipo = value; }
         }
 
+        public DataTable ListarAbreviacionDeIdtmaestroingresos(int pidtmaestroingresos)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarAbreviacionDeIdtmaestroingresos", pidtmaestroingresos);
+        }
+
         public DataTable ListarMaestroIngresos(string Tipo)
         {
             return Conexion.GDatos.TraerDataTable("spListarMaestroIngresos", Tipo);

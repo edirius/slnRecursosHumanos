@@ -455,7 +455,13 @@ namespace CapaUsuario.Reportes
                 decimal monto_dec_afp = 0;
                 decimal sumatoria_dec_afp = 0;
 
-
+                string columna_essalud_vida = "";
+                string columna_essalud_regular = "";
+                string columna_essalud_trabajador = "";
+                string columna_essalud_complementario = "";
+                string columna_aporte_entidad = "";
+                string columna_renta_5ta = "";
+                string columna_snp = "";
 
                 string[] arr_aportaciones_trabajador = new string[160];
                 //Calcular cuantas AFP existen en el datatable odtPrueba
@@ -1275,15 +1281,34 @@ namespace CapaUsuario.Reportes
                             iindice_a_empleador = BuscarIndiceColumna(odtPlanilla, "totalaempleador");
                             iindice_a_trabajador = BuscarIndiceColumna(odtPlanilla, "totalatrabajador");
 
-                            iindice_essalud_vida = BuscarIndiceColumna(odtPrueba, "ESSALUDV");
-                            iindice_essalud_seguro_regular = BuscarIndiceColumna(odtPrueba, "ESSALUD-SR-P");
-                            iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, "APORTE ESSALUD");
-                            iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtPrueba, "ESSALUD-SCTR");
+                            CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador oMaestroATrabajador = new CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador();
 
-                            iindice_aporte_entidad = BuscarIndiceColumna(odtPrueba, "APORT. ENTIDAD");
- 
-                            iindice_renta_quinta = BuscarIndiceColumna(odtPrueba, "RENTA 5TA CAT");
- 
+                            /*Aportaciones trabajador ESSALUD +VIDA y ESSALUD - SEGURO REGULAR - PENSIONISTA*/
+                            columna_essalud_vida  = oMaestroATrabajador.ListarAbreviacionDeIdtmaestroatrabajador(6).Rows[0][1].ToString();
+                            iindice_essalud_vida = BuscarIndiceColumna(odtPrueba, columna_essalud_vida);
+
+                            columna_essalud_regular = oMaestroATrabajador.ListarAbreviacionDeIdtmaestroatrabajador(12).Rows[0][1].ToString();
+                            iindice_essalud_seguro_regular = BuscarIndiceColumna(odtPrueba, columna_essalud_regular);
+
+                            /*Aportaciones empleador ESSALUD (SEGURO REGULAR, CBBSP, AGRARIO/ACUICULTOR) - TRABAJADOR 
+                             * y ESSALUD – SEGURO COMPLEMENTARIO DE TRABAJO DE RIESGO Y APORTE ENTIDAD*/
+
+                            CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador oMaestroAEmpleador = new CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador();
+
+                            columna_essalud_trabajador = oMaestroAEmpleador.ListarAbreviacionDeIdtmaestroaempleador(5).Rows[0][1].ToString();
+                            iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, columna_essalud_trabajador);
+
+                            columna_essalud_complementario = oMaestroAEmpleador.ListarAbreviacionDeIdtmaestroaempleador(7).Rows[0][1].ToString(); 
+                            iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtPrueba, columna_essalud_complementario);
+
+                            columna_aporte_entidad = oMaestroAEmpleador.ListarAbreviacionDeIdtmaestroaempleador(14).Rows[0][1].ToString(); 
+                            iindice_aporte_entidad = BuscarIndiceColumna(odtPrueba, columna_aporte_entidad);
+
+                            /* Descuentos: Renta de 5ta categoria*/
+                            CapaDeNegocios.Sunat.cMaestroDescuentos oMaestroDctos = new CapaDeNegocios.Sunat.cMaestroDescuentos();
+
+                            columna_renta_5ta = oMaestroDctos.ListarAbreviacionDeIdtmaestrodescuentos(18).Rows[0][1].ToString();
+                            iindice_renta_quinta = BuscarIndiceColumna(odtPrueba, columna_renta_5ta); 
 
                             if (ll == odtPrueba.Rows.Count - 1)
                             {
@@ -1346,8 +1371,10 @@ namespace CapaUsuario.Reportes
                                 iindice_a_empleador = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES EMPLEADOR");
                                 if (iindice_a_empleador != -1)
                                     drFilaCorta[iindice_a_empleador] = sumatoria_a_empleador.ToString();
-  
-                                iindice_aporte_entidad = BuscarIndiceColumna(odtPruebaCorta, "APORT. ENTIDAD");
+
+                                /* 14 = Aporte entidad */
+                                
+                                iindice_aporte_entidad = BuscarIndiceColumna(odtPruebaCorta, columna_aporte_entidad);
                                 if (iindice_aporte_entidad != -1)
                                 {
                                     monto_aporte_entidad = Convert.ToDecimal(odtPruebaCorta.Rows[d][iindice_aporte_entidad]);
@@ -1410,21 +1437,21 @@ namespace CapaUsuario.Reportes
 
                         //Agregando columnas al cuadro redondear a entero
 
-                        if (iindice_essalud_vida != -1) odtRedondear.Columns.Add("ESSALUDV", typeof(string));
-                        if (iindice_essalud_seguro_regular != -1) odtRedondear.Columns.Add("ESSALUD-SR-P", typeof(string));
-                        if (iindice_essalud_cbbsp != -1) odtRedondear.Columns.Add("APORTE ESSALUD", typeof(string));
-                        if (iindice_essalud_seguro_complementario != -1) odtRedondear.Columns.Add("ESSALUD-SCTR", typeof(string));
+                        if (iindice_essalud_vida != -1) odtRedondear.Columns.Add( columna_essalud_vida, typeof(string));
+                        if (iindice_essalud_seguro_regular != -1) odtRedondear.Columns.Add( columna_essalud_regular  , typeof(string));
+                        if (iindice_essalud_cbbsp != -1) odtRedondear.Columns.Add(columna_essalud_trabajador  , typeof(string));
+                        if (iindice_essalud_seguro_complementario != -1) odtRedondear.Columns.Add ( columna_essalud_complementario , typeof(string));
 
-                        if (iindice_renta_quinta != -1) odtRedondear.Columns.Add("RENTA 5TA CAT", typeof(string));
+                        if (iindice_renta_quinta != -1) odtRedondear.Columns.Add( columna_renta_5ta , typeof(string));
                         odtRedondear.Columns.Add("TOTAL", typeof(string));
 
                         //Actualizando indices para agregar valores a odtRedondear
-                        iindice_essalud_vida = BuscarIndiceColumna(odtRedondear, "ESSALUDV");
-                        iindice_essalud_seguro_regular = BuscarIndiceColumna(odtRedondear, "ESSALUD-SR-P");
-                        iindice_essalud_cbbsp = BuscarIndiceColumna(odtRedondear, "APORTE ESSALUD");
-                        iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtRedondear, "ESSALUD-SCTR");
+                        iindice_essalud_vida = BuscarIndiceColumna(odtRedondear, columna_essalud_vida);
+                        iindice_essalud_seguro_regular = BuscarIndiceColumna(odtRedondear, columna_essalud_regular);
+                        iindice_essalud_cbbsp = BuscarIndiceColumna(odtRedondear, columna_essalud_trabajador);
+                        iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtRedondear, columna_essalud_complementario);
 
-                        iindice_renta_quinta = BuscarIndiceColumna(odtRedondear, "RENTA 5TA CAT");
+                        iindice_renta_quinta = BuscarIndiceColumna(odtRedondear, columna_renta_5ta);
 
                         drFilaRedondear = odtRedondear.NewRow();
                         drFilaRedondear.Delete();
@@ -1478,6 +1505,7 @@ namespace CapaUsuario.Reportes
                         /*Agregando Remuneración total*/
 
                         /*DEBE */
+
                         iindice_total_ingresos = BuscarIndiceColumna(odtPruebaCorta, "TOTAL INGRESOS");
                         iindice_total_a_empleador = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES EMPLEADOR");
 
@@ -1509,40 +1537,20 @@ namespace CapaUsuario.Reportes
                         /*FIN DEBE */
 
                         /* HABER */
-                        iindice_ad = BuscarIndiceColumna(odtPrueba, "AD");
-                        iindice_cs = BuscarIndiceColumna(odtPrueba, "CS");
-                        iindice_daomj = BuscarIndiceColumna(odtPrueba, "DAOMJ");
-                        iindice_ta = BuscarIndiceColumna(odtPrueba, "TA");
-                        iindice_in = BuscarIndiceColumna(odtPrueba, "IN");
-                        iindice_odndbm = BuscarIndiceColumna(odtPrueba, "ODNDBM");
-                        iindice_oddbi = BuscarIndiceColumna(odtPrueba, "ODDBI");
-                        iindice_desc_caja = BuscarIndiceColumna(odtPrueba, "DESC CAJA");
-                        iindice_renta_5ta_cat = BuscarIndiceColumna(odtPrueba, "RENTA 5TA CAT");
-                        iindice_renta_4ta_cat = BuscarIndiceColumna(odtPrueba, "RENTA 4TA CAT");
-                        iindice_desc_judi = BuscarIndiceColumna(odtPrueba, "DESC JUDI");
-                        iindice_desc_rimac = BuscarIndiceColumna(odtPrueba, "DESC RIMAC");
-                        iindice_faltas_sanciones = BuscarIndiceColumna(odtPrueba, "FALTAS/SANCIONES");
-                        iindice_aporte_essalud = BuscarIndiceColumna(odtPrueba, "APORTE ESSALUD");
-
- 
+                       
                         iindice_afp = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES TRABAJADOR");
-                        iindice_aportacion_entidad = BuscarIndiceColumna(odtPrueba, "APORT. ENTIDAD");
+                        iindice_aportacion_entidad = BuscarIndiceColumna(odtPrueba, columna_aporte_entidad);
                         iindice_neto_cobrar = BuscarIndiceColumna(odtPruebaCorta, "NETO A COBRAR");
 
-                        iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, "APORTE ESSALUD");
-                        iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtPrueba, "ESSALUD-SCTR");
+                        iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, columna_essalud_trabajador);
+                        iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtPrueba, columna_essalud_complementario);
 
                         if (odtPruebaCorta.Rows.Count > 0) ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
                         if (odtPrueba.Rows.Count > 0) ultima_fila_prueba = odtPrueba.Rows.Count - 1;
-
- 
-
+                        
                         if (iindice_aportacion_entidad != -1)
                             aportacion_entidad_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba_corta][iindice_aportacion_entidad]);
-
- 
-
-
+                        
                         if (iindice_neto_cobrar != -1)
                         {
                             neto_cobrar_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_neto_cobrar]);
@@ -2337,15 +2345,37 @@ namespace CapaUsuario.Reportes
                             iindice_a_empleador = BuscarIndiceColumna(odtPlanilla, "totalaempleador");
                             iindice_a_trabajador = BuscarIndiceColumna(odtPlanilla, "totalatrabajador");
 
-                            iindice_essalud_vida = BuscarIndiceColumna(odtPrueba, "ESSALUDV");
-                            iindice_essalud_seguro_regular = BuscarIndiceColumna(odtPrueba, "ESSALUD-SR-P");
-                            iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, "APORTE ESSALUD");
-                            iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtPrueba, "ESSALUD-SCTR");
+                            CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador oMaestroATrabajador = new CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador();
 
-                            iindice_aporte_entidad = BuscarIndiceColumna(odtPrueba, "APORT. ENTIDAD");
+                            /*Aportaciones trabajador ESSALUD +VIDA y ESSALUD - SEGURO REGULAR - PENSIONISTA*/
+                            columna_essalud_vida = oMaestroATrabajador.ListarAbreviacionDeIdtmaestroatrabajador(6).Rows[0][1].ToString();
+                            iindice_essalud_vida = BuscarIndiceColumna(odtPrueba, columna_essalud_vida);
 
-                            iindice_snp_dl = BuscarIndiceColumna(odtPrueba, "SNP 13%");
-                            iindice_renta_quinta = BuscarIndiceColumna(odtPrueba, "RENTA 5TA CAT");
+                            columna_essalud_regular = oMaestroATrabajador.ListarAbreviacionDeIdtmaestroatrabajador(12).Rows[0][1].ToString();
+                            iindice_essalud_seguro_regular = BuscarIndiceColumna(odtPrueba, columna_essalud_regular);
+
+                            /*Aportaciones empleador ESSALUD (SEGURO REGULAR, CBBSP, AGRARIO/ACUICULTOR) - TRABAJADOR 
+                             * y ESSALUD – SEGURO COMPLEMENTARIO DE TRABAJO DE RIESGO Y APORTE ENTIDAD*/
+
+                            CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador oMaestroAEmpleador = new CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador();
+
+                            columna_essalud_trabajador = oMaestroAEmpleador.ListarAbreviacionDeIdtmaestroaempleador(5).Rows[0][1].ToString();
+                            iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, columna_essalud_trabajador);
+
+                            columna_essalud_complementario = oMaestroAEmpleador.ListarAbreviacionDeIdtmaestroaempleador(7).Rows[0][1].ToString();
+                            iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtPrueba, columna_essalud_complementario);
+
+                            columna_aporte_entidad = oMaestroAEmpleador.ListarAbreviacionDeIdtmaestroaempleador(14).Rows[0][1].ToString();
+                            iindice_aporte_entidad = BuscarIndiceColumna(odtPrueba, columna_aporte_entidad);
+
+                            /* Descuentos: Renta de 5ta categoria*/
+                            CapaDeNegocios.Sunat.cMaestroDescuentos oMaestroDctos = new CapaDeNegocios.Sunat.cMaestroDescuentos();
+
+                            columna_renta_5ta = oMaestroDctos.ListarAbreviacionDeIdtmaestrodescuentos(18).Rows[0][1].ToString();
+                            iindice_renta_quinta = BuscarIndiceColumna(odtPrueba, columna_renta_5ta);
+
+                            columna_snp = oMaestroATrabajador.ListarAbreviacionDeIdtmaestroatrabajador(9).Rows[0][1].ToString();
+                            iindice_snp_dl = BuscarIndiceColumna(odtPrueba, columna_snp );
 
                             iindice_dec_afp = BuscarIndiceColumna(odtPruebaCorta, "DEC. AFP");
 
@@ -2423,7 +2453,7 @@ namespace CapaUsuario.Reportes
                                 if (iindice_dec_afp != -1)
                                     drFilaCorta[iindice_dec_afp] = sumatoria_dec_afp.ToString();
 
-                                iindice_aporte_entidad = BuscarIndiceColumna(odtPruebaCorta, "APORT. ENTIDAD");
+                                iindice_aporte_entidad = BuscarIndiceColumna(odtPruebaCorta, columna_aporte_entidad);
                                 if (iindice_aporte_entidad != -1)
                                 {
                                     monto_aporte_entidad = Convert.ToDecimal(odtPruebaCorta.Rows[d][iindice_aporte_entidad]);
@@ -2454,7 +2484,7 @@ namespace CapaUsuario.Reportes
                         //Calculando cuadro de AFP
 
 
-                        indice_snp = BuscarIndiceColumna(odtPrueba, "SNP 13%");
+                        indice_snp = BuscarIndiceColumna(odtPrueba, columna_snp);
                         indice_afp = BuscarIndiceColumna(odtPrueba, "DEC. AFP");
                         /*
                         if (indice_snp != -1)
@@ -2544,21 +2574,21 @@ namespace CapaUsuario.Reportes
 
                         //Agregando columnas al cuadro redondear a entero
 
-                        if (iindice_essalud_vida != -1) odtRedondear.Columns.Add("ESSALUDV", typeof(string));
-                        if (iindice_essalud_seguro_regular != -1) odtRedondear.Columns.Add("ESSALUD-SR-P", typeof(string));
-                        if (iindice_essalud_cbbsp != -1) odtRedondear.Columns.Add("APORTE ESSALUD", typeof(string));
-                        if (iindice_essalud_seguro_complementario != -1) odtRedondear.Columns.Add("ESSALUD-SCTR", typeof(string));
-                        if (iindice_snp_dl != -1) odtRedondear.Columns.Add("SNP 13%", typeof(string));
-                        if (iindice_renta_quinta != -1) odtRedondear.Columns.Add("RENTA 5TA CAT", typeof(string));
+                        if (iindice_essalud_vida != -1) odtRedondear.Columns.Add(columna_essalud_vida, typeof(string));
+                        if (iindice_essalud_seguro_regular != -1) odtRedondear.Columns.Add(columna_essalud_regular, typeof(string));
+                        if (iindice_essalud_cbbsp != -1) odtRedondear.Columns.Add(columna_essalud_trabajador , typeof(string));
+                        if (iindice_essalud_seguro_complementario != -1) odtRedondear.Columns.Add(columna_essalud_complementario, typeof(string));
+                        if (iindice_snp_dl != -1) odtRedondear.Columns.Add( columna_snp, typeof(string));
+                        if (iindice_renta_quinta != -1) odtRedondear.Columns.Add( columna_renta_5ta, typeof(string));
                         odtRedondear.Columns.Add("TOTAL", typeof(string));
 
                         //Actualizando indices para agregar valores a odtRedondear
-                        iindice_essalud_vida = BuscarIndiceColumna(odtRedondear, "ESSALUDV");
-                        iindice_essalud_seguro_regular = BuscarIndiceColumna(odtRedondear, "ESSALUD-SR-P");
-                        iindice_essalud_cbbsp = BuscarIndiceColumna(odtRedondear, "APORTE ESSALUD");
-                        iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtRedondear, "ESSALUD-SCTR");
-                        iindice_snp_dl = BuscarIndiceColumna(odtRedondear, "SNP 13%");
-                        iindice_renta_quinta = BuscarIndiceColumna(odtRedondear, "RENTA 5TA CAT");
+                        iindice_essalud_vida = BuscarIndiceColumna(odtRedondear, columna_essalud_vida);
+                        iindice_essalud_seguro_regular = BuscarIndiceColumna(odtRedondear, columna_essalud_regular);
+                        iindice_essalud_cbbsp = BuscarIndiceColumna(odtRedondear, columna_essalud_trabajador);
+                        iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtRedondear, columna_essalud_complementario);
+                        iindice_snp_dl = BuscarIndiceColumna(odtRedondear, columna_snp);
+                        iindice_renta_quinta = BuscarIndiceColumna(odtRedondear, columna_renta_5ta);
 
                         drFilaRedondear = odtRedondear.NewRow();
                         drFilaRedondear.Delete();
@@ -2647,28 +2677,13 @@ namespace CapaUsuario.Reportes
                         /*FIN DEBE */
 
                         /* HABER */
-                        iindice_ad = BuscarIndiceColumna(odtPrueba, "AD");
-                        iindice_cs = BuscarIndiceColumna(odtPrueba, "CS");
-                        iindice_daomj = BuscarIndiceColumna(odtPrueba, "DAOMJ");
-                        iindice_ta = BuscarIndiceColumna(odtPrueba, "TA");
-                        iindice_in = BuscarIndiceColumna(odtPrueba, "IN");
-                        iindice_odndbm = BuscarIndiceColumna(odtPrueba, "ODNDBM");
-                        iindice_oddbi = BuscarIndiceColumna(odtPrueba, "ODDBI");
-                        iindice_desc_caja = BuscarIndiceColumna(odtPrueba, "DESC CAJA");
-                        iindice_renta_5ta_cat = BuscarIndiceColumna(odtPrueba, "RENTA 5TA CAT");
-                        iindice_renta_4ta_cat = BuscarIndiceColumna(odtPrueba, "RENTA 4TA CAT");
-                        iindice_desc_judi = BuscarIndiceColumna(odtPrueba, "DESC JUDI");
-                        iindice_desc_rimac = BuscarIndiceColumna(odtPrueba, "DESC RIMAC");
-                        iindice_faltas_sanciones = BuscarIndiceColumna(odtPrueba, "FALTAS/SANCIONES");
-                        iindice_aporte_essalud = BuscarIndiceColumna(odtPrueba, "APORTE ESSALUD");
-
-                        iindice_snp_13 = BuscarIndiceColumna(odtPrueba, "SNP 13%");
+                         iindice_snp_13 = BuscarIndiceColumna(odtPrueba, columna_snp);
                         iindice_afp = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES TRABAJADOR");
-                        iindice_aportacion_entidad = BuscarIndiceColumna(odtPrueba, "APORT. ENTIDAD");
+                        iindice_aportacion_entidad = BuscarIndiceColumna(odtPrueba, columna_aporte_entidad);
                         iindice_neto_cobrar = BuscarIndiceColumna(odtPruebaCorta, "NETO A COBRAR");
 
-                        iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, "APORTE ESSALUD");
-                        iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtPrueba, "ESSALUD-SCTR");
+                        iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, columna_essalud_trabajador);
+                        iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtPrueba,  columna_essalud_complementario);
 
                         if (odtPruebaCorta.Rows.Count > 0) ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
                         if (odtPrueba.Rows.Count > 0) ultima_fila_prueba = odtPrueba.Rows.Count - 1;
@@ -2680,7 +2695,7 @@ namespace CapaUsuario.Reportes
                             snp_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_snp_13]);
                             drFilaEEFF = odtEEFF.NewRow();
                             drFilaEEFF.Delete();
-                            drFilaEEFF[0] = "SNP 13%";
+                            drFilaEEFF[0] = columna_snp ;
                             drFilaEEFF[2] = snp_total;
                             haber_total += snp_total;
                             odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
@@ -3038,7 +3053,7 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph3 = new Paragraph();
                 paragraph3.Alignment = Element.ALIGN_CENTER;
                 paragraph3.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                paragraph3.Add("PLANILLA DE RENUMERACIONES DEL PERSONAL DE " + sRegimenLaboral + " DE " + smes + " DE " + saño + ".");
+                paragraph3.Add("PLANILLA DE RENUMERACIONES DEL PERSONAL DE " + sRegimenLaboral + " DE " + saño + " DE " + smes + ".");
 
                 Paragraph paragraph4 = new Paragraph();
                 paragraph4.Alignment = Element.ALIGN_LEFT;
@@ -3056,7 +3071,14 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph6 = new Paragraph();
                 paragraph6.Alignment = Element.ALIGN_CENTER;
                 paragraph6.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                paragraph6.Add("CCATCCA, " + String.Format("{0:dd}" , fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
+
+                CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
+
+                fecha = Convert.ToDateTime( oPlanilla.ListarFechaPlanilla(sidtplanilla).Rows[0][1].ToString() );
+
+                paragraph6.Add("CCATCCA, " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
+                /*FEcha de hoy*/
+                //paragraph6.Add("CCATCCA, " + String.Format("{0:dd}" , fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
 
                 //FIRMAS
                 Paragraph p_rrhh = new Paragraph();
@@ -3099,16 +3121,22 @@ namespace CapaUsuario.Reportes
 
                 string ruta_imagen = ruta + "\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
 
+                string ruta_cuadro_oficinas = ruta + "\\oficinas.png";
+
                 iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
                 logo.ScalePercent(64f);
                 logo.SetAbsolutePosition(12f, pdfDoc.PageSize.Height-36f-100f);
+
+                iTextSharp.text.Image oficinas = iTextSharp.text.Image.GetInstance(ruta_cuadro_oficinas);
+                oficinas.ScalePercent(64f);
+                oficinas.SetAbsolutePosition(pdfDoc.PageSize.Width - 150f , pdfDoc.PageSize.Height - 80f);
 
                 //tabla que continene logo, meta y nº planilla
                 PdfPTable tabla_bonus = new PdfPTable(3);
                 tabla_bonus.DefaultCell.BorderWidth = 0;
 
                 //tabla que continene rrhh, gerencia municipal, presupuesto y contabilidad
-                PdfPTable tabla_firmas = new PdfPTable(3);
+                PdfPTable tabla_firmas = new PdfPTable(4);
                 tabla_firmas.DefaultCell.BorderWidth = 0;
 
                 //instanciando una columna y 3 columnas
@@ -3117,7 +3145,7 @@ namespace CapaUsuario.Reportes
                 column_one.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 1);
 
                 MultiColumnText column_3 = new MultiColumnText();
-                column_3.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 3);
+                column_3.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 4);
 
                 //Agrupando tabla titular
                 tabla_bonus.AddCell(pdfTable2);
@@ -3128,7 +3156,7 @@ namespace CapaUsuario.Reportes
                 tabla_firmas.AddCell(p_rrhh);
                 tabla_firmas.AddCell(p_gm);
                 tabla_firmas.AddCell(p_pre);
-                //tabla_firmas.AddCell(p_con);
+                tabla_firmas.AddCell(p_con);
                 
                 //Agregando una columna 
                 column_one.AddElement(paragraph);
@@ -3149,6 +3177,7 @@ namespace CapaUsuario.Reportes
                 column_one.AddElement(tabla_firmas);
 
                 pdfDoc.Add(logo);
+                pdfDoc.Add(oficinas);
                 pdfDoc.Add(column_one);
                 pdfDoc.Close();
                 stream.Close();
