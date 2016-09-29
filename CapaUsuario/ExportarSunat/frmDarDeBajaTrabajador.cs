@@ -161,39 +161,37 @@ namespace CapaUsuario.ExportarSunat
                     string EPS = "";
                     Periodos = oExpo.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, TipoRegistro, fechainicio, fechafin.ToShortDateString(), indicadorTipoRegistro, EPS);
                     milista.Add(Periodos);
+                }
+                SaveFileDialog Guardar = new SaveFileDialog();
+                string RUC = "20226560824";
+                string tipoArchivo = ".PER";
+                string rp = "RP_";
+                string Titulo = rp + RUC + tipoArchivo;
+                Guardar.FileName = Titulo;
+                string Ruta = "";
+                if (Guardar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
 
+                    if (File.Exists(Guardar.FileName))
+                    {
+                        File.Delete(Guardar.FileName);
+                    }
+                    if (Guardar.FileName.Contains(Titulo))
+                    {
+                        Ruta = Guardar.FileName;
+                        StreamWriter escribir = new StreamWriter(Ruta);//ruta del guardado
+                                                                       //StreamWriter escribir = new StreamWriter(@"C:\Users\Usuario\Desktop\Textos SUNAT\" + Titulo + "");//ruta del guardado
+                        for (int k = 0; k < milista.Count; k++)//mientras sea menor al contenido del arreglo(arraylist) guardará cada items k
+                        {
+                            escribir.WriteLine(milista[k]);//guarda en el bloc de notas 
+                        }
+                        escribir.Close();//cierra la escritura para que eje manejar por separado el bloc de notas
+                        MessageBox.Show("Datos Exportados Exitosamente");//mensaje de cierre exitoso
+
+                    }
                 }
             }
             //CrearCarpeta();
-            SaveFileDialog Guardar = new SaveFileDialog();
-            string RUC = "20226560824";
-            string tipoArchivo = ".PER";
-            string rp = "RP_";
-            string Titulo = rp + RUC + tipoArchivo;
-            Guardar.FileName = Titulo;
-            string Ruta = "";
-            if (Guardar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-
-                if (File.Exists(Guardar.FileName))
-                {
-                    File.Delete(Guardar.FileName);
-                }
-                if (Guardar.FileName.Contains(Titulo))
-                {
-                    Ruta = Guardar.FileName;
-                    StreamWriter escribir = new StreamWriter(Ruta);//ruta del guardado
-                                                                   //StreamWriter escribir = new StreamWriter(@"C:\Users\Usuario\Desktop\Textos SUNAT\" + Titulo + "");//ruta del guardado
-                    for (int k = 0; k < milista.Count; k++)//mientras sea menor al contenido del arreglo(arraylist) guardará cada items k
-                    {
-                        escribir.WriteLine(milista[k]);//guarda en el bloc de notas 
-                    }
-                    escribir.Close();//cierra la escritura para que eje manejar por separado el bloc de notas
-                    MessageBox.Show("Datos Exportados Exitosamente");//mensaje de cierre exitoso
-
-                }
-            }
-
 
         }
 
@@ -225,8 +223,14 @@ namespace CapaUsuario.ExportarSunat
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            concatenarDatos();
-            milista.Clear();
+            if (dgvDarDeBaja.Rows.Count != 0)
+            {
+                concatenarDatos();
+                milista.Clear();
+            }
+            else
+            MessageBox.Show("No ha seleccionado ningún trabajador para dar de baja");
+            
         }
 
         private void frmDarDeBajaTrabajador_Load(object sender, EventArgs e)

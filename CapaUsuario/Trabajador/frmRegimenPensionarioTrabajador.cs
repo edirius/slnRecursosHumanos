@@ -27,7 +27,7 @@ namespace CapaUsuario.Trabajador
         {
             CargarAFP();
             cboFinPeriodo_SelectedIndexChanged(sender, e);
-            linkLabel1.Links.Add(40,13,"www.google.com");
+            linkLabel1.Links.Add(40,13, "http://www.sbs.gob.pe/principal/categoria/averigue-si-esta-afiliado-al-sistema-privado-de-pensiones-spp/2211/c-2211");
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)

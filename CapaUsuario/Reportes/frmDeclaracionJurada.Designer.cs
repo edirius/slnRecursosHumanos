@@ -49,6 +49,8 @@
             // 
             this.dgvDeclaracionJurada.AllowUserToAddRows = false;
             this.dgvDeclaracionJurada.AllowUserToDeleteRows = false;
+            this.dgvDeclaracionJurada.AllowUserToResizeColumns = false;
+            this.dgvDeclaracionJurada.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
             this.dgvDeclaracionJurada.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDeclaracionJurada.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -96,6 +98,7 @@
             this.cboAño.Name = "cboAño";
             this.cboAño.Size = new System.Drawing.Size(146, 21);
             this.cboAño.TabIndex = 3;
+            this.cboAño.SelectedValueChanged += new System.EventHandler(this.cboAño_SelectedValueChanged);
             // 
             // label2
             // 

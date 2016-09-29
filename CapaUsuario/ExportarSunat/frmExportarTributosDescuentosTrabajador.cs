@@ -22,6 +22,7 @@ namespace CapaUsuario.ExportarSunat
         string Nromes = "";
         string FechaTexto = "";
         ArrayList milista = new ArrayList();
+        ArrayList milistaJornada = new ArrayList();
         public frmExportarTributosDescuentosTrabajador()
         {
             InitializeComponent();
@@ -188,17 +189,88 @@ namespace CapaUsuario.ExportarSunat
             
         }
         private void btnExportar_Click(object sender, EventArgs e)
-        {   if (dgvIngresos.Columns.Count != 0 & dgvAportaciones.Columns.Count != 0 & dgvDescuentos.Columns.Count != 0)
+        {
+            if (dgvListaPlanillas.Rows.Count != 0)
             {
-                concatenarDatos();
-                milista.Clear();
+                if (CheckJornada.Checked == true)
+                {
+                    concatenarDatos();
+                    concatenarDatosJornadaLaboral();
+                    milista.Clear();
+                    milistaJornada.Clear();
+                }
+                else if (dgvIngresos.Rows.Count != 0)
+                {
+                    concatenarDatos();
+                    milista.Clear();
+                }
+                else MessageBox.Show("La planilla no tiene trabajadores para exportar");
             }
             else
-                MessageBox.Show("No hay datos para Exportar");
+            {
+                MessageBox.Show("No ha seleccionado ninguna planilla");
+            } 
         }
         public void CrearCarpeta()
         {
             DirectoryInfo di = Directory.CreateDirectory(@"C:\Users\Usuario\Desktop\Textos SUNAT");//ruta de la carpeta
+        }
+        public void concatenarDatosJornadaLaboral()
+        {
+            
+            string TituloJornada = "";
+            try
+            {
+                for (int i = 0; i < dgvJornadaLaboral.Rows.Count; i++)
+                {
+                    //obtenemos los datos de las columnas que queremos
+                    string mes = dgvListaPlanillas[2, i].Value.ToString();
+                    string año = dgvListaPlanillas[3, i].Value.ToString();
+                    string TipoDoc = dgvJornadaLaboral[0, i].Value.ToString();
+                    string dni = dgvJornadaLaboral[1, i].Value.ToString();
+                    string NHO = dgvJornadaLaboral[2, i].Value.ToString();
+                    string NMO = dgvJornadaLaboral[3, i].Value.ToString();
+                    string NHS = dgvJornadaLaboral[4, i].Value.ToString();
+                    string NMS = dgvJornadaLaboral[5, i].Value.ToString();
+                    string codigoformjornada = "0601";
+                    string Ruc = txtRuc.Text;
+                    string Palo = "|";
+                    ConvertirMes(mes);
+                    string Jornada = TipoDoc + Palo + dni + Palo + NHO + Palo + NMO + Palo + NHS + Palo + NMS + Palo;
+                    TituloJornada = codigoformjornada + año + Nromes + txtRuc.Text + ".jor";
+                    milistaJornada.Add(Jornada);//agregamos los datos concatenados al arreglo(ArrayList)
+                }
+            }
+            catch
+            {
+            }
+            SaveFileDialog Guardar = new SaveFileDialog();
+            Guardar.FileName = TituloJornada;
+            string Ruta = "";
+            if (TituloJornada != "")
+            {
+                if (Guardar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+
+                    if (File.Exists(Guardar.FileName))
+                    {
+                        File.Delete(Guardar.FileName);
+                    }
+                    if (Guardar.FileName.Contains(TituloJornada))
+                    {
+                        Ruta = Guardar.FileName;
+                        StreamWriter escribir = new StreamWriter(Ruta);//ruta del guardado
+                        //StreamWriter escribir = new StreamWriter(@"C:\Users\Usuario\Desktop\Textos SUNAT\" + Titulo + "");//ruta del guardado
+                        for (int k = 0; k < milistaJornada.Count; k++)//mientras sea menor al contenido del arreglo(arraylist) guardará cada items k
+                        {
+                            escribir.WriteLine(milistaJornada[k]);//guarda en el bloc de notas 
+                        }
+                        escribir.Close();//cierra la escritura para que eje manejar por separado el bloc de notas
+                        MessageBox.Show("Datos de Jornada laboral exportados Exitosamente");//mensaje de cierre exitoso
+
+                    }
+                }
+            }
         }
         public void concatenarDatos()
         {
@@ -245,6 +317,7 @@ namespace CapaUsuario.ExportarSunat
             catch
             {
             }
+
             try
             {
                 for (int i = 0; i < dgvAportaciones.Rows.Count; i++)
@@ -290,7 +363,7 @@ namespace CapaUsuario.ExportarSunat
                             escribir.WriteLine(milista[k]);//guarda en el bloc de notas 
                         }
                         escribir.Close();//cierra la escritura para que eje manejar por separado el bloc de notas
-                        MessageBox.Show("Datos Exportados Exitosamente");//mensaje de cierre exitoso
+                        MessageBox.Show("Datos de tributos y descuentos del trabajador exportados Exitosamente");//mensaje de cierre exitoso
 
                     }
                 }
@@ -302,12 +375,20 @@ namespace CapaUsuario.ExportarSunat
 
         private void dgvListaPlanillas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
-            string numero = "";
-            numero = dgvListaPlanillas[0, Valor].Value.ToString();
-            dgvIngresos.DataSource = oExportar.ListarTrabajadoresPorPlanillaIngresos(numero);
-            dgvDescuentos.DataSource = oExportar.ListarTrabajadoresPorPlanillaDescuentos(numero);
-            dgvAportaciones.DataSource = oExportar.ListarTrabajadoresPorPlanillaAportaciones(numero);
+            try
+            {
+                int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
+                string numero = "";
+                numero = dgvListaPlanillas[0, Valor].Value.ToString();
+                dgvIngresos.DataSource = oExportar.ListarTrabajadoresPorPlanillaIngresos(numero);
+                dgvDescuentos.DataSource = oExportar.ListarTrabajadoresPorPlanillaDescuentos(numero);
+                dgvAportaciones.DataSource = oExportar.ListarTrabajadoresPorPlanillaAportaciones(numero);
+                dgvJornadaLaboral.DataSource = oExportar.ListarJornadaLaboralTrabajadores(numero);
+            }
+            catch
+            {
+
+            }
         }
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -330,12 +411,21 @@ namespace CapaUsuario.ExportarSunat
 
         private void dgvListaPlanillas_SelectionChanged(object sender, EventArgs e)
         {
-            int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
-            string numero = "";
-            numero = dgvListaPlanillas[0, Valor].Value.ToString();
-            dgvIngresos.DataSource = oExportar.ListarTrabajadoresPorPlanillaIngresos(numero);
-            dgvDescuentos.DataSource = oExportar.ListarTrabajadoresPorPlanillaDescuentos(numero);
-            dgvAportaciones.DataSource = oExportar.ListarTrabajadoresPorPlanillaAportaciones(numero);
+            try
+            {
+                int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
+                string numero = "";
+                numero = dgvListaPlanillas[0, Valor].Value.ToString();
+                dgvIngresos.DataSource = oExportar.ListarTrabajadoresPorPlanillaIngresos(numero);
+                dgvDescuentos.DataSource = oExportar.ListarTrabajadoresPorPlanillaDescuentos(numero);
+                dgvAportaciones.DataSource = oExportar.ListarTrabajadoresPorPlanillaAportaciones(numero);
+                dgvJornadaLaboral.DataSource = oExportar.ListarJornadaLaboralTrabajadores(numero);
+            }
+            catch 
+            {
+
+            }   
+            
         }
 
         private void bntListarTodo_Click(object sender, EventArgs e)

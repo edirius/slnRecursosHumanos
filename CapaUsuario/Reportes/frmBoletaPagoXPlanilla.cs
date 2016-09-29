@@ -600,6 +600,8 @@ namespace CapaUsuario.Reportes
             DataTable odtOB = new DataTable();
             DataTable odtE2 = new DataTable();
 
+            DataTable odtID = new DataTable();
+
             DataTable odtC3 = new DataTable();
 
             DataTable odtPlanilla = new DataTable();
@@ -746,7 +748,8 @@ namespace CapaUsuario.Reportes
                 odtC.Rows[0][2] = 0;
                 odtC.Rows[0][3] = "Domiciliado";
                 odtC.Rows[0][4] = dias_laborados * 8;
-                odtC.Rows[0][5] = dias_laborados * 8 * 60;
+                //odtC.Rows[0][5] = dias_laborados * 8 * 60;
+                odtC.Rows[0][5] = 0;
 
                 odtCB.Columns.Clear();
                 odtCB.Rows.Clear();
@@ -849,7 +852,7 @@ namespace CapaUsuario.Reportes
 
                 decimal dIngresos = 0;
                 decimal dIngresosParcial = 0;
-                decimal dEgresos = 0;
+                decimal dDescuentos = 0;
                 decimal dEgresosParcial = 0;
                 decimal dNeto = 0;
 
@@ -866,10 +869,16 @@ namespace CapaUsuario.Reportes
                         dEgresosParcial = Convert.ToDecimal(odtF.Rows[k][2].ToString());
 
                     dIngresos += dIngresosParcial;
-                    dEgresos += dEgresosParcial;
+                    dDescuentos += dEgresosParcial;
                 }
 
-                dNeto = dIngresos - dEgresos;
+                /* Ingresos y Egresos */
+                odtID = oDetallePlanillaATrabajador.ListarDetallePlanillaXTrabajador(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+
+                dIngresos = Convert.ToDecimal( odtID.Rows[0][1]);
+                dDescuentos = Convert.ToDecimal(odtID.Rows[0][4]);
+
+                dNeto = dIngresos - dDescuentos;
 
                 drFilaF = odtF.NewRow();
                 drFilaF.Delete();
