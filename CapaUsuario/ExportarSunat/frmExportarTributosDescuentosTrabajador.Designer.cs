@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvIngresos = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodForm = new System.Windows.Forms.TextBox();
@@ -44,11 +44,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvDescuentos = new System.Windows.Forms.DataGridView();
             this.dgvAportaciones = new System.Windows.Forms.DataGridView();
+            this.dgvJornadaLaboral = new System.Windows.Forms.DataGridView();
+            this.CheckJornada = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDescuentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAportaciones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJornadaLaboral)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvIngresos
@@ -58,7 +61,7 @@
             this.dgvIngresos.Location = new System.Drawing.Point(12, 297);
             this.dgvIngresos.Name = "dgvIngresos";
             this.dgvIngresos.RowHeadersVisible = false;
-            this.dgvIngresos.Size = new System.Drawing.Size(384, 172);
+            this.dgvIngresos.Size = new System.Drawing.Size(312, 172);
             this.dgvIngresos.TabIndex = 0;
             // 
             // label2
@@ -97,11 +100,11 @@
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(804, 19);
+            this.btnExportar.Location = new System.Drawing.Point(877, 19);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(107, 40);
             this.btnExportar.TabIndex = 24;
-            this.btnExportar.Text = "&Exportar Datos (.REM)";
+            this.btnExportar.Text = "&Exportar datos";
             this.btnExportar.UseVisualStyleBackColor = true;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
@@ -110,8 +113,8 @@
             this.dgvListaPlanillas.AllowUserToAddRows = false;
             this.dgvListaPlanillas.AllowUserToResizeColumns = false;
             this.dgvListaPlanillas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaPlanillas.Location = new System.Drawing.Point(11, 93);
             this.dgvListaPlanillas.Name = "dgvListaPlanillas";
@@ -140,7 +143,7 @@
             "OCTUBRE",
             "NOVIEMBRE",
             "DICIEMBRE"});
-            this.cbMes.Location = new System.Drawing.Point(316, 30);
+            this.cbMes.Location = new System.Drawing.Point(276, 30);
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(121, 21);
             this.cbMes.TabIndex = 29;
@@ -150,7 +153,7 @@
             // 
             this.cbAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAños.FormattingEnabled = true;
-            this.cbAños.Location = new System.Drawing.Point(505, 30);
+            this.cbAños.Location = new System.Drawing.Point(465, 30);
             this.cbAños.Name = "cbAños";
             this.cbAños.Size = new System.Drawing.Size(74, 21);
             this.cbAños.TabIndex = 30;
@@ -159,7 +162,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(282, 33);
+            this.label1.Location = new System.Drawing.Point(242, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 31;
@@ -168,7 +171,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(470, 33);
+            this.label3.Location = new System.Drawing.Point(430, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
             this.label3.TabIndex = 32;
@@ -176,7 +179,7 @@
             // 
             // bntListarTodo
             // 
-            this.bntListarTodo.Location = new System.Drawing.Point(619, 19);
+            this.bntListarTodo.Location = new System.Drawing.Point(579, 19);
             this.bntListarTodo.Name = "bntListarTodo";
             this.bntListarTodo.Size = new System.Drawing.Size(179, 40);
             this.bntListarTodo.TabIndex = 33;
@@ -186,6 +189,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CheckJornada);
             this.groupBox1.Controls.Add(this.bntListarTodo);
             this.groupBox1.Controls.Add(this.btnExportar);
             this.groupBox1.Controls.Add(this.label3);
@@ -203,21 +207,41 @@
             // 
             this.dgvDescuentos.AllowUserToAddRows = false;
             this.dgvDescuentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDescuentos.Location = new System.Drawing.Point(427, 297);
+            this.dgvDescuentos.Location = new System.Drawing.Point(368, 297);
             this.dgvDescuentos.Name = "dgvDescuentos";
             this.dgvDescuentos.RowHeadersVisible = false;
-            this.dgvDescuentos.Size = new System.Drawing.Size(385, 172);
+            this.dgvDescuentos.Size = new System.Drawing.Size(302, 172);
             this.dgvDescuentos.TabIndex = 42;
             // 
             // dgvAportaciones
             // 
             this.dgvAportaciones.AllowUserToAddRows = false;
             this.dgvAportaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAportaciones.Location = new System.Drawing.Point(852, 297);
+            this.dgvAportaciones.Location = new System.Drawing.Point(717, 297);
             this.dgvAportaciones.Name = "dgvAportaciones";
             this.dgvAportaciones.RowHeadersVisible = false;
-            this.dgvAportaciones.Size = new System.Drawing.Size(385, 172);
+            this.dgvAportaciones.Size = new System.Drawing.Size(274, 172);
             this.dgvAportaciones.TabIndex = 43;
+            // 
+            // dgvJornadaLaboral
+            // 
+            this.dgvJornadaLaboral.AllowUserToAddRows = false;
+            this.dgvJornadaLaboral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvJornadaLaboral.Location = new System.Drawing.Point(1029, 297);
+            this.dgvJornadaLaboral.Name = "dgvJornadaLaboral";
+            this.dgvJornadaLaboral.RowHeadersVisible = false;
+            this.dgvJornadaLaboral.Size = new System.Drawing.Size(274, 172);
+            this.dgvJornadaLaboral.TabIndex = 44;
+            // 
+            // CheckJornada
+            // 
+            this.CheckJornada.AutoSize = true;
+            this.CheckJornada.Location = new System.Drawing.Point(821, 68);
+            this.CheckJornada.Name = "CheckJornada";
+            this.CheckJornada.Size = new System.Drawing.Size(235, 17);
+            this.CheckJornada.TabIndex = 34;
+            this.CheckJornada.Text = "Generar datos Jornada laboral del trabajador";
+            this.CheckJornada.UseVisualStyleBackColor = true;
             // 
             // frmExportarTributosDescuentosTrabajador
             // 
@@ -233,6 +257,7 @@
             this.Controls.Add(this.dgvIngresos);
             this.Controls.Add(this.dgvDescuentos);
             this.Controls.Add(this.dgvAportaciones);
+            this.Controls.Add(this.dgvJornadaLaboral);
             this.Name = "frmExportarTributosDescuentosTrabajador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generar archivos de importación de tributos y descuentos del trabajador(PDT-PLAME" +
@@ -244,6 +269,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDescuentos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAportaciones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvJornadaLaboral)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,5 +292,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvDescuentos;
         private System.Windows.Forms.DataGridView dgvAportaciones;
+        private System.Windows.Forms.CheckBox CheckJornada;
+        private System.Windows.Forms.DataGridView dgvJornadaLaboral;
     }
 }
