@@ -30,15 +30,15 @@ namespace CapaUsuario.Usuarios
         private void Iniciar()
         {
             txtDescripcion.Text = miPrivilegio.Descripcion;
-            chkMenuAFP.Checked = miPrivilegio.MenuAFP;
-            chkUsuarios.Checked = miPrivilegio.MenuUsuario; 
+            checkMenuAFP.Checked = miPrivilegio.MenuAFP;
+            checkUsuarios.Checked = miPrivilegio.MenuUsuario; 
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             miPrivilegio.Descripcion = txtDescripcion.Text;
-            miPrivilegio.MenuAFP = chkMenuAFP.Checked;
-            miPrivilegio.MenuUsuario = chkUsuarios.Checked;
+            miPrivilegio.MenuAFP = checkMenuAFP.Checked;
+            miPrivilegio.MenuUsuario = checkUsuarios.Checked;
             DialogResult = DialogResult.OK;
         }
 
