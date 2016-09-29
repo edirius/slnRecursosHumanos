@@ -30,27 +30,28 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Todos");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Activos");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Inactivos");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Sin Periodo Laboral");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Situacion Laboral", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Activos", 2, 2);
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Inactivos", 2, 2);
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Sin Periodo Laboral", 2, 2);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Situacion Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
             treeNode3,
             treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Todos");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Regimen CAS");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("DL. 276");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("DL. 728");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Todos", 1, 1);
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Regimen CAS", 2, 2);
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("DL. 276", 2, 2);
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("DL. 728", 2, 2);
             System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Regimen Laboral", new System.Windows.Forms.TreeNode[] {
             treeNode6,
             treeNode7,
             treeNode8,
             treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", 2, 2, new System.Windows.Forms.TreeNode[] {
             treeNode5,
             treeNode10});
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTrabajadores));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -99,6 +100,7 @@
             this.menuCopiarNombre = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCopiarPaterno = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApellidoMaterno = new System.Windows.Forms.ToolStripMenuItem();
+            this.imageLista = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -243,37 +245,60 @@
             // treeFiltro
             // 
             this.treeFiltro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeFiltro.ImageIndex = 0;
+            this.treeFiltro.ImageList = this.imageLista;
             this.treeFiltro.Location = new System.Drawing.Point(0, 0);
             this.treeFiltro.Name = "treeFiltro";
             treeNode1.BackColor = System.Drawing.Color.Teal;
             treeNode1.Name = "Node3";
+            treeNode1.SelectedImageIndex = 0;
             treeNode1.Text = "Todos";
+            treeNode2.ImageIndex = 2;
             treeNode2.Name = "Node4";
+            treeNode2.SelectedImageIndex = 2;
             treeNode2.Text = "Activos";
+            treeNode3.ImageIndex = 2;
             treeNode3.Name = "Node5";
+            treeNode3.SelectedImageIndex = 2;
             treeNode3.Text = "Inactivos";
+            treeNode4.ImageIndex = 2;
             treeNode4.Name = "Node6";
+            treeNode4.SelectedImageIndex = 2;
             treeNode4.Text = "Sin Periodo Laboral";
             treeNode5.Checked = true;
+            treeNode5.ImageIndex = 2;
             treeNode5.Name = "Node1";
+            treeNode5.SelectedImageIndex = 2;
             treeNode5.Text = "Situacion Laboral";
             treeNode6.BackColor = System.Drawing.Color.Teal;
+            treeNode6.ImageIndex = 1;
             treeNode6.Name = "Node0";
+            treeNode6.SelectedImageIndex = 1;
             treeNode6.Text = "Todos";
+            treeNode7.ImageIndex = 2;
             treeNode7.Name = "Node9";
+            treeNode7.SelectedImageIndex = 2;
             treeNode7.Text = "Regimen CAS";
+            treeNode8.ImageIndex = 2;
             treeNode8.Name = "Node10";
+            treeNode8.SelectedImageIndex = 2;
             treeNode8.Text = "DL. 276";
+            treeNode9.ImageIndex = 2;
             treeNode9.Name = "Node11";
+            treeNode9.SelectedImageIndex = 2;
             treeNode9.Text = "DL. 728";
             treeNode10.Checked = true;
             treeNode10.Name = "Node8";
+            treeNode10.SelectedImageIndex = 2;
             treeNode10.Text = "Regimen Laboral";
             treeNode11.Checked = true;
+            treeNode11.ImageIndex = 2;
             treeNode11.Name = "Node0";
+            treeNode11.SelectedImageIndex = 2;
             treeNode11.Text = "FILTRO DE TRABAJADORES";
             this.treeFiltro.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode11});
+            this.treeFiltro.SelectedImageIndex = 0;
             this.treeFiltro.Size = new System.Drawing.Size(205, 550);
             this.treeFiltro.TabIndex = 0;
             this.treeFiltro.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeFiltro_NodeMouseClick);
@@ -454,6 +479,7 @@
             // txtDNI
             // 
             this.txtDNI.Location = new System.Drawing.Point(113, 12);
+            this.txtDNI.MaxLength = 8;
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(100, 20);
             this.txtDNI.TabIndex = 17;
@@ -558,7 +584,7 @@
             this.menuCopiarPaterno,
             this.menuApellidoMaterno});
             this.menuAuxiliar.Name = "menuAuxiliar";
-            this.menuAuxiliar.Size = new System.Drawing.Size(213, 136);
+            this.menuAuxiliar.Size = new System.Drawing.Size(213, 114);
             // 
             // menuCopiarDNI
             // 
@@ -594,6 +620,14 @@
             this.menuApellidoMaterno.Size = new System.Drawing.Size(212, 22);
             this.menuApellidoMaterno.Text = "Copiar Apellido Materno";
             this.menuApellidoMaterno.Click += new System.EventHandler(this.menuApellidoMaterno_Click);
+            // 
+            // imageLista
+            // 
+            this.imageLista.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageLista.ImageStream")));
+            this.imageLista.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageLista.Images.SetKeyName(0, "161.ICO");
+            this.imageLista.Images.SetKeyName(1, "WinXPSetV4 Icon 23.ico");
+            this.imageLista.Images.SetKeyName(2, "123.ICO");
             // 
             // frmListaTrabajadores
             // 
@@ -672,5 +706,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuCopiarNombre;
         private System.Windows.Forms.ToolStripMenuItem menuCopiarPaterno;
         private System.Windows.Forms.ToolStripMenuItem menuApellidoMaterno;
+        private System.Windows.Forms.ImageList imageLista;
     }
 }

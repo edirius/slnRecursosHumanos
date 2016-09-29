@@ -55,21 +55,37 @@ namespace CapaUsuario.AFP
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea eliminar la AFP?", "Eliminar:", MessageBoxButtons.YesNo )== System.Windows.Forms.DialogResult.OK) 
+            try
             {
-                if (dtgListaAFPs.SelectedRows.Count > 0)
+                if (MessageBox.Show("Desea eliminar la AFP?", "Eliminar:", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    cAFP miAFPaEliminar = new cAFP();
-                    miAFPaEliminar.CodigoAFP = Convert.ToInt16(dtgListaAFPs.Rows[dtgListaAFPs.SelectedRows[0].Index].Cells[0].Value.ToString());
-                    miAFPaEliminar.Nombre = dtgListaAFPs.Rows[dtgListaAFPs.SelectedRows[0].Index].Cells[1].Value.ToString();
-                    miListaAFP.EliminarAfp(miAFPaEliminar);
-                    dtgListaAFPs.DataSource = miListaAFP.ObtenerListaAFP();
-                  }
-                else
-                {
-                    MessageBox.Show ("Seleccione una AFP en la Lista de AFP ");
+                    if (dtgListaAFPs.SelectedRows.Count > 0)
+                    {
+                        cAFP miAFPaEliminar = new cAFP();
+                        miAFPaEliminar.CodigoAFP = Convert.ToInt16(dtgListaAFPs.Rows[dtgListaAFPs.SelectedRows[0].Index].Cells[0].Value.ToString());
+                        miAFPaEliminar.Nombre = dtgListaAFPs.Rows[dtgListaAFPs.SelectedRows[0].Index].Cells[1].Value.ToString();
+                        if (miListaAFP.EliminarAfp(miAFPaEliminar) == true)
+                        {
+                            MessageBox.Show("Se elimino Correctamente.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se puede eliminar la AFP porque esta relacionada a otras tablas.");
+                        }
+                        dtgListaAFPs.DataSource = miListaAFP.ObtenerListaAFP();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione una AFP en la Lista de AFP ");
+                    }
                 }
             }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+
+           
         }
 
         private void dtgListaAFPs_CellContentClick(object sender, DataGridViewCellEventArgs e)

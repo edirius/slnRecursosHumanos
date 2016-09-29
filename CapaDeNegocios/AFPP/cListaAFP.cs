@@ -27,8 +27,22 @@ namespace CapaDeNegocios
 
         public Boolean EliminarAfp(cAFP afp)
         {
-            Conexion.GDatos.Ejecutar("spEliminarAFP", afp.CodigoAFP);
-            return true;
+            try
+            {
+                if (Conexion.GDatos.Ejecutar("spEliminarAFP", afp.CodigoAFP) > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new cReglaNegociosException("Error Eliminar AFP. Detalles: " + e.Message, e);
+            }
+            
         }
 
         public Boolean ModificarAfp(cAFP afp)

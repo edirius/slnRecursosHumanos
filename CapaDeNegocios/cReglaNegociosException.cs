@@ -16,7 +16,7 @@ namespace CapaDeNegocios
         /// <param name="original">El error original.</param>
         public cReglaNegociosException(string mensaje, Exception original) : base(mensaje, original)
         {
-
+             
         }
 
         /// <summary>

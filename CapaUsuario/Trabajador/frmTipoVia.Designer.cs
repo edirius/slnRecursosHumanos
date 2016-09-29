@@ -38,6 +38,8 @@
             // 
             // dtgListaTipoVia
             // 
+            this.dtgListaTipoVia.AllowUserToAddRows = false;
+            this.dtgListaTipoVia.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.dtgListaTipoVia.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgListaTipoVia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -48,9 +50,11 @@
             this.dtgListaTipoVia.Location = new System.Drawing.Point(12, 12);
             this.dtgListaTipoVia.MultiSelect = false;
             this.dtgListaTipoVia.Name = "dtgListaTipoVia";
+            this.dtgListaTipoVia.ReadOnly = true;
             this.dtgListaTipoVia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListaTipoVia.Size = new System.Drawing.Size(496, 241);
             this.dtgListaTipoVia.TabIndex = 0;
+            this.dtgListaTipoVia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTipoVia_CellClick);
             this.dtgListaTipoVia.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgListaTipoVia_KeyDown);
             // 
             // idttipovia
@@ -58,6 +62,7 @@
             this.idttipovia.DataPropertyName = "idttipovia";
             this.idttipovia.HeaderText = "Codigo";
             this.idttipovia.Name = "idttipovia";
+            this.idttipovia.ReadOnly = true;
             this.idttipovia.Width = 50;
             // 
             // codigoSunat
@@ -65,6 +70,7 @@
             this.codigoSunat.DataPropertyName = "codigosunat";
             this.codigoSunat.HeaderText = "Codigo Sunat";
             this.codigoSunat.Name = "codigoSunat";
+            this.codigoSunat.ReadOnly = true;
             this.codigoSunat.Width = 50;
             // 
             // descripcion
@@ -72,6 +78,7 @@
             this.descripcion.DataPropertyName = "descripcion";
             this.descripcion.HeaderText = "Descripcion";
             this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
             this.descripcion.Width = 300;
             // 
             // frmTipoVia
