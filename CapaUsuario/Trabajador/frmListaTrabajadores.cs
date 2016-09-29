@@ -31,6 +31,7 @@ namespace CapaUsuario.Trabajador
         private void Iniciar()
         {
             dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
+            lblNumeroTrabajadores.Text = "Nro de trabajadores: " +  dtgListaTrabajadores.Rows.Count.ToString();
             if (dtgListaTrabajadores.Rows.Count > 0)
             {
                 DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, 0);
@@ -94,6 +95,7 @@ namespace CapaUsuario.Trabajador
                 {
                     miListaTrabajadores.ModificarTrabajador(fModificarTrabajador.miTrabajador);
                     dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
+                    lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
                 }
             }
             catch (Exception g)
@@ -115,6 +117,7 @@ namespace CapaUsuario.Trabajador
                     miTrabajador.IdTrabajador = Convert.ToInt16(dtgListaTrabajadores.SelectedRows[0].Cells["id_trabajador"].Value.ToString());
                     miListaTrabajadores.EliminarTrabajador(miTrabajador);
                     dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
+                    lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
                 }
             }
             catch (Exception h)
@@ -152,21 +155,25 @@ namespace CapaUsuario.Trabajador
         private void btnBuscarDNI_Click(object sender, EventArgs e)
         {
             dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral , "Todos" );
+            lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
         }
 
         private void btnBuscarNombre_Click(object sender, EventArgs e)
         {
             dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
         }
 
         private void btnBuscarAPaterno_Click(object sender, EventArgs e)
         {
             dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
         }
 
         private void btnBuscarAMaterno_Click(object sender, EventArgs e)
         {
             dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
         }
 
         private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
@@ -236,6 +243,7 @@ namespace CapaUsuario.Trabajador
                         break;
                 }
                 dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, "","","","",filtroRegimeLaboral, "Todos");
+                lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
             }
             
         }
@@ -245,6 +253,7 @@ namespace CapaUsuario.Trabajador
             if (cboMeta.SelectedIndex >= 0)
             {
                 dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, cboMeta.SelectedValue.ToString() );
+                lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
             }
             
         }
@@ -287,6 +296,55 @@ namespace CapaUsuario.Trabajador
             {
                 Clipboard.SetDataObject(dtgListaTrabajadores.SelectedRows[0].Cells["apellidoMaterno"].Value.ToString());
             }
+        }
+
+        private void txtDNI_Enter(object sender, EventArgs e)
+        {
+            txtBuscarNombre.Text = "";
+            txtBuscarApellidoMaterno.Text = "";
+            txtBuscarApellidoPaterno.Text = "";
+        }
+
+        private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtDNI_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBuscarDNI.Focus();
+            }
+        }
+
+        private void txtBuscarNombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBuscarNombre.Focus(); 
+            }
+        }
+
+        private void txtBuscarApellidoPaterno_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBuscarAPaterno.Focus();
+            }
+        }
+
+        private void txtBuscarApellidoMaterno_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnBuscarAMaterno.Focus();
+            }
+        }
+
+        private void treeFiltro_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
         }
     }
 }
