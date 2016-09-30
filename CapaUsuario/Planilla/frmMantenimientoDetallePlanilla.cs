@@ -18,6 +18,7 @@ namespace CapaUsuario.Planilla
         int sidtplanilla;
         int sidtregimenlaboral;
         int sidtmeta;
+        string snumerometa = "";
         string smes = "";
         string saño = "";
         string splantilla = "";
@@ -348,7 +349,7 @@ namespace CapaUsuario.Planilla
             CalcularNetoaCobrar(e.RowIndex);
         }
 
-        public void RecibirDatos(int pidtplanilla, string pnumero, string pmes, string paño, int pidtmeta, string pmeta, int pidtfuentefinanciamiento, string pfuentefinanciamiento, int pidtregimenlaboral, string pregimenlaboral, string pplantilla)
+        public void RecibirDatos(int pidtplanilla, string pnumero, string pmes, string paño, int pidtmeta, string pnumerometa, string pmeta, int pidtfuentefinanciamiento, string pfuentefinanciamiento, int pidtregimenlaboral, string pregimenlaboral, string pplantilla)
         {
             sidtplanilla = pidtplanilla;
             txtNumero.Text = pnumero;
@@ -357,6 +358,7 @@ namespace CapaUsuario.Planilla
             txtFecha.Text = pmes + " - " + paño;
             sidtmeta = pidtmeta;
             txtMeta.Text = pmeta;
+            snumerometa = pnumerometa;
             //sidtfuentefinanciamiento = pidtfuentefinanciamiento;
             txtFuenteFinanciamiento.Text = pfuentefinanciamiento;
             sidtregimenlaboral = pidtregimenlaboral;
@@ -437,7 +439,7 @@ namespace CapaUsuario.Planilla
                         }
                     }
                     contador += 1;
-                    dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, sidtmeta, FechaInicio, MontoPago, "", "");
+                    dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio, MontoPago, "", "");
                 }
             }
         }

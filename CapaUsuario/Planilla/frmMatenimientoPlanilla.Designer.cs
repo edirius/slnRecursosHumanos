@@ -36,8 +36,6 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.dgvPlanilla = new System.Windows.Forms.DataGridView();
-            this.dgvPrueba = new System.Windows.Forms.DataGridView();
-            this.dgvAFP = new System.Windows.Forms.DataGridView();
             this.cboAño = new System.Windows.Forms.ComboBox();
             this.cboMes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,14 +47,13 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdtRegimenLaboral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -173,6 +170,7 @@
             this.Column4,
             this.Column5,
             this.Column6,
+            this.Column10,
             this.Column7,
             this.Column8,
             this.Column9,
@@ -190,24 +188,6 @@
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick);
             this.dgvPlanilla.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellDoubleClick);
-            // 
-            // dgvPrueba
-            // 
-            this.dgvPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrueba.Location = new System.Drawing.Point(25, 202);
-            this.dgvPrueba.Name = "dgvPrueba";
-            this.dgvPrueba.Size = new System.Drawing.Size(156, 156);
-            this.dgvPrueba.TabIndex = 30;
-            this.dgvPrueba.Visible = false;
-            // 
-            // dgvAFP
-            // 
-            this.dgvAFP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAFP.Location = new System.Drawing.Point(187, 202);
-            this.dgvAFP.Name = "dgvAFP";
-            this.dgvAFP.Size = new System.Drawing.Size(156, 156);
-            this.dgvAFP.TabIndex = 30;
-            this.dgvAFP.Visible = false;
             // 
             // cboAño
             // 
@@ -314,6 +294,14 @@
             this.Column6.Visible = false;
             this.Column6.Width = 20;
             // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "NroMeta";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Visible = false;
+            this.Column10.Width = 20;
+            // 
             // Column7
             // 
             this.Column7.HeaderText = "Meta";
@@ -360,8 +348,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboMes);
             this.Controls.Add(this.cboAño);
-            this.Controls.Add(this.dgvAFP);
-            this.Controls.Add(this.dgvPrueba);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnDetallePlanilla);
             this.Controls.Add(this.btnSalir);
@@ -375,8 +361,6 @@
             this.Text = "Matenimiento Planilla";
             this.Load += new System.EventHandler(this.frmMatenimientoPlanilla_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -391,8 +375,6 @@
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.DataGridView dgvPlanilla;
-        private System.Windows.Forms.DataGridView dgvPrueba;
-        private System.Windows.Forms.DataGridView dgvAFP;
         private System.Windows.Forms.ComboBox cboAño;
         private System.Windows.Forms.ComboBox cboMes;
         private System.Windows.Forms.Label label1;
@@ -404,6 +386,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;

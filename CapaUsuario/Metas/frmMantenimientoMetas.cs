@@ -23,12 +23,27 @@ namespace CapaUsuario.Metas
 
         private void frmMantenimientoMetas_Load(object sender, EventArgs e)
         {
-            Iniciar();
+            CargarAños();
         }
 
         private void Iniciar()
         {
-            dtgListaMetas.DataSource = miCadena.ListarMetas();
+            dtgListaMetas.Rows.Clear();
+            if (cboAño.Text != "")
+            {
+                DataTable oDataMeta = new DataTable();
+                CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
+                oDataMeta = miMeta.ListarMetas();
+                foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+                {
+                    dtgListaMetas.Rows.Add(row[0].ToString(), row[1].ToString(), row[3].ToString(), row[2].ToString(), row[4].ToString(), row[5].ToString());
+                }
+            }
+        }
+
+        private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Iniciar();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -53,8 +68,8 @@ namespace CapaUsuario.Metas
                 fMiMeta.miMeta.GrupoFuncional = new cGrupoFuncional();
                 fMiMeta.miMeta.Codigo = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[0].Value);
                 fMiMeta.miMeta.Año = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[1].Value);
-                fMiMeta.miMeta.Nombre = Convert.ToString(dtgListaMetas.SelectedRows[0].Cells[2].Value);
-                fMiMeta.miMeta.Numero = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[3].Value);
+                fMiMeta.miMeta.Numero = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[2].Value);
+                fMiMeta.miMeta.Nombre = Convert.ToString(dtgListaMetas.SelectedRows[0].Cells[3].Value);
                 fMiMeta.miMeta.GrupoFuncional.Codigo = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[4].Value);
                 fMiMeta.miMeta.ActividadObra.Codigo  = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[5].Value);
 
@@ -79,8 +94,8 @@ namespace CapaUsuario.Metas
                 miMeta.GrupoFuncional = new cGrupoFuncional();
                 miMeta.Codigo = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[0].Value);
                 miMeta.Año = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[1].Value);
-                miMeta.Nombre = Convert.ToString(dtgListaMetas.SelectedRows[0].Cells[2].Value);
-                miMeta.Numero = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[3].Value);
+                miMeta.Numero = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[2].Value);
+                miMeta.Nombre = Convert.ToString(dtgListaMetas.SelectedRows[0].Cells[3].Value);
                 miMeta.GrupoFuncional.Codigo = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[4].Value);
                 miMeta.ActividadObra.Codigo = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[5].Value);
                     miCadena.EliminarMeta(miMeta);
@@ -90,6 +105,15 @@ namespace CapaUsuario.Metas
             {
                 MessageBox.Show("Debe seleccionar una meta");
             }
+        }
+
+        private void CargarAños()
+        {
+            for (int i = DateTime.Now.Year; i >= 2000; i--)
+            {
+                cboAño.Items.Add(i);
+            }
+            cboAño.Text = Convert.ToString(DateTime.Now.Year);
         }
     }
 }

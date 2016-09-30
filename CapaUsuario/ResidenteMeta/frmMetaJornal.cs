@@ -25,6 +25,12 @@ namespace CapaUsuario.ResidenteMeta
 
         private void frmMetaJornal_Load(object sender, EventArgs e)
         {
+            CargarAños();
+            cboAño_SelectedIndexChanged(sender, e);
+        }
+
+        private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
             CargarMeta();
             cboMeta_SelectedIndexChanged(sender, e);
         }
@@ -34,6 +40,17 @@ namespace CapaUsuario.ResidenteMeta
 
         }
 
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            dgvMetaJornal.Rows.Clear();
+            dgvMetaJornal.Rows.Add("I", "0", "MAESTRO DE OBRA", "0");
+            dgvMetaJornal.Rows.Add("I", "0", "OPERARIO", "0");
+            dgvMetaJornal.Rows.Add("I", "0", "OFICIAL", "0");
+            dgvMetaJornal.Rows.Add("I", "0", "PEON", "0");
+            dgvMetaJornal.Rows.Add("I", "0", "ALMACENERO", "0");
+            dgvMetaJornal.Rows.Add("I", "0", "GUARDIAN", "0");
+        }
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             bool bOk = false;
@@ -41,7 +58,7 @@ namespace CapaUsuario.ResidenteMeta
             {
                 miMejaJornal.IdtMetaJornal = Convert.ToInt32(row.Cells[1].Value);
                 miMejaJornal.Categoria = Convert.ToString(row.Cells[2].Value);
-                miMejaJornal.Jornal = Convert.ToInt32(row.Cells[3].Value);
+                miMejaJornal.Jornal = Convert.ToDouble(row.Cells[3].Value);
                 miMeta.Codigo = sidtmeta;
                 if (Convert.ToString(row.Cells[0].Value) == "I")
                 {
@@ -84,33 +101,49 @@ namespace CapaUsuario.ResidenteMeta
 
         private void CargarMeta()
         {
-            CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miCadena = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
-            cboMeta.DataSource = miCadena.ListarMetas();
-            cboMeta.DisplayMember = "nombre";
-            cboMeta.ValueMember = "idtmeta";
+            if (cboAño.Text != "")
+            {
+                DataTable oDataMeta = new DataTable();
+                CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
+                oDataMeta = miMeta.ListarMetas();
+                Dictionary<string, string> test = new Dictionary<string, string>();
+                foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+                {
+                    test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+                }
+                cboMeta.DataSource = new BindingSource(test, null);
+                cboMeta.DisplayMember = "Value";
+                cboMeta.ValueMember = "Key";
+            }
+            if (sidtmeta == 0) { cboMeta.SelectedIndex = -1; }
+            else { cboMeta.SelectedValue = sidtmeta.ToString(); }
         }
 
         private void CargarDatos()
         {
             dgvMetaJornal.Rows.Clear();
             oDataMetaJornal = miMejaJornal.ListarMetaJornal(sidtmeta);
-            int x = oDataMetaJornal.Rows.Count;
             if (oDataMetaJornal.Rows.Count == 0)
             {
-                dgvMetaJornal.Rows.Add("I", "0", "MAESTRO DE OBRA", "0");
-                dgvMetaJornal.Rows.Add("I", "0", "OPERARIO", "0");
-                dgvMetaJornal.Rows.Add("I", "0", "OFICIAL", "0");
-                dgvMetaJornal.Rows.Add("I", "0", "PEON", "0");
-                dgvMetaJornal.Rows.Add("I", "0", "ALMACENERO", "0");
-                dgvMetaJornal.Rows.Add("I", "0", "GUARDIAN", "0");
+                btnCategorias.Enabled = true;
             }
             else
             {
+                btnCategorias.Enabled = false;
                 foreach (DataRow row in oDataMetaJornal.Rows)
                 {
                     dgvMetaJornal.Rows.Add("M", row[0].ToString(), row[1].ToString(), row[2].ToString());
                 }
             }
+        }
+
+        private void CargarAños()
+        {
+            for (int i = DateTime.Now.Year; i >= 2000; i--)
+            {
+                cboAño.Items.Add(i);
+            }
+            cboAño.Text = Convert.ToString(DateTime.Now.Year);
         }
     }
 }
