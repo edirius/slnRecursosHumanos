@@ -69,7 +69,7 @@ namespace CapaUsuario.Tareo
             dgvDetalleTareo.Rows.Clear();
             pIdTTareo = miTareo.IdTTareo;
             oDataTareo = miTareo.ListarTareo(miMeta.Codigo);
-            foreach (DataRow row1 in oDataTareo.Select("numero = '" + (Convert.ToInt32(txtNumero.Text) - 1) + "'"))
+            foreach (DataRow row1 in oDataTareo.Select("numero='" + (Convert.ToInt32(txtNumero.Text) - 1) + "' and descripcion='" + miTareo.Descripcion + "'"))
             {
                 miTareo.IdTTareo = Convert.ToInt32(row1[0]);
             }

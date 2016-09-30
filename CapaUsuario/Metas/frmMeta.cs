@@ -41,8 +41,6 @@ namespace CapaUsuario.Metas
                     miMeta.GrupoFuncional = fGrupoFuncional.miGrupoFuncional;
                     txtGrupoFuncional.Text = miMeta.GrupoFuncional.Nombre;
                 }
-
-
             }
         }
 
@@ -57,8 +55,6 @@ namespace CapaUsuario.Metas
                     miMeta.ActividadObra = fActividadObra.oActividadObra;
                     txtActividadObra.Text = miMeta.ActividadObra.Nombre;
                 }
-
-
             }
         }
 

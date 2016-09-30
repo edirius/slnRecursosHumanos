@@ -14,7 +14,7 @@ namespace CapaDeNegocios.Obras
     {
         int sidtmetajornal;
         string scategoria;
-        int sjornal;
+        double sjornal;
 
         public int IdtMetaJornal
         {
@@ -26,7 +26,7 @@ namespace CapaDeNegocios.Obras
             get { return scategoria; }
             set { scategoria = value; }
         }
-        public int Jornal
+        public double Jornal
         {
             get { return sjornal; }
             set { sjornal = value; }
