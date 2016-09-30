@@ -387,5 +387,11 @@ namespace CapaUsuario
         {
 
         }
+
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CapaUsuario.Usuarios.frmLogin frmLogin = new Usuarios.frmLogin();
+            Application.Exit();
+        }
     }
 }

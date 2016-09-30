@@ -35,13 +35,13 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.CheckTrabadores = new System.Windows.Forms.CheckBox();
             this.CheckTareos = new System.Windows.Forms.CheckBox();
-            this.CheckPlanillas = new System.Windows.Forms.CheckBox();
-            this.CheckTablas = new System.Windows.Forms.CheckBox();
-            this.ChecExportar = new System.Windows.Forms.CheckBox();
+            this.CheckTrabadores = new System.Windows.Forms.CheckBox();
             this.CheckReportes = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.CheckExportar = new System.Windows.Forms.CheckBox();
+            this.CheckTablas = new System.Windows.Forms.CheckBox();
+            this.CheckPlanillas = new System.Windows.Forms.CheckBox();
+            this.CheckMeta = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,7 +107,7 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.checkBox1, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.CheckMeta, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.CheckTareos, 0, 3);
@@ -116,7 +116,7 @@
             this.tableLayoutPanel1.Controls.Add(this.checkMenuAFP, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.CheckPlanillas, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.CheckTablas, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.ChecExportar, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.CheckExportar, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.CheckReportes, 1, 3);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 53);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -130,16 +130,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(348, 168);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // CheckTrabadores
-            // 
-            this.CheckTrabadores.AutoSize = true;
-            this.CheckTrabadores.Location = new System.Drawing.Point(4, 54);
-            this.CheckTrabadores.Name = "CheckTrabadores";
-            this.CheckTrabadores.Size = new System.Drawing.Size(118, 17);
-            this.CheckTrabadores.TabIndex = 2;
-            this.CheckTrabadores.Text = "Menu Trabajadores";
-            this.CheckTrabadores.UseVisualStyleBackColor = true;
-            // 
             // CheckTareos
             // 
             this.CheckTareos.AutoSize = true;
@@ -150,35 +140,15 @@
             this.CheckTareos.Text = "Menu Tareos";
             this.CheckTareos.UseVisualStyleBackColor = true;
             // 
-            // CheckPlanillas
+            // CheckTrabadores
             // 
-            this.CheckPlanillas.AutoSize = true;
-            this.CheckPlanillas.Location = new System.Drawing.Point(177, 4);
-            this.CheckPlanillas.Name = "CheckPlanillas";
-            this.CheckPlanillas.Size = new System.Drawing.Size(94, 17);
-            this.CheckPlanillas.TabIndex = 4;
-            this.CheckPlanillas.Text = "Menu Planillas";
-            this.CheckPlanillas.UseVisualStyleBackColor = true;
-            // 
-            // CheckTablas
-            // 
-            this.CheckTablas.AutoSize = true;
-            this.CheckTablas.Location = new System.Drawing.Point(177, 29);
-            this.CheckTablas.Name = "CheckTablas";
-            this.CheckTablas.Size = new System.Drawing.Size(152, 17);
-            this.CheckTablas.TabIndex = 5;
-            this.CheckTablas.Text = "Menu Tablas Parametricas";
-            this.CheckTablas.UseVisualStyleBackColor = true;
-            // 
-            // ChecExportar
-            // 
-            this.ChecExportar.AutoSize = true;
-            this.ChecExportar.Location = new System.Drawing.Point(177, 54);
-            this.ChecExportar.Name = "ChecExportar";
-            this.ChecExportar.Size = new System.Drawing.Size(126, 17);
-            this.ChecExportar.TabIndex = 6;
-            this.ChecExportar.Text = "Menu Exportar Datos";
-            this.ChecExportar.UseVisualStyleBackColor = true;
+            this.CheckTrabadores.AutoSize = true;
+            this.CheckTrabadores.Location = new System.Drawing.Point(4, 54);
+            this.CheckTrabadores.Name = "CheckTrabadores";
+            this.CheckTrabadores.Size = new System.Drawing.Size(118, 17);
+            this.CheckTrabadores.TabIndex = 2;
+            this.CheckTrabadores.Text = "Menu Trabajadores";
+            this.CheckTrabadores.UseVisualStyleBackColor = true;
             // 
             // CheckReportes
             // 
@@ -190,15 +160,45 @@
             this.CheckReportes.Text = "Menu Reportes";
             this.CheckReportes.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // CheckExportar
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(4, 104);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(76, 17);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Menu AFP";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.CheckExportar.AutoSize = true;
+            this.CheckExportar.Location = new System.Drawing.Point(177, 54);
+            this.CheckExportar.Name = "CheckExportar";
+            this.CheckExportar.Size = new System.Drawing.Size(126, 17);
+            this.CheckExportar.TabIndex = 6;
+            this.CheckExportar.Text = "Menu Exportar Datos";
+            this.CheckExportar.UseVisualStyleBackColor = true;
+            // 
+            // CheckTablas
+            // 
+            this.CheckTablas.AutoSize = true;
+            this.CheckTablas.Location = new System.Drawing.Point(177, 29);
+            this.CheckTablas.Name = "CheckTablas";
+            this.CheckTablas.Size = new System.Drawing.Size(152, 17);
+            this.CheckTablas.TabIndex = 5;
+            this.CheckTablas.Text = "Menu Tablas Parametricas";
+            this.CheckTablas.UseVisualStyleBackColor = true;
+            // 
+            // CheckPlanillas
+            // 
+            this.CheckPlanillas.AutoSize = true;
+            this.CheckPlanillas.Location = new System.Drawing.Point(177, 4);
+            this.CheckPlanillas.Name = "CheckPlanillas";
+            this.CheckPlanillas.Size = new System.Drawing.Size(94, 17);
+            this.CheckPlanillas.TabIndex = 4;
+            this.CheckPlanillas.Text = "Menu Planillas";
+            this.CheckPlanillas.UseVisualStyleBackColor = true;
+            // 
+            // CheckMeta
+            // 
+            this.CheckMeta.AutoSize = true;
+            this.CheckMeta.Location = new System.Drawing.Point(4, 104);
+            this.CheckMeta.Name = "CheckMeta";
+            this.CheckMeta.Size = new System.Drawing.Size(80, 17);
+            this.CheckMeta.TabIndex = 8;
+            this.CheckMeta.Text = "Menu Meta";
+            this.CheckMeta.UseVisualStyleBackColor = true;
             // 
             // frmCategoria
             // 
@@ -230,10 +230,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.CheckBox CheckTrabadores;
         private System.Windows.Forms.CheckBox CheckTareos;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox CheckPlanillas;
         private System.Windows.Forms.CheckBox CheckTablas;
-        private System.Windows.Forms.CheckBox ChecExportar;
+        private System.Windows.Forms.CheckBox CheckExportar;
         private System.Windows.Forms.CheckBox CheckReportes;
+        private System.Windows.Forms.CheckBox CheckMeta;
     }
 }

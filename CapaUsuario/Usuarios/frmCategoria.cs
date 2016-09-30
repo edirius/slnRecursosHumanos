@@ -31,7 +31,14 @@ namespace CapaUsuario.Usuarios
         {
             txtDescripcion.Text = miPrivilegio.Descripcion;
             checkMenuAFP.Checked = miPrivilegio.MenuAFP;
-            checkUsuarios.Checked = miPrivilegio.MenuUsuario; 
+            checkUsuarios.Checked = miPrivilegio.MenuUsuario;
+            CheckTrabadores.Checked = miPrivilegio.MenuTrabajadores;
+            CheckTareos.Checked = miPrivilegio.MenuTareos;
+            CheckMeta.Checked = miPrivilegio.MenuMetas;
+            CheckPlanillas.Checked = miPrivilegio.MenuPlanillas;
+            CheckTablas.Checked = miPrivilegio.MenuTablasParametricass;
+            CheckExportar.Checked = miPrivilegio.MenuExportarDatos;
+            CheckReportes.Checked = miPrivilegio.MenuReportes;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -39,6 +46,13 @@ namespace CapaUsuario.Usuarios
             miPrivilegio.Descripcion = txtDescripcion.Text;
             miPrivilegio.MenuAFP = checkMenuAFP.Checked;
             miPrivilegio.MenuUsuario = checkUsuarios.Checked;
+            miPrivilegio.MenuTrabajadores = CheckTrabadores.Checked;
+            miPrivilegio.MenuTareos = CheckTareos.Checked;
+            miPrivilegio.MenuMetas = CheckMeta.Checked;
+            miPrivilegio.MenuPlanillas = CheckPlanillas.Checked;
+            miPrivilegio.MenuTablasParametricass = CheckTablas.Checked;
+            miPrivilegio.MenuExportarDatos = CheckExportar.Checked;
+            miPrivilegio.MenuReportes = CheckReportes.Checked;
             DialogResult = DialogResult.OK;
         }
 

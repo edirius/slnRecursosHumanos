@@ -70,10 +70,10 @@
             this.exportarTextoSUNATToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarAExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultaMasivaAFPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarTodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datosDelPensionistaPENToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultaMasivaAFPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.boletaPagoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.boletaPagoPorPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,6 +96,8 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -434,6 +436,13 @@
             this.exportarAExcelToolStripMenuItem.Text = "Exportar datos de AFP a Excel";
             this.exportarAExcelToolStripMenuItem.Click += new System.EventHandler(this.exportarAExcelToolStripMenuItem_Click);
             // 
+            // consultaMasivaAFPToolStripMenuItem
+            // 
+            this.consultaMasivaAFPToolStripMenuItem.Name = "consultaMasivaAFPToolStripMenuItem";
+            this.consultaMasivaAFPToolStripMenuItem.Size = new System.Drawing.Size(343, 22);
+            this.consultaMasivaAFPToolStripMenuItem.Text = "Generar archivo para consulta masiva AFPNET";
+            this.consultaMasivaAFPToolStripMenuItem.Click += new System.EventHandler(this.consultaMasivaAFPToolStripMenuItem_Click);
+            // 
             // exportarTodoToolStripMenuItem
             // 
             this.exportarTodoToolStripMenuItem.Name = "exportarTodoToolStripMenuItem";
@@ -454,13 +463,6 @@
             this.datosDelPensionistaPENToolStripMenuItem.Size = new System.Drawing.Size(343, 22);
             this.datosDelPensionistaPENToolStripMenuItem.Text = "Datos del Pensionista(.PEN)";
             this.datosDelPensionistaPENToolStripMenuItem.Click += new System.EventHandler(this.datosDelPensionistaPENToolStripMenuItem_Click);
-            // 
-            // consultaMasivaAFPToolStripMenuItem
-            // 
-            this.consultaMasivaAFPToolStripMenuItem.Name = "consultaMasivaAFPToolStripMenuItem";
-            this.consultaMasivaAFPToolStripMenuItem.Size = new System.Drawing.Size(343, 22);
-            this.consultaMasivaAFPToolStripMenuItem.Text = "Generar archivo para consulta masiva AFPNET";
-            this.consultaMasivaAFPToolStripMenuItem.Click += new System.EventHandler(this.consultaMasivaAFPToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem1
             // 
@@ -629,7 +631,9 @@
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
+            this.toolStripStatusLabel,
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
             this.statusStrip.Location = new System.Drawing.Point(0, 431);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1219, 22);
@@ -641,6 +645,18 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
             // 
             // frmPrincipal
             // 
@@ -656,6 +672,7 @@
             this.Name = "frmPrincipal";
             this.Text = "Sotfware de PLanillas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -736,6 +753,8 @@
         private System.Windows.Forms.ToolStripMenuItem darDeBajaAlTrabajadorTREGISTROToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem declaraciónJuradaDeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultaMasivaAFPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
     }
 }
 

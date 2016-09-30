@@ -135,7 +135,10 @@ namespace CapaDeNegocios.Usuario
         {
             return Convert.ToBoolean(Conexion.GDatos.Ejecutar("spDeshabilitarUsuario", UsuarioADeshabilitar.codigo, habilitado));
         }
-
+        public int ValidarUsuarioContraseña(string usuario, string contraseña, string numero, string user)
+        {
+           return Conexion.GDatos.Ejecutar("spLoginUsuario", usuario, contraseña, numero, user);
+        }
         public cUsuario BuscarUsuarioPorCodigo(int codigo)
         {
             cUsuario UsuarioParaBuscar = new cUsuario();

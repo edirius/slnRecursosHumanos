@@ -63,7 +63,7 @@
             this.dtgListaUsuarios.Name = "dtgListaUsuarios";
             this.dtgListaUsuarios.ReadOnly = true;
             this.dtgListaUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaUsuarios.Size = new System.Drawing.Size(773, 197);
+            this.dtgListaUsuarios.Size = new System.Drawing.Size(765, 197);
             this.dtgListaUsuarios.TabIndex = 15;
             // 
             // idTrabajador
