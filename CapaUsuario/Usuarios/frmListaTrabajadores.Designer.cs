@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTrabajadores));
             this.dtgListaUsuarios = new System.Windows.Forms.DataGridView();
             this.idTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,6 +41,7 @@
             this.btnCrearUsuario = new System.Windows.Forms.Button();
             this.btnDeshabilitar = new System.Windows.Forms.Button();
             this.btnModificarUsuario = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,44 +131,68 @@
             // 
             // btnCrearUsuario
             // 
-            this.btnCrearUsuario.Location = new System.Drawing.Point(118, 270);
+            this.btnCrearUsuario.BackColor = System.Drawing.Color.MintCream;
+            this.btnCrearUsuario.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearUsuario.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCrearUsuario.Location = new System.Drawing.Point(105, 270);
             this.btnCrearUsuario.Name = "btnCrearUsuario";
             this.btnCrearUsuario.Size = new System.Drawing.Size(109, 46);
             this.btnCrearUsuario.TabIndex = 16;
             this.btnCrearUsuario.Text = "Crear Usuario";
-            this.btnCrearUsuario.UseVisualStyleBackColor = true;
+            this.btnCrearUsuario.UseVisualStyleBackColor = false;
             this.btnCrearUsuario.Click += new System.EventHandler(this.btnCrearUsuario_Click);
             // 
             // btnDeshabilitar
             // 
-            this.btnDeshabilitar.Location = new System.Drawing.Point(442, 270);
+            this.btnDeshabilitar.BackColor = System.Drawing.Color.MintCream;
+            this.btnDeshabilitar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeshabilitar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnDeshabilitar.Location = new System.Drawing.Point(421, 270);
             this.btnDeshabilitar.Name = "btnDeshabilitar";
             this.btnDeshabilitar.Size = new System.Drawing.Size(109, 46);
             this.btnDeshabilitar.TabIndex = 17;
             this.btnDeshabilitar.Text = "Deshabilitar Usuario";
-            this.btnDeshabilitar.UseVisualStyleBackColor = true;
+            this.btnDeshabilitar.UseVisualStyleBackColor = false;
             this.btnDeshabilitar.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnModificarUsuario
             // 
-            this.btnModificarUsuario.Location = new System.Drawing.Point(288, 270);
+            this.btnModificarUsuario.BackColor = System.Drawing.Color.MintCream;
+            this.btnModificarUsuario.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificarUsuario.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnModificarUsuario.Location = new System.Drawing.Point(263, 270);
             this.btnModificarUsuario.Name = "btnModificarUsuario";
-            this.btnModificarUsuario.Size = new System.Drawing.Size(116, 46);
+            this.btnModificarUsuario.Size = new System.Drawing.Size(109, 46);
             this.btnModificarUsuario.TabIndex = 18;
             this.btnModificarUsuario.Text = "Modificar Usuario";
-            this.btnModificarUsuario.UseVisualStyleBackColor = true;
+            this.btnModificarUsuario.UseVisualStyleBackColor = false;
             this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificarUsuario_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackColor = System.Drawing.Color.MintCream;
+            this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSalir.Location = new System.Drawing.Point(579, 270);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(109, 46);
+            this.btnSalir.TabIndex = 19;
+            this.btnSalir.Text = "&Salir";
+            this.btnSalir.UseVisualStyleBackColor = false;
             // 
             // frmListaTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 351);
+            this.ClientSize = new System.Drawing.Size(789, 351);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnModificarUsuario);
             this.Controls.Add(this.btnDeshabilitar);
             this.Controls.Add(this.btnCrearUsuario);
             this.Controls.Add(this.dtgListaUsuarios);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListaTrabajadores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de Trabajadores";
             this.Load += new System.EventHandler(this.frmListaTrabajadores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaUsuarios)).EndInit();
@@ -187,5 +213,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Habilitado;
         private System.Windows.Forms.Button btnModificarUsuario;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

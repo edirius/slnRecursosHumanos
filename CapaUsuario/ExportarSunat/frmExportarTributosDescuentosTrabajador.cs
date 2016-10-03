@@ -406,7 +406,7 @@ namespace CapaUsuario.ExportarSunat
 
         private void frmExportarTributosDescuentosTrabajador_Load(object sender, EventArgs e)
         {
-
+            pbSunat.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private void dgvListaPlanillas_SelectionChanged(object sender, EventArgs e)

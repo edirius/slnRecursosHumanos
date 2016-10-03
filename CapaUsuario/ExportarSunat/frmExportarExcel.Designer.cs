@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExportarExcel));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.btnExport = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -58,10 +59,12 @@
             this.txt13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pbAFPNET = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAFPNET)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView
@@ -83,12 +86,15 @@
             // 
             // btnExport
             // 
+            this.btnExport.BackColor = System.Drawing.Color.MintCream;
+            this.btnExport.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnExport.Location = new System.Drawing.Point(886, 20);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(138, 39);
             this.btnExport.TabIndex = 4;
             this.btnExport.Text = "&Exportar AFP a Excel";
-            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.UseVisualStyleBackColor = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click_1);
             // 
             // groupBox2
@@ -100,7 +106,7 @@
             this.groupBox2.Controls.Add(this.cbMes);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cbAños);
-            this.groupBox2.Location = new System.Drawing.Point(8, 1);
+            this.groupBox2.Location = new System.Drawing.Point(9, 96);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1292, 81);
             this.groupBox2.TabIndex = 41;
@@ -120,12 +126,15 @@
             // 
             // bntListarTodo
             // 
+            this.bntListarTodo.BackColor = System.Drawing.Color.MintCream;
+            this.bntListarTodo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntListarTodo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.bntListarTodo.Location = new System.Drawing.Point(659, 20);
             this.bntListarTodo.Name = "bntListarTodo";
             this.bntListarTodo.Size = new System.Drawing.Size(179, 39);
             this.bntListarTodo.TabIndex = 33;
             this.bntListarTodo.Text = "&Listar todas las planillas\r\n por año";
-            this.bntListarTodo.UseVisualStyleBackColor = true;
+            this.bntListarTodo.UseVisualStyleBackColor = false;
             this.bntListarTodo.Click += new System.EventHandler(this.bntListarTodo_Click);
             // 
             // label3
@@ -187,11 +196,11 @@
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaPlanillas.Location = new System.Drawing.Point(9, 88);
+            this.dgvListaPlanillas.Location = new System.Drawing.Point(9, 183);
             this.dgvListaPlanillas.Name = "dgvListaPlanillas";
             this.dgvListaPlanillas.RowHeadersVisible = false;
             this.dgvListaPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaPlanillas.Size = new System.Drawing.Size(1292, 434);
+            this.dgvListaPlanillas.Size = new System.Drawing.Size(1292, 396);
             this.dgvListaPlanillas.TabIndex = 42;
             this.dgvListaPlanillas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaPlanillas_CellClick);
             this.dgvListaPlanillas.SelectionChanged += new System.EventHandler(this.dgvListaPlanillas_SelectionChanged);
@@ -326,15 +335,26 @@
             this.txt15.Name = "txt15";
             this.txt15.ReadOnly = true;
             // 
+            // pbAFPNET
+            // 
+            this.pbAFPNET.Image = global::CapaUsuario.Properties.Resources.header;
+            this.pbAFPNET.Location = new System.Drawing.Point(229, 2);
+            this.pbAFPNET.Name = "pbAFPNET";
+            this.pbAFPNET.Size = new System.Drawing.Size(804, 88);
+            this.pbAFPNET.TabIndex = 44;
+            this.pbAFPNET.TabStop = false;
+            // 
             // frmExportarExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1310, 532);
+            this.ClientSize = new System.Drawing.Size(1310, 591);
+            this.Controls.Add(this.pbAFPNET);
             this.Controls.Add(this.dgvListaPlanillas);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.dgv2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmExportarExcel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generar archivo para la exportación de datos a AFPNET";
@@ -344,6 +364,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAFPNET)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -376,5 +397,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txt14;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt15;
         private System.Windows.Forms.CheckBox checkSeleccionar;
+        private System.Windows.Forms.PictureBox pbAFPNET;
     }
 }

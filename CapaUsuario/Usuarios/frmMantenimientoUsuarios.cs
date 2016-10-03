@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,10 @@ namespace CapaUsuario.Usuarios
     {
         public CapaDeNegocios.Usuario.cUsuario miUsuario;
 
-       
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+        }
 
         public frmMantenimientoUsuarios()
         {
@@ -69,6 +73,14 @@ namespace CapaUsuario.Usuarios
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void frmMantenimientoUsuarios_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics gr = this.CreateGraphics();
+            Rectangle rectangulo = new Rectangle(0, 0, this.Width, this.Height);
+            LinearGradientBrush brocha = new LinearGradientBrush(rectangulo, Color.SteelBlue, Color.LightSteelBlue, LinearGradientMode.ForwardDiagonal);
+            gr.FillRectangle(brocha, rectangulo);
         }
     }
 }
