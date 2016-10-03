@@ -14,6 +14,7 @@ using CapaUsuario.Properties;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using CapaDeNegocios;
+using System.IO;
 
 namespace CapaUsuario.Usuarios
 {
@@ -27,7 +28,7 @@ namespace CapaUsuario.Usuarios
         {
             
             InitializeComponent();
-            pbImagen.Image = Resources.MUNICIPALIDAD_DISTRITAL_DE_CCATCCA_2;
+            pbImagen.Image = Resources.LogoCatca2;
 
         }
         public string Usuario;

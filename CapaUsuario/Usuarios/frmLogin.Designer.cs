@@ -138,7 +138,7 @@
             // 
             // pbImagen
             // 
-            this.pbImagen.Image = global::CapaUsuario.Properties.Resources.MUNICIPALIDAD_DISTRITAL_DE_CCATCCA_2;
+            this.pbImagen.Image = global::CapaUsuario.Properties.Resources.LogoCatca2;
             this.pbImagen.Location = new System.Drawing.Point(89, 9);
             this.pbImagen.Name = "pbImagen";
             this.pbImagen.Size = new System.Drawing.Size(200, 200);
