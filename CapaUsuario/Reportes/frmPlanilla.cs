@@ -101,6 +101,10 @@ namespace CapaUsuario.Reportes
             return indice_titulo_buscado;
         }
 
+         
+
+
+
         public void CreateHeaderFooter(ref Document _document)
         {
             var headerfooter = FontFactory.GetFont("Arial", 8);
@@ -108,9 +112,17 @@ namespace CapaUsuario.Reportes
             header.BorderColorTop = new iTextSharp.text.Color(System.Drawing.Color.Red);
             header.BorderWidthTop = 0f;
             //_document.Header = header;
-            HeaderFooter Footer = new HeaderFooter(new Phrase(" ", headerfooter), true);
+            //string ppath = "C:\\PDFs\\Planilla.pdf";
+            //PdfReader pdfReader = new PdfReader(ppath);
+            //int cantidad_paginas = _pdfreader.PageNumber;
+            //int numberOfPages = pdfReader.NumberOfPages;
+            
+            HeaderFooter Footer = new HeaderFooter(new Phrase("  "  , headerfooter), true);
             Footer.BorderColorBottom = new iTextSharp.text.Color(System.Drawing.Color.White);
             Footer.BorderWidthBottom = 0f;
+            Footer.BorderWidthTop = 0f;
+            Footer.BorderWidthLeft = 0f;
+            Footer.BorderWidthRight = 0f;
             _document.Footer = Footer;
         }
 
@@ -3105,10 +3117,10 @@ namespace CapaUsuario.Reportes
                 CreateHeaderFooter(ref pdfDoc);
                 pdfDoc.Open();
 
-                string imageURL = "C:\\Users\\ADVANCE\\Source\\Repos\\slnRecursosHumanos\\slnRecursosHumanos\\Recursos Varios\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
+                //string imageURL = "C:\\Users\\ADVANCE\\Source\\Repos\\slnRecursosHumanos\\slnRecursosHumanos\\Recursos Varios\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
                 string ruta = Directory.GetCurrentDirectory();
-                string ruta2 = Application.StartupPath;
-                string ruta3 = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                //string ruta2 = Application.StartupPath;
+                //string ruta3 = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
 
                 //string[] palabras = ruta.Split('\\');
 

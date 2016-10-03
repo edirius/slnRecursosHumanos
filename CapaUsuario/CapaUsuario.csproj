@@ -230,6 +230,12 @@
     <Compile Include="Reportes\frmBoletaPagoXPlanilla.Designer.cs">
       <DependentUpon>frmBoletaPagoXPlanilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\frmCertificadoRetenciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmCertificadoRetenciones.Designer.cs">
+      <DependentUpon>frmCertificadoRetenciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\frmDeclaracionJurada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -987,6 +993,7 @@
     <Compile Include="Reportes\uspListarTiposDeTrabajador_Result.cs">
       <DependentUpon>modPersonal.tt</DependentUpon>
     </Compile>
+    <Compile Include="TwoColumnHeaderFooter.cs" />
     <Compile Include="Usuarios\frmCategoria.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1198,6 +1205,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmBoletaPagoXPlanilla.resx">
       <DependentUpon>frmBoletaPagoXPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmCertificadoRetenciones.resx">
+      <DependentUpon>frmCertificadoRetenciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmDeclaracionJurada.resx">
       <DependentUpon>frmDeclaracionJurada.cs</DependentUpon>
