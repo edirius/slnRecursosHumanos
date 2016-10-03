@@ -162,7 +162,7 @@ namespace CapaUsuario.ExportarSunat
                 }
                 libros_trabajo.SaveAs(fichero.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
                 libros_trabajo.Close(true);
-                MessageBox.Show("Los datos fueron exportados exitosamente.");
+                MessageBox.Show("Los datos fueron exportados.");
                 aplicacion.Quit();
             }
         }
@@ -262,6 +262,26 @@ namespace CapaUsuario.ExportarSunat
                 {
                     dgvListarPlanillas[0, i].Value = false;
                 }
+        }
+
+        private void frmConsultaMasivaSunat_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnComparar_Click(object sender, EventArgs e)
+        {
+            if (dgvListarPlanillas.SelectedRows.Count > 0  )
+            {
+                frmCompararDatosAFP fCompararDatosAFP = new frmCompararDatosAFP();
+                fCompararDatosAFP.planilla = new CapaDeNegocios.Planillas.cPlanilla();
+                fCompararDatosAFP.planilla = fCompararDatosAFP.planilla.TraerPlanilla(Convert.ToInt16(dgvListarPlanillas.SelectedRows[0].Cells[1].Value));  
+                fCompararDatosAFP.ShowDialog();
+            }
+          else
+            {
+                MessageBox.Show("Debe seleccionar una planilla.");
+            }
         }
     }
 }

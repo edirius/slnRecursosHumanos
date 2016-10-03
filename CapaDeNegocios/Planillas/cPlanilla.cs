@@ -145,5 +145,28 @@ namespace CapaDeNegocios.Planillas
             Conexion.GDatos.Ejecutar("spELiminarPlanilla", IdtPlanilla);
             return true;
         }
+
+        public cPlanilla TraerPlanilla(int idtPlanilla)
+        {
+            cPlanilla planillaAuxiliar = new cPlanilla();
+            DataTable tablaAuxiliar;
+            tablaAuxiliar = Conexion.GDatos.TraerDataTable("spTraerPlanillaxID", idtPlanilla);
+            if (tablaAuxiliar.Rows.Count > 0)
+            {
+                planillaAuxiliar.IdtPlanilla = Convert.ToInt16(tablaAuxiliar.Rows[0][0]);
+                planillaAuxiliar.Numero = Convert.ToString(tablaAuxiliar.Rows[0][1]);
+                planillaAuxiliar.Mes = Convert.ToString(tablaAuxiliar.Rows[0][2]);
+                planillaAuxiliar.Año = Convert.ToString(tablaAuxiliar.Rows[0][3]);
+                planillaAuxiliar.Fecha = Convert.ToDateTime(tablaAuxiliar.Rows[0][4]);
+                planillaAuxiliar.IdtMeta = Convert.ToInt16(tablaAuxiliar.Rows[0][5]);
+                planillaAuxiliar.IdtFuenteFinanciamiento = Convert.ToInt16(tablaAuxiliar.Rows[0][6]);
+                planillaAuxiliar.IdtRegimenLaboral = Convert.ToInt16(tablaAuxiliar.Rows[0][7]);
+                return planillaAuxiliar;
+            }
+           else
+            {
+                throw new cReglaNegociosException("No existe filas para el id de planilla. Funcion: TraerPlanilla");
+            }
+        }
     }
 }

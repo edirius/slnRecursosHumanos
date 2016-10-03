@@ -46,6 +46,7 @@
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ptAFP = new System.Windows.Forms.PictureBox();
+            this.btnComparar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarPlanillas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
@@ -74,13 +75,16 @@
             // 
             // btnExportar
             // 
+            this.btnExportar.BackColor = System.Drawing.Color.MintCream;
             this.btnExportar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExportar.Location = new System.Drawing.Point(869, 24);
+            this.btnExportar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExportar.Location = new System.Drawing.Point(870, 19);
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(154, 40);
+            this.btnExportar.Size = new System.Drawing.Size(154, 53);
             this.btnExportar.TabIndex = 43;
             this.btnExportar.Text = "&Exportar Excel";
-            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.UseVisualStyleBackColor = false;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // label3
@@ -117,6 +121,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnComparar);
             this.groupBox1.Controls.Add(this.checkSeleccionar);
             this.groupBox1.Controls.Add(this.bntListarTodo);
             this.groupBox1.Controls.Add(this.btnExportar);
@@ -143,12 +148,15 @@
             // 
             // bntListarTodo
             // 
-            this.bntListarTodo.Location = new System.Drawing.Point(667, 24);
+            this.bntListarTodo.BackColor = System.Drawing.Color.MintCream;
+            this.bntListarTodo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntListarTodo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.bntListarTodo.Location = new System.Drawing.Point(668, 19);
             this.bntListarTodo.Name = "bntListarTodo";
-            this.bntListarTodo.Size = new System.Drawing.Size(179, 40);
+            this.bntListarTodo.Size = new System.Drawing.Size(179, 53);
             this.bntListarTodo.TabIndex = 44;
             this.bntListarTodo.Text = "&Listar todas las planillas\r\n por año";
-            this.bntListarTodo.UseVisualStyleBackColor = true;
+            this.bntListarTodo.UseVisualStyleBackColor = false;
             this.bntListarTodo.Click += new System.EventHandler(this.bntListarTodo_Click);
             // 
             // dgvListarPlanillas
@@ -225,6 +233,20 @@
             this.ptAFP.TabIndex = 48;
             this.ptAFP.TabStop = false;
             // 
+            // btnComparar
+            // 
+            this.btnComparar.BackColor = System.Drawing.Color.MintCream;
+            this.btnComparar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnComparar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComparar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnComparar.Location = new System.Drawing.Point(1059, 19);
+            this.btnComparar.Name = "btnComparar";
+            this.btnComparar.Size = new System.Drawing.Size(154, 53);
+            this.btnComparar.TabIndex = 47;
+            this.btnComparar.Text = "&Comparar Resultados";
+            this.btnComparar.UseVisualStyleBackColor = false;
+            this.btnComparar.Click += new System.EventHandler(this.btnComparar_Click);
+            // 
             // frmConsultaMasivaSunat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,6 +261,7 @@
             this.Name = "frmConsultaMasivaSunat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generar archivo excel para la consulta masiva de AFP";
+            this.Load += new System.EventHandler(this.frmConsultaMasivaSunat_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarPlanillas)).EndInit();
@@ -264,5 +287,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txt1;
         private System.Windows.Forms.CheckBox checkSeleccionar;
         private System.Windows.Forms.PictureBox ptAFP;
+        private System.Windows.Forms.Button btnComparar;
     }
 }

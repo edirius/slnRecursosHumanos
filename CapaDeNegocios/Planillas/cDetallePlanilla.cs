@@ -89,6 +89,11 @@ namespace CapaDeNegocios.Planillas
             return Conexion.GDatos.TraerDataTable("spListarDetallePlanilla", IdtPlanilla);
         }
 
+        public DataTable ListarDetallePlanillaParaAFP(int IdtPlanilla)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarDetallePlanillaParaAFP", IdtPlanilla);
+        }
+
         public Boolean CrearDetallePlanilla(cDetallePlanilla miDetallePlanilla)
         {
             Conexion.GDatos.Ejecutar("spCrearDetallePlanilla", miDetallePlanilla.Cargo, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.NetoaCobrar, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla);

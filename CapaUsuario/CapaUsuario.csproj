@@ -106,6 +106,12 @@
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </Compile>
     <Compile Include="ConvertImage.cs" />
+    <Compile Include="ExportarSunat\frmCompararDatosAFP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarSunat\frmCompararDatosAFP.Designer.cs">
+      <DependentUpon>frmCompararDatosAFP.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportarSunat\frmConsultaMasivaSunat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1053,6 +1059,9 @@
     <EmbeddedResource Include="AFP\frmListaAFPs.resx">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExportarSunat\frmCompararDatosAFP.resx">
+      <DependentUpon>frmCompararDatosAFP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmConsultaMasivaSunat.resx">
       <DependentUpon>frmConsultaMasivaSunat.cs</DependentUpon>
     </EmbeddedResource>
@@ -1461,6 +1470,10 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\profuturo.jpg" />
+    <None Include="Resources\prima.jpg" />
+    <None Include="Resources\integra.jpg" />
+    <None Include="Resources\Habitat.jpg" />
     <None Include="Resources\logoamplio.png" />
     <None Include="Resources\logoafp.jpg" />
     <None Include="Resources\logoSunat.jpg" />
