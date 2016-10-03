@@ -30,66 +30,62 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.chkMenuAFP = new System.Windows.Forms.CheckBox();
-            this.chkUsuarios = new System.Windows.Forms.CheckBox();
+            this.checkMenuAFP = new System.Windows.Forms.CheckBox();
+            this.checkUsuarios = new System.Windows.Forms.CheckBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.CheckTareos = new System.Windows.Forms.CheckBox();
+            this.CheckTrabadores = new System.Windows.Forms.CheckBox();
+            this.CheckReportes = new System.Windows.Forms.CheckBox();
+            this.CheckExportar = new System.Windows.Forms.CheckBox();
+            this.CheckTablas = new System.Windows.Forms.CheckBox();
+            this.CheckPlanillas = new System.Windows.Forms.CheckBox();
+            this.CheckMeta = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 31);
+            this.label1.Location = new System.Drawing.Point(9, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Nombre :";
+            this.label1.Text = "Categoria:";
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(89, 24);
+            this.txtDescripcion.Location = new System.Drawing.Point(70, 21);
             this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(308, 20);
+            this.txtDescripcion.Size = new System.Drawing.Size(286, 20);
             this.txtDescripcion.TabIndex = 1;
             // 
-            // groupBox1
+            // checkMenuAFP
             // 
-            this.groupBox1.Controls.Add(this.chkMenuAFP);
-            this.groupBox1.Controls.Add(this.chkUsuarios);
-            this.groupBox1.Location = new System.Drawing.Point(12, 71);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(489, 167);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Menu";
+            this.checkMenuAFP.AutoSize = true;
+            this.checkMenuAFP.Location = new System.Drawing.Point(4, 29);
+            this.checkMenuAFP.Name = "checkMenuAFP";
+            this.checkMenuAFP.Size = new System.Drawing.Size(76, 17);
+            this.checkMenuAFP.TabIndex = 1;
+            this.checkMenuAFP.Text = "Menu AFP";
+            this.checkMenuAFP.UseVisualStyleBackColor = true;
             // 
-            // chkMenuAFP
+            // checkUsuarios
             // 
-            this.chkMenuAFP.AutoSize = true;
-            this.chkMenuAFP.Location = new System.Drawing.Point(26, 44);
-            this.chkMenuAFP.Name = "chkMenuAFP";
-            this.chkMenuAFP.Size = new System.Drawing.Size(76, 17);
-            this.chkMenuAFP.TabIndex = 1;
-            this.chkMenuAFP.Text = "Menu AFP";
-            this.chkMenuAFP.UseVisualStyleBackColor = true;
-            // 
-            // chkUsuarios
-            // 
-            this.chkUsuarios.AutoSize = true;
-            this.chkUsuarios.Location = new System.Drawing.Point(26, 20);
-            this.chkUsuarios.Name = "chkUsuarios";
-            this.chkUsuarios.Size = new System.Drawing.Size(97, 17);
-            this.chkUsuarios.TabIndex = 0;
-            this.chkUsuarios.Text = "Menu Usuarios";
-            this.chkUsuarios.UseVisualStyleBackColor = true;
+            this.checkUsuarios.AutoSize = true;
+            this.checkUsuarios.Location = new System.Drawing.Point(4, 4);
+            this.checkUsuarios.Name = "checkUsuarios";
+            this.checkUsuarios.Size = new System.Drawing.Size(97, 17);
+            this.checkUsuarios.TabIndex = 0;
+            this.checkUsuarios.Text = "Menu Usuarios";
+            this.checkUsuarios.UseVisualStyleBackColor = true;
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(60, 255);
+            this.btnAceptar.Location = new System.Drawing.Point(4, 129);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.Size = new System.Drawing.Size(166, 35);
             this.btnAceptar.TabIndex = 5;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
@@ -97,30 +93,127 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(362, 255);
+            this.btnCancelar.Location = new System.Drawing.Point(177, 129);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(167, 35);
             this.btnCancelar.TabIndex = 6;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.CheckMeta, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.CheckTareos, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.CheckTrabadores, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.checkUsuarios, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.checkMenuAFP, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.CheckPlanillas, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.CheckTablas, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.CheckExportar, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.CheckReportes, 1, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 53);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(348, 168);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // CheckTareos
+            // 
+            this.CheckTareos.AutoSize = true;
+            this.CheckTareos.Location = new System.Drawing.Point(4, 79);
+            this.CheckTareos.Name = "CheckTareos";
+            this.CheckTareos.Size = new System.Drawing.Size(89, 17);
+            this.CheckTareos.TabIndex = 3;
+            this.CheckTareos.Text = "Menu Tareos";
+            this.CheckTareos.UseVisualStyleBackColor = true;
+            // 
+            // CheckTrabadores
+            // 
+            this.CheckTrabadores.AutoSize = true;
+            this.CheckTrabadores.Location = new System.Drawing.Point(4, 54);
+            this.CheckTrabadores.Name = "CheckTrabadores";
+            this.CheckTrabadores.Size = new System.Drawing.Size(118, 17);
+            this.CheckTrabadores.TabIndex = 2;
+            this.CheckTrabadores.Text = "Menu Trabajadores";
+            this.CheckTrabadores.UseVisualStyleBackColor = true;
+            // 
+            // CheckReportes
+            // 
+            this.CheckReportes.AutoSize = true;
+            this.CheckReportes.Location = new System.Drawing.Point(177, 79);
+            this.CheckReportes.Name = "CheckReportes";
+            this.CheckReportes.Size = new System.Drawing.Size(99, 17);
+            this.CheckReportes.TabIndex = 7;
+            this.CheckReportes.Text = "Menu Reportes";
+            this.CheckReportes.UseVisualStyleBackColor = true;
+            // 
+            // CheckExportar
+            // 
+            this.CheckExportar.AutoSize = true;
+            this.CheckExportar.Location = new System.Drawing.Point(177, 54);
+            this.CheckExportar.Name = "CheckExportar";
+            this.CheckExportar.Size = new System.Drawing.Size(126, 17);
+            this.CheckExportar.TabIndex = 6;
+            this.CheckExportar.Text = "Menu Exportar Datos";
+            this.CheckExportar.UseVisualStyleBackColor = true;
+            // 
+            // CheckTablas
+            // 
+            this.CheckTablas.AutoSize = true;
+            this.CheckTablas.Location = new System.Drawing.Point(177, 29);
+            this.CheckTablas.Name = "CheckTablas";
+            this.CheckTablas.Size = new System.Drawing.Size(152, 17);
+            this.CheckTablas.TabIndex = 5;
+            this.CheckTablas.Text = "Menu Tablas Parametricas";
+            this.CheckTablas.UseVisualStyleBackColor = true;
+            // 
+            // CheckPlanillas
+            // 
+            this.CheckPlanillas.AutoSize = true;
+            this.CheckPlanillas.Location = new System.Drawing.Point(177, 4);
+            this.CheckPlanillas.Name = "CheckPlanillas";
+            this.CheckPlanillas.Size = new System.Drawing.Size(94, 17);
+            this.CheckPlanillas.TabIndex = 4;
+            this.CheckPlanillas.Text = "Menu Planillas";
+            this.CheckPlanillas.UseVisualStyleBackColor = true;
+            // 
+            // CheckMeta
+            // 
+            this.CheckMeta.AutoSize = true;
+            this.CheckMeta.Location = new System.Drawing.Point(4, 104);
+            this.CheckMeta.Name = "CheckMeta";
+            this.CheckMeta.Size = new System.Drawing.Size(80, 17);
+            this.CheckMeta.TabIndex = 8;
+            this.CheckMeta.Text = "Menu Meta";
+            this.CheckMeta.UseVisualStyleBackColor = true;
+            // 
             // frmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 300);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(369, 233);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label1);
             this.Name = "frmCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Privilegios de Usuario";
             this.Load += new System.EventHandler(this.frmCategoria_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,10 +223,17 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox chkUsuarios;
-        private System.Windows.Forms.CheckBox chkMenuAFP;
+        private System.Windows.Forms.CheckBox checkUsuarios;
+        private System.Windows.Forms.CheckBox checkMenuAFP;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.CheckBox CheckTrabadores;
+        private System.Windows.Forms.CheckBox CheckTareos;
+        private System.Windows.Forms.CheckBox CheckPlanillas;
+        private System.Windows.Forms.CheckBox CheckTablas;
+        private System.Windows.Forms.CheckBox CheckExportar;
+        private System.Windows.Forms.CheckBox CheckReportes;
+        private System.Windows.Forms.CheckBox CheckMeta;
     }
 }

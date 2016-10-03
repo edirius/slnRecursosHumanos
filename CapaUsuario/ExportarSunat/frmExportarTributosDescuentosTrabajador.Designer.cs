@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvIngresos = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodForm = new System.Windows.Forms.TextBox();
@@ -42,16 +42,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.bntListarTodo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CheckJornada = new System.Windows.Forms.CheckBox();
             this.dgvDescuentos = new System.Windows.Forms.DataGridView();
             this.dgvAportaciones = new System.Windows.Forms.DataGridView();
             this.dgvJornadaLaboral = new System.Windows.Forms.DataGridView();
-            this.CheckJornada = new System.Windows.Forms.CheckBox();
+            this.pbSunat = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDescuentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAportaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJornadaLaboral)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSunat)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvIngresos
@@ -100,12 +102,15 @@
             // 
             // btnExportar
             // 
-            this.btnExportar.Location = new System.Drawing.Point(877, 19);
+            this.btnExportar.BackColor = System.Drawing.Color.MintCream;
+            this.btnExportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExportar.Location = new System.Drawing.Point(875, 13);
             this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(107, 40);
+            this.btnExportar.Size = new System.Drawing.Size(107, 54);
             this.btnExportar.TabIndex = 24;
             this.btnExportar.Text = "&Exportar datos";
-            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.UseVisualStyleBackColor = false;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // dgvListaPlanillas
@@ -113,10 +118,10 @@
             this.dgvListaPlanillas.AllowUserToAddRows = false;
             this.dgvListaPlanillas.AllowUserToResizeColumns = false;
             this.dgvListaPlanillas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaPlanillas.Location = new System.Drawing.Point(11, 93);
+            this.dgvListaPlanillas.Location = new System.Drawing.Point(11, 101);
             this.dgvListaPlanillas.Name = "dgvListaPlanillas";
             this.dgvListaPlanillas.ReadOnly = true;
             this.dgvListaPlanillas.RowHeadersVisible = false;
@@ -179,16 +184,20 @@
             // 
             // bntListarTodo
             // 
-            this.bntListarTodo.Location = new System.Drawing.Point(579, 19);
+            this.bntListarTodo.BackColor = System.Drawing.Color.MintCream;
+            this.bntListarTodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bntListarTodo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.bntListarTodo.Location = new System.Drawing.Point(577, 13);
             this.bntListarTodo.Name = "bntListarTodo";
-            this.bntListarTodo.Size = new System.Drawing.Size(179, 40);
+            this.bntListarTodo.Size = new System.Drawing.Size(179, 54);
             this.bntListarTodo.TabIndex = 33;
             this.bntListarTodo.Text = "&Listar todas las planillas\r\n por año";
-            this.bntListarTodo.UseVisualStyleBackColor = true;
+            this.bntListarTodo.UseVisualStyleBackColor = false;
             this.bntListarTodo.Click += new System.EventHandler(this.bntListarTodo_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pbSunat);
             this.groupBox1.Controls.Add(this.CheckJornada);
             this.groupBox1.Controls.Add(this.bntListarTodo);
             this.groupBox1.Controls.Add(this.btnExportar);
@@ -198,10 +207,20 @@
             this.groupBox1.Controls.Add(this.cbAños);
             this.groupBox1.Location = new System.Drawing.Point(12, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1291, 85);
+            this.groupBox1.Size = new System.Drawing.Size(1291, 93);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar trabajadores por fecha:";
+            // 
+            // CheckJornada
+            // 
+            this.CheckJornada.AutoSize = true;
+            this.CheckJornada.Location = new System.Drawing.Point(821, 68);
+            this.CheckJornada.Name = "CheckJornada";
+            this.CheckJornada.Size = new System.Drawing.Size(235, 17);
+            this.CheckJornada.TabIndex = 34;
+            this.CheckJornada.Text = "Generar datos Jornada laboral del trabajador";
+            this.CheckJornada.UseVisualStyleBackColor = true;
             // 
             // dgvDescuentos
             // 
@@ -233,15 +252,15 @@
             this.dgvJornadaLaboral.Size = new System.Drawing.Size(274, 172);
             this.dgvJornadaLaboral.TabIndex = 44;
             // 
-            // CheckJornada
+            // pbSunat
             // 
-            this.CheckJornada.AutoSize = true;
-            this.CheckJornada.Location = new System.Drawing.Point(821, 68);
-            this.CheckJornada.Name = "CheckJornada";
-            this.CheckJornada.Size = new System.Drawing.Size(235, 17);
-            this.CheckJornada.TabIndex = 34;
-            this.CheckJornada.Text = "Generar datos Jornada laboral del trabajador";
-            this.CheckJornada.UseVisualStyleBackColor = true;
+            this.pbSunat.Image = global::CapaUsuario.Properties.Resources.logoamplio;
+            this.pbSunat.Location = new System.Drawing.Point(16, 19);
+            this.pbSunat.Name = "pbSunat";
+            this.pbSunat.Size = new System.Drawing.Size(184, 54);
+            this.pbSunat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSunat.TabIndex = 35;
+            this.pbSunat.TabStop = false;
             // 
             // frmExportarTributosDescuentosTrabajador
             // 
@@ -270,6 +289,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDescuentos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAportaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJornadaLaboral)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSunat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,5 +314,6 @@
         private System.Windows.Forms.DataGridView dgvAportaciones;
         private System.Windows.Forms.CheckBox CheckJornada;
         private System.Windows.Forms.DataGridView dgvJornadaLaboral;
+        private System.Windows.Forms.PictureBox pbSunat;
     }
 }

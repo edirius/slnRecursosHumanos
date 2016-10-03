@@ -57,7 +57,7 @@ namespace CapaUsuario.ExportarSunat
             cbAños.Text = años;
             cbAños.Text = Convert.ToString(DateTime.Now.Year);
         }
-        private void CargarMes(DateTime FechaActual)
+        public void CargarMes(DateTime FechaActual)
         {
             string Ahora = Convert.ToString(FechaActual.Date.Month);
             switch (Ahora)

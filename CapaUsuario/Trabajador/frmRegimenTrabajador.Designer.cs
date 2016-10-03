@@ -59,13 +59,13 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cboAño = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cboCategoriaOcupacional = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cboTipoTrabajador = new System.Windows.Forms.ComboBox();
-            this.cboAño = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.gbPeriodoCOntrato.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMontoPago)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -257,7 +257,6 @@
             // 
             this.cboOcupacion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboOcupacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOcupacion.FormattingEnabled = true;
             this.cboOcupacion.Location = new System.Drawing.Point(107, 128);
             this.cboOcupacion.Name = "cboOcupacion";
@@ -309,7 +308,6 @@
             // 
             this.cboCargo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboCargo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCargo.FormattingEnabled = true;
             this.cboCargo.Location = new System.Drawing.Point(107, 155);
             this.cboCargo.Name = "cboCargo";
@@ -450,6 +448,39 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalles";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.label28);
+            this.groupBox3.Controls.Add(this.cboAño);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.cboMeta);
+            this.groupBox3.Location = new System.Drawing.Point(6, 182);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(533, 56);
+            this.groupBox3.TabIndex = 62;
+            this.groupBox3.TabStop = false;
+            // 
+            // cboAño
+            // 
+            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAño.FormattingEnabled = true;
+            this.cboAño.Location = new System.Drawing.Point(6, 29);
+            this.cboAño.Name = "cboAño";
+            this.cboAño.Size = new System.Drawing.Size(89, 21);
+            this.cboAño.TabIndex = 82;
+            this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.TabIndex = 83;
+            this.label6.Text = "Año :";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -463,7 +494,6 @@
             // 
             this.cboCategoriaOcupacional.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboCategoriaOcupacional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoriaOcupacional.FormattingEnabled = true;
             this.cboCategoriaOcupacional.Location = new System.Drawing.Point(107, 101);
             this.cboCategoriaOcupacional.Name = "cboCategoriaOcupacional";
@@ -491,39 +521,6 @@
             this.cboTipoTrabajador.Size = new System.Drawing.Size(432, 21);
             this.cboTipoTrabajador.TabIndex = 8;
             this.cboTipoTrabajador.SelectedIndexChanged += new System.EventHandler(this.cboTipoTrabajador_SelectedIndexChanged);
-            // 
-            // cboAño
-            // 
-            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAño.FormattingEnabled = true;
-            this.cboAño.Location = new System.Drawing.Point(6, 29);
-            this.cboAño.Name = "cboAño";
-            this.cboAño.Size = new System.Drawing.Size(89, 21);
-            this.cboAño.TabIndex = 82;
-            this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 13);
-            this.label6.TabIndex = 83;
-            this.label6.Text = "Año :";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.label28);
-            this.groupBox3.Controls.Add(this.cboAño);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.cboMeta);
-            this.groupBox3.Location = new System.Drawing.Point(6, 182);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(533, 56);
-            this.groupBox3.TabIndex = 62;
-            this.groupBox3.TabStop = false;
             // 
             // frmRegimenTrabajador
             // 

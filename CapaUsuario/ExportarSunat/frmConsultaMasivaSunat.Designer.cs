@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultaMasivaSunat));
             this.cbAños = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExportar = new System.Windows.Forms.Button();
@@ -44,10 +45,12 @@
             this.dgv2 = new System.Windows.Forms.DataGridView();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ptAFP = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarPlanillas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptAFP)).BeginInit();
             this.SuspendLayout();
             // 
             // cbAños
@@ -121,12 +124,11 @@
             this.groupBox1.Controls.Add(this.cbAños);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 2);
+            this.groupBox1.Location = new System.Drawing.Point(12, 68);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1294, 85);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // checkSeleccionar
             // 
@@ -157,11 +159,11 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dgvListarPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListarPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListarPlanillas.Location = new System.Drawing.Point(12, 93);
+            this.dgvListarPlanillas.Location = new System.Drawing.Point(12, 159);
             this.dgvListarPlanillas.Name = "dgvListarPlanillas";
             this.dgvListarPlanillas.RowHeadersVisible = false;
             this.dgvListarPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListarPlanillas.Size = new System.Drawing.Size(1292, 432);
+            this.dgvListarPlanillas.Size = new System.Drawing.Size(1292, 366);
             this.dgvListarPlanillas.TabIndex = 45;
             this.dgvListarPlanillas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarPlanillas_CellClick);
             // 
@@ -194,7 +196,7 @@
             this.dgv2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Numero,
             this.txt1});
-            this.dgv2.Location = new System.Drawing.Point(12, 360);
+            this.dgv2.Location = new System.Drawing.Point(12, 324);
             this.dgv2.Name = "dgv2";
             this.dgv2.ReadOnly = true;
             this.dgv2.RowHeadersVisible = false;
@@ -214,15 +216,26 @@
             this.txt1.Name = "txt1";
             this.txt1.ReadOnly = true;
             // 
+            // ptAFP
+            // 
+            this.ptAFP.Image = global::CapaUsuario.Properties.Resources.AFPS;
+            this.ptAFP.Location = new System.Drawing.Point(287, 2);
+            this.ptAFP.Name = "ptAFP";
+            this.ptAFP.Size = new System.Drawing.Size(803, 70);
+            this.ptAFP.TabIndex = 48;
+            this.ptAFP.TabStop = false;
+            // 
             // frmConsultaMasivaSunat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1318, 537);
-            this.Controls.Add(this.dgvListarPlanillas);
+            this.Controls.Add(this.ptAFP);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.dgvListarPlanillas);
             this.Controls.Add(this.dgv2);
             this.Controls.Add(this.dgv1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmConsultaMasivaSunat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generar archivo excel para la consulta masiva de AFP";
@@ -231,6 +244,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarPlanillas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptAFP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -249,5 +263,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn txt1;
         private System.Windows.Forms.CheckBox checkSeleccionar;
+        private System.Windows.Forms.PictureBox ptAFP;
     }
 }

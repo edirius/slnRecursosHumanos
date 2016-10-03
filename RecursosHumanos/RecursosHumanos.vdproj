@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_056DA520D7AB4F0AAFB4876777D1C243"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0D9EBC6A3F0287038D3C6C520CC4ABB4"
         "OwnerKey" = "8:_1C5D664DCA144582B06536D1A1E7EB14"
         "MsmSig" = "8:_UNDEFINED"
@@ -202,12 +208,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_B28FD4BE2753BD5779CBE990837FB049"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_8D7F7F4292FD85F405F170E790E9FF81"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -251,6 +251,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3E7DBA7BE10EB4A7A1CD6EE31ADBF03E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B28FD4BE2753BD5779CBE990837FB049"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -405,6 +411,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_056DA520D7AB4F0AAFB4876777D1C243"
+            {
+            "SourcePath" = "8:..\\Recursos Varios\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png"
+            "TargetName" = "8:MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png"
+            "Tag" = "8:"
+            "Folder" = "8:_FEBE7D6155BD45B8AAD4A9E919CF1A6B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0D9EBC6A3F0287038D3C6C520CC4ABB4"
             {
             "AssemblyRegister" = "3:1"
@@ -1040,7 +1066,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Sistema Planilla"
         "ProductCode" = "8:{D9BE6E3A-DA02-4364-B53A-8352A4AD6078}"
-        "PackageCode" = "8:{898BB43D-FDFD-415B-86A8-3A6C45098161}"
+        "PackageCode" = "8:{C456F2D3-89B8-4F07-A2D9-106D5EFBC918}"
         "UpgradeCode" = "8:{F0D96F0A-3A66-45F9-BC46-0F0CE816E884}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

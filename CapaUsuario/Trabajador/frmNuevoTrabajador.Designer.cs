@@ -561,7 +561,7 @@
             this.txtDNI.MaxLength = 8;
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(71, 20);
-            this.txtDNI.TabIndex = 65;
+            this.txtDNI.TabIndex = 0;
             this.txtDNI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDNI.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDNI_KeyDown);
             this.txtDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDNI_KeyPress);

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsTrabajador" targetNamespace="http://tempuri.org/dsTrabajador.xsd" xmlns:mstns="http://tempuri.org/dsTrabajador.xsd" xmlns="http://tempuri.org/dsTrabajador.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsTrabajador" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsTrabajador" msprop:Generator_UserDSName="dsTrabajador">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="spListarTrabajadoresFiltro" msprop:Generator_TableClassName="spListarTrabajadoresFiltroDataTable" msprop:Generator_TableVarName="tablespListarTrabajadoresFiltro" msprop:Generator_TablePropName="spListarTrabajadoresFiltro" msprop:Generator_RowDeletingName="spListarTrabajadoresFiltroRowDeleting" msprop:Generator_RowChangingName="spListarTrabajadoresFiltroRowChanging" msprop:Generator_RowEvHandlerName="spListarTrabajadoresFiltroRowChangeEventHandler" msprop:Generator_RowDeletedName="spListarTrabajadoresFiltroRowDeleted" msprop:Generator_UserTableName="spListarTrabajadoresFiltro" msprop:Generator_RowChangedName="spListarTrabajadoresFiltroRowChanged" msprop:Generator_RowEvArgName="spListarTrabajadoresFiltroRowChangeEvent" msprop:Generator_RowClassName="spListarTrabajadoresFiltroRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id_Trabajador" msprop:Generator_ColumnVarNameInTable="columnid_Trabajador" msprop:Generator_ColumnPropNameInRow="id_Trabajador" msprop:Generator_ColumnPropNameInTable="id_TrabajadorColumn" msprop:Generator_UserColumnName="id_Trabajador" type="xs:string" minOccurs="0" />
+              <xs:element name="dni" msprop:Generator_ColumnVarNameInTable="columndni" msprop:Generator_ColumnPropNameInRow="dni" msprop:Generator_ColumnPropNameInTable="dniColumn" msprop:Generator_UserColumnName="dni" type="xs:string" minOccurs="0" />
+              <xs:element name="nombres" msprop:Generator_ColumnVarNameInTable="columnnombres" msprop:Generator_ColumnPropNameInRow="nombres" msprop:Generator_ColumnPropNameInTable="nombresColumn" msprop:Generator_UserColumnName="nombres" type="xs:string" minOccurs="0" />
+              <xs:element name="apellidoPaterno" msprop:Generator_ColumnVarNameInTable="columnapellidoPaterno" msprop:Generator_ColumnPropNameInRow="apellidoPaterno" msprop:Generator_ColumnPropNameInTable="apellidoPaternoColumn" msprop:Generator_UserColumnName="apellidoPaterno" type="xs:string" minOccurs="0" />
+              <xs:element name="apellidoMaterno" msprop:Generator_ColumnVarNameInTable="columnapellidoMaterno" msprop:Generator_ColumnPropNameInRow="apellidoMaterno" msprop:Generator_ColumnPropNameInTable="apellidoMaternoColumn" msprop:Generator_UserColumnName="apellidoMaterno" type="xs:string" minOccurs="0" />
+              <xs:element name="sexo" msprop:Generator_ColumnVarNameInTable="columnsexo" msprop:Generator_ColumnPropNameInRow="sexo" msprop:Generator_ColumnPropNameInTable="sexoColumn" msprop:Generator_UserColumnName="sexo" type="xs:string" minOccurs="0" />
+              <xs:element name="suspencionrenta4ta" msprop:Generator_ColumnVarNameInTable="columnsuspencionrenta4ta" msprop:Generator_ColumnPropNameInRow="suspencionrenta4ta" msprop:Generator_ColumnPropNameInTable="suspencionrenta4taColumn" msprop:Generator_UserColumnName="suspencionrenta4ta" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

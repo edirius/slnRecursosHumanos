@@ -339,6 +339,41 @@ namespace CapaDeNegocios
             return true;
         }
 
+        public int AgregarTrabajadorConID(cTrabajador trabajador)
+        {
+            string sexo = "";
+            int essalud = 0;
+            int codigo;
+            switch (trabajador.Sexo)
+            {
+                case EnumSexo.Masculino:
+                    sexo = "M";
+                    break;
+                case EnumSexo.Femenino:
+                    sexo = "F";
+                    break;
+                default:
+
+                    break;
+            }
+
+            switch (trabajador.essaludvida)
+            {
+                case true:
+                    essalud = 1;
+                    break;
+                case false:
+                    essalud = 0;
+                    break;
+                default:
+                    break;
+            }
+            codigo = Convert.ToInt32( Conexion.GDatos.TraerValorEscalar("spCrearTrabajador", trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud, trabajador.Suspencionrenta4ta));
+
+            return codigo;
+        }
+
+
         public Boolean ModificarTrabajador(cTrabajador trabajador)
         {
             string sexo = "";

@@ -66,6 +66,13 @@ namespace CapaDeNegocios.Usuario
                 menuUsuario = value;
             }
         }
+        public bool MenuTrabajadores { get; set; }
+        public bool MenuTareos { get; set; }
+        public bool MenuMetas { get; set; }
+        public bool MenuPlanillas { get; set; }
+        public bool MenuTablasParametricass { get; set; }
+        public bool MenuExportarDatos { get; set; }
+        public bool MenuReportes { get; set; }
 
         public DataTable ListaPrivilegios()
         {
@@ -74,12 +81,12 @@ namespace CapaDeNegocios.Usuario
 
         public int AgregarPrivilegio (cPrivilegio NuevoPrivilegio)
         {
-            return Conexion.GDatos.Ejecutar("spCrearPrivilegios", NuevoPrivilegio.Descripcion, NuevoPrivilegio.MenuAFP, NuevoPrivilegio.MenuUsuario);
+            return Conexion.GDatos.Ejecutar("spCrearPrivilegios", NuevoPrivilegio.Descripcion, NuevoPrivilegio.MenuAFP, NuevoPrivilegio.MenuUsuario, NuevoPrivilegio.MenuTrabajadores, NuevoPrivilegio.MenuTareos, NuevoPrivilegio.MenuMetas, NuevoPrivilegio.MenuPlanillas, NuevoPrivilegio.MenuTablasParametricass, NuevoPrivilegio.MenuExportarDatos, NuevoPrivilegio.MenuReportes);
         }
 
         public int ModificarPrivilegio (cPrivilegio PrivilegioModificar)
         {
-            return Conexion.GDatos.Ejecutar("spModificarPrivilegios", PrivilegioModificar.codigo, PrivilegioModificar.Descripcion, PrivilegioModificar.MenuAFP, PrivilegioModificar.MenuUsuario);
+            return Conexion.GDatos.Ejecutar("spModificarPrivilegios", PrivilegioModificar.codigo, PrivilegioModificar.Descripcion, PrivilegioModificar.MenuAFP, PrivilegioModificar.MenuUsuario, PrivilegioModificar.MenuTrabajadores, PrivilegioModificar.MenuTareos, PrivilegioModificar.MenuMetas, PrivilegioModificar.MenuPlanillas, PrivilegioModificar.MenuTablasParametricass, PrivilegioModificar.MenuExportarDatos, PrivilegioModificar.MenuReportes);
         }
 
         public int EliminarPrivilegio (cPrivilegio PrivilegioAEliminar)

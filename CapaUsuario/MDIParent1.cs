@@ -388,11 +388,10 @@ namespace CapaUsuario
 
         }
 
-        private void certificadoDeRetencionesQuintaCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Reportes.frmCertificadoRetenciones frmCertificadoRetenciones = new Reportes.frmCertificadoRetenciones();
-            frmCertificadoRetenciones.MdiParent = this;
-            frmCertificadoRetenciones.Show();
+            CapaUsuario.Usuarios.frmLogin frmLogin = new Usuarios.frmLogin();
+            Application.Exit();
         }
     }
 }

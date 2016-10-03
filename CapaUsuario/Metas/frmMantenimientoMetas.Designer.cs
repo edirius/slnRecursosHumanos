@@ -28,15 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtgListaMetas = new System.Windows.Forms.DataGridView();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboAño = new System.Windows.Forms.ComboBox();
             this.idtMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.año = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idGrupoFuncional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idActividadObra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaMetas)).BeginInit();
@@ -44,25 +46,32 @@
             // 
             // dtgListaMetas
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightBlue;
-            this.dtgListaMetas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgListaMetas.AllowUserToAddRows = false;
+            this.dtgListaMetas.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            this.dtgListaMetas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgListaMetas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgListaMetas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaMetas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idtMeta,
             this.numero,
-            this.nombre,
             this.año,
+            this.nombre,
             this.idGrupoFuncional,
             this.idActividadObra});
-            this.dtgListaMetas.Location = new System.Drawing.Point(12, 33);
+            this.dtgListaMetas.Location = new System.Drawing.Point(12, 39);
             this.dtgListaMetas.MultiSelect = false;
             this.dtgListaMetas.Name = "dtgListaMetas";
+            this.dtgListaMetas.RowHeadersVisible = false;
             this.dtgListaMetas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaMetas.Size = new System.Drawing.Size(677, 173);
+            this.dtgListaMetas.Size = new System.Drawing.Size(677, 190);
             this.dtgListaMetas.TabIndex = 0;
             // 
             // btnEliminar
             // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEliminar.Location = new System.Drawing.Point(524, 235);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(87, 36);
@@ -73,6 +82,8 @@
             // 
             // btnModificar
             // 
+            this.btnModificar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnModificar.Location = new System.Drawing.Point(288, 236);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(90, 35);
@@ -83,6 +94,7 @@
             // 
             // btnNuevo
             // 
+            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNuevo.Location = new System.Drawing.Point(64, 237);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(100, 34);
@@ -90,6 +102,25 @@
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 13);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Año";
+            // 
+            // cboAño
+            // 
+            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAño.FormattingEnabled = true;
+            this.cboAño.Location = new System.Drawing.Point(44, 12);
+            this.cboAño.Name = "cboAño";
+            this.cboAño.Size = new System.Drawing.Size(147, 21);
+            this.cboAño.TabIndex = 34;
+            this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
             // 
             // idtMeta
             // 
@@ -100,24 +131,25 @@
             // 
             // numero
             // 
-            this.numero.DataPropertyName = "numero";
-            this.numero.HeaderText = "Codigo";
+            this.numero.DataPropertyName = "Año";
+            this.numero.HeaderText = "Año";
             this.numero.Name = "numero";
+            this.numero.Visible = false;
             this.numero.Width = 50;
+            // 
+            // año
+            // 
+            this.año.DataPropertyName = "Numero";
+            this.año.HeaderText = "Numero";
+            this.año.Name = "año";
+            this.año.Width = 50;
             // 
             // nombre
             // 
             this.nombre.DataPropertyName = "nombre";
             this.nombre.HeaderText = "Nombre";
             this.nombre.Name = "nombre";
-            this.nombre.Width = 500;
-            // 
-            // año
-            // 
-            this.año.DataPropertyName = "Año";
-            this.año.HeaderText = "Año";
-            this.año.Name = "año";
-            this.año.Width = 50;
+            this.nombre.Width = 600;
             // 
             // idGrupoFuncional
             // 
@@ -138,6 +170,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 283);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cboAño);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnNuevo);
@@ -148,6 +182,7 @@
             this.Load += new System.EventHandler(this.frmMantenimientoMetas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaMetas)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -157,10 +192,12 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboAño;
         private System.Windows.Forms.DataGridViewTextBoxColumn idtMeta;
         private System.Windows.Forms.DataGridViewTextBoxColumn numero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn año;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn idGrupoFuncional;
         private System.Windows.Forms.DataGridViewTextBoxColumn idActividadObra;
     }
