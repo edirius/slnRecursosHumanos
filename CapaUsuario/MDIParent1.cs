@@ -11,6 +11,7 @@ using CapaDeDatos;
 using CapaDeNegocios.Obras;
 using cWord;
 using CapaUsuario.Properties;
+using CapaDeNegocios;
 
 namespace CapaUsuario
 {
@@ -26,12 +27,13 @@ namespace CapaUsuario
             try
             {
                 Conexion.IniciarSesion(Settings.Default.ConexionMySql, "bdPersonal", "root", "root");
-                MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
+                //MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -392,6 +394,67 @@ namespace CapaUsuario
         {
             CapaUsuario.Usuarios.frmLogin frmLogin = new Usuarios.frmLogin();
             Application.Exit();
+        }
+        //Dar privilegios al usuario según su cargo
+        CapaUsuario.Usuarios.frmLogin FrmLogin = new CapaUsuario.Usuarios.frmLogin();
+        CapaDeNegocios.Usuario.cUsuario oUsu = new CapaDeNegocios.Usuario.cUsuario();
+        bool menuAFP, menuUsuario, menuTrabajadores, menuTareos, menuMeta, menuPlanillas, menuSunatTablasParametricas, menuExportarDatosSunat, menuReportes, habilitado; 
+        public void DarPrivilegios(string UsuarioLogin)
+        {
+            string Usuario = "";
+            string Cargo = "";
+            dgvCargo.DataSource = oUsu.ObtenerPrivilegios(UsuarioLogin);
+            foreach (DataGridViewRow fila in dgvCargo.Rows)
+            {
+                Usuario = "Usuario: "+ fila.Cells["Usuario"].Value.ToString();
+                Cargo = "Cargo: "+ fila.Cells["Cargo"].Value.ToString();
+                menuAFP =  Convert.ToBoolean(fila.Cells["menuAFP"].Value);
+                menuUsuario = Convert.ToBoolean(fila.Cells["menuUsuario"].Value);
+                menuTrabajadores = Convert.ToBoolean(fila.Cells["menuTrabajadores"].Value);
+                menuTareos = Convert.ToBoolean(fila.Cells["menuTareos"].Value);
+                menuMeta = Convert.ToBoolean(fila.Cells["menuMeta"].Value);
+                menuPlanillas = Convert.ToBoolean(fila.Cells["menuPlanillas"].Value);
+                menuSunatTablasParametricas = Convert.ToBoolean(fila.Cells["menuSunatTablasParametricas"].Value);
+                menuExportarDatosSunat = Convert.ToBoolean(fila.Cells["menuExportarDatosSunat"].Value);
+                menuReportes = Convert.ToBoolean(fila.Cells["menuReportes"].Value);
+                habilitado = Convert.ToBoolean(fila.Cells["habilitado"].Value);
+                toolStripStatusLabel1.Text = Usuario;
+                toolStripStatusLabel2.Text = Cargo;
+                OcultarMenu();
+            }
+            
+        }
+        public void OcultarMenu()
+        {
+            if (habilitado == true)
+            {
+                if (menuAFP == true) { fileMenu.Visible = true; }
+                else { fileMenu.Visible = false; newToolStripButton.Visible = false; }
+                if (menuUsuario == true) { editMenu.Visible = true; }
+                else { editMenu.Visible = false; }
+                if (menuTrabajadores == true) { viewMenu.Visible = true; }
+                else { viewMenu.Visible = false; helpToolStripButton.Visible = false; }
+                if (menuTareos == true) { toolsMenu.Visible = true; }
+                else { toolsMenu.Visible = false; }
+                if (menuMeta == true) { windowsMenu.Visible = true; }
+                else { windowsMenu.Visible = false; }
+                if (menuPlanillas == true) { planillasToolStripMenuItem.Visible = true; }
+                else { planillasToolStripMenuItem.Visible = false; printPreviewToolStripButton.Visible = false; }
+                if (menuSunatTablasParametricas == true) { sUNATToolStripMenuItem.Visible = true; }
+                else { sUNATToolStripMenuItem.Visible = false; }
+                if (menuExportarDatosSunat == true) { exportarTextoSUNATToolStripMenuItem.Visible = true; }
+                else { exportarTextoSUNATToolStripMenuItem.Visible = false; }
+                if (menuReportes == true) { reportesToolStripMenuItem1.Visible = true; }
+                else { reportesToolStripMenuItem1.Visible = false; printToolStripButton.Visible = false; }
+            }
+            else
+            {
+                const string message = "El usuario no se encuentra habilitado. Póngase en contacto con el administrador del sistema.";
+                const string caption = "Usuario Deshabilitado";
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Application.Exit();
+            }
+            
         }
     }
 }

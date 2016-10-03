@@ -58,7 +58,7 @@ namespace CapaUsuario.Usuarios
             if (txtPassword.Text == txtPassword2.Text )
             {
                 miUsuario.Nombre = txtUsuario.Text;
-                miUsuario.Password = txtPassword.Text;
+                miUsuario.Password = miUsuario.ObtenerSHA1(txtPassword.Text);
                 miUsuario.Privilegio.Codigo = Convert.ToInt16(cboCategoria.SelectedValue);
                 miUsuario.Habilitado1 = chkHabilitado.Checked;
                 this.DialogResult = DialogResult.OK;

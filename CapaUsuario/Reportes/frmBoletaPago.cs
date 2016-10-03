@@ -187,6 +187,9 @@ namespace CapaUsuario.Reportes
             _document.Header = header;
             HeaderFooter Footer = new HeaderFooter(new Phrase(" ", headerfooter), true);
             Footer.BorderWidthBottom = 0f;
+            Footer.BorderWidthTop = 0f;
+            Footer.BorderWidthLeft = 0f;
+            Footer.BorderWidthRight = 0f;
             _document.Footer = Footer;
         }
 
@@ -516,7 +519,7 @@ namespace CapaUsuario.Reportes
                 pdfTableD.HorizontalAlignment = Element.ALIGN_LEFT;
                 pdfTableD.DefaultCell.BorderWidth = 1;
                 pdfTableD.SetWidths(headerwidths_D);
-                pdfTableD.WidthPercentage = 100;
+                pdfTableD.WidthPercentage = 48;
 
                 /* -------------------------------INICIO DGVBOLETA_D */
                 foreach (DataGridViewColumn column in dgvBoletaPago_D.Columns)
@@ -548,7 +551,7 @@ namespace CapaUsuario.Reportes
                 pdfTableA.HorizontalAlignment = Element.ALIGN_LEFT;
                 pdfTableA.DefaultCell.BorderWidth = 1;
                 pdfTableA.SetWidths(headerwidths_A);
-                pdfTableA.WidthPercentage = 100;
+                pdfTableA.WidthPercentage = 48;
                 
                 /* -------------------------------INICIO DGVBOLETA_A */
 
@@ -626,7 +629,7 @@ namespace CapaUsuario.Reportes
                 pdfTableB.HorizontalAlignment = Element.ALIGN_LEFT;
                 pdfTableB.DefaultCell.BorderWidth = 1;
                 pdfTableB.SetWidths(headerwidths_B);
-                pdfTableB.WidthPercentage = 100;
+                pdfTableB.WidthPercentage = 48;
                 /* -------------------------------INICIO DGVBOLETA_B */
 
                 foreach (DataGridViewColumn column in dgvBoletaPago_B.Columns)
@@ -659,13 +662,12 @@ namespace CapaUsuario.Reportes
                 pdfTableC.HorizontalAlignment = Element.ALIGN_LEFT;
                 pdfTableC.DefaultCell.BorderWidth = 1;
                 pdfTableC.SetWidths(headerwidths_C);
-                pdfTableC.WidthPercentage = 100;
+                pdfTableC.WidthPercentage = 48;
                 /* -------------------------------INICIO DGVBOLETA_C */
 
                 o = 0;
                 foreach (DataGridViewColumn column in dgvBoletaPago_C.Columns)
                 {
-
                     if (o == 4)
                     {
                         cell = new PdfPCell((new Phrase("JORNADA ORDINARIA", new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
@@ -689,6 +691,7 @@ namespace CapaUsuario.Reportes
                     if (o < 4 || o > 7)
                     {
                         cell = new PdfPCell((new Phrase(column.HeaderText , new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
                         cell.Rowspan = 2;
                         cell.Colspan = 1;
                         cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
@@ -703,6 +706,7 @@ namespace CapaUsuario.Reportes
                 foreach (DataGridViewColumn column in dgvBoletaPago_C.Columns)
                 {
  
+
                     if (k == 4 || k == 5 || k == 6 || k == 7) { 
                         cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
                         cell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -740,7 +744,7 @@ namespace CapaUsuario.Reportes
                 pdfTableE.HorizontalAlignment = Element.ALIGN_LEFT;
                 pdfTableE.DefaultCell.BorderWidth = 1;
                 pdfTableE.SetWidths(headerwidths_E);
-                pdfTableE.WidthPercentage = 100;
+                pdfTableE.WidthPercentage = 48;
 
                 /* -------------------------------INICIO DGVBOLETA_E */
 
@@ -804,12 +808,17 @@ namespace CapaUsuario.Reportes
             }
   
             Document pdfDoc = new Document(PageSize.A4, 9, 9, 10, 10);
-            pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4);
+
+            if (rdbVertical.Checked == true)
+                pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4);
+            else
+                pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
 
             Paragraph paragraph = new Paragraph();
             paragraph.Alignment = Element.ALIGN_CENTER;
             paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
             paragraph.Add(" ");
+            
 
             Paragraph paragraph2 = new Paragraph();
             paragraph2.Alignment = Element.ALIGN_LEFT;
@@ -827,7 +836,7 @@ namespace CapaUsuario.Reportes
 
             //Columnas 
             MultiColumnText columns = new MultiColumnText();
-            columns.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 2);
+            columns.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 1);
 
             //Agregando pdfTable A, B, C, D, E a pdfDoc
             columns.AddElement(pdfTableD);
@@ -922,6 +931,8 @@ namespace CapaUsuario.Reportes
                 sMes = dgvBoletaPago.Rows[0].Cells[5].Value.ToString();
                 sAño = dgvBoletaPago.Rows[0].Cells[6].Value.ToString();
                 plantilla = dgvBoletaPago.Rows[0].Cells[12].Value.ToString();
+
+                dgvBoletaPago.Columns[2].Width = 200;
             }
 
             if (numero_boleta_pago == 0)
