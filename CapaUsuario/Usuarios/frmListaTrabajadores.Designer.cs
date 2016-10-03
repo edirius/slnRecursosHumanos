@@ -60,12 +60,12 @@
             this.sexo,
             this.Usuario,
             this.Habilitado});
-            this.dtgListaUsuarios.Location = new System.Drawing.Point(12, 12);
+            this.dtgListaUsuarios.Location = new System.Drawing.Point(13, 12);
             this.dtgListaUsuarios.MultiSelect = false;
             this.dtgListaUsuarios.Name = "dtgListaUsuarios";
             this.dtgListaUsuarios.ReadOnly = true;
             this.dtgListaUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaUsuarios.Size = new System.Drawing.Size(765, 197);
+            this.dtgListaUsuarios.Size = new System.Drawing.Size(760, 197);
             this.dtgListaUsuarios.TabIndex = 15;
             // 
             // idTrabajador
@@ -179,6 +179,7 @@
             this.btnSalir.TabIndex = 19;
             this.btnSalir.Text = "&Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmListaTrabajadores
             // 

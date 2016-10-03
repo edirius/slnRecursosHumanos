@@ -27,9 +27,10 @@ namespace CapaUsuario.Usuarios
         {
             
             InitializeComponent();
-            
-        }
+            pbImagen.Image = Resources.MUNICIPALIDAD_DISTRITAL_DE_CCATCCA_2;
 
+        }
+        public string Usuario;
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             string existe = "@a";
@@ -37,23 +38,25 @@ namespace CapaUsuario.Usuarios
             try
             {
                 int numero;
-                numero = oUsuario.ValidarUsuarioContraseña(txtUsuario.Text, txtPass.Text, existe, user);
+                string Contraseña = oUsuario.ObtenerSHA1(txtPass.Text);
+                numero = oUsuario.ValidarUsuarioContraseña(txtUsuario.Text, Contraseña, existe, user);
+                Usuario = txtUsuario.Text;
                 //
                 if (numero == 1)
                 {
-                    lblMensaje.Text = "Bienvenido al Sistema de Planillas";
                     frmPrincipal Principal = new frmPrincipal();
+                    MessageBox.Show("Bienvenido al sistema de planillas usuario " + Usuario+ ".");
                     Principal.Show();
                     this.Hide();
-
+                    Principal.DarPrivilegios(Usuario);
                 }
-                else { lblMensaje.Text = "ERROR: El Usuario no existe o la contraseña es incorrecta"; }
+                else {
+                    const string message = "El Usuario no existe o la contraseña es incorrecta.";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtUsuario.Text = ""; txtPass.Text = ""; txtUsuario.Focus(); }
             }
             catch { }
-
-            
-            
-            
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
@@ -71,6 +74,37 @@ namespace CapaUsuario.Usuarios
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        private void txtPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                string existe = "@a";
+                string user = "@b";
+                try
+                {
+                    int numero;
+                    string Contraseña = oUsuario.ObtenerSHA1(txtPass.Text);
+                    numero = oUsuario.ValidarUsuarioContraseña(txtUsuario.Text, Contraseña, existe, user);
+                    Usuario = txtUsuario.Text;
+                    //
+                    if (numero == 1)
+                    {
+                        frmPrincipal Principal = new frmPrincipal();
+                        MessageBox.Show("Bienvenido al sistema de planillas usuario " + Usuario +".");
+                        Principal.Show();
+                        this.Hide();
+                        Principal.DarPrivilegios(Usuario);
+                    }
+                    else {
+                        const string message = "El Usuario no existe o la contraseña es incorrecta.";
+                        const string caption = "Error";
+                        var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtUsuario.Text = ""; txtPass.Text = ""; txtUsuario.Focus();
+                    }
+                }
+                catch { }
+            }
         }
     }
 }

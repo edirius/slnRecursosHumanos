@@ -1461,6 +1461,8 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-21.png" />
+    <None Include="Resources\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png" />
     <None Include="Resources\logoamplio.png" />
     <None Include="Resources\logoafp.jpg" />
     <None Include="Resources\logoSunat.jpg" />
