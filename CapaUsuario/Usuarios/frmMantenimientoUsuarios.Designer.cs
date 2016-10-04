@@ -77,7 +77,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.MintCream;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(62, 35);
+            this.label1.Location = new System.Drawing.Point(81, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 15);
             this.label1.TabIndex = 19;
@@ -88,7 +88,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.MintCream;
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Location = new System.Drawing.Point(44, 62);
+            this.label2.Location = new System.Drawing.Point(63, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 15);
             this.label2.TabIndex = 20;
@@ -96,14 +96,14 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(119, 32);
+            this.txtUsuario.Location = new System.Drawing.Point(138, 35);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(225, 20);
             this.txtUsuario.TabIndex = 21;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(119, 59);
+            this.txtPassword.Location = new System.Drawing.Point(138, 68);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(225, 20);
@@ -111,7 +111,7 @@
             // 
             // txtPassword2
             // 
-            this.txtPassword2.Location = new System.Drawing.Point(119, 85);
+            this.txtPassword2.Location = new System.Drawing.Point(138, 101);
             this.txtPassword2.Name = "txtPassword2";
             this.txtPassword2.PasswordChar = '●';
             this.txtPassword2.Size = new System.Drawing.Size(225, 20);
@@ -122,7 +122,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.MintCream;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(7, 88);
+            this.label3.Location = new System.Drawing.Point(26, 104);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 15);
             this.label3.TabIndex = 24;
@@ -133,7 +133,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.MintCream;
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Location = new System.Drawing.Point(53, 114);
+            this.label4.Location = new System.Drawing.Point(72, 136);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 15);
             this.label4.TabIndex = 25;
@@ -145,14 +145,14 @@
             this.lblNombre.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblNombre.Location = new System.Drawing.Point(0, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(428, 23);
+            this.lblNombre.Size = new System.Drawing.Size(460, 23);
             this.lblNombre.TabIndex = 27;
             this.lblNombre.Text = "Nombre:";
             this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCategoria
             // 
-            this.btnCategoria.Location = new System.Drawing.Point(350, 109);
+            this.btnCategoria.Location = new System.Drawing.Point(369, 130);
             this.btnCategoria.Name = "btnCategoria";
             this.btnCategoria.Size = new System.Drawing.Size(32, 23);
             this.btnCategoria.TabIndex = 28;
@@ -165,7 +165,7 @@
             this.cboCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategoria.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cboCategoria.FormattingEnabled = true;
-            this.cboCategoria.Location = new System.Drawing.Point(119, 111);
+            this.cboCategoria.Location = new System.Drawing.Point(138, 133);
             this.cboCategoria.Name = "cboCategoria";
             this.cboCategoria.Size = new System.Drawing.Size(225, 21);
             this.cboCategoria.TabIndex = 29;
@@ -173,7 +173,7 @@
             // chkHabilitado
             // 
             this.chkHabilitado.AutoSize = true;
-            this.chkHabilitado.Location = new System.Drawing.Point(119, 140);
+            this.chkHabilitado.Location = new System.Drawing.Point(138, 167);
             this.chkHabilitado.Name = "chkHabilitado";
             this.chkHabilitado.Size = new System.Drawing.Size(85, 17);
             this.chkHabilitado.TabIndex = 30;
@@ -182,13 +182,13 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnSalir, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(71, 173);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(82, 194);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -199,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 239);
+            this.ClientSize = new System.Drawing.Size(460, 275);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.chkHabilitado);
             this.Controls.Add(this.cboCategoria);
