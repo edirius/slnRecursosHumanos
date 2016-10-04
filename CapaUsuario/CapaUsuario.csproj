@@ -1470,6 +1470,7 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\gente-de-negocios-trabajando-siluetas-vector_72147497295.jpg" />
     <Content Include="Resources\LogoCatca2.png" />
     <None Include="Resources\LogoCatca21.png" />
     <None Include="Resources\profuturo.jpg" />

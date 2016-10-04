@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCompararDatosAFP));
             this.dtgDatosPlanilla = new System.Windows.Forms.DataGridView();
             this.dtgDatosExcel = new System.Windows.Forms.DataGridView();
             this.btnCargar = new System.Windows.Forms.Button();
@@ -35,6 +36,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatosPlanilla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatosExcel)).BeginInit();
             this.SuspendLayout();
@@ -44,21 +47,25 @@
             this.dtgDatosPlanilla.AllowUserToAddRows = false;
             this.dtgDatosPlanilla.AllowUserToDeleteRows = false;
             this.dtgDatosPlanilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgDatosPlanilla.Location = new System.Drawing.Point(12, 128);
+            this.dtgDatosPlanilla.Location = new System.Drawing.Point(12, 170);
             this.dtgDatosPlanilla.Name = "dtgDatosPlanilla";
             this.dtgDatosPlanilla.ReadOnly = true;
-            this.dtgDatosPlanilla.Size = new System.Drawing.Size(448, 263);
+            this.dtgDatosPlanilla.Size = new System.Drawing.Size(587, 263);
             this.dtgDatosPlanilla.TabIndex = 0;
             this.dtgDatosPlanilla.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgDatosPlanilla_CellFormatting);
             this.dtgDatosPlanilla.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dtgDatosPlanilla_RowsAdded);
             // 
             // dtgDatosExcel
             // 
+            this.dtgDatosExcel.AllowUserToAddRows = false;
+            this.dtgDatosExcel.AllowUserToDeleteRows = false;
             this.dtgDatosExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgDatosExcel.Location = new System.Drawing.Point(492, 128);
+            this.dtgDatosExcel.Location = new System.Drawing.Point(634, 170);
             this.dtgDatosExcel.Name = "dtgDatosExcel";
-            this.dtgDatosExcel.Size = new System.Drawing.Size(448, 263);
+            this.dtgDatosExcel.ReadOnly = true;
+            this.dtgDatosExcel.Size = new System.Drawing.Size(574, 263);
             this.dtgDatosExcel.TabIndex = 1;
+            this.dtgDatosExcel.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgDatosExcel_CellFormatting);
             // 
             // btnCargar
             // 
@@ -79,7 +86,7 @@
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label4.Image = global::CapaUsuario.Properties.Resources.Habitat;
             this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Location = new System.Drawing.Point(552, 90);
+            this.label4.Location = new System.Drawing.Point(737, 78);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 25);
             this.label4.TabIndex = 52;
@@ -91,7 +98,7 @@
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Image = global::CapaUsuario.Properties.Resources.profuturo;
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Location = new System.Drawing.Point(399, 90);
+            this.label3.Location = new System.Drawing.Point(558, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 25);
             this.label3.TabIndex = 51;
@@ -103,7 +110,7 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Image = global::CapaUsuario.Properties.Resources.prima;
             this.label2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Location = new System.Drawing.Point(261, 90);
+            this.label2.Location = new System.Drawing.Point(410, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 25);
             this.label2.TabIndex = 50;
@@ -115,18 +122,42 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Image = global::CapaUsuario.Properties.Resources.integra;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label1.Location = new System.Drawing.Point(55, 90);
+            this.label1.Location = new System.Drawing.Point(242, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 25);
             this.label1.TabIndex = 49;
             this.label1.Text = "INTEGRA";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Location = new System.Drawing.Point(12, 144);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(587, 23);
+            this.label5.TabIndex = 53;
+            this.label5.Text = "Datos de la Planilla";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label6.Location = new System.Drawing.Point(634, 144);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(574, 23);
+            this.label6.TabIndex = 54;
+            this.label6.Text = "Datos de AFP.NET";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmCompararDatosAFP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(965, 405);
+            this.ClientSize = new System.Drawing.Size(1220, 455);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -134,9 +165,12 @@
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.dtgDatosExcel);
             this.Controls.Add(this.dtgDatosPlanilla);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCompararDatosAFP";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Comparar Datos de AFP";
             this.Load += new System.EventHandler(this.frmCompararDatosAFP_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmCompararDatosAFP_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatosPlanilla)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatosExcel)).EndInit();
             this.ResumeLayout(false);
@@ -152,5 +186,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,11 @@ namespace CapaUsuario.ExportarSunat
         public cPlanilla planilla;
 
         cDetallePlanilla detallePlanilla = new cDetallePlanilla();
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+        }
 
         private void btnCargar_Click(object sender, EventArgs e)
         {
@@ -84,20 +90,30 @@ namespace CapaUsuario.ExportarSunat
             dtgDatosExcel.Columns[2].Visible = false;
             dtgDatosExcel.Columns[3].Visible = false;
             dtgDatosExcel.Columns[4].Visible = false;
+            dtgDatosExcel.Columns[9].Visible = false;
             dtgDatosExcel.Columns[10].Visible = false;
             dtgDatosExcel.Columns[11].Visible = false;
             dtgDatosExcel.Columns[12].Visible = false;
-            dtgDatosExcel.AlternatingRowsDefaultCellStyle.BackColor = Color.Azure;
+        
 
         }
 
         private void frmCompararDatosAFP_Load(object sender, EventArgs e)
         {
             dtgDatosPlanilla.DataSource = detallePlanilla.ListarDetallePlanillaParaAFP(planilla.IdtPlanilla);
-            //for (int i = 0; i < dtgDatosPlanilla.Rows.Count -1; i++)
-            //{
-            //    dtgDatosPlanilla.Rows[i].Cells.
-            //}
+            dtgDatosPlanilla.Columns[0].Visible = false;
+            dtgDatosPlanilla.Columns[6].Visible = false;
+            dtgDatosPlanilla.Columns[7].Visible = false;
+
+            dtgDatosPlanilla.Columns[1].HeaderText = "DNI";
+            dtgDatosPlanilla.Columns[2].HeaderText = "CUSSP";
+            dtgDatosPlanilla.Columns[3].HeaderText = "Apellido Paterno";
+            dtgDatosPlanilla.Columns[4].HeaderText = "Apellido Materno";
+            dtgDatosPlanilla.Columns[5].HeaderText = "Nombres";
+            dtgDatosPlanilla.Columns[8].HeaderText = "AFP";
+            dtgDatosPlanilla.Columns[9].HeaderText = "TIPO COMISION AFP";
+
+
         }
 
         private void dtgDatosPlanilla_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -112,18 +128,90 @@ namespace CapaUsuario.ExportarSunat
         {
             if (dtgDatosPlanilla.Rows[e.RowIndex].Cells[0].Value != null)
             {
-                if (dtgDatosPlanilla.Rows[e.RowIndex].Cells["nombre"].Value.ToString() == "PROFUTURO")
+                switch (dtgDatosPlanilla.Rows[e.RowIndex].Cells["nombre"].Value.ToString())
                 {
-                    foreach (DataGridViewCell celda in this.dtgDatosPlanilla.Rows[e.RowIndex].Cells)
-                    {
-                        celda.Style.BackColor = Color.Orange;
-   
-                    }
-                }
+                    case "PROFUTURO":
+                        foreach (DataGridViewCell celda in this.dtgDatosPlanilla.Rows[e.RowIndex].Cells)
+                        {
+                            celda.Style.BackColor = Color.LightGreen;
 
-                
+                        }
+                        break;
+                    case "PRIMA":
+                        foreach (DataGridViewCell celda in this.dtgDatosPlanilla.Rows[e.RowIndex].Cells)
+                        {
+                            celda.Style.BackColor = Color.Orange;
+
+                        }
+                        break;
+                    case "HABITAT":
+                        foreach (DataGridViewCell celda in this.dtgDatosPlanilla.Rows[e.RowIndex].Cells)
+                        {
+                            celda.Style.BackColor = Color.Red;
+
+                        }
+                        break;
+                    case "INTEGRA":
+                        foreach (DataGridViewCell celda in this.dtgDatosPlanilla.Rows[e.RowIndex].Cells)
+                        {
+                            celda.Style.BackColor = Color.LightBlue;
+
+                        }
+                        break;
+                    default:
+                        break;
+                }
                 
             }
+        }
+
+        private void dtgDatosExcel_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (dtgDatosExcel.Rows[e.RowIndex].Cells[0].Value != null)
+            {
+                switch (dtgDatosExcel.Rows[e.RowIndex].Cells["AFP"].Value.ToString())
+                {
+                    case "PROFUTURO":
+                        foreach (DataGridViewCell celda in this.dtgDatosExcel.Rows[e.RowIndex].Cells)
+                        {
+                            celda.Style.BackColor = Color.LightGreen;
+
+                        }
+                        break;
+                    case "PRIMA":
+                        foreach (DataGridViewCell celda in this.dtgDatosExcel.Rows[e.RowIndex].Cells)
+                        {
+                            celda.Style.BackColor = Color.Orange;
+
+                        }
+                        break;
+                    case "HABITAT":
+                        foreach (DataGridViewCell celda in this.dtgDatosExcel.Rows[e.RowIndex].Cells)
+                        {
+                            celda.Style.BackColor = Color.Red;
+
+                        }
+                        break;
+                    case "INTEGRA":
+                        foreach (DataGridViewCell celda in this.dtgDatosExcel.Rows[e.RowIndex].Cells)
+                        {
+                            celda.Style.BackColor = Color.LightBlue;
+
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+        }
+
+        private void frmCompararDatosAFP_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics gr = this.CreateGraphics();
+            Rectangle rectangulo = new Rectangle(0, 0, this.Width, this.Height);
+            LinearGradientBrush brocha = new LinearGradientBrush(rectangulo, Color.SteelBlue, Color.LightSteelBlue, LinearGradientMode.ForwardDiagonal);
+            gr.FillRectangle(brocha, rectangulo);
         }
     }
 }
