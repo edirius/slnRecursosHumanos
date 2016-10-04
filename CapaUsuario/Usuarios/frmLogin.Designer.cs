@@ -73,7 +73,7 @@
             // 
             this.txtPass.Location = new System.Drawing.Point(141, 64);
             this.txtPass.Name = "txtPass";
-            this.txtPass.PasswordChar = '*';
+            this.txtPass.PasswordChar = '●';
             this.txtPass.Size = new System.Drawing.Size(140, 20);
             this.txtPass.TabIndex = 3;
             this.txtPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPass_KeyPress);
@@ -138,7 +138,7 @@
             // 
             // pbImagen
             // 
-            this.pbImagen.Image = global::CapaUsuario.Properties.Resources.MUNICIPALIDAD_DISTRITAL_DE_CCATCCA_2;
+            this.pbImagen.Image = global::CapaUsuario.Properties.Resources.LogoCatca2;
             this.pbImagen.Location = new System.Drawing.Point(89, 9);
             this.pbImagen.Name = "pbImagen";
             this.pbImagen.Size = new System.Drawing.Size(200, 200);
@@ -150,7 +150,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightGray;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(381, 386);
             this.Controls.Add(this.pbImagen);
             this.Controls.Add(this.groupBox1);

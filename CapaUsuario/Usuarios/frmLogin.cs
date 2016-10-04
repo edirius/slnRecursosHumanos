@@ -16,7 +16,6 @@ using MySql.Data.MySqlClient;
 using CapaDeNegocios;
 using System.IO;
 
-
 namespace CapaUsuario.Usuarios
 {
     public partial class frmLogin : Form
@@ -29,9 +28,7 @@ namespace CapaUsuario.Usuarios
         {
             
             InitializeComponent();
-            string ruta = Directory.GetCurrentDirectory();
-
-            pbImagen.ImageLocation = ruta + "\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.PNG";
+            pbImagen.Image = Resources.LogoCatca2;
 
         }
         public string Usuario;

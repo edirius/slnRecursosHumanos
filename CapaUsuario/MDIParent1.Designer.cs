@@ -698,6 +698,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::CapaUsuario.Properties.Resources.gente_de_negocios_trabajando_siluetas_vector_72147497295;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1219, 453);
             this.Controls.Add(this.dgvCargo);
             this.Controls.Add(this.statusStrip);

@@ -193,6 +193,16 @@ namespace CapaUsuario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap gente_de_negocios_trabajando_siluetas_vector_72147497295 {
+            get {
+                object obj = ResourceManager.GetObject("gente-de-negocios-trabajando-siluetas-vector_72147497295", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Habitat {
             get {
                 object obj = ResourceManager.GetObject("Habitat", resourceCulture);
@@ -263,9 +273,9 @@ namespace CapaUsuario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logoSunat {
+        internal static System.Drawing.Bitmap LogoCatca2 {
             get {
-                object obj = ResourceManager.GetObject("logoSunat", resourceCulture);
+                object obj = ResourceManager.GetObject("LogoCatca2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +283,9 @@ namespace CapaUsuario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MUNICIPALIDAD_DISTRITAL_DE_CCATCCA_2 {
+        internal static System.Drawing.Bitmap logoSunat {
             get {
-                object obj = ResourceManager.GetObject("MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2", resourceCulture);
+                object obj = ResourceManager.GetObject("logoSunat", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
