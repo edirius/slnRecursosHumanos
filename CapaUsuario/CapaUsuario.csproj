@@ -236,6 +236,12 @@
     <Compile Include="Reportes\frmBoletaPagoXPlanilla.Designer.cs">
       <DependentUpon>frmBoletaPagoXPlanilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\frmCertificado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmCertificado.Designer.cs">
+      <DependentUpon>frmCertificado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\frmDeclaracionJurada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1207,6 +1213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmBoletaPagoXPlanilla.resx">
       <DependentUpon>frmBoletaPagoXPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmCertificado.resx">
+      <DependentUpon>frmCertificado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmDeclaracionJurada.resx">
       <DependentUpon>frmDeclaracionJurada.cs</DependentUpon>

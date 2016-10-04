@@ -99,6 +99,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
+            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -481,7 +482,8 @@
             this.planillaToolStripMenuItem2,
             this.trabajadoresToolStripMenuItem,
             this.personalToolStripMenuItem,
-            this.declaraciónJuradaDeToolStripMenuItem});
+            this.declaraciónJuradaDeToolStripMenuItem,
+            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem});
             this.reportesToolStripMenuItem1.Name = "reportesToolStripMenuItem1";
             this.reportesToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
             this.reportesToolStripMenuItem1.Text = "Reportes";
@@ -685,6 +687,13 @@
             this.dgvCargo.TabIndex = 5;
             this.dgvCargo.Visible = false;
             // 
+            // certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem
+            // 
+            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem.Name = "certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem";
+            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem.Text = "Certificado de Retenciones de Quinta Categoria";
+            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem.Click += new System.EventHandler(this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -789,6 +798,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.DataGridView dgvPrivilegios;
         private System.Windows.Forms.DataGridView dgvCargo;
+        private System.Windows.Forms.ToolStripMenuItem certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem;
     }
 }
 
