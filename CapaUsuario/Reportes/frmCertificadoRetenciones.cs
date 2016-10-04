@@ -14,7 +14,6 @@ using System.Reflection;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp;
-using System.Runtime.InteropServices;
 
 namespace CapaUsuario.Reportes
 {
@@ -26,8 +25,8 @@ namespace CapaUsuario.Reportes
         string pmes_nro = "";
         string paño = "";
 
-        string sMes = "";
-        string sAño = "";
+        int sMes = 0;
+        int sAño = 0;
 
         int sidttrabajador = 0;
         int sidtplanilla = 0;
@@ -157,8 +156,8 @@ namespace CapaUsuario.Reportes
                 sidtplanilla = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[0].Value);
                 sidttrabajador = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[1].Value);
                 sidtregimenlaboral = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[3].Value);
-                sMes = dgvBoletaPago.Rows[0].Cells[5].Value.ToString();
-                sAño = dgvBoletaPago.Rows[0].Cells[6].Value.ToString();
+                sMes = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[5].Value);
+                sAño = Convert.ToInt32(dgvBoletaPago.Rows[0].Cells[6].Value);
                 plantilla = dgvBoletaPago.Rows[0].Cells[12].Value.ToString();
 
                 dgvBoletaPago.Columns[2].Width = 200;
@@ -181,8 +180,8 @@ namespace CapaUsuario.Reportes
                 sidtplanilla = Convert.ToInt32(dgvBoletaPago.Rows[e.RowIndex].Cells[0].Value);
                 sidttrabajador = Convert.ToInt32(dgvBoletaPago.Rows[e.RowIndex].Cells[1].Value);
                 sidtregimenlaboral = Convert.ToInt32(dgvBoletaPago.Rows[e.RowIndex].Cells[3].Value);
-                sMes = dgvBoletaPago.Rows[e.RowIndex].Cells[5].Value.ToString();
-                sAño = dgvBoletaPago.Rows[e.RowIndex].Cells[6].Value.ToString();
+                sMes = Convert.ToInt32(dgvBoletaPago.Rows[e.RowIndex].Cells[5].Value);
+                sAño = Convert.ToInt32(dgvBoletaPago.Rows[e.RowIndex].Cells[6].Value);
             }
         }
 
@@ -224,13 +223,24 @@ namespace CapaUsuario.Reportes
         {
             FileInfo file = new FileInfo("C:\\PDFs\\CertificadoRetenciones.pdf");
             bool estaAbierto = IsFileinUse(file, "C:\\PDFs\\CertificadoRetenciones.pdf");
+            DataTable odtCertificado = new DataTable();
+            CapaDeNegocios.Trabajadores.cTrabajadorCas oTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorCas();
 
-            if (!estaAbierto)
+            dgvRentasBrutas.DataSource = oTrabajador.ListarRentaBrutaXTrabajador(sidttrabajador, sAño);
+
+            if (dgvBoletaPago.Rows.Count > 0)
             {
-                exportar_a_pdf();
+                if (!estaAbierto)
+                {
+                    exportar_a_pdf();
+                }
+                else
+                    MessageBox.Show("Por favor cerrar CertificadoRetenciones.pdf", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                MessageBox.Show("Por favor cerrar BoletaPago.pdf", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Certificado de Retenciones de Quinta Categoria vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
         }
 
         public float[] GetTamañoColumnas(DataGridView dg)
@@ -267,9 +277,9 @@ namespace CapaUsuario.Reportes
                 pdfTableD.HorizontalAlignment = Element.ALIGN_LEFT;
                 pdfTableD.DefaultCell.BorderWidth = 1;
                 pdfTableD.SetWidths(headerwidths_D);
-                pdfTableD.WidthPercentage = 48;
+                pdfTableD.WidthPercentage = 100;
 
-                /* -------------------------------INICIO DGVBOLETA_D */
+                /* -------------------------------INICIO dgvRentasBrutas */
                 foreach (DataGridViewColumn column in dgvRentasBrutas.Columns)
                 {
                     cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
@@ -287,9 +297,9 @@ namespace CapaUsuario.Reportes
                     }
                     pdfTableD.CompleteRow();
                 }
-                /* -------------------------------FIN DGVBOLETA_D */
+                /* -------------------------------FIN dgvRentasBrutas */
             }
-                                    
+
 
             //Exporting to PDF
             string folderPath = "C:\\PDFs\\";
@@ -305,19 +315,40 @@ namespace CapaUsuario.Reportes
 
             Paragraph paragraph = new Paragraph();
             paragraph.Alignment = Element.ALIGN_CENTER;
-            paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
+            paragraph.Font = FontFactory.GetFont(FontFactory.TIMES, 12);
             paragraph.Add(" ");
 
 
             Paragraph paragraph2 = new Paragraph();
-            paragraph2.Alignment = Element.ALIGN_LEFT;
-            paragraph2.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
-            paragraph2.Add("\n\n             ......................................                              ......................................");
+            paragraph2.Alignment = Element.ALIGN_JUSTIFIED;
+            paragraph2.Font = FontFactory.GetFont(FontFactory.TIMES, 12);
+            paragraph2.Add("CERTIFICADO DE RENTAS Y RETENCIONES A CUENTA DEL IMPUESTO DE RENTA DE CUARTA CATEGORIA(Articulo 45º del D.S. Nº 122-94-EF, Reglamento de la ley de IR)");
 
             Paragraph paragraph3 = new Paragraph();
-            paragraph3.Alignment = Element.ALIGN_LEFT;
-            paragraph3.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
-            paragraph3.Add("               EMPLEADOR                                          TRABAJADOR");
+            paragraph3.Alignment = Element.ALIGN_CENTER;
+            paragraph3.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
+            paragraph3.Add("EJERCICIO " + sAño);
+
+            CapaDeNegocios.Trabajadores.cTrabajadorCas oTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorCas();
+            string sAlcalde = oTrabajador.ListarAlcalde().Rows[0][0].ToString();
+
+            Paragraph paragraph4 = new Paragraph();
+            paragraph4.Alignment = Element.ALIGN_JUSTIFIED;
+            paragraph4.Font = FontFactory.GetFont(FontFactory.TIMES, 12);
+            paragraph4.Add("Municipalidad Distrital de Ccatcca con RUC 20226560824 domiciliado en la Plaza de Armas s/n del Distrito de Ccatcca, provincia de Quispicanchis Departamento del Cusco debidamente representado por el Alcalde " + sAlcalde);
+
+            Paragraph paragraph5 = new Paragraph();
+            paragraph5.Alignment = Element.ALIGN_CENTER;
+            paragraph5.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 14);
+            paragraph5.Add("CERTIFICA");
+
+            //snombre_completo = 
+
+            Paragraph paragraph6 = new Paragraph();
+            paragraph6.Alignment = Element.ALIGN_JUSTIFIED;
+            paragraph6.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
+            //paragraph6.Add("Por la presente se certifica que "+ snombre_completo + " con DNI " + sDNI + " ha realizado en forma independiente el servicio o actividad de " + sCargo + " en el presente ejercicio percibiendo rentras brutas de acuerdo al siguiente detalle." );
+
 
             PdfWriter writer = PdfWriter.GetInstance(pdfDoc, new FileStream(folderPath + "BoletaPago.pdf", FileMode.Create));
             CreateHeaderFooter(ref pdfDoc);
@@ -330,7 +361,7 @@ namespace CapaUsuario.Reportes
             //Agregando pdfTable A, B, C, D, E a pdfDoc
             columns.AddElement(pdfTableD);
             columns.AddElement(paragraph);
- 
+
 
             pdfDoc.Add(columns);
 

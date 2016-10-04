@@ -26,7 +26,10 @@ namespace CapaDeNegocios.Trabajadores
             }
         }
 
-
+        public DataTable ListarDatosTrabajador(int pid_trabajador)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarDatosTrabajador", pid_trabajador);
+        }
 
         public DataTable ListarAlcalde()
         {
@@ -47,6 +50,11 @@ namespace CapaDeNegocios.Trabajadores
         {
             return Conexion.GDatos.TraerDataTable("spListarDeclaracionJNC", id_trabajador, paño, pcodigo);
         }
-         
+
+        public DataTable ListarRentaBrutaXTrabajador(int pid_trabajador, int paño )
+        {
+            return Conexion.GDatos.TraerDataTable("spListarRentaBrutaXTrabajador", pid_trabajador, paño );
+        }
+
     }
 }

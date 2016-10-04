@@ -398,7 +398,15 @@ namespace CapaUsuario
         //Dar privilegios al usuario según su cargo
         CapaUsuario.Usuarios.frmLogin FrmLogin = new CapaUsuario.Usuarios.frmLogin();
         CapaDeNegocios.Usuario.cUsuario oUsu = new CapaDeNegocios.Usuario.cUsuario();
-        bool menuAFP, menuUsuario, menuTrabajadores, menuTareos, menuMeta, menuPlanillas, menuSunatTablasParametricas, menuExportarDatosSunat, menuReportes, habilitado; 
+        bool menuAFP, menuUsuario, menuTrabajadores, menuTareos, menuMeta, menuPlanillas, menuSunatTablasParametricas, menuExportarDatosSunat, menuReportes, habilitado;
+
+        private void certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Reportes.frmCertificado frmCertificado = new CapaUsuario.Reportes.frmCertificado();
+            frmCertificado.MdiParent = this;
+            frmCertificado.Show();
+        }
+
         public void DarPrivilegios(string UsuarioLogin)
         {
             string Usuario = "";
