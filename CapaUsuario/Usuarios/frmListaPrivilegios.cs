@@ -53,6 +53,14 @@ namespace CapaUsuario.Usuarios
                 fModificarPrivilegio.miPrivilegio.Descripcion = Convert.ToString(dtgPrivilegios.SelectedRows[0].Cells[1].Value);
                 fModificarPrivilegio.miPrivilegio.MenuAFP = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[2].Value);
                 fModificarPrivilegio.miPrivilegio.MenuUsuario = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[3].Value);
+                fModificarPrivilegio.miPrivilegio.MenuTrabajadores = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[4].Value);
+                fModificarPrivilegio.miPrivilegio.MenuTareos = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[5].Value);
+                fModificarPrivilegio.miPrivilegio.MenuMetas = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[6].Value);
+                fModificarPrivilegio.miPrivilegio.MenuPlanillas = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[7].Value);
+                fModificarPrivilegio.miPrivilegio.MenuTablasParametricass = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[8].Value);
+                fModificarPrivilegio.miPrivilegio.MenuExportarDatos = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[9].Value);
+                fModificarPrivilegio.miPrivilegio.MenuReportes = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[10].Value);
+
                 if (fModificarPrivilegio.ShowDialog() == DialogResult.OK)
                 {
                     fModificarPrivilegio.miPrivilegio.ModificarPrivilegio(fModificarPrivilegio.miPrivilegio);
@@ -74,6 +82,7 @@ namespace CapaUsuario.Usuarios
                 fEliminarPrivilegio.miPrivilegio = new CapaDeNegocios.Usuario.cPrivilegio();
                 if (fEliminarPrivilegio.ShowDialog() == DialogResult.OK)
                 {
+                    
                     fEliminarPrivilegio.miPrivilegio.EliminarPrivilegio(fEliminarPrivilegio.miPrivilegio);
                     dtgPrivilegios.DataSource = miPrivilegio.ListaPrivilegios();
                    
