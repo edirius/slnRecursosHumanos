@@ -236,18 +236,23 @@ namespace CapaUsuario
 
         private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            cMiword = new cDocumentoWord();
-            cMiword.trabajador = "Edward Crisologo Roman Castro";
-            cMiword.dni = "41919785";
-            cMiword.direccion = "Urb.Balconcillo B-1";
-            cMiword.distrito = "Cusco";
-            cMiword.provincia = "Cusco";
-            cMiword.departamento = "Cusco";
-            cMiword.direccion = "Urb. Balconcillo B-1";
-            cMiword.cargo = "Jefe de la Unidad de Recursos Humanos";
-            cMiword.monto = "S/. 1500.00 (Mil quinientos Nuevos Soles)";
-            cMiword.fecha = DateTime.Now.ToLongDateString();
-            cMiword.Iniciar();
+            try
+            {
+                cMiword = new cDocumentoWord();
+                cMiword.trabajador = "Edward Crisologo Roman Castro";
+                cMiword.dni = "41919785";
+                cMiword.direccion = "Urb.Balconcillo B-1";
+                cMiword.distrito = "Cusco";
+                cMiword.provincia = "Cusco";
+                cMiword.departamento = "Cusco";
+                cMiword.direccion = "Urb. Balconcillo B-1";
+                cMiword.cargo = "Jefe de la Unidad de Recursos Humanos";
+                cMiword.monto = "S/. 1500.00 (Mil quinientos Nuevos Soles)";
+                cMiword.fecha = DateTime.Now.ToLongDateString();
+                cMiword.Iniciar();
+            }
+            catch { }
+            
         }
 
         private void variablesToolStripMenuItem_Click(object sender, EventArgs e)
