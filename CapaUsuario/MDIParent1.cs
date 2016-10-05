@@ -400,6 +400,11 @@ namespace CapaUsuario
         CapaDeNegocios.Usuario.cUsuario oUsu = new CapaDeNegocios.Usuario.cUsuario();
         bool menuAFP, menuUsuario, menuTrabajadores, menuTareos, menuMeta, menuPlanillas, menuSunatTablasParametricas, menuExportarDatosSunat, menuReportes, habilitado;
 
+        private void globalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CapaUsuario.Reportes.frmCertificado frmCertificado = new CapaUsuario.Reportes.frmCertificado();
