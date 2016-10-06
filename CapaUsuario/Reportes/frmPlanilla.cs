@@ -464,6 +464,7 @@ namespace CapaUsuario.Reportes
                 decimal monto_a_trabajador = 0;
                 decimal sumatoria_a_trabajador = 0;
                 decimal monto_aporte_entidad = 0;
+                decimal sumatoria_aporte_entidad = 0;
                 decimal monto_dec_afp = 0;
                 decimal sumatoria_dec_afp = 0;
 
@@ -2160,7 +2161,7 @@ namespace CapaUsuario.Reportes
                         //esribir datos de planilla
                         int total_prueba_corta = odtPrueba.Rows.Count;
 
-                        for (int d = 0; d < total_prueba_corta; d++)
+                        for (int d = 0; d < total_prueba_corta ; d++)
                         {
                             drFilaCorta = odtPruebaCorta.NewRow();
                             drFilaCorta.Delete();
@@ -2395,8 +2396,10 @@ namespace CapaUsuario.Reportes
                             {
                                 for (int l = 0; l < odtPrueba.Rows.Count - 1; l++)
                                 {
-                                    if (iindice_aporte_entidad != -1)
+                                    if (iindice_aporte_entidad != -1) {
                                         monto_aporte_entidad = Convert.ToDecimal(odtPrueba.Rows[l][iindice_aporte_entidad]);
+                                        sumatoria_aporte_entidad += monto_aporte_entidad;
+                                    }
 
                                     monto = Convert.ToDecimal(odtPrueba.Rows[l][indice_prueba_corta_neto_cobrar]);
                                     sumatoria = sumatoria + monto;
@@ -2468,8 +2471,9 @@ namespace CapaUsuario.Reportes
                                 iindice_aporte_entidad = BuscarIndiceColumna(odtPruebaCorta, columna_aporte_entidad);
                                 if (iindice_aporte_entidad != -1)
                                 {
-                                    monto_aporte_entidad = Convert.ToDecimal(odtPruebaCorta.Rows[d][iindice_aporte_entidad]);
-                                    drFilaCorta[iindice_dec_afp] = monto_aporte_entidad + sumatoria_a_trabajador;
+                                    //monto_aporte_entidad = Convert.ToDecimal(odtPruebaCorta.Rows[d][iindice_aporte_entidad]);
+                                    //drFilaCorta[iindice_dec_afp] = monto_aporte_entidad + sumatoria_a_trabajador;
+                                    drFilaCorta[iindice_aporte_entidad] = sumatoria_aporte_entidad;
                                 }
 
                             }
@@ -2549,8 +2553,11 @@ namespace CapaUsuario.Reportes
 
                                 if (prueba_afp == arr_prueba_trabajador)
                                 {
+                                    if (odtPruebaCorta.Rows[l][indice_dec_afp] == DBNull.Value)
+                                        sumatoria_afp_parcial = 0;
+                                    else
+                                        sumatoria_afp_parcial = Convert.ToDecimal(odtPruebaCorta.Rows[l][indice_dec_afp]);
 
-                                    sumatoria_afp_parcial = Convert.ToDecimal(odtPruebaCorta.Rows[l][indice_dec_afp].ToString().Trim());
                                     sumatoria_afp += sumatoria_afp_parcial;
                                 }
                             }
