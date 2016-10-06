@@ -52,8 +52,26 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMenuTramite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenuTramite.Designer.cs">
+      <DependentUpon>frmMenuTramite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Oficina\frmOficina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oficina\frmOficina.Designer.cs">
+      <DependentUpon>frmOficina.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmMenuTramite.resx">
+      <DependentUpon>frmMenuTramite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oficina\frmOficina.resx">
+      <DependentUpon>frmOficina.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
