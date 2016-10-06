@@ -124,5 +124,10 @@ namespace CapaUsuario.ExportarSunat
         {
             dgvListarPensionistas.DataSource = oExp.ListarDatosDelPensionistaporFecha(DtDesde.Value, DtHasta.Value);
         }
+
+        private void frmDatosDelPensionista_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

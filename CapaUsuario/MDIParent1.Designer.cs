@@ -81,6 +81,8 @@
             this.trabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.declaraciónJuradaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.globalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,7 +101,6 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
-            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -483,7 +484,8 @@
             this.trabajadoresToolStripMenuItem,
             this.personalToolStripMenuItem,
             this.declaraciónJuradaDeToolStripMenuItem,
-            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem});
+            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem,
+            this.globalToolStripMenuItem});
             this.reportesToolStripMenuItem1.Name = "reportesToolStripMenuItem1";
             this.reportesToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
             this.reportesToolStripMenuItem1.Text = "Reportes";
@@ -531,6 +533,20 @@
             this.declaraciónJuradaDeToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
             this.declaraciónJuradaDeToolStripMenuItem.Text = "Declaración Jurada de Nombramientos de Contraloria";
             this.declaraciónJuradaDeToolStripMenuItem.Click += new System.EventHandler(this.declaraciónJuradaDeToolStripMenuItem_Click);
+            // 
+            // certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem
+            // 
+            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem.Name = "certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem";
+            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem.Text = "Certificado de Retenciones de Quinta Categoria";
+            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem.Click += new System.EventHandler(this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem_Click);
+            // 
+            // globalToolStripMenuItem
+            // 
+            this.globalToolStripMenuItem.Name = "globalToolStripMenuItem";
+            this.globalToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.globalToolStripMenuItem.Text = "Planilla Total";
+            this.globalToolStripMenuItem.Click += new System.EventHandler(this.globalToolStripMenuItem_Click);
             // 
             // helpMenu
             // 
@@ -687,13 +703,6 @@
             this.dgvCargo.TabIndex = 5;
             this.dgvCargo.Visible = false;
             // 
-            // certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem
-            // 
-            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem.Name = "certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem";
-            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
-            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem.Text = "Certificado de Retenciones de Quinta Categoria";
-            this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem.Click += new System.EventHandler(this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem_Click);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -799,6 +808,7 @@
         private System.Windows.Forms.DataGridView dgvPrivilegios;
         private System.Windows.Forms.DataGridView dgvCargo;
         private System.Windows.Forms.ToolStripMenuItem certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem globalToolStripMenuItem;
     }
 }
 
