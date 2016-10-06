@@ -3292,7 +3292,6 @@ namespace CapaUsuario.Reportes
                 foreach (DataRow row in odtPrueba.Rows)
                     sRegimenLaboral = row[0].ToString();
             }
-            
         }
     }
 }
