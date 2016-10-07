@@ -40,5 +40,12 @@ namespace CapaDeUsuarioTramite
         {
             HacerConeccion();
         }
+
+        private void mantenimientoRequisitosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaDeUsuarioTramite.Solicitud_Oficina.frmRequisitos frmRequisito = new Solicitud_Oficina.frmRequisitos();
+            frmRequisito.MdiParent = this;
+            frmRequisito.Show();
+        }
     }
 }
