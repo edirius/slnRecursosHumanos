@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.crTrabajador = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.crListaTrabajador1 = new CapaUsuario.Reportes.crListaTrabajador();
             this.crReporteTrabajador1 = new CapaUsuario.Reportes.crReporteTrabajador();
+            this.crListaTrabajador1 = new CapaUsuario.Reportes.crListaTrabajador();
             this.SuspendLayout();
             // 
             // crTrabajador
@@ -54,6 +54,7 @@
             this.Controls.Add(this.crTrabajador);
             this.Name = "frmTrabajadores";
             this.Text = "frmTrabajadores";
+            this.Load += new System.EventHandler(this.frmTrabajadores_Load);
             this.ResumeLayout(false);
 
         }
