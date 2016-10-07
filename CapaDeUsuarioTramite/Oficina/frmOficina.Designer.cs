@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -37,9 +37,9 @@
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.btnInsertar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
             this.dgvListarOficinas = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarOficinas)).BeginInit();
@@ -48,7 +48,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(54, 65);
+            this.label2.Location = new System.Drawing.Point(30, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 1;
@@ -57,7 +57,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 35);
+            this.label3.Location = new System.Drawing.Point(39, 35);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 2;
@@ -66,7 +66,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(71, 96);
+            this.label4.Location = new System.Drawing.Point(47, 96);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 3;
@@ -74,21 +74,21 @@
             // 
             // txtDependencia
             // 
-            this.txtDependencia.Location = new System.Drawing.Point(143, 32);
+            this.txtDependencia.Location = new System.Drawing.Point(119, 32);
             this.txtDependencia.Name = "txtDependencia";
             this.txtDependencia.Size = new System.Drawing.Size(267, 20);
             this.txtDependencia.TabIndex = 4;
             // 
             // txtNombreOficina
             // 
-            this.txtNombreOficina.Location = new System.Drawing.Point(143, 62);
+            this.txtNombreOficina.Location = new System.Drawing.Point(119, 62);
             this.txtNombreOficina.Name = "txtNombreOficina";
             this.txtNombreOficina.Size = new System.Drawing.Size(267, 20);
             this.txtNombreOficina.TabIndex = 5;
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(143, 93);
+            this.txtDescripcion.Location = new System.Drawing.Point(119, 93);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(267, 43);
@@ -102,6 +102,7 @@
             this.btnInsertar.TabIndex = 8;
             this.btnInsertar.Text = "Guardar";
             this.btnInsertar.UseVisualStyleBackColor = true;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -121,14 +122,14 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(475, 48);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
-            // btnModificar
+            // btnSalir
             // 
-            this.btnModificar.Location = new System.Drawing.Point(121, 3);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(112, 42);
-            this.btnModificar.TabIndex = 9;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnSalir.Location = new System.Drawing.Point(357, 3);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(115, 42);
+            this.btnSalir.TabIndex = 11;
+            this.btnSalir.Text = "Cancelar";
+            this.btnSalir.UseVisualStyleBackColor = true;
             // 
             // btnEliminar
             // 
@@ -139,35 +140,35 @@
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             // 
-            // btnSalir
+            // btnModificar
             // 
-            this.btnSalir.Location = new System.Drawing.Point(357, 3);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(115, 42);
-            this.btnSalir.TabIndex = 11;
-            this.btnSalir.Text = "Cancelar";
-            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnModificar.Location = new System.Drawing.Point(121, 3);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(112, 42);
+            this.btnModificar.TabIndex = 9;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
             // 
             // dgvListarOficinas
             // 
             this.dgvListarOficinas.AllowUserToAddRows = false;
             this.dgvListarOficinas.AllowUserToResizeColumns = false;
             this.dgvListarOficinas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListarOficinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListarOficinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListarOficinas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListarOficinas.Location = new System.Drawing.Point(22, 142);
             this.dgvListarOficinas.Name = "dgvListarOficinas";
             this.dgvListarOficinas.RowHeadersVisible = false;
             this.dgvListarOficinas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListarOficinas.Size = new System.Drawing.Size(475, 227);
+            this.dgvListarOficinas.Size = new System.Drawing.Size(787, 227);
             this.dgvListarOficinas.TabIndex = 46;
             // 
             // frmOficina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 445);
+            this.ClientSize = new System.Drawing.Size(821, 451);
             this.Controls.Add(this.dgvListarOficinas);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.txtDescripcion);
@@ -179,6 +180,7 @@
             this.Name = "frmOficina";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmOficina";
+            this.Load += new System.EventHandler(this.frmOficina_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarOficinas)).EndInit();
             this.ResumeLayout(false);

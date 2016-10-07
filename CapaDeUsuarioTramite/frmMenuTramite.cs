@@ -40,5 +40,24 @@ namespace CapaDeUsuarioTramite
         {
             HacerConeccion();
         }
+
+        private void operaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void operaciónToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CapaDeUsuarioTramite.Tramite.frmOperacion fOperacion = new CapaDeUsuarioTramite.Tramite.frmOperacion();
+            fOperacion.MdiParent = this;
+            fOperacion.Show();
+        }
+
+        private void localSedeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaDeUsuarioTramite.Tramite.frmLocalSede fLocalSede = new CapaDeUsuarioTramite.Tramite.frmLocalSede();
+            fLocalSede.MdiParent = this;
+            fLocalSede.Show();
+        }
     }
 }

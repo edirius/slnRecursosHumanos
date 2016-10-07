@@ -31,13 +31,17 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.oficinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoOficinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operaciónToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.localSedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.oficinasToolStripMenuItem});
+            this.oficinasToolStripMenuItem,
+            this.operaciónToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(783, 24);
@@ -58,6 +62,30 @@
             this.mantenimientoOficinasToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.mantenimientoOficinasToolStripMenuItem.Text = "Mantenimiento Oficinas";
             this.mantenimientoOficinasToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoOficinasToolStripMenuItem_Click);
+            // 
+            // operaciónToolStripMenuItem
+            // 
+            this.operaciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.operaciónToolStripMenuItem1,
+            this.localSedeToolStripMenuItem});
+            this.operaciónToolStripMenuItem.Name = "operaciónToolStripMenuItem";
+            this.operaciónToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.operaciónToolStripMenuItem.Text = "Tramite";
+            this.operaciónToolStripMenuItem.Click += new System.EventHandler(this.operaciónToolStripMenuItem_Click);
+            // 
+            // operaciónToolStripMenuItem1
+            // 
+            this.operaciónToolStripMenuItem1.Name = "operaciónToolStripMenuItem1";
+            this.operaciónToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.operaciónToolStripMenuItem1.Text = "Operación";
+            this.operaciónToolStripMenuItem1.Click += new System.EventHandler(this.operaciónToolStripMenuItem1_Click);
+            // 
+            // localSedeToolStripMenuItem
+            // 
+            this.localSedeToolStripMenuItem.Name = "localSedeToolStripMenuItem";
+            this.localSedeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.localSedeToolStripMenuItem.Text = "Local Sede";
+            this.localSedeToolStripMenuItem.Click += new System.EventHandler(this.localSedeToolStripMenuItem_Click);
             // 
             // frmMenuTramite
             // 
@@ -83,5 +111,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem oficinasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoOficinasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem operaciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem operaciónToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem localSedeToolStripMenuItem;
     }
 }

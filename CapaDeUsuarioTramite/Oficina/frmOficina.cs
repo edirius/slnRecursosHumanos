@@ -24,5 +24,16 @@ namespace CapaDeUsuarioTramite.Oficina
         {
             dgvListarOficinas.DataSource =  oOficina.ListarOficina();
         }
+
+        private void frmOficina_Load(object sender, EventArgs e)
+        {
+            dgvListarOficinas.Columns[1].Width = 250;
+            dgvListarOficinas.Columns[2].Width = 250;
+        }
+
+        private void btnInsertar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

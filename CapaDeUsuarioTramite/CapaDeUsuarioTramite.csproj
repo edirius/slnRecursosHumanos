@@ -66,6 +66,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tramite\frmLocalSede.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tramite\frmLocalSede.Designer.cs">
+      <DependentUpon>frmLocalSede.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tramite\frmOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tramite\frmOperacion.Designer.cs">
+      <DependentUpon>frmOperacion.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMenuTramite.resx">
       <DependentUpon>frmMenuTramite.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,6 +93,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Tramite\frmLocalSede.resx">
+      <DependentUpon>frmLocalSede.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tramite\frmOperacion.resx">
+      <DependentUpon>frmOperacion.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

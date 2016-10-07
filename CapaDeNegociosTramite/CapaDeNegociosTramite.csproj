@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cReglaNegociosException.cs" />
+    <Compile Include="LocalSede\cLocalSede.cs" />
     <Compile Include="Oficina\cOficina.cs" />
+    <Compile Include="Operacion\cOperacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,8 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Documento\" />
-    <Folder Include="LocalSede\" />
-    <Folder Include="Operacion\" />
     <Folder Include="Requisito-Oficina\" />
     <Folder Include="Solicitante\" />
     <Folder Include="Trabajador-Oficina\" />

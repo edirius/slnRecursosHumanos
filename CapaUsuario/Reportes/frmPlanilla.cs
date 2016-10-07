@@ -1327,8 +1327,10 @@ namespace CapaUsuario.Reportes
                             {
                                 for (int l = 0; l < odtPrueba.Rows.Count - 1; l++)
                                 {
-                                    if (iindice_aporte_entidad != -1)
+                                    if (iindice_aporte_entidad != -1) {
                                         monto_aporte_entidad = Convert.ToDecimal(odtPrueba.Rows[l][iindice_aporte_entidad]);
+                                        sumatoria_aporte_entidad += monto_aporte_entidad;
+                                    }
 
                                     monto = Convert.ToDecimal(odtPrueba.Rows[l][indice_prueba_corta_neto_cobrar]);
                                     sumatoria = sumatoria + monto;
@@ -1390,8 +1392,8 @@ namespace CapaUsuario.Reportes
                                 iindice_aporte_entidad = BuscarIndiceColumna(odtPruebaCorta, columna_aporte_entidad);
                                 if (iindice_aporte_entidad != -1)
                                 {
-                                    monto_aporte_entidad = Convert.ToDecimal(odtPruebaCorta.Rows[d][iindice_aporte_entidad]);
-                                    drFilaCorta[iindice_dec_afp] = monto_aporte_entidad + sumatoria_a_trabajador;
+                                    //monto_aporte_entidad = Convert.ToDecimal(odtPruebaCorta.Rows[d][iindice_aporte_entidad]);
+                                    drFilaCorta[iindice_aporte_entidad] = sumatoria_aporte_entidad;
                                 }
 
                             }
@@ -2872,7 +2874,6 @@ namespace CapaUsuario.Reportes
             PdfPTable pdfTable = new PdfPTable(dgvPrueba.ColumnCount);
 
             PdfPTable pdfTable2 = new PdfPTable(dgvAFP.ColumnCount);
-
             PdfPTable pdfTableRedondear = new PdfPTable(dgvRedondear.ColumnCount);
             PdfPTable pdfTableEEFF = new PdfPTable(dgvEEFF.ColumnCount);
 
