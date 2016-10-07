@@ -16,14 +16,14 @@ namespace CapaUsuario.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class crPlanillaTotal : ReportClass {
+    public class crResumenPlanillas : ReportClass {
         
-        public crPlanillaTotal() {
+        public crResumenPlanillas() {
         }
         
         public override string ResourceName {
             get {
-                return "crPlanillaTotal.rpt";
+                return "crResumenPlanillas.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace CapaUsuario.Reportes {
         
         public override string FullResourceName {
             get {
-                return "CapaUsuario.Reportes.crPlanillaTotal.rpt";
+                return "CapaUsuario.Reportes.crResumenPlanillas.rpt";
             }
             set {
                 // Do nothing
@@ -66,7 +66,7 @@ namespace CapaUsuario.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -74,7 +74,7 @@ namespace CapaUsuario.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,17 +82,49 @@ namespace CapaUsuario.Reportes {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
             get {
                 return this.ReportDefinition.Sections[4];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
+            get {
+                return this.ReportDefinition.Sections[5];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.CrystalReports.Engine.Section Section5 {
+            get {
+                return this.ReportDefinition.Sections[6];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_pestado {
+            get {
+                return this.DataDefinition.ParameterFields[0];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_pidtplanilla {
+            get {
+                return this.DataDefinition.ParameterFields[1];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedcrPlanillaTotal : Component, ICachedReport {
+    public class CachedcrResumenPlanillas : Component, ICachedReport {
         
-        public CachedcrPlanillaTotal() {
+        public CachedcrResumenPlanillas() {
         }
         
         [Browsable(false)]
@@ -129,7 +161,7 @@ namespace CapaUsuario.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            crPlanillaTotal rpt = new crPlanillaTotal();
+            crResumenPlanillas rpt = new crResumenPlanillas();
             rpt.Site = this.Site;
             return rpt;
         }

@@ -21,5 +21,10 @@ namespace CapaUsuario.Reportes
         {
 
         }
+
+        private void frmTrabajadores_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

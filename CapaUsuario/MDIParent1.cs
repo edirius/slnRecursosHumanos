@@ -407,7 +407,7 @@ namespace CapaUsuario
 
         private void globalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CapaUsuario.Reportes.frmPlanillaTotal frmPlanillaGlobal  = new CapaUsuario.Reportes.frmPlanillaTotal();
+            CapaUsuario.Reportes.frmResumenPlanillas frmPlanillaGlobal  = new CapaUsuario.Reportes.frmResumenPlanillas();
             frmPlanillaGlobal.MdiParent = this;
             frmPlanillaGlobal.Show();
         }
