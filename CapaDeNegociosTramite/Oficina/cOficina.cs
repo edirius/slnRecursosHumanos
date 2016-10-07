@@ -18,49 +18,23 @@ namespace CapaDeNegociosTramite.Oficina
 
         public string DescripcionOficina { get; set; }
 
-        public Boolean AgregarOficina(cOficina oficina)
+        
+        public int AgregarOficina()
         {
-            DataTable Auxiliar = new DataTable();
-            Auxiliar = Conexion.GDatos.TraerDataTable("spOficinaInsertar", oficina.NombreOficina, oficina.Dependencia, oficina.DescripcionOficina);
-            if (Convert.ToString(Auxiliar.Rows[0][0]) == "0")
-            {
-                return true;
-            }
-            else
-            {
-                throw new cReglaNegociosException(Convert.ToString(Auxiliar.Rows[0][1]));
-            }
+            return Conexion.GDatos.Ejecutar("spTramiteInsertarOficina", Dependencia, NombreOficina, DescripcionOficina);
         }
-
-        public Boolean ModificarOficina(cOficina oficina)
+        public int ModificarOficina()
         {
-            Conexion.GDatos.Ejecutar("spOficinaModificar", oficina.NombreOficina, oficina.Dependencia, oficina.DescripcionOficina);
-            return true;
+            return Conexion.GDatos.Ejecutar("spTramiteModificarOficina", CodigoOficina, Dependencia, NombreOficina, DescripcionOficina);
+        }
+        public int EliminarOficina()
+        {
+            return Conexion.GDatos.Ejecutar("spTramiteEliminarOficina", CodigoOficina);
         }
         public DataTable ListarOficina()
         {
-            return Conexion.GDatos.TraerDataTable("spOficinaListar");
+            return Conexion.GDatos.TraerDataTable("spTramiteListarOficina");
         }
-
-        public Boolean EliminarOficina(cOficina oficina)
-        {
-            try
-            {
-                if (Conexion.GDatos.Ejecutar("spOficinaEliminar", oficina.CodigoOficina) > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception e)
-            {
-                throw new cReglaNegociosException("Error Eliminar Oficina. Detalles: " + e.Message, e);
-            }
-
-        }
-
+        
     }
 }
