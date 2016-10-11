@@ -47,9 +47,9 @@ namespace CapaDeUsuarioTramite.Tramite
             cbUnidadDestino.DisplayMember = "nombre_oficina";
             cbUnidadDestino.DataSource = miOficina.ListarOficina();
 
-            //cboUsuarioDestino.ValueMember = "id_oficina_trabajador";
-            //cboUsuarioDestino.DisplayMember = "nombres";
-            //cboUsuarioDestino.DataSource = miTramite.ListarTrabajadores();
+            cboUsuarioDestino.ValueMember = "id_oficina_trabajador";
+            cboUsuarioDestino.DisplayMember = "nombres";
+            cboUsuarioDestino.DataSource = miTramite.ListarTrabajadoresPorOficina(int.Parse(cbUnidadDestino.SelectedValue.ToString()));
 
             cbDocumento.ValueMember = "id_documento";
             cbDocumento.DisplayMember = "expediente";
@@ -93,6 +93,13 @@ namespace CapaDeUsuarioTramite.Tramite
         private void btnInsertar_Click(object sender, EventArgs e)
         {
             AgregarTramite();
+        }
+
+        private void cbUnidadDestino_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboUsuarioDestino.ValueMember = "id_oficina_trabajador";
+            cboUsuarioDestino.DisplayMember = "nombres";
+            cboUsuarioDestino.DataSource = miTramite.ListarTrabajadoresPorOficina(int.Parse(cbUnidadDestino.SelectedValue.ToString()));
         }
     }
 }

@@ -68,5 +68,12 @@ namespace CapaDeUsuarioTramite
             frmTramite.MdiParent = this;
             frmTramite.Show();
         }
+
+        private void mantenimientoLocalSedeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaDeUsuarioTramite.Local_Sede.frmLocalSede frmLocal = new Local_Sede.frmLocalSede();
+            frmLocal.MdiParent = this;
+            frmLocal.Show();
+        }
     }
 }

@@ -7,72 +7,61 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDeDatos;
-using CapaDeNegociosTramite;
-using CapaDeNegociosTramite.Oficina;
 
-namespace CapaDeUsuarioTramite.Oficina
+namespace CapaDeUsuarioTramite.Local_Sede
 {
-    public partial class frmOficina : Form
+    public partial class frmLocalSede : Form
     {
-        cOficina miOficina = new cOficina();
-
-        public frmOficina()
+        CapaDeNegociosTramite.LocalSede.cSede miSede = new CapaDeNegociosTramite.LocalSede.cSede();
+        public frmLocalSede()
         {
             InitializeComponent();
             ActualizarLista();
         }
         public void ActualizarLista()
         {
-            dgvListarOficinas.DataSource =  miOficina.ListarOficina();
+            dgvListarSede.DataSource = miSede.ListarSede();
         }
-        public void ConfiguracionInicial()
+        private void ConfiguracionInicial()
         {
-            txtDependencia.Text = "";
             txtDescripcion.Text = "";
-            txtNombreOficina.Text = "";
-            txtDependencia.Focus();
+            txtDescripcion.Focus();
         }
-        public void AgregarOficina()
+        public void AgregarSede()
         {
             try
             {
-                int numero;
-                miOficina.Dependencia = txtDependencia.Text;
-                miOficina.NombreOficina = txtNombreOficina.Text;
-                miOficina.DescripcionOficina = txtDescripcion.Text;
-                numero = miOficina.AgregarOficina();
-                //
-                if (numero == 1)
+                bool numero;
+                miSede.Descripcion = txtDescripcion.Text;
+                numero = Convert.ToBoolean(miSede.AgregarSede());
+                if (numero == true)
                 {
                     ActualizarLista();
-                    MessageBox.Show("Oficina agregada correctamente");
+                    MessageBox.Show("La Sede fue agregada correctamente");
                 }
                 else
                 {
-                    const string message = "No ha insertado ningun dato";
+                    const string message = "La Sede ya existe en la base de datos";
                     const string caption = "Error";
                     var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch
             {
-                const string message = "La oficina ya existe en la base de datos";
+                const string message = "gege";
                 const string caption = "Error";
                 var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void Modificar()
+        public void ModificarSede()
         {
             try
             {
                 int numero;
-                int valor = dgvListarOficinas.CurrentCell.RowIndex;
-                miOficina.CodigoOficina = int.Parse(dgvListarOficinas[0, valor].Value.ToString());
-                miOficina.Dependencia = txtDependencia.Text;
-                miOficina.NombreOficina = txtNombreOficina.Text;
-                miOficina.DescripcionOficina = txtDescripcion.Text;
-                numero = miOficina.ModificarOficina();
+                int valor = dgvListarSede.CurrentCell.RowIndex;
+                miSede.CodigoSede = int.Parse(dgvListarSede[0, valor].Value.ToString());
+                miSede.Descripcion = txtDescripcion.Text;
+                numero = miSede.ModificarSede();
                 if (numero == 1)
                 {
                     ActualizarLista();
@@ -92,17 +81,17 @@ namespace CapaDeUsuarioTramite.Oficina
                 const string caption = "Error";
                 var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            
+
+
         }
-        private void Eliminar()
+        private void EliminarSede()
         {
             try
             {
                 int numero;
-                int valor = dgvListarOficinas.CurrentCell.RowIndex;
-                miOficina.CodigoOficina = int.Parse(dgvListarOficinas[0, valor].Value.ToString());
-                numero = miOficina.EliminarOficina();
+                int valor = dgvListarSede.CurrentCell.RowIndex;
+                miSede.CodigoSede = int.Parse(dgvListarSede[0, valor].Value.ToString());
+                numero = miSede.EliminarSede();
                 if (numero == 1)
                 {
                     ActualizarLista();
@@ -121,37 +110,24 @@ namespace CapaDeUsuarioTramite.Oficina
                 const string caption = "Error";
                 var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
         private void btnInsertar_Click(object sender, EventArgs e)
         {
-            AgregarOficina();
+            AgregarSede();
             ConfiguracionInicial();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Modificar();
+            ModificarSede();
             ConfiguracionInicial();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            Eliminar();
+            EliminarSede();
             ConfiguracionInicial();
-        }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            ConfiguracionInicial();
-        }
-        private void dgvListarOficinas_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int valor = dgvListarOficinas.CurrentCell.RowIndex;
-            miOficina.CodigoOficina = int.Parse(dgvListarOficinas[0, valor].Value.ToString());
-            txtDependencia.Text = dgvListarOficinas[1, valor].Value.ToString();
-            txtNombreOficina.Text = dgvListarOficinas[2, valor].Value.ToString();
-            txtDescripcion.Text = dgvListarOficinas[3, valor].Value.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -159,14 +135,15 @@ namespace CapaDeUsuarioTramite.Oficina
             Close();
         }
 
-        private void frmOficina_Load(object sender, EventArgs e)
+        private void dgvListarSede_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            int valor = dgvListarSede.CurrentCell.RowIndex;
+            txtDescripcion.Text = dgvListarSede[0, valor].Value.ToString();
         }
 
-        private void btnInsertar_Click_1(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-            AgregarOficina();
+            ConfiguracionInicial();
         }
     }
 }

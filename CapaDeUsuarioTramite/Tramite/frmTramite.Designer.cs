@@ -28,11 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbSede = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvListarTramites = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -55,16 +65,6 @@
             this.cboUsuarioDestino = new System.Windows.Forms.ComboBox();
             this.cbDocumento = new System.Windows.Forms.ComboBox();
             this.txtProveido = new System.Windows.Forms.TextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarTramites)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -72,7 +72,7 @@
             // cbSede
             // 
             this.cbSede.FormattingEnabled = true;
-            this.cbSede.Location = new System.Drawing.Point(245, 12);
+            this.cbSede.Location = new System.Drawing.Point(192, 12);
             this.cbSede.Name = "cbSede";
             this.cbSede.Size = new System.Drawing.Size(129, 21);
             this.cbSede.TabIndex = 67;
@@ -80,7 +80,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(204, 15);
+            this.label3.Location = new System.Drawing.Point(151, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 65;
@@ -91,8 +91,8 @@
             this.dgvListarTramites.AllowUserToAddRows = false;
             this.dgvListarTramites.AllowUserToResizeColumns = false;
             this.dgvListarTramites.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListarTramites.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListarTramites.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvListarTramites.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvListarTramites.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListarTramites.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -113,6 +113,78 @@
             this.dgvListarTramites.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListarTramites.Size = new System.Drawing.Size(1022, 297);
             this.dgvListarTramites.TabIndex = 63;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "id_tramite";
+            this.Column1.HeaderText = "Codigo";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "sede";
+            this.Column2.HeaderText = "Sede";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "fecha_hora";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column3.HeaderText = "Fecha/Hora";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "operacion";
+            this.Column4.HeaderText = "Operacion";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "oficina";
+            this.Column5.HeaderText = "Oficina";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "usuario";
+            this.Column6.HeaderText = "Usuario";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "oficinadestino";
+            this.Column7.HeaderText = "Oficina Destino";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "usuariodestino";
+            this.Column8.HeaderText = "Usuario Destino";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "proveido";
+            this.Column9.HeaderText = "Proveido";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "expediente";
+            this.Column10.HeaderText = "Expediente";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
             // 
             // tableLayoutPanel1
             // 
@@ -183,7 +255,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(171, 48);
+            this.label1.Location = new System.Drawing.Point(118, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 68;
@@ -192,7 +264,7 @@
             // dtpFechaHora
             // 
             this.dtpFechaHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpFechaHora.Location = new System.Drawing.Point(245, 42);
+            this.dtpFechaHora.Location = new System.Drawing.Point(192, 42);
             this.dtpFechaHora.Name = "dtpFechaHora";
             this.dtpFechaHora.Size = new System.Drawing.Size(156, 20);
             this.dtpFechaHora.TabIndex = 69;
@@ -200,7 +272,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(180, 80);
+            this.label2.Location = new System.Drawing.Point(127, 80);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 70;
@@ -209,7 +281,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(196, 111);
+            this.label4.Location = new System.Drawing.Point(143, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 71;
@@ -218,7 +290,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(180, 139);
+            this.label5.Location = new System.Drawing.Point(127, 139);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 72;
@@ -263,7 +335,7 @@
             // cboOperacion
             // 
             this.cboOperacion.FormattingEnabled = true;
-            this.cboOperacion.Location = new System.Drawing.Point(245, 77);
+            this.cboOperacion.Location = new System.Drawing.Point(192, 77);
             this.cboOperacion.Name = "cboOperacion";
             this.cboOperacion.Size = new System.Drawing.Size(129, 21);
             this.cboOperacion.TabIndex = 77;
@@ -271,17 +343,17 @@
             // cbOficina
             // 
             this.cbOficina.FormattingEnabled = true;
-            this.cbOficina.Location = new System.Drawing.Point(245, 108);
+            this.cbOficina.Location = new System.Drawing.Point(192, 108);
             this.cbOficina.Name = "cbOficina";
-            this.cbOficina.Size = new System.Drawing.Size(129, 21);
+            this.cbOficina.Size = new System.Drawing.Size(292, 21);
             this.cbOficina.TabIndex = 78;
             // 
             // cbTrabajador
             // 
             this.cbTrabajador.FormattingEnabled = true;
-            this.cbTrabajador.Location = new System.Drawing.Point(247, 136);
+            this.cbTrabajador.Location = new System.Drawing.Point(194, 136);
             this.cbTrabajador.Name = "cbTrabajador";
-            this.cbTrabajador.Size = new System.Drawing.Size(129, 21);
+            this.cbTrabajador.Size = new System.Drawing.Size(290, 21);
             this.cbTrabajador.TabIndex = 79;
             // 
             // cbUnidadDestino
@@ -289,15 +361,16 @@
             this.cbUnidadDestino.FormattingEnabled = true;
             this.cbUnidadDestino.Location = new System.Drawing.Point(569, 12);
             this.cbUnidadDestino.Name = "cbUnidadDestino";
-            this.cbUnidadDestino.Size = new System.Drawing.Size(129, 21);
+            this.cbUnidadDestino.Size = new System.Drawing.Size(345, 21);
             this.cbUnidadDestino.TabIndex = 80;
+            this.cbUnidadDestino.SelectedIndexChanged += new System.EventHandler(this.cbUnidadDestino_SelectedIndexChanged);
             // 
             // cboUsuarioDestino
             // 
             this.cboUsuarioDestino.FormattingEnabled = true;
             this.cboUsuarioDestino.Location = new System.Drawing.Point(569, 45);
             this.cboUsuarioDestino.Name = "cboUsuarioDestino";
-            this.cboUsuarioDestino.Size = new System.Drawing.Size(129, 21);
+            this.cboUsuarioDestino.Size = new System.Drawing.Size(345, 21);
             this.cboUsuarioDestino.TabIndex = 81;
             // 
             // cbDocumento
@@ -305,7 +378,7 @@
             this.cbDocumento.FormattingEnabled = true;
             this.cbDocumento.Location = new System.Drawing.Point(569, 131);
             this.cbDocumento.Name = "cbDocumento";
-            this.cbDocumento.Size = new System.Drawing.Size(129, 21);
+            this.cbDocumento.Size = new System.Drawing.Size(234, 21);
             this.cbDocumento.TabIndex = 82;
             // 
             // txtProveido
@@ -315,78 +388,6 @@
             this.txtProveido.Name = "txtProveido";
             this.txtProveido.Size = new System.Drawing.Size(234, 49);
             this.txtProveido.TabIndex = 83;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "id_tramite";
-            this.Column1.HeaderText = "Codigo";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "sede";
-            this.Column2.HeaderText = "Sede";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "fecha_hora";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column3.HeaderText = "Fecha/Hora";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "operacion";
-            this.Column4.HeaderText = "Operacion";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "oficina";
-            this.Column5.HeaderText = "Oficina";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "usuario";
-            this.Column6.HeaderText = "Usuario";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "oficinadestino";
-            this.Column7.HeaderText = "Oficina Destino";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "usuariodestino";
-            this.Column8.HeaderText = "Usuario Destino";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "proveido";
-            this.Column9.HeaderText = "Proveido";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "expediente";
-            this.Column10.HeaderText = "Expediente";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
             // 
             // frmTramite
             // 

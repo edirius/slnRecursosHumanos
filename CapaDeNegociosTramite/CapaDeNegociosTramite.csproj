@@ -43,6 +43,7 @@
     <Compile Include="cReglaNegociosException.cs" />
     <Compile Include="Documento\cDocumento.cs" />
     <Compile Include="Documento\cTipoDocumento.cs" />
+    <Compile Include="LocalSede\cSede.cs" />
     <Compile Include="Oficina\cOficina.cs" />
     <Compile Include="Oficina\cOficinaTrabajador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,7 +61,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="LocalSede\" />
     <Folder Include="Operacion\" />
     <Folder Include="Trabajador-Oficina\" />
   </ItemGroup>

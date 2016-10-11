@@ -39,6 +39,8 @@
             this.tipoDeDocumentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tramiteDocumentarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarTramiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.localSedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mantenimientoLocalSedeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +50,8 @@
             this.oficinasToolStripMenuItem,
             this.requisitosOficinasToolStripMenuItem,
             this.documentoToolStripMenuItem,
-            this.tramiteDocumentarioToolStripMenuItem});
+            this.tramiteDocumentarioToolStripMenuItem,
+            this.localSedeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(783, 24);
@@ -130,6 +133,21 @@
             this.registrarTramiteToolStripMenuItem.Text = "Registrar tramite";
             this.registrarTramiteToolStripMenuItem.Click += new System.EventHandler(this.registrarTramiteToolStripMenuItem_Click);
             // 
+            // localSedeToolStripMenuItem
+            // 
+            this.localSedeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mantenimientoLocalSedeToolStripMenuItem});
+            this.localSedeToolStripMenuItem.Name = "localSedeToolStripMenuItem";
+            this.localSedeToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
+            this.localSedeToolStripMenuItem.Text = "Local-Sede";
+            // 
+            // mantenimientoLocalSedeToolStripMenuItem
+            // 
+            this.mantenimientoLocalSedeToolStripMenuItem.Name = "mantenimientoLocalSedeToolStripMenuItem";
+            this.mantenimientoLocalSedeToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.mantenimientoLocalSedeToolStripMenuItem.Text = "Mantenimiento Local-Sede";
+            this.mantenimientoLocalSedeToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoLocalSedeToolStripMenuItem_Click);
+            // 
             // frmMenuTramite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,5 +180,7 @@
         private System.Windows.Forms.ToolStripMenuItem mantenimientoOfincaTrabajadorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tramiteDocumentarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarTramiteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem localSedeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mantenimientoLocalSedeToolStripMenuItem;
     }
 }

@@ -52,11 +52,23 @@
     <Compile Include="Documento\frmDocumento.Designer.cs">
       <DependentUpon>frmDocumento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Documento\frmTipoDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documento\frmTipoDocumento.Designer.cs">
+      <DependentUpon>frmTipoDocumento.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuTramite.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMenuTramite.Designer.cs">
       <DependentUpon>frmMenuTramite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Local-Sede\frmLocalSede.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Local-Sede\frmLocalSede.Designer.cs">
+      <DependentUpon>frmLocalSede.cs</DependentUpon>
     </Compile>
     <Compile Include="Oficina\frmOficina.cs">
       <SubType>Form</SubType>
@@ -87,8 +99,14 @@
     <EmbeddedResource Include="Documento\frmDocumento.resx">
       <DependentUpon>frmDocumento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Documento\frmTipoDocumento.resx">
+      <DependentUpon>frmTipoDocumento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMenuTramite.resx">
       <DependentUpon>frmMenuTramite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Local-Sede\frmLocalSede.resx">
+      <DependentUpon>frmLocalSede.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Oficina\frmOficina.resx">
       <DependentUpon>frmOficina.cs</DependentUpon>
@@ -138,6 +156,7 @@
       <Name>CapaDeNegocios</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
