@@ -1,6 +1,6 @@
 ﻿namespace CapaUsuario.Reportes
 {
-    partial class frmPlanillaTotal
+    partial class frmResumenPlanillas
     {
         /// <summary>
         /// Required designer variable.
@@ -36,12 +36,12 @@
             this.cboMes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdtPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Año = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,12 +95,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPlanilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlanilla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.txtDescripcion,
-            this.Column3,
-            this.Column4,
-            this.Column5,
+            this.IdtPlanilla,
+            this.Numero,
+            this.Descripcion,
+            this.Mes,
+            this.Año,
+            this.Fecha,
             this.Column6,
             this.Column10,
             this.Column7,
@@ -169,51 +169,51 @@
             this.label2.TabIndex = 34;
             this.label2.Text = "Mes";
             // 
-            // Column1
+            // IdtPlanilla
             // 
-            this.Column1.HeaderText = "IdtPlanilla";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            this.Column1.Width = 20;
+            this.IdtPlanilla.HeaderText = "IdtPlanilla";
+            this.IdtPlanilla.Name = "IdtPlanilla";
+            this.IdtPlanilla.ReadOnly = true;
+            this.IdtPlanilla.Visible = false;
+            this.IdtPlanilla.Width = 20;
             // 
-            // Column2
+            // Numero
             // 
-            this.Column2.HeaderText = "Numero";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 50;
+            this.Numero.HeaderText = "Numero";
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            this.Numero.Width = 50;
             // 
-            // txtDescripcion
+            // Descripcion
             // 
-            this.txtDescripcion.HeaderText = "Descripción";
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.ReadOnly = true;
-            this.txtDescripcion.Width = 300;
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 300;
             // 
-            // Column3
+            // Mes
             // 
-            this.Column3.HeaderText = "Mes";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Visible = false;
-            this.Column3.Width = 75;
+            this.Mes.HeaderText = "Mes";
+            this.Mes.Name = "Mes";
+            this.Mes.ReadOnly = true;
+            this.Mes.Visible = false;
+            this.Mes.Width = 75;
             // 
-            // Column4
+            // Año
             // 
-            this.Column4.HeaderText = "Año";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Visible = false;
-            this.Column4.Width = 40;
+            this.Año.HeaderText = "Año";
+            this.Año.Name = "Año";
+            this.Año.ReadOnly = true;
+            this.Año.Visible = false;
+            this.Año.Width = 40;
             // 
-            // Column5
+            // Fecha
             // 
-            this.Column5.HeaderText = "Fecha";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Visible = false;
-            this.Column5.Width = 40;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Visible = false;
+            this.Fecha.Width = 40;
             // 
             // Column6
             // 
@@ -268,7 +268,7 @@
             this.Plantilla.ReadOnly = true;
             this.Plantilla.Visible = false;
             // 
-            // frmPlanillaTotal
+            // frmResumenPlanillas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -280,10 +280,10 @@
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.dgvPlanilla);
-            this.Name = "frmPlanillaTotal";
+            this.Name = "frmResumenPlanillas";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Matenimiento Planilla";
+            this.Text = "Resumen Planillas";
             this.Load += new System.EventHandler(this.frmMatenimientoPlanilla_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).EndInit();
             this.ResumeLayout(false);
@@ -300,12 +300,12 @@
         private System.Windows.Forms.ComboBox cboMes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtDescripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdtPlanilla;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Año;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;

@@ -26,11 +26,11 @@ namespace CapaUsuario.Tareo
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
-            sfechafin = monthCalendar1.SelectionRange.Start.ToShortDateString();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            sfechafin = monthCalendar1.SelectionRange.Start.ToShortDateString();
             //Regimen Trabajador
             CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
             miPeriodoTrabajador.BajaPeriodoTrabajador(sfechafin, sidtperiodotrabajador);

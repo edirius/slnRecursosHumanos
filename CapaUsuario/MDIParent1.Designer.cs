@@ -545,7 +545,7 @@
             // 
             this.globalToolStripMenuItem.Name = "globalToolStripMenuItem";
             this.globalToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
-            this.globalToolStripMenuItem.Text = "Planilla Total";
+            this.globalToolStripMenuItem.Text = "Resumen Planillas";
             this.globalToolStripMenuItem.Click += new System.EventHandler(this.globalToolStripMenuItem_Click);
             // 
             // helpMenu

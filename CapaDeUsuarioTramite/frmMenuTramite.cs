@@ -41,23 +41,25 @@ namespace CapaDeUsuarioTramite
             HacerConeccion();
         }
 
-        private void operaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mantenimientoRequisitosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            CapaDeUsuarioTramite.Solicitud_Oficina.frmRequisitos frmRequisito = new Solicitud_Oficina.frmRequisitos();
+            frmRequisito.MdiParent = this;
+            frmRequisito.Show();
         }
 
-        private void operaciónToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void mantenimientoDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CapaDeUsuarioTramite.Tramite.frmOperacion fOperacion = new CapaDeUsuarioTramite.Tramite.frmOperacion();
-            fOperacion.MdiParent = this;
-            fOperacion.Show();
+            CapaDeUsuarioTramite.Documento.frmDocumento frmDocumento = new Documento.frmDocumento();
+            frmDocumento.MdiParent = this;
+            frmDocumento.Show();
         }
 
-        private void localSedeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mantenimientoOfincaTrabajadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CapaDeUsuarioTramite.Tramite.frmLocalSede fLocalSede = new CapaDeUsuarioTramite.Tramite.frmLocalSede();
-            fLocalSede.MdiParent = this;
-            fLocalSede.Show();
+            CapaDeUsuarioTramite.Oficina.frmOficinaTrabajador frmOficinaTrabajador = new Oficina.frmOficinaTrabajador();
+            frmOficinaTrabajador.MdiParent = this;
+            frmOficinaTrabajador.Show();
         }
     }
 }

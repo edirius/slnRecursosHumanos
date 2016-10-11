@@ -18,7 +18,7 @@ using iTextSharp;
 
 namespace CapaUsuario.Reportes
 {
-    public partial class frmPlanillaTotal : Form
+    public partial class frmResumenPlanillas : Form
     {
         int sidtmeta = 0;
         string smeta = "";
@@ -29,7 +29,7 @@ namespace CapaUsuario.Reportes
         CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
         CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
 
-        public frmPlanillaTotal()
+        public frmResumenPlanillas()
         {
             InitializeComponent();
         }
@@ -53,7 +53,24 @@ namespace CapaUsuario.Reportes
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+            CapaDeNegocios.Reportes.cResumenPlanillas miResumenPlanilla = new CapaDeNegocios.Reportes.cResumenPlanillas();
+            try
+            {
+                foreach (DataGridViewRow row in dgvPlanilla.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells["☑"].Value) == true)
+                    {
+                        miResumenPlanilla.ResumenPlanilla("ACTIVO", Convert.ToInt32(row.Cells["IdtPlanilla"].Value));
+                    }
+                }
+            }
+            catch (Exception m)
+            { MessageBox.Show(m.Message); }
 
+            CapaUsuario.Reportes.MostrarReportes Reportes = new MostrarReportes();
+            Reportes.ResumenPlanillas("ResumenPlanillas", "DESACTIVO", 0);
+            Reportes.MdiParent = this.MdiParent;
+            Reportes.Show();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -111,9 +128,9 @@ namespace CapaUsuario.Reportes
                     dgvPlanilla.Rows[0].Selected = true;
                 }
             }
-            catch (Exception e)
+            catch (Exception m)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(m.Message);
             }
         }
 
