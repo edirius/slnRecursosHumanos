@@ -165,9 +165,9 @@ namespace CapaDeUsuarioTramite.Oficina
             dgvListarOficinas.Columns[2].Width = 250;
         }
 
-        private void btnInsertar_Click(object sender, EventArgs e)
+        private void btnInsertar_Click_1(object sender, EventArgs e)
         {
-
+            AgregarOficina();
         }
     }
 }

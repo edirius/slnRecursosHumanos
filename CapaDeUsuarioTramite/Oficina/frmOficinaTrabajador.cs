@@ -153,5 +153,10 @@ namespace CapaDeUsuarioTramite.Oficina
             cbTrabajadores.Text = dgvTrabajadores[1, Valor].Value.ToString();
             cbOficinas.Text = dgvTrabajadores[2, Valor].Value.ToString();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

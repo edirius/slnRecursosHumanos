@@ -61,5 +61,12 @@ namespace CapaDeUsuarioTramite
             frmOficinaTrabajador.MdiParent = this;
             frmOficinaTrabajador.Show();
         }
+
+        private void registrarTramiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaDeUsuarioTramite.Tramite.frmTramite frmTramite = new Tramite.frmTramite();
+            frmTramite.MdiParent = this;
+            frmTramite.Show();
+        }
     }
 }
