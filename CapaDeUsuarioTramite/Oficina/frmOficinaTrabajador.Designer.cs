@@ -1,6 +1,6 @@
-﻿namespace CapaDeUsuarioTramite.Solicitud_Oficina
+﻿namespace CapaDeUsuarioTramite.Oficina
 {
-    partial class frmRequisitos
+    partial class frmOficinaTrabajador
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dgvListarRequisitos = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.cbTrabajadores = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dgvTrabajadores = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -40,57 +40,60 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnInsertar = new System.Windows.Forms.Button();
             this.cbOficinas = new System.Windows.Forms.ComboBox();
-            this.txtRequisitos = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListarRequisitos)).BeginInit();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTrabajadores)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgvListarRequisitos
+            // cbTrabajadores
             // 
-            this.dgvListarRequisitos.AllowUserToAddRows = false;
-            this.dgvListarRequisitos.AllowUserToResizeColumns = false;
-            this.dgvListarRequisitos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListarRequisitos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvListarRequisitos.BackgroundColor = System.Drawing.Color.Silver;
-            this.dgvListarRequisitos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListarRequisitos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cbTrabajadores.FormattingEnabled = true;
+            this.cbTrabajadores.Location = new System.Drawing.Point(212, 34);
+            this.cbTrabajadores.Name = "cbTrabajadores";
+            this.cbTrabajadores.Size = new System.Drawing.Size(390, 21);
+            this.cbTrabajadores.TabIndex = 67;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(92, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 13);
+            this.label3.TabIndex = 65;
+            this.label3.Text = "Nombre del trabajador:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(163, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 64;
+            this.label2.Text = "Oficina:";
+            // 
+            // dgvTrabajadores
+            // 
+            this.dgvTrabajadores.AllowUserToAddRows = false;
+            this.dgvTrabajadores.AllowUserToResizeColumns = false;
+            this.dgvTrabajadores.AllowUserToResizeRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvTrabajadores.BackgroundColor = System.Drawing.Color.Silver;
+            this.dgvTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTrabajadores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dgvListarRequisitos.GridColor = System.Drawing.Color.White;
-            this.dgvListarRequisitos.Location = new System.Drawing.Point(21, 105);
-            this.dgvListarRequisitos.Name = "dgvListarRequisitos";
-            this.dgvListarRequisitos.RowHeadersVisible = false;
-            this.dgvListarRequisitos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListarRequisitos.Size = new System.Drawing.Size(723, 297);
-            this.dgvListarRequisitos.TabIndex = 50;
-            this.dgvListarRequisitos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarRequisitos_CellClick);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "id_requisito_oficina";
-            this.Column1.HeaderText = "Codigo";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "nombre_requisito";
-            this.Column2.HeaderText = "Requisito";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 300;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "nombre_oficina";
-            this.Column3.HeaderText = "Oficina";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 300;
+            this.dgvTrabajadores.GridColor = System.Drawing.Color.White;
+            this.dgvTrabajadores.Location = new System.Drawing.Point(27, 117);
+            this.dgvTrabajadores.Name = "dgvTrabajadores";
+            this.dgvTrabajadores.RowHeadersVisible = false;
+            this.dgvTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTrabajadores.Size = new System.Drawing.Size(722, 297);
+            this.dgvTrabajadores.TabIndex = 63;
+            this.dgvTrabajadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrabajadores_CellClick);
             // 
             // tableLayoutPanel1
             // 
@@ -105,12 +108,12 @@
             this.tableLayoutPanel1.Controls.Add(this.btnEliminar, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnModificar, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnInsertar, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(81, 421);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(87, 433);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(612, 48);
-            this.tableLayoutPanel1.TabIndex = 49;
+            this.tableLayoutPanel1.TabIndex = 62;
             // 
             // button1
             // 
@@ -130,7 +133,6 @@
             this.btnSalir.TabIndex = 11;
             this.btnSalir.Text = "Limpiar";
             this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnEliminar
             // 
@@ -165,52 +167,48 @@
             // cbOficinas
             // 
             this.cbOficinas.FormattingEnabled = true;
-            this.cbOficinas.Location = new System.Drawing.Point(206, 71);
+            this.cbOficinas.Location = new System.Drawing.Point(212, 69);
             this.cbOficinas.Name = "cbOficinas";
-            this.cbOficinas.Size = new System.Drawing.Size(433, 21);
-            this.cbOficinas.TabIndex = 61;
+            this.cbOficinas.Size = new System.Drawing.Size(225, 21);
+            this.cbOficinas.TabIndex = 68;
             // 
-            // txtRequisitos
+            // Column1
             // 
-            this.txtRequisitos.Location = new System.Drawing.Point(206, 17);
-            this.txtRequisitos.Multiline = true;
-            this.txtRequisitos.Name = "txtRequisitos";
-            this.txtRequisitos.Size = new System.Drawing.Size(305, 48);
-            this.txtRequisitos.TabIndex = 60;
+            this.Column1.DataPropertyName = "id_oficina_trabajador";
+            this.Column1.HeaderText = "Codigo";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
-            // label3
+            // Column2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(146, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 13);
-            this.label3.TabIndex = 59;
-            this.label3.Text = "Requisito:";
+            this.Column2.DataPropertyName = "Nombres";
+            this.Column2.HeaderText = "Nombre del Trabajador";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 300;
             // 
-            // label2
+            // Column3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(157, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 58;
-            this.label2.Text = "Oficina:";
+            this.Column3.DataPropertyName = "Oficina";
+            this.Column3.HeaderText = "Oficina";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 300;
             // 
-            // frmRequisitos
+            // frmOficinaTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(763, 481);
+            this.ClientSize = new System.Drawing.Size(777, 511);
             this.Controls.Add(this.cbOficinas);
-            this.Controls.Add(this.txtRequisitos);
+            this.Controls.Add(this.cbTrabajadores);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dgvListarRequisitos);
+            this.Controls.Add(this.dgvTrabajadores);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "frmRequisitos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmRequisitos";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListarRequisitos)).EndInit();
+            this.Name = "frmOficinaTrabajador";
+            this.Text = "frmOficinaTrabajador";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTrabajadores)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -219,19 +217,19 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvListarRequisitos;
+        private System.Windows.Forms.ComboBox cbTrabajadores;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dgvTrabajadores;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnInsertar;
+        private System.Windows.Forms.ComboBox cbOficinas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.ComboBox cbOficinas;
-        private System.Windows.Forms.TextBox txtRequisitos;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
     }
 }

@@ -43,7 +43,7 @@ namespace CapaDeUsuarioTramite.Oficina
                 miOficina.DescripcionOficina = txtDescripcion.Text;
                 numero = miOficina.AgregarOficina();
                 //
-                if (numero == 0)
+                if (numero == 1)
                 {
                     ActualizarLista();
                     MessageBox.Show("Oficina agregada correctamente");
@@ -157,6 +157,16 @@ namespace CapaDeUsuarioTramite.Oficina
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void frmOficina_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnInsertar_Click_1(object sender, EventArgs e)
+        {
+            AgregarOficina();
         }
     }
 }

@@ -177,7 +177,7 @@ namespace CapaDeNegocios.Usuario
                 sb.AppendFormat("{0:x2}", dataMD5[i]);
             return sb.ToString();
         }
-        public String ObtenerSHA1(String contraseña)
+        public String ObtenerSHA1(String contraseña )
         {
             SHA1 sha1 = new SHA1CryptoServiceProvider();
             sha1 = SHA1CryptoServiceProvider.Create();

@@ -46,17 +46,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Documento\frmDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documento\frmDocumento.Designer.cs">
+      <DependentUpon>frmDocumento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Documento\frmTipoDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Documento\frmTipoDocumento.Designer.cs">
+      <DependentUpon>frmTipoDocumento.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuTramite.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMenuTramite.Designer.cs">
       <DependentUpon>frmMenuTramite.cs</DependentUpon>
     </Compile>
+    <Compile Include="Local-Sede\frmLocalSede.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Local-Sede\frmLocalSede.Designer.cs">
+      <DependentUpon>frmLocalSede.cs</DependentUpon>
+    </Compile>
     <Compile Include="Oficina\frmOficina.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Oficina\frmOficina.Designer.cs">
       <DependentUpon>frmOficina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Oficina\frmOficinaTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oficina\frmOficinaTrabajador.Designer.cs">
+      <DependentUpon>frmOficinaTrabajador.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,11 +90,29 @@
     <Compile Include="Requisitos-Oficina\frmRequisitosOficina.Designer.cs">
       <DependentUpon>frmRequisitosOficina.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tramite\frmTramite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tramite\frmTramite.Designer.cs">
+      <DependentUpon>frmTramite.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Documento\frmDocumento.resx">
+      <DependentUpon>frmDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Documento\frmTipoDocumento.resx">
+      <DependentUpon>frmTipoDocumento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMenuTramite.resx">
       <DependentUpon>frmMenuTramite.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Local-Sede\frmLocalSede.resx">
+      <DependentUpon>frmLocalSede.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Oficina\frmOficina.resx">
       <DependentUpon>frmOficina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oficina\frmOficinaTrabajador.resx">
+      <DependentUpon>frmOficinaTrabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -83,6 +125,9 @@
     </Compile>
     <EmbeddedResource Include="Requisitos-Oficina\frmRequisitosOficina.resx">
       <DependentUpon>frmRequisitosOficina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tramite\frmTramite.resx">
+      <DependentUpon>frmTramite.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -106,7 +151,12 @@
       <Project>{001cf6b5-2d62-4b5a-91f9-171c991307f0}</Project>
       <Name>CapaDeNegociosTramite</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CapaDeNegocios\CapaDeNegocios.csproj">
+      <Project>{24921af8-19f7-4b75-a697-f5de39a839a1}</Project>
+      <Name>CapaDeNegocios</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

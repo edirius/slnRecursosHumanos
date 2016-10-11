@@ -47,5 +47,33 @@ namespace CapaDeUsuarioTramite
             frmRequisito.MdiParent = this;
             frmRequisito.Show();
         }
+
+        private void mantenimientoDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaDeUsuarioTramite.Documento.frmDocumento frmDocumento = new Documento.frmDocumento();
+            frmDocumento.MdiParent = this;
+            frmDocumento.Show();
+        }
+
+        private void mantenimientoOfincaTrabajadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaDeUsuarioTramite.Oficina.frmOficinaTrabajador frmOficinaTrabajador = new Oficina.frmOficinaTrabajador();
+            frmOficinaTrabajador.MdiParent = this;
+            frmOficinaTrabajador.Show();
+        }
+
+        private void registrarTramiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaDeUsuarioTramite.Tramite.frmTramite frmTramite = new Tramite.frmTramite();
+            frmTramite.MdiParent = this;
+            frmTramite.Show();
+        }
+
+        private void mantenimientoLocalSedeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaDeUsuarioTramite.Local_Sede.frmLocalSede frmLocal = new Local_Sede.frmLocalSede();
+            frmLocal.MdiParent = this;
+            frmLocal.Show();
+        }
     }
 }
