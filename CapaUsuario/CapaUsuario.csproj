@@ -726,6 +726,12 @@
     <Compile Include="Tareo\frmBajaTrabajador.Designer.cs">
       <DependentUpon>frmBajaTrabajador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Asistencia\frmDetalleAsistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmDetalleAsistencia.designer.cs">
+      <DependentUpon>frmDetalleAsistencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tareo\frmMantenimientoDetalleTareo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -869,6 +875,12 @@
     </Compile>
     <Compile Include="Trabajador\frmListaDistritos.Designer.cs">
       <DependentUpon>frmListaDistritos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmAsistenciaTrabajadores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmAsistenciaTrabajadores.Designer.cs">
+      <DependentUpon>frmAsistenciaTrabajadores.cs</DependentUpon>
     </Compile>
     <Compile Include="Trabajador\frmListaTrabajadores.cs">
       <SubType>Form</SubType>
@@ -1306,6 +1318,9 @@
     <EmbeddedResource Include="Tareo\frmBajaTrabajador.resx">
       <DependentUpon>frmBajaTrabajador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmDetalleAsistencia.resx">
+      <DependentUpon>frmDetalleAsistencia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmMantenimientoDetalleTareo.resx">
       <DependentUpon>frmMantenimientoDetalleTareo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1326,6 +1341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmListaDistritos.resx">
       <DependentUpon>frmListaDistritos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmAsistenciaTrabajadores.resx">
+      <DependentUpon>frmAsistenciaTrabajadores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmListaTrabajadores.resx">
       <DependentUpon>frmListaTrabajadores.cs</DependentUpon>

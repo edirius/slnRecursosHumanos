@@ -60,6 +60,9 @@
             this.cboAFP = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.txtCUSPP = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +73,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(543, 252);
+            this.btnCancelar.Location = new System.Drawing.Point(543, 277);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 14;
@@ -86,7 +89,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(462, 252);
+            this.btnAceptar.Location = new System.Drawing.Point(462, 277);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 13;
@@ -212,7 +215,7 @@
             // 
             this.cboDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDepartamento.FormattingEnabled = true;
-            this.cboDepartamento.Location = new System.Drawing.Point(117, 191);
+            this.cboDepartamento.Location = new System.Drawing.Point(403, 191);
             this.cboDepartamento.Name = "cboDepartamento";
             this.cboDepartamento.Size = new System.Drawing.Size(215, 21);
             this.cboDepartamento.TabIndex = 10;
@@ -222,7 +225,7 @@
             // 
             this.cboProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProvincia.FormattingEnabled = true;
-            this.cboProvincia.Location = new System.Drawing.Point(403, 191);
+            this.cboProvincia.Location = new System.Drawing.Point(402, 218);
             this.cboProvincia.Name = "cboProvincia";
             this.cboProvincia.Size = new System.Drawing.Size(215, 21);
             this.cboProvincia.TabIndex = 11;
@@ -231,7 +234,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(31, 194);
+            this.label7.Location = new System.Drawing.Point(317, 194);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 13);
             this.label7.TabIndex = 79;
@@ -290,7 +293,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(340, 194);
+            this.label10.Location = new System.Drawing.Point(339, 221);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 13);
             this.label10.TabIndex = 85;
@@ -300,7 +303,7 @@
             // 
             this.cboDistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDistrito.FormattingEnabled = true;
-            this.cboDistrito.Location = new System.Drawing.Point(117, 218);
+            this.cboDistrito.Location = new System.Drawing.Point(402, 245);
             this.cboDistrito.Name = "cboDistrito";
             this.cboDistrito.Size = new System.Drawing.Size(215, 21);
             this.cboDistrito.TabIndex = 12;
@@ -309,7 +312,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(66, 221);
+            this.label11.Location = new System.Drawing.Point(352, 248);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(45, 13);
             this.label11.TabIndex = 87;
@@ -319,13 +322,16 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.txtCUSPP);
+            this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.cboTipoComision);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.cboAFP);
-            this.groupBox1.Location = new System.Drawing.Point(117, 245);
+            this.groupBox1.Location = new System.Drawing.Point(12, 191);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(339, 72);
+            this.groupBox1.Size = new System.Drawing.Size(299, 116);
             this.groupBox1.TabIndex = 88;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AFP";
@@ -350,7 +356,7 @@
             "MIXTA"});
             this.cboTipoComision.Location = new System.Drawing.Point(119, 46);
             this.cboTipoComision.Name = "cboTipoComision";
-            this.cboTipoComision.Size = new System.Drawing.Size(214, 21);
+            this.cboTipoComision.Size = new System.Drawing.Size(174, 21);
             this.cboTipoComision.TabIndex = 14;
             // 
             // label14
@@ -370,7 +376,7 @@
             this.cboAFP.FormattingEnabled = true;
             this.cboAFP.Location = new System.Drawing.Point(119, 19);
             this.cboAFP.Name = "cboAFP";
-            this.cboAFP.Size = new System.Drawing.Size(214, 21);
+            this.cboAFP.Size = new System.Drawing.Size(174, 21);
             this.cboAFP.TabIndex = 13;
             this.cboAFP.SelectedIndexChanged += new System.EventHandler(this.cboAFP_SelectedIndexChanged);
             // 
@@ -391,11 +397,38 @@
             this.dtpFechaInicio.Size = new System.Drawing.Size(204, 20);
             this.dtpFechaInicio.TabIndex = 8;
             // 
+            // txtCUSPP
+            // 
+            this.txtCUSPP.Location = new System.Drawing.Point(119, 73);
+            this.txtCUSPP.Name = "txtCUSPP";
+            this.txtCUSPP.Size = new System.Drawing.Size(174, 20);
+            this.txtCUSPP.TabIndex = 91;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(70, 76);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(43, 13);
+            this.label15.TabIndex = 92;
+            this.label15.Text = "CUSPP";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(9, 100);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(285, 13);
+            this.linkLabel1.TabIndex = 93;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Obtenga el CUSPP accediendo a la página web de la SBS";
+            // 
             // frmNuevoObrero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 329);
+            this.ClientSize = new System.Drawing.Size(630, 354);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dtpFechaInicio);
             this.Controls.Add(this.groupBox1);
@@ -469,5 +502,8 @@
         private System.Windows.Forms.ComboBox cboAFP;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DateTimePicker dtpFechaInicio;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtCUSPP;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
