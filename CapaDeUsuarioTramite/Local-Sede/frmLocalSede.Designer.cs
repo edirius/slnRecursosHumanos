@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvListarSede = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnInsertar = new System.Windows.Forms.Button();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnInsertar = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarSede)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -50,8 +50,8 @@
             this.dgvListarSede.AllowUserToAddRows = false;
             this.dgvListarSede.AllowUserToResizeColumns = false;
             this.dgvListarSede.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListarSede.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListarSede.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListarSede.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvListarSede.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListarSede.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -66,6 +66,29 @@
             this.dgvListarSede.Size = new System.Drawing.Size(373, 247);
             this.dgvListarSede.TabIndex = 50;
             this.dgvListarSede.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarSede_CellClick);
+            this.dgvListarSede.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarSede_CellContentClick);
+            // 
+            // numero
+            // 
+            this.numero.DataPropertyName = "Nº";
+            this.numero.HeaderText = "N°";
+            this.numero.Name = "numero";
+            this.numero.ReadOnly = true;
+            this.numero.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "ID";
+            this.Column2.HeaderText = "Codigo";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "DESCRIPCION";
+            this.Column1.HeaderText = "Descripcion";
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 200;
             // 
             // tableLayoutPanel1
             // 
@@ -97,16 +120,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnSalir
-            // 
-            this.btnSalir.Location = new System.Drawing.Point(225, 3);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(68, 33);
-            this.btnSalir.TabIndex = 11;
-            this.btnSalir.Text = "Limpiar";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
             // btnEliminar
             // 
             this.btnEliminar.Location = new System.Drawing.Point(151, 3);
@@ -137,6 +150,16 @@
             this.btnInsertar.UseVisualStyleBackColor = true;
             this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
+            // btnSalir
+            // 
+            this.btnSalir.Location = new System.Drawing.Point(225, 3);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(68, 33);
+            this.btnSalir.TabIndex = 11;
+            this.btnSalir.Text = "Limpiar";
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // txtDescripcion
             // 
             this.txtDescripcion.Location = new System.Drawing.Point(163, 29);
@@ -153,28 +176,6 @@
             this.label3.TabIndex = 44;
             this.label3.Text = "Descripcion:";
             // 
-            // numero
-            // 
-            this.numero.DataPropertyName = "Nº";
-            this.numero.HeaderText = "N°";
-            this.numero.Name = "numero";
-            this.numero.ReadOnly = true;
-            this.numero.Width = 50;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "ID";
-            this.Column2.HeaderText = "Codigo";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "DESCRIPCION";
-            this.Column1.HeaderText = "Descripcion";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 200;
-            // 
             // frmLocalSede
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,6 +187,7 @@
             this.Controls.Add(this.label3);
             this.Name = "frmLocalSede";
             this.Text = "frmLocalSede";
+            this.Load += new System.EventHandler(this.frmLocalSede_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarSede)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

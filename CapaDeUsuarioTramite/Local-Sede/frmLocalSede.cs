@@ -13,6 +13,11 @@ namespace CapaDeUsuarioTramite.Local_Sede
     public partial class frmLocalSede : Form
     {
         CapaDeNegociosTramite.LocalSede.cSede miSede = new CapaDeNegociosTramite.LocalSede.cSede();
+        string descripcion = "";
+        DataTable odtLocalSede = new DataTable();
+        string mensaje = "";
+        string respuesta = "";
+        
         public frmLocalSede()
         {
             InitializeComponent();
@@ -31,20 +36,27 @@ namespace CapaDeUsuarioTramite.Local_Sede
         {
             try
             {
-                bool numero;
-                miSede.Descripcion = txtDescripcion.Text;
-                numero = Convert.ToBoolean(miSede.AgregarSede());
-                if (numero == true)
-                {
-                    ActualizarLista();
-                    MessageBox.Show("La Sede fue agregada correctamente");
-                }
-                else
-                {
-                    const string message = "La Sede ya existe en la base de datos";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                if (txtDescripcion.Text != "") {
+                    descripcion = txtDescripcion.Text;
+                    odtLocalSede = miSede.AgregarSede(descripcion);
+                    respuesta = odtLocalSede.Rows[0][0].ToString();
+                    mensaje = odtLocalSede.Rows[0][1].ToString();
+                    if (respuesta == "1")
+                    {
+                        MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtDescripcion.Text = "";
+                        dgvListarSede.DataSource = miSede.ListarSede() ;
+                    }
+                    else if (respuesta == "0") {
+                        MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtDescripcion.Focus();
+                    }
+                }else
+                    MessageBox.Show("Porfavor llene el campo descripción.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+
+
             }
             catch
             {
@@ -138,12 +150,23 @@ namespace CapaDeUsuarioTramite.Local_Sede
         private void dgvListarSede_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int valor = dgvListarSede.CurrentCell.RowIndex;
-            txtDescripcion.Text = dgvListarSede[0, valor].Value.ToString();
+            txtDescripcion.Text = dgvListarSede[2, valor].Value.ToString();
+            descripcion = dgvListarSede[2, e.RowIndex].Value.ToString();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             ConfiguracionInicial();
+        }
+
+        private void frmLocalSede_Load(object sender, EventArgs e)
+        {
+            dgvListarSede.Columns[1].Visible = false;
+        }
+
+        private void dgvListarSede_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            descripcion = dgvListarSede[2, e.RowIndex].Value.ToString();
         }
     }
 }
