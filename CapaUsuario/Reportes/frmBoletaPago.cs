@@ -364,6 +364,8 @@ namespace CapaUsuario.Reportes
                     decimal dEgresos = 0;
                     decimal dEgresosParcial = 0;
                     decimal dNeto = 0;
+                    decimal dTrabajador = 0;
+                    decimal dDescuentos = 0;
 
                     for (int k = 0; k < odtF.Rows.Count; k++)
                     {
@@ -381,7 +383,17 @@ namespace CapaUsuario.Reportes
                         dEgresos += dEgresosParcial;
                     }
 
-                    dNeto = dIngresos - dEgresos;
+                    /* Ingresos y Egresos */
+                    DataTable odtID = new DataTable();
+                    odtID = oDetallePlanillaATrabajador.ListarDetallePlanillaXTrabajador(sidtplanilla, sidtregimenlaboral, sidttrabajador);
+
+                    dIngresos = Convert.ToDecimal(odtID.Rows[0][1]);
+                    dTrabajador = Convert.ToDecimal(odtID.Rows[0][2]);
+                    dDescuentos = Convert.ToDecimal(odtID.Rows[0][4]);
+
+                    dNeto = dIngresos - dDescuentos - dTrabajador;
+
+                    //dNeto = dIngresos - dEgresos;
 
                     drFilaF = odtF.NewRow();
                     drFilaF.Delete();
