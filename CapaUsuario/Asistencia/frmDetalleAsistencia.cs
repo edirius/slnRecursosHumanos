@@ -13,7 +13,8 @@ namespace CapaUsuario.Asistencia
     public partial class frmDetalleAsistencia : Form
     {
         int sidtrabajador = 0;
-        private string _cellValue = String.Empty;
+        int filaseleccionada = 0;
+        int columnaseleccionada = 0;
 
         public frmDetalleAsistencia()
         {
@@ -54,31 +55,30 @@ namespace CapaUsuario.Asistencia
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
-        private void dgvDetalleTareo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvAsistenciaTrabajador_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
 
-        private void dgvDetalleTareo_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvAsistenciaTrabajador_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             try
             {
-                //Preguntamos si el boton pulsado del Mouse es el Derecho
-                //si no lo es no salimos sin hacer nada mas
-                if (e.Button != MouseButtons.Right) return;
-
-                if (e.ColumnIndex < 0 || e.RowIndex < 0)
-                    return;
-
-                //enviamos el valor de la celda a la variable _cellValue
-                _cellValue = dgvAsistenciaTrabajador[e.ColumnIndex, e.RowIndex].Value.ToString();
-
-                //Definimos el lugar donde aparecera el scontextMenuStrip
-                contextMenuStrip1.Show(MousePosition);
+                if (e.RowIndex != -1)
+                {
+                    filaseleccionada = e.RowIndex;
+                    columnaseleccionada = e.ColumnIndex;
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        dgvAsistenciaTrabajador.ClearSelection();
+                        dgvAsistenciaTrabajador.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
+                        miMenu.Show(MousePosition);
+                    }
+                }
             }
-            catch
+            catch (Exception m)
             {
-
+                MessageBox.Show(m.Message);
             }
         }
 
@@ -203,44 +203,14 @@ namespace CapaUsuario.Asistencia
             }
         }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        private void miMenu_Opening(object sender, CancelEventArgs e)
         {
 
         }
 
-        private void contextMenuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void miMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            //Preguntamos por el nombre del item pulsado
-            switch (e.ClickedItem.Name)
-            {
-                case "copyCellValue":
-                    //
-                    //Copiamos el valor de la variable _cellValue al ClipBoard
-                    //
-                    Clipboard.SetText(_cellValue);
-                    break;
-
-                case "copyRowValue":
-                    //
-                    //Copiamos el valor de toda la Fila selccionada al ClipBoard
-                    //
-                    DataObject dataObj = dgvAsistenciaTrabajador.GetClipboardContent();
-                    if (dataObj != null)
-                        Clipboard.SetDataObject(dataObj);
-                    break;
-
-                case "deleteRow":
-                    //
-                    //Identificamos la Fila actualmente seleccionada
-                    //
-                    DataGridViewRow row = dgvAsistenciaTrabajador.CurrentRow;
-                    //
-                    //Preguntamos si el valor de Row es diferente de null, esto para evitar posibles
-                    //excepciones de referencias Nulas
-                    //
-                    if (row != null) dgvAsistenciaTrabajador.Rows.Remove(row);
-                    break;
-            }
+            dgvAsistenciaTrabajador.Rows[filaseleccionada].Cells[columnaseleccionada].Value = e.ClickedItem.Text;
         }
     }
 }

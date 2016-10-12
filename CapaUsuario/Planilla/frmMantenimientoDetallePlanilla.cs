@@ -927,7 +927,7 @@ namespace CapaUsuario.Planilla
                 //result = decimal.Round(Convert.ToDecimal(essalud), 2);
                 result = Convert.ToDouble(essalud);
             }
-            return result;
+            return Math.Round(result, 2);
         }
 
         private void CalcularTotalDescuentos(int fila)

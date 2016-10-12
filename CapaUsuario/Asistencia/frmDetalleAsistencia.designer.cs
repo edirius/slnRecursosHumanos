@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAsistenciaTrabajador = new System.Windows.Forms.DataGridView();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -40,40 +40,41 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboAño = new System.Windows.Forms.ComboBox();
             this.cboMes = new System.Windows.Forms.ComboBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.miMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsistenciaTrabajador)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
+            this.miMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvAsistenciaTrabajador
             // 
             this.dgvAsistenciaTrabajador.AllowUserToAddRows = false;
             this.dgvAsistenciaTrabajador.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvAsistenciaTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvAsistenciaTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAsistenciaTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsistenciaTrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsistenciaTrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAsistenciaTrabajador.ColumnHeadersHeight = 35;
             this.dgvAsistenciaTrabajador.Location = new System.Drawing.Point(12, 51);
             this.dgvAsistenciaTrabajador.Name = "dgvAsistenciaTrabajador";
+            this.dgvAsistenciaTrabajador.ReadOnly = true;
             this.dgvAsistenciaTrabajador.RowHeadersVisible = false;
             this.dgvAsistenciaTrabajador.RowHeadersWidth = 25;
             this.dgvAsistenciaTrabajador.Size = new System.Drawing.Size(793, 114);
             this.dgvAsistenciaTrabajador.TabIndex = 8;
-            this.dgvAsistenciaTrabajador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleTareo_CellContentClick);
-            this.dgvAsistenciaTrabajador.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDetalleTareo_CellMouseClick);
+            this.dgvAsistenciaTrabajador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAsistenciaTrabajador_CellContentClick);
+            this.dgvAsistenciaTrabajador.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAsistenciaTrabajador_CellMouseClick);
             // 
             // btnCancelar
             // 
@@ -178,34 +179,35 @@
             this.cboMes.TabIndex = 77;
             this.cboMes.SelectedIndexChanged += new System.EventHandler(this.cboMes_SelectedIndexChanged);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 92);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
-            this.contextMenuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.contextMenuStrip1_ItemClicked);
-            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(81, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(56, 22);
             this.toolStripMenuItem1.Text = "T";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(81, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(56, 22);
             this.toolStripMenuItem2.Text = "F";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(81, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(56, 22);
             this.toolStripMenuItem3.Text = "S";
+            // 
+            // miMenu
+            // 
+            this.miMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3});
+            this.miMenu.Name = "contextMenuStrip1";
+            this.miMenu.ShowImageMargin = false;
+            this.miMenu.Size = new System.Drawing.Size(57, 70);
+            this.miMenu.Opening += new System.ComponentModel.CancelEventHandler(this.miMenu_Opening);
+            this.miMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.miMenu_ItemClicked);
             // 
             // frmDetalleAsistencia
             // 
@@ -227,7 +229,7 @@
             this.Text = "Detalle Asistencia";
             this.Load += new System.EventHandler(this.frmMantenimientoDetalleTareo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsistenciaTrabajador)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.miMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -243,9 +245,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboAño;
         private System.Windows.Forms.ComboBox cboMes;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ContextMenuStrip miMenu;
     }
 }

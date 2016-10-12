@@ -246,7 +246,7 @@ namespace CapaUsuario.Planilla
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
-            fPlanilla.MdiParent = this;
+            fPlanilla.MdiParent = this.MdiParent;
             fPlanilla.Show();
         }
 
