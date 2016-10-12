@@ -1444,7 +1444,7 @@ namespace CapaUsuario.Reportes
                         drFilaATrabajador[1] = "";
                         odtATrabajador.Rows.InsertAt(drFilaATrabajador, nn);
 
-                        //dgvAFP.DataSource = odtATrabajador;
+                        dgvAFP.DataSource = odtATrabajador;
 
                         /* Cuadro de redondear a entero */
                         odtRedondear.Columns.Clear();
@@ -1571,12 +1571,14 @@ namespace CapaUsuario.Reportes
                             neto_cobrar_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_neto_cobrar]);
                             drFilaEEFF = odtEEFF.NewRow();
                             drFilaEEFF.Delete();
-                            drFilaEEFF[0] = "NETO A COBRAR";
+                            drFilaEEFF[0] = "NETO A PAGAR";
                             drFilaEEFF[2] = neto_cobrar_total;
                             haber_total += neto_cobrar_total;
                             odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
                             lll++;
                         }
+
+                        /* CONCEPTOS DE MAESTRO DESCUENTOS, EMPLEADOR, TRABAJADOR */
 
                         CapaDeNegocios.Sunat.cMaestroDescuentos oMaestroDescuentos = new CapaDeNegocios.Sunat.cMaestroDescuentos();
                         DataTable odtMaestroDescuentos = new DataTable();
@@ -1602,6 +1604,55 @@ namespace CapaUsuario.Reportes
                                 lll++;
                             }
                         }
+
+                        CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador oMaestroEmpleador = new CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador();
+                        DataTable odtMaestroEmpleador = new DataTable();
+                        string titulo_maestro_empleador = "";
+
+                        odtMaestroEmpleador = oMaestroEmpleador.ListarMaestroAportacionesEmpleador();
+
+                        for (int i = 0; i < odtMaestroEmpleador.Rows.Count; i++)
+                        {
+                            titulo_maestro_empleador = odtMaestroEmpleador.Rows[i][4].ToString();
+                            iindice_ad = BuscarIndiceColumna(odtPrueba, titulo_maestro_empleador);
+
+                            if (iindice_ad != -1)
+                            {
+                                ad_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_ad]);
+                                drFilaEEFF = odtEEFF.NewRow();
+                                drFilaEEFF.Delete();
+                                drFilaEEFF[0] = titulo_maestro_empleador;
+                                drFilaEEFF[2] = ad_total;
+                                haber_total += ad_total;
+                                odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                                lll++;
+                            }
+                        }
+
+                        CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador oMaestroTrabajador = new CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador();
+                        DataTable odtMaestroTrabajador = new DataTable();
+                        string titulo_maestro_trabajador = "";
+
+                        odtMaestroTrabajador = oMaestroTrabajador.ListarMaestroAportacionesTrabajador();
+
+                        for (int i = 0; i < odtMaestroTrabajador.Rows.Count; i++)
+                        {
+                            titulo_maestro_trabajador = odtMaestroTrabajador.Rows[i][4].ToString();
+                            iindice_ad = BuscarIndiceColumna(odtPrueba, titulo_maestro_trabajador);
+
+                            if (iindice_ad != -1)
+                            {
+                                ad_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_ad]);
+                                drFilaEEFF = odtEEFF.NewRow();
+                                drFilaEEFF.Delete();
+                                drFilaEEFF[0] = titulo_maestro_trabajador;
+                                drFilaEEFF[2] = ad_total;
+                                haber_total += ad_total;
+                                odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                                lll++;
+                            }
+                        }
+
 
                         /* Insertando totales de debe y haber*/
 
@@ -2736,7 +2787,9 @@ namespace CapaUsuario.Reportes
                             drFilaEEFF.Delete();
                             drFilaEEFF[0] = "AFP";
                             drFilaEEFF[2] = afp_total - snp_total;
+                            
                             haber_total += afp_total - snp_total;
+                            
                             odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
                             lll++;
                         }
@@ -2778,6 +2831,8 @@ namespace CapaUsuario.Reportes
                                 lll++;
                             }
                         }
+
+
 
                         /* Insertando totales de debe y haber*/
 
