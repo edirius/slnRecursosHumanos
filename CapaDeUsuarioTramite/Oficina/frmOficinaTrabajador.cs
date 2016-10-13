@@ -28,6 +28,8 @@ namespace CapaDeUsuarioTramite.Oficina
         public void ActualizarLista()
         {
             dgvTrabajadores.DataSource = miOficinaTrabajador.ListarOficinaTrabajador();
+            dgvTrabajadores.Columns["id_trabajador"].Visible = false;
+            dgvTrabajadores.Columns["id_oficina"].Visible = false;
         }
         public void CargarComboTrabajadores()
         {

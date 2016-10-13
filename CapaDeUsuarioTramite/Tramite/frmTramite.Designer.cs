@@ -44,8 +44,8 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnInsertar = new System.Windows.Forms.Button();
@@ -111,7 +111,7 @@
             this.dgvListarTramites.Name = "dgvListarTramites";
             this.dgvListarTramites.RowHeadersVisible = false;
             this.dgvListarTramites.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListarTramites.Size = new System.Drawing.Size(1022, 297);
+            this.dgvListarTramites.Size = new System.Drawing.Size(1021, 297);
             this.dgvListarTramites.TabIndex = 63;
             this.dgvListarTramites.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarTramites_CellClick);
             // 
@@ -195,8 +195,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.button1, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnSalir, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnSalir, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnNuevo, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnEliminar, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnModificar, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnInsertar, 0, 0);
@@ -207,23 +207,25 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(612, 48);
             this.tableLayoutPanel1.TabIndex = 62;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(491, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 42);
-            this.button1.TabIndex = 47;
-            this.button1.Text = "Salir";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(369, 3);
+            this.btnSalir.Location = new System.Drawing.Point(491, 3);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(116, 42);
-            this.btnSalir.TabIndex = 11;
-            this.btnSalir.Text = "Limpiar";
+            this.btnSalir.Size = new System.Drawing.Size(118, 42);
+            this.btnSalir.TabIndex = 47;
+            this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Location = new System.Drawing.Point(369, 3);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(116, 42);
+            this.btnNuevo.TabIndex = 11;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnEliminar
             // 
@@ -418,6 +420,7 @@
             this.Controls.Add(this.dgvListarTramites);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmTramite";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmTramite";
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarTramites)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -432,8 +435,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dgvListarTramites;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnInsertar;

@@ -24,9 +24,11 @@ namespace CapaDeUsuarioTramite.Tramite
         string respuesta = "";
         public frmTramite()
         {
+            
             InitializeComponent();
             ActualizarLista();
             CargarCombos();
+            ConfiguracionInicial();
         }
         public void ActualizarLista()
         {
@@ -63,10 +65,19 @@ namespace CapaDeUsuarioTramite.Tramite
             cbDocumento.DataSource = miDocumento.ListarDocumento();
         }
         public void ConfiguracionInicial()
-        { }
+        {
+            cbSede.Text = "Seleccione aqui la Sede";
+            cboOperacion.Text = "Seleccione aqui la operación";
+            cbOficina.Text = "Seleccione aqui la oficina";
+            cbTrabajador.Text = "Seleccione aqui el trabajador";
+            cbUnidadDestino.Text = "Seleccione aqui la unidad de destino";
+            cboUsuarioDestino.Text = "Seleccione aqui el usuario de destino";
+            cbDocumento.Text = "Seleccione aqui el documento";
+        }
         public void AgregarTramite()
         {
-            
+            try
+            {
                 miTramite.CodigoLocalSede = int.Parse(cbSede.SelectedValue.ToString());
                 miTramite.FechaHora = dtpFechaHora.Value;
                 miTramite.CodigoOperacion = int.Parse(cboOperacion.SelectedValue.ToString());
@@ -90,15 +101,19 @@ namespace CapaDeUsuarioTramite.Tramite
                     MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ConfiguracionInicial();
                 }
-            
-
-            
+            }
+            catch
+            {
+                MessageBox.Show("Seleccione los campos necesarios para agregar el tramite", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ConfiguracionInicial();
+            }
         }
         public void Modificar()
         {
-            
+            try
+            {
                 int Valor = dgvListarTramites.CurrentCell.RowIndex;
-                miTramite.CodigoTramite = int.Parse(dgvListarTramites[0,Valor].Value.ToString());
+                miTramite.CodigoTramite = int.Parse(dgvListarTramites[0, Valor].Value.ToString());
                 miTramite.CodigoLocalSede = int.Parse(cbSede.SelectedValue.ToString());
                 miTramite.FechaHora = dtpFechaHora.Value;
                 miTramite.CodigoOperacion = int.Parse(cboOperacion.SelectedValue.ToString());
@@ -122,28 +137,39 @@ namespace CapaDeUsuarioTramite.Tramite
                     MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ConfiguracionInicial();
                 }
+
+            }
+            catch
+            {
+                MessageBox.Show("Seleccione los campos necesarios para modificar el tramite", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ConfiguracionInicial();
+            }
+                
             
         }
         public void Eliminar()
         {
-
-            int Valor = dgvListarTramites.CurrentCell.RowIndex;
-            miTramite.CodigoTramite = int.Parse(dgvListarTramites[0, Valor].Value.ToString());
-            Tabla = miTramite.EliminarTramite();
-            respuesta = Tabla.Rows[0][0].ToString();
-            mensaje = Tabla.Rows[0][1].ToString();
-            if (respuesta == "1")
+            try
             {
-                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ConfiguracionInicial();
-                ActualizarLista();
-            }
-            else if(respuesta == "0")
-            {
-                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ConfiguracionInicial();
-            }
+                int Valor = dgvListarTramites.CurrentCell.RowIndex;
+                miTramite.CodigoTramite = int.Parse(dgvListarTramites[0, Valor].Value.ToString());
+                Tabla = miTramite.EliminarTramite();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
+                {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
+                    ActualizarLista();
+                }
+                else if (respuesta == "0")
+                {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
+                }
 
+            }
+            catch{}
         }
         private void btnInsertar_Click(object sender, EventArgs e)
         {
@@ -182,11 +208,23 @@ namespace CapaDeUsuarioTramite.Tramite
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Modificar();
+            ConfiguracionInicial();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             Eliminar();
+            ConfiguracionInicial();
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            ConfiguracionInicial();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
