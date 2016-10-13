@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbSede = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dgvListarTramites = new System.Windows.Forms.DataGridView();
@@ -91,8 +91,8 @@
             this.dgvListarTramites.AllowUserToAddRows = false;
             this.dgvListarTramites.AllowUserToResizeColumns = false;
             this.dgvListarTramites.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListarTramites.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListarTramites.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListarTramites.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvListarTramites.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListarTramites.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -132,8 +132,8 @@
             // Column3
             // 
             this.Column3.DataPropertyName = "fecha_hora";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column3.HeaderText = "Fecha/Hora";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -233,6 +233,7 @@
             this.btnEliminar.TabIndex = 10;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
@@ -388,7 +389,7 @@
             this.txtProveido.Location = new System.Drawing.Point(569, 75);
             this.txtProveido.Multiline = true;
             this.txtProveido.Name = "txtProveido";
-            this.txtProveido.Size = new System.Drawing.Size(234, 49);
+            this.txtProveido.Size = new System.Drawing.Size(345, 49);
             this.txtProveido.TabIndex = 83;
             // 
             // frmTramite

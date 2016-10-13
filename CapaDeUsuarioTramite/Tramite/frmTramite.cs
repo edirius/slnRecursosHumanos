@@ -42,7 +42,7 @@ namespace CapaDeUsuarioTramite.Tramite
             cboOperacion.DisplayMember = "descripcion";
             cboOperacion.DataSource = miOperacion.ListarOperacion();
 
-            cbOficina.ValueMember = "id_oficina_trabajador";
+            cbOficina.ValueMember = "id_oficina";
             cbOficina.DisplayMember = "Oficina";
             cbOficina.DataSource = miOficinaTrabajador.ListarOficinaTrabajador();
 
@@ -50,13 +50,13 @@ namespace CapaDeUsuarioTramite.Tramite
             cbTrabajador.DisplayMember = "Nombres";
             cbTrabajador.DataSource = miOficinaTrabajador.ListarOficinaTrabajador();
 
-            cbUnidadDestino.ValueMember = "id_oficina_trabajador";
+            cbUnidadDestino.ValueMember = "id_oficina";
             cbUnidadDestino.DisplayMember = "Oficina";
             cbUnidadDestino.DataSource = miOficinaTrabajador.ListarOficinaTrabajador();
 
             cboUsuarioDestino.ValueMember = "id_oficina_trabajador";
             cboUsuarioDestino.DisplayMember = "nombres";
-            cboUsuarioDestino.DataSource = miTramite.ListarTrabajadoresPorOficina(int.Parse(cbUnidadDestino.SelectedValue.ToString()));
+            cboUsuarioDestino.DataSource = miTramite.ListarTrabajadoresPorOficina(cbUnidadDestino.Text);
 
             cbDocumento.ValueMember = "id_documento";
             cbDocumento.DisplayMember = "expediente";
@@ -124,6 +124,27 @@ namespace CapaDeUsuarioTramite.Tramite
                 }
             
         }
+        public void Eliminar()
+        {
+
+            int Valor = dgvListarTramites.CurrentCell.RowIndex;
+            miTramite.CodigoTramite = int.Parse(dgvListarTramites[0, Valor].Value.ToString());
+            Tabla = miTramite.EliminarTramite();
+            respuesta = Tabla.Rows[0][0].ToString();
+            mensaje = Tabla.Rows[0][1].ToString();
+            if (respuesta == "1")
+            {
+                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ConfiguracionInicial();
+                ActualizarLista();
+            }
+            else if(respuesta == "0")
+            {
+                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ConfiguracionInicial();
+            }
+
+        }
         private void btnInsertar_Click(object sender, EventArgs e)
         {
             AgregarTramite();
@@ -131,9 +152,9 @@ namespace CapaDeUsuarioTramite.Tramite
 
         private void cbUnidadDestino_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cboUsuarioDestino.ValueMember = "id_oficina_trabajador";
+            cboUsuarioDestino.ValueMember = "id_trabajador";
             cboUsuarioDestino.DisplayMember = "nombres";
-            cboUsuarioDestino.DataSource = miTramite.ListarTrabajadoresPorOficina(int.Parse(cbUnidadDestino.SelectedValue.ToString()));
+            cboUsuarioDestino.DataSource = miTramite.ListarTrabajadoresPorOficina(cbUnidadDestino.Text);
         }
 
         private void dgvListarTramites_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -161,6 +182,11 @@ namespace CapaDeUsuarioTramite.Tramite
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Modificar();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Eliminar();
         }
     }
 }
