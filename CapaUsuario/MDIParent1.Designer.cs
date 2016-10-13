@@ -101,6 +101,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
+            this.asistentiaDeTrabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -218,7 +219,8 @@
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mantenimientoDeTrabajadoresToolStripMenuItem,
             this.mantenimientoDeCargosToolStripMenuItem,
-            this.residenteMetaToolStripMenuItem});
+            this.residenteMetaToolStripMenuItem,
+            this.asistentiaDeTrabajadoresToolStripMenuItem});
             this.viewMenu.Name = "viewMenu";
             this.viewMenu.Size = new System.Drawing.Size(86, 20);
             this.viewMenu.Text = "&Trabajadores";
@@ -703,6 +705,13 @@
             this.dgvCargo.TabIndex = 5;
             this.dgvCargo.Visible = false;
             // 
+            // asistentiaDeTrabajadoresToolStripMenuItem
+            // 
+            this.asistentiaDeTrabajadoresToolStripMenuItem.Name = "asistentiaDeTrabajadoresToolStripMenuItem";
+            this.asistentiaDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.asistentiaDeTrabajadoresToolStripMenuItem.Text = "Asistentia de Trabajadores";
+            this.asistentiaDeTrabajadoresToolStripMenuItem.Click += new System.EventHandler(this.asistentiaDeTrabajadoresToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,6 +818,7 @@
         private System.Windows.Forms.DataGridView dgvCargo;
         private System.Windows.Forms.ToolStripMenuItem certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem globalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem asistentiaDeTrabajadoresToolStripMenuItem;
     }
 }
 

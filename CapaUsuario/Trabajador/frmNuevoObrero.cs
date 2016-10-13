@@ -90,7 +90,7 @@ namespace CapaUsuario.Trabajador
             miRegimenPensionarioTrabajador.IdtRegimenPensionarioTrabajador = 0;
             miRegimenPensionarioTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
             miRegimenPensionarioTrabajador.FechaFin = "";
-            miRegimenPensionarioTrabajador.CUSPP = "";
+            miRegimenPensionarioTrabajador.CUSPP = txtCUSPP.Text;
             miRegimenPensionarioTrabajador.TipoComision = cboTipoComision.Text;
             miRegimenPensionarioTrabajador.IdtAFP = sidtafp;
             miRegimenPensionarioTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;

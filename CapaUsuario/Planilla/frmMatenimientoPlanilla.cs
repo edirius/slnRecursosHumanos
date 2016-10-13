@@ -202,44 +202,51 @@ namespace CapaUsuario.Planilla
 
         private void CargarDatos()
         {
-            dgvPlanilla.Rows.Clear();
-            DataTable oDataPlanilla = new DataTable();
-            oDataPlanilla = miPlanilla.ListarPlanilla();
-
-            DataTable oDataMeta = new DataTable();
-            CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
-            oDataMeta = miMeta.ListarMetas();
-            DataTable oDataFuenteFinanciamiento = new DataTable();
-            CapaDeNegocios.cFuenteFinanciamiento miFuenteFinanciamietno = new CapaDeNegocios.cFuenteFinanciamiento();
-            oDataFuenteFinanciamiento = miFuenteFinanciamietno.ListarFuenteFinanciamiento();
-
-            foreach (DataRow row in oDataPlanilla.Select("año ='" + cboAño.Text + "' AND mes ='" + cboMes.Text + "'"))
+            try
             {
-                foreach (DataRow roww in oDataMeta.Select("idtmeta ='" + row[5].ToString() + "'"))
+                dgvPlanilla.Rows.Clear();
+                DataTable oDataPlanilla = new DataTable();
+                oDataPlanilla = miPlanilla.ListarPlanilla();
+
+                DataTable oDataMeta = new DataTable();
+                CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
+                oDataMeta = miMeta.ListarMetas();
+                DataTable oDataFuenteFinanciamiento = new DataTable();
+                CapaDeNegocios.cFuenteFinanciamiento miFuenteFinanciamietno = new CapaDeNegocios.cFuenteFinanciamiento();
+                oDataFuenteFinanciamiento = miFuenteFinanciamietno.ListarFuenteFinanciamiento();
+
+                foreach (DataRow row in oDataPlanilla.Select("año ='" + cboAño.Text + "' AND mes ='" + cboMes.Text + "'"))
                 {
-                    sidtmeta = Convert.ToInt32(roww[0]);
-                    smeta = roww[2].ToString();
-                    snumerometa = roww[3].ToString();
+                    foreach (DataRow roww in oDataMeta.Select("idtmeta ='" + row[5].ToString() + "'"))
+                    {
+                        sidtmeta = Convert.ToInt32(roww[0]);
+                        smeta = roww[2].ToString();
+                        snumerometa = roww[3].ToString();
+                    }
+                    foreach (DataRow roww in oDataFuenteFinanciamiento.Select("idtfuentefinanciamiento ='" + row[6].ToString() + "'"))
+                    {
+                        sidtfuentefinanciamiento = Convert.ToInt32(roww[0]);
+                        sfuentefinanciamiento = roww[2].ToString();
+                    }
+                    dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, snumerometa, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString());
                 }
-                foreach (DataRow roww in oDataFuenteFinanciamiento.Select("idtfuentefinanciamiento ='" + row[6].ToString() + "'"))
+                if (dgvPlanilla.Rows.Count > 0)
                 {
-                    sidtfuentefinanciamiento = Convert.ToInt32(roww[0]);
-                    sfuentefinanciamiento = roww[2].ToString();
+                    DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, 0);
+                    dgvPlanilla.Rows[0].Selected = true;
+                    dgvPlanilla_CellClick(dgvPlanilla, cea);
                 }
-                dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, snumerometa, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString());
             }
-            if (dgvPlanilla.Rows.Count > 0)
+            catch (Exception m)
             {
-                DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, 0);
-                dgvPlanilla.Rows[0].Selected = true;
-                dgvPlanilla_CellClick(dgvPlanilla, cea);
+                MessageBox.Show(m.Message);
             }
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
-            fPlanilla.MdiParent = this;
+            fPlanilla.MdiParent = this.MdiParent;
             fPlanilla.Show();
         }
 

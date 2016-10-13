@@ -675,7 +675,7 @@ namespace CapaUsuario.Reportes
                 odtA.Rows.Clear();
                 odtA = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorA(sidtplanilla, sidtregimenlaboral,sidttrabajador, pmes,pmes_nro, paño);
 
-                odtA.Columns.Add("SITUACION", typeof(string));  
+                odtA.Columns.Add("SITUACION", typeof(string));
 
             if (odtA.Rows.Count > 0)
             {
@@ -688,7 +688,7 @@ namespace CapaUsuario.Reportes
                 for (int kkk = 0; kkk < odtA.Rows.Count; kkk++) {
                     drFilaAB = odtAB.NewRow();
                     drFilaAB[0] = "";
-                    odtAB.Rows.InsertAt(drFilaAB,kkk);
+                    odtAB.Rows.InsertAt(drFilaAB, kkk);
                 }
 
                 odtA2 = MergeTablesByIndex(odtA, odtAB);
@@ -700,7 +700,7 @@ namespace CapaUsuario.Reportes
 
                 odtB.Columns.Clear();
                 odtB.Rows.Clear();
-                odtB = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorB(sidtplanilla ,  sidtregimenlaboral, sidttrabajador ,pmes,pmes_nro, paño);
+                odtB = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorB(sidtplanilla, sidtregimenlaboral, sidttrabajador, pmes, pmes_nro, paño);
 
                 odtBB.Columns.Clear();
                 odtBB.Rows.Clear();
@@ -723,7 +723,7 @@ namespace CapaUsuario.Reportes
                 /*--------- inicio de parte c de boleta de pago, donde se aumentan columnas y se calcula dias no laborados asi como total de horas y minutos */
                 odtC.Columns.Clear();
                 odtC.Rows.Clear();
-                odtC = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorC(sidtplanilla,sidtregimenlaboral,sidttrabajador,pmes,pmes_nro, paño);
+                odtC = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorC(sidtplanilla, sidtregimenlaboral, sidttrabajador, pmes, pmes_nro, paño);
 
                 odtC.Columns.Add("DIAS NO LABORADOS", typeof(string));
                 odtC.Columns.Add("DIAS SUBSIDIADOS", typeof(string));
@@ -764,7 +764,7 @@ namespace CapaUsuario.Reportes
                 /*---------------Inicio de Obligaciones de boleta de pago - Ingresos*/
                 odtE.Columns.Clear();
                 odtE.Rows.Clear();
-                odtE = oDetallePlanillaIngresos.ListarPlanillaXIngresosXBoletaPago(sidtplanilla ,sidtregimenlaboral,sidttrabajador);
+                odtE = oDetallePlanillaIngresos.ListarPlanillaXIngresosXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
 
                 odtF.Columns.Clear();
                 odtF.Rows.Clear();
@@ -797,7 +797,7 @@ namespace CapaUsuario.Reportes
 
                 odtG.Columns.Clear();
                 odtG.Rows.Clear();
-                odtG = oDetallePlanillaDescuentos.ListarPlanillaXDescuentosXBoletaPago(sidtplanilla ,sidtregimenlaboral,sidttrabajador);
+                odtG = oDetallePlanillaDescuentos.ListarPlanillaXDescuentosXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
 
                 if (odtG.Rows.Count > 0)
                 {
@@ -820,7 +820,7 @@ namespace CapaUsuario.Reportes
 
                 odtH.Columns.Clear();
                 odtH.Rows.Clear();
-                odtH = oDetallePlanillaATrabajador.ListarPlanillaATrabajadorXBoletaPago(sidtplanilla,sidtregimenlaboral,sidttrabajador );
+                odtH = oDetallePlanillaATrabajador.ListarPlanillaATrabajadorXBoletaPago(sidtplanilla, sidtregimenlaboral, sidttrabajador);
 
                 if (odtH.Rows.Count > 0)
                 {
@@ -848,6 +848,8 @@ namespace CapaUsuario.Reportes
                 decimal dDescuentos = 0;
                 decimal dEgresosParcial = 0;
                 decimal dNeto = 0;
+                decimal dTrabajador = 0;
+            
 
                 for (int k = 0; k < odtF.Rows.Count; k++)
                 {
@@ -868,10 +870,11 @@ namespace CapaUsuario.Reportes
                 /* Ingresos y Egresos */
                 odtID = oDetallePlanillaATrabajador.ListarDetallePlanillaXTrabajador(sidtplanilla, sidtregimenlaboral, sidttrabajador);
 
-                dIngresos = Convert.ToDecimal( odtID.Rows[0][1]);
+                dIngresos = Convert.ToDecimal(odtID.Rows[0][1]);
+                dTrabajador = Convert.ToDecimal(odtID.Rows[0][2]);
                 dDescuentos = Convert.ToDecimal(odtID.Rows[0][4]);
 
-                dNeto = dIngresos - dDescuentos;
+                dNeto = dIngresos - dDescuentos - dTrabajador;
 
                 drFilaF = odtF.NewRow();
                 drFilaF.Delete();

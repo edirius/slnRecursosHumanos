@@ -145,7 +145,6 @@ namespace CapaUsuario
             Trabajador.frmListaTrabajadores fListaTrabajadores = new Trabajador.frmListaTrabajadores();
             fListaTrabajadores.MdiParent = this;
             fListaTrabajadores.Show();
-
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -404,6 +403,13 @@ namespace CapaUsuario
         CapaUsuario.Usuarios.frmLogin FrmLogin = new CapaUsuario.Usuarios.frmLogin();
         CapaDeNegocios.Usuario.cUsuario oUsu = new CapaDeNegocios.Usuario.cUsuario();
         bool menuAFP, menuUsuario, menuTrabajadores, menuTareos, menuMeta, menuPlanillas, menuSunatTablasParametricas, menuExportarDatosSunat, menuReportes, habilitado;
+
+        private void asistentiaDeTrabajadoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Asistencia.frmAsistenciaTrabajadores fAsistenciaTrabajadores = new Asistencia.frmAsistenciaTrabajadores();
+            fAsistenciaTrabajadores.MdiParent = this;
+            fAsistenciaTrabajadores.Show();
+        }
 
         private void globalToolStripMenuItem_Click(object sender, EventArgs e)
         {
