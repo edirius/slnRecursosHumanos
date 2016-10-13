@@ -31,25 +31,25 @@ namespace CapaDeNegociosTramite.Tramite
 
         public int CodigoDocumento { get; set; }
 
-        public int AgregarTramite()
+        public DataTable AgregarTramite()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteInsertarTramite", CodigoLocalSede, FechaHora, CodigoOperacion, CodigoOficina, CodigoOficinaTrabajador, UnidadDestino, UsuarioDestino, Proveido, CodigoDocumento);
+            return Conexion.GDatos.TraerDataTable("spTramiteInsertarTramite", CodigoLocalSede, FechaHora, CodigoOperacion, CodigoOficina, CodigoOficinaTrabajador, UnidadDestino, UsuarioDestino, Proveido, CodigoDocumento);
         }
-        public int ModificarTramiter()
+        public DataTable ModificarTramite()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteModificarTramite", CodigoTramite, CodigoLocalSede, FechaHora, CodigoOperacion, CodigoOficina, CodigoOficinaTrabajador, UnidadDestino, UsuarioDestino, Proveido, CodigoDocumento);
+            return Conexion.GDatos.TraerDataTable("spTramiteModificarTramite", CodigoTramite, CodigoLocalSede, FechaHora, CodigoOperacion, CodigoOficina, CodigoOficinaTrabajador, UnidadDestino, UsuarioDestino, Proveido, CodigoDocumento);
         }
-        public int EliminarTramite()
+        public DataTable EliminarTramite()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteEliminarTramite", CodigoTramite);
+            return Conexion.GDatos.TraerDataTable("spTramiteEliminarTramite", CodigoTramite);
         }
         public DataTable ListarTramite()
         {
             return Conexion.GDatos.TraerDataTable("spTramiteListarTramite");
         }
-        public DataTable ListarTrabajadoresPorOficina(int codigoOficina)
+        public DataTable ListarTrabajadoresPorOficina(int codigoOficinaTrabajador)
         {
-            return Conexion.GDatos.TraerDataTable("spTramiteListarTrabajadorPorOficina", codigoOficina);
+            return Conexion.GDatos.TraerDataTable("spTramiteListarTrabajadorPorOficina", codigoOficinaTrabajador);
         }
 
     }

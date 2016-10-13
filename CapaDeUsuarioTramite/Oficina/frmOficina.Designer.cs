@@ -43,6 +43,7 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.dgvListarOficinas = new System.Windows.Forms.DataGridView();
             this.id_oficina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -180,6 +181,7 @@
             this.dgvListarOficinas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListarOficinas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_oficina,
+            this.Nro,
             this.Column2,
             this.Column3,
             this.Column4});
@@ -198,7 +200,16 @@
             this.id_oficina.HeaderText = "Codigo";
             this.id_oficina.Name = "id_oficina";
             this.id_oficina.ReadOnly = true;
+            this.id_oficina.Visible = false;
             this.id_oficina.Width = 50;
+            // 
+            // Nro
+            // 
+            this.Nro.DataPropertyName = "nro";
+            this.Nro.HeaderText = "N°";
+            this.Nro.Name = "Nro";
+            this.Nro.ReadOnly = true;
+            this.Nro.Width = 50;
             // 
             // Column2
             // 
@@ -262,6 +273,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvListarOficinas;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_oficina;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;

@@ -13,8 +13,7 @@ namespace CapaDeUsuarioTramite.Local_Sede
     public partial class frmLocalSede : Form
     {
         CapaDeNegociosTramite.LocalSede.cSede miSede = new CapaDeNegociosTramite.LocalSede.cSede();
-        string descripcion = "";
-        DataTable odtLocalSede = new DataTable();
+        DataTable Tabla = new DataTable();
         string mensaje = "";
         string respuesta = "";
         
@@ -34,95 +33,75 @@ namespace CapaDeUsuarioTramite.Local_Sede
         }
         public void AgregarSede()
         {
-            try
+            if (txtDescripcion.Text != "")
             {
-                if (txtDescripcion.Text != "") {
-                    descripcion = txtDescripcion.Text;
-                    odtLocalSede = miSede.AgregarSede(descripcion);
-                    respuesta = odtLocalSede.Rows[0][0].ToString();
-                    mensaje = odtLocalSede.Rows[0][1].ToString();
-                    if (respuesta == "1")
-                    {
-                        MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtDescripcion.Text = "";
-                        dgvListarSede.DataSource = miSede.ListarSede() ;
-                    }
-                    else if (respuesta == "0") {
-                        MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtDescripcion.Focus();
-                    }
-                }else
-                    MessageBox.Show("Porfavor llene el campo descripción.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
-
-
+                miSede.Descripcion = txtDescripcion.Text;
+                Tabla = miSede.AgregarSede();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
+                {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
+                    ActualizarLista();
+                }
+                else if (respuesta == "0")
+                {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
+                }
             }
-            catch
-            {
-                const string message = "gege";
-                const string caption = "Error";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            else
+                MessageBox.Show("Por favor llene los campos necesarios", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
         public void ModificarSede()
         {
-            try
+            if (txtDescripcion.Text != "")
             {
-                int numero;
                 int valor = dgvListarSede.CurrentCell.RowIndex;
-                miSede.CodigoSede = int.Parse(dgvListarSede[0, valor].Value.ToString());
+                miSede.CodigoSede = int.Parse(dgvListarSede[1, valor].Value.ToString());
                 miSede.Descripcion = txtDescripcion.Text;
-                numero = miSede.ModificarSede();
-                if (numero == 1)
+                Tabla = miSede.ModificarSede();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
                 {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
                     ActualizarLista();
-                    MessageBox.Show("La Oficina fue modificada correctamente");
                 }
-                else
+                else if (respuesta == "0")
                 {
-                    const string message = "No ha seleccionado ninguna Oficina para modificar";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
                 }
-
             }
-            catch
-            {
-                const string message = "La oficina ya existe en la base de datos";
-                const string caption = "Error";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            else
+                MessageBox.Show("Por favor llene los campos necesarios", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 
         }
         private void EliminarSede()
         {
-            try
+            int valor = dgvListarSede.CurrentCell.RowIndex;
+            miSede.CodigoSede = int.Parse(dgvListarSede[1, valor].Value.ToString());
+            miSede.Descripcion = txtDescripcion.Text;
+            Tabla = miSede.EliminarSede();
+            respuesta = Tabla.Rows[0][0].ToString();
+            mensaje = Tabla.Rows[0][1].ToString();
+            if (respuesta == "1")
             {
-                int numero;
-                int valor = dgvListarSede.CurrentCell.RowIndex;
-                miSede.CodigoSede = int.Parse(dgvListarSede[0, valor].Value.ToString());
-                numero = miSede.EliminarSede();
-                if (numero == 1)
-                {
-                    ActualizarLista();
-                    MessageBox.Show("La Oficina fue eliminada correctamente");
-                }
-                else
-                {
-                    const string message = "Debe Seleccionar una Oficina";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(mensaje);
+                ConfiguracionInicial();
+                ActualizarLista();
             }
-            catch
+            else if (respuesta == "0")
             {
-                const string message = "No existe la oficina";
-                const string caption = "Error";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ConfiguracionInicial();
             }
-
         }
         private void btnInsertar_Click(object sender, EventArgs e)
         {
@@ -151,7 +130,6 @@ namespace CapaDeUsuarioTramite.Local_Sede
         {
             int valor = dgvListarSede.CurrentCell.RowIndex;
             txtDescripcion.Text = dgvListarSede[2, valor].Value.ToString();
-            descripcion = dgvListarSede[2, e.RowIndex].Value.ToString();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -162,11 +140,6 @@ namespace CapaDeUsuarioTramite.Local_Sede
         private void frmLocalSede_Load(object sender, EventArgs e)
         {
             dgvListarSede.Columns[1].Visible = false;
-        }
-
-        private void dgvListarSede_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            descripcion = dgvListarSede[2, e.RowIndex].Value.ToString();
         }
     }
 }

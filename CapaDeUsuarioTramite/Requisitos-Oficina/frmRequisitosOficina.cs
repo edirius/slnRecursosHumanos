@@ -14,10 +14,14 @@ namespace CapaDeUsuarioTramite.Solicitud_Oficina
     {
         CapaDeNegociosTramite.Requisito_Oficina.cRequisitoOficina miRequisito = new CapaDeNegociosTramite.Requisito_Oficina.cRequisitoOficina();
         CapaDeNegociosTramite.Oficina.cOficina miOficina = new CapaDeNegociosTramite.Oficina.cOficina();
+        DataTable Tabla = new DataTable();
+        string mensaje = "";
+        string respuesta = "";
         public frmRequisitos()
         {
             InitializeComponent();
             ActualizarLista();
+            ConfiguracionInicial();
         }
         public void ActualizarLista()
         {
@@ -25,96 +29,98 @@ namespace CapaDeUsuarioTramite.Solicitud_Oficina
             cbOficinas.ValueMember = "id_oficina";
             dgvListarRequisitos.DataSource = miRequisito.ListarRequisito();
             cbOficinas.DataSource = miOficina.ListarOficina();
-            ConfiguracionInicial();
+            
         }
         public void ConfiguracionInicial()
         {
             txtRequisitos.Text = "";
             txtRequisitos.Focus();
+            cbOficinas.Text = "Seleccione una oficina";
         }
         public void AgregarRequisito()
         {
-            if (txtRequisitos.Text != "")
+            try
             {
-                int numero;
-                miRequisito.NombreRequisito = txtRequisitos.Text;
-                miRequisito.CodigoOficina = int.Parse(cbOficinas.SelectedValue.ToString());
-                numero = miRequisito.AgregarRequisito();
-                //
-                if (numero == 1)
+                if (txtRequisitos.Text != "")
                 {
-                    ActualizarLista();
-                    MessageBox.Show("El requisito fue agregado correctamente");
+                    miRequisito.NombreRequisito = txtRequisitos.Text;
+                    miRequisito.CodigoOficina = int.Parse(cbOficinas.SelectedValue.ToString());
+                    Tabla = miRequisito.AgregarRequisito();
+                    respuesta = Tabla.Rows[0][0].ToString();
+                    mensaje = Tabla.Rows[0][1].ToString();
+                    if (respuesta == "1")
+                    {
+                        MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ConfiguracionInicial();
+                        ActualizarLista();
+                    }
+                    else if (respuesta == "0")
+                    {
+                        MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ConfiguracionInicial();
+                    }
                 }
                 else
-                {
-                    const string message = "Ya existe un requisito con el mismo nombre para esa oficina";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    MessageBox.Show("Por favor llene los campos necesarios", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
-            else
-            {
-                const string message = "No escrito el nombre del requisito para esa oficina";
-                const string caption = "Error";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch { MessageBox.Show("Seleccione un dato de la lista deplegable" + " oficina", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            
         }
         public void ModificarRequisito()
         {
             if (txtRequisitos.Text != "")
             {
-                int numero;
-                int valor = dgvListarRequisitos.CurrentCell.RowIndex;
-                miRequisito.CodigoRequisitoOficina = int.Parse(dgvListarRequisitos[0, valor].Value.ToString());
+                int Valor = dgvListarRequisitos.CurrentCell.RowIndex;
+                miRequisito.CodigoRequisitoOficina = int.Parse(dgvListarRequisitos[0, Valor].Value.ToString());
                 miRequisito.NombreRequisito = txtRequisitos.Text;
                 miRequisito.CodigoOficina = int.Parse(cbOficinas.SelectedValue.ToString());
-                numero = miRequisito.ModificarRequisito();
-                if (numero == 0)
+                Tabla = miRequisito.ModificarRequisito();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
                 {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
                     ActualizarLista();
-                    MessageBox.Show("El requisito fue modificado correctamente");
                 }
-                else
+                else if (respuesta == "0")
                 {
-                    const string message = "No ha seleccionado ninguna Oficina para modificar";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
                 }
             }
             else
-            {
-                const string message = "No ha seleccionado ninguna Oficina para modificar";
-                const string caption = "Error";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                MessageBox.Show("Por favor llene los campos necesarios", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private void EliminarRequisito()
         {
             try
             {
-                int numero;
-                int valor = dgvListarRequisitos.CurrentCell.RowIndex;
-                miRequisito.CodigoRequisitoOficina = int.Parse(dgvListarRequisitos[0, valor].Value.ToString());
-                numero = miRequisito.EliminarRequisito();
-                if (numero == 1)
+                int Valor = dgvListarRequisitos.CurrentCell.RowIndex;
+                miRequisito.CodigoRequisitoOficina = int.Parse(dgvListarRequisitos[0, Valor].Value.ToString());
+                miRequisito.NombreRequisito = txtRequisitos.Text;
+                Tabla = miRequisito.EliminarRequisito();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
                 {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
                     ActualizarLista();
-                    MessageBox.Show("El requisito fue eliminado correctamente");
                 }
-                else
+                else if (respuesta == "0")
                 {
-                    const string message = "Debe seleccionar un requisito";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
                 }
             }
             catch
             {
-                const string message = "No existe el requisito en la base de datos";
-                const string caption = "Error";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                MessageBox.Show("No ha seleccionado ningún requisito para eliminar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
 
         }
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -126,8 +132,8 @@ namespace CapaDeUsuarioTramite.Solicitud_Oficina
         {
             int valor = dgvListarRequisitos.CurrentCell.RowIndex;
             miRequisito.CodigoRequisitoOficina= int.Parse(dgvListarRequisitos[0, valor].Value.ToString());
-            txtRequisitos.Text = dgvListarRequisitos[1, valor].Value.ToString();
-            cbOficinas.Text = dgvListarRequisitos[2, valor].Value.ToString();
+            txtRequisitos.Text = dgvListarRequisitos[2, valor].Value.ToString();
+            cbOficinas.Text = dgvListarRequisitos[3, valor].Value.ToString();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaDeNegociosTramite.Operaciones;
 
 namespace CapaDeUsuarioTramite.Tramite
 {
@@ -15,6 +16,12 @@ namespace CapaDeUsuarioTramite.Tramite
         CapaDeNegociosTramite.Tramite.cTramite miTramite = new CapaDeNegociosTramite.Tramite.cTramite();
         CapaDeNegociosTramite.Oficina.cOficina miOficina = new CapaDeNegociosTramite.Oficina.cOficina();
         CapaDeNegociosTramite.Documento.cDocumento miDocumento = new CapaDeNegociosTramite.Documento.cDocumento();
+        CapaDeNegociosTramite.LocalSede.cSede miSede = new CapaDeNegociosTramite.LocalSede.cSede();
+        CapaDeNegociosTramite.Oficina.cOficinaTrabajador miOficinaTrabajador = new CapaDeNegociosTramite.Oficina.cOficinaTrabajador();
+        cOperaciones miOperacion = new cOperaciones();
+        DataTable Tabla = new DataTable();
+        string mensaje = "";
+        string respuesta = "";
         public frmTramite()
         {
             InitializeComponent();
@@ -27,25 +34,25 @@ namespace CapaDeUsuarioTramite.Tramite
         }
         public void CargarCombos()
         {
-            //cbSede.ValueMember = "id_local_sede";
-            //cbSede.DisplayMember = "descripcion";
-            //cbSede.DataSource = miSede.ListarSedes();
+            cbSede.ValueMember = "ID";
+            cbSede.DisplayMember = "DESCRIPCION";
+            cbSede.DataSource = miSede.ListarSede();
 
-            //cboOperacion.ValueMember = "id_operacion";
-            //cboOperacion.DisplayMember = "descripcion";
-            //cboOperacion.DataSource = miOperacion.ListarOperaciones();
+            cboOperacion.ValueMember = "id_operacion";
+            cboOperacion.DisplayMember = "descripcion";
+            cboOperacion.DataSource = miOperacion.ListarOperacion();
 
-            cbOficina.ValueMember = "id_oficina";
-            cbOficina.DisplayMember = "nombre_oficina";
-            cbOficina.DataSource = miOficina.ListarOficina();
+            cbOficina.ValueMember = "id_oficina_trabajador";
+            cbOficina.DisplayMember = "Oficina";
+            cbOficina.DataSource = miOficinaTrabajador.ListarOficinaTrabajador();
 
-            //cbTrabajador.ValueMember = "";
-            //cbTrabajador.DisplayMember = "";
-            //cbTrabajador.DataSource = miTramite.ListarTrabajadores();
+            cbTrabajador.ValueMember = "id_oficina_trabajador";
+            cbTrabajador.DisplayMember = "Nombres";
+            cbTrabajador.DataSource = miOficinaTrabajador.ListarOficinaTrabajador();
 
-            cbUnidadDestino.ValueMember = "id_oficina";
-            cbUnidadDestino.DisplayMember = "nombre_oficina";
-            cbUnidadDestino.DataSource = miOficina.ListarOficina();
+            cbUnidadDestino.ValueMember = "id_oficina_trabajador";
+            cbUnidadDestino.DisplayMember = "Oficina";
+            cbUnidadDestino.DataSource = miOficinaTrabajador.ListarOficinaTrabajador();
 
             cboUsuarioDestino.ValueMember = "id_oficina_trabajador";
             cboUsuarioDestino.DisplayMember = "nombres";
@@ -55,11 +62,11 @@ namespace CapaDeUsuarioTramite.Tramite
             cbDocumento.DisplayMember = "expediente";
             cbDocumento.DataSource = miDocumento.ListarDocumento();
         }
+        public void ConfiguracionInicial()
+        { }
         public void AgregarTramite()
         {
-            try
-            {
-                int numero;
+            
                 miTramite.CodigoLocalSede = int.Parse(cbSede.SelectedValue.ToString());
                 miTramite.FechaHora = dtpFechaHora.Value;
                 miTramite.CodigoOperacion = int.Parse(cboOperacion.SelectedValue.ToString());
@@ -69,26 +76,53 @@ namespace CapaDeUsuarioTramite.Tramite
                 miTramite.UsuarioDestino = int.Parse(cboUsuarioDestino.SelectedValue.ToString());
                 miTramite.Proveido = txtProveido.Text;
                 miTramite.CodigoDocumento = int.Parse(cbDocumento.SelectedValue.ToString());
-                numero = miTramite.AgregarTramite();
-                if (numero == 1)
+                Tabla = miTramite.AgregarTramite();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
                 {
-                    MessageBox.Show("El tramite se efectuo correctamente");
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
                     ActualizarLista();
                 }
-                else
+                else if (respuesta == "0")
                 {
-                    const string message = "Ya existe un mismo tramite en esa oficina";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
                 }
+            
 
-            }
-            catch
-            {
-                const string message = "No ha llenado los datos necesarios";
-                const string caption = "Error";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
+        }
+        public void Modificar()
+        {
+            
+                int Valor = dgvListarTramites.CurrentCell.RowIndex;
+                miTramite.CodigoTramite = int.Parse(dgvListarTramites[0,Valor].Value.ToString());
+                miTramite.CodigoLocalSede = int.Parse(cbSede.SelectedValue.ToString());
+                miTramite.FechaHora = dtpFechaHora.Value;
+                miTramite.CodigoOperacion = int.Parse(cboOperacion.SelectedValue.ToString());
+                miTramite.CodigoOficina = int.Parse(cbOficina.SelectedValue.ToString());
+                miTramite.CodigoOficinaTrabajador = int.Parse(cbTrabajador.SelectedValue.ToString());
+                miTramite.UnidadDestino = int.Parse(cbUnidadDestino.SelectedValue.ToString());
+                miTramite.UsuarioDestino = int.Parse(cboUsuarioDestino.SelectedValue.ToString());
+                miTramite.Proveido = txtProveido.Text;
+                miTramite.CodigoDocumento = int.Parse(cbDocumento.SelectedValue.ToString());
+                Tabla = miTramite.ModificarTramite();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
+                {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
+                    ActualizarLista();
+                }
+                else if (respuesta == "0")
+                {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
+                }
+            
         }
         private void btnInsertar_Click(object sender, EventArgs e)
         {
@@ -100,6 +134,33 @@ namespace CapaDeUsuarioTramite.Tramite
             cboUsuarioDestino.ValueMember = "id_oficina_trabajador";
             cboUsuarioDestino.DisplayMember = "nombres";
             cboUsuarioDestino.DataSource = miTramite.ListarTrabajadoresPorOficina(int.Parse(cbUnidadDestino.SelectedValue.ToString()));
+        }
+
+        private void dgvListarTramites_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int valor = dgvListarTramites.CurrentCell.RowIndex;
+            cbSede.Text = dgvListarTramites[1, valor].Value.ToString();
+            dtpFechaHora.Text = dgvListarTramites[2,valor].Value.ToString();
+            cboOperacion.Text = dgvListarTramites[3, valor].Value.ToString();
+            cbOficina.Text = dgvListarTramites[4, valor].Value.ToString();
+            cbTrabajador.Text = dgvListarTramites[5, valor].Value.ToString();
+            cbUnidadDestino.Text = dgvListarTramites[6, valor].Value.ToString();
+            cboUsuarioDestino.Text = dgvListarTramites[7, valor].Value.ToString();
+            txtProveido.Text = dgvListarTramites[8, valor].Value.ToString();
+            cbDocumento.Text = dgvListarTramites[9, valor].Value.ToString();
+
+        }
+
+        private void cbOficina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //cbTrabajador.ValueMember = "id_oficina_trabajador";
+            //cbTrabajador.DisplayMember = "nombres";
+            //cbTrabajador.DataSource = miTramite.ListarTrabajadoresPorOficina(int.Parse(cbOficina.SelectedValue.ToString()));
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Modificar();
         }
     }
 }

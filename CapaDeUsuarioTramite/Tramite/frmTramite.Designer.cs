@@ -74,7 +74,7 @@
             this.cbSede.FormattingEnabled = true;
             this.cbSede.Location = new System.Drawing.Point(192, 12);
             this.cbSede.Name = "cbSede";
-            this.cbSede.Size = new System.Drawing.Size(129, 21);
+            this.cbSede.Size = new System.Drawing.Size(200, 21);
             this.cbSede.TabIndex = 67;
             // 
             // label3
@@ -113,6 +113,7 @@
             this.dgvListarTramites.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListarTramites.Size = new System.Drawing.Size(1022, 297);
             this.dgvListarTramites.TabIndex = 63;
+            this.dgvListarTramites.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListarTramites_CellClick);
             // 
             // Column1
             // 
@@ -241,6 +242,7 @@
             this.btnModificar.TabIndex = 9;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnInsertar
             // 
@@ -263,10 +265,9 @@
             // 
             // dtpFechaHora
             // 
-            this.dtpFechaHora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpFechaHora.Location = new System.Drawing.Point(192, 42);
+            this.dtpFechaHora.Location = new System.Drawing.Point(192, 45);
             this.dtpFechaHora.Name = "dtpFechaHora";
-            this.dtpFechaHora.Size = new System.Drawing.Size(156, 20);
+            this.dtpFechaHora.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaHora.TabIndex = 69;
             // 
             // label2
@@ -337,7 +338,7 @@
             this.cboOperacion.FormattingEnabled = true;
             this.cboOperacion.Location = new System.Drawing.Point(192, 77);
             this.cboOperacion.Name = "cboOperacion";
-            this.cboOperacion.Size = new System.Drawing.Size(129, 21);
+            this.cboOperacion.Size = new System.Drawing.Size(200, 21);
             this.cboOperacion.TabIndex = 77;
             // 
             // cbOficina
@@ -347,6 +348,7 @@
             this.cbOficina.Name = "cbOficina";
             this.cbOficina.Size = new System.Drawing.Size(292, 21);
             this.cbOficina.TabIndex = 78;
+            this.cbOficina.SelectedIndexChanged += new System.EventHandler(this.cbOficina_SelectedIndexChanged);
             // 
             // cbTrabajador
             // 

@@ -15,19 +15,17 @@ namespace CapaDeNegociosTramite.LocalSede
 
         public string Descripcion { get; set; }
 
-        public DataTable AgregarSede(string pDescripcion)
+        public DataTable AgregarSede()
         {
-            return Conexion.GDatos.TraerDataTable("spTramiteInsertarLocalSede", pDescripcion);
+            return Conexion.GDatos.TraerDataTable("spTramiteInsertarLocalSede", Descripcion);
         }
-
-      
-        public int ModificarSede()
+        public DataTable ModificarSede()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteModificarLocalSede", CodigoSede, Descripcion);
+            return Conexion.GDatos.TraerDataTable("spTramiteModificarLocalSede", CodigoSede, Descripcion);
         }
-        public int EliminarSede()
+        public DataTable EliminarSede()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteEliminarLocalSede", CodigoSede);
+            return Conexion.GDatos.TraerDataTable("spTramiteEliminarLocalSede", CodigoSede, Descripcion);
         }
         public DataTable ListarSede()
         {

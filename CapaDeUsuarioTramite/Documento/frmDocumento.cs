@@ -16,17 +16,21 @@ namespace CapaDeUsuarioTramite.Documento
         CapaDeNegocios.Contrato.cCargo miCargo = new CapaDeNegocios.Contrato.cCargo();
         CapaDeNegociosTramite.Documento.cDocumento miDocumento = new CapaDeNegociosTramite.Documento.cDocumento();
         CapaDeNegociosTramite.Documento.cTipoDocumento miTipoDocumento = new CapaDeNegociosTramite.Documento.cTipoDocumento();
+        DataTable Tabla = new DataTable();
+        string mensaje = "";
+        string respuesta = "";
 
         public frmDocumento()
         {
             InitializeComponent();
+            ActualizarLista();
         }
 
         private void frmDocumento_Load(object sender, EventArgs e)
         {
             CargarComboCargo();
             CargarComboTipoDocumento();
-            ActualizarLista();
+            
             ConfiguracionInicial();
         }
         public void ActualizarLista()
@@ -61,78 +65,91 @@ namespace CapaDeUsuarioTramite.Documento
         {
             if (txtExpediente.Text != "")
             {
-                int numero;
                 miDocumento.Expediente = txtExpediente.Text;
                 miDocumento.FechaDocumento = dtpFecha.Value;
                 miDocumento.Folios = int.Parse(nudFolios.Value.ToString());
                 miDocumento.Dependencia = txtDependencia.Text;
                 miDocumento.Asunto = txtAsunto.Text;
-                miDocumento.De = txtDe.Text;
+                miDocumento.Presentado = txtDe.Text;
                 miDocumento.Firma = txtFirma.Text;
                 miDocumento.CodigoCargo = int.Parse(cbCargo.SelectedValue.ToString());
                 miDocumento.CodigoTipoDocumento = int.Parse(cbTipoDocumento.SelectedValue.ToString());
-                numero = miDocumento.AgregarDocumento();
-                //
-                if (numero == 1)
+                Tabla = miDocumento.AgregarDocumento();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
                 {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
                     ActualizarLista();
-                    MessageBox.Show("El documento fue agregado correctamente");
                 }
-                else
+                else if (respuesta == "0")
                 {
-                    const string message = "Ya existe un documento con los mismos datos";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
                 }
             }
+            else
+                MessageBox.Show("Por favor llene los campos necesarios", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
         public void ModificarDocumento()
         {
             if (txtExpediente.Text != "")
             {
-                int numero;
                 int valor = dgvListaDocumentos.CurrentCell.RowIndex;
-                miDocumento.CodigoDocumento = int.Parse(dgvListaDocumentos[0, valor].Value.ToString());
+                miDocumento.CodigoDocumento = int.Parse(dgvListaDocumentos[1, valor].Value.ToString());
                 miDocumento.Expediente = txtExpediente.Text;
                 miDocumento.FechaDocumento = dtpFecha.Value;
                 miDocumento.Folios = int.Parse(nudFolios.Value.ToString());
                 miDocumento.Dependencia = txtDependencia.Text;
                 miDocumento.Asunto = txtAsunto.Text;
-                miDocumento.De = txtDe.Text;
+                miDocumento.Presentado = txtDe.Text;
                 miDocumento.Firma = txtFirma.Text;
                 miDocumento.CodigoCargo = int.Parse(cbCargo.SelectedValue.ToString());
                 miDocumento.CodigoTipoDocumento = int.Parse(cbTipoDocumento.SelectedValue.ToString());
-                numero = miDocumento.ModificarDocumento();
-                if (numero == 1)
+                Tabla = miDocumento.ModificarDocumento();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
                 {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
                     ActualizarLista();
-                    MessageBox.Show("El documento fue modificado correctamente");
                 }
-                else
+                else if (respuesta == "0")
                 {
-                    const string message = "No ha seleccionado ningun documento para modificar";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
                 }
             }
+            else
+                MessageBox.Show("Por favor llene los campos necesarios", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         private void EliminarDocumento()
         {
-            int numero;
-            int valor = dgvListaDocumentos.CurrentCell.RowIndex;
-            miDocumento.CodigoDocumento = int.Parse(dgvListaDocumentos[0, valor].Value.ToString());
-            numero = miDocumento.EliminarDocumento();
-            if (numero == 1)
+            if (txtExpediente.Text != "")
             {
-                ActualizarLista();
-                MessageBox.Show("El documento fue eliminado correctamente");
+                int valor = dgvListaDocumentos.CurrentCell.RowIndex;
+                miDocumento.CodigoDocumento = int.Parse(dgvListaDocumentos[1, valor].Value.ToString());
+                miDocumento.Expediente = txtExpediente.Text;
+                Tabla = miDocumento.EliminarDocumento();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
+                {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
+                    ActualizarLista();
+                }
+                else if (respuesta == "0")
+                {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
+                }
             }
             else
-            {
-                const string message = "Debe seleccionar un documento";
-                const string caption = "Error";
-                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                MessageBox.Show("No ha seleccionado el documento que desea eliminar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnInsertar_Click(object sender, EventArgs e)
@@ -143,17 +160,26 @@ namespace CapaDeUsuarioTramite.Documento
 
         private void dgvListaDocumentos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int valor = dgvListaDocumentos.CurrentCell.RowIndex;
-            miDocumento.CodigoDocumento = int.Parse(dgvListaDocumentos[0, valor].Value.ToString());
-            txtExpediente.Text = dgvListaDocumentos[1, valor].Value.ToString();
-            dtpFecha.Text = dgvListaDocumentos[2, valor].Value.ToString();
-            nudFolios.Text = dgvListaDocumentos[3, valor].Value.ToString();
-            txtDependencia.Text = dgvListaDocumentos[4, valor].Value.ToString();
-            txtAsunto.Text = dgvListaDocumentos[5, valor].Value.ToString(); ;
-            txtDe.Text = dgvListaDocumentos[6, valor].Value.ToString();
-            txtFirma.Text = dgvListaDocumentos[7, valor].Value.ToString();
-            cbCargo.Text = dgvListaDocumentos[8, valor].Value.ToString();
-            cbTipoDocumento.Text = dgvListaDocumentos[9, valor].Value.ToString();
+            try {
+                int valor = dgvListaDocumentos.CurrentCell.RowIndex;
+                miDocumento.CodigoDocumento = int.Parse(dgvListaDocumentos[1, valor].Value.ToString());
+                txtExpediente.Text = dgvListaDocumentos[2, valor].Value.ToString();
+                dtpFecha.Text = dgvListaDocumentos[3, valor].Value.ToString();
+                nudFolios.Text = dgvListaDocumentos[4, valor].Value.ToString();
+                txtDependencia.Text = dgvListaDocumentos[5, valor].Value.ToString();
+                txtAsunto.Text = dgvListaDocumentos[6, valor].Value.ToString(); ;
+                txtDe.Text = dgvListaDocumentos[7, valor].Value.ToString();
+                txtFirma.Text = dgvListaDocumentos[8, valor].Value.ToString();
+                cbCargo.Text = dgvListaDocumentos[9, valor].Value.ToString();
+                cbTipoDocumento.Text = dgvListaDocumentos[10, valor].Value.ToString();
+            }
+            catch
+            {
+                const string message = "Seleccione otra fila";
+                const string caption = "Error";
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

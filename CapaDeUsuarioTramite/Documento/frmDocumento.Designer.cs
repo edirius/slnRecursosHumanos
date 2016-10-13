@@ -29,17 +29,9 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvListaDocumentos = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.folios = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dependencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.de = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firma = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
@@ -64,6 +56,17 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cbCargo = new System.Windows.Forms.ComboBox();
             this.cbTipoDocumento = new System.Windows.Forms.ComboBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.folios = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dependencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.asunto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Presentado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firma = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaDocumentos)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudFolios)).BeginInit();
@@ -80,12 +83,13 @@
             this.dgvListaDocumentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaDocumentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.nro,
             this.Column2,
             this.Column3,
             this.folios,
             this.dependencia,
             this.asunto,
-            this.de,
+            this.Presentado,
             this.firma,
             this.cargo,
             this.tipoDocumento});
@@ -94,82 +98,9 @@
             this.dgvListaDocumentos.Name = "dgvListaDocumentos";
             this.dgvListaDocumentos.RowHeadersVisible = false;
             this.dgvListaDocumentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaDocumentos.Size = new System.Drawing.Size(872, 247);
+            this.dgvListaDocumentos.Size = new System.Drawing.Size(1208, 247);
             this.dgvListaDocumentos.TabIndex = 56;
             this.dgvListaDocumentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaDocumentos_CellClick);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "id_documento";
-            this.Column1.HeaderText = "Codigo";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 50;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "expediente";
-            this.Column2.HeaderText = "Expediente";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "fecha_documento";
-            this.Column3.HeaderText = "Fecha";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 50;
-            // 
-            // folios
-            // 
-            this.folios.DataPropertyName = "folios";
-            this.folios.HeaderText = "Folios";
-            this.folios.Name = "folios";
-            this.folios.ReadOnly = true;
-            this.folios.Width = 50;
-            // 
-            // dependencia
-            // 
-            this.dependencia.DataPropertyName = "dependencia";
-            this.dependencia.HeaderText = "Dependencia";
-            this.dependencia.Name = "dependencia";
-            this.dependencia.ReadOnly = true;
-            // 
-            // asunto
-            // 
-            this.asunto.DataPropertyName = "asunto";
-            this.asunto.HeaderText = "Asunto";
-            this.asunto.Name = "asunto";
-            this.asunto.ReadOnly = true;
-            // 
-            // de
-            // 
-            this.de.DataPropertyName = "de";
-            this.de.HeaderText = "De";
-            this.de.Name = "de";
-            this.de.ReadOnly = true;
-            // 
-            // firma
-            // 
-            this.firma.DataPropertyName = "firma";
-            this.firma.HeaderText = "Firma";
-            this.firma.Name = "firma";
-            this.firma.ReadOnly = true;
-            // 
-            // cargo
-            // 
-            this.cargo.DataPropertyName = "cargo";
-            this.cargo.HeaderText = "Cargo";
-            this.cargo.Name = "cargo";
-            this.cargo.ReadOnly = true;
-            // 
-            // tipoDocumento
-            // 
-            this.tipoDocumento.DataPropertyName = "tipoDocumento";
-            this.tipoDocumento.HeaderText = "TipoDocumento";
-            this.tipoDocumento.Name = "tipoDocumento";
-            this.tipoDocumento.ReadOnly = true;
             // 
             // tableLayoutPanel1
             // 
@@ -184,7 +115,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnEliminar, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnModificar, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnInsertar, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(142, 448);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(337, 448);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -243,7 +174,7 @@
             // 
             // txtExpediente
             // 
-            this.txtExpediente.Location = new System.Drawing.Point(133, 21);
+            this.txtExpediente.Location = new System.Drawing.Point(317, 12);
             this.txtExpediente.Name = "txtExpediente";
             this.txtExpediente.Size = new System.Drawing.Size(230, 20);
             this.txtExpediente.TabIndex = 54;
@@ -251,7 +182,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 24);
+            this.label3.Location = new System.Drawing.Point(248, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 53;
@@ -260,7 +191,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(87, 56);
+            this.label1.Location = new System.Drawing.Point(271, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 57;
@@ -269,7 +200,7 @@
             // dtpFecha
             // 
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(133, 50);
+            this.dtpFecha.Location = new System.Drawing.Point(317, 41);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(99, 20);
             this.dtpFecha.TabIndex = 58;
@@ -277,7 +208,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(90, 82);
+            this.label2.Location = new System.Drawing.Point(274, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 59;
@@ -285,14 +216,14 @@
             // 
             // nudFolios
             // 
-            this.nudFolios.Location = new System.Drawing.Point(133, 80);
+            this.nudFolios.Location = new System.Drawing.Point(317, 71);
             this.nudFolios.Name = "nudFolios";
             this.nudFolios.Size = new System.Drawing.Size(48, 20);
             this.nudFolios.TabIndex = 60;
             // 
             // txtDependencia
             // 
-            this.txtDependencia.Location = new System.Drawing.Point(133, 109);
+            this.txtDependencia.Location = new System.Drawing.Point(317, 100);
             this.txtDependencia.Name = "txtDependencia";
             this.txtDependencia.Size = new System.Drawing.Size(230, 20);
             this.txtDependencia.TabIndex = 62;
@@ -300,7 +231,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(53, 112);
+            this.label4.Location = new System.Drawing.Point(237, 103);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 61;
@@ -308,7 +239,7 @@
             // 
             // txtAsunto
             // 
-            this.txtAsunto.Location = new System.Drawing.Point(133, 140);
+            this.txtAsunto.Location = new System.Drawing.Point(317, 131);
             this.txtAsunto.Multiline = true;
             this.txtAsunto.Name = "txtAsunto";
             this.txtAsunto.Size = new System.Drawing.Size(649, 49);
@@ -317,7 +248,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(64, 143);
+            this.label5.Location = new System.Drawing.Point(248, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 63;
@@ -325,7 +256,7 @@
             // 
             // txtDe
             // 
-            this.txtDe.Location = new System.Drawing.Point(553, 21);
+            this.txtDe.Location = new System.Drawing.Point(737, 12);
             this.txtDe.Name = "txtDe";
             this.txtDe.Size = new System.Drawing.Size(230, 20);
             this.txtDe.TabIndex = 66;
@@ -333,7 +264,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(523, 24);
+            this.label6.Location = new System.Drawing.Point(707, 15);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(24, 13);
             this.label6.TabIndex = 65;
@@ -341,7 +272,7 @@
             // 
             // txtFirma
             // 
-            this.txtFirma.Location = new System.Drawing.Point(553, 53);
+            this.txtFirma.Location = new System.Drawing.Point(737, 44);
             this.txtFirma.Name = "txtFirma";
             this.txtFirma.Size = new System.Drawing.Size(230, 20);
             this.txtFirma.TabIndex = 68;
@@ -349,7 +280,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(512, 56);
+            this.label7.Location = new System.Drawing.Point(696, 47);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(35, 13);
             this.label7.TabIndex = 67;
@@ -358,7 +289,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(510, 87);
+            this.label8.Location = new System.Drawing.Point(694, 78);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 69;
@@ -367,7 +298,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(444, 112);
+            this.label9.Location = new System.Drawing.Point(628, 103);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(104, 13);
             this.label9.TabIndex = 70;
@@ -376,7 +307,7 @@
             // cbCargo
             // 
             this.cbCargo.FormattingEnabled = true;
-            this.cbCargo.Location = new System.Drawing.Point(554, 82);
+            this.cbCargo.Location = new System.Drawing.Point(738, 73);
             this.cbCargo.Name = "cbCargo";
             this.cbCargo.Size = new System.Drawing.Size(229, 21);
             this.cbCargo.TabIndex = 71;
@@ -384,16 +315,108 @@
             // cbTipoDocumento
             // 
             this.cbTipoDocumento.FormattingEnabled = true;
-            this.cbTipoDocumento.Location = new System.Drawing.Point(553, 109);
+            this.cbTipoDocumento.Location = new System.Drawing.Point(737, 100);
             this.cbTipoDocumento.Name = "cbTipoDocumento";
             this.cbTipoDocumento.Size = new System.Drawing.Size(229, 21);
             this.cbTipoDocumento.TabIndex = 72;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "id_documento";
+            this.Column1.HeaderText = "Codigo";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            this.Column1.Width = 50;
+            // 
+            // nro
+            // 
+            this.nro.DataPropertyName = "Nro";
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.nro.DefaultCellStyle = dataGridViewCellStyle2;
+            this.nro.HeaderText = "N°";
+            this.nro.Name = "nro";
+            this.nro.ReadOnly = true;
+            this.nro.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "expediente";
+            this.Column2.HeaderText = "Expediente";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 126;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "fecha_documento";
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column3.HeaderText = "Fecha";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 75;
+            // 
+            // folios
+            // 
+            this.folios.DataPropertyName = "folios";
+            this.folios.HeaderText = "Folios";
+            this.folios.Name = "folios";
+            this.folios.ReadOnly = true;
+            this.folios.Width = 40;
+            // 
+            // dependencia
+            // 
+            this.dependencia.DataPropertyName = "dependencia";
+            this.dependencia.HeaderText = "Dependencia";
+            this.dependencia.Name = "dependencia";
+            this.dependencia.ReadOnly = true;
+            this.dependencia.Width = 75;
+            // 
+            // asunto
+            // 
+            this.asunto.DataPropertyName = "asunto";
+            this.asunto.HeaderText = "Asunto";
+            this.asunto.Name = "asunto";
+            this.asunto.ReadOnly = true;
+            this.asunto.Width = 270;
+            // 
+            // Presentado
+            // 
+            this.Presentado.DataPropertyName = "presentado";
+            this.Presentado.HeaderText = "Presentado";
+            this.Presentado.Name = "Presentado";
+            this.Presentado.ReadOnly = true;
+            this.Presentado.Width = 150;
+            // 
+            // firma
+            // 
+            this.firma.DataPropertyName = "firma";
+            this.firma.HeaderText = "Firma";
+            this.firma.Name = "firma";
+            this.firma.ReadOnly = true;
+            this.firma.Width = 150;
+            // 
+            // cargo
+            // 
+            this.cargo.DataPropertyName = "cargo";
+            this.cargo.HeaderText = "Cargo";
+            this.cargo.Name = "cargo";
+            this.cargo.ReadOnly = true;
+            this.cargo.Width = 150;
+            // 
+            // tipoDocumento
+            // 
+            this.tipoDocumento.DataPropertyName = "tipoDocumento";
+            this.tipoDocumento.HeaderText = "TipoDocumento";
+            this.tipoDocumento.Name = "tipoDocumento";
+            this.tipoDocumento.ReadOnly = true;
             // 
             // frmDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 502);
+            this.ClientSize = new System.Drawing.Size(1232, 502);
             this.Controls.Add(this.cbTipoDocumento);
             this.Controls.Add(this.cbCargo);
             this.Controls.Add(this.label9);
@@ -446,21 +469,22 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtDe;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn folios;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dependencia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn asunto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn de;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cargo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoDocumento;
         private System.Windows.Forms.TextBox txtFirma;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbCargo;
         private System.Windows.Forms.ComboBox cbTipoDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn folios;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dependencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn asunto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Presentado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cargo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoDocumento;
     }
 }
