@@ -102,6 +102,18 @@
     <Compile Include="Tramite\frmTramite.Designer.cs">
       <DependentUpon>frmTramite.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usuario\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuario\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario\frmMantenimientoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuario\frmMantenimientoUsuarios.Designer.cs">
+      <DependentUpon>frmMantenimientoUsuarios.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Documento\frmDocumento.resx">
       <DependentUpon>frmDocumento.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,12 +143,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Requisitos-Oficina\frmRequisitosOficina.resx">
       <DependentUpon>frmRequisitosOficina.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tramite\frmTramite.resx">
       <DependentUpon>frmTramite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuario\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -165,7 +181,21 @@
       <Name>CapaDeNegocios</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Logo de la empresa.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoFaceBook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoTwiter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logotwit.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logoYoutube.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

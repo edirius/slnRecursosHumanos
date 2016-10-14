@@ -1471,6 +1471,10 @@
       <Project>{24921af8-19f7-4b75-a697-f5de39a839a1}</Project>
       <Name>CapaDeNegocios</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CapaDeUsuarioTramite\CapaDeUsuarioTramite.csproj">
+      <Project>{2436aef4-4242-42d6-8d98-ca404b1c69b9}</Project>
+      <Name>CapaDeUsuarioTramite</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReporteTrabajador\dsTrabajador.xsc">

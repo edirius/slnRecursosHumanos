@@ -28,29 +28,29 @@ namespace CapaDeUsuarioTramite.Tramite
             InitializeComponent();
             ActualizarLista();
             CargarCombos();
-            ConfiguracionInicial();
+            //ConfiguracionInicial();
         }
         public void ActualizarLista()
         {
             dgvListarTramites.DataSource = miTramite.ListarTramite();
         }
+        frmMenuTramite miFormulario = new frmMenuTramite();
         public void CargarCombos()
         {
+            MessageBox.Show(miFormulario.Usuario);
             cbSede.ValueMember = "ID";
             cbSede.DisplayMember = "DESCRIPCION";
             cbSede.DataSource = miSede.ListarSede();
-
             cboOperacion.ValueMember = "id_operacion";
             cboOperacion.DisplayMember = "descripcion";
             cboOperacion.DataSource = miOperacion.ListarOperacion();
-
             cbOficina.ValueMember = "id_oficina";
             cbOficina.DisplayMember = "Oficina";
-            cbOficina.DataSource = miOficinaTrabajador.ListarOficinaTrabajador();
+            cbOficina.DataSource = miOficinaTrabajador.DatosUsuario(miFormulario.toolStripUsuario.Text);
 
             cbTrabajador.ValueMember = "id_oficina_trabajador";
             cbTrabajador.DisplayMember = "Nombres";
-            cbTrabajador.DataSource = miOficinaTrabajador.ListarOficinaTrabajador();
+            cbTrabajador.DataSource = miOficinaTrabajador.DatosUsuario(miFormulario.toolStripUsuario.Text);
 
             cbUnidadDestino.ValueMember = "id_oficina";
             cbUnidadDestino.DisplayMember = "Oficina";

@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuTramite));
+            this.MenuBarra = new System.Windows.Forms.MenuStrip();
             this.oficinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoOficinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoOfincaTrabajadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,25 +38,38 @@
             this.documentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDocumentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tipoDeDocumentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tramiteDocumentarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarTramiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.operacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.BarraEstado = new System.Windows.Forms.StatusStrip();
+            this.StripLabelUsuario = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StripLabelCargo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.StripLabelOficina = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripUsuario = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.dgvListar = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.MenuBarra.SuspendLayout();
+            this.BarraEstado.SuspendLayout();
+            this.toolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListar)).BeginInit();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // MenuBarra
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuBarra.BackColor = System.Drawing.Color.White;
+            this.MenuBarra.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.oficinasToolStripMenuItem,
             this.documentoToolStripMenuItem,
             this.tramiteDocumentarioToolStripMenuItem,
             this.reportesToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(783, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.MenuBarra.Location = new System.Drawing.Point(0, 0);
+            this.MenuBarra.Name = "MenuBarra";
+            this.MenuBarra.Size = new System.Drawing.Size(783, 24);
+            this.MenuBarra.TabIndex = 0;
+            this.MenuBarra.Text = "menuStrip1";
             // 
             // oficinasToolStripMenuItem
             // 
@@ -120,6 +134,13 @@
             this.tipoDeDocumentoToolStripMenuItem.Text = "Mantenimiento Tipo de Documento";
             this.tipoDeDocumentoToolStripMenuItem.Click += new System.EventHandler(this.tipoDeDocumentoToolStripMenuItem_Click);
             // 
+            // operacionesToolStripMenuItem
+            // 
+            this.operacionesToolStripMenuItem.Name = "operacionesToolStripMenuItem";
+            this.operacionesToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.operacionesToolStripMenuItem.Text = "Operaciones";
+            this.operacionesToolStripMenuItem.Click += new System.EventHandler(this.operacionesToolStripMenuItem_Click);
+            // 
             // tramiteDocumentarioToolStripMenuItem
             // 
             this.tramiteDocumentarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -141,27 +162,108 @@
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.reportesToolStripMenuItem.Text = "Reportes";
             // 
-            // operacionesToolStripMenuItem
+            // BarraEstado
             // 
-            this.operacionesToolStripMenuItem.Name = "operacionesToolStripMenuItem";
-            this.operacionesToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
-            this.operacionesToolStripMenuItem.Text = "Operaciones";
-            this.operacionesToolStripMenuItem.Click += new System.EventHandler(this.operacionesToolStripMenuItem_Click);
+            this.BarraEstado.AllowItemReorder = true;
+            this.BarraEstado.BackColor = System.Drawing.Color.White;
+            this.BarraEstado.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StripLabelUsuario,
+            this.StripLabelCargo,
+            this.StripLabelOficina,
+            this.toolStripUsuario});
+            this.BarraEstado.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.BarraEstado.Location = new System.Drawing.Point(0, 434);
+            this.BarraEstado.Name = "BarraEstado";
+            this.BarraEstado.Size = new System.Drawing.Size(783, 20);
+            this.BarraEstado.TabIndex = 2;
+            this.BarraEstado.Text = "statusStrip1";
+            // 
+            // StripLabelUsuario
+            // 
+            this.StripLabelUsuario.Name = "StripLabelUsuario";
+            this.StripLabelUsuario.Size = new System.Drawing.Size(64, 15);
+            this.StripLabelUsuario.Text = "Trabajador";
+            // 
+            // StripLabelCargo
+            // 
+            this.StripLabelCargo.Name = "StripLabelCargo";
+            this.StripLabelCargo.Size = new System.Drawing.Size(39, 15);
+            this.StripLabelCargo.Text = "Cargo";
+            // 
+            // StripLabelOficina
+            // 
+            this.StripLabelOficina.Name = "StripLabelOficina";
+            this.StripLabelOficina.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StripLabelOficina.Size = new System.Drawing.Size(45, 15);
+            this.StripLabelOficina.Text = "Oficina";
+            // 
+            // toolStripUsuario
+            // 
+            this.toolStripUsuario.Name = "toolStripUsuario";
+            this.toolStripUsuario.Size = new System.Drawing.Size(47, 15);
+            this.toolStripUsuario.Text = "Usuario";
+            // 
+            // toolStrip
+            // 
+            this.toolStrip.BackColor = System.Drawing.Color.White;
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1});
+            this.toolStrip.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(783, 25);
+            this.toolStrip.TabIndex = 4;
+            this.toolStrip.Text = "ToolStrip";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // dgvListar
+            // 
+            this.dgvListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListar.Location = new System.Drawing.Point(12, 184);
+            this.dgvListar.Name = "dgvListar";
+            this.dgvListar.Size = new System.Drawing.Size(46, 48);
+            this.dgvListar.TabIndex = 5;
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 49);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(89, 385);
+            this.panel1.TabIndex = 9;
             // 
             // frmMenuTramite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(783, 454);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dgvListar);
+            this.Controls.Add(this.toolStrip);
+            this.Controls.Add(this.BarraEstado);
+            this.Controls.Add(this.MenuBarra);
             this.IsMdiContainer = true;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.MenuBarra;
             this.Name = "frmMenuTramite";
             this.Text = "Sistema de Tramite Documentario de la Municipalidad de CCATCCA  V1.1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenuTramite_FormClosing);
             this.Load += new System.EventHandler(this.frmMenuTramite_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.MenuBarra.ResumeLayout(false);
+            this.MenuBarra.PerformLayout();
+            this.BarraEstado.ResumeLayout(false);
+            this.BarraEstado.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,7 +271,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip MenuBarra;
         private System.Windows.Forms.ToolStripMenuItem oficinasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoOficinasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem documentoToolStripMenuItem;
@@ -182,5 +284,14 @@
         private System.Windows.Forms.ToolStripMenuItem mantenimientoLocalesSedesDeLaMunicipalidadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operacionesToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip BarraEstado;
+        private System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        public System.Windows.Forms.ToolStripStatusLabel StripLabelUsuario;
+        public System.Windows.Forms.ToolStripStatusLabel StripLabelCargo;
+        public System.Windows.Forms.ToolStripStatusLabel StripLabelOficina;
+        public System.Windows.Forms.DataGridView dgvListar;
+        public System.Windows.Forms.ToolStripStatusLabel toolStripUsuario;
+        private System.Windows.Forms.Panel panel1;
     }
 }
