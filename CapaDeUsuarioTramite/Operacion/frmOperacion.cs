@@ -7,43 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDeDatos;
-using CapaDeNegociosTramite;
-using CapaDeNegociosTramite.Oficina;
 
-namespace CapaDeUsuarioTramite.Oficina
-{
-    public partial class frmOficina : Form
+namespace CapaDeUsuarioTramite.Operacion
+{ 
+    public partial class frmOperacion : Form
     {
-        cOficina miOficina = new cOficina();
+        CapaDeNegociosTramite.Operaciones.cOperaciones miOperacion = new CapaDeNegociosTramite.Operaciones.cOperaciones();
         DataTable Tabla = new DataTable();
         string mensaje = "";
         string respuesta = "";
 
-        public frmOficina()
+        public frmOperacion()
         {
             InitializeComponent();
             ActualizarLista();
+            ConfiguracionInicial();
         }
         public void ActualizarLista()
         {
-            dgvListarOficinas.DataSource =  miOficina.ListarOficina();
+            dgvListarOperaciones.DataSource = miOperacion.ListarOperacion();
         }
-        public void ConfiguracionInicial()
+        private void ConfiguracionInicial()
         {
-            txtDependencia.Text = "";
             txtDescripcion.Text = "";
-            txtNombreOficina.Text = "";
-            txtDependencia.Focus();
+            txtDescripcion.Focus();
         }
-        private void Agregar()
+        public void Agregar()
         {
-            if (txtNombreOficina.Text != "")
+            if (txtDescripcion.Text != "")
             {
-                miOficina.NombreOficina = txtNombreOficina.Text;
-                miOficina.Dependencia = txtDependencia.Text;
-                miOficina.DescripcionOficina = txtDescripcion.Text;
-                Tabla = miOficina.AgregarOficina();
+                miOperacion.Descripcion = txtDescripcion.Text;
+                Tabla = miOperacion.AgregarOperacion();
                 respuesta = Tabla.Rows[0][0].ToString();
                 mensaje = Tabla.Rows[0][1].ToString();
                 if (respuesta == "1")
@@ -60,17 +54,16 @@ namespace CapaDeUsuarioTramite.Oficina
             }
             else
                 MessageBox.Show("Por favor llene los campos necesarios", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
-        private void Modificar()
+        public void Modificar()
         {
-            if (txtNombreOficina.Text != "")
+            if (txtDescripcion.Text != "")
             {
-                int valor = dgvListarOficinas.CurrentCell.RowIndex;
-                miOficina.CodigoOficina = int.Parse(dgvListarOficinas[0, valor].Value.ToString());
-                miOficina.NombreOficina = txtNombreOficina.Text;
-                miOficina.Dependencia = txtDependencia.Text;
-                miOficina.DescripcionOficina = txtDescripcion.Text;
-                Tabla = miOficina.ModificarOficina();
+                int valor = dgvListarOperaciones.CurrentCell.RowIndex;
+                miOperacion.CodigoOperacion = int.Parse(dgvListarOperaciones[0, valor].Value.ToString());
+                miOperacion.Descripcion = txtDescripcion.Text;
+                Tabla = miOperacion.ModificarOperacion();
                 respuesta = Tabla.Rows[0][0].ToString();
                 mensaje = Tabla.Rows[0][1].ToString();
                 if (respuesta == "1")
@@ -87,20 +80,23 @@ namespace CapaDeUsuarioTramite.Oficina
             }
             else
                 MessageBox.Show("Por favor llene los campos necesarios", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
         }
         private void Eliminar()
         {
-            if (txtNombreOficina.Text != "")
+            try
             {
-                int valor = dgvListarOficinas.CurrentCell.RowIndex;
-                miOficina.CodigoOficina = int.Parse(dgvListarOficinas[0, valor].Value.ToString());
-                miOficina.NombreOficina = txtNombreOficina.Text;
-                Tabla = miOficina.EliminarOficina();
+                int valor = dgvListarOperaciones.CurrentCell.RowIndex;
+                miOperacion.CodigoOperacion = int.Parse(dgvListarOperaciones[0, valor].Value.ToString());
+                miOperacion.Descripcion = txtDescripcion.Text;
+                Tabla = miOperacion.EliminarOperacion();
                 respuesta = Tabla.Rows[0][0].ToString();
                 mensaje = Tabla.Rows[0][1].ToString();
                 if (respuesta == "1")
                 {
                     MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(mensaje);
                     ConfiguracionInicial();
                     ActualizarLista();
                 }
@@ -110,16 +106,25 @@ namespace CapaDeUsuarioTramite.Oficina
                     ConfiguracionInicial();
                 }
             }
-            else
-                MessageBox.Show("No ha seleccionado la oficina que desea eliminar", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+            catch
+            {
+                MessageBox.Show("La operación no puede ser eliminada porque esta siendo usada en el formulario de tramites", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ConfiguracionInicial();
+            }
+        }
+        private void dgvListarOperaciones_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int valor = dgvListarOperaciones.CurrentCell.RowIndex;
+            miOperacion.CodigoOperacion = int.Parse(dgvListarOperaciones[0, valor].Value.ToString());
+            txtDescripcion.Text = dgvListarOperaciones[2, valor].Value.ToString();
         }
 
-        private void btnInsertar_Click_1(object sender, EventArgs e)
+        private void btnInsertar_Click(object sender, EventArgs e)
         {
             Agregar();
             ConfiguracionInicial();
         }
+
         private void btnModificar_Click(object sender, EventArgs e)
         {
             Modificar();
@@ -136,24 +141,10 @@ namespace CapaDeUsuarioTramite.Oficina
         {
             ConfiguracionInicial();
         }
-        private void dgvListarOficinas_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int valor = dgvListarOficinas.CurrentCell.RowIndex;
-            miOficina.CodigoOficina = int.Parse(dgvListarOficinas[0, valor].Value.ToString());
-            txtDependencia.Text = dgvListarOficinas[2, valor].Value.ToString();
-            txtNombreOficina.Text = dgvListarOficinas[3, valor].Value.ToString();
-            txtDescripcion.Text = dgvListarOficinas[4, valor].Value.ToString();
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
         }
-
-        private void frmOficina_Load(object sender, EventArgs e)
-        {
-            
-        }
-
     }
 }

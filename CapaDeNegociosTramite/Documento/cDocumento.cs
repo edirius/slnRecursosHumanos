@@ -21,7 +21,7 @@ namespace CapaDeNegociosTramite.Documento
 
         public string Asunto { get; set; }
 
-        public string De { get; set; }
+        public string Presentado { get; set; }
 
         public string Firma { get; set; }
 
@@ -30,17 +30,17 @@ namespace CapaDeNegociosTramite.Documento
         public int CodigoTipoDocumento { get; set; }
             
 
-        public int AgregarDocumento()
+        public DataTable AgregarDocumento()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteInsertarDocumento", Expediente, FechaDocumento, Folios, Dependencia, Asunto, De, Firma, CodigoCargo, CodigoTipoDocumento);
+            return Conexion.GDatos.TraerDataTable("spTramiteInsertarDocumento", Expediente, FechaDocumento, Folios, Dependencia, Asunto, Presentado, Firma, CodigoCargo, CodigoTipoDocumento);
         }
-        public int ModificarDocumento()
+        public DataTable ModificarDocumento()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteModificarDocumento", CodigoDocumento, Expediente, FechaDocumento, Folios, Dependencia, Asunto, De, Firma, CodigoCargo, CodigoTipoDocumento);
+            return Conexion.GDatos.TraerDataTable("spTramiteModificarDocumento", CodigoDocumento, Expediente, FechaDocumento, Folios, Dependencia, Asunto, Presentado, Firma, CodigoCargo, CodigoTipoDocumento);
         }
-        public int EliminarDocumento()
+        public DataTable EliminarDocumento()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteEliminarDocumento", CodigoDocumento);
+            return Conexion.GDatos.TraerDataTable("spTramiteEliminarDocumento", CodigoDocumento, Expediente);
         }
         public DataTable ListarDocumento()
         {

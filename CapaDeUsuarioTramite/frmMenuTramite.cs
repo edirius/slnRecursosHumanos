@@ -40,14 +40,6 @@ namespace CapaDeUsuarioTramite
         {
             HacerConeccion();
         }
-
-        private void mantenimientoRequisitosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CapaDeUsuarioTramite.Solicitud_Oficina.frmRequisitos frmRequisito = new Solicitud_Oficina.frmRequisitos();
-            frmRequisito.MdiParent = this;
-            frmRequisito.Show();
-        }
-
         private void mantenimientoDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CapaDeUsuarioTramite.Documento.frmDocumento frmDocumento = new Documento.frmDocumento();
@@ -69,11 +61,32 @@ namespace CapaDeUsuarioTramite
             frmTramite.Show();
         }
 
-        private void mantenimientoLocalSedeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mantenimientoRequisitosOficinaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaDeUsuarioTramite.Solicitud_Oficina.frmRequisitos frmRequisito = new Solicitud_Oficina.frmRequisitos();
+            frmRequisito.MdiParent = this;
+            frmRequisito.Show();
+        }
+
+        private void mantenimientoLocalesSedesDeLaMunicipalidadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CapaDeUsuarioTramite.Local_Sede.frmLocalSede frmLocal = new Local_Sede.frmLocalSede();
             frmLocal.MdiParent = this;
             frmLocal.Show();
+        }
+
+        private void tipoDeDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaDeUsuarioTramite.Documento.frmTipoDocumento frmTipoDocumento = new Documento.frmTipoDocumento();
+            frmTipoDocumento.MdiParent = this;
+            frmTipoDocumento.Show();
+        }
+
+        private void operacionesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CapaDeUsuarioTramite.Operacion.frmOperacion frmOperaciones = new Operacion.frmOperacion();
+            frmOperaciones.MdiParent = this;
+            frmOperaciones.Show();
         }
     }
 }

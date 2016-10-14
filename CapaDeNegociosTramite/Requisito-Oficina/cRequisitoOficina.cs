@@ -16,17 +16,17 @@ namespace CapaDeNegociosTramite.Requisito_Oficina
         public int CodigoOficina { get; set; }
 
 
-        public int AgregarRequisito()
+        public DataTable AgregarRequisito()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteInsertarRequisitosOficina", NombreRequisito, CodigoOficina);
+            return Conexion.GDatos.TraerDataTable("spTramiteInsertarRequisitosOficina", NombreRequisito, CodigoOficina);
         }
-        public int ModificarRequisito()
+        public DataTable ModificarRequisito()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteModificarRequisitosOficina", CodigoRequisitoOficina, NombreRequisito, CodigoOficina);
+            return Conexion.GDatos.TraerDataTable("spTramiteModificarRequisitosOficina", CodigoRequisitoOficina, NombreRequisito, CodigoOficina);
         }
-        public int EliminarRequisito()
+        public DataTable EliminarRequisito()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteEliminarRequisitosOficina", CodigoRequisitoOficina);
+            return Conexion.GDatos.TraerDataTable("spTramiteEliminarRequisitosOficina", CodigoRequisitoOficina, NombreRequisito);
         }
         public DataTable ListarRequisito()
         {

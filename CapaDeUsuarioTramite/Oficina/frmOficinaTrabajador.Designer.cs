@@ -28,11 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbTrabajadores = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvTrabajadores = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -40,9 +44,6 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnInsertar = new System.Windows.Forms.Button();
             this.cbOficinas = new System.Windows.Forms.ComboBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrabajadores)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -50,15 +51,16 @@
             // cbTrabajadores
             // 
             this.cbTrabajadores.FormattingEnabled = true;
-            this.cbTrabajadores.Location = new System.Drawing.Point(212, 34);
+            this.cbTrabajadores.Location = new System.Drawing.Point(184, 34);
             this.cbTrabajadores.Name = "cbTrabajadores";
-            this.cbTrabajadores.Size = new System.Drawing.Size(390, 21);
+            this.cbTrabajadores.Size = new System.Drawing.Size(467, 21);
             this.cbTrabajadores.TabIndex = 67;
+            this.cbTrabajadores.SelectedIndexChanged += new System.EventHandler(this.cbTrabajadores_SelectedIndexChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(92, 37);
+            this.label3.Location = new System.Drawing.Point(64, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 13);
             this.label3.TabIndex = 65;
@@ -67,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(163, 72);
+            this.label2.Location = new System.Drawing.Point(135, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 64;
@@ -78,22 +80,55 @@
             this.dgvTrabajadores.AllowUserToAddRows = false;
             this.dgvTrabajadores.AllowUserToResizeColumns = false;
             this.dgvTrabajadores.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTrabajadores.BackgroundColor = System.Drawing.Color.Silver;
             this.dgvTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTrabajadores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.nro,
             this.Column2,
             this.Column3});
             this.dgvTrabajadores.GridColor = System.Drawing.Color.White;
-            this.dgvTrabajadores.Location = new System.Drawing.Point(27, 117);
+            this.dgvTrabajadores.Location = new System.Drawing.Point(12, 96);
             this.dgvTrabajadores.Name = "dgvTrabajadores";
             this.dgvTrabajadores.RowHeadersVisible = false;
             this.dgvTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTrabajadores.Size = new System.Drawing.Size(722, 297);
+            this.dgvTrabajadores.Size = new System.Drawing.Size(674, 297);
             this.dgvTrabajadores.TabIndex = 63;
             this.dgvTrabajadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTrabajadores_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "id_oficina_trabajador";
+            this.Column1.HeaderText = "Codigo";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // nro
+            // 
+            this.nro.DataPropertyName = "nro";
+            this.nro.HeaderText = "N°";
+            this.nro.Name = "nro";
+            this.nro.ReadOnly = true;
+            this.nro.Width = 50;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Nombres";
+            this.Column2.HeaderText = "Nombre del Trabajador";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 300;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Oficina";
+            this.Column3.HeaderText = "Oficina";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 300;
             // 
             // tableLayoutPanel1
             // 
@@ -108,7 +143,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnEliminar, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnModificar, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnInsertar, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(87, 433);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(42, 410);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -167,39 +202,16 @@
             // cbOficinas
             // 
             this.cbOficinas.FormattingEnabled = true;
-            this.cbOficinas.Location = new System.Drawing.Point(212, 69);
+            this.cbOficinas.Location = new System.Drawing.Point(184, 69);
             this.cbOficinas.Name = "cbOficinas";
-            this.cbOficinas.Size = new System.Drawing.Size(225, 21);
+            this.cbOficinas.Size = new System.Drawing.Size(467, 21);
             this.cbOficinas.TabIndex = 68;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "id_oficina_trabajador";
-            this.Column1.HeaderText = "Codigo";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Nombres";
-            this.Column2.HeaderText = "Nombre del Trabajador";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 300;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Oficina";
-            this.Column3.HeaderText = "Oficina";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 300;
             // 
             // frmOficinaTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 511);
+            this.ClientSize = new System.Drawing.Size(698, 481);
             this.Controls.Add(this.cbOficinas);
             this.Controls.Add(this.cbTrabajadores);
             this.Controls.Add(this.label3);
@@ -229,6 +241,7 @@
         private System.Windows.Forms.Button btnInsertar;
         private System.Windows.Forms.ComboBox cbOficinas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }

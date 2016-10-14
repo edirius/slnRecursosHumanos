@@ -16,17 +16,17 @@ namespace CapaDeNegociosTramite.Oficina
 
         public int CodigoOficina { get; set; }
 
-        public int AgregarOficinaTrabajador()
+        public DataTable AgregarOficinaTrabajador()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteInsertarOficinaTrabajador", CodigoTrabajador, CodigoOficina);
+            return Conexion.GDatos.TraerDataTable("spTramiteInsertarOficinaTrabajador", CodigoTrabajador, CodigoOficina);
         }
-        public int ModificarOficinaTrabajador()
+        public DataTable ModificarOficinaTrabajador()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteModificarOficinaTrabajador", CodigoOficinaTrabajador, CodigoTrabajador, CodigoOficina);
+            return Conexion.GDatos.TraerDataTable("spTramiteModificarOficinaTrabajador", CodigoOficinaTrabajador, CodigoTrabajador, CodigoOficina);
         }
-        public int EliminarOficinaTrabajador()
+        public DataTable EliminarOficinaTrabajador()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteEliminarOficinaTrabajador", CodigoOficinaTrabajador);
+            return Conexion.GDatos.TraerDataTable("spTramiteEliminarOficinaTrabajador", CodigoOficinaTrabajador);
         }
         public DataTable ListarOficinaTrabajador()
         {

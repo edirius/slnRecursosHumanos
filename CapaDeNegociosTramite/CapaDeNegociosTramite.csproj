@@ -46,6 +46,7 @@
     <Compile Include="LocalSede\cSede.cs" />
     <Compile Include="Oficina\cOficina.cs" />
     <Compile Include="Oficina\cOficinaTrabajador.cs" />
+    <Compile Include="Operaciones\cOperaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Requisito-Oficina\cRequisitoOficina.cs" />
     <Compile Include="Tramite\cTramite.cs" />
@@ -60,10 +61,7 @@
       <Name>CapaDeNegocios</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Operacion\" />
-    <Folder Include="Trabajador-Oficina\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

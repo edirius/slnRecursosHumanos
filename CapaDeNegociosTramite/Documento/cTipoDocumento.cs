@@ -13,21 +13,22 @@ namespace CapaDeNegociosTramite.Documento
 
         public string Descripcion { get; set; }
 
-        public int AgregarTipoDocumento()
+        public DataTable AgregarTipoDocumento()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteInsertarTipoDocumento", Descripcion);
+            return Conexion.GDatos.TraerDataTable("spTramiteInsertarTipoDocumento", Descripcion);
         }
-        public int ModificarTipoDocumento()
+        public DataTable ModificarTipoDocumento()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteModificarTipoDocumento", CodigoTipoDocumento, Descripcion);
+            return Conexion.GDatos.TraerDataTable("spTramiteModificarTipoDocumento", CodigoTipoDocumento, Descripcion);
         }
-        public int EliminarTipoDocumento()
+        public DataTable EliminarTipoDocumento()
         {
-            return Conexion.GDatos.Ejecutar("spTramiteEliminarTipoDocumento", CodigoTipoDocumento);
+            return Conexion.GDatos.TraerDataTable("spTramiteEliminarTipoDocumento", CodigoTipoDocumento, Descripcion);
         }
         public DataTable ListarTipoDocumento()
         {
             return Conexion.GDatos.TraerDataTable("spTramiteListarTipoDocumento");
         }
+
     }
 }

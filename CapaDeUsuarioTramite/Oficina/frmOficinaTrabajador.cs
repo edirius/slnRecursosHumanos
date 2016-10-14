@@ -14,6 +14,9 @@ namespace CapaDeUsuarioTramite.Oficina
     {
         CapaDeNegociosTramite.Oficina.cOficinaTrabajador miOficinaTrabajador = new CapaDeNegociosTramite.Oficina.cOficinaTrabajador();
         CapaDeNegociosTramite.Oficina.cOficina miOficina = new CapaDeNegociosTramite.Oficina.cOficina();
+        DataTable Tabla = new DataTable();
+        string mensaje = "";
+        string respuesta = "";
         public frmOficinaTrabajador()
         {
             InitializeComponent();
@@ -25,6 +28,8 @@ namespace CapaDeUsuarioTramite.Oficina
         public void ActualizarLista()
         {
             dgvTrabajadores.DataSource = miOficinaTrabajador.ListarOficinaTrabajador();
+            dgvTrabajadores.Columns["id_trabajador"].Visible = false;
+            dgvTrabajadores.Columns["id_oficina"].Visible = false;
         }
         public void CargarComboTrabajadores()
         {
@@ -42,22 +47,22 @@ namespace CapaDeUsuarioTramite.Oficina
         {
             try
             {
-                int numero;
                 miOficinaTrabajador.CodigoTrabajador = int.Parse(cbTrabajadores.SelectedValue.ToString());
                 miOficinaTrabajador.CodigoOficina = int.Parse(cbOficinas.SelectedValue.ToString());
-                numero = miOficinaTrabajador.AgregarOficinaTrabajador();
-                if (numero == 1)
+                Tabla = miOficinaTrabajador.AgregarOficinaTrabajador();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
                 {
-                    MessageBox.Show("El trabajador fue asignado a esa oficina correctamente");
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
                     ActualizarLista();
                 }
-                else
+                else if (respuesta == "0")
                 {
-                    const string message = "El trabajador ya ha sido asignado a una oficina";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
                 }
-
             }
             catch
             {
@@ -70,27 +75,28 @@ namespace CapaDeUsuarioTramite.Oficina
         {
             try
             {
-                int numero;
-                int valor = dgvTrabajadores.CurrentCell.RowIndex;
-                miOficinaTrabajador.CodigoOficinaTrabajador = int.Parse(dgvTrabajadores[0, valor].Value.ToString());
+                int Valor = dgvTrabajadores.CurrentCell.RowIndex;
+                miOficinaTrabajador.CodigoOficinaTrabajador = int.Parse(dgvTrabajadores[0, Valor].Value.ToString());
                 miOficinaTrabajador.CodigoTrabajador = int.Parse(cbTrabajadores.SelectedValue.ToString());
                 miOficinaTrabajador.CodigoOficina = int.Parse(cbOficinas.SelectedValue.ToString());
-                numero = miOficinaTrabajador.ModificarOficinaTrabajador();
-                if (numero == 0)
+                Tabla = miOficinaTrabajador.ModificarOficinaTrabajador();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
                 {
-                    MessageBox.Show("Datos modificados correctamente");
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
                     ActualizarLista();
                 }
-                else
+                else if (respuesta == "0")
                 {
-                    const string message = "El trabajador ya ha sido asignado a una oficina";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
                 }
             }
             catch
             {
-                const string message = "No ha seleccionado algún trabajador u oficina para modificar";
+                const string message = "No ha seleccionado algun trabajador o alguna oficina";
                 const string caption = "Error";
                 var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -99,26 +105,26 @@ namespace CapaDeUsuarioTramite.Oficina
         {
             try
             {
-                int numero;
-                int valor = dgvTrabajadores.CurrentCell.RowIndex;
-                miOficinaTrabajador.CodigoOficinaTrabajador = int.Parse(dgvTrabajadores[0, valor].Value.ToString());
-                numero = miOficinaTrabajador.EliminarOficinaTrabajador();
-                if (numero == 1)
+                int Valor = dgvTrabajadores.CurrentCell.RowIndex;
+                miOficinaTrabajador.CodigoOficinaTrabajador = int.Parse(dgvTrabajadores[0, Valor].Value.ToString());
+                Tabla = miOficinaTrabajador.EliminarOficinaTrabajador();
+                respuesta = Tabla.Rows[0][0].ToString();
+                mensaje = Tabla.Rows[0][1].ToString();
+                if (respuesta == "1")
                 {
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ConfiguracionInicial();
                     ActualizarLista();
-                    MessageBox.Show("El trabajador fue eliminado de esa oficina exitosamente");
-                    
                 }
-                else
+                else if (respuesta == "0")
                 {
-                    const string message = "Debe seccionar un trabajador";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ConfiguracionInicial();
                 }
             }
             catch
             {
-                const string message = "No existe el trabajador en la base de datos";
+                const string message = "No ha seleccionado algun trabajador para eliminar";
                 const string caption = "Error";
                 var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -150,13 +156,18 @@ namespace CapaDeUsuarioTramite.Oficina
         private void dgvTrabajadores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int Valor = dgvTrabajadores.CurrentCell.RowIndex;
-            cbTrabajadores.Text = dgvTrabajadores[1, Valor].Value.ToString();
-            cbOficinas.Text = dgvTrabajadores[2, Valor].Value.ToString();
+            cbTrabajadores.Text = dgvTrabajadores[2, Valor].Value.ToString();
+            cbOficinas.Text = dgvTrabajadores[3, Valor].Value.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void cbTrabajadores_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
