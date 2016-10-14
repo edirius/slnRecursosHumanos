@@ -404,6 +404,13 @@ namespace CapaUsuario
         CapaDeNegocios.Usuario.cUsuario oUsu = new CapaDeNegocios.Usuario.cUsuario();
         bool menuAFP, menuUsuario, menuTrabajadores, menuTareos, menuMeta, menuPlanillas, menuSunatTablasParametricas, menuExportarDatosSunat, menuReportes, habilitado;
 
+        private void tipoDeSuspencionLaboralToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Sunat.frmMantenimientoTipoSuspencionLaboral fMantenimientoTipoSuspencionLaboral = new Sunat.frmMantenimientoTipoSuspencionLaboral();
+            fMantenimientoTipoSuspencionLaboral.MdiParent = this;
+            fMantenimientoTipoSuspencionLaboral.Show();
+        }
+
         private void asistentiaDeTrabajadoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Asistencia.frmAsistenciaTrabajadores fAsistenciaTrabajadores = new Asistencia.frmAsistenciaTrabajadores();

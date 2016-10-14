@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAsistenciaTrabajador = new System.Windows.Forms.DataGridView();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -44,6 +44,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.miMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tTardanzaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsistenciaTrabajador)).BeginInit();
             this.miMenu.SuspendLayout();
             this.SuspendLayout();
@@ -52,19 +53,19 @@
             // 
             this.dgvAsistenciaTrabajador.AllowUserToAddRows = false;
             this.dgvAsistenciaTrabajador.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvAsistenciaTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvAsistenciaTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAsistenciaTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsistenciaTrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsistenciaTrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAsistenciaTrabajador.ColumnHeadersHeight = 35;
             this.dgvAsistenciaTrabajador.Location = new System.Drawing.Point(12, 51);
             this.dgvAsistenciaTrabajador.Name = "dgvAsistenciaTrabajador";
@@ -182,32 +183,39 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(56, 22);
-            this.toolStripMenuItem1.Text = "T";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(238, 22);
+            this.toolStripMenuItem1.Text = "L = Laborados";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(56, 22);
-            this.toolStripMenuItem2.Text = "F";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(238, 22);
+            this.toolStripMenuItem2.Text = "S = Subsidiados";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(56, 22);
-            this.toolStripMenuItem3.Text = "S";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(235, 22);
+            this.toolStripMenuItem3.Text = "F = No Laborados y no Subsidiados";
             // 
             // miMenu
             // 
             this.miMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
+            this.tTardanzaToolStripMenuItem,
             this.toolStripMenuItem2,
             this.toolStripMenuItem3});
             this.miMenu.Name = "contextMenuStrip1";
             this.miMenu.ShowImageMargin = false;
-            this.miMenu.Size = new System.Drawing.Size(57, 70);
+            this.miMenu.Size = new System.Drawing.Size(236, 114);
             this.miMenu.Opening += new System.ComponentModel.CancelEventHandler(this.miMenu_Opening);
             this.miMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.miMenu_ItemClicked);
+            // 
+            // tTardanzaToolStripMenuItem
+            // 
+            this.tTardanzaToolStripMenuItem.Name = "tTardanzaToolStripMenuItem";
+            this.tTardanzaToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.tTardanzaToolStripMenuItem.Text = "T = Tardanza";
             // 
             // frmDetalleAsistencia
             // 
@@ -249,5 +257,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ContextMenuStrip miMenu;
+        private System.Windows.Forms.ToolStripMenuItem tTardanzaToolStripMenuItem;
     }
 }

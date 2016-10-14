@@ -82,6 +82,30 @@ namespace CapaUsuario.Asistencia
             }
         }
 
+        private void miMenu_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void miMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            switch (e.ClickedItem.Text)
+            {
+                case "L = Laborados":
+                    dgvAsistenciaTrabajador.Rows[filaseleccionada].Cells[columnaseleccionada].Value = "L";
+                    break;
+                case "T = Tardanza":
+                    dgvAsistenciaTrabajador.Rows[filaseleccionada].Cells[columnaseleccionada].Value = "T";
+                    break;
+                case "S = Subsidiados":
+                    dgvAsistenciaTrabajador.Rows[filaseleccionada].Cells[columnaseleccionada].Value = "S";
+                    break; 
+                case "F = No Laborados y no Subsidiados":
+                    dgvAsistenciaTrabajador.Rows[filaseleccionada].Cells[columnaseleccionada].Value = "F";
+                    break; 
+            }
+        }
+
         public void RecibirDatos(int pidtrabajador,string ptrabajador)
         {
             sidtrabajador = pidtrabajador;
@@ -90,7 +114,7 @@ namespace CapaUsuario.Asistencia
 
         private void CargarDatos()
         {
-            dgvAsistenciaTrabajador.Rows.Add();
+            LlenarDataGrid();
         }
 
         private void CargarAños()
@@ -100,6 +124,81 @@ namespace CapaUsuario.Asistencia
                 cboAño.Items.Add(i);
             }
             cboAño.Text = Convert.ToString(DateTime.Now.Year);
+        }
+
+        private void LlenarDataGrid()
+        {
+            foreach (DataGridViewColumn colm in dgvAsistenciaTrabajador.Columns)
+            {
+                dgvAsistenciaTrabajador.Rows[0].Cells[colm.Index].Value = "L";
+            }
+
+                //foreach (DataGridViewRow row in dgvDetallePlanilla.Rows)
+                //{
+                //    DatosAFP(row.Index);
+                //}
+        }
+
+        private void DibujarDataGrid()
+        {
+            try
+            {
+                dgvAsistenciaTrabajador.Columns.Clear();
+                DateTime auxiliar;
+                int DiasMes = DateTime.DaysInMonth(Convert.ToInt32(cboAño.Text), Convert.ToInt32(Mes(cboMes.Text)));
+
+                for (int i = 0; i < DiasMes; i++)
+                {
+                    auxiliar = Convert.ToDateTime("01/" + Mes(cboMes.Text) + "/" + cboAño.Text).AddDays(i);
+                    DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
+                    col.Name = "col" + i.ToString();
+                    string auxiliarDiaSemana = "";
+                    switch (auxiliar.DayOfWeek)
+                    {
+                        case DayOfWeek.Monday:
+                            auxiliarDiaSemana = "L " + auxiliar.Day;
+                            break;
+                        case DayOfWeek.Tuesday:
+                            auxiliarDiaSemana = "M " + auxiliar.Day;
+                            break;
+                        case DayOfWeek.Wednesday:
+                            auxiliarDiaSemana = "M " + auxiliar.Day;
+                            break;
+                        case DayOfWeek.Friday:
+                            auxiliarDiaSemana = "V " + auxiliar.Day;
+                            break;
+                        case DayOfWeek.Thursday:
+                            auxiliarDiaSemana = "J " + auxiliar.Day;
+                            break;
+                        case DayOfWeek.Saturday:
+                            auxiliarDiaSemana = "S " + auxiliar.Day;
+                            break;
+                        case DayOfWeek.Sunday:
+                            auxiliarDiaSemana = "D " + auxiliar.Day;
+                            col.DefaultCellStyle.BackColor = Color.Red;
+                            break;
+                        default:
+                            break;
+                    }
+                    col.HeaderText = auxiliarDiaSemana;
+                    col.Width = 22;
+                    dgvAsistenciaTrabajador.Columns.Add(col);
+                }
+                //DataGridViewTextBoxColumn TotalDias = new DataGridViewTextBoxColumn();
+                //TotalDias.Name = "txtTotalDias";
+                //TotalDias.HeaderText = "Total Dias";
+                //TotalDias.Width = 50;
+                //dgvAsistenciaTrabajador.Columns.Add(TotalDias);
+            }
+            catch (Exception m)
+            {
+                MessageBox.Show(m.Message);
+            }
+            dgvAsistenciaTrabajador.Rows.Add();
+            dgvAsistenciaTrabajador.Rows.Add();
+            dgvAsistenciaTrabajador.Rows.Add();
+            dgvAsistenciaTrabajador.Rows[1].Visible = false;
+            dgvAsistenciaTrabajador.Rows[2].Visible = false;
         }
 
         string Mes(string pmes)
@@ -145,72 +244,6 @@ namespace CapaUsuario.Asistencia
                     break;
             }
             return x;
-        }
-
-        private void DibujarDataGrid()
-        {
-            try
-            {
-                dgvAsistenciaTrabajador.Columns.Clear();
-                DateTime auxiliar;
-                int DiasMes = DateTime.DaysInMonth(Convert.ToInt32(cboAño.Text), Convert.ToInt32(Mes(cboMes.Text)));
-
-                for (int i = 0; i < DiasMes; i++)
-                {
-                    auxiliar = Convert.ToDateTime("01/" + Mes(cboMes.Text) + "/" + cboAño.Text).AddDays(i);
-                    DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
-                    col.Name = "col" + i.ToString();
-                    string auxiliarDiaSemana = "";
-                    switch (auxiliar.DayOfWeek)
-                    {
-                        case DayOfWeek.Monday:
-                            auxiliarDiaSemana = "L " + auxiliar.Day;
-                            break;
-                        case DayOfWeek.Tuesday:
-                            auxiliarDiaSemana = "M " + auxiliar.Day;
-                            break;
-                        case DayOfWeek.Wednesday:
-                            auxiliarDiaSemana = "M " + auxiliar.Day;
-                            break;
-                        case DayOfWeek.Friday:
-                            auxiliarDiaSemana = "V " + auxiliar.Day;
-                            break;
-                        case DayOfWeek.Thursday:
-                            auxiliarDiaSemana = "J " + auxiliar.Day;
-                            break;
-                        case DayOfWeek.Saturday:
-                            auxiliarDiaSemana = "S " + auxiliar.Day;
-                            break;
-                        case DayOfWeek.Sunday:
-                            auxiliarDiaSemana = "D " + auxiliar.Day;
-                            break;
-                        default:
-                            break;
-                    }
-                    col.HeaderText = auxiliarDiaSemana;
-                    col.Width = 22;
-                    dgvAsistenciaTrabajador.Columns.Add(col);
-                }
-                DataGridViewTextBoxColumn TotalDias = new DataGridViewTextBoxColumn();
-                TotalDias.Name = "txtTotalDias";
-                TotalDias.HeaderText = "Total Dias";
-                TotalDias.Width = 50;
-                dgvAsistenciaTrabajador.Columns.Add(TotalDias);
-            }
-            catch (Exception m)
-            {
-                MessageBox.Show(m.Message);
-            }
-        }
-
-        private void miMenu_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void miMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            dgvAsistenciaTrabajador.Rows[filaseleccionada].Cells[columnaseleccionada].Value = e.ClickedItem.Text;
         }
     }
 }

@@ -675,6 +675,12 @@
     <Compile Include="Sunat\frmMaestroAportacionesTrabajador.Designer.cs">
       <DependentUpon>frmMaestroAportacionesTrabajador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sunat\frmTipoSuspencionLaboral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\frmTipoSuspencionLaboral.Designer.cs">
+      <DependentUpon>frmTipoSuspencionLaboral.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sunat\frmMaestroDescuentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -698,6 +704,12 @@
     </Compile>
     <Compile Include="Sunat\frmMantenimientoMaestroAportacionesTrabajador.Designer.cs">
       <DependentUpon>frmMantenimientoMaestroAportacionesTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sunat\frmMantenimientoTipoSuspencionLaboral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\frmMantenimientoTipoSuspencionLaboral.Designer.cs">
+      <DependentUpon>frmMantenimientoTipoSuspencionLaboral.cs</DependentUpon>
     </Compile>
     <Compile Include="Sunat\frmMantenimientoMaestroDescuentos.cs">
       <SubType>Form</SubType>
@@ -1297,6 +1309,9 @@
     <EmbeddedResource Include="Sunat\frmMaestroAportacionesTrabajador.resx">
       <DependentUpon>frmMaestroAportacionesTrabajador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\frmTipoSuspencionLaboral.resx">
+      <DependentUpon>frmTipoSuspencionLaboral.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sunat\frmMaestroDescuentos.resx">
       <DependentUpon>frmMaestroDescuentos.cs</DependentUpon>
     </EmbeddedResource>
@@ -1308,6 +1323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sunat\frmMantenimientoMaestroAportacionesTrabajador.resx">
       <DependentUpon>frmMantenimientoMaestroAportacionesTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\frmMantenimientoTipoSuspencionLaboral.resx">
+      <DependentUpon>frmMantenimientoTipoSuspencionLaboral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sunat\frmMantenimientoMaestroDescuentos.resx">
       <DependentUpon>frmMantenimientoMaestroDescuentos.cs</DependentUpon>
