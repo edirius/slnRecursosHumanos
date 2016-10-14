@@ -183,13 +183,13 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(238, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(235, 22);
             this.toolStripMenuItem1.Text = "L = Laborados";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(238, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(235, 22);
             this.toolStripMenuItem2.Text = "S = Subsidiados";
             // 
             // toolStripMenuItem3
@@ -207,7 +207,7 @@
             this.toolStripMenuItem3});
             this.miMenu.Name = "contextMenuStrip1";
             this.miMenu.ShowImageMargin = false;
-            this.miMenu.Size = new System.Drawing.Size(236, 114);
+            this.miMenu.Size = new System.Drawing.Size(236, 92);
             this.miMenu.Opening += new System.ComponentModel.CancelEventHandler(this.miMenu_Opening);
             this.miMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.miMenu_ItemClicked);
             // 

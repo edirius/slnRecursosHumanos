@@ -89,6 +89,8 @@ namespace CapaUsuario.Asistencia
 
         private void miMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            CapaUsuario.Asistencia.frmBuscarSubsidio fBuscarSubsidio = new frmBuscarSubsidio();
+            
             switch (e.ClickedItem.Text)
             {
                 case "L = Laborados":
@@ -99,9 +101,19 @@ namespace CapaUsuario.Asistencia
                     break;
                 case "S = Subsidiados":
                     dgvAsistenciaTrabajador.Rows[filaseleccionada].Cells[columnaseleccionada].Value = "S";
+                    fBuscarSubsidio.RecibirDatos(true);
+                    if (fBuscarSubsidio.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        dgvAsistenciaTrabajador.Rows[1].Cells[columnaseleccionada].Value = fBuscarSubsidio.sidttiposuspencionlaboral;
+                    }
                     break; 
                 case "F = No Laborados y no Subsidiados":
                     dgvAsistenciaTrabajador.Rows[filaseleccionada].Cells[columnaseleccionada].Value = "F";
+                    fBuscarSubsidio.RecibirDatos(false);
+                    if (fBuscarSubsidio.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        dgvAsistenciaTrabajador.Rows[1].Cells[columnaseleccionada].Value = fBuscarSubsidio.sidttiposuspencionlaboral;
+                    }
                     break; 
             }
         }
@@ -196,9 +208,7 @@ namespace CapaUsuario.Asistencia
             }
             dgvAsistenciaTrabajador.Rows.Add();
             dgvAsistenciaTrabajador.Rows.Add();
-            dgvAsistenciaTrabajador.Rows.Add();
-            dgvAsistenciaTrabajador.Rows[1].Visible = false;
-            dgvAsistenciaTrabajador.Rows[2].Visible = false;
+            //dgvAsistenciaTrabajador.Rows[1].Visible = false;
         }
 
         string Mes(string pmes)

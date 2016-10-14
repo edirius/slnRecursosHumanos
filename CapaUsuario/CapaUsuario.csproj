@@ -105,6 +105,12 @@
     <Compile Include="AFP\frmListaAFPs.Designer.cs">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Asistencia\frmBuscarSubsidio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmBuscarSubsidio.Designer.cs">
+      <DependentUpon>frmBuscarSubsidio.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConvertImage.cs" />
     <Compile Include="ExportarSunat\frmCompararDatosAFP.cs">
       <SubType>Form</SubType>
@@ -1100,6 +1106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AFP\frmListaAFPs.resx">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmBuscarSubsidio.resx">
+      <DependentUpon>frmBuscarSubsidio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmCompararDatosAFP.resx">
       <DependentUpon>frmCompararDatosAFP.cs</DependentUpon>
