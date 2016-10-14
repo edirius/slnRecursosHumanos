@@ -125,6 +125,7 @@
     <Compile Include="Sunat\cMaestroAportacionesTrabajador.cs" />
     <Compile Include="Sunat\cMaestroDescuentos.cs" />
     <Compile Include="Sunat\cMaestroIngresos.cs" />
+    <Compile Include="Sunat\cTipoSuspencionLaboral.cs" />
     <Compile Include="Tareos\cDetalleTareo.cs" />
     <Compile Include="Tareos\cDiasTareo.cs" />
     <Compile Include="DatosLaborales\cOcupacion.cs" />
@@ -150,7 +151,9 @@
       <Name>CapaDeDatos</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Asistencia\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

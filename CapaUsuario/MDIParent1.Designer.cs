@@ -45,6 +45,7 @@
             this.mantenimientoDeTrabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeCargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.residenteMetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.asistentiaDeTrabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,7 +102,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
-            this.asistentiaDeTrabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoDeSuspencionLaboralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -229,23 +230,30 @@
             // 
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources._161;
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Name = "mantenimientoDeTrabajadoresToolStripMenuItem";
-            this.mantenimientoDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.mantenimientoDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Text = "Mantenimiento de Trabajadores";
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeTrabajadoresToolStripMenuItem_Click);
             // 
             // mantenimientoDeCargosToolStripMenuItem
             // 
             this.mantenimientoDeCargosToolStripMenuItem.Name = "mantenimientoDeCargosToolStripMenuItem";
-            this.mantenimientoDeCargosToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.mantenimientoDeCargosToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
             this.mantenimientoDeCargosToolStripMenuItem.Text = "Mantenimiento de Cargos";
             this.mantenimientoDeCargosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeCargosToolStripMenuItem_Click);
             // 
             // residenteMetaToolStripMenuItem
             // 
             this.residenteMetaToolStripMenuItem.Name = "residenteMetaToolStripMenuItem";
-            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
+            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
             this.residenteMetaToolStripMenuItem.Text = "Residente Meta";
             this.residenteMetaToolStripMenuItem.Click += new System.EventHandler(this.residenteMetaToolStripMenuItem_Click);
+            // 
+            // asistentiaDeTrabajadoresToolStripMenuItem
+            // 
+            this.asistentiaDeTrabajadoresToolStripMenuItem.Name = "asistentiaDeTrabajadoresToolStripMenuItem";
+            this.asistentiaDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
+            this.asistentiaDeTrabajadoresToolStripMenuItem.Text = "Control de Faltas y Tardanzas Trabajadores";
+            this.asistentiaDeTrabajadoresToolStripMenuItem.Click += new System.EventHandler(this.asistentiaDeTrabajadoresToolStripMenuItem_Click);
             // 
             // toolsMenu
             // 
@@ -370,7 +378,8 @@
             this.maestroIngresosToolStripMenuItem,
             this.maestroAportacionesTrabajadorToolStripMenuItem,
             this.maestroDescuentosToolStripMenuItem,
-            this.maestroDescuentosToolStripMenuItem1});
+            this.maestroDescuentosToolStripMenuItem1,
+            this.tipoDeSuspencionLaboralToolStripMenuItem});
             this.sUNATToolStripMenuItem.Name = "sUNATToolStripMenuItem";
             this.sUNATToolStripMenuItem.Size = new System.Drawing.Size(171, 20);
             this.sUNATToolStripMenuItem.Text = "SUNAT - Tablas Parametricas";
@@ -705,12 +714,12 @@
             this.dgvCargo.TabIndex = 5;
             this.dgvCargo.Visible = false;
             // 
-            // asistentiaDeTrabajadoresToolStripMenuItem
+            // tipoDeSuspencionLaboralToolStripMenuItem
             // 
-            this.asistentiaDeTrabajadoresToolStripMenuItem.Name = "asistentiaDeTrabajadoresToolStripMenuItem";
-            this.asistentiaDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.asistentiaDeTrabajadoresToolStripMenuItem.Text = "Asistentia de Trabajadores";
-            this.asistentiaDeTrabajadoresToolStripMenuItem.Click += new System.EventHandler(this.asistentiaDeTrabajadoresToolStripMenuItem_Click);
+            this.tipoDeSuspencionLaboralToolStripMenuItem.Name = "tipoDeSuspencionLaboralToolStripMenuItem";
+            this.tipoDeSuspencionLaboralToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.tipoDeSuspencionLaboralToolStripMenuItem.Text = "Tipo de Suspencion Laboral";
+            this.tipoDeSuspencionLaboralToolStripMenuItem.Click += new System.EventHandler(this.tipoDeSuspencionLaboralToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -819,6 +828,7 @@
         private System.Windows.Forms.ToolStripMenuItem certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem globalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asistentiaDeTrabajadoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tipoDeSuspencionLaboralToolStripMenuItem;
     }
 }
 
