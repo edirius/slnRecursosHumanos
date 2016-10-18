@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAsistenciaTrabajador = new System.Windows.Forms.DataGridView();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -53,29 +53,31 @@
             // 
             this.dgvAsistenciaTrabajador.AllowUserToAddRows = false;
             this.dgvAsistenciaTrabajador.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvAsistenciaTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvAsistenciaTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAsistenciaTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsistenciaTrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsistenciaTrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAsistenciaTrabajador.ColumnHeadersHeight = 35;
             this.dgvAsistenciaTrabajador.Location = new System.Drawing.Point(12, 51);
             this.dgvAsistenciaTrabajador.Name = "dgvAsistenciaTrabajador";
             this.dgvAsistenciaTrabajador.ReadOnly = true;
             this.dgvAsistenciaTrabajador.RowHeadersVisible = false;
             this.dgvAsistenciaTrabajador.RowHeadersWidth = 25;
-            this.dgvAsistenciaTrabajador.Size = new System.Drawing.Size(793, 114);
+            this.dgvAsistenciaTrabajador.Size = new System.Drawing.Size(953, 114);
             this.dgvAsistenciaTrabajador.TabIndex = 8;
             this.dgvAsistenciaTrabajador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAsistenciaTrabajador_CellContentClick);
+            this.dgvAsistenciaTrabajador.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAsistenciaTrabajador_CellEndEdit);
             this.dgvAsistenciaTrabajador.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAsistenciaTrabajador_CellMouseClick);
+            this.dgvAsistenciaTrabajador.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAsistenciaTrabajador_CellValueChanged);
             // 
             // btnCancelar
             // 
@@ -84,7 +86,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(731, 171);
+            this.btnCancelar.Location = new System.Drawing.Point(891, 171);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(74, 65);
             this.btnCancelar.TabIndex = 72;
@@ -100,7 +102,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(650, 171);
+            this.btnAceptar.Location = new System.Drawing.Point(810, 171);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 71;
@@ -117,7 +119,7 @@
             this.txtTrabajador.Enabled = false;
             this.txtTrabajador.Location = new System.Drawing.Point(251, 25);
             this.txtTrabajador.Name = "txtTrabajador";
-            this.txtTrabajador.Size = new System.Drawing.Size(554, 20);
+            this.txtTrabajador.Size = new System.Drawing.Size(714, 20);
             this.txtTrabajador.TabIndex = 68;
             // 
             // label8
@@ -221,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 248);
+            this.ClientSize = new System.Drawing.Size(977, 248);
             this.Controls.Add(this.cboMes);
             this.Controls.Add(this.cboAño);
             this.Controls.Add(this.label2);

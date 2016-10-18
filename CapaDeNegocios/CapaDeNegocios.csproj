@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="AFPP\cAFP.cs" />
     <Compile Include="AFPP\cComisionesAFP.cs" />
+    <Compile Include="Asistencia\cAsistenciaSuspencionLaboral.cs" />
+    <Compile Include="Asistencia\cAsistenciaTrabajador.cs" />
     <Compile Include="cDepartamento.cs" />
     <Compile Include="cDistrito.cs" />
     <Compile Include="cEnumTipoDia.cs" />
@@ -151,9 +153,7 @@
       <Name>CapaDeDatos</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Asistencia\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
