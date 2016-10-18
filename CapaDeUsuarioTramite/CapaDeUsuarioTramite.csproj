@@ -102,12 +102,6 @@
     <Compile Include="Requisitos-Oficina\frmRequisitosOficina.Designer.cs">
       <DependentUpon>frmRequisitosOficina.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tramite\frmMenuDinamico.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tramite\frmMenuDinamico.Designer.cs">
-      <DependentUpon>frmMenuDinamico.cs</DependentUpon>
-    </Compile>
     <Compile Include="Tramite\frmTramite.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,9 +156,6 @@
     </Compile>
     <EmbeddedResource Include="Requisitos-Oficina\frmRequisitosOficina.resx">
       <DependentUpon>frmRequisitosOficina.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Tramite\frmMenuDinamico.resx">
-      <DependentUpon>frmMenuDinamico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tramite\frmTramite.resx">
       <DependentUpon>frmTramite.cs</DependentUpon>
