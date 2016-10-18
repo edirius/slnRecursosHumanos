@@ -58,6 +58,12 @@
     <Compile Include="Documento\frmTipoDocumento.Designer.cs">
       <DependentUpon>frmTipoDocumento.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMenu.Designer.cs">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuTramite.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     <Compile Include="Requisitos-Oficina\frmRequisitosOficina.Designer.cs">
       <DependentUpon>frmRequisitosOficina.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tramite\frmMenuDinamico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tramite\frmMenuDinamico.Designer.cs">
+      <DependentUpon>frmMenuDinamico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tramite\frmTramite.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Documento\frmTipoDocumento.resx">
       <DependentUpon>frmTipoDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenu.resx">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuTramite.resx">
       <DependentUpon>frmMenuTramite.cs</DependentUpon>
@@ -147,6 +162,9 @@
     </Compile>
     <EmbeddedResource Include="Requisitos-Oficina\frmRequisitosOficina.resx">
       <DependentUpon>frmRequisitosOficina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tramite\frmMenuDinamico.resx">
+      <DependentUpon>frmMenuDinamico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tramite\frmTramite.resx">
       <DependentUpon>frmTramite.cs</DependentUpon>
