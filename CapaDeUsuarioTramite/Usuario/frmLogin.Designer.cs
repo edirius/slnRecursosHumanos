@@ -100,6 +100,8 @@
             // cbVerContraseña
             // 
             this.cbVerContraseña.AutoSize = true;
+            this.cbVerContraseña.Checked = true;
+            this.cbVerContraseña.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbVerContraseña.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbVerContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbVerContraseña.ForeColor = System.Drawing.Color.SteelBlue;
@@ -139,6 +141,7 @@
             this.txtcontraseña.PasswordChar = '●';
             this.txtcontraseña.Size = new System.Drawing.Size(246, 18);
             this.txtcontraseña.TabIndex = 39;
+            this.txtcontraseña.Text = "BAHAMUT";
             this.txtcontraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtcontraseña_KeyPress);
             // 
             // txtusuario
@@ -151,6 +154,7 @@
             this.txtusuario.Name = "txtusuario";
             this.txtusuario.Size = new System.Drawing.Size(246, 18);
             this.txtusuario.TabIndex = 38;
+            this.txtusuario.Text = "EDIRIUS";
             // 
             // label1
             // 
@@ -167,9 +171,9 @@
             // 
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox4.Image = global::CapaDeUsuarioTramite.Properties.Resources.logoYoutube;
-            this.pictureBox4.Location = new System.Drawing.Point(388, 236);
+            this.pictureBox4.Location = new System.Drawing.Point(370, 228);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(38, 38);
+            this.pictureBox4.Size = new System.Drawing.Size(58, 53);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 48;
             this.pictureBox4.TabStop = false;

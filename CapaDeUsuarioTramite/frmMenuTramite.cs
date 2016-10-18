@@ -36,6 +36,8 @@ namespace CapaDeUsuarioTramite
         //bool menuAFP, menuUsuario, menuTrabajadores, menuTareos, menuMeta, menuPlanillas, menuSunatTablasParametricas, menuExportarDatosSunat, menuReportes, habilitado;
         bool habilitado;
         public string Usuario;
+        public string usu;
+        //CapaDeUsuarioTramite.Tramite.frmTramite miTramite = new Tramite.frmTramite();
         public void obtenerDatos(string LoginUsuario)
         {
             
@@ -46,10 +48,11 @@ namespace CapaDeUsuarioTramite
             
             foreach (DataGridViewRow fila in dgvListar.Rows)
             {
-                Trabajador = "Trabajador: " + fila.Cells["Nombres"].Value.ToString();
-                Cargo = "Cargo: " + fila.Cells["Cargo"].Value.ToString();
-                Oficina = "Oficina: " + fila.Cells["Oficina"].Value.ToString();
-                Usuario = "Usuario: " + fila.Cells["nombre"].Value.ToString();
+                Trabajador = "TRABAJADOR: " + fila.Cells["Nombres"].Value.ToString();
+                Cargo = "CARGO: " + fila.Cells["Cargo"].Value.ToString();
+                Oficina = "OFICINA: " + fila.Cells["Oficina"].Value.ToString();
+                Usuario = "USUARIO: " + fila.Cells["nombre"].Value.ToString();
+                usu = fila.Cells["nombre"].Value.ToString();
                 //menuAFP = Convert.ToBoolean(fila.Cells["menuAFP"].Value);
                 //menuUsuario = Convert.ToBoolean(fila.Cells["menuUsuario"].Value);
                 //menuTrabajadores = Convert.ToBoolean(fila.Cells["menuTrabajadores"].Value);
@@ -126,7 +129,7 @@ namespace CapaDeUsuarioTramite
 
         private void registrarTramiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CapaDeUsuarioTramite.Tramite.frmTramite frmTramite = new Tramite.frmTramite();
+            CapaDeUsuarioTramite.Tramite.frmTramite frmTramite = new Tramite.frmTramite(usu);
             frmTramite.MdiParent = this;
             frmTramite.Show();
         }

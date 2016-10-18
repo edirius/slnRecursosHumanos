@@ -58,6 +58,12 @@
     <Compile Include="Documento\frmTipoDocumento.Designer.cs">
       <DependentUpon>frmTipoDocumento.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMenu.Designer.cs">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuTramite.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Documento\frmTipoDocumento.resx">
       <DependentUpon>frmTipoDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenu.resx">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuTramite.resx">
       <DependentUpon>frmMenuTramite.cs</DependentUpon>
