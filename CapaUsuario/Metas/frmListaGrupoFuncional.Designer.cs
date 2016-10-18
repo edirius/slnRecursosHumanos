@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaGrupoFuncional));
             this.dtgGrupoFuncional = new System.Windows.Forms.DataGridView();
             this.idtGrupoFuncional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grupoFuncional = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +49,8 @@
             // 
             this.dtgGrupoFuncional.AllowUserToAddRows = false;
             this.dtgGrupoFuncional.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
-            this.dtgGrupoFuncional.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            this.dtgGrupoFuncional.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgGrupoFuncional.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgGrupoFuncional.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idtGrupoFuncional,
@@ -143,22 +144,28 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(71, 265);
+            this.btnAceptar.BackColor = System.Drawing.Color.MintCream;
+            this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAceptar.Location = new System.Drawing.Point(87, 265);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 32);
+            this.btnAceptar.Size = new System.Drawing.Size(105, 52);
             this.btnAceptar.TabIndex = 10;
             this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(354, 265);
+            this.btnCancelar.BackColor = System.Drawing.Color.MintCream;
+            this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCancelar.Location = new System.Drawing.Point(370, 265);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 32);
+            this.btnCancelar.Size = new System.Drawing.Size(105, 52);
             this.btnCancelar.TabIndex = 11;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmListaGrupoFuncional
@@ -173,6 +180,7 @@
             this.Controls.Add(this.cboFuncion);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmListaGrupoFuncional";

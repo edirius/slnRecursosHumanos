@@ -113,5 +113,10 @@ namespace CapaUsuario.Metas
                 MessageBox.Show("Debe seleccionar un Grupo Funcional.");
             }
         }
+
+        private void dtgGrupoFuncional_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

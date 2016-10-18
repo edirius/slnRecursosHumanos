@@ -82,5 +82,37 @@ namespace CapaUsuario.Metas
         {
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
+
+        private void btnActividad_Click(object sender, EventArgs e)
+        {
+            frmListaActividadObra fActividadObra = new frmListaActividadObra();
+            fActividadObra.oActividadObra = new cActividadObra();
+            if (fActividadObra.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                miMeta.ActividadObra = fActividadObra.oActividadObra;
+                txtActividadObra.Text = miMeta.ActividadObra.Nombre;
+            }
+        }
+
+        private void btnGrupo_Click(object sender, EventArgs e)
+        {
+            frmListaGrupoFuncional fGrupoFuncional = new frmListaGrupoFuncional();
+            fGrupoFuncional.miGrupoFuncional = new cGrupoFuncional();
+            if (fGrupoFuncional.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                miMeta.GrupoFuncional = fGrupoFuncional.miGrupoFuncional;
+                txtGrupoFuncional.Text = miMeta.GrupoFuncional.Nombre;
+            }
+        }
+
+        private void txtActividadObra_Enter(object sender, EventArgs e)
+        {
+            tipMeta.Show("Presione F2 para Seleccionar la Actividad / Obra.", txtActividadObra);
+        }
+
+        private void txtGrupoFuncional_Enter(object sender, EventArgs e)
+        {
+            tipMeta.Show("Presione F2 para Seleccionar la Actividad / Obra.", txtGrupoFuncional);
+        }
     }
 }

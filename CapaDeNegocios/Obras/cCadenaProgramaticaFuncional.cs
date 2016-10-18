@@ -70,8 +70,16 @@ namespace CapaDeNegocios.Obras
 
         public Boolean EliminarGrupoFuncional(cGrupoFuncional miGrupoFuncional)
         {
-            Conexion.GDatos.Ejecutar("spEliminarGrupoFuncional", miGrupoFuncional.DivisionFuncional.Codigo );
-            return true;
+            try
+            {
+                Conexion.GDatos.Ejecutar("spEliminarGrupoFuncional", miGrupoFuncional.DivisionFuncional.Codigo);
+                return true;
+            }
+            catch (Exception egf)
+            {
+                throw new cReglaNegociosException("RG: Error al eliminar Grupo Funcional: " + egf.Message) ;
+            }
+           
         }
 
         public DataTable ListarGrupoFuncional(cDivisionFuncional miDivisionFuncional)

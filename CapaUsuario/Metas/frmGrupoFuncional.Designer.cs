@@ -34,14 +34,14 @@
             this.cboFuncion = new System.Windows.Forms.ComboBox();
             this.cboDivisionFuncional = new System.Windows.Forms.ComboBox();
             this.dtgGrupoFuncional = new System.Windows.Forms.DataGridView();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
             this.idtGrupoFuncional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grupoFuncional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.año = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDivisionFuncional = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgGrupoFuncional)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,36 +100,7 @@
             this.dtgGrupoFuncional.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgGrupoFuncional.Size = new System.Drawing.Size(550, 150);
             this.dtgGrupoFuncional.TabIndex = 4;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(480, 275);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(87, 36);
-            this.btnEliminar.TabIndex = 18;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnModificar
-            // 
-            this.btnModificar.Location = new System.Drawing.Point(244, 276);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(90, 35);
-            this.btnModificar.TabIndex = 17;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Location = new System.Drawing.Point(20, 277);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(100, 34);
-            this.btnNuevo.TabIndex = 16;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            this.dtgGrupoFuncional.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgGrupoFuncional_CellContentClick);
             // 
             // idtGrupoFuncional
             // 
@@ -171,6 +142,36 @@
             this.idDivisionFuncional.ReadOnly = true;
             this.idDivisionFuncional.Visible = false;
             this.idDivisionFuncional.Width = 50;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(480, 275);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(87, 36);
+            this.btnEliminar.TabIndex = 18;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(244, 276);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(90, 35);
+            this.btnModificar.TabIndex = 17;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Location = new System.Drawing.Point(20, 277);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(100, 34);
+            this.btnNuevo.TabIndex = 16;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // frmGrupoFuncional
             // 

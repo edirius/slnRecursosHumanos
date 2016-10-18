@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMantenimientoProgramaPresupuestal));
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,6 +69,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(94, 38);
+            this.txtNombre.MaxLength = 199;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(417, 20);
             this.txtNombre.TabIndex = 3;
@@ -95,22 +97,28 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(64, 151);
+            this.btnAceptar.BackColor = System.Drawing.Color.MintCream;
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAceptar.Location = new System.Drawing.Point(71, 127);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(97, 30);
+            this.btnAceptar.Size = new System.Drawing.Size(97, 48);
             this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(338, 151);
+            this.btnCancelar.BackColor = System.Drawing.Color.MintCream;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCancelar.Location = new System.Drawing.Point(345, 127);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(97, 30);
+            this.btnCancelar.Size = new System.Drawing.Size(97, 48);
             this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmMantenimientoProgramaPresupuestal
@@ -126,6 +134,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMantenimientoProgramaPresupuestal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Programa Presupuestal";

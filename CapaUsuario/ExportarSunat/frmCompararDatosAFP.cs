@@ -213,5 +213,15 @@ namespace CapaUsuario.ExportarSunat
             LinearGradientBrush brocha = new LinearGradientBrush(rectangulo, Color.SteelBlue, Color.LightSteelBlue, LinearGradientMode.ForwardDiagonal);
             gr.FillRectangle(brocha, rectangulo);
         }
+
+        private void dtgDatosPlanilla_Scroll(object sender, ScrollEventArgs e)
+        {
+            if ((e.ScrollOrientation == ScrollOrientation.VerticalScroll) & (dtgDatosExcel.Rows.Count > 0)  )
+            {
+                dtgDatosExcel.FirstDisplayedScrollingRowIndex = e.NewValue; 
+                
+            }
+           
+        }
     }
 }
