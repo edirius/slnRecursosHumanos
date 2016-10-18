@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaActividadObra));
             this.dtgActividadObra = new System.Windows.Forms.DataGridView();
             this.idtactividadobra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.actividadobra = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +49,8 @@
             // 
             this.dtgActividadObra.AllowUserToAddRows = false;
             this.dtgActividadObra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
-            this.dtgActividadObra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
+            this.dtgActividadObra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgActividadObra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgActividadObra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idtactividadobra,
@@ -143,29 +144,35 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(84, 264);
+            this.btnAceptar.BackColor = System.Drawing.Color.MintCream;
+            this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAceptar.Location = new System.Drawing.Point(88, 257);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(99, 23);
+            this.btnAceptar.Size = new System.Drawing.Size(112, 53);
             this.btnAceptar.TabIndex = 12;
             this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(397, 263);
+            this.btnCancelar.BackColor = System.Drawing.Color.MintCream;
+            this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCancelar.Location = new System.Drawing.Point(401, 256);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(112, 24);
+            this.btnCancelar.Size = new System.Drawing.Size(112, 53);
             this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmListaActividadObra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 305);
+            this.ClientSize = new System.Drawing.Size(635, 332);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.dtgActividadObra);
@@ -173,7 +180,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboProgramaPresupuestal);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListaActividadObra";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de Actividad / Obra";
             this.Load += new System.EventHandler(this.frmListaActividadObra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgActividadObra)).EndInit();

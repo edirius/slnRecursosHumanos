@@ -37,6 +37,10 @@ namespace CapaDeNegociosTramite.Oficina
         {
             return Conexion.GDatos.TraerDataTable("spTramiteListarTrabajadores");
         }
+        public DataTable DatosUsuario(string nombre)
+        {
+            return Conexion.GDatos.TraerDataTable("spTramiteRecuperarDatosUsuario", nombre);
+        }
 
     }
 }

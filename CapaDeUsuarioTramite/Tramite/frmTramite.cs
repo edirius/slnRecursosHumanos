@@ -22,20 +22,24 @@ namespace CapaDeUsuarioTramite.Tramite
         DataTable Tabla = new DataTable();
         string mensaje = "";
         string respuesta = "";
-        public frmTramite()
+        string Usuario;
+        public frmTramite(string user)
         {
             
             InitializeComponent();
+            Usuario = user;
             ActualizarLista();
             CargarCombos();
-            ConfiguracionInicial();
+            //ConfiguracionInicial();
         }
         public void ActualizarLista()
         {
             dgvListarTramites.DataSource = miTramite.ListarTramite();
         }
+        frmMenuTramite miFormulario = new frmMenuTramite();
         public void CargarCombos()
         {
+            //MessageBox.Show(miFormulario.Usuario);
             cbSede.ValueMember = "ID";
             cbSede.DisplayMember = "DESCRIPCION";
             cbSede.DataSource = miSede.ListarSede();
@@ -46,11 +50,11 @@ namespace CapaDeUsuarioTramite.Tramite
 
             cbOficina.ValueMember = "id_oficina";
             cbOficina.DisplayMember = "Oficina";
-            cbOficina.DataSource = miOficinaTrabajador.ListarOficinaTrabajador();
+            cbOficina.DataSource = miOficinaTrabajador.DatosUsuario(Usuario);
 
             cbTrabajador.ValueMember = "id_oficina_trabajador";
             cbTrabajador.DisplayMember = "Nombres";
-            cbTrabajador.DataSource = miOficinaTrabajador.ListarOficinaTrabajador();
+            cbTrabajador.DataSource = miOficinaTrabajador.DatosUsuario(Usuario);
 
             cbUnidadDestino.ValueMember = "id_oficina";
             cbUnidadDestino.DisplayMember = "Oficina";
@@ -68,16 +72,14 @@ namespace CapaDeUsuarioTramite.Tramite
         {
             cbSede.Text = "Seleccione aqui la Sede";
             cboOperacion.Text = "Seleccione aqui la operación";
-            cbOficina.Text = "Seleccione aqui la oficina";
-            cbTrabajador.Text = "Seleccione aqui el trabajador";
             cbUnidadDestino.Text = "Seleccione aqui la unidad de destino";
             cboUsuarioDestino.Text = "Seleccione aqui el usuario de destino";
             cbDocumento.Text = "Seleccione aqui el documento";
         }
         public void AgregarTramite()
         {
-            try
-            {
+            //try
+            //{
                 miTramite.CodigoLocalSede = int.Parse(cbSede.SelectedValue.ToString());
                 miTramite.FechaHora = dtpFechaHora.Value;
                 miTramite.CodigoOperacion = int.Parse(cboOperacion.SelectedValue.ToString());
@@ -101,12 +103,12 @@ namespace CapaDeUsuarioTramite.Tramite
                     MessageBox.Show(mensaje, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ConfiguracionInicial();
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Seleccione los campos necesarios para agregar el tramite", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ConfiguracionInicial();
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Seleccione los campos necesarios para agregar el tramite", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    ConfiguracionInicial();
+            //}
         }
         public void Modificar()
         {
@@ -144,8 +146,6 @@ namespace CapaDeUsuarioTramite.Tramite
                 MessageBox.Show("Seleccione los campos necesarios para modificar el tramite", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ConfiguracionInicial();
             }
-                
-            
         }
         public void Eliminar()
         {
@@ -178,7 +178,7 @@ namespace CapaDeUsuarioTramite.Tramite
 
         private void cbUnidadDestino_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cboUsuarioDestino.ValueMember = "id_trabajador";
+            cboUsuarioDestino.ValueMember = "id_oficina_trabajador";
             cboUsuarioDestino.DisplayMember = "nombres";
             cboUsuarioDestino.DataSource = miTramite.ListarTrabajadoresPorOficina(cbUnidadDestino.Text);
         }
@@ -196,13 +196,6 @@ namespace CapaDeUsuarioTramite.Tramite
             txtProveido.Text = dgvListarTramites[8, valor].Value.ToString();
             cbDocumento.Text = dgvListarTramites[9, valor].Value.ToString();
 
-        }
-
-        private void cbOficina_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //cbTrabajador.ValueMember = "id_oficina_trabajador";
-            //cbTrabajador.DisplayMember = "nombres";
-            //cbTrabajador.DataSource = miTramite.ListarTrabajadoresPorOficina(int.Parse(cbOficina.SelectedValue.ToString()));
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -225,6 +218,30 @@ namespace CapaDeUsuarioTramite.Tramite
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void lblminimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void lbleliminar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void lblmaximizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+            lblmaximizar.Visible = false;
+            lblnormal.Visible = true;
+        }
+
+        private void lblnormal_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            lblnormal.Visible = false;
+            lblmaximizar.Visible = true;
         }
     }
 }

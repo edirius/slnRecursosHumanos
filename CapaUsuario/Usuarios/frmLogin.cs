@@ -46,7 +46,7 @@ namespace CapaUsuario.Usuarios
                 if (numero == 1)
                 {
                     frmPrincipal Principal = new frmPrincipal();
-                    MessageBox.Show("Bienvenido al sistema de planillas usuario " + Usuario+ ".");
+                    MessageBox.Show("Bienvenido al Sistema de Planillas usuario " + Usuario + ".", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Principal.Show();
                     this.Hide();
                     Principal.DarPrivilegios(Usuario);
