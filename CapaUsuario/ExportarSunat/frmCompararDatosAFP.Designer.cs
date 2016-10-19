@@ -54,6 +54,7 @@
             this.dtgDatosPlanilla.TabIndex = 0;
             this.dtgDatosPlanilla.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgDatosPlanilla_CellFormatting);
             this.dtgDatosPlanilla.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dtgDatosPlanilla_RowsAdded);
+            this.dtgDatosPlanilla.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dtgDatosPlanilla_Scroll);
             // 
             // dtgDatosExcel
             // 

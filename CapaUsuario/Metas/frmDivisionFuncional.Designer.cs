@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.cboDivisionFuncional = new System.Windows.Forms.ComboBox();
             this.dtgDivisionFuncional = new System.Windows.Forms.DataGridView();
@@ -65,8 +65,8 @@
             // 
             this.dtgDivisionFuncional.AllowUserToAddRows = false;
             this.dtgDivisionFuncional.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
-            this.dtgDivisionFuncional.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            this.dtgDivisionFuncional.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgDivisionFuncional.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgDivisionFuncional.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idtdivisionfuncional,
@@ -81,6 +81,7 @@
             this.dtgDivisionFuncional.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgDivisionFuncional.Size = new System.Drawing.Size(547, 157);
             this.dtgDivisionFuncional.TabIndex = 2;
+            this.dtgDivisionFuncional.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgDivisionFuncional_CellContentClick);
             // 
             // idtdivisionfuncional
             // 

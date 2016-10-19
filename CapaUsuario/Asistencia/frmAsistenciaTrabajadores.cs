@@ -45,6 +45,11 @@ namespace CapaUsuario.Asistencia
         {
             try
             {
+                if (dtgListaTrabajadores.SelectedRows.Count > 0)
+                {
+                    sidttrabajador = Convert.ToInt32(dtgListaTrabajadores.SelectedRows[0].Cells["id_trabajador"].Value);
+                    strabajador = dtgListaTrabajadores.SelectedRows[0].Cells[2].Value.ToString() + " " + dtgListaTrabajadores.SelectedRows[0].Cells[3].Value.ToString() + " " + dtgListaTrabajadores.SelectedRows[0].Cells[4].Value.ToString();
+                }
                 if (sidttrabajador == 0 || dtgListaTrabajadores.SelectedRows.Count == 0)
                 {
                     MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);

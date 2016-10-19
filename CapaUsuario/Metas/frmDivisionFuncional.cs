@@ -101,5 +101,10 @@ namespace CapaUsuario.Metas
                 MessageBox.Show("Seleccion una division funcional.");
             }
         }
+
+        private void dtgDivisionFuncional_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

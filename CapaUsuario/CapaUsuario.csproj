@@ -172,6 +172,12 @@
       <DependentUpon>crResumenPlanillas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\CrystalReport4.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport4.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\frmResumenPlanillas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1197,6 +1203,10 @@
     <EmbeddedResource Include="Reportes\crResumenPlanillas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crResumenPlanillas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\CrystalReport4.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport4.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmResumenPlanillas.resx">
       <DependentUpon>frmResumenPlanillas.cs</DependentUpon>

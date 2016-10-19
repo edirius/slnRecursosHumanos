@@ -143,11 +143,11 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 172);
+            this.label2.Location = new System.Drawing.Point(28, 172);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 13);
+            this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 110;
-            this.label2.Text = "Abreviación :";
+            this.label2.Text = "Subsidio :";
             // 
             // frmTipoSuspencionLaboral
             // 
