@@ -76,7 +76,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 219);
+            this.dataGridView.Location = new System.Drawing.Point(12, 300);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
@@ -231,7 +231,7 @@
             this.txt13,
             this.txt14,
             this.txt15});
-            this.dgv2.Location = new System.Drawing.Point(12, 349);
+            this.dgv2.Location = new System.Drawing.Point(12, 430);
             this.dgv2.Name = "dgv2";
             this.dgv2.ReadOnly = true;
             this.dgv2.RowHeadersVisible = false;

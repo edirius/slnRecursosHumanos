@@ -124,13 +124,16 @@
   <data name="Logo de la empresa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo de la empresa.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="logoYoutube" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoYoutube.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logotwit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logotwit.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LogoFaceBook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LogoFaceBook.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logoYoutube" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logoYoutube.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LogoEdirius" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LogoEdirius.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

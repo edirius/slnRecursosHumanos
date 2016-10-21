@@ -42,18 +42,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.bntListarTodo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pbSunat = new System.Windows.Forms.PictureBox();
             this.CheckJornada = new System.Windows.Forms.CheckBox();
             this.dgvDescuentos = new System.Windows.Forms.DataGridView();
             this.dgvAportaciones = new System.Windows.Forms.DataGridView();
             this.dgvJornadaLaboral = new System.Windows.Forms.DataGridView();
-            this.pbSunat = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSunat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDescuentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAportaciones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJornadaLaboral)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSunat)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvIngresos
@@ -212,6 +212,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar trabajadores por fecha:";
             // 
+            // pbSunat
+            // 
+            this.pbSunat.Image = global::CapaUsuario.Properties.Resources.logoamplio;
+            this.pbSunat.Location = new System.Drawing.Point(16, 19);
+            this.pbSunat.Name = "pbSunat";
+            this.pbSunat.Size = new System.Drawing.Size(184, 54);
+            this.pbSunat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSunat.TabIndex = 35;
+            this.pbSunat.TabStop = false;
+            // 
             // CheckJornada
             // 
             this.CheckJornada.AutoSize = true;
@@ -221,6 +231,7 @@
             this.CheckJornada.TabIndex = 34;
             this.CheckJornada.Text = "Generar datos Jornada laboral del trabajador";
             this.CheckJornada.UseVisualStyleBackColor = true;
+            this.CheckJornada.CheckedChanged += new System.EventHandler(this.CheckJornada_CheckedChanged);
             // 
             // dgvDescuentos
             // 
@@ -252,16 +263,6 @@
             this.dgvJornadaLaboral.Size = new System.Drawing.Size(274, 172);
             this.dgvJornadaLaboral.TabIndex = 44;
             // 
-            // pbSunat
-            // 
-            this.pbSunat.Image = global::CapaUsuario.Properties.Resources.logoamplio;
-            this.pbSunat.Location = new System.Drawing.Point(16, 19);
-            this.pbSunat.Name = "pbSunat";
-            this.pbSunat.Size = new System.Drawing.Size(184, 54);
-            this.pbSunat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbSunat.TabIndex = 35;
-            this.pbSunat.TabStop = false;
-            // 
             // frmExportarTributosDescuentosTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,10 +287,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSunat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDescuentos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAportaciones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvJornadaLaboral)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSunat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

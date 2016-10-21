@@ -194,8 +194,8 @@ namespace CapaUsuario.ExportarSunat
             {
                 if (CheckJornada.Checked == true)
                 {
-                    concatenarDatos();
                     concatenarDatosJornadaLaboral();
+                    concatenarDatos();
                     milista.Clear();
                     milistaJornada.Clear();
                 }
@@ -224,8 +224,8 @@ namespace CapaUsuario.ExportarSunat
                 for (int i = 0; i < dgvJornadaLaboral.Rows.Count; i++)
                 {
                     //obtenemos los datos de las columnas que queremos
-                    string mes = dgvListaPlanillas[2, i].Value.ToString();
-                    string año = dgvListaPlanillas[3, i].Value.ToString();
+                    string mes = cbMes.Text;
+                    string año = cbAños.Text;
                     string TipoDoc = dgvJornadaLaboral[0, i].Value.ToString();
                     string dni = dgvJornadaLaboral[1, i].Value.ToString();
                     string NHO = dgvJornadaLaboral[2, i].Value.ToString();
@@ -236,14 +236,14 @@ namespace CapaUsuario.ExportarSunat
                     string Ruc = txtRuc.Text;
                     string Palo = "|";
                     ConvertirMes(mes);
-                    string Jornada = TipoDoc + Palo + dni + Palo + NHO + Palo + NMO + Palo + NHS + Palo + NMS + Palo;
+                    string Jornada = "";
+                    Jornada = TipoDoc + Palo + dni + Palo + NHO + Palo + NMO + Palo + NHS + Palo + NMS + Palo;
                     TituloJornada = codigoformjornada + año + Nromes + txtRuc.Text + ".jor";
                     milistaJornada.Add(Jornada);//agregamos los datos concatenados al arreglo(ArrayList)
                 }
+
             }
-            catch
-            {
-            }
+            catch { }
             SaveFileDialog Guardar = new SaveFileDialog();
             Guardar.FileName = TituloJornada;
             string Ruta = "";
@@ -426,6 +426,11 @@ namespace CapaUsuario.ExportarSunat
 
             }   
             
+        }
+
+        private void CheckJornada_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void bntListarTodo_Click(object sender, EventArgs e)
