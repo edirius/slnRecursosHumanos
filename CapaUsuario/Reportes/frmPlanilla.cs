@@ -57,6 +57,7 @@ namespace CapaUsuario.Reportes
         string smes = "";
         string saño = "";
         string smeta = "";
+        string smeta_numero = "";
         DateTime sfecha;
         int sidtmeta = 0;
         int sidtfuentefinanciamiento = 0;
@@ -269,13 +270,15 @@ namespace CapaUsuario.Reportes
                 {
                     sidtmeta = Convert.ToInt32(roww[0]);
                     smeta = roww[2].ToString();
+                    
                 }
                 foreach (DataRow roww in oDataFuenteFinanciamiento.Select("idtfuentefinanciamiento ='" + row[6].ToString() + "'"))
                 {
                     sidtfuentefinanciamiento = Convert.ToInt32(roww[0]);
                     sfuentefinanciamiento = roww[2].ToString();
                 }
-                dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString());
+                smeta_numero = row[10].ToString();
+                dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, smeta, smeta_numero, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString());
             }
             if (dgvPlanilla.Rows.Count > 0)
             {
@@ -3157,7 +3160,7 @@ namespace CapaUsuario.Reportes
                 paragraph4.Alignment = Element.ALIGN_LEFT;
                 paragraph4.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
                 paragraph4.IndentationLeft = 110f;
-                paragraph4.Add("META:" + smeta + ". \n\n");
+                paragraph4.Add("META:" + smeta_numero +" - " + smeta + ". \n\n");
 
                 Paragraph paragraph5 = new Paragraph();
                 paragraph5.Alignment = Element.ALIGN_CENTER;
@@ -3313,10 +3316,11 @@ namespace CapaUsuario.Reportes
                 sfecha = Convert.ToDateTime(dgvPlanilla.Rows[e.RowIndex].Cells[5].Value);
                 sidtmeta = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[6].Value);
                 smeta = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[7].Value);
-                sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[8].Value);
-                sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[9].Value);
-                sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[10].Value);
-                splantilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[11].Value);
+                smeta_numero = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[8].Value);
+                sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[9].Value);
+                sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[10].Value);
+                sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[11].Value);
+                splantilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[12].Value);
 
                 sNumeroPlanilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value);
                 DataTable odtPrueba = new DataTable();
@@ -3366,10 +3370,11 @@ namespace CapaUsuario.Reportes
                 sfecha = Convert.ToDateTime(dgvPlanilla.Rows[0].Cells[5].Value);
                 sidtmeta = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[6].Value);
                 smeta = Convert.ToString(dgvPlanilla.Rows[0].Cells[7].Value);
-                sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[8].Value);
-                sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[0].Cells[9].Value);
-                sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[10].Value);
-                splantilla = Convert.ToString(dgvPlanilla.Rows[0].Cells[11].Value);
+                smeta_numero = Convert.ToString(dgvPlanilla.Rows[0].Cells[8].Value);
+                sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[9].Value);
+                sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[0].Cells[10].Value);
+                sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[11].Value);
+                splantilla = Convert.ToString(dgvPlanilla.Rows[0].Cells[12].Value);
 
                 sNumeroPlanilla = Convert.ToString(dgvPlanilla.Rows[0].Cells[1].Value);
                 DataTable odtPrueba = new DataTable();

@@ -33,18 +33,6 @@
             this.dgvAFP = new System.Windows.Forms.DataGridView();
             this.dgvPrueba = new System.Windows.Forms.DataGridView();
             this.dgvPlanilla = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdtRegimenLaboral = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Plantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvRedondear = new System.Windows.Forms.DataGridView();
             this.dgvEEFF = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -53,6 +41,19 @@
             this.cboMes = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumeroMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdtRegimenLaboral = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Plantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
@@ -114,6 +115,7 @@
             this.Column5,
             this.Column6,
             this.Column7,
+            this.NumeroMeta,
             this.Column8,
             this.Column9,
             this.IdtRegimenLaboral,
@@ -129,94 +131,6 @@
             this.dgvPlanilla.TabIndex = 94;
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick_1);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick_1);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "IdtPlanilla";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            this.Column1.Width = 20;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Numero";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 50;
-            // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.HeaderText = "Descripción";
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.ReadOnly = true;
-            this.txtDescripcion.Width = 125;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Mes";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 75;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Año";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 40;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Fecha";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Visible = false;
-            this.Column5.Width = 40;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "IdtMeta";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Visible = false;
-            this.Column6.Width = 20;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Meta";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Width = 200;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "IdtFuenteFinanciamiento";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Visible = false;
-            this.Column8.Width = 20;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Fuente Financiamiento";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            this.Column9.Width = 200;
-            // 
-            // IdtRegimenLaboral
-            // 
-            this.IdtRegimenLaboral.HeaderText = "IdtRegimenLaboral";
-            this.IdtRegimenLaboral.Name = "IdtRegimenLaboral";
-            this.IdtRegimenLaboral.ReadOnly = true;
-            this.IdtRegimenLaboral.Visible = false;
-            this.IdtRegimenLaboral.Width = 20;
-            // 
-            // Plantilla
-            // 
-            this.Plantilla.HeaderText = "Plantilla";
-            this.Plantilla.Name = "Plantilla";
-            this.Plantilla.ReadOnly = true;
             // 
             // dgvRedondear
             // 
@@ -294,6 +208,100 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mes:";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "IdtPlanilla";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            this.Column1.Width = 20;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Numero";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 50;
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.HeaderText = "Descripción";
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.ReadOnly = true;
+            this.txtDescripcion.Width = 125;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Mes";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 75;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Año";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 40;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Fecha";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Visible = false;
+            this.Column5.Width = 40;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "IdtMeta";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Visible = false;
+            this.Column6.Width = 20;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Meta";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 200;
+            // 
+            // NumeroMeta
+            // 
+            this.NumeroMeta.HeaderText = "Numero Meta";
+            this.NumeroMeta.Name = "NumeroMeta";
+            this.NumeroMeta.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "IdtFuenteFinanciamiento";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Visible = false;
+            this.Column8.Width = 20;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Fuente Financiamiento";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            this.Column9.Width = 200;
+            // 
+            // IdtRegimenLaboral
+            // 
+            this.IdtRegimenLaboral.HeaderText = "IdtRegimenLaboral";
+            this.IdtRegimenLaboral.Name = "IdtRegimenLaboral";
+            this.IdtRegimenLaboral.ReadOnly = true;
+            this.IdtRegimenLaboral.Visible = false;
+            this.IdtRegimenLaboral.Width = 20;
+            // 
+            // Plantilla
+            // 
+            this.Plantilla.HeaderText = "Plantilla";
+            this.Plantilla.Name = "Plantilla";
+            this.Plantilla.ReadOnly = true;
+            // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,6 +350,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumeroMeta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdtRegimenLaboral;
