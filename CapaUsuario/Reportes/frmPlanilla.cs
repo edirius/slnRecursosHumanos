@@ -2214,7 +2214,7 @@ namespace CapaUsuario.Reportes
                         //esribir datos de planilla
                         int total_prueba_corta = odtPrueba.Rows.Count;
 
-                        for (int d = 0; d < total_prueba_corta ; d++)
+                        for (int d = 0; d < total_prueba_corta; d++)
                         {
                             drFilaCorta = odtPruebaCorta.NewRow();
                             drFilaCorta.Delete();
@@ -2368,7 +2368,7 @@ namespace CapaUsuario.Reportes
 
                             if (odtPrueba.Rows[d][3].ToString() != "")
                                 drFilaCorta[4] = Convert.ToDateTime(odtPrueba.Rows[d][3]).Date.ToString("MM/dd/yyyy");
-
+                        
                             //drFilaCorta[5] = odtPrueba.Rows[d][4];
 
                             drFilaCorta[5] = odtPrueba.Rows[d][4];
@@ -2424,7 +2424,7 @@ namespace CapaUsuario.Reportes
                              * y ESSALUD – SEGURO COMPLEMENTARIO DE TRABAJO DE RIESGO Y APORTE ENTIDAD*/
 
                             CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador oMaestroAEmpleador = new CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador();
-
+                        
                             columna_essalud_trabajador = oMaestroAEmpleador.ListarAbreviacionDeIdtmaestroaempleador(5).Rows[0][1].ToString();
                             iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, columna_essalud_trabajador);
 
@@ -2469,11 +2469,25 @@ namespace CapaUsuario.Reportes
                                     monto_a_trabajador = Convert.ToDecimal(odtPlanilla.Rows[l][iindice_a_trabajador]);
                                     sumatoria_a_trabajador += monto_a_trabajador;
 
-                                    monto_dec_afp = monto_a_trabajador + monto_aporte_entidad;
-                                    sumatoria_dec_afp += monto_dec_afp;
+                                    
 
                                     /* DEC. AFP para cada registro*/
-                                    odtPruebaCorta.Rows[l][iindice_dec_afp] = monto_dec_afp;
+                                    //monto_dec_afp
+                                    int indice_AFP_SNP = BuscarIndiceColumna(odtPrueba, "AFIL. AFP/SNP");
+                                    string AFP_SNP = odtPrueba.Rows[l][indice_AFP_SNP].ToString() ;
+
+                                    if (AFP_SNP == "SNP")
+                                    {
+                                        odtPruebaCorta.Rows[l][iindice_dec_afp] = "0.00";
+                                        monto_dec_afp = monto_aporte_entidad;
+                                        sumatoria_dec_afp += monto_dec_afp;
+                                    }
+                                    else
+                                    {
+                                        odtPruebaCorta.Rows[l][iindice_dec_afp] = monto_dec_afp;
+                                        monto_dec_afp = monto_a_trabajador + monto_aporte_entidad;
+                                        sumatoria_dec_afp += monto_dec_afp;
+                                    }
 
                                     //sumatoria ESSALUD
                                     if (iindice_essalud_vida != -1)
@@ -2610,6 +2624,13 @@ namespace CapaUsuario.Reportes
                                         sumatoria_afp_parcial = 0;
                                     else
                                         sumatoria_afp_parcial = Convert.ToDecimal(odtPruebaCorta.Rows[l][indice_dec_afp]);
+
+
+                                    if (iindice_snp_dl != -1) {
+                                        if (prueba_afp == "SNP")
+                                        sumatoria_afp_parcial = Convert.ToDecimal(odtPrueba.Rows[l][iindice_snp_dl]);
+                                    }
+
 
                                     sumatoria_afp += sumatoria_afp_parcial;
                                 }
@@ -2899,6 +2920,8 @@ namespace CapaUsuario.Reportes
                 values[i] = (float)dg.Columns[i].Width;
                 if (i == 0) values[i] = 50;
                 if (i == 1) values[i] = 200;
+                if (i == 4) values[i] = 120;
+                if (i == 3) values[i] = 120;
 
                 if (i == dg.ColumnCount - 1) values[i] = 300;
                 if (i == dg.ColumnCount - 2) values[i] = 50;
