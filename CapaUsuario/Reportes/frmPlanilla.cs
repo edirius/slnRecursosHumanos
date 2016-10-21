@@ -3160,7 +3160,10 @@ namespace CapaUsuario.Reportes
                 paragraph4.Alignment = Element.ALIGN_LEFT;
                 paragraph4.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
                 paragraph4.IndentationLeft = 110f;
-                paragraph4.Add("META:" + smeta_numero +" - " + smeta + ". \n\n");
+
+                string smeta_numero_con_ceros = string.Format("{0:000}", smeta_numero);
+                
+                paragraph4.Add("META:" + smeta_numero.PadLeft(3,'0') + " - " + smeta + ". \n\n");
 
                 Paragraph paragraph5 = new Paragraph();
                 paragraph5.Alignment = Element.ALIGN_CENTER;
