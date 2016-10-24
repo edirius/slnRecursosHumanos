@@ -57,6 +57,7 @@ namespace CapaUsuario.Reportes
         string smes = "";
         string saño = "";
         string smeta = "";
+        string smeta_numero = "";
         DateTime sfecha;
         int sidtmeta = 0;
         int sidtfuentefinanciamiento = 0;
@@ -269,13 +270,15 @@ namespace CapaUsuario.Reportes
                 {
                     sidtmeta = Convert.ToInt32(roww[0]);
                     smeta = roww[2].ToString();
+                    
                 }
                 foreach (DataRow roww in oDataFuenteFinanciamiento.Select("idtfuentefinanciamiento ='" + row[6].ToString() + "'"))
                 {
                     sidtfuentefinanciamiento = Convert.ToInt32(roww[0]);
                     sfuentefinanciamiento = roww[2].ToString();
                 }
-                dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString());
+                smeta_numero = row[10].ToString();
+                dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, smeta, smeta_numero, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString());
             }
             if (dgvPlanilla.Rows.Count > 0)
             {
@@ -2214,7 +2217,7 @@ namespace CapaUsuario.Reportes
                         //esribir datos de planilla
                         int total_prueba_corta = odtPrueba.Rows.Count;
 
-                        for (int d = 0; d < total_prueba_corta ; d++)
+                        for (int d = 0; d < total_prueba_corta; d++)
                         {
                             drFilaCorta = odtPruebaCorta.NewRow();
                             drFilaCorta.Delete();
@@ -2368,7 +2371,7 @@ namespace CapaUsuario.Reportes
 
                             if (odtPrueba.Rows[d][3].ToString() != "")
                                 drFilaCorta[4] = Convert.ToDateTime(odtPrueba.Rows[d][3]).Date.ToString("MM/dd/yyyy");
-
+                        
                             //drFilaCorta[5] = odtPrueba.Rows[d][4];
 
                             drFilaCorta[5] = odtPrueba.Rows[d][4];
@@ -2424,7 +2427,7 @@ namespace CapaUsuario.Reportes
                              * y ESSALUD – SEGURO COMPLEMENTARIO DE TRABAJO DE RIESGO Y APORTE ENTIDAD*/
 
                             CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador oMaestroAEmpleador = new CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador();
-
+                        
                             columna_essalud_trabajador = oMaestroAEmpleador.ListarAbreviacionDeIdtmaestroaempleador(5).Rows[0][1].ToString();
                             iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, columna_essalud_trabajador);
 
@@ -2469,11 +2472,25 @@ namespace CapaUsuario.Reportes
                                     monto_a_trabajador = Convert.ToDecimal(odtPlanilla.Rows[l][iindice_a_trabajador]);
                                     sumatoria_a_trabajador += monto_a_trabajador;
 
-                                    monto_dec_afp = monto_a_trabajador + monto_aporte_entidad;
-                                    sumatoria_dec_afp += monto_dec_afp;
+                                    
 
                                     /* DEC. AFP para cada registro*/
-                                    odtPruebaCorta.Rows[l][iindice_dec_afp] = monto_dec_afp;
+                                    //monto_dec_afp
+                                    int indice_AFP_SNP = BuscarIndiceColumna(odtPrueba, "AFIL. AFP/SNP");
+                                    string AFP_SNP = odtPrueba.Rows[l][indice_AFP_SNP].ToString() ;
+
+                                    if (AFP_SNP == "SNP")
+                                    {
+                                        odtPruebaCorta.Rows[l][iindice_dec_afp] = "0.00";
+                                        monto_dec_afp = monto_aporte_entidad;
+                                        sumatoria_dec_afp += monto_dec_afp;
+                                    }
+                                    else
+                                    {
+                                        odtPruebaCorta.Rows[l][iindice_dec_afp] = monto_dec_afp;
+                                        monto_dec_afp = monto_a_trabajador + monto_aporte_entidad;
+                                        sumatoria_dec_afp += monto_dec_afp;
+                                    }
 
                                     //sumatoria ESSALUD
                                     if (iindice_essalud_vida != -1)
@@ -2610,6 +2627,13 @@ namespace CapaUsuario.Reportes
                                         sumatoria_afp_parcial = 0;
                                     else
                                         sumatoria_afp_parcial = Convert.ToDecimal(odtPruebaCorta.Rows[l][indice_dec_afp]);
+
+
+                                    if (iindice_snp_dl != -1) {
+                                        if (prueba_afp == "SNP")
+                                        sumatoria_afp_parcial = Convert.ToDecimal(odtPrueba.Rows[l][iindice_snp_dl]);
+                                    }
+
 
                                     sumatoria_afp += sumatoria_afp_parcial;
                                 }
@@ -2899,6 +2923,8 @@ namespace CapaUsuario.Reportes
                 values[i] = (float)dg.Columns[i].Width;
                 if (i == 0) values[i] = 50;
                 if (i == 1) values[i] = 200;
+                if (i == 4) values[i] = 120;
+                if (i == 3) values[i] = 120;
 
                 if (i == dg.ColumnCount - 1) values[i] = 300;
                 if (i == dg.ColumnCount - 2) values[i] = 50;
@@ -3134,7 +3160,7 @@ namespace CapaUsuario.Reportes
                 paragraph4.Alignment = Element.ALIGN_LEFT;
                 paragraph4.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
                 paragraph4.IndentationLeft = 110f;
-                paragraph4.Add("META:" + smeta + ". \n\n");
+                paragraph4.Add("META:" + smeta_numero +" - " + smeta + ". \n\n");
 
                 Paragraph paragraph5 = new Paragraph();
                 paragraph5.Alignment = Element.ALIGN_CENTER;
@@ -3290,10 +3316,11 @@ namespace CapaUsuario.Reportes
                 sfecha = Convert.ToDateTime(dgvPlanilla.Rows[e.RowIndex].Cells[5].Value);
                 sidtmeta = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[6].Value);
                 smeta = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[7].Value);
-                sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[8].Value);
-                sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[9].Value);
-                sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[10].Value);
-                splantilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[11].Value);
+                smeta_numero = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[8].Value);
+                sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[9].Value);
+                sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[10].Value);
+                sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[11].Value);
+                splantilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[12].Value);
 
                 sNumeroPlanilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value);
                 DataTable odtPrueba = new DataTable();
@@ -3343,10 +3370,11 @@ namespace CapaUsuario.Reportes
                 sfecha = Convert.ToDateTime(dgvPlanilla.Rows[0].Cells[5].Value);
                 sidtmeta = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[6].Value);
                 smeta = Convert.ToString(dgvPlanilla.Rows[0].Cells[7].Value);
-                sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[8].Value);
-                sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[0].Cells[9].Value);
-                sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[10].Value);
-                splantilla = Convert.ToString(dgvPlanilla.Rows[0].Cells[11].Value);
+                smeta_numero = Convert.ToString(dgvPlanilla.Rows[0].Cells[8].Value);
+                sidtfuentefinanciamiento = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[9].Value);
+                sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[0].Cells[10].Value);
+                sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[0].Cells[11].Value);
+                splantilla = Convert.ToString(dgvPlanilla.Rows[0].Cells[12].Value);
 
                 sNumeroPlanilla = Convert.ToString(dgvPlanilla.Rows[0].Cells[1].Value);
                 DataTable odtPrueba = new DataTable();

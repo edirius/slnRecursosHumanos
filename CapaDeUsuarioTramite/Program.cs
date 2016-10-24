@@ -16,7 +16,7 @@ namespace CapaDeUsuarioTramite
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Tramite.frmMenuDinamico());
+            Application.Run(new Usuario.frmLogin());
         }
     }
 }
