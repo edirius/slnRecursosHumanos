@@ -65,7 +65,7 @@ namespace CapaUsuario.Trabajador
 
             chkEssaludVida.Checked = miTrabajador.Essaludvida;
             chkRenta4ta.Checked = miTrabajador.Suspencionrenta4ta;
-
+            txtNroRenta4ta.Text = miTrabajador.NroRenta4ta;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -131,7 +131,7 @@ namespace CapaUsuario.Trabajador
 
             miTrabajador.Essaludvida = chkEssaludVida.Checked;
             miTrabajador.Suspencionrenta4ta = chkRenta4ta.Checked;
-
+            miTrabajador.NroRenta4ta = txtNroRenta4ta.Text;
             DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
@@ -720,7 +720,19 @@ namespace CapaUsuario.Trabajador
             
         }
 
-       
+        private void chkRenta4ta_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkRenta4ta.Checked == true)
+            {
+                label11.Visible = true;
+                txtNroRenta4ta.Visible = true;
+            }
+            else
+            {
+                label11.Visible = false;
+                txtNroRenta4ta.Visible = false;
+            }
+        }
     }
 
 

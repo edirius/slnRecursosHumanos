@@ -127,34 +127,41 @@ namespace CapaUsuario.Planilla
 
         private void btnAgregarTrabajador_Click(object sender, EventArgs e)
         {
-            CapaUsuario.Planilla.frmSeleccionTrabajadorPlanilla fSeleccionTrabajadorPlanilla = new frmSeleccionTrabajadorPlanilla();
-            fSeleccionTrabajadorPlanilla.RecibirDatos(smes, saño, sidtmeta, sidtregimenlaboral);
-            if (fSeleccionTrabajadorPlanilla.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                sselecciontrabajadores = fSeleccionTrabajadorPlanilla.strabajadores;
-                sfilasselecciontrabajadores = fSeleccionTrabajadorPlanilla.sfilasselecciontrabajadores;
-                
-                int z = 0;
-                for (int i = 0; i < sfilasselecciontrabajadores; i++)
+                CapaUsuario.Planilla.frmSeleccionTrabajadorPlanilla fSeleccionTrabajadorPlanilla = new frmSeleccionTrabajadorPlanilla();
+                fSeleccionTrabajadorPlanilla.RecibirDatos(smes, saño, sidtmeta, sidtregimenlaboral);
+                if (fSeleccionTrabajadorPlanilla.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    z = 0;
-                    foreach (DataGridViewRow rowDgvDetallePlanilla in dgvDetallePlanilla.Rows)
+                    sselecciontrabajadores = fSeleccionTrabajadorPlanilla.strabajadores;
+                    sfilasselecciontrabajadores = fSeleccionTrabajadorPlanilla.sfilasselecciontrabajadores;
+
+                    int z = 0;
+                    for (int i = 0; i < sfilasselecciontrabajadores; i++)
                     {
-                        if (Convert.ToString(rowDgvDetallePlanilla.Cells[4].Value) == sselecciontrabajadores[i, 0].ToString())
+                        z = 0;
+                        foreach (DataGridViewRow rowDgvDetallePlanilla in dgvDetallePlanilla.Rows)
                         {
-                            z = 1;
+                            if (Convert.ToString(rowDgvDetallePlanilla.Cells[4].Value) == sselecciontrabajadores[i, 0].ToString())
+                            {
+                                z = 1;
+                            }
+                        }
+                        if (z == 0)
+                        {
+                            CargarTrabajador(Convert.ToInt32(sselecciontrabajadores[i, 0].ToString()));
+                            TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
+                        }
+                        else
+                        {
+                            MessageBox.Show("El trabajador ya se encuentra en la planilla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    if (z == 0)
-                    {
-                        CargarTrabajador(Convert.ToInt32(sselecciontrabajadores[i, 0].ToString()));
-                        TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
-                    }
-                    else
-                    {
-                        MessageBox.Show("El trabajador ya se encuentra en la planilla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
+            }
+            catch (Exception m)
+            {
+                MessageBox.Show(m.Message);
             }
         }
 
@@ -415,6 +422,7 @@ namespace CapaUsuario.Planilla
 
         private void CargarTrabajador(int pidtrabajador)
         {
+            bool TienAFP = false;
             string Nombre = "";
             string DNI = "";
             string FechaInicio = "";
@@ -438,8 +446,19 @@ namespace CapaUsuario.Planilla
                             Cargo = rowCargo[1].ToString();
                         }
                     }
-                    contador += 1;
-                    dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio, MontoPago, "", "");
+                    foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                    {
+                        TienAFP = true;
+                    }
+                    if (TienAFP == false)
+                    {
+                        MessageBox.Show("El trabajador " + Nombre + " no tiene datos de AFP.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        contador += 1;
+                        dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio, MontoPago, "", "");
+                    }
                 }
             }
         }
