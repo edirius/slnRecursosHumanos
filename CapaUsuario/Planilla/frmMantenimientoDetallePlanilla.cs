@@ -127,34 +127,41 @@ namespace CapaUsuario.Planilla
 
         private void btnAgregarTrabajador_Click(object sender, EventArgs e)
         {
-            CapaUsuario.Planilla.frmSeleccionTrabajadorPlanilla fSeleccionTrabajadorPlanilla = new frmSeleccionTrabajadorPlanilla();
-            fSeleccionTrabajadorPlanilla.RecibirDatos(smes, saño, sidtmeta, sidtregimenlaboral);
-            if (fSeleccionTrabajadorPlanilla.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                sselecciontrabajadores = fSeleccionTrabajadorPlanilla.strabajadores;
-                sfilasselecciontrabajadores = fSeleccionTrabajadorPlanilla.sfilasselecciontrabajadores;
-                
-                int z = 0;
-                for (int i = 0; i < sfilasselecciontrabajadores; i++)
+                CapaUsuario.Planilla.frmSeleccionTrabajadorPlanilla fSeleccionTrabajadorPlanilla = new frmSeleccionTrabajadorPlanilla();
+                fSeleccionTrabajadorPlanilla.RecibirDatos(smes, saño, sidtmeta, sidtregimenlaboral);
+                if (fSeleccionTrabajadorPlanilla.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    z = 0;
-                    foreach (DataGridViewRow rowDgvDetallePlanilla in dgvDetallePlanilla.Rows)
+                    sselecciontrabajadores = fSeleccionTrabajadorPlanilla.strabajadores;
+                    sfilasselecciontrabajadores = fSeleccionTrabajadorPlanilla.sfilasselecciontrabajadores;
+
+                    int z = 0;
+                    for (int i = 0; i < sfilasselecciontrabajadores; i++)
                     {
-                        if (Convert.ToString(rowDgvDetallePlanilla.Cells[4].Value) == sselecciontrabajadores[i, 0].ToString())
+                        z = 0;
+                        foreach (DataGridViewRow rowDgvDetallePlanilla in dgvDetallePlanilla.Rows)
                         {
-                            z = 1;
+                            if (Convert.ToString(rowDgvDetallePlanilla.Cells[4].Value) == sselecciontrabajadores[i, 0].ToString())
+                            {
+                                z = 1;
+                            }
+                        }
+                        if (z == 0)
+                        {
+                            CargarTrabajador(Convert.ToInt32(sselecciontrabajadores[i, 0].ToString()));
+                            TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
+                        }
+                        else
+                        {
+                            MessageBox.Show("El trabajador ya se encuentra en la planilla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    if (z == 0)
-                    {
-                        CargarTrabajador(Convert.ToInt32(sselecciontrabajadores[i, 0].ToString()));
-                        TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
-                    }
-                    else
-                    {
-                        MessageBox.Show("El trabajador ya se encuentra en la planilla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
                 }
+            }
+            catch (Exception m)
+            {
+                MessageBox.Show(m.Message);
             }
         }
 
@@ -415,6 +422,7 @@ namespace CapaUsuario.Planilla
 
         private void CargarTrabajador(int pidtrabajador)
         {
+            bool TienAFP = false;
             string Nombre = "";
             string DNI = "";
             string FechaInicio = "";
@@ -438,8 +446,19 @@ namespace CapaUsuario.Planilla
                             Cargo = rowCargo[1].ToString();
                         }
                     }
-                    contador += 1;
-                    dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio, MontoPago, "", "");
+                    foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                    {
+                        TienAFP = true;
+                    }
+                    if (TienAFP == false)
+                    {
+                        MessageBox.Show("El trabajador " + Nombre + " no tiene datos de AFP.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        contador += 1;
+                        dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio, MontoPago, "", "");
+                    }
                 }
             }
         }
@@ -957,22 +976,54 @@ namespace CapaUsuario.Planilla
             CapaDeNegocios.Planillas.cIngresos5taCategoria miIngresos5taCategoria = new CapaDeNegocios.Planillas.cIngresos5taCategoria();
             DataTable oDataIngresos5taCategoria = new DataTable();
             oDataIngresos5taCategoria = miIngresos5taCategoria.Ingresos5taCategoria(sidtplanilla, smes, saño, Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
-            int z = 0;
             foreach (DataRow rowingresos in oDataIngresos5taCategoria.Rows)
             {
-                if (rowingresos[0].ToString() != "")
+                if (rowingresos[0].ToString() == "Ingresos")
                 {
-                    if (z == 0)
+                    sRemMesAnt += Convert.ToDecimal(rowingresos[2]);//suma de las remuneraciones totales
+                }
+                else
+                {
+                    if (smes == "ENERO" || smes == "FEBRERO" || smes == "MARZO")
                     {
-                        sRemMesAnt = Convert.ToDecimal(rowingresos[0]);//suma de las remuneraciones totales
+                        sRetMesAnteriores = 0;
                     }
-
-                    if (z == 1)
+                    else if (smes == "ABRIL")
                     {
-                        sRetMesAnteriores = Convert.ToDecimal(rowingresos[0]);//suma de las retenciones de 5tacategoria totales
+                        if (rowingresos[1].ToString() == "ENERO" || rowingresos[1].ToString() == "FEBRERO" || rowingresos[1].ToString() == "MARZO")
+                        {
+                            sRetMesAnteriores += Convert.ToDecimal(rowingresos[2]);//suma de las retenciones de 5tacategoria totales
+                        }
+                    }
+                    else if (smes == "MAYO" || smes == "JUNIO" || smes == "JULIO")
+                    {
+                        if (rowingresos[1].ToString() == "ENERO" || rowingresos[1].ToString() == "FEBRERO" || rowingresos[1].ToString() == "MARZO" || rowingresos[1].ToString() == "ABRIL")
+                        {
+                            sRetMesAnteriores += Convert.ToDecimal(rowingresos[2]);//suma de las retenciones de 5tacategoria totales
+                        }
+                    }
+                    else if (smes == "AGOSTO")
+                    {
+                        if (rowingresos[1].ToString() != "AGOSTO" && rowingresos[1].ToString() != "SETIEMBRE" && rowingresos[1].ToString() != "OCTUBRE" && rowingresos[1].ToString() != "NOVIEMBRE" && rowingresos[1].ToString() != "DICIEMBRE")
+                        {
+                            sRetMesAnteriores += Convert.ToDecimal(rowingresos[2]);//suma de las retenciones de 5tacategoria totales
+                        }
+                    }
+                    else if (smes == "SETIEMBRE" || smes == "OCTUBRE" || smes == "NOVIEMBRE")
+                    {
+                        if (rowingresos[1].ToString() != "SETIEMBRE" && rowingresos[1].ToString() != "OCTUBRE" && rowingresos[1].ToString() != "NOVIEMBRE" && rowingresos[1].ToString() != "DICIEMBRE")
+                        {
+                            sRetMesAnteriores += Convert.ToDecimal(rowingresos[2]);//suma de las retenciones de 5tacategoria totales
+                        }
+                    }
+                    else if (smes == "DICIEMBRE")
+                    {
+                        if (rowingresos[1].ToString() != "DICIEMBRE")
+                        {
+                            sRetMesAnteriores += Convert.ToDecimal(rowingresos[2]);//suma de las retenciones de 5tacategoria totales
+                        }
                     }
                 }
-                z += 1;
             }
             sRemuneracion = Convert.ToDecimal(remuneracion_5ta);
             sNroMes = Convert.ToInt32(Mes(smes));
