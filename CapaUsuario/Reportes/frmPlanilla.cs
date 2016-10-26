@@ -3156,7 +3156,7 @@ namespace CapaUsuario.Reportes
                 paragraph3.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
                 /*paragraph3.Add("PLANILLA DE RENUMERACIONES DEL PERSONAL DE " + sRegimenLaboral + " DE " + saño + " DE " + smes + ".");*/
                 /*Titulo de planilla*/
-                paragraph3.Add(sdescripcion.ToString().ToUpper() + " " + sRegimenLaboral + " DE " + saño + " DE " + smes + ".");
+                paragraph3.Add(sdescripcion.ToString().ToUpper() + " DE " + smes + " DE " + saño + ".");
 
                 Paragraph paragraph4 = new Paragraph();
                 paragraph4.Alignment = Element.ALIGN_LEFT;
