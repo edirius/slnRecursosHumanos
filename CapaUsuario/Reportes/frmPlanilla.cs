@@ -2487,8 +2487,9 @@ namespace CapaUsuario.Reportes
                                     }
                                     else
                                     {
-                                        odtPruebaCorta.Rows[l][iindice_dec_afp] = monto_dec_afp;
+                                        
                                         monto_dec_afp = monto_a_trabajador + monto_aporte_entidad;
+                                        odtPruebaCorta.Rows[l][iindice_dec_afp] = monto_dec_afp;
                                         sumatoria_dec_afp += monto_dec_afp;
                                     }
 
