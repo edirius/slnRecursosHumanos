@@ -3174,7 +3174,7 @@ namespace CapaUsuario.Reportes
                 paragraph5.Add("\n");
 
                 DateTime fecha = DateTime.Now;
-
+                 
                 Paragraph paragraph6 = new Paragraph();
                 paragraph6.Alignment = Element.ALIGN_CENTER;
                 paragraph6.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
