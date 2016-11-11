@@ -1294,7 +1294,6 @@
     <EmbeddedResource Include="Reportes\frmPlanilla.resx">
       <DependentUpon>frmPlanilla.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\TareoObras.rdlc" />
     <EmbeddedResource Include="ReporteTrabajadores.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteTrabajadores.cs</LastGenOutput>

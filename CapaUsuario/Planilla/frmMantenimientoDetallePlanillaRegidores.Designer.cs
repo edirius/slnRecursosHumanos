@@ -248,6 +248,7 @@
             this.dgvDetallePlanilla.RowHeadersWidth = 25;
             this.dgvDetallePlanilla.Size = new System.Drawing.Size(905, 295);
             this.dgvDetallePlanilla.TabIndex = 100;
+            this.dgvDetallePlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellClick);
             this.dgvDetallePlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellContentClick);
             this.dgvDetallePlanilla.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellEndEdit);
             // 

@@ -67,6 +67,7 @@
             this.maestroAportacionesTrabajadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestroDescuentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestroDescuentosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoDeSuspencionLaboralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IR5taCategoriatoolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarTextoSUNATToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,7 +103,8 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
-            this.tipoDeSuspencionLaboralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restaurarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -135,6 +137,8 @@
             // 
             this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
+            this.generarCopiaDeSeguridadToolStripMenuItem,
+            this.restaurarCopiaDeSeguridadToolStripMenuItem,
             this.toolStripSeparator3,
             this.exitToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
@@ -417,6 +421,13 @@
             this.maestroDescuentosToolStripMenuItem1.Size = new System.Drawing.Size(250, 22);
             this.maestroDescuentosToolStripMenuItem1.Text = "Maestro Descuentos";
             this.maestroDescuentosToolStripMenuItem1.Click += new System.EventHandler(this.maestroDescuentosToolStripMenuItem1_Click);
+            // 
+            // tipoDeSuspencionLaboralToolStripMenuItem
+            // 
+            this.tipoDeSuspencionLaboralToolStripMenuItem.Name = "tipoDeSuspencionLaboralToolStripMenuItem";
+            this.tipoDeSuspencionLaboralToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.tipoDeSuspencionLaboralToolStripMenuItem.Text = "Tipo de Suspencion Laboral";
+            this.tipoDeSuspencionLaboralToolStripMenuItem.Click += new System.EventHandler(this.tipoDeSuspencionLaboralToolStripMenuItem_Click);
             // 
             // IR5taCategoriatoolStripMenuItem4
             // 
@@ -714,12 +725,19 @@
             this.dgvCargo.TabIndex = 5;
             this.dgvCargo.Visible = false;
             // 
-            // tipoDeSuspencionLaboralToolStripMenuItem
+            // generarCopiaDeSeguridadToolStripMenuItem
             // 
-            this.tipoDeSuspencionLaboralToolStripMenuItem.Name = "tipoDeSuspencionLaboralToolStripMenuItem";
-            this.tipoDeSuspencionLaboralToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
-            this.tipoDeSuspencionLaboralToolStripMenuItem.Text = "Tipo de Suspencion Laboral";
-            this.tipoDeSuspencionLaboralToolStripMenuItem.Click += new System.EventHandler(this.tipoDeSuspencionLaboralToolStripMenuItem_Click);
+            this.generarCopiaDeSeguridadToolStripMenuItem.Name = "generarCopiaDeSeguridadToolStripMenuItem";
+            this.generarCopiaDeSeguridadToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.generarCopiaDeSeguridadToolStripMenuItem.Text = "Generar Backup Base Datos";
+            this.generarCopiaDeSeguridadToolStripMenuItem.Click += new System.EventHandler(this.generarCopiaDeSeguridadToolStripMenuItem_Click);
+            // 
+            // restaurarCopiaDeSeguridadToolStripMenuItem
+            // 
+            this.restaurarCopiaDeSeguridadToolStripMenuItem.Name = "restaurarCopiaDeSeguridadToolStripMenuItem";
+            this.restaurarCopiaDeSeguridadToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.restaurarCopiaDeSeguridadToolStripMenuItem.Text = "Restaurar Base de Datos";
+            this.restaurarCopiaDeSeguridadToolStripMenuItem.Click += new System.EventHandler(this.restaurarCopiaDeSeguridadToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -829,6 +847,8 @@
         private System.Windows.Forms.ToolStripMenuItem globalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asistentiaDeTrabajadoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tipoDeSuspencionLaboralToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem generarCopiaDeSeguridadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restaurarCopiaDeSeguridadToolStripMenuItem;
     }
 }
 

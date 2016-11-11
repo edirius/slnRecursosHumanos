@@ -12,6 +12,7 @@ using CapaDeNegocios.Obras;
 using cWord;
 using CapaUsuario.Properties;
 using CapaDeNegocios;
+using MySql.Data.MySqlClient;
 
 namespace CapaUsuario
 {
@@ -404,6 +405,16 @@ namespace CapaUsuario
         CapaDeNegocios.Usuario.cUsuario oUsu = new CapaDeNegocios.Usuario.cUsuario();
         bool menuAFP, menuUsuario, menuTrabajadores, menuTareos, menuMeta, menuPlanillas, menuSunatTablasParametricas, menuExportarDatosSunat, menuReportes, habilitado;
 
+        private void restaurarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RestaurarBBDDMySql();
+        }
+
+        private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BackupBBDDMySQL();
+        }
+
         private void tipoDeSuspencionLaboralToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Sunat.frmMantenimientoTipoSuspencionLaboral fMantenimientoTipoSuspencionLaboral = new Sunat.frmMantenimientoTipoSuspencionLaboral();
@@ -488,6 +499,104 @@ namespace CapaUsuario
                 Application.Exit();
             }
             
+        }
+        private void BackupBBDDMySQL()
+        {
+            try
+            {
+                //SaveFileDialog fd;
+                //fd = new SaveFileDialog();
+                //DialogResult dialogo;
+                //dialogo = fd.ShowDialog();
+                //if (dialogo == DialogResult.OK)
+                //{
+                //    if (fd.FileName != String.Empty)
+                //    {
+                //        String linea;
+                //        fichero = fd.FileName;
+                //        System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                //        proc.EnableRaisingEvents = false;
+                //        proc.StartInfo.UseShellExecute = false;
+                //        proc.StartInfo.RedirectStandardOutput = true;
+                //        proc.StartInfo.FileName = "mysqldump";
+                //        proc.StartInfo.Arguments = "base_datos --single-transaction --host=ip_del_servidor --user=usuario --password=clave";
+                //        Process miProceso;
+                //        miProceso = Process.Start(proc.StartInfo);
+                //        StreamReader sr = miProceso.StandardOutput;
+                //        TextWriter tw = new StreamWriter(fd.FileName, false, Encoding.Default);
+                //        while ((linea = sr.ReadLine()) != null)
+                //        {
+                //            tw.WriteLine(linea);
+                //        }
+                //        tw.Close();
+                //        MessageBox.Show("Copia de seguridad realizada con éxito");
+                //    }
+                //}
+
+                string constring = "server=localhost;user=root;pwd=qwerty;database=test;";
+                string file = "C:\\backup.sql";
+                using (MySqlConnection conn = new MySqlConnection(constring))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        //using (MySqlBackup mb = new MySqlBackup(cmd))
+                        //{
+                        //    cmd.Connection = conn;
+                        //    conn.Open();
+                        //    mb.ExportToFile(file);
+                        //    conn.Close();
+                        //}
+                    }
+
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Se ha producido un error al realizar la copia de seguridad");
+            }
+        }
+
+        private void RestaurarBBDDMySql()
+        {
+            try
+            {
+                //Process miProceso;
+                //miProceso = new Process();
+                ////Es necesario que el fichero mysql.exe esté en el PATH del sistema
+                //miProceso.StartInfo.FileName = "mysql";
+                //miProceso.StartInfo.Arguments = "--host=ip_servidor --database=bbdd --user=usuario --password=clave";
+                //miProceso.StartInfo.RedirectStandardInput = true;
+                //miProceso.StartInfo.UseShellExecute = false;
+                //miProceso.Start();
+
+                //StreamWriter myStreamWriter = miProceso.StandardInput;
+                //myStreamWriter.Write(File.ReadAllText(path_fichero_mysqldump, Encoding.Default));
+                //myStreamWriter.Close();
+
+                //miProceso.WaitForExit();
+                //miProceso.Close();
+                //MessageBox.Show("Se ha finalizado la restauración de datos con éxito");
+
+                string constring = "server = localhost; user = root; pwd = qwerty; base de datos = prueba;";
+                string file = "C: \\ backup.sql";
+                using (MySqlConnection conn = new MySqlConnection(constring))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        //using (MySqlBackup mb = new MySqlBackup(cmd))
+                        //{
+                        //    cmd.Connection = conn;
+                        //    conn.Open();
+                        //    mb.ImportFromFile(file);
+                        //    conn.Close();
+                        //}
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Se ha producido un error. Mensaje: " + exc.Message);
+            }
         }
     }
 }
