@@ -126,7 +126,7 @@
             this.dgvListaPlanillas.ReadOnly = true;
             this.dgvListaPlanillas.RowHeadersVisible = false;
             this.dgvListaPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaPlanillas.Size = new System.Drawing.Size(1292, 376);
+            this.dgvListaPlanillas.Size = new System.Drawing.Size(1292, 368);
             this.dgvListaPlanillas.TabIndex = 28;
             this.dgvListaPlanillas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaPlanillas_CellClick);
             this.dgvListaPlanillas.SelectionChanged += new System.EventHandler(this.dgvListaPlanillas_SelectionChanged);
