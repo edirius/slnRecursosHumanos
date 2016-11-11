@@ -51,13 +51,18 @@ namespace CapaUsuario.Usuarios
                     this.Hide();
                     Principal.DarPrivilegios(Usuario);
                 }
-                else {
+                else
+                {
                     const string message = "El Usuario no existe o la contraseña es incorrecta.";
                     const string caption = "Error";
                     var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtUsuario.Text = ""; txtPass.Text = ""; txtUsuario.Focus(); }
+                    txtUsuario.Text = ""; txtPass.Text = ""; txtUsuario.Focus();
+                }
             }
-            catch { }
+            catch (Exception m)
+            {
+                MessageBox.Show(m.Message);
+            }
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
