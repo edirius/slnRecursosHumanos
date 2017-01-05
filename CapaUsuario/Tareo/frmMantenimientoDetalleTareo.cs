@@ -303,6 +303,27 @@ namespace CapaUsuario.Tareo
                 int IdtCargo = 0;
                 string Cargo = "";
                 string AFP = "";
+
+                int fila = e.RowIndex;
+                string DNIingresado = dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value.ToString();
+                z = 0;
+                for (int i = 0; i < dgvDetalleTareo.Rows.Count - 1; i++)
+                {
+                    if (i != fila)
+                    {
+                        if (Convert.ToString(dgvDetalleTareo.Rows[i].Cells[6].Value) == DNIingresado)
+                        {
+                            z = 1;
+                        }
+                    }
+                }
+                if (z != 0)
+                {
+                    dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = "";
+                    MessageBox.Show("El trabajador ya se encuentra en el tareo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 foreach (DataRow row in oDataTrabajador.Select("dni = '" + dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value + "'"))
                 {
                     contador += 1;

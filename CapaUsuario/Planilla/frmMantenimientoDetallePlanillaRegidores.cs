@@ -856,18 +856,19 @@ namespace CapaUsuario.Planilla
         private decimal CalculoRenta5ta(int fila)
         {
             decimal sRenta5ta = 0;
-            decimal sRemuneracion = 0;
-            decimal sRemMesAnt = 0;
             int sNroMes = 0;
+            decimal sRemuneracion = 0;
+            decimal sIngresos = 0;
             decimal sGratificaciones = 0;
+            decimal sRemuMesAnt = 0;
             decimal sRetMesAnteriores = 0;
             sRemuneracion = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
-            sRemMesAnt = 0;//suma de las remuneraciones totales
+            sRemuMesAnt = 0;//suma de las remuneraciones totales
             sNroMes = Convert.ToInt32(Mes(smes));
             sGratificaciones = 600;
             sRetMesAnteriores = 0;
             CapaDeNegocios.Planillas.cCalculo5taCategoria miCalculo5ta = new CapaDeNegocios.Planillas.cCalculo5taCategoria();
-            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sRemuneracion, sRemMesAnt, sNroMes, sGratificaciones, sUIT, sRetMesAnteriores);
+            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sNroMes, sRemuneracion, sIngresos, sGratificaciones, sRemuMesAnt, sRetMesAnteriores, sUIT);
             return sRenta5ta;
         }
 

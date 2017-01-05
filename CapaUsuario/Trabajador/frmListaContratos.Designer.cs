@@ -153,6 +153,7 @@
             this.Controls.Add(this.groupBox2);
             this.Name = "frmListaContratos";
             this.Text = "Lista de Contratos";
+            this.Load += new System.EventHandler(this.frmListaContratos_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgContratos)).EndInit();
             this.ResumeLayout(false);

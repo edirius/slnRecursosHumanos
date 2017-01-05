@@ -16,5 +16,10 @@ namespace CapaUsuario.Trabajador
         {
             InitializeComponent();
         }
+
+        private void frmListaContratos_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

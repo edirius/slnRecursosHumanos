@@ -88,41 +88,48 @@ namespace CapaUsuario.Planilla
 
         private void btnImportar_Click(object sender, EventArgs e)
         {
-            decimal pagoobrero = 0;
-            dgvDetallePlanilla.Rows.Clear();
-            DataTable oDataTareo = new DataTable();
-            DataTable oDataDetalleTareo = new DataTable();
-
-            CapaDeNegocios.Tareos.cTareo miTareo = new CapaDeNegocios.Tareos.cTareo();
-            CapaDeNegocios.Tareos.cDetalleTareo miDetalleTareo = new CapaDeNegocios.Tareos.cDetalleTareo();
-
-            oDataTareo = miTareo.ListarTareo(sidtmeta);
-            oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")));
-            foreach (DataRow rowdetalletareo in oDataDetalleTareo.Select("idttareo = '" + Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")) + "'"))
+            try
             {
-                pagoobrero = 0;
-                if (splantilla == "PERSONAL OBRERO")
+                decimal pagoobrero = 0;
+                dgvDetallePlanilla.Rows.Clear();
+                DataTable oDataTareo = new DataTable();
+                DataTable oDataDetalleTareo = new DataTable();
+
+                CapaDeNegocios.Tareos.cTareo miTareo = new CapaDeNegocios.Tareos.cTareo();
+                CapaDeNegocios.Tareos.cDetalleTareo miDetalleTareo = new CapaDeNegocios.Tareos.cDetalleTareo();
+
+                oDataTareo = miTareo.ListarTareo(sidtmeta);
+                oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")));
+                foreach (DataRow rowdetalletareo in oDataDetalleTareo.Select("idttareo = '" + Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")) + "'"))
                 {
-                    pagoobrero = MetaJornal(rowdetalletareo[1].ToString(), sidtmeta);
-                    if (pagoobrero == 0)
-                    {
-                        MessageBox.Show("La Remuneración de los Obreros no existe, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-                CargarTrabajador(Convert.ToInt32(rowdetalletareo[4].ToString()));
-                if (dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[4].Value.ToString() == rowdetalletareo[4].ToString())
-                {
-                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[7].Value = rowdetalletareo[1].ToString();
-                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[12].Value = rowdetalletareo[3].ToString();
+                    pagoobrero = 0;
                     if (splantilla == "PERSONAL OBRERO")
                     {
-                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", pagoobrero);
+                        pagoobrero = MetaJornal(rowdetalletareo[1].ToString(), sidtmeta);
+                        if (pagoobrero == 0)
+                        {
+                            MessageBox.Show("La Remuneración de los Obreros no existe, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                     }
+                    CargarTrabajador(Convert.ToInt32(rowdetalletareo[4].ToString()));
+                    if (dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[4].Value.ToString() == rowdetalletareo[4].ToString())
+                    {
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[7].Value = rowdetalletareo[1].ToString();
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[12].Value = rowdetalletareo[3].ToString();
+                        if (splantilla == "PERSONAL OBRERO")
+                        {
+                            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", pagoobrero);
+                        }
+                    }
+                    TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
                 }
-                TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
+                btnImportar.Enabled = false;
             }
-            btnImportar.Enabled = false;
+            catch
+            {
+
+            }
         }
 
         private void btnAgregarTrabajador_Click(object sender, EventArgs e)
@@ -966,10 +973,11 @@ namespace CapaUsuario.Planilla
         private decimal CalculoRenta5ta(int fila, double remuneracion_5ta, double ingresos_5ta)
         {
             decimal sRenta5ta = 0;
-            decimal sRemuneracion = 0;
-            decimal sRemMesAnt = 0;
             int sNroMes = 0;
+            decimal sRemuneracion = 0;
+            decimal sIngresos = 0;
             decimal sGratificaciones = 0;
+            decimal sRemuMesAnt = 0;
             decimal sRetMesAnteriores = 0;
 
             int idttrabajador = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value);
@@ -980,7 +988,7 @@ namespace CapaUsuario.Planilla
             {
                 if (rowingresos[0].ToString() == "Ingresos")
                 {
-                    sRemMesAnt += Convert.ToDecimal(rowingresos[2]);//suma de las remuneraciones totales
+                    sRemuMesAnt += Convert.ToDecimal(rowingresos[2]);//suma de las remuneraciones totales
                 }
                 else
                 {
@@ -1025,11 +1033,12 @@ namespace CapaUsuario.Planilla
                     }
                 }
             }
-            sRemuneracion = Convert.ToDecimal(remuneracion_5ta);
             sNroMes = Convert.ToInt32(Mes(smes));
-            sGratificaciones = Convert.ToDecimal(600 + ingresos_5ta);
+            sRemuneracion = Convert.ToDecimal(remuneracion_5ta);
+            sIngresos = Convert.ToDecimal(ingresos_5ta);
+            sGratificaciones = Convert.ToDecimal(600);
             CapaDeNegocios.Planillas.cCalculo5taCategoria miCalculo5ta = new CapaDeNegocios.Planillas.cCalculo5taCategoria();
-            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sRemuneracion, sRemMesAnt, sNroMes, sGratificaciones, sUIT, sRetMesAnteriores);
+            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sNroMes, sRemuneracion, sIngresos, sGratificaciones, sRemuMesAnt, sRetMesAnteriores, sUIT);
             return sRenta5ta;
         }
 

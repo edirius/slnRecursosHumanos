@@ -11,172 +11,99 @@ namespace CapaDeNegocios.Planillas
     public class cCalculo5taCategoria
     {
 
-        public decimal CalculoRentaAnual(decimal Remuneracion, decimal RemMesAnt, int NroMes, decimal Gratificaciones, decimal UIT)
+        public decimal CalculoImpuestoAnual(decimal RentaNetaProyectada, decimal UIT)
         {
-            decimal ImpuestoRentaAnual = 0;
+            decimal ImpuestoAnual = 0;
+            decimal RentaNetaImponible = 0;
             decimal T8, T14, T17, T20, T30;
-            decimal UIT5, UIT7, UIT20, UIT35, UIT45;
+            decimal UIT5, UIT20, UIT35, UIT45;
             UIT5 = UIT * 5;
-            UIT7 = UIT * 7;
             UIT20 = UIT * 20;
             UIT35 = UIT * 35;
             UIT45 = UIT * 45;
-            decimal RentaBruta, RentaNeta;
-            RentaBruta = ((Remuneracion * NroMes) + Gratificaciones + RemMesAnt);
-            RentaNeta = (RentaBruta - UIT7);
 
-            if (RentaBruta <= (UIT7))
+            RentaNetaImponible = (RentaNetaProyectada - (7 * UIT));
+
+            if (RentaNetaProyectada <= (7 * UIT))
             {
-                ImpuestoRentaAnual = 0;
+                ImpuestoAnual = 0;
             }
-            else if (RentaBruta > UIT7)
+            else
             {
-
-                if (RentaNeta <= UIT5)
+                if (RentaNetaImponible <= UIT5)
                 {
-
-                    ImpuestoRentaAnual = ((RentaNeta * 8) / 100);
-
+                    T8 = ((RentaNetaImponible * 8) / 100);
+                    ImpuestoAnual = T8;
                 }
-                else if (RentaNeta > UIT5 && RentaNeta <= UIT20)
+                else if (RentaNetaImponible > UIT5 && RentaNetaImponible <= UIT20)
                 {
-
                     T8 = (UIT5 * 8) / 100;
-                    T14 = ((RentaNeta - UIT5) * 14) / 100;
-                    ImpuestoRentaAnual = T8 + T14;
-
+                    T14 = ((RentaNetaImponible - UIT5) * 14) / 100;
+                    ImpuestoAnual = T8 + T14;
                 }
-                else if (RentaNeta > UIT20 && RentaNeta <= UIT35)
+                else if (RentaNetaImponible > UIT20 && RentaNetaImponible <= UIT35)
                 {
-
                     T8 = (UIT5 * 8) / 100;
                     T14 = ((UIT20 - UIT5) * 14) / 100;
-                    T17 = ((RentaNeta - UIT20) * 17) / 100;
-                    ImpuestoRentaAnual = T8 + T14 + T17;
+                    T17 = ((RentaNetaImponible - UIT20) * 17) / 100;
+                    ImpuestoAnual = T8 + T14 + T17;
                 }
-                else if (RentaNeta > UIT35 && RentaNeta <= UIT45)
+                else if (RentaNetaImponible > UIT35 && RentaNetaImponible <= UIT45)
                 {
-
                     T8 = (UIT5 * 8) / 100;
                     T14 = ((UIT20 - UIT5) * 14) / 100;
-                    T17 = ((UIT20 - UIT5) * 17) / 100;
-                    T20 = ((RentaNeta - UIT35) * 20) / 100;
-                    ImpuestoRentaAnual = T8 + T14 + T17 + T20;
-
+                    T17 = ((UIT35 - UIT20) * 17) / 100;
+                    T20 = ((RentaNetaImponible - UIT35) * 20) / 100;
+                    ImpuestoAnual = T8 + T14 + T17 + T20;
                 }
-                else if (RentaNeta > UIT45)
+                else if (RentaNetaImponible > UIT45)
                 {
-
                     T8 = (UIT5 * 8) / 100;
                     T14 = ((UIT20 - UIT5) * 14) / 100;
-                    T17 = ((UIT20 - UIT5) * 17) / 100;
+                    T17 = ((UIT35 - UIT20) * 17) / 100;
                     T20 = ((UIT45 - UIT35) * 20) / 100;
-                    T30 = ((RentaNeta - UIT35) * 30) / 100;
-                    ImpuestoRentaAnual = T8 + T14 + T17 + T20 + T30;
-
+                    T30 = ((RentaNetaImponible - UIT45) * 30) / 100;
+                    ImpuestoAnual = T8 + T14 + T17 + T20 + T30;
                 }
             }
-            return ImpuestoRentaAnual;
-
+            return ImpuestoAnual;
         }
 
-        public decimal CalculoRentaMensual(decimal Remuneracion, decimal RemMesAnt, int NroMes, decimal Gratificaciones, decimal UIT, decimal RetMesAnteriores)
+        public decimal CalculoRentaMensual(int NroMes, decimal Remuneracion, decimal Ingresos, decimal Gratificaciones, decimal RemuMesAnt, decimal RetMesAnteriores, decimal UIT)
         {
-            decimal ImpuestoRentaMensual = 0;
-            switch (NroMes)
-            {
+            decimal ImpuestoAnual = 0;
+            decimal ImpuestoCalculado = 0;
+            decimal ImpuestoAPagar = 0;
+            decimal RentaNetaProyectada = ((13 - NroMes) * (Remuneracion + Ingresos)) + Gratificaciones + RemuMesAnt;
 
-                case 1:
-                    {
-                        int nromes = 12;
-                        decimal ImpuestoRentaAnual = CalculoRentaAnual(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = ImpuestoRentaAnual / 12;
-                        break;
-                    }
-                case 2:
-                    {
-                        int nromes = 11;
-                        decimal ImpuestoRentaAnual = CalculoRentaAnual(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = ImpuestoRentaAnual / 12;
-                        break;
-                    }
-                case 3:
-                    {
-                        int nromes = 10;
-                        decimal ImpuestoRentaAnual = CalculoRentaAnual(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = ImpuestoRentaAnual / 12;
-                        break;
-                    }
-                case 4:
-                    {
-                        int nromes = 9;
-                        decimal ImpuestoRentaAnual = CalculoRentaAnual(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 9;
-                        break;
-                    }
-                case 5:
-                    {
-                        int nromes = 8;
-                        decimal ImpuestoRentaAnual = CalculoRentaAnual(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 8;
-                        break;
-                    }
-                case 6:
-                    {
-                        int nromes = 7;
-                        decimal ImpuestoRentaAnual = CalculoRentaAnual(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 8;
-                        break;
-                    }
-                case 7:
-                    {
-                        int nromes = 6;
-                        decimal ImpuestoRentaAnual = CalculoRentaAnual(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 8;
-                        break;
-                    }
-                case 8:
-                    {
-                        int nromes = 5;
-                        decimal ImpuestoRentaAnual = CalculoRentaAnual(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 5;
-                        break;
-                    }
-                case 9:
-                    {
-                        int nromes = 4;
-                        decimal ImpuestoRentaAnual = CalculoRentaAnual(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 4;
-                        break;
-                    }
-                case 10:
-                    {
-                        int nromes = 3;
-                        decimal ImpuestoRentaAnual = CalculoRentaAnual(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 4;
-                        break;
-                    }
-                case 11:
-                    {
-                        int nromes = 2;
-                        decimal ImpuestoRentaAnual = CalculoRentaAnual(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = (ImpuestoRentaAnual - RetMesAnteriores) / 4;
-                        break;
-                    }
-                case 12:
-                    {
-                        int nromes = 1;
-                        decimal ImpuestoRentaAnual = CalculoRentaAnual(Remuneracion, RemMesAnt, nromes, Gratificaciones, UIT);
-                        ImpuestoRentaMensual = ImpuestoRentaAnual - RetMesAnteriores;
-                        break;
-                    }
-                default:
-                    {
-                        //no se  encontró ese mes
-                        break;
-                    }
+            ImpuestoAnual = CalculoImpuestoAnual(RentaNetaProyectada, UIT);
+            ImpuestoCalculado = ImpuestoAnual - RetMesAnteriores;
+
+            if (NroMes == 1 || NroMes == 2 || NroMes == 3)
+            {
+                ImpuestoAPagar = ImpuestoCalculado / 12;
             }
-            return ImpuestoRentaMensual;
+            else if (NroMes == 4)
+            {
+                ImpuestoAPagar = ImpuestoCalculado / 9;
+            }
+            else if (NroMes == 5 || NroMes == 6 || NroMes == 7)
+            {
+                ImpuestoAPagar = ImpuestoCalculado / 8;
+            }
+            else if (NroMes == 8)
+            {
+                ImpuestoAPagar = ImpuestoCalculado / 5;
+            }
+            else if(NroMes == 9 || NroMes == 10 || NroMes == 11)
+            {
+                ImpuestoAPagar = ImpuestoCalculado / 4;
+            }
+            else
+            {
+                ImpuestoAPagar = ImpuestoCalculado;
+            }
+            return ImpuestoAPagar;
         }
 
     }

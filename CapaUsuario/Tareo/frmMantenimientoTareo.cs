@@ -160,17 +160,22 @@ namespace CapaUsuario.Tareo
 
         private void CargarMeta()
         {
-            DataTable oDataMeta = new DataTable();
-            CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miCadena = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
-            oDataMeta = miCadena.ListarMetas();
-            Dictionary<string, string> test = new Dictionary<string, string>();
-            foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+            try
             {
-                test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+                DataTable oDataMeta = new DataTable();
+                CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miCadena = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
+                oDataMeta = miCadena.ListarMetas();
+                Dictionary<string, string> test = new Dictionary<string, string>();
+                foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+                {
+                    test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+                }
+                cboMeta.DataSource = new BindingSource(test, null);
+                cboMeta.DisplayMember = "Value";
+                cboMeta.ValueMember = "Key";
             }
-            cboMeta.DataSource = new BindingSource(test, null);
-            cboMeta.DisplayMember = "Value";
-            cboMeta.ValueMember = "Key";
+            catch
+            { }
         }
 
         private void CargarDatos()

@@ -53,7 +53,6 @@ namespace CapaUsuario.Reportes
                 try
                 {
                     stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
-
                 }
                 catch (IOException)
                 {
@@ -62,7 +61,6 @@ namespace CapaUsuario.Reportes
                     //or being processed by another thread
                     //or does not exist (has already been processed)
                     return true;
-
                 }
                 finally
                 {
@@ -78,8 +76,6 @@ namespace CapaUsuario.Reportes
             string _Name;
             int _Id;
 
-
-
             public Item(string name, int id)
             {
                 _Name = name;
@@ -91,7 +87,6 @@ namespace CapaUsuario.Reportes
                 get { return _Name; }
                 set { _Name = value; }
             }
-
 
             public int Id
             {
@@ -456,10 +451,6 @@ namespace CapaUsuario.Reportes
             proc.EnableRaisingEvents = false;
             proc.StartInfo.FileName = "C:\\PDFs\\CertificadoRetenciones.pdf";
             proc.Start();
-
-
-
         }
-
     }
 }

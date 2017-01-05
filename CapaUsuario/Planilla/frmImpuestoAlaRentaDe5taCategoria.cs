@@ -25,13 +25,14 @@ namespace CapaUsuario.Planilla
         }
         public void CalcularIRM()
         {
-            decimal Remuneracion = Convert.ToDecimal(txtIngresos.Text);
-            decimal RemMesAnt = Convert.ToDecimal(txtRemAnteriores.Text);
             int NroMes = Convert.ToInt16(cbMes.Text);
+            decimal Remuneracion = Convert.ToDecimal(txtIngresos.Text);
+            decimal Ingresos = 0;
             decimal Gratificaciones = Convert.ToDecimal(txtGrati.Text);
-            decimal UIT = Convert.ToDecimal(cbUIT.Text);
+            decimal RemuMesAnt = Convert.ToDecimal(txtRemAnteriores.Text);
             decimal RetMesAnteriores = Convert.ToDecimal(txtRetencionesAnteriores.Text);
-            decimal ImpuestoRentaMensual = oCalculo.CalculoRentaMensual(Remuneracion, RemMesAnt, NroMes, Gratificaciones, UIT, RetMesAnteriores);
+            decimal UIT = Convert.ToDecimal(cbUIT.Text);
+            decimal ImpuestoRentaMensual = oCalculo.CalculoRentaMensual(NroMes, Remuneracion, Ingresos, Gratificaciones, RemuMesAnt, RetMesAnteriores, UIT);
             txtIRM.Text = Convert.ToString(Decimal.Round(ImpuestoRentaMensual, 2));
         }
 

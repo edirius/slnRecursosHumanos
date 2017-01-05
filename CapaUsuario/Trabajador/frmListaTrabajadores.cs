@@ -50,10 +50,7 @@ namespace CapaUsuario.Trabajador
             cboMeta.ValueMember = "idtmeta";
             cboMeta.DataSource = oCadena.ListarMetas(Convert.ToInt16(cboAño.Text));
             treeFiltro.ExpandAll();
-            
         }
-
-          
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -62,7 +59,7 @@ namespace CapaUsuario.Trabajador
 
         private void frmListaTrabajadores_Load(object sender, EventArgs e)
         {
-            Iniciar();
+             Iniciar();
         }
 
         private void btnNuevoTrabajador_Click_1(object sender, EventArgs e)
@@ -83,7 +80,6 @@ namespace CapaUsuario.Trabajador
             {
                 MessageBox.Show(f.Message); 
             }
-           
         }
 
         private void btnModificarTrabajador_Click(object sender, EventArgs e)
@@ -107,9 +103,7 @@ namespace CapaUsuario.Trabajador
                 MessageBox.Show(g.Message); 
                 
             }
-          
         }
-
 
        private void btnEliminarTrabajador_Click_1(object sender, EventArgs e)
         {
@@ -129,7 +123,6 @@ namespace CapaUsuario.Trabajador
             {
                 MessageBox.Show(h.Message);
             }
-            
         }
 
         private void dtgListaTrabajadores_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -219,7 +212,6 @@ namespace CapaUsuario.Trabajador
                                 filtroSituacionLaboral = "Sin Periodo Laboral";
                                 break;
                         }
-                        
                         break;
                         
                     case "Regimen Laboral":
@@ -252,7 +244,6 @@ namespace CapaUsuario.Trabajador
                 dtgListaTrabajadores.DataSource = tablaAuxiliar;
                 lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
             }
-            
         }
 
         private void btnBuscarXMeta_Click(object sender, EventArgs e)
@@ -267,7 +258,6 @@ namespace CapaUsuario.Trabajador
                 dtgListaTrabajadores.DataSource = tablaAuxiliar;
                 lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
             }
-            
         }
 
         private void menuCopiarDNI_Click(object sender, EventArgs e)
@@ -385,20 +375,15 @@ namespace CapaUsuario.Trabajador
             ReporteTrabajador.rptReporteTrabajador objRpt;
             objRpt = new ReporteTrabajador.rptReporteTrabajador();
 
-
             // LA DE ARRIBA ES NUESTRA CADENA DE CONEXION DEL SERVIDOR
-
            
             ReporteTrabajador.dsTrabajador Ds = new ReporteTrabajador.dsTrabajador(); // ESTE ES EL NOMBRE DE NUESTRO DATASET
             Ds.Tables.Add(miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, cboMeta.SelectedValue.ToString()));  // ESTE Reportes ES EL NOMBRE DE NUESTRA TABLA DE DATOS QUE ESTA DENTRO DE NUESTRO DATASET
-
 
             objRpt.SetDataSource(tablaAuxiliar); // dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos")); 
             ReporteTrabajador.frmReporteListaTrabajadores fReporteListaTrabajadores = new ReporteTrabajador.frmReporteListaTrabajadores(); // ES EL FORM DONDE ESTA NUESTRO CRYSTAL REPORT VIEWER
             fReporteListaTrabajadores.crystalReportViewer1.ReportSource = objRpt; // ESTE ES NUESTRO REPORT VIEWER
             fReporteListaTrabajadores.ShowDialog(); // AQUI LO MUESTRA
-
-            
         }
     }
 }
