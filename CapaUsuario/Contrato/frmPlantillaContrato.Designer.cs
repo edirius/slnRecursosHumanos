@@ -147,6 +147,7 @@
             this.dgvPlantillaContratos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPlantillaContratos.Location = new System.Drawing.Point(6, 19);
             this.dgvPlantillaContratos.Name = "dgvPlantillaContratos";
+            this.dgvPlantillaContratos.ReadOnly = true;
             this.dgvPlantillaContratos.RowHeadersVisible = false;
             this.dgvPlantillaContratos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPlantillaContratos.Size = new System.Drawing.Size(383, 162);

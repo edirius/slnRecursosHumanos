@@ -38,46 +38,38 @@ namespace CapaUsuario.Contrato
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            //bool bOk = false;
-            //CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
-            //miRegimenTrabajador.IdtRegimenTrabajador = sidtregimentrabajador;
-            //miRegimenTrabajador.Condicion = cboCondicionLaboral.Text;
-            //miRegimenTrabajador.ServidorConfianza = chkServidorConfianza.Checked;
-            //miRegimenTrabajador.NumeroDocumento = txtNumeroContrato.Text;
-            //miRegimenTrabajador.Periodicidad = cboPeriodicidad.Text;
-            //miRegimenTrabajador.TipoPago = cboTipoPago.Text;
-            //miRegimenTrabajador.MontoPago = Convert.ToDecimal(nupMontoPago.Value);
-            //miRegimenTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
-            //if (dtpFechaFin.Format == DateTimePickerFormat.Custom) { miRegimenTrabajador.FechaFin = ""; }
-            //else { miRegimenTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString(); }
-            //miRegimenTrabajador.RUC = txtRUC.Text;
-            //miRegimenTrabajador.IdtRegimenLaboral = sidtregimenlaboral;
-            //miRegimenTrabajador.IdtTipoTrabajador = sidttipotrabajador;
-            //miRegimenTrabajador.IdtTipoContrato = sidttipocontrato;
-            //miRegimenTrabajador.IdtCategoriaOcupacional = sidtcategoriaocupacional;
-            //miRegimenTrabajador.IdtOcupacion = sidtocupacion;
-            //miRegimenTrabajador.IdtCargo = sidtcargo;
-            //miRegimenTrabajador.IdtMeta = sidtmeta;
-            //miRegimenTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
+            bool bOk = false;
+            CapaDeNegocios.Contrato.cContrato miContrato = new CapaDeNegocios.Contrato.cContrato();
+            miContrato.Idtcontrato = sidtcontrato;
+            miContrato.Fecharegistro = dtpFechaRegistro.Value;
+            miContrato.NumeroDocumento = txtNumeroContrato.Text;
+            miContrato.FechaInicio = dtpFechaInicio.Value;
+            miContrato.FechaFin = dtpFechaFin.Value;
+            miContrato.MontoPago = Convert.ToDecimal(nupMontoPago.Value);
+            miContrato.RUC = txtRUC.Text;
+            miContrato.Idtplantillacontrato = sidtplanillacontrato;
+            miContrato.IdtCargo = sidtcargo;
+            miContrato.IdtMeta = sidtmeta;
+            miContrato.Idttrabajador = sidttrabajador;
 
-            //if (iAccion == 1)
-            //{
-            //    miRegimenTrabajador.CrearRegimenTrabajador(miRegimenTrabajador);
-            //    bOk = true;
-            //}
-            //if (iAccion == 2)
-            //{
-            //    miRegimenTrabajador.ModificarRegimenTrabajador(miRegimenTrabajador);
-            //    bOk = true;
-            //}
-            //if (bOk == true)
-            //{
-            //    DialogResult = System.Windows.Forms.DialogResult.OK;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("No se puede registrar estos datos", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            if (iAccion == 1)
+            {
+                miContrato.CrearContrato(miContrato);
+                bOk = true;
+            }
+            if (iAccion == 2)
+            {
+                miContrato.ModificarContrato(miContrato);
+                bOk = true;
+            }
+            if (bOk == true)
+            {
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("No se puede registrar estos datos", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

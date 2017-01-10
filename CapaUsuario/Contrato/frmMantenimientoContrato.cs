@@ -14,8 +14,19 @@ namespace CapaUsuario.Contrato
 {
     public partial class frmMantenimientoContrato : Form
     {
+        int sidtcontrato = 0;
+        DateTime sfecharegistro;
+        string snumerodocumento = "";
+        DateTime sfechainicio;
+        DateTime sfechafin;
+        decimal smontopago = 0;
+        string sruc = "";
+        int sidtplantillacontrato = 0;
+        int sidtcargo = 0;
+        int sidtmeta = 0;
         int sidttrabajador = 0;
-        CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+
+        CapaDeNegocios.Contrato.cContrato miContrato = new CapaDeNegocios.Contrato.cContrato();
 
         public frmMantenimientoContrato()
         {
@@ -29,8 +40,8 @@ namespace CapaUsuario.Contrato
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            if (dgvContratos.Rows.Count > 0)
-            {
+            //if (dgvContratos.Rows.Count > 0)
+            //{
                 //sfechainicio = Convert.ToString(dgvRegimenTrabajador.Rows[dgvRegimenTrabajador.Rows.Count - 1].Cells[7].Value);
                 //sfechafin = Convert.ToString(dgvRegimenTrabajador.Rows[dgvRegimenTrabajador.Rows.Count - 1].Cells[8].Value);
                 //if (sfechafin == "")
@@ -43,9 +54,9 @@ namespace CapaUsuario.Contrato
                 //    MessageBox.Show("No quedan dias libres en el periodo, no se puede agregar uno nuevo", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //    return;
                 //}
-            }
+            //}
             CapaUsuario.Contrato.frmContrato fContrato = new frmContrato();
-            //fContratos.RecibirDatos(0, "", false, "", "", "", 0, "", "", "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, "", 0, "", sidtperiodotrabajador, 1, sfechainicioperiodo, sfechafinperiodo);
+            fContrato.RecibirDatos(0, DateTime.Now, "", DateTime.Now, DateTime.Now, 0, "", sidtplantillacontrato, sidtcargo, sidtmeta, "", sidttrabajador, 1);
             if (fContrato.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -54,27 +65,51 @@ namespace CapaUsuario.Contrato
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            //if (sidtregimentrabajador == 0)
-            //{
-            //    MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
-            //CapaUsuario.Trabajador.frmRegimenTrabajador fRegimenTrabajador = new frmRegimenTrabajador();
-            //fRegimenTrabajador.RecibirDatos(sidtregimentrabajador, scondicion, sservidorconfianza, snumerodocumento, speriodicidad, stipopago, smontopago, sfechainicio, sfechafin, sruc, sidtregimenlaboral, sregimenlaboral, sidttipotrabajador, stipotrabajador, sidttipocontrato, stipocontrato, sidtcategoriaocupacional, scategoriaocupacional, sidtocupacion, socupacion, sidtcargo, scargo, sidtmeta, smeta, sidtperiodotrabajador, 2, sfechainicioperiodo, sfechafinperiodo);
-            //if (fRegimenTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            //{
-            //    CargarDatos();
-            //}
+            if (sidtcontrato == 0)
+            {
+                MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            CapaUsuario.Contrato.frmContrato fContrato = new frmContrato();
+            fContrato.RecibirDatos(sidtcontrato, sfecharegistro, snumerodocumento, sfechainicio, sfechafin, smontopago, sruc, sidtplantillacontrato, sidtcargo, sidtmeta, "", sidttrabajador, 2);
+            if (fContrato.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                CargarDatos();
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            //DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            Close();
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvContratos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvContratos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                sidtcontrato = Convert.ToInt32(dgvContratos.Rows[e.RowIndex].Cells[0].Value);
+                sfecharegistro = Convert.ToDateTime(dgvContratos.Rows[e.RowIndex].Cells[1].Value);
+                snumerodocumento = Convert.ToString(dgvContratos.Rows[e.RowIndex].Cells[2].Value);
+                sfechainicio = Convert.ToDateTime(dgvContratos.Rows[e.RowIndex].Cells[3].Value);
+                sfechafin = Convert.ToDateTime(dgvContratos.Rows[e.RowIndex].Cells[4].Value);
+                smontopago = Convert.ToDecimal(dgvContratos.Rows[e.RowIndex].Cells[5].Value);
+                sruc = Convert.ToString(dgvContratos.Rows[e.RowIndex].Cells[6].Value);
+                sidtplantillacontrato = Convert.ToInt32(dgvContratos.Rows[e.RowIndex].Cells[7].Value);
+                sidtcargo = Convert.ToInt32(dgvContratos.Rows[e.RowIndex].Cells[8].Value);
+                sidtmeta = Convert.ToInt32(dgvContratos.Rows[e.RowIndex].Cells[9].Value);
+                sidttrabajador = Convert.ToInt32(dgvContratos.Rows[e.RowIndex].Cells[10].Value);
+            }
         }
 
         public void RecibirDatos(int pidttrabajador, string ptrabajador)
@@ -85,60 +120,21 @@ namespace CapaUsuario.Contrato
 
         public void CargarDatos()
         {
-            DataTable oDataPeriodoTrabajador = new DataTable();
-            DataTable oDataMotivoFinPeriodo = new DataTable();
-
-            //dgvPeriodoTrabajador.Rows.Clear();
-            //oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(sidttrabajador);
-
-            //CapaDeNegocios.DatosLaborales.cMotivoFinPeriodo miMotivoFinPeriodo = new CapaDeNegocios.DatosLaborales.cMotivoFinPeriodo();
-            //oDataMotivoFinPeriodo = miMotivoFinPeriodo.ListaMotivosFinPeriodos();
-
-            //foreach (DataRow row in oDataPeriodoTrabajador.Rows)
-            //{
-            //    string xxxx = row[3].ToString();
-            //    foreach (DataRow row1 in oDataMotivoFinPeriodo.Select("idtmotivofinperiodo ='" + row[3].ToString() + "'"))
-            //    {
-            //        dgvPeriodoTrabajador.Rows.Add("", row[0].ToString(), row[1].ToString(), row[2].ToString(), row1[0].ToString(), row1[2].ToString());
-            //    }
-            //}
-            //if (dgvPeriodoTrabajador.Rows.Count > 0)
-            //{
-            //    dgvPeriodoTrabajador.Rows[dgvPeriodoTrabajador.Rows.Count - 1].Cells[2].Selected = true;
-            //    DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, dgvPeriodoTrabajador.Rows.Count - 1);
-            //    dgvPeriodoTrabajador_CellClick(dgvPeriodoTrabajador, cea);
-            //}
-        }
-
-        private void dgvContratos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dgvContratos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //if (e.RowIndex != -1)
-            //{
-            //    sidtperiodotrabajador = Convert.ToInt32(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[1].Value);
-            //    sfechainicio = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[2].Value);
-            //    sfechafin = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[3].Value);
-            //    sidtmotivofinperiodo = Convert.ToInt32(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[4].Value);
-            //    smotivofinperiodo = Convert.ToString(dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[5].Value);
-            //    if (dgvPeriodoTrabajador.Rows[e.RowIndex].Cells[0].Selected == true)
-            //    {
-            //        if (sidtperiodotrabajador == 0)
-            //        {
-            //            MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //            return;
-            //        }
-            //        if (MessageBox.Show("Está seguro que desea eliminar el Periodo del Trabajador", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
-            //        {
-            //            return;
-            //        }
-            //        miPeriodoTrabajador.EliminarPeriodoTrabajador(sidtperiodotrabajador);
-            //        CargarDatos();
-            //    }
-            //}
+            //dgvContratos.Rows.Clear();
+            dgvContratos.DataSource = miContrato.ListarContrato(sidttrabajador);
+            dgvContratos.Columns[0].Visible = false;
+            dgvContratos.Columns[1].Visible = false;
+            dgvContratos.Columns[6].Visible = false;
+            dgvContratos.Columns[7].Visible = false;
+            dgvContratos.Columns[8].Visible = false;
+            dgvContratos.Columns[9].Visible = false;
+            dgvContratos.Columns[10].Visible = false;
+            if (dgvContratos.Rows.Count > 0)
+            {
+                dgvContratos.Rows[dgvContratos.Rows.Count - 1].Cells[3].Selected = true;
+                DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, dgvContratos.Rows.Count - 1);
+                dgvContratos_CellClick(dgvContratos, cea);
+            }
         }
     }
 }
