@@ -10,155 +10,143 @@ namespace CapaDeNegocios.Contrato
 {
     public class cContrato
     {
-        int codigo;
+        int sidtregimentrabajador;
+        string scondicion;
+        bool sservidorconfianza;
+        string snumerodocumento;
+        string speriodicidad;
+        string stipopago;
+        decimal smontopago;
+        string sfechainicio;
+        string sfechafin;
+        string sruc;
+        int sidtregimenlaboral;
+        int sidttipotrabajador;
+        int sidttipocontrato;
+        int sidtcategoriaocupacional;
+        int sidtocupacion;
+        int sidtcargo;
+        int sidtmeta;
+        int sidtperiodotrabajador;
 
-        DateTime fechaInicio;
-
-        DateTime fechaFinal;
-
-        cTipoTrabajador miTipoTrabajador;
-
-        cTrabajador miTrabajador;
-
-        int numeroContrato;
-
-        cMeta miMeta;
-
-        cTipoContrato tipoContrato;
-
-       
-
-        public DateTime FechaInicio
+        public int IdtRegimenTrabajador
         {
-            get
-            {
-                return fechaInicio;
-            }
-
-            set
-            {
-                fechaInicio = value;
-            }
+            get { return sidtregimentrabajador; }
+            set { sidtregimentrabajador = value; }
+        }
+        public string Condicion
+        {
+            get { return scondicion; }
+            set { scondicion = value; }
+        }
+        public bool ServidorConfianza
+        {
+            get { return sservidorconfianza; }
+            set { sservidorconfianza = value; }
+        }
+        public string NumeroDocumento
+        {
+            get { return snumerodocumento; }
+            set { snumerodocumento = value; }
+        }
+        public string Periodicidad
+        {
+            get { return speriodicidad; }
+            set { speriodicidad = value; }
+        }
+        public string TipoPago
+        {
+            get { return stipopago; }
+            set { stipopago = value; }
+        }
+        public decimal MontoPago
+        {
+            get { return smontopago; }
+            set { smontopago = value; }
+        }
+        public string FechaInicio
+        {
+            get { return sfechainicio; }
+            set { sfechainicio = value; }
+        }
+        public string FechaFin
+        {
+            get { return sfechafin; }
+            set { sfechafin = value; }
+        }
+        public string RUC
+        {
+            get { return sruc; }
+            set { sruc = value; }
+        }
+        public int IdtRegimenLaboral
+        {
+            get { return sidtregimenlaboral; }
+            set { sidtregimenlaboral = value; }
+        }
+        public int IdtTipoTrabajador
+        {
+            get { return sidttipotrabajador; }
+            set { sidttipotrabajador = value; }
+        }
+        public int IdtTipoContrato
+        {
+            get { return sidttipocontrato; }
+            set { sidttipocontrato = value; }
+        }
+        public int IdtCategoriaOcupacional
+        {
+            get { return sidtcategoriaocupacional; }
+            set { sidtcategoriaocupacional = value; }
+        }
+        public int IdtOcupacion
+        {
+            get { return sidtocupacion; }
+            set { sidtocupacion = value; }
+        }
+        public int IdtCargo
+        {
+            get { return sidtcargo; }
+            set { sidtcargo = value; }
+        }
+        public int IdtMeta
+        {
+            get { return sidtmeta; }
+            set { sidtmeta = value; }
+        }
+        public int IdtPeriodoTrabajador
+        {
+            get { return sidtperiodotrabajador; }
+            set { sidtperiodotrabajador = value; }
         }
 
-        public DateTime FechaFinal
+        public DataTable ListarRegimenTrabajador(int IdtPeriodoTrabajador)
         {
-            get
-            {
-                return fechaFinal;
-            }
-
-            set
-            {
-                fechaFinal = value;
-            }
+            return Conexion.GDatos.TraerDataTable("spListarRegimenTrabajador", IdtPeriodoTrabajador);
         }
 
-        public cTipoTrabajador MiTipoTrabajador
+        public Boolean CrearRegimenTrabajador(cRegimenTrabajador miRegimenTrabajador)
         {
-            get
-            {
-                return miTipoTrabajador;
-            }
-
-            set
-            {
-                miTipoTrabajador = value;
-            }
-        }
-
-        public int Codigo
-        {
-            get
-            {
-                return codigo;
-            }
-
-            set
-            {
-                codigo = value;
-            }
-        }
-
-        public cTrabajador MiTrabajador
-        {
-            get
-            {
-                return miTrabajador;
-            }
-
-            set
-            {
-                miTrabajador = value;
-            }
-        }
-
-        public int NumeroContrato
-        {
-            get
-            {
-                return numeroContrato;
-            }
-
-            set
-            {
-                numeroContrato = value;
-            }
-        }
-
-        public cMeta MiMeta
-        {
-            get
-            {
-                return miMeta;
-            }
-
-            set
-            {
-                miMeta = value;
-            }
-        }
-
-        public cTipoContrato TipoContrato
-        {
-            get
-            {
-                return tipoContrato;
-            }
-
-            set
-            {
-                tipoContrato = value;
-            }
-        }
-
-        public Boolean AgregarContrato(cContrato miContrato)
-        {
-            Conexion.GDatos.Ejecutar("spCrearContrato", miContrato.miTrabajador.IdTrabajador, miTipoTrabajador.Codigo, fechaInicio, fechaFinal, miContrato.numeroContrato, miContrato.miMeta.Codigo);
+            Conexion.GDatos.Ejecutar("spCrearRegimenTrabajador", miRegimenTrabajador.Condicion, miRegimenTrabajador.ServidorConfianza, miRegimenTrabajador.NumeroDocumento, miRegimenTrabajador.Periodicidad, miRegimenTrabajador.TipoPago, miRegimenTrabajador.MontoPago, miRegimenTrabajador.FechaInicio, miRegimenTrabajador.FechaFin, miRegimenTrabajador.RUC, miRegimenTrabajador.IdtRegimenLaboral, miRegimenTrabajador.IdtTipoTrabajador, miRegimenTrabajador.IdtTipoContrato, miRegimenTrabajador.IdtCategoriaOcupacional, miRegimenTrabajador.IdtOcupacion, miRegimenTrabajador.IdtCargo, miRegimenTrabajador.IdtMeta, miRegimenTrabajador.IdtPeriodoTrabajador);
             return true;
         }
 
-        public Boolean ModificarContrato(cContrato miContrato)
+        public Boolean ModificarRegimenTrabajador(cRegimenTrabajador miRegimenTrabajador)
         {
-            Conexion.GDatos.Ejecutar("spModificarContrato", miContrato.codigo, miContrato.miTrabajador.IdTrabajador, miTipoTrabajador.Codigo, fechaInicio, fechaFinal, miContrato.numeroContrato, miContrato.miMeta.Codigo);
+            Conexion.GDatos.Ejecutar("spModificarRegimenTrabajador", miRegimenTrabajador.IdtRegimenTrabajador, miRegimenTrabajador.Condicion, miRegimenTrabajador.ServidorConfianza, miRegimenTrabajador.NumeroDocumento, miRegimenTrabajador.Periodicidad, miRegimenTrabajador.TipoPago, miRegimenTrabajador.MontoPago, miRegimenTrabajador.FechaInicio, miRegimenTrabajador.FechaFin, miRegimenTrabajador.RUC, miRegimenTrabajador.IdtRegimenLaboral, miRegimenTrabajador.IdtTipoTrabajador, miRegimenTrabajador.IdtTipoContrato, miRegimenTrabajador.IdtCategoriaOcupacional, miRegimenTrabajador.IdtOcupacion, miRegimenTrabajador.IdtCargo, miRegimenTrabajador.IdtMeta, miRegimenTrabajador.IdtPeriodoTrabajador);
             return true;
         }
 
-        public Boolean EliminarContrato(cContrato miContrato)
+        public Boolean EliminarRegimenTrabajador(int IdtRegimenTrabajador)
         {
-            Conexion.GDatos.Ejecutar("spEliminarContrato", miContrato.codigo);
+            Conexion.GDatos.Ejecutar("spELiminarRegimenTrabajador", IdtRegimenTrabajador);
             return true;
         }
 
-        public DataTable ListaContrato (cTrabajador miTrabajador)
+        public Boolean BajaRegimenTrabajador(string fechafin, int IdtPeriodoTrabajador)
         {
-            return Conexion.GDatos.TraerDataTable("spListarContratos", miTrabajador.IdTrabajador);
-            
-        }
-
-        public int ObtenerUltimoNumeroDeContrato(cTipoContrato miTipoContrato)
-        {
-            return Convert.ToInt16(Conexion.GDatos.TraerValorEscalar("spTraerUltimoContrato", miTipoContrato.Codigo));
+            Conexion.GDatos.Ejecutar("spBajaRegimenTrabajador", fechafin, IdtPeriodoTrabajador);
+            return true;
         }
     }
 }

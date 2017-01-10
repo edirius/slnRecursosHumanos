@@ -33,6 +33,8 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restaurarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,8 +105,8 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
-            this.generarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.restaurarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contratosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trabajadoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -125,7 +127,8 @@
             this.IR5taCategoriatoolStripMenuItem4,
             this.exportarTextoSUNATToolStripMenuItem,
             this.reportesToolStripMenuItem1,
-            this.helpMenu});
+            this.helpMenu,
+            this.contratosToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
@@ -155,6 +158,20 @@
             this.newToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
             this.newToolStripMenuItem.Text = "Mantenimiento de Usuarios";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
+            // 
+            // generarCopiaDeSeguridadToolStripMenuItem
+            // 
+            this.generarCopiaDeSeguridadToolStripMenuItem.Name = "generarCopiaDeSeguridadToolStripMenuItem";
+            this.generarCopiaDeSeguridadToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.generarCopiaDeSeguridadToolStripMenuItem.Text = "Generar Backup Base Datos";
+            this.generarCopiaDeSeguridadToolStripMenuItem.Click += new System.EventHandler(this.generarCopiaDeSeguridadToolStripMenuItem_Click);
+            // 
+            // restaurarCopiaDeSeguridadToolStripMenuItem
+            // 
+            this.restaurarCopiaDeSeguridadToolStripMenuItem.Name = "restaurarCopiaDeSeguridadToolStripMenuItem";
+            this.restaurarCopiaDeSeguridadToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.restaurarCopiaDeSeguridadToolStripMenuItem.Text = "Restaurar Base de Datos";
+            this.restaurarCopiaDeSeguridadToolStripMenuItem.Click += new System.EventHandler(this.restaurarCopiaDeSeguridadToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -725,19 +742,20 @@
             this.dgvCargo.TabIndex = 5;
             this.dgvCargo.Visible = false;
             // 
-            // generarCopiaDeSeguridadToolStripMenuItem
+            // contratosToolStripMenuItem
             // 
-            this.generarCopiaDeSeguridadToolStripMenuItem.Name = "generarCopiaDeSeguridadToolStripMenuItem";
-            this.generarCopiaDeSeguridadToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
-            this.generarCopiaDeSeguridadToolStripMenuItem.Text = "Generar Backup Base Datos";
-            this.generarCopiaDeSeguridadToolStripMenuItem.Click += new System.EventHandler(this.generarCopiaDeSeguridadToolStripMenuItem_Click);
+            this.contratosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trabajadoresToolStripMenuItem1});
+            this.contratosToolStripMenuItem.Name = "contratosToolStripMenuItem";
+            this.contratosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.contratosToolStripMenuItem.Text = "Contratos";
             // 
-            // restaurarCopiaDeSeguridadToolStripMenuItem
+            // trabajadoresToolStripMenuItem1
             // 
-            this.restaurarCopiaDeSeguridadToolStripMenuItem.Name = "restaurarCopiaDeSeguridadToolStripMenuItem";
-            this.restaurarCopiaDeSeguridadToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
-            this.restaurarCopiaDeSeguridadToolStripMenuItem.Text = "Restaurar Base de Datos";
-            this.restaurarCopiaDeSeguridadToolStripMenuItem.Click += new System.EventHandler(this.restaurarCopiaDeSeguridadToolStripMenuItem_Click);
+            this.trabajadoresToolStripMenuItem1.Name = "trabajadoresToolStripMenuItem1";
+            this.trabajadoresToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.trabajadoresToolStripMenuItem1.Text = "Trabajadores";
+            this.trabajadoresToolStripMenuItem1.Click += new System.EventHandler(this.trabajadoresToolStripMenuItem1_Click);
             // 
             // frmPrincipal
             // 
@@ -849,6 +867,8 @@
         private System.Windows.Forms.ToolStripMenuItem tipoDeSuspencionLaboralToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generarCopiaDeSeguridadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restaurarCopiaDeSeguridadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contratosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem trabajadoresToolStripMenuItem1;
     }
 }
 

@@ -19,7 +19,6 @@ namespace CapaUsuario.Trabajador
     {
         public cTrabajador miTrabajador;
         //public cPeriodo miPeriodo ;
-        
 
         public frmNuevoTrabajador()
         {
@@ -734,7 +733,4 @@ namespace CapaUsuario.Trabajador
             }
         }
     }
-
-
-
 }

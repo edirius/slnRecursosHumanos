@@ -132,7 +132,20 @@ namespace CapaUsuario.Trabajador
 
         private void dtgListaTrabajadores_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
+        }
+
+        private void btnContratos_Click(object sender, EventArgs e)
+        {
+            if (dtgListaTrabajadores.SelectedRows.Count > 0)
+            {
+                pidttrabajador = Convert.ToInt32(dtgListaTrabajadores.SelectedRows[0].Cells["id_trabajador"].Value);
+                trabajador = Convert.ToString(dtgListaTrabajadores.SelectedRows[0].Cells["nombres"].Value) + " " + Convert.ToString(dtgListaTrabajadores.SelectedRows[0].Cells["apellidoPaterno"].Value) + " " + Convert.ToString(dtgListaTrabajadores.SelectedRows[0].Cells["apellidoMaterno"].Value);
+            }
+            CapaUsuario.Contrato.frmMantenimientoContrato fListarContrato = new Contrato.frmMantenimientoContrato();
+            fListarContrato.RecibirDatos(pidttrabajador, trabajador);
+            fListarContrato.MdiParent = this.MdiParent;
+            fListarContrato.Show();
         }
 
         private void btnDatosLaborales_Click(object sender, EventArgs e)

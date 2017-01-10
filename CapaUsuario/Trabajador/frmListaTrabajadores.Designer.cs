@@ -29,40 +29,46 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Todos");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Activos", 2, 2);
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Inactivos", 2, 2);
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Sin Periodo Laboral", 2, 2);
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Situacion Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Todos", 1, 1);
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Regimen CAS", 2, 2);
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("DL. 276", 2, 2);
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("DL. 728", 2, 2);
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Regimen Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7,
-            treeNode8,
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", 2, 2, new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode10});
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Todos");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Activos", 2, 2);
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Inactivos", 2, 2);
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Sin Periodo Laboral", 2, 2);
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Situacion Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
+            treeNode12,
+            treeNode13,
+            treeNode14,
+            treeNode15});
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Todos", 1, 1);
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Regimen CAS", 2, 2);
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("DL. 276", 2, 2);
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("DL. 728", 2, 2);
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Regimen Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
+            treeNode17,
+            treeNode18,
+            treeNode19,
+            treeNode20});
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", 2, 2, new System.Windows.Forms.TreeNode[] {
+            treeNode16,
+            treeNode21});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTrabajadores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusTrabajadores = new System.Windows.Forms.StatusStrip();
             this.lblNumeroTrabajadores = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnNuevoTrabajador = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnModificarTrabajador = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnEliminarTrabajador = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnImprimirLista = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeFiltro = new System.Windows.Forms.TreeView();
             this.imageLista = new System.Windows.Forms.ImageList(this.components);
+            this.btnContratos = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.btnBuscarXMeta = new System.Windows.Forms.Button();
             this.cboMeta = new System.Windows.Forms.ComboBox();
@@ -97,11 +103,6 @@
             this.menuCopiarNombre = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCopiarPaterno = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApellidoMaterno = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnNuevoTrabajador = new System.Windows.Forms.ToolStripButton();
-            this.btnModificarTrabajador = new System.Windows.Forms.ToolStripButton();
-            this.btnEliminarTrabajador = new System.Windows.Forms.ToolStripButton();
-            this.btnImprimirLista = new System.Windows.Forms.ToolStripButton();
-            this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.statusTrabajadores.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -121,7 +122,7 @@
             // 
             this.statusTrabajadores.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblNumeroTrabajadores});
-            this.statusTrabajadores.Location = new System.Drawing.Point(0, 578);
+            this.statusTrabajadores.Location = new System.Drawing.Point(0, 569);
             this.statusTrabajadores.Name = "statusTrabajadores";
             this.statusTrabajadores.Size = new System.Drawing.Size(1043, 22);
             this.statusTrabajadores.TabIndex = 1;
@@ -151,25 +152,71 @@
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnNuevoTrabajador
+            // 
+            this.btnNuevoTrabajador.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoTrabajador.Image = global::CapaUsuario.Properties.Resources.add1;
+            this.btnNuevoTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNuevoTrabajador.Name = "btnNuevoTrabajador";
+            this.btnNuevoTrabajador.Size = new System.Drawing.Size(154, 25);
+            this.btnNuevoTrabajador.Text = "Nuevo Trabajador";
+            this.btnNuevoTrabajador.Click += new System.EventHandler(this.btnNuevoTrabajador_Click_1);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
+            // btnModificarTrabajador
+            // 
+            this.btnModificarTrabajador.Image = global::CapaUsuario.Properties.Resources.add_to_folder;
+            this.btnModificarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnModificarTrabajador.Name = "btnModificarTrabajador";
+            this.btnModificarTrabajador.Size = new System.Drawing.Size(137, 25);
+            this.btnModificarTrabajador.Text = "Modificar Trabajador";
+            this.btnModificarTrabajador.Click += new System.EventHandler(this.btnModificarTrabajador_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
+            // btnEliminarTrabajador
+            // 
+            this.btnEliminarTrabajador.Image = global::CapaUsuario.Properties.Resources.delete_page;
+            this.btnEliminarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEliminarTrabajador.Name = "btnEliminarTrabajador";
+            this.btnEliminarTrabajador.Size = new System.Drawing.Size(129, 25);
+            this.btnEliminarTrabajador.Text = "Eliminar Trabajador";
+            this.btnEliminarTrabajador.Click += new System.EventHandler(this.btnEliminarTrabajador_Click_1);
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             // 
+            // btnImprimirLista
+            // 
+            this.btnImprimirLista.Image = global::CapaUsuario.Properties.Resources.chart;
+            this.btnImprimirLista.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImprimirLista.Name = "btnImprimirLista";
+            this.btnImprimirLista.Size = new System.Drawing.Size(100, 25);
+            this.btnImprimirLista.Text = "Imprimir Lista";
+            this.btnImprimirLista.Click += new System.EventHandler(this.btnImprimirLista_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_17;
+            this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(49, 25);
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // splitContainer1
             // 
@@ -183,6 +230,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnContratos);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarXMeta);
             this.splitContainer1.Panel2.Controls.Add(this.cboMeta);
@@ -203,7 +251,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.txtDNI);
             this.splitContainer1.Panel2.Controls.Add(this.dtgListaTrabajadores);
-            this.splitContainer1.Size = new System.Drawing.Size(1043, 550);
+            this.splitContainer1.Size = new System.Drawing.Size(1043, 541);
             this.splitContainer1.SplitterDistance = 205;
             this.splitContainer1.TabIndex = 3;
             // 
@@ -214,59 +262,59 @@
             this.treeFiltro.ImageList = this.imageLista;
             this.treeFiltro.Location = new System.Drawing.Point(0, 0);
             this.treeFiltro.Name = "treeFiltro";
-            treeNode1.BackColor = System.Drawing.Color.Teal;
-            treeNode1.Name = "Node3";
-            treeNode1.SelectedImageIndex = 0;
-            treeNode1.Text = "Todos";
-            treeNode2.ImageIndex = 2;
-            treeNode2.Name = "Node4";
-            treeNode2.SelectedImageIndex = 2;
-            treeNode2.Text = "Activos";
-            treeNode3.ImageIndex = 2;
-            treeNode3.Name = "Node5";
-            treeNode3.SelectedImageIndex = 2;
-            treeNode3.Text = "Inactivos";
-            treeNode4.ImageIndex = 2;
-            treeNode4.Name = "Node6";
-            treeNode4.SelectedImageIndex = 2;
-            treeNode4.Text = "Sin Periodo Laboral";
-            treeNode5.Checked = true;
-            treeNode5.ImageIndex = 2;
-            treeNode5.Name = "Node1";
-            treeNode5.SelectedImageIndex = 2;
-            treeNode5.Text = "Situacion Laboral";
-            treeNode6.BackColor = System.Drawing.Color.Teal;
-            treeNode6.ImageIndex = 1;
-            treeNode6.Name = "Node0";
-            treeNode6.SelectedImageIndex = 1;
-            treeNode6.Text = "Todos";
-            treeNode7.ImageIndex = 2;
-            treeNode7.Name = "Node9";
-            treeNode7.SelectedImageIndex = 2;
-            treeNode7.Text = "Regimen CAS";
-            treeNode8.ImageIndex = 2;
-            treeNode8.Name = "Node10";
-            treeNode8.SelectedImageIndex = 2;
-            treeNode8.Text = "DL. 276";
-            treeNode9.ImageIndex = 2;
-            treeNode9.Name = "Node11";
-            treeNode9.SelectedImageIndex = 2;
-            treeNode9.Text = "DL. 728";
-            treeNode10.Checked = true;
-            treeNode10.ImageIndex = 2;
-            treeNode10.Name = "Node8";
-            treeNode10.SelectedImageIndex = 2;
-            treeNode10.Text = "Regimen Laboral";
-            treeNode11.Checked = true;
-            treeNode11.ImageIndex = 2;
-            treeNode11.Name = "Node0";
-            treeNode11.SelectedImageIndex = 2;
-            treeNode11.Text = "FILTRO DE TRABAJADORES";
-            treeNode11.ToolTipText = "Seleccione abajo para filtrar la lista de trabajadores.";
+            treeNode12.BackColor = System.Drawing.Color.Teal;
+            treeNode12.Name = "Node3";
+            treeNode12.SelectedImageIndex = 0;
+            treeNode12.Text = "Todos";
+            treeNode13.ImageIndex = 2;
+            treeNode13.Name = "Node4";
+            treeNode13.SelectedImageIndex = 2;
+            treeNode13.Text = "Activos";
+            treeNode14.ImageIndex = 2;
+            treeNode14.Name = "Node5";
+            treeNode14.SelectedImageIndex = 2;
+            treeNode14.Text = "Inactivos";
+            treeNode15.ImageIndex = 2;
+            treeNode15.Name = "Node6";
+            treeNode15.SelectedImageIndex = 2;
+            treeNode15.Text = "Sin Periodo Laboral";
+            treeNode16.Checked = true;
+            treeNode16.ImageIndex = 2;
+            treeNode16.Name = "Node1";
+            treeNode16.SelectedImageIndex = 2;
+            treeNode16.Text = "Situacion Laboral";
+            treeNode17.BackColor = System.Drawing.Color.Teal;
+            treeNode17.ImageIndex = 1;
+            treeNode17.Name = "Node0";
+            treeNode17.SelectedImageIndex = 1;
+            treeNode17.Text = "Todos";
+            treeNode18.ImageIndex = 2;
+            treeNode18.Name = "Node9";
+            treeNode18.SelectedImageIndex = 2;
+            treeNode18.Text = "Regimen CAS";
+            treeNode19.ImageIndex = 2;
+            treeNode19.Name = "Node10";
+            treeNode19.SelectedImageIndex = 2;
+            treeNode19.Text = "DL. 276";
+            treeNode20.ImageIndex = 2;
+            treeNode20.Name = "Node11";
+            treeNode20.SelectedImageIndex = 2;
+            treeNode20.Text = "DL. 728";
+            treeNode21.Checked = true;
+            treeNode21.ImageIndex = 2;
+            treeNode21.Name = "Node8";
+            treeNode21.SelectedImageIndex = 2;
+            treeNode21.Text = "Regimen Laboral";
+            treeNode22.Checked = true;
+            treeNode22.ImageIndex = 2;
+            treeNode22.Name = "Node0";
+            treeNode22.SelectedImageIndex = 2;
+            treeNode22.Text = "FILTRO DE TRABAJADORES";
+            treeNode22.ToolTipText = "Seleccione abajo para filtrar la lista de trabajadores.";
             this.treeFiltro.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode11});
+            treeNode22});
             this.treeFiltro.SelectedImageIndex = 0;
-            this.treeFiltro.Size = new System.Drawing.Size(205, 550);
+            this.treeFiltro.Size = new System.Drawing.Size(205, 541);
             this.treeFiltro.TabIndex = 0;
             this.treeFiltro.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeFiltro_AfterSelect);
             this.treeFiltro.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeFiltro_NodeMouseClick);
@@ -278,6 +326,22 @@
             this.imageLista.Images.SetKeyName(0, "161.ICO");
             this.imageLista.Images.SetKeyName(1, "WinXPSetV4 Icon 23.ico");
             this.imageLista.Images.SetKeyName(2, "123.ICO");
+            // 
+            // btnContratos
+            // 
+            this.btnContratos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnContratos.BackColor = System.Drawing.Color.MintCream;
+            this.btnContratos.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnContratos.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnContratos.ImageIndex = 1;
+            this.btnContratos.Location = new System.Drawing.Point(569, 485);
+            this.btnContratos.Name = "btnContratos";
+            this.btnContratos.Size = new System.Drawing.Size(114, 53);
+            this.btnContratos.TabIndex = 40;
+            this.btnContratos.Text = "&Contratos";
+            this.btnContratos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnContratos.UseVisualStyleBackColor = false;
+            this.btnContratos.Click += new System.EventHandler(this.btnContratos_Click);
             // 
             // label7
             // 
@@ -335,7 +399,7 @@
             this.btnDatosLaborales.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDatosLaborales.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDatosLaborales.ImageIndex = 1;
-            this.btnDatosLaborales.Location = new System.Drawing.Point(689, 494);
+            this.btnDatosLaborales.Location = new System.Drawing.Point(689, 485);
             this.btnDatosLaborales.Name = "btnDatosLaborales";
             this.btnDatosLaborales.Size = new System.Drawing.Size(114, 53);
             this.btnDatosLaborales.TabIndex = 32;
@@ -351,7 +415,7 @@
             this.btnDetalleTareo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDetalleTareo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDetalleTareo.ImageIndex = 1;
-            this.btnDetalleTareo.Location = new System.Drawing.Point(591, 568);
+            this.btnDetalleTareo.Location = new System.Drawing.Point(591, 559);
             this.btnDetalleTareo.Name = "btnDetalleTareo";
             this.btnDetalleTareo.Size = new System.Drawing.Size(114, 53);
             this.btnDetalleTareo.TabIndex = 30;
@@ -496,8 +560,8 @@
             // 
             this.dtgListaTrabajadores.AllowUserToAddRows = false;
             this.dtgListaTrabajadores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgListaTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaTrabajadores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_trabajador,
@@ -629,64 +693,18 @@
             this.menuApellidoMaterno.Text = "Copiar Apellido Materno";
             this.menuApellidoMaterno.Click += new System.EventHandler(this.menuApellidoMaterno_Click);
             // 
-            // btnNuevoTrabajador
-            // 
-            this.btnNuevoTrabajador.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoTrabajador.Image = global::CapaUsuario.Properties.Resources.add1;
-            this.btnNuevoTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNuevoTrabajador.Name = "btnNuevoTrabajador";
-            this.btnNuevoTrabajador.Size = new System.Drawing.Size(154, 25);
-            this.btnNuevoTrabajador.Text = "Nuevo Trabajador";
-            this.btnNuevoTrabajador.Click += new System.EventHandler(this.btnNuevoTrabajador_Click_1);
-            // 
-            // btnModificarTrabajador
-            // 
-            this.btnModificarTrabajador.Image = global::CapaUsuario.Properties.Resources.add_to_folder;
-            this.btnModificarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnModificarTrabajador.Name = "btnModificarTrabajador";
-            this.btnModificarTrabajador.Size = new System.Drawing.Size(137, 25);
-            this.btnModificarTrabajador.Text = "Modificar Trabajador";
-            this.btnModificarTrabajador.Click += new System.EventHandler(this.btnModificarTrabajador_Click);
-            // 
-            // btnEliminarTrabajador
-            // 
-            this.btnEliminarTrabajador.Image = global::CapaUsuario.Properties.Resources.delete_page;
-            this.btnEliminarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEliminarTrabajador.Name = "btnEliminarTrabajador";
-            this.btnEliminarTrabajador.Size = new System.Drawing.Size(129, 25);
-            this.btnEliminarTrabajador.Text = "Eliminar Trabajador";
-            this.btnEliminarTrabajador.Click += new System.EventHandler(this.btnEliminarTrabajador_Click_1);
-            // 
-            // btnImprimirLista
-            // 
-            this.btnImprimirLista.Image = global::CapaUsuario.Properties.Resources.chart;
-            this.btnImprimirLista.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImprimirLista.Name = "btnImprimirLista";
-            this.btnImprimirLista.Size = new System.Drawing.Size(100, 25);
-            this.btnImprimirLista.Text = "Imprimir Lista";
-            this.btnImprimirLista.Click += new System.EventHandler(this.btnImprimirLista_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_17;
-            this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(49, 25);
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
             // frmListaTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 600);
+            this.ClientSize = new System.Drawing.Size(1043, 591);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusTrabajadores);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmListaTrabajadores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de Trabajadores";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmListaTrabajadores_Load);
             this.statusTrabajadores.ResumeLayout(false);
             this.statusTrabajadores.PerformLayout();
@@ -756,5 +774,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuApellidoMaterno;
         private System.Windows.Forms.ImageList imageLista;
         private System.Windows.Forms.ToolStripStatusLabel lblNumeroTrabajadores;
+        private System.Windows.Forms.Button btnContratos;
     }
 }

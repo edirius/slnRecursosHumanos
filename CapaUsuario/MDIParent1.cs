@@ -410,6 +410,13 @@ namespace CapaUsuario
             RestaurarBBDDMySql();
         }
 
+        private void trabajadoresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Trabajador.frmListaTrabajadores fListaTrabajadores = new Trabajador.frmListaTrabajadores();
+            fListaTrabajadores.MdiParent = this;
+            fListaTrabajadores.Show();
+        }
+
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackupBBDDMySQL();

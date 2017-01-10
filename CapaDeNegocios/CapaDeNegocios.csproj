@@ -70,6 +70,7 @@
     <Compile Include="DataGridViewPrinter.cs" />
     <Compile Include="DatosLaborales\cCategoriaOcupacional.cs" />
     <Compile Include="DatosLaborales\cPeriodoTrabajador.cs" />
+    <Compile Include="Contrato\cPlantillaConrato.cs" />
     <Compile Include="DatosLaborales\cRegimenLaboral.cs" />
     <Compile Include="DatosLaborales\cRegimenPensionarioTrabajador.cs" />
     <Compile Include="DatosLaborales\cRegimenSaludTrabajador.cs" />
