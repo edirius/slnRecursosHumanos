@@ -17,7 +17,6 @@ namespace CapaUsuario.Contrato
         int sidtplanillacontrato = 0;
         int sidtcargo = 0;
         int sidtmeta = 0;
-        string smeta = "";
         int sidttrabajador = 0;
 
         public frmContrato()
@@ -110,62 +109,18 @@ namespace CapaUsuario.Contrato
             }
         }
 
-        public void RecibirDatos(int pidtcontrato, DateTime pfecharegistro, string pnumerodocumento, DateTime pfechainicio, DateTime pfechafin, decimal pmontopago, string pruc, int pidtplanillacontrato, int pidtcargo, int pidtmeta, string pmeta, int pidttrabajador, int pAccion)
+        public void RecibirDatos(int pidtcontrato, DateTime pfecharegistro, string pnumerodocumento, DateTime pfechainicio, DateTime pfechafin, decimal pmontopago, string pruc, int pidtplanillacontrato, int pidtcargo, int pidtmeta, int pidttrabajador, int pAccion)
         {
             sidtcontrato = pidtcontrato;
             dtpFechaRegistro.Value = pfecharegistro;
             txtNumeroContrato.Text = pnumerodocumento;
-            //if (pfechainicio == "")
-            //{
-            //    dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicioperiodo);
-            //    dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechainicioperiodo);
-            //    dtpFechaInicio.Value = Convert.ToDateTime(pfechainicioperiodo);
-            //}
-            //else
-            //{
-            //    if (pAccion == 1)
-            //    {
-            //        dtpFechaInicio.MinDate = Convert.ToDateTime(pfechafin).AddDays(1);
-            //        dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechafin).AddDays(1);
-            //        dtpFechaInicio.Value = Convert.ToDateTime(pfechafin).AddDays(1);
-            //    }
-            //    else
-            //    {
-            //        dtpFechaInicio.MinDate = Convert.ToDateTime(pfechainicioperiodo);
-            //        //dtpFechaInicio.MaxDate = Convert.ToDateTime(pfechainicio);
-            //        dtpFechaInicio.Value = Convert.ToDateTime(pfechainicio);
-            //    }
-            //}
-            //if (pfechafin == "")
-            //{
-            //    dtpFechaFin.MinDate = Convert.ToDateTime(pfechainicioperiodo).AddDays(1);
-            //    if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
-            //    dtpFechaFin.Value = Convert.ToDateTime(pfechainicioperiodo).AddDays(1);
-            //    dtpFechaFin.Format = DateTimePickerFormat.Custom;
-            //    dtpFechaFin.CustomFormat = " ";
-            //}
-            //else
-            //{
-            //    if (pAccion == 1)
-            //    {
-            //        dtpFechaFin.MinDate = Convert.ToDateTime(pfechafin).AddDays(1);
-            //        if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
-            //        dtpFechaFin.Format = DateTimePickerFormat.Custom;
-            //        dtpFechaFin.CustomFormat = " ";
-            //    }
-            //    else
-            //    {
-            //        dtpFechaFin.MinDate = Convert.ToDateTime(pfechainicio).AddDays(1);
-            //        if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
-            //        dtpFechaFin.Value = Convert.ToDateTime(pfechafin);
-            //    }
-            //}
+            dtpFechaInicio.Value = pfechainicio;
+            dtpFechaFin.Value = pfechafin;
             nupMontoPago.Value = pmontopago;
             txtRUC.Text = pruc;
-            cboPlantillaContrato.SelectedValue = pidtplanillacontrato;
-            cboCargo.SelectedValue = pidtcargo;
+            sidtplanillacontrato = pidtplanillacontrato;
+            sidtcargo = pidtcargo;
             sidtmeta = pidtmeta;
-            smeta = pmeta;
             sidttrabajador = pidttrabajador;
             iAccion = pAccion;
         }
@@ -176,8 +131,8 @@ namespace CapaUsuario.Contrato
             cboPlantillaContrato.DataSource = miPlantillaContrato.ListarPlantillaContrato();
             cboPlantillaContrato.DisplayMember = "descripcion";
             cboPlantillaContrato.ValueMember = "idtplantillacontrato";
-            //if (splantillacontrato == "") { cboPlantillaContrato.SelectedIndex = -1; }
-            //else { cboPlantillaContrato.Text = splantillacontrato; }
+            if (sidtplanillacontrato == 0) { cboPlantillaContrato.SelectedIndex = -1; }
+            else { cboPlantillaContrato.SelectedValue = sidtplanillacontrato.ToString(); }
         }
 
         private void CargarCargo()
@@ -194,35 +149,40 @@ namespace CapaUsuario.Contrato
             cboCargo.AutoCompleteCustomSource = coleccion;
             cboCargo.AutoCompleteMode = AutoCompleteMode.Suggest;
             cboCargo.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            //if (scargo == "") { cboCargo.SelectedIndex = -1; }
-            //else { cboCargo.Text = scargo; }
+            if (sidtcargo == 0) { cboCargo.SelectedIndex = -1; }
+            else { cboCargo.SelectedValue = sidtcargo.ToString(); }
         }
 
         private void CargarMeta()
         {
-            //CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
-            //cboMeta.DataSource = miMeta.ListarMetas();
-            //cboMeta.DisplayMember = "nombre";
-            //cboMeta.ValueMember = "idtmeta";
-            //if (smeta == "") { cboMeta.SelectedIndex = -1; }
-            //else { cboMeta.Text = smeta; }
-
-            if (cboAño.Text != "")
+            try
             {
-                DataTable oDataMeta = new DataTable();
-                CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
-                oDataMeta = miMeta.ListarMetas();
-                Dictionary<string, string> test = new Dictionary<string, string>();
-                foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+                //CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
+                //cboMeta.DataSource = miMeta.ListarMetas();
+                //cboMeta.DisplayMember = "nombre";
+                //cboMeta.ValueMember = "idtmeta";
+                //if (smeta == "") { cboMeta.SelectedIndex = -1; }
+                //else { cboMeta.Text = smeta; }
+
+                if (cboAño.Text != "")
                 {
-                    test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+                    DataTable oDataMeta = new DataTable();
+                    CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
+                    oDataMeta = miMeta.ListarMetas();
+                    Dictionary<string, string> test = new Dictionary<string, string>();
+                    foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+                    {
+                        test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+                    }
+                    cboMeta.DataSource = new BindingSource(test, null);
+                    cboMeta.DisplayMember = "Value";
+                    cboMeta.ValueMember = "Key";
                 }
-                cboMeta.DataSource = new BindingSource(test, null);
-                cboMeta.DisplayMember = "Value";
-                cboMeta.ValueMember = "Key";
+                if (sidtmeta == 0) { cboMeta.SelectedIndex = -1; }
+                else { cboMeta.SelectedValue = sidtmeta.ToString(); }
             }
-            if (sidtmeta == 0) { cboMeta.SelectedIndex = -1; }
-            else { cboMeta.SelectedValue = sidtmeta.ToString(); }
+            catch
+            { }
         }
 
         private void CargarAños()

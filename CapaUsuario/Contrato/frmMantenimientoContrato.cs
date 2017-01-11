@@ -27,6 +27,7 @@ namespace CapaUsuario.Contrato
         int sidttrabajador = 0;
 
         CapaDeNegocios.Contrato.cContrato miContrato = new CapaDeNegocios.Contrato.cContrato();
+        string srutaarchivo = "";
 
         public frmMantenimientoContrato()
         {
@@ -56,7 +57,7 @@ namespace CapaUsuario.Contrato
                 //}
             //}
             CapaUsuario.Contrato.frmContrato fContrato = new frmContrato();
-            fContrato.RecibirDatos(0, DateTime.Now, "", DateTime.Now, DateTime.Now, 0, "", sidtplantillacontrato, sidtcargo, sidtmeta, "", sidttrabajador, 1);
+            fContrato.RecibirDatos(0, DateTime.Now, "", DateTime.Now, DateTime.Now, 0, "", 0, 0, 0, sidttrabajador, 1);
             if (fContrato.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -71,7 +72,7 @@ namespace CapaUsuario.Contrato
                 return;
             }
             CapaUsuario.Contrato.frmContrato fContrato = new frmContrato();
-            fContrato.RecibirDatos(sidtcontrato, sfecharegistro, snumerodocumento, sfechainicio, sfechafin, smontopago, sruc, sidtplantillacontrato, sidtcargo, sidtmeta, "", sidttrabajador, 2);
+            fContrato.RecibirDatos(sidtcontrato, sfecharegistro, snumerodocumento, sfechainicio, sfechafin, smontopago, sruc, sidtplantillacontrato, sidtcargo, sidtmeta, sidttrabajador, 2);
             if (fContrato.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -86,7 +87,27 @@ namespace CapaUsuario.Contrato
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                CapaDeNegocios.Contrato.cDocumentoWord cMiword = new CapaDeNegocios.Contrato.cDocumentoWord();
+                CargarPlanillaContrato();
+                cMiword.trabajador = txtTrabajador.Text;
+                cMiword.dni = "41919785";
+                cMiword.direccion = "Urb.Balconcillo B-1";
+                cMiword.distrito = "Cusco";
+                cMiword.provincia = "Cusco";
+                cMiword.departamento = "Cusco";
+                cMiword.direccion = "Urb. Balconcillo B-1";
+                cMiword.cargo = "Jefe de la Unidad de Recursos Humanos";
+                cMiword.monto = "S/. 1500.00 (Mil quinientos Nuevos Soles)";
+                cMiword.fecha = DateTime.Now.ToLongDateString();
+                cMiword.rutaarchivo = srutaarchivo;
+                cMiword.Iniciar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void dgvContratos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -134,6 +155,17 @@ namespace CapaUsuario.Contrato
                 dgvContratos.Rows[dgvContratos.Rows.Count - 1].Cells[3].Selected = true;
                 DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, dgvContratos.Rows.Count - 1);
                 dgvContratos_CellClick(dgvContratos, cea);
+            }
+        }
+
+        private void CargarPlanillaContrato()
+        {
+            DataTable oDataPlantillaContrato = new DataTable();
+            CapaDeNegocios.Contrato.cPlantillaContrato miPlantillaContrato = new CapaDeNegocios.Contrato.cPlantillaContrato();
+            oDataPlantillaContrato = miPlantillaContrato.ListarPlantillaContrato();
+            foreach (DataRow row in oDataPlantillaContrato.Select("idtplantillacontrato = '" + sidtplantillacontrato + "'"))
+            {
+                srutaarchivo = row[2].ToString();
             }
         }
     }

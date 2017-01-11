@@ -26,6 +26,13 @@ namespace CapaUsuario.Contrato
             CargarPlantillasContratos();
         }
 
+        private void btnRuta_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog Ofd = new OpenFileDialog();
+            Ofd.ShowDialog();
+            txtDireccion.Text = Ofd.FileName;
+        }
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             iAccion = 1;
