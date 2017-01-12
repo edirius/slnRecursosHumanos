@@ -27,7 +27,10 @@ namespace CapaUsuario.Contrato
         int sidttrabajador = 0;
 
         CapaDeNegocios.Contrato.cContrato miContrato = new CapaDeNegocios.Contrato.cContrato();
+        CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
         string srutaarchivo = "";
+        string scargo = "";
+        string smeta = "";
 
         public frmMantenimientoContrato()
         {
@@ -90,17 +93,20 @@ namespace CapaUsuario.Contrato
             try
             {
                 CapaDeNegocios.Contrato.cDocumentoWord cMiword = new CapaDeNegocios.Contrato.cDocumentoWord();
+                miTrabajador.traerTrabajador(sidttrabajador);
                 CargarPlanillaContrato();
                 cMiword.trabajador = txtTrabajador.Text;
-                cMiword.dni = "41919785";
-                cMiword.direccion = "Urb.Balconcillo B-1";
-                cMiword.distrito = "Cusco";
-                cMiword.provincia = "Cusco";
-                cMiword.departamento = "Cusco";
-                cMiword.direccion = "Urb. Balconcillo B-1";
-                cMiword.cargo = "Jefe de la Unidad de Recursos Humanos";
-                cMiword.monto = "S/. 1500.00 (Mil quinientos Nuevos Soles)";
-                cMiword.fecha = DateTime.Now.ToLongDateString();
+                cMiword.dni = miTrabajador.Dni;
+                cMiword.direccion = miTrabajador.Direccion;
+                cMiword.distrito = miTrabajador.MiDistrito.Descripcion;
+                cMiword.provincia = miTrabajador.MiProvincia.Descripcion;
+                cMiword.departamento = miTrabajador.MiDepartamento.Descripcion;
+                cMiword.monto = smontopago.ToString();
+                cMiword.fecharegistro = sfecharegistro.ToString();
+                cMiword.fechainicio = sfechainicio.ToString();
+                cMiword.fechafin = sfechafin.ToString();
+                cMiword.cargo = scargo;
+                cMiword.meta = smeta;
                 cMiword.rutaarchivo = srutaarchivo;
                 cMiword.Iniciar();
             }
@@ -166,6 +172,28 @@ namespace CapaUsuario.Contrato
             foreach (DataRow row in oDataPlantillaContrato.Select("idtplantillacontrato = '" + sidtplantillacontrato + "'"))
             {
                 srutaarchivo = row[2].ToString();
+            }
+        }
+
+        private void CargarCargo()
+        {
+            DataTable oDataCargo = new DataTable();
+            CapaDeNegocios.Contrato.cCargo miCargo = new CapaDeNegocios.Contrato.cCargo();
+            oDataCargo = miCargo.ListaCargos();
+            foreach (DataRow row in oDataCargo.Select("idtcargo = '" + sidtcargo + "'"))
+            {
+                scargo = row[1].ToString();
+            }
+        }
+
+        private void CargarMeta()
+        {
+            DataTable oDataMeta = new DataTable();
+            CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
+            oDataMeta = miMeta.ListarMetas();
+            foreach (DataRow row in oDataMeta.Select("idtmeta = '" + sidtmeta + "'"))
+            {
+                smeta = row[2].ToString();
             }
         }
     }

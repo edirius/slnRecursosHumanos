@@ -417,6 +417,13 @@ namespace CapaUsuario
             fListaTrabajadores.Show();
         }
 
+        private void numeraciónContratosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Contrato.frmNumeracionContrato fNumeracionContrato = new Contrato.frmNumeracionContrato();
+            fNumeracionContrato.MdiParent = this;
+            fNumeracionContrato.Show();
+        }
+
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackupBBDDMySQL();

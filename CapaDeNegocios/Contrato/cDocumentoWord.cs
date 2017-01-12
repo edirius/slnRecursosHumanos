@@ -20,9 +20,12 @@ namespace CapaDeNegocios.Contrato
         public string distrito;
         public string provincia;
         public string departamento;
-        public string fecha;
         public string monto;
+        public string fecharegistro;
+        public string fechainicio;
+        public string fechafin;
         public string cargo;
+        public string meta;
         public string rutaarchivo;
 
         public void Iniciar()
@@ -56,14 +59,14 @@ namespace CapaDeNegocios.Contrato
             BuscarReemplazar("@Departamento", departamento);
             BuscarReemplazar("@Monto", monto);
             BuscarReemplazar("@Cargo", cargo);
-            BuscarReemplazar("@Fecha", fecha);
+            BuscarReemplazar("@Fecha", fecharegistro);
         }
 
         private void BuscarReemplazar(string variable, string valor)
         {
-            Find findObject = miWord.Selection.Find ;
+            Find findObject = miWord.Selection.Find;
             findObject.ClearFormatting();
-            findObject.Text =variable;
+            findObject.Text = variable;
             findObject.Replacement.ClearFormatting();
             findObject.Replacement.Text = valor;
 

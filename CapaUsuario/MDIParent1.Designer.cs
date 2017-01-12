@@ -92,6 +92,8 @@
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contratosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trabajadoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -105,8 +107,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
-            this.contratosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.trabajadoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.numeraciónContratosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -625,6 +626,22 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutToolStripMenuItem.Text = "&Sobre ... ...";
             // 
+            // contratosToolStripMenuItem
+            // 
+            this.contratosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trabajadoresToolStripMenuItem1,
+            this.numeraciónContratosToolStripMenuItem});
+            this.contratosToolStripMenuItem.Name = "contratosToolStripMenuItem";
+            this.contratosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.contratosToolStripMenuItem.Text = "Contratos";
+            // 
+            // trabajadoresToolStripMenuItem1
+            // 
+            this.trabajadoresToolStripMenuItem1.Name = "trabajadoresToolStripMenuItem1";
+            this.trabajadoresToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
+            this.trabajadoresToolStripMenuItem1.Text = "Trabajadores";
+            this.trabajadoresToolStripMenuItem1.Click += new System.EventHandler(this.trabajadoresToolStripMenuItem1_Click);
+            // 
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -742,20 +759,12 @@
             this.dgvCargo.TabIndex = 5;
             this.dgvCargo.Visible = false;
             // 
-            // contratosToolStripMenuItem
+            // numeraciónContratosToolStripMenuItem
             // 
-            this.contratosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.trabajadoresToolStripMenuItem1});
-            this.contratosToolStripMenuItem.Name = "contratosToolStripMenuItem";
-            this.contratosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.contratosToolStripMenuItem.Text = "Contratos";
-            // 
-            // trabajadoresToolStripMenuItem1
-            // 
-            this.trabajadoresToolStripMenuItem1.Name = "trabajadoresToolStripMenuItem1";
-            this.trabajadoresToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.trabajadoresToolStripMenuItem1.Text = "Trabajadores";
-            this.trabajadoresToolStripMenuItem1.Click += new System.EventHandler(this.trabajadoresToolStripMenuItem1_Click);
+            this.numeraciónContratosToolStripMenuItem.Name = "numeraciónContratosToolStripMenuItem";
+            this.numeraciónContratosToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.numeraciónContratosToolStripMenuItem.Text = "Numeración Contratos";
+            this.numeraciónContratosToolStripMenuItem.Click += new System.EventHandler(this.numeraciónContratosToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -869,6 +878,7 @@
         private System.Windows.Forms.ToolStripMenuItem restaurarCopiaDeSeguridadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contratosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trabajadoresToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem numeraciónContratosToolStripMenuItem;
     }
 }
 

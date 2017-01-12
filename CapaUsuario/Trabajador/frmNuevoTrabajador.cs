@@ -61,7 +61,6 @@ namespace CapaUsuario.Trabajador
             {
                 pbFoto.Image = ConvertImage.ByteArrayToImage(miTrabajador.Foto);
             }
-
             chkEssaludVida.Checked = miTrabajador.Essaludvida;
             chkRenta4ta.Checked = miTrabajador.Suspencionrenta4ta;
             txtNroRenta4ta.Text = miTrabajador.NroRenta4ta;
@@ -69,44 +68,44 @@ namespace CapaUsuario.Trabajador
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-             miTrabajador.IdTrabajador = Convert.ToInt16 ( txtCodigo.Text);
-             miTrabajador.Dni = txtDNI.Text;
-             miTrabajador.Nombres = txtNombres.Text;
-             miTrabajador.ApellidoPaterno = txtApellidoPaterno.Text;
-             miTrabajador.ApellidoMaterno = txtApellidoMaterno.Text;
-             switch (cboEstadoCivil.Text)
-             {
-                 case "Casado":
-                     miTrabajador.EstadoCivil = enumEstadoCivil.Casado;
-                     break;
-                 case "Soltero":
-                     miTrabajador.EstadoCivil= enumEstadoCivil.Soltero ;
-                     break;
-                 case "Viudo":
-                     miTrabajador.EstadoCivil = enumEstadoCivil.Viudo;
-                     break;
-                 case "Divorciado":
-                     miTrabajador.EstadoCivil = enumEstadoCivil.Divorciado ;
-                     break;
-                 default:
-                     break;
-             }
+            miTrabajador.IdTrabajador = Convert.ToInt16(txtCodigo.Text);
+            miTrabajador.Dni = txtDNI.Text;
+            miTrabajador.Nombres = txtNombres.Text;
+            miTrabajador.ApellidoPaterno = txtApellidoPaterno.Text;
+            miTrabajador.ApellidoMaterno = txtApellidoMaterno.Text;
+            switch (cboEstadoCivil.Text)
+            {
+                case "Casado":
+                    miTrabajador.EstadoCivil = enumEstadoCivil.Casado;
+                    break;
+                case "Soltero":
+                    miTrabajador.EstadoCivil = enumEstadoCivil.Soltero;
+                    break;
+                case "Viudo":
+                    miTrabajador.EstadoCivil = enumEstadoCivil.Viudo;
+                    break;
+                case "Divorciado":
+                    miTrabajador.EstadoCivil = enumEstadoCivil.Divorciado;
+                    break;
+                default:
+                    break;
+            }
 
-             switch (cboSexo.Text)
-             {
-                 case "Masculino":
-                     miTrabajador.Sexo = EnumSexo.Masculino;
-                     break;
-                 case "Femenino":
-                     miTrabajador.Sexo = EnumSexo.Femenino;
-                     break;
-                 default:
-                     break;
-             } 
+            switch (cboSexo.Text)
+            {
+                case "Masculino":
+                    miTrabajador.Sexo = EnumSexo.Masculino;
+                    break;
+                case "Femenino":
+                    miTrabajador.Sexo = EnumSexo.Femenino;
+                    break;
+                default:
+                    break;
+            }
             miTrabajador.Direccion = txtDireccion.Text;
-            miTrabajador.CelularTrabajo =  txtCelularTrabajo.Text;
+            miTrabajador.CelularTrabajo = txtCelularTrabajo.Text;
             miTrabajador.CelularPersonal = txtCelularPersonal.Text;
-            miTrabajador.FechaNacimiento =  dtpFechaNacimiento.Value;
+            miTrabajador.FechaNacimiento = dtpFechaNacimiento.Value;
             miTrabajador.CorreoElectronico = txtCorreo.Text;
             miTrabajador.NombreVia = txtNombreVia.Text;
             miTrabajador.NumeroVia = txtNumeroVia.Text;
@@ -354,7 +353,6 @@ namespace CapaUsuario.Trabajador
         #endregion
 
         #region CodigoContrato
-
         cContrato miContrato = new cContrato();
         Boolean ingresoPrimeraVez { get; set; }
         cCadenaProgramaticaFuncional miCadenaProgramaticaFuncional = new cCadenaProgramaticaFuncional();
@@ -420,11 +418,8 @@ namespace CapaUsuario.Trabajador
             //    dtgTipoTrabajador.DataSource = miTipoTrabajador.ListarPeriodoTipoTrabajador();
             //}
         }
-       
-
         #endregion
 
-        
         private void btnNuevoTipoTrabajador_Click(object sender, EventArgs e)
         {
             frmNuevoTipoTrabajador fNuevoTipoTrabajador = new frmNuevoTipoTrabajador();

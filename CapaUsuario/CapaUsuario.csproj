@@ -111,6 +111,12 @@
     <Compile Include="Asistencia\frmBuscarSubsidio.Designer.cs">
       <DependentUpon>frmBuscarSubsidio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Contrato\frmNumeraciónContrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contrato\frmNumeraciónContrato.Designer.cs">
+      <DependentUpon>frmNumeraciónContrato.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConvertImage.cs" />
     <Compile Include="ExportarSunat\frmCompararDatosAFP.cs">
       <SubType>Form</SubType>
@@ -1127,6 +1133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Asistencia\frmBuscarSubsidio.resx">
       <DependentUpon>frmBuscarSubsidio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contrato\frmNumeraciónContrato.resx">
+      <DependentUpon>frmNumeraciónContrato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmCompararDatosAFP.resx">
       <DependentUpon>frmCompararDatosAFP.cs</DependentUpon>
