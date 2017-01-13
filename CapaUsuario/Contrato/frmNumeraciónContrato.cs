@@ -57,12 +57,61 @@ namespace CapaUsuario.Contrato
 
         private void CargarDatos()
         {
-            DataTable oDataContrato = new DataTable();
-            oDataContrato = miContrato.ListarContrato(0);
-            foreach (DataRow row in oDataContrato.Select("idtplantillacontrato = '" + sidtplantillacontrato + "'"))
+            dgvContratos.Rows.Clear();
+            int columna = 0;
+            int fila = 0;
+            int ultimonro = 0;
+            if (miContrato.ListarNumeroContrato(sidtplantillacontrato).Rows.Count <= 10)
             {
-                //srutaarchivo = row[2].ToString();
+                dgvContratos.Rows.Add();
             }
+            else if (miContrato.ListarNumeroContrato(sidtplantillacontrato).Rows.Count <= 20)
+            {
+                dgvContratos.Rows.Add();
+                dgvContratos.Rows.Add();
+            }
+            else if (miContrato.ListarNumeroContrato(sidtplantillacontrato).Rows.Count <= 30)
+            {
+                dgvContratos.Rows.Add();
+                dgvContratos.Rows.Add();
+                dgvContratos.Rows.Add();
+            }
+            else if (miContrato.ListarNumeroContrato(sidtplantillacontrato).Rows.Count <= 40)
+            {
+                dgvContratos.Rows.Add();
+                dgvContratos.Rows.Add();
+                dgvContratos.Rows.Add();
+                dgvContratos.Rows.Add();
+            }
+            else if (miContrato.ListarNumeroContrato(sidtplantillacontrato).Rows.Count <= 50)
+            {
+                dgvContratos.Rows.Add();
+                dgvContratos.Rows.Add();
+                dgvContratos.Rows.Add();
+                dgvContratos.Rows.Add();
+                dgvContratos.Rows.Add();
+            }
+
+            foreach (DataRow row in miContrato.ListarNumeroContrato(sidtplantillacontrato).Rows)
+            {
+                ultimonro = Convert.ToInt32(row[2]);
+                dgvContratos.Rows[fila].Cells[columna].Style.BackColor = Color.Red;
+                dgvContratos.Rows[fila].Cells[columna].Value = row[2].ToString();
+                columna += 1;
+                if (columna == 10)
+                {
+                    fila += 1;
+                }
+            }
+            if (ultimonro < 10)
+            {
+                dgvContratos.Rows[fila].Cells[columna].Value = "0" + (ultimonro + 1);
+            }
+            else
+            {
+                dgvContratos.Rows[fila].Cells[columna].Value = ultimonro + 1;
+            }
+            dgvContratos.ClearSelection();
         }
     }
 }

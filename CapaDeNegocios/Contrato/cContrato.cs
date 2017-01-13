@@ -100,5 +100,10 @@ namespace CapaDeNegocios.Contrato
             Conexion.GDatos.Ejecutar("spELiminarContrato", IdtContrato);
             return true;
         }
+
+        public DataTable ListarNumeroContrato(int Idtplantillacontrato)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarNumeroContrato", Idtplantillacontrato);
+        }
     }
 }
