@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.gbPeriodoCOntrato = new System.Windows.Forms.GroupBox();
+            this.btnNumeracion = new System.Windows.Forms.Button();
             this.btnPlantillaContrato = new System.Windows.Forms.Button();
             this.cboPlantillaContrato = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,6 +64,7 @@
             this.gbPeriodoCOntrato.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbPeriodoCOntrato.Controls.Add(this.btnNumeracion);
             this.gbPeriodoCOntrato.Controls.Add(this.btnPlantillaContrato);
             this.gbPeriodoCOntrato.Controls.Add(this.cboPlantillaContrato);
             this.gbPeriodoCOntrato.Controls.Add(this.label2);
@@ -85,6 +87,16 @@
             this.gbPeriodoCOntrato.TabIndex = 26;
             this.gbPeriodoCOntrato.TabStop = false;
             this.gbPeriodoCOntrato.Text = "Condiciones";
+            // 
+            // btnNumeracion
+            // 
+            this.btnNumeracion.Location = new System.Drawing.Point(301, 44);
+            this.btnNumeracion.Name = "btnNumeracion";
+            this.btnNumeracion.Size = new System.Drawing.Size(46, 23);
+            this.btnNumeracion.TabIndex = 69;
+            this.btnNumeracion.Text = "...";
+            this.btnNumeracion.UseVisualStyleBackColor = true;
+            this.btnNumeracion.Click += new System.EventHandler(this.btnNumeracion_Click);
             // 
             // btnPlantillaContrato
             // 
@@ -292,6 +304,7 @@
             // 
             this.txtNumeroContrato.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNumeroContrato.Enabled = false;
             this.txtNumeroContrato.Location = new System.Drawing.Point(118, 46);
             this.txtNumeroContrato.Name = "txtNumeroContrato";
             this.txtNumeroContrato.Size = new System.Drawing.Size(174, 20);
@@ -401,5 +414,6 @@
         private System.Windows.Forms.DateTimePicker dtpFechaRegistro;
         private System.Windows.Forms.Button btnPlantillaContrato;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnNumeracion;
     }
 }

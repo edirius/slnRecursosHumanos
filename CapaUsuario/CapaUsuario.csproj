@@ -172,6 +172,12 @@
     <Compile Include="Planilla\frmMantenimientoDetallePlanillaRegidores.Designer.cs">
       <DependentUpon>frmMantenimientoDetallePlanillaRegidores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\crReporteContratos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crReporteContratos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\crResumenPlanillas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1220,6 +1226,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Planilla\frmMantenimientoDetallePlanilla.resx">
       <DependentUpon>frmMantenimientoDetallePlanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crReporteContratos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crReporteContratos.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\crResumenPlanillas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -14,10 +14,12 @@ namespace CapaUsuario.Contrato
     {
         int iAccion = 0;
         int sidtcontrato = 0;
-        int sidtplanillacontrato = 0;
+        int sidtplantillacontrato = 0;
         int sidtcargo = 0;
         int sidtmeta = 0;
         int sidttrabajador = 0;
+        int sidtplantillacontratoactual = 0;
+        string snumerocontratoactual = "";
 
         public frmContrato()
         {
@@ -46,7 +48,7 @@ namespace CapaUsuario.Contrato
             miContrato.FechaFin = dtpFechaFin.Value;
             miContrato.MontoPago = Convert.ToDecimal(nupMontoPago.Value);
             miContrato.RUC = txtRUC.Text;
-            miContrato.Idtplantillacontrato = sidtplanillacontrato;
+            miContrato.Idtplantillacontrato = sidtplantillacontrato;
             miContrato.IdtCargo = sidtcargo;
             miContrato.IdtMeta = sidtmeta;
             miContrato.Idttrabajador = sidttrabajador;
@@ -85,11 +87,29 @@ namespace CapaUsuario.Contrato
             }
         }
 
+        private void btnNumeracion_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Contrato.frmNumeracionContrato fNumeracionContrato = new Contrato.frmNumeracionContrato();
+            fNumeracionContrato.RecibirDatos(sidtplantillacontrato);
+            if (fNumeracionContrato.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                txtNumeroContrato.Text = fNumeracionContrato.snumerocontrato;
+            }
+        }
+
         private void cboPlantillaContrato_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboPlantillaContrato.Text != "System.Data.DataRowView" && cboPlantillaContrato.ValueMember != "")
             {
-                sidtplanillacontrato = Convert.ToInt32(cboPlantillaContrato.SelectedValue);
+                sidtplantillacontrato = Convert.ToInt32(cboPlantillaContrato.SelectedValue);
+                if (sidtplantillacontrato == sidtplantillacontratoactual)
+                {
+                    txtNumeroContrato.Text = snumerocontratoactual;
+                }
+                else
+                {
+                    txtNumeroContrato.Text = "";
+                }
             }
         }
 
@@ -114,11 +134,13 @@ namespace CapaUsuario.Contrato
             sidtcontrato = pidtcontrato;
             dtpFechaRegistro.Value = pfecharegistro;
             txtNumeroContrato.Text = pnumerodocumento;
+            snumerocontratoactual = pnumerodocumento;
             dtpFechaInicio.Value = pfechainicio;
             dtpFechaFin.Value = pfechafin;
             nupMontoPago.Value = pmontopago;
             txtRUC.Text = pruc;
-            sidtplanillacontrato = pidtplanillacontrato;
+            sidtplantillacontrato = pidtplanillacontrato;
+            sidtplantillacontratoactual = pidtplanillacontrato;
             sidtcargo = pidtcargo;
             sidtmeta = pidtmeta;
             sidttrabajador = pidttrabajador;
@@ -131,8 +153,8 @@ namespace CapaUsuario.Contrato
             cboPlantillaContrato.DataSource = miPlantillaContrato.ListarPlantillaContrato();
             cboPlantillaContrato.DisplayMember = "descripcion";
             cboPlantillaContrato.ValueMember = "idtplantillacontrato";
-            if (sidtplanillacontrato == 0) { cboPlantillaContrato.SelectedIndex = -1; }
-            else { cboPlantillaContrato.SelectedValue = sidtplanillacontrato.ToString(); }
+            if (sidtplantillacontrato == 0) { cboPlantillaContrato.SelectedIndex = -1; }
+            else { cboPlantillaContrato.SelectedValue = sidtplantillacontrato.ToString(); }
         }
 
         private void CargarCargo()
