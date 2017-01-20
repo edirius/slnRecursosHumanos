@@ -132,6 +132,11 @@ namespace CapaUsuario.Planilla
             }
         }
 
+        private void btnRenta5ta_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnAgregarTrabajador_Click(object sender, EventArgs e)
         {
             try

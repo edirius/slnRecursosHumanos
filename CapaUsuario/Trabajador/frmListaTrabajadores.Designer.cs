@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Todos");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Activos", 2, 2);
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Inactivos", 2, 2);
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Sin Periodo Laboral", 2, 2);
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Situacion Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
-            treeNode12,
-            treeNode13,
-            treeNode14,
-            treeNode15});
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Todos", 1, 1);
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Regimen CAS", 2, 2);
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("DL. 276", 2, 2);
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("DL. 728", 2, 2);
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Regimen Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
-            treeNode17,
-            treeNode18,
-            treeNode19,
-            treeNode20});
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", 2, 2, new System.Windows.Forms.TreeNode[] {
-            treeNode16,
-            treeNode21});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Todos");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Activos", 2, 2);
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Inactivos", 2, 2);
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Sin Periodo Laboral", 2, 2);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Situacion Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Todos", 1, 1);
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Regimen CAS", 2, 2);
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("DL. 276", 2, 2);
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("DL. 728", 2, 2);
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Regimen Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", 2, 2, new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode10});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTrabajadores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusTrabajadores = new System.Windows.Forms.StatusStrip();
             this.lblNumeroTrabajadores = new System.Windows.Forms.ToolStripStatusLabel();
@@ -68,6 +68,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeFiltro = new System.Windows.Forms.TreeView();
             this.imageLista = new System.Windows.Forms.ImageList(this.components);
+            this.btnReporteContratos = new System.Windows.Forms.Button();
             this.btnContratos = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.btnBuscarXMeta = new System.Windows.Forms.Button();
@@ -230,6 +231,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnReporteContratos);
             this.splitContainer1.Panel2.Controls.Add(this.btnContratos);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarXMeta);
@@ -262,57 +264,57 @@
             this.treeFiltro.ImageList = this.imageLista;
             this.treeFiltro.Location = new System.Drawing.Point(0, 0);
             this.treeFiltro.Name = "treeFiltro";
-            treeNode12.BackColor = System.Drawing.Color.Teal;
-            treeNode12.Name = "Node3";
-            treeNode12.SelectedImageIndex = 0;
-            treeNode12.Text = "Todos";
-            treeNode13.ImageIndex = 2;
-            treeNode13.Name = "Node4";
-            treeNode13.SelectedImageIndex = 2;
-            treeNode13.Text = "Activos";
-            treeNode14.ImageIndex = 2;
-            treeNode14.Name = "Node5";
-            treeNode14.SelectedImageIndex = 2;
-            treeNode14.Text = "Inactivos";
-            treeNode15.ImageIndex = 2;
-            treeNode15.Name = "Node6";
-            treeNode15.SelectedImageIndex = 2;
-            treeNode15.Text = "Sin Periodo Laboral";
-            treeNode16.Checked = true;
-            treeNode16.ImageIndex = 2;
-            treeNode16.Name = "Node1";
-            treeNode16.SelectedImageIndex = 2;
-            treeNode16.Text = "Situacion Laboral";
-            treeNode17.BackColor = System.Drawing.Color.Teal;
-            treeNode17.ImageIndex = 1;
-            treeNode17.Name = "Node0";
-            treeNode17.SelectedImageIndex = 1;
-            treeNode17.Text = "Todos";
-            treeNode18.ImageIndex = 2;
-            treeNode18.Name = "Node9";
-            treeNode18.SelectedImageIndex = 2;
-            treeNode18.Text = "Regimen CAS";
-            treeNode19.ImageIndex = 2;
-            treeNode19.Name = "Node10";
-            treeNode19.SelectedImageIndex = 2;
-            treeNode19.Text = "DL. 276";
-            treeNode20.ImageIndex = 2;
-            treeNode20.Name = "Node11";
-            treeNode20.SelectedImageIndex = 2;
-            treeNode20.Text = "DL. 728";
-            treeNode21.Checked = true;
-            treeNode21.ImageIndex = 2;
-            treeNode21.Name = "Node8";
-            treeNode21.SelectedImageIndex = 2;
-            treeNode21.Text = "Regimen Laboral";
-            treeNode22.Checked = true;
-            treeNode22.ImageIndex = 2;
-            treeNode22.Name = "Node0";
-            treeNode22.SelectedImageIndex = 2;
-            treeNode22.Text = "FILTRO DE TRABAJADORES";
-            treeNode22.ToolTipText = "Seleccione abajo para filtrar la lista de trabajadores.";
+            treeNode1.BackColor = System.Drawing.Color.Teal;
+            treeNode1.Name = "Node3";
+            treeNode1.SelectedImageIndex = 0;
+            treeNode1.Text = "Todos";
+            treeNode2.ImageIndex = 2;
+            treeNode2.Name = "Node4";
+            treeNode2.SelectedImageIndex = 2;
+            treeNode2.Text = "Activos";
+            treeNode3.ImageIndex = 2;
+            treeNode3.Name = "Node5";
+            treeNode3.SelectedImageIndex = 2;
+            treeNode3.Text = "Inactivos";
+            treeNode4.ImageIndex = 2;
+            treeNode4.Name = "Node6";
+            treeNode4.SelectedImageIndex = 2;
+            treeNode4.Text = "Sin Periodo Laboral";
+            treeNode5.Checked = true;
+            treeNode5.ImageIndex = 2;
+            treeNode5.Name = "Node1";
+            treeNode5.SelectedImageIndex = 2;
+            treeNode5.Text = "Situacion Laboral";
+            treeNode6.BackColor = System.Drawing.Color.Teal;
+            treeNode6.ImageIndex = 1;
+            treeNode6.Name = "Node0";
+            treeNode6.SelectedImageIndex = 1;
+            treeNode6.Text = "Todos";
+            treeNode7.ImageIndex = 2;
+            treeNode7.Name = "Node9";
+            treeNode7.SelectedImageIndex = 2;
+            treeNode7.Text = "Regimen CAS";
+            treeNode8.ImageIndex = 2;
+            treeNode8.Name = "Node10";
+            treeNode8.SelectedImageIndex = 2;
+            treeNode8.Text = "DL. 276";
+            treeNode9.ImageIndex = 2;
+            treeNode9.Name = "Node11";
+            treeNode9.SelectedImageIndex = 2;
+            treeNode9.Text = "DL. 728";
+            treeNode10.Checked = true;
+            treeNode10.ImageIndex = 2;
+            treeNode10.Name = "Node8";
+            treeNode10.SelectedImageIndex = 2;
+            treeNode10.Text = "Regimen Laboral";
+            treeNode11.Checked = true;
+            treeNode11.ImageIndex = 2;
+            treeNode11.Name = "Node0";
+            treeNode11.SelectedImageIndex = 2;
+            treeNode11.Text = "FILTRO DE TRABAJADORES";
+            treeNode11.ToolTipText = "Seleccione abajo para filtrar la lista de trabajadores.";
             this.treeFiltro.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode22});
+            treeNode11});
             this.treeFiltro.SelectedImageIndex = 0;
             this.treeFiltro.Size = new System.Drawing.Size(205, 541);
             this.treeFiltro.TabIndex = 0;
@@ -326,6 +328,22 @@
             this.imageLista.Images.SetKeyName(0, "161.ICO");
             this.imageLista.Images.SetKeyName(1, "WinXPSetV4 Icon 23.ico");
             this.imageLista.Images.SetKeyName(2, "123.ICO");
+            // 
+            // btnReporteContratos
+            // 
+            this.btnReporteContratos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReporteContratos.BackColor = System.Drawing.Color.MintCream;
+            this.btnReporteContratos.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnReporteContratos.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnReporteContratos.ImageIndex = 1;
+            this.btnReporteContratos.Location = new System.Drawing.Point(449, 485);
+            this.btnReporteContratos.Name = "btnReporteContratos";
+            this.btnReporteContratos.Size = new System.Drawing.Size(114, 53);
+            this.btnReporteContratos.TabIndex = 41;
+            this.btnReporteContratos.Text = "&Reporte Contratos";
+            this.btnReporteContratos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnReporteContratos.UseVisualStyleBackColor = false;
+            this.btnReporteContratos.Click += new System.EventHandler(this.btnReporteContratos_Click);
             // 
             // btnContratos
             // 
@@ -560,8 +578,8 @@
             // 
             this.dtgListaTrabajadores.AllowUserToAddRows = false;
             this.dtgListaTrabajadores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgListaTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaTrabajadores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_trabajador,
@@ -775,5 +793,6 @@
         private System.Windows.Forms.ImageList imageLista;
         private System.Windows.Forms.ToolStripStatusLabel lblNumeroTrabajadores;
         private System.Windows.Forms.Button btnContratos;
+        private System.Windows.Forms.Button btnReporteContratos;
     }
 }

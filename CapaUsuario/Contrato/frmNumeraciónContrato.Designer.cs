@@ -35,6 +35,7 @@
             this.cboPlantillaContrato = new System.Windows.Forms.ComboBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +77,7 @@
             this.dgvContratos.ColumnHeadersVisible = false;
             this.dgvContratos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
+            this.Column10,
             this.Column2,
             this.Column3,
             this.Column4,
@@ -91,6 +93,8 @@
             this.dgvContratos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvContratos.Size = new System.Drawing.Size(465, 208);
             this.dgvContratos.TabIndex = 0;
+            this.dgvContratos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContratos_CellContentClick);
+            this.dgvContratos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContratos_CellDoubleClick);
             // 
             // groupBox1
             // 
@@ -110,6 +114,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboPlantillaContrato.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPlantillaContrato.Enabled = false;
             this.cboPlantillaContrato.FormattingEnabled = true;
             this.cboPlantillaContrato.Location = new System.Drawing.Point(6, 19);
             this.cboPlantillaContrato.Name = "cboPlantillaContrato";
@@ -138,6 +143,12 @@
             this.Column1.HeaderText = "Column1";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Column10";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
             // 
             // Column2
             // 
@@ -215,6 +226,7 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ComboBox cboPlantillaContrato;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;

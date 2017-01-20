@@ -135,6 +135,18 @@ namespace CapaUsuario.Trabajador
 
         }
 
+        private void btnReporteContratos_Click(object sender, EventArgs e)
+        {
+            if (dtgListaTrabajadores.SelectedRows.Count > 0)
+            {
+                pidttrabajador = Convert.ToInt32(dtgListaTrabajadores.SelectedRows[0].Cells["id_trabajador"].Value);
+            }
+            CapaUsuario.Reportes.MostrarReportes Reportes = new CapaUsuario.Reportes.MostrarReportes();
+            Reportes.ReporteContratos("ReporteContratos", pidttrabajador);
+            Reportes.MdiParent = this.MdiParent;
+            Reportes.Show();
+        }
+
         private void btnContratos_Click(object sender, EventArgs e)
         {
             if (dtgListaTrabajadores.SelectedRows.Count > 0)

@@ -36,7 +36,7 @@ namespace CapaUsuario.Reportes
 
         //string ruta = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
 
-        string Reporte = ""; string sestado; int sidtplanilla;
+        string Reporte = ""; string sestado; int sidtplanilla; int sidttrabajador;
 
         public MostrarReportes()
         {
@@ -45,38 +45,21 @@ namespace CapaUsuario.Reportes
 
         private void MostrarReportes_Load(object sender, EventArgs e)
         {
-            //this.spTareoObrasTableAdapter.Fill(this.bdpersonal.spTareoObras, sidtmeta, IdTTareo);
-
-            //ReportDataSource NuevaFuenteDatos = new ReportDataSource();
-            ////reportViewer1.LocalReport.DataSources.Clear();
-            //if (Reporte == "TareoObras")
-            //{
-            //    reportViewer1.LocalReport.ReportEmbeddedResource = "TareoObras.rdlc";
-            //    NuevaFuenteDatos.Name = "TareoObras";
-            //    NuevaFuenteDatos.Value = spTareoObrasBindingSource;
-            //    reportViewer1.LocalReport.DataSources.Add(NuevaFuenteDatos);
-            //}
-            //this.crystalReportViewer1.RefreshReport();
-
             try
             {
                 if (Reporte == "ResumenPlanillas")
                 {
                     CapaUsuario.Reportes.crResumenPlanillas crResumenPlanillas = new crResumenPlanillas();
-
-                    crParameterDiscreteValue.Value = sestado;
-                    crParameterFieldDefinitions = crResumenPlanillas.DataDefinition.ParameterFields;
-                    crParameterFieldDefinition = crParameterFieldDefinitions["pestado"];
-                    crParameterValues.Add(crParameterDiscreteValue);
-                    crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
-
-                    crParameterDiscreteValue.Value = sidtplanilla;
-                    crParameterFieldDefinitions = crResumenPlanillas.DataDefinition.ParameterFields;
-                    crParameterFieldDefinition = crParameterFieldDefinitions["pidtplanilla"];
-                    crParameterValues.Add(crParameterDiscreteValue);
-                    crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
-
+                    Estado(crResumenPlanillas, sestado);
+                    IdtPlanilla(crResumenPlanillas, sidtplanilla);
                     crystalReportViewer1.ReportSource = crResumenPlanillas;
+                    crystalReportViewer1.Refresh();
+                }
+                else if (Reporte == "ReporteContratos")
+                {
+                    Reportes.crReporteContratos crReporteContratos = new crReporteContratos();
+                    IdtTrabajador(crReporteContratos, sidttrabajador);
+                    crystalReportViewer1.ReportSource = crReporteContratos;
                     crystalReportViewer1.Refresh();
                 }
             }
@@ -93,22 +76,37 @@ namespace CapaUsuario.Reportes
             sidtplanilla = pidtplanilla;
         }
 
-        private void EstadoPlanillaTotal(object reporte, object r)
+        public void ReporteContratos(string tipo, int pidttrabajador)
         {
-            
+            Reporte = tipo;
+            sidttrabajador = pidttrabajador;
         }
 
-        private void Idtplanilla(object r)
+        private void Estado(ReportClass rpt, string pestado)
         {
-            //crtParamDiscreteValue = new ParameterDiscreteValue();
-            //crtParamField = new ParameterField();
-            //crtParamFields = new ParameterFields();
+            crParameterDiscreteValue.Value = pestado;
+            crParameterFieldDefinitions = rpt.DataDefinition.ParameterFields;
+            crParameterFieldDefinition = crParameterFieldDefinitions["pestado"];
+            crParameterValues.Add(crParameterDiscreteValue);
+            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+        }
 
-            //crtParamField.ParameterValueType = ParameterValueKind.NumberParameter;
-            //crtParamField.ParameterFieldName = "pidtplanilla";
-            //crtParamDiscreteValue.Value = r;
-            //crtParamField.CurrentValues.Add(crtParamDiscreteValue);
-            //crtParamFields.Add(crtParamField);
+        private void IdtPlanilla(ReportClass rpt, int pidtplanilla)
+        {
+            crParameterDiscreteValue.Value = pidtplanilla;
+            crParameterFieldDefinitions = rpt.DataDefinition.ParameterFields;
+            crParameterFieldDefinition = crParameterFieldDefinitions["pidtplanilla"];
+            crParameterValues.Add(crParameterDiscreteValue);
+            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+        }
+
+        private void IdtTrabajador(ReportClass rpt, int pidttrabajador)
+        {
+            crParameterDiscreteValue.Value = pidttrabajador;
+            crParameterFieldDefinitions = rpt.DataDefinition.ParameterFields;
+            crParameterFieldDefinition = crParameterFieldDefinitions["pidttrabajador"];
+            crParameterValues.Add(crParameterDiscreteValue);
+            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
         }
 
         private void password()

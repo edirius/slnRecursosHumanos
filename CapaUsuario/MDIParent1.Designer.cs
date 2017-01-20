@@ -94,6 +94,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contratosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trabajadoresToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.numeraciónContratosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -107,7 +108,6 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
-            this.numeraciónContratosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -638,9 +638,16 @@
             // trabajadoresToolStripMenuItem1
             // 
             this.trabajadoresToolStripMenuItem1.Name = "trabajadoresToolStripMenuItem1";
-            this.trabajadoresToolStripMenuItem1.Size = new System.Drawing.Size(195, 22);
+            this.trabajadoresToolStripMenuItem1.Size = new System.Drawing.Size(165, 22);
             this.trabajadoresToolStripMenuItem1.Text = "Trabajadores";
             this.trabajadoresToolStripMenuItem1.Click += new System.EventHandler(this.trabajadoresToolStripMenuItem1_Click);
+            // 
+            // numeraciónContratosToolStripMenuItem
+            // 
+            this.numeraciónContratosToolStripMenuItem.Name = "numeraciónContratosToolStripMenuItem";
+            this.numeraciónContratosToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.numeraciónContratosToolStripMenuItem.Text = "Reporte Contrato";
+            this.numeraciónContratosToolStripMenuItem.Click += new System.EventHandler(this.numeraciónContratosToolStripMenuItem_Click);
             // 
             // toolStrip
             // 
@@ -758,13 +765,6 @@
             this.dgvCargo.Size = new System.Drawing.Size(10, 10);
             this.dgvCargo.TabIndex = 5;
             this.dgvCargo.Visible = false;
-            // 
-            // numeraciónContratosToolStripMenuItem
-            // 
-            this.numeraciónContratosToolStripMenuItem.Name = "numeraciónContratosToolStripMenuItem";
-            this.numeraciónContratosToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.numeraciónContratosToolStripMenuItem.Text = "Numeración Contratos";
-            this.numeraciónContratosToolStripMenuItem.Click += new System.EventHandler(this.numeraciónContratosToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
