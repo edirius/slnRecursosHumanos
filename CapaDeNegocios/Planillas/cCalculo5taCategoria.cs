@@ -10,7 +10,6 @@ namespace CapaDeNegocios.Planillas
 {
     public class cCalculo5taCategoria
     {
-
         public decimal CalculoImpuestoAnual(decimal RentaNetaProyectada, decimal UIT)
         {
             decimal ImpuestoAnual = 0;

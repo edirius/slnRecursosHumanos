@@ -30,6 +30,9 @@ namespace CapaUsuario.Planilla
         int sfilasselecciontrabajadores;
         decimal sUIT = 0;
         decimal sRemuneracionBasica = 0;
+        int sidttrabajador = 0;
+        double sRemuneracionActual = 4550.00;
+        double sIngresosActual = 379.17;
 
         string AFP = "";
         string Cuspp = "";
@@ -134,9 +137,17 @@ namespace CapaUsuario.Planilla
 
         private void btnRenta5ta_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                CapaUsuario.Planilla.frmRenta5taProyectado fRenta5taProyectado = new frmRenta5taProyectado();
+                fRenta5taProyectado.RecibirDatos(sidtplanilla, sidttrabajador, Convert.ToInt32(Mes(smes)), saño, sRemuneracionActual, sIngresosActual, sUIT);
+                fRenta5taProyectado.ShowDialog();
+            }
+            catch (Exception m)
+            {
+                MessageBox.Show(m.Message);
+            }
         }
-
         private void btnAgregarTrabajador_Click(object sender, EventArgs e)
         {
             try
@@ -314,6 +325,7 @@ namespace CapaUsuario.Planilla
         {
             if (e.RowIndex != -1)
             {
+                sidttrabajador = Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[4].Value);
                 if (dgvDetallePlanilla.Rows[e.RowIndex].Cells[2].Selected == true)
                 {
                     if (dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value == null)
