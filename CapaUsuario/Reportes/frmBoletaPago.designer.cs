@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBoletaPago));
             this.btnImprimir = new System.Windows.Forms.Button();
             this.dgvBoletaPago_A = new System.Windows.Forms.DataGridView();
             this.dgvBoletaPago_B = new System.Windows.Forms.DataGridView();
@@ -131,8 +132,8 @@
             // 
             this.dgvBoletaPago.AllowUserToAddRows = false;
             this.dgvBoletaPago.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvBoletaPago.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -254,7 +255,9 @@
             this.Controls.Add(this.dgvBoletaPago_C);
             this.Controls.Add(this.dgvBoletaPago_B);
             this.Controls.Add(this.dgvBoletaPago_A);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmBoletaPago";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Boleta de Pago";
             this.Load += new System.EventHandler(this.frmBoletaPago_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_A)).EndInit();

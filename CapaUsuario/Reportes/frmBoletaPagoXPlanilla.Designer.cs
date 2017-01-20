@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBoletaPagoXPlanilla));
             this.dgvBoletaPago = new System.Windows.Forms.DataGridView();
             this.dgvBoletaPago_F = new System.Windows.Forms.DataGridView();
             this.dgvBoletaPago_E = new System.Windows.Forms.DataGridView();
@@ -44,8 +45,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rdbVertical = new System.Windows.Forms.RadioButton();
             this.rdbHorizontal = new System.Windows.Forms.RadioButton();
+            this.rdbVertical = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_E)).BeginInit();
@@ -61,8 +62,8 @@
             // 
             this.dgvBoletaPago.AllowUserToAddRows = false;
             this.dgvBoletaPago.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBoletaPago.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -220,6 +221,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Impresion de reporte.";
             // 
+            // rdbHorizontal
+            // 
+            this.rdbHorizontal.AutoSize = true;
+            this.rdbHorizontal.Location = new System.Drawing.Point(18, 55);
+            this.rdbHorizontal.Name = "rdbHorizontal";
+            this.rdbHorizontal.Size = new System.Drawing.Size(72, 17);
+            this.rdbHorizontal.TabIndex = 93;
+            this.rdbHorizontal.Text = "Horizontal";
+            this.rdbHorizontal.UseVisualStyleBackColor = true;
+            // 
             // rdbVertical
             // 
             this.rdbVertical.AutoSize = true;
@@ -231,16 +242,6 @@
             this.rdbVertical.TabStop = true;
             this.rdbVertical.Text = "Vertical";
             this.rdbVertical.UseVisualStyleBackColor = true;
-            // 
-            // rdbHorizontal
-            // 
-            this.rdbHorizontal.AutoSize = true;
-            this.rdbHorizontal.Location = new System.Drawing.Point(18, 55);
-            this.rdbHorizontal.Name = "rdbHorizontal";
-            this.rdbHorizontal.Size = new System.Drawing.Size(72, 17);
-            this.rdbHorizontal.TabIndex = 93;
-            this.rdbHorizontal.Text = "Horizontal";
-            this.rdbHorizontal.UseVisualStyleBackColor = true;
             // 
             // frmBoletaPagoXPlanilla
             // 
@@ -256,8 +257,10 @@
             this.Controls.Add(this.dgvBoletaPago_C);
             this.Controls.Add(this.dgvBoletaPago_B);
             this.Controls.Add(this.dgvBoletaPago_A);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmBoletaPagoXPlanilla";
-            this.Text = "frmBoletaPagoXPlanilla";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Reporte de Boletas por Planilla";
             this.Load += new System.EventHandler(this.frmBoletaPagoXPlanilla_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_F)).EndInit();
