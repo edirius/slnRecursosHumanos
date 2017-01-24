@@ -166,7 +166,9 @@ namespace CapaUsuario.Planilla
                 DataTable odtPrueba = new DataTable();
                 odtPrueba = oPlanilla.ListarRegimenLaboralPlanilla(sNumeroPlanilla);
                 foreach (DataRow row in odtPrueba.Rows)
+                {
                     sRegimenLaboral = row[0].ToString();
+                }
             }
         }
 

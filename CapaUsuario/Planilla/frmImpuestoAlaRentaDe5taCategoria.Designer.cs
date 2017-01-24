@@ -244,6 +244,7 @@
             this.Name = "frmImpuestoAlaRentaDe5taCategoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmImpuestoAlaRentaDe5taCategoria";
+            this.Load += new System.EventHandler(this.frmImpuestoAlaRentaDe5taCategoria_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);

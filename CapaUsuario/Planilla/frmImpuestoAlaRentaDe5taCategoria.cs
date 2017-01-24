@@ -63,5 +63,10 @@ namespace CapaUsuario.Planilla
         {
             CalcularIRM();
         }
+
+        private void frmImpuestoAlaRentaDe5taCategoria_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
