@@ -31,8 +31,8 @@ namespace CapaUsuario.Planilla
         decimal sUIT = 0;
         decimal sRemuneracionBasica = 0;
         int sidttrabajador = 0;
-        double sRemuneracionActual = 4550.00;
-        double sIngresosActual = 379.17;
+        double sRemuneracionActual = 0;
+        double sIngresosActual = 0;
 
         string AFP = "";
         string Cuspp = "";
@@ -139,15 +139,24 @@ namespace CapaUsuario.Planilla
         {
             try
             {
-                CapaUsuario.Planilla.frmRenta5taProyectado fRenta5taProyectado = new frmRenta5taProyectado();
-                fRenta5taProyectado.RecibirDatos(sidtplanilla, sidttrabajador, Convert.ToInt32(Mes(smes)), saño, sRemuneracionActual, sIngresosActual, sUIT);
-                fRenta5taProyectado.ShowDialog();
+                if (sidttrabajador != 0)
+                {
+                    CapaUsuario.Planilla.frmRenta5taProyectado fRenta5taProyectado = new frmRenta5taProyectado();
+                    fRenta5taProyectado.RecibirDatos(sidtplanilla, sidttrabajador, smes, saño, sRemuneracionActual, sIngresosActual, sUIT);
+                    fRenta5taProyectado.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No selecciono a un trabajador, seleccione uno.", "Gestion del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
             catch (Exception m)
             {
                 MessageBox.Show(m.Message);
             }
         }
+
         private void btnAgregarTrabajador_Click(object sender, EventArgs e)
         {
             try

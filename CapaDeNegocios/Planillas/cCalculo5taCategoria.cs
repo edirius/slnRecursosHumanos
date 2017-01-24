@@ -10,6 +10,43 @@ namespace CapaDeNegocios.Planillas
 {
     public class cCalculo5taCategoria
     {
+        public decimal CalculoRentaMensual(int NroMes, decimal Remuneracion, decimal Ingresos, decimal Gratificaciones, decimal RemuMesAnt, decimal RetMesAnteriores, decimal UIT)
+        {
+            decimal ImpuestoAnual = 0;
+            decimal ImpuestoCalculado = 0;
+            decimal ImpuestoAPagar = 0;
+            decimal RentaNetaProyectada = ((13 - NroMes) * (Remuneracion + Ingresos)) + Gratificaciones + RemuMesAnt;
+
+            ImpuestoAnual = CalculoImpuestoAnual(RentaNetaProyectada, UIT);
+            ImpuestoCalculado = ImpuestoAnual - RetMesAnteriores;
+
+            if (NroMes == 1 || NroMes == 2 || NroMes == 3)
+            {
+                ImpuestoAPagar = ImpuestoCalculado / 12;
+            }
+            else if (NroMes == 4)
+            {
+                ImpuestoAPagar = ImpuestoCalculado / 9;
+            }
+            else if (NroMes == 5 || NroMes == 6 || NroMes == 7)
+            {
+                ImpuestoAPagar = ImpuestoCalculado / 8;
+            }
+            else if (NroMes == 8)
+            {
+                ImpuestoAPagar = ImpuestoCalculado / 5;
+            }
+            else if(NroMes == 9 || NroMes == 10 || NroMes == 11)
+            {
+                ImpuestoAPagar = ImpuestoCalculado / 4;
+            }
+            else
+            {
+                ImpuestoAPagar = ImpuestoCalculado;
+            }
+            return ImpuestoAPagar;
+        }
+
         public decimal CalculoImpuestoAnual(decimal RentaNetaProyectada, decimal UIT)
         {
             decimal ImpuestoAnual = 0;
@@ -67,43 +104,5 @@ namespace CapaDeNegocios.Planillas
             }
             return ImpuestoAnual;
         }
-
-        public decimal CalculoRentaMensual(int NroMes, decimal Remuneracion, decimal Ingresos, decimal Gratificaciones, decimal RemuMesAnt, decimal RetMesAnteriores, decimal UIT)
-        {
-            decimal ImpuestoAnual = 0;
-            decimal ImpuestoCalculado = 0;
-            decimal ImpuestoAPagar = 0;
-            decimal RentaNetaProyectada = ((13 - NroMes) * (Remuneracion + Ingresos)) + Gratificaciones + RemuMesAnt;
-
-            ImpuestoAnual = CalculoImpuestoAnual(RentaNetaProyectada, UIT);
-            ImpuestoCalculado = ImpuestoAnual - RetMesAnteriores;
-
-            if (NroMes == 1 || NroMes == 2 || NroMes == 3)
-            {
-                ImpuestoAPagar = ImpuestoCalculado / 12;
-            }
-            else if (NroMes == 4)
-            {
-                ImpuestoAPagar = ImpuestoCalculado / 9;
-            }
-            else if (NroMes == 5 || NroMes == 6 || NroMes == 7)
-            {
-                ImpuestoAPagar = ImpuestoCalculado / 8;
-            }
-            else if (NroMes == 8)
-            {
-                ImpuestoAPagar = ImpuestoCalculado / 5;
-            }
-            else if(NroMes == 9 || NroMes == 10 || NroMes == 11)
-            {
-                ImpuestoAPagar = ImpuestoCalculado / 4;
-            }
-            else
-            {
-                ImpuestoAPagar = ImpuestoCalculado;
-            }
-            return ImpuestoAPagar;
-        }
-
     }
 }

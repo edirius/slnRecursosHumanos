@@ -110,6 +110,7 @@
     <Compile Include="Obras\cProductoProyecto.cs" />
     <Compile Include="Obras\cProgramaPresupuestal.cs" />
     <Compile Include="Planillas\cAportaciones.cs" />
+    <Compile Include="Planillas\cCalculo5taProyectada.cs" />
     <Compile Include="Planillas\cCalculo5taCategoria.cs" />
     <Compile Include="Planillas\cDescuentos.cs" />
     <Compile Include="Planillas\cDetallePlanilla.cs" />
