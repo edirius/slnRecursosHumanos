@@ -59,34 +59,50 @@ namespace CapaUsuario.Planilla
 
         private void Calculo5taProyectada()
         {
-            CapaDeNegocios.Planillas.cCalculo5taProyectada miCalculo5taProyectado = new CapaDeNegocios.Planillas.cCalculo5taProyectada();
-            CapaDeNegocios.Planillas.cIngresos5taCategoria miIngresos5taCategoria = new CapaDeNegocios.Planillas.cIngresos5taCategoria();
-            DataTable oDataIngresos5taCategoria = new DataTable();
-            oDataIngresos5taCategoria = miIngresos5taCategoria.Ingresos5taCategoria(sidtplanilla, smes, saño, sidttrabajador);
-            foreach (DataRow rowingresos in oDataIngresos5taCategoria.Rows)
-            {
-                //if (rowingresos[0].ToString() == "Ingresos")
-                //{
-                //    sRemuMesAnt += Convert.ToDecimal(rowingresos[2]);
-                //}
-                //else
-                //{
-                //}
-            }
+            //CapaDeNegocios.Planillas.cCalculo5taProyectada miCalculo5taProyectado = new CapaDeNegocios.Planillas.cCalculo5taProyectada();
+            //CapaDeNegocios.RentaQuinta.cQuintaCategoria miIngresos5taCategoria = new cQuintaCategoria();
+            //DataTable oDataIngresos5taCategoria = new DataTable();
+            //oDataIngresos5taCategoria = miIngresos5taCategoria.Ingresos5taCategoria(sidtplanilla, smes, saño, sidttrabajador);
+            //foreach (DataRow rowingresos in oDataIngresos5taCategoria.Rows)
+            //{
+            //    //if (rowingresos[0].ToString() == "Ingresos")
+            //    //{
+            //    //    sRemuMesAnt += Convert.ToDecimal(rowingresos[2]);
+            //    //}
+            //    //else
+            //    //{
+            //    //}
+            //}
 
-            miCalculo5taProyectado.sNroMes = Convert.ToInt32(Mes(smes));
-            miCalculo5taProyectado.sAño = Convert.ToInt32(saño);
-            miCalculo5taProyectado.sRemuneracion = 4000;
-            miCalculo5taProyectado.sIngreso = 333.33 + 400;
-            miCalculo5taProyectado.sGratificaciones = 600;
-            miCalculo5taProyectado.sUIT = sUIT;
+            //miCalculo5taProyectado.sNroMes = Convert.ToInt32(Mes(smes));
+            //miCalculo5taProyectado.sAño = Convert.ToInt32(saño);
+            //miCalculo5taProyectado.sRemuneracion = 4000;
+            //miCalculo5taProyectado.sIngreso = 333.33 + 400;
+            //miCalculo5taProyectado.sGratificaciones = 600;
+            //miCalculo5taProyectado.sUIT = sUIT;
 
-            miCalculo5taProyectado.CalculoMensual();
+            //miCalculo5taProyectado.CalculoMensual();
+            //for (int i = 0; i < 12; i++)
+            //{
+            //    dgv5taCat.Rows[0].Cells[i + 1].Value = string.Format("{0:0.00}", miCalculo5taProyectado.srentas[0, i]);
+            //    dgv5taCat.Rows[1].Cells[i + 1].Value = string.Format("{0:0.00}", miCalculo5taProyectado.srentas[1, i]);
+            //    dgv5taCat.Rows[2].Cells[i + 1].Value = string.Format("{0:0.00}", miCalculo5taProyectado.srentas[2, i]);
+            //}
+
+            CapaDeNegocios.RentaQuinta.cQuintaCategoria miQuintaCategoria = new CapaDeNegocios.RentaQuinta.cQuintaCategoria();
+            miQuintaCategoria.idttrabajador = sidttrabajador;
+            miQuintaCategoria.mes = Convert.ToInt32(Mes(smes));
+            miQuintaCategoria.año = Convert.ToInt32(saño);
+            miQuintaCategoria.remuneracionactual = 4000;
+            miQuintaCategoria.ingresoactual = 333.33;
+            miQuintaCategoria.gratificaciones = 600;
+            miQuintaCategoria.UIT = sUIT;
+            miQuintaCategoria.RentaQuintaCategoria();
             for (int i = 0; i < 12; i++)
             {
-                dgv5taCat.Rows[0].Cells[i + 1].Value = string.Format("{0:0.00}", miCalculo5taProyectado.srentas[0, i]);
-                dgv5taCat.Rows[1].Cells[i + 1].Value = string.Format("{0:0.00}", miCalculo5taProyectado.srentas[1, i]);
-                dgv5taCat.Rows[2].Cells[i + 1].Value = string.Format("{0:0.00}", miCalculo5taProyectado.srentas[2, i]);
+                //dgv5taCat.Rows[0].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.;
+                //dgv5taCat.Rows[1].Cells[i + 1].Value = string.Format("{0:0.00}", miCalculo5taProyectado.srentas[1, i]);
+                //dgv5taCat.Rows[2].Cells[i + 1].Value = string.Format("{0:0.00}", miCalculo5taProyectado.srentas[2, i]);
             }
         }
 
