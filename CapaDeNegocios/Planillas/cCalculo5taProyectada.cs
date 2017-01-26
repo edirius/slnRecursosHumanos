@@ -14,6 +14,7 @@ namespace CapaDeNegocios.Planillas
         public int sAño = 0;
         public double sRemuneracion = 0;
         public double sIngreso = 0;
+        public double sIngresoAnuales = 0;
         public double sGratificaciones = 0;
         public double sUIT = 0;
         public double sRemMesAnt = 0;
@@ -83,7 +84,7 @@ namespace CapaDeNegocios.Planillas
                         }
                     }
                 }
-                double CAL5TA = Convert.ToDouble(miCalculo5ta.CalculoRentaMensual(j + 1, Convert.ToDecimal(sRemuneracion), Convert.ToDecimal(sIngreso), Convert.ToDecimal(sGratificaciones), Convert.ToDecimal(sRemMesAnt + sIngMesAnt), Convert.ToDecimal(sRetMesAnt), Convert.ToDecimal(sUIT)));
+                double CAL5TA = Convert.ToDouble(miCalculo5ta.CalculoRentaMensual(j + 1, Convert.ToDecimal(sRemuneracion), Convert.ToDecimal(sIngreso), Convert.ToDecimal(sRemMesAnt + sIngMesAnt), Convert.ToDecimal(sRetMesAnt), Convert.ToDecimal(sUIT)));
                 srentas[2, j] = Math.Round(CAL5TA, 2);
             }
         }

@@ -8,8 +8,8 @@ namespace CapaDeNegocios.RentaQuinta
 {
     public class cRentaQuintaOtrosIngresos
     {
+        public string descripcion;
         public double monto;
-        public Boolean ProyectableTodoElAño;
-        
+        public Boolean proyectabletodoelaño;
     }
 }

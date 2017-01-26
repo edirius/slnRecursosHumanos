@@ -18,7 +18,7 @@ namespace CapaUsuario
             InitializeComponent();
         }
 
-        CapaDeNegocios.RentaQuinta.cQuintaCategoria2017 miNUevaRentaQuintaCategoria2017;
+        //CapaDeNegocios.RentaQuinta.cQuintaCategoria2017 miNUevaRentaQuintaCategoria2017;
 
 
 
@@ -29,7 +29,7 @@ namespace CapaUsuario
 
         private void Cargar()
         {
-            miNUevaRentaQuintaCategoria2017.CargarDatos(11);
+            //miNUevaRentaQuintaCategoria2017.CargarDatos(11);
                          
         }
     }

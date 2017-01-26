@@ -27,12 +27,12 @@ namespace CapaUsuario.Planilla
         {
             int NroMes = Convert.ToInt16(cbMes.Text);
             decimal Remuneracion = Convert.ToDecimal(txtIngresos.Text);
-            decimal Ingresos = 0;
+            decimal OtrosIngresos = 0;
             decimal Gratificaciones = Convert.ToDecimal(txtGrati.Text);
             decimal RemuMesAnt = Convert.ToDecimal(txtRemAnteriores.Text);
             decimal RetMesAnteriores = Convert.ToDecimal(txtRetencionesAnteriores.Text);
             decimal UIT = Convert.ToDecimal(cbUIT.Text);
-            decimal ImpuestoRentaMensual = oCalculo.CalculoRentaMensual(NroMes, Remuneracion, Ingresos, Gratificaciones, RemuMesAnt, RetMesAnteriores, UIT);
+            decimal ImpuestoRentaMensual = oCalculo.CalculoRentaMensual(NroMes, Remuneracion, OtrosIngresos, RemuMesAnt, RetMesAnteriores, UIT);
             txtIRM.Text = Convert.ToString(Decimal.Round(ImpuestoRentaMensual, 2));
         }
 
