@@ -49,14 +49,6 @@ namespace CapaUsuario.Planilla
             sUIT = Convert.ToDouble(pUIT);
         }
 
-        private void MostrarFilas()
-        {
-            dgv5taCat.Rows.Add(3);
-            dgv5taCat.Rows[0].Cells[0].Value = "REMUNERACION";
-            dgv5taCat.Rows[1].Cells[0].Value = "OTROS INGRESOS";
-            dgv5taCat.Rows[2].Cells[0].Value = "IMPUESTO A PAGAR";
-        }
-
         private void Calculo5taProyectada()
         {
             //CapaDeNegocios.Planillas.cCalculo5taProyectada miCalculo5taProyectado = new CapaDeNegocios.Planillas.cCalculo5taProyectada();
@@ -100,10 +92,42 @@ namespace CapaUsuario.Planilla
             miQuintaCategoria.RentaQuintaCategoria();
             for (int i = 0; i < 12; i++)
             {
-                //dgv5taCat.Rows[0].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.;
-                //dgv5taCat.Rows[1].Cells[i + 1].Value = string.Format("{0:0.00}", miCalculo5taProyectado.srentas[1, i]);
-                //dgv5taCat.Rows[2].Cells[i + 1].Value = string.Format("{0:0.00}", miCalculo5taProyectado.srentas[2, i]);
+                dgv5taCat.Rows[0].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].remuneracion);
+                dgv5taCat.Rows[1].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].ingresos);
+                dgv5taCat.Rows[2].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].xnumeromeses);
+                dgv5taCat.Rows[3].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].ingresosmesesanteriores);
+                dgv5taCat.Rows[4].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].rentanetaproyectada);
+                dgv5taCat.Rows[5].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].rentanetaimponible);
+                dgv5taCat.Rows[6].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].PrimeraDeduccion);
+                dgv5taCat.Rows[7].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].SegundaDeduccion);
+                dgv5taCat.Rows[8].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].TerceraDeduccion);
+                dgv5taCat.Rows[9].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].CuartaDeduccion);
+                dgv5taCat.Rows[10].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].QuintaDeduccion);
+                dgv5taCat.Rows[11].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].impuestaanual);
+                dgv5taCat.Rows[12].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].retencionesanteriores);
+                dgv5taCat.Rows[13].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].impuestocalculado);
+                dgv5taCat.Rows[14].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMeses[i].impuestomensualapagar);
             }
+        }
+
+        private void MostrarFilas()
+        {
+            dgv5taCat.Rows.Add(15);
+            dgv5taCat.Rows[0].Cells[0].Value = "REMUNERACION";
+            dgv5taCat.Rows[1].Cells[0].Value = "OTROS INGRESOS";
+            dgv5taCat.Rows[2].Cells[0].Value = "X NUMERO DE MESES";
+            dgv5taCat.Rows[3].Cells[0].Value = "INGRESOS ANTERIORES";
+            dgv5taCat.Rows[4].Cells[0].Value = "RENTA NETA PROYECTADA";
+            dgv5taCat.Rows[5].Cells[0].Value = "RENTA NETA IMPONIBLE";
+            dgv5taCat.Rows[6].Cells[0].Value = "HASTA 5 UIT 8%";
+            dgv5taCat.Rows[7].Cells[0].Value = "MAS DE 5 HASTA 20 UIT 14%";
+            dgv5taCat.Rows[8].Cells[0].Value = "MAS DE 20 HASTA 35 UIT 17%";
+            dgv5taCat.Rows[9].Cells[0].Value = "MAS DE 35 HASTA 45 UIT 20%";
+            dgv5taCat.Rows[10].Cells[0].Value = "MAS DE 45 UIT 30%";
+            dgv5taCat.Rows[11].Cells[0].Value = "IMPUESTO ANUAL";
+            dgv5taCat.Rows[12].Cells[0].Value = "RETENCIONES ANTERIORES";
+            dgv5taCat.Rows[13].Cells[0].Value = "IMPUESTO CALCULADO";
+            dgv5taCat.Rows[14].Cells[0].Value = "IMPUESTO MENSUAL A PAGAR";
         }
 
         string Mes(string pmes)

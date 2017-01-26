@@ -50,21 +50,59 @@ namespace CapaDeNegocios.RentaQuinta
                     break;
                 case 2:
                     RentaEnero = RecuperarDatosMesBD(1);
+                    RentaFebrero = AsignarDatosMesProyectado(2);
+                    RentaMarzo = AsignarDatosMesProyectado(3);
+                    RentaAbril = AsignarDatosMesProyectado(4);
+                    RentaMayo = AsignarDatosMesProyectado(5);
+                    RentaJunio = AsignarDatosMesProyectado(6);
+                    RentaJulio = AsignarDatosMesProyectado(7);
+                    RentaAgosto = AsignarDatosMesProyectado(8);
+                    RentaSetiembre = AsignarDatosMesProyectado(9);
+                    RentaOctubre = AsignarDatosMesProyectado(10);
+                    RentaNoviembre = AsignarDatosMesProyectado(11);
+                    RentaDiciembre = AsignarDatosMesProyectado(12);
                     break;
                 case 3:
                     RentaEnero = RecuperarDatosMesBD(1);
                     RentaFebrero = RecuperarDatosMesBD(2);
+                    RentaMarzo = AsignarDatosMesProyectado(3);
+                    RentaAbril = AsignarDatosMesProyectado(4);
+                    RentaMayo = AsignarDatosMesProyectado(5);
+                    RentaJunio = AsignarDatosMesProyectado(6);
+                    RentaJulio = AsignarDatosMesProyectado(7);
+                    RentaAgosto = AsignarDatosMesProyectado(8);
+                    RentaSetiembre = AsignarDatosMesProyectado(9);
+                    RentaOctubre = AsignarDatosMesProyectado(10);
+                    RentaNoviembre = AsignarDatosMesProyectado(11);
+                    RentaDiciembre = AsignarDatosMesProyectado(12);
                     break;
                 case 4:
                     RentaEnero = RecuperarDatosMesBD(1);
                     RentaFebrero = RecuperarDatosMesBD(2);
                     RentaMarzo = RecuperarDatosMesBD(3);
+                    RentaAbril = AsignarDatosMesProyectado(4);
+                    RentaMayo = AsignarDatosMesProyectado(5);
+                    RentaJunio = AsignarDatosMesProyectado(6);
+                    RentaJulio = AsignarDatosMesProyectado(7);
+                    RentaAgosto = AsignarDatosMesProyectado(8);
+                    RentaSetiembre = AsignarDatosMesProyectado(9);
+                    RentaOctubre = AsignarDatosMesProyectado(10);
+                    RentaNoviembre = AsignarDatosMesProyectado(11);
+                    RentaDiciembre = AsignarDatosMesProyectado(12);
                     break;
                 case 5:
                     RentaEnero = RecuperarDatosMesBD(1);
                     RentaFebrero = RecuperarDatosMesBD(2);
                     RentaMarzo = RecuperarDatosMesBD(3);
                     RentaAbril = RecuperarDatosMesBD(4);
+                    RentaMayo = AsignarDatosMesProyectado(5);
+                    RentaJunio = AsignarDatosMesProyectado(6);
+                    RentaJulio = AsignarDatosMesProyectado(7);
+                    RentaAgosto = AsignarDatosMesProyectado(8);
+                    RentaSetiembre = AsignarDatosMesProyectado(9);
+                    RentaOctubre = AsignarDatosMesProyectado(10);
+                    RentaNoviembre = AsignarDatosMesProyectado(11);
+                    RentaDiciembre = AsignarDatosMesProyectado(12);
                     break;
                 case 6:
                     RentaEnero = RecuperarDatosMesBD(1);
@@ -72,6 +110,13 @@ namespace CapaDeNegocios.RentaQuinta
                     RentaMarzo = RecuperarDatosMesBD(3);
                     RentaAbril = RecuperarDatosMesBD(4);
                     RentaMayo = RecuperarDatosMesBD(5);
+                    RentaJunio = AsignarDatosMesProyectado(6);
+                    RentaJulio = AsignarDatosMesProyectado(7);
+                    RentaAgosto = AsignarDatosMesProyectado(8);
+                    RentaSetiembre = AsignarDatosMesProyectado(9);
+                    RentaOctubre = AsignarDatosMesProyectado(10);
+                    RentaNoviembre = AsignarDatosMesProyectado(11);
+                    RentaDiciembre = AsignarDatosMesProyectado(12);
                     break;
                 case 7:
                     RentaEnero = RecuperarDatosMesBD(1);
@@ -80,6 +125,12 @@ namespace CapaDeNegocios.RentaQuinta
                     RentaAbril = RecuperarDatosMesBD(4);
                     RentaMayo = RecuperarDatosMesBD(5);
                     RentaJunio = RecuperarDatosMesBD(6);
+                    RentaJulio = AsignarDatosMesProyectado(7);
+                    RentaAgosto = AsignarDatosMesProyectado(8);
+                    RentaSetiembre = AsignarDatosMesProyectado(9);
+                    RentaOctubre = AsignarDatosMesProyectado(10);
+                    RentaNoviembre = AsignarDatosMesProyectado(11);
+                    RentaDiciembre = AsignarDatosMesProyectado(12);
                     break;
                 case 8:
                     RentaEnero = RecuperarDatosMesBD(1);
@@ -89,6 +140,11 @@ namespace CapaDeNegocios.RentaQuinta
                     RentaMayo = RecuperarDatosMesBD(5);
                     RentaJunio = RecuperarDatosMesBD(6);
                     RentaJulio = RecuperarDatosMesBD(7);
+                    RentaAgosto = AsignarDatosMesProyectado(8);
+                    RentaSetiembre = AsignarDatosMesProyectado(9);
+                    RentaOctubre = AsignarDatosMesProyectado(10);
+                    RentaNoviembre = AsignarDatosMesProyectado(11);
+                    RentaDiciembre = AsignarDatosMesProyectado(12);
                     break;
                 case 9:
                     RentaEnero = RecuperarDatosMesBD(1);
@@ -99,6 +155,10 @@ namespace CapaDeNegocios.RentaQuinta
                     RentaJunio = RecuperarDatosMesBD(6);
                     RentaJulio = RecuperarDatosMesBD(7);
                     RentaAgosto = RecuperarDatosMesBD(8);
+                    RentaSetiembre = AsignarDatosMesProyectado(9);
+                    RentaOctubre = AsignarDatosMesProyectado(10);
+                    RentaNoviembre = AsignarDatosMesProyectado(11);
+                    RentaDiciembre = AsignarDatosMesProyectado(12);
                     break;
                 case 10:
                     RentaEnero = RecuperarDatosMesBD(1);
@@ -110,6 +170,9 @@ namespace CapaDeNegocios.RentaQuinta
                     RentaJulio = RecuperarDatosMesBD(7);
                     RentaAgosto = RecuperarDatosMesBD(8);
                     RentaSetiembre = RecuperarDatosMesBD(9);
+                    RentaOctubre = AsignarDatosMesProyectado(10);
+                    RentaNoviembre = AsignarDatosMesProyectado(11);
+                    RentaDiciembre = AsignarDatosMesProyectado(12);
                     break;
                 case 11:
                     RentaEnero = RecuperarDatosMesBD(1);
@@ -122,6 +185,8 @@ namespace CapaDeNegocios.RentaQuinta
                     RentaAgosto = RecuperarDatosMesBD(8);
                     RentaSetiembre = RecuperarDatosMesBD(9);
                     RentaOctubre = RecuperarDatosMesBD(10);
+                    RentaNoviembre = AsignarDatosMesProyectado(11);
+                    RentaDiciembre = AsignarDatosMesProyectado(12);
                     break;
                 case 12:
                     RentaEnero = RecuperarDatosMesBD(1);
@@ -135,6 +200,7 @@ namespace CapaDeNegocios.RentaQuinta
                     RentaSetiembre = RecuperarDatosMesBD(9);
                     RentaOctubre = RecuperarDatosMesBD(10);
                     RentaNoviembre = RecuperarDatosMesBD(11);
+                    RentaDiciembre = AsignarDatosMesProyectado(12);
                     break; 
                 default:
                     break;
@@ -157,8 +223,8 @@ namespace CapaDeNegocios.RentaQuinta
         public cRentaQuintaMes RecuperarDatosMesBD(int mes)
         {
             cRentaQuintaMes mirenta = new cRentaQuintaMes();
-            //mirenta.remuneracion = 2600;
-            //mirenta.otrosingresos[0] = 400;
+            mirenta.remuneracion = 0;
+            mirenta.ingresos = 0;
             return mirenta;
         }
 

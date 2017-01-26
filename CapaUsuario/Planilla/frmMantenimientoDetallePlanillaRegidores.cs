@@ -858,17 +858,16 @@ namespace CapaUsuario.Planilla
             decimal sRenta5ta = 0;
             int sNroMes = 0;
             decimal sRemuneracion = 0;
-            decimal sIngresos = 0;
-            decimal sGratificaciones = 0;
+            decimal sOtrosIngresos = 0;
             decimal sRemuMesAnt = 0;
             decimal sRetMesAnteriores = 0;
             sRemuneracion = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
             sRemuMesAnt = 0;//suma de las remuneraciones totales
             sNroMes = Convert.ToInt32(Mes(smes));
-            sGratificaciones = 600;
+            sOtrosIngresos = 600;
             sRetMesAnteriores = 0;
             CapaDeNegocios.Planillas.cCalculo5taCategoria miCalculo5ta = new CapaDeNegocios.Planillas.cCalculo5taCategoria();
-            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sNroMes, sRemuneracion, sIngresos, sGratificaciones, sRemuMesAnt, sRetMesAnteriores, sUIT);
+            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sNroMes, sRemuneracion, sOtrosIngresos, sRemuMesAnt, sRetMesAnteriores, sUIT);
             return sRenta5ta;
         }
 
