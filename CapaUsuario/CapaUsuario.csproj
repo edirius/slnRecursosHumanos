@@ -202,6 +202,12 @@
       <DependentUpon>CrystalReport4.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\frmPlanilla2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmPlanilla2.Designer.cs">
+      <DependentUpon>frmPlanilla2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\frmResumenPlanillas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1257,6 +1263,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport4.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmPlanilla2.resx">
+      <DependentUpon>frmPlanilla2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmResumenPlanillas.resx">
       <DependentUpon>frmResumenPlanillas.cs</DependentUpon>
     </EmbeddedResource>
@@ -1611,6 +1620,9 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\pdf3.jpg" />
+    <None Include="Resources\pdf2.jpg" />
+    <None Include="Resources\pdf.jpg" />
     <None Include="Resources\gente-de-negocios-trabajando-siluetas-vector_72147497295.jpg" />
     <Content Include="Resources\LogoCatca2.png" />
     <None Include="Resources\LogoCatca21.png" />

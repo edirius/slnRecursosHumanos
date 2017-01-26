@@ -108,6 +108,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
+            this.impresionPlanillasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -525,7 +526,8 @@
             this.personalToolStripMenuItem,
             this.declaraciónJuradaDeToolStripMenuItem,
             this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem,
-            this.globalToolStripMenuItem});
+            this.globalToolStripMenuItem,
+            this.impresionPlanillasToolStripMenuItem});
             this.reportesToolStripMenuItem1.Name = "reportesToolStripMenuItem1";
             this.reportesToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
             this.reportesToolStripMenuItem1.Text = "Reportes";
@@ -766,6 +768,13 @@
             this.dgvCargo.TabIndex = 5;
             this.dgvCargo.Visible = false;
             // 
+            // impresionPlanillasToolStripMenuItem
+            // 
+            this.impresionPlanillasToolStripMenuItem.Name = "impresionPlanillasToolStripMenuItem";
+            this.impresionPlanillasToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.impresionPlanillasToolStripMenuItem.Text = "Impresion Planillas";
+            this.impresionPlanillasToolStripMenuItem.Click += new System.EventHandler(this.impresionPlanillasToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -879,6 +888,7 @@
         private System.Windows.Forms.ToolStripMenuItem contratosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trabajadoresToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem numeraciónContratosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem impresionPlanillasToolStripMenuItem;
     }
 }
 

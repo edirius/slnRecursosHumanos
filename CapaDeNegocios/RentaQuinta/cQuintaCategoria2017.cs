@@ -50,7 +50,7 @@ namespace CapaDeNegocios.RentaQuinta
         {
             cRentaQuintaMes miRenta = new cRentaQuintaMes();
             miRenta.Remuneracion = 2600;
-            miRenta.OtrosIngresos[0] = 400;
+            miRenta.OtrosIngresos[0].monto  = 400;
             return miRenta; 
         }
 
@@ -58,9 +58,9 @@ namespace CapaDeNegocios.RentaQuinta
 
         public decimal HallarRentaQUinta(int mes)
         {
-            decimal sumatoriaRemuneracionesMesesAnteriores = 0;
-            decimal sumatoriaOtrosINgresos = 0;
-            decimal sumatoriaTotal = 0;
+            double sumatoriaRemuneracionesMesesAnteriores = 0;
+            double sumatoriaOtrosINgresos = 0;
+            double sumatoriaTotal = 0;
 
             switch (mes)
             {
@@ -68,15 +68,19 @@ namespace CapaDeNegocios.RentaQuinta
                     for (int i = 0; i < mes; i++)
                     {
                         sumatoriaRemuneracionesMesesAnteriores = sumatoriaRemuneracionesMesesAnteriores +  ListaRentaMeses[i].Remuneracion;
-                        sumatoriaOtrosINgresos = sumatoriaOtrosINgresos + ListaRentaMeses[11].OtrosIngresos .OtrosIngresos;
+                        sumatoriaOtrosINgresos = sumatoriaOtrosINgresos + ListaRentaMeses[11].OtrosIngresos[0].monto;
                         sumatoriaTotal = sumatoriaRemuneracionesMesesAnteriores + sumatoriaOtrosINgresos;
 
                     }
+
+
                     break;
-                case 2
+               
                 default:
                     break;
             }
+
+            return 0;
         }
     }
 }

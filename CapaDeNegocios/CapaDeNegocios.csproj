@@ -109,6 +109,9 @@
     <Compile Include="Obras\cObra.cs" />
     <Compile Include="Obras\cProductoProyecto.cs" />
     <Compile Include="Obras\cProgramaPresupuestal.cs" />
+    <Compile Include="PlanillaNueva\cnDetallePlanilla.cs" />
+    <Compile Include="PlanillaNueva\cnDetallePlanillaEgresos.cs" />
+    <Compile Include="PlanillaNueva\cnDetallePlanillaIngresos.cs" />
     <Compile Include="Planillas\cAportaciones.cs" />
     <Compile Include="Planillas\cCalculo5taProyectada.cs" />
     <Compile Include="Planillas\cCalculo5taCategoria.cs" />

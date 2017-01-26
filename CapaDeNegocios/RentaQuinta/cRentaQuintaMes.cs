@@ -8,7 +8,7 @@ namespace CapaDeNegocios.RentaQuinta
 {
     public class cRentaQuintaMes
     {
-        public decimal Remuneracion;
+        public double Remuneracion;
         public  List<cRentaQuintaOtrosIngresos> OtrosIngresos;
 
         public double HallarSumatoriaOtrosIngresos()
