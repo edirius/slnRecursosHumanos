@@ -88,7 +88,7 @@
             this.dgv5taCat.Name = "dgv5taCat";
             this.dgv5taCat.ReadOnly = true;
             this.dgv5taCat.RowHeadersVisible = false;
-            this.dgv5taCat.Size = new System.Drawing.Size(888, 340);
+            this.dgv5taCat.Size = new System.Drawing.Size(888, 401);
             this.dgv5taCat.TabIndex = 0;
             // 
             // btnCancelar
@@ -98,7 +98,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(826, 358);
+            this.btnCancelar.Location = new System.Drawing.Point(826, 419);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(74, 65);
             this.btnCancelar.TabIndex = 87;
@@ -109,7 +109,7 @@
             // 
             // Column1
             // 
-            this.Column1.FillWeight = 296.9545F;
+            this.Column1.FillWeight = 263.9596F;
             this.Column1.HeaderText = "DESCRIPCION";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -118,7 +118,7 @@
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column2.FillWeight = 83.58717F;
+            this.Column2.FillWeight = 86.33675F;
             this.Column2.HeaderText = "ENERO";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -127,7 +127,7 @@
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column3.FillWeight = 83.58717F;
+            this.Column3.FillWeight = 86.33675F;
             this.Column3.HeaderText = "FEBRERO";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -136,7 +136,7 @@
             // 
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Column4.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column4.FillWeight = 83.58717F;
+            this.Column4.FillWeight = 86.33675F;
             this.Column4.HeaderText = "MARZO";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -145,7 +145,7 @@
             // 
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Column5.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column5.FillWeight = 83.58717F;
+            this.Column5.FillWeight = 86.33675F;
             this.Column5.HeaderText = "ABRIL";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
@@ -154,7 +154,7 @@
             // 
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Column6.DefaultCellStyle = dataGridViewCellStyle6;
-            this.Column6.FillWeight = 83.58717F;
+            this.Column6.FillWeight = 86.33675F;
             this.Column6.HeaderText = "MAYO";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
@@ -163,7 +163,7 @@
             // 
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Column7.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Column7.FillWeight = 83.58717F;
+            this.Column7.FillWeight = 86.33675F;
             this.Column7.HeaderText = "JUNIO";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
@@ -172,7 +172,7 @@
             // 
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Column8.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Column8.FillWeight = 83.58717F;
+            this.Column8.FillWeight = 86.33675F;
             this.Column8.HeaderText = "JULIO";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
@@ -181,7 +181,7 @@
             // 
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Column9.DefaultCellStyle = dataGridViewCellStyle9;
-            this.Column9.FillWeight = 83.58717F;
+            this.Column9.FillWeight = 86.33675F;
             this.Column9.HeaderText = "AGOSTO";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
@@ -190,7 +190,7 @@
             // 
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Column10.DefaultCellStyle = dataGridViewCellStyle10;
-            this.Column10.FillWeight = 83.58717F;
+            this.Column10.FillWeight = 86.33675F;
             this.Column10.HeaderText = "SETIEMBRE";
             this.Column10.Name = "Column10";
             this.Column10.ReadOnly = true;
@@ -199,7 +199,7 @@
             // 
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Column11.DefaultCellStyle = dataGridViewCellStyle11;
-            this.Column11.FillWeight = 83.58717F;
+            this.Column11.FillWeight = 86.33675F;
             this.Column11.HeaderText = "OCTUBRE";
             this.Column11.Name = "Column11";
             this.Column11.ReadOnly = true;
@@ -208,7 +208,7 @@
             // 
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Column12.DefaultCellStyle = dataGridViewCellStyle12;
-            this.Column12.FillWeight = 83.58717F;
+            this.Column12.FillWeight = 86.33675F;
             this.Column12.HeaderText = "NOVIEMBRE";
             this.Column12.Name = "Column12";
             this.Column12.ReadOnly = true;
@@ -217,7 +217,7 @@
             // 
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.Column13.DefaultCellStyle = dataGridViewCellStyle13;
-            this.Column13.FillWeight = 83.58717F;
+            this.Column13.FillWeight = 86.33675F;
             this.Column13.HeaderText = "DICIEMBRE";
             this.Column13.Name = "Column13";
             this.Column13.ReadOnly = true;
@@ -226,7 +226,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(912, 435);
+            this.ClientSize = new System.Drawing.Size(912, 496);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.dgv5taCat);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

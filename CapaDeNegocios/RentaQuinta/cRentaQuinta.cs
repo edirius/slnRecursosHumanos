@@ -6,32 +6,32 @@ using System.Threading.Tasks;
 
 namespace CapaDeNegocios.RentaQuinta
 {
-    public class cQuintaCategoria
+    public class cRentaQuinta
     {
         public int idttrabajador;
         public int mes;
         public int año;
-        public double remuneracionactual;
-        public double ingresoactual;
-        public double gratificaciones;
+        public double remuneracion;
+        public double ingresos;
+        public double gratificacion = 300;
         public double UIT;
-        public List<cRentaQuintaMes> ListaRentaMeses = new List<cRentaQuintaMes>();
+        public List<cRentaQuintaMensual> ListaRentaMensual = new List<cRentaQuintaMensual>();
 
         public void RentaQuintaCategoria()
         {
-            cRentaQuintaMes RentaEnero = new cRentaQuintaMes();
-            cRentaQuintaMes RentaFebrero = new cRentaQuintaMes();
-            cRentaQuintaMes RentaMarzo = new cRentaQuintaMes();
-            cRentaQuintaMes RentaAbril = new cRentaQuintaMes();
-            cRentaQuintaMes RentaMayo = new cRentaQuintaMes();
-            cRentaQuintaMes RentaJunio = new cRentaQuintaMes();
-            cRentaQuintaMes RentaJulio = new cRentaQuintaMes();
-            cRentaQuintaMes RentaAgosto = new cRentaQuintaMes();
-            cRentaQuintaMes RentaSetiembre = new cRentaQuintaMes();
-            cRentaQuintaMes RentaOctubre = new cRentaQuintaMes();
-            cRentaQuintaMes RentaNoviembre = new cRentaQuintaMes();
-            cRentaQuintaMes RentaDiciembre = new cRentaQuintaMes();
-            
+            cRentaQuintaMensual RentaEnero = new cRentaQuintaMensual();
+            cRentaQuintaMensual RentaFebrero = new cRentaQuintaMensual();
+            cRentaQuintaMensual RentaMarzo = new cRentaQuintaMensual();
+            cRentaQuintaMensual RentaAbril = new cRentaQuintaMensual();
+            cRentaQuintaMensual RentaMayo = new cRentaQuintaMensual();
+            cRentaQuintaMensual RentaJunio = new cRentaQuintaMensual();
+            cRentaQuintaMensual RentaJulio = new cRentaQuintaMensual();
+            cRentaQuintaMensual RentaAgosto = new cRentaQuintaMensual();
+            cRentaQuintaMensual RentaSetiembre = new cRentaQuintaMensual();
+            cRentaQuintaMensual RentaOctubre = new cRentaQuintaMensual();
+            cRentaQuintaMensual RentaNoviembre = new cRentaQuintaMensual();
+            cRentaQuintaMensual RentaDiciembre = new cRentaQuintaMensual();
+
             switch (mes)
             {
                 case 1:
@@ -205,54 +205,89 @@ namespace CapaDeNegocios.RentaQuinta
                 default:
                     break;
             }
-            ListaRentaMeses.Add(RentaEnero);
-            ListaRentaMeses.Add(RentaFebrero);
-            ListaRentaMeses.Add(RentaMarzo);
-            ListaRentaMeses.Add(RentaAbril);
-            ListaRentaMeses.Add(RentaMayo);
-            ListaRentaMeses.Add(RentaJunio);
-            ListaRentaMeses.Add(RentaJulio);
-            ListaRentaMeses.Add(RentaAgosto);
-            ListaRentaMeses.Add(RentaSetiembre);
-            ListaRentaMeses.Add(RentaOctubre);
-            ListaRentaMeses.Add(RentaNoviembre);
-            ListaRentaMeses.Add(RentaDiciembre);
+            ListaRentaMensual.Add(RentaEnero);
+            ListaRentaMensual.Add(RentaFebrero);
+            ListaRentaMensual.Add(RentaMarzo);
+            ListaRentaMensual.Add(RentaAbril);
+            ListaRentaMensual.Add(RentaMayo);
+            ListaRentaMensual.Add(RentaJunio);
+            ListaRentaMensual.Add(RentaJulio);
+            ListaRentaMensual.Add(RentaAgosto);
+            ListaRentaMensual.Add(RentaSetiembre);
+            ListaRentaMensual.Add(RentaOctubre);
+            ListaRentaMensual.Add(RentaNoviembre);
+            ListaRentaMensual.Add(RentaDiciembre);
             HallarRentaQuinta();
         }
 
-        public cRentaQuintaMes RecuperarDatosMesBD(int mes)
+        public cRentaQuintaMensual RecuperarDatosMesBD(int mes)
         {
-            cRentaQuintaMes mirenta = new cRentaQuintaMes();
+            cRentaQuintaMensual mirenta = new cRentaQuintaMensual();
             mirenta.remuneracion = 0;
-            mirenta.ingresos = 0;
+            //for (int i = 0; i < 1; i++)
+            //{
+            //    cRentaQuintaIngresos miingresos = new cRentaQuintaIngresos();
+            //    miingresos.codigo = "";
+            //    miingresos.monto = ingresos;
+            //    miingresos.proyectabletodoelaño = true;
+            //    mirentamensual.ingresos.Add(miingresos);
+            //}
+            //if (mes == 7 || mes == 12)
+            //{
+            //    cRentaQuintaIngresos miingresos = new cRentaQuintaIngresos();
+            //    miingresos.codigo = "";
+            //    miingresos.monto = gratificacion;
+            //    miingresos.proyectabletodoelaño = false;
+            //    mirentamensual.ingresos.Add(miingresos);
+            //}
             return mirenta;
         }
 
-        public cRentaQuintaMes AsignarDatosMesProyectado(int mes)
+        public cRentaQuintaMensual AsignarDatosMesProyectado(int mes)
         {
-            cRentaQuintaMes mirenta = new cRentaQuintaMes();
-            cRentaQuintaOtrosIngresos miotrosingresos = new cRentaQuintaOtrosIngresos();
-            mirenta.remuneracion = remuneracionactual;
-            miotrosingresos.monto = ingresoactual;
-            miotrosingresos.proyectabletodoelaño = true;
-            //mirenta.ingresos = mirenta.HallarSumatoriaOtrosIngresos();
-            mirenta.ingresos = ingresoactual;
-            return mirenta;
+            cRentaQuintaMensual mirentamensual = new cRentaQuintaMensual();
+            mirentamensual.remuneracion = remuneracion;
+            for (int i = 0; i < 1; i++)
+            {
+                cRentaQuintaIngresos miingresos = new cRentaQuintaIngresos();
+                miingresos.codigo = "";
+                miingresos.monto = ingresos;
+                miingresos.proyectabletodoelaño = true;
+                mirentamensual.ingresos.Add(miingresos);
+            }
+            if (mes == 7 || mes == 12)
+            {
+                cRentaQuintaIngresos miingresos = new cRentaQuintaIngresos();
+                miingresos.codigo = "";
+                miingresos.monto = gratificacion;
+                miingresos.proyectabletodoelaño = false;
+                mirentamensual.ingresos.Add(miingresos);
+            }
+            return mirentamensual;
         }
 
         public void HallarRentaQuinta()
         {
-            double sumatoriaingresosmesesanteriores = 0;
+            double sumatoriaremuneracionmesesanteriores = 0;
+            double sumatoriaingresosnoproyectables = 0;
             double sumatoriaretencionmesesanteriores = 0;
 
             for (int i = mes - 1; i < 12; i++)
             {
-                sumatoriaingresosmesesanteriores = 0;
+                sumatoriaremuneracionmesesanteriores = 0;
+                sumatoriaingresosnoproyectables = 0;
                 sumatoriaretencionmesesanteriores = 0;
+
                 for (int j = 0; j < i; j++)
                 {
-                    sumatoriaingresosmesesanteriores += ListaRentaMeses[j].remuneracion + ListaRentaMeses[j].ingresos;
+                    sumatoriaremuneracionmesesanteriores += ListaRentaMensual[j].remuneracion + ListaRentaMensual[j].sumatoriaingresosproyectables();
                 }
+
+                for (int j = 0; j < 12; j++)
+                {
+                    sumatoriaingresosnoproyectables += ListaRentaMensual[j].sumatoriaingresosnoproyectables();
+                }
+
                 if (i + 1 == 1 || i + 1 == 2 || i + 1 == 3)
                 {
                     sumatoriaretencionmesesanteriores = 0;
@@ -261,68 +296,69 @@ namespace CapaDeNegocios.RentaQuinta
                 {
                     for (int k = 0; k < 3; k++)
                     {
-                        sumatoriaretencionmesesanteriores += ListaRentaMeses[k].impuestomensualapagar;
+                        sumatoriaretencionmesesanteriores += ListaRentaMensual[k].impuestomensualapagar;
                     }
                 }
                 else if (i + 1 == 5 || i + 1 == 6 || i + 1 == 7)
                 {
                     for (int k = 0; k < 4; k++)
                     {
-                        sumatoriaretencionmesesanteriores += ListaRentaMeses[k].impuestomensualapagar;
+                        sumatoriaretencionmesesanteriores += ListaRentaMensual[k].impuestomensualapagar;
                     }
                 }
                 else if (i + 1 == 8)
                 {
                     for (int k = 0; k < 7; k++)
                     {
-                        sumatoriaretencionmesesanteriores += ListaRentaMeses[k].impuestomensualapagar;
+                        sumatoriaretencionmesesanteriores += ListaRentaMensual[k].impuestomensualapagar;
                     }
                 }
                 else if (i + 1 == 9 || i + 1 == 10 || i + 1 == 11)
                 {
                     for (int k = 0; k < 8; k++)
                     {
-                        sumatoriaretencionmesesanteriores += ListaRentaMeses[k].impuestomensualapagar;
+                        sumatoriaretencionmesesanteriores += ListaRentaMensual[k].impuestomensualapagar;
                     }
                 }
                 else if (i + 1 == 12)
                 {
                     for (int k = 0; k < 11; k++)
                     {
-                        sumatoriaretencionmesesanteriores += ListaRentaMeses[k].impuestomensualapagar;
+                        sumatoriaretencionmesesanteriores += ListaRentaMensual[k].impuestomensualapagar;
                     }
                 }
-                ListaRentaMeses[i].ingresosmesesanteriores = sumatoriaingresosmesesanteriores + gratificaciones;
-                ListaRentaMeses[i].xnumeromeses = (ListaRentaMeses[i].remuneracion + ListaRentaMeses[i].ingresos) * (12 - i);
-                ListaRentaMeses[i].rentanetaproyectada = ListaRentaMeses[i].ingresosmesesanteriores + ListaRentaMeses[i].xnumeromeses;
-                ListaRentaMeses[i].rentanetaimponible = ListaRentaMeses[i].rentanetaproyectada - (7 * UIT);
-                Deducciones(i, ListaRentaMeses[i].rentanetaimponible);
-                ListaRentaMeses[i].impuestaanual = ListaRentaMeses[i].PrimeraDeduccion + ListaRentaMeses[i].SegundaDeduccion + ListaRentaMeses[i].TerceraDeduccion + ListaRentaMeses[i].CuartaDeduccion + ListaRentaMeses[i].QuintaDeduccion;
-                ListaRentaMeses[i].retencionesanteriores = sumatoriaretencionmesesanteriores;
-                ListaRentaMeses[i].impuestocalculado = ListaRentaMeses[i].impuestaanual - ListaRentaMeses[i].retencionesanteriores;
+                ListaRentaMensual[i].xnumeromeses = (ListaRentaMensual[i].remuneracion + ListaRentaMensual[i].sumatoriaingresosproyectables()) * (12 - i);
+                ListaRentaMensual[i].remuneracionanteriores = sumatoriaremuneracionmesesanteriores;
+                ListaRentaMensual[i].rentanetaproyectada = sumatoriaremuneracionmesesanteriores + sumatoriaingresosnoproyectables + ListaRentaMensual[i].xnumeromeses;
+                ListaRentaMensual[i].uit7 = (7 * UIT);
+                ListaRentaMensual[i].rentanetaimponible = ListaRentaMensual[i].rentanetaproyectada - ListaRentaMensual[i].uit7;
+                Deducciones(i, ListaRentaMensual[i].rentanetaimponible);
+                ListaRentaMensual[i].impuestaanual = ListaRentaMensual[i].PrimeraDeduccion + ListaRentaMensual[i].SegundaDeduccion + ListaRentaMensual[i].TerceraDeduccion + ListaRentaMensual[i].CuartaDeduccion + ListaRentaMensual[i].QuintaDeduccion;
+                ListaRentaMensual[i].retencionesanteriores = sumatoriaretencionmesesanteriores;
+                ListaRentaMensual[i].impuestocalculado = ListaRentaMensual[i].impuestaanual - ListaRentaMensual[i].retencionesanteriores;
                 if (i + 1 == 1 || i + 1 == 2 || i + 1 == 3)
                 {
-                    ListaRentaMeses[i].impuestomensualapagar = ListaRentaMeses[i].impuestocalculado / 12;
+                    ListaRentaMensual[i].impuestomensualapagar = ListaRentaMensual[i].impuestocalculado / 12;
                 }
                 else if (i + 1 == 4)
                 {
-                    ListaRentaMeses[i].impuestomensualapagar = ListaRentaMeses[i].impuestocalculado / 9;
+                    ListaRentaMensual[i].impuestomensualapagar = ListaRentaMensual[i].impuestocalculado / 9;
                 }
                 else if (i + 1 == 5 || i + 1 == 6 || i + 1 == 7)
                 {
-                    ListaRentaMeses[i].impuestomensualapagar = ListaRentaMeses[i].impuestocalculado / 8;
+                    ListaRentaMensual[i].impuestomensualapagar = ListaRentaMensual[i].impuestocalculado / 8;
                 }
                 else if (i + 1 == 8)
                 {
-                    ListaRentaMeses[i].impuestomensualapagar = ListaRentaMeses[i].impuestocalculado / 5;
+                    ListaRentaMensual[i].impuestomensualapagar = ListaRentaMensual[i].impuestocalculado / 5;
                 }
                 else if (i + 1 == 9 || i + 1 == 10 || i + 1 == 11)
                 {
-                    ListaRentaMeses[i].impuestomensualapagar = ListaRentaMeses[i].impuestocalculado / 4;
+                    ListaRentaMensual[i].impuestomensualapagar = ListaRentaMensual[i].impuestocalculado / 4;
                 }
                 else
                 {
-                    ListaRentaMeses[i].impuestomensualapagar = ListaRentaMeses[i].impuestocalculado;
+                    ListaRentaMensual[i].impuestomensualapagar = ListaRentaMensual[i].impuestocalculado;
                 }
             }
         }
@@ -337,53 +373,53 @@ namespace CapaDeNegocios.RentaQuinta
 
             if (rentanetaimponible <= 0)
             {
-                ListaRentaMeses[mes].PrimeraDeduccion = 0;
-                ListaRentaMeses[mes].SegundaDeduccion = 0;
-                ListaRentaMeses[mes].TerceraDeduccion = 0;
-                ListaRentaMeses[mes].CuartaDeduccion = 0;
-                ListaRentaMeses[mes].QuintaDeduccion = 0;
+                ListaRentaMensual[mes].PrimeraDeduccion = 0;
+                ListaRentaMensual[mes].SegundaDeduccion = 0;
+                ListaRentaMensual[mes].TerceraDeduccion = 0;
+                ListaRentaMensual[mes].CuartaDeduccion = 0;
+                ListaRentaMensual[mes].QuintaDeduccion = 0;
             }
             else
             {
                 if (rentanetaimponible <= UIT5)
                 {
-                    ListaRentaMeses[mes].PrimeraDeduccion = ((rentanetaimponible * 8) / 100);
-                    ListaRentaMeses[mes].SegundaDeduccion = 0;
-                    ListaRentaMeses[mes].TerceraDeduccion = 0;
-                    ListaRentaMeses[mes].CuartaDeduccion = 0;
-                    ListaRentaMeses[mes].QuintaDeduccion = 0;
+                    ListaRentaMensual[mes].PrimeraDeduccion = ((rentanetaimponible * 8) / 100);
+                    ListaRentaMensual[mes].SegundaDeduccion = 0;
+                    ListaRentaMensual[mes].TerceraDeduccion = 0;
+                    ListaRentaMensual[mes].CuartaDeduccion = 0;
+                    ListaRentaMensual[mes].QuintaDeduccion = 0;
                 }
                 else if (rentanetaimponible > UIT5 && rentanetaimponible <= UIT20)
                 {
-                    ListaRentaMeses[mes].PrimeraDeduccion = (UIT5 * 8) / 100;
-                    ListaRentaMeses[mes].SegundaDeduccion = ((rentanetaimponible - UIT5) * 14) / 100;
-                    ListaRentaMeses[mes].TerceraDeduccion = 0;
-                    ListaRentaMeses[mes].CuartaDeduccion = 0;
-                    ListaRentaMeses[mes].QuintaDeduccion = 0;
+                    ListaRentaMensual[mes].PrimeraDeduccion = (UIT5 * 8) / 100;
+                    ListaRentaMensual[mes].SegundaDeduccion = ((rentanetaimponible - UIT5) * 14) / 100;
+                    ListaRentaMensual[mes].TerceraDeduccion = 0;
+                    ListaRentaMensual[mes].CuartaDeduccion = 0;
+                    ListaRentaMensual[mes].QuintaDeduccion = 0;
                 }
                 else if (rentanetaimponible > UIT20 && rentanetaimponible <= UIT35)
                 {
-                    ListaRentaMeses[mes].PrimeraDeduccion = (UIT5 * 8) / 100;
-                    ListaRentaMeses[mes].SegundaDeduccion = ((UIT20 - UIT5) * 14) / 100;
-                    ListaRentaMeses[mes].TerceraDeduccion = ((rentanetaimponible - UIT20) * 17) / 100;
-                    ListaRentaMeses[mes].CuartaDeduccion = 0;
-                    ListaRentaMeses[mes].QuintaDeduccion = 0;
+                    ListaRentaMensual[mes].PrimeraDeduccion = (UIT5 * 8) / 100;
+                    ListaRentaMensual[mes].SegundaDeduccion = ((UIT20 - UIT5) * 14) / 100;
+                    ListaRentaMensual[mes].TerceraDeduccion = ((rentanetaimponible - UIT20) * 17) / 100;
+                    ListaRentaMensual[mes].CuartaDeduccion = 0;
+                    ListaRentaMensual[mes].QuintaDeduccion = 0;
                 }
                 else if (rentanetaimponible > UIT35 && rentanetaimponible <= UIT45)
                 {
-                    ListaRentaMeses[mes].PrimeraDeduccion = (UIT5 * 8) / 100;
-                    ListaRentaMeses[mes].SegundaDeduccion = ((UIT20 - UIT5) * 14) / 100;
-                    ListaRentaMeses[mes].TerceraDeduccion = ((UIT35 - UIT20) * 17) / 100;
-                    ListaRentaMeses[mes].CuartaDeduccion = ((rentanetaimponible - UIT35) * 20) / 100;
-                    ListaRentaMeses[mes].QuintaDeduccion = 0;
+                    ListaRentaMensual[mes].PrimeraDeduccion = (UIT5 * 8) / 100;
+                    ListaRentaMensual[mes].SegundaDeduccion = ((UIT20 - UIT5) * 14) / 100;
+                    ListaRentaMensual[mes].TerceraDeduccion = ((UIT35 - UIT20) * 17) / 100;
+                    ListaRentaMensual[mes].CuartaDeduccion = ((rentanetaimponible - UIT35) * 20) / 100;
+                    ListaRentaMensual[mes].QuintaDeduccion = 0;
                 }
                 else if (rentanetaimponible > UIT45)
                 {
-                    ListaRentaMeses[mes].PrimeraDeduccion = (UIT5 * 8) / 100;
-                    ListaRentaMeses[mes].SegundaDeduccion = ((UIT20 - UIT5) * 14) / 100;
-                    ListaRentaMeses[mes].TerceraDeduccion = ((UIT35 - UIT20) * 17) / 100;
-                    ListaRentaMeses[mes].CuartaDeduccion = ((UIT45 - UIT35) * 20) / 100;
-                    ListaRentaMeses[mes].QuintaDeduccion = ((rentanetaimponible - UIT45) * 30) / 100;
+                    ListaRentaMensual[mes].PrimeraDeduccion = (UIT5 * 8) / 100;
+                    ListaRentaMensual[mes].SegundaDeduccion = ((UIT20 - UIT5) * 14) / 100;
+                    ListaRentaMensual[mes].TerceraDeduccion = ((UIT35 - UIT20) * 17) / 100;
+                    ListaRentaMensual[mes].CuartaDeduccion = ((UIT45 - UIT35) * 20) / 100;
+                    ListaRentaMensual[mes].QuintaDeduccion = ((rentanetaimponible - UIT45) * 30) / 100;
                 }
             }
         }

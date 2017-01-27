@@ -124,9 +124,9 @@
     <Compile Include="Planillas\cPlanilla.cs" />
     <Compile Include="Planillas\cPlantillaPlanilla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RentaQuinta\cQuintaCategoria.cs" />
-    <Compile Include="RentaQuinta\cRentaQuintaMes.cs" />
-    <Compile Include="RentaQuinta\cRentaQuintaOtrosIngresos.cs" />
+    <Compile Include="RentaQuinta\cRentaQuinta.cs" />
+    <Compile Include="RentaQuinta\cRentaQuintaMensual.cs" />
+    <Compile Include="RentaQuinta\cRentaQuintaIngresos.cs" />
     <Compile Include="Reportes\cBoletaPago.cs" />
     <Compile Include="Reportes\cResumenPlanillas.cs" />
     <Compile Include="Reportes\NumLetra.cs" />

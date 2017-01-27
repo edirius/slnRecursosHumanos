@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CapaDeNegocios.RentaQuinta
 {
-    public class cRentaQuintaOtrosIngresos
+    public class cRentaQuintaIngresos
     {
-        public string descripcion;
+        public string codigo;
         public double monto;
         public Boolean proyectabletodoelaño;
     }
