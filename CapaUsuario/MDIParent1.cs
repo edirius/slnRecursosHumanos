@@ -424,6 +424,13 @@ namespace CapaUsuario
             //fNumeracionContrato.Show();
         }
 
+        private void impresionPlanillasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reportes.frmPlanilla2 fPlanillas = new Reportes.frmPlanilla2();
+            fPlanillas.MdiParent = this;
+            fPlanillas.Show();
+        }
+
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackupBBDDMySQL();
