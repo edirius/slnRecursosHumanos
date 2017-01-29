@@ -14,7 +14,7 @@ namespace CapaDeDatos
         
         public void Conectar()
         {
-            builder.Server = "localhost";
+            builder.Server = "192.168.1.60";
             builder.UserID = "root";
             builder.Password = "root";
             builder.Database = "bdpersonal";

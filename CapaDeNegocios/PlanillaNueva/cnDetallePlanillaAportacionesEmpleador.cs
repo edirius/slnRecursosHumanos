@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace CapaDeNegocios.PlanillaNueva
 {
-    public class cnDetallePlanillaIngresos
+    public class cnDetallePlanillaAportacionesEmpleador
     {
         public double Monto { get; set; }
-        public Sunat.cMaestroIngresos MaestroIngresos { get; set; }
+        public Sunat.cMaestroAportacionesEmpleador MaestroAportacionesEmpleador { get; set; }
         public int Codigo { get; set; }
+
     }
 }

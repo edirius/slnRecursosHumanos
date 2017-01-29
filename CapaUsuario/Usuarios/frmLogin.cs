@@ -69,7 +69,7 @@ namespace CapaUsuario.Usuarios
         {
             try
             {
-                Conexion.IniciarSesion(Settings.Default.ConexionMySql, "bdPersonal", "root", "root");
+                Conexion.IniciarSesion(Settings.Default.ConexionMySql, "bdpersonal", "root", "root");
             }
             catch (Exception ex)
             {

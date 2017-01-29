@@ -90,7 +90,12 @@ namespace CapaUsuario.Reportes
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+            CapaDeNegocios.PlanillaNueva.blPlanilla oblPlanilla = new CapaDeNegocios.PlanillaNueva.blPlanilla();
+            CapaDeNegocios.PlanillaNueva.cnPlanilla oPlanilla = new CapaDeNegocios.PlanillaNueva.cnPlanilla();
 
+            oPlanilla = oblPlanilla.TraerPlanilla(Convert.ToInt16(dtgListaPlanillas.SelectedRows[0].Cells[0].Value));
+
+            MessageBox.Show(oPlanilla.Descripcion);
         }
     }
 }
