@@ -29,8 +29,25 @@ namespace CapaUsuario
 
         private void Cargar()
         {
-            //miNUevaRentaQuintaCategoria2017.CargarDatos(11);
-                         
+            CapaDeNegocios.RentaQuinta.cQuintaCategoria miQUintaCategoria2017 = new CapaDeNegocios.RentaQuinta.cQuintaCategoria();
+
+            CapaDeNegocios.RentaQuinta.cRentaQuintaMes RentaEnero = new CapaDeNegocios.RentaQuinta.cRentaQuintaMes();
+            CapaDeNegocios.RentaQuinta.cRentaQuintaMes RentaFebrero = new CapaDeNegocios.RentaQuinta.cRentaQuintaMes();
+            CapaDeNegocios.RentaQuinta.cRentaQuintaMes RentaMarzo = new CapaDeNegocios.RentaQuinta.cRentaQuintaMes();
+
+            //double RentaMes = miQUintaCategoria2017.hallaraRentaQUintaMes( detalleplanilla)
+            //double RentaMes = miQUintaCategoria2017.HallarRemuneracionMesesAnteriores(9);
+
+            //double renta = RentaFebrero.remuneracion + RentaFebrero.otrosingresos[0].monto + RentaEnero.remuneracion;
+            //double renta = RentaMarzo.remuneracion + RentaMarzo.otrosingresos[0].monto + RentaFebrero.remuneracion + RentaEnero.remuneracion;
+
+            //miQUintaCategoria2017.ListaRentaMeses[0].remuneracion;
+            //miQUintaCategoria2017.ListaRentaMeses[0].otrosingresos[0].monto + " " +  miQUintaCategoria2017.ListaRentaMeses[0].otrosingresos[0].descripcion;
+
+            //miQUintaCategoria2017.ListaRentaMeses[0].otrosingresos.Count;
+
+            //miQUintaCategoria2017.ListaRentaMeses[0].otrosingresos.Add(cnuevoIngreso);
+            
         }
     }
 }
