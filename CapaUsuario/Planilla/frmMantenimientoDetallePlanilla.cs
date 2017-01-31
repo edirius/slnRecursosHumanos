@@ -31,8 +31,8 @@ namespace CapaUsuario.Planilla
         decimal sUIT = 0;
         decimal sRemuneracionBasica = 0;
         int sidttrabajador = 0;
-        double sRemuneracionActual = 0;
-        double sIngresosActual = 0;
+        double sRemuneracion = 0;
+        double[,] sIngresos;
 
         string AFP = "";
         string Cuspp = "";
@@ -133,7 +133,7 @@ namespace CapaUsuario.Planilla
             {
 
             }
-        }
+        } 
 
         private void btnRenta5ta_Click(object sender, EventArgs e)
         {
@@ -142,7 +142,7 @@ namespace CapaUsuario.Planilla
                 if (sidttrabajador != 0)
                 {
                     CapaUsuario.Planilla.frmRenta5taProyectado fRenta5taProyectado = new frmRenta5taProyectado();
-                    fRenta5taProyectado.RecibirDatos(sidtplanilla, sidttrabajador, smes, saño, sRemuneracionActual, sIngresosActual, sUIT);
+                    //fRenta5taProyectado.RecibirDatos(sidtplanilla, sidttrabajador, smes, saño, sRemuneracion, sIngresos, sUIT);
                     fRenta5taProyectado.ShowDialog();
                 }
                 else
@@ -335,6 +335,7 @@ namespace CapaUsuario.Planilla
             if (e.RowIndex != -1)
             {
                 sidttrabajador = Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[4].Value);
+                CalcularIngresos(e.RowIndex);
                 if (dgvDetallePlanilla.Rows[e.RowIndex].Cells[2].Selected == true)
                 {
                     if (dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value == null)

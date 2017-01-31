@@ -36,7 +36,7 @@ namespace CapaUsuario.Reportes
 
         //string ruta = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
 
-        string Reporte = ""; string sestado; int sidtplanilla; int sidttrabajador;
+        string Reporte = ""; string sestado; int sidtmeta; int sidttareo; int sidtplanilla; int sidttrabajador;
 
         public MostrarReportes()
         {
@@ -47,7 +47,15 @@ namespace CapaUsuario.Reportes
         {
             try
             {
-                if (Reporte == "ResumenPlanillas")
+                if (Reporte == "ReporteTareos")
+                {
+                    CapaUsuario.Reportes.crTareo crReporteTareos = new crTareo();
+                    IdtMeta(crReporteTareos, sidtmeta);
+                    IdtTareo(crReporteTareos, sidttareo);
+                    crystalReportViewer1.ReportSource = crReporteTareos;
+                    crystalReportViewer1.Refresh();
+                }
+                else if (Reporte == "ResumenPlanillas")
                 {
                     CapaUsuario.Reportes.crResumenPlanillas crResumenPlanillas = new crResumenPlanillas();
                     Estado(crResumenPlanillas, sestado);
@@ -69,6 +77,13 @@ namespace CapaUsuario.Reportes
             }
         }
 
+        public void ReporteTareos(string tipo, int pidtmeta, int pidttareo)
+        {
+            Reporte = tipo;
+            sidtmeta = pidtmeta;
+            sidttareo = pidttareo;
+        }
+
         public void ResumenPlanillas(string tipo, string pestado, int pidtplanilla)
         {
             Reporte = tipo;
@@ -87,6 +102,24 @@ namespace CapaUsuario.Reportes
             crParameterDiscreteValue.Value = pestado;
             crParameterFieldDefinitions = rpt.DataDefinition.ParameterFields;
             crParameterFieldDefinition = crParameterFieldDefinitions["pestado"];
+            crParameterValues.Add(crParameterDiscreteValue);
+            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+        }
+
+        private void IdtMeta(ReportClass rpt, int pidtmeta)
+        {
+            crParameterDiscreteValue.Value = pidtmeta;
+            crParameterFieldDefinitions = rpt.DataDefinition.ParameterFields;
+            crParameterFieldDefinition = crParameterFieldDefinitions["pidtmeta"];
+            crParameterValues.Add(crParameterDiscreteValue);
+            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+        }
+
+        private void IdtTareo(ReportClass rpt, int pidttareo)
+        {
+            crParameterDiscreteValue.Value = pidttareo;
+            crParameterFieldDefinitions = rpt.DataDefinition.ParameterFields;
+            crParameterFieldDefinition = crParameterFieldDefinitions["pidttareo"];
             crParameterValues.Add(crParameterDiscreteValue);
             crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
         }

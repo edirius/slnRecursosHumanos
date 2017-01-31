@@ -16,14 +16,14 @@ namespace CapaUsuario.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport4 : ReportClass {
+    public class crTareo : ReportClass {
         
-        public CrystalReport4() {
+        public crTareo() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport4.rpt";
+                return "crTareo.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace CapaUsuario.Reportes {
         
         public override string FullResourceName {
             get {
-                return "CapaUsuario.Reportes.CrystalReport4.rpt";
+                return "CapaUsuario.Reportes.crTareo.rpt";
             }
             set {
                 // Do nothing
@@ -87,12 +87,28 @@ namespace CapaUsuario.Reportes {
                 return this.ReportDefinition.Sections[4];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_pidtmeta {
+            get {
+                return this.DataDefinition.ParameterFields[0];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_pidttareo {
+            get {
+                return this.DataDefinition.ParameterFields[1];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport4 : Component, ICachedReport {
+    public class CachedcrTareo : Component, ICachedReport {
         
-        public CachedCrystalReport4() {
+        public CachedcrTareo() {
         }
         
         [Browsable(false)]
@@ -129,7 +145,7 @@ namespace CapaUsuario.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport4 rpt = new CrystalReport4();
+            crTareo rpt = new crTareo();
             rpt.Site = this.Site;
             return rpt;
         }

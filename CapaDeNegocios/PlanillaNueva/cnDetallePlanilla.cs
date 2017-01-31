@@ -11,6 +11,6 @@ namespace CapaDeNegocios.PlanillaNueva
     {
         public cTrabajador miTrabajador { get; set; }
         public List<cnDetallePlanillaIngresos> ListaDetalleIngresos { get; set; }
-        public List<>
+        //public List<>;
     }
 }
