@@ -196,9 +196,9 @@ namespace CapaUsuario.Tareo
         private void button1_Click(object sender, EventArgs e)
         {
             CapaUsuario.Reportes.MostrarReportes fMostrarReportes = new CapaUsuario.Reportes.MostrarReportes();
-            //fMostrarReportes.IdTMeta = sIdTMeta;
-            //fMostrarReportes.IdTTareo = sIdTTareo;
-            fMostrarReportes.ShowDialog();
+            fMostrarReportes.ReporteTareos("ReporteTareos", sIdTMeta, sIdTTareo);
+            fMostrarReportes.MdiParent = this.MdiParent;
+            fMostrarReportes.Show();
         }
 
         public class ComboboxItem

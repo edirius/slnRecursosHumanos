@@ -31,8 +31,8 @@ namespace CapaUsuario.Planilla
         decimal sUIT = 0;
         decimal sRemuneracionBasica = 0;
         int sidttrabajador = 0;
-        double sRemuneracionActual = 0;
-        double sIngresosActual = 0;
+        double sRemuneracion_5ta = 0;
+        double[,] sIngresos_5ta;
 
         string AFP = "";
         string Cuspp = "";
@@ -133,7 +133,7 @@ namespace CapaUsuario.Planilla
             {
 
             }
-        }
+        } 
 
         private void btnRenta5ta_Click(object sender, EventArgs e)
         {
@@ -142,7 +142,7 @@ namespace CapaUsuario.Planilla
                 if (sidttrabajador != 0)
                 {
                     CapaUsuario.Planilla.frmRenta5taProyectado fRenta5taProyectado = new frmRenta5taProyectado();
-                    fRenta5taProyectado.RecibirDatos(sidtplanilla, sidttrabajador, smes, saño, sRemuneracionActual, sIngresosActual, sUIT);
+                    fRenta5taProyectado.RecibirDatos(sidtplanilla, sidttrabajador, smes, saño, sRemuneracion_5ta, sIngresos_5ta, sUIT);
                     fRenta5taProyectado.ShowDialog();
                 }
                 else
@@ -335,6 +335,7 @@ namespace CapaUsuario.Planilla
             if (e.RowIndex != -1)
             {
                 sidttrabajador = Convert.ToInt32(dgvDetallePlanilla.Rows[e.RowIndex].Cells[4].Value);
+                Ingresos_5ta(e.RowIndex);
                 if (dgvDetallePlanilla.Rows[e.RowIndex].Cells[2].Selected == true)
                 {
                     if (dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value == null)
@@ -680,6 +681,35 @@ namespace CapaUsuario.Planilla
             }
             dgvDetallePlanilla.Rows[fila].Cells[12].Value = DiasLaborados;
             dgvDetallePlanilla.Rows[fila].Cells[13].Value = String.Format("{0:0.00}", PagoTotal);
+        }
+
+        private void Ingresos_5ta(int fila)
+        {
+            int celda_inicio_ingresos = 14;
+            sIngresos_5ta = new double[con_ingresos, 2];
+
+            for (int i = 0; i < con_ingresos; i++)
+            {
+                if (smingresos[i, 17].ToString() == "0")
+                {
+                    if (smingresos[i, 1].ToString() == "0121" || smingresos[i, 1].ToString() == "0122" || smingresos[i, 1].ToString() == "2039")
+                    {
+                        sRemuneracion_5ta = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                    }
+                    else
+                    {
+                        sIngresos_5ta[i, 0] = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        if (smingresos[i, 1].ToString() == "0114")
+                        {
+                            sIngresos_5ta[i, 1] = 1;
+                        }
+                        else
+                        {
+                            sIngresos_5ta[i, 1] = 0;
+                        }
+                    }
+                }
+            }
         }
 
         private void CalcularIngresos(int fila)
