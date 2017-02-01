@@ -34,7 +34,6 @@ namespace CapaUsuario.Planilla
         string sdescripcion = "";
         string splantilla = "";
 
-        string sNumeroPlanilla = "";
         string sRegimenLaboral = "";
 
         CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
@@ -145,6 +144,7 @@ namespace CapaUsuario.Planilla
         private void dgvPlanilla_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
+            CapaDeNegocios.DatosLaborales.cRegimenLaboral oRegimenLaboral = new CapaDeNegocios.DatosLaborales.cRegimenLaboral();
 
             if (e.RowIndex != -1)
             {
@@ -162,12 +162,9 @@ namespace CapaUsuario.Planilla
                 sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[11].Value);
                 splantilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[12].Value);
 
-                sNumeroPlanilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value);
-                DataTable odtPrueba = new DataTable();
-                odtPrueba = oPlanilla.ListarRegimenLaboralPlanilla(sNumeroPlanilla);
-                foreach (DataRow row in odtPrueba.Rows)
+                foreach (DataRow row in oRegimenLaboral.ListarRegimenLaboral().Select("idtregimenlaboral= '" + sidtregimenlaboral + "'"))
                 {
-                    sRegimenLaboral = row[0].ToString();
+                    sRegimenLaboral = row[2].ToString();
                 }
             }
         }

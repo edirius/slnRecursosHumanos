@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CapaDeNegocios;
+//using CapaDeNegocios;
 
 namespace CapaUsuario
 {
@@ -29,11 +29,11 @@ namespace CapaUsuario
 
         private void Cargar()
         {
-            CapaDeNegocios.RentaQuinta.cQuintaCategoria miQUintaCategoria2017 = new CapaDeNegocios.RentaQuinta.cQuintaCategoria();
+            //CapaDeNegocios.RentaQuinta.cQuintaCategoria miQUintaCategoria2017 = new CapaDeNegocios.RentaQuinta.cQuintaCategoria();
 
-            CapaDeNegocios.RentaQuinta.cRentaQuintaMes RentaEnero = new CapaDeNegocios.RentaQuinta.cRentaQuintaMes();
-            CapaDeNegocios.RentaQuinta.cRentaQuintaMes RentaFebrero = new CapaDeNegocios.RentaQuinta.cRentaQuintaMes();
-            CapaDeNegocios.RentaQuinta.cRentaQuintaMes RentaMarzo = new CapaDeNegocios.RentaQuinta.cRentaQuintaMes();
+            //CapaDeNegocios.RentaQuinta.cRentaQuintaMes RentaEnero = new CapaDeNegocios.RentaQuinta.cRentaQuintaMes();
+            //CapaDeNegocios.RentaQuinta.cRentaQuintaMes RentaFebrero = new CapaDeNegocios.RentaQuinta.cRentaQuintaMes();
+            //CapaDeNegocios.RentaQuinta.cRentaQuintaMes RentaMarzo = new CapaDeNegocios.RentaQuinta.cRentaQuintaMes();
 
             //double RentaMes = miQUintaCategoria2017.hallaraRentaQUintaMes( detalleplanilla)
             //double RentaMes = miQUintaCategoria2017.HallarRemuneracionMesesAnteriores(9);

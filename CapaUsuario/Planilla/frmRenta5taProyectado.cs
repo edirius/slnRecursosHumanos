@@ -16,9 +16,8 @@ namespace CapaUsuario.Planilla
         string saño = "";
         int sidtplanilla = 0;
         int sidttrabajador = 0;
-        double sRemuneracionBasica = 0;
-        double sRemuneracionActual = 0;
-        double sIngresosActual = 0;
+        double sRemuneracion = 0;
+        double[,] sIngresos;
         double sUIT = 0;
 
         public frmRenta5taProyectado()
@@ -37,15 +36,14 @@ namespace CapaUsuario.Planilla
             Close();
         }
 
-        public void RecibirDatos(int pidtplanilla, int pidttrabajador, string pmes, string paño, double pRemuneracionActual, double pIngresosActual, decimal pUIT)
+        public void RecibirDatos(int pidtplanilla, int pidttrabajador, string pmes, string paño, double pRemuneracion, double[,] pIngresos, decimal pUIT)
         {
             sidtplanilla = pidtplanilla;
             sidttrabajador = pidttrabajador;
             smes = pmes;
             saño = paño;
-            //sRemuneracionBasica = 0;
-            sRemuneracionActual = pRemuneracionActual;
-            sIngresosActual = pIngresosActual;
+            sRemuneracion = pRemuneracion;
+            sIngresos = pIngresos;
             sUIT = Convert.ToDouble(pUIT);
         }
 
@@ -55,8 +53,8 @@ namespace CapaUsuario.Planilla
             miQuintaCategoria.idttrabajador = sidttrabajador;
             miQuintaCategoria.mes = Convert.ToInt32(Mes(smes));
             miQuintaCategoria.año = Convert.ToInt32(saño);
-            miQuintaCategoria.remuneracion = 6000;
-            miQuintaCategoria.ingresos = 0;
+            miQuintaCategoria.remuneracion = sRemuneracion;
+            miQuintaCategoria.ingresos = sIngresos;
             miQuintaCategoria.UIT = sUIT;
             miQuintaCategoria.RentaQuintaCategoria();
             for (int i = 0; i < 12; i++)

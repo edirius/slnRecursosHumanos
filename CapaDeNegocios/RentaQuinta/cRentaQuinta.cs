@@ -12,7 +12,7 @@ namespace CapaDeNegocios.RentaQuinta
         public int mes;
         public int año;
         public double remuneracion;
-        public double ingresos;
+        public double[,] ingresos;
         public double gratificacion = 300;
         public double UIT;
         public List<cRentaQuintaMensual> ListaRentaMensual = new List<cRentaQuintaMensual>();
@@ -247,12 +247,21 @@ namespace CapaDeNegocios.RentaQuinta
         {
             cRentaQuintaMensual mirentamensual = new cRentaQuintaMensual();
             mirentamensual.remuneracion = remuneracion;
-            for (int i = 0; i < 1; i++)
-            {
+            int x = ingresos.Length;
+            for (int i = 0; i < x / 2; i++)
+            { 
                 cRentaQuintaIngresos miingresos = new cRentaQuintaIngresos();
                 miingresos.codigo = "";
-                miingresos.monto = ingresos;
-                miingresos.proyectabletodoelaño = true;
+                miingresos.monto = ingresos[i, 0];
+                double y = ingresos[i, 1];
+                if (ingresos[i, 1] == 1)
+                {
+                    miingresos.proyectabletodoelaño = true;
+                }
+                else
+                {
+                    miingresos.proyectabletodoelaño = false;
+                }
                 mirentamensual.ingresos.Add(miingresos);
             }
             if (mes == 7 || mes == 12)
