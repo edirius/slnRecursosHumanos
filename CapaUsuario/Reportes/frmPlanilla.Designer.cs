@@ -86,6 +86,7 @@
             this.dgvAFP.Name = "dgvAFP";
             this.dgvAFP.Size = new System.Drawing.Size(157, 65);
             this.dgvAFP.TabIndex = 92;
+            this.dgvAFP.Visible = false;
             // 
             // dgvPrueba
             // 
@@ -94,6 +95,7 @@
             this.dgvPrueba.Name = "dgvPrueba";
             this.dgvPrueba.Size = new System.Drawing.Size(157, 65);
             this.dgvPrueba.TabIndex = 93;
+            this.dgvPrueba.Visible = false;
             // 
             // dgvPlanilla
             // 
@@ -232,6 +234,7 @@
             this.dgvRedondear.Name = "dgvRedondear";
             this.dgvRedondear.Size = new System.Drawing.Size(157, 65);
             this.dgvRedondear.TabIndex = 95;
+            this.dgvRedondear.Visible = false;
             // 
             // dgvEEFF
             // 
@@ -240,6 +243,7 @@
             this.dgvEEFF.Name = "dgvEEFF";
             this.dgvEEFF.Size = new System.Drawing.Size(157, 65);
             this.dgvEEFF.TabIndex = 96;
+            this.dgvEEFF.Visible = false;
             // 
             // groupBox1
             // 

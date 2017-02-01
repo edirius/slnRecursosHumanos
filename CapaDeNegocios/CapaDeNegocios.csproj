@@ -164,12 +164,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.csproj">
-      <Project>{0ad70875-403b-44ad-b9c7-47f27bbebb5d}</Project>
-      <Name>CapaDeDatos</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
@@ -188,6 +182,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.csproj">
+      <Project>{0ad70875-403b-44ad-b9c7-47f27bbebb5d}</Project>
+      <Name>CapaDeDatos</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
