@@ -686,9 +686,22 @@ namespace CapaUsuario.Planilla
         private void Ingresos_5ta(int fila)
         {
             int celda_inicio_ingresos = 14;
-            sIngresos_5ta = new double[con_ingresos, 2];
-
+            int nrocolumnas_ingresos = 0;
+            int nrocolumnas_asignadas = 0;
             for (int i = 0; i < con_ingresos; i++)
+            {
+                if (smingresos[i, 17].ToString() == "0")
+                {
+                    if (smingresos[i, 1].ToString() != "0121" && smingresos[i, 1].ToString() != "0122" && smingresos[i, 1].ToString() != "2039")
+                    {
+                        nrocolumnas_ingresos += 1;
+                    }
+                }
+            }
+
+            sIngresos_5ta = new double[nrocolumnas_ingresos, 2];
+
+            for (int i = 0; i < con_ingresos - 1; i++)
             {
                 if (smingresos[i, 17].ToString() == "0")
                 {
@@ -698,15 +711,9 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        sIngresos_5ta[i, 0] = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
-                        if (smingresos[i, 1].ToString() == "0114")
-                        {
-                            sIngresos_5ta[i, 1] = 1;
-                        }
-                        else
-                        {
-                            sIngresos_5ta[i, 1] = 0;
-                        }
+                        sIngresos_5ta[nrocolumnas_asignadas, 0] = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        sIngresos_5ta[nrocolumnas_asignadas, 1] = 0;
+                        nrocolumnas_asignadas += 1;
                     }
                 }
             }

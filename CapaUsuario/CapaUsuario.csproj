@@ -196,6 +196,12 @@
       <DependentUpon>crResumenPlanillas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\crTareoResumen.cs">
+      <DependentUpon>crTareoResumen.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reportes\crTareo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1258,6 +1264,10 @@
     <EmbeddedResource Include="Reportes\crResumenPlanillas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crResumenPlanillas.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crTareoResumen.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crTareoResumen.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\crTareo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

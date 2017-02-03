@@ -8,6 +8,7 @@ namespace CapaDeNegocios.RentaQuinta
 {
     public class cRentaQuinta
     {
+        bool ingreso_asignado = false;
         public int idttrabajador;
         public int mes;
         public int año;
@@ -257,13 +258,22 @@ namespace CapaDeNegocios.RentaQuinta
                 if (ingresos[i, 1] == 1)
                 {
                     miingresos.proyectabletodoelaño = true;
+                    mirentamensual.ingresos.Add(miingresos);
                 }
                 else
                 {
-                    miingresos.proyectabletodoelaño = false;
+                    if (ingreso_asignado != true)
+                    {
+                        miingresos.proyectabletodoelaño = false;
+                        mirentamensual.ingresos.Add(miingresos);
+                    }
                 }
-                mirentamensual.ingresos.Add(miingresos);
+                if (i == x / 2 - 1)
+                {
+                    ingreso_asignado = true;
+                }
             }
+            
             if (mes == 7 || mes == 12)
             {
                 cRentaQuintaIngresos miingresos = new cRentaQuintaIngresos();
