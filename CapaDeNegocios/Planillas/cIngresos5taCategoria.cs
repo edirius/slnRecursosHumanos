@@ -15,5 +15,10 @@ namespace CapaDeNegocios.Planillas
         {
             return Conexion.GDatos.TraerDataTable("spIngresos5taCategoria", sidtplanilla, smes, saño, sidttrabajador);
         }
+
+        public DataTable Ingresos5taMensual(string smes, string saño, int sidttrabajador)
+        {
+            return Conexion.GDatos.TraerDataTable("spIngresos5taMensual", smes, saño, sidttrabajador);
+        }
     }
 }

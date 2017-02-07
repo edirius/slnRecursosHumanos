@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace CapaDeNegocios.RentaQuinta
 {
@@ -13,6 +14,7 @@ namespace CapaDeNegocios.RentaQuinta
         public int mes;
         public int año;
         public double remuneracion;
+        public string[] ingresosdesc;
         public double[,] ingresos;
         public double gratificacion = 300;
         public double UIT;
@@ -223,24 +225,39 @@ namespace CapaDeNegocios.RentaQuinta
 
         public cRentaQuintaMensual RecuperarDatosMesBD(int mes)
         {
+            double totalingresos = 0;
             cRentaQuintaMensual mirenta = new cRentaQuintaMensual();
-            mirenta.remuneracion = 0;
-            //for (int i = 0; i < 1; i++)
-            //{
-            //    cRentaQuintaIngresos miingresos = new cRentaQuintaIngresos();
-            //    miingresos.codigo = "";
-            //    miingresos.monto = ingresos;
-            //    miingresos.proyectabletodoelaño = true;
-            //    mirentamensual.ingresos.Add(miingresos);
-            //}
-            //if (mes == 7 || mes == 12)
-            //{
-            //    cRentaQuintaIngresos miingresos = new cRentaQuintaIngresos();
-            //    miingresos.codigo = "";
-            //    miingresos.monto = gratificacion;
-            //    miingresos.proyectabletodoelaño = false;
-            //    mirentamensual.ingresos.Add(miingresos);
-            //}
+            int x = ingresos.Length / 2;
+            for (int i = 0; i <= x; i++)
+            {
+                cRentaQuintaIngresos miingresos = new cRentaQuintaIngresos();
+                miingresos.codigo = "";
+                miingresos.monto = 0;
+                miingresos.proyectabletodoelaño = false;
+                mirenta.ingresos.Add(miingresos);
+            }
+
+            CapaDeNegocios.Planillas.cIngresos5taCategoria miIngresos5taCategoria = new CapaDeNegocios.Planillas.cIngresos5taCategoria();
+            foreach (DataRow rowingresos in miIngresos5taCategoria.Ingresos5taMensual(Mes(mes), año.ToString(), idttrabajador).Rows)
+            {
+                if (rowingresos[0].ToString() == "Ingresos")
+                {
+                    if (rowingresos[3].ToString() == "0121" || rowingresos[3].ToString() == "0122" || rowingresos[3].ToString() == "2039" || rowingresos[3].ToString() == "0114")
+                    {
+                        mirenta.remuneracion += Convert.ToDouble(rowingresos[2]);
+                    }
+                    else
+                    {
+                        totalingresos += Convert.ToDouble(rowingresos[2]);
+                    }
+                    mirenta.ingresos[x].monto = totalingresos;
+                    mirenta.ingresos[x].proyectabletodoelaño = false;
+                }
+                else
+                {
+                    mirenta.impuestomensualapagar = Convert.ToDouble(rowingresos[2]);
+                }
+            }
             return mirenta;
         }
 
@@ -248,40 +265,54 @@ namespace CapaDeNegocios.RentaQuinta
         {
             cRentaQuintaMensual mirentamensual = new cRentaQuintaMensual();
             mirentamensual.remuneracion = remuneracion;
-            int x = ingresos.Length;
-            for (int i = 0; i < x / 2; i++)
+            int x = ingresos.Length / 2;
+            for (int i = 0; i < x; i++)
             { 
                 cRentaQuintaIngresos miingresos = new cRentaQuintaIngresos();
-                miingresos.codigo = "";
-                miingresos.monto = ingresos[i, 0];
+                miingresos.codigo = ingresosdesc[i];
+                
                 double y = ingresos[i, 1];
                 if (ingresos[i, 1] == 1)
                 {
+                    miingresos.monto = ingresos[i, 0];
                     miingresos.proyectabletodoelaño = true;
-                    mirentamensual.ingresos.Add(miingresos);
                 }
                 else
                 {
                     if (ingreso_asignado != true)
                     {
+                        miingresos.monto = ingresos[i, 0];
                         miingresos.proyectabletodoelaño = false;
-                        mirentamensual.ingresos.Add(miingresos);
+                    }
+                    else
+                    {
+                        miingresos.monto = 0;
+                        miingresos.proyectabletodoelaño = false;
                     }
                 }
-                if (i == x / 2 - 1)
+                if (i == x - 1)
                 {
                     ingreso_asignado = true;
                 }
+                mirentamensual.ingresos.Add(miingresos);
             }
-            
             if (mes == 7 || mes == 12)
             {
                 cRentaQuintaIngresos miingresos = new cRentaQuintaIngresos();
-                miingresos.codigo = "";
+                miingresos.codigo = "GRATIFICACIONES Y OTROS";
                 miingresos.monto = gratificacion;
                 miingresos.proyectabletodoelaño = false;
                 mirentamensual.ingresos.Add(miingresos);
             }
+            else
+            {
+                cRentaQuintaIngresos miingresos = new cRentaQuintaIngresos();
+                miingresos.codigo = "GRATIFICACIONES Y OTROS";
+                miingresos.monto = 0;
+                miingresos.proyectabletodoelaño = false;
+                mirentamensual.ingresos.Add(miingresos);
+            }
+
             return mirentamensual;
         }
 
@@ -442,5 +473,51 @@ namespace CapaDeNegocios.RentaQuinta
                 }
             }
         }
+
+        string Mes(int pmes)
+        {
+            string x = "";
+            switch (pmes)
+            {
+                case 1:
+                    x = "ENERO";
+                    break;
+                case 2:
+                    x = "FEBRERO";
+                    break;
+                case 3:
+                    x = "MARZO";
+                    break;
+                case 4:
+                    x = "ABRIL";
+                    break;
+                case 5:
+                    x = "MAYO";
+                    break;
+                case 6:
+                    x = "JUNIO";
+                    break;
+                case 7:
+                    x = "JULIO";
+                    break;
+                case 8:
+                    x = "AGOSTO";
+                    break;
+                case 9:
+                    x = "SETIEMBRE";
+                    break;
+                case 10:
+                    x = "OCTUBRE";
+                    break;
+                case 11:
+                    x = "NOVIEMBRE";
+                    break;
+                case 12:
+                    x = "DICIEMBRE";
+                    break;
+            }
+            return x;
+        }
+
     }
 }

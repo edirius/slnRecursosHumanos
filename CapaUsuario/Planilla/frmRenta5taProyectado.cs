@@ -17,6 +17,7 @@ namespace CapaUsuario.Planilla
         int sidtplanilla = 0;
         int sidttrabajador = 0;
         double sRemuneracion = 0;
+        string[] sIngresosDesc;
         double[,] sIngresos;
         double sUIT = 0;
 
@@ -32,18 +33,47 @@ namespace CapaUsuario.Planilla
             Calculo5taProyectada();
         }
 
+        private void dgvIngresos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1 && e.RowIndex != sIngresos.Length/2)
+            {
+                if (dgvIngresos.Rows[e.RowIndex].Cells[13].Selected == true)
+                {
+                    bool x = Convert.ToBoolean(dgvIngresos.Rows[e.RowIndex].Cells[13].Value);
+                    if (Convert.ToBoolean(dgvIngresos.Rows[e.RowIndex].Cells[13].Value) == true)
+                    {
+                        sIngresos[e.RowIndex, 1] = 1;
+                    }
+                    else
+                    {
+                        sIngresos[e.RowIndex, 1] = 0;
+                    }
+                    Calculo5taProyectada();
+                }
+            }
+        }
+
+        private void dgvIngresos_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvIngresos.IsCurrentCellDirty)
+            {
+                dgvIngresos.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        public void RecibirDatos(int pidtplanilla, int pidttrabajador, string pmes, string paño, double pRemuneracion, double[,] pIngresos, decimal pUIT)
+        public void RecibirDatos(int pidtplanilla, int pidttrabajador, string pmes, string paño, double pRemuneracion, string[] pIngresosDesc, double[,] pIngresos, decimal pUIT)
         {
             sidtplanilla = pidtplanilla;
             sidttrabajador = pidttrabajador;
             smes = pmes;
             saño = paño;
             sRemuneracion = pRemuneracion;
+            sIngresosDesc = pIngresosDesc;
             sIngresos = pIngresos;
             sUIT = Convert.ToDouble(pUIT);
         }
@@ -55,6 +85,7 @@ namespace CapaUsuario.Planilla
             miQuintaCategoria.mes = Convert.ToInt32(Mes(smes));
             miQuintaCategoria.año = Convert.ToInt32(saño);
             miQuintaCategoria.remuneracion = sRemuneracion;
+            miQuintaCategoria.ingresosdesc = sIngresosDesc;
             miQuintaCategoria.ingresos = sIngresos;
             miQuintaCategoria.UIT = sUIT;
             miQuintaCategoria.RentaQuintaCategoria();
@@ -62,8 +93,12 @@ namespace CapaUsuario.Planilla
             {
                 dgvRemuneracion.Rows[0].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMensual[i].remuneracion);
 
-                dgvIngresos.Rows[0].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMensual[i].sumatoriaingresosproyectables());
-                dgvIngresos.Rows[1].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMensual[i].sumatoriaingresosnoproyectables());
+                int x = miQuintaCategoria.ListaRentaMensual[i].ingresos.Count;
+                for (int j = 0; j < x; j++)
+                {
+                    dgvIngresos.Rows[j].Cells[0].Value = miQuintaCategoria.ListaRentaMensual[i].ingresos[j].codigo;
+                    dgvIngresos.Rows[j].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMensual[i].ingresos[j].monto);
+                }
 
                 dgv5taCat.Rows[0].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMensual[i].xnumeromeses);
                 dgv5taCat.Rows[1].Cells[i + 1].Value = string.Format("{0:0.00}", miQuintaCategoria.ListaRentaMensual[i].remuneracionanteriores);
@@ -106,12 +141,12 @@ namespace CapaUsuario.Planilla
         private void MostrarFilasIngresos()
         {
             dgvIngresos.Rows.Add((sIngresos.Length / 2) + 1);
-            for (int i = 0; i < sIngresos.Length / 2; i++)
-            {
-                dgvIngresos.Rows[i].Cells[0].Value = "INGRESOS";
-                //dgvIngresos.Rows[i].Cells[Convert.ToInt32(Mes(smes))].Value = sIngresos[i, 0];
-            }
-            dgvIngresos.Rows[sIngresos.Length / 2].Cells[0].Value = "GRATIFICACIONES";
+            //for (int i = 0; i < sIngresos.Length / 2; i++)
+            //{
+            //    dgvIngresos.Rows[i].Cells[0].Value = "INGRESOS";
+            //    //dgvIngresos.Rows[i].Cells[Convert.ToInt32(Mes(smes))].Value = sIngresos[i, 0];
+            //}
+            //dgvIngresos.Rows[sIngresos.Length / 2].Cells[0].Value = "GRATIFICACIONES";
         }
 
         string Mes(string pmes)

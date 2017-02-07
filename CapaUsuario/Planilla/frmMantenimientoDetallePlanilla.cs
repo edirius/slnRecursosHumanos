@@ -32,6 +32,7 @@ namespace CapaUsuario.Planilla
         decimal sRemuneracionBasica = 0;
         int sidttrabajador = 0;
         double sRemuneracion_5ta = 0;
+        string[] sIngresosDesc_5ta;
         double[,] sIngresos_5ta;
 
         string AFP = "";
@@ -142,7 +143,7 @@ namespace CapaUsuario.Planilla
                 if (sidttrabajador != 0)
                 {
                     CapaUsuario.Planilla.frmRenta5taProyectado fRenta5taProyectado = new frmRenta5taProyectado();
-                    fRenta5taProyectado.RecibirDatos(sidtplanilla, sidttrabajador, smes, saño, sRemuneracion_5ta, sIngresos_5ta, sUIT);
+                    fRenta5taProyectado.RecibirDatos(sidtplanilla, sidttrabajador, smes, saño, sRemuneracion_5ta, sIngresosDesc_5ta, sIngresos_5ta, sUIT);
                     fRenta5taProyectado.ShowDialog();
                 }
                 else
@@ -699,9 +700,10 @@ namespace CapaUsuario.Planilla
                 }
             }
 
+            sIngresosDesc_5ta = new string[nrocolumnas_ingresos];
             sIngresos_5ta = new double[nrocolumnas_ingresos, 2];
 
-            for (int i = 0; i < con_ingresos - 1; i++)
+            for (int i = 0; i < con_ingresos; i++)
             {
                 if (smingresos[i, 17].ToString() == "0")
                 {
@@ -711,6 +713,7 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
+                        sIngresosDesc_5ta[nrocolumnas_asignadas] = smingresos[i, 2].ToString();
                         sIngresos_5ta[nrocolumnas_asignadas, 0] = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
                         sIngresos_5ta[nrocolumnas_asignadas, 1] = 0;
                         nrocolumnas_asignadas += 1;
