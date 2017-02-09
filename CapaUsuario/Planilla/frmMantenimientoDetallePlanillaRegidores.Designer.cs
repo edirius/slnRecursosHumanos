@@ -208,6 +208,7 @@
             this.btnAprobacion.Text = "&Poner en Aprobacion";
             this.btnAprobacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAprobacion.UseVisualStyleBackColor = false;
+            this.btnAprobacion.Click += new System.EventHandler(this.btnAprobacion_Click);
             // 
             // dgvDetallePlanilla
             // 

@@ -942,6 +942,11 @@ namespace CapaUsuario.Planilla
             }
         }
 
+        private void btnAprobacion_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void DibujarDataGrid()
         {
             string abrev_ingresos = ""; string abrev_descuentos = ""; string abrev_atrabajador = ""; string abrev_aempleador = "";

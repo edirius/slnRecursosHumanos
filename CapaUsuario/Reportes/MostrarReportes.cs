@@ -47,7 +47,15 @@ namespace CapaUsuario.Reportes
         {
             try
             {
-                if (Reporte == "ReporteTareos")
+                if (Reporte == "ReporteTareosResumen")
+                {
+                    CapaUsuario.Reportes.crTareoResumen crReporteTareos = new crTareoResumen();
+                    IdtMeta(crReporteTareos, sidtmeta);
+                    IdtTareo(crReporteTareos, sidttareo);
+                    crystalReportViewer1.ReportSource = crReporteTareos;
+                    crystalReportViewer1.Refresh();
+                }
+                else if(Reporte == "ReporteTareos")
                 {
                     CapaUsuario.Reportes.crTareo crReporteTareos = new crTareo();
                     IdtMeta(crReporteTareos, sidtmeta);

@@ -50,11 +50,11 @@ namespace CapaUsuario.Tareo
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            //if (sEstado == true)
-            //{
-            //    MessageBox.Show("El Tareo ya no se puede Modificar.", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            if (sEstado == true)
+            {
+                MessageBox.Show("El Tareo ya no se puede Modificar.", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (sIdTTareo == 0 && dgvTareo.SelectedRows.Count > 0)
             {
                 MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -199,6 +199,11 @@ namespace CapaUsuario.Tareo
             fMostrarReportes.ReporteTareos("ReporteTareos", sIdTMeta, sIdTTareo);
             fMostrarReportes.MdiParent = this.MdiParent;
             fMostrarReportes.Show();
+
+            CapaUsuario.Reportes.MostrarReportes fMostrarReporte = new CapaUsuario.Reportes.MostrarReportes();
+            fMostrarReporte.ReporteTareos("ReporteTareosResumen", sIdTMeta, sIdTTareo);
+            fMostrarReporte.MdiParent = this.MdiParent;
+            fMostrarReporte.Show();
         }
 
         public class ComboboxItem

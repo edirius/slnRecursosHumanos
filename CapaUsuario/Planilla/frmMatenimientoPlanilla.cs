@@ -316,5 +316,12 @@ namespace CapaUsuario.Planilla
                     }
             }
         }
+
+        private void btnHabilitarTareo_Click(object sender, EventArgs e)
+        {
+            Tareo.frmHabilitarTareo fTareo = new Tareo.frmHabilitarTareo();
+            fTareo.MdiParent = this.MdiParent;
+            fTareo.Show();
+        }
     }
 }

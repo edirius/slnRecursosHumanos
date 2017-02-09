@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnDetallePlanilla = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -36,10 +36,6 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.dgvPlanilla = new System.Windows.Forms.DataGridView();
-            this.cboAño = new System.Windows.Forms.ComboBox();
-            this.cboMes = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +49,11 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdtRegimenLaboral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboAño = new System.Windows.Forms.ComboBox();
+            this.cboMes = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnHabilitarTareo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,8 +157,8 @@
             // 
             this.dgvPlanilla.AllowUserToAddRows = false;
             this.dgvPlanilla.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvPlanilla.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvPlanilla.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPlanilla.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -188,57 +189,6 @@
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick);
             this.dgvPlanilla.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellDoubleClick);
-            // 
-            // cboAño
-            // 
-            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAño.FormattingEnabled = true;
-            this.cboAño.Location = new System.Drawing.Point(43, 12);
-            this.cboAño.Name = "cboAño";
-            this.cboAño.Size = new System.Drawing.Size(140, 21);
-            this.cboAño.TabIndex = 31;
-            this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
-            // 
-            // cboMes
-            // 
-            this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMes.FormattingEnabled = true;
-            this.cboMes.Items.AddRange(new object[] {
-            "ENERO",
-            "FEBRERO",
-            "MARZO",
-            "ABRIL",
-            "MAYO",
-            "JUNIO",
-            "JULIO",
-            "AGOSTO",
-            "SETIEMBRE",
-            "OCTUBRE",
-            "NOVIEMBRE",
-            "DICIEMBRE"});
-            this.cboMes.Location = new System.Drawing.Point(222, 12);
-            this.cboMes.Name = "cboMes";
-            this.cboMes.Size = new System.Drawing.Size(121, 21);
-            this.cboMes.TabIndex = 32;
-            this.cboMes.SelectedIndexChanged += new System.EventHandler(this.cboMes_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 13);
-            this.label1.TabIndex = 33;
-            this.label1.Text = "Año";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(189, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
-            this.label2.TabIndex = 34;
-            this.label2.Text = "Mes";
             // 
             // Column1
             // 
@@ -339,11 +289,79 @@
             this.Plantilla.ReadOnly = true;
             this.Plantilla.Visible = false;
             // 
+            // cboAño
+            // 
+            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAño.FormattingEnabled = true;
+            this.cboAño.Location = new System.Drawing.Point(43, 12);
+            this.cboAño.Name = "cboAño";
+            this.cboAño.Size = new System.Drawing.Size(140, 21);
+            this.cboAño.TabIndex = 31;
+            this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
+            // 
+            // cboMes
+            // 
+            this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMes.FormattingEnabled = true;
+            this.cboMes.Items.AddRange(new object[] {
+            "ENERO",
+            "FEBRERO",
+            "MARZO",
+            "ABRIL",
+            "MAYO",
+            "JUNIO",
+            "JULIO",
+            "AGOSTO",
+            "SETIEMBRE",
+            "OCTUBRE",
+            "NOVIEMBRE",
+            "DICIEMBRE"});
+            this.cboMes.Location = new System.Drawing.Point(222, 12);
+            this.cboMes.Name = "cboMes";
+            this.cboMes.Size = new System.Drawing.Size(121, 21);
+            this.cboMes.TabIndex = 32;
+            this.cboMes.SelectedIndexChanged += new System.EventHandler(this.cboMes_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 13);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Año";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(189, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "Mes";
+            // 
+            // btnHabilitarTareo
+            // 
+            this.btnHabilitarTareo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnHabilitarTareo.BackColor = System.Drawing.Color.MintCream;
+            this.btnHabilitarTareo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnHabilitarTareo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnHabilitarTareo.ImageIndex = 1;
+            this.btnHabilitarTareo.Location = new System.Drawing.Point(132, 471);
+            this.btnHabilitarTareo.Name = "btnHabilitarTareo";
+            this.btnHabilitarTareo.Size = new System.Drawing.Size(114, 53);
+            this.btnHabilitarTareo.TabIndex = 35;
+            this.btnHabilitarTareo.Text = "&Habilitar Tareo";
+            this.btnHabilitarTareo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnHabilitarTareo.UseVisualStyleBackColor = false;
+            this.btnHabilitarTareo.Click += new System.EventHandler(this.btnHabilitarTareo_Click);
+            // 
             // frmMatenimientoPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 536);
+            this.Controls.Add(this.btnHabilitarTareo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboMes);
@@ -392,5 +410,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdtRegimenLaboral;
         private System.Windows.Forms.DataGridViewTextBoxColumn Plantilla;
+        private System.Windows.Forms.Button btnHabilitarTareo;
     }
 }

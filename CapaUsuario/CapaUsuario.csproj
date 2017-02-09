@@ -798,6 +798,12 @@
     <Compile Include="Tareo\frmMantenimientoDetalleTareo.designer.cs">
       <DependentUpon>frmMantenimientoDetalleTareo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tareo\frmHabilitarTareo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tareo\frmHabilitarTareo.designer.cs">
+      <DependentUpon>frmHabilitarTareo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tareo\frmMantenimientoTareo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1427,6 +1433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmMantenimientoDetalleTareo.resx">
       <DependentUpon>frmMantenimientoDetalleTareo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tareo\frmHabilitarTareo.resx">
+      <DependentUpon>frmHabilitarTareo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmMantenimientoTareo.resx">
       <DependentUpon>frmMantenimientoTareo.cs</DependentUpon>
