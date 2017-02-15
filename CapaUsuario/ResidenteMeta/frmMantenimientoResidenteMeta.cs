@@ -23,19 +23,29 @@ namespace CapaUsuario.ResidenteMeta
 
         private void frmMantenimientoResidenteMeta_Load(object sender, EventArgs e)
         {
-            CargarResidente();
-            cboResidente_SelectedIndexChanged(sender, e);
+
         }
 
         private void btnResidente_Click(object sender, EventArgs e)
         {
-
+            ResidenteMeta.frmBuscarTrabajadores fBuscarTrabajador = new ResidenteMeta.frmBuscarTrabajadores();
+            if (fBuscarTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                sIdTTrabajador = fBuscarTrabajador.sidttrabajador;
+                txtTrabajador.Text = fBuscarTrabajador.strabajador;
+                CargarDatos();
+            }
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            if (sIdTTrabajador == 0)
+            {
+                MessageBox.Show("Debe seleccionar un trabjador", "Gestion del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             ResidenteMeta.frmResidenteMeta fResidenteMeta = new ResidenteMeta.frmResidenteMeta();
-            fResidenteMeta.RecibirDatos(0, sIdTTrabajador, cboResidente.Text, 1);
+            fResidenteMeta.RecibirDatos(0, sIdTTrabajador, txtTrabajador.Text, 1);
             if (fResidenteMeta.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -64,15 +74,6 @@ namespace CapaUsuario.ResidenteMeta
             this.Close();
         }
 
-        private void cboResidente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboResidente.Text != "System.Data.DataRowView" && cboResidente.ValueMember != "")
-            {
-                sIdTTrabajador = Convert.ToInt32(cboResidente.SelectedValue);
-                CargarDatos();
-            }
-        }
-
         private void dgvResidenteMeta_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -85,14 +86,6 @@ namespace CapaUsuario.ResidenteMeta
                 sIdTResidenteMeta = Convert.ToInt32(dgvResidenteMeta.Rows[iFila].Cells["IdTResidenteMeta"].Value);
                 sIdTMeta = Convert.ToInt32(dgvResidenteMeta.Rows[iFila].Cells["IdTMeta"].Value);
             }
-        }
-
-        private void CargarResidente()
-        {
-            CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
-            cboResidente.DataSource = miTrabajador.ObtenerListaTrabajadores("Todos");
-            cboResidente.DisplayMember = "nombres";
-            cboResidente.ValueMember = "id_trabajador";
         }
 
         private void CargarDatos()

@@ -15,6 +15,7 @@ namespace CapaUsuario.ResidenteMeta
         int sIdTResidenteMeta = 0;
         int sIdTTrabajador = 0;
         int iAccion = 0;
+        string saño;
         CapaDeNegocios.ResidenteMeta.cResidenteMeta miResidenteMeta = new CapaDeNegocios.ResidenteMeta.cResidenteMeta();
         CapaDeNegocios.Obras.cMeta miMeta = new CapaDeNegocios.Obras.cMeta();
         CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
@@ -27,7 +28,7 @@ namespace CapaUsuario.ResidenteMeta
 
         private void frmResidenteMeta_Load(object sender, EventArgs e)
         {
-            CargarMetas();
+            CargarAños();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -69,27 +70,46 @@ namespace CapaUsuario.ResidenteMeta
             iAccion = piAccion;
         }
 
+        private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarMetas();
+        }
+
         private void CargarMetas()
         {
-            int contador = 0;
-            DataTable oDataTable, oDataTable1 = new DataTable();
-            miTrabajador.IdTrabajador = 0;
-            oDataTable = miResidenteMeta.ListarResidenteMeta(miTrabajador);
-            oDataTable1 = miCadena.ListarMetas();
 
-            dgvResidenteMeta.Rows.Clear();
-            foreach (DataRow row in oDataTable1.Rows)
+            if (cboAño.Text != "")
             {
-                contador = 0;
-                foreach (DataRow row1 in oDataTable.Select("idtmeta = '" + row[0].ToString() + "'"))
+                int contador = 0;
+                DataTable oDataTable, oDataTable1 = new DataTable();
+                miTrabajador.IdTrabajador = 0;
+                oDataTable = miResidenteMeta.ListarResidenteMeta(miTrabajador);
+                oDataTable1 = miCadena.ListarMetas();
+
+                dgvResidenteMeta.Rows.Clear();
+                foreach (DataRow row in oDataTable1.Select("año = '" + cboAño.Text + "'"))
                 {
-                    contador += 1;
-                }
-                if (contador == 0)
-                {
-                    dgvResidenteMeta.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString());
+                    contador = 0;
+                    foreach (DataRow row1 in oDataTable.Select("idtmeta = '" + row[0].ToString() + "'"))
+                    {
+                        contador += 1;
+                    }
+                    if (contador == 0)
+                    {
+                        dgvResidenteMeta.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString());
+                    }
                 }
             }
+        }
+
+        private void CargarAños()
+        {
+            for (int i = DateTime.Now.Year; i >= 2000; i--)
+            {
+                cboAño.Items.Add(i);
+            }
+            if (saño == "") { cboAño.SelectedIndex = -1; }
+            else { cboAño.Text = saño; }
         }
     }
 }

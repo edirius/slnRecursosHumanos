@@ -137,6 +137,7 @@
     <Compile Include="Reportes\cBoletaPago.cs" />
     <Compile Include="Reportes\cResumenPlanillas.cs" />
     <Compile Include="Reportes\NumLetra.cs" />
+    <Compile Include="ResidenteMeta\cBuscarTrabajador.cs" />
     <Compile Include="ResidenteMeta\cResidenteMeta.cs" />
     <Compile Include="Sexo.cs" />
     <Compile Include="Sunat\cMaestroAportacionesEmpleador.cs" />
