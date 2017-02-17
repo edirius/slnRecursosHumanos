@@ -20,6 +20,7 @@ namespace CapaUsuario.Usuarios
 {
     public partial class frmLogin : Form
     {
+        public string Usuario;
         CapaDeNegocios.Usuario.cUsuario oUsuario = new CapaDeNegocios.Usuario.cUsuario();
         ////MySqlConnection Con = new MySqlConnection(Settings.Default.ConexionMySql, "bdPersonal", "root", "root");
         //MySqlConnection cn = new MySqlConnection("Server =  192.168.1.60; Uid = root; Password = root; Database = bdPersonal");
@@ -31,40 +32,7 @@ namespace CapaUsuario.Usuarios
             pbImagen.Image = Resources.LogoCatca2;
 
         }
-        public string Usuario;
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            string existe = "@a";
-            string user = "@b";
-            try
-            {
-                int numero;
-                string Contraseña = oUsuario.ObtenerSHA1(txtPass.Text);
-                numero = oUsuario.ValidarUsuarioContraseña(txtUsuario.Text, Contraseña, existe, user);
-                Usuario = txtUsuario.Text;
-                //
-                if (numero == 1)
-                {
-                    frmPrincipal Principal = new frmPrincipal();
-                    MessageBox.Show("Bienvenido al Sistema de Planillas usuario " + Usuario + ".", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Principal.Show();
-                    this.Hide();
-                    Principal.DarPrivilegios(Usuario);
-                }
-                else
-                {
-                    const string message = "El Usuario no existe o la contraseña es incorrecta.";
-                    const string caption = "Error";
-                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txtUsuario.Text = ""; txtPass.Text = ""; txtUsuario.Focus();
-                }
-            }
-            catch (Exception m)
-            {
-                MessageBox.Show(m.Message);
-            }
-        }
-
+        
         private void frmLogin_Load(object sender, EventArgs e)
         {
             try
@@ -77,40 +45,84 @@ namespace CapaUsuario.Usuarios
             }
         }
 
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            IniciarSesion();
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
         private void txtPass_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                string existe = "@a";
-                string user = "@b";
-                try
-                {
-                    int numero;
-                    string Contraseña = oUsuario.ObtenerSHA1(txtPass.Text);
-                    numero = oUsuario.ValidarUsuarioContraseña(txtUsuario.Text, Contraseña, existe, user);
-                    Usuario = txtUsuario.Text;
-                    //
-                    if (numero == 1)
-                    {
-                        frmPrincipal Principal = new frmPrincipal();
-                        MessageBox.Show("Bienvenido al sistema de planillas usuario " + Usuario +".");
-                        Principal.Show();
-                        this.Hide();
-                        Principal.DarPrivilegios(Usuario);
-                    }
-                    else {
-                        const string message = "El Usuario no existe o la contraseña es incorrecta.";
-                        const string caption = "Error";
-                        var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtUsuario.Text = ""; txtPass.Text = ""; txtUsuario.Focus();
-                    }
-                }
-                catch { }
+                IniciarSesion();
             }
+        }
+
+        public void IniciarSesion()
+        {
+            try
+            {
+                DataView objDataView = new DataView();
+                objDataView.Table = oUsuario.ListaUsuarios();
+                objDataView.RowFilter = "nombre='" + txtUsuario.Text + "' and contraseña='" + oUsuario.ObtenerSHA1(txtPass.Text) + "'";
+                dgvUsuarios.DataSource = objDataView;
+                if (objDataView.Count > 0)
+                {
+                    frmPrincipal Principal = new frmPrincipal();
+                    MessageBox.Show("Bienvenido al Sistema de Control de Gestantes usuario " + txtUsuario.Text + ".", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Principal.DarPrivilegios(txtUsuario.Text);
+                    cVariablesUsuario.v_idtrabajador = dgvUsuarios.Rows[0].Cells[4].Value.ToString();
+                    cVariablesUsuario.v_idusuario = dgvUsuarios.Rows[0].Cells[0].Value.ToString();
+                    cVariablesUsuario.v_usuario = dgvUsuarios.Rows[0].Cells[1].Value.ToString();
+                    cVariablesUsuario.v_password = dgvUsuarios.Rows[0].Cells[2].Value.ToString();
+                    Principal.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    const string message = "El Usuario no existe o la contraseña es incorrecta.";
+                    const string caption = "Error";
+                    var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtUsuario.Text = ""; txtPass.Text = ""; txtUsuario.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            //string existe = "@a";
+            //string user = "@b";
+            //try
+            //{
+            //    int numero;
+            //    string Contraseña = oUsuario.ObtenerSHA1(txtPass.Text);
+            //    numero = oUsuario.ValidarUsuarioContraseña(txtUsuario.Text, Contraseña, existe, user);
+
+            //    Usuario = txtUsuario.Text;
+            //    //
+            //    if (numero == 1)
+            //    {
+            //        frmPrincipal Principal = new frmPrincipal();
+            //        MessageBox.Show("Bienvenido al sistema de planillas usuario " + Usuario + ".");
+            //        Principal.Show();
+            //        this.Hide();
+            //        Principal.DarPrivilegios(Usuario);
+            //    }
+            //    else
+            //    {
+            //        const string message = "El Usuario no existe o la contraseña es incorrecta.";
+            //        const string caption = "Error";
+            //        var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //        txtUsuario.Text = ""; txtPass.Text = ""; txtUsuario.Focus();
+            //    }
+            //}
+            //catch { }
         }
     }
 }

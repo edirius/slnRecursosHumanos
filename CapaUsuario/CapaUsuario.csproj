@@ -118,6 +118,7 @@
       <DependentUpon>frmNumeraciónContrato.cs</DependentUpon>
     </Compile>
     <Compile Include="ConvertImage.cs" />
+    <Compile Include="cVariablesUsuario.cs" />
     <Compile Include="ExportarSunat\frmCompararDatosAFP.cs">
       <SubType>Form</SubType>
     </Compile>

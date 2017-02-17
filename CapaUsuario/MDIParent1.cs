@@ -477,11 +477,12 @@ namespace CapaUsuario
             string Usuario = "";
             string Cargo = "";
             dgvCargo.DataSource = oUsu.ObtenerPrivilegios(UsuarioLogin);
+
             foreach (DataGridViewRow fila in dgvCargo.Rows)
             {
-                Usuario = "Usuario: "+ fila.Cells["Usuario"].Value.ToString();
-                Cargo = "Cargo: "+ fila.Cells["Cargo"].Value.ToString();
-                menuAFP =  Convert.ToBoolean(fila.Cells["menuAFP"].Value);
+                Usuario = "Usuario: " + fila.Cells["Usuario"].Value.ToString();
+                Cargo = "Cargo: " + fila.Cells["Cargo"].Value.ToString();
+                menuAFP = Convert.ToBoolean(fila.Cells["menuAFP"].Value);
                 menuUsuario = Convert.ToBoolean(fila.Cells["menuUsuario"].Value);
                 menuTrabajadores = Convert.ToBoolean(fila.Cells["menuTrabajadores"].Value);
                 menuTareos = Convert.ToBoolean(fila.Cells["menuTareos"].Value);
@@ -495,8 +496,8 @@ namespace CapaUsuario
                 toolStripStatusLabel2.Text = Cargo;
                 OcultarMenu();
             }
-            
         }
+
         public void OcultarMenu()
         {
             if (habilitado == true)
@@ -527,8 +528,8 @@ namespace CapaUsuario
                 var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 Application.Exit();
             }
-            
         }
+
         private void BackupBBDDMySQL()
         {
             try
