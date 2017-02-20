@@ -1,0 +1,80 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CapaUsuario.Tareo
+{
+    public partial class frmImportarTareo : Form
+    {
+        string sDescripcion = "";
+        int sIdTMeta = 0;
+
+        public frmImportarTareo()
+        {
+            InitializeComponent();
+        }
+
+        private void frmImportarTareo_Load(object sender, EventArgs e)
+        {
+            CargarTareos();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvTareo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvTareo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        //public void RecibirDatos(int pIdTTareo, int pNumero, DateTime pFechaInicio, DateTime pFechaFin, string pDescripcion, string pNombre, int pIdTMeta)
+        public void RecibirDatos(int pIdTTareo, string pDescripcion, int pIdTMeta)
+        {
+            //miTareo.IdTTareo = pIdTTareo;
+            //miTareo.Numero = pNumero;
+            //txtNumero.Text = Convert.ToString(pNumero);
+            //txtDesdeHasta.Text = Convert.ToString(pFechaInicio.ToLongDateString()) + "   -   " + Convert.ToString(pFechaFin.ToLongDateString());
+            //miTareo.FechaInicio = pFechaInicio;
+            //miTareo.FechaFin = pFechaFin;
+            sDescripcion = pDescripcion;
+            //txtMeta.Text = pNombre;
+            sIdTMeta = pIdTMeta;
+            //if (pDescripcion == "PERSONAL TECNICO") { btnNuevoTrabajador.Visible = false; }
+        }
+
+        private void CargarTareos()
+        {
+            CapaDeNegocios.Obras.cMeta miMeta = new CapaDeNegocios.Obras.cMeta();
+            CapaDeNegocios.Tareos.cTareo miTareo = new CapaDeNegocios.Tareos.cTareo();
+            dgvTareo.Rows.Clear();
+            foreach (DataRow row in miTareo.ListarTareo(sIdTMeta).Rows)
+            {
+                dgvTareo.Rows.Add(row[0].ToString(), row[1].ToString(), row[4].ToString(), row[2].ToString(), row[3].ToString(), Convert.ToBoolean(row[5]));
+            }
+            if (dgvTareo.Rows.Count > 0)
+            {
+                DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, 0);
+                dgvTareo.Rows[0].Selected = true;
+                dgvTareo_CellClick(dgvTareo, cea);
+            }
+        }
+    }
+}
