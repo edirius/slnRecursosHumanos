@@ -36,10 +36,12 @@ namespace CapaUsuario.Usuarios
         {
             lblNombre.Text = miUsuario.Trabajador.Nombres + " " + miUsuario.Trabajador.ApellidoPaterno + " " + miUsuario.Trabajador.ApellidoMaterno;
             txtUsuario.Text = miUsuario.Nombre;
+           
             chkHabilitado.Checked = miUsuario.Habilitado1;
             cboCategoria.DisplayMember = "nombre";
             cboCategoria.ValueMember = "idtPrivilegios";
             cboCategoria.DataSource = miUsuario.Privilegio.ListaPrivilegios();
+            cboCategoria.SelectedValue = miUsuario.Privilegio.Codigo;
         }
 
         private void btnCategoria_Click(object sender, EventArgs e)
@@ -55,18 +57,25 @@ namespace CapaUsuario.Usuarios
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (txtPassword.Text == txtPassword2.Text )
+            if (!string.IsNullOrEmpty( txtPassword.Text) )
             {
-                miUsuario.Nombre = txtUsuario.Text;
-                miUsuario.Password = miUsuario.ObtenerSHA1(txtPassword.Text);
-                miUsuario.Privilegio.Codigo = Convert.ToInt16(cboCategoria.SelectedValue);
-                miUsuario.Habilitado1 = chkHabilitado.Checked;
-                this.DialogResult = DialogResult.OK;
+                if (txtPassword.Text == txtPassword2.Text)
+                {
+                    miUsuario.Nombre = txtUsuario.Text;
+                    miUsuario.Password = miUsuario.ObtenerSHA1(txtPassword.Text);
+                    miUsuario.Privilegio.Codigo = Convert.ToInt16(cboCategoria.SelectedValue);
+                    miUsuario.Habilitado1 = chkHabilitado.Checked;
+                    this.DialogResult = DialogResult.OK;
+                }
+
+                else
+                {
+                    MessageBox.Show("El password no coincide:");
+                }
             }
-           
             else
             {
-                MessageBox.Show("El password no coincide:");
+                MessageBox.Show("El password no puede estar vacio.");
             }
         }
 
