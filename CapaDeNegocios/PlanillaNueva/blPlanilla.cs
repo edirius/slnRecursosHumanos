@@ -31,7 +31,7 @@ namespace CapaDeNegocios.PlanillaNueva
                     oPlanilla.Meta = TraerMeta(oPlanilla.Meta.Codigo);
                     oPlanilla.FuenteFinanciamiento = TraerFuenteFinanciamiento(oPlanilla.FuenteFinanciamiento.IdTFuenteFinanciamiento);
                     oPlanilla.RegimenLaboral = TraerRegimenLaboral(oPlanilla.RegimenLaboral.IdTRegimenLaboral);
-
+                    oPlanilla.ListaDetalle = TraerDetallesPlanilla(oPlanilla.codigo);
                 }
 
                 else
@@ -93,6 +93,28 @@ namespace CapaDeNegocios.PlanillaNueva
             }
         }
 
+        public cTrabajador TraerTrabajador (int codigo)
+        {
+            try
+            {
+                cTrabajador miTrabajador = new cTrabajador();
+                DataTable TablaTrabajador = Conexion.GDatos.TraerDataTable("spTraerTrabajadorxID", codigo);
+                if (TablaTrabajador.Rows.Count > 0)
+                {
+                    miTrabajador.IdTrabajador = Convert.ToInt16(TablaTrabajador.Rows[0][0]);
+                    miTrabajador.Nombres = Convert.ToString(TablaTrabajador.Rows[0][1]);
+                    miTrabajador.ApellidoPaterno = Convert.ToString(TablaTrabajador.Rows[0][2]);
+                    miTrabajador.ApellidoMaterno = Convert.ToString(TablaTrabajador.Rows[0][3]);
+                    
+                    TablaTrabajador.Dispose();
+                }
+                return miTrabajador;
+            }
+            catch (Exception e)
+            {
+                throw new cReglaNegociosException("blPlanilla: " + e.Message);
+            }
+        }
         public DatosLaborales.cRegimenLaboral TraerRegimenLaboral(int codigo)
         {
             try
@@ -126,8 +148,20 @@ namespace CapaDeNegocios.PlanillaNueva
                     {
                         cnDetallePlanilla detalleAuxiliar = new cnDetallePlanilla();
                         detalleAuxiliar.numero = i + 1;
-                        detalleAuxiliar.miTrabajador.IdTrabajador = Convert.ToInt16(ListaDetallesAuxiliar.Rows[0][9]);
-
+                        detalleAuxiliar.cargo = Convert.ToString(ListaDetallesAuxiliar.Rows[i][1]);
+                        detalleAuxiliar.fechaInicio = Convert.ToDateTime(ListaDetallesAuxiliar.Rows[i][2]);
+                        detalleAuxiliar.diasLaborados = Convert.ToInt16(ListaDetallesAuxiliar.Rows[i][3]);
+                        detalleAuxiliar.totalIngreso = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][4]);
+                        detalleAuxiliar.totalAportacionesTrabajador = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][5]);
+                        detalleAuxiliar.totalDescuentos = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][6]);
+                        detalleAuxiliar.totalAportacionesEmpleador = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][7]);
+                        detalleAuxiliar.netoACobrar = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][8]);
+                        detalleAuxiliar.miTrabajador = TraerTrabajador (Convert.ToInt16(ListaDetallesAuxiliar.Rows[i][9]));
+                        detalleAuxiliar.ListaDetalleIngresos = TraerListaIngresos(detalleAuxiliar);
+                        detalleAuxiliar.ListaDetalleEgresos = TraerListaDescuentos(detalleAuxiliar);
+                        detalleAuxiliar.ListaDetalleAportacionesTrabajador = TraerListaAportacionesTrabajador(detalleAuxiliar);
+                        detalleAuxiliar.ListaDetalleAportacionesEmpleador = TraerListaAportacionesEmpleador(detalleAuxiliar);
+                        ListaDetalles.Add(detalleAuxiliar);
                     }
                     return ListaDetalles; 
                 }     
@@ -156,7 +190,7 @@ namespace CapaDeNegocios.PlanillaNueva
                         cnDetallePlanillaIngresos ingresoAuxiliar = new cnDetallePlanillaIngresos();
                         ingresoAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarIngresos.Rows[0][0]);
                         ingresoAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarIngresos.Rows[0][1]);
-                        ingresoAuxiliar.MaestroIngresos.Codigo = Convert.ToString(ListaAuxiliarIngresos.Rows[0][2]);
+                        ingresoAuxiliar.MaestroIngresos = TraerMaestroIngresos(Convert.ToInt16(ListaAuxiliarIngresos.Rows[0][2]));
                         miListaDetalleIngresos.Add(ingresoAuxiliar);
                     }
                 }
@@ -166,6 +200,208 @@ namespace CapaDeNegocios.PlanillaNueva
             {
 
                 throw new cReglaNegociosException("blPLanilla: " + e.Message) ;
+            }
+        }
+
+        public Sunat.cMaestroIngresos TraerMaestroIngresos(int codigo)
+        {
+            try
+            {
+                DataTable AuxiliarMaestroIngresos = Conexion.GDatos.TraerDataTable("spTraerMaestroIngresos", codigo);
+                Sunat.cMaestroIngresos MIngresoAuxiliar = new Sunat.cMaestroIngresos();
+                if (AuxiliarMaestroIngresos.Rows.Count > 0)
+                {
+                    
+                    MIngresoAuxiliar.IdtMaestroIngresos = Convert.ToInt16(AuxiliarMaestroIngresos.Rows[0][0]);
+                    MIngresoAuxiliar.Codigo = Convert.ToString(AuxiliarMaestroIngresos.Rows[0][1]);
+                    MIngresoAuxiliar.Descripcion = Convert.ToString(AuxiliarMaestroIngresos.Rows[0][2]);
+                    MIngresoAuxiliar.Essalud_trabajador = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][3]);
+                    MIngresoAuxiliar.Essalud_cbssp = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][4]);
+                    MIngresoAuxiliar.Essalud_agrario = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][5]);
+                    MIngresoAuxiliar.Essalud_sctr = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][6]);
+                    MIngresoAuxiliar.Impuesto_extraord = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][7]);
+                    MIngresoAuxiliar.Derechos_sociales = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][8]);
+                    MIngresoAuxiliar.Senati = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][9]);
+                    MIngresoAuxiliar.Snp = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][10]);
+                    MIngresoAuxiliar.Spp = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][11]);
+                    MIngresoAuxiliar.Renta_5ta = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][12]);
+                    MIngresoAuxiliar.Essalud_pensionista = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][13]);
+                    MIngresoAuxiliar.Contrib_solidaria = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][14]);
+                    MIngresoAuxiliar.Calculo = Convert.ToString(AuxiliarMaestroIngresos.Rows[0][15]);
+                    MIngresoAuxiliar.Abreviacion = Convert.ToString(AuxiliarMaestroIngresos.Rows[0][16]);
+                    MIngresoAuxiliar.Informativa = Convert.ToBoolean(AuxiliarMaestroIngresos.Rows[0][17]);
+                    MIngresoAuxiliar.Tipo = Convert.ToString(AuxiliarMaestroIngresos.Rows[0][18]);
+
+                }
+                else
+                {
+                    throw new cReglaNegociosException("blPlanilla: No existe datos para Maestro INgresos");
+                }
+                return MIngresoAuxiliar;
+            }
+            catch (Exception e)
+            {
+                throw new cReglaNegociosException("blPlanilla: " + e.Message);
+            }
+        }
+
+        public List<cnDetallePlanillaEgresos> TraerListaDescuentos(cnDetallePlanilla miDetallePlanilla)
+        {
+            try
+            {
+                List<cnDetallePlanillaEgresos> miListaDetalleDescuentos = new List<cnDetallePlanillaEgresos>();
+                DataTable ListaAuxiliarEgresos = Conexion.GDatos.TraerDataTable("spTraerDetalleDescuentos", miDetallePlanilla.codigo);
+                if (ListaAuxiliarEgresos.Rows.Count > 0)
+                {
+                    for (int i = 0; i < ListaAuxiliarEgresos.Rows.Count; i++)
+                    {
+                        cnDetallePlanillaEgresos descuentoAuxiliar = new  cnDetallePlanillaEgresos();
+                        descuentoAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarEgresos.Rows[0][0]);
+                        descuentoAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarEgresos.Rows[0][1]);
+                        descuentoAuxiliar.MaestroDescuentos = TraerMaestroDescuento(Convert.ToInt16(ListaAuxiliarEgresos.Rows[0][2]));  
+                        miListaDetalleDescuentos.Add(descuentoAuxiliar);
+                    }
+                }
+                return miListaDetalleDescuentos;
+            }
+            catch (Exception e)
+            {
+
+                throw new cReglaNegociosException("blPLanilla: " + e.Message);
+            }
+        }
+
+        public Sunat.cMaestroDescuentos TraerMaestroDescuento (int codigo)
+        {
+            try
+            {
+                DataTable AuxiliarMaestroEgresos = Conexion.GDatos.TraerDataTable("spTraerMaestroDescuento", codigo);
+                Sunat.cMaestroDescuentos MDescuentoAuxiliar = new Sunat.cMaestroDescuentos();
+                if (AuxiliarMaestroEgresos.Rows.Count > 0)
+                {
+
+                    MDescuentoAuxiliar.IdtMaestroDescuentos = Convert.ToInt16(AuxiliarMaestroEgresos.Rows[0][0]);
+                    MDescuentoAuxiliar.Codigo = Convert.ToString(AuxiliarMaestroEgresos.Rows[0][1]);
+                    MDescuentoAuxiliar.Descripcion = Convert.ToString(AuxiliarMaestroEgresos.Rows[0][2]);
+                    MDescuentoAuxiliar.Calculo = Convert.ToString(AuxiliarMaestroEgresos.Rows[0][3]);
+                    MDescuentoAuxiliar.Abreviacion = Convert.ToString(AuxiliarMaestroEgresos.Rows[0][4]);
+                 }
+                else
+                {
+                    throw new cReglaNegociosException("blPlanilla: No existe datos para Maestro Descuentos");
+                }
+                return MDescuentoAuxiliar;
+            }
+            catch (Exception e)
+            {
+                throw new cReglaNegociosException("blPlanilla: " + e.Message);
+            }
+        }
+
+        public List<cnDetallePlanillaAportacionesTrabajador> TraerListaAportacionesTrabajador(cnDetallePlanilla miDetallePlanilla)
+        {
+            try
+            {
+                List<cnDetallePlanillaAportacionesTrabajador> miListaAportacionesTrabajador =  new List<cnDetallePlanillaAportacionesTrabajador>();
+                DataTable ListaAuxiliarAportacionesTrabajador = Conexion.GDatos.TraerDataTable("spTraerDetalleAportacionesTrabajador", miDetallePlanilla.codigo);
+                if (ListaAuxiliarAportacionesTrabajador.Rows.Count > 0)
+                {
+                    for (int i = 0; i < ListaAuxiliarAportacionesTrabajador.Rows.Count; i++)
+                    {
+                        cnDetallePlanillaAportacionesTrabajador aportacionAuxiliar = new cnDetallePlanillaAportacionesTrabajador();
+                        aportacionAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarAportacionesTrabajador.Rows[0][0]);
+                        aportacionAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarAportacionesTrabajador.Rows[0][1]);
+                        aportacionAuxiliar.MaestroAportacionTrabajador = TraerMaestroAportacionesTrabajador(Convert.ToInt16(ListaAuxiliarAportacionesTrabajador.Rows[0][2]));
+                        miListaAportacionesTrabajador.Add(aportacionAuxiliar);
+                    }
+                }
+                return miListaAportacionesTrabajador;
+            }
+            catch (Exception e)
+            {
+
+                throw new cReglaNegociosException("blPLanilla: " + e.Message);
+            }
+        }
+
+        public Sunat.cMaestroAportacionesTrabajador TraerMaestroAportacionesTrabajador(int codigo)
+        {
+            try
+            {
+                DataTable AuxiliarMaestroAportacionTrabajador = Conexion.GDatos.TraerDataTable("spTraerMaestroAportacionTrabajador", codigo);
+                Sunat.cMaestroAportacionesTrabajador MAportacionTrabajador = new Sunat.cMaestroAportacionesTrabajador();
+                if (AuxiliarMaestroAportacionTrabajador.Rows.Count > 0)
+                {
+
+                    MAportacionTrabajador.IdtMaestroAportacionesTrabajador  = Convert.ToInt16(AuxiliarMaestroAportacionTrabajador.Rows[0][0]);
+                    MAportacionTrabajador.Codigo = Convert.ToString(AuxiliarMaestroAportacionTrabajador.Rows[0][1]);
+                    MAportacionTrabajador.Descripcion = Convert.ToString(AuxiliarMaestroAportacionTrabajador.Rows[0][2]);
+                    MAportacionTrabajador.Calculo = Convert.ToString(AuxiliarMaestroAportacionTrabajador.Rows[0][3]);
+                    MAportacionTrabajador.Abreviacion = Convert.ToString(AuxiliarMaestroAportacionTrabajador.Rows[0][4]);
+                }
+                else
+                {
+                    throw new cReglaNegociosException("blPlanilla: No existe datos para Maestro Aportacion Trabajador");
+                }
+                return MAportacionTrabajador;
+            }
+            catch (Exception e)
+            {
+                throw new cReglaNegociosException("blPlanilla: " + e.Message);
+            }
+        }
+
+
+        public List<cnDetallePlanillaAportacionesEmpleador> TraerListaAportacionesEmpleador(cnDetallePlanilla miDetallePlanilla)
+        {
+            try
+            {
+                List<cnDetallePlanillaAportacionesEmpleador> miListaAportacionesEmpleador = new List<cnDetallePlanillaAportacionesEmpleador>();
+                DataTable ListaAuxiliarAportacionesEmpleador = Conexion.GDatos.TraerDataTable("spTraerDetalleAportacionesEmpleador", miDetallePlanilla.codigo);
+                if (ListaAuxiliarAportacionesEmpleador.Rows.Count > 0)
+                {
+                    for (int i = 0; i < ListaAuxiliarAportacionesEmpleador.Rows.Count; i++)
+                    {
+                        cnDetallePlanillaAportacionesEmpleador aportacionAuxiliar = new cnDetallePlanillaAportacionesEmpleador();
+                        aportacionAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarAportacionesEmpleador.Rows[0][0]);
+                        aportacionAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarAportacionesEmpleador.Rows[0][1]);
+                        aportacionAuxiliar.MaestroAportacionesEmpleador = TraerMaestroAportacionesEmpleador(Convert.ToInt16(ListaAuxiliarAportacionesEmpleador.Rows[0][2]));
+                        miListaAportacionesEmpleador.Add(aportacionAuxiliar);
+                    }
+                }
+                return miListaAportacionesEmpleador;
+            }
+            catch (Exception e)
+            {
+
+                throw new cReglaNegociosException("blPLanilla: " + e.Message);
+            }
+        }
+
+        public Sunat.cMaestroAportacionesEmpleador TraerMaestroAportacionesEmpleador (int codigo)
+        {
+            try
+            {
+                DataTable AuxiliarMaestroAportacionEmpleador = Conexion.GDatos.TraerDataTable("spTraerMaestroAportacionEmpleador", codigo);
+                Sunat.cMaestroAportacionesEmpleador MAportacionEmpleador = new Sunat.cMaestroAportacionesEmpleador();
+                if (AuxiliarMaestroAportacionEmpleador.Rows.Count > 0)
+                {
+
+                    MAportacionEmpleador.IdtMaestroAportacionesEmpleador = Convert.ToInt16(AuxiliarMaestroAportacionEmpleador.Rows[0][0]);
+                    MAportacionEmpleador.Codigo = Convert.ToString(AuxiliarMaestroAportacionEmpleador.Rows[0][1]);
+                    MAportacionEmpleador.Descripcion = Convert.ToString(AuxiliarMaestroAportacionEmpleador.Rows[0][2]);
+                    MAportacionEmpleador.Calculo = Convert.ToString(AuxiliarMaestroAportacionEmpleador.Rows[0][3]);
+                    MAportacionEmpleador.Abreviacion = Convert.ToString(AuxiliarMaestroAportacionEmpleador.Rows[0][4]);
+                }
+                else
+                {
+                    throw new cReglaNegociosException("blPlanilla: No existe datos para Maestro Aportacion Empleador");
+                }
+                return MAportacionEmpleador;
+            }
+            catch (Exception e)
+            {
+                throw new cReglaNegociosException("blPlanilla: " + e.Message);
             }
         }
     }

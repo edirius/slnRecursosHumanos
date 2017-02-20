@@ -92,10 +92,13 @@ namespace CapaUsuario.Reportes
         {
             CapaDeNegocios.PlanillaNueva.blPlanilla oblPlanilla = new CapaDeNegocios.PlanillaNueva.blPlanilla();
             CapaDeNegocios.PlanillaNueva.cnPlanilla oPlanilla = new CapaDeNegocios.PlanillaNueva.cnPlanilla();
-
+            CapaDeNegocios.PDF.cPDF miPdf = new CapaDeNegocios.PDF.cPDF();
+             
             oPlanilla = oblPlanilla.TraerPlanilla(Convert.ToInt16(dtgListaPlanillas.SelectedRows[0].Cells[0].Value));
 
-            MessageBox.Show(oPlanilla.Descripcion);
+            miPdf.ImprimirPlanilla(oPlanilla);
+
+        
         }
     }
 }
