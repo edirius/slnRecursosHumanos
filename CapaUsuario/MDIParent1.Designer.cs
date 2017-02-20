@@ -46,7 +46,6 @@
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeTrabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeCargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.residenteMetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asistentiaDeTrabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,6 +86,7 @@
             this.declaraciónJuradaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.globalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.impresionPlanillasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,7 +108,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
-            this.impresionPlanillasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.residenteMetaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -243,7 +243,6 @@
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mantenimientoDeTrabajadoresToolStripMenuItem,
             this.mantenimientoDeCargosToolStripMenuItem,
-            this.residenteMetaToolStripMenuItem,
             this.asistentiaDeTrabajadoresToolStripMenuItem});
             this.viewMenu.Name = "viewMenu";
             this.viewMenu.Size = new System.Drawing.Size(86, 20);
@@ -264,13 +263,6 @@
             this.mantenimientoDeCargosToolStripMenuItem.Text = "Mantenimiento de Cargos";
             this.mantenimientoDeCargosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeCargosToolStripMenuItem_Click);
             // 
-            // residenteMetaToolStripMenuItem
-            // 
-            this.residenteMetaToolStripMenuItem.Name = "residenteMetaToolStripMenuItem";
-            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
-            this.residenteMetaToolStripMenuItem.Text = "Residente Meta";
-            this.residenteMetaToolStripMenuItem.Click += new System.EventHandler(this.residenteMetaToolStripMenuItem_Click);
-            // 
             // asistentiaDeTrabajadoresToolStripMenuItem
             // 
             this.asistentiaDeTrabajadoresToolStripMenuItem.Name = "asistentiaDeTrabajadoresToolStripMenuItem";
@@ -281,7 +273,8 @@
             // toolsMenu
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionsToolStripMenuItem});
+            this.optionsToolStripMenuItem,
+            this.residenteMetaToolStripMenuItem1});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(53, 20);
             this.toolsMenu.Text = "Tareos";
@@ -289,7 +282,7 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.optionsToolStripMenuItem.Text = "Tareo de Obras";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
@@ -590,6 +583,13 @@
             this.globalToolStripMenuItem.Text = "Resumen Planillas";
             this.globalToolStripMenuItem.Click += new System.EventHandler(this.globalToolStripMenuItem_Click);
             // 
+            // impresionPlanillasToolStripMenuItem
+            // 
+            this.impresionPlanillasToolStripMenuItem.Name = "impresionPlanillasToolStripMenuItem";
+            this.impresionPlanillasToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.impresionPlanillasToolStripMenuItem.Text = "Impresion Planillas";
+            this.impresionPlanillasToolStripMenuItem.Click += new System.EventHandler(this.impresionPlanillasToolStripMenuItem_Click);
+            // 
             // helpMenu
             // 
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -768,12 +768,12 @@
             this.dgvCargo.TabIndex = 5;
             this.dgvCargo.Visible = false;
             // 
-            // impresionPlanillasToolStripMenuItem
+            // residenteMetaToolStripMenuItem1
             // 
-            this.impresionPlanillasToolStripMenuItem.Name = "impresionPlanillasToolStripMenuItem";
-            this.impresionPlanillasToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
-            this.impresionPlanillasToolStripMenuItem.Text = "Impresion Planillas";
-            this.impresionPlanillasToolStripMenuItem.Click += new System.EventHandler(this.impresionPlanillasToolStripMenuItem_Click);
+            this.residenteMetaToolStripMenuItem1.Name = "residenteMetaToolStripMenuItem1";
+            this.residenteMetaToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
+            this.residenteMetaToolStripMenuItem1.Text = "Residente Meta";
+            this.residenteMetaToolStripMenuItem1.Click += new System.EventHandler(this.residenteMetaToolStripMenuItem1_Click);
             // 
             // frmPrincipal
             // 
@@ -850,7 +850,6 @@
         private System.Windows.Forms.ToolStripMenuItem sUNATToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem motivoFinPeriodoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeCargosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem residenteMetaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maestroIngresosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maestroAportacionesTrabajadorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem maestroDescuentosToolStripMenuItem;
@@ -889,6 +888,7 @@
         private System.Windows.Forms.ToolStripMenuItem trabajadoresToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem numeraciónContratosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem impresionPlanillasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem residenteMetaToolStripMenuItem1;
     }
 }
 

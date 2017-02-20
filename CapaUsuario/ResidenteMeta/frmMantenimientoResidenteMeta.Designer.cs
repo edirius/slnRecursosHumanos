@@ -33,13 +33,13 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.dgvResidenteMeta = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnResidente = new System.Windows.Forms.Button();
-            this.cboResidente = new System.Windows.Forms.ComboBox();
             this.IdTResidenteMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdTMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Año = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Meta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtTrabajador = new System.Windows.Forms.TextBox();
+            this.btnResidente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResidenteMeta)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +101,7 @@
             this.dgvResidenteMeta.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvResidenteMeta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvResidenteMeta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResidenteMeta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdTResidenteMeta,
@@ -111,48 +112,12 @@
             this.dgvResidenteMeta.MultiSelect = false;
             this.dgvResidenteMeta.Name = "dgvResidenteMeta";
             this.dgvResidenteMeta.ReadOnly = true;
+            this.dgvResidenteMeta.RowHeadersVisible = false;
             this.dgvResidenteMeta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvResidenteMeta.Size = new System.Drawing.Size(568, 310);
             this.dgvResidenteMeta.TabIndex = 21;
             this.dgvResidenteMeta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResidenteMeta_CellClick);
             this.dgvResidenteMeta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResidenteMeta_CellContentClick);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnResidente);
-            this.groupBox2.Controls.Add(this.cboResidente);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(568, 48);
-            this.groupBox2.TabIndex = 20;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Residente";
-            // 
-            // btnResidente
-            // 
-            this.btnResidente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnResidente.Font = new System.Drawing.Font("Wide Latin", 9.75F);
-            this.btnResidente.Location = new System.Drawing.Point(498, 19);
-            this.btnResidente.Name = "btnResidente";
-            this.btnResidente.Size = new System.Drawing.Size(64, 23);
-            this.btnResidente.TabIndex = 1;
-            this.btnResidente.Text = "...";
-            this.btnResidente.UseVisualStyleBackColor = true;
-            this.btnResidente.Click += new System.EventHandler(this.btnResidente_Click);
-            // 
-            // cboResidente
-            // 
-            this.cboResidente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboResidente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboResidente.FormattingEnabled = true;
-            this.cboResidente.Location = new System.Drawing.Point(6, 19);
-            this.cboResidente.Name = "cboResidente";
-            this.cboResidente.Size = new System.Drawing.Size(486, 21);
-            this.cboResidente.TabIndex = 0;
-            this.cboResidente.SelectedIndexChanged += new System.EventHandler(this.cboResidente_SelectedIndexChanged);
             // 
             // IdTResidenteMeta
             // 
@@ -170,16 +135,50 @@
             // 
             // Año
             // 
+            this.Año.FillWeight = 50.76142F;
             this.Año.HeaderText = "Año";
             this.Año.Name = "Año";
             this.Año.ReadOnly = true;
             // 
             // Meta
             // 
+            this.Meta.FillWeight = 149.2386F;
             this.Meta.HeaderText = "Meta";
             this.Meta.Name = "Meta";
             this.Meta.ReadOnly = true;
-            this.Meta.Width = 400;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.txtTrabajador);
+            this.groupBox2.Controls.Add(this.btnResidente);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(568, 48);
+            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Residente";
+            // 
+            // txtTrabajador
+            // 
+            this.txtTrabajador.Enabled = false;
+            this.txtTrabajador.Location = new System.Drawing.Point(6, 19);
+            this.txtTrabajador.Name = "txtTrabajador";
+            this.txtTrabajador.Size = new System.Drawing.Size(486, 20);
+            this.txtTrabajador.TabIndex = 2;
+            // 
+            // btnResidente
+            // 
+            this.btnResidente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnResidente.Font = new System.Drawing.Font("Adobe Gothic Std B", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResidente.Location = new System.Drawing.Point(498, 19);
+            this.btnResidente.Name = "btnResidente";
+            this.btnResidente.Size = new System.Drawing.Size(64, 23);
+            this.btnResidente.TabIndex = 1;
+            this.btnResidente.Text = "Buscar";
+            this.btnResidente.UseVisualStyleBackColor = true;
+            this.btnResidente.Click += new System.EventHandler(this.btnResidente_Click);
             // 
             // frmMantenimientoResidenteMeta
             // 
@@ -197,6 +196,7 @@
             this.Load += new System.EventHandler(this.frmMantenimientoResidenteMeta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResidenteMeta)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -209,10 +209,10 @@
         private System.Windows.Forms.DataGridView dgvResidenteMeta;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnResidente;
-        private System.Windows.Forms.ComboBox cboResidente;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdTResidenteMeta;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdTMeta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Año;
         private System.Windows.Forms.DataGridViewTextBoxColumn Meta;
+        private System.Windows.Forms.TextBox txtTrabajador;
     }
 }
