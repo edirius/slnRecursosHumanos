@@ -33,6 +33,9 @@
     <Reference Include="info.lundin.Math">
       <HintPath>..\info.lundin.Math.dll</HintPath>
     </Reference>
+    <Reference Include="iTextSharp">
+      <HintPath>C:\Program Files (x86)\EDIRIUS SOFT S.A.C\SistemaControlGestantes\iTextSharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -109,6 +112,7 @@
     <Compile Include="Obras\cObra.cs" />
     <Compile Include="Obras\cProductoProyecto.cs" />
     <Compile Include="Obras\cProgramaPresupuestal.cs" />
+    <Compile Include="PDF\cPDF.cs" />
     <Compile Include="PlanillaNueva\blPlanilla.cs" />
     <Compile Include="PlanillaNueva\cnDetallePlanilla.cs" />
     <Compile Include="PlanillaNueva\cnDetallePlanillaAportacionesEmpleador.cs" />

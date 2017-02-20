@@ -12,10 +12,23 @@ namespace CapaDeNegocios.PlanillaNueva
         public int codigo { get; set; }
         public int numero { get; set; }
         public cTrabajador miTrabajador { get; set; }
+        public string cargo { get; set; }
+        public DateTime fechaInicio { get; set; }
+        public int diasLaborados { get; set; }
+        public double totalIngreso { get; set; }
+        public double totalAportacionesTrabajador { get; set; }
+        public double totalDescuentos { get; set; }
+        public double totalAportacionesEmpleador { get; set; }
+        public double netoACobrar { get; set; }
+
         public List<cnDetallePlanillaIngresos> ListaDetalleIngresos { get; set; }
         public List<cnDetallePlanillaEgresos > ListaDetalleEgresos { get; set; }
         public List<cnDetallePlanillaAportacionesTrabajador> ListaDetalleAportacionesTrabajador { get; set; }
         public List<cnDetallePlanillaAportacionesEmpleador> ListaDetalleAportacionesEmpleador { get; set; }
 
+        public cnDetallePlanilla()
+        {
+            miTrabajador = new cTrabajador();
+        }
     }
 }
