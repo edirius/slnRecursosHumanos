@@ -12,8 +12,10 @@ namespace CapaUsuario.Tareo
 {
     public partial class frmImportarTareo : Form
     {
-        string sDescripcion = "";
-        int sIdTMeta = 0;
+        string sdescripcion = "";
+        int sidttareo= 0;
+        int sidtmeta = 0;
+        public int sidttareoimportar = 0;
 
         public frmImportarTareo()
         {
@@ -27,12 +29,20 @@ namespace CapaUsuario.Tareo
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-
+            if (sidttareoimportar == 0)
+            {
+                MessageBox.Show("Debe seleccionar nuevamente los datos", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                DialogResult = DialogResult.OK;
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-
+            DialogResult = DialogResult.Cancel;
         }
 
         private void dgvTareo_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -42,30 +52,35 @@ namespace CapaUsuario.Tareo
 
         private void dgvTareo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex != -1)
+            {
+                sidttareoimportar = Convert.ToInt32(dgvTareo.Rows[e.RowIndex].Cells[0].Value);
+            }
         }
 
         //public void RecibirDatos(int pIdTTareo, int pNumero, DateTime pFechaInicio, DateTime pFechaFin, string pDescripcion, string pNombre, int pIdTMeta)
         public void RecibirDatos(int pIdTTareo, string pDescripcion, int pIdTMeta)
         {
-            //miTareo.IdTTareo = pIdTTareo;
+            sidttareo = pIdTTareo;
             //miTareo.Numero = pNumero;
             //txtNumero.Text = Convert.ToString(pNumero);
             //txtDesdeHasta.Text = Convert.ToString(pFechaInicio.ToLongDateString()) + "   -   " + Convert.ToString(pFechaFin.ToLongDateString());
             //miTareo.FechaInicio = pFechaInicio;
             //miTareo.FechaFin = pFechaFin;
-            sDescripcion = pDescripcion;
+            sdescripcion = pDescripcion;
             //txtMeta.Text = pNombre;
-            sIdTMeta = pIdTMeta;
+            sidtmeta = pIdTMeta;
             //if (pDescripcion == "PERSONAL TECNICO") { btnNuevoTrabajador.Visible = false; }
         }
 
         private void CargarTareos()
         {
+            DataTable oDataTareo = new DataTable();
             CapaDeNegocios.Obras.cMeta miMeta = new CapaDeNegocios.Obras.cMeta();
             CapaDeNegocios.Tareos.cTareo miTareo = new CapaDeNegocios.Tareos.cTareo();
             dgvTareo.Rows.Clear();
-            foreach (DataRow row in miTareo.ListarTareo(sIdTMeta).Rows)
+            oDataTareo = miTareo.ListarTareo(sidtmeta);
+            foreach (DataRow row in oDataTareo.Select("descripcion = '" + sdescripcion + "' and idttareo <> '" + sidttareo + "'"))
             {
                 dgvTareo.Rows.Add(row[0].ToString(), row[1].ToString(), row[4].ToString(), row[2].ToString(), row[3].ToString(), Convert.ToBoolean(row[5]));
             }
