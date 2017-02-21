@@ -89,9 +89,55 @@ namespace CapaDeNegocios.Planillas
             return Conexion.GDatos.TraerDataTable("spListarDetallePlanilla", IdtPlanilla);
         }
 
-        public DataTable ListarDetallePlanillaParaAFP(int IdtPlanilla)
+        public DataTable ListarDetallePlanillaParaAFP(int IdtPlanilla, string mes, string año)
         {
-            return Conexion.GDatos.TraerDataTable("spListarDetallePlanillaParaAFP", IdtPlanilla);
+            DateTime miNuevoFecha = new DateTime();
+            int numeromes = 0;
+            switch (mes)
+            {
+                case "ENERO":
+                    numeromes = 0;
+                    break;
+                case "FEBRERO":
+                    numeromes = 1;
+                    break;
+                case "MARZO":
+                    numeromes = 2;
+                    break;
+                case "ABRIL":
+                    numeromes = 3;
+                    break;
+                case "MAYO":
+                    numeromes = 4;
+                    break;
+                case "JUNIO":
+                    numeromes = 5;
+                    break;
+                case "JULIO":
+                    numeromes = 6;
+                    break;
+                case "AGOSTO":
+                    numeromes = 7;
+                    break;
+                case "SETIEMBRE":
+                    numeromes = 8;
+                    break;
+                case "OCTUBRE":
+                    numeromes = 9;
+                    break;
+                case "NOVIEMBRE":
+                    numeromes = 10;
+                    break;
+                case "DICIEMBRE":
+                    numeromes = 11;
+                    break;
+                
+                default:
+                    break;
+            }
+            miNuevoFecha = miNuevoFecha.AddYears(Convert.ToInt16(año));
+            miNuevoFecha = miNuevoFecha.AddMonths(numeromes);
+            return Conexion.GDatos.TraerDataTable("spListarDetallePlanillaParaAFP", IdtPlanilla, miNuevoFecha);
         }
 
         public Boolean CrearDetallePlanilla(cDetallePlanilla miDetallePlanilla)

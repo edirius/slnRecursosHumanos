@@ -100,7 +100,7 @@ namespace CapaUsuario.ExportarSunat
 
         private void frmCompararDatosAFP_Load(object sender, EventArgs e)
         {
-            dtgDatosPlanilla.DataSource = detallePlanilla.ListarDetallePlanillaParaAFP(planilla.IdtPlanilla);
+            dtgDatosPlanilla.DataSource = detallePlanilla.ListarDetallePlanillaParaAFP(planilla.IdtPlanilla, planilla.Mes, planilla.Año);
             dtgDatosPlanilla.Columns[0].Visible = false;
             dtgDatosPlanilla.Columns[6].Visible = false;
             dtgDatosPlanilla.Columns[7].Visible = false;
