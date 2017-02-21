@@ -49,6 +49,7 @@
             this.asistentiaDeTrabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.residenteMetaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.menuProgramaPresupuestal = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,7 +109,6 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
-            this.residenteMetaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -285,6 +285,13 @@
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.optionsToolStripMenuItem.Text = "Tareo de Obras";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+            // 
+            // residenteMetaToolStripMenuItem1
+            // 
+            this.residenteMetaToolStripMenuItem1.Name = "residenteMetaToolStripMenuItem1";
+            this.residenteMetaToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
+            this.residenteMetaToolStripMenuItem1.Text = "Residente Meta";
+            this.residenteMetaToolStripMenuItem1.Click += new System.EventHandler(this.residenteMetaToolStripMenuItem1_Click);
             // 
             // windowsMenu
             // 
@@ -758,6 +765,8 @@
             // 
             // dgvCargo
             // 
+            this.dgvCargo.AllowUserToAddRows = false;
+            this.dgvCargo.AllowUserToDeleteRows = false;
             this.dgvCargo.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvCargo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCargo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -767,13 +776,6 @@
             this.dgvCargo.Size = new System.Drawing.Size(10, 10);
             this.dgvCargo.TabIndex = 5;
             this.dgvCargo.Visible = false;
-            // 
-            // residenteMetaToolStripMenuItem1
-            // 
-            this.residenteMetaToolStripMenuItem1.Name = "residenteMetaToolStripMenuItem1";
-            this.residenteMetaToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
-            this.residenteMetaToolStripMenuItem1.Text = "Residente Meta";
-            this.residenteMetaToolStripMenuItem1.Click += new System.EventHandler(this.residenteMetaToolStripMenuItem1_Click);
             // 
             // frmPrincipal
             // 

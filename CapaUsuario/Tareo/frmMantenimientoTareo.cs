@@ -162,13 +162,21 @@ namespace CapaUsuario.Tareo
         {
             try
             {
+                dgvTareo.Rows.Clear();
+                CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
+                CapaDeNegocios.ResidenteMeta.cResidenteMeta miResidenteMeta = new CapaDeNegocios.ResidenteMeta.cResidenteMeta();
+                miTrabajador.IdTrabajador = Convert.ToInt32(cVariablesUsuario.v_idtrabajador);
                 DataTable oDataMeta = new DataTable();
                 CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miCadena = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
                 oDataMeta = miCadena.ListarMetas();
                 Dictionary<string, string> test = new Dictionary<string, string>();
-                foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+                foreach (DataRow rowResidenteMeta in miResidenteMeta.ListarResidenteMeta(miTrabajador).Rows)
                 {
-                    test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+                    string xx = rowResidenteMeta[1].ToString();
+                    foreach (DataRow row in oDataMeta.Select("idtmeta = '" + rowResidenteMeta[1].ToString() + "' and año = '" + cboAño.Text + "'"))
+                    {
+                        test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+                    }
                 }
                 cboMeta.DataSource = new BindingSource(test, null);
                 cboMeta.DisplayMember = "Value";

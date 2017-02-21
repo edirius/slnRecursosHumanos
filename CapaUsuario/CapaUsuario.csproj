@@ -118,6 +118,7 @@
       <DependentUpon>frmNumeraciónContrato.cs</DependentUpon>
     </Compile>
     <Compile Include="ConvertImage.cs" />
+    <Compile Include="cVariablesUsuario.cs" />
     <Compile Include="ExportarSunat\frmCompararDatosAFP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -798,6 +799,12 @@
     <Compile Include="Asistencia\frmDetalleAsistencia.designer.cs">
       <DependentUpon>frmDetalleAsistencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tareo\frmImportarTareo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tareo\frmImportarTareo.Designer.cs">
+      <DependentUpon>frmImportarTareo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tareo\frmMantenimientoDetalleTareo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1439,6 +1446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Asistencia\frmDetalleAsistencia.resx">
       <DependentUpon>frmDetalleAsistencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tareo\frmImportarTareo.resx">
+      <DependentUpon>frmImportarTareo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmMantenimientoDetalleTareo.resx">
       <DependentUpon>frmMantenimientoDetalleTareo.cs</DependentUpon>
