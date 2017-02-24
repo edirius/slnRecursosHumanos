@@ -12,6 +12,7 @@ namespace CapaUsuario.Tareo
 {
     public partial class frmMantenimientoDetalleTareo : Form
     {
+        int sidttrabajador = 0;
         int sidtperiodotrabajador = 0;
         DateTime auxiliar;
 
@@ -81,54 +82,60 @@ namespace CapaUsuario.Tareo
                 oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(miTareo.IdTTareo);
                 foreach (DataRow row in oDataDetalleTareo.Rows)
                 {
-                    contador += 1;
-                    dgvDetalleTareo.Rows.Add();
-                    fila = dgvDetalleTareo.RowCount - 1;
-                    dgvDetalleTareo.Rows[fila].Cells[1].Value = "I";
-                    dgvDetalleTareo.Rows[fila].Cells[3].Value = contador;
-                    foreach (DataRow row1 in oDataTrabajador.Select("id_trabajador = '" + row[4].ToString() + "'"))
+                    IdtTrabajador = row[4].ToString();
+                    if (ComprobarBajaTrabajador(Convert.ToInt32(IdtTrabajador)) == false)
                     {
-                        IdtTrabajador = row1[0].ToString();
-                        Nombre = row1[2].ToString() + " " + row1[3].ToString() + ", " + row1[4].ToString();
-                        DNI = row1[1].ToString();
-                        Sexo = row1[5].ToString();
-                        foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + Convert.ToInt32(row1[0].ToString()) + "'"))
+                        contador += 1;
+                        dgvDetalleTareo.Rows.Add();
+                        fila = dgvDetalleTareo.RowCount - 1;
+                        dgvDetalleTareo.Rows[fila].Cells[1].Value = "I";
+                        dgvDetalleTareo.Rows[fila].Cells[3].Value = contador;
+                        foreach (DataRow row1 in oDataTrabajador.Select("id_trabajador = '" + IdtTrabajador + "'"))
                         {
-                            FechaInicio = rowPeriodoTrabajador[1].ToString();
-                            foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                            Nombre = row1[2].ToString() + " " + row1[3].ToString() + ", " + row1[4].ToString();
+                            DNI = row1[1].ToString();
+                            Sexo = row1[5].ToString();
+                            foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + Convert.ToInt32(row1[0].ToString()) + "'"))
                             {
-                                foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + Convert.ToInt32(rowRegimenTrabajador[15].ToString()) + "'"))
+                                FechaInicio = rowPeriodoTrabajador[1].ToString();
+                                foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
                                 {
-                                    IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
-                                    Cargo = rowCargo[1].ToString();
+                                    foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + Convert.ToInt32(rowRegimenTrabajador[15].ToString()) + "'"))
+                                    {
+                                        IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
+                                        Cargo = rowCargo[1].ToString();
+                                    }
+                                }
+                                foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                                {
+                                    foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()) + "'"))
+                                    {
+                                        AFP = rowAFP[1].ToString();
+                                    }
                                 }
                             }
-                            foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                            dgvDetalleTareo.Rows[fila].Cells[4].Value = IdtTrabajador;
+                            dgvDetalleTareo.Rows[fila].Cells[5].Value = Nombre;
+                            dgvDetalleTareo.Rows[fila].Cells[6].Value = DNI;
+                            dgvDetalleTareo.Rows[fila].Cells[7].Value = Sexo;
+                            dgvDetalleTareo.Rows[fila].Cells[8].Value = Cargo;
+                            dgvDetalleTareo.Rows[fila].Cells[10].Value = FechaInicio;
+                            dgvDetalleTareo.Rows[fila].Cells[11].Value = AFP;
+                            if (miTareo.Descripcion == "PERSONAL TECNICO") { dgvDetalleTareo.Rows[fila].Cells[8].Value = row[1].ToString(); }
+                            else { dgvDetalleTareo.Rows[fila].Cells[9].Value = row[1].ToString(); }
+                        }
+                        for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+                        {
+                            auxiliar = miTareo.FechaInicio.AddDays(i);
+                            if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
                             {
-                                foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()) + "'"))
-                                {
-                                    AFP = rowAFP[1].ToString();
-                                }
+                                dgvDetalleTareo.Rows[fila].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
                             }
                         }
-                        dgvDetalleTareo.Rows[fila].Cells[4].Value = IdtTrabajador;
-                        dgvDetalleTareo.Rows[fila].Cells[5].Value = Nombre;
-                        dgvDetalleTareo.Rows[fila].Cells[6].Value = DNI;
-                        dgvDetalleTareo.Rows[fila].Cells[7].Value = Sexo;
-                        dgvDetalleTareo.Rows[fila].Cells[8].Value = Cargo;
-                        dgvDetalleTareo.Rows[fila].Cells[10].Value = FechaInicio;
-                        dgvDetalleTareo.Rows[fila].Cells[11].Value = AFP;
-                        if (miTareo.Descripcion == "PERSONAL TECNICO") { dgvDetalleTareo.Rows[fila].Cells[8].Value = row[1].ToString(); }
-                        else { dgvDetalleTareo.Rows[fila].Cells[9].Value = row[1].ToString(); }
                     }
-
-                    for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+                    else
                     {
-                        auxiliar = miTareo.FechaInicio.AddDays(i);
-                        if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
-                        {
-                            dgvDetalleTareo.Rows[fila].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
-                        }
+                        //MessageBox.Show("El trabajador se encuentra de Baja, no se puede agregar al Tareo.", "Gestion de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 if (contador == 0)
@@ -243,7 +250,8 @@ namespace CapaUsuario.Tareo
         private void dgvDetalleTareo_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
-            { 
+            {
+                sidttrabajador = Convert.ToInt32(dgvDetalleTareo.Rows[e.RowIndex].Cells[4].Value);
                 if (dgvDetalleTareo.Rows[e.RowIndex].Cells[12].Selected == true)
                 {
                     for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
@@ -254,32 +262,24 @@ namespace CapaUsuario.Tareo
                 }
                 else if (dgvDetalleTareo.Rows[e.RowIndex].Cells[2].Selected == true)
                 {
-                    if (dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value == null)
-                    {
-                        if (MessageBox.Show("Desea dar de baja al Trabajador.", "Gestión del Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            PeriodoTrabajador(e.RowIndex);
-                            CapaUsuario.Tareo.frmBajaTrabajador fBajaTrabajador = new CapaUsuario.Tareo.frmBajaTrabajador();
-                            fBajaTrabajador.RecibirDatos(miTareo.FechaInicio, sidtperiodotrabajador);
-                            if (fBajaTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                            {
-                                dgvDetalleTareo.Rows.RemoveAt(e.RowIndex);
-                            }
-                        }
-                        return;
-                    }
                     if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value) == "")
                     {
-                        MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (MessageBox.Show("Está seguro que desea quitar al Trabajador del Tareo de Obra", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                        {
+                            return;
+                        }
+                        dgvDetalleTareo.Rows.RemoveAt(e.RowIndex);
                     }
-                    if (MessageBox.Show("Está seguro que desea eliminar al Trabajador del Tareo de Obra", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    else
                     {
-                        return;
+                        if (MessageBox.Show("Está seguro que desea eliminar al Trabajador del Tareo de Obra", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                        {
+                            return;
+                        }
+                        miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value);
+                        miDetalleTareo.EliminarDetalleTareo(miDetalleTareo.IdTDetalleTareo);
+                        CargarDatos();
                     }
-                    miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value);
-                    miDetalleTareo.EliminarDetalleTareo(miDetalleTareo.IdTDetalleTareo);
-                    CargarDatos();
                 }
             }
         }
@@ -333,6 +333,12 @@ namespace CapaUsuario.Tareo
                 {
                     contador += 1;
                     IdtTrabajador = row[0].ToString();
+                    if (ComprobarBajaTrabajador(Convert.ToInt32(IdtTrabajador)) == true)
+                    {
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = "";
+                        MessageBox.Show("El trabajador se encuentra de Baja, no se puede agregar al Tareo.", "Gestion de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                     Nombre = row[2].ToString() + " " + row[3].ToString() + ", " + row[4].ToString();
                     DNI = row[1].ToString();
                     Sexo = row[5].ToString();
@@ -631,12 +637,44 @@ namespace CapaUsuario.Tareo
             return contadordias;
         }
 
-        private void PeriodoTrabajador(int fila)
+        private void PeriodoTrabajador(int pidttrabajador)
         {
-            foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + Convert.ToInt32(dgvDetalleTareo.Rows[fila].Cells[4].Value.ToString()) + "'"))
+            foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + pidttrabajador + "'"))
             {
                 sidtperiodotrabajador = Convert.ToInt32(rowPeriodoTrabajador[0].ToString());
             }
+        }
+
+        private void btnBajaTrabajador_Click(object sender, EventArgs e)
+        {
+            if (sidttrabajador == 0)
+            {
+                MessageBox.Show("No selecciono a ningun trabajador", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            PeriodoTrabajador(sidttrabajador);
+            CapaUsuario.Tareo.frmBajaTrabajador fBajaTrabajador = new CapaUsuario.Tareo.frmBajaTrabajador();
+            fBajaTrabajador.RecibirDatos(miTareo.FechaInicio, sidtperiodotrabajador);
+            fBajaTrabajador.ShowDialog();
+        }
+
+        private bool ComprobarBajaTrabajador(int IdtTrabajador)
+        {
+            bool Baja = false;
+            DataTable oDataPeriodoTrabajador = new DataTable();
+            oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(IdtTrabajador);
+            foreach (DataRow row in oDataPeriodoTrabajador.Rows)
+            {
+                if (row[2].ToString() != "")
+                {
+                    Baja = true;
+                }
+                else
+                {
+                    Baja = false;
+                }
+            }
+            return Baja;
         }
     }
 }

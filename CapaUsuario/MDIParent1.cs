@@ -431,9 +431,8 @@ namespace CapaUsuario
             fPlanillas.Show();
         }
 
-        private void residenteMetaToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void residenteMetaToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-
             ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();
             fMantenimientoResidenteMeta.MdiParent = this;
             fMantenimientoResidenteMeta.Show();

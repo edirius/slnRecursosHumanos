@@ -36,19 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDetalleTareo = new System.Windows.Forms.DataGridView();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.txtMeta = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnAprobacion = new System.Windows.Forms.Button();
-            this.txtDesdeHasta = new System.Windows.Forms.TextBox();
-            this.txtResidente = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnImportar = new System.Windows.Forms.Button();
-            this.btnNuevoTrabajador = new System.Windows.Forms.Button();
             this.txtIdTDetalleTareo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnProceso = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -62,6 +49,20 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSistemaPensiones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkMarca = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.txtMeta = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnAprobacion = new System.Windows.Forms.Button();
+            this.txtDesdeHasta = new System.Windows.Forms.TextBox();
+            this.txtResidente = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnImportar = new System.Windows.Forms.Button();
+            this.btnNuevoTrabajador = new System.Windows.Forms.Button();
+            this.btnBajaTrabajador = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleTareo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,6 +109,114 @@
             this.dgvDetalleTareo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleTareo_CellEndEdit);
             this.dgvDetalleTareo.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDetalleTareo_EditingControlShowing);
             this.dgvDetalleTareo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvDetalleTareo_KeyPress);
+            // 
+            // txtIdTDetalleTareo
+            // 
+            this.txtIdTDetalleTareo.HeaderText = "ID";
+            this.txtIdTDetalleTareo.Name = "txtIdTDetalleTareo";
+            this.txtIdTDetalleTareo.ReadOnly = true;
+            this.txtIdTDetalleTareo.Visible = false;
+            this.txtIdTDetalleTareo.Width = 30;
+            // 
+            // txtAccion
+            // 
+            this.txtAccion.HeaderText = "Accion";
+            this.txtAccion.Name = "txtAccion";
+            this.txtAccion.Visible = false;
+            this.txtAccion.Width = 30;
+            // 
+            // btnProceso
+            // 
+            this.btnProceso.HeaderText = "";
+            this.btnProceso.Name = "btnProceso";
+            this.btnProceso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnProceso.Width = 30;
+            // 
+            // txtNro
+            // 
+            this.txtNro.HeaderText = "NRO";
+            this.txtNro.Name = "txtNro";
+            this.txtNro.ReadOnly = true;
+            this.txtNro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtNro.Width = 30;
+            // 
+            // txtIdTTrabajador
+            // 
+            this.txtIdTTrabajador.HeaderText = "IdTTrabajador";
+            this.txtIdTTrabajador.Name = "txtIdTTrabajador";
+            this.txtIdTTrabajador.ReadOnly = true;
+            this.txtIdTTrabajador.Visible = false;
+            this.txtIdTTrabajador.Width = 50;
+            // 
+            // txtApellidosNombres
+            // 
+            this.txtApellidosNombres.HeaderText = "APELLIDOS Y NOMBRES";
+            this.txtApellidosNombres.Name = "txtApellidosNombres";
+            this.txtApellidosNombres.ReadOnly = true;
+            this.txtApellidosNombres.Width = 275;
+            // 
+            // txtDNI
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.txtDNI.DefaultCellStyle = dataGridViewCellStyle3;
+            this.txtDNI.HeaderText = "DNI";
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtDNI.Width = 75;
+            // 
+            // Column2
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column2.HeaderText = "Sexo";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 30;
+            // 
+            // Column3
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column3.HeaderText = "CATEGORIA";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 150;
+            // 
+            // cboCategoria
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.cboCategoria.DefaultCellStyle = dataGridViewCellStyle6;
+            this.cboCategoria.HeaderText = "CATEGORIA";
+            this.cboCategoria.Items.AddRange(new object[] {
+            "PEON",
+            "OPERARIO",
+            "OFICIAL",
+            "MAESTRO DE OBRA",
+            "ALMACENERO",
+            "GUARDIAN"});
+            this.cboCategoria.Name = "cboCategoria";
+            // 
+            // Column4
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Column4.HeaderText = "Fecha Inicio";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 75;
+            // 
+            // txtSistemaPensiones
+            // 
+            this.txtSistemaPensiones.HeaderText = "SIS PENSIONES";
+            this.txtSistemaPensiones.Name = "txtSistemaPensiones";
+            this.txtSistemaPensiones.ReadOnly = true;
+            this.txtSistemaPensiones.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // chkMarca
+            // 
+            this.chkMarca.HeaderText = "Marcar Todo";
+            this.chkMarca.Name = "chkMarca";
+            this.chkMarca.Width = 45;
             // 
             // btnCancelar
             // 
@@ -258,128 +367,37 @@
             this.btnNuevoTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevoTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevoTrabajador.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnNuevoTrabajador.Location = new System.Drawing.Point(714, 403);
+            this.btnNuevoTrabajador.Location = new System.Drawing.Point(763, 403);
             this.btnNuevoTrabajador.Name = "btnNuevoTrabajador";
-            this.btnNuevoTrabajador.Size = new System.Drawing.Size(132, 65);
+            this.btnNuevoTrabajador.Size = new System.Drawing.Size(83, 65);
             this.btnNuevoTrabajador.TabIndex = 78;
             this.btnNuevoTrabajador.Text = "&Nuevo Trabajador";
             this.btnNuevoTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNuevoTrabajador.UseVisualStyleBackColor = false;
             this.btnNuevoTrabajador.Click += new System.EventHandler(this.btnNuevoTrabajador_Click);
             // 
-            // txtIdTDetalleTareo
+            // btnBajaTrabajador
             // 
-            this.txtIdTDetalleTareo.HeaderText = "ID";
-            this.txtIdTDetalleTareo.Name = "txtIdTDetalleTareo";
-            this.txtIdTDetalleTareo.ReadOnly = true;
-            this.txtIdTDetalleTareo.Visible = false;
-            this.txtIdTDetalleTareo.Width = 30;
-            // 
-            // txtAccion
-            // 
-            this.txtAccion.HeaderText = "Accion";
-            this.txtAccion.Name = "txtAccion";
-            this.txtAccion.Visible = false;
-            this.txtAccion.Width = 30;
-            // 
-            // btnProceso
-            // 
-            this.btnProceso.HeaderText = "";
-            this.btnProceso.Name = "btnProceso";
-            this.btnProceso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnProceso.Width = 30;
-            // 
-            // txtNro
-            // 
-            this.txtNro.HeaderText = "NRO";
-            this.txtNro.Name = "txtNro";
-            this.txtNro.ReadOnly = true;
-            this.txtNro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.txtNro.Width = 30;
-            // 
-            // txtIdTTrabajador
-            // 
-            this.txtIdTTrabajador.HeaderText = "IdTTrabajador";
-            this.txtIdTTrabajador.Name = "txtIdTTrabajador";
-            this.txtIdTTrabajador.ReadOnly = true;
-            this.txtIdTTrabajador.Visible = false;
-            this.txtIdTTrabajador.Width = 50;
-            // 
-            // txtApellidosNombres
-            // 
-            this.txtApellidosNombres.HeaderText = "APELLIDOS Y NOMBRES";
-            this.txtApellidosNombres.Name = "txtApellidosNombres";
-            this.txtApellidosNombres.ReadOnly = true;
-            this.txtApellidosNombres.Width = 275;
-            // 
-            // txtDNI
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.txtDNI.DefaultCellStyle = dataGridViewCellStyle3;
-            this.txtDNI.HeaderText = "DNI";
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.txtDNI.Width = 75;
-            // 
-            // Column2
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column2.HeaderText = "Sexo";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 30;
-            // 
-            // Column3
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column3.HeaderText = "CATEGORIA";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 150;
-            // 
-            // cboCategoria
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.cboCategoria.DefaultCellStyle = dataGridViewCellStyle6;
-            this.cboCategoria.HeaderText = "CATEGORIA";
-            this.cboCategoria.Items.AddRange(new object[] {
-            "PEON",
-            "OPERARIO",
-            "OFICIAL",
-            "MAESTRO DE OBRA",
-            "ALMACENERO",
-            "GUARDIAN"});
-            this.cboCategoria.Name = "cboCategoria";
-            // 
-            // Column4
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Column4.HeaderText = "Fecha Inicio";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 75;
-            // 
-            // txtSistemaPensiones
-            // 
-            this.txtSistemaPensiones.HeaderText = "SIS PENSIONES";
-            this.txtSistemaPensiones.Name = "txtSistemaPensiones";
-            this.txtSistemaPensiones.ReadOnly = true;
-            this.txtSistemaPensiones.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // chkMarca
-            // 
-            this.chkMarca.HeaderText = "Marcar Todo";
-            this.chkMarca.Name = "chkMarca";
-            this.chkMarca.Width = 45;
+            this.btnBajaTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBajaTrabajador.BackColor = System.Drawing.Color.MintCream;
+            this.btnBajaTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnBajaTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnBajaTrabajador.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnBajaTrabajador.Location = new System.Drawing.Point(674, 403);
+            this.btnBajaTrabajador.Name = "btnBajaTrabajador";
+            this.btnBajaTrabajador.Size = new System.Drawing.Size(83, 65);
+            this.btnBajaTrabajador.TabIndex = 79;
+            this.btnBajaTrabajador.Text = "&Dar Baja a Trabajador";
+            this.btnBajaTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnBajaTrabajador.UseVisualStyleBackColor = false;
+            this.btnBajaTrabajador.Click += new System.EventHandler(this.btnBajaTrabajador_Click);
             // 
             // frmMantenimientoDetalleTareo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1019, 480);
+            this.Controls.Add(this.btnBajaTrabajador);
             this.Controls.Add(this.btnNuevoTrabajador);
             this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.txtResidente);
@@ -434,5 +452,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtSistemaPensiones;
         private System.Windows.Forms.DataGridViewCheckBoxColumn chkMarca;
+        private System.Windows.Forms.Button btnBajaTrabajador;
     }
 }
