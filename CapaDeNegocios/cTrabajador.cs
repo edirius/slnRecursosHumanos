@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using CapaDeDatos;
+using CapaDeNegocios.PlanillaNueva;
 
 namespace CapaDeNegocios
 {
@@ -224,6 +225,23 @@ namespace CapaDeNegocios
             set { nrorenta4ta = value; }
         }
 
+       
+
+        public List<cPeriodoRegimenPensionario> ListaRegimenPensionario
+        {
+            get
+            {
+                return listaRegimenPensionario;
+            }
+
+            set
+            {
+                listaRegimenPensionario = value;
+            }
+        }
+
+        private List<PlanillaNueva.cPeriodoRegimenPensionario>     listaRegimenPensionario;
+        
         public cTrabajador traerTrabajador(int codigoTrabajador)
         {
             cTrabajador miTrabajador = new cTrabajador();

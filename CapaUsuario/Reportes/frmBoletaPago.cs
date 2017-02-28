@@ -230,7 +230,7 @@ namespace CapaUsuario.Reportes
 
                 drFilaD = odtD.NewRow();
                 drFilaD.Delete();
-                drFilaD[0] = "EMPLEADOR:"; drFilaD[1] = "MUNICIPALIDAD DISTRITAL DE CCATCAA";
+                drFilaD[0] = "EMPLEADOR:"; drFilaD[1] = "MUNICIPALIDAD DISTRITAL DE CCATCCA";
                 odtD.Rows.InsertAt(drFilaD, 1);
 
                 drFilaD = odtD.NewRow();

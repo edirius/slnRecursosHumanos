@@ -58,6 +58,7 @@ namespace CapaDeNegocios.PlanillaNueva
                     miMeta.Codigo = Convert.ToInt16(metaAuxiliar.Rows[0][0]);
                     miMeta.Año = Convert.ToInt16(metaAuxiliar.Rows [0][1]);
                     miMeta.Nombre = Convert.ToString(metaAuxiliar.Rows [0][2]);
+                    miMeta.Numero = Convert.ToInt16(metaAuxiliar.Rows[0][3]);
                     return miMeta;
                 }
                 else
@@ -105,7 +106,7 @@ namespace CapaDeNegocios.PlanillaNueva
                     miTrabajador.Nombres = Convert.ToString(TablaTrabajador.Rows[0][1]);
                     miTrabajador.ApellidoPaterno = Convert.ToString(TablaTrabajador.Rows[0][2]);
                     miTrabajador.ApellidoMaterno = Convert.ToString(TablaTrabajador.Rows[0][3]);
-                    
+                    miTrabajador.ListaRegimenPensionario = TraerRegimenPensionario(miTrabajador.IdTrabajador);
                     TablaTrabajador.Dispose();
                 }
                 return miTrabajador;
@@ -113,6 +114,73 @@ namespace CapaDeNegocios.PlanillaNueva
             catch (Exception e)
             {
                 throw new cReglaNegociosException("blPlanilla: " + e.Message);
+            }
+        }
+
+        public List<cPeriodoRegimenPensionario> TraerRegimenPensionario (int codigoTrabajador)
+        {
+            try
+            {
+                List<cPeriodoRegimenPensionario> listaRegimenPensionario = new List<cPeriodoRegimenPensionario>();
+
+                DataTable TablaPeriodoRegimenPensionario = Conexion.GDatos.TraerDataTable("spTraerPeriodosRegimenPensionario", codigoTrabajador);
+                if (TablaPeriodoRegimenPensionario.Rows.Count > 0 )
+                {
+                    for (int i = 0; i < TablaPeriodoRegimenPensionario.Rows.Count; i++)
+                    {
+                        cPeriodoRegimenPensionario miPeriodoRegimenPensionario = new cPeriodoRegimenPensionario();
+
+                        miPeriodoRegimenPensionario.IdRegimenPensionario = Convert.ToInt16(TablaPeriodoRegimenPensionario.Rows[i][0]);
+                        miPeriodoRegimenPensionario.FechaInicio = Convert.ToDateTime(TablaPeriodoRegimenPensionario.Rows[i][1]);
+                        if (string.IsNullOrEmpty(Convert.ToString(TablaPeriodoRegimenPensionario.Rows[i][2])))
+                        {
+                            miPeriodoRegimenPensionario.FechaFin = new DateTime(2999, 12, 31);
+                        }
+                        else
+                        { 
+                            miPeriodoRegimenPensionario.FechaFin = Convert.ToDateTime(TablaPeriodoRegimenPensionario.Rows[i][2]);
+                        }
+                       
+                        miPeriodoRegimenPensionario.Cuspp = Convert.ToString(TablaPeriodoRegimenPensionario.Rows[i][3]);
+                        miPeriodoRegimenPensionario.TipoComision = Convert.ToString(TablaPeriodoRegimenPensionario.Rows[i][4]);
+                        miPeriodoRegimenPensionario.MiAFP = TraerAFP(Convert.ToInt16(TablaPeriodoRegimenPensionario.Rows[i][5]));
+                        listaRegimenPensionario.Add(miPeriodoRegimenPensionario);
+                    }
+                    return listaRegimenPensionario;
+                }
+                else
+                {
+                    throw new cReglaNegociosException("blPlanilla: No existe regimen pensionarios para el trabajador.");
+                }
+            }
+            catch (Exception e)
+            {
+
+                throw new cReglaNegociosException("blplanilla: " + e.Message );
+            }
+        }
+
+        public cAFP TraerAFP(int codigoAFP)
+        {
+            try
+            {
+                cAFP miAFp = new cAFP();
+                DataTable TablaAFP = Conexion.GDatos.TraerDataTable("spTraerAFP", codigoAFP);
+                if (TablaAFP.Rows.Count > 0)
+                {
+                    miAFp.CodigoAFP = Convert.ToInt16(TablaAFP.Rows[0][0]);
+                    miAFp.Nombre = Convert.ToString(TablaAFP.Rows[0][1]);
+                    return miAFp;
+                }
+                else
+                {
+                    throw new cReglaNegociosException("blPlanilla: No existe ninguna AFP para el codigo");
+                }
+            }
+            catch (Exception d)
+            {
+
+                throw new cReglaNegociosException("blPlanilla: " + d.Message);
             }
         }
         public DatosLaborales.cRegimenLaboral TraerRegimenLaboral(int codigo)
@@ -147,6 +215,7 @@ namespace CapaDeNegocios.PlanillaNueva
                     for (int i = 0; i < ListaDetallesAuxiliar.Rows.Count; i++)
                     {
                         cnDetallePlanilla detalleAuxiliar = new cnDetallePlanilla();
+                        detalleAuxiliar.codigo = Convert.ToInt16(ListaDetallesAuxiliar.Rows[i][0]); 
                         detalleAuxiliar.numero = i + 1;
                         detalleAuxiliar.cargo = Convert.ToString(ListaDetallesAuxiliar.Rows[i][1]);
                         detalleAuxiliar.fechaInicio = Convert.ToDateTime(ListaDetallesAuxiliar.Rows[i][2]);
@@ -188,9 +257,9 @@ namespace CapaDeNegocios.PlanillaNueva
                     for (int i = 0; i < ListaAuxiliarIngresos.Rows.Count; i++)
                     {
                         cnDetallePlanillaIngresos ingresoAuxiliar = new cnDetallePlanillaIngresos();
-                        ingresoAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarIngresos.Rows[0][0]);
-                        ingresoAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarIngresos.Rows[0][1]);
-                        ingresoAuxiliar.MaestroIngresos = TraerMaestroIngresos(Convert.ToInt16(ListaAuxiliarIngresos.Rows[0][2]));
+                        ingresoAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarIngresos.Rows[i][0]);
+                        ingresoAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarIngresos.Rows[i][1]);
+                        ingresoAuxiliar.MaestroIngresos = TraerMaestroIngresos(Convert.ToInt16(ListaAuxiliarIngresos.Rows[i][2]));
                         miListaDetalleIngresos.Add(ingresoAuxiliar);
                     }
                 }
@@ -309,9 +378,9 @@ namespace CapaDeNegocios.PlanillaNueva
                     for (int i = 0; i < ListaAuxiliarAportacionesTrabajador.Rows.Count; i++)
                     {
                         cnDetallePlanillaAportacionesTrabajador aportacionAuxiliar = new cnDetallePlanillaAportacionesTrabajador();
-                        aportacionAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarAportacionesTrabajador.Rows[0][0]);
-                        aportacionAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarAportacionesTrabajador.Rows[0][1]);
-                        aportacionAuxiliar.MaestroAportacionTrabajador = TraerMaestroAportacionesTrabajador(Convert.ToInt16(ListaAuxiliarAportacionesTrabajador.Rows[0][2]));
+                        aportacionAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarAportacionesTrabajador.Rows[i][0]);
+                        aportacionAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarAportacionesTrabajador.Rows[i][1]);
+                        aportacionAuxiliar.MaestroAportacionTrabajador = TraerMaestroAportacionesTrabajador(Convert.ToInt16(ListaAuxiliarAportacionesTrabajador.Rows[i][2]));
                         miListaAportacionesTrabajador.Add(aportacionAuxiliar);
                     }
                 }
