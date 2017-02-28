@@ -12,5 +12,6 @@ namespace CapaUsuario
         public static string v_idusuario;
         public static string v_usuario;
         public static string v_password;
+        public static string v_cargo;
     }
 }

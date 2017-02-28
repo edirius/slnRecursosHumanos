@@ -84,7 +84,7 @@ namespace CapaUsuario.Tareo
             cboFinPeriodo.DataSource = miMotivoFinPeriodo.ListaMotivosFinPeriodos();
             cboFinPeriodo.DisplayMember = "descripcion";
             cboFinPeriodo.ValueMember = "idtmotivofinperiodo";
-            cboFinPeriodo.SelectedIndex = -1;
+            cboFinPeriodo.SelectedIndex = 0;
         }
     }
 }

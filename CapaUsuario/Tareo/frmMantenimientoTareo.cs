@@ -170,12 +170,22 @@ namespace CapaUsuario.Tareo
                 CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miCadena = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
                 oDataMeta = miCadena.ListarMetas();
                 Dictionary<string, string> test = new Dictionary<string, string>();
-                foreach (DataRow rowResidenteMeta in miResidenteMeta.ListarResidenteMeta(miTrabajador).Rows)
+                if (cVariablesUsuario.v_cargo == "ADMINISTRADOR")
                 {
-                    string xx = rowResidenteMeta[1].ToString();
-                    foreach (DataRow row in oDataMeta.Select("idtmeta = '" + rowResidenteMeta[1].ToString() + "' and año = '" + cboAño.Text + "'"))
+                    foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
                     {
                         test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+                    }
+                }
+                else
+                {
+                    foreach (DataRow rowResidenteMeta in miResidenteMeta.ListarResidenteMeta(miTrabajador).Rows)
+                    {
+                        string xx = rowResidenteMeta[1].ToString();
+                        foreach (DataRow row in oDataMeta.Select("idtmeta = '" + rowResidenteMeta[1].ToString() + "' and año = '" + cboAño.Text + "'"))
+                        {
+                            test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+                        }
                     }
                 }
                 cboMeta.DataSource = new BindingSource(test, null);

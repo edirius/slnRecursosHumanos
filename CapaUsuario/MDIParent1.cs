@@ -493,6 +493,7 @@ namespace CapaUsuario
                 habilitado = Convert.ToBoolean(fila.Cells["habilitado"].Value);
                 toolStripStatusLabel1.Text = Usuario;
                 toolStripStatusLabel2.Text = Cargo;
+                cVariablesUsuario.v_cargo = fila.Cells["Cargo"].Value.ToString();
                 OcultarMenu();
             }
         }
