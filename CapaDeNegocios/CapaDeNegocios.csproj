@@ -112,6 +112,7 @@
     <Compile Include="Obras\cObra.cs" />
     <Compile Include="Obras\cProductoProyecto.cs" />
     <Compile Include="Obras\cProgramaPresupuestal.cs" />
+    <Compile Include="PDF\cCabezaReporte.cs" />
     <Compile Include="PDF\cPDF.cs" />
     <Compile Include="PlanillaNueva\blPlanilla.cs" />
     <Compile Include="PlanillaNueva\cnDetallePlanilla.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="PlanillaNueva\cnDetallePlanillaIngresos.cs" />
     <Compile Include="PlanillaNueva\cnDetallePlanillaAportacionesTrabajador.cs" />
     <Compile Include="PlanillaNueva\cnPlanilla.cs" />
+    <Compile Include="PlanillaNueva\cPeriodoRegimenPensionario.cs" />
     <Compile Include="Planillas\cAportaciones.cs" />
     <Compile Include="Planillas\cCalculo5taProyectada.cs" />
     <Compile Include="Planillas\cCalculo5taCategoria.cs" />
