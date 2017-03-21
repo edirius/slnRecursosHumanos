@@ -77,5 +77,10 @@ namespace CapaDeNegocios.Tareos
             Conexion.GDatos.Ejecutar("spELiminarTareo", IdTTareo);
             return true;
         }
+
+        public DataTable ImprimirTareo(int IdtMeta, int IdTTareo)
+        {
+            return Conexion.GDatos.TraerDataTable("spTareoObras", IdtMeta, IdTTareo);
+        }
     }
 }

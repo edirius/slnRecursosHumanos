@@ -36,6 +36,9 @@
     <Reference Include="iTextSharp">
       <HintPath>..\..\slnSolucionRedNorte\CapaUsuario\bin\Debug\iTextSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -154,6 +157,7 @@
     <Compile Include="Tareos\cDetalleTareo.cs" />
     <Compile Include="Tareos\cDiasTareo.cs" />
     <Compile Include="DatosLaborales\cOcupacion.cs" />
+    <Compile Include="Tareos\cImprimirTareo.cs" />
     <Compile Include="Tareos\cTareo.cs" />
     <Compile Include="Trabajadores\cTrabajador276.cs" />
     <Compile Include="Trabajadores\cTrabajadorCas.cs" />

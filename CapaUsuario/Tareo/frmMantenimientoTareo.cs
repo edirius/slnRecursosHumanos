@@ -213,15 +213,26 @@ namespace CapaUsuario.Tareo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CapaUsuario.Reportes.MostrarReportes fMostrarReportes = new CapaUsuario.Reportes.MostrarReportes();
-            fMostrarReportes.ReporteTareos("ReporteTareos", sIdTMeta, sIdTTareo);
-            fMostrarReportes.MdiParent = this.MdiParent;
-            fMostrarReportes.Show();
+            try
+            {
+                //CapaUsuario.Reportes.MostrarReportes fMostrarReportes = new CapaUsuario.Reportes.MostrarReportes();
+                //fMostrarReportes.ReporteTareos("ReporteTareos", sIdTMeta, sIdTTareo);
+                //fMostrarReportes.MdiParent = this.MdiParent;
+                //fMostrarReportes.Show();
 
-            CapaUsuario.Reportes.MostrarReportes fMostrarReporte = new CapaUsuario.Reportes.MostrarReportes();
-            fMostrarReporte.ReporteTareos("ReporteTareosResumen", sIdTMeta, sIdTTareo);
-            fMostrarReporte.MdiParent = this.MdiParent;
-            fMostrarReporte.Show();
+                //CapaUsuario.Reportes.MostrarReportes fMostrarReporte = new CapaUsuario.Reportes.MostrarReportes();
+                //fMostrarReporte.ReporteTareos("ReporteTareosResumen", sIdTMeta, sIdTTareo);
+                //fMostrarReporte.MdiParent = this.MdiParent;
+                //fMostrarReporte.Show();
+
+                CapaDeNegocios.Tareos.cImprimirTareo cImprimirTareo= new CapaDeNegocios.Tareos.cImprimirTareo();
+                cImprimirTareo.oImprimirTareo = miTareo.ImprimirTareo(sIdTMeta, sIdTTareo);
+                cImprimirTareo.Iniciar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public class ComboboxItem
