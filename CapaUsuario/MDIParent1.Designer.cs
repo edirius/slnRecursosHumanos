@@ -109,6 +109,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
+            this.horasHombreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -273,7 +274,8 @@
             // toolsMenu
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionsToolStripMenuItem});
+            this.optionsToolStripMenuItem,
+            this.horasHombreToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(53, 20);
             this.toolsMenu.Text = "Tareos";
@@ -777,6 +779,13 @@
             this.dgvCargo.TabIndex = 5;
             this.dgvCargo.Visible = false;
             // 
+            // horasHombreToolStripMenuItem
+            // 
+            this.horasHombreToolStripMenuItem.Name = "horasHombreToolStripMenuItem";
+            this.horasHombreToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.horasHombreToolStripMenuItem.Text = "Horas Hombre";
+            this.horasHombreToolStripMenuItem.Click += new System.EventHandler(this.horasHombreToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -891,6 +900,7 @@
         private System.Windows.Forms.ToolStripMenuItem numeraciónContratosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem impresionPlanillasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem residenteMetaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horasHombreToolStripMenuItem;
     }
 }
 

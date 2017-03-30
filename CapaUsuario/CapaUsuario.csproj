@@ -799,6 +799,12 @@
     <Compile Include="Asistencia\frmDetalleAsistencia.designer.cs">
       <DependentUpon>frmDetalleAsistencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Metas\frmVincularMetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metas\frmVincularMetas.Designer.cs">
+      <DependentUpon>frmVincularMetas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tareo\frmImportarTareo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -816,6 +822,12 @@
     </Compile>
     <Compile Include="Tareo\frmHabilitarTareo.designer.cs">
       <DependentUpon>frmHabilitarTareo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tareo\frmHorasHombre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tareo\frmHorasHombre.designer.cs">
+      <DependentUpon>frmHorasHombre.cs</DependentUpon>
     </Compile>
     <Compile Include="Tareo\frmMantenimientoTareo.cs">
       <SubType>Form</SubType>
@@ -1447,6 +1459,9 @@
     <EmbeddedResource Include="Asistencia\frmDetalleAsistencia.resx">
       <DependentUpon>frmDetalleAsistencia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Metas\frmVincularMetas.resx">
+      <DependentUpon>frmVincularMetas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmImportarTareo.resx">
       <DependentUpon>frmImportarTareo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1455,6 +1470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmHabilitarTareo.resx">
       <DependentUpon>frmHabilitarTareo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tareo\frmHorasHombre.resx">
+      <DependentUpon>frmHorasHombre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmMantenimientoTareo.resx">
       <DependentUpon>frmMantenimientoTareo.cs</DependentUpon>

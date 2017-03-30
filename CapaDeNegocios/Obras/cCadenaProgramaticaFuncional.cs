@@ -157,13 +157,13 @@ namespace CapaDeNegocios.Obras
 
         public Boolean  CrearMeta(cMeta miMeta)
         {
-            Conexion.GDatos.Ejecutar("spCrearMeta", miMeta.Año, miMeta.Nombre, miMeta.Numero, miMeta.GrupoFuncional.Codigo, miMeta.ActividadObra.Codigo);
+            Conexion.GDatos.Ejecutar("spCrearMeta", miMeta.Año, miMeta.Nombre, miMeta.Numero, miMeta.GrupoFuncional.Codigo, miMeta.ActividadObra.Codigo, miMeta.idtmetavinculo);
             return true;
         }
 
         public Boolean ModificarMeta(cMeta miMeta)
         {
-            Conexion.GDatos.Ejecutar("spModificarMeta", miMeta.Codigo, miMeta.Año, miMeta.Nombre, miMeta.Numero, miMeta.GrupoFuncional.Codigo, miMeta.ActividadObra.Codigo);
+            Conexion.GDatos.Ejecutar("spModificarMeta", miMeta.Codigo, miMeta.Año, miMeta.Nombre, miMeta.Numero, miMeta.GrupoFuncional.Codigo, miMeta.ActividadObra.Codigo, miMeta.idtmetavinculo);
             return true;
         }
 

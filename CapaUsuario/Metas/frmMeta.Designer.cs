@@ -45,6 +45,9 @@
             this.btnActividad = new System.Windows.Forms.Button();
             this.btnGrupo = new System.Windows.Forms.Button();
             this.tipMeta = new System.Windows.Forms.ToolTip(this.components);
+            this.btnVincularMetas = new System.Windows.Forms.Button();
+            this.txtMetaVinculo = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numAño)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,13 +143,14 @@
             this.numAño.Name = "numAño";
             this.numAño.Size = new System.Drawing.Size(65, 20);
             this.numAño.TabIndex = 11;
+            this.numAño.ValueChanged += new System.EventHandler(this.numAño_ValueChanged);
             // 
             // btnAceptar
             // 
             this.btnAceptar.BackColor = System.Drawing.Color.MintCream;
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAceptar.Location = new System.Drawing.Point(89, 227);
+            this.btnAceptar.Location = new System.Drawing.Point(89, 270);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(107, 52);
             this.btnAceptar.TabIndex = 12;
@@ -159,7 +163,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.MintCream;
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCancelar.Location = new System.Drawing.Point(375, 227);
+            this.btnCancelar.Location = new System.Drawing.Point(375, 270);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(107, 52);
             this.btnCancelar.TabIndex = 13;
@@ -187,11 +191,41 @@
             this.btnGrupo.UseVisualStyleBackColor = true;
             this.btnGrupo.Click += new System.EventHandler(this.btnGrupo_Click);
             // 
+            // btnVincularMetas
+            // 
+            this.btnVincularMetas.Location = new System.Drawing.Point(563, 220);
+            this.btnVincularMetas.Name = "btnVincularMetas";
+            this.btnVincularMetas.Size = new System.Drawing.Size(29, 23);
+            this.btnVincularMetas.TabIndex = 18;
+            this.btnVincularMetas.Text = "...";
+            this.btnVincularMetas.UseVisualStyleBackColor = true;
+            this.btnVincularMetas.Click += new System.EventHandler(this.btnVincularMetas_Click);
+            // 
+            // txtMetaVinculo
+            // 
+            this.txtMetaVinculo.Location = new System.Drawing.Point(155, 222);
+            this.txtMetaVinculo.Name = "txtMetaVinculo";
+            this.txtMetaVinculo.ReadOnly = true;
+            this.txtMetaVinculo.Size = new System.Drawing.Size(401, 20);
+            this.txtMetaVinculo.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 225);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(130, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Vincular Metas Anteriores:";
+            // 
             // frmMeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 311);
+            this.ClientSize = new System.Drawing.Size(621, 348);
+            this.Controls.Add(this.btnVincularMetas);
+            this.Controls.Add(this.txtMetaVinculo);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnGrupo);
             this.Controls.Add(this.btnActividad);
             this.Controls.Add(this.btnCancelar);
@@ -234,5 +268,8 @@
         private System.Windows.Forms.Button btnActividad;
         private System.Windows.Forms.Button btnGrupo;
         private System.Windows.Forms.ToolTip tipMeta;
+        private System.Windows.Forms.Button btnVincularMetas;
+        private System.Windows.Forms.TextBox txtMetaVinculo;
+        private System.Windows.Forms.Label label6;
     }
 }

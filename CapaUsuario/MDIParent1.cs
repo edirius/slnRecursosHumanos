@@ -438,6 +438,13 @@ namespace CapaUsuario
             fMantenimientoResidenteMeta.Show();
         }
 
+        private void horasHombreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Tareo.frmHorasHombre fHorasHombre = new Tareo.frmHorasHombre();
+            fHorasHombre.MdiParent = this;
+            fHorasHombre.Show();
+        }
+
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackupBBDDMySQL();

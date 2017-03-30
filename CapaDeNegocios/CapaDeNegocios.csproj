@@ -157,7 +157,9 @@
     <Compile Include="Tareos\cDetalleTareo.cs" />
     <Compile Include="Tareos\cDiasTareo.cs" />
     <Compile Include="DatosLaborales\cOcupacion.cs" />
+    <Compile Include="Tareos\cImprimirHorasHombre.cs" />
     <Compile Include="Tareos\cImprimirTareo.cs" />
+    <Compile Include="Tareos\cTareoHorasAcumuladas.cs" />
     <Compile Include="Tareos\cTareo.cs" />
     <Compile Include="Trabajadores\cTrabajador276.cs" />
     <Compile Include="Trabajadores\cTrabajadorCas.cs" />

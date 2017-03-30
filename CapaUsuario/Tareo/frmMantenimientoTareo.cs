@@ -87,6 +87,9 @@ namespace CapaUsuario.Tareo
             {
                 return;
             }
+
+            CapaDeNegocios.Tareos.cTareoHorasAcumuladas miTareoHorasAcumuladas = new CapaDeNegocios.Tareos.cTareoHorasAcumuladas();
+            miTareoHorasAcumuladas.EliminarTareoHorasAcumuladas(sIdTTareo);
             miTareo.EliminarTareo(sIdTTareo);
             CargarDatos();
         }

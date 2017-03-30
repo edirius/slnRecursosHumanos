@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtResidente = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboAño = new System.Windows.Forms.ComboBox();
             this.dgvResidenteMeta = new System.Windows.Forms.DataGridView();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -39,8 +41,6 @@
             this.Año = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Meta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cboAño = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResidenteMeta)).BeginInit();
             this.SuspendLayout();
@@ -80,12 +80,33 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleccionar Metas";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 88;
+            this.label1.Text = "Año :";
+            // 
+            // cboAño
+            // 
+            this.cboAño.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAño.FormattingEnabled = true;
+            this.cboAño.Location = new System.Drawing.Point(64, 19);
+            this.cboAño.Name = "cboAño";
+            this.cboAño.Size = new System.Drawing.Size(144, 21);
+            this.cboAño.TabIndex = 87;
+            this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
+            // 
             // dgvResidenteMeta
             // 
             this.dgvResidenteMeta.AllowUserToAddRows = false;
             this.dgvResidenteMeta.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvResidenteMeta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvResidenteMeta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvResidenteMeta.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -145,7 +166,7 @@
             // Año
             // 
             this.Año.FillWeight = 40.64596F;
-            this.Año.HeaderText = "Año";
+            this.Año.HeaderText = "Nro";
             this.Año.Name = "Año";
             this.Año.ReadOnly = true;
             // 
@@ -161,27 +182,6 @@
             this.Estado.FillWeight = 30.45685F;
             this.Estado.HeaderText = "Estado";
             this.Estado.Name = "Estado";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 88;
-            this.label1.Text = "Año :";
-            // 
-            // cboAño
-            // 
-            this.cboAño.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAño.FormattingEnabled = true;
-            this.cboAño.Location = new System.Drawing.Point(64, 19);
-            this.cboAño.Name = "cboAño";
-            this.cboAño.Size = new System.Drawing.Size(144, 21);
-            this.cboAño.TabIndex = 87;
-            this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
             // 
             // frmResidenteMeta
             // 
@@ -212,11 +212,11 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridView dgvResidenteMeta;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboAño;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdTMeta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Año;
         private System.Windows.Forms.DataGridViewTextBoxColumn Meta;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Estado;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboAño;
     }
 }

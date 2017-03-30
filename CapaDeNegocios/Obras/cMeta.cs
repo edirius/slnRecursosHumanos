@@ -63,5 +63,12 @@ namespace CapaDeNegocios.Obras
             set { actividadObra = value; }
         }
 
+        int sidtmetavinculo;
+
+        public int idtmetavinculo
+        {
+            get { return sidtmetavinculo; }
+            set { sidtmetavinculo = value; }
+        }
     }
 }

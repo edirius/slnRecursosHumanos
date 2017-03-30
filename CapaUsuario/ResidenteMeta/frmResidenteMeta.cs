@@ -96,7 +96,7 @@ namespace CapaUsuario.ResidenteMeta
                     }
                     if (contador == 0)
                     {
-                        dgvResidenteMeta.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString());
+                        dgvResidenteMeta.Rows.Add(row[0].ToString(), row[3].ToString(), row[2].ToString());
                     }
                 }
             }

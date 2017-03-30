@@ -13,6 +13,7 @@ namespace CapaUsuario.Metas
 {
     public partial class frmMeta : Form
     {
+        int sidmetavinculo = 0;
         public frmMeta()
         {
             InitializeComponent();
@@ -75,6 +76,7 @@ namespace CapaUsuario.Metas
             miMeta.Numero = Convert.ToInt16(txtCodigo.Text);
             miMeta.Nombre = txtNombre.Text;
             miMeta.Año = Convert.ToInt16(numAño.Value);
+            miMeta.idtmetavinculo = sidmetavinculo;
             DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
@@ -113,6 +115,24 @@ namespace CapaUsuario.Metas
         private void txtGrupoFuncional_Enter(object sender, EventArgs e)
         {
             tipMeta.Show("Presione F2 para Seleccionar la Actividad / Obra.", txtGrupoFuncional);
+        }
+
+
+        private void numAño_ValueChanged(object sender, EventArgs e)
+        {
+            sidmetavinculo = 0;
+            txtMetaVinculo.Text = "";
+        }
+
+        private void btnVincularMetas_Click(object sender, EventArgs e)
+        {
+            CapaUsuario.Metas.frmVincularMetas fVincularMeta = new frmVincularMetas();
+            fVincularMeta.RecibirDatos(Convert.ToInt32(numAño.Value));
+            if (fVincularMeta.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                sidmetavinculo = fVincularMeta.sidtmeta;
+                txtMetaVinculo.Text = fVincularMeta.sdescripcion;
+            }
         }
     }
 }
