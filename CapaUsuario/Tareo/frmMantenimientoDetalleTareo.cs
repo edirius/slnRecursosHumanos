@@ -263,6 +263,7 @@ namespace CapaUsuario.Tareo
                 {
                     if (miTareo.Descripcion == "PERSONAL TECNICO")
                     {
+                        string xxx = Convert.ToString(row.Cells[8].Value);
                         switch (Convert.ToString(row.Cells[8].Value))
                         {
                             case "INGENIERO RESIDENTE":

@@ -636,7 +636,7 @@ namespace CapaUsuario.Reportes
 
                 drFilaD = odtD.NewRow();
                 drFilaD.Delete();
-                drFilaD[0] = "EMPLEADOR:"; drFilaD[1] = "MUNICIPALIDAD DISTRITAL DE CCATCAA";
+                drFilaD[0] = "EMPLEADOR:"; drFilaD[1] = "MUNICIPALIDAD DISTRITAL DE CCATCCA";
                 odtD.Rows.InsertAt(drFilaD, 1);
 
                 drFilaD = odtD.NewRow();
@@ -1414,11 +1414,7 @@ namespace CapaUsuario.Reportes
                     total_lineas_hoja++;
                 }
                 /* -------------------------------FIN DGVBOLETA_E */
-
-
-
             }
-
             return pdfTableE;
         }
  
@@ -1456,10 +1452,7 @@ namespace CapaUsuario.Reportes
             cboAño.DataSource = odtAños;
             cboAño.DisplayMember = "añó";
             cboAño.ValueMember = "año";
-
         }
-
-
 
         private void dgvBoletaPago_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1533,9 +1526,6 @@ namespace CapaUsuario.Reportes
                 case "NOVIEMBRE": pmes_nro = "11"; break;
                 case "DICIEMBRE": pmes_nro = "12"; break;
             }
-
-
-
             //Llenar data table BoletaPago verificando que tenga mas de un registro
 
             dgvBoletaPago.DataSource = oPlanilla.ListarPlanillaX(pmes,paño );
@@ -1557,10 +1547,8 @@ namespace CapaUsuario.Reportes
                 sAño = dgvBoletaPago.Rows[0].Cells[4].Value.ToString();
                 plantilla = dgvBoletaPago.Rows[0].Cells[10].Value.ToString();
             }
-            
             if (numero_boleta_pago==0)
                 MessageBox.Show("No hay datos para esta consulta.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
         }
     }
 }

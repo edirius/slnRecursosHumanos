@@ -230,6 +230,7 @@ namespace CapaUsuario.Tareo
 
                 CapaDeNegocios.Tareos.cImprimirTareo cImprimirTareo= new CapaDeNegocios.Tareos.cImprimirTareo();
                 cImprimirTareo.oImprimirTareo = miTareo.ImprimirTareo(sIdTMeta, sIdTTareo);
+                cImprimirTareo.fechainicio = sFechaInicio;
                 cImprimirTareo.Iniciar();
             }
             catch (Exception ex)
