@@ -186,6 +186,18 @@ namespace CapaUsuario.Trabajador
             if (cboAFP.Text != "System.Data.DataRowView" && cboAFP.ValueMember != "")
             {
                 sidtafp = Convert.ToInt32(cboAFP.SelectedValue);
+                if (cboAFP.Text == "SNP")
+                {
+                    cboTipoComision.SelectedIndex = -1;
+                    txtCUSPP.Text = "";
+                    cboTipoComision.Enabled = false;
+                    txtCUSPP.Enabled = false;
+                }
+                else
+                {
+                    cboTipoComision.Enabled = true;
+                    txtCUSPP.Enabled = true;
+                }
             }
         }
 

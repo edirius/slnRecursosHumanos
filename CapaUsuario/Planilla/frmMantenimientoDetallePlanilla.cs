@@ -645,12 +645,19 @@ namespace CapaUsuario.Planilla
 
             decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
             DiasLaborados = 1 + DateTime.DaysInMonth(AñoInicio, MesInicio) - DiaInicio;
-            if (sidtregimenlaboral == 3 && splantilla == "PERSONAL OBRERO")
+            if (sidtregimenlaboral == 3 && (splantilla == "PERSONAL OBRERO" || splantilla == "PERSONAL TECNICO"))
             {
                 if (dgvDetallePlanilla.Rows[fila].Cells[12].Value != "")
                 {
                     DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[12].Value);
-                    PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 2);
+                    if (splantilla == "PERSONAL OBRERO")
+                    {
+                        PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 2);
+                    }
+                    if (splantilla == "PERSONAL TECNICO")
+                    {
+                        PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                    }
                 }
             }
             else
