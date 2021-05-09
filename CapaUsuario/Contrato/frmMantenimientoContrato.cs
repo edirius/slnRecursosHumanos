@@ -102,11 +102,12 @@ namespace CapaUsuario.Contrato
                 cMiword.provincia = miTrabajador.MiProvincia.Descripcion;
                 cMiword.departamento = miTrabajador.MiDepartamento.Descripcion;
                 cMiword.monto = smontopago.ToString();
-                cMiword.fecharegistro = sfecharegistro.ToString();
-                cMiword.fechainicio = sfechainicio.ToString();
-                cMiword.fechafin = sfechafin.ToString();
+                cMiword.fecharegistro = sfecharegistro.ToString("dd") + " de " + sfecharegistro.ToString("MMMM") + " " + sfecharegistro.ToString("yyyy");
+                cMiword.fechainicio = sfechainicio.ToString("dd") + " de " + sfechainicio.ToString("MMMM") + " " + sfechainicio.ToString("yyyy");
+                cMiword.fechafin = sfechafin.ToString("dd") + " de " + sfechafin.ToString("MMMM") + " " + sfechafin.ToString("yyyy");
                 cMiword.cargo = scargo;
                 cMiword.meta = smeta;
+                cMiword.numero = snumerodocumento.ToString();
                 cMiword.rutaarchivo = srutaarchivo;
                 cMiword.Iniciar();
             }

@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNuevoTrabajador));
             this.tabTrabajador = new System.Windows.Forms.TabControl();
             this.tabDatosGenerales = new System.Windows.Forms.TabPage();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtNroRenta4ta = new System.Windows.Forms.TextBox();
             this.chkRenta4ta = new System.Windows.Forms.CheckBox();
             this.chkEssaludVida = new System.Windows.Forms.CheckBox();
             this.btnTipoZona = new System.Windows.Forms.Button();
@@ -93,8 +95,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
             this.toolTrabajador = new System.Windows.Forms.ToolTip(this.components);
-            this.txtNroRenta4ta = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.chkScrt = new System.Windows.Forms.CheckBox();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
@@ -112,6 +113,7 @@
             // 
             // tabDatosGenerales
             // 
+            this.tabDatosGenerales.Controls.Add(this.chkScrt);
             this.tabDatosGenerales.Controls.Add(this.label11);
             this.tabDatosGenerales.Controls.Add(this.txtNroRenta4ta);
             this.tabDatosGenerales.Controls.Add(this.chkRenta4ta);
@@ -181,14 +183,30 @@
             this.tabDatosGenerales.Text = "Datos Generales";
             this.tabDatosGenerales.UseVisualStyleBackColor = true;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(533, 594);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(83, 13);
+            this.label11.TabIndex = 106;
+            this.label11.Text = "Nro Renta 4ta  :";
+            // 
+            // txtNroRenta4ta
+            // 
+            this.txtNroRenta4ta.Location = new System.Drawing.Point(622, 591);
+            this.txtNroRenta4ta.Name = "txtNroRenta4ta";
+            this.txtNroRenta4ta.Size = new System.Drawing.Size(127, 20);
+            this.txtNroRenta4ta.TabIndex = 105;
+            // 
             // chkRenta4ta
             // 
             this.chkRenta4ta.AutoSize = true;
             this.chkRenta4ta.Location = new System.Drawing.Point(536, 568);
             this.chkRenta4ta.Name = "chkRenta4ta";
-            this.chkRenta4ta.Size = new System.Drawing.Size(210, 17);
+            this.chkRenta4ta.Size = new System.Drawing.Size(216, 17);
             this.chkRenta4ta.TabIndex = 104;
-            this.chkRenta4ta.Text = "Esta inafecto a Renta de 4ta Categoria";
+            this.chkRenta4ta.Text = "Esta inafecto a Renta de 4ta Categoria?";
             this.chkRenta4ta.UseVisualStyleBackColor = true;
             this.chkRenta4ta.CheckedChanged += new System.EventHandler(this.chkRenta4ta_CheckedChanged);
             // 
@@ -605,6 +623,7 @@
             this.txtCelularPersonal.Size = new System.Drawing.Size(100, 20);
             this.txtCelularPersonal.TabIndex = 61;
             this.txtCelularPersonal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCelularPersonal_KeyDown);
+            this.txtCelularPersonal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelularPersonal_KeyPress);
             // 
             // label8
             // 
@@ -622,6 +641,7 @@
             this.txtCelularTrabajo.Size = new System.Drawing.Size(100, 20);
             this.txtCelularTrabajo.TabIndex = 59;
             this.txtCelularTrabajo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCelularTrabajo_KeyDown);
+            this.txtCelularTrabajo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelularTrabajo_KeyPress);
             // 
             // label7
             // 
@@ -752,21 +772,15 @@
             this.toolTrabajador.ForeColor = System.Drawing.Color.RoyalBlue;
             this.toolTrabajador.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // txtNroRenta4ta
+            // chkScrt
             // 
-            this.txtNroRenta4ta.Location = new System.Drawing.Point(622, 591);
-            this.txtNroRenta4ta.Name = "txtNroRenta4ta";
-            this.txtNroRenta4ta.Size = new System.Drawing.Size(127, 20);
-            this.txtNroRenta4ta.TabIndex = 105;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(533, 594);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 13);
-            this.label11.TabIndex = 106;
-            this.label11.Text = "Nro Renta 4ta  :";
+            this.chkScrt.AutoSize = true;
+            this.chkScrt.Location = new System.Drawing.Point(657, 545);
+            this.chkScrt.Name = "chkScrt";
+            this.chkScrt.Size = new System.Drawing.Size(55, 17);
+            this.chkScrt.TabIndex = 107;
+            this.chkScrt.Text = "SCRT";
+            this.chkScrt.UseVisualStyleBackColor = true;
             // 
             // frmNuevoTrabajador
             // 
@@ -855,5 +869,6 @@
         private System.Windows.Forms.CheckBox chkRenta4ta;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtNroRenta4ta;
+        private System.Windows.Forms.CheckBox chkScrt;
     }
 }

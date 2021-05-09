@@ -35,7 +35,7 @@ namespace CapaUsuario.ExportarSunat
         string RegimenPensionario = "";
         string Ruta = "";
         string Titulo = "";
-        string RUC = "20226560824";
+        string RUC = "20177432360";
         string tipoArchivo = ".PER";
         string rp = "RP_";
         string NroRegimenSalud = "";
@@ -290,14 +290,18 @@ namespace CapaUsuario.ExportarSunat
                     string sexo = fila.Cells["Sexo"].Value.ToString();
                     Sexo(sexo);
                     string nacionalidad = fila.Cells["CodNac"].Value.ToString();
-                    string telLargaDistancia = "84";
+                    string telLargaDistancia = "";
                     string telefono = fila.Cells["Celular"].Value.ToString();
                     if (telefono == "")
                     {
-                        telefono = "000000000";
+                        telefono = "984696969";
                     }
                     else;
                     string correo = fila.Cells["Email"].Value.ToString();
+                    if (correo == "")
+                    {
+                        correo = "munimaras@gmail.com";
+                    }
                     string tipoVia = fila.Cells["CodTipoVia"].Value.ToString();
                     string nombreVia = fila.Cells["NombreVia"].Value.ToString();
                     string nroVia = fila.Cells["NroVia"].Value.ToString();
@@ -316,7 +320,7 @@ namespace CapaUsuario.ExportarSunat
                     ContenidoIDE = oExportar.ExportarDatosTrabajador(tipoDoc, dni, paisDoc, fechaNac.ToShortDateString(), apPaterno, apMaterno, nombres, nroSexo.ToString(), nacionalidad, telLargaDistancia, telefono, correo, tipoVia, nombreVia, nroVia, departamento, interior, manzana, lote, kilometro, block, etapa, tipoZona, nombreZona, referencia, ubigeo, tipoVia2, nombreVia2, nroVia2, departamento2, interior2, manzana2, lote2, kilometro2, block2, etapa2, tipoZona2, nombreZona2, referencia2, ubigeo2, indicadorAsistenciaESSALUD);
                     milistaIDE.Add(ContenidoIDE);
                     SaveFileDialog Guardar = new SaveFileDialog();
-                    string RUC = "20226560824";
+                    string RUC = "20177432360";
                     string tipoArchivo = ".IDE";
                     string rp = "RP_";
                     string Titulo = rp + RUC + tipoArchivo;
@@ -391,7 +395,7 @@ namespace CapaUsuario.ExportarSunat
             }   
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
-            string ruc = "20226560824";
+            string ruc = "20177432360";
             string tipoArchivo = ".TRA";
             string rp = "RP_";
             string Titulo = rp + ruc + tipoArchivo;
@@ -493,7 +497,7 @@ namespace CapaUsuario.ExportarSunat
                     string tipoDoc = fila.Cells["@TipoDoc"].Value.ToString();
                     string dni = fila.Cells["DNI"].Value.ToString();
                     string paisDoc = fila.Cells["@PaisEmisor"].Value.ToString();
-                    string ruc = "20226560824";
+                    string ruc = "20177432360";
                     string Establecimientos = "";
                     string codEstab = "0000";
                     Establecimientos = oExportar.ExportarEstablecimiento(tipoDoc, dni, paisDoc, ruc, codEstab);
@@ -502,7 +506,7 @@ namespace CapaUsuario.ExportarSunat
             }
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
-            string RUC = "20226560824";
+            string RUC = "20177432360";
             string tipoArchivo = ".EST";
             string rp = "RP_";
             string Titulo = rp + RUC + tipoArchivo;
@@ -550,7 +554,7 @@ namespace CapaUsuario.ExportarSunat
             }
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
-            string RUC = "20226560824";
+            string RUC = "20177432360";
             string tipoArchivo = ".EDU";
             string rp = "RP_";
             string Titulo = rp + RUC + tipoArchivo;
@@ -638,6 +642,11 @@ namespace CapaUsuario.ExportarSunat
                     dgvListarTrabajadores[0, i].Value = false;
                    
                 }
+        }
+
+        private void frmExportarTodo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

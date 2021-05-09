@@ -495,6 +495,10 @@ namespace CapaDeNegocios.Tareos
                         case "RESIDENTE":
                             INGENIERO_RESIDENTE_ACULUMADO += Convert.ToDouble(row[4].ToString());
                             break;
+                        case "RESIDENTE DE OBRA":
+                            INGENIERO_RESIDENTE_ACULUMADO += Convert.ToDouble(row[4].ToString());
+                            break;
+
                         case "INSPECTOR DE OBRA":
                             INSPECTOR_DE_OBRA_ACULUMADO += Convert.ToDouble(row[4].ToString());
                             break;

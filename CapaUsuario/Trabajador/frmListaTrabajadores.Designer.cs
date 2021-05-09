@@ -42,14 +42,18 @@
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Regimen CAS", 2, 2);
             System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("DL. 276", 2, 2);
             System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("DL. 728", 2, 2);
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Regimen Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("DL. 30057");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Racionamiento");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Regimen Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
             treeNode6,
             treeNode7,
             treeNode8,
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", 2, 2, new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode10,
+            treeNode11});
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", 2, 2, new System.Windows.Forms.TreeNode[] {
             treeNode5,
-            treeNode10});
+            treeNode12});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTrabajadores));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
@@ -64,6 +68,8 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnImprimirLista = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnDatosFijosxTrabajador = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeFiltro = new System.Windows.Forms.TreeView();
@@ -98,6 +104,8 @@
             this.sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.suspensionrenta4ta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechafin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuAuxiliar = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuCopiarDNI = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCopiarNombreCompleto = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,7 +140,7 @@
             // lblNumeroTrabajadores
             // 
             this.lblNumeroTrabajadores.Name = "lblNumeroTrabajadores";
-            this.lblNumeroTrabajadores.Size = new System.Drawing.Size(100, 17);
+            this.lblNumeroTrabajadores.Size = new System.Drawing.Size(99, 17);
             this.lblNumeroTrabajadores.Text = "Nro Trabajadores:";
             // 
             // toolStrip1
@@ -146,6 +154,8 @@
             this.toolStripSeparator3,
             this.btnImprimirLista,
             this.toolStripSeparator4,
+            this.btnDatosFijosxTrabajador,
+            this.toolStripSeparator5,
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -173,7 +183,7 @@
             this.btnModificarTrabajador.Image = global::CapaUsuario.Properties.Resources.add_to_folder;
             this.btnModificarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnModificarTrabajador.Name = "btnModificarTrabajador";
-            this.btnModificarTrabajador.Size = new System.Drawing.Size(137, 25);
+            this.btnModificarTrabajador.Size = new System.Drawing.Size(136, 25);
             this.btnModificarTrabajador.Text = "Modificar Trabajador";
             this.btnModificarTrabajador.Click += new System.EventHandler(this.btnModificarTrabajador_Click);
             // 
@@ -187,7 +197,7 @@
             this.btnEliminarTrabajador.Image = global::CapaUsuario.Properties.Resources.delete_page;
             this.btnEliminarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnEliminarTrabajador.Name = "btnEliminarTrabajador";
-            this.btnEliminarTrabajador.Size = new System.Drawing.Size(129, 25);
+            this.btnEliminarTrabajador.Size = new System.Drawing.Size(128, 25);
             this.btnEliminarTrabajador.Text = "Eliminar Trabajador";
             this.btnEliminarTrabajador.Click += new System.EventHandler(this.btnEliminarTrabajador_Click_1);
             // 
@@ -209,6 +219,20 @@
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
+            // 
+            // btnDatosFijosxTrabajador
+            // 
+            this.btnDatosFijosxTrabajador.Image = global::CapaUsuario.Properties.Resources._98;
+            this.btnDatosFijosxTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDatosFijosxTrabajador.Name = "btnDatosFijosxTrabajador";
+            this.btnDatosFijosxTrabajador.Size = new System.Drawing.Size(84, 25);
+            this.btnDatosFijosxTrabajador.Text = "Datos Fijos";
+            this.btnDatosFijosxTrabajador.Click += new System.EventHandler(this.btnDatosFijosxTrabajador_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 28);
             // 
             // btnSalir
             // 
@@ -302,19 +326,26 @@
             treeNode9.Name = "Node11";
             treeNode9.SelectedImageIndex = 2;
             treeNode9.Text = "DL. 728";
-            treeNode10.Checked = true;
             treeNode10.ImageIndex = 2;
-            treeNode10.Name = "Node8";
-            treeNode10.SelectedImageIndex = 2;
-            treeNode10.Text = "Regimen Laboral";
-            treeNode11.Checked = true;
+            treeNode10.Name = "Node0";
+            treeNode10.Text = "DL. 30057";
             treeNode11.ImageIndex = 2;
-            treeNode11.Name = "Node0";
-            treeNode11.SelectedImageIndex = 2;
-            treeNode11.Text = "FILTRO DE TRABAJADORES";
-            treeNode11.ToolTipText = "Seleccione abajo para filtrar la lista de trabajadores.";
+            treeNode11.Name = "Node1";
+            treeNode11.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            treeNode11.Text = "Racionamiento";
+            treeNode12.Checked = true;
+            treeNode12.ImageIndex = 2;
+            treeNode12.Name = "Node8";
+            treeNode12.SelectedImageIndex = 2;
+            treeNode12.Text = "Regimen Laboral";
+            treeNode13.Checked = true;
+            treeNode13.ImageIndex = 2;
+            treeNode13.Name = "Node0";
+            treeNode13.SelectedImageIndex = 2;
+            treeNode13.Text = "FILTRO DE TRABAJADORES";
+            treeNode13.ToolTipText = "Seleccione abajo para filtrar la lista de trabajadores.";
             this.treeFiltro.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode11});
+            treeNode13});
             this.treeFiltro.SelectedImageIndex = 0;
             this.treeFiltro.Size = new System.Drawing.Size(205, 541);
             this.treeFiltro.TabIndex = 0;
@@ -589,7 +620,9 @@
             this.apellidoMaterno,
             this.sexo,
             this.suspensionrenta4ta,
-            this.fechafin});
+            this.fechafin,
+            this.fechaInicio,
+            this.descripcion});
             this.dtgListaTrabajadores.ContextMenuStrip = this.menuAuxiliar;
             this.dtgListaTrabajadores.Location = new System.Drawing.Point(15, 212);
             this.dtgListaTrabajadores.MultiSelect = false;
@@ -664,6 +697,22 @@
             this.fechafin.Name = "fechafin";
             this.fechafin.ReadOnly = true;
             this.fechafin.Visible = false;
+            // 
+            // fechaInicio
+            // 
+            this.fechaInicio.DataPropertyName = "fechainicio";
+            this.fechaInicio.HeaderText = "fechaInicio";
+            this.fechaInicio.Name = "fechaInicio";
+            this.fechaInicio.ReadOnly = true;
+            this.fechaInicio.Visible = false;
+            // 
+            // descripcion
+            // 
+            this.descripcion.DataPropertyName = "descripcion";
+            this.descripcion.HeaderText = "Cargo";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            this.descripcion.Visible = false;
             // 
             // menuAuxiliar
             // 
@@ -776,14 +825,6 @@
         private System.Windows.Forms.ComboBox cboMeta;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnBuscarXMeta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_trabajador;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dni;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombres;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPaterno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoMaterno;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sexo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn suspensionrenta4ta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechafin;
         private System.Windows.Forms.ContextMenuStrip menuAuxiliar;
         private System.Windows.Forms.ToolStripMenuItem menuCopiarDNI;
         private System.Windows.Forms.ToolStripMenuItem menuCopiarNombreCompleto;
@@ -794,5 +835,17 @@
         private System.Windows.Forms.ToolStripStatusLabel lblNumeroTrabajadores;
         private System.Windows.Forms.Button btnContratos;
         private System.Windows.Forms.Button btnReporteContratos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_trabajador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombres;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoPaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apellidoMaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sexo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn suspensionrenta4ta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechafin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaInicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
+        private System.Windows.Forms.ToolStripButton btnDatosFijosxTrabajador;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

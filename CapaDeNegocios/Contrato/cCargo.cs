@@ -53,8 +53,16 @@ namespace CapaDeNegocios.Contrato
 
         public Boolean EliminarCargo (cCargo miCargo)
         {
-            Conexion.GDatos.Ejecutar("EliminarCargo", miCargo.codigo);
-            return true;
+            try
+            {
+                Conexion.GDatos.Ejecutar("spEliminarCargo", miCargo.codigo);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error al eliminar el cargo: Verifique que no se haya usado en algun trabajador: " + ex.Message);
+            }
+            
         }
 
         public DataTable ListaCargos()

@@ -39,36 +39,44 @@ namespace CapaUsuario.Planilla
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            bool bOk = false;
-            CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
-            miPlanilla.IdtPlanilla = sidtplanilla;
-            miPlanilla.Numero = txtNumero.Text;
-            miPlanilla.Mes = cboMes.Text;
-            miPlanilla.Año = cboAño.Text;
-            miPlanilla.Fecha = dtpFecha.Value;
-            miPlanilla.IdtMeta = sidtmeta;
-            miPlanilla.IdtFuenteFinanciamiento = sidtfuentefinanciamiento;
-            miPlanilla.IdtRegimenLaboral = sidtregimenlaboral;
-            miPlanilla.Descripcion = txtDescripcion.Text;
-            miPlanilla.Plantilla = cboPlantilla.Text;
-            if (iAccion == 1)
+            try
             {
-                miPlanilla.CrearPlanilla(miPlanilla);
-                bOk = true;
+                bool bOk = false;
+                CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
+                miPlanilla.IdtPlanilla = sidtplanilla;
+                miPlanilla.Numero = txtNumero.Text;
+                miPlanilla.Mes = cboMes.Text;
+                miPlanilla.Año = cboAño.Text;
+                miPlanilla.Fecha = dtpFecha.Value;
+                miPlanilla.IdtMeta = sidtmeta;
+                miPlanilla.IdtFuenteFinanciamiento = sidtfuentefinanciamiento;
+                miPlanilla.IdtRegimenLaboral = sidtregimenlaboral;
+                miPlanilla.Descripcion = txtDescripcion.Text;
+                miPlanilla.Plantilla = cboPlantilla.Text;
+                if (iAccion == 1)
+                {
+                    miPlanilla.CrearPlanilla(miPlanilla);
+                    bOk = true;
+                }
+                if (iAccion == 2)
+                {
+                    miPlanilla.ModificarPlanilla(miPlanilla);
+                    bOk = true;
+                }
+                if (bOk == true)
+                {
+                    DialogResult = System.Windows.Forms.DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("No se puede registrar estos datos", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            if (iAccion == 2)
+            catch (Exception ex)
             {
-                miPlanilla.ModificarPlanilla(miPlanilla);
-                bOk = true;
+                MessageBox.Show("Error al crear la planilla: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (bOk == true)
-            {
-                DialogResult = System.Windows.Forms.DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("No se puede registrar estos datos", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

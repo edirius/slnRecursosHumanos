@@ -53,7 +53,7 @@
             this.ClientSize = new System.Drawing.Size(1217, 494);
             this.Controls.Add(this.crTrabajador);
             this.Name = "frmTrabajadores";
-            this.Text = "frmTrabajadores";
+            this.Text = "Lista de Trabajadores";
             this.Load += new System.EventHandler(this.frmTrabajadores_Load);
             this.ResumeLayout(false);
 

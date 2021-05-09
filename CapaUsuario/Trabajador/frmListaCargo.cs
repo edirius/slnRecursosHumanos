@@ -108,5 +108,10 @@ namespace CapaUsuario.Trabajador
         {
             this.Close();
         }
+
+        private void dtgListaCargos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

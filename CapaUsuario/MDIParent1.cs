@@ -445,6 +445,30 @@ namespace CapaUsuario
             fHorasHombre.Show();
         }
 
+        private void toolImportadorExcel_Click(object sender, EventArgs e)
+        {
+            ImportadorExcel.frmImportadorExcel fImportadorExcel = new ImportadorExcel.frmImportadorExcel();
+            fImportadorExcel.MdiParent = this;
+            fImportadorExcel.Show();
+        }
+
+        private void menuClasificadores_Click(object sender, EventArgs e)
+        {
+            Clasificadores.frmListaClasificadoresGasto fListaClasificadorGasto = new Clasificadores.frmListaClasificadoresGasto();
+            fListaClasificadorGasto.MdiParent = this;
+            fListaClasificadorGasto.Show();
+        }
+
+        private void asignarClasificadoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClasificadorMeta.frmClasificadorMeta fClasificadorMeta = new ClasificadorMeta.frmClasificadorMeta();
+
+            if (fClasificadorMeta.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
+
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackupBBDDMySQL();
@@ -570,26 +594,35 @@ namespace CapaUsuario
                 //    }
                 //}
 
-                string constring = "server=localhost;user=root;pwd=qwerty;database=test;";
-                string file = "C:\\backup.sql";
+                
+                string constring = "server=" + Settings.Default.ConexionMySql + ";user=root;pwd=root;database=bdpersonal;";
+                string file =  "D:\\backup.sql";
+
+                dlgSalvarArchivo.Filter = "Archivo sql (*.sql)|*.SQL|Todos los archivos (*.*)|*.*";
+                if (dlgSalvarArchivo.ShowDialog() == DialogResult.OK)
+                {
+                    file = dlgSalvarArchivo.FileName;
+                }
+
                 using (MySqlConnection conn = new MySqlConnection(constring))
                 {
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        //using (MySqlBackup mb = new MySqlBackup(cmd))
-                        //{
-                        //    cmd.Connection = conn;
-                        //    conn.Open();
-                        //    mb.ExportToFile(file);
-                        //    conn.Close();
-                        //}
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            cmd.Connection = conn;
+                            conn.Open();
+                            mb.ExportToFile(file);
+                            conn.Close();
+                            MessageBox.Show("Backup creado con exito.");
+                        }
                     }
 
                 }
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Se ha producido un error al realizar la copia de seguridad");
+                MessageBox.Show("Se ha producido un error al realizar la copia de seguridad: " + exc.Message);
             }
         }
 
@@ -614,19 +647,30 @@ namespace CapaUsuario
                 //miProceso.Close();
                 //MessageBox.Show("Se ha finalizado la restauración de datos con éxito");
 
-                string constring = "server = localhost; user = root; pwd = qwerty; base de datos = prueba;";
-                string file = "C: \\ backup.sql";
+                
+
+               
+                string constring = "server="+ Settings.Default.ConexionMySql + "; user=root; pwd=root;database=bdpersonal;";
+                string file = "D:\\backup.sql";
+                dlgAbrirArchivo.Filter = "Archivo sql (*.sql)|*.SQL|Todos los archivos (*.*)|*.*";
+                if (dlgAbrirArchivo.ShowDialog() == DialogResult.OK)
+                {
+                    file = dlgAbrirArchivo.FileName;
+                }
+
+               
                 using (MySqlConnection conn = new MySqlConnection(constring))
                 {
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        //using (MySqlBackup mb = new MySqlBackup(cmd))
-                        //{
-                        //    cmd.Connection = conn;
-                        //    conn.Open();
-                        //    mb.ImportFromFile(file);
-                        //    conn.Close();
-                        //}
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            cmd.Connection = conn;
+                            conn.Open();
+                            mb.ImportFromFile(file);
+                            conn.Close();
+                            MessageBox.Show("Restauracion Exitosa");
+                        }
                     }
                 }
             }

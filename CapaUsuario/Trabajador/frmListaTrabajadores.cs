@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDeNegocios;
-using System.Data;
+
 namespace CapaUsuario.Trabajador
 {
     public partial class frmListaTrabajadores : Form
@@ -31,7 +31,9 @@ namespace CapaUsuario.Trabajador
 
         private void Iniciar()
         {
-            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
+
+            //tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
             lblNumeroTrabajadores.Text = "Nro de trabajadores: " +  dtgListaTrabajadores.Rows.Count.ToString();
             //if (dtgListaTrabajadores.Rows.Count > 0)
@@ -262,6 +264,14 @@ namespace CapaUsuario.Trabajador
                                 e.Node.BackColor = Color.Teal;
                                 filtroRegimeLaboral = "728";
                                 break;
+                            case "Racionamiento":
+                                e.Node.BackColor = Color.Teal;
+                                filtroRegimeLaboral = "racionamiento";
+                                break;
+                            case "DL. 30057":
+                                e.Node.BackColor = Color.Teal;
+                                filtroRegimeLaboral = "30057";
+                                break;
                         }
                         break;
                 }
@@ -397,18 +407,67 @@ namespace CapaUsuario.Trabajador
 
         private void btnImprimirLista_Click(object sender, EventArgs e)
         {
-            ReporteTrabajador.rptReporteTrabajador objRpt;
-            objRpt = new ReporteTrabajador.rptReporteTrabajador();
+            try
+            {
+                CapaDeNegocios.PDF.cPDF miPDF = new CapaDeNegocios.PDF.cPDF();
 
-            // LA DE ARRIBA ES NUESTRA CADENA DE CONEXION DEL SERVIDOR
-           
-            ReporteTrabajador.dsTrabajador Ds = new ReporteTrabajador.dsTrabajador(); // ESTE ES EL NOMBRE DE NUESTRO DATASET
-            Ds.Tables.Add(miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, cboMeta.SelectedValue.ToString()));  // ESTE Reportes ES EL NOMBRE DE NUESTRA TABLA DE DATOS QUE ESTA DENTRO DE NUESTRO DATASET
+                miPDF.ImprimirListaTrabajadores(tablaAuxiliar, "Situacion Laboral: " + filtroSituacionLaboral + " Regimen:  " + filtroRegimeLaboral);
 
-            objRpt.SetDataSource(tablaAuxiliar); // dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos")); 
-            ReporteTrabajador.frmReporteListaTrabajadores fReporteListaTrabajadores = new ReporteTrabajador.frmReporteListaTrabajadores(); // ES EL FORM DONDE ESTA NUESTRO CRYSTAL REPORT VIEWER
-            fReporteListaTrabajadores.crystalReportViewer1.ReportSource = objRpt; // ESTE ES NUESTRO REPORT VIEWER
-            fReporteListaTrabajadores.ShowDialog(); // AQUI LO MUESTRA
+
+                System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                proc.EnableRaisingEvents = false;
+                proc.StartInfo.FileName = @"c:\PDFs\listaTrabajadores.pdf";
+                proc.Start();
+
+                //ReporteTrabajador.rptReporteTrabajador objRpt;
+                //objRpt = new ReporteTrabajador.rptReporteTrabajador();
+
+
+                //// LA DE ARRIBA ES NUESTRA CADENA DE CONEXION DEL SERVIDOR
+
+                //ReporteTrabajador.dsTrabajador Ds = new ReporteTrabajador.dsTrabajador(); // ESTE ES EL NOMBRE DE NUESTRO DATASET
+                //Ds.Tables.Add(miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, cboMeta.SelectedValue.ToString()));  // ESTE Reportes ES EL NOMBRE DE NUESTRA TABLA DE DATOS QUE ESTA DENTRO DE NUESTRO DATASET
+
+                //objRpt.SetDataSource(tablaAuxiliar); // dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos")); 
+                //ReporteTrabajador.frmReporteListaTrabajadores fReporteListaTrabajadores = new ReporteTrabajador.frmReporteListaTrabajadores(); // ES EL FORM DONDE ESTA NUESTRO CRYSTAL REPORT VIEWER
+                //fReporteListaTrabajadores.crystalReportViewer1.ReportSource = objRpt; // ESTE ES NUESTRO REPORT VIEWER
+                //fReporteListaTrabajadores.ShowDialog(); // AQUI LO MUESTRA
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir la lista de trabajadores: " + ex.Message);
+                
+            }
+            
+        }
+
+        private void btnDatosFijosxTrabajador_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dtgListaTrabajadores.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un trabajador:", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    cTrabajador oTrabajador = new cTrabajador();
+                    oTrabajador.IdTrabajador = Convert.ToInt32(dtgListaTrabajadores.SelectedRows[0].Cells["id_trabajador"].Value);
+                    oTrabajador.Nombres = Convert.ToString(dtgListaTrabajadores.SelectedRows[0].Cells["nombres"].Value);
+                    oTrabajador.ApellidoPaterno = Convert.ToString(dtgListaTrabajadores.SelectedRows[0].Cells["apellidoPaterno"].Value);
+                    oTrabajador.ApellidoMaterno = Convert.ToString(dtgListaTrabajadores.SelectedRows[0].Cells["apellidoMaterno"].Value);
+                    frmListaDatosFijos fListaDatosFijos = new frmListaDatosFijos();
+                    fListaDatosFijos.oTrabajador = oTrabajador;
+                    if (fListaDatosFijos.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar datos fijos del trabajador: frmListaTrabajadores: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

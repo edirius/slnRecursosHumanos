@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaCargo));
             this.label1 = new System.Windows.Forms.Label();
             this.dtgListaCargos = new System.Windows.Forms.DataGridView();
             this.idtCargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,8 +57,8 @@
             // 
             this.dtgListaCargos.AllowUserToAddRows = false;
             this.dtgListaCargos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dtgListaCargos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dtgListaCargos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgListaCargos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaCargos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idtCargo,
@@ -69,6 +70,7 @@
             this.dtgListaCargos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListaCargos.Size = new System.Drawing.Size(477, 170);
             this.dtgListaCargos.TabIndex = 1;
+            this.dtgListaCargos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaCargos_CellContentClick);
             // 
             // idtCargo
             // 
@@ -150,6 +152,7 @@
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dtgListaCargos);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListaCargo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de cargo";

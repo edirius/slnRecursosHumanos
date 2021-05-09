@@ -76,5 +76,10 @@ namespace CapaUsuario.Tareo
             txtMeta.Text = pNombre;
             iAccion = piAccion;
         }
+
+        private void cboDescripcion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

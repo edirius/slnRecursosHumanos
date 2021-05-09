@@ -111,8 +111,8 @@ namespace CapaUsuario.Reportes
             dgvDeclaracionJurada.Columns["cbc"].ReadOnly = false;
             dgvDeclaracionJurada.ReadOnly = false;
 
-            dgvDeclaracionJurada.Columns["N°"].Width = 30;
-            dgvDeclaracionJurada.Columns["NOMBRES Y APELLIDOS"].Width = 250;
+            dgvDeclaracionJurada.Columns[0].Width = 30;
+            dgvDeclaracionJurada.Columns[1].Width = 250;
 
             dgvDeclaracionJurada.Columns[1].ReadOnly = true;
             dgvDeclaracionJurada.Columns[2].ReadOnly = true;

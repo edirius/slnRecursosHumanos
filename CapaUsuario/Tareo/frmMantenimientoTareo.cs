@@ -73,25 +73,33 @@ namespace CapaUsuario.Tareo
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (sEstado == true)
+            try
             {
-                MessageBox.Show("El Tareo no se puede Eliminar.", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (sIdTTareo == 0 && dgvTareo.SelectedRows.Count > 0)
-            {
-                MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (MessageBox.Show("Está seguro que desea eliminar el Cronograma asignado a la Meta", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
-            {
-                return;
-            }
+                if (sEstado == true)
+                {
+                    MessageBox.Show("El Tareo no se puede Eliminar.", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (sIdTTareo == 0 && dgvTareo.SelectedRows.Count > 0)
+                {
+                    MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (MessageBox.Show("Está seguro que desea el tareo", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                {
+                    return;
+                }
 
-            CapaDeNegocios.Tareos.cTareoHorasAcumuladas miTareoHorasAcumuladas = new CapaDeNegocios.Tareos.cTareoHorasAcumuladas();
-            miTareoHorasAcumuladas.EliminarTareoHorasAcumuladas(sIdTTareo);
-            miTareo.EliminarTareo(sIdTTareo);
-            CargarDatos();
+                CapaDeNegocios.Tareos.cTareoHorasAcumuladas miTareoHorasAcumuladas = new CapaDeNegocios.Tareos.cTareoHorasAcumuladas();
+                miTareoHorasAcumuladas.EliminarTareoHorasAcumuladas(sIdTTareo);
+                miTareo.EliminarTareo(sIdTTareo);
+                CargarDatos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("El tareo no se puede eliminar, porque ya ha asido usado en una planilla, o contiene datos:" + ex.Message);
+            }
+           
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -228,10 +236,18 @@ namespace CapaUsuario.Tareo
                 //fMostrarReporte.MdiParent = this.MdiParent;
                 //fMostrarReporte.Show();
 
-                CapaDeNegocios.Tareos.cImprimirTareo cImprimirTareo= new CapaDeNegocios.Tareos.cImprimirTareo();
+                CapaDeNegocios.Tareos.cImprimirTareo cImprimirTareo = new CapaDeNegocios.Tareos.cImprimirTareo();
                 cImprimirTareo.oImprimirTareo = miTareo.ImprimirTareo(sIdTMeta, sIdTTareo);
-                cImprimirTareo.fechainicio = sFechaInicio;
-                cImprimirTareo.Iniciar();
+                if (cImprimirTareo.oImprimirTareo.Rows.Count == 0)
+                {
+                    MessageBox.Show("Error al obtener tareos, o residente responsable de la meta: ");
+                }
+                else
+                {
+                    cImprimirTareo.fechainicio = sFechaInicio;
+                    cImprimirTareo.Iniciar();
+                }
+                
             }
             catch (Exception ex)
             {

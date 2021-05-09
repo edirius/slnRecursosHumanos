@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
 using System.IO;
+using CapaUsuario.Properties;
 
 using CrystalDecisions.Shared;
 using CrystalDecisions.Windows;
@@ -155,7 +156,7 @@ namespace CapaUsuario.Reportes
             TableLogOnInfos crTableLogonInfos = new TableLogOnInfos();
             TableLogOnInfo crTableLogonInfo = new TableLogOnInfo();
             ConnectionInfo crConnectionInfo = new ConnectionInfo();
-            crConnectionInfo.ServerName = "192.168.1.60";
+            crConnectionInfo.ServerName = Settings.Default.ConexionMySql;
             crConnectionInfo.DatabaseName = "bdpersonal";
             crConnectionInfo.UserID = "root";
             crConnectionInfo.Password = "root";

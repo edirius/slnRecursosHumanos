@@ -42,6 +42,11 @@ namespace CapaDeNegocios.Asistencia
             return Conexion.GDatos.TraerDataTable("spListarAsistenciaTrabajador", IdtTrabajador);
         }
 
+        public DataTable ListarAsistenciaTrabajadorxMes(int IdtTrabajador, DateTime mes)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarAsistenciaTrabajadorxMes", mes, IdtTrabajador);
+        }
+
         public Boolean CrearAsistenciaTrabajador(cAsistenciaTrabajador miAsistenciaTrabajador)
         {
             Conexion.GDatos.Ejecutar("spCrearAsistenciaTrabajador", miAsistenciaTrabajador.Fecha, miAsistenciaTrabajador.Tipo, miAsistenciaTrabajador.IdtTrabajador);

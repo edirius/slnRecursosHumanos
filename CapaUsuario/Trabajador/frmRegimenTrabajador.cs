@@ -56,46 +56,62 @@ namespace CapaUsuario.Trabajador
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            bool bOk = false;
-            CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
-            miRegimenTrabajador.IdtRegimenTrabajador = sidtregimentrabajador;
-            miRegimenTrabajador.Condicion = cboCondicionLaboral.Text;
-            miRegimenTrabajador.ServidorConfianza = chkServidorConfianza.Checked;
-            miRegimenTrabajador.NumeroDocumento = txtNumero.Text;
-            miRegimenTrabajador.Periodicidad = cboPeriodicidad.Text;
-            miRegimenTrabajador.TipoPago = cboTipoPago.Text;
-            miRegimenTrabajador.MontoPago = Convert.ToDecimal(nupMontoPago.Value);
-            miRegimenTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
-            if (dtpFechaFin.Format == DateTimePickerFormat.Custom) { miRegimenTrabajador.FechaFin = ""; }
-            else { miRegimenTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString(); }
-            miRegimenTrabajador.RUC = txtRUC.Text;
-            miRegimenTrabajador.IdtRegimenLaboral = sidtregimenlaboral;
-            miRegimenTrabajador.IdtTipoTrabajador = sidttipotrabajador;
-            miRegimenTrabajador.IdtTipoContrato = sidttipocontrato;
-            miRegimenTrabajador.IdtCategoriaOcupacional = sidtcategoriaocupacional;
-            miRegimenTrabajador.IdtOcupacion = sidtocupacion;
-            miRegimenTrabajador.IdtCargo = sidtcargo;
-            miRegimenTrabajador.IdtMeta = sidtmeta;
-            miRegimenTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
+            try
+            {
+                if (cboRegimenLaboral.SelectedIndex == -1)
+                {
+                    throw new Exception("Debe seleccionar un Regimen Laboral");
+                }
+                if (cboTipoTrabajador.SelectedIndex == -1)
+                {
+                    throw new Exception("Debe seleccionar un tipo de trabajador");
+                }
+                bool bOk = false;
+                CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                miRegimenTrabajador.IdtRegimenTrabajador = sidtregimentrabajador;
+                miRegimenTrabajador.Condicion = cboCondicionLaboral.Text;
+                miRegimenTrabajador.ServidorConfianza = chkServidorConfianza.Checked;
+                miRegimenTrabajador.NumeroDocumento = txtNumero.Text;
+                miRegimenTrabajador.Periodicidad = cboPeriodicidad.Text;
+                miRegimenTrabajador.TipoPago = cboTipoPago.Text;
+                miRegimenTrabajador.MontoPago = Convert.ToDecimal(nupMontoPago.Value);
+                miRegimenTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
+                if (dtpFechaFin.Format == DateTimePickerFormat.Custom) { miRegimenTrabajador.FechaFin = ""; }
+                else { miRegimenTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString(); }
+                miRegimenTrabajador.RUC = txtRUC.Text;
+                miRegimenTrabajador.IdtRegimenLaboral = sidtregimenlaboral;
+                miRegimenTrabajador.IdtTipoTrabajador = sidttipotrabajador;
+                miRegimenTrabajador.IdtTipoContrato = sidttipocontrato;
+                miRegimenTrabajador.IdtCategoriaOcupacional = sidtcategoriaocupacional;
+                miRegimenTrabajador.IdtOcupacion = sidtocupacion;
+                miRegimenTrabajador.IdtCargo = sidtcargo;
+                miRegimenTrabajador.IdtMeta = sidtmeta;
+                miRegimenTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
 
-            if (iAccion == 1)
-            {
-                miRegimenTrabajador.CrearRegimenTrabajador(miRegimenTrabajador);
-                bOk = true;
+                if (iAccion == 1)
+                {
+                    miRegimenTrabajador.CrearRegimenTrabajador(miRegimenTrabajador);
+                    bOk = true;
+                }
+                if (iAccion == 2)
+                {
+                    miRegimenTrabajador.ModificarRegimenTrabajador(miRegimenTrabajador);
+                    bOk = true;
+                }
+                if (bOk == true)
+                {
+                    DialogResult = System.Windows.Forms.DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("No se puede registrar estos datos", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            if (iAccion == 2)
+            catch (Exception ex)
             {
-                miRegimenTrabajador.ModificarRegimenTrabajador(miRegimenTrabajador);
-                bOk = true;
+                MessageBox.Show("Error al crear o modifica el regimen del trabajador: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            if (bOk == true)
-            {
-                DialogResult = System.Windows.Forms.DialogResult.OK;
-            }
-            else
-            {
-                MessageBox.Show("No se puede registrar estos datos", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -329,29 +345,38 @@ namespace CapaUsuario.Trabajador
 
         private void CargarMeta()
         {
-            //CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
-            //cboMeta.DataSource = miMeta.ListarMetas();
-            //cboMeta.DisplayMember = "nombre";
-            //cboMeta.ValueMember = "idtmeta";
-            //if (smeta == "") { cboMeta.SelectedIndex = -1; }
-            //else { cboMeta.Text = smeta; }
-
-            if (cboAño.Text != "")
+            try
             {
-                DataTable oDataMeta = new DataTable();
-                CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
-                oDataMeta = miMeta.ListarMetas();
-                Dictionary<string, string> test = new Dictionary<string, string>();
-                foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+                //CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
+                //cboMeta.DataSource = miMeta.ListarMetas();
+                //cboMeta.DisplayMember = "nombre";
+                //cboMeta.ValueMember = "idtmeta";
+                //if (smeta == "") { cboMeta.SelectedIndex = -1; }
+                //else { cboMeta.Text = smeta; }
+
+                if (cboAño.Text != "")
                 {
-                    test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+                    DataTable oDataMeta = new DataTable();
+                    CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
+                    oDataMeta = miMeta.ListarMetas();
+                    Dictionary<string, string> test = new Dictionary<string, string>();
+                    foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+                    {
+                        test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
+                    }
+                    cboMeta.DataSource = new BindingSource(test, null);
+                    cboMeta.DisplayMember = "Value";
+                    cboMeta.ValueMember = "Key";
                 }
-                cboMeta.DataSource = new BindingSource(test, null);
-                cboMeta.DisplayMember = "Value";
-                cboMeta.ValueMember = "Key";
+                if (sidtmeta == 0) { cboMeta.SelectedIndex = -1; }
+                else { cboMeta.SelectedValue = sidtmeta.ToString(); }
             }
-            if (sidtmeta == 0) { cboMeta.SelectedIndex = -1; }
-            else { cboMeta.SelectedValue = sidtmeta.ToString(); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las metas: " + ex.Message);
+                throw;
+            }
+           
         }
 
         private void CargarAños()

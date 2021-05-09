@@ -115,7 +115,7 @@ namespace CapaDeNegocios.Tareos
             }
             catch (Exception e)
             {
-
+                throw new cReglaNegociosException("Error al imprimir excel, verifique que su excel sea original: " + e.Message);
             }
         }
 

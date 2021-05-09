@@ -36,6 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMantenimientoDetallePlanilla));
             this.btnImportar = new System.Windows.Forms.Button();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -68,6 +69,7 @@
             this.btnCalcular = new System.Windows.Forms.Button();
             this.btnAprobacion = new System.Windows.Forms.Button();
             this.btnRenta5ta = new System.Windows.Forms.Button();
+            this.chkQuinta = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -435,11 +437,22 @@
             this.btnRenta5ta.UseVisualStyleBackColor = false;
             this.btnRenta5ta.Click += new System.EventHandler(this.btnRenta5ta_Click);
             // 
+            // chkQuinta
+            // 
+            this.chkQuinta.AutoSize = true;
+            this.chkQuinta.Location = new System.Drawing.Point(837, 12);
+            this.chkQuinta.Name = "chkQuinta";
+            this.chkQuinta.Size = new System.Drawing.Size(59, 17);
+            this.chkQuinta.TabIndex = 100;
+            this.chkQuinta.Text = "5ta cat";
+            this.chkQuinta.UseVisualStyleBackColor = true;
+            // 
             // frmMantenimientoDetallePlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(929, 468);
+            this.Controls.Add(this.chkQuinta);
             this.Controls.Add(this.btnRenta5ta);
             this.Controls.Add(this.btnAprobacion);
             this.Controls.Add(this.btnCalcular);
@@ -458,6 +471,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dgvDetallePlanilla);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMantenimientoDetallePlanilla";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -503,5 +517,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DiasLaborados;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalRemuneracio;
         private System.Windows.Forms.Button btnRenta5ta;
+        private System.Windows.Forms.CheckBox chkQuinta;
     }
 }

@@ -98,7 +98,7 @@
             this.txtRuc.Name = "txtRuc";
             this.txtRuc.Size = new System.Drawing.Size(83, 20);
             this.txtRuc.TabIndex = 10;
-            this.txtRuc.Text = "20226560824";
+            this.txtRuc.Text = "20177432360";
             // 
             // btnExportar
             // 

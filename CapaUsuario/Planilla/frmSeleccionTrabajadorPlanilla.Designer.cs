@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSeleccionTrabajadorPlanilla));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvTrabajador = new System.Windows.Forms.DataGridView();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.txtTrabajador = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.IdTMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Año = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Meta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.txtTrabajador = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrabajador)).BeginInit();
             this.SuspendLayout();
@@ -60,8 +61,8 @@
             // 
             this.dgvTrabajador.AllowUserToAddRows = false;
             this.dgvTrabajador.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -78,6 +79,32 @@
             this.dgvTrabajador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTrabajador.Size = new System.Drawing.Size(467, 285);
             this.dgvTrabajador.TabIndex = 22;
+            // 
+            // IdTMeta
+            // 
+            this.IdTMeta.HeaderText = "Id";
+            this.IdTMeta.Name = "IdTMeta";
+            this.IdTMeta.Visible = false;
+            // 
+            // Año
+            // 
+            this.Año.HeaderText = "DNI";
+            this.Año.Name = "Año";
+            this.Año.ReadOnly = true;
+            this.Año.Width = 75;
+            // 
+            // Meta
+            // 
+            this.Meta.HeaderText = "Nombres y Apellidos";
+            this.Meta.Name = "Meta";
+            this.Meta.ReadOnly = true;
+            this.Meta.Width = 300;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.Width = 50;
             // 
             // btnCancelar
             // 
@@ -131,32 +158,6 @@
             this.label2.TabIndex = 80;
             this.label2.Text = "Filtrar Trabajador :";
             // 
-            // IdTMeta
-            // 
-            this.IdTMeta.HeaderText = "Id";
-            this.IdTMeta.Name = "IdTMeta";
-            this.IdTMeta.Visible = false;
-            // 
-            // Año
-            // 
-            this.Año.HeaderText = "DNI";
-            this.Año.Name = "Año";
-            this.Año.ReadOnly = true;
-            this.Año.Width = 75;
-            // 
-            // Meta
-            // 
-            this.Meta.HeaderText = "Nombres y Apellidos";
-            this.Meta.Name = "Meta";
-            this.Meta.ReadOnly = true;
-            this.Meta.Width = 300;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.Width = 50;
-            // 
             // frmSeleccionTrabajadorPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,6 +168,7 @@
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtTrabajador);
             this.Controls.Add(this.label2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSeleccionTrabajadorPlanilla";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -25,6 +25,8 @@ namespace CapaUsuario.Reportes
 {
     public partial class frmPlanilla : Form
     {
+        Boolean columnasFijas = false;
+        float altoColumna;
         DataTable odtPrueba = new DataTable();
         DataTable odtPruebaCorta = new DataTable();
         DataTable odtATrabajador = new DataTable();
@@ -45,6 +47,7 @@ namespace CapaUsuario.Reportes
         decimal monto_renta_quinta = 0;
 
         int iindice_essalud_vida = 0;
+        int iindice_4ta = 0;
         int iindice_essalud_seguro_regular = 0;
         int iindice_essalud_cbbsp = 0;
         int iindice_essalud_seguro_complementario = 0;
@@ -373,6 +376,15 @@ namespace CapaUsuario.Reportes
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+            if (txtAltoColumnas.Text == "")
+            {
+                altoColumna = 0;
+            }
+            else
+            {
+                altoColumna = Convert.ToInt16(txtAltoColumnas.Text);
+            }
+           
             FileInfo file = new FileInfo("C:\\PDFs\\Planilla.pdf");
             bool estaAbierto = IsFileinUse(file, "C:\\PDFs\\Planilla.pdf");
             if (!estaAbierto)
@@ -404,6 +416,8 @@ namespace CapaUsuario.Reportes
                 decimal desc_rimac_total = 0;
                 decimal faltas_sanciones_total = 0;
                 decimal aporte_essalud_total = 0;
+
+                CapaDeNegocios.ClasificadorMeta.cClasificadoresxMetaxPlantilla oClasificadoresxMetaxPLantilla = new CapaDeNegocios.ClasificadorMeta.cClasificadoresxMetaxPlantilla();
 
                 CapaDeNegocios.Planillas.cDetallePlanilla oPlanilla = new CapaDeNegocios.Planillas.cDetallePlanilla();
                 CapaDeNegocios.Planillas.cDetallePlanillaIngresos oPlanillaIngresos = new CapaDeNegocios.Planillas.cDetallePlanillaIngresos();
@@ -1671,11 +1685,12 @@ namespace CapaUsuario.Reportes
 
                         /*Fin del 3er cuadro de la ultima parte de la planilla*/
 
-                        exportar_a_pdf();
+                        exportar_a_pdf(0);
                     }
                     else
                         MessageBox.Show("Plantilla sin datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+   //FINAL DE CESANTES
                 else
                 {
 
@@ -1692,7 +1707,7 @@ namespace CapaUsuario.Reportes
                     odtPrueba.Columns.Add("SEC. FUNC.", typeof(string));
                     odtPrueba.Columns.Add("AFIL. AFP/SNP", typeof(string));
                     odtPrueba.Columns.Add("COMISION", typeof(string));
-                    odtPrueba.Columns.Add("CUSP", typeof(string));
+                    odtPrueba.Columns.Add("CUSSP", typeof(string));
 
                     //realizar consulta para planilla por mes y regimen laboral
 
@@ -2380,6 +2395,13 @@ namespace CapaUsuario.Reportes
 
                             //drFilaCorta[10] = odtPrueba.Rows[d][9];
 
+                            if (!ExisteColumnaTexto(odtPruebaCorta, "DEC. AFP"))
+                            {
+                                odtPruebaCorta.Columns.Add("DEC. AFP", typeof(string));
+                                iindice_dec_afp = BuscarIndiceColumna(odtPrueba, "DEC. AFP");
+                            }
+
+
                             if (!ExisteColumnaTexto(odtPruebaCorta, "NETO A COBRAR"))
                             {
                                 odtPruebaCorta.Columns.Add("NETO A COBRAR", typeof(string));
@@ -2387,12 +2409,7 @@ namespace CapaUsuario.Reportes
                             }
                             indice_prueba_corta_neto_cobrar = BuscarIndiceColumna(odtPruebaCorta, "NETO A COBRAR");
 
-                            if (!ExisteColumnaTexto(odtPruebaCorta, "DEC. AFP"))
-                            {
-                                odtPruebaCorta.Columns.Add("DEC. AFP", typeof(string));
-                                iindice_dec_afp = BuscarIndiceColumna(odtPrueba, "DEC. AFP");
-                            }
-
+                           
                             if (!ExisteColumnaTexto(odtPruebaCorta, "DIAS LABORADOS"))
                             {
                                 odtPruebaCorta.Columns.Add("DIAS LABORADOS", typeof(string));
@@ -2423,6 +2440,8 @@ namespace CapaUsuario.Reportes
                             columna_essalud_regular = oMaestroATrabajador.ListarAbreviacionDeIdtmaestroatrabajador(12).Rows[0][1].ToString();
                             iindice_essalud_seguro_regular = BuscarIndiceColumna(odtPrueba, columna_essalud_regular);
 
+                            iindice_4ta = BuscarIndiceColumna(odtPrueba, "RENTA 4TA CAT");
+                            iindice_renta_5ta_cat = BuscarIndiceColumna(odtPrueba, "RENTA 5TA CAT");
                             /*Aportaciones empleador ESSALUD (SEGURO REGULAR, CBBSP, AGRARIO/ACUICULTOR) - TRABAJADOR 
                              * y ESSALUD – SEGURO COMPLEMENTARIO DE TRABAJO DE RIESGO Y APORTE ENTIDAD*/
 
@@ -2474,10 +2493,18 @@ namespace CapaUsuario.Reportes
 
                                     
 
+                                   
+                                    //sumatoria ESSALUD
+                                    if (iindice_essalud_vida != -1)
+                                    {
+                                        monto_essalud_vida += Convert.ToDecimal(odtPrueba.Rows[l][iindice_essalud_vida]);
+                               
+                                    }
+
                                     /* DEC. AFP para cada registro*/
                                     //monto_dec_afp
                                     int indice_AFP_SNP = BuscarIndiceColumna(odtPrueba, "AFIL. AFP/SNP");
-                                    string AFP_SNP = odtPrueba.Rows[l][indice_AFP_SNP].ToString() ;
+                                    string AFP_SNP = odtPrueba.Rows[l][indice_AFP_SNP].ToString();
 
                                     if (AFP_SNP == "SNP")
                                     {
@@ -2487,15 +2514,28 @@ namespace CapaUsuario.Reportes
                                     }
                                     else
                                     {
-                                        
+                                       
                                         monto_dec_afp = monto_a_trabajador + monto_aporte_entidad;
+                                        if (iindice_4ta != -1)
+                                        {
+                                            monto_dec_afp = monto_dec_afp - Convert.ToDecimal(odtPrueba.Rows[l][iindice_4ta]);
+                                        }
+                                        if (iindice_essalud_vida != -1)
+                                        {
+                                            monto_dec_afp = monto_dec_afp - Convert.ToDecimal(odtPrueba.Rows[l][iindice_essalud_vida]);
+
+                                        }
+                                        if (iindice_renta_5ta_cat != -1)
+                                        {
+                                            monto_dec_afp = monto_dec_afp - Convert.ToDecimal(odtPrueba.Rows[l][iindice_renta_5ta_cat]);
+                                        }
+                                       
                                         odtPruebaCorta.Rows[l][iindice_dec_afp] = monto_dec_afp;
+
                                         sumatoria_dec_afp += monto_dec_afp;
                                     }
 
-                                    //sumatoria ESSALUD
-                                    if (iindice_essalud_vida != -1)
-                                        monto_essalud_vida += Convert.ToDecimal(odtPrueba.Rows[l][iindice_essalud_vida]);
+
 
                                     if (iindice_essalud_seguro_regular != -1)
                                         monto_essalud_seguro_regular += Convert.ToDecimal(odtPrueba.Rows[l][iindice_essalud_seguro_regular]);
@@ -2669,66 +2709,120 @@ namespace CapaUsuario.Reportes
                         odtRedondear.Columns.Clear();
                         odtRedondear.Rows.Clear();
 
-                        //Agregando columnas al cuadro redondear a entero
+                        CapaDeNegocios.Obras.cMeta ooMeta = new CapaDeNegocios.Obras.cMeta();
+                        CapaDeNegocios.Planillas.cPlantillaPlanilla ooPlantilla = new CapaDeNegocios.Planillas.cPlantillaPlanilla();
+                        List<CapaDeNegocios.ClasificadorMeta.cClasificadorMeta> ListaClasificadoresMeta = new List<CapaDeNegocios.ClasificadorMeta.cClasificadorMeta>();
+                        ooMeta.Codigo = sidtmeta;
+                        ooPlantilla.Descripcion = splantilla;
 
-                        if (iindice_essalud_vida != -1) odtRedondear.Columns.Add(columna_essalud_vida, typeof(string));
-                        if (iindice_essalud_seguro_regular != -1) odtRedondear.Columns.Add(columna_essalud_regular, typeof(string));
-                        if (iindice_essalud_cbbsp != -1) odtRedondear.Columns.Add(columna_essalud_trabajador , typeof(string));
-                        if (iindice_essalud_seguro_complementario != -1) odtRedondear.Columns.Add(columna_essalud_complementario, typeof(string));
-                        if (iindice_snp_dl != -1) odtRedondear.Columns.Add( columna_snp, typeof(string));
-                        if (iindice_renta_quinta != -1) odtRedondear.Columns.Add( columna_renta_5ta, typeof(string));
-                        odtRedondear.Columns.Add("TOTAL", typeof(string));
+                        
+                         
+                        ListaClasificadoresMeta = oClasificadoresxMetaxPLantilla.ListaClasificadoresMeta(ooPlantilla, ooMeta);
+                        //Agregando columnas al cuadro redondear a entero
+                        odtRedondear.Columns.Add("Clasificador", typeof(string));
+                        odtRedondear.Columns.Add("Concepto", typeof(string));
+                        odtRedondear.Columns.Add("Monto", typeof(string));
+
+                        iindice_total_ingresos = BuscarIndiceColumna(odtPruebaCorta, "TOTAL INGRESOS");
+                        iindice_total_a_empleador = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES EMPLEADOR");
+
+                        ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
+                        total_ingresos_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_total_ingresos]);
+
+                        ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
+                        total_a_empleador_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_total_a_empleador]);
+
+                        foreach (CapaDeNegocios.ClasificadorMeta.cClasificadorMeta item in ListaClasificadoresMeta)
+                        {
+                            string MontoConcepto="";
+                            
+                            int index = item.Concepto.IndexOf("&&");
+
+                            if (index != -1 )
+                            {
+                                MontoConcepto = "";
+                            }
+                            else
+                            {
+                                switch (item.Concepto)
+                                {
+                                    case "0804":
+                                        MontoConcepto = monto_essalud_seguro_regular.ToString("0.00");
+                                        break;
+                                    case "0806":
+                                        MontoConcepto = monto_essalud_seguro_complementario.ToString("0.00");
+                                        break;
+                                    case "Total Ingresos":
+                                        MontoConcepto = total_ingresos_total.ToString("0.00");
+                                        break;
+                                    case "Total Aportaciones":
+                                        MontoConcepto = total_a_empleador_total.ToString("0.00");
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            odtRedondear.Rows.Add(item.Especifica.Codigo, item.Especifica.Nombre, MontoConcepto);
+                        }
+
+                        //if (iindice_essalud_vida != -1) odtRedondear.Columns.Add(columna_essalud_vida, typeof(string));
+                        //if (iindice_essalud_seguro_regular != -1) odtRedondear.Columns.Add(columna_essalud_regular, typeof(string));
+                        //if (iindice_essalud_cbbsp != -1) odtRedondear.Columns.Add(columna_essalud_trabajador , typeof(string));
+                        //if (iindice_essalud_seguro_complementario != -1) odtRedondear.Columns.Add(columna_essalud_complementario, typeof(string));
+                        //if (iindice_snp_dl != -1) odtRedondear.Columns.Add( columna_snp, typeof(string));
+                        //if (iindice_renta_quinta != -1) odtRedondear.Columns.Add( columna_renta_5ta, typeof(string));
+                        //odtRedondear.Columns.Add("TOTAL", typeof(string));
 
                         //Actualizando indices para agregar valores a odtRedondear
-                        iindice_essalud_vida = BuscarIndiceColumna(odtRedondear, columna_essalud_vida);
-                        iindice_essalud_seguro_regular = BuscarIndiceColumna(odtRedondear, columna_essalud_regular);
-                        iindice_essalud_cbbsp = BuscarIndiceColumna(odtRedondear, columna_essalud_trabajador);
-                        iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtRedondear, columna_essalud_complementario);
-                        iindice_snp_dl = BuscarIndiceColumna(odtRedondear, columna_snp);
-                        iindice_renta_quinta = BuscarIndiceColumna(odtRedondear, columna_renta_5ta);
+                        //iindice_essalud_vida = BuscarIndiceColumna(odtRedondear, columna_essalud_vida);
+                        //iindice_essalud_seguro_regular = BuscarIndiceColumna(odtRedondear, columna_essalud_regular);
+                        //iindice_essalud_cbbsp = BuscarIndiceColumna(odtRedondear, columna_essalud_trabajador);
+                        //iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtRedondear, columna_essalud_complementario);
+                        //iindice_snp_dl = BuscarIndiceColumna(odtRedondear, columna_snp);
+                        //iindice_renta_quinta = BuscarIndiceColumna(odtRedondear, columna_renta_5ta);
 
-                        drFilaRedondear = odtRedondear.NewRow();
-                        drFilaRedondear.Delete();
+                        //drFilaRedondear = odtRedondear.NewRow();
+                        //drFilaRedondear.Delete();
 
-                        decimal monto_redondear_total = 0;
-                        int iindice_monto_redondear_total = 0;
+                        //decimal monto_redondear_total = 0;
+                        //int iindice_monto_redondear_total = 0;
 
-                        iindice_monto_redondear_total = BuscarIndiceColumna(odtRedondear, "TOTAL");
+                        //iindice_monto_redondear_total = BuscarIndiceColumna(odtRedondear, "TOTAL");
 
-                        if (iindice_essalud_vida != -1)
-                        {
-                            drFilaRedondear[iindice_essalud_vida] = Math.Round(monto_essalud_vida, 0);
-                            monto_redondear_total += monto_essalud_vida;
-                        }
-                        if (iindice_essalud_seguro_regular != -1)
-                        {
-                            drFilaRedondear[iindice_essalud_seguro_regular] = Math.Round(monto_essalud_seguro_regular, 0);
-                            monto_redondear_total += monto_essalud_seguro_regular;
-                        }
-                        if (iindice_essalud_cbbsp != -1)
-                        {
-                            drFilaRedondear[iindice_essalud_cbbsp] = Math.Round(monto_essalud_cbbsp, 0);
-                            monto_redondear_total += monto_essalud_cbbsp;
-                        }
-                        if (iindice_essalud_seguro_complementario != -1)
-                        {
-                            drFilaRedondear[iindice_essalud_seguro_complementario] = Math.Round(monto_essalud_seguro_complementario, 0);
-                            monto_redondear_total += monto_essalud_seguro_complementario;
-                        }
-                        if (iindice_snp_dl != -1)
-                        {
-                            drFilaRedondear[iindice_snp_dl] = Math.Round(monto_snp_dl, 0);
-                            monto_redondear_total += monto_snp_dl;
-                        }
-                        if (iindice_renta_quinta != -1)
-                        {
-                            drFilaRedondear[iindice_renta_quinta] = Math.Round(monto_renta_quinta, 0);
-                            monto_redondear_total += monto_renta_quinta;
-                        }
+                        //if (iindice_essalud_vida != -1)
+                        //{
+                        //    drFilaRedondear[iindice_essalud_vida] = Math.Round(monto_essalud_vida, 0);
+                        //    monto_redondear_total += monto_essalud_vida;
+                        //}
+                        //if (iindice_essalud_seguro_regular != -1)
+                        //{
+                        //    drFilaRedondear[iindice_essalud_seguro_regular] = Math.Round(monto_essalud_seguro_regular, 0);
+                        //    monto_redondear_total += monto_essalud_seguro_regular;
+                        //}
+                        //if (iindice_essalud_cbbsp != -1)
+                        //{
+                        //    drFilaRedondear[iindice_essalud_cbbsp] = Math.Round(monto_essalud_cbbsp, 0);
+                        //    monto_redondear_total += monto_essalud_cbbsp;
+                        //}
+                        //if (iindice_essalud_seguro_complementario != -1)
+                        //{
+                        //    drFilaRedondear[iindice_essalud_seguro_complementario] = Math.Round(monto_essalud_seguro_complementario, 0);
+                        //    monto_redondear_total += monto_essalud_seguro_complementario;
+                        //}
+                        //if (iindice_snp_dl != -1)
+                        //{
+                        //    drFilaRedondear[iindice_snp_dl] = Math.Round(monto_snp_dl, 0);
+                        //    monto_redondear_total += monto_snp_dl;
+                        //}
+                        //if (iindice_renta_quinta != -1)
+                        //{
+                        //    drFilaRedondear[iindice_renta_quinta] = Math.Round(monto_renta_quinta, 0);
+                        //    monto_redondear_total += monto_renta_quinta;
+                        //}
 
-                        drFilaRedondear[iindice_monto_redondear_total] = Math.Round(monto_redondear_total, 0);
+                        //drFilaRedondear[iindice_monto_redondear_total] = Math.Round(monto_redondear_total, 0);
 
-                        odtRedondear.Rows.InsertAt(drFilaRedondear, 0);
+                        //odtRedondear.Rows.InsertAt(drFilaRedondear, 0);
                         dgvRedondear.DataSource = odtRedondear;
                         /* fin cuadro de redondear a entero */
 
@@ -2775,7 +2869,7 @@ namespace CapaUsuario.Reportes
 
                         /* HABER */
                          iindice_snp_13 = BuscarIndiceColumna(odtPrueba, columna_snp);
-                        iindice_afp = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES TRABAJADOR");
+                        iindice_afp = BuscarIndiceColumna(odtPruebaCorta, "DEC. AFP");
                         iindice_aportacion_entidad = BuscarIndiceColumna(odtPrueba, columna_aporte_entidad);
                         iindice_neto_cobrar = BuscarIndiceColumna(odtPruebaCorta, "NETO A COBRAR");
 
@@ -2807,18 +2901,29 @@ namespace CapaUsuario.Reportes
                         if (iindice_afp != -1)
                         {
                             afp_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_afp]);
-                            afp_total = afp_total + aportacion_entidad_total;
+                            //afp_total = afp_total + aportacion_entidad_total;
                             drFilaEEFF = odtEEFF.NewRow();
                             drFilaEEFF.Delete();
                             drFilaEEFF[0] = "AFP";
-                            drFilaEEFF[2] = afp_total - snp_total;
+                            drFilaEEFF[2] = afp_total;
                             
-                            haber_total += afp_total - snp_total;
+                            haber_total += afp_total;
                             
                             odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
                             lll++;
                         }
 
+                        if (iindice_essalud_vida != -1)
+                        {
+                            //essalud_vida_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_essalud_vida]);
+                            drFilaEEFF = odtEEFF.NewRow();
+                            drFilaEEFF.Delete();
+                            drFilaEEFF[0] = "ESSALUD VIDA";
+                            drFilaEEFF[2] = monto_essalud_vida;
+                            haber_total += monto_essalud_vida;
+                            odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                            lll++;
+                        }
 
                         if (iindice_neto_cobrar != -1)
                         {
@@ -2857,6 +2962,30 @@ namespace CapaUsuario.Reportes
                             }
                         }
 
+                        CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador oMaestroAportacion = new CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador();
+                        DataTable odtMaestroAportacion = new DataTable();
+                        string titulo_maestro_Aportacion = "";
+
+                        odtMaestroAportacion = oMaestroAportacion.ListarMaestroAportacionesEmpleador();
+
+                        for (int i = 0; i < odtMaestroAportacion.Rows.Count; i++)
+                        {
+
+                            titulo_maestro_Aportacion = odtMaestroAportacion.Rows[i][4].ToString();
+                            iindice_ad = BuscarIndiceColumna(odtPrueba, titulo_maestro_Aportacion);
+
+                            if (iindice_ad != -1)
+                            {
+                                ad_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_ad]);
+                                drFilaEEFF = odtEEFF.NewRow();
+                                drFilaEEFF.Delete();
+                                drFilaEEFF[0] = titulo_maestro_Aportacion;
+                                drFilaEEFF[2] = ad_total;
+                                haber_total += ad_total;
+                                odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                                lll++;
+                            }
+                        }
 
 
                         /* Insertando totales de debe y haber*/
@@ -2873,7 +3002,7 @@ namespace CapaUsuario.Reportes
 
                         /*Fin del 3er cuadro de la ultima parte de la planilla*/
 
-                        exportar_a_pdf();
+                        exportar_a_pdf(sidtregimenlaboral);
                     }
                     else
                         MessageBox.Show("Plantilla sin datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -2947,7 +3076,7 @@ namespace CapaUsuario.Reportes
             return values;
         }
 
-        private void exportar_a_pdf()
+        private void exportar_a_pdf(int numeroRegimenLaboral)
         {
             //Creating iTextSharp Table from the DataTable data
             iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);
@@ -2971,6 +3100,7 @@ namespace CapaUsuario.Reportes
             pdfTable.DefaultCell.Padding = 1;
             pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
             pdfTable.DefaultCell.BorderWidth = 1;
+            //pdfTable.DefaultCell.FixedHeight = 600f;
 
             pdfTable2.DefaultCell.Padding = 1;
             pdfTable2.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -2994,7 +3124,7 @@ namespace CapaUsuario.Reportes
 
             pdfTable.SetWidths(headerwidths);
             pdfTable.WidthPercentage = 100;
-
+            
             pdfTable2.SetWidths(headerwidths2);
             pdfTable2.WidthPercentage = 100;
 
@@ -3032,8 +3162,13 @@ namespace CapaUsuario.Reportes
                 for (int j = 0; j < dgvPrueba.ColumnCount; j++)
                 {
                     //objP = new Phrase(dgvPrueba[j, i].Value.ToString(), fuente);
+                    
                     cell = new PdfPCell((new Phrase(dgvPrueba[j, i].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
-
+                    if (columnasFijas)
+                    {
+                        cell.FixedHeight = altoColumna;
+                    }
+                    
                     //Alineando a la derecha la columna nº
                     cell.HorizontalAlignment = Element.ALIGN_RIGHT;
 
@@ -3145,7 +3280,7 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph = new Paragraph();
                 paragraph.Alignment = Element.ALIGN_CENTER;
                 paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
-                paragraph.Add("MUNICIPALIDAD DISTRITAL DE CCATCCA \n UNIDAD DE PERSONAL \n ");
+                paragraph.Add("MUNICIPALIDAD DISTRITAL DE MARAS \n UNIDAD DE PERSONAL \n ");
 
                 Paragraph paragraph2 = new Paragraph();
                 paragraph2.Alignment = Element.ALIGN_RIGHT;
@@ -3168,6 +3303,12 @@ namespace CapaUsuario.Reportes
                 
                 paragraph4.Add("META:" + smeta_numero.PadLeft(3,'0') + " - " + smeta + ". \n\n");
 
+                Paragraph paragraph40 = new Paragraph();
+                paragraph40.Alignment = Element.ALIGN_LEFT;
+                paragraph40.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                paragraph40.IndentationLeft = 110f;
+                paragraph4.Add("FUENTE FINANCIAMIENTO:" + sfuentefinanciamiento + ". \n\n");
+
                 Paragraph paragraph5 = new Paragraph();
                 paragraph5.Alignment = Element.ALIGN_CENTER;
                 paragraph5.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
@@ -3183,30 +3324,12 @@ namespace CapaUsuario.Reportes
 
                 fecha = Convert.ToDateTime( oPlanilla.ListarFechaPlanilla(sidtplanilla).Rows[0][1].ToString() );
 
-                paragraph6.Add("CCATCCA, " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
+                paragraph6.Add("MARAS, " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
                 /*FEcha de hoy*/
                 //paragraph6.Add("CCATCCA, " + String.Format("{0:dd}" , fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
 
-                //FIRMAS
-                Paragraph p_rrhh = new Paragraph();
-                p_rrhh.Alignment = Element.ALIGN_CENTER;
-                p_rrhh.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                p_rrhh.Add(" ............................................. \n RECURSOS HUMANOS");
+               
 
-                Paragraph p_gm = new Paragraph();
-                p_gm.Alignment = Element.ALIGN_CENTER;
-                p_gm.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                p_gm.Add(" ............................................... \n GERENCIA MUNICIPAL");
-
-                Paragraph p_pre = new Paragraph();
-                p_pre.Alignment = Element.ALIGN_CENTER;
-                p_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                p_pre.Add(" .................................... \n PRESUPUESTO");
-
-                Paragraph p_con = new Paragraph();
-                p_con.Alignment = Element.ALIGN_CENTER;
-                p_con.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                p_con.Add(" .................................... \n CONTABILIDAD");
 
                 PdfWriter.GetInstance(pdfDoc, stream);
                 CreateHeaderFooter(ref pdfDoc);
@@ -3230,7 +3353,7 @@ namespace CapaUsuario.Reportes
                 //C:\\Users\\ADVANCE\\Source\\Repos\\slnRecursosHumanos\\slnRecursosHumanos\\CapaUsuario\\bin\\Debug
                 //C:\\Users\\ADVANCE\\Source\\Repos\\slnRecursosHumanos\\slnRecursosHumanos\\CapaUsuario
 
-                string ruta_imagen = ruta + "\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
+                string ruta_imagen = ruta + "\\logo-muni-fw.png";
 
                 string ruta_cuadro_oficinas = ruta + "\\oficinas.png";
 
@@ -3247,27 +3370,101 @@ namespace CapaUsuario.Reportes
                 tabla_bonus.DefaultCell.BorderWidth = 0;
 
                 //tabla que continene rrhh, gerencia municipal, presupuesto y contabilidad
-                PdfPTable tabla_firmas = new PdfPTable(4);
-                tabla_firmas.DefaultCell.BorderWidth = 0;
+                PdfPTable tabla_firmas;
+                PdfPTable tabla_firmas2;
+                if (numeroRegimenLaboral == 1 || numeroRegimenLaboral == 2)
+                {
+                    tabla_firmas = new PdfPTable(4);
+                    tabla_firmas2 = new PdfPTable(2);
+                    tabla_firmas.DefaultCell.BorderWidth = 0;
+                    tabla_firmas2.DefaultCell.BorderWidth = 0;
+                    //FIRMAS
+                    Paragraph firma_rrhh = new Paragraph();
+                    firma_rrhh.Alignment = Element.ALIGN_CENTER;
+                    firma_rrhh.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    firma_rrhh.Add(" ............................................. \n RECURSOS HUMANOS");
+
+                    Paragraph firma_gm = new Paragraph();
+                    firma_gm.Alignment = Element.ALIGN_CENTER;
+                    firma_gm.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    firma_gm.Add(" ............................................... \n GERENCIA MUNICIPAL");
+
+                    Paragraph firma_pre = new Paragraph();
+                    firma_pre.Alignment = Element.ALIGN_CENTER;
+                    firma_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    firma_pre.Add(" .................................... \n CONTABILIDAD Y PRESUPUESTO");
+
+                    Paragraph firma_con = new Paragraph();
+                    firma_con.Alignment = Element.ALIGN_CENTER;
+                    firma_con.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    firma_con.Add(" .................................... \n TESORERIA");
+                    //aÑADIENDO FIRMAS A LA TABLA FIRMAS
+                    tabla_firmas.AddCell(firma_rrhh);
+                    tabla_firmas.AddCell(firma_gm);
+                    tabla_firmas.AddCell(firma_pre);
+                    tabla_firmas.AddCell(firma_con);
+                }
+                else
+                {
+                    tabla_firmas = new PdfPTable(4);
+                    tabla_firmas2 = new PdfPTable(2);
+                    tabla_firmas.DefaultCell.BorderWidth = 0;
+                    tabla_firmas2.DefaultCell.BorderWidth = 0;
+                    //FIRMAS
+                    Paragraph p_rrhh = new Paragraph();
+                    p_rrhh.Alignment = Element.ALIGN_CENTER;
+                    p_rrhh.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    p_rrhh.Add(" ............................................. \n   RECURSOS HUMANOS");
+
+                    Paragraph p_gm = new Paragraph();
+                    p_gm.Alignment = Element.ALIGN_CENTER;
+                    p_gm.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    p_gm.Add(" ............................................... \n   GERENCIA MUNICIPAL");
+
+                    Paragraph p_pre = new Paragraph();
+                    p_pre.Alignment = Element.ALIGN_CENTER;
+                    p_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    p_pre.Add(" ....................................... \n PRESUPUESTO Y CONTABILIDAD");
+
+                    Paragraph p_con = new Paragraph();
+                    p_con.Alignment = Element.ALIGN_CENTER;
+                    p_con.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    p_con.Add(" ");
+
+                    Paragraph firma_Tes = new Paragraph();
+                    firma_Tes.Alignment = Element.ALIGN_CENTER;
+                    firma_Tes.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    firma_Tes.Add(" ............................................... \n          TESORERIA");
+
+                    Paragraph firma_SUb = new Paragraph();
+                    firma_SUb.Alignment = Element.ALIGN_CENTER;
+                    firma_SUb.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    firma_SUb.Add(" ............................................................. \n RESIDENCIA DE OBRAS");
+                    //aÑADIENDO FIRMAS A LA TABLA FIRMAS
+                    tabla_firmas.AddCell(p_rrhh);
+                    tabla_firmas.AddCell(p_gm);
+                    tabla_firmas.AddCell(p_pre);
+                    tabla_firmas.AddCell(p_con);
+                    tabla_firmas2.AddCell(firma_Tes);
+                    tabla_firmas2.AddCell(firma_SUb);
+                }
 
                 //instanciando una columna y 3 columnas
                 //Columnas 
                 MultiColumnText column_one = new MultiColumnText();
                 column_one.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 1);
 
+
                 MultiColumnText column_3 = new MultiColumnText();
                 column_3.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 4);
 
                 //Agrupando tabla titular
-                tabla_bonus.AddCell(pdfTable2);
                 tabla_bonus.AddCell(pdfTableRedondear);
+                tabla_bonus.AddCell(pdfTable2);
+                
                 tabla_bonus.AddCell(pdfTableEEFF);
 
-                //aÑADIENDO FIRMAS A LA TABLA FIRMAS
-                tabla_firmas.AddCell(p_rrhh);
-                tabla_firmas.AddCell(p_gm);
-                tabla_firmas.AddCell(p_pre);
-                tabla_firmas.AddCell(p_con);
+               
                 
                 //Agregando una columna 
                 column_one.AddElement(paragraph);
@@ -3275,6 +3472,7 @@ namespace CapaUsuario.Reportes
                 column_one.AddElement(paragraph2);
                 column_one.AddElement(paragraph3);
                 column_one.AddElement(paragraph4);
+                column_one.AddElement(paragraph40);
                 column_one.AddElement(pdfTable);
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph6);
@@ -3286,10 +3484,20 @@ namespace CapaUsuario.Reportes
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(tabla_firmas);
-
+                if (numeroRegimenLaboral == 3)
+                {
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(tabla_firmas2);
+                }
                 pdfDoc.Add(logo);
                 pdfDoc.Add(oficinas);
                 pdfDoc.Add(column_one);
+                //pdfDoc.Add(column_dos);
                 pdfDoc.Close();
                 stream.Close();
             }
@@ -3388,6 +3596,32 @@ namespace CapaUsuario.Reportes
                 odtPrueba = oPlanilla.ListarRegimenLaboralPlanilla(sNumeroPlanilla);
                 foreach (DataRow row in odtPrueba.Rows)
                     sRegimenLaboral = row[0].ToString();
+            }
+        }
+
+        private void txtAltoColumnas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void chkAltoColumna_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAltoColumna.Checked)
+            {
+                txtAltoColumnas.Visible = true;
+                columnasFijas = true;
+            }
+            else
+            {
+                txtAltoColumnas.Visible = false;
+                columnasFijas = false;
             }
         }
     }

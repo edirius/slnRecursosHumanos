@@ -54,15 +54,15 @@
             this.cboDistrito = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtCUSPP = new System.Windows.Forms.TextBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label12 = new System.Windows.Forms.Label();
             this.cboTipoComision = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.cboAFP = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
-            this.txtCUSPP = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -336,6 +336,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AFP";
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(70, 76);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(43, 13);
+            this.label15.TabIndex = 92;
+            this.label15.Text = "CUSPP";
+            // 
+            // txtCUSPP
+            // 
+            this.txtCUSPP.Location = new System.Drawing.Point(119, 73);
+            this.txtCUSPP.Name = "txtCUSPP";
+            this.txtCUSPP.Size = new System.Drawing.Size(174, 20);
+            this.txtCUSPP.TabIndex = 91;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(9, 100);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(285, 13);
+            this.linkLabel1.TabIndex = 93;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Obtenga el CUSPP accediendo a la página web de la SBS";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -396,33 +424,6 @@
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(204, 20);
             this.dtpFechaInicio.TabIndex = 8;
-            // 
-            // txtCUSPP
-            // 
-            this.txtCUSPP.Location = new System.Drawing.Point(119, 73);
-            this.txtCUSPP.Name = "txtCUSPP";
-            this.txtCUSPP.Size = new System.Drawing.Size(174, 20);
-            this.txtCUSPP.TabIndex = 91;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(70, 76);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(43, 13);
-            this.label15.TabIndex = 92;
-            this.label15.Text = "CUSPP";
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(9, 100);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(285, 13);
-            this.linkLabel1.TabIndex = 93;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Obtenga el CUSPP accediendo a la página web de la SBS";
             // 
             // frmNuevoObrero
             // 

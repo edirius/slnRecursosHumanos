@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHorasHombre));
             this.cboMeta = new System.Windows.Forms.ComboBox();
             this.dgvTareo = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -240,10 +241,11 @@
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.dgvTareo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmHorasHombre";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Mantenimineto de Tareos";
+            this.Text = "Mantenimiento de Tareos";
             this.Load += new System.EventHandler(this.frmMantenimientoCronogramaTareo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTareo)).EndInit();
             this.ResumeLayout(false);

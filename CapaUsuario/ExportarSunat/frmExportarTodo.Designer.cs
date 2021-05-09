@@ -214,6 +214,7 @@
             this.Name = "frmExportarTodo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dar de alta al trabajador(T-REGISTRO)";
+            this.Load += new System.EventHandler(this.frmExportarTodo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarTrabajadores)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

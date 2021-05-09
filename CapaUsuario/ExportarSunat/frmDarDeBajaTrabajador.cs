@@ -163,7 +163,7 @@ namespace CapaUsuario.ExportarSunat
                     milista.Add(Periodos);
                 }
                 SaveFileDialog Guardar = new SaveFileDialog();
-                string RUC = "20226560824";
+                string RUC = "20177432360";
                 string tipoArchivo = ".PER";
                 string rp = "RP_";
                 string Titulo = rp + RUC + tipoArchivo;

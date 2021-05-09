@@ -29,7 +29,7 @@ namespace CapaUsuario.Usuarios
         {
             
             InitializeComponent();
-            pbImagen.Image = Resources.LogoCatca2;
+            pbImagen.Image = Resources.logo_muni_fw_;
 
         }
         
@@ -74,7 +74,7 @@ namespace CapaUsuario.Usuarios
                 if (objDataView.Count > 0)
                 {
                     frmPrincipal Principal = new frmPrincipal();
-                    MessageBox.Show("Bienvenido al Sistema de Control de Gestantes usuario " + txtUsuario.Text + ".", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Bienvenido al Sistema de Planillas usuario " + txtUsuario.Text + ".", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Principal.DarPrivilegios(txtUsuario.Text);
                     cVariablesUsuario.v_idtrabajador = dgvUsuarios.Rows[0].Cells[4].Value.ToString();
                     cVariablesUsuario.v_idusuario = dgvUsuarios.Rows[0].Cells[0].Value.ToString();

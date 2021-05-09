@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using info.lundin.math;
+using CapaDeNegocios;
 
 namespace CapaUsuario.Planilla
 {
@@ -45,6 +46,10 @@ namespace CapaUsuario.Planilla
         decimal ComisionMixta = 0;
 
         bool ssuspencionrenta4ta;
+        bool sessaludvida;
+        bool sscrt;
+
+        
 
         DataTable oDataDetallePlanilla = new DataTable();
         DataTable oDataTrabajador = new DataTable();
@@ -56,6 +61,7 @@ namespace CapaUsuario.Planilla
         DataTable oDataAFP = new DataTable();
         DataTable oDataComisionAFP = new DataTable();
 
+        CapaDeNegocios.Trabajadores.cDatosFijo oDatoFijo = new CapaDeNegocios.Trabajadores.cDatosFijo(0);
         CapaDeNegocios.Planillas.cDetallePlanilla miDetallePlanilla = new CapaDeNegocios.Planillas.cDetallePlanilla();
         CapaDeNegocios.Planillas.cDetallePlanillaIngresos miDetallePlanillaIngresos = new CapaDeNegocios.Planillas.cDetallePlanillaIngresos();
         CapaDeNegocios.Planillas.cDetallePlanillaATrabajador miDetallePlanillaATrabajador = new CapaDeNegocios.Planillas.cDetallePlanillaATrabajador();
@@ -67,6 +73,7 @@ namespace CapaUsuario.Planilla
         CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miRegimenPensionarioTrabajor = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
         CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador miRegimenSaludTrajador = new CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador();
         CapaDeNegocios.Contrato.cCargo miCargo = new CapaDeNegocios.Contrato.cCargo();
+        CapaDeNegocios.Asistencia.cAsistenciaTrabajador oAsistenciaTrabajador = new CapaDeNegocios.Asistencia.cAsistenciaTrabajador();
         CapaDeNegocios.cListaAFP miAFP = new CapaDeNegocios.cListaAFP(); 
         CapaDeNegocios.cComisionesAFP miComisionAFP = new CapaDeNegocios.cComisionesAFP();
 
@@ -107,7 +114,7 @@ namespace CapaUsuario.Planilla
                 foreach (DataRow rowdetalletareo in oDataDetalleTareo.Select("idttareo = '" + Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")) + "'"))
                 {
                     pagoobrero = 0;
-                    if (splantilla == "PERSONAL OBRERO")
+                    if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
                     {
                         pagoobrero = MetaJornal(rowdetalletareo[1].ToString(), sidtmeta);
                         if (pagoobrero == 0)
@@ -116,12 +123,12 @@ namespace CapaUsuario.Planilla
                             return;
                         }
                     }
-                    CargarTrabajador(Convert.ToInt32(rowdetalletareo[4].ToString()));
+                    CargarTrabajador(Convert.ToInt32(rowdetalletareo[4].ToString()), splantilla);
                     if (dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[4].Value.ToString() == rowdetalletareo[4].ToString())
                     {
                         dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[7].Value = rowdetalletareo[1].ToString();
                         dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[12].Value = rowdetalletareo[3].ToString();
-                        if (splantilla == "PERSONAL OBRERO")
+                        if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
                         {
                             dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", pagoobrero);
                         }
@@ -130,9 +137,9 @@ namespace CapaUsuario.Planilla
                 }
                 btnImportar.Enabled = false;
             }
-            catch
+            catch(Exception EX)
             {
-
+                MessageBox.Show(EX.Message);
             }
         } 
 
@@ -182,7 +189,7 @@ namespace CapaUsuario.Planilla
                         }
                         if (z == 0)
                         {
-                            CargarTrabajador(Convert.ToInt32(sselecciontrabajadores[i, 0].ToString()));
+                            CargarTrabajador(Convert.ToInt32(sselecciontrabajadores[i, 0].ToString()), splantilla);
                             TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
                         }
                         else
@@ -426,7 +433,7 @@ namespace CapaUsuario.Planilla
             oDataDetallePlanilla = miDetallePlanilla.ListarDetallePlanilla(sidtplanilla);
             foreach (DataRow row in oDataDetallePlanilla.Rows)
             {
-                CargarTrabajador(Convert.ToInt32(row[09].ToString()));
+                CargarTrabajador(Convert.ToInt32(row[09].ToString()),splantilla);
                 if (splantilla == "PERSONAL OBRERO")
                 {
                     decimal pagoobrero = 0;
@@ -455,7 +462,7 @@ namespace CapaUsuario.Planilla
             }
         }
 
-        private void CargarTrabajador(int pidtrabajador)
+        private void CargarTrabajador(int pidtrabajador, string tipoPlanilla)
         {
             bool TienAFP = false;
             string Nombre = "";
@@ -481,19 +488,30 @@ namespace CapaUsuario.Planilla
                             Cargo = rowCargo[1].ToString();
                         }
                     }
-                    foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+
+                    if (tipoPlanilla == "RACIONAMIENTO")
                     {
-                        TienAFP = true;
-                    }
-                    if (TienAFP == false)
-                    {
-                        MessageBox.Show("El trabajador " + Nombre + " no tiene datos de AFP.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                       
+                            contador += 1;
+                            dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio, MontoPago, "", "");
+                                           }
                     else
                     {
-                        contador += 1;
-                        dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio, MontoPago, "", "");
+                        foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                        {
+                            TienAFP = true;
+                        }
+                        if (TienAFP == false)
+                        {
+                            MessageBox.Show("El trabajador " + Nombre + " no tiene datos de AFP.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            contador += 1;
+                            dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio, MontoPago, "", "");
+                        }
                     }
+                    
                 }
             }
         }
@@ -506,6 +524,43 @@ namespace CapaUsuario.Planilla
             }
         }
 
+        private void BuscarEssaludVida(int pidtrabajador)
+        {
+            foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + pidtrabajador + "'"))
+            {
+                sessaludvida = Convert.ToBoolean(rowTrabajador[7]);
+            }
+        }
+
+        private bool verificar65anio(string dnitrabajador)
+        {
+            bool valor = false;
+            DateTime fechaFinMes = new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1);
+            foreach (DataRow rowTrabajador in miTrabajador.ListaTrabajadoresX().Select("DNI = '" + dnitrabajador + "'"))
+            {
+                DateTime fechaNacimiento = Convert.ToDateTime(rowTrabajador[5]);
+                
+                int añosEdad = Convert.ToInt16( Math.Truncate(Convert.ToDouble( ((fechaFinMes - fechaNacimiento).Days) / 365)));
+                
+                if (añosEdad >= 65)
+                {
+                    valor = true;
+                }
+                else
+                {
+                    valor = false;
+                }
+            }
+            return valor;
+        }
+
+        private void BuscarSCRT(int pidtrabajador)
+        {
+            foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + pidtrabajador + "'"))
+            {
+                sscrt = Convert.ToBoolean(rowTrabajador[8]);
+            }
+        }
         private void DatosAFP(int fila)
         {   
             foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + dgvDetallePlanilla.Rows[fila].Cells[4].Value.ToString() + "'"))
@@ -642,21 +697,36 @@ namespace CapaUsuario.Planilla
             int DiaInicio = Convert.ToDateTime(dgvDetallePlanilla.Rows[fila].Cells[10].Value).Day;
             int DiasMes = DateTime.DaysInMonth(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)));
             int sMes = Convert.ToInt32(Mes(smes));
-
+            int diasSuspendidos = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMes(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
             decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
             DiasLaborados = 1 + DateTime.DaysInMonth(AñoInicio, MesInicio) - DiaInicio;
-            if (sidtregimenlaboral == 3 && (splantilla == "PERSONAL OBRERO" || splantilla == "PERSONAL TECNICO"))
+            if (sidtregimenlaboral == 3 && (splantilla == "PERSONAL OBRERO" || splantilla == "PERSONAL TECNICO" || splantilla == "RACIONAMIENTO"))
             {
                 if (dgvDetallePlanilla.Rows[fila].Cells[12].Value != "")
                 {
                     DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[12].Value);
-                    if (splantilla == "PERSONAL OBRERO")
+                    if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
                     {
                         PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 2);
                     }
                     if (splantilla == "PERSONAL TECNICO")
                     {
-                        PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                        if (sMes != 2)
+                        {
+                            if (DiasLaborados == 31)
+                            {
+                                PagoTotal = Math.Round(PagoDia * (DiasLaborados - 1), 2);
+                            }
+                            else
+                            {
+                                PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                            }
+                        }
+                        else
+                        {
+                            PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 28;
+                            PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                        }
                     }
                 }
             }
@@ -664,25 +734,89 @@ namespace CapaUsuario.Planilla
             {
                 if (Convert.ToInt32(saño) > AñoInicio)
                 {
-                    DiasLaborados = DiasMes;
-                    PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                    if (diasSuspendidos > 0)
+                    {
+                        DiasLaborados = DiasMes - diasSuspendidos;
+                        if (diasSuspendidos > DiasLaborados)
+                        {
+                            PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                        }
+                        else
+                        {
+                            PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) - Math.Round((PagoDia * diasSuspendidos),2);
+                        }
+                    }
+                    else
+                    {
+                        DiasLaborados = DiasMes;
+                        PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                    }
+                    
                 }
                 else
                 {
                     if (sMes > MesInicio)
                     {
-                        DiasLaborados = DiasMes;
-                        PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                        if (diasSuspendidos > 0)
+                        {
+                            DiasLaborados = DiasMes - diasSuspendidos;
+                            if (diasSuspendidos > DiasLaborados)
+                            {
+                                PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                            }
+                            else
+                            {
+                                PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) - Math.Round((PagoDia * diasSuspendidos),2);
+                            }
+                        }
+                        else
+                        {
+                            DiasLaborados = DiasMes;
+                            PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                        }
+                       
                     }
                     else
                     {
                         if (DiasLaborados == DiasMes)
                         {
-                            PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                            if (diasSuspendidos > 0)
+                            {
+                                DiasLaborados = DiasMes - diasSuspendidos;
+                                if (diasSuspendidos > DiasLaborados)
+                                {
+                                    PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                                }
+                                else
+                                {
+                                    PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) - Math.Round((PagoDia * diasSuspendidos),2);
+                                }
+                            }
+                            else
+                            {
+                                PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                            }
+                            
                         }
                         else
                         {
-                            PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                            if (diasSuspendidos > 0)
+                            {
+                                DiasLaborados = DiasLaborados - diasSuspendidos;
+                                if (diasSuspendidos > DiasLaborados)
+                                {
+                                    PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                                }
+                                else
+                                {
+                                    PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) - Math.Round((PagoDia * diasSuspendidos),2);
+                                }
+                            }
+                            else
+                            {
+                                PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                            }
+                            
                         }
                     }
                 }
@@ -742,16 +876,37 @@ namespace CapaUsuario.Planilla
                     decimal number2 = 0;
                     if (decimal.TryParse(smingresos[i, 3].ToString(), out number2) == true)//Verificamos si la formula es un Numero
                     {
-                        dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].Value = String.Format("{0:0.00}", number2);
-                        if (smingresos[i, 17].ToString() == "0")
+                        //verificamos que tiene algun dato fijo
+                        int codigoTrabajador = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value.ToString());
+                        if (oDatoFijo.TieneDatoFijo( codigoTrabajador, Convert.ToInt16(smingresos[i,0].ToString()), "INGRESOS"))
+                        {
+                            dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].Value = String.Format("{0:0.00}", oDatoFijo.TraerDatoFijo(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value.ToString()), Convert.ToInt16( smingresos[i, 0].ToString()), "INGRESOS"));
+                        }
+                        else
+                        {
+                            dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].Value = String.Format("{0:0.00}", number2);
+                        }
+
+                       
+                        if (smingresos[i, 17].ToString() == "0") //Verificamos que la columna no sea Informativa.
                         {
                             total_ingresos += decimal.Round(Convert.ToDecimal(smingresos[i, 3].ToString()), 2);
                         }
                     }
-                    else
+                    else // tiene formula
                     {
                         double result = CalcularFormula(fila, Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value), smingresos[i, 3].ToString());
-                        dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].Value = String.Format("{0:0.00}", result);
+                        //verificamos que tiene algun dato fijo
+                        if (oDatoFijo.TieneDatoFijo(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value.ToString()), Convert.ToInt16(smingresos[i, 0].ToString()), "INGRESOS"))
+                        {
+                            dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].Value = String.Format("{0:0.00}", oDatoFijo.TraerDatoFijo(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value.ToString()), Convert.ToInt16(smingresos[i, 0].ToString()), "INGRESOS"));
+                        }
+                        else
+                        {
+                            
+                            dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].Value = String.Format("{0:0.00}", result);
+                        }
+                           
 
                         if (smingresos[i, 17].ToString() == "0")//Verificamos que la columna no sea Informativa.
                         {
@@ -786,7 +941,11 @@ namespace CapaUsuario.Planilla
             {
                 if (sma_trabajador[i, 3].ToString() != "" || sma_trabajador[i, 1].ToString() == "0605" || sma_trabajador[i, 1].ToString() == "0804")
                 {
-                    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].ReadOnly = true;
+                    if (!(sma_trabajador[i, 1].ToString() == "0605"))
+                    {
+                        dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].ReadOnly = true;
+                    }
+                    
                     decimal number2 = 0;
                     if (decimal.TryParse(sma_trabajador[i, 3].ToString(), out number2) == true)
                     {
@@ -795,17 +954,41 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
+                        
                         double result = IngresosAfectos(fila, sma_trabajador[i, 1].ToString(), sma_trabajador[i, 3].ToString());
-                        dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = String.Format("{0:0.00}", result);
-                        total_atrabajador += decimal.Round(Convert.ToDecimal(result), 2);
-                        if (AFP == "SNP" && dgvDetallePlanilla.Columns[celda_inicio + con_ingresos + i].Name != "T9" && dgvDetallePlanilla.Columns[celda_inicio + con_ingresos + i].Name != "T12")
+                        if (result == 0 && (sma_trabajador[i, 1].ToString() =="0605"))
                         {
-                            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = String.Format("{0:0.00}", 0);
+                            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value;
+
+                            if (!(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value == null))
+                            {
+                                if (double.TryParse(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value.ToString(), out result))
+                                {
+                                    total_atrabajador += decimal.Round(Convert.ToDecimal(result), 2);
+                                }
+
+                            }
+
                         }
-                        else if (AFP != "SNP" && dgvDetallePlanilla.Columns[celda_inicio + con_ingresos + i].Name == "T9")
+                        else
                         {
-                            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = String.Format("{0:0.00}", 0);
+                            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = String.Format("{0:0.00}", result);
+                            total_atrabajador += decimal.Round(Convert.ToDecimal(result), 2);
                         }
+                        
+                       //ojo con esto no se para que sirve
+                        if (dgvDetallePlanilla.Columns[celda_inicio + con_ingresos + i].HeaderText !="ESSALUDV" && dgvDetallePlanilla.Columns[celda_inicio + con_ingresos + i].HeaderText != "RENTA 4TA CAT" && dgvDetallePlanilla.Columns[celda_inicio + con_ingresos + i].HeaderText != "RENTA 5TA CAT")
+                        {
+                            if (AFP == "SNP" && dgvDetallePlanilla.Columns[celda_inicio + con_ingresos + i].Name != "T9" && dgvDetallePlanilla.Columns[celda_inicio + con_ingresos + i].Name != "T12")
+                            {
+                                dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = String.Format("{0:0.00}", 0);
+                            }
+                            else if (AFP != "SNP" && dgvDetallePlanilla.Columns[celda_inicio + con_ingresos + i].Name == "T9")
+                            {
+                                dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = String.Format("{0:0.00}", 0);
+                            }
+                        }
+                        
                     }
                 }
                 else
@@ -1009,6 +1192,28 @@ namespace CapaUsuario.Planilla
                 result = CalcularFormula(fila, remuneracion_afecta, formula);
             }
 
+            if (codigo =="0606")
+            {
+                if (verificar65anio (dgvDetallePlanilla.Rows[fila].Cells[8].Value.ToString()))
+                {
+                    result = 0;
+                }
+            }
+            //essaludvida
+            if (codigo == "0604")
+            {
+                BuscarEssaludVida(Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
+                if (sessaludvida == true)
+                {
+                    result = 5.00;
+                }
+                else
+                {
+                    result = 0;
+                }
+            }
+
+
             //renta 4ta Categoria
             if (codigo == "0618" && suma_ingresos <= 1500)
             {
@@ -1027,7 +1232,34 @@ namespace CapaUsuario.Planilla
             {
                 decimal renta5ta = CalculoRenta5ta(fila, remuneracion_5ta, otrosingresos_5ta);
                 //result = decimal.Round(Convert.ToDecimal(renta5ta), 2);
-                result = Convert.ToDouble(renta5ta);
+                if (renta5ta < 0)
+                {
+                    renta5ta = 0;
+                }
+                if (chkQuinta.Checked)
+                {
+                    result = 0;
+                }
+                else
+                {
+                    result = Convert.ToDouble(renta5ta);
+                }
+                
+            }
+
+            //seguro complementario de riesgo
+
+            if (codigo == "0806")
+            {
+                BuscarSCRT(Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
+                if (sscrt == true)
+                {
+                    result = CalcularFormula(fila, remuneracion_afecta, formula);
+                }
+                else
+                {
+                    result = 0;
+                }
             }
             //Essalud
             if (codigo == "0804")
@@ -1147,7 +1379,7 @@ namespace CapaUsuario.Planilla
                 }
                 else
                 {
-                    sEssalud = (sUIT * 30 / 100) * 9 / 100;
+                    sEssalud = (sUIT * 55 / 100) * 9 / 100;
                 }
             }
             else

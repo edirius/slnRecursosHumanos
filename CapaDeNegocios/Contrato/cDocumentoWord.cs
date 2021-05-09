@@ -14,6 +14,7 @@ namespace CapaDeNegocios.Contrato
         private object oMissing;
         private Microsoft.Office.Interop.Word.Document oDocumento;
 
+        public string numero;
         public string trabajador;
         public string dni;
         public string direccion;
@@ -51,6 +52,7 @@ namespace CapaDeNegocios.Contrato
             //oParrafo.Range.InsertParagraphAfter();
             //miWord.Documents.Open()
 
+            BuscarReemplazar("@Numero", numero);
             BuscarReemplazar("@Trabajador", trabajador);
             BuscarReemplazar("@DNI", dni);
             BuscarReemplazar("@Direccion", direccion);
@@ -60,6 +62,8 @@ namespace CapaDeNegocios.Contrato
             BuscarReemplazar("@Monto", monto);
             BuscarReemplazar("@Cargo", cargo);
             BuscarReemplazar("@Fecha", fecharegistro);
+            BuscarReemplazar("@iniciofecha", fechainicio);
+            BuscarReemplazar("@finfecha", fechafin);
         }
 
         private void BuscarReemplazar(string variable, string valor)

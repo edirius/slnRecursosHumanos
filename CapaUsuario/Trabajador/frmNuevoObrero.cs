@@ -71,6 +71,8 @@ namespace CapaUsuario.Trabajador
             miTrabajador.MiTipoZOna.Codigo = 1;
             miTrabajador.MiNacionalidad = miNacionalidad;
             miTrabajador.MiNacionalidad.Codigo = 1;
+            miTrabajador.Essaludvida = false;
+            miTrabajador.Scrt = true;
 
             sidttrabajador = miTrabajador.AgregarTrabajadorConID(miTrabajador);
             //oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Sin Periodo Laboral", "", "", "", "", "Todos", "Todos");
@@ -237,6 +239,11 @@ namespace CapaUsuario.Trabajador
             cboAFP.DisplayMember = "nombre";
             cboAFP.ValueMember = "idtafp";
             cboAFP.SelectedIndex = -1; 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

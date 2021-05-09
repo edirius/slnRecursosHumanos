@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTareo));
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -181,11 +182,13 @@
             this.cboDescripcion.FormattingEnabled = true;
             this.cboDescripcion.Items.AddRange(new object[] {
             "PERSONAL TECNICO",
-            "PERSONAL OBRERO"});
+            "PERSONAL OBRERO",
+            "RACIONAMIENTO"});
             this.cboDescripcion.Location = new System.Drawing.Point(85, 64);
             this.cboDescripcion.Name = "cboDescripcion";
             this.cboDescripcion.Size = new System.Drawing.Size(354, 21);
             this.cboDescripcion.TabIndex = 61;
+            this.cboDescripcion.SelectedIndexChanged += new System.EventHandler(this.cboDescripcion_SelectedIndexChanged);
             // 
             // frmTareo
             // 
@@ -205,6 +208,7 @@
             this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTareo";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

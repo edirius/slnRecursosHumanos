@@ -55,6 +55,8 @@
             this.cboMes = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.chkAltoColumna = new System.Windows.Forms.CheckBox();
+            this.txtAltoColumnas = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
@@ -82,7 +84,7 @@
             // dgvAFP
             // 
             this.dgvAFP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAFP.Location = new System.Drawing.Point(277, 465);
+            this.dgvAFP.Location = new System.Drawing.Point(366, 460);
             this.dgvAFP.Name = "dgvAFP";
             this.dgvAFP.Size = new System.Drawing.Size(157, 65);
             this.dgvAFP.TabIndex = 92;
@@ -91,7 +93,7 @@
             // dgvPrueba
             // 
             this.dgvPrueba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPrueba.Location = new System.Drawing.Point(115, 465);
+            this.dgvPrueba.Location = new System.Drawing.Point(204, 460);
             this.dgvPrueba.Name = "dgvPrueba";
             this.dgvPrueba.Size = new System.Drawing.Size(157, 65);
             this.dgvPrueba.TabIndex = 93;
@@ -230,7 +232,7 @@
             // dgvRedondear
             // 
             this.dgvRedondear.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRedondear.Location = new System.Drawing.Point(440, 465);
+            this.dgvRedondear.Location = new System.Drawing.Point(529, 460);
             this.dgvRedondear.Name = "dgvRedondear";
             this.dgvRedondear.Size = new System.Drawing.Size(157, 65);
             this.dgvRedondear.TabIndex = 95;
@@ -239,7 +241,7 @@
             // dgvEEFF
             // 
             this.dgvEEFF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEEFF.Location = new System.Drawing.Point(603, 465);
+            this.dgvEEFF.Location = new System.Drawing.Point(692, 460);
             this.dgvEEFF.Name = "dgvEEFF";
             this.dgvEEFF.Size = new System.Drawing.Size(157, 65);
             this.dgvEEFF.TabIndex = 96;
@@ -303,11 +305,33 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mes:";
             // 
+            // chkAltoColumna
+            // 
+            this.chkAltoColumna.AutoSize = true;
+            this.chkAltoColumna.Location = new System.Drawing.Point(105, 461);
+            this.chkAltoColumna.Name = "chkAltoColumna";
+            this.chkAltoColumna.Size = new System.Drawing.Size(115, 17);
+            this.chkAltoColumna.TabIndex = 102;
+            this.chkAltoColumna.Text = "Fijar Alto Columnas";
+            this.chkAltoColumna.UseVisualStyleBackColor = true;
+            this.chkAltoColumna.CheckedChanged += new System.EventHandler(this.chkAltoColumna_CheckedChanged);
+            // 
+            // txtAltoColumnas
+            // 
+            this.txtAltoColumnas.Location = new System.Drawing.Point(105, 485);
+            this.txtAltoColumnas.Name = "txtAltoColumnas";
+            this.txtAltoColumnas.Size = new System.Drawing.Size(100, 20);
+            this.txtAltoColumnas.TabIndex = 103;
+            this.txtAltoColumnas.Visible = false;
+            this.txtAltoColumnas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAltoColumnas_KeyPress);
+            // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 537);
+            this.Controls.Add(this.txtAltoColumnas);
+            this.Controls.Add(this.chkAltoColumna);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvEEFF);
             this.Controls.Add(this.dgvRedondear);
@@ -328,6 +352,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -358,5 +383,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdtRegimenLaboral;
         private System.Windows.Forms.DataGridViewTextBoxColumn Plantilla;
+        private System.Windows.Forms.CheckBox chkAltoColumna;
+        private System.Windows.Forms.TextBox txtAltoColumnas;
     }
 }

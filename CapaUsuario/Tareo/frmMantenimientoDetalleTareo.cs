@@ -737,14 +737,29 @@ namespace CapaUsuario.Tareo
 
         private void MostrarColumnas()
         {
-            if (miTareo.Descripcion == "PERSONAL TECNICO")
+            switch (miTareo.Descripcion)
             {
-                dgvDetalleTareo.Columns[9].Visible = false;
+                case "PERSONAL TECNICO":
+                       dgvDetalleTareo.Columns[9].Visible = false;
+                    break;
+                case "PERSONAL OBRERO":
+                    dgvDetalleTareo.Columns[8].Visible = false;
+                    break;
+                case "RACIONAMIENTO":
+                    dgvDetalleTareo.Columns[8].Visible = false;
+                    dgvDetalleTareo.Columns[11].Visible = false;
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                dgvDetalleTareo.Columns[8].Visible = false;
-            }
+            //if (miTareo.Descripcion == "PERSONAL TECNICO")
+            //{
+            //    dgvDetalleTareo.Columns[9].Visible = false;
+            //}
+            //else
+            //{
+            //    dgvDetalleTareo.Columns[8].Visible = false;
+            //}
         }
 
         void LlenarDias(int fila, string caracter)

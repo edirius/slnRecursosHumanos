@@ -63,74 +63,119 @@ namespace CapaUsuario.Trabajador
             }
             chkEssaludVida.Checked = miTrabajador.Essaludvida;
             chkRenta4ta.Checked = miTrabajador.Suspencionrenta4ta;
+            chkScrt.Checked = miTrabajador.Scrt;
             txtNroRenta4ta.Text = miTrabajador.NroRenta4ta;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            miTrabajador.IdTrabajador = Convert.ToInt16(txtCodigo.Text);
-            miTrabajador.Dni = txtDNI.Text;
-            miTrabajador.Nombres = txtNombres.Text;
-            miTrabajador.ApellidoPaterno = txtApellidoPaterno.Text;
-            miTrabajador.ApellidoMaterno = txtApellidoMaterno.Text;
-            switch (cboEstadoCivil.Text)
+            try
             {
-                case "Casado":
-                    miTrabajador.EstadoCivil = enumEstadoCivil.Casado;
-                    break;
-                case "Soltero":
-                    miTrabajador.EstadoCivil = enumEstadoCivil.Soltero;
-                    break;
-                case "Viudo":
-                    miTrabajador.EstadoCivil = enumEstadoCivil.Viudo;
-                    break;
-                case "Divorciado":
-                    miTrabajador.EstadoCivil = enumEstadoCivil.Divorciado;
-                    break;
-                default:
-                    break;
-            }
+                if (txtNacionalidad.Text == "")
+                {
+                    txtNacionalidad.Focus();
+                    throw new cReglaNegociosException("Seleccione una nacionalidad.");
+                }
 
-            switch (cboSexo.Text)
-            {
-                case "Masculino":
-                    miTrabajador.Sexo = EnumSexo.Masculino;
-                    break;
-                case "Femenino":
-                    miTrabajador.Sexo = EnumSexo.Femenino;
-                    break;
-                default:
-                    break;
-            }
-            miTrabajador.Direccion = txtDireccion.Text;
-            miTrabajador.CelularTrabajo = txtCelularTrabajo.Text;
-            miTrabajador.CelularPersonal = txtCelularPersonal.Text;
-            miTrabajador.FechaNacimiento = dtpFechaNacimiento.Value;
-            miTrabajador.CorreoElectronico = txtCorreo.Text;
-            miTrabajador.NombreVia = txtNombreVia.Text;
-            miTrabajador.NumeroVia = txtNumeroVia.Text;
-            miTrabajador.DepartamentoInterior = txtDepartamentoInterior.Text;
-            miTrabajador.NombreZona = txtNombreZona.Text;
-            miTrabajador.Referencia = txtReferencia.Text;
+                if (txtDepartamento.Text == "")
+                {
+                    txtDepartamento.Focus();
+                    throw new cReglaNegociosException("Seleccione un departamento.");
+                }
 
-            if (pbFoto.Image != null)
-            {
-                System.IO.MemoryStream ms = new System.IO.MemoryStream();
-                // Se guarda la imagen en el buffer
-                pbFoto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                // Se extraen los bytes del buffer para asignarlos como valor para el 
-                // parámetro.
-                miTrabajador.Foto = ms.GetBuffer();
-            }
-            else
-            {
-                miTrabajador.Foto = null;
-            }
+                if (txtProvincia.Text == "")
+                {
+                    txtProvincia.Focus();
+                    throw new cReglaNegociosException("Seleccione una provincia.");
+                }
 
-            miTrabajador.Essaludvida = chkEssaludVida.Checked;
-            miTrabajador.Suspencionrenta4ta = chkRenta4ta.Checked;
-            miTrabajador.NroRenta4ta = txtNroRenta4ta.Text;
-            DialogResult = System.Windows.Forms.DialogResult.OK;
+                if (txtDistrito.Text == "")
+                {
+                    txtDistrito.Focus();
+                    throw new cReglaNegociosException("Seleccione un distrito.");
+                }
+
+                if (txtTipoVia.Text == "")
+                {
+                    txtTipoVia.Focus();
+                    throw new cReglaNegociosException("Seleccione un tipovia.");
+                }
+
+                if (txtTipoZona.Text == "")
+                {
+                    txtTipoZona.Focus();
+                    throw new cReglaNegociosException("Seleccione un tipo de zona.");
+                }
+                miTrabajador.IdTrabajador = Convert.ToInt16(txtCodigo.Text);
+                miTrabajador.Dni = txtDNI.Text;
+                miTrabajador.Nombres = txtNombres.Text;
+                miTrabajador.ApellidoPaterno = txtApellidoPaterno.Text;
+                miTrabajador.ApellidoMaterno = txtApellidoMaterno.Text;
+                switch (cboEstadoCivil.Text)
+                {
+                    case "Casado":
+                        miTrabajador.EstadoCivil = enumEstadoCivil.Casado;
+                        break;
+                    case "Soltero":
+                        miTrabajador.EstadoCivil = enumEstadoCivil.Soltero;
+                        break;
+                    case "Viudo":
+                        miTrabajador.EstadoCivil = enumEstadoCivil.Viudo;
+                        break;
+                    case "Divorciado":
+                        miTrabajador.EstadoCivil = enumEstadoCivil.Divorciado;
+                        break;
+                    default:
+                        break;
+                }
+
+                switch (cboSexo.Text)
+                {
+                    case "Masculino":
+                        miTrabajador.Sexo = EnumSexo.Masculino;
+                        break;
+                    case "Femenino":
+                        miTrabajador.Sexo = EnumSexo.Femenino;
+                        break;
+                    default:
+                        break;
+                }
+                miTrabajador.Direccion = txtDireccion.Text;
+                miTrabajador.CelularTrabajo = txtCelularTrabajo.Text;
+                miTrabajador.CelularPersonal = txtCelularPersonal.Text;
+                miTrabajador.FechaNacimiento = dtpFechaNacimiento.Value;
+                miTrabajador.CorreoElectronico = txtCorreo.Text;
+                miTrabajador.NombreVia = txtNombreVia.Text;
+                miTrabajador.NumeroVia = txtNumeroVia.Text;
+                miTrabajador.DepartamentoInterior = txtDepartamentoInterior.Text;
+                miTrabajador.NombreZona = txtNombreZona.Text;
+                miTrabajador.Referencia = txtReferencia.Text;
+
+                if (pbFoto.Image != null)
+                {
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                    // Se guarda la imagen en el buffer
+                    pbFoto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    // Se extraen los bytes del buffer para asignarlos como valor para el 
+                    // parámetro.
+                    miTrabajador.Foto = ms.GetBuffer();
+                }
+                else
+                {
+                    miTrabajador.Foto = null;
+                }
+
+                miTrabajador.Essaludvida = chkEssaludVida.Checked;
+                miTrabajador.Suspencionrenta4ta = chkRenta4ta.Checked;
+                miTrabajador.NroRenta4ta = txtNroRenta4ta.Text;
+                miTrabajador.Scrt = chkScrt.Checked;
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al Ingresar el Nuevo Trabajador: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void txtNacionalidad_KeyPress(object sender, KeyPressEventArgs e)
@@ -711,7 +756,21 @@ namespace CapaUsuario.Trabajador
 
         private void txtDNI_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            if (char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (char.IsControl(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
         }
 
         private void chkRenta4ta_CheckedChanged(object sender, EventArgs e)
@@ -725,6 +784,37 @@ namespace CapaUsuario.Trabajador
             {
                 label11.Visible = false;
                 txtNroRenta4ta.Visible = false;
+            }
+        }
+
+        private void txtCelularTrabajo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                if (char.IsControl(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void txtCelularPersonal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar) || char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
             }
         }
     }

@@ -38,12 +38,12 @@
             this.lblMensaje = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pbImagen = new System.Windows.Forms.PictureBox();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.pbImagen = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -139,16 +139,6 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
-            // pbImagen
-            // 
-            this.pbImagen.Image = global::CapaUsuario.Properties.Resources.LogoCatca2;
-            this.pbImagen.Location = new System.Drawing.Point(89, 9);
-            this.pbImagen.Name = "pbImagen";
-            this.pbImagen.Size = new System.Drawing.Size(200, 200);
-            this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbImagen.TabIndex = 4;
-            this.pbImagen.TabStop = false;
-            // 
             // dgvUsuarios
             // 
             this.dgvUsuarios.AllowUserToAddRows = false;
@@ -159,6 +149,16 @@
             this.dgvUsuarios.Size = new System.Drawing.Size(25, 20);
             this.dgvUsuarios.TabIndex = 10;
             this.dgvUsuarios.Visible = false;
+            // 
+            // pbImagen
+            // 
+            this.pbImagen.Image = global::CapaUsuario.Properties.Resources.logo_MuniMaras;
+            this.pbImagen.Location = new System.Drawing.Point(96, 23);
+            this.pbImagen.Name = "pbImagen";
+            this.pbImagen.Size = new System.Drawing.Size(188, 177);
+            this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbImagen.TabIndex = 4;
+            this.pbImagen.TabStop = false;
             // 
             // frmLogin
             // 
@@ -180,10 +180,9 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

@@ -432,9 +432,9 @@ namespace CapaDeNegocios.PlanillaNueva
                     for (int i = 0; i < ListaAuxiliarAportacionesEmpleador.Rows.Count; i++)
                     {
                         cnDetallePlanillaAportacionesEmpleador aportacionAuxiliar = new cnDetallePlanillaAportacionesEmpleador();
-                        aportacionAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarAportacionesEmpleador.Rows[0][0]);
-                        aportacionAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarAportacionesEmpleador.Rows[0][1]);
-                        aportacionAuxiliar.MaestroAportacionesEmpleador = TraerMaestroAportacionesEmpleador(Convert.ToInt16(ListaAuxiliarAportacionesEmpleador.Rows[0][2]));
+                        aportacionAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarAportacionesEmpleador.Rows[i][0]);
+                        aportacionAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarAportacionesEmpleador.Rows[i][1]);
+                        aportacionAuxiliar.MaestroAportacionesEmpleador = TraerMaestroAportacionesEmpleador(Convert.ToInt16(ListaAuxiliarAportacionesEmpleador.Rows[i][2]));
                         miListaAportacionesEmpleador.Add(aportacionAuxiliar);
                     }
                 }
@@ -473,5 +473,69 @@ namespace CapaDeNegocios.PlanillaNueva
                 throw new cReglaNegociosException("blPlanilla: " + e.Message);
             }
         }
+
+        public cnDetallePlanilla ListaTotales(cnPlanilla miPlanilla)
+        {
+            cnDetallePlanilla auxiliarDetalle = new cnDetallePlanilla();
+             
+
+            for (int i = 0; i < miPlanilla.ListaDetalle[0].ListaDetalleIngresos.Count ; i++)
+            {
+                cnDetallePlanillaIngresos auxiliarIngresos = new cnDetallePlanillaIngresos();
+                auxiliarIngresos.MaestroIngresos = miPlanilla.ListaDetalle[0].ListaDetalleIngresos[i].MaestroIngresos;
+                auxiliarDetalle.ListaDetalleIngresos.Add(auxiliarIngresos); 
+                
+            }
+
+            for (int i = 0; i < miPlanilla.ListaDetalle[0].ListaDetalleEgresos.Count  ; i++)
+            {
+                cnDetallePlanillaEgresos auxiliarEgresos = new cnDetallePlanillaEgresos();
+                auxiliarEgresos.MaestroDescuentos = miPlanilla.ListaDetalle[0].ListaDetalleEgresos[i].MaestroDescuentos;
+                auxiliarDetalle.ListaDetalleEgresos.Add(auxiliarEgresos);
+            }
+
+            for (int i = 0; i < miPlanilla.ListaDetalle[0].ListaDetalleAportacionesEmpleador.Count ; i++)
+            {
+                cnDetallePlanillaAportacionesEmpleador aportacionEmpleador = new cnDetallePlanillaAportacionesEmpleador();
+                aportacionEmpleador.MaestroAportacionesEmpleador = miPlanilla.ListaDetalle[0].ListaDetalleAportacionesEmpleador[i].MaestroAportacionesEmpleador;
+                auxiliarDetalle.ListaDetalleAportacionesEmpleador.Add(aportacionEmpleador);
+                 
+            }
+
+            for (int i = 0; i < miPlanilla.ListaDetalle[0].ListaDetalleAportacionesTrabajador.Count  ; i++)
+            {
+                cnDetallePlanillaAportacionesTrabajador aportacionTrabajador = new cnDetallePlanillaAportacionesTrabajador();
+                aportacionTrabajador.MaestroAportacionTrabajador = miPlanilla.ListaDetalle[0].ListaDetalleAportacionesTrabajador[i].MaestroAportacionTrabajador;  
+                auxiliarDetalle.ListaDetalleAportacionesTrabajador.Add(aportacionTrabajador); 
+            }
+
+            for (int i = 0; i < miPlanilla.ListaDetalle.Count; i++)
+            {
+                for (int j = 0; j < miPlanilla.ListaDetalle[i].ListaDetalleIngresos.Count ; j++)
+                {
+                    auxiliarDetalle.ListaDetalleIngresos[j].Monto = auxiliarDetalle.ListaDetalleIngresos[j].Monto + miPlanilla.ListaDetalle[i].ListaDetalleIngresos[j].Monto;
+
+                }
+
+                for (int k = 0; k < miPlanilla.ListaDetalle[i].ListaDetalleEgresos.Count  ; k++)
+                {
+                    auxiliarDetalle.ListaDetalleEgresos[k].Monto = auxiliarDetalle.ListaDetalleEgresos[k].Monto + miPlanilla.ListaDetalle[i].ListaDetalleEgresos[k].Monto; 
+                }
+
+                for (int l = 0; l < miPlanilla.ListaDetalle[i].ListaDetalleAportacionesTrabajador.Count  ; l++)
+                {
+                    auxiliarDetalle.ListaDetalleAportacionesTrabajador[l].Monto += miPlanilla.ListaDetalle[i].ListaDetalleAportacionesTrabajador[l].Monto;  
+                }
+                for (int n = 0; n < miPlanilla.ListaDetalle[i].ListaDetalleAportacionesEmpleador.Count  ; n++)
+                {
+                    auxiliarDetalle.ListaDetalleAportacionesEmpleador[n].Monto += miPlanilla.ListaDetalle[i].ListaDetalleAportacionesEmpleador[n].Monto;   
+                }
+            }
+
+         
+            return auxiliarDetalle;
+        }
+
+        
     }
 }

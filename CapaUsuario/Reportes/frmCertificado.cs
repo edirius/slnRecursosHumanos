@@ -370,7 +370,7 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph4 = new Paragraph();
                 paragraph4.Alignment = Element.ALIGN_JUSTIFIED;
                 paragraph4.Font = FontFactory.GetFont(FontFactory.TIMES, 12);
-                paragraph4.Add("\n Municipalidad Distrital de Ccatcca con RUC 20226560824 domiciliado en la Plaza de Armas s/n del Distrito de Ccatcca, provincia de Quispicanchis Departamento del Cusco debidamente representado por el Alcalde " + sAlcalde + " \n");
+                paragraph4.Add("\n Municipalidad Distrital de Maras con RUC 20177432360 domiciliado en la Plaza de Armas s/n del Distrito de Maras, provincia de Urubamba Departamento del Cusco debidamente representado por el Alcalde " + sAlcalde + " \n");
 
                 Paragraph paragraph5 = new Paragraph();
                 paragraph5.Alignment = Element.ALIGN_CENTER;
@@ -407,7 +407,7 @@ namespace CapaUsuario.Reportes
                 paragraph9.Alignment = Element.ALIGN_JUSTIFIED;
                 paragraph9.Font = FontFactory.GetFont(FontFactory.TIMES, 12);
                 DateTime fecha = dtpFecha.Value.Date;
-                paragraph9.Add("\n CCATCCA, " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
+                paragraph9.Add("\n MARAS, " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
 
                 Paragraph paragraph10 = new Paragraph();
                 paragraph10.Alignment = Element.ALIGN_CENTER;

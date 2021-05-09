@@ -225,7 +225,20 @@ namespace CapaDeNegocios
             set { nrorenta4ta = value; }
         }
 
-       
+        private Boolean scrt;
+
+        public bool Scrt
+        {
+            get
+            {
+                return scrt;
+            }
+
+            set
+            {
+                scrt = value;
+            }
+        }
 
         public List<cPeriodoRegimenPensionario> ListaRegimenPensionario
         {
@@ -239,6 +252,8 @@ namespace CapaDeNegocios
                 listaRegimenPensionario = value;
             }
         }
+
+       
 
         private List<PlanillaNueva.cPeriodoRegimenPensionario>     listaRegimenPensionario;
         
@@ -312,7 +327,7 @@ namespace CapaDeNegocios
                 miTrabajador.essaludvida  = Convert.ToBoolean(dt.Rows[0][22]);
                 miTrabajador.ssuspencionrenta4ta = Convert.ToBoolean(dt.Rows[0][23]);
                 miTrabajador.nrorenta4ta = Convert.ToString(dt.Rows[0][24]);
-
+                miTrabajador.scrt = Convert.ToBoolean(dt.Rows[0][25]);
                 miTrabajador.miTipoVia = miTrabajador.miTipoVia.TraerTipoVia(miTrabajador.miTipoVia.Codigo);
                 miTrabajador.miTipoZOna = miTrabajador.miTipoZOna.TraerTipoZona(miTrabajador.miTipoZOna.Codigo);
                 miTrabajador.miNacionalidad = miTrabajador.miNacionalidad.TraerNacionalidad(miTrabajador.miNacionalidad.Codigo);
@@ -359,7 +374,7 @@ namespace CapaDeNegocios
                 default:
                     break;
             }
-            Conexion.GDatos.Ejecutar("spCrearTrabajador", trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud, trabajador.Suspencionrenta4ta, trabajador.NroRenta4ta);
+            Conexion.GDatos.Ejecutar("spCrearTrabajador", trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud, trabajador.Suspencionrenta4ta, trabajador.NroRenta4ta, trabajador.scrt);
 
             return true;
         }
@@ -393,7 +408,7 @@ namespace CapaDeNegocios
                 default:
                     break;
             }
-            codigo = Convert.ToInt32( Conexion.GDatos.TraerValorEscalar("spCrearTrabajador", trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud, trabajador.Suspencionrenta4ta, trabajador.NroRenta4ta));
+            codigo = Convert.ToInt32( Conexion.GDatos.TraerValorEscalar("spCrearTrabajador", trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud, trabajador.Suspencionrenta4ta, trabajador.NroRenta4ta, trabajador.scrt));
 
             return codigo;
         }
@@ -428,7 +443,7 @@ namespace CapaDeNegocios
                     break;
             }
 
-            Conexion.GDatos.Ejecutar("spModificarTrabajador", trabajador.IdTrabajador, trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud, trabajador.Suspencionrenta4ta, trabajador.NroRenta4ta);
+            Conexion.GDatos.Ejecutar("spModificarTrabajador", trabajador.IdTrabajador, trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud, trabajador.Suspencionrenta4ta, trabajador.NroRenta4ta, trabajador.scrt);
             return true;
         }
 
@@ -494,6 +509,12 @@ namespace CapaDeNegocios
                 case "276":
                     regimenfiltro = "02";
                     break;
+                case "30057":
+                    regimenfiltro = "22";
+                    break;
+                case "racionamiento":
+                    regimenfiltro = "00";
+                    break;
             }
 
             if (fmeta != "Todos")
@@ -505,6 +526,11 @@ namespace CapaDeNegocios
                 filtroMeta = "%";
             }
             return Conexion.GDatos.TraerDataTable("spListarTrabajadoresFiltro", filtro, fnombres + '%', fapellidoPaterno + '%', fapellidoMaterno + '%', fdni + '%', regimenfiltro, filtroMeta);
+        }
+
+        public DataTable ListaTrabajadoresX()
+        {
+            return Conexion.GDatos.TraerDataTable("spListarXTrabajadores");
         }
     }
 }

@@ -38,7 +38,7 @@ namespace CapaUsuario.ExportarSunat
             fichero.FileName = "consultaCUSPPMasiva.xls";
             if (fichero.ShowDialog() == DialogResult.OK)
             {
-                LLenarGrid(fichero.FileName, "Sheet0");
+                LLenarGrid(fichero.FileName, "Hoja1");
             }
         }
 
@@ -48,7 +48,7 @@ namespace CapaUsuario.ExportarSunat
             OleDbConnection conexion = null;
             DataSet dataSet = null;
             OleDbDataAdapter dataAdapter = null;
-            string consultaHojaExcel = "Select * from [" + hoja + "$]";
+            string consultaHojaExcel = "SELECT * FROM [" + hoja + "$];";
 
             //esta cadena es para archivos excel 2007 y 2010
             string cadenaConexionArchivoExcel = "provider=Microsoft.ACE.OLEDB.12.0;Data Source='" + archivo + "';Extended Properties=Excel 12.0;";
@@ -94,7 +94,7 @@ namespace CapaUsuario.ExportarSunat
             dtgDatosExcel.Columns[10].Visible = false;
             dtgDatosExcel.Columns[11].Visible = false;
             dtgDatosExcel.Columns[12].Visible = false;
-        
+
 
         }
 

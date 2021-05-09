@@ -29,6 +29,10 @@ namespace CapaDeNegocios.PlanillaNueva
         public cnDetallePlanilla()
         {
             miTrabajador = new cTrabajador();
+            ListaDetalleIngresos = new List<cnDetallePlanillaIngresos>();
+            ListaDetalleEgresos = new List<cnDetallePlanillaEgresos>();
+            ListaDetalleAportacionesEmpleador = new List<cnDetallePlanillaAportacionesEmpleador>();
+            ListaDetalleAportacionesTrabajador = new List<cnDetallePlanillaAportacionesTrabajador>();
         }
     }
 }

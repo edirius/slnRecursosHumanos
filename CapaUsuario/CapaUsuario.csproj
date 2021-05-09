@@ -58,7 +58,14 @@
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.12\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySqlBackup, Version=2.0.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySqlBackup.NET.2.0.10.1\lib\net45\MySqlBackup.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -110,6 +117,66 @@
     </Compile>
     <Compile Include="Asistencia\frmBuscarSubsidio.Designer.cs">
       <DependentUpon>frmBuscarSubsidio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clasificadores\frmListaClasificadoresGasto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clasificadores\frmListaClasificadoresGasto.Designer.cs">
+      <DependentUpon>frmListaClasificadoresGasto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clasificadores\frmMantenimientoEspecifica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clasificadores\frmMantenimientoEspecifica.Designer.cs">
+      <DependentUpon>frmMantenimientoEspecifica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clasificadores\frmMantenimientoEspecifica2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clasificadores\frmMantenimientoEspecifica2.Designer.cs">
+      <DependentUpon>frmMantenimientoEspecifica2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clasificadores\frmMantenimientoSubGenerica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clasificadores\frmMantenimientoSubGenerica.Designer.cs">
+      <DependentUpon>frmMantenimientoSubGenerica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clasificadores\frmMantenimientoSubGenerica2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clasificadores\frmMantenimientoSubGenerica2.Designer.cs">
+      <DependentUpon>frmMantenimientoSubGenerica2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clasificadores\frmNuevoGenerica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clasificadores\frmNuevoGenerica.Designer.cs">
+      <DependentUpon>frmNuevoGenerica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clasificadores\frmSeleccionarClasificador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clasificadores\frmSeleccionarClasificador.Designer.cs">
+      <DependentUpon>frmSeleccionarClasificador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClasificadorMeta\frmClasificadorMeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClasificadorMeta\frmClasificadorMeta.Designer.cs">
+      <DependentUpon>frmClasificadorMeta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClasificadorMeta\frmMantenimientoClasificador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClasificadorMeta\frmMantenimientoClasificador.Designer.cs">
+      <DependentUpon>frmMantenimientoClasificador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClasificadorMeta\frmSeleccionarConceptos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClasificadorMeta\frmSeleccionarConceptos.Designer.cs">
+      <DependentUpon>frmSeleccionarConceptos.cs</DependentUpon>
     </Compile>
     <Compile Include="Contrato\frmNumeraciónContrato.cs">
       <SubType>Form</SubType>
@@ -166,6 +233,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportadorExcel\frmImportadorExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportadorExcel\frmImportadorExcel.Designer.cs">
+      <DependentUpon>frmImportadorExcel.cs</DependentUpon>
     </Compile>
     <Compile Include="Planilla\frmImpuestoAlaRentaDe5taCategoria.cs">
       <SubType>Form</SubType>
@@ -961,6 +1034,12 @@
     <Compile Include="Contrato\frmMantenimientoContrato.Designer.cs">
       <DependentUpon>frmMantenimientoContrato.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trabajador\frmListaDatosFijos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmListaDatosFijos.Designer.cs">
+      <DependentUpon>frmListaDatosFijos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trabajador\frmListaDistritos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -997,11 +1076,23 @@
     <Compile Include="Trabajador\frmNacionalidad.Designer.cs">
       <DependentUpon>frmNacionalidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trabajador\frmNuevoDatoFijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmNuevoDatoFijo.Designer.cs">
+      <DependentUpon>frmNuevoDatoFijo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trabajador\frmNuevoObrero.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Trabajador\frmNuevoObrero.designer.cs">
       <DependentUpon>frmNuevoObrero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmNuevoObreroRacionamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmNuevoObreroRacionamiento.Designer.cs">
+      <DependentUpon>frmNuevoObreroRacionamiento.cs</DependentUpon>
     </Compile>
     <Compile Include="Trabajador\frmNuevoTipoTrabajador.cs">
       <SubType>Form</SubType>
@@ -1195,6 +1286,36 @@
     <EmbeddedResource Include="Asistencia\frmBuscarSubsidio.resx">
       <DependentUpon>frmBuscarSubsidio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Clasificadores\frmListaClasificadoresGasto.resx">
+      <DependentUpon>frmListaClasificadoresGasto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clasificadores\frmMantenimientoEspecifica.resx">
+      <DependentUpon>frmMantenimientoEspecifica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clasificadores\frmMantenimientoEspecifica2.resx">
+      <DependentUpon>frmMantenimientoEspecifica2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clasificadores\frmMantenimientoSubGenerica.resx">
+      <DependentUpon>frmMantenimientoSubGenerica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clasificadores\frmMantenimientoSubGenerica2.resx">
+      <DependentUpon>frmMantenimientoSubGenerica2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clasificadores\frmNuevoGenerica.resx">
+      <DependentUpon>frmNuevoGenerica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clasificadores\frmSeleccionarClasificador.resx">
+      <DependentUpon>frmSeleccionarClasificador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClasificadorMeta\frmClasificadorMeta.resx">
+      <DependentUpon>frmClasificadorMeta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClasificadorMeta\frmMantenimientoClasificador.resx">
+      <DependentUpon>frmMantenimientoClasificador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClasificadorMeta\frmSeleccionarConceptos.resx">
+      <DependentUpon>frmSeleccionarConceptos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Contrato\frmNumeraciónContrato.resx">
       <DependentUpon>frmNumeraciónContrato.cs</DependentUpon>
     </EmbeddedResource>
@@ -1221,6 +1342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportadorExcel\frmImportadorExcel.resx">
+      <DependentUpon>frmImportadorExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIParent1.resx">
       <DependentUpon>MDIParent1.cs</DependentUpon>
@@ -1489,6 +1613,9 @@
     <EmbeddedResource Include="Contrato\frmMantenimientoContrato.resx">
       <DependentUpon>frmMantenimientoContrato.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmListaDatosFijos.resx">
+      <DependentUpon>frmListaDatosFijos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmListaDistritos.resx">
       <DependentUpon>frmListaDistritos.cs</DependentUpon>
     </EmbeddedResource>
@@ -1507,8 +1634,14 @@
     <EmbeddedResource Include="Trabajador\frmNacionalidad.resx">
       <DependentUpon>frmNacionalidad.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmNuevoDatoFijo.resx">
+      <DependentUpon>frmNuevoDatoFijo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmNuevoObrero.resx">
       <DependentUpon>frmNuevoObrero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmNuevoObreroRacionamiento.resx">
+      <DependentUpon>frmNuevoObreroRacionamiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmNuevoTipoTrabajador.resx">
       <DependentUpon>frmNuevoTipoTrabajador.cs</DependentUpon>
@@ -1583,6 +1716,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>modPersonal.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="packages.config" />
     <None Include="Reportes\DataSetPlanilla.xsc">
       <DependentUpon>DataSetPlanilla.xsd</DependentUpon>
     </None>
@@ -1676,10 +1810,12 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logo_MuniMaras.png" />
     <None Include="Resources\pdf3.jpg" />
     <None Include="Resources\pdf2.jpg" />
     <None Include="Resources\pdf.jpg" />
     <None Include="Resources\gente-de-negocios-trabajando-siluetas-vector_72147497295.jpg" />
+    <None Include="Resources\logo-muni.fw_.png" />
     <Content Include="Resources\LogoCatca2.png" />
     <None Include="Resources\LogoCatca21.png" />
     <None Include="Resources\profuturo.jpg" />
