@@ -16,17 +16,23 @@ namespace CapaUsuario.Trabajador
         int sidtafp = 0;
         int sidttrabajador = 0;
         int sidtperiodotrabajador = 0;
+        
         DataTable oDataTrabajador = new DataTable();
         DataTable oDataPeriodoTrabajador = new DataTable();
+
+        public Boolean modoEdicion = false;
 
         CapaDeNegocios.cDepartamento miDepartamento = new CapaDeNegocios.cDepartamento();
         CapaDeNegocios.cProvincia miProvincia = new CapaDeNegocios.cProvincia();
         CapaDeNegocios.cDistrito miDistrito = new CapaDeNegocios.cDistrito();
-        CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
+        public CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
 
         CapaDeNegocios.cTipoVia miTipoVia = new CapaDeNegocios.cTipoVia();
         CapaDeNegocios.cTipoZona miTipoZona = new CapaDeNegocios.cTipoZona();
         CapaDeNegocios.cNacionalidad miNacionalidad = new CapaDeNegocios.cNacionalidad();
+
+        CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+        CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
 
         public frmNuevoObrero()
         {
@@ -38,6 +44,44 @@ namespace CapaUsuario.Trabajador
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
             CargarDepartamento();
             CargarAFP();
+
+            if (modoEdicion)
+            {
+                CargarTrabajador();
+            }
+        }
+
+        public void CargarTrabajador()
+        {
+            txtApeMaterno.Text = miTrabajador.ApellidoMaterno;
+            txtApePaterno.Text = miTrabajador.ApellidoPaterno;
+            txtNombre.Text = miTrabajador.Nombres;
+            txtDNI.Text = miTrabajador.Dni;
+            txtCelular.Text = miTrabajador.CelularPersonal;
+            if (miTrabajador.Sexo == CapaDeNegocios.EnumSexo.Masculino)
+            {
+                rbtMasculino.Checked = true;
+            }
+            else
+            {
+                rbtFemenino.Checked = true;
+            }
+
+            dtpFechaNacimiento.Value = miTrabajador.FechaNacimiento;
+            dtpFechaInicio.Value = Convert.ToDateTime(miPeriodoTrabajador.FechaInicio) ;
+            txtDireccion.Text = miTrabajador.Direccion;
+            cboDepartamento.SelectedValue = miTrabajador.MiDepartamento.Codigo;
+            cboProvincia.SelectedValue = miTrabajador.MiProvincia.Codigo;
+            cboDistrito.SelectedValue = miTrabajador.MiDistrito.Codigo;
+
+
+            txtCUSPP.Text = miRegimenPensionarioTrabajador.CUSPP;
+            cboTipoComision.Text = miRegimenPensionarioTrabajador.TipoComision;
+            cboAFP.SelectedValue = miRegimenPensionarioTrabajador.IdtAFP;
+            sidtafp = miRegimenPensionarioTrabajador.IdtAFP;
+            sidtperiodotrabajador = miRegimenPensionarioTrabajador.IdtPeriodoTrabajador;
+            
+
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -78,7 +122,7 @@ namespace CapaUsuario.Trabajador
             //oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Sin Periodo Laboral", "", "", "", "", "Todos", "Todos");
             //sidttrabajador = Convert.ToInt32(oDataTrabajador.Compute("MAX(id_trabajador)", ""));
 
-            CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+           
             miPeriodoTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
             miPeriodoTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
             miPeriodoTrabajador.FechaFin = "";
@@ -88,7 +132,7 @@ namespace CapaUsuario.Trabajador
             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(sidttrabajador);
             sidtperiodotrabajador = Convert.ToInt32(oDataPeriodoTrabajador.Compute("MAX(idtperiodotrabajador)", ""));
 
-            CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+           
             miRegimenPensionarioTrabajador.IdtRegimenPensionarioTrabajador = 0;
             miRegimenPensionarioTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
             miRegimenPensionarioTrabajador.FechaFin = "";

@@ -413,7 +413,7 @@ namespace CapaUsuario.Planilla
             sidtregimenlaboral = pidtregimenlaboral;
             txtRegimenLaboral.Text = pregimenlaboral;
             splantilla = pplantilla;
-            if (pregimenlaboral == "REGIMEN 728")
+            if (pregimenlaboral == "REGIMEN 728" || pregimenlaboral == "RACIONAMIENTO")
             {
                 btnAgregarTrabajador.Visible = false;
                 btnImportar.Visible = true;
@@ -699,6 +699,11 @@ namespace CapaUsuario.Planilla
             int sMes = Convert.ToInt32(Mes(smes));
             int diasSuspendidos = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMes(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
             decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
+            if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
+            {
+                
+                PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+            }
             DiasLaborados = 1 + DateTime.DaysInMonth(AñoInicio, MesInicio) - DiaInicio;
             if (sidtregimenlaboral == 3 && (splantilla == "PERSONAL OBRERO" || splantilla == "PERSONAL TECNICO" || splantilla == "RACIONAMIENTO"))
             {
@@ -708,6 +713,7 @@ namespace CapaUsuario.Planilla
                     if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
                     {
                         PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 2);
+                        PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) ;
                     }
                     if (splantilla == "PERSONAL TECNICO")
                     {

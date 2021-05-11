@@ -28,7 +28,7 @@ namespace CapaDeNegocios.Contrato
         public string cargo;
         public string meta;
         public string rutaarchivo;
-
+        
         public void Iniciar()
         {
             if (File.Exists (@rutaarchivo))

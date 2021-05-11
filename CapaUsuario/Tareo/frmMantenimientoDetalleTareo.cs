@@ -566,6 +566,12 @@ namespace CapaUsuario.Tareo
             txtMeta.Text = pNombre;
             miMeta.Codigo = pIdTMeta;
             if (pDescripcion == "PERSONAL TECNICO") { btnNuevoTrabajador.Visible = false; }
+            if (pDescripcion == "RACIONAMIENTO")
+            {
+                btnNuevoTrabajador.Visible = false;
+                btnNuevoTrabajadorRacionamiento.Visible = true;
+            }
+            
         }
 
         private void CargarDatos()
@@ -853,6 +859,68 @@ namespace CapaUsuario.Tareo
                 }
             }
             return Baja;
+        }
+
+        private void btnNuevoTrabajadorRacionamiento_Click(object sender, EventArgs e)
+        {
+            Trabajador.frmNuevoObreroRacionamiento fNuevoObreroRacionamiento = new Trabajador.frmNuevoObreroRacionamiento();
+            fNuevoObreroRacionamiento.RecibirDatos(miMeta.Codigo);
+            if (fNuevoObreroRacionamiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
+                oDataAFP = miAFP.ObtenerListaAFP();
+                oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
+                oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
+            }
+        }
+
+        private void btnModificarTrabajador_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (dgvDetalleTareo.SelectedCells.Count > 0)
+                {
+                    if (miTareo.Descripcion == "PERSONAL OBRERO")
+                    {
+                        Trabajador.frmNuevoObrero fNuevoObrero = new Trabajador.frmNuevoObrero();
+                        fNuevoObrero.RecibirDatos(miMeta.Codigo);
+                        fNuevoObrero.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt16(dgvDetalleTareo.Rows[dgvDetalleTareo.SelectedCells[0].RowIndex].Cells[4].Value));
+                        fNuevoObrero.modoEdicion = true;
+                        if (fNuevoObrero.ShowDialog() == DialogResult.OK)
+                        {
+
+                        }
+                    }
+                    if (miTareo.Descripcion == "RACIONAMIENTO")
+                    {
+                        Trabajador.frmNuevoObreroRacionamiento fNuevoObreroRacionamiento = new Trabajador.frmNuevoObreroRacionamiento();
+                        fNuevoObreroRacionamiento.RecibirDatos(miMeta.Codigo);
+                        fNuevoObreroRacionamiento.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt16(dgvDetalleTareo.Rows[dgvDetalleTareo.SelectedCells[0].RowIndex].Cells[4].Value));
+                        fNuevoObreroRacionamiento.modoEdicion = true;
+                        if (fNuevoObreroRacionamiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
+                            oDataAFP = miAFP.ObtenerListaAFP();
+                            oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
+                            oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
+                        }
+                    }
+
+                    if (miTareo.Descripcion == "PERSONAL TECNICO")
+                    {
+                        MessageBox.Show("No se puede modificar personal tecnico, consulte al area de personal para su modificacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un obrero para modficarlo", "Seleccionar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar el trabajador: " + ex.Message);
+            }
         }
     }
 }

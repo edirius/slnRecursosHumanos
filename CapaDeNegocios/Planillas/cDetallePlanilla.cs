@@ -84,6 +84,13 @@ namespace CapaDeNegocios.Planillas
             return Conexion.GDatos.TraerDataTable("spListarPlanillaXMesYRegimenLaboral", pidPlanilla, pidRegimenLaboral, pmes,  paño);
         }
 
+
+        public DataTable ListarPlanillaXMesYRegimenLaboralRacionamiento(int pidPlanilla, int pidRegimenLaboral, string pmes, string paño)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarPlanillaXMesYRegimenLaboralRacionamiento", pidPlanilla, pidRegimenLaboral, pmes, paño);
+        }
+
+
         public DataTable ListarDetallePlanilla(int IdtPlanilla)
         {
             return Conexion.GDatos.TraerDataTable("spListarDetallePlanilla", IdtPlanilla);

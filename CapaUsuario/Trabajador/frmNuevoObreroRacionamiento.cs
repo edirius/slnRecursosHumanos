@@ -22,11 +22,14 @@ namespace CapaUsuario.Trabajador
         CapaDeNegocios.cDepartamento miDepartamento = new CapaDeNegocios.cDepartamento();
         CapaDeNegocios.cProvincia miProvincia = new CapaDeNegocios.cProvincia();
         CapaDeNegocios.cDistrito miDistrito = new CapaDeNegocios.cDistrito();
-        CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
+        public CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
 
+        public bool modoEdicion = false;
         CapaDeNegocios.cTipoVia miTipoVia = new CapaDeNegocios.cTipoVia();
         CapaDeNegocios.cTipoZona miTipoZona = new CapaDeNegocios.cTipoZona();
         CapaDeNegocios.cNacionalidad miNacionalidad = new CapaDeNegocios.cNacionalidad();
+
+        CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
 
         public frmNuevoObreroRacionamiento()
         {
@@ -37,7 +40,40 @@ namespace CapaUsuario.Trabajador
         {
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
             CargarDepartamento();
-   
+            if (modoEdicion)
+            {
+                CargarTrabajador();
+            }
+
+        }
+
+        public void CargarTrabajador()
+        {
+            txtApeMaterno.Text = miTrabajador.ApellidoMaterno;
+            txtApePaterno.Text = miTrabajador.ApellidoPaterno;
+            txtNombre.Text = miTrabajador.Nombres;
+            txtDNI.Text = miTrabajador.Dni;
+            txtCelular.Text = miTrabajador.CelularPersonal;
+            if (miTrabajador.Sexo == CapaDeNegocios.EnumSexo.Masculino)
+            {
+                rbtMasculino.Checked = true;
+            }
+            else
+            {
+                rbtFemenino.Checked = true;
+            }
+
+            dtpFechaNacimiento.Value = miTrabajador.FechaNacimiento;
+            dtpFechaInicio.Value = Convert.ToDateTime(miPeriodoTrabajador.FechaInicio);
+            txtDireccion.Text = miTrabajador.Direccion;
+            cboDepartamento.SelectedValue = miTrabajador.MiDepartamento.Codigo;
+            cboProvincia.SelectedValue = miTrabajador.MiProvincia.Codigo;
+            cboDistrito.SelectedValue = miTrabajador.MiDistrito.Codigo;
+
+
+         
+
+
         }
 
         private void CargarDepartamento()
@@ -62,6 +98,146 @@ namespace CapaUsuario.Trabajador
             cboDistrito.DisplayMember = "descripcion";
             cboDistrito.ValueMember = "idtdistrito";
             cboDistrito.SelectedIndex = -1;
+        }
+
+        public void RecibirDatos(int pidtmeta)
+        {
+            sidtmeta = pidtmeta;
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if (txtDNI.Text.Length != 8)
+            {
+                MessageBox.Show("El DNI no es correcto, no se puede Guardar al nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (txtDNI.Text == "" || txtNombre.Text == "" || txtApePaterno.Text == "" || txtApeMaterno.Text == "" || cboDepartamento.Text == "" || cboProvincia.Text == "" || cboDistrito.Text == "" )
+            {
+                MessageBox.Show("Existen datos en Blanco, no se puede Guardar al nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            bool bOk = false;
+            miTrabajador.Nombres = txtNombre.Text;
+            miTrabajador.ApellidoPaterno = txtApePaterno.Text;
+            miTrabajador.ApellidoMaterno = txtApeMaterno.Text;
+            if (rbtMasculino.Checked == true) { miTrabajador.Sexo = CapaDeNegocios.EnumSexo.Masculino; }
+            else if (rbtFemenino.Checked == true) { miTrabajador.Sexo = CapaDeNegocios.EnumSexo.Femenino; }
+            miTrabajador.FechaNacimiento = dtpFechaNacimiento.Value;
+            miTrabajador.Dni = txtDNI.Text;
+            miTrabajador.CelularPersonal = txtCelular.Text;
+            miTrabajador.Direccion = txtDireccion.Text;
+            miTrabajador.MiDistrito = miDistrito;
+            miTrabajador.MiDistrito.Codigo = miDistrito.Codigo;
+
+            miTrabajador.MiTipoVia = miTipoVia;
+            miTrabajador.MiTipoVia.Codigo = 1;
+            miTrabajador.MiTipoZOna = miTipoZona;
+            miTrabajador.MiTipoZOna.Codigo = 1;
+            miTrabajador.MiNacionalidad = miNacionalidad;
+            miTrabajador.MiNacionalidad.Codigo = 1;
+            miTrabajador.Essaludvida = false;
+            miTrabajador.Scrt = true;
+
+
+            sidttrabajador = miTrabajador.AgregarTrabajadorConID(miTrabajador);
+            //oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Sin Periodo Laboral", "", "", "", "", "Todos", "Todos");
+            //sidttrabajador = Convert.ToInt32(oDataTrabajador.Compute("MAX(id_trabajador)", ""));
+
+            
+            miPeriodoTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
+            miPeriodoTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
+            miPeriodoTrabajador.FechaFin = "";
+            miPeriodoTrabajador.IdtMotivoFinPeriodo = 1;
+            miPeriodoTrabajador.IdtTrabajador = sidttrabajador;
+            miPeriodoTrabajador.CrearPeriodoTrabajador(miPeriodoTrabajador);
+            oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(sidttrabajador);
+            sidtperiodotrabajador = Convert.ToInt32(oDataPeriodoTrabajador.Compute("MAX(idtperiodotrabajador)", ""));
+
+            
+
+            CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+            miRegimenTrabajador.IdtRegimenTrabajador = 0;
+            miRegimenTrabajador.Condicion = "CONTRATADO";
+            miRegimenTrabajador.ServidorConfianza = false;
+            miRegimenTrabajador.NumeroDocumento = "";
+            miRegimenTrabajador.Periodicidad = "MENSUAL";
+            miRegimenTrabajador.TipoPago = "EFECTIVO";
+            miRegimenTrabajador.MontoPago = 0;
+            miRegimenTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
+            miRegimenTrabajador.FechaFin = "";
+            miRegimenTrabajador.RUC = "";
+            miRegimenTrabajador.IdtRegimenLaboral = 4;
+            miRegimenTrabajador.IdtTipoTrabajador = 2;
+            miRegimenTrabajador.IdtTipoContrato = 15;
+            miRegimenTrabajador.IdtCategoriaOcupacional = 5;
+            miRegimenTrabajador.IdtOcupacion = 1;
+            miRegimenTrabajador.IdtCargo = 49;
+            miRegimenTrabajador.IdtMeta = sidtmeta;
+            miRegimenTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
+            miRegimenTrabajador.CrearRegimenTrabajador(miRegimenTrabajador);
+
+            bOk = true;
+            if (bOk == true)
+            {
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("No se puede registrar estos datos", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult = System.Windows.Forms.DialogResult.Cancel;
+        }
+
+        private void txtDNI_TextChanged(object sender, EventArgs e)
+        {
+            if (modoEdicion)
+            {
+
+            }
+            else
+            {
+                if (txtDNI.Text.Length == 8)
+                {
+                    foreach (DataRow row in oDataTrabajador.Select("dni = '" + txtDNI.Text + "'"))
+                    {
+                        MessageBox.Show("El DNI ingresado ya pertenece a otro Obrero.", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtDNI.Text = "";
+                        return;
+                    }
+                }
+            }
+            
+        }
+
+        private void cboDepartamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboDepartamento.Text != "System.Data.DataRowView" && cboDepartamento.ValueMember != "")
+            {
+                miDepartamento.Codigo = Convert.ToInt32(cboDepartamento.SelectedValue);
+                CargarProvincia();
+            }
+        }
+
+        private void cboProvincia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboProvincia.Text != "System.Data.DataRowView" && cboProvincia.ValueMember != "")
+            {
+                miProvincia.Codigo = Convert.ToInt32(cboProvincia.SelectedValue);
+                CargarDistrito();
+            }
+        }
+
+        private void cboDistrito_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboDistrito.Text != "System.Data.DataRowView" && cboDistrito.ValueMember != "")
+            {
+                miDistrito.Codigo = Convert.ToInt32(cboDistrito.SelectedValue);
+            }
         }
     }
 }
