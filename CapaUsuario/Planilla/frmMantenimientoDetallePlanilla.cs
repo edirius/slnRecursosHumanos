@@ -705,7 +705,7 @@ namespace CapaUsuario.Planilla
                 PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
             }
             DiasLaborados = 1 + DateTime.DaysInMonth(AñoInicio, MesInicio) - DiaInicio;
-            if (sidtregimenlaboral == 3 && (splantilla == "PERSONAL OBRERO" || splantilla == "PERSONAL TECNICO" || splantilla == "RACIONAMIENTO"))
+            if ((sidtregimenlaboral == 3 || sidtregimenlaboral == 5) && (splantilla == "PERSONAL OBRERO" || splantilla == "PERSONAL TECNICO" || splantilla == "RACIONAMIENTO"))
             {
                 if (dgvDetallePlanilla.Rows[fila].Cells[12].Value != "")
                 {
