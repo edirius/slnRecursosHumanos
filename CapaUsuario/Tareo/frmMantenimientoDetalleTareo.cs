@@ -171,6 +171,8 @@ namespace CapaUsuario.Tareo
         {
             Trabajador.frmNuevoObrero fNuevoObrero = new Trabajador.frmNuevoObrero();
             fNuevoObrero.RecibirDatos(miMeta.Codigo);
+            fNuevoObrero.fechaInicio = miTareo.FechaInicio;
+            fNuevoObrero.fechaFin = miTareo.FechaFin;
             if (fNuevoObrero.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
@@ -182,60 +184,68 @@ namespace CapaUsuario.Tareo
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            bool bOk = false;
-            string diastareo = "";
-            int contadordias = 0;
-            foreach (DataGridViewRow row in dgvDetalleTareo.Rows)
+            try
             {
-                contadordias = 0;
-                diastareo = "";
-                for (int i = 1; i <= 31; i++)
+                bool bOk = false;
+                string diastareo = "";
+                int contadordias = 0;
+                foreach (DataGridViewRow row in dgvDetalleTareo.Rows)
                 {
-                    if (i >= miTareo.FechaInicio.Day && i <= miTareo.FechaFin.Day)
+                    contadordias = 0;
+                    diastareo = "";
+                    for (int i = 1; i <= 31; i++)
                     {
-                        if (Convert.ToString(row.Cells[12 + i - contadordias].Value) == "")
+                        if (i >= miTareo.FechaInicio.Day && i <= miTareo.FechaFin.Day)
                         {
+                            if (Convert.ToString(row.Cells[12 + i - contadordias].Value) == "")
+                            {
+                                diastareo += "0";
+                            }
+                            diastareo += Convert.ToString(row.Cells[12 + i - contadordias].Value);
+                        }
+                        else
+                        {
+                            contadordias += 1;
                             diastareo += "0";
                         }
-                        diastareo += Convert.ToString(row.Cells[12 + i - contadordias].Value);
                     }
-                    else
+                    miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(row.Cells[0].Value);
+                    if (miTareo.Descripcion == "PERSONAL TECNICO") { miDetalleTareo.Categoria = Convert.ToString(row.Cells[8].Value); }
+                    else { miDetalleTareo.Categoria = Convert.ToString(row.Cells[9].Value); }
+                    miDetalleTareo.DiasTareo = diastareo;
+                    miDetalleTareo.TotalDias = Convert.ToInt32(row.Cells[dgvDetalleTareo.ColumnCount - 2].Value);
+                    miDetalleTareo.IdtTrabajador = Convert.ToInt32(row.Cells[4].Value);
+                    miDetalleTareo.IdtTareo = miTareo.IdTTareo;
+                    if (Convert.ToString(row.Cells[1].Value) == "I")
                     {
-                        contadordias += 1;
-                        diastareo += "0";
+                        miDetalleTareo.CrearDetalleTareo(miDetalleTareo);
+                        oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(miTareo.IdTTareo);
+                        miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(oDataDetalleTareo.Compute("MAX(idtdetalletareo)", ""));
+                        row.Cells[0].Value = miDetalleTareo.IdTDetalleTareo.ToString();
+                        row.Cells[1].Value = "M";
+                        bOk = true;
+                    }
+                    if (Convert.ToString(row.Cells[1].Value) == "M")
+                    {
+                        miDetalleTareo.ModificarDetalleTareo(miDetalleTareo);
+                        bOk = true;
                     }
                 }
-                miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(row.Cells[0].Value);
-                if (miTareo.Descripcion == "PERSONAL TECNICO") { miDetalleTareo.Categoria = Convert.ToString(row.Cells[8].Value); }
-                else { miDetalleTareo.Categoria = Convert.ToString(row.Cells[9].Value); }
-                miDetalleTareo.DiasTareo = diastareo;
-                miDetalleTareo.TotalDias = Convert.ToInt32(row.Cells[dgvDetalleTareo.ColumnCount - 2].Value);
-                miDetalleTareo.IdtTrabajador = Convert.ToInt32(row.Cells[4].Value);
-                miDetalleTareo.IdtTareo = miTareo.IdTTareo;
-                if (Convert.ToString(row.Cells[1].Value) == "I")
+                GuardarTareoHorasAcumulado();
+                if (bOk == false)
                 {
-                    miDetalleTareo.CrearDetalleTareo(miDetalleTareo);
-                    oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(miTareo.IdTTareo);
-                    miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(oDataDetalleTareo.Compute("MAX(idtdetalletareo)", ""));
-                    row.Cells[0].Value = miDetalleTareo.IdTDetalleTareo.ToString();
-                    row.Cells[1].Value = "M";
-                    bOk = true;
+                    MessageBox.Show("No existen datos que se puedan registrar", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                if (Convert.ToString(row.Cells[1].Value) == "M")
+                else
                 {
-                    miDetalleTareo.ModificarDetalleTareo(miDetalleTareo);
-                    bOk = true;
+                    CargarDatos();
                 }
             }
-            GuardarTareoHorasAcumulado();
-            if (bOk == false)
+            catch (Exception ex)
             {
-                MessageBox.Show("No existen datos que se puedan registrar", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error en guardar tareo, verifique que no exista filas vacias: " + ex.Message);
             }
-            else
-            {
-                CargarDatos();
-            }
+            
         }
 
         void GuardarTareoHorasAcumulado()
@@ -456,8 +466,96 @@ namespace CapaUsuario.Tareo
                     if (ComprobarBajaTrabajador(Convert.ToInt32(IdtTrabajador)) == true)
                     {
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = "";
-                        MessageBox.Show("El trabajador se encuentra de Baja, no se puede agregar al Tareo.", "Gestion de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        if (MessageBox.Show("El trabajador se encuentra de Baja, desea darle de alta?", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Error)== DialogResult.Yes)
+                        {
+                            if (miTareo.Descripcion == "PERSONAL OBRERO")
+                            {
+                                Trabajador.frmNuevoObrero fNuevoObrero = new Trabajador.frmNuevoObrero();
+                                fNuevoObrero.RecibirDatos(miMeta.Codigo);
+                                fNuevoObrero.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt32(IdtTrabajador));
+
+                                fNuevoObrero.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoObrero.miTrabajador.IdTrabajador);
+                                fNuevoObrero.miPeriodoTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
+                                fNuevoObrero.miPeriodoTrabajador.FechaFin = "";
+                                
+
+                                CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador AuxiliarRegimenPensionario = miRegimenPensionarioTrabajor.TraerUltimoRegimenPensionario(fNuevoObrero.miPeriodoTrabajador.IdtPeriodoTrabajador);
+
+                                fNuevoObrero.miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+                                fNuevoObrero.miRegimenPensionarioTrabajador.CUSPP = AuxiliarRegimenPensionario.CUSPP;
+                                fNuevoObrero.miRegimenPensionarioTrabajador.IdtAFP = AuxiliarRegimenPensionario.IdtAFP;
+                                fNuevoObrero.miRegimenPensionarioTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
+
+                                
+                                fNuevoObrero.miRegimenSaludTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador();
+
+                                fNuevoObrero.miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                                fNuevoObrero.fechaInicio = miTareo.FechaInicio;
+                                fNuevoObrero.fechaFin = miTareo.FechaFin;
+                                fNuevoObrero.modoEdicion = true;
+                                fNuevoObrero.modoAltaTrabajador = true;
+                                if (Convert.ToDateTime(fNuevoObrero.miPeriodoTrabajador.FechaInicio) < fNuevoObrero.fechaInicio)
+                                {
+                                    MessageBox.Show("No se puede modificar trabajadores que ya han sido ingresados en tareos anteriores o con fecha de inicio anterior a la fecha del tareo.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    if (fNuevoObrero.ShowDialog() == DialogResult.OK)
+                                    {
+                                        MessageBox.Show("Trabajador Agregado");
+
+                                        oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
+                                        oDataAFP = miAFP.ObtenerListaAFP();
+                                        oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
+                                        oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
+                                    }
+                                }
+
+                            }
+                            if (miTareo.Descripcion == "RACIONAMIENTO")
+                            {
+                                Trabajador.frmNuevoObreroRacionamiento fNuevoObreroRacionamiento = new Trabajador.frmNuevoObreroRacionamiento();
+                                fNuevoObreroRacionamiento.RecibirDatos(miMeta.Codigo);
+                                fNuevoObreroRacionamiento.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt32(IdtTrabajador));
+
+                                fNuevoObreroRacionamiento.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoObreroRacionamiento.miTrabajador.IdTrabajador);
+                                fNuevoObreroRacionamiento.miPeriodoTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
+                                fNuevoObreroRacionamiento.miPeriodoTrabajador.FechaFin = "";
+
+                                fNuevoObreroRacionamiento.fechaInicio = miTareo.FechaInicio;
+                                fNuevoObreroRacionamiento.fechaFin = miTareo.FechaFin;
+                                fNuevoObreroRacionamiento.modoEdicion = true;
+                                fNuevoObreroRacionamiento.modoAltatrabajador = true;
+                                if (Convert.ToDateTime(fNuevoObreroRacionamiento.miPeriodoTrabajador.FechaInicio) < fNuevoObreroRacionamiento.fechaInicio)
+                                {
+                                    MessageBox.Show("No se puede modificar trabajadores que ya han sido ingresados en tareos anteriores o con fecha de inicio anterior a la fecha del tareo.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+
+                                else
+                                {
+                                    if (fNuevoObreroRacionamiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                                    {
+                                        MessageBox.Show("Trabajador agregado");
+
+                                        oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
+                                        oDataAFP = miAFP.ObtenerListaAFP();
+                                        oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
+                                        oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
+                                    }
+                                }
+
+                            }
+
+                            if (miTareo.Descripcion == "PERSONAL TECNICO")
+                            {
+                                MessageBox.Show("No se puede modificar personal tecnico, consulte al area de personal para su modificacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                        {
+                            return;
+                        }
+                        
                     }
                     Nombre = row[2].ToString() + " " + row[3].ToString() + ", " + row[4].ToString();
                     DNI = row[1].ToString();
@@ -541,13 +639,23 @@ namespace CapaUsuario.Tareo
         {
             if (e.KeyChar == 13)
             {
-                dgvDetalleTareo.Rows.Add();
+                int indiceFila;
+                if (dgvDetalleTareo.CurrentCell.RowIndex == 0)
+                {
+                    indiceFila = dgvDetalleTareo.CurrentCell.RowIndex + 1;
+                }
+                else
+                {
+                    indiceFila = dgvDetalleTareo.CurrentCell.RowIndex;
+                }
+                
+                dgvDetalleTareo.Rows.Insert(indiceFila,1);
                 for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
                 {
                     auxiliar = miTareo.FechaInicio.AddDays(i);
                     if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
                     {
-                        dgvDetalleTareo.Rows[dgvDetalleTareo.RowCount - 1].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
+                        dgvDetalleTareo.Rows[indiceFila].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
                     }
                 }
                 dgvDetalleTareo.CurrentCell = dgvDetalleTareo.CurrentRow.Cells[6];
@@ -865,6 +973,8 @@ namespace CapaUsuario.Tareo
         {
             Trabajador.frmNuevoObreroRacionamiento fNuevoObreroRacionamiento = new Trabajador.frmNuevoObreroRacionamiento();
             fNuevoObreroRacionamiento.RecibirDatos(miMeta.Codigo);
+            fNuevoObreroRacionamiento.fechaInicio = miTareo.FechaInicio;
+            fNuevoObreroRacionamiento.fechaFin = miTareo.FechaFin;
             if (fNuevoObreroRacionamiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
@@ -886,25 +996,62 @@ namespace CapaUsuario.Tareo
                         Trabajador.frmNuevoObrero fNuevoObrero = new Trabajador.frmNuevoObrero();
                         fNuevoObrero.RecibirDatos(miMeta.Codigo);
                         fNuevoObrero.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt16(dgvDetalleTareo.Rows[dgvDetalleTareo.SelectedCells[0].RowIndex].Cells[4].Value));
+                        fNuevoObrero.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoObrero.miTrabajador.IdTrabajador);
+                        fNuevoObrero.miRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.TraerUltimoRegimenPensionario(fNuevoObrero.miPeriodoTrabajador.IdtPeriodoTrabajador);
+                        fNuevoObrero.miRegimenSaludTrabajador = fNuevoObrero.miRegimenSaludTrabajador.TraerUltimoRegimenSalud(fNuevoObrero.miPeriodoTrabajador.IdtPeriodoTrabajador);
+                        fNuevoObrero.miRegimenTrabajador = fNuevoObrero.miRegimenTrabajador.TraerUltimoRegimenTrabajador(fNuevoObrero.miPeriodoTrabajador.IdtPeriodoTrabajador);
+                        fNuevoObrero.fechaInicio = miTareo.FechaInicio;
+                        fNuevoObrero.fechaFin = miTareo.FechaFin;
                         fNuevoObrero.modoEdicion = true;
-                        if (fNuevoObrero.ShowDialog() == DialogResult.OK)
+                        if (Convert.ToDateTime(fNuevoObrero.miPeriodoTrabajador.FechaInicio) < fNuevoObrero.fechaInicio)
                         {
-
+                            MessageBox.Show("No se puede modificar trabajadores que ya han sido ingresados en tareos anteriores o con fecha de inicio anterior a la fecha del tareo.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
+                        else
+                        {
+                            if (fNuevoObrero.ShowDialog() == DialogResult.OK)
+                            {
+                                fNuevoObrero.miTrabajador.ModificarTrabajador(fNuevoObrero.miTrabajador);
+                                fNuevoObrero.miPeriodoTrabajador.ModificarPeriodoTrabajador(fNuevoObrero.miPeriodoTrabajador);
+                                fNuevoObrero.miRegimenPensionarioTrabajador.ModificarRegimenPensionarioTrabajador(fNuevoObrero.miRegimenPensionarioTrabajador);
+                                fNuevoObrero.miRegimenSaludTrabajador.ModificarRegimenSaludTrabajador(fNuevoObrero.miRegimenSaludTrabajador);
+                                fNuevoObrero.miRegimenTrabajador.ModificarRegimenTrabajador(fNuevoObrero.miRegimenTrabajador);
+
+                                oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
+                                oDataAFP = miAFP.ObtenerListaAFP();
+                                oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
+                                oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
+                            }
+                        }
+                        
                     }
                     if (miTareo.Descripcion == "RACIONAMIENTO")
                     {
                         Trabajador.frmNuevoObreroRacionamiento fNuevoObreroRacionamiento = new Trabajador.frmNuevoObreroRacionamiento();
                         fNuevoObreroRacionamiento.RecibirDatos(miMeta.Codigo);
                         fNuevoObreroRacionamiento.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt16(dgvDetalleTareo.Rows[dgvDetalleTareo.SelectedCells[0].RowIndex].Cells[4].Value));
+                        fNuevoObreroRacionamiento.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoObreroRacionamiento.miTrabajador.IdTrabajador);
+                        fNuevoObreroRacionamiento.fechaInicio = miTareo.FechaInicio;
+                        fNuevoObreroRacionamiento.fechaFin = miTareo.FechaFin;
                         fNuevoObreroRacionamiento.modoEdicion = true;
-                        if (fNuevoObreroRacionamiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+
+                        if (Convert.ToDateTime(fNuevoObreroRacionamiento.miPeriodoTrabajador.FechaInicio) < fNuevoObreroRacionamiento.fechaInicio)
                         {
-                            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
-                            oDataAFP = miAFP.ObtenerListaAFP();
-                            oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
-                            oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
+                            MessageBox.Show("No se puede modificar trabajadores que ya han sido ingresados en tareos anteriores o con fecha de inicio anterior a la fecha del tareo.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
+
+                        else
+                        {
+                            if (fNuevoObreroRacionamiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                            {
+                                fNuevoObreroRacionamiento.miTrabajador.ModificarTrabajador(fNuevoObreroRacionamiento.miTrabajador);
+                                oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
+                                oDataAFP = miAFP.ObtenerListaAFP();
+                                oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
+                                oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
+                            }
+                        }
+                        
                     }
 
                     if (miTareo.Descripcion == "PERSONAL TECNICO")

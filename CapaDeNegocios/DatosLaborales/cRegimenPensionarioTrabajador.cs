@@ -83,5 +83,47 @@ namespace CapaDeNegocios.DatosLaborales
             Conexion.GDatos.Ejecutar("spBajaRegimenPensionarioTrabajador", fechafin, IdtPeriodoTrabajador);
             return true;
         }
+
+
+        /// <summary>
+        /// Metodo para traer el ultimo regimen pensionario del trabajador.
+        /// idtregimenpensionariotrabajador, fechainicio, fechafin, CUSPP, tipocomision, idtafp, idtperiodotrabajador
+        /// </summary>
+        /// <param name="idtPeriodoTrabajador"></param>
+        /// <returns></returns>
+        public cRegimenPensionarioTrabajador TraerUltimoRegimenPensionario(int idtPeriodoTrabajador)
+        {
+         
+            try
+            {
+                
+
+                DataTable listaPeriodos;
+                listaPeriodos = Conexion.GDatos.TraerDataTable("spListarRegimenPensionarioTrabajador", idtPeriodoTrabajador);
+
+                if (listaPeriodos.Rows.Count == 0)
+                {
+                    throw new cReglaNegociosException("Error, el trabajador no esta activo ");
+                }
+
+                cRegimenPensionarioTrabajador nuevoPeriodoTrabajador = new cRegimenPensionarioTrabajador();
+                        nuevoPeriodoTrabajador.IdtRegimenPensionarioTrabajador = Convert.ToInt16(listaPeriodos.Rows[listaPeriodos.Rows.Count -1][0].ToString());
+                        nuevoPeriodoTrabajador.sfechainicio = listaPeriodos.Rows[listaPeriodos.Rows.Count - 1][1].ToString();
+                        nuevoPeriodoTrabajador.sfechafin = "";
+                        nuevoPeriodoTrabajador.CUSPP = listaPeriodos.Rows[listaPeriodos.Rows.Count - 1][3].ToString();
+                        nuevoPeriodoTrabajador.TipoComision = listaPeriodos.Rows[listaPeriodos.Rows.Count - 1][4].ToString();
+                        nuevoPeriodoTrabajador.IdtAFP = Convert.ToInt16(listaPeriodos.Rows[listaPeriodos.Rows.Count - 1][5].ToString());
+                        nuevoPeriodoTrabajador.IdtPeriodoTrabajador = Convert.ToInt16(listaPeriodos.Rows[listaPeriodos.Rows.Count - 1][6].ToString());
+
+
+
+                return nuevoPeriodoTrabajador;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en traer el periodo del trabajador: " + ex.Message);
+            }
+        }
+    
     }
 }

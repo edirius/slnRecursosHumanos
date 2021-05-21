@@ -47,6 +47,7 @@ namespace CapaUsuario.Clasificadores
             {
                 frmNuevoGenerica fNuevoGenerica = new frmNuevoGenerica();
                 fNuevoGenerica.oGenerica = new CapaDeNegocios.Clasificadores.cGenerica();
+                fNuevoGenerica.oGenerica.Codigo = "";
                 if (fNuevoGenerica.ShowDialog() == DialogResult.OK)
                 {
                     oClasificadorGasto.CrearGenerica(fNuevoGenerica.oGenerica);
@@ -144,6 +145,7 @@ namespace CapaUsuario.Clasificadores
             {
                 frmMantenimientoSubGenerica fMantenimientoSubGenerica = new frmMantenimientoSubGenerica();
                 fMantenimientoSubGenerica.oSubgenerica = new CapaDeNegocios.Clasificadores.cSubgenerica();
+                fMantenimientoSubGenerica.oSubgenerica.Codigo = "";
                 fMantenimientoSubGenerica.oSubgenerica.Generica = oGenericaSeleccionada;
                 if (fMantenimientoSubGenerica.ShowDialog() == DialogResult.OK)
                 {
@@ -263,6 +265,7 @@ namespace CapaUsuario.Clasificadores
             {
                 frmMantenimientoSubGenerica2 fMantenimientoSubGenerica2 = new frmMantenimientoSubGenerica2();
                 fMantenimientoSubGenerica2.oSubgenerica2 = new CapaDeNegocios.Clasificadores.cSubgenerica2();
+                fMantenimientoSubGenerica2.oSubgenerica2.Codigo = "";
                 fMantenimientoSubGenerica2.oSubgenerica2.Subgenerica = oSubgenericaSeleccionada;
                 if (fMantenimientoSubGenerica2.ShowDialog() == DialogResult.OK)
                 {
@@ -352,6 +355,7 @@ namespace CapaUsuario.Clasificadores
             {
                 frmMantenimientoEspecifica fMantenimiento = new frmMantenimientoEspecifica();
                 fMantenimiento.oEspecifica = new CapaDeNegocios.Clasificadores.cEspecifica();
+                fMantenimiento.oEspecifica.Codigo = "";
                 fMantenimiento.oEspecifica.Subgenerica2 = oSubgenerica2Seleccionada;
 
                 if (fMantenimiento.ShowDialog() == DialogResult.OK)
@@ -445,6 +449,7 @@ namespace CapaUsuario.Clasificadores
             {
                 frmMantenimientoEspecifica2 fMantenimientoEspecifica2 = new frmMantenimientoEspecifica2();
                 fMantenimientoEspecifica2.oEspecifica2 = new CapaDeNegocios.Clasificadores.cEspecifica2();
+                fMantenimientoEspecifica2.oEspecifica2.Codigo = "";
                 fMantenimientoEspecifica2.oEspecifica2.Especifica = oEspecificaSeleccionada;
                 if (fMantenimientoEspecifica2.ShowDialog() == DialogResult.OK)
                 {

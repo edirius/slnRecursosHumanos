@@ -112,11 +112,83 @@
     <Compile Include="AFP\frmListaAFPs.Designer.cs">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Asistencia\frmAsistenciaMes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmAsistenciaMes.Designer.cs">
+      <DependentUpon>frmAsistenciaMes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Asistencia\frmBuscarSubsidio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Asistencia\frmBuscarSubsidio.Designer.cs">
       <DependentUpon>frmBuscarSubsidio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmListaDiasFestivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmListaDiasFestivos.Designer.cs">
+      <DependentUpon>frmListaDiasFestivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmListaTurnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmListaTurnos.Designer.cs">
+      <DependentUpon>frmListaTurnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmListaTurnosDia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmListaTurnosDia.Designer.cs">
+      <DependentUpon>frmListaTurnosDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmMantenimientoDiaFestivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmMantenimientoDiaFestivo.Designer.cs">
+      <DependentUpon>frmMantenimientoDiaFestivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmMantenimientoHorario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmMantenimientoHorario.Designer.cs">
+      <DependentUpon>frmMantenimientoHorario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmMantenimientoSalidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmMantenimientoSalidas.Designer.cs">
+      <DependentUpon>frmMantenimientoSalidas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmMantenimientoTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmMantenimientoTurno.Designer.cs">
+      <DependentUpon>frmMantenimientoTurno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmMantenimientoTurnoXDia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmMantenimientoTurnoXDia.Designer.cs">
+      <DependentUpon>frmMantenimientoTurnoXDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmNuevoHorario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmNuevoHorario.Designer.cs">
+      <DependentUpon>frmNuevoHorario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmTrabajadorExcepcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmTrabajadorExcepcion.Designer.cs">
+      <DependentUpon>frmTrabajadorExcepcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmTrabajadorHorario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmTrabajadorHorario.Designer.cs">
+      <DependentUpon>frmTrabajadorHorario.cs</DependentUpon>
     </Compile>
     <Compile Include="Clasificadores\frmListaClasificadoresGasto.cs">
       <SubType>Form</SubType>
@@ -1283,8 +1355,44 @@
     <EmbeddedResource Include="AFP\frmListaAFPs.resx">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmAsistenciaMes.resx">
+      <DependentUpon>frmAsistenciaMes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Asistencia\frmBuscarSubsidio.resx">
       <DependentUpon>frmBuscarSubsidio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmListaDiasFestivos.resx">
+      <DependentUpon>frmListaDiasFestivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmListaTurnos.resx">
+      <DependentUpon>frmListaTurnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmListaTurnosDia.resx">
+      <DependentUpon>frmListaTurnosDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmMantenimientoDiaFestivo.resx">
+      <DependentUpon>frmMantenimientoDiaFestivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmMantenimientoHorario.resx">
+      <DependentUpon>frmMantenimientoHorario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmMantenimientoSalidas.resx">
+      <DependentUpon>frmMantenimientoSalidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmMantenimientoTurno.resx">
+      <DependentUpon>frmMantenimientoTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmMantenimientoTurnoXDia.resx">
+      <DependentUpon>frmMantenimientoTurnoXDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmNuevoHorario.resx">
+      <DependentUpon>frmNuevoHorario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmTrabajadorExcepcion.resx">
+      <DependentUpon>frmTrabajadorExcepcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmTrabajadorHorario.resx">
+      <DependentUpon>frmTrabajadorHorario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clasificadores\frmListaClasificadoresGasto.resx">
       <DependentUpon>frmListaClasificadoresGasto.cs</DependentUpon>

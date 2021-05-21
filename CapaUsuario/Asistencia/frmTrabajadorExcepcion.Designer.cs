@@ -1,6 +1,6 @@
-﻿namespace CapaUsuario.Trabajador
+﻿namespace CapaUsuario.Asistencia
 {
-    partial class frmListaTrabajadores
+    partial class frmTrabajadorExcepcion
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Todos");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Activos", 2, 2);
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Inactivos", 2, 2);
@@ -54,26 +53,13 @@
             System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", 2, 2, new System.Windows.Forms.TreeNode[] {
             treeNode5,
             treeNode12});
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTrabajadores));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.statusTrabajadores = new System.Windows.Forms.StatusStrip();
-            this.lblNumeroTrabajadores = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnNuevoTrabajador = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnModificarTrabajador = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnEliminarTrabajador = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnImprimirLista = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnDatosFijosxTrabajador = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeFiltro = new System.Windows.Forms.TreeView();
-            this.imageLista = new System.Windows.Forms.ImageList(this.components);
             this.btnReporteContratos = new System.Windows.Forms.Button();
             this.btnContratos = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
@@ -106,142 +92,48 @@
             this.fechafin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.menuAuxiliar = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuCopiarDNI = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCopiarNombreCompleto = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCopiarNombre = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCopiarPaterno = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuApellidoMaterno = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusTrabajadores.SuspendLayout();
+            this.btnAsignarHorario = new System.Windows.Forms.ToolStripButton();
+            this.btnNuevaSalidaTrabajador = new System.Windows.Forms.ToolStripButton();
+            this.btnAsistenciaMes = new System.Windows.Forms.ToolStripButton();
+            this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaTrabajadores)).BeginInit();
-            this.menuAuxiliar.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
-            // 
-            // statusTrabajadores
-            // 
-            this.statusTrabajadores.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblNumeroTrabajadores});
-            this.statusTrabajadores.Location = new System.Drawing.Point(0, 569);
-            this.statusTrabajadores.Name = "statusTrabajadores";
-            this.statusTrabajadores.Size = new System.Drawing.Size(1043, 22);
-            this.statusTrabajadores.TabIndex = 1;
-            this.statusTrabajadores.Text = "statusStrip1";
-            // 
-            // lblNumeroTrabajadores
-            // 
-            this.lblNumeroTrabajadores.Name = "lblNumeroTrabajadores";
-            this.lblNumeroTrabajadores.Size = new System.Drawing.Size(100, 17);
-            this.lblNumeroTrabajadores.Text = "Nro Trabajadores:";
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnNuevoTrabajador,
+            this.btnAsignarHorario,
             this.toolStripSeparator1,
-            this.btnModificarTrabajador,
+            this.btnNuevaSalidaTrabajador,
             this.toolStripSeparator2,
-            this.btnEliminarTrabajador,
-            this.toolStripSeparator3,
-            this.btnImprimirLista,
+            this.btnAsistenciaMes,
             this.toolStripSeparator4,
-            this.btnDatosFijosxTrabajador,
-            this.toolStripSeparator5,
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1043, 28);
-            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Size = new System.Drawing.Size(1070, 28);
+            this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnNuevoTrabajador
-            // 
-            this.btnNuevoTrabajador.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoTrabajador.Image = global::CapaUsuario.Properties.Resources.add1;
-            this.btnNuevoTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNuevoTrabajador.Name = "btnNuevoTrabajador";
-            this.btnNuevoTrabajador.Size = new System.Drawing.Size(154, 25);
-            this.btnNuevoTrabajador.Text = "Nuevo Trabajador";
-            this.btnNuevoTrabajador.Click += new System.EventHandler(this.btnNuevoTrabajador_Click_1);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
-            // btnModificarTrabajador
-            // 
-            this.btnModificarTrabajador.Image = global::CapaUsuario.Properties.Resources.add_to_folder;
-            this.btnModificarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnModificarTrabajador.Name = "btnModificarTrabajador";
-            this.btnModificarTrabajador.Size = new System.Drawing.Size(137, 25);
-            this.btnModificarTrabajador.Text = "Modificar Trabajador";
-            this.btnModificarTrabajador.Click += new System.EventHandler(this.btnModificarTrabajador_Click);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
-            // btnEliminarTrabajador
-            // 
-            this.btnEliminarTrabajador.Image = global::CapaUsuario.Properties.Resources.delete_page;
-            this.btnEliminarTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEliminarTrabajador.Name = "btnEliminarTrabajador";
-            this.btnEliminarTrabajador.Size = new System.Drawing.Size(129, 25);
-            this.btnEliminarTrabajador.Text = "Eliminar Trabajador";
-            this.btnEliminarTrabajador.Click += new System.EventHandler(this.btnEliminarTrabajador_Click_1);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
-            // 
-            // btnImprimirLista
-            // 
-            this.btnImprimirLista.Image = global::CapaUsuario.Properties.Resources.chart;
-            this.btnImprimirLista.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImprimirLista.Name = "btnImprimirLista";
-            this.btnImprimirLista.Size = new System.Drawing.Size(100, 25);
-            this.btnImprimirLista.Text = "Imprimir Lista";
-            this.btnImprimirLista.Click += new System.EventHandler(this.btnImprimirLista_Click);
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
-            // 
-            // btnDatosFijosxTrabajador
-            // 
-            this.btnDatosFijosxTrabajador.Image = global::CapaUsuario.Properties.Resources._98;
-            this.btnDatosFijosxTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDatosFijosxTrabajador.Name = "btnDatosFijosxTrabajador";
-            this.btnDatosFijosxTrabajador.Size = new System.Drawing.Size(84, 25);
-            this.btnDatosFijosxTrabajador.Text = "Datos Fijos";
-            this.btnDatosFijosxTrabajador.Click += new System.EventHandler(this.btnDatosFijosxTrabajador_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 28);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_17;
-            this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(49, 25);
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // splitContainer1
             // 
@@ -277,15 +169,13 @@
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.txtDNI);
             this.splitContainer1.Panel2.Controls.Add(this.dtgListaTrabajadores);
-            this.splitContainer1.Size = new System.Drawing.Size(1043, 541);
-            this.splitContainer1.SplitterDistance = 205;
-            this.splitContainer1.TabIndex = 3;
+            this.splitContainer1.Size = new System.Drawing.Size(1070, 551);
+            this.splitContainer1.SplitterDistance = 210;
+            this.splitContainer1.TabIndex = 4;
             // 
             // treeFiltro
             // 
             this.treeFiltro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeFiltro.ImageIndex = 0;
-            this.treeFiltro.ImageList = this.imageLista;
             this.treeFiltro.Location = new System.Drawing.Point(0, 0);
             this.treeFiltro.Name = "treeFiltro";
             treeNode1.BackColor = System.Drawing.Color.Teal;
@@ -346,20 +236,9 @@
             treeNode13.ToolTipText = "Seleccione abajo para filtrar la lista de trabajadores.";
             this.treeFiltro.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode13});
-            this.treeFiltro.SelectedImageIndex = 0;
-            this.treeFiltro.Size = new System.Drawing.Size(205, 541);
+            this.treeFiltro.Size = new System.Drawing.Size(210, 551);
             this.treeFiltro.TabIndex = 0;
-            this.treeFiltro.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeFiltro_AfterSelect);
             this.treeFiltro.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeFiltro_NodeMouseClick);
-            this.treeFiltro.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeFiltro_MouseClick);
-            // 
-            // imageLista
-            // 
-            this.imageLista.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageLista.ImageStream")));
-            this.imageLista.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageLista.Images.SetKeyName(0, "161.ICO");
-            this.imageLista.Images.SetKeyName(1, "WinXPSetV4 Icon 23.ico");
-            this.imageLista.Images.SetKeyName(2, "123.ICO");
             // 
             // btnReporteContratos
             // 
@@ -368,14 +247,13 @@
             this.btnReporteContratos.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnReporteContratos.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnReporteContratos.ImageIndex = 1;
-            this.btnReporteContratos.Location = new System.Drawing.Point(449, 485);
+            this.btnReporteContratos.Location = new System.Drawing.Point(449, 495);
             this.btnReporteContratos.Name = "btnReporteContratos";
             this.btnReporteContratos.Size = new System.Drawing.Size(114, 53);
             this.btnReporteContratos.TabIndex = 41;
             this.btnReporteContratos.Text = "&Reporte Contratos";
             this.btnReporteContratos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReporteContratos.UseVisualStyleBackColor = false;
-            this.btnReporteContratos.Click += new System.EventHandler(this.btnReporteContratos_Click);
             // 
             // btnContratos
             // 
@@ -384,14 +262,13 @@
             this.btnContratos.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnContratos.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnContratos.ImageIndex = 1;
-            this.btnContratos.Location = new System.Drawing.Point(569, 485);
+            this.btnContratos.Location = new System.Drawing.Point(569, 495);
             this.btnContratos.Name = "btnContratos";
             this.btnContratos.Size = new System.Drawing.Size(114, 53);
             this.btnContratos.TabIndex = 40;
             this.btnContratos.Text = "&Contratos";
             this.btnContratos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnContratos.UseVisualStyleBackColor = false;
-            this.btnContratos.Click += new System.EventHandler(this.btnContratos_Click);
             // 
             // label7
             // 
@@ -414,7 +291,6 @@
             this.btnBuscarXMeta.TabIndex = 38;
             this.btnBuscarXMeta.Text = "Buscar por Meta";
             this.btnBuscarXMeta.UseVisualStyleBackColor = false;
-            this.btnBuscarXMeta.Click += new System.EventHandler(this.btnBuscarXMeta_Click);
             // 
             // cboMeta
             // 
@@ -431,7 +307,6 @@
             this.cboAño.Name = "cboAño";
             this.cboAño.Size = new System.Drawing.Size(65, 21);
             this.cboAño.TabIndex = 36;
-            this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -449,14 +324,13 @@
             this.btnDatosLaborales.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDatosLaborales.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDatosLaborales.ImageIndex = 1;
-            this.btnDatosLaborales.Location = new System.Drawing.Point(689, 485);
+            this.btnDatosLaborales.Location = new System.Drawing.Point(689, 495);
             this.btnDatosLaborales.Name = "btnDatosLaborales";
             this.btnDatosLaborales.Size = new System.Drawing.Size(114, 53);
             this.btnDatosLaborales.TabIndex = 32;
             this.btnDatosLaborales.Text = "&Datos Laborales";
             this.btnDatosLaborales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDatosLaborales.UseVisualStyleBackColor = false;
-            this.btnDatosLaborales.Click += new System.EventHandler(this.btnDatosLaborales_Click);
             // 
             // btnDetalleTareo
             // 
@@ -465,7 +339,7 @@
             this.btnDetalleTareo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDetalleTareo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDetalleTareo.ImageIndex = 1;
-            this.btnDetalleTareo.Location = new System.Drawing.Point(591, 559);
+            this.btnDetalleTareo.Location = new System.Drawing.Point(591, 569);
             this.btnDetalleTareo.Name = "btnDetalleTareo";
             this.btnDetalleTareo.Size = new System.Drawing.Size(114, 53);
             this.btnDetalleTareo.TabIndex = 30;
@@ -485,7 +359,6 @@
             this.btnBuscarAMaterno.TabIndex = 28;
             this.btnBuscarAMaterno.Text = "Buscar por Apellido Materno";
             this.btnBuscarAMaterno.UseVisualStyleBackColor = false;
-            this.btnBuscarAMaterno.Click += new System.EventHandler(this.btnBuscarAMaterno_Click);
             // 
             // btnBuscarAPaterno
             // 
@@ -499,7 +372,6 @@
             this.btnBuscarAPaterno.TabIndex = 27;
             this.btnBuscarAPaterno.Text = "Buscar por Apellido Paterno";
             this.btnBuscarAPaterno.UseVisualStyleBackColor = false;
-            this.btnBuscarAPaterno.Click += new System.EventHandler(this.btnBuscarAPaterno_Click);
             // 
             // btnBuscarNombre
             // 
@@ -513,7 +385,6 @@
             this.btnBuscarNombre.TabIndex = 26;
             this.btnBuscarNombre.Text = "Buscar por Nombres";
             this.btnBuscarNombre.UseVisualStyleBackColor = false;
-            this.btnBuscarNombre.Click += new System.EventHandler(this.btnBuscarNombre_Click);
             // 
             // txtBuscarApellidoMaterno
             // 
@@ -522,8 +393,6 @@
             this.txtBuscarApellidoMaterno.Name = "txtBuscarApellidoMaterno";
             this.txtBuscarApellidoMaterno.Size = new System.Drawing.Size(216, 20);
             this.txtBuscarApellidoMaterno.TabIndex = 25;
-            this.txtBuscarApellidoMaterno.Enter += new System.EventHandler(this.txtBuscarApellidoMaterno_Enter);
-            this.txtBuscarApellidoMaterno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarApellidoMaterno_KeyDown);
             // 
             // txtBuscarApellidoPaterno
             // 
@@ -532,8 +401,6 @@
             this.txtBuscarApellidoPaterno.Name = "txtBuscarApellidoPaterno";
             this.txtBuscarApellidoPaterno.Size = new System.Drawing.Size(216, 20);
             this.txtBuscarApellidoPaterno.TabIndex = 24;
-            this.txtBuscarApellidoPaterno.Enter += new System.EventHandler(this.txtBuscarApellidoPaterno_Enter);
-            this.txtBuscarApellidoPaterno.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarApellidoPaterno_KeyDown);
             // 
             // txtBuscarNombre
             // 
@@ -542,8 +409,6 @@
             this.txtBuscarNombre.Name = "txtBuscarNombre";
             this.txtBuscarNombre.Size = new System.Drawing.Size(216, 20);
             this.txtBuscarNombre.TabIndex = 23;
-            this.txtBuscarNombre.Enter += new System.EventHandler(this.txtBuscarNombre_Enter);
-            this.txtBuscarNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarNombre_KeyDown);
             // 
             // label4
             // 
@@ -584,7 +449,6 @@
             this.btnBuscarDNI.TabIndex = 19;
             this.btnBuscarDNI.Text = "Buscar por DNI";
             this.btnBuscarDNI.UseVisualStyleBackColor = false;
-            this.btnBuscarDNI.Click += new System.EventHandler(this.btnBuscarDNI_Click);
             // 
             // label1
             // 
@@ -602,14 +466,10 @@
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(100, 20);
             this.txtDNI.TabIndex = 17;
-            this.txtDNI.Enter += new System.EventHandler(this.txtDNI_Enter);
-            this.txtDNI.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDNI_KeyDown);
-            this.txtDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDNI_KeyPress);
             // 
             // dtgListaTrabajadores
             // 
             this.dtgListaTrabajadores.AllowUserToAddRows = false;
-            this.dtgListaTrabajadores.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgListaTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -624,23 +484,21 @@
             this.fechafin,
             this.fechaInicio,
             this.descripcion});
-            this.dtgListaTrabajadores.ContextMenuStrip = this.menuAuxiliar;
             this.dtgListaTrabajadores.Location = new System.Drawing.Point(15, 212);
             this.dtgListaTrabajadores.MultiSelect = false;
             this.dtgListaTrabajadores.Name = "dtgListaTrabajadores";
-            this.dtgListaTrabajadores.ReadOnly = true;
+            this.dtgListaTrabajadores.RowHeadersVisible = false;
             this.dtgListaTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListaTrabajadores.Size = new System.Drawing.Size(788, 271);
             this.dtgListaTrabajadores.TabIndex = 13;
             this.dtgListaTrabajadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellClick);
-            this.dtgListaTrabajadores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellContentClick);
+            this.dtgListaTrabajadores.CurrentCellDirtyStateChanged += new System.EventHandler(this.dtgListaTrabajadores_CurrentCellDirtyStateChanged);
             // 
             // id_trabajador
             // 
             this.id_trabajador.DataPropertyName = "id_trabajador";
             this.id_trabajador.HeaderText = "Codigo";
             this.id_trabajador.Name = "id_trabajador";
-            this.id_trabajador.ReadOnly = true;
             this.id_trabajador.Width = 50;
             // 
             // dni
@@ -648,7 +506,6 @@
             this.dni.DataPropertyName = "dni";
             this.dni.HeaderText = "DNI";
             this.dni.Name = "dni";
-            this.dni.ReadOnly = true;
             this.dni.Width = 70;
             // 
             // nombres
@@ -656,7 +513,6 @@
             this.nombres.DataPropertyName = "nombres";
             this.nombres.HeaderText = "Nombres";
             this.nombres.Name = "nombres";
-            this.nombres.ReadOnly = true;
             this.nombres.Width = 180;
             // 
             // apellidoPaterno
@@ -664,7 +520,6 @@
             this.apellidoPaterno.DataPropertyName = "apellidoPaterno";
             this.apellidoPaterno.HeaderText = "Apellido Paterno";
             this.apellidoPaterno.Name = "apellidoPaterno";
-            this.apellidoPaterno.ReadOnly = true;
             this.apellidoPaterno.Width = 180;
             // 
             // apellidoMaterno
@@ -672,7 +527,6 @@
             this.apellidoMaterno.DataPropertyName = "apellidoMaterno";
             this.apellidoMaterno.HeaderText = "Apellido Materno";
             this.apellidoMaterno.Name = "apellidoMaterno";
-            this.apellidoMaterno.ReadOnly = true;
             this.apellidoMaterno.Width = 180;
             // 
             // sexo
@@ -680,7 +534,6 @@
             this.sexo.DataPropertyName = "sexo";
             this.sexo.HeaderText = "Sexo";
             this.sexo.Name = "sexo";
-            this.sexo.ReadOnly = true;
             this.sexo.Width = 50;
             // 
             // suspensionrenta4ta
@@ -688,7 +541,6 @@
             this.suspensionrenta4ta.DataPropertyName = "suspencionrenta4ta";
             this.suspensionrenta4ta.HeaderText = "Renta4ta";
             this.suspensionrenta4ta.Name = "suspensionrenta4ta";
-            this.suspensionrenta4ta.ReadOnly = true;
             this.suspensionrenta4ta.Visible = false;
             // 
             // fechafin
@@ -696,7 +548,6 @@
             this.fechafin.DataPropertyName = "fechafin";
             this.fechafin.HeaderText = "fechafin";
             this.fechafin.Name = "fechafin";
-            this.fechafin.ReadOnly = true;
             this.fechafin.Visible = false;
             // 
             // fechaInicio
@@ -704,7 +555,6 @@
             this.fechaInicio.DataPropertyName = "fechainicio";
             this.fechaInicio.HeaderText = "fechaInicio";
             this.fechaInicio.Name = "fechaInicio";
-            this.fechaInicio.ReadOnly = true;
             this.fechaInicio.Visible = false;
             // 
             // descripcion
@@ -712,70 +562,55 @@
             this.descripcion.DataPropertyName = "descripcion";
             this.descripcion.HeaderText = "Cargo";
             this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
             this.descripcion.Visible = false;
             // 
-            // menuAuxiliar
+            // btnAsignarHorario
             // 
-            this.menuAuxiliar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuCopiarDNI,
-            this.menuCopiarNombreCompleto,
-            this.menuCopiarNombre,
-            this.menuCopiarPaterno,
-            this.menuApellidoMaterno});
-            this.menuAuxiliar.Name = "menuAuxiliar";
-            this.menuAuxiliar.Size = new System.Drawing.Size(213, 114);
+            this.btnAsignarHorario.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsignarHorario.Image = global::CapaUsuario.Properties.Resources.add1;
+            this.btnAsignarHorario.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAsignarHorario.Name = "btnAsignarHorario";
+            this.btnAsignarHorario.Size = new System.Drawing.Size(140, 25);
+            this.btnAsignarHorario.Text = "Asignar Horario";
+            this.btnAsignarHorario.Click += new System.EventHandler(this.btnAsignarHorario_Click);
             // 
-            // menuCopiarDNI
+            // btnNuevaSalidaTrabajador
             // 
-            this.menuCopiarDNI.Name = "menuCopiarDNI";
-            this.menuCopiarDNI.Size = new System.Drawing.Size(212, 22);
-            this.menuCopiarDNI.Text = "CopiarDNI";
-            this.menuCopiarDNI.Click += new System.EventHandler(this.menuCopiarDNI_Click);
+            this.btnNuevaSalidaTrabajador.Image = global::CapaUsuario.Properties.Resources.add_to_folder;
+            this.btnNuevaSalidaTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNuevaSalidaTrabajador.Name = "btnNuevaSalidaTrabajador";
+            this.btnNuevaSalidaTrabajador.Size = new System.Drawing.Size(162, 25);
+            this.btnNuevaSalidaTrabajador.Text = "Ingresar Salida Trabajador";
+            this.btnNuevaSalidaTrabajador.Click += new System.EventHandler(this.btnNuevaSalidaTrabajador_Click);
             // 
-            // menuCopiarNombreCompleto
+            // btnAsistenciaMes
             // 
-            this.menuCopiarNombreCompleto.Name = "menuCopiarNombreCompleto";
-            this.menuCopiarNombreCompleto.Size = new System.Drawing.Size(212, 22);
-            this.menuCopiarNombreCompleto.Text = "Copiar Nombre Completo";
-            this.menuCopiarNombreCompleto.Click += new System.EventHandler(this.menuCopiarNombreCompleto_Click);
+            this.btnAsistenciaMes.Image = global::CapaUsuario.Properties.Resources.chart;
+            this.btnAsistenciaMes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAsistenciaMes.Name = "btnAsistenciaMes";
+            this.btnAsistenciaMes.Size = new System.Drawing.Size(124, 25);
+            this.btnAsistenciaMes.Text = "Asistencia del Mes";
+            this.btnAsistenciaMes.Click += new System.EventHandler(this.btnAsistenciaMes_Click);
             // 
-            // menuCopiarNombre
+            // btnSalir
             // 
-            this.menuCopiarNombre.Name = "menuCopiarNombre";
-            this.menuCopiarNombre.Size = new System.Drawing.Size(212, 22);
-            this.menuCopiarNombre.Text = "Copiar Nombre";
-            this.menuCopiarNombre.Click += new System.EventHandler(this.menuCopiarNombre_Click);
+            this.btnSalir.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_17;
+            this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(49, 25);
+            this.btnSalir.Text = "Salir";
             // 
-            // menuCopiarPaterno
-            // 
-            this.menuCopiarPaterno.Name = "menuCopiarPaterno";
-            this.menuCopiarPaterno.Size = new System.Drawing.Size(212, 22);
-            this.menuCopiarPaterno.Text = "Copiar Apellido Paterno";
-            this.menuCopiarPaterno.Click += new System.EventHandler(this.menuCopiarPaterno_Click);
-            // 
-            // menuApellidoMaterno
-            // 
-            this.menuApellidoMaterno.Name = "menuApellidoMaterno";
-            this.menuApellidoMaterno.Size = new System.Drawing.Size(212, 22);
-            this.menuApellidoMaterno.Text = "Copiar Apellido Materno";
-            this.menuApellidoMaterno.Click += new System.EventHandler(this.menuApellidoMaterno_Click);
-            // 
-            // frmListaTrabajadores
+            // frmTrabajadorExcepcion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 591);
+            this.ClientSize = new System.Drawing.Size(1070, 579);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.statusTrabajadores);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmListaTrabajadores";
+            this.Name = "frmTrabajadorExcepcion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Lista de Trabajadores";
-            this.Load += new System.EventHandler(this.frmListaTrabajadores_Load);
-            this.statusTrabajadores.ResumeLayout(false);
-            this.statusTrabajadores.PerformLayout();
+            this.Text = "Excepciones de Trabajador";
+            this.Load += new System.EventHandler(this.frmTrabajadorExcepcion_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -784,7 +619,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaTrabajadores)).EndInit();
-            this.menuAuxiliar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -792,11 +626,28 @@
 
         #endregion
 
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.StatusStrip statusTrabajadores;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton btnAsignarHorario;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton btnNuevaSalidaTrabajador;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnAsistenciaMes;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton btnSalir;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView treeFiltro;
+        private System.Windows.Forms.Button btnReporteContratos;
+        private System.Windows.Forms.Button btnContratos;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnBuscarXMeta;
+        private System.Windows.Forms.ComboBox cboMeta;
+        private System.Windows.Forms.ComboBox cboAño;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnDatosLaborales;
+        private System.Windows.Forms.Button btnDetalleTareo;
+        private System.Windows.Forms.Button btnBuscarAMaterno;
+        private System.Windows.Forms.Button btnBuscarAPaterno;
+        private System.Windows.Forms.Button btnBuscarNombre;
         private System.Windows.Forms.TextBox txtBuscarApellidoMaterno;
         private System.Windows.Forms.TextBox txtBuscarApellidoPaterno;
         private System.Windows.Forms.TextBox txtBuscarNombre;
@@ -807,35 +658,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.DataGridView dtgListaTrabajadores;
-        private System.Windows.Forms.ToolStripButton btnNuevoTrabajador;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnModificarTrabajador;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton btnEliminarTrabajador;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripButton btnImprimirLista;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton btnSalir;
-        private System.Windows.Forms.Button btnBuscarAMaterno;
-        private System.Windows.Forms.Button btnBuscarAPaterno;
-        private System.Windows.Forms.Button btnBuscarNombre;
-        private System.Windows.Forms.Button btnDetalleTareo;
-        private System.Windows.Forms.Button btnDatosLaborales;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cboAño;
-        private System.Windows.Forms.ComboBox cboMeta;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnBuscarXMeta;
-        private System.Windows.Forms.ContextMenuStrip menuAuxiliar;
-        private System.Windows.Forms.ToolStripMenuItem menuCopiarDNI;
-        private System.Windows.Forms.ToolStripMenuItem menuCopiarNombreCompleto;
-        private System.Windows.Forms.ToolStripMenuItem menuCopiarNombre;
-        private System.Windows.Forms.ToolStripMenuItem menuCopiarPaterno;
-        private System.Windows.Forms.ToolStripMenuItem menuApellidoMaterno;
-        private System.Windows.Forms.ImageList imageLista;
-        private System.Windows.Forms.ToolStripStatusLabel lblNumeroTrabajadores;
-        private System.Windows.Forms.Button btnContratos;
-        private System.Windows.Forms.Button btnReporteContratos;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_trabajador;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombres;
@@ -846,7 +668,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechafin;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.ToolStripButton btnDatosFijosxTrabajador;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }

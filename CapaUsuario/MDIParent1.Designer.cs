@@ -47,6 +47,11 @@
             this.mantenimientoDeTrabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeCargosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.asistentiaDeTrabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuListaHorarios = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuListaTurnosXDia = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuListaTurnos = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuListaDiasFestivos = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horasHombreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +67,7 @@
             this.metaJornalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuClasificadores = new System.Windows.Forms.ToolStripMenuItem();
+            this.asignarClasificadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plantillaPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,7 +121,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.asignarClasificadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAsistenciaTrabajador = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -250,32 +256,71 @@
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mantenimientoDeTrabajadoresToolStripMenuItem,
             this.mantenimientoDeCargosToolStripMenuItem,
-            this.asistentiaDeTrabajadoresToolStripMenuItem});
+            this.asistentiaDeTrabajadoresToolStripMenuItem,
+            this.toolStripSeparator5,
+            this.mnuListaHorarios,
+            this.mnuListaTurnosXDia,
+            this.mnuListaTurnos,
+            this.mnuListaDiasFestivos,
+            this.mnuAsistenciaTrabajador});
             this.viewMenu.Name = "viewMenu";
-            this.viewMenu.Size = new System.Drawing.Size(85, 20);
+            this.viewMenu.Size = new System.Drawing.Size(86, 20);
             this.viewMenu.Text = "&Trabajadores";
             // 
             // mantenimientoDeTrabajadoresToolStripMenuItem
             // 
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources._161;
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Name = "mantenimientoDeTrabajadoresToolStripMenuItem";
-            this.mantenimientoDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.mantenimientoDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Text = "Mantenimiento de Trabajadores";
             this.mantenimientoDeTrabajadoresToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeTrabajadoresToolStripMenuItem_Click);
             // 
             // mantenimientoDeCargosToolStripMenuItem
             // 
             this.mantenimientoDeCargosToolStripMenuItem.Name = "mantenimientoDeCargosToolStripMenuItem";
-            this.mantenimientoDeCargosToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.mantenimientoDeCargosToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
             this.mantenimientoDeCargosToolStripMenuItem.Text = "Mantenimiento de Cargos";
             this.mantenimientoDeCargosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeCargosToolStripMenuItem_Click);
             // 
             // asistentiaDeTrabajadoresToolStripMenuItem
             // 
             this.asistentiaDeTrabajadoresToolStripMenuItem.Name = "asistentiaDeTrabajadoresToolStripMenuItem";
-            this.asistentiaDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.asistentiaDeTrabajadoresToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
             this.asistentiaDeTrabajadoresToolStripMenuItem.Text = "Control de Faltas y Tardanzas Trabajadores";
             this.asistentiaDeTrabajadoresToolStripMenuItem.Click += new System.EventHandler(this.asistentiaDeTrabajadoresToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(294, 6);
+            // 
+            // mnuListaHorarios
+            // 
+            this.mnuListaHorarios.Name = "mnuListaHorarios";
+            this.mnuListaHorarios.Size = new System.Drawing.Size(297, 22);
+            this.mnuListaHorarios.Text = "Lista Horarios";
+            this.mnuListaHorarios.Click += new System.EventHandler(this.mnuListaHorarios_Click);
+            // 
+            // mnuListaTurnosXDia
+            // 
+            this.mnuListaTurnosXDia.Name = "mnuListaTurnosXDia";
+            this.mnuListaTurnosXDia.Size = new System.Drawing.Size(297, 22);
+            this.mnuListaTurnosXDia.Text = "Lista Turnos x Dia";
+            this.mnuListaTurnosXDia.Click += new System.EventHandler(this.mnuListaTurnosXDia_Click);
+            // 
+            // mnuListaTurnos
+            // 
+            this.mnuListaTurnos.Name = "mnuListaTurnos";
+            this.mnuListaTurnos.Size = new System.Drawing.Size(297, 22);
+            this.mnuListaTurnos.Text = "Lista Turnos";
+            this.mnuListaTurnos.Click += new System.EventHandler(this.mnuListaTurnos_Click);
+            // 
+            // mnuListaDiasFestivos
+            // 
+            this.mnuListaDiasFestivos.Name = "mnuListaDiasFestivos";
+            this.mnuListaDiasFestivos.Size = new System.Drawing.Size(297, 22);
+            this.mnuListaDiasFestivos.Text = "Lista Dias Festivos";
+            this.mnuListaDiasFestivos.Click += new System.EventHandler(this.mnuListaDiasFestivos_Click);
             // 
             // toolsMenu
             // 
@@ -283,20 +328,20 @@
             this.optionsToolStripMenuItem,
             this.horasHombreToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
-            this.toolsMenu.Size = new System.Drawing.Size(52, 20);
+            this.toolsMenu.Size = new System.Drawing.Size(53, 20);
             this.toolsMenu.Text = "Tareos";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.optionsToolStripMenuItem.Text = "Tareo de Obras";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // horasHombreToolStripMenuItem
             // 
             this.horasHombreToolStripMenuItem.Name = "horasHombreToolStripMenuItem";
-            this.horasHombreToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.horasHombreToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.horasHombreToolStripMenuItem.Text = "Horas Hombre";
             this.horasHombreToolStripMenuItem.Click += new System.EventHandler(this.horasHombreToolStripMenuItem_Click);
             // 
@@ -392,6 +437,13 @@
             this.menuClasificadores.Text = "Clasificador de gastos";
             this.menuClasificadores.Click += new System.EventHandler(this.menuClasificadores_Click);
             // 
+            // asignarClasificadoresToolStripMenuItem
+            // 
+            this.asignarClasificadoresToolStripMenuItem.Name = "asignarClasificadoresToolStripMenuItem";
+            this.asignarClasificadoresToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.asignarClasificadoresToolStripMenuItem.Text = "Asignar Clasificadores";
+            this.asignarClasificadoresToolStripMenuItem.Click += new System.EventHandler(this.asignarClasificadoresToolStripMenuItem_Click);
+            // 
             // planillasToolStripMenuItem
             // 
             this.planillasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -434,7 +486,7 @@
             this.maestroDescuentosToolStripMenuItem1,
             this.tipoDeSuspencionLaboralToolStripMenuItem});
             this.sUNATToolStripMenuItem.Name = "sUNATToolStripMenuItem";
-            this.sUNATToolStripMenuItem.Size = new System.Drawing.Size(169, 20);
+            this.sUNATToolStripMenuItem.Size = new System.Drawing.Size(171, 20);
             this.sUNATToolStripMenuItem.Text = "SUNAT - Tablas Parametricas";
             // 
             // motivoFinPeriodoToolStripMenuItem
@@ -502,7 +554,7 @@
             // 
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources.logoSunat;
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Name = "tributosYDescuentosDelTrabajadorToolStripMenuItem";
-            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Size = new System.Drawing.Size(340, 22);
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Text = "Tributos y Descuentos del Trabajador(PDT-PLAME)";
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Click += new System.EventHandler(this.tributosYDescuentosDelTrabajadorToolStripMenuItem_Click);
             // 
@@ -510,7 +562,7 @@
             // 
             this.exportarAExcelToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources.logoafp;
             this.exportarAExcelToolStripMenuItem.Name = "exportarAExcelToolStripMenuItem";
-            this.exportarAExcelToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
+            this.exportarAExcelToolStripMenuItem.Size = new System.Drawing.Size(340, 22);
             this.exportarAExcelToolStripMenuItem.Text = "Exportar datos de AFP a Excel";
             this.exportarAExcelToolStripMenuItem.Click += new System.EventHandler(this.exportarAExcelToolStripMenuItem_Click);
             // 
@@ -518,7 +570,7 @@
             // 
             this.consultaMasivaAFPToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources.logoafp;
             this.consultaMasivaAFPToolStripMenuItem.Name = "consultaMasivaAFPToolStripMenuItem";
-            this.consultaMasivaAFPToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
+            this.consultaMasivaAFPToolStripMenuItem.Size = new System.Drawing.Size(340, 22);
             this.consultaMasivaAFPToolStripMenuItem.Text = "Generar archivo para consulta masiva AFPNET";
             this.consultaMasivaAFPToolStripMenuItem.Click += new System.EventHandler(this.consultaMasivaAFPToolStripMenuItem_Click);
             // 
@@ -526,7 +578,7 @@
             // 
             this.exportarTodoToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources.logoSunat;
             this.exportarTodoToolStripMenuItem.Name = "exportarTodoToolStripMenuItem";
-            this.exportarTodoToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
+            this.exportarTodoToolStripMenuItem.Size = new System.Drawing.Size(340, 22);
             this.exportarTodoToolStripMenuItem.Text = "Dar de alta al trabajador(T-REGISTRO)";
             this.exportarTodoToolStripMenuItem.Click += new System.EventHandler(this.exportarTodoToolStripMenuItem_Click);
             // 
@@ -534,7 +586,7 @@
             // 
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources.logoSunat;
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Name = "darDeBajaAlTrabajadorTREGISTROToolStripMenuItem";
-            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
+            this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Size = new System.Drawing.Size(340, 22);
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Text = "Dar de baja al trabajador(T-REGISTRO)";
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Click += new System.EventHandler(this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem_Click);
             // 
@@ -542,7 +594,7 @@
             // 
             this.datosDelPensionistaPENToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources.logoSunat;
             this.datosDelPensionistaPENToolStripMenuItem.Name = "datosDelPensionistaPENToolStripMenuItem";
-            this.datosDelPensionistaPENToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
+            this.datosDelPensionistaPENToolStripMenuItem.Size = new System.Drawing.Size(340, 22);
             this.datosDelPensionistaPENToolStripMenuItem.Text = "Datos del Pensionista(.PEN)";
             this.datosDelPensionistaPENToolStripMenuItem.Click += new System.EventHandler(this.datosDelPensionistaPENToolStripMenuItem_Click);
             // 
@@ -821,12 +873,12 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // asignarClasificadoresToolStripMenuItem
+            // mnuAsistenciaTrabajador
             // 
-            this.asignarClasificadoresToolStripMenuItem.Name = "asignarClasificadoresToolStripMenuItem";
-            this.asignarClasificadoresToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.asignarClasificadoresToolStripMenuItem.Text = "Asignar Clasificadores";
-            this.asignarClasificadoresToolStripMenuItem.Click += new System.EventHandler(this.asignarClasificadoresToolStripMenuItem_Click);
+            this.mnuAsistenciaTrabajador.Name = "mnuAsistenciaTrabajador";
+            this.mnuAsistenciaTrabajador.Size = new System.Drawing.Size(297, 22);
+            this.mnuAsistenciaTrabajador.Text = "Asistencia Trabajador";
+            this.mnuAsistenciaTrabajador.Click += new System.EventHandler(this.mnuAsistenciaTrabajador_Click);
             // 
             // frmPrincipal
             // 
@@ -949,6 +1001,12 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem menuClasificadores;
         private System.Windows.Forms.ToolStripMenuItem asignarClasificadoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem mnuListaHorarios;
+        private System.Windows.Forms.ToolStripMenuItem mnuListaTurnosXDia;
+        private System.Windows.Forms.ToolStripMenuItem mnuListaTurnos;
+        private System.Windows.Forms.ToolStripMenuItem mnuListaDiasFestivos;
+        private System.Windows.Forms.ToolStripMenuItem mnuAsistenciaTrabajador;
     }
 }
 

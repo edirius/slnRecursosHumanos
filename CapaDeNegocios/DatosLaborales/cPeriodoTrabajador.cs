@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Data;
+
 using CapaDeDatos;
 
 namespace CapaDeNegocios.DatosLaborales
@@ -70,6 +71,44 @@ namespace CapaDeNegocios.DatosLaborales
         {
             Conexion.GDatos.Ejecutar("spBajaPeriodoTrabajador", fechafin, idtmotivofinperiodo, idtperiodotrabajador);
             return true;
+        }
+
+
+        /// <summary>
+        /// Metodo para traer el ultimo periodo de trabajador
+        /// idtperiodotrabajador,fechainicio,fechafin,idtmotivofinperiodo,idttrabajador
+        /// </summary>
+        /// <param name="idtPeriodoTrabajador"></param>
+        /// <returns></returns>
+        public cPeriodoTrabajador traerUltimoPeriodoTrabajador (int idTrabajador)
+        {
+            try
+            {
+                
+
+                DataTable listaPeriodos;
+                listaPeriodos =   Conexion.GDatos.TraerDataTable("spListarPeriodoTrabajador", idTrabajador);
+                if (listaPeriodos.Rows.Count == 0)
+                {
+                    throw new cReglaNegociosException("Error, no existe periodos para el trabajador ");
+                }
+
+
+                cPeriodoTrabajador nuevoPeriodoTrabajador = new cPeriodoTrabajador();
+                        nuevoPeriodoTrabajador.IdtPeriodoTrabajador = Convert.ToInt16(listaPeriodos.Rows[listaPeriodos.Rows.Count -1][0].ToString());
+                        nuevoPeriodoTrabajador.sfechainicio = listaPeriodos.Rows[listaPeriodos.Rows.Count - 1][1].ToString();
+                        nuevoPeriodoTrabajador.sfechafin = "";
+                        nuevoPeriodoTrabajador.IdtMotivoFinPeriodo = Convert.ToInt16(listaPeriodos.Rows[listaPeriodos.Rows.Count - 1][3].ToString());
+                        nuevoPeriodoTrabajador.IdtTrabajador = Convert.ToInt16(listaPeriodos.Rows[listaPeriodos.Rows.Count - 1][4].ToString());
+                        
+
+
+                return nuevoPeriodoTrabajador;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en traer el periodo del trabajador: " + ex.Message);
+            }
         }
     }
 }

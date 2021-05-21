@@ -25,11 +25,15 @@ namespace CapaUsuario.Trabajador
         public CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
 
         public bool modoEdicion = false;
+
+        public bool modoAltatrabajador = false;
         CapaDeNegocios.cTipoVia miTipoVia = new CapaDeNegocios.cTipoVia();
         CapaDeNegocios.cTipoZona miTipoZona = new CapaDeNegocios.cTipoZona();
         CapaDeNegocios.cNacionalidad miNacionalidad = new CapaDeNegocios.cNacionalidad();
 
-        CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+        public CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+        public DateTime fechaInicio;
+        public DateTime fechaFin;
 
         public frmNuevoObreroRacionamiento()
         {
@@ -44,7 +48,13 @@ namespace CapaUsuario.Trabajador
             {
                 CargarTrabajador();
             }
+            LimitarMes();
+        }
 
+        public void LimitarMes()
+        {
+            dtpFechaInicio.MinDate = fechaInicio;
+            dtpFechaInicio.MaxDate = fechaFin;
         }
 
         public void CargarTrabajador()
@@ -64,6 +74,7 @@ namespace CapaUsuario.Trabajador
             }
 
             dtpFechaNacimiento.Value = miTrabajador.FechaNacimiento;
+           
             dtpFechaInicio.Value = Convert.ToDateTime(miPeriodoTrabajador.FechaInicio);
             txtDireccion.Text = miTrabajador.Direccion;
             cboDepartamento.SelectedValue = miTrabajador.MiDepartamento.Codigo;
@@ -139,45 +150,59 @@ namespace CapaUsuario.Trabajador
             miTrabajador.Essaludvida = false;
             miTrabajador.Scrt = true;
 
+            if (modoEdicion == false || modoAltatrabajador == true)
+            {
 
-            sidttrabajador = miTrabajador.AgregarTrabajadorConID(miTrabajador);
-            //oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Sin Periodo Laboral", "", "", "", "", "Todos", "Todos");
-            //sidttrabajador = Convert.ToInt32(oDataTrabajador.Compute("MAX(id_trabajador)", ""));
+                if (modoAltatrabajador == false)
+                {
+                    sidttrabajador = miTrabajador.AgregarTrabajadorConID(miTrabajador);
+                }
+                else
+                {
+                    sidttrabajador = miTrabajador.IdTrabajador;
+                }
+                //oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Sin Periodo Laboral", "", "", "", "", "Todos", "Todos");
+                //sidttrabajador = Convert.ToInt32(oDataTrabajador.Compute("MAX(id_trabajador)", ""));
 
-            
-            miPeriodoTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
-            miPeriodoTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
-            miPeriodoTrabajador.FechaFin = "";
-            miPeriodoTrabajador.IdtMotivoFinPeriodo = 1;
-            miPeriodoTrabajador.IdtTrabajador = sidttrabajador;
-            miPeriodoTrabajador.CrearPeriodoTrabajador(miPeriodoTrabajador);
-            oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(sidttrabajador);
-            sidtperiodotrabajador = Convert.ToInt32(oDataPeriodoTrabajador.Compute("MAX(idtperiodotrabajador)", ""));
 
-            
+                miPeriodoTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
+                miPeriodoTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
+                miPeriodoTrabajador.FechaFin = "";
+                miPeriodoTrabajador.IdtMotivoFinPeriodo = 1;
+                miPeriodoTrabajador.IdtTrabajador = sidttrabajador;
+                miPeriodoTrabajador.CrearPeriodoTrabajador(miPeriodoTrabajador);
+                oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(sidttrabajador);
+                sidtperiodotrabajador = Convert.ToInt32(oDataPeriodoTrabajador.Compute("MAX(idtperiodotrabajador)", ""));
 
-            CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
-            miRegimenTrabajador.IdtRegimenTrabajador = 0;
-            miRegimenTrabajador.Condicion = "CONTRATADO";
-            miRegimenTrabajador.ServidorConfianza = false;
-            miRegimenTrabajador.NumeroDocumento = "";
-            miRegimenTrabajador.Periodicidad = "MENSUAL";
-            miRegimenTrabajador.TipoPago = "EFECTIVO";
-            miRegimenTrabajador.MontoPago = 0;
-            miRegimenTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
-            miRegimenTrabajador.FechaFin = "";
-            miRegimenTrabajador.RUC = "";
-            miRegimenTrabajador.IdtRegimenLaboral = 4;
-            miRegimenTrabajador.IdtTipoTrabajador = 2;
-            miRegimenTrabajador.IdtTipoContrato = 15;
-            miRegimenTrabajador.IdtCategoriaOcupacional = 5;
-            miRegimenTrabajador.IdtOcupacion = 1;
-            miRegimenTrabajador.IdtCargo = 49;
-            miRegimenTrabajador.IdtMeta = sidtmeta;
-            miRegimenTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
-            miRegimenTrabajador.CrearRegimenTrabajador(miRegimenTrabajador);
 
-            bOk = true;
+
+                CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                miRegimenTrabajador.IdtRegimenTrabajador = 0;
+                miRegimenTrabajador.Condicion = "CONTRATADO";
+                miRegimenTrabajador.ServidorConfianza = false;
+                miRegimenTrabajador.NumeroDocumento = "";
+                miRegimenTrabajador.Periodicidad = "MENSUAL";
+                miRegimenTrabajador.TipoPago = "EFECTIVO";
+                miRegimenTrabajador.MontoPago = 0;
+                miRegimenTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
+                miRegimenTrabajador.FechaFin = "";
+                miRegimenTrabajador.RUC = "";
+                miRegimenTrabajador.IdtRegimenLaboral = 5;
+                miRegimenTrabajador.IdtTipoTrabajador = 2;
+                miRegimenTrabajador.IdtTipoContrato = 15;
+                miRegimenTrabajador.IdtCategoriaOcupacional = 5;
+                miRegimenTrabajador.IdtOcupacion = 1;
+                miRegimenTrabajador.IdtCargo = 49;
+                miRegimenTrabajador.IdtMeta = sidtmeta;
+                miRegimenTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
+                miRegimenTrabajador.CrearRegimenTrabajador(miRegimenTrabajador);
+
+                bOk = true;
+            }
+            else
+            {
+                bOk = true;
+            }
             if (bOk == true)
             {
                 DialogResult = System.Windows.Forms.DialogResult.OK;
@@ -195,7 +220,7 @@ namespace CapaUsuario.Trabajador
 
         private void txtDNI_TextChanged(object sender, EventArgs e)
         {
-            if (modoEdicion)
+            if (modoEdicion || modoAltatrabajador)
             {
 
             }

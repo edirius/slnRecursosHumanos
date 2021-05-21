@@ -469,6 +469,86 @@ namespace CapaUsuario
             }
         }
 
+        private void mnuListaHorarios_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Asistencia.frmMantenimientoHorario fMantenimientoHorario = new Asistencia.frmMantenimientoHorario();
+                if (fMantenimientoHorario.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostra la lista de horario: " + ex.Message);
+            }
+        }
+
+        private void mnuListaTurnosXDia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Asistencia.frmListaTurnosDia fListaTurnosDia = new Asistencia.frmListaTurnosDia();
+                if (fListaTurnosDia.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar la lista de turnos x dia: " + ex.Message);
+            }
+        }
+
+        private void mnuListaTurnos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Asistencia.frmListaTurnos fListaTurnos = new Asistencia.frmListaTurnos();
+                if (fListaTurnos.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar la lista de turnos: " + ex.Message);
+            }
+        }
+
+        private void mnuListaDiasFestivos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Asistencia.frmListaDiasFestivos fListaDiasFestivos = new Asistencia.frmListaDiasFestivos();
+                if (fListaDiasFestivos.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar la lista de dias festivos: " + ex.Message);
+            }
+        }
+
+        private void mnuAsistenciaTrabajador_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Asistencia.frmTrabajadorExcepcion fTrabajadoresExcepcion = new Asistencia.frmTrabajadorExcepcion();
+                if (fTrabajadoresExcepcion.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar la asistencia de trabajadores: " + ex.Message);
+            }
+        }
+
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackupBBDDMySQL();

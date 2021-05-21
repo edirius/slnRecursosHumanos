@@ -469,5 +469,10 @@ namespace CapaUsuario.Trabajador
                 MessageBox.Show("Error al mostrar datos fijos del trabajador: frmListaTrabajadores: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void treeFiltro_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

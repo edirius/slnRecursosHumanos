@@ -2603,10 +2603,11 @@ namespace CapaUsuario.Reportes
                                         sumatoria_dec_afp += monto_dec_afp;
                                     }
 
+                                  
 
 
-                                    if (iindice_essalud_seguro_regular != -1)
-                                        monto_essalud_seguro_regular += Convert.ToDecimal(odtPrueba.Rows[l][iindice_essalud_seguro_regular]);
+                                    if (iindice_essalud_cbbsp != -1)
+                                        monto_essalud_seguro_regular += Convert.ToDecimal(odtPrueba.Rows[l][iindice_essalud_cbbsp]);
 
                                     if (iindice_essalud_cbbsp != -1)
                                         monto_essalud_cbbsp += Convert.ToDecimal(odtPrueba.Rows[l][iindice_essalud_cbbsp]);
