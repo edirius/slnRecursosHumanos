@@ -323,6 +323,7 @@
             this.txtAltoColumnas.Size = new System.Drawing.Size(100, 20);
             this.txtAltoColumnas.TabIndex = 103;
             this.txtAltoColumnas.Visible = false;
+            this.txtAltoColumnas.TextChanged += new System.EventHandler(this.txtAltoColumnas_TextChanged);
             this.txtAltoColumnas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAltoColumnas_KeyPress);
             // 
             // frmPlanilla

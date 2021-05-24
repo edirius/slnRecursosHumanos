@@ -56,6 +56,7 @@
             this.chkVacio = new System.Windows.Forms.CheckBox();
             this.chkIngresos = new System.Windows.Forms.CheckBox();
             this.chkAportaciones = new System.Windows.Forms.CheckBox();
+            this.chkTodo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgAportaciones)).BeginInit();
             this.SuspendLayout();
@@ -291,7 +292,7 @@
             // chkVacio
             // 
             this.chkVacio.AutoSize = true;
-            this.chkVacio.Location = new System.Drawing.Point(417, 319);
+            this.chkVacio.Location = new System.Drawing.Point(417, 306);
             this.chkVacio.Name = "chkVacio";
             this.chkVacio.Size = new System.Drawing.Size(53, 17);
             this.chkVacio.TabIndex = 40;
@@ -321,11 +322,23 @@
             this.chkAportaciones.UseVisualStyleBackColor = true;
             this.chkAportaciones.CheckedChanged += new System.EventHandler(this.chkAportaciones_CheckedChanged);
             // 
+            // chkTodo
+            // 
+            this.chkTodo.AutoSize = true;
+            this.chkTodo.Location = new System.Drawing.Point(417, 329);
+            this.chkTodo.Name = "chkTodo";
+            this.chkTodo.Size = new System.Drawing.Size(51, 17);
+            this.chkTodo.TabIndex = 43;
+            this.chkTodo.Text = "Todo";
+            this.chkTodo.UseVisualStyleBackColor = true;
+            this.chkTodo.CheckedChanged += new System.EventHandler(this.chkTodo_CheckedChanged);
+            // 
             // frmSeleccionarConceptos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(535, 438);
+            this.Controls.Add(this.chkTodo);
             this.Controls.Add(this.chkAportaciones);
             this.Controls.Add(this.chkIngresos);
             this.Controls.Add(this.chkVacio);
@@ -371,5 +384,6 @@
         private System.Windows.Forms.CheckBox chkVacio;
         private System.Windows.Forms.CheckBox chkIngresos;
         private System.Windows.Forms.CheckBox chkAportaciones;
+        private System.Windows.Forms.CheckBox chkTodo;
     }
 }

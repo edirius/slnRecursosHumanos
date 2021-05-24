@@ -182,5 +182,17 @@ namespace CapaUsuario.ClasificadorMeta
         {
 
         }
+
+        private void chkTodo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkTodo.Checked)
+            {
+                dtgIngresos.Enabled = false;
+                chkAportaciones.Checked = false;
+                chkTotalAportaciones.Checked = false;
+                chkTotalIngresos.Checked = false;
+                ConceptoSeleccionado = "Todo";
+            }
+        }
     }
 }

@@ -2134,7 +2134,7 @@ namespace CapaUsuario.Reportes
                         odtPruebaCorta.Columns.Add("FECHA INICIO", typeof(string));
 
                         odtPruebaCorta.Columns.Add("SEC. FUNC.", typeof(string));
-                        odtPruebaCorta.Columns.Add("AFIL. AFP/SNP \n\n COMISION \n\n CUSP ", typeof(string));
+                        odtPruebaCorta.Columns.Add("AFIL. AFP/SNP \n\n COMIS. \n\n CUSP ", typeof(string));
 
                         decimal DivisionTrabajador = Math.Ceiling(total_tipo_a_trabajador / 2);
                         decimal DivisionEmpleador = Math.Ceiling(total_tipo_a_empleador / 2);
@@ -2815,6 +2815,15 @@ namespace CapaUsuario.Reportes
                             {
                                 switch (item.Concepto)
                                 {
+                                    case "Todo":
+                                        MontoConcepto = (total_ingresos_total + total_a_empleador_total).ToString("0.00");
+                                        break;
+                                    case "0122":
+                                        MontoConcepto = total_ingresos_total.ToString("0.00");
+                                        break;
+                                    case "2039":
+                                        MontoConcepto = total_ingresos_total.ToString("0.00");
+                                        break;
                                     case "0804":
                                         MontoConcepto = monto_essalud_seguro_regular.ToString("0.00");
                                         break;
@@ -3123,11 +3132,12 @@ namespace CapaUsuario.Reportes
                 if (i == 0) values[i] = 50;
                 if (i == 1) values[i] = 200;
                 if (i == 4) values[i] = 120;
-                if (i == 3) values[i] = 120;
+                if (i == 3) values[i] = 100;
 
                 if (i == dg.ColumnCount - 1) values[i] = 300;
                 if (i == dg.ColumnCount - 2) values[i] = 50;
                 if (i == 5) values[i] = 50;
+                if (i == 6) values[i] = 120;
             }
             return values;
         }
@@ -3226,7 +3236,7 @@ namespace CapaUsuario.Reportes
             iindice_nombre = BuscarIndiceColumna(odtPruebaCorta, "NOMBRE COMPLETO");
             iindice_cargo = BuscarIndiceColumna(odtPruebaCorta, "CARGO");
             iindice_fecha = BuscarIndiceColumna(odtPruebaCorta, "FECHA INICIO");
-            iindice_afi_com_cus = BuscarIndiceColumna(odtPruebaCorta, "AFIL. AFP/SNP \n\n COMISION \n\n CUSP ");
+            iindice_afi_com_cus = BuscarIndiceColumna(odtPruebaCorta, "AFIL. AFP/SNP \n\n COMIS. \n\n CUSP ");
 
             for (int i = 0; i < dgvPrueba.RowCount - 1; i++)
             {
@@ -3343,7 +3353,7 @@ namespace CapaUsuario.Reportes
             using (FileStream stream = new FileStream(folderPath + "Planilla.pdf", FileMode.Create))
             {
 
-                Document pdfDoc = new Document(PageSize.A4, 9, 9, 40, 30);
+                Document pdfDoc = new Document(PageSize.A4, 9, 9, 30, 30);
                 pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
 
                 
@@ -3352,11 +3362,18 @@ namespace CapaUsuario.Reportes
                 paragraph.Alignment = Element.ALIGN_CENTER;
                 paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
                 paragraph.Add("MUNICIPALIDAD DISTRITAL DE MARAS \n UNIDAD DE PERSONAL \n ");
-
+                paragraph.SpacingBefore = 0f;
+                paragraph.SpacingAfter = 0f;
+                
+                
                 Paragraph paragraph2 = new Paragraph();
                 paragraph2.Alignment = Element.ALIGN_RIGHT;
                 paragraph2.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
                 paragraph2.Add("PLANILLA Nº" + sNumeroPlanilla + " - " + saño + " \n ");
+                paragraph2.SpacingBefore = 0f;
+                paragraph2.SpacingAfter = 0f;
+                paragraph2.SetLeading(0, 0);
+
 
                 Paragraph paragraph3 = new Paragraph();
                 paragraph3.Alignment = Element.ALIGN_CENTER;
@@ -3364,11 +3381,17 @@ namespace CapaUsuario.Reportes
                 /*paragraph3.Add("PLANILLA DE RENUMERACIONES DEL PERSONAL DE " + sRegimenLaboral + " DE " + saño + " DE " + smes + ".");*/
                 /*Titulo de planilla */
                 paragraph3.Add(sdescripcion.ToString().ToUpper() + " DE " + smes + " DE " + saño + ".");
+                paragraph3.SpacingBefore = 0f;
+                paragraph3.SpacingAfter = 0f;
+
 
                 Paragraph paragraph4 = new Paragraph();
                 paragraph4.Alignment = Element.ALIGN_LEFT;
                 paragraph4.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
                 paragraph4.IndentationLeft = 110f;
+                paragraph4.SpacingAfter = 0;
+                paragraph4.SpacingBefore = 0;
+                
 
                 string smeta_numero_con_ceros = string.Format("{0:000}", smeta_numero);
                 
@@ -3379,6 +3402,9 @@ namespace CapaUsuario.Reportes
                 paragraph40.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
                 paragraph40.IndentationLeft = 110f;
                 paragraph4.Add("FUENTE FINANCIAMIENTO:" + sfuentefinanciamiento + ". \n\n");
+                paragraph40.SpacingAfter = 0;
+                paragraph40.SpacingBefore = 0;
+             
 
                 Paragraph paragraph5 = new Paragraph();
                 paragraph5.Alignment = Element.ALIGN_CENTER;
@@ -3426,11 +3452,11 @@ namespace CapaUsuario.Reportes
 
                 string ruta_imagen = ruta + "\\logo-muni-fw.png";
 
-                string ruta_cuadro_oficinas = ruta + "\\oficinas.png";
+                string ruta_cuadro_oficinas = ruta + "\\LogoBicentenario2021.jpeg";
 
                 iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
                 logo.ScalePercent(64f);
-                logo.SetAbsolutePosition(12f, pdfDoc.PageSize.Height-36f-100f);
+                logo.SetAbsolutePosition(12f, pdfDoc.PageSize.Height-100f);
 
                 iTextSharp.text.Image oficinas = iTextSharp.text.Image.GetInstance(ruta_cuadro_oficinas);
                 oficinas.ScalePercent(64f);
@@ -3443,7 +3469,7 @@ namespace CapaUsuario.Reportes
                 //tabla que continene rrhh, gerencia municipal, presupuesto y contabilidad
                 PdfPTable tabla_firmas;
                 PdfPTable tabla_firmas2;
-                if (numeroRegimenLaboral == 1 || numeroRegimenLaboral == 2)
+                if (numeroRegimenLaboral == 1 || numeroRegimenLaboral == 2 || numeroRegimenLaboral == 4)
                 {
                     tabla_firmas = new PdfPTable(4);
                     tabla_firmas2 = new PdfPTable(2);
@@ -3453,22 +3479,22 @@ namespace CapaUsuario.Reportes
                     Paragraph firma_rrhh = new Paragraph();
                     firma_rrhh.Alignment = Element.ALIGN_CENTER;
                     firma_rrhh.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_rrhh.Add(" ............................................. \n RECURSOS HUMANOS");
+                    firma_rrhh.Add("............................................. \n RECURSOS HUMANOS");
 
                     Paragraph firma_gm = new Paragraph();
                     firma_gm.Alignment = Element.ALIGN_CENTER;
                     firma_gm.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_gm.Add(" ............................................... \n GERENCIA MUNICIPAL");
+                    firma_gm.Add("............................................. \n GERENCIA MUNICIPAL");
 
                     Paragraph firma_pre = new Paragraph();
                     firma_pre.Alignment = Element.ALIGN_CENTER;
                     firma_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_pre.Add(" .................................... \n CONTABILIDAD Y PRESUPUESTO");
+                    firma_pre.Add("............................................. \n CONTABILIDAD Y PRESUPUESTO ");
 
                     Paragraph firma_con = new Paragraph();
                     firma_con.Alignment = Element.ALIGN_CENTER;
                     firma_con.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_con.Add(" .................................... \n TESORERIA");
+                    firma_con.Add("............................................. \n       TESORERIA");
                     //aÑADIENDO FIRMAS A LA TABLA FIRMAS
                     tabla_firmas.AddCell(firma_rrhh);
                     tabla_firmas.AddCell(firma_gm);
@@ -3529,6 +3555,19 @@ namespace CapaUsuario.Reportes
                 MultiColumnText column_3 = new MultiColumnText();
                 column_3.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 4);
 
+                PdfPTable tabla_Encabezado = new PdfPTable(3);
+                tabla_Encabezado.DefaultCell.BorderWidth = 0;
+
+                Paragraph vacio = new Paragraph();
+                vacio.Alignment = Element.ALIGN_CENTER;
+                vacio.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+
+                tabla_Encabezado.SetWidths(new float[] { 30, 120, 40 });
+                //tabla_Encabezado.SetWidthPercentage(new float[] { 20f, 60f, 20f }, iTextSharp.text.PageSize.A4.Rotate());
+                tabla_Encabezado.AddCell(vacio);
+                tabla_Encabezado.AddCell(paragraph3);
+                tabla_Encabezado.AddCell(paragraph2);
+
                 //Agrupando tabla titular
                 tabla_bonus.AddCell(pdfTableRedondear);
                 tabla_bonus.AddCell(pdfTable2);
@@ -3540,12 +3579,13 @@ namespace CapaUsuario.Reportes
                 //Agregando una columna 
                 column_one.AddElement(paragraph);
                 //column_one.AddElement(logo);
-                column_one.AddElement(paragraph2);
-                column_one.AddElement(paragraph3);
+                //column_one.AddElement(paragraph2);
+                //column_one.AddElement(paragraph3);
+                column_one.AddElement(tabla_Encabezado);
                 column_one.AddElement(paragraph4);
                 column_one.AddElement(paragraph40);
                 column_one.AddElement(pdfTable);
-                column_one.AddElement(paragraph5);
+                //column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph6);
                 column_one.AddElement(tabla_bonus);
                 column_one.AddElement(paragraph5);
@@ -3553,7 +3593,7 @@ namespace CapaUsuario.Reportes
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph5);
-                column_one.AddElement(paragraph5);
+                //column_one.AddElement(paragraph5);
                 column_one.AddElement(tabla_firmas);
                 if (numeroRegimenLaboral == 3)
                 {
@@ -3765,7 +3805,7 @@ namespace CapaUsuario.Reportes
 
                 string ruta_imagen = ruta + "\\logo-muni-fw.png";
 
-                string ruta_cuadro_oficinas = ruta + "\\oficinas.png";
+                string ruta_cuadro_oficinas = ruta + "\\LogoBicentenario2021.jpeg";
 
                 iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
                 logo.ScalePercent(64f);
@@ -4027,6 +4067,11 @@ namespace CapaUsuario.Reportes
                 txtAltoColumnas.Visible = false;
                 columnasFijas = false;
             }
+        }
+
+        private void txtAltoColumnas_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
