@@ -124,6 +124,40 @@ namespace CapaDeNegocios.DatosLaborales
                 throw new cReglaNegociosException("Error en traer el periodo del trabajador: " + ex.Message);
             }
         }
-    
+
+        public cRegimenPensionarioTrabajador TraerRegimenPensionario(int idtRegimenTrabajador)
+        {
+
+            try
+            {
+
+
+                DataTable listaPeriodos;
+                listaPeriodos = Conexion.GDatos.TraerDataTable("spTraerRegimenPensionarioTrabajador", idtRegimenTrabajador);
+
+                if (listaPeriodos.Rows.Count == 0)
+                {
+                    throw new cReglaNegociosException("Error, el regimen no esta activo ");
+                }
+
+                cRegimenPensionarioTrabajador nuevoPeriodoTrabajador = new cRegimenPensionarioTrabajador();
+                nuevoPeriodoTrabajador.IdtRegimenPensionarioTrabajador = Convert.ToInt16(listaPeriodos.Rows[0][0].ToString());
+                nuevoPeriodoTrabajador.sfechainicio = listaPeriodos.Rows[0][1].ToString();
+                nuevoPeriodoTrabajador.sfechafin = "";
+                nuevoPeriodoTrabajador.CUSPP = listaPeriodos.Rows[0][3].ToString();
+                nuevoPeriodoTrabajador.TipoComision = listaPeriodos.Rows[0][4].ToString();
+                nuevoPeriodoTrabajador.IdtAFP = Convert.ToInt16(listaPeriodos.Rows[0][5].ToString());
+                nuevoPeriodoTrabajador.IdtPeriodoTrabajador = Convert.ToInt16(listaPeriodos.Rows[0][6].ToString());
+
+
+
+                return nuevoPeriodoTrabajador;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en traer el periodo del trabajador: " + ex.Message);
+            }
+        }
+
     }
 }

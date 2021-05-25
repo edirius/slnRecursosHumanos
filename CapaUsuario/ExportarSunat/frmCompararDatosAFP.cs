@@ -223,5 +223,29 @@ namespace CapaUsuario.ExportarSunat
             }
            
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dtgDatosPlanilla.SelectedRows.Count > 0)
+                {
+                    CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+                    miRegimenPensionarioTrabajador = miRegimenPensionarioTrabajador.TraerRegimenPensionario(Convert.ToInt16(dtgDatosPlanilla.SelectedRows[0].Cells[7].Value));
+
+                    Trabajador.frmRegimenPensionarioTrabajador fRegimenPensionarioTrabajador = new Trabajador.frmRegimenPensionarioTrabajador();
+                    fRegimenPensionarioTrabajador.RecibirDatos(miRegimenPensionarioTrabajador.IdtRegimenPensionarioTrabajador, miRegimenPensionarioTrabajador.FechaInicio, miRegimenPensionarioTrabajador.FechaFin, miRegimenPensionarioTrabajador.CUSPP, miRegimenPensionarioTrabajador.TipoComision, miRegimenPensionarioTrabajador.IdtAFP, "", miRegimenPensionarioTrabajador.IdtPeriodoTrabajador, 2,miRegimenPensionarioTrabajador.FechaInicio, "");
+                    if (fRegimenPensionarioTrabajador.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en actualizar la afp. " + ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -1379,7 +1379,7 @@ namespace CapaUsuario.Planilla
                 {
                     sEssalud = sRemuneracionBasica * 9 / 100;
                 }
-                else if (sRemuneracion >= sRemuneracionBasica && sRemuneracion <= sUIT * 30 / 100)
+                else if (sRemuneracion >= sRemuneracionBasica && sRemuneracion <= sUIT * 55 / 100)
                 {
                     sEssalud = sRemuneracion * 9 / 100;
                 }
