@@ -961,14 +961,14 @@ namespace CapaUsuario.Planilla
                     else
                     {
                         
-                        double result = IngresosAfectos(fila, sma_trabajador[i, 1].ToString(), sma_trabajador[i, 3].ToString());
+                        decimal result = IngresosAfectos(fila, sma_trabajador[i, 1].ToString(), sma_trabajador[i, 3].ToString());
                         if (result == 0 && (sma_trabajador[i, 1].ToString() =="0605"))
                         {
                             dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value;
 
                             if (!(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value == null))
                             {
-                                if (double.TryParse(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value.ToString(), out result))
+                                if (decimal.TryParse(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value.ToString(), out result))
                                 {
                                     total_atrabajador += decimal.Round(Convert.ToDecimal(result), 2);
                                 }
@@ -1033,7 +1033,7 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        double result = IngresosAfectos(fila, smdescuentos[i, 1].ToString(), smdescuentos[i, 3].ToString());
+                        decimal result = IngresosAfectos(fila, smdescuentos[i, 1].ToString(), smdescuentos[i, 3].ToString());
                         dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", result);
                         total_descuentos += decimal.Round(Convert.ToDecimal(result), 2);
                     }
@@ -1071,7 +1071,7 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        double result = IngresosAfectos(fila, sma_empleador[i, 1].ToString(), sma_empleador[i, 3].ToString());
+                        decimal result = IngresosAfectos(fila, sma_empleador[i, 1].ToString(), sma_empleador[i, 3].ToString());
                         dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value = String.Format("{0:0.00}", result);
                         total_aempleador += decimal.Round(Convert.ToDecimal(result), 2);
                     }
@@ -1091,7 +1091,7 @@ namespace CapaUsuario.Planilla
             dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + con_empleador].Value = String.Format("{0:0.00}", total_aempleador);
         }
 
-        double IngresosAfectos(int fila, string codigo, string formula)
+        decimal IngresosAfectos(int fila, string codigo, string formula)
         {
             int celda_inicio_ingresos = 14;
             int celda_inicio_descuentos = 19;
@@ -1274,7 +1274,10 @@ namespace CapaUsuario.Planilla
                 //result = decimal.Round(Convert.ToDecimal(essalud), 2);
                 result = Convert.ToDouble(essalud);
             }
-            return Math.Round(result, 2);
+
+            decimal result99 = Convert.ToDecimal(result);
+            //return Math.Round(result, 2, MidpointRounding.AwayFromZero);
+            return Math.Round(result99, 2, MidpointRounding.AwayFromZero);
         }
 
         private void CalcularTotalDescuentos(int fila)

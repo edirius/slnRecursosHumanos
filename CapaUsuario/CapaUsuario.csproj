@@ -330,6 +330,12 @@
     <Compile Include="Planilla\frmRenta5taProyectado.Designer.cs">
       <DependentUpon>frmRenta5taProyectado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reloj\frmAdministrarReloj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reloj\frmAdministrarReloj.Designer.cs">
+      <DependentUpon>frmAdministrarReloj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\crReporteContratos.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1519,6 +1525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Planilla\frmRenta5taProyectado.resx">
       <DependentUpon>frmRenta5taProyectado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reloj\frmAdministrarReloj.resx">
+      <DependentUpon>frmAdministrarReloj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\crReporteContratos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

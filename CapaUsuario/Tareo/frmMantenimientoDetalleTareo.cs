@@ -402,264 +402,294 @@ namespace CapaUsuario.Tareo
                 }
                 else if (dgvDetalleTareo.Rows[e.RowIndex].Cells[2].Selected == true)
                 {
-                    if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value) == "")
+                    //if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value) == "")
+                    //{
+                    //    if (MessageBox.Show("Está seguro que desea quitar al Trabajador del Tareo de Obra", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    //    {
+                    //        return;
+                    //    }
+                    //    dgvDetalleTareo.Rows.RemoveAt(e.RowIndex);
+                    //}
+                    //else
+                    //{
+                    //    if (MessageBox.Show("Está seguro que desea eliminar al Trabajador del Tareo de Obra", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    //    {
+                    //        return;
+                    //    }
+                    //    miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value);
+                    //    miDetalleTareo.EliminarDetalleTareo(miDetalleTareo.IdTDetalleTareo);
+                    //    CargarDatos();
+                    //}
+                }
+                else if (e.ColumnIndex > 12 && dgvDetalleTareo.CurrentCell.ColumnIndex < (dgvDetalleTareo.ColumnCount - 2))
+                {
+                    if (dgvDetalleTareo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null || dgvDetalleTareo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "0")
                     {
-                        if (MessageBox.Show("Está seguro que desea quitar al Trabajador del Tareo de Obra", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
-                        {
-                            return;
-                        }
-                        dgvDetalleTareo.Rows.RemoveAt(e.RowIndex);
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "X";
                     }
                     else
                     {
-                        if (MessageBox.Show("Está seguro que desea eliminar al Trabajador del Tareo de Obra", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
-                        {
-                            return;
-                        }
-                        miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(dgvDetalleTareo.Rows[e.RowIndex].Cells[0].Value);
-                        miDetalleTareo.EliminarDetalleTareo(miDetalleTareo.IdTDetalleTareo);
-                        CargarDatos();
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "0";
                     }
+                    dgvDetalleTareo.Rows[e.RowIndex].Cells[dgvDetalleTareo.ColumnCount - 2].Value = TotalDias(e.RowIndex);
+                    dgvDetalleTareo.Rows[e.RowIndex].Cells[dgvDetalleTareo.ColumnCount - 1].Value = TotalHoras(e.RowIndex);
                 }
             }
         }
 
         private void dgvDetalleTareo_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Selected == true)
+            try
             {
-                int z = 0;
-                int contador = 0;
-                string IdtTrabajador = "";
-                string Nombre = "";
-                string DNI = "";
-                string Sexo = "";
-                string FechaInicio = "";
-                int IdtCargo = 0;
-                string Cargo = "";
-                string AFP = "";
 
-                int fila = e.RowIndex;
-                string DNIingresado = dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value.ToString();
-
-                for (int i = 0; i < dgvDetalleTareo.Rows.Count - 1; i++)
+                if (dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Selected == true)
                 {
-                    if (i != fila)
+                    int z = 0;
+                    int contador = 0;
+                    string IdtTrabajador = "";
+                    string Nombre = "";
+                    string DNI = "";
+                    string Sexo = "";
+                    string FechaInicio = "";
+                    int IdtCargo = 0;
+                    string Cargo = "";
+                    string AFP = "";
+
+                    int fila = e.RowIndex;
+                    string DNIingresado = dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value.ToString();
+
+                    for (int i = 0; i < dgvDetalleTareo.Rows.Count - 1; i++)
                     {
-                        if (Convert.ToString(dgvDetalleTareo.Rows[i].Cells[6].Value) == DNIingresado)
+                        if (i != fila)
                         {
-                            z = 1;
+                            if (Convert.ToString(dgvDetalleTareo.Rows[i].Cells[6].Value) == DNIingresado)
+                            {
+                                z = 1;
+                            }
                         }
                     }
-                }
-                if (z != 0)
-                {
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = "";
-                    MessageBox.Show("El trabajador ya se encuentra en el tareo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                foreach (DataRow row in oDataTrabajador.Select("dni = '" + dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value + "'"))
-                {
-                    contador += 1;
-                    IdtTrabajador = row[0].ToString();
-                    if (ComprobarBajaTrabajador(Convert.ToInt32(IdtTrabajador)) == true)
+                    if (z != 0)
                     {
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = "";
-                        if (MessageBox.Show("El trabajador se encuentra de Baja, desea darle de alta?", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Error)== DialogResult.Yes)
-                        {
-                            if (miTareo.Descripcion == "PERSONAL OBRERO")
-                            {
-                                Trabajador.frmNuevoObrero fNuevoObrero = new Trabajador.frmNuevoObrero();
-                                fNuevoObrero.RecibirDatos(miMeta.Codigo);
-                                fNuevoObrero.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt32(IdtTrabajador));
-
-                                fNuevoObrero.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoObrero.miTrabajador.IdTrabajador);
-                                fNuevoObrero.miPeriodoTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
-                                fNuevoObrero.miPeriodoTrabajador.FechaFin = "";
-                                
-
-                                CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador AuxiliarRegimenPensionario = miRegimenPensionarioTrabajor.TraerUltimoRegimenPensionario(fNuevoObrero.miPeriodoTrabajador.IdtPeriodoTrabajador);
-
-                                fNuevoObrero.miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
-                                fNuevoObrero.miRegimenPensionarioTrabajador.CUSPP = AuxiliarRegimenPensionario.CUSPP;
-                                fNuevoObrero.miRegimenPensionarioTrabajador.IdtAFP = AuxiliarRegimenPensionario.IdtAFP;
-                                fNuevoObrero.miRegimenPensionarioTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
-
-                                
-                                fNuevoObrero.miRegimenSaludTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador();
-
-                                fNuevoObrero.miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
-                                fNuevoObrero.fechaInicio = miTareo.FechaInicio;
-                                fNuevoObrero.fechaFin = miTareo.FechaFin;
-                                fNuevoObrero.modoEdicion = true;
-                                fNuevoObrero.modoAltaTrabajador = true;
-                                if (Convert.ToDateTime(fNuevoObrero.miPeriodoTrabajador.FechaInicio) < fNuevoObrero.fechaInicio)
-                                {
-                                    MessageBox.Show("No se puede modificar trabajadores que ya han sido ingresados en tareos anteriores o con fecha de inicio anterior a la fecha del tareo.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    if (fNuevoObrero.ShowDialog() == DialogResult.OK)
-                                    {
-                                        MessageBox.Show("Trabajador Agregado");
-
-                                        oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
-                                        oDataAFP = miAFP.ObtenerListaAFP();
-                                        oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
-                                        oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
-                                    }
-                                }
-
-                            }
-                            if (miTareo.Descripcion == "RACIONAMIENTO")
-                            {
-                                Trabajador.frmNuevoObreroRacionamiento fNuevoObreroRacionamiento = new Trabajador.frmNuevoObreroRacionamiento();
-                                fNuevoObreroRacionamiento.RecibirDatos(miMeta.Codigo);
-                                fNuevoObreroRacionamiento.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt32(IdtTrabajador));
-
-                                fNuevoObreroRacionamiento.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoObreroRacionamiento.miTrabajador.IdTrabajador);
-                                fNuevoObreroRacionamiento.miPeriodoTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
-                                fNuevoObreroRacionamiento.miPeriodoTrabajador.FechaFin = "";
-
-                                fNuevoObreroRacionamiento.fechaInicio = miTareo.FechaInicio;
-                                fNuevoObreroRacionamiento.fechaFin = miTareo.FechaFin;
-                                fNuevoObreroRacionamiento.modoEdicion = true;
-                                fNuevoObreroRacionamiento.modoAltatrabajador = true;
-                                if (Convert.ToDateTime(fNuevoObreroRacionamiento.miPeriodoTrabajador.FechaInicio) < fNuevoObreroRacionamiento.fechaInicio)
-                                {
-                                    MessageBox.Show("No se puede modificar trabajadores que ya han sido ingresados en tareos anteriores o con fecha de inicio anterior a la fecha del tareo.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-
-                                else
-                                {
-                                    if (fNuevoObreroRacionamiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                                    {
-                                        MessageBox.Show("Trabajador agregado");
-
-                                        oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
-                                        oDataAFP = miAFP.ObtenerListaAFP();
-                                        oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
-                                        oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
-                                    }
-                                }
-
-                            }
-
-                            if (miTareo.Descripcion == "PERSONAL TECNICO")
-                            {
-                                MessageBox.Show("No se puede modificar personal tecnico, consulte al area de personal para su modificacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                        else
-                        {
-                            return;
-                        }
-                        
+                        MessageBox.Show("El trabajador ya se encuentra en el tareo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
-                    Nombre = row[2].ToString() + " " + row[3].ToString() + ", " + row[4].ToString();
-                    DNI = row[1].ToString();
-                    Sexo = row[5].ToString();
-                    foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + Convert.ToInt32(row[0].ToString()) + "'"))
+
+                    foreach (DataRow row in oDataTrabajador.Select("dni = '" + dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value + "'"))
                     {
-                        FechaInicio = rowPeriodoTrabajador[1].ToString();
-                        foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                        contador += 1;
+                        IdtTrabajador = row[0].ToString();
+                        if (ComprobarBajaTrabajador(Convert.ToInt32(IdtTrabajador)) == true)
                         {
-                            foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + Convert.ToInt32(rowRegimenTrabajador[15].ToString()) + "'"))
+                            dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = "";
+                            if (MessageBox.Show("El trabajador se encuentra de Baja, desea darle de alta?", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
                             {
-                                IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
-                                Cargo = rowCargo[1].ToString();
+                                if (miTareo.Descripcion == "PERSONAL OBRERO")
+                                {
+                                    Trabajador.frmNuevoObrero fNuevoObrero = new Trabajador.frmNuevoObrero();
+                                    fNuevoObrero.RecibirDatos(miMeta.Codigo);
+                                    fNuevoObrero.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt32(IdtTrabajador));
+
+                                    fNuevoObrero.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoObrero.miTrabajador.IdTrabajador);
+                                    fNuevoObrero.miPeriodoTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
+                                    fNuevoObrero.miPeriodoTrabajador.FechaFin = "";
+
+
+                                    CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador AuxiliarRegimenPensionario = miRegimenPensionarioTrabajor.TraerUltimoRegimenPensionario(fNuevoObrero.miPeriodoTrabajador.IdtPeriodoTrabajador);
+
+                                    fNuevoObrero.miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+                                    fNuevoObrero.miRegimenPensionarioTrabajador.CUSPP = AuxiliarRegimenPensionario.CUSPP;
+                                    fNuevoObrero.miRegimenPensionarioTrabajador.IdtAFP = AuxiliarRegimenPensionario.IdtAFP;
+                                    fNuevoObrero.miRegimenPensionarioTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
+
+
+                                    fNuevoObrero.miRegimenSaludTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador();
+
+                                    fNuevoObrero.miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                                    fNuevoObrero.fechaInicio = miTareo.FechaInicio;
+                                    fNuevoObrero.fechaFin = miTareo.FechaFin;
+                                    fNuevoObrero.modoEdicion = true;
+                                    fNuevoObrero.modoAltaTrabajador = true;
+                                    if (Convert.ToDateTime(fNuevoObrero.miPeriodoTrabajador.FechaInicio) < fNuevoObrero.fechaInicio)
+                                    {
+                                        MessageBox.Show("No se puede modificar trabajadores que ya han sido ingresados en tareos anteriores o con fecha de inicio anterior a la fecha del tareo.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        if (fNuevoObrero.ShowDialog() == DialogResult.OK)
+                                        {
+                                            MessageBox.Show("Trabajador Agregado");
+
+                                            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
+                                            oDataAFP = miAFP.ObtenerListaAFP();
+                                            oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
+                                            oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
+                                        }
+                                    }
+
+                                }
+                                if (miTareo.Descripcion == "RACIONAMIENTO")
+                                {
+                                    Trabajador.frmNuevoObreroRacionamiento fNuevoObreroRacionamiento = new Trabajador.frmNuevoObreroRacionamiento();
+                                    fNuevoObreroRacionamiento.RecibirDatos(miMeta.Codigo);
+                                    fNuevoObreroRacionamiento.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt32(IdtTrabajador));
+
+                                    fNuevoObreroRacionamiento.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoObreroRacionamiento.miTrabajador.IdTrabajador);
+                                    fNuevoObreroRacionamiento.miPeriodoTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
+                                    fNuevoObreroRacionamiento.miPeriodoTrabajador.FechaFin = "";
+
+                                    fNuevoObreroRacionamiento.fechaInicio = miTareo.FechaInicio;
+                                    fNuevoObreroRacionamiento.fechaFin = miTareo.FechaFin;
+                                    fNuevoObreroRacionamiento.modoEdicion = true;
+                                    fNuevoObreroRacionamiento.modoAltatrabajador = true;
+                                    if (Convert.ToDateTime(fNuevoObreroRacionamiento.miPeriodoTrabajador.FechaInicio) < fNuevoObreroRacionamiento.fechaInicio)
+                                    {
+                                        MessageBox.Show("No se puede modificar trabajadores que ya han sido ingresados en tareos anteriores o con fecha de inicio anterior a la fecha del tareo.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+
+                                    else
+                                    {
+                                        if (fNuevoObreroRacionamiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                                        {
+                                            MessageBox.Show("Trabajador agregado");
+
+                                            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
+                                            oDataAFP = miAFP.ObtenerListaAFP();
+                                            oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
+                                            oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
+                                        }
+                                    }
+
+                                }
+
+                                if (miTareo.Descripcion == "PERSONAL TECNICO")
+                                {
+                                    MessageBox.Show("No se puede modificar personal tecnico, consulte al area de personal para su modificacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
+                            {
+                                return;
+                            }
+
+                        }
+                        Nombre = row[2].ToString() + " " + row[3].ToString() + ", " + row[4].ToString();
+                        DNI = row[1].ToString();
+                        Sexo = row[5].ToString();
+                        foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + Convert.ToInt32(row[0].ToString()) + "'"))
+                        {
+                            FechaInicio = rowPeriodoTrabajador[1].ToString();
+                            foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                            {
+                                foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + Convert.ToInt32(rowRegimenTrabajador[15].ToString()) + "'"))
+                                {
+                                    IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
+                                    Cargo = rowCargo[1].ToString();
+                                }
+                            }
+                            foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                            {
+                                foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()) + "'"))
+                                {
+                                    AFP = rowAFP[1].ToString();
+                                }
                             }
                         }
-                        foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                        if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value) == "") { dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value = "I"; }
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[3].Value = e.RowIndex + 1;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[4].Value = IdtTrabajador;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[5].Value = Nombre;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = DNI;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[7].Value = Sexo;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[8].Value = Cargo;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[10].Value = FechaInicio;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[11].Value = AFP;
+                    }
+                    if (contador == 0)
+                    {
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[5].Value = "";
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = "";
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[7].Value = "";
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[8].Value = "";
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[10].Value = "";
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[11].Value = "";
+                        MessageBox.Show("No existe el Trabajador, para agregar hacer clic en Nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        if (TotalDias(e.RowIndex) == 0)
                         {
-                            foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()) + "'"))
-                            {
-                                AFP = rowAFP[1].ToString();
-                            }
+                            LlenarDias(e.RowIndex, "0");
                         }
                     }
-                    if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value) == "") { dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value = "I"; }
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[3].Value = e.RowIndex + 1;
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[4].Value = IdtTrabajador;
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[5].Value = Nombre;
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = DNI;
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[7].Value = Sexo;
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[8].Value = Cargo;
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[10].Value = FechaInicio;
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[11].Value = AFP;
                 }
-                if (contador == 0)
+                else if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value) == "")
                 {
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[5].Value = "";
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = "";
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[7].Value = "";
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[8].Value = "";
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[10].Value = "";
-                    dgvDetalleTareo.Rows[e.RowIndex].Cells[11].Value = "";
+                    dgvDetalleTareo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
                     MessageBox.Show("No existe el Trabajador, para agregar hacer clic en Nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                else
-                {
-                    if (TotalDias(e.RowIndex) == 0)
-                    {
-                        LlenarDias(e.RowIndex, "0");
-                    }
-                }
+                dgvDetalleTareo.Rows[e.RowIndex].Cells[dgvDetalleTareo.ColumnCount - 2].Value = TotalDias(e.RowIndex);
+                dgvDetalleTareo.Rows[e.RowIndex].Cells[dgvDetalleTareo.ColumnCount - 1].Value = TotalHoras(e.RowIndex);
             }
-            else if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value) == "")
+            catch (Exception ex)
             {
-                dgvDetalleTareo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
-                MessageBox.Show("No existe el Trabajador, para agregar hacer clic en Nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Error en buscar el dni: " + ex.Message);
             }
-            dgvDetalleTareo.Rows[e.RowIndex].Cells[dgvDetalleTareo.ColumnCount - 2].Value = TotalDias(e.RowIndex);
-            dgvDetalleTareo.Rows[e.RowIndex].Cells[dgvDetalleTareo.ColumnCount - 1].Value = TotalHoras(e.RowIndex);
+
         }
 
         private void dgvDetalleTareo_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            string titleText = dgvDetalleTareo.Columns[6].HeaderText;
-            if (titleText.Equals("DNI"))
+            if (dgvDetalleTareo.CurrentCell.ColumnIndex == 6)
             {
-                TextBox autoText = e.Control as TextBox;
-                if (autoText != null)
+                string titleText = dgvDetalleTareo.Columns[6].HeaderText;
+                if (titleText.Equals("DNI"))
                 {
-                    autoText.AutoCompleteMode = AutoCompleteMode.Suggest;
-                    autoText.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                    AutoCompleteStringCollection DataCollection = new AutoCompleteStringCollection();
-                    CargarTrabajador(DataCollection);
-                    autoText.AutoCompleteCustomSource = DataCollection;
+                    TextBox autoText = e.Control as TextBox;
+                    if (autoText != null)
+                    {
+                        autoText.AutoCompleteMode = AutoCompleteMode.Suggest;
+                        autoText.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                        AutoCompleteStringCollection DataCollection = new AutoCompleteStringCollection();
+                        CargarTrabajador(DataCollection);
+                        autoText.AutoCompleteCustomSource = DataCollection;
+                    }
                 }
             }
+            else
+            {
+
+            }
+           
         }
 
         private void dgvDetalleTareo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13)
-            {
-                int indiceFila;
-                if (dgvDetalleTareo.CurrentCell.RowIndex == 0)
-                {
-                    indiceFila = dgvDetalleTareo.CurrentCell.RowIndex + 1;
-                }
-                else
-                {
-                    indiceFila = dgvDetalleTareo.CurrentCell.RowIndex;
-                }
+            //if (e.KeyChar == 13)
+            //{
+            //    int indiceFila;
+            //    if (dgvDetalleTareo.CurrentCell.RowIndex == 0)
+            //    {
+            //        indiceFila = dgvDetalleTareo.CurrentCell.RowIndex + 1;
+            //    }
+            //    else
+            //    {
+            //        indiceFila = dgvDetalleTareo.CurrentCell.RowIndex;
+            //    }
                 
-                dgvDetalleTareo.Rows.Insert(indiceFila,1);
-                for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
-                {
-                    auxiliar = miTareo.FechaInicio.AddDays(i);
-                    if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
-                    {
-                        dgvDetalleTareo.Rows[indiceFila].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
-                    }
-                }
-                dgvDetalleTareo.CurrentCell = dgvDetalleTareo.CurrentRow.Cells[6];
-            }
+            //    dgvDetalleTareo.Rows.Insert(indiceFila,1);
+            //    for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+            //    {
+            //        auxiliar = miTareo.FechaInicio.AddDays(i);
+            //        if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
+            //        {
+            //            dgvDetalleTareo.Rows[indiceFila].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
+            //        }
+            //    }
+            //    dgvDetalleTareo.CurrentCell = dgvDetalleTareo.CurrentRow.Cells[6];
+            //}
         }
 
         public void RecibirDatos(int pIdTTareo, int pNumero, DateTime pFechaInicio, DateTime pFechaFin, string pDescripcion, string pNombre, int pIdTMeta)
@@ -1068,6 +1098,61 @@ namespace CapaUsuario.Tareo
             {
                 MessageBox.Show("Error al modificar el trabajador: " + ex.Message);
             }
+        }
+
+        private void btnInsertarNuevaFila_Click(object sender, EventArgs e)
+        {
+           
+                int indiceFila;
+            //if (dgvDetalleTareo.CurrentCell.RowIndex == 0)
+            //{
+            //    indiceFila = dgvDetalleTareo.CurrentCell.RowIndex + 1;
+            //}
+            //else
+            //{
+            //    indiceFila = dgvDetalleTareo.CurrentCell.RowIndex;
+            //}
+            indiceFila = dgvDetalleTareo.CurrentCell.RowIndex + 1;
+          
+            dgvDetalleTareo.Rows.Insert(indiceFila, 1);
+                for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
+                {
+                    auxiliar = miTareo.FechaInicio.AddDays(i);
+                    if (auxiliar.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        dgvDetalleTareo.Rows[indiceFila].Cells["col" + i.ToString()].Style.BackColor = Color.Red;
+                    }
+                }
+                dgvDetalleTareo.CurrentCell = dgvDetalleTareo.CurrentRow.Cells[6];
+            
+        }
+
+        private void btnEliminarFila_Click(object sender, EventArgs e)
+        {
+            int indiceFila;
+
+            indiceFila = dgvDetalleTareo.CurrentCell.RowIndex;
+
+            
+                if (Convert.ToString(dgvDetalleTareo.Rows[indiceFila].Cells[0].Value) == "")
+                {
+                    if (MessageBox.Show("Está seguro que desea quitar al Trabajador del Tareo de Obra", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    {
+                        return;
+                    }
+                    dgvDetalleTareo.Rows.RemoveAt(indiceFila);
+                }
+                else
+                {
+                    if (MessageBox.Show("Está seguro que desea eliminar al Trabajador del Tareo de Obra", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+                    {
+                        return;
+                    }
+                    miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(dgvDetalleTareo.Rows[indiceFila].Cells[0].Value);
+                    miDetalleTareo.EliminarDetalleTareo(miDetalleTareo.IdTDetalleTareo);
+                    CargarDatos();
+                }
+            
         }
     }
 }

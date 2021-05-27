@@ -167,6 +167,16 @@
     <Compile Include="Planillas\cPlanilla.cs" />
     <Compile Include="Planillas\cPlantillaPlanilla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reloj\cReloj.cs" />
+    <Compile Include="Reloj\cServidorReloj.cs" />
+    <Compile Include="Reloj\Enums\ClearFlag.cs" />
+    <Compile Include="Reloj\Info\DeviceTimeInfo.cs" />
+    <Compile Include="Reloj\Info\MachineInfo.cs" />
+    <Compile Include="Reloj\Info\UserIDInfo.cs" />
+    <Compile Include="Reloj\Info\UserInfo.cs" />
+    <Compile Include="Reloj\Utilidades\DeviceManipulator.cs" />
+    <Compile Include="Reloj\Utilidades\UniversalStatic.cs" />
+    <Compile Include="Reloj\Utilidades\ZkemClient.cs" />
     <Compile Include="RentaQuinta\cRentaQuinta.cs" />
     <Compile Include="RentaQuinta\cRentaQuintaMensual.cs" />
     <Compile Include="RentaQuinta\cRentaQuintaIngresos.cs" />
@@ -224,12 +234,24 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+    <COMReference Include="zkemkeeper">
+      <Guid>{FE9DED34-E159-408E-8490-B720A5E632C7}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.csproj">
       <Project>{0ad70875-403b-44ad-b9c7-47f27bbebb5d}</Project>
       <Name>CapaDeDatos</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="dlls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
