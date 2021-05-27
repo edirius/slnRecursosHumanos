@@ -10,22 +10,22 @@ namespace CapaDeNegocios.Reloj
 {
     public class cServidorReloj
     {
-        DeviceManipulator manipulator = new DeviceManipulator();
-        public ZkemClient objZkeeper;
-        private bool isDeviceConnected = false;
+        //DeviceManipulator manipulator = new DeviceManipulator();
+        //public ZkemClient objZkeeper;
+        //private bool isDeviceConnected = false;
 
-        public cReloj ObtenerDatosReloj()
-        {
-            try
-            {
-                cReloj nuevoReloj = new cReloj();
+        //public cReloj ObtenerDatosReloj()
+        //{
+        //    try
+        //    {
+        //        cReloj nuevoReloj = new cReloj();
 
-                return nuevoReloj;
-            }
-            catch (Exception ex)
-            {
-                throw new cReglaNegociosException("Error al obtener datos del reloj: " + ex.Message);
-            }
-        }
+        //        return nuevoReloj;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new cReglaNegociosException("Error al obtener datos del reloj: " + ex.Message);
+        //    }
+        //}
     }
 }
