@@ -98,16 +98,6 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
-        public void IngresarNuevaSalida(cExcepcionesAsistencia NuevaSalida)
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                throw new cReglaNegociosException("Error al ingresar Nueva salida: " + ex.Message);
-            }
-        }
+      
     }
 }

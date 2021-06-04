@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace CapaDeNegocios.Reloj.Utilidades
+namespace CapaDeNegocios.Reloj.Utilities
 {
     internal class UniversalStatic
     {

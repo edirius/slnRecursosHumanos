@@ -17,6 +17,9 @@ namespace CapaUsuario.Asistencia
 
         CapaDeNegocios.Asistencia.cTurnoDia oTurnoDia = new CapaDeNegocios.Asistencia.cTurnoDia();
 
+        CapaDeNegocios.Asistencia.cCatalogoAsistencia oCatalogo= new CapaDeNegocios.Asistencia.cCatalogoAsistencia();
+
+
         public frmNuevoHorario()
         {
             InitializeComponent();
@@ -31,19 +34,19 @@ namespace CapaUsuario.Asistencia
         private void CargarCombos()
         {
             List<CapaDeNegocios.Asistencia.cTurnoDia> ListaTurnosLunes = new List<CapaDeNegocios.Asistencia.cTurnoDia>();
-            ListaTurnosLunes = oTurnoDia.ListaTurnosDia();
+            ListaTurnosLunes = oCatalogo.ListaTurnosDiasyVacio();
             List<CapaDeNegocios.Asistencia.cTurnoDia> ListaTurnosMartes = new List<CapaDeNegocios.Asistencia.cTurnoDia>();
-            ListaTurnosMartes = oTurnoDia.ListaTurnosDia();
+            ListaTurnosMartes = oCatalogo.ListaTurnosDiasyVacio();
             List<CapaDeNegocios.Asistencia.cTurnoDia> ListaTurnosMiercoles = new List<CapaDeNegocios.Asistencia.cTurnoDia>();
-            ListaTurnosMiercoles = oTurnoDia.ListaTurnosDia();
+            ListaTurnosMiercoles = oCatalogo.ListaTurnosDiasyVacio();
             List<CapaDeNegocios.Asistencia.cTurnoDia> ListaTurnosJueves = new List<CapaDeNegocios.Asistencia.cTurnoDia>();
-            ListaTurnosJueves = oTurnoDia.ListaTurnosDia();
+            ListaTurnosJueves = oCatalogo.ListaTurnosDiasyVacio();
             List<CapaDeNegocios.Asistencia.cTurnoDia> ListaTurnosViernes = new List<CapaDeNegocios.Asistencia.cTurnoDia>();
-            ListaTurnosViernes = oTurnoDia.ListaTurnosDia();
+            ListaTurnosViernes = oCatalogo.ListaTurnosDiasyVacio();
             List<CapaDeNegocios.Asistencia.cTurnoDia> ListaTurnosSabado = new List<CapaDeNegocios.Asistencia.cTurnoDia>();
-            ListaTurnosSabado = oTurnoDia.ListaTurnosDia();
+            ListaTurnosSabado = oCatalogo.ListaTurnosDiasyVacio();
             List<CapaDeNegocios.Asistencia.cTurnoDia> ListaTurnosDomingo = new List<CapaDeNegocios.Asistencia.cTurnoDia>();
-            ListaTurnosDomingo = oTurnoDia.ListaTurnosDia();
+            ListaTurnosDomingo = oCatalogo.ListaTurnosDiasyVacio();
 
             cboTurnoLunes.DataSource = ListaTurnosLunes;
             cboTurnoLunes.DisplayMember = "NombreTurnoDia";

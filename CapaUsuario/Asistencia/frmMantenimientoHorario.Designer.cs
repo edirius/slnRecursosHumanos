@@ -34,7 +34,7 @@
             this.btnModificarHorario = new System.Windows.Forms.Button();
             this.btnNuevoHorario = new System.Windows.Forms.Button();
             this.btnEliminarHorario = new System.Windows.Forms.Button();
-            this.colCodigoHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombreHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTurnoLunes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTurnoMartes = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +54,7 @@
             this.dtgListaMantenimeintoHorarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgListaMantenimeintoHorarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaMantenimeintoHorarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colCodigoHorario,
+            this.CodigoHorario,
             this.colNombreHorario,
             this.colTurnoLunes,
             this.colTurnoMartes,
@@ -66,6 +66,7 @@
             this.dtgListaMantenimeintoHorarios.Location = new System.Drawing.Point(12, 52);
             this.dtgListaMantenimeintoHorarios.Name = "dtgListaMantenimeintoHorarios";
             this.dtgListaMantenimeintoHorarios.ReadOnly = true;
+            this.dtgListaMantenimeintoHorarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListaMantenimeintoHorarios.Size = new System.Drawing.Size(587, 149);
             this.dtgListaMantenimeintoHorarios.TabIndex = 0;
             // 
@@ -83,6 +84,7 @@
             this.btnModificarHorario.Text = "&Modificar Horario";
             this.btnModificarHorario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnModificarHorario.UseVisualStyleBackColor = false;
+            this.btnModificarHorario.Click += new System.EventHandler(this.btnModificarHorario_Click);
             // 
             // btnNuevoHorario
             // 
@@ -114,14 +116,15 @@
             this.btnEliminarHorario.Text = "&Eliminar Horario";
             this.btnEliminarHorario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEliminarHorario.UseVisualStyleBackColor = false;
+            this.btnEliminarHorario.Click += new System.EventHandler(this.btnEliminarHorario_Click);
             // 
-            // colCodigoHorario
+            // CodigoHorario
             // 
-            this.colCodigoHorario.DataPropertyName = "CodigoHorario";
-            this.colCodigoHorario.HeaderText = "Codigo";
-            this.colCodigoHorario.Name = "colCodigoHorario";
-            this.colCodigoHorario.ReadOnly = true;
-            this.colCodigoHorario.Width = 50;
+            this.CodigoHorario.DataPropertyName = "CodigoHorario";
+            this.CodigoHorario.HeaderText = "Codigo";
+            this.CodigoHorario.Name = "CodigoHorario";
+            this.CodigoHorario.ReadOnly = true;
+            this.CodigoHorario.Width = 50;
             // 
             // colNombreHorario
             // 
@@ -200,6 +203,7 @@
             this.Name = "frmMantenimientoHorario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Horario";
+            this.Load += new System.EventHandler(this.frmMantenimientoHorario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaMantenimeintoHorarios)).EndInit();
             this.ResumeLayout(false);
 
@@ -211,7 +215,7 @@
         private System.Windows.Forms.Button btnModificarHorario;
         private System.Windows.Forms.Button btnNuevoHorario;
         private System.Windows.Forms.Button btnEliminarHorario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCodigoHorario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoHorario;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombreHorario;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTurnoLunes;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTurnoMartes;

@@ -10,7 +10,7 @@ namespace CapaDeNegocios.Asistencia
     {
         int _CodigoTurno;
         string _NombreTurno;
-        TimeSpan _ToleranciaInicio;
+        int _ToleranciaInicio;
         DateTime _InicioTurno;
         DateTime _FinTurno;
 
@@ -47,7 +47,7 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
-        public TimeSpan ToleranciaInicio
+        public int ToleranciaInicio
         {
             get
             {

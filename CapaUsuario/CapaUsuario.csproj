@@ -112,6 +112,12 @@
     <Compile Include="AFP\frmListaAFPs.Designer.cs">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Asistencia\AsignarCodigoReloj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\AsignarCodigoReloj.Designer.cs">
+      <DependentUpon>AsignarCodigoReloj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Asistencia\frmAsistenciaMes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,12 @@
     </Compile>
     <Compile Include="Asistencia\frmListaDiasFestivos.Designer.cs">
       <DependentUpon>frmListaDiasFestivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmListaSalidas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmListaSalidas.Designer.cs">
+      <DependentUpon>frmListaSalidas.cs</DependentUpon>
     </Compile>
     <Compile Include="Asistencia\frmListaTurnos.cs">
       <SubType>Form</SubType>
@@ -335,6 +347,12 @@
     </Compile>
     <Compile Include="Reloj\frmAdministrarReloj.Designer.cs">
       <DependentUpon>frmAdministrarReloj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reloj\frmAsistenciaReloj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reloj\frmAsistenciaReloj.Designer.cs">
+      <DependentUpon>frmAsistenciaReloj.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\crReporteContratos.cs">
       <AutoGen>True</AutoGen>
@@ -1361,6 +1379,9 @@
     <EmbeddedResource Include="AFP\frmListaAFPs.resx">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\AsignarCodigoReloj.resx">
+      <DependentUpon>AsignarCodigoReloj.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Asistencia\frmAsistenciaMes.resx">
       <DependentUpon>frmAsistenciaMes.cs</DependentUpon>
     </EmbeddedResource>
@@ -1369,6 +1390,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Asistencia\frmListaDiasFestivos.resx">
       <DependentUpon>frmListaDiasFestivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmListaSalidas.resx">
+      <DependentUpon>frmListaSalidas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Asistencia\frmListaTurnos.resx">
       <DependentUpon>frmListaTurnos.cs</DependentUpon>
@@ -1528,6 +1552,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reloj\frmAdministrarReloj.resx">
       <DependentUpon>frmAdministrarReloj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reloj\frmAsistenciaReloj.resx">
+      <DependentUpon>frmAsistenciaReloj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\crReporteContratos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

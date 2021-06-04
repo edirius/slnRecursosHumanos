@@ -67,6 +67,7 @@
             this.btnEliminarDiaFestivo.Text = "&Eliminar Dia Festivo";
             this.btnEliminarDiaFestivo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEliminarDiaFestivo.UseVisualStyleBackColor = false;
+            this.btnEliminarDiaFestivo.Click += new System.EventHandler(this.btnEliminarDiaFestivo_Click);
             // 
             // btnModificarDiaFestivo
             // 

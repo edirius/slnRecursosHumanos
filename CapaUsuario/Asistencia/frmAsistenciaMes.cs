@@ -13,7 +13,7 @@ namespace CapaUsuario.Asistencia
 {
     public partial class frmAsistenciaMes : Form
     {
-        public cTrabajador miTrabajador;
+        public CapaDeNegocios.Asistencia.cTrabajadorReloj miTrabajador;
 
         int totalFaltas = 0;
         int totalTardanzas = 0;
@@ -54,7 +54,7 @@ namespace CapaUsuario.Asistencia
 
             cboMes.SelectedIndex = DateTime.Now.Month - 1;
 
-            lblNombredelTrabajador.Text = miTrabajador.Nombres + " " + miTrabajador.ApellidoPaterno + " " + miTrabajador.ApellidoMaterno;
+            lblNombredelTrabajador.Text = miTrabajador.OTrabajador.Nombres + " " + miTrabajador.OTrabajador.ApellidoPaterno + " " + miTrabajador.OTrabajador.ApellidoMaterno;
 
             DarFormato();
             
@@ -62,9 +62,7 @@ namespace CapaUsuario.Asistencia
 
         private void CargarCalendario()
         {
-            
-
-            oAsistenciaMes = oCatalogoAsistencia.LLenarAsistencia(miTrabajador, cboMes.SelectedIndex + 1, Convert.ToInt16(cboAño.Text));
+            oAsistenciaMes = oCatalogoAsistencia.LLenarAsistencia(miTrabajador.OTrabajador, cboMes.SelectedIndex + 1, Convert.ToInt16(cboAño.Text));
             CalendarioAsistencia.MinDate = oAsistenciaMes.InicioMes;
             CalendarioAsistencia.MaxDate = oAsistenciaMes.FinMes;
             
@@ -91,10 +89,23 @@ namespace CapaUsuario.Asistencia
 
         private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboAño.Text != "" || cboMes.Text !="")
+            if (cboAño.Text != "" && cboMes.Text !="")
             {
                 CargarCalendario();
             }
+        }
+
+        private void CargarDatos()
+        {
+            if (chkTodoElMes.Checked)
+            {
+                dtgDetalleAsistencia.DataSource = oCatalogoAsistencia.ListaPicadoxDia(miTrabajador, CalendarioAsistencia.SelectionStart);
+            }
+            else
+            {
+                dtgDetalleAsistencia.DataSource = oCatalogoAsistencia.ListaPicadoxDia(miTrabajador, CalendarioAsistencia.SelectionStart);
+            }
+            dtgListaSalidas.DataSource = oCatalogoAsistencia.ListaSalidas(miTrabajador.OTrabajador);
         }
 
         private void CalendarioAsistencia_DateSelected(object sender, DateRangeEventArgs e)
@@ -123,6 +134,41 @@ namespace CapaUsuario.Asistencia
             dtgDetalleAsistencia.Columns.Add("colDireccionFoto", "Foto");
             dtgDetalleAsistencia.Columns["colDireccionFoto"].DataPropertyName = "DireccionFoto";
             dtgDetalleAsistencia.Columns["colDireccionFoto"].Visible = false;
+
+            dtgListaSalidas.Columns.Add("CodigoExcepcion", "Codigo");
+            dtgListaSalidas.Columns["CodigoExcepcion"].DataPropertyName = "CodigoExcepcion";
+            dtgListaSalidas.Columns["CodigoExcepcion"].Width = 30;
+
+            dtgListaSalidas.Columns.Add("Tipo", "Tipo");
+            dtgListaSalidas.Columns["Tipo"].DataPropertyName = "Tipo";
+            dtgListaSalidas.Columns["Tipo"].Width = 80;
+
+            dtgListaSalidas.Columns.Add("Comentario", "Comentario");
+            dtgListaSalidas.Columns["Comentario"].DataPropertyName = "Comentario";
+
+            dtgListaSalidas.Columns.Add("InicioExcepcion", "InicioExcepcion");
+            dtgListaSalidas.Columns["InicioExcepcion"].DataPropertyName = "InicioExcepcion";
+
+            dtgListaSalidas.Columns.Add("FinExcepcion", "FinExcepcion");
+            dtgListaSalidas.Columns["FinExcepcion"].DataPropertyName = "FinExcepcion";
+
+            dtgListaSalidas.Columns.Add("Trabajador", "Trabajador");
+            dtgListaSalidas.Columns["Trabajador"].DataPropertyName = "Trabajador";
+            dtgListaSalidas.Columns["Trabajador"].Visible = false;
         }
+
+        private void CalendarioAsistencia_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            CargarDatos();
+        }
+
+        private void cboMes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboAño.Text != "" && cboMes.Text != "")
+            {
+                CargarCalendario();
+            }
+        }
+    
     }
 }

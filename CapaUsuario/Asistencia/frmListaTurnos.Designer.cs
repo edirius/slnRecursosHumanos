@@ -59,6 +59,7 @@
             this.btnEliminarTurnoXDia.Text = "&Eliminar Turno";
             this.btnEliminarTurnoXDia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEliminarTurnoXDia.UseVisualStyleBackColor = false;
+            this.btnEliminarTurnoXDia.Click += new System.EventHandler(this.btnEliminarTurnoXDia_Click);
             // 
             // btnModificarTurnoXDia
             // 

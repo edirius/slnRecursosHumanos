@@ -8,21 +8,14 @@ namespace CapaDeNegocios.Asistencia
 {
     public class cPicado
     {
-        cTrabajador _Trabajador;
+        int _CodigoPicado;
+        cTrabajadorReloj _TrabajadorReloj;
         DateTime _Picado;
-        string _DireccionFoto;
+       
 
-        public cTrabajador Trabajador
+        public cPicado()
         {
-            get
-            {
-                return _Trabajador;
-            }
-
-            set
-            {
-                _Trabajador = value;
-            }
+            _TrabajadorReloj = new cTrabajadorReloj();
         }
 
         public DateTime Picado
@@ -38,17 +31,35 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
-        public string DireccionFoto
+        public cTrabajadorReloj TrabajadorReloj
         {
             get
             {
-                return _DireccionFoto;
+                return _TrabajadorReloj;
             }
 
             set
             {
-                _DireccionFoto = value;
+                _TrabajadorReloj = value;
             }
+        }
+
+        public int CodigoPicado
+        {
+            get
+            {
+                return _CodigoPicado;
+            }
+
+            set
+            {
+                _CodigoPicado = value;
+            }
+        }
+
+        public string DevolverNombreFoto()
+        {
+            return _TrabajadorReloj.CodigoReloj + _Picado.Day.ToString() + _Picado.Month.ToString() + _Picado.Year.ToString() + _Picado.Hour.ToString() + _Picado.Minute.ToString() + _Picado.Second.ToString(); 
         }
     }
 }

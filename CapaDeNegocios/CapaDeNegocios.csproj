@@ -33,6 +33,10 @@
     <Reference Include="info.lundin.Math">
       <HintPath>..\info.lundin.Math.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.zkemkeeper">
+      <HintPath>..\..\..\..\..\Documents\Edward Roman Castro\Proyectos\Proyectos Escritorio\Planilla Maras\sdk-6.3.1.34-doc-1.0.4-demo-1.1.14\sdk-6.3.1.34-doc-1.0.4-demo-1.1.14\Demo-Ver1.1.14\standalonesdkdemo\bin\x64\Release\Interop.zkemkeeper.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="iTextSharp">
       <HintPath>bin\Debug\iTextSharp.dll</HintPath>
     </Reference>
@@ -72,6 +76,7 @@
     <Compile Include="Asistencia\cHorario.cs" />
     <Compile Include="Asistencia\cHorarioTrabajador.cs" />
     <Compile Include="Asistencia\cReglaAsistencia.cs" />
+    <Compile Include="Asistencia\cTrabajadorReloj.cs" />
     <Compile Include="Asistencia\cTurno.cs" />
     <Compile Include="Asistencia\cTurnoDia.cs" />
     <Compile Include="cDepartamento.cs" />
@@ -167,16 +172,17 @@
     <Compile Include="Planillas\cPlanilla.cs" />
     <Compile Include="Planillas\cPlantillaPlanilla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reloj\cCatalogoPrivilegiosReloj.cs" />
+    <Compile Include="Reloj\cHuellaDedo.cs" />
+    <Compile Include="Reloj\cHuellaUsuarioReloj.cs" />
+    <Compile Include="Reloj\cPrivilegioReloj.cs" />
     <Compile Include="Reloj\cReloj.cs" />
     <Compile Include="Reloj\cServidorReloj.cs" />
+    <Compile Include="Reloj\cUsuarioReloj.cs" />
     <Compile Include="Reloj\Enums\ClearFlag.cs" />
-    <Compile Include="Reloj\Info\DeviceTimeInfo.cs" />
-    <Compile Include="Reloj\Info\MachineInfo.cs" />
-    <Compile Include="Reloj\Info\UserIDInfo.cs" />
-    <Compile Include="Reloj\Info\UserInfo.cs" />
-    <Compile Include="Reloj\Utilidades\DeviceManipulator.cs" />
-    <Compile Include="Reloj\Utilidades\UniversalStatic.cs" />
-    <Compile Include="Reloj\Utilidades\ZkemClient.cs" />
+    <Compile Include="Reloj\Helper\SDKHelper.cs" />
+    <Compile Include="Reloj\Helper\SearchforUSBCom.cs" />
+    <Compile Include="Reloj\Utilities\UniversalStatic.cs" />
     <Compile Include="RentaQuinta\cRentaQuinta.cs" />
     <Compile Include="RentaQuinta\cRentaQuintaMensual.cs" />
     <Compile Include="RentaQuinta\cRentaQuintaIngresos.cs" />
@@ -231,15 +237,6 @@
       <VersionMinor>3</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="zkemkeeper">
-      <Guid>{FE9DED34-E159-408E-8490-B720A5E632C7}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>

@@ -18,6 +18,8 @@ namespace CapaUsuario
 {
     public partial class frmPrincipal : Form
     {
+        public static CapaDeNegocios.Reloj.cServidorReloj oServidorReloj = new CapaDeNegocios.Reloj.cServidorReloj();
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -546,6 +548,41 @@ namespace CapaUsuario
             catch (Exception ex)
             {
                 MessageBox.Show("Error al mostrar la asistencia de trabajadores: " + ex.Message);
+            }
+        }
+
+        private void btnConexionReloj_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Reloj.frmAdministrarReloj fAdministrarReloj = new Reloj.frmAdministrarReloj();
+                fAdministrarReloj.oServidorReloj = oServidorReloj;
+                if (fAdministrarReloj.ShowDialog() == DialogResult.OK)
+                {
+                    oServidorReloj = fAdministrarReloj.oServidorReloj;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar la conexion del reloj: " + ex.Message);
+            }
+        }
+
+        private void btnDescargarDatosReloj_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Reloj.frmAsistenciaReloj fAsistenciareloj  = new Reloj.frmAsistenciaReloj();
+                fAsistenciareloj.oServidorReloj = new CapaDeNegocios.Reloj.cServidorReloj();
+
+                if (fAsistenciareloj.ShowDialog() == DialogResult.OK)
+                {
+                    oServidorReloj = fAsistenciareloj.oServidorReloj;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos del reloj: " + ex.Message);
             }
         }
 

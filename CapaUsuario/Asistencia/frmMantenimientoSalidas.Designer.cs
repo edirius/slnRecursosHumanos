@@ -48,7 +48,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(246, 327);
+            this.btnCancelar.Location = new System.Drawing.Point(272, 327);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 65);
             this.btnCancelar.TabIndex = 85;
@@ -64,7 +64,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(165, 327);
+            this.btnAceptar.Location = new System.Drawing.Point(191, 327);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 84;
@@ -93,16 +93,20 @@
             // 
             // dtpFechaFin
             // 
+            this.dtpFechaFin.CustomFormat = "ddddd, dd MMMM, yyyy hh:mm:ss tt";
+            this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaFin.Location = new System.Drawing.Point(97, 277);
             this.dtpFechaFin.Name = "dtpFechaFin";
-            this.dtpFechaFin.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaFin.Size = new System.Drawing.Size(241, 20);
             this.dtpFechaFin.TabIndex = 81;
             // 
             // dtpFechaInicio
             // 
+            this.dtpFechaInicio.CustomFormat = "ddddd, dd MMMM, yyyy hh:mm:ss tt";
+            this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaInicio.Location = new System.Drawing.Point(97, 226);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(200, 20);
+            this.dtpFechaInicio.Size = new System.Drawing.Size(241, 20);
             this.dtpFechaInicio.TabIndex = 80;
             // 
             // cboTipoSalidas
@@ -110,7 +114,7 @@
             this.cboTipoSalidas.FormattingEnabled = true;
             this.cboTipoSalidas.Location = new System.Drawing.Point(88, 37);
             this.cboTipoSalidas.Name = "cboTipoSalidas";
-            this.cboTipoSalidas.Size = new System.Drawing.Size(242, 21);
+            this.cboTipoSalidas.Size = new System.Drawing.Size(250, 21);
             this.cboTipoSalidas.TabIndex = 79;
             // 
             // label1
@@ -129,7 +133,7 @@
             this.lblNombredelTrabajador.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblNombredelTrabajador.Location = new System.Drawing.Point(0, 0);
             this.lblNombredelTrabajador.Name = "lblNombredelTrabajador";
-            this.lblNombredelTrabajador.Size = new System.Drawing.Size(346, 23);
+            this.lblNombredelTrabajador.Size = new System.Drawing.Size(372, 23);
             this.lblNombredelTrabajador.TabIndex = 77;
             this.lblNombredelTrabajador.Text = "Lista Cargos";
             this.lblNombredelTrabajador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -148,14 +152,14 @@
             this.txtComentario.Location = new System.Drawing.Point(88, 78);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
-            this.txtComentario.Size = new System.Drawing.Size(242, 128);
+            this.txtComentario.Size = new System.Drawing.Size(250, 128);
             this.txtComentario.TabIndex = 87;
             // 
             // frmMantenimientoSalidas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 404);
+            this.ClientSize = new System.Drawing.Size(372, 404);
             this.Controls.Add(this.txtComentario);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCancelar);
@@ -168,6 +172,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblNombredelTrabajador);
             this.Name = "frmMantenimientoSalidas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Salida";
             this.Load += new System.EventHandler(this.frmMantenimientoSalidas_Load);
             this.ResumeLayout(false);

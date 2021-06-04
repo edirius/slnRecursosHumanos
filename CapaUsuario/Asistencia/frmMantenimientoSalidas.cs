@@ -49,6 +49,7 @@ namespace CapaUsuario.Asistencia
                     oSalidaTrabajador.Comentario = txtComentario.Text;
                     oSalidaTrabajador.InicioExcepcion = dtpFechaInicio.Value;
                     oSalidaTrabajador.FinExcepcion = dtpFechaFin.Value;
+            
                     DialogResult = DialogResult.OK;
                 }
                 else

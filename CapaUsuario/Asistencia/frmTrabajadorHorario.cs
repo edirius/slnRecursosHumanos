@@ -15,9 +15,11 @@ namespace CapaUsuario.Asistencia
     {
         public List<cTrabajador> ListaTrabajadores;
 
-        public List<CapaDeNegocios.Asistencia.cHorarioTrabajador> ListaHorarioTrabajador;
+        public List<CapaDeNegocios.Asistencia.cHorarioTrabajador> ListaHorarioTrabajador = new List<CapaDeNegocios.Asistencia.cHorarioTrabajador>();
 
         CapaDeNegocios.Asistencia.cHorario oHorario = new CapaDeNegocios.Asistencia.cHorario();
+
+        CapaDeNegocios.Asistencia.cCatalogoAsistencia ocatalogo = new CapaDeNegocios.Asistencia.cCatalogoAsistencia();
 
         public frmTrabajadorHorario()
         {
@@ -40,7 +42,7 @@ namespace CapaUsuario.Asistencia
                 lblNombredelTrabajador.Text = ListaTrabajadores[0].Nombres + " " + ListaTrabajadores[0].ApellidoPaterno + " " + ListaTrabajadores[0].ApellidoMaterno;
             }
 
-            cboListaHorarios.DataSource = oHorario.ListaHorarios();
+            cboListaHorarios.DataSource = ocatalogo.ListaHorarios();
             cboListaHorarios.DisplayMember = "NombreHorario";
             cboListaHorarios.ValueMember = "CodigoHorario";
         }

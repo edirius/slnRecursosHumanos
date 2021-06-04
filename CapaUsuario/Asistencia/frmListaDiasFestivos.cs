@@ -15,6 +15,8 @@ namespace CapaUsuario.Asistencia
     {
         CapaDeNegocios.Asistencia.cDiaFestivo oDiaFestivo = new CapaDeNegocios.Asistencia.cDiaFestivo();
 
+        CapaDeNegocios.Asistencia.cCatalogoAsistencia oCatalogo = new CapaDeNegocios.Asistencia.cCatalogoAsistencia();
+
 
         public frmListaDiasFestivos()
         {
@@ -59,8 +61,8 @@ namespace CapaUsuario.Asistencia
                 fMantenimientoDiaFestivo.oDiaFestivo = new CapaDeNegocios.Asistencia.cDiaFestivo();
                 if (fMantenimientoDiaFestivo.ShowDialog() == DialogResult.OK)
                 {
-                    fMantenimientoDiaFestivo.oDiaFestivo.AgregarDiaFestivo(fMantenimientoDiaFestivo.oDiaFestivo);
-                    dtgListaDiasFestivos.Refresh();
+                    oCatalogo.AgregarDiaFestivo(fMantenimientoDiaFestivo.oDiaFestivo);
+                    dtgListaDiasFestivos.DataSource = oCatalogo.ListaDiaFestivo(Convert.ToInt16(cboAño.Text.ToString()));
                 }
                 else
                 {
@@ -81,7 +83,7 @@ namespace CapaUsuario.Asistencia
                 {
                     frmMantenimientoDiaFestivo fMantenimientoDiaFestivo = new frmMantenimientoDiaFestivo();
                     fMantenimientoDiaFestivo.oDiaFestivo = new CapaDeNegocios.Asistencia.cDiaFestivo();
-                    fMantenimientoDiaFestivo.oDiaFestivo = oDiaFestivo.ListaDiasFestivos(Convert.ToInt16(cboAño.Text.ToString())).Find(miDia => miDia.Codigo == Convert.ToInt16(dtgListaDiasFestivos.SelectedRows[0].Cells["colCodigoDiaFestivo"].Value.ToString()));
+                    fMantenimientoDiaFestivo.oDiaFestivo = oCatalogo.ListaDiaFestivo(Convert.ToInt16(cboAño.Text.ToString())).Find(miDia => miDia.Codigo == Convert.ToInt16(dtgListaDiasFestivos.SelectedRows[0].Cells["colCodigoDiaFestivo"].Value.ToString()));
                     if (fMantenimientoDiaFestivo.ShowDialog() == DialogResult.OK)
                     {
                         fMantenimientoDiaFestivo.oDiaFestivo.ModificarDiaFestivo(fMantenimientoDiaFestivo.oDiaFestivo);
@@ -106,6 +108,30 @@ namespace CapaUsuario.Asistencia
         private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
         {
             dtgListaDiasFestivos.DataSource = oDiaFestivo.ListaDiasFestivos(Convert.ToInt16(cboAño.Text.ToString()));
+        }
+
+        private void btnEliminarDiaFestivo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dtgListaDiasFestivos.SelectedRows.Count > 0)
+                {
+                    if (MessageBox.Show("Desea eliminar el dia festivo???", "Dia Festivo", MessageBoxButtons.YesNo)== DialogResult.Yes)
+                    {
+                        oCatalogo.Eliminarfestivo(oCatalogo.ListaDiaFestivo(Convert.ToInt16(cboAño.Text.ToString())).Find(miDia => miDia.Codigo == Convert.ToInt16(dtgListaDiasFestivos.SelectedRows[0].Cells["colCodigoDiaFestivo"].Value.ToString())));
+                        dtgListaDiasFestivos.DataSource = oCatalogo.ListaDiaFestivo(Convert.ToInt16(cboAño.Text.ToString())).Find(miDia => miDia.Codigo == Convert.ToInt16(dtgListaDiasFestivos.SelectedRows[0].Cells["colCodigoDiaFestivo"].Value.ToString()));
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un dia festivo para eliminarlo.", "Eliminar Dia Festivo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminarr el dia festivo: " + ex.Message, "Eliminar Dia festivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

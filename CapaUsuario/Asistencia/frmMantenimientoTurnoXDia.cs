@@ -20,6 +20,8 @@ namespace CapaUsuario.Asistencia
 
         CapaDeNegocios.Asistencia.cTurno oTurno = new CapaDeNegocios.Asistencia.cTurno();
 
+        CapaDeNegocios.Asistencia.cCatalogoAsistencia oCatalogo = new CapaDeNegocios.Asistencia.cCatalogoAsistencia();
+
         public frmMantenimientoTurnoXDia()
         {
             InitializeComponent();
@@ -40,7 +42,7 @@ namespace CapaUsuario.Asistencia
 
             dtgListaTurnos.DataSource = bindingTurnos;
             
-            cboListaTurnos.DataSource = oTurno.ListaTurnos();
+            cboListaTurnos.DataSource = oCatalogo.ListaTurnos();
             cboListaTurnos.DisplayMember = "NombreTurno";
             cboListaTurnos.ValueMember = "CodigoTurno";
         }

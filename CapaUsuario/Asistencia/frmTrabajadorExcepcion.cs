@@ -17,6 +17,8 @@ namespace CapaUsuario.Asistencia
 
         CapaDeNegocios.Asistencia.cHorarioTrabajador oHorarioTrabajador = new CapaDeNegocios.Asistencia.cHorarioTrabajador();
 
+        CapaDeNegocios.Asistencia.cCatalogoAsistencia oCatalogo = new CapaDeNegocios.Asistencia.cCatalogoAsistencia();
+
         int pidttrabajador = 0;
         string trabajador = "";
 
@@ -173,7 +175,7 @@ namespace CapaUsuario.Asistencia
                     {
                         foreach (CapaDeNegocios.Asistencia.cHorarioTrabajador item in fTrabajadorHorario.ListaHorarioTrabajador)
                         {
-                            oHorarioTrabajador.AgregarHorario(item);
+                            oCatalogo.CrearHorarioTrabajador(item);
                         }
                         
                     }
@@ -233,7 +235,7 @@ namespace CapaUsuario.Asistencia
 
                     if (fMantenimientoSalidas.ShowDialog() == DialogResult.OK)
                     {
-                        fMantenimientoSalidas.oSalidaTrabajador.IngresarNuevaSalida(fMantenimientoSalidas.oSalidaTrabajador);
+                        oCatalogo.IngresarNuevaSalida(fMantenimientoSalidas.oSalidaTrabajador);
                         MessageBox.Show("Se ingreso correctamente.", "Ingreso salida", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -272,16 +274,77 @@ namespace CapaUsuario.Asistencia
                 if (listaTrabajadores.Count > 0)
                 {
                     frmAsistenciaMes fAsistenciaMes = new frmAsistenciaMes();
-                    fAsistenciaMes.miTrabajador = listaTrabajadores[0];
                     
-                    if (fAsistenciaMes.ShowDialog() == DialogResult.OK)
+
+                    fAsistenciaMes.miTrabajador = oCatalogo.TraerTrabajadorReloj(listaTrabajadores[0]);
+
+                    if (fAsistenciaMes.miTrabajador == null)
                     {
-                        
-                        
+                        MessageBox.Show("El trabajador no tiene asignado un codigo del reloj.", "Reloj", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Se canceló la operación.", "Mantenimiento Salidas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (fAsistenciaMes.ShowDialog() == DialogResult.OK)
+                        {
+
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se canceló la operación.", "Mantenimiento Salidas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un trabajador.", "Seleccionar Horario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ingresar horario del trabajador: " + ex.Message, "Asignar Horario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAsignarNumeroReloj_Click(object sender, EventArgs e)
+        {
+            List<cTrabajador> listaTrabajadores = new List<cTrabajador>();
+
+            try
+            {
+                foreach (DataGridViewRow item in dtgListaTrabajadores.Rows)
+                {
+                    if (Convert.ToBoolean(item.Cells["☑"].Value) == true)
+                    {
+                        cTrabajador otrabajador = new cTrabajador();
+                        otrabajador = miListaTrabajadores.traerTrabajador(Convert.ToInt16(item.Cells["id_trabajador"].Value.ToString()));
+                        listaTrabajadores.Add(otrabajador);
+                    }
+                }
+
+
+                if (listaTrabajadores.Count > 0)
+                {
+                    if (listaTrabajadores.Count == 1)
+                    {
+                        AsignarCodigoReloj fAsignarCodigoReloj = new AsignarCodigoReloj();
+                        fAsignarCodigoReloj.oTrabajadorReloj = new CapaDeNegocios.Asistencia.cTrabajadorReloj();
+                        fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador = listaTrabajadores[0];
+
+                        if (fAsignarCodigoReloj.ShowDialog() == DialogResult.OK)
+                        {
+                            oCatalogo.CrearTrabajadorReloj(fAsignarCodigoReloj.oTrabajadorReloj);
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se canceló la operación.", "Mantenimiento Salidas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Para esta operacion solo debe seleccionar un solo trabajador", "Seleccionar Horario", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else

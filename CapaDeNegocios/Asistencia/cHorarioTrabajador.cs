@@ -8,6 +8,7 @@ namespace CapaDeNegocios.Asistencia
 {
     public class cHorarioTrabajador
     {
+        int _Codigo;
         DateTime _FechaInicioHorario;
         DateTime _FechaFinHorario;
         cTrabajador _Trabajador;
@@ -62,6 +63,19 @@ namespace CapaDeNegocios.Asistencia
             set
             {
                 _Horario = value;
+            }
+        }
+
+        public int Codigo
+        {
+            get
+            {
+                return _Codigo;
+            }
+
+            set
+            {
+                _Codigo = value;
             }
         }
 

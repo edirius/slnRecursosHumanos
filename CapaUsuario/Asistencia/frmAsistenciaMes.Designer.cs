@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAsistenciaMes));
             this.CalendarioAsistencia = new System.Windows.Forms.MonthCalendar();
             this.lblNombredelTrabajador = new System.Windows.Forms.Label();
             this.cboMes = new System.Windows.Forms.ComboBox();
@@ -42,6 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dtgListaSalidas = new System.Windows.Forms.DataGridView();
+            this.chkTodoElMes = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDetalleAsistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaSalidas)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +60,7 @@
         new System.DateTime(2021, 5, 21, 0, 0, 0, 0)};
             this.CalendarioAsistencia.Name = "CalendarioAsistencia";
             this.CalendarioAsistencia.TabIndex = 0;
+            this.CalendarioAsistencia.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.CalendarioAsistencia_DateChanged);
             this.CalendarioAsistencia.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.CalendarioAsistencia_DateSelected);
             // 
             // lblNombredelTrabajador
@@ -78,6 +82,7 @@
             this.cboMes.Name = "cboMes";
             this.cboMes.Size = new System.Drawing.Size(121, 21);
             this.cboMes.TabIndex = 79;
+            this.cboMes.SelectedIndexChanged += new System.EventHandler(this.cboMes_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -168,17 +173,31 @@
             // 
             // dtgListaSalidas
             // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
+            this.dtgListaSalidas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgListaSalidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaSalidas.Location = new System.Drawing.Point(624, 113);
             this.dtgListaSalidas.Name = "dtgListaSalidas";
+            this.dtgListaSalidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListaSalidas.Size = new System.Drawing.Size(240, 150);
             this.dtgListaSalidas.TabIndex = 89;
+            // 
+            // chkTodoElMes
+            // 
+            this.chkTodoElMes.AutoSize = true;
+            this.chkTodoElMes.Location = new System.Drawing.Point(338, 90);
+            this.chkTodoElMes.Name = "chkTodoElMes";
+            this.chkTodoElMes.Size = new System.Drawing.Size(84, 17);
+            this.chkTodoElMes.TabIndex = 90;
+            this.chkTodoElMes.Text = "Todo el mes";
+            this.chkTodoElMes.UseVisualStyleBackColor = true;
             // 
             // frmAsistenciaMes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 450);
+            this.Controls.Add(this.chkTodoElMes);
             this.Controls.Add(this.dtgListaSalidas);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -192,6 +211,7 @@
             this.Controls.Add(this.cboMes);
             this.Controls.Add(this.lblNombredelTrabajador);
             this.Controls.Add(this.CalendarioAsistencia);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAsistenciaMes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AsistenciaMes";
@@ -218,5 +238,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dtgListaSalidas;
+        private System.Windows.Forms.CheckBox chkTodoElMes;
     }
 }

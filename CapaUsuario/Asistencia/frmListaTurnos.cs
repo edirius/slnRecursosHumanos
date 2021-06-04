@@ -14,6 +14,7 @@ namespace CapaUsuario.Asistencia
     public partial class frmListaTurnos : Form
     {
         CapaDeNegocios.Asistencia.cTurno oTurno = new CapaDeNegocios.Asistencia.cTurno();
+        CapaDeNegocios.Asistencia.cCatalogoAsistencia oCatalogo = new CapaDeNegocios.Asistencia.cCatalogoAsistencia();
 
         public frmListaTurnos()
         {
@@ -27,7 +28,8 @@ namespace CapaUsuario.Asistencia
 
         private void Iniciar()
         {
-            dtgListaTurno.DataSource = oTurno.ListaTurnos();
+            dtgListaTurno.DataSource = oCatalogo.ListaTurnos();
+            //dtgListaTurno.DataSource = oTurno.ListaTurnos();
         }
 
         private void btnNuevoTurno_Click(object sender, EventArgs e)
@@ -39,7 +41,9 @@ namespace CapaUsuario.Asistencia
                 
                 if (fMantenimientoTurno.ShowDialog() == DialogResult.OK)
                 {
-
+                    oCatalogo.CrearTurno(fMantenimientoTurno.oTurno);
+                    dtgListaTurno.DataSource = oCatalogo.ListaTurnos();
+                    MessageBox.Show("Turno creado", "Turnos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -59,10 +63,10 @@ namespace CapaUsuario.Asistencia
                 if (dtgListaTurno.SelectedRows.Count > 0)
                 {
                     frmMantenimientoTurno fMantenimientoTurno = new frmMantenimientoTurno();
-                    fMantenimientoTurno.oTurno = oTurno.ListaTurnos().Find(miTurno => miTurno.CodigoTurno == Convert.ToInt16(dtgListaTurno.SelectedRows[0].Cells["colCodigoTurno"].Value.ToString()));
+                    fMantenimientoTurno.oTurno =oCatalogo.ListaTurnos().Find(miTurno => miTurno.CodigoTurno == Convert.ToInt16(dtgListaTurno.SelectedRows[0].Cells["colCodigoTurno"].Value.ToString()));
                     if (fMantenimientoTurno.ShowDialog() == DialogResult.OK)
                     {
-
+                        oCatalogo.ModificarTurno(fMantenimientoTurno.oTurno);
                     }
                     else
                     {
@@ -72,6 +76,30 @@ namespace CapaUsuario.Asistencia
                 else
                 {
                     MessageBox.Show("Debe seleccionar un turno para modificarlo.", "Modificar Turno", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar el turno: " + ex.Message, "Modificar Turno", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEliminarTurnoXDia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dtgListaTurno.SelectedRows.Count > 0)
+                {
+                    if ((MessageBox.Show("Desea eliminar el turno: ", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)== DialogResult.Yes))
+                    {
+                        oCatalogo.EliminarTurno(oCatalogo.ListaTurnos().Find(miTurno => miTurno.CodigoTurno == Convert.ToInt16(dtgListaTurno.SelectedRows[0].Cells["colCodigoTurno"].Value.ToString())));
+                        MessageBox.Show("Turno Eliminado", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dtgListaTurno.DataSource = oCatalogo.ListaTurnos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un turno para eliminarlo.", "Modificar Turno", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

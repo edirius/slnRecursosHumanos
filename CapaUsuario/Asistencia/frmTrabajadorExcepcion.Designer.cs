@@ -55,9 +55,13 @@
             treeNode12});
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnAsignarHorario = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnNuevaSalidaTrabajador = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnAsistenciaMes = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeFiltro = new System.Windows.Forms.TreeView();
             this.btnReporteContratos = new System.Windows.Forms.Button();
@@ -92,10 +96,8 @@
             this.fechafin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAsignarHorario = new System.Windows.Forms.ToolStripButton();
-            this.btnNuevaSalidaTrabajador = new System.Windows.Forms.ToolStripButton();
-            this.btnAsistenciaMes = new System.Windows.Forms.ToolStripButton();
-            this.btnSalir = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnAsignarNumeroReloj = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -113,6 +115,8 @@
             this.toolStripSeparator2,
             this.btnAsistenciaMes,
             this.toolStripSeparator4,
+            this.btnAsignarNumeroReloj,
+            this.toolStripSeparator3,
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -120,20 +124,56 @@
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnAsignarHorario
+            // 
+            this.btnAsignarHorario.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsignarHorario.Image = global::CapaUsuario.Properties.Resources.add1;
+            this.btnAsignarHorario.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAsignarHorario.Name = "btnAsignarHorario";
+            this.btnAsignarHorario.Size = new System.Drawing.Size(140, 25);
+            this.btnAsignarHorario.Text = "Asignar Horario";
+            this.btnAsignarHorario.Click += new System.EventHandler(this.btnAsignarHorario_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            // 
+            // btnNuevaSalidaTrabajador
+            // 
+            this.btnNuevaSalidaTrabajador.Image = global::CapaUsuario.Properties.Resources.add_to_folder;
+            this.btnNuevaSalidaTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNuevaSalidaTrabajador.Name = "btnNuevaSalidaTrabajador";
+            this.btnNuevaSalidaTrabajador.Size = new System.Drawing.Size(162, 25);
+            this.btnNuevaSalidaTrabajador.Text = "Ingresar Salida Trabajador";
+            this.btnNuevaSalidaTrabajador.Click += new System.EventHandler(this.btnNuevaSalidaTrabajador_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
+            // btnAsistenciaMes
+            // 
+            this.btnAsistenciaMes.Image = global::CapaUsuario.Properties.Resources.chart;
+            this.btnAsistenciaMes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAsistenciaMes.Name = "btnAsistenciaMes";
+            this.btnAsistenciaMes.Size = new System.Drawing.Size(124, 25);
+            this.btnAsistenciaMes.Text = "Asistencia del Mes";
+            this.btnAsistenciaMes.Click += new System.EventHandler(this.btnAsistenciaMes_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_17;
+            this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(49, 25);
+            this.btnSalir.Text = "Salir";
             // 
             // splitContainer1
             // 
@@ -564,41 +604,19 @@
             this.descripcion.Name = "descripcion";
             this.descripcion.Visible = false;
             // 
-            // btnAsignarHorario
+            // toolStripSeparator3
             // 
-            this.btnAsignarHorario.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAsignarHorario.Image = global::CapaUsuario.Properties.Resources.add1;
-            this.btnAsignarHorario.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAsignarHorario.Name = "btnAsignarHorario";
-            this.btnAsignarHorario.Size = new System.Drawing.Size(140, 25);
-            this.btnAsignarHorario.Text = "Asignar Horario";
-            this.btnAsignarHorario.Click += new System.EventHandler(this.btnAsignarHorario_Click);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             // 
-            // btnNuevaSalidaTrabajador
+            // btnAsignarNumeroReloj
             // 
-            this.btnNuevaSalidaTrabajador.Image = global::CapaUsuario.Properties.Resources.add_to_folder;
-            this.btnNuevaSalidaTrabajador.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNuevaSalidaTrabajador.Name = "btnNuevaSalidaTrabajador";
-            this.btnNuevaSalidaTrabajador.Size = new System.Drawing.Size(162, 25);
-            this.btnNuevaSalidaTrabajador.Text = "Ingresar Salida Trabajador";
-            this.btnNuevaSalidaTrabajador.Click += new System.EventHandler(this.btnNuevaSalidaTrabajador_Click);
-            // 
-            // btnAsistenciaMes
-            // 
-            this.btnAsistenciaMes.Image = global::CapaUsuario.Properties.Resources.chart;
-            this.btnAsistenciaMes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAsistenciaMes.Name = "btnAsistenciaMes";
-            this.btnAsistenciaMes.Size = new System.Drawing.Size(124, 25);
-            this.btnAsistenciaMes.Text = "Asistencia del Mes";
-            this.btnAsistenciaMes.Click += new System.EventHandler(this.btnAsistenciaMes_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_17;
-            this.btnSalir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(49, 25);
-            this.btnSalir.Text = "Salir";
+            this.btnAsignarNumeroReloj.Image = global::CapaUsuario.Properties.Resources._112;
+            this.btnAsignarNumeroReloj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAsignarNumeroReloj.Name = "btnAsignarNumeroReloj";
+            this.btnAsignarNumeroReloj.Size = new System.Drawing.Size(143, 25);
+            this.btnAsignarNumeroReloj.Text = "Asignar Numero Reloj";
+            this.btnAsignarNumeroReloj.Click += new System.EventHandler(this.btnAsignarNumeroReloj_Click);
             // 
             // frmTrabajadorExcepcion
             // 
@@ -668,5 +686,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechafin;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
+        private System.Windows.Forms.ToolStripButton btnAsignarNumeroReloj;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }

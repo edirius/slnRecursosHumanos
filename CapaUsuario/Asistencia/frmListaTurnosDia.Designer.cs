@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTurnosDia));
             this.btnEliminarTurnoXDia = new System.Windows.Forms.Button();
             this.btnModificarTurnoXDia = new System.Windows.Forms.Button();
             this.btnNuevoTurnoxDia = new System.Windows.Forms.Button();
@@ -52,6 +53,7 @@
             this.btnEliminarTurnoXDia.Text = "&Eliminar Turno x Dia";
             this.btnEliminarTurnoXDia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEliminarTurnoXDia.UseVisualStyleBackColor = false;
+            this.btnEliminarTurnoXDia.Click += new System.EventHandler(this.btnEliminarTurnoXDia_Click);
             // 
             // btnModificarTurnoXDia
             // 
@@ -95,12 +97,12 @@
             this.dtgListaTurnoXDia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodigoTurnoDia,
             this.colNombreTurnoDia});
-            this.dtgListaTurnoXDia.Location = new System.Drawing.Point(12, 43);
+            this.dtgListaTurnoXDia.Location = new System.Drawing.Point(12, 33);
             this.dtgListaTurnoXDia.MultiSelect = false;
             this.dtgListaTurnoXDia.Name = "dtgListaTurnoXDia";
             this.dtgListaTurnoXDia.ReadOnly = true;
             this.dtgListaTurnoXDia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaTurnoXDia.Size = new System.Drawing.Size(587, 149);
+            this.dtgListaTurnoXDia.Size = new System.Drawing.Size(587, 159);
             this.dtgListaTurnoXDia.TabIndex = 76;
             // 
             // colCodigoTurnoDia
@@ -128,6 +130,7 @@
             this.Controls.Add(this.btnModificarTurnoXDia);
             this.Controls.Add(this.btnNuevoTurnoxDia);
             this.Controls.Add(this.dtgListaTurnoXDia);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListaTurnosDia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista Turnos X Dia";

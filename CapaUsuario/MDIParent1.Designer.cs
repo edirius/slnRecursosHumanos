@@ -52,6 +52,7 @@
             this.mnuListaTurnosXDia = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuListaTurnos = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuListaDiasFestivos = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAsistenciaTrabajador = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horasHombreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,7 +122,9 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.mnuAsistenciaTrabajador = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnConexionReloj = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDescargarDatosReloj = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -262,7 +265,10 @@
             this.mnuListaTurnosXDia,
             this.mnuListaTurnos,
             this.mnuListaDiasFestivos,
-            this.mnuAsistenciaTrabajador});
+            this.mnuAsistenciaTrabajador,
+            this.toolStripSeparator7,
+            this.btnConexionReloj,
+            this.btnDescargarDatosReloj});
             this.viewMenu.Name = "viewMenu";
             this.viewMenu.Size = new System.Drawing.Size(86, 20);
             this.viewMenu.Text = "&Trabajadores";
@@ -321,6 +327,13 @@
             this.mnuListaDiasFestivos.Size = new System.Drawing.Size(297, 22);
             this.mnuListaDiasFestivos.Text = "Lista Dias Festivos";
             this.mnuListaDiasFestivos.Click += new System.EventHandler(this.mnuListaDiasFestivos_Click);
+            // 
+            // mnuAsistenciaTrabajador
+            // 
+            this.mnuAsistenciaTrabajador.Name = "mnuAsistenciaTrabajador";
+            this.mnuAsistenciaTrabajador.Size = new System.Drawing.Size(297, 22);
+            this.mnuAsistenciaTrabajador.Text = "Asistencia Trabajador";
+            this.mnuAsistenciaTrabajador.Click += new System.EventHandler(this.mnuAsistenciaTrabajador_Click);
             // 
             // toolsMenu
             // 
@@ -873,12 +886,24 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // mnuAsistenciaTrabajador
+            // toolStripSeparator7
             // 
-            this.mnuAsistenciaTrabajador.Name = "mnuAsistenciaTrabajador";
-            this.mnuAsistenciaTrabajador.Size = new System.Drawing.Size(297, 22);
-            this.mnuAsistenciaTrabajador.Text = "Asistencia Trabajador";
-            this.mnuAsistenciaTrabajador.Click += new System.EventHandler(this.mnuAsistenciaTrabajador_Click);
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(294, 6);
+            // 
+            // btnConexionReloj
+            // 
+            this.btnConexionReloj.Name = "btnConexionReloj";
+            this.btnConexionReloj.Size = new System.Drawing.Size(297, 22);
+            this.btnConexionReloj.Text = "Conexion con Reloj";
+            this.btnConexionReloj.Click += new System.EventHandler(this.btnConexionReloj_Click);
+            // 
+            // btnDescargarDatosReloj
+            // 
+            this.btnDescargarDatosReloj.Name = "btnDescargarDatosReloj";
+            this.btnDescargarDatosReloj.Size = new System.Drawing.Size(297, 22);
+            this.btnDescargarDatosReloj.Text = "Descargar Datos Reloj";
+            this.btnDescargarDatosReloj.Click += new System.EventHandler(this.btnDescargarDatosReloj_Click);
             // 
             // frmPrincipal
             // 
@@ -1007,6 +1032,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuListaTurnos;
         private System.Windows.Forms.ToolStripMenuItem mnuListaDiasFestivos;
         private System.Windows.Forms.ToolStripMenuItem mnuAsistenciaTrabajador;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem btnConexionReloj;
+        private System.Windows.Forms.ToolStripMenuItem btnDescargarDatosReloj;
     }
 }
 
