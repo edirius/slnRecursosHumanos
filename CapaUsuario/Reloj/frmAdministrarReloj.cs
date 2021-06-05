@@ -27,7 +27,7 @@ namespace CapaUsuario.Reloj
 
         private void Iniciar()
         {
-
+            
         }
 
         private void btnConectarReloj_Click(object sender, EventArgs e)
@@ -84,6 +84,11 @@ namespace CapaUsuario.Reloj
             {
                 MessageBox.Show("Error al obtener la capacidad del reloj: " + ex.Message);
             }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
         }
     }
 }

@@ -572,8 +572,8 @@ namespace CapaUsuario
         {
             try
             {
-                Reloj.frmAsistenciaReloj fAsistenciareloj  = new Reloj.frmAsistenciaReloj();
-                fAsistenciareloj.oServidorReloj = new CapaDeNegocios.Reloj.cServidorReloj();
+                Reloj.frmAsistenciaReloj fAsistenciareloj = new Reloj.frmAsistenciaReloj();
+                fAsistenciareloj.oServidorReloj = oServidorReloj;
 
                 if (fAsistenciareloj.ShowDialog() == DialogResult.OK)
                 {

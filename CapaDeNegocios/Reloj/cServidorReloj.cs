@@ -15,7 +15,7 @@ namespace CapaDeNegocios.Reloj
     {
         private static int idwErrorCode = 0;
 
-        
+
 
         private SupportBiometricType _supportBiometricType = new SupportBiometricType();
         private string _biometricType = string.Empty;
@@ -177,11 +177,12 @@ namespace CapaDeNegocios.Reloj
 
             if (axCZKEM1.ReadGeneralLogData(oReloj.NumeroMaquina))
             {
-                cHuellaUsuarioReloj oHuellaUsuarioReloj = new cHuellaUsuarioReloj();
+                
 
                 while (axCZKEM1.SSR_GetGeneralLogData(oReloj.NumeroMaquina, out sdwEnrollNumber, out idwVerifyMode,
                             out idwInOutMode, out idwYear, out idwMonth, out idwDay, out idwHour, out idwMinute, out idwSecond, ref idwWorkcode))//conseguir records de la maquina
                 {
+                    cHuellaUsuarioReloj oHuellaUsuarioReloj = new cHuellaUsuarioReloj();
                     oHuellaUsuarioReloj.IdUsuario = sdwEnrollNumber;
                     oHuellaUsuarioReloj.IdwYear = idwYear;
                     oHuellaUsuarioReloj.IdwMonth = idwMonth;
@@ -191,8 +192,8 @@ namespace CapaDeNegocios.Reloj
                     oHuellaUsuarioReloj.IdwSecond = idwSecond;
                     oHuellaUsuarioReloj.IdwVerifyMode = idwVerifyMode;
                     oHuellaUsuarioReloj.IdwInOutMode = idwInOutMode;
-                    oHuellaUsuarioReloj.IdwWorkcode  = idwWorkcode;
-                    ListaHuellasReloj.Add(oHuellaUsuarioReloj);        
+                    oHuellaUsuarioReloj.IdwWorkcode = idwWorkcode;
+                    ListaHuellasReloj.Add(oHuellaUsuarioReloj);
                 }
                 ret = 1;
             }
@@ -338,8 +339,8 @@ namespace CapaDeNegocios.Reloj
             int i = 0;
             int num = 0;
             int iFpCount = 0;
-          
-            
+
+
 
             axCZKEM1.EnableDevice(oReloj.NumeroMaquina, false);
             axCZKEM1.ReadAllUserID(oReloj.NumeroMaquina);//read all the user information to the memory  except fingerprint Templates
@@ -372,8 +373,8 @@ namespace CapaDeNegocios.Reloj
                     oHuellaDedo.IndiceHuella = idwFingerIndex;
                     if (axCZKEM1.GetUserTmpExStr(oReloj.NumeroMaquina, sEnrollNumber, idwFingerIndex, out iFlag, out sFPTmpData, out iFPTmpLength))//obtener la cadena de plantillas correspondiente y la longitud de la memoria
                     {
-                            oHuellaDedo.Flag = iFlag;
-                            oHuellaDedo.FPTmpData = sFPTmpData;
+                        oHuellaDedo.Flag = iFlag;
+                        oHuellaDedo.FPTmpData = sFPTmpData;
                     }
                     oUsuario.HuellaDedos.Add(oHuellaDedo);
                     iFpCount++;
@@ -461,7 +462,7 @@ namespace CapaDeNegocios.Reloj
                         //return -1022;
                     }
                 }
-                
+
             }
             axCZKEM1.BatchUpdate(oReloj.NumeroMaquina);//upload all the information in the memory
             axCZKEM1.RefreshData(oReloj.NumeroMaquina);//the data in the device should be refreshed
@@ -630,7 +631,7 @@ namespace CapaDeNegocios.Reloj
             string sProductTime = "";
             string strTemp = "";
 
-            if ( oReloj.Conectado == false)
+            if (oReloj.Conectado == false)
             {
                 Mensajes.Add("*Por favor conectar el reloj primero!");
                 return -1024;
@@ -680,7 +681,7 @@ namespace CapaDeNegocios.Reloj
             oReloj.IFPAlg = iFPAlg;
             oReloj.IFaceAlg = iFaceAlg;
             oReloj.SProductTime = sProductTime;
-            
+
             return iRet;
         }
 
@@ -727,7 +728,7 @@ namespace CapaDeNegocios.Reloj
                 {
                     axCZKEM1.GetLastError(ref idwErrorCode);
                     Mensajes.Add("*No se puede conectar con el reloj, ErrorCode=" + idwErrorCode.ToString());
-                   
+
                     return idwErrorCode;
                 }
 
@@ -1011,6 +1012,6 @@ namespace CapaDeNegocios.Reloj
             }
         }
 
-       
+
     }
 }

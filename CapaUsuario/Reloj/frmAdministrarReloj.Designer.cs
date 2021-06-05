@@ -75,6 +75,7 @@
             this.txtAttLogCnt = new System.Windows.Forms.TextBox();
             this.txtFPCnt = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -83,7 +84,7 @@
             // txtIP
             // 
             this.txtIP.Location = new System.Drawing.Point(52, 16);
-            this.txtIP.MaxLength = 12;
+            this.txtIP.MaxLength = 20;
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(100, 20);
             this.txtIP.TabIndex = 0;
@@ -207,7 +208,6 @@
             // 
             // btnGetSystemInfo
             // 
-            this.btnGetSystemInfo.Enabled = false;
             this.btnGetSystemInfo.Location = new System.Drawing.Point(721, 133);
             this.btnGetSystemInfo.Name = "btnGetSystemInfo";
             this.btnGetSystemInfo.Size = new System.Drawing.Size(151, 23);
@@ -386,7 +386,6 @@
             // 
             // btnGetDataInfo
             // 
-            this.btnGetDataInfo.Enabled = false;
             this.btnGetDataInfo.Location = new System.Drawing.Point(623, 131);
             this.btnGetDataInfo.Name = "btnGetDataInfo";
             this.btnGetDataInfo.Size = new System.Drawing.Size(176, 23);
@@ -507,11 +506,28 @@
             this.label29.TabIndex = 20;
             this.label29.Text = "Nro. Huellas";
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.BackColor = System.Drawing.Color.MintCream;
+            this.btnGuardar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnGuardar.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnGuardar.Location = new System.Drawing.Point(776, 87);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(94, 65);
+            this.btnGuardar.TabIndex = 104;
+            this.btnGuardar.Text = "Guardar Reloj";
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // frmAdministrarReloj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 336);
+            this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lblInformacionreloj);
             this.Controls.Add(this.label4);
@@ -585,5 +601,6 @@
         private System.Windows.Forms.TextBox txtAttLogCnt;
         private System.Windows.Forms.TextBox txtFPCnt;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button btnGuardar;
     }
 }
