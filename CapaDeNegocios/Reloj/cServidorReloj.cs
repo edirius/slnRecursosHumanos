@@ -193,6 +193,7 @@ namespace CapaDeNegocios.Reloj
                     oHuellaUsuarioReloj.IdwVerifyMode = idwVerifyMode;
                     oHuellaUsuarioReloj.IdwInOutMode = idwInOutMode;
                     oHuellaUsuarioReloj.IdwWorkcode = idwWorkcode;
+                    oHuellaUsuarioReloj.ActualizarFecha();
                     ListaHuellasReloj.Add(oHuellaUsuarioReloj);
                 }
                 ret = 1;
@@ -596,7 +597,7 @@ namespace CapaDeNegocios.Reloj
             if (miReloj.Conectado == false)
             {
                 throw new cReglaNegociosException("* POr favor conectar el reloj primero.");
-                return -1024;
+               
             }
 
             axCZKEM1.EnableDevice(miReloj.NumeroMaquina, false);//disable the device
@@ -610,6 +611,14 @@ namespace CapaDeNegocios.Reloj
             axCZKEM1.GetDeviceStatus(miReloj.NumeroMaquina, 21, ref faceCnt);
 
             axCZKEM1.EnableDevice(miReloj.NumeroMaquina, true);//enable the device
+
+            Reloj.UserCount = userCount;
+            Reloj.RecordCnt = recordCnt;
+            Reloj.FaceCnt = faceCnt;
+            Reloj.AdminCnt = adminCnt;
+            Reloj.FpCnt = fpCnt;
+            Reloj.PwdCnt = pwdCnt;
+            Reloj.OplogCnt = oplogCnt;
 
             Mensajes.Add("Se obtuvo los datos del reloj");
 

@@ -11,6 +11,11 @@ namespace CapaDeNegocios.Asistencia
         cTrabajador _oTrabajador;
         int _CodigoReloj;
 
+
+        public cTrabajadorReloj()
+        {
+            _oTrabajador = new cTrabajador();
+        }
         public cTrabajador OTrabajador
         {
             get

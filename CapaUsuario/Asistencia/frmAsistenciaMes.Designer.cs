@@ -45,6 +45,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dtgListaSalidas = new System.Windows.Forms.DataGridView();
             this.chkTodoElMes = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblMinutostarde = new System.Windows.Forms.Label();
+            this.lblFaltaDia = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDetalleAsistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaSalidas)).BeginInit();
             this.SuspendLayout();
@@ -55,9 +59,6 @@
         new System.DateTime(2021, 5, 24, 0, 0, 0, 0)};
             this.CalendarioAsistencia.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.CalendarioAsistencia.Location = new System.Drawing.Point(33, 113);
-            this.CalendarioAsistencia.MonthlyBoldedDates = new System.DateTime[] {
-        new System.DateTime(2021, 5, 10, 0, 0, 0, 0),
-        new System.DateTime(2021, 5, 21, 0, 0, 0, 0)};
             this.CalendarioAsistencia.Name = "CalendarioAsistencia";
             this.CalendarioAsistencia.TabIndex = 0;
             this.CalendarioAsistencia.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.CalendarioAsistencia_DateChanged);
@@ -140,18 +141,18 @@
             this.lblTotaltardanzas.AutoSize = true;
             this.lblTotaltardanzas.Location = new System.Drawing.Point(183, 314);
             this.lblTotaltardanzas.Name = "lblTotaltardanzas";
-            this.lblTotaltardanzas.Size = new System.Drawing.Size(35, 13);
+            this.lblTotaltardanzas.Size = new System.Drawing.Size(13, 13);
             this.lblTotaltardanzas.TabIndex = 85;
-            this.lblTotaltardanzas.Text = "label4";
+            this.lblTotaltardanzas.Text = "0";
             // 
             // lblTotalFaltas
             // 
             this.lblTotalFaltas.AutoSize = true;
             this.lblTotalFaltas.Location = new System.Drawing.Point(186, 352);
             this.lblTotalFaltas.Name = "lblTotalFaltas";
-            this.lblTotalFaltas.Size = new System.Drawing.Size(35, 13);
+            this.lblTotalFaltas.Size = new System.Drawing.Size(13, 13);
             this.lblTotalFaltas.TabIndex = 86;
-            this.lblTotalFaltas.Text = "label4";
+            this.lblTotalFaltas.Text = "0";
             // 
             // label4
             // 
@@ -191,12 +192,53 @@
             this.chkTodoElMes.TabIndex = 90;
             this.chkTodoElMes.Text = "Todo el mes";
             this.chkTodoElMes.UseVisualStyleBackColor = true;
+            this.chkTodoElMes.CheckedChanged += new System.EventHandler(this.chkTodoElMes_CheckedChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(338, 313);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 13);
+            this.label6.TabIndex = 91;
+            this.label6.Text = "Minutos tarde;";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(338, 352);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 13);
+            this.label7.TabIndex = 92;
+            this.label7.Text = "Faltas:";
+            // 
+            // lblMinutostarde
+            // 
+            this.lblMinutostarde.AutoSize = true;
+            this.lblMinutostarde.Location = new System.Drawing.Point(454, 311);
+            this.lblMinutostarde.Name = "lblMinutostarde";
+            this.lblMinutostarde.Size = new System.Drawing.Size(13, 13);
+            this.lblMinutostarde.TabIndex = 93;
+            this.lblMinutostarde.Text = "0";
+            // 
+            // lblFaltaDia
+            // 
+            this.lblFaltaDia.AutoSize = true;
+            this.lblFaltaDia.Location = new System.Drawing.Point(457, 352);
+            this.lblFaltaDia.Name = "lblFaltaDia";
+            this.lblFaltaDia.Size = new System.Drawing.Size(13, 13);
+            this.lblFaltaDia.TabIndex = 94;
+            this.lblFaltaDia.Text = "0";
             // 
             // frmAsistenciaMes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 450);
+            this.Controls.Add(this.lblFaltaDia);
+            this.Controls.Add(this.lblMinutostarde);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.chkTodoElMes);
             this.Controls.Add(this.dtgListaSalidas);
             this.Controls.Add(this.label5);
@@ -239,5 +281,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dtgListaSalidas;
         private System.Windows.Forms.CheckBox chkTodoElMes;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblMinutostarde;
+        private System.Windows.Forms.Label lblFaltaDia;
     }
 }

@@ -36,7 +36,7 @@ namespace CapaUsuario.Asistencia
         {
             txtNombreTurnoXDia.Text = oTurnoDia.NombreTurnoDia;
 
-
+            oTurnoDia.ListaTurnos = oCatalogo.TraerTurnos(oTurnoDia);
 
             bindingTurnos.DataSource = oTurnoDia.ListaTurnos;
 

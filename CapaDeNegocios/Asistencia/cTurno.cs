@@ -11,14 +11,14 @@ namespace CapaDeNegocios.Asistencia
         int _CodigoTurno;
         string _NombreTurno;
         int _ToleranciaInicio;
+        int _ToleranciaFalta;
         DateTime _InicioTurno;
         DateTime _FinTurno;
 
 
         public cTurno()
         {
-            _InicioTurno = new DateTime(2021, 1, 1);
-            _FinTurno = new DateTime(2021, 1, 1);
+           
         }
 
         public int CodigoTurno
@@ -83,6 +83,19 @@ namespace CapaDeNegocios.Asistencia
             set
             {
                 _FinTurno = value;
+            }
+        }
+
+        public int ToleranciaFalta
+        {
+            get
+            {
+                return _ToleranciaFalta;
+            }
+
+            set
+            {
+                _ToleranciaFalta = value;
             }
         }
 

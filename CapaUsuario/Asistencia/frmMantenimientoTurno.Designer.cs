@@ -40,7 +40,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.numToleranciaFalta = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numTolerancia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numToleranciaFalta)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -57,13 +61,14 @@
             this.dtpInicioTurno.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpInicioTurno.Location = new System.Drawing.Point(107, 57);
             this.dtpInicioTurno.Name = "dtpInicioTurno";
-            this.dtpInicioTurno.Size = new System.Drawing.Size(108, 20);
+            this.dtpInicioTurno.ShowUpDown = true;
+            this.dtpInicioTurno.Size = new System.Drawing.Size(97, 20);
             this.dtpInicioTurno.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 136);
+            this.label2.Location = new System.Drawing.Point(32, 182);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 2;
@@ -72,19 +77,20 @@
             // dtpFinTurno
             // 
             this.dtpFinTurno.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtpFinTurno.Location = new System.Drawing.Point(107, 129);
+            this.dtpFinTurno.Location = new System.Drawing.Point(107, 175);
             this.dtpFinTurno.Name = "dtpFinTurno";
-            this.dtpFinTurno.Size = new System.Drawing.Size(108, 20);
+            this.dtpFinTurno.ShowUpDown = true;
+            this.dtpFinTurno.Size = new System.Drawing.Size(97, 20);
             this.dtpFinTurno.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 100);
+            this.label3.Location = new System.Drawing.Point(32, 91);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 13);
+            this.label3.Size = new System.Drawing.Size(58, 26);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Tolerancia :";
+            this.label3.Text = "Tolerancia\r\nTardanza :";
             // 
             // label4
             // 
@@ -104,7 +110,7 @@
             // 
             // numTolerancia
             // 
-            this.numTolerancia.Location = new System.Drawing.Point(107, 93);
+            this.numTolerancia.Location = new System.Drawing.Point(107, 97);
             this.numTolerancia.Name = "numTolerancia";
             this.numTolerancia.Size = new System.Drawing.Size(47, 20);
             this.numTolerancia.TabIndex = 7;
@@ -112,7 +118,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(160, 100);
+            this.label5.Location = new System.Drawing.Point(160, 104);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 8;
@@ -125,7 +131,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(247, 184);
+            this.btnCancelar.Location = new System.Drawing.Point(247, 224);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 65);
             this.btnCancelar.TabIndex = 80;
@@ -141,7 +147,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(166, 184);
+            this.btnAceptar.Location = new System.Drawing.Point(166, 224);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 79;
@@ -150,11 +156,39 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(160, 145);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 83;
+            this.label6.Text = "Minutos";
+            // 
+            // numToleranciaFalta
+            // 
+            this.numToleranciaFalta.Location = new System.Drawing.Point(107, 138);
+            this.numToleranciaFalta.Name = "numToleranciaFalta";
+            this.numToleranciaFalta.Size = new System.Drawing.Size(47, 20);
+            this.numToleranciaFalta.TabIndex = 82;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(33, 132);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 26);
+            this.label7.TabIndex = 81;
+            this.label7.Text = "Tolerancia\r\nFalta :";
+            // 
             // frmMantenimientoTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 261);
+            this.ClientSize = new System.Drawing.Size(338, 301);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.numToleranciaFalta);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.label5);
@@ -172,6 +206,7 @@
             this.Text = "Mantenimiento Turno";
             this.Load += new System.EventHandler(this.frmMantenimientoTurno_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numTolerancia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numToleranciaFalta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,5 +225,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown numToleranciaFalta;
+        private System.Windows.Forms.Label label7;
     }
 }

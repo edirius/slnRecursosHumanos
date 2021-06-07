@@ -49,28 +49,30 @@ namespace CapaUsuario.Reloj
 
         private void DarFormatoGrid()
         {
-            string _IdUsuario = "";
-            int _IdwVerifyMode = 0;
-            int _IdwInOutMode = 0;
-            int _IdwYear = 0;
-            int _IdwMonth = 0;
-            int _IdwDay = 0;
-            int _IdwHour = 0;
-            int _IdwMinute = 0;
-            int _IdwSecond = 0;
-            int _IdwWorkcode = 0;
+       
 
             dtgListaPicados.Columns.Add("colIdUsuario", "Id Usuario");
+            dtgListaPicados.Columns["colIdUsuario"].DataPropertyName = "IdUsuario";
             dtgListaPicados.Columns.Add("colFechaYHora", "Fecha y Hora");
+            dtgListaPicados.Columns["colFechaYHora"].DataPropertyName = "FechaYHora";
             dtgListaPicados.Columns.Add("colIdwVerifyMode", "IdwVerifyMode");
+            dtgListaPicados.Columns["colIdwVerifyMode"].DataPropertyName = "IdwVerifyMode";
             dtgListaPicados.Columns.Add("colIdwInOutMode", "IdwInOutMode");
+            dtgListaPicados.Columns["colIdwInOutMode"].DataPropertyName = "IdwInOutMode";
             dtgListaPicados.Columns.Add("colIdwWorkcode", "IdwWorkcode");
+            dtgListaPicados.Columns["colIdwWorkcode"].DataPropertyName = "IdwWorkcode";
             dtgListaPicados.Columns.Add("colIdwYear", "IdwYear");
-            dtgListaPicados.Columns.Add("colIdwMonth", "_IdwMonth");
+            dtgListaPicados.Columns["colIdwYear"].DataPropertyName = "IdwYear";
+            dtgListaPicados.Columns.Add("colIdwMonth", "IdwMonth");
+            dtgListaPicados.Columns["colIdwMonth"].DataPropertyName = "IdwMonth";
             dtgListaPicados.Columns.Add("colIdwDay", "IdwDay");
+            dtgListaPicados.Columns["colIdwDay"].DataPropertyName = "IdwDay";
             dtgListaPicados.Columns.Add("colIdwHour", "IdwHour");
+            dtgListaPicados.Columns["colIdwHour"].DataPropertyName = "IdwHour";
             dtgListaPicados.Columns.Add("colIdwMinute", "IdwMinute");
+            dtgListaPicados.Columns["colIdwMinute"].DataPropertyName = "IdwMinute";
             dtgListaPicados.Columns.Add("colIdwSecond", "IdwSecond");
+            dtgListaPicados.Columns["colIdwSecond"].DataPropertyName = "IdwSecond";
 
             dtgListaPicados.Columns["colFechaYHora"].Width = 200;
             dtgListaPicados.Columns["colIdwYear"].Visible = false;
@@ -86,6 +88,8 @@ namespace CapaUsuario.Reloj
         {
             try
             {
+
+                
                 if (ListaHuellasReloj.Count > 0)
                 {
                     foreach (CapaDeNegocios.Reloj.cHuellaUsuarioReloj item in ListaHuellasReloj)

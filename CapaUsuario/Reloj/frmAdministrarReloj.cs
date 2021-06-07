@@ -69,7 +69,7 @@ namespace CapaUsuario.Reloj
         {
             try
             {
-                oServidorReloj.sta_GetDeviceInfo(oServidorReloj.Reloj);
+                oServidorReloj.sta_GetCapacityInfo(oServidorReloj.Reloj);
 
                 txtUserCnt.Text = oServidorReloj.Reloj.UserCount.ToString();
                 txtAttLogCnt.Text = oServidorReloj.Reloj.RecordCnt.ToString();

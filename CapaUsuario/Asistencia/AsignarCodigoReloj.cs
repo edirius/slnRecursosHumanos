@@ -20,6 +20,8 @@ namespace CapaUsuario.Asistencia
 
         public CapaDeNegocios.Asistencia.cTrabajadorReloj oTrabajadorReloj;
 
+        public bool  modificado  = false;
+
         CapaDeNegocios.Asistencia.cCatalogoAsistencia oCatalogo = new CapaDeNegocios.Asistencia.cCatalogoAsistencia();
 
         private void AsignarCodigoReloj_Load(object sender, EventArgs e)
@@ -30,6 +32,18 @@ namespace CapaUsuario.Asistencia
         private void Iniciar()
         {
             lblNombredelTrabajador.Text = oTrabajadorReloj.OTrabajador.Nombres + " " + oTrabajadorReloj.OTrabajador.ApellidoPaterno + " " + oTrabajadorReloj.OTrabajador.ApellidoMaterno;
+
+
+            if (oTrabajadorReloj.CodigoReloj != -1)
+            {
+                MessageBox.Show("El trabajadaro ya tiene asignado un codigo en el reloj: " + oTrabajadorReloj.CodigoReloj.ToString());
+                txtNumero.Text = oTrabajadorReloj.CodigoReloj.ToString();
+                modificado = true;
+            }
+            else
+            {
+                modificado = false;
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -39,8 +53,10 @@ namespace CapaUsuario.Asistencia
                 if (txtNumero.Text.Trim() != "")
                 {
                     cTrabajador BuscarTrabajador = oCatalogo.TraerTrabajadorXCodigoReloj(Convert.ToInt16(txtNumero.Text));
-                    if (BuscarTrabajador == null)
+
+                    if (BuscarTrabajador == null )
                     {
+                        oTrabajadorReloj.CodigoReloj = Convert.ToInt16(txtNumero.Text);
                         DialogResult = DialogResult.OK;
                     }
                     else
@@ -62,6 +78,18 @@ namespace CapaUsuario.Asistencia
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
         }
     }
 }

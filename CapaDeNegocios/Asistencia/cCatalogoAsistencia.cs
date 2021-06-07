@@ -15,24 +15,20 @@ namespace CapaDeNegocios.Asistencia
             cAsistenciaMes oAsistenciaMes = new cAsistenciaMes();
             oAsistenciaMes.InicioMes = new DateTime(año, mes, 1);
             oAsistenciaMes.FinMes = new DateTime(año, mes, 1).AddMonths(1).AddDays(-1);
-            DataTable ListaTrabajadores = new DataTable();
+            //DataTable ListaTrabajadores = new DataTable();
 
-            foreach (DataRow item in ListaTrabajadores.Rows)
-            {
-                
-
-            }
+            
             //ejemplo
-            cAsistenciaDia oAsistenciaDia = new cAsistenciaDia();
-            oAsistenciaDia.Dia = new DateTime(2021, 5, 18);
+            //cAsistenciaDia oAsistenciaDia = new cAsistenciaDia();
+            //oAsistenciaDia.Dia = new DateTime(2021, 5, 18);
 
-            cPicado oPicado = new cPicado();
-            oPicado.Picado = new DateTime(2021, 5, 18, 8, 1, 0);
+            //cPicado oPicado = new cPicado();
+            //oPicado.Picado = new DateTime(2021, 5, 18, 8, 1, 0);
             //oPicado.Trabajador = miTrabajador;
 
-            oAsistenciaDia.ListaPicados.Add(oPicado);
+            //oAsistenciaDia.ListaPicados.Add(oPicado);
 
-            oAsistenciaMes.ListaAsistenciaDia.Add(oAsistenciaDia);
+            //oAsistenciaMes.ListaAsistenciaDia.Add(oAsistenciaDia);
 
             return oAsistenciaMes;
         }
@@ -134,6 +130,36 @@ namespace CapaDeNegocios.Asistencia
             catch (Exception ex)
             {
                 throw new cReglaNegociosException("Error al eliminar el horario del trabajador: " + ex.Message);
+            }
+        }
+
+        public cHorario TraerHorarioTrabajador(cTrabajador oTrabajador)
+        {
+            try
+            {
+                cHorario oHorario = new cHorario();
+
+                DataTable data = Conexion.GDatos.TraerDataTable("spTraerHorarioTrabajador", oTrabajador.IdTrabajador);
+
+                foreach (DataRow item in data.Rows)
+                {
+                    oHorario.CodigoHorario = Convert.ToInt16(item["idthorario"].ToString());
+                    oHorario.NombreHorario = item["nombrehorario"].ToString();
+                    oHorario.TurnoLunes = TraerTurnoDia(Convert.ToInt16(item["turnolunes"].ToString()));
+                    oHorario.TurnoMartes = TraerTurnoDia(Convert.ToInt16(item["turnomartes"].ToString()));
+                    oHorario.TurnoMiercoles = TraerTurnoDia(Convert.ToInt16(item["turnomiercoles"].ToString()));
+                    oHorario.TurnoJueves = TraerTurnoDia(Convert.ToInt16(item["turnojueves"].ToString()));
+                    oHorario.TurnoViernes = TraerTurnoDia(Convert.ToInt16(item["turnoviernes"].ToString()));
+                    oHorario.TurnoSabado = TraerTurnoDia(Convert.ToInt16(item["turnosabado"].ToString()));
+                    oHorario.TurnoDomingo = TraerTurnoDia(Convert.ToInt16(item["turnodomingo"].ToString()));
+                    
+                }
+
+                return oHorario;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error al traer el horario del trabajador: " + ex.Message);
             }
         }
 
@@ -279,6 +305,7 @@ namespace CapaDeNegocios.Asistencia
                 {
                     oTurno.CodigoTurnoDia = Convert.ToInt16(item["idtturnodia"].ToString());
                     oTurno.NombreTurnoDia = item["nombreturnodia"].ToString();
+                    oTurno.ListaTurnos = TraerTurnos(oTurno);
                 }
 
                 return oTurno;
@@ -335,6 +362,7 @@ namespace CapaDeNegocios.Asistencia
                     oTurno.CodigoTurno = Convert.ToInt16(item["idtturno"].ToString());
                     oTurno.NombreTurno = item["nombreturno"].ToString();
                     oTurno.ToleranciaInicio = Convert.ToInt16(item["toleranciaTurno"].ToString());
+                    oTurno.ToleranciaFalta = Convert.ToInt16(item["toleranciaFalta"].ToString());
                     oTurno.InicioTurno = Convert.ToDateTime(item["inicioTurno"].ToString());
                     oTurno.FinTurno = Convert.ToDateTime(item["finTurno"].ToString());
                     oListaTurnos.Add(oTurno);
@@ -408,7 +436,7 @@ namespace CapaDeNegocios.Asistencia
         {
             try
             {
-                Conexion.GDatos.Ejecutar("spCrearTurno", oTurno.NombreTurno, oTurno.ToleranciaInicio, oTurno.InicioTurno, oTurno.FinTurno);
+                Conexion.GDatos.Ejecutar("spCrearTurno", oTurno.NombreTurno, oTurno.ToleranciaInicio, oTurno.ToleranciaFalta, oTurno.InicioTurno, oTurno.FinTurno);
             }
             catch (Exception ex)
             {
@@ -420,7 +448,7 @@ namespace CapaDeNegocios.Asistencia
         {
             try
             {
-                Conexion.GDatos.Ejecutar("spModificarTurno", oTurno.CodigoTurno, oTurno.NombreTurno, oTurno.ToleranciaInicio, oTurno.InicioTurno, oTurno.FinTurno);
+                Conexion.GDatos.Ejecutar("spModificarTurno", oTurno.CodigoTurno, oTurno.NombreTurno, oTurno.ToleranciaInicio, oTurno.ToleranciaFalta,  oTurno.InicioTurno, oTurno.FinTurno);
             }
             catch (Exception ex)
             {
@@ -455,6 +483,7 @@ namespace CapaDeNegocios.Asistencia
                     oTurno.CodigoTurno = Convert.ToInt16(item["idtturno"].ToString());
                     oTurno.NombreTurno = item["nombreturno"].ToString();
                     oTurno.ToleranciaInicio = Convert.ToInt16(item["toleranciaTurno"].ToString());
+                    oTurno.ToleranciaFalta = Convert.ToInt16(item["toleranciaFalta"].ToString());
                     oTurno.InicioTurno = Convert.ToDateTime(item["inicioTurno"].ToString());
                     oTurno.FinTurno = Convert.ToDateTime(item["finTurno"].ToString());
                     oListaTurnos.Add(oTurno);
@@ -635,12 +664,36 @@ namespace CapaDeNegocios.Asistencia
                 cTrabajador oTrabajadorReloj = null;
 
                 DataTable data = new DataTable();
-                data = Conexion.GDatos.TraerDataTable("spBuscarTrabajadorReloj", codigoReloj);
+                data = Conexion.GDatos.TraerDataTable("spBuscarCodigoTrabajadorReloj", codigoReloj);
 
                 foreach (DataRow item in data.Rows)
                 {
                     oTrabajadorReloj = new cTrabajador();
                     oTrabajadorReloj = oTrabajadorReloj.traerTrabajador(Convert.ToInt16(item["idttrabajador"].ToString()));
+                }
+
+                return oTrabajadorReloj;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error al traer trabajador reloj: " + ex.Message);
+            }
+        }
+
+        public cTrabajadorReloj TraerTrabajadorRelojXidTrabajador(int idtTrabajador)
+        {
+            try
+            {
+                cTrabajadorReloj oTrabajadorReloj = null;
+
+                DataTable data = new DataTable();
+                data = Conexion.GDatos.TraerDataTable("spBuscarTrabajadorReloj", idtTrabajador);
+
+                foreach (DataRow item in data.Rows)
+                {
+                    oTrabajadorReloj = new cTrabajadorReloj();
+                    oTrabajadorReloj.OTrabajador = oTrabajadorReloj.OTrabajador.traerTrabajador(Convert.ToInt16(item["idttrabajador"].ToString()));
+                    oTrabajadorReloj.CodigoReloj = Convert.ToInt16(item["idtreloj"].ToString());
                 }
 
                 return oTrabajadorReloj;

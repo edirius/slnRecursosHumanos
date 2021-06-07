@@ -32,6 +32,7 @@ namespace CapaUsuario.Asistencia
             dtpInicioTurno.Value = oTurno.InicioTurno;
             dtpFinTurno.Value = oTurno.FinTurno;
             numTolerancia.Value = oTurno.ToleranciaInicio;
+            numToleranciaFalta.Value = oTurno.ToleranciaFalta;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -43,6 +44,7 @@ namespace CapaUsuario.Asistencia
                     oTurno.NombreTurno = txtNombreTurno.Text;
                     oTurno.InicioTurno = dtpInicioTurno.Value;
                     oTurno.FinTurno = dtpFinTurno.Value;
+                    oTurno.ToleranciaFalta = Convert.ToInt16(numToleranciaFalta.Value);
                     oTurno.ToleranciaInicio = Convert.ToInt16(numTolerancia.Value);
                     DialogResult = DialogResult.OK;
                 }

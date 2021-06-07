@@ -38,7 +38,8 @@ namespace CapaUsuario.Asistencia
             {
                 frmMantenimientoTurno fMantenimientoTurno = new frmMantenimientoTurno();
                 fMantenimientoTurno.oTurno = new CapaDeNegocios.Asistencia.cTurno();
-                
+                fMantenimientoTurno.oTurno.InicioTurno = DateTime.Now;
+                fMantenimientoTurno.oTurno.FinTurno = DateTime.Now;
                 if (fMantenimientoTurno.ShowDialog() == DialogResult.OK)
                 {
                     oCatalogo.CrearTurno(fMantenimientoTurno.oTurno);

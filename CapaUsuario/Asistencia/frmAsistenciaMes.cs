@@ -15,8 +15,7 @@ namespace CapaUsuario.Asistencia
     {
         public CapaDeNegocios.Asistencia.cTrabajadorReloj miTrabajador;
 
-        int totalFaltas = 0;
-        int totalTardanzas = 0;
+        CapaDeNegocios.Asistencia.cAsistenciaDia oAsistenciaDia = new CapaDeNegocios.Asistencia.cAsistenciaDia();
 
         CapaDeNegocios.Asistencia.cCatalogoAsistencia oCatalogoAsistencia = new CapaDeNegocios.Asistencia.cCatalogoAsistencia();
 
@@ -67,70 +66,92 @@ namespace CapaUsuario.Asistencia
             CalendarioAsistencia.MaxDate = oAsistenciaMes.FinMes;
             
             
+
+
+            oAsistenciaMes.ListaAsistenciaDia = oAsistenciaMes.LlenarAsistencias(oCatalogoAsistencia.ListaPicadoxMes(miTrabajador, CalendarioAsistencia.SelectionStart),oAsistenciaMes.InicioMes, oCatalogoAsistencia.TraerHorarioTrabajador(miTrabajador.OTrabajador));
+            oAsistenciaMes.Actualizardatos();
+
+            lblTotalFaltas.Text = oAsistenciaMes.TotalFaltasMes.ToString();
+            lblTotaltardanzas.Text = oAsistenciaMes.TotalMinutosTarde.ToString(); // .TotalTardanzas.ToString();
+
             foreach (CapaDeNegocios.Asistencia.cAsistenciaDia item in oAsistenciaMes.ListaAsistenciaDia)
             {
                 if (item.Falta == true)
                 {
                     CalendarioAsistencia.AddBoldedDate(item.Dia);
-                    totalFaltas += 1;
+                  
                 }
 
                 if (item.Tarde == true)
                 {
-                    totalTardanzas += 1;
+                    CalendarioAsistencia.AddBoldedDate(item.Dia);
                 }
 
             }
 
-            lblTotalFaltas.Text = totalFaltas.ToString();
-            lblTotaltardanzas.Text = totalTardanzas.ToString();
-
         }
 
-        private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboAño.Text != "" && cboMes.Text !="")
-            {
-                CargarCalendario();
-            }
-        }
+      
 
         private void CargarDatos()
         {
-            if (chkTodoElMes.Checked)
+            if (!chkTodoElMes.Checked)
             {
                 dtgDetalleAsistencia.DataSource = oCatalogoAsistencia.ListaPicadoxDia(miTrabajador, CalendarioAsistencia.SelectionStart);
             }
             else
             {
-                dtgDetalleAsistencia.DataSource = oCatalogoAsistencia.ListaPicadoxDia(miTrabajador, CalendarioAsistencia.SelectionStart);
+                dtgDetalleAsistencia.DataSource = oCatalogoAsistencia.ListaPicadoxMes(miTrabajador, CalendarioAsistencia.SelectionStart);
             }
             dtgListaSalidas.DataSource = oCatalogoAsistencia.ListaSalidas(miTrabajador.OTrabajador);
+
+            if (oAsistenciaMes.ListaAsistenciaDia.Count > 0)
+            {
+                oAsistenciaDia = oAsistenciaMes.ListaAsistenciaDia.Find(x => x.Dia.Date == CalendarioAsistencia.SelectionStart);
+                if (oAsistenciaDia != null)
+                {
+                    lblMinutostarde.Text = oAsistenciaDia.MinutosTarde.ToString();
+                    if (oAsistenciaDia.Falta == true)
+                    {
+                        lblFaltaDia.Text = "Si";
+                    }
+                    else
+                    {
+                        lblFaltaDia.Text = "No";
+                    }
+                    
+                }
+                
+            }
+            
         }
 
         private void CalendarioAsistencia_DateSelected(object sender, DateRangeEventArgs e)
         {
-            if (oAsistenciaMes != null)
-            {
-                foreach (CapaDeNegocios.Asistencia.cAsistenciaDia item in oAsistenciaMes.ListaAsistenciaDia)
-                {
-                    if (item.Dia.Date == e.Start)
-                    {
-                        dtgDetalleAsistencia.DataSource = item.ListaPicados;
-                        dtgListaSalidas.DataSource = item.ListaSalidas;
-                    }
-                }
-            }
+            //if (oAsistenciaMes != null)
+            //{
+            //    foreach (CapaDeNegocios.Asistencia.cAsistenciaDia item in oAsistenciaMes.ListaAsistenciaDia)
+            //    {
+            //        if (item.Dia.Date == e.Start)
+            //        {
+            //            dtgDetalleAsistencia.DataSource = item.ListaPicados;
+            //            dtgListaSalidas.DataSource = item.ListaSalidas;
+            //        }
+            //    }
+            //}
         }
 
         private void DarFormato()
         {
             dtgDetalleAsistencia.Columns.Add("colTrabajador", "Trabajador");
-            dtgDetalleAsistencia.Columns["colTrabajador"].DataPropertyName = "Trabajador";
+            dtgDetalleAsistencia.Columns["colTrabajador"].DataPropertyName = "TrabajadorReloj";
             dtgDetalleAsistencia.Columns["colTrabajador"].Visible = false;
             dtgDetalleAsistencia.Columns.Add("colPicado", "Picado");
             dtgDetalleAsistencia.Columns["colPicado"].DataPropertyName = "Picado";
             dtgDetalleAsistencia.Columns["colPicado"].Visible = true;
+            dtgDetalleAsistencia.Columns.Add("colCodigoPicado", "Codigo");
+            dtgDetalleAsistencia.Columns["colCodigoPicado"].DataPropertyName = "CodigoPicado";
+            dtgDetalleAsistencia.Columns["colCodigoPicado"].Visible = false;
             dtgDetalleAsistencia.Columns.Add("colDireccionFoto", "Foto");
             dtgDetalleAsistencia.Columns["colDireccionFoto"].DataPropertyName = "DireccionFoto";
             dtgDetalleAsistencia.Columns["colDireccionFoto"].Visible = false;
@@ -169,6 +190,18 @@ namespace CapaUsuario.Asistencia
                 CargarCalendario();
             }
         }
-    
+
+        private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboAño.Text != "" && cboMes.Text != "")
+            {
+                CargarCalendario();
+            }
+        }
+
+        private void chkTodoElMes_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

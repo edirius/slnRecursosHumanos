@@ -332,9 +332,30 @@ namespace CapaUsuario.Asistencia
                         fAsignarCodigoReloj.oTrabajadorReloj = new CapaDeNegocios.Asistencia.cTrabajadorReloj();
                         fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador = listaTrabajadores[0];
 
+                        if (oCatalogo.TraerTrabajadorRelojXidTrabajador(listaTrabajadores[0].IdTrabajador)== null)
+                        {
+                            fAsignarCodigoReloj.oTrabajadorReloj.CodigoReloj = -1;
+                        }
+                        else
+                        {
+                            fAsignarCodigoReloj.oTrabajadorReloj.CodigoReloj = oCatalogo.TraerTrabajadorRelojXidTrabajador(listaTrabajadores[0].IdTrabajador).CodigoReloj;
+
+                        }
+                        
+
                         if (fAsignarCodigoReloj.ShowDialog() == DialogResult.OK)
                         {
-                            oCatalogo.CrearTrabajadorReloj(fAsignarCodigoReloj.oTrabajadorReloj);
+                            if (fAsignarCodigoReloj.modificado == false)
+                            {
+                                oCatalogo.CrearTrabajadorReloj(fAsignarCodigoReloj.oTrabajadorReloj);
+                                MessageBox.Show("Se ingreso el codigo del reloj: " + fAsignarCodigoReloj.oTrabajadorReloj.CodigoReloj + " al trabajador: " + fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador.Nombres + " " + fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador.ApellidoPaterno + " " + fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador.ApellidoMaterno, "Asignado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                oCatalogo.ModificarTrabajadorReloj(fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador, fAsignarCodigoReloj.oTrabajadorReloj.CodigoReloj);
+                                MessageBox.Show("Se modifico el codigo del reloj: " + fAsignarCodigoReloj.oTrabajadorReloj.CodigoReloj + " al trabajador: " + fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador.Nombres + " " + fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador.ApellidoPaterno + " " + fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador.ApellidoMaterno, "Asignado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            
 
                         }
                         else

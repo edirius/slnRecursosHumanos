@@ -22,10 +22,10 @@ namespace CapaDeNegocios.Asistencia
         public cHorario()
         {
             cTurnoDia NuevoTurnoDia = new cTurnoDia();
-            NuevoTurnoDia.CodigoTurnoDia = 1;
-            NuevoTurnoDia.NombreTurnoDia = "Sin Turno";
-            _TurnoLunes = NuevoTurnoDia;
-            _TurnoMartes = NuevoTurnoDia;
+            //NuevoTurnoDia.CodigoTurnoDia = 1;
+            //NuevoTurnoDia.NombreTurnoDia = "Sin Turno";
+            //_TurnoLunes = NuevoTurnoDia;
+            //_TurnoMartes = NuevoTurnoDia;
 
         }
 
@@ -146,26 +146,26 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
-        public List<cHorario> ListaHorarios()
-        {
-            try
-            {
-                List<cHorario> NuevaListaHorarios = new List<cHorario>();
+        //public List<cHorario> ListaHorarios()
+        //{
+        //    try
+        //    {
+        //        List<cHorario> NuevaListaHorarios = new List<cHorario>();
 
-                //Codigo Ejemplo
+        //        //Codigo Ejemplo
 
-                cHorario EjemploHorario = new cHorario();
-                EjemploHorario.CodigoHorario = 0;
-                EjemploHorario.NombreHorario = "Ejemplo Horario";
+        //        cHorario EjemploHorario = new cHorario();
+        //        EjemploHorario.CodigoHorario = 0;
+        //        EjemploHorario.NombreHorario = "Ejemplo Horario";
 
-                NuevaListaHorarios.Add(EjemploHorario);
+        //        NuevaListaHorarios.Add(EjemploHorario);
 
-                return NuevaListaHorarios;
-            }
-            catch (Exception ex)
-            {
-                throw new cReglaNegociosException("Error al listar los horarios: " + ex.Message);
-            }
-        }
+        //        return NuevaListaHorarios;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new cReglaNegociosException("Error al listar los horarios: " + ex.Message);
+        //    }
+        //}
     }
 }

@@ -12,14 +12,17 @@ namespace CapaDeNegocios.Asistencia
         DateTime _Dia;
         Boolean _Tarde;
         Boolean _Falta;
-        TimeSpan _MinutosTarde;
-        cHorario _HorarioTrabajador;
-        List<cExcepcionesAsistencia> _ListaSalidas;
+        int _MinutosTarde;
 
+        Boolean _PicadoSalida;
+        Boolean _DiaLibre;
+        cTurnoDia _TurnoDiaTrabajador;
+        List<cExcepcionesAsistencia> _ListaSalidas;
+        
         public cAsistenciaDia()
         {
             _ListaPicados = new List<cPicado>();
-            _HorarioTrabajador = new cHorario();
+            _TurnoDiaTrabajador = new cTurnoDia();
         }
 
         public List<cPicado> ListaPicados
@@ -74,20 +77,9 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
-        public cHorario HorarioTrabajador
-        {
-            get
-            {
-                return _HorarioTrabajador;
-            }
+       
 
-            set
-            {
-                _HorarioTrabajador = value;
-            }
-        }
-
-        public TimeSpan MinutosTarde
+        public int MinutosTarde
         {
             get
             {
@@ -110,6 +102,111 @@ namespace CapaDeNegocios.Asistencia
             set
             {
                 _ListaSalidas = value;
+            }
+        }
+
+        public cTurnoDia TurnoDiaTrabajador
+        {
+            get
+            {
+                return _TurnoDiaTrabajador;
+            }
+
+            set
+            {
+                _TurnoDiaTrabajador = value;
+            }
+        }
+
+        public bool PicadoSalida
+        {
+            get
+            {
+                return _PicadoSalida;
+            }
+
+            set
+            {
+                _PicadoSalida = value;
+            }
+        }
+
+        public bool DiaLibre
+        {
+            get
+            {
+                return _DiaLibre;
+            }
+
+            set
+            {
+                _DiaLibre = value;
+            }
+        }
+
+        public void Actualizardatos()
+        {
+            try
+            {
+                // Dia Libre
+                if (_TurnoDiaTrabajador.CodigoTurnoDia != 0)
+                {
+                    //Verificamos que tiene turnos
+                    if (_TurnoDiaTrabajador.ListaTurnos.Count > 0)
+                    {
+                        foreach (cTurno miTurno in _TurnoDiaTrabajador.ListaTurnos)
+                        {
+                            foreach (cPicado miPicado in ListaPicados)
+                            {
+                                //pico antes del horario
+                                if (miPicado.Picado.TimeOfDay <= miTurno.InicioTurno.TimeOfDay )
+                                {
+                                    _MinutosTarde = 0;
+                                    _Tarde = false;
+                                    _Falta = false;
+                                }
+                                else
+                                {
+                                    //pico despues del horario de inicio, pero antes del horario de fin
+                                    if (miPicado.Picado.TimeOfDay < miTurno.FinTurno.TimeOfDay)
+                                    {
+                                        _MinutosTarde = (miPicado.Picado.TimeOfDay - miTurno.InicioTurno.TimeOfDay).Minutes;
+                                        if (_MinutosTarde >= miTurno.ToleranciaInicio)
+                                        {
+                                            _Tarde = true;
+                                            _Falta = false;
+                                        }
+                                        else
+                                        {
+                                            _Tarde = false;
+                                            _Falta = false;
+                                        }
+
+                                        if (_MinutosTarde >= miTurno.ToleranciaFalta)
+                                        {
+                                            _Tarde = false;
+                                            _Falta = true;
+                                        }
+                                    }
+                                    //es el picado de salida
+                                    else
+                                    {
+                                        _PicadoSalida = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                else
+                {
+                    _DiaLibre = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error al actualizar datos de la asistencia del dia del trabajador: " + ex.Message);
             }
         }
     }
