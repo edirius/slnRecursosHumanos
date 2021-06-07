@@ -88,7 +88,7 @@ namespace CapaUsuario.Reloj
         {
             try
             {
-
+                int datosGuardados=0;
                 
                 if (ListaHuellasReloj.Count > 0)
                 {
@@ -98,13 +98,20 @@ namespace CapaUsuario.Reloj
                         miPicado.Picado = item.FechaYHora;
                         miPicado.TrabajadorReloj = new CapaDeNegocios.Asistencia.cTrabajadorReloj();
                         miPicado.TrabajadorReloj.CodigoReloj = Convert.ToInt16(item.IdUsuario);
-                        oCatalogo.CrearPicadoReloj(miPicado);
+
+                        if (oCatalogo.TraerPicadoRelojXTrabajadorFecha(miPicado.TrabajadorReloj.CodigoReloj, miPicado.Picado)== null)
+                        {
+                            oCatalogo.CrearPicadoReloj(miPicado);
+                        }
+                        datosGuardados += 1;
                     }
                 }
                 else
                 {
                     MessageBox.Show("No existe records para guardar.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
+                label1.Text = "Datos guardados: " + datosGuardados.ToString(); 
             }
             catch (Exception ex)
             {

@@ -783,6 +783,30 @@ namespace CapaDeNegocios.Asistencia
                 throw new cReglaNegociosException("Error al listar los picados del reloj: " + ex.Message);
             }
         }
+
+
+        public cPicado TraerPicadoRelojXTrabajadorFecha(int idttrabajadorreloj, DateTime fecha)
+        {
+            try
+            {
+                DataTable oData = new DataTable();
+                cPicado oPicado = null;
+
+                oData = Conexion.GDatos.TraerDataTable("spListarPicadoRelojxDia", idttrabajadorreloj, fecha);
+                foreach (DataRow item in oData.Rows)
+                {
+                    oPicado = new cPicado();
+                    oPicado.CodigoPicado = Convert.ToInt16(item["idtpicadoreloj"].ToString());
+                    oPicado.Picado = Convert.ToDateTime(item["fecha"].ToString());
+                    oPicado.TrabajadorReloj.CodigoReloj = Convert.ToInt16(item["idtreloj"].ToString());
+                }
+                return oPicado;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error al traer el picado del reloj: " + ex.Message);
+            }
+        }
         #endregion
     }
 }

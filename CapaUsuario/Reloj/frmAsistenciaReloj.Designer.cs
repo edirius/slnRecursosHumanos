@@ -33,6 +33,7 @@
             this.dtgListaPicados = new System.Windows.Forms.DataGridView();
             this.btnDescargarAsistencia = new System.Windows.Forms.Button();
             this.btnGuardarAsistencia = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaPicados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,11 +79,21 @@
             this.btnGuardarAsistencia.UseVisualStyleBackColor = false;
             this.btnGuardarAsistencia.Click += new System.EventHandler(this.btnGuardarAsistencia_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(27, 280);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 13);
+            this.label1.TabIndex = 103;
+            this.label1.Text = "Datos Guardados: 0";
+            // 
             // frmAsistenciaReloj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 305);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGuardarAsistencia);
             this.Controls.Add(this.btnDescargarAsistencia);
             this.Controls.Add(this.dtgListaPicados);
@@ -93,6 +104,7 @@
             this.Load += new System.EventHandler(this.frmAsistenciaReloj_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaPicados)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -101,5 +113,6 @@
         private System.Windows.Forms.DataGridView dtgListaPicados;
         private System.Windows.Forms.Button btnDescargarAsistencia;
         private System.Windows.Forms.Button btnGuardarAsistencia;
+        private System.Windows.Forms.Label label1;
     }
 }
