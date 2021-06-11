@@ -71,13 +71,14 @@
             this.lblNombredelTrabajador.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblNombredelTrabajador.Location = new System.Drawing.Point(0, 0);
             this.lblNombredelTrabajador.Name = "lblNombredelTrabajador";
-            this.lblNombredelTrabajador.Size = new System.Drawing.Size(886, 23);
+            this.lblNombredelTrabajador.Size = new System.Drawing.Size(933, 23);
             this.lblNombredelTrabajador.TabIndex = 78;
             this.lblNombredelTrabajador.Text = "Lista Cargos";
             this.lblNombredelTrabajador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cboMes
             // 
+            this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMes.FormattingEnabled = true;
             this.cboMes.Location = new System.Drawing.Point(160, 71);
             this.cboMes.Name = "cboMes";
@@ -96,6 +97,7 @@
             // 
             // cboAño
             // 
+            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAño.FormattingEnabled = true;
             this.cboAño.Location = new System.Drawing.Point(45, 71);
             this.cboAño.Name = "cboAño";
@@ -166,7 +168,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(621, 78);
+            this.label5.Location = new System.Drawing.Point(596, 78);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 13);
             this.label5.TabIndex = 88;
@@ -177,10 +179,10 @@
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
             this.dtgListaSalidas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgListaSalidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgListaSalidas.Location = new System.Drawing.Point(624, 113);
+            this.dtgListaSalidas.Location = new System.Drawing.Point(596, 113);
             this.dtgListaSalidas.Name = "dtgListaSalidas";
             this.dtgListaSalidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaSalidas.Size = new System.Drawing.Size(240, 150);
+            this.dtgListaSalidas.Size = new System.Drawing.Size(308, 150);
             this.dtgListaSalidas.TabIndex = 89;
             // 
             // chkTodoElMes
@@ -234,7 +236,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(886, 450);
+            this.ClientSize = new System.Drawing.Size(933, 450);
             this.Controls.Add(this.lblFaltaDia);
             this.Controls.Add(this.lblMinutostarde);
             this.Controls.Add(this.label7);

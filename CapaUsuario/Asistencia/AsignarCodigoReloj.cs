@@ -36,7 +36,7 @@ namespace CapaUsuario.Asistencia
 
             if (oTrabajadorReloj.CodigoReloj != -1)
             {
-                MessageBox.Show("El trabajadaro ya tiene asignado un codigo en el reloj: " + oTrabajadorReloj.CodigoReloj.ToString());
+                MessageBox.Show("El trabajador ya tiene asignado un codigo en el reloj: " + oTrabajadorReloj.CodigoReloj.ToString(), "Codigo encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtNumero.Text = oTrabajadorReloj.CodigoReloj.ToString();
                 modificado = true;
             }
@@ -52,11 +52,11 @@ namespace CapaUsuario.Asistencia
             {
                 if (txtNumero.Text.Trim() != "")
                 {
-                    cTrabajador BuscarTrabajador = oCatalogo.TraerTrabajadorXCodigoReloj(Convert.ToInt16(txtNumero.Text));
+                    cTrabajador BuscarTrabajador = oCatalogo.TraerTrabajadorXCodigoReloj(Convert.ToInt32(txtNumero.Text));
 
                     if (BuscarTrabajador == null )
                     {
-                        oTrabajadorReloj.CodigoReloj = Convert.ToInt16(txtNumero.Text);
+                        oTrabajadorReloj.CodigoReloj = Convert.ToInt32(txtNumero.Text);
                         DialogResult = DialogResult.OK;
                     }
                     else
@@ -90,6 +90,16 @@ namespace CapaUsuario.Asistencia
             {
                 e.Handled = true;
             }
+        }
+
+        private void btnIngresarDNI_Click(object sender, EventArgs e)
+        {
+            txtNumero.Text = oTrabajadorReloj.OTrabajador.Dni;
+        }
+
+        private void txtNumero_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

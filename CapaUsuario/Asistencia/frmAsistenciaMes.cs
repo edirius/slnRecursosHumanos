@@ -61,14 +61,19 @@ namespace CapaUsuario.Asistencia
 
         private void CargarCalendario()
         {
-            oAsistenciaMes = oCatalogoAsistencia.LLenarAsistencia(miTrabajador.OTrabajador, cboMes.SelectedIndex + 1, Convert.ToInt16(cboAño.Text));
+            oAsistenciaMes = oCatalogoAsistencia.LLenarAsistencia(miTrabajador.OTrabajador, cboMes.SelectedIndex + 1, Convert.ToInt16(cboAño.Text), oCatalogoAsistencia.TraerHorarioTrabajador(miTrabajador.OTrabajador));
             CalendarioAsistencia.MinDate = oAsistenciaMes.InicioMes;
             CalendarioAsistencia.MaxDate = oAsistenciaMes.FinMes;
             
             
 
 
-            oAsistenciaMes.ListaAsistenciaDia = oAsistenciaMes.LlenarAsistencias(oCatalogoAsistencia.ListaPicadoxMes(miTrabajador, CalendarioAsistencia.SelectionStart),oAsistenciaMes.InicioMes, oCatalogoAsistencia.TraerHorarioTrabajador(miTrabajador.OTrabajador));
+            oAsistenciaMes.ListaAsistenciaDia = oAsistenciaMes.LlenarAsistencias(oCatalogoAsistencia.ListaPicadoEntreFechas(miTrabajador, oAsistenciaMes.InicioMes, oAsistenciaMes.FinMes),
+                                                                                                                    oAsistenciaMes.InicioMes,
+                                                                                                                    oAsistenciaMes.FinMes,
+                                                                                                                    oCatalogoAsistencia.TraerHorarioTrabajador(miTrabajador.OTrabajador), 
+                                                                                                                    oCatalogoAsistencia.ListaSalidasEntreFechas(miTrabajador.OTrabajador, oAsistenciaMes.InicioMes, oAsistenciaMes.FinMes), 
+                                                                                                                    oCatalogoAsistencia.ListaDiaFestivo(CalendarioAsistencia.SelectionStart.Year));
             oAsistenciaMes.Actualizardatos();
 
             lblTotalFaltas.Text = oAsistenciaMes.TotalFaltasMes.ToString();
@@ -76,7 +81,7 @@ namespace CapaUsuario.Asistencia
 
             foreach (CapaDeNegocios.Asistencia.cAsistenciaDia item in oAsistenciaMes.ListaAsistenciaDia)
             {
-                if (item.Falta == true)
+                if ((item.Falta == CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaPicadoEntrada) || (item.Falta == CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaPicadoFinal) || (item.Falta == CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaTotal))
                 {
                     CalendarioAsistencia.AddBoldedDate(item.Dia);
                   
@@ -101,7 +106,7 @@ namespace CapaUsuario.Asistencia
             }
             else
             {
-                dtgDetalleAsistencia.DataSource = oCatalogoAsistencia.ListaPicadoxMes(miTrabajador, CalendarioAsistencia.SelectionStart);
+                dtgDetalleAsistencia.DataSource = oCatalogoAsistencia.ListaPicadoEntreFechas(miTrabajador, oAsistenciaMes.InicioMes, oAsistenciaMes.FinMes);
             }
             dtgListaSalidas.DataSource = oCatalogoAsistencia.ListaSalidas(miTrabajador.OTrabajador);
 
@@ -111,14 +116,32 @@ namespace CapaUsuario.Asistencia
                 if (oAsistenciaDia != null)
                 {
                     lblMinutostarde.Text = oAsistenciaDia.MinutosTarde.ToString();
-                    if (oAsistenciaDia.Falta == true)
+                    switch (oAsistenciaDia.Falta)
                     {
-                        lblFaltaDia.Text = "Si";
+                        case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaPicadoEntrada:
+                            lblFaltaDia.Text = "Falta al picar Entrada";
+                            lblFaltaDia.ForeColor = Color.Red;
+                            break;
+                        case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaPicadoFinal:
+                            lblFaltaDia.Text = "Falta al picar Salida";
+                            lblFaltaDia.ForeColor = Color.Red;
+                            break;
+                        case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaJustificada:
+                            lblFaltaDia.Text = "Falta Justificada";
+                            lblFaltaDia.ForeColor = Color.Blue;
+                            break;
+                        case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaTotal:
+                            lblFaltaDia.Text = "Falta al picar entrada y salida";
+                            lblFaltaDia.ForeColor = Color.Red;
+                            break;
+                        case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.SinFalta:
+                            lblFaltaDia.Text = "No";
+                            lblFaltaDia.ForeColor = Color.Green;
+                            break;
+                        default:
+                            break;
                     }
-                    else
-                    {
-                        lblFaltaDia.Text = "No";
-                    }
+                    
                     
                 }
                 

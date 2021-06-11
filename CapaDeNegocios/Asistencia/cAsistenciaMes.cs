@@ -23,6 +23,7 @@ namespace CapaDeNegocios.Asistencia
         {
             _Trabajador = new cTrabajador();
             _ListaAsistenciaDia = new List<cAsistenciaDia>();
+            _ListaSalidas = new List<cExcepcionesAsistencia>();
             _HorarioTrabajador = new cHorario();
         }
 
@@ -147,24 +148,46 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
-        public List<cAsistenciaDia> LlenarAsistencias( List<cPicado> ListaPicados, DateTime Mes, cHorario miHorario)
+        public List<cAsistenciaDia> LlenarAsistencias( List<cPicado> ListaPicados, DateTime FechaInicio, DateTime FechaFin, cHorario miHorario, List<cExcepcionesAsistencia> ListaSalidasMes, List<cDiaFestivo> ListaDiaFestivosMes)
         {
             try
             {
                 List<cAsistenciaDia> NuevaLista = new List<cAsistenciaDia>();
                 int numeroDias = 0;
-                numeroDias = DateTime.DaysInMonth(Mes.Year, Mes.Month);
+                numeroDias = (FechaFin - FechaInicio).Days;
 
                 for (int i = 0; i < numeroDias; i++)
                 {
                     cAsistenciaDia NuevaAsistencia = new cAsistenciaDia();
-                    NuevaAsistencia.Dia = new DateTime(Mes.Year, Mes.Month, i + 1);
+                    NuevaAsistencia.Dia = FechaInicio.AddDays(i);
 
                     foreach (cPicado item in ListaPicados)
                     {
                         if (item.Picado.Date == NuevaAsistencia.Dia.Date)
                         {
                             NuevaAsistencia.ListaPicados.Add(item);
+                        }
+                    }
+
+                    foreach (cExcepcionesAsistencia item in ListaSalidasMes)
+                    {
+                        //Si la fecha de salida es la misma que el dia
+                        if (NuevaAsistencia.Dia.Date == item.InicioExcepcion.Date || NuevaAsistencia.Dia.Date == item.FinExcepcion.Date)
+                        {
+                            NuevaAsistencia.ListaSalidas.Add(item);
+                        }
+                        //Si la fecha de papeleta de salida es de varios dias
+                        if (NuevaAsistencia.Dia.Date > item.InicioExcepcion.Date && NuevaAsistencia.Dia.Date < item.FinExcepcion.Date)
+                        {
+                            NuevaAsistencia.ListaSalidas.Add(item);
+                        }
+                    }
+
+                    foreach (cDiaFestivo item in ListaDiaFestivosMes)
+                    {
+                        if (NuevaAsistencia.Dia.Date == item.DiaFestivo)
+                        {
+                            NuevaAsistencia.DiaFestivo = item;
                         }
                     }
 
@@ -214,7 +237,7 @@ namespace CapaDeNegocios.Asistencia
                 foreach (cAsistenciaDia item in  ListaAsistenciaDia)
                 {
                     item.Actualizardatos();
-                    if (item.Falta == true)
+                    if (item.Falta == cAsistenciaDia.TipoFalta.FaltaPicadoEntrada || item.Falta == cAsistenciaDia.TipoFalta.FaltaPicadoFinal || item.Falta == cAsistenciaDia.TipoFalta.FaltaTotal)
                     {
                         TotalFaltasMes++;
                     }

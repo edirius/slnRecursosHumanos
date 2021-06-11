@@ -11,18 +11,30 @@ namespace CapaDeNegocios.Asistencia
         List<cPicado> _ListaPicados;
         DateTime _Dia;
         Boolean _Tarde;
-        Boolean _Falta;
+        TipoFalta _Falta;
+   
         int _MinutosTarde;
 
         Boolean _PicadoSalida;
         Boolean _DiaLibre;
         cTurnoDia _TurnoDiaTrabajador;
         List<cExcepcionesAsistencia> _ListaSalidas;
+        cDiaFestivo _DiaFestivo;
         
+        public enum TipoFalta
+        {
+            FaltaPicadoEntrada,
+            FaltaPicadoFinal,
+            FaltaJustificada,
+            FaltaTotal,
+            SinFalta
+        }
+
         public cAsistenciaDia()
         {
             _ListaPicados = new List<cPicado>();
             _TurnoDiaTrabajador = new cTurnoDia();
+            _ListaSalidas = new List<cExcepcionesAsistencia>();
         }
 
         public List<cPicado> ListaPicados
@@ -64,19 +76,7 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
-        public bool Falta
-        {
-            get
-            {
-                return _Falta;
-            }
-
-            set
-            {
-                _Falta = value;
-            }
-        }
-
+   
        
 
         public int MinutosTarde
@@ -144,6 +144,32 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
+        public cDiaFestivo DiaFestivo
+        {
+            get
+            {
+                return _DiaFestivo;
+            }
+
+            set
+            {
+                _DiaFestivo = value;
+            }
+        }
+
+        public TipoFalta Falta
+        {
+            get
+            {
+                return _Falta;
+            }
+
+            set
+            {
+                _Falta = value;
+            }
+        }
+
         public void Actualizardatos()
         {
             try
@@ -151,57 +177,144 @@ namespace CapaDeNegocios.Asistencia
                 // Dia Libre
                 if (_TurnoDiaTrabajador.CodigoTurnoDia != 0)
                 {
-                    //Verificamos que tiene turnos
-                    if (_TurnoDiaTrabajador.ListaTurnos.Count > 0)
+                    //Dia festivo
+                    if (DiaFestivo != null)
                     {
-                        foreach (cTurno miTurno in _TurnoDiaTrabajador.ListaTurnos)
+                        _DiaLibre = true;
+                        _Tarde = false;
+                        _Falta = TipoFalta.SinFalta;
+                        _MinutosTarde = 0;
+                    }
+                    else
+                    {
+                        //Verificamos que tiene turnos
+                        if (_TurnoDiaTrabajador.ListaTurnos.Count > 0)
                         {
-                            foreach (cPicado miPicado in ListaPicados)
+                            foreach (cTurno miTurno in _TurnoDiaTrabajador.ListaTurnos)
                             {
-                                //pico antes del horario
-                                if (miPicado.Picado.TimeOfDay <= miTurno.InicioTurno.TimeOfDay )
+                                foreach (cPicado miPicado in ListaPicados)
                                 {
-                                    _MinutosTarde = 0;
-                                    _Tarde = false;
-                                    _Falta = false;
-                                }
-                                else
-                                {
-                                    //pico despues del horario de inicio, pero antes del horario de fin
-                                    if (miPicado.Picado.TimeOfDay < miTurno.FinTurno.TimeOfDay)
+                                    //pico antes del horario
+                                    if (miPicado.Picado.TimeOfDay <= miTurno.InicioTurno.TimeOfDay)
                                     {
-                                        _MinutosTarde = (miPicado.Picado.TimeOfDay - miTurno.InicioTurno.TimeOfDay).Minutes;
-                                        if (_MinutosTarde >= miTurno.ToleranciaInicio)
-                                        {
-                                            _Tarde = true;
-                                            _Falta = false;
-                                        }
-                                        else
-                                        {
-                                            _Tarde = false;
-                                            _Falta = false;
-                                        }
-
-                                        if (_MinutosTarde >= miTurno.ToleranciaFalta)
-                                        {
-                                            _Tarde = false;
-                                            _Falta = true;
-                                        }
+                                        _MinutosTarde = 0;
+                                        _Tarde = false;
+                                        _Falta = TipoFalta.SinFalta;
+                                        
                                     }
-                                    //es el picado de salida
                                     else
                                     {
-                                        _PicadoSalida = true;
+                                        //pico despues del horario de inicio, pero antes del horario de fin
+                                        if (miPicado.Picado.TimeOfDay < miTurno.FinTurno.TimeOfDay)
+                                        {
+                                            _MinutosTarde = (miPicado.Picado.TimeOfDay - miTurno.InicioTurno.TimeOfDay).Minutes;
+                                            if (_MinutosTarde >= miTurno.ToleranciaInicio)
+                                            {
+                                                _Tarde = true;
+                                                _Falta = TipoFalta.SinFalta;
+                                            }
+                                            else
+                                            {
+                                                _Tarde = false;
+                                                _Falta = TipoFalta.SinFalta;
+                                            }
+
+                                            if (_MinutosTarde >= miTurno.ToleranciaFalta)
+                                            {
+                                                _Tarde = false;
+                                                _Falta = TipoFalta.FaltaPicadoEntrada;
+                                            }
+                                        }
+                                        //es el picado de salida
+                                        else
+                                        {
+                                            _PicadoSalida = true;
+                                        }
                                     }
                                 }
                             }
                         }
+
+                        if (_PicadoSalida == false)
+                        {
+                            if (_Falta == TipoFalta.SinFalta)
+                            {
+                                _Falta = TipoFalta.FaltaPicadoFinal;
+                            }
+                            else
+                            {
+                                _Falta = TipoFalta.FaltaTotal;
+                            }
+                            
+                        }
+
+                        foreach (cExcepcionesAsistencia item in _ListaSalidas)
+                        {
+                            //Si la fecha de salida es la misma que el dia
+                            if ( _Dia.Date == item.InicioExcepcion.Date || _Dia.Date == item.FinExcepcion.Date)
+                            {
+                                if (item.InicioExcepcion.TimeOfDay <= _TurnoDiaTrabajador.ListaTurnos[0].InicioTurno.TimeOfDay)
+                                {
+                                    _MinutosTarde = 0;
+                                    _Tarde = false;
+                                    if (_Falta == TipoFalta.FaltaTotal)
+                                    {
+                                        _Falta = TipoFalta.FaltaPicadoFinal;
+                                    }
+                                    else
+                                    {
+                                        if (_Falta == TipoFalta.FaltaPicadoEntrada)
+                                        {
+                                            _Falta = TipoFalta.FaltaJustificada;
+                                        }
+                                        else
+                                        {
+                                            _Falta = TipoFalta.SinFalta;
+                                        }
+                                    }
+                                }
+                                if (item.FinExcepcion.TimeOfDay >= _TurnoDiaTrabajador.ListaTurnos[0].FinTurno.TimeOfDay)
+                                {
+                                    if (_Falta == TipoFalta.FaltaTotal)
+                                    {
+                                        _Falta = TipoFalta.FaltaPicadoEntrada;
+                                    }
+                                    else
+                                    {
+                                        if (_Falta == TipoFalta.FaltaPicadoEntrada)
+                                        {
+                                            _Falta = TipoFalta.FaltaJustificada;
+                                        }
+                                        else
+                                        {
+                                            _Falta = TipoFalta.SinFalta;
+                                        }
+                                        
+                                    }
+                                }
+                            }
+                            //Si la fecha de papeleta de salida es de varios dias
+                            if (_Dia.Date > item.InicioExcepcion.Date && _Dia.Date < item.FinExcepcion.Date)
+                            {
+                                _Tarde = false;
+                                if (_Falta != TipoFalta.SinFalta)
+                                {
+                                    _Falta = TipoFalta.FaltaJustificada;
+                                }
+                                
+                                _MinutosTarde = 0;
+                            }
+                        }
                     }
+                
                 }
 
                 else
                 {
                     _DiaLibre = true;
+                    _Tarde = false;
+                    _Falta = TipoFalta.SinFalta;
+                    _MinutosTarde = 0;
                 }
             }
             catch (Exception ex)

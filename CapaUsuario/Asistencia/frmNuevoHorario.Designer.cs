@@ -47,6 +47,11 @@
             this.cboTurnoDomingo = new System.Windows.Forms.ComboBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.chkInicioMensual = new System.Windows.Forms.CheckBox();
+            this.numInicioMes = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numInicioMes)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -68,7 +73,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 77);
+            this.label2.Location = new System.Drawing.Point(42, 65);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 2;
@@ -77,7 +82,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 115);
+            this.label3.Location = new System.Drawing.Point(42, 103);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 13);
             this.label3.TabIndex = 3;
@@ -86,7 +91,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 153);
+            this.label4.Location = new System.Drawing.Point(42, 141);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 13);
             this.label4.TabIndex = 4;
@@ -95,7 +100,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(42, 191);
+            this.label5.Location = new System.Drawing.Point(42, 179);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 5;
@@ -104,7 +109,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(42, 229);
+            this.label6.Location = new System.Drawing.Point(42, 217);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 13);
             this.label6.TabIndex = 6;
@@ -113,7 +118,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(42, 267);
+            this.label7.Location = new System.Drawing.Point(42, 255);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 7;
@@ -122,7 +127,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(42, 305);
+            this.label8.Location = new System.Drawing.Point(42, 293);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 8;
@@ -131,7 +136,7 @@
             // cboTurnoLunes
             // 
             this.cboTurnoLunes.FormattingEnabled = true;
-            this.cboTurnoLunes.Location = new System.Drawing.Point(126, 75);
+            this.cboTurnoLunes.Location = new System.Drawing.Point(126, 63);
             this.cboTurnoLunes.Name = "cboTurnoLunes";
             this.cboTurnoLunes.Size = new System.Drawing.Size(208, 21);
             this.cboTurnoLunes.TabIndex = 9;
@@ -139,7 +144,7 @@
             // cboTurnoMartes
             // 
             this.cboTurnoMartes.FormattingEnabled = true;
-            this.cboTurnoMartes.Location = new System.Drawing.Point(126, 112);
+            this.cboTurnoMartes.Location = new System.Drawing.Point(126, 100);
             this.cboTurnoMartes.Name = "cboTurnoMartes";
             this.cboTurnoMartes.Size = new System.Drawing.Size(208, 21);
             this.cboTurnoMartes.TabIndex = 10;
@@ -147,7 +152,7 @@
             // cboTurnoMiercoles
             // 
             this.cboTurnoMiercoles.FormattingEnabled = true;
-            this.cboTurnoMiercoles.Location = new System.Drawing.Point(126, 149);
+            this.cboTurnoMiercoles.Location = new System.Drawing.Point(126, 137);
             this.cboTurnoMiercoles.Name = "cboTurnoMiercoles";
             this.cboTurnoMiercoles.Size = new System.Drawing.Size(208, 21);
             this.cboTurnoMiercoles.TabIndex = 11;
@@ -155,7 +160,7 @@
             // cboTurnoJueves
             // 
             this.cboTurnoJueves.FormattingEnabled = true;
-            this.cboTurnoJueves.Location = new System.Drawing.Point(126, 186);
+            this.cboTurnoJueves.Location = new System.Drawing.Point(126, 174);
             this.cboTurnoJueves.Name = "cboTurnoJueves";
             this.cboTurnoJueves.Size = new System.Drawing.Size(208, 21);
             this.cboTurnoJueves.TabIndex = 12;
@@ -163,7 +168,7 @@
             // cboTurnoViernes
             // 
             this.cboTurnoViernes.FormattingEnabled = true;
-            this.cboTurnoViernes.Location = new System.Drawing.Point(126, 223);
+            this.cboTurnoViernes.Location = new System.Drawing.Point(126, 211);
             this.cboTurnoViernes.Name = "cboTurnoViernes";
             this.cboTurnoViernes.Size = new System.Drawing.Size(208, 21);
             this.cboTurnoViernes.TabIndex = 13;
@@ -171,7 +176,7 @@
             // cboTurnoSabado
             // 
             this.cboTurnoSabado.FormattingEnabled = true;
-            this.cboTurnoSabado.Location = new System.Drawing.Point(126, 260);
+            this.cboTurnoSabado.Location = new System.Drawing.Point(126, 248);
             this.cboTurnoSabado.Name = "cboTurnoSabado";
             this.cboTurnoSabado.Size = new System.Drawing.Size(208, 21);
             this.cboTurnoSabado.TabIndex = 14;
@@ -179,7 +184,7 @@
             // cboTurnoDomingo
             // 
             this.cboTurnoDomingo.FormattingEnabled = true;
-            this.cboTurnoDomingo.Location = new System.Drawing.Point(126, 297);
+            this.cboTurnoDomingo.Location = new System.Drawing.Point(126, 285);
             this.cboTurnoDomingo.Name = "cboTurnoDomingo";
             this.cboTurnoDomingo.Size = new System.Drawing.Size(208, 21);
             this.cboTurnoDomingo.TabIndex = 15;
@@ -191,7 +196,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(255, 330);
+            this.btnCancelar.Location = new System.Drawing.Point(255, 424);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 65);
             this.btnCancelar.TabIndex = 76;
@@ -206,7 +211,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(174, 330);
+            this.btnAceptar.Location = new System.Drawing.Point(174, 424);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 75;
@@ -215,11 +220,70 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(42, 330);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(132, 13);
+            this.label9.TabIndex = 77;
+            this.label9.Text = "Inicio Control de Asitencia:";
+            // 
+            // chkInicioMensual
+            // 
+            this.chkInicioMensual.AutoSize = true;
+            this.chkInicioMensual.Checked = true;
+            this.chkInicioMensual.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkInicioMensual.Location = new System.Drawing.Point(45, 360);
+            this.chkInicioMensual.Name = "chkInicioMensual";
+            this.chkInicioMensual.Size = new System.Drawing.Size(94, 17);
+            this.chkInicioMensual.TabIndex = 78;
+            this.chkInicioMensual.Text = "Inicio Mensual";
+            this.chkInicioMensual.UseVisualStyleBackColor = true;
+            this.chkInicioMensual.CheckedChanged += new System.EventHandler(this.chkInicioMensual_CheckedChanged);
+            // 
+            // numInicioMes
+            // 
+            this.numInicioMes.Enabled = false;
+            this.numInicioMes.Location = new System.Drawing.Point(45, 389);
+            this.numInicioMes.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.numInicioMes.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numInicioMes.Name = "numInicioMes";
+            this.numInicioMes.Size = new System.Drawing.Size(52, 20);
+            this.numInicioMes.TabIndex = 79;
+            this.numInicioMes.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(101, 394);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(71, 13);
+            this.label10.TabIndex = 80;
+            this.label10.Text = "de cada mes.";
+            // 
             // frmNuevoHorario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 407);
+            this.ClientSize = new System.Drawing.Size(373, 501);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.numInicioMes);
+            this.Controls.Add(this.chkInicioMensual);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.cboTurnoDomingo);
@@ -243,6 +307,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mantenimiento Horario";
             this.Load += new System.EventHandler(this.frmNuevoHorario_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numInicioMes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +333,9 @@
         private System.Windows.Forms.ComboBox cboTurnoDomingo;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox chkInicioMensual;
+        private System.Windows.Forms.NumericUpDown numInicioMes;
+        private System.Windows.Forms.Label label10;
     }
 }

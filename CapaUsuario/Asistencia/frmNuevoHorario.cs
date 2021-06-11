@@ -69,6 +69,8 @@ namespace CapaUsuario.Asistencia
             cboTurnoDomingo.DataSource = ListaTurnosDomingo;
             cboTurnoDomingo.DisplayMember = "NombreTurnoDia";
             cboTurnoDomingo.ValueMember = "CodigoTurnoDia";
+
+            
         }
 
         private void Iniciar()
@@ -137,16 +139,27 @@ namespace CapaUsuario.Asistencia
             {
                 cboTurnoDomingo.SelectedValue = 0;
             }
-            
+
+            if (oHorario.InicioMes == 1)
+            {
+                chkInicioMensual.Checked = true;
+                numInicioMes.Value = 1;
+            }
+            else
+            {
+                chkInicioMensual.Checked = false;
+                numInicioMes.Value = oHorario.InicioMes;
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             try
             {
+
                 if (txtNombreHorario.Text == "")
                 {
-                    MessageBox.Show("El nombre de horario debe contener un nombre.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El nombre de horario esta vacio.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -158,7 +171,7 @@ namespace CapaUsuario.Asistencia
                     oHorario.TurnoViernes = (CapaDeNegocios.Asistencia.cTurnoDia)cboTurnoViernes.SelectedItem;
                     oHorario.TurnoSabado = (CapaDeNegocios.Asistencia.cTurnoDia)cboTurnoSabado.SelectedItem;
                     oHorario.TurnoDomingo = (CapaDeNegocios.Asistencia.cTurnoDia)cboTurnoDomingo.SelectedItem;
-
+                    oHorario.InicioMes = Convert.ToInt16(numInicioMes.Value);
                     DialogResult = DialogResult.OK;
                 }
                 
@@ -166,6 +179,18 @@ namespace CapaUsuario.Asistencia
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void chkInicioMensual_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkInicioMensual.Checked)
+            {
+                numInicioMes.Enabled = false;
+            }
+            else
+            {
+                numInicioMes.Enabled = true;
             }
         }
     }

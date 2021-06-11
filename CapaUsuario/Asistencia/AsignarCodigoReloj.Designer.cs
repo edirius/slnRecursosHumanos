@@ -34,6 +34,7 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
+            this.btnIngresarDNI = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblNombredelTrabajador
@@ -91,18 +92,30 @@
             // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(155, 51);
+            this.txtNumero.Location = new System.Drawing.Point(126, 52);
             this.txtNumero.MaxLength = 10;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(100, 20);
             this.txtNumero.TabIndex = 86;
+            this.txtNumero.TextChanged += new System.EventHandler(this.txtNumero_TextChanged);
             this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
+            // 
+            // btnIngresarDNI
+            // 
+            this.btnIngresarDNI.Location = new System.Drawing.Point(260, 50);
+            this.btnIngresarDNI.Name = "btnIngresarDNI";
+            this.btnIngresarDNI.Size = new System.Drawing.Size(133, 23);
+            this.btnIngresarDNI.TabIndex = 87;
+            this.btnIngresarDNI.Text = "Usar DNI como Código";
+            this.btnIngresarDNI.UseVisualStyleBackColor = true;
+            this.btnIngresarDNI.Click += new System.EventHandler(this.btnIngresarDNI_Click);
             // 
             // AsignarCodigoReloj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(439, 229);
+            this.Controls.Add(this.btnIngresarDNI);
             this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
@@ -125,5 +138,6 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.Button btnIngresarDNI;
     }
 }

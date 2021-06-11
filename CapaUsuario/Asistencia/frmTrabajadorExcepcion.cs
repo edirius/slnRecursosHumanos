@@ -265,7 +265,7 @@ namespace CapaUsuario.Asistencia
                     if (Convert.ToBoolean(item.Cells["☑"].Value) == true)
                     {
                         cTrabajador otrabajador = new cTrabajador();
-                        otrabajador = miListaTrabajadores.traerTrabajador(Convert.ToInt16(item.Cells["id_trabajador"].Value.ToString()));
+                        otrabajador = miListaTrabajadores.traerTrabajador(Convert.ToInt32(item.Cells["id_trabajador"].Value.ToString()));
                         listaTrabajadores.Add(otrabajador);
                     }
                 }
