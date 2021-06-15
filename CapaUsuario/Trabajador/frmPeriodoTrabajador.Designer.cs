@@ -39,6 +39,7 @@
             this.txtTrabajador = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnFechaFin = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +48,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnFechaFin);
             this.groupBox1.Controls.Add(this.dtpFechaFin);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -172,6 +174,16 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // btnFechaFin
+            // 
+            this.btnFechaFin.Location = new System.Drawing.Point(445, 42);
+            this.btnFechaFin.Name = "btnFechaFin";
+            this.btnFechaFin.Size = new System.Drawing.Size(103, 23);
+            this.btnFechaFin.TabIndex = 5;
+            this.btnFechaFin.Text = "Quitar Fecha Fin";
+            this.btnFechaFin.UseVisualStyleBackColor = true;
+            this.btnFechaFin.Click += new System.EventHandler(this.btnFechaFin_Click);
+            // 
             // frmPeriodoTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,5 +219,6 @@
         private System.Windows.Forms.TextBox txtTrabajador;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Button btnFechaFin;
     }
 }

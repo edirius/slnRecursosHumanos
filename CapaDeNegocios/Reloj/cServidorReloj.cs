@@ -157,7 +157,7 @@ namespace CapaDeNegocios.Reloj
 
             if (oReloj.Conectado == false)
             {
-                Mensajes.Add("*Por favor conectar el reloj primero!");
+                throw new cReglaNegociosException("*Por favor conectar el reloj primero!");
             }
 
             int ret = 0;
@@ -178,6 +178,74 @@ namespace CapaDeNegocios.Reloj
             if (axCZKEM1.ReadGeneralLogData(oReloj.NumeroMaquina))
             {
                 
+
+                while (axCZKEM1.SSR_GetGeneralLogData(oReloj.NumeroMaquina, out sdwEnrollNumber, out idwVerifyMode,
+                            out idwInOutMode, out idwYear, out idwMonth, out idwDay, out idwHour, out idwMinute, out idwSecond, ref idwWorkcode))//conseguir records de la maquina
+                {
+                    cHuellaUsuarioReloj oHuellaUsuarioReloj = new cHuellaUsuarioReloj();
+                    oHuellaUsuarioReloj.IdUsuario = sdwEnrollNumber;
+                    oHuellaUsuarioReloj.IdwYear = idwYear;
+                    oHuellaUsuarioReloj.IdwMonth = idwMonth;
+                    oHuellaUsuarioReloj.IdwDay = idwDay;
+                    oHuellaUsuarioReloj.IdwHour = idwHour;
+                    oHuellaUsuarioReloj.IdwMinute = idwMinute;
+                    oHuellaUsuarioReloj.IdwSecond = idwSecond;
+                    oHuellaUsuarioReloj.IdwVerifyMode = idwVerifyMode;
+                    oHuellaUsuarioReloj.IdwInOutMode = idwInOutMode;
+                    oHuellaUsuarioReloj.IdwWorkcode = idwWorkcode;
+                    oHuellaUsuarioReloj.ActualizarFecha();
+                    ListaHuellasReloj.Add(oHuellaUsuarioReloj);
+                }
+                ret = 1;
+            }
+            else
+            {
+                axCZKEM1.GetLastError(ref idwErrorCode);
+                ret = idwErrorCode;
+
+                if (idwErrorCode != 0)
+                {
+                    Mensajes.Add("*Error al leer log  del reloj, ErrorCode: " + idwErrorCode.ToString());
+                }
+                else
+                {
+                    Mensajes.Add("No hay datos en el reloj!");
+                }
+            }
+
+            axCZKEM1.EnableDevice(oReloj.NumeroMaquina, true);//enable the device
+
+            return ListaHuellasReloj;
+        }
+
+
+        public List<cHuellaUsuarioReloj> sta_readAttLog(cReloj oReloj, string Inicio, string Fin)
+        {
+            List<cHuellaUsuarioReloj> ListaHuellasReloj = new List<cHuellaUsuarioReloj>();
+
+            if (oReloj.Conectado == false)
+            {
+                throw new cReglaNegociosException("*Por favor conectar el reloj primero!");
+            }
+
+            int ret = 0;
+
+            axCZKEM1.EnableDevice(oReloj.NumeroMaquina, false);//disable the device
+
+            string sdwEnrollNumber = "";
+            int idwVerifyMode = 0;
+            int idwInOutMode = 0;
+            int idwYear = 0;
+            int idwMonth = 0;
+            int idwDay = 0;
+            int idwHour = 0;
+            int idwMinute = 0;
+            int idwSecond = 0;
+            int idwWorkcode = 0;
+
+            if (axCZKEM1.ReadTimeGLogData(oReloj.NumeroMaquina, Inicio, Fin) )
+            {
+
 
                 while (axCZKEM1.SSR_GetGeneralLogData(oReloj.NumeroMaquina, out sdwEnrollNumber, out idwVerifyMode,
                             out idwInOutMode, out idwYear, out idwMonth, out idwDay, out idwHour, out idwMinute, out idwSecond, ref idwWorkcode))//conseguir records de la maquina

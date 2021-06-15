@@ -15,6 +15,7 @@ namespace CapaDeNegocios.Asistencia
         DateTime _InicioTurno;
         DateTime _FinTurno;
 
+        
 
         public cTurno()
         {

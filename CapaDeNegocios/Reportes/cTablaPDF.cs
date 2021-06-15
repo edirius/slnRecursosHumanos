@@ -10,6 +10,7 @@ namespace CapaDeNegocios.Reportes
     {
         public List<cFilasPDF> ListaFilas { get; set; }
         public int columnas { get; set; }
+        public float[] anchoColumnas { get; set; }
         public cTablaPDF()
         {
             ListaFilas = new List<cFilasPDF>();

@@ -9,23 +9,39 @@ using iTextSharp.text.html;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp;
 using CapaDeNegocios.Asistencia;
+using System.IO;
 
 namespace CapaDeNegocios.Reportes
 {
     public class cReporteAsistencia
     {
 
-        public void ImprimirReporteAsistenciaXTrabajador(cTrabajador oTrabajador,  cAsistenciaMes oAsistenciaMes )
+        public void ImprimirReporteAsistenciaXTrabajador(cTrabajador oTrabajador,  cAsistenciaMes oAsistenciaMes, string RutaArchivo )
         {
-            //Creating iTextSharp Table from the DataTable data
-            iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);
-            iTextSharp.text.Font fuenteTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 9, 1, iTextSharp.text.Color.BLUE);
+   
+            cReportePDF oReporte = new cReportePDF();
+
+            oReporte.RutaArchivo = RutaArchivo;
+
+            cHojaPDF oHojaPDF = new cHojaPDF();
+            
+           
+            cTablaPDF TablaTituloPrincipal = new cTablaPDF();
+            TablaTituloPrincipal.columnas = 1;
+            TablaTituloPrincipal.anchoColumnas = new float[] { 500f };
 
             cFilasPDF FilaTituloPrincipal = new cFilasPDF();
 
             cCeldaPDF TituloPrincipal = new cCeldaPDF();
             TituloPrincipal.Contenido = "Reporte de Asistencia";
+            TituloPrincipal.ColorFondo = System.Drawing.Color.LightGray;
             FilaTituloPrincipal.ListaCeldas.Add(TituloPrincipal);
+
+            TablaTituloPrincipal.ListaFilas.Add(FilaTituloPrincipal);
+
+            cTablaPDF TablaTitulo1 = new cTablaPDF();
+            TablaTitulo1.columnas = 6;
+            TablaTitulo1.anchoColumnas = new float[] { 50f, 50f, 50f, 50f, 50f, 50f };
 
             cFilasPDF FilaTitulo1 = new cFilasPDF();
 
@@ -53,6 +69,11 @@ namespace CapaDeNegocios.Reportes
             ValorFecha.Contenido = DateTime.Now.ToString();
             FilaTitulo1.ListaCeldas.Add(ValorFecha);
 
+            TablaTitulo1.ListaFilas.Add(FilaTitulo1);
+
+            cTablaPDF TablaTitulo2 = new cTablaPDF();
+            TablaTitulo2.columnas = 3;
+            TablaTitulo2.anchoColumnas = new float[] { 50f, 50f, 50f };
             cFilasPDF FilaTitulos2 = new cFilasPDF();
 
             cCeldaPDF LabelDNI = new cCeldaPDF();
@@ -66,6 +87,12 @@ namespace CapaDeNegocios.Reportes
             cCeldaPDF LabelNombres = new cCeldaPDF();
             LabelNombres.Contenido = oTrabajador.ApellidoPaterno + " " + oTrabajador.ApellidoMaterno + ", " + oTrabajador.Nombres;
             FilaTitulos2.ListaCeldas.Add(LabelNombres);
+
+            TablaTitulo2.ListaFilas.Add(FilaTitulos2);
+
+            cTablaPDF TablaTitulo3 = new cTablaPDF();
+            TablaTitulo3.columnas = 4;
+            TablaTitulo3.anchoColumnas = new float[] { 50f, 50f, 50f, 50f };
 
             cFilasPDF FilaTitulos3 = new cFilasPDF();
 
@@ -85,474 +112,356 @@ namespace CapaDeNegocios.Reportes
             ValorFechas.Contenido = oAsistenciaMes.InicioMes.ToShortDateString() + " Del: " + oAsistenciaMes.FinMes.ToShortDateString();
             FilaTitulos3.ListaCeldas.Add(ValorFechas);
 
+            TablaTitulo3.ListaFilas.Add(FilaTitulos3);
 
-            int semana = 1;
+            //Encabezado de detalle de asistencia
+
+            cTablaPDF TablaDetalle = new cTablaPDF();
+            TablaDetalle.columnas = 7;
+            TablaDetalle.anchoColumnas = new float[] { 100f, 100f, 150f, 125f, 125f, 50f, 50f };
+            cFilasPDF FilaTituloDetalle = new cFilasPDF();
+
+            cCeldaPDF labelFechaDetalle = new cCeldaPDF();
+            labelFechaDetalle.Contenido = "Fechas";
+            FilaTituloDetalle.ListaCeldas.Add(labelFechaDetalle);
+
+            cCeldaPDF labelHorario = new cCeldaPDF();
+            labelHorario.TablaPDF = new cTablaPDF();
+            labelHorario.TablaPDF.columnas = 1;
+            labelHorario.TablaPDF.anchoColumnas = new float[] { 50f };
+
+            cFilasPDF filaTablaHorario1 = new cFilasPDF();
+            cCeldaPDF labelTablaHorario = new cCeldaPDF();
+            labelTablaHorario.Contenido = "HORARIO";
+            filaTablaHorario1.ListaCeldas.Add(labelTablaHorario);
+            cFilasPDF filaTablahorario2 = new cFilasPDF();
+            cCeldaPDF labelEntradaSalida = new cCeldaPDF();
+            labelEntradaSalida.TablaPDF = new cTablaPDF();
+            labelEntradaSalida.TablaPDF.columnas = 2;
+            labelEntradaSalida.TablaPDF.anchoColumnas = new float[] { 50f , 50f};
+            cFilasPDF filaentradasalidaTitulo = new cFilasPDF();
+            cCeldaPDF labelEntrada = new cCeldaPDF();
+            labelEntrada.Contenido = "Entrada";
+            filaentradasalidaTitulo.ListaCeldas.Add(labelEntrada);
+            cCeldaPDF labelSalida = new cCeldaPDF();
+            labelSalida.Contenido = "Salida";
+            filaentradasalidaTitulo.ListaCeldas.Add(labelSalida);
+            labelEntradaSalida.TablaPDF.ListaFilas.Add(filaentradasalidaTitulo);
+            filaTablahorario2.ListaCeldas.Add(labelEntradaSalida);
+            labelHorario.TablaPDF.ListaFilas.Add(filaTablaHorario1);
+            labelHorario.TablaPDF.ListaFilas.Add(filaTablahorario2);
+            FilaTituloDetalle.ListaCeldas.Add(labelHorario);
+
+            cCeldaPDF labelJornadaReal = new cCeldaPDF();
+            labelJornadaReal.TablaPDF = new cTablaPDF();
+            labelJornadaReal.TablaPDF.columnas = 1;
+            labelJornadaReal.TablaPDF.anchoColumnas = new float[] { 50f };
+            cFilasPDF FilaJornadaReal = new cFilasPDF();
+            cCeldaPDF labelDetalleJornada = new cCeldaPDF();
+            labelDetalleJornada.Contenido = "JORNADA REAL";
+            FilaJornadaReal.ListaCeldas.Add(labelDetalleJornada);
+            cFilasPDF FilaJornadaReal2 = new cFilasPDF();
+            cCeldaPDF labelEntradaDescanso = new cCeldaPDF();
+            labelEntradaDescanso.TablaPDF = new cTablaPDF();
+            labelEntradaDescanso.TablaPDF.columnas = 3;
+            labelEntradaDescanso.TablaPDF.anchoColumnas = new float[] { 40f, 70f, 40f };
+            cFilasPDF FilaEntradaDescanso = new cFilasPDF();
+            cCeldaPDF labelEntradaReal = new cCeldaPDF();
+            labelEntradaReal.Contenido = "Entrada";
+            FilaEntradaDescanso.ListaCeldas.Add(labelEntradaReal);
+            cCeldaPDF labelDescanso = new cCeldaPDF();
+            labelDescanso.Contenido = "Descanso";
+            FilaEntradaDescanso.ListaCeldas.Add(labelDescanso);
+            cCeldaPDF labelSalidaReal = new cCeldaPDF();
+            labelSalidaReal.Contenido = "Salida";
+            FilaEntradaDescanso.ListaCeldas.Add(labelSalidaReal);
+            labelEntradaDescanso.TablaPDF.ListaFilas.Add(FilaEntradaDescanso);
+            FilaJornadaReal2.ListaCeldas.Add(labelEntradaDescanso);
+            labelJornadaReal.TablaPDF.ListaFilas.Add(FilaJornadaReal);
+            labelJornadaReal.TablaPDF.ListaFilas.Add(FilaJornadaReal2);
+            FilaTituloDetalle.ListaCeldas.Add(labelJornadaReal);
+
+            cCeldaPDF labelHorasAsignadas = new cCeldaPDF();
+            labelHorasAsignadas.TablaPDF = new cTablaPDF();
+            labelHorasAsignadas.TablaPDF.columnas = 1;
+            labelHorasAsignadas.TablaPDF.anchoColumnas = new float[] { 50f };
+            cFilasPDF filaHorasAsignadas = new cFilasPDF();
+            cCeldaPDF labelDetalleHorasAsignadas = new cCeldaPDF();
+            labelDetalleHorasAsignadas.Contenido = "HORAS";
+            filaHorasAsignadas.ListaCeldas.Add(labelDetalleHorasAsignadas);
+            cFilasPDF filaHorasAsignadas2 = new cFilasPDF();
+            cCeldaPDF labelHorasAsignadasAsistidas = new cCeldaPDF();
+            labelHorasAsignadasAsistidas.TablaPDF = new cTablaPDF();
+            labelHorasAsignadasAsistidas.TablaPDF.columnas = 3;
+            labelHorasAsignadasAsistidas.TablaPDF.anchoColumnas = new float[] { 50f, 50f, 50f };
+            cFilasPDF FilaDetalleHorasAsignadasAsistidas = new cFilasPDF();
+            cCeldaPDF LabelDetalleAsignadas = new cCeldaPDF("Horas Asignadas");
+            FilaDetalleHorasAsignadasAsistidas.ListaCeldas.Add(LabelDetalleAsignadas);
+            cCeldaPDF LabelDetalleAsistidas = new cCeldaPDF("Horas Usadas");
+            FilaDetalleHorasAsignadasAsistidas.ListaCeldas.Add(LabelDetalleAsistidas);
+            cCeldaPDF LabelDetalleTarde = new cCeldaPDF("Min. Tarde");
+            FilaDetalleHorasAsignadasAsistidas.ListaCeldas.Add(LabelDetalleTarde);
+            labelHorasAsignadasAsistidas.TablaPDF.ListaFilas.Add(FilaDetalleHorasAsignadasAsistidas);
+            filaHorasAsignadas2.ListaCeldas.Add(labelHorasAsignadasAsistidas);
+            labelHorasAsignadas.TablaPDF.ListaFilas.Add(filaHorasAsignadas);
+            labelHorasAsignadas.TablaPDF.ListaFilas.Add(filaHorasAsignadas2);
+            FilaTituloDetalle.ListaCeldas.Add(labelHorasAsignadas);
+
+            cCeldaPDF labelPermisosySalidas = new cCeldaPDF();
+            labelPermisosySalidas.TablaPDF = new cTablaPDF();
+            labelPermisosySalidas.TablaPDF.columnas = 1;
+            labelPermisosySalidas.TablaPDF.anchoColumnas = new float[] { 50f };
+            cFilasPDF filaPermisosysalidas = new cFilasPDF();
+            cCeldaPDF TituloPermisosSalidas = new cCeldaPDF("Permisos y Salidas");
+            filaPermisosysalidas.ListaCeldas.Add(TituloPermisosSalidas);
+            cFilasPDF filaPermisosySalidas2 = new cFilasPDF();
+            cCeldaPDF labelTipoSalida = new cCeldaPDF();
+            labelTipoSalida.TablaPDF = new cTablaPDF();
+            labelTipoSalida.TablaPDF.columnas = 3;
+            labelTipoSalida.TablaPDF.anchoColumnas = new float[] { 50f, 50f, 50f };
+            cFilasPDF filaTipoSalida = new cFilasPDF();
+            cCeldaPDF TituloEntradaComision = new cCeldaPDF("Entrada");
+            filaTipoSalida.ListaCeldas.Add(TituloEntradaComision);
+            cCeldaPDF TituloSalidaComision = new cCeldaPDF("Salida");
+            filaTipoSalida.ListaCeldas.Add(TituloSalidaComision);
+            cCeldaPDF TituloTipoComision = new cCeldaPDF("Tipo");
+            filaTipoSalida.ListaCeldas.Add(TituloTipoComision);
+            labelTipoSalida.TablaPDF.ListaFilas.Add(filaTipoSalida);
+            filaPermisosySalidas2.ListaCeldas.Add(labelTipoSalida);
+            labelPermisosySalidas.TablaPDF.ListaFilas.Add(filaPermisosysalidas);
+            labelPermisosySalidas.TablaPDF.ListaFilas.Add(filaPermisosySalidas2);
+            FilaTituloDetalle.ListaCeldas.Add(labelPermisosySalidas);
+
+            cCeldaPDF LabelFalta = new cCeldaPDF("Falta");
+            FilaTituloDetalle.ListaCeldas.Add(LabelFalta);
+
+            cCeldaPDF labelTipoHorario = new cCeldaPDF("Tipo Horario");
+            FilaTituloDetalle.ListaCeldas.Add(labelTipoHorario);
+
+            TablaDetalle.ListaFilas.Add(FilaTituloDetalle);
+
+            cTablaPDF TablaDetalleDetalle = new cTablaPDF();
+            TablaDetalleDetalle.columnas = 13;
+            TablaDetalleDetalle.anchoColumnas = new float[] { 100f, 50f, 50f, 40f, 70f, 40f, 50f, 50f, 50f, 50f, 50f, 50f, 50f };
+
             foreach (cAsistenciaDia item in oAsistenciaMes.ListaAsistenciaDia)
             {
-                if (item.Dia.DayOfWeek == DayOfWeek.Sunday)
-                {
-                    semana++;
+                
+                cFilasPDF FilaDetalle = new cFilasPDF();
+                cCeldaPDF DetalleFecha = new cCeldaPDF();
+                DetalleFecha.AltoColumna = 12f;
+                DetalleFecha.Contenido = item.Dia.ToString("ddd dd/MM/yyyy" );
+                FilaDetalle.ListaCeldas.Add(DetalleFecha);
+
+                    cCeldaPDF DetalleInicioHorario = new cCeldaPDF("");
+                    if (item.EventoDia == cAsistenciaDia.TipoDia.DiaLaborable)
+                    {
+                        DetalleInicioHorario.Contenido = item.TurnoDiaTrabajador.ListaTurnos[0].InicioTurno.ToShortTimeString();
+                    }
+                    
+                    FilaDetalle.ListaCeldas.Add(DetalleInicioHorario);
+
+                    cCeldaPDF DetalleFinHorario = new cCeldaPDF("");
+                    if (item.EventoDia == cAsistenciaDia.TipoDia.DiaLaborable)
+                    {
+                    DetalleFinHorario.Contenido = item.TurnoDiaTrabajador.ListaTurnos[0].FinTurno.ToShortTimeString();
                 }
+                    
+                    FilaDetalle.ListaCeldas.Add(DetalleFinHorario);
+
+                    cCeldaPDF DetalleInicioPicado = new cCeldaPDF();
+                    if (item.PicadoEntrada == null)
+                    {
+                        DetalleInicioPicado.Contenido = "";
+                    }
+                    else
+                    {
+                        DetalleInicioPicado.Contenido = item.PicadoEntrada.Picado.ToShortTimeString();
+                    }
+                    FilaDetalle.ListaCeldas.Add(DetalleInicioPicado);
+
+                    cCeldaPDF DetalleInicioDescanso = new cCeldaPDF("13:00 14:00");
+                    if (item.EventoDia == cAsistenciaDia.TipoDia.DiaLibre || item.EventoDia == cAsistenciaDia.TipoDia.DiaFestivo)
+                    {
+                        DetalleInicioDescanso.Contenido = "";
+                    }
+                    FilaDetalle.ListaCeldas.Add(DetalleInicioDescanso);
+
+                    //cCeldaPDF DetalleFinDescanso = new cCeldaPDF("14:00");
+                    //FilaDetalle.ListaCeldas.Add(DetalleFinDescanso);
+
+                    cCeldaPDF DetalleFinPicado = new cCeldaPDF();
+                    if (item.PicadoSalida == null)
+                    {
+                        DetalleFinPicado.Contenido = "";
+                    }
+                    else
+                    {
+                        DetalleFinPicado.Contenido = item.PicadoSalida.Picado.ToShortTimeString();
+                    }
+                    FilaDetalle.ListaCeldas.Add(DetalleFinPicado);
+
+                    cCeldaPDF DetalleHorasAsignadas = new cCeldaPDF();
+                    DetalleHorasAsignadas.Contenido = item.HorasAsignadas.TotalHours + ":" + item.HorasAsignadas.Minutes;
+                    FilaDetalle.ListaCeldas.Add(DetalleHorasAsignadas);
+
+                    cCeldaPDF DetalleHorasTrabjadas = new cCeldaPDF();
+                    DetalleHorasTrabjadas.Contenido = item.HorasTrabajadas.TotalHours + ":" + item.HorasTrabajadas.Minutes;
+                    FilaDetalle.ListaCeldas.Add(DetalleHorasTrabjadas);
+
+                    cCeldaPDF DetalleMinutostarde = new cCeldaPDF();
+                    DetalleMinutostarde.Contenido = item.MinutosTarde.ToString();
+                    if (item.MinutosTarde > 0)
+                    {
+                        DetalleMinutostarde.ColorLetra = System.Drawing.Color.Red;
+                    }
+                    FilaDetalle.ListaCeldas.Add(DetalleMinutostarde);
+
+                    cCeldaPDF DetalleExcepcionEntrada = new cCeldaPDF("");
+                    if (item.ListaSalidas.Count > 0)
+                    {
+                        DetalleExcepcionEntrada.Contenido = item.ListaSalidas[0].InicioExcepcion.ToShortTimeString();
+                    }
+                    FilaDetalle.ListaCeldas.Add(DetalleExcepcionEntrada);
+
+                    cCeldaPDF DetalleExcepcionFin = new cCeldaPDF("");
+                    if (item.ListaSalidas.Count > 0)
+                    {
+                        DetalleExcepcionFin.Contenido = item.ListaSalidas[0].FinExcepcion.ToShortDateString();
+                    }
+                    FilaDetalle.ListaCeldas.Add(DetalleExcepcionFin);
+
+                    cCeldaPDF DetalleFalta = new cCeldaPDF("");
+                    if ((item.Falta == cAsistenciaDia.TipoFalta.FaltaTotal) || (item.Falta == cAsistenciaDia.TipoFalta.FaltaPicadoFinal) || (item.Falta == cAsistenciaDia.TipoFalta.FaltaPicadoEntrada))
+                    {
+                        DetalleFalta.Contenido = "1";
+                        DetalleFalta.ColorLetra = System.Drawing.Color.Red;
+                    }
+                    FilaDetalle.ListaCeldas.Add(DetalleFalta);
+
+                    cCeldaPDF DetalleTipoFalta = new cCeldaPDF();
+                    switch (item.EventoDia)
+                    {
+                        case cAsistenciaDia.TipoDia.DiaLaborable:
+                            DetalleTipoFalta.Contenido = "Normal";
+                            break;
+                        case cAsistenciaDia.TipoDia.DiaFestivo:
+                            DetalleTipoFalta.Contenido = "Feriado";
+                            DetalleTipoFalta.ColorLetra = System.Drawing.Color.Blue;
+                            break;
+                        case cAsistenciaDia.TipoDia.DiaLibre:
+                            DetalleTipoFalta.Contenido = "Libre";
+                            DetalleTipoFalta.ColorLetra = System.Drawing.Color.Blue;
+                            break;
+                        default:
+                            break;
+                    }
+                    FilaDetalle.ListaCeldas.Add(DetalleTipoFalta);
+                TablaDetalleDetalle.ListaFilas.Add(FilaDetalle);
+               
             }
 
-            //PdfCell colTitulo = new Pdf;
-            //Cell();
-            //colTitulo.t
-            //PdfPTable pdfTable = new PdfPTable(dgvPrueba.ColumnCount);
-
-            //PdfPTable pdfTable2 = new PdfPTable(dgvAFP.ColumnCount);
-            //PdfPTable pdfTableRedondear = new PdfPTable(dgvRedondear.ColumnCount);
-            //PdfPTable pdfTableEEFF = new PdfPTable(dgvEEFF.ColumnCount);
-
-            //Phrase objP = new Phrase("A", fuente);
-            //Phrase objP2 = new Phrase("A", fuente);
-            //Phrase objP3 = new Phrase("A", fuente);
-            ////Phrase objH = new Phrase("A", fuenteTitulo);
-            //PdfPCell cell;
-            //PdfPCell cell2;
-            //PdfPCell cell3;
-            //PdfPCell cell4;
-
-            //pdfTable.DefaultCell.Padding = 1;
-            //pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
-            //pdfTable.DefaultCell.BorderWidth = 1;
-            ////pdfTable.DefaultCell.FixedHeight = 600f;
-
-            //pdfTable2.DefaultCell.Padding = 1;
-            //pdfTable2.HorizontalAlignment = Element.ALIGN_LEFT;
-            //pdfTable2.DefaultCell.BorderWidth = 1;
-
-            //pdfTableRedondear.DefaultCell.Padding = 1;
-            //pdfTableRedondear.HorizontalAlignment = Element.ALIGN_LEFT;
-            //pdfTableRedondear.DefaultCell.BorderWidth = 1;
-
-            //pdfTableEEFF.DefaultCell.Padding = 1;
-            //pdfTableEEFF.HorizontalAlignment = Element.ALIGN_LEFT;
-            //pdfTableEEFF.DefaultCell.BorderWidth = 1;
-
-            //float[] headerwidths = GetTamañoColumnas(dgvPrueba);
-            //float[] headerwidths2 = GetTamañoColumnas2(dgvAFP);
-            //float[] headerwidths3 = GetTamañoColumnas2(dgvRedondear);
-            //float[] headerwidths4 = GetTamañoColumnas2(dgvEEFF);
-            ////float[] headerwidths = { 2f, 6f, 6f, 3f, 5f, 8f, 5f, 5f, 5f, 5f };
-
-            ////cell.BackgroundColor = new BaseColor(System.Drawing.ColorTranslator.FromHtml("#d1dbe0"));
-
-            //pdfTable.SetWidths(headerwidths);
-            //pdfTable.WidthPercentage = 100;
-
-            //pdfTable2.SetWidths(headerwidths2);
-            //pdfTable2.WidthPercentage = 100;
-
-            //pdfTableRedondear.SetWidths(headerwidths3);
-            //pdfTableRedondear.WidthPercentage = 100;
-
-            //pdfTableEEFF.SetWidths(headerwidths4);
-            //pdfTableEEFF.WidthPercentage = 100;
-
-            //int iindice_nombre = 0;
-            //int iindice_cargo = 0;
-            //int iindice_fecha = 0;
-            //int iindice_afi_com_cus = 0;
-
-            ////Adding Header row
-            //foreach (DataGridViewColumn column in dgvPrueba.Columns)
-            //{
-            //    cell = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
-            //    //cell = new PdfPCell(new Phrase(column.HeaderText));
-            //    //PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-            //    cell.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
-            //    cell.HorizontalAlignment = Element.ALIGN_CENTER;
-            //    // objH = new Phrase(column.HeaderText, fuenteTitulo);
-            //    pdfTable.AddCell(cell);
-            //}
-
-            ///*Indices de la secciones alineadas*/
-            //iindice_nombre = BuscarIndiceColumna(odtPruebaCorta, "NOMBRE COMPLETO");
-            //iindice_cargo = BuscarIndiceColumna(odtPruebaCorta, "CARGO");
-            //iindice_fecha = BuscarIndiceColumna(odtPruebaCorta, "FECHA INICIO");
-            //iindice_afi_com_cus = BuscarIndiceColumna(odtPruebaCorta, "AFIL. AFP/SNP \n\n COMIS. \n\n CUSP ");
-
-            //for (int i = 0; i < dgvPrueba.RowCount - 1; i++)
-            //{
-            //    for (int j = 0; j < dgvPrueba.ColumnCount; j++)
-            //    {
-            //        //objP = new Phrase(dgvPrueba[j, i].Value.ToString(), fuente);
-
-            //        cell = new PdfPCell((new Phrase(dgvPrueba[j, i].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
-            //        if (columnasFijas)
-            //        {
-            //            cell.FixedHeight = altoColumna;
-            //        }
-
-            //        //Alineando a la derecha la columna nº
-            //        cell.HorizontalAlignment = Element.ALIGN_RIGHT;
-
-            //        if (j == iindice_nombre || j == iindice_cargo || j == iindice_fecha || j == iindice_afi_com_cus)
-            //            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-
-            //        pdfTable.AddCell(cell);
-            //    }
-            //    pdfTable.CompleteRow();
-            //}
-
-            ///* ---------------- dgvAFP */
-
-            ////Adding Header row
-            //foreach (DataGridViewColumn column in dgvAFP.Columns)
-            //{
-            //    cell2 = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
-            //    //cell = new PdfPCell(new Phrase(column.HeaderText));
-            //    //PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-            //    cell2.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
-            //    // objH = new Phrase(column.HeaderText, fuenteTitulo);
-            //    pdfTable2.AddCell(cell2);
-            //}
-
-            //for (int k = 0; k < dgvAFP.RowCount - 1; k++)
-            //{
-            //    for (int l = 0; l < dgvAFP.ColumnCount; l++)
-            //    {
-            //        cell = new PdfPCell((new Phrase(dgvAFP[l, k].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
-
-            //        if (l == 1)
-            //            cell.HorizontalAlignment = Element.ALIGN_RIGHT;
-
-            //        pdfTable2.AddCell(cell);
-
-            //    }
-            //    pdfTable2.CompleteRow();
-            //}
-
-            ///*----------------fin dfvAFP*/
-
-            ///* ------------- dgvRedondear ----------- */
-
-            //foreach (DataGridViewColumn column in dgvRedondear.Columns)
-            //{
-            //    cell3 = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
-            //    //cell = new PdfPCell(new Phrase(column.HeaderText));
-            //    //PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
-            //    cell3.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
-            //    // objH = new Phrase(column.HeaderText, fuenteTitulo);
-            //    pdfTableRedondear.AddCell(cell3);
-            //}
-
-            //for (int k = 0; k < dgvRedondear.RowCount - 1; k++)
-            //{
-            //    for (int l = 0; l < dgvRedondear.ColumnCount; l++)
-            //    {
-            //        cell3 = new PdfPCell((new Phrase(dgvRedondear[l, k].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
-            //        cell3.HorizontalAlignment = Element.ALIGN_RIGHT;
-            //        pdfTableRedondear.AddCell(cell3);
-            //    }
-            //    pdfTableRedondear.CompleteRow();
-            //}
-
-            ///* -------------fin dgvRedondear ----------*/
-
-            ///* ---------------- dgvEEFF */
-
-            ////Adding Header row
-            //foreach (DataGridViewColumn column in dgvEEFF.Columns)
-            //{
-            //    cell2 = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
-            //    cell2.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
-            //    pdfTableEEFF.AddCell(cell2);
-            //}
-
-            //for (int k = 0; k < dgvEEFF.RowCount - 1; k++)
-            //{
-            //    for (int l = 0; l < dgvEEFF.ColumnCount; l++)
-            //    {
-            //        cell2 = new PdfPCell((new Phrase(dgvEEFF[l, k].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
-            //        if (l == 1 || l == 2)
-            //            cell2.HorizontalAlignment = Element.ALIGN_RIGHT;
-            //        pdfTableEEFF.AddCell(cell2);
-            //    }
-            //}
-
-            ///*----------------fin dgvEEFF*/
-
-            ////Exporting to PDF
-            //string folderPath = "C:\\PDFs\\";
-
-            ////use a variable to let my code fit across the page...
-            ////string path = Server.MapPath("PDFs");
-            ////PdfWriter.GetInstance(doc1, new FileStream(path + "/Doc1.pdf", FileMode.Create));
-
-            //if (!Directory.Exists(folderPath))
-            //{
-            //    Directory.CreateDirectory(folderPath);
-            //}
-            //using (FileStream stream = new FileStream(folderPath + "Planilla.pdf", FileMode.Create))
-            //{
-
-            //    Document pdfDoc = new Document(PageSize.A4, 9, 9, 30, 30);
-            //    pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
-
-
-
-            //    Paragraph paragraph = new Paragraph();
-            //    paragraph.Alignment = Element.ALIGN_CENTER;
-            //    paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
-            //    paragraph.Add("MUNICIPALIDAD DISTRITAL DE MARAS \n UNIDAD DE PERSONAL \n ");
-            //    paragraph.SpacingBefore = 0f;
-            //    paragraph.SpacingAfter = 0f;
-
-
-            //    Paragraph paragraph2 = new Paragraph();
-            //    paragraph2.Alignment = Element.ALIGN_RIGHT;
-            //    paragraph2.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //    paragraph2.Add("PLANILLA Nº" + sNumeroPlanilla + " - " + saño + " \n ");
-            //    paragraph2.SpacingBefore = 0f;
-            //    paragraph2.SpacingAfter = 0f;
-            //    paragraph2.SetLeading(0, 0);
-
-
-            //    Paragraph paragraph3 = new Paragraph();
-            //    paragraph3.Alignment = Element.ALIGN_CENTER;
-            //    paragraph3.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //    /*paragraph3.Add("PLANILLA DE RENUMERACIONES DEL PERSONAL DE " + sRegimenLaboral + " DE " + saño + " DE " + smes + ".");*/
-            //    /*Titulo de planilla */
-            //    paragraph3.Add(sdescripcion.ToString().ToUpper() + " DE " + smes + " DE " + saño + ".");
-            //    paragraph3.SpacingBefore = 0f;
-            //    paragraph3.SpacingAfter = 0f;
-
-
-            //    Paragraph paragraph4 = new Paragraph();
-            //    paragraph4.Alignment = Element.ALIGN_LEFT;
-            //    paragraph4.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //    paragraph4.IndentationLeft = 110f;
-            //    paragraph4.SpacingAfter = 0;
-            //    paragraph4.SpacingBefore = 0;
-
-
-            //    string smeta_numero_con_ceros = string.Format("{0:000}", smeta_numero);
-
-            //    paragraph4.Add("META:" + smeta_numero.PadLeft(3, '0') + " - " + smeta + ". \n\n");
-
-            //    Paragraph paragraph40 = new Paragraph();
-            //    paragraph40.Alignment = Element.ALIGN_LEFT;
-            //    paragraph40.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //    paragraph40.IndentationLeft = 110f;
-            //    paragraph4.Add("FUENTE FINANCIAMIENTO:" + sfuentefinanciamiento + ". \n\n");
-            //    paragraph40.SpacingAfter = 0;
-            //    paragraph40.SpacingBefore = 0;
-
-
-            //    Paragraph paragraph5 = new Paragraph();
-            //    paragraph5.Alignment = Element.ALIGN_CENTER;
-            //    paragraph5.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //    paragraph5.Add("\n");
-
-            //    DateTime fecha = DateTime.Now;
-
-            //    Paragraph paragraph6 = new Paragraph();
-            //    paragraph6.Alignment = Element.ALIGN_CENTER;
-            //    paragraph6.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-
-            //    CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
-
-            //    fecha = Convert.ToDateTime(oPlanilla.ListarFechaPlanilla(sidtplanilla).Rows[0][1].ToString());
-
-            //    paragraph6.Add("MARAS, " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
-            //    /*FEcha de hoy*/
-            //    //paragraph6.Add("CCATCCA, " + String.Format("{0:dd}" , fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
-
-
-
-
-            //    PdfWriter.GetInstance(pdfDoc, stream);
-            //    CreateHeaderFooter(ref pdfDoc);
-            //    pdfDoc.Open();
-
-            //    //string imageURL = "C:\\Users\\ADVANCE\\Source\\Repos\\slnRecursosHumanos\\slnRecursosHumanos\\Recursos Varios\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
-            //    //string ruta = Directory.GetCurrentDirectory();
-            //    string ruta = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-            //    //string ruta2 = Application.StartupPath;
-            //    //string ruta3 = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-
-            //    //string[] palabras = ruta.Split('\\');
-
-            //    //string ruta_imagen = palabras[0] + '\\' + palabras[1] + '\\' + palabras[2] + '\\' +
-            //    //palabras[3] + '\\' + palabras[4] + '\\' + palabras[5] + '\\' + palabras[6] + '\\';
-
-            //    //string ruta_carpeta = "Recursos Varios\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
-
-            //    //ruta_imagen = ruta_imagen + ruta_carpeta ;
-
-            //    //C:\\Users\\ADVANCE\\Source\\Repos\\slnRecursosHumanos\\slnRecursosHumanos\\CapaUsuario\\bin\\Debug
-            //    //C:\\Users\\ADVANCE\\Source\\Repos\\slnRecursosHumanos\\slnRecursosHumanos\\CapaUsuario
-
-            //    string ruta_imagen = ruta + "\\logo-muni-fw.png";
-
-            //    string ruta_cuadro_oficinas = ruta + "\\LogoBicentenario2021.jpeg";
-
-            //    iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
-            //    logo.ScalePercent(64f);
-            //    logo.SetAbsolutePosition(12f, pdfDoc.PageSize.Height - 100f);
-
-            //    iTextSharp.text.Image oficinas = iTextSharp.text.Image.GetInstance(ruta_cuadro_oficinas);
-            //    oficinas.ScalePercent(64f);
-            //    oficinas.SetAbsolutePosition(pdfDoc.PageSize.Width - 150f, pdfDoc.PageSize.Height - 80f);
-
-            //    //tabla que continene logo, meta y nº planilla
-            //    PdfPTable tabla_bonus = new PdfPTable(3);
-            //    tabla_bonus.DefaultCell.BorderWidth = 0;
-
-            //    //tabla que continene rrhh, gerencia municipal, presupuesto y contabilidad
-            //    PdfPTable tabla_firmas;
-            //    PdfPTable tabla_firmas2;
-            //    if (numeroRegimenLaboral == 1 || numeroRegimenLaboral == 2 || numeroRegimenLaboral == 4)
-            //    {
-            //        tabla_firmas = new PdfPTable(4);
-            //        tabla_firmas2 = new PdfPTable(2);
-            //        tabla_firmas.DefaultCell.BorderWidth = 0;
-            //        tabla_firmas2.DefaultCell.BorderWidth = 0;
-            //        //FIRMAS
-            //        Paragraph firma_rrhh = new Paragraph();
-            //        firma_rrhh.Alignment = Element.ALIGN_CENTER;
-            //        firma_rrhh.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //        firma_rrhh.Add("............................................. \n RECURSOS HUMANOS");
-
-            //        Paragraph firma_gm = new Paragraph();
-            //        firma_gm.Alignment = Element.ALIGN_CENTER;
-            //        firma_gm.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //        firma_gm.Add("............................................. \n GERENCIA MUNICIPAL");
-
-            //        Paragraph firma_pre = new Paragraph();
-            //        firma_pre.Alignment = Element.ALIGN_CENTER;
-            //        firma_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //        firma_pre.Add("............................................. \n CONTABILIDAD Y PRESUPUESTO ");
-
-            //        Paragraph firma_con = new Paragraph();
-            //        firma_con.Alignment = Element.ALIGN_CENTER;
-            //        firma_con.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //        firma_con.Add("............................................. \n       TESORERIA");
-            //        //aÑADIENDO FIRMAS A LA TABLA FIRMAS
-            //        tabla_firmas.AddCell(firma_rrhh);
-            //        tabla_firmas.AddCell(firma_gm);
-            //        tabla_firmas.AddCell(firma_pre);
-            //        tabla_firmas.AddCell(firma_con);
-            //    }
-            //    else
-            //    {
-            //        tabla_firmas = new PdfPTable(4);
-            //        tabla_firmas2 = new PdfPTable(2);
-            //        tabla_firmas.DefaultCell.BorderWidth = 0;
-            //        tabla_firmas2.DefaultCell.BorderWidth = 0;
-            //        //FIRMAS
-            //        Paragraph p_rrhh = new Paragraph();
-            //        p_rrhh.Alignment = Element.ALIGN_CENTER;
-            //        p_rrhh.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //        p_rrhh.Add(" ............................................. \n   RECURSOS HUMANOS");
-
-            //        Paragraph p_gm = new Paragraph();
-            //        p_gm.Alignment = Element.ALIGN_CENTER;
-            //        p_gm.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //        p_gm.Add(" ............................................... \n   GERENCIA MUNICIPAL");
-
-            //        Paragraph p_pre = new Paragraph();
-            //        p_pre.Alignment = Element.ALIGN_CENTER;
-            //        p_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //        p_pre.Add(" ....................................... \n PRESUPUESTO Y CONTABILIDAD");
-
-            //        Paragraph p_con = new Paragraph();
-            //        p_con.Alignment = Element.ALIGN_CENTER;
-            //        p_con.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //        p_con.Add(" ");
-
-            //        Paragraph firma_Tes = new Paragraph();
-            //        firma_Tes.Alignment = Element.ALIGN_CENTER;
-            //        firma_Tes.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //        firma_Tes.Add(" ............................................... \n          TESORERIA");
-
-            //        Paragraph firma_SUb = new Paragraph();
-            //        firma_SUb.Alignment = Element.ALIGN_CENTER;
-            //        firma_SUb.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-            //        firma_SUb.Add(" ............................................................. \n RESIDENCIA DE OBRAS");
-            //        //aÑADIENDO FIRMAS A LA TABLA FIRMAS
-            //        tabla_firmas.AddCell(p_rrhh);
-            //        tabla_firmas.AddCell(p_gm);
-            //        tabla_firmas.AddCell(p_pre);
-            //        tabla_firmas.AddCell(p_con);
-            //        tabla_firmas2.AddCell(firma_Tes);
-            //        tabla_firmas2.AddCell(firma_SUb);
-            //    }
-
-            //    //instanciando una columna y 3 columnas
-            //    //Columnas 
-            //    MultiColumnText column_one = new MultiColumnText();
-            //    column_one.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 1);
-
-
-            //    MultiColumnText column_3 = new MultiColumnText();
-            //    column_3.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 4);
-
-            //    PdfPTable tabla_Encabezado = new PdfPTable(3);
-            //    tabla_Encabezado.DefaultCell.BorderWidth = 0;
-
-            //    Paragraph vacio = new Paragraph();
-            //    vacio.Alignment = Element.ALIGN_CENTER;
-            //    vacio.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-
-            //    tabla_Encabezado.SetWidths(new float[] { 30, 120, 40 });
-            //    //tabla_Encabezado.SetWidthPercentage(new float[] { 20f, 60f, 20f }, iTextSharp.text.PageSize.A4.Rotate());
-            //    tabla_Encabezado.AddCell(vacio);
-            //    tabla_Encabezado.AddCell(paragraph3);
-            //    tabla_Encabezado.AddCell(paragraph2);
-
-            //    //Agrupando tabla titular
-            //    tabla_bonus.AddCell(pdfTableRedondear);
-            //    tabla_bonus.AddCell(pdfTable2);
-
-            //    tabla_bonus.AddCell(pdfTableEEFF);
-
-
-
-            //    //Agregando una columna 
-            //    column_one.AddElement(paragraph);
-            //    //column_one.AddElement(logo);
-            //    //column_one.AddElement(paragraph2);
-            //    //column_one.AddElement(paragraph3);
-            //    column_one.AddElement(tabla_Encabezado);
-            //    column_one.AddElement(paragraph4);
-            //    column_one.AddElement(paragraph40);
-            //    column_one.AddElement(pdfTable);
-            //    //column_one.AddElement(paragraph5);
-            //    column_one.AddElement(paragraph6);
-            //    column_one.AddElement(tabla_bonus);
-            //    column_one.AddElement(paragraph5);
-            //    column_one.AddElement(paragraph5);
-            //    column_one.AddElement(paragraph5);
-            //    column_one.AddElement(paragraph5);
-            //    column_one.AddElement(paragraph5);
-            //    //column_one.AddElement(paragraph5);
-            //    column_one.AddElement(tabla_firmas);
-            //    if (numeroRegimenLaboral == 3)
-            //    {
-            //        column_one.AddElement(paragraph5);
-            //        column_one.AddElement(paragraph5);
-            //        column_one.AddElement(paragraph5);
-            //        column_one.AddElement(paragraph5);
-            //        column_one.AddElement(paragraph5);
-            //        column_one.AddElement(paragraph5);
-            //        column_one.AddElement(tabla_firmas2);
-            //    }
-            //    pdfDoc.Add(logo);
-            //    pdfDoc.Add(oficinas);
-            //    pdfDoc.Add(column_one);
-            //    //pdfDoc.Add(column_dos);
-            //    pdfDoc.Close();
-            //    stream.Close();
-            //}
-
-            //System.Diagnostics.Process proc = new System.Diagnostics.Process();
-            //proc.EnableRaisingEvents = false;
-            //proc.StartInfo.FileName = "C:\\PDFs\\Planilla.pdf";
-            //proc.Start();
+            oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
+            oHojaPDF.ListaDeTablas.Add(TablaTitulo1);
+
+            oHojaPDF.ListaDeTablas.Add(TablaTitulo2);
+            oHojaPDF.ListaDeTablas.Add(TablaTitulo3);
+            oHojaPDF.ListaDeTablas.Add(TablaDetalle);
+            oHojaPDF.ListaDeTablas.Add(TablaDetalleDetalle);
+            oReporte.ListaHojasPDF.Add(oHojaPDF);
+
+            ImprimirReportePDF(oReporte);
+         
         }
-        
+
+
+        private void ImprimirReportePDF(cReportePDF oReportePDF)
+        {
+            iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);
+            iTextSharp.text.Font fuenteTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 9, 1, iTextSharp.text.Color.BLUE);
+            Document pdfDoc = new Document(PageSize.A4, 30, 9, 10, 10);
+            pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4);
+            FileStream stream = new FileStream(oReportePDF.RutaArchivo, FileMode.Create);
+            PdfWriter.GetInstance(pdfDoc, stream);
+            pdfDoc.Open();
+            foreach (cHojaPDF item in oReportePDF.ListaHojasPDF)
+            {
+                foreach (cTablaPDF item2 in item.ListaDeTablas)
+                {
+                    PdfPTable pdfTable = new PdfPTable(item2.columnas);
+                    pdfTable.DefaultCell.Padding = 1;
+                    pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                    pdfTable.DefaultCell.BorderWidth = 1;
+                    pdfTable.SetWidths(item2.anchoColumnas);
+
+                    foreach (cFilasPDF item3 in item2.ListaFilas)
+                    {
+                        foreach (cCeldaPDF item4 in item3.ListaCeldas)
+                        {
+                            if (item4.TablaPDF != null)
+                            {
+                                PdfPTable oNuevaTabla = new PdfPTable(item4.TablaPDF.columnas);
+                                oNuevaTabla.SetWidths(item4.TablaPDF.anchoColumnas);
+                                foreach (cFilasPDF item5 in item4.TablaPDF.ListaFilas)
+                                {
+                                    foreach (cCeldaPDF item6 in item5.ListaCeldas)
+                                    {
+                                        if (item6.TablaPDF != null)
+                                        {
+                                            PdfPTable oNuevaTabla2 = new PdfPTable(item6.TablaPDF.columnas);
+                                            oNuevaTabla2.SetWidths(item6.TablaPDF.anchoColumnas);
+
+                                            foreach (cFilasPDF item7 in item6.TablaPDF.ListaFilas)
+                                            {
+                                                foreach (cCeldaPDF item8 in item7.ListaCeldas)
+                                                {
+                                                    PdfPCell cell = new PdfPCell((new Phrase(item8.Contenido, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, new iTextSharp.text.Color(item8.ColorLetra)))));
+                                                    cell.BackgroundColor = new iTextSharp.text.Color(item8.ColorFondo);
+                                                    cell.FixedHeight = item8.AltoColumna;
+                                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                                    // objH = new Phrase(column.HeaderText, fuenteTitulo);
+                                                    oNuevaTabla2.AddCell(cell);
+                                                }
+                                                oNuevaTabla2.CompleteRow();
+                                            }
+                                            oNuevaTabla.AddCell(oNuevaTabla2);
+                                        }
+                                        else
+                                        { 
+                                            PdfPCell cell = new PdfPCell((new Phrase(item6.Contenido, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, new iTextSharp.text.Color(item6.ColorLetra)))));
+                                            cell.BackgroundColor = new iTextSharp.text.Color(item4.ColorFondo);
+                                            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                            cell.FixedHeight = item6.AltoColumna;
+                                            // objH = new Phrase(column.HeaderText, fuenteTitulo);
+                                            oNuevaTabla.AddCell(cell);
+                                        }
+                                        
+                                    }
+                                    oNuevaTabla.CompleteRow();
+                                }
+                                pdfTable.AddCell(oNuevaTabla);
+                            }
+                            else
+                            {
+                                PdfPCell cell = new PdfPCell((new Phrase(item4.Contenido, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, new iTextSharp.text.Color(item4.ColorLetra)))));
+                                //cell = new PdfPCell(new Phrase(column.HeaderText));
+                                //PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                cell.BackgroundColor = new iTextSharp.text.Color(item4.ColorFondo);
+                                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                cell.FixedHeight = item4.AltoColumna;
+                                // objH = new Phrase(column.HeaderText, fuenteTitulo);
+                                pdfTable.AddCell(cell);
+                            }
+                            
+                        }
+                        pdfTable.CompleteRow();
+                    }
+                    pdfDoc.Add(pdfTable);
+                }
+
+            }
+            pdfDoc.Close();
+        }
+
     }
 }

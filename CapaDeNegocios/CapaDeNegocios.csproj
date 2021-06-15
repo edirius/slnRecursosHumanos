@@ -190,6 +190,7 @@
     <Compile Include="Reportes\cCeldaPDF.cs" />
     <Compile Include="Reportes\cFilasPDF.cs" />
     <Compile Include="Reportes\cHojaPDF.cs" />
+    <Compile Include="Reportes\cMultiCeldaPDF.cs" />
     <Compile Include="Reportes\cReporteAsistencia.cs" />
     <Compile Include="Reportes\cReportePDF.cs" />
     <Compile Include="Reportes\cResumenPlanillas.cs" />

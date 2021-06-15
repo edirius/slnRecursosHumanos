@@ -28,8 +28,17 @@ namespace CapaUsuario.Reloj
 
             try
             {
-                ListaHuellasReloj =  oServidorReloj.sta_readAttLog(oServidorReloj.Reloj);
-                dtgListaPicados.DataSource = ListaHuellasReloj;
+                if (chkRangoFechas.Checked == false)
+                {
+                    ListaHuellasReloj = oServidorReloj.sta_readAttLog(oServidorReloj.Reloj);
+                    dtgListaPicados.DataSource = ListaHuellasReloj;
+                }
+                else
+                {
+                    ListaHuellasReloj = oServidorReloj.sta_readAttLog(oServidorReloj.Reloj, dtpInicioFecha.Text.Trim().ToString(), dtpFinFecha.Text.Trim().ToString());
+                    dtgListaPicados.DataSource = ListaHuellasReloj;
+                }
+                
             }
             catch (Exception ex)
             {
@@ -45,6 +54,8 @@ namespace CapaUsuario.Reloj
         private void Iniciar()
         {
             DarFormatoGrid();
+            dtpInicioFecha.Value = DateTime.Now;
+            dtpFinFecha.Value = DateTime.Now;
         }
 
         private void DarFormatoGrid()
@@ -116,6 +127,20 @@ namespace CapaUsuario.Reloj
             catch (Exception ex)
             {
                 MessageBox.Show("Error al guardar asistencia: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void chkRangoFechas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkRangoFechas.Checked)
+            {
+                dtpFinFecha.Enabled = true;
+                dtpInicioFecha.Enabled = true;
+            }
+            else
+            {
+                dtpFinFecha.Enabled = false;
+                dtpInicioFecha.Enabled = false;
             }
         }
     }

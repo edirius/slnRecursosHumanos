@@ -12,10 +12,24 @@ namespace CapaDeNegocios.Reportes
         public string Contenido { get; set; }
         public Color ColorFondo { get; set; }
         public Boolean Negrita { get; set; }
+        public cTablaPDF TablaPDF { get; set; }
+        public Color ColorLetra { get; set; }
+        public float AltoColumna { get; set; }
 
         public cCeldaPDF()
         {
             Negrita = false;
+            ColorFondo = Color.White;
+            ColorLetra = Color.Black;
+            AltoColumna = 20f;
+        }
+
+        public cCeldaPDF(string contenido)
+        {
+            Contenido = contenido;
+            ColorFondo = Color.White;
+            ColorLetra = Color.Black;
+            AltoColumna = 20f;
         }
 
         public cCeldaPDF(Boolean negrita, Color color, string contenido)
@@ -23,6 +37,8 @@ namespace CapaDeNegocios.Reportes
             Negrita = negrita;
             ColorFondo = color;
             Contenido = contenido;
+            ColorLetra = Color.Black;
+            AltoColumna = 20f;
         }
     }
 }

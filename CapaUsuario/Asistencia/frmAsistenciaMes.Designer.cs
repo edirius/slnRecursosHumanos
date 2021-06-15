@@ -49,6 +49,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblMinutostarde = new System.Windows.Forms.Label();
             this.lblFaltaDia = new System.Windows.Forms.Label();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.dlgGuardarReportePDF = new System.Windows.Forms.SaveFileDialog();
+            this.chkSalidasTodoElMes = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDetalleAsistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaSalidas)).BeginInit();
             this.SuspendLayout();
@@ -73,7 +76,7 @@
             this.lblNombredelTrabajador.Name = "lblNombredelTrabajador";
             this.lblNombredelTrabajador.Size = new System.Drawing.Size(933, 23);
             this.lblNombredelTrabajador.TabIndex = 78;
-            this.lblNombredelTrabajador.Text = "Lista Cargos";
+            this.lblNombredelTrabajador.Text = "Nombres";
             this.lblNombredelTrabajador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cboMes
@@ -123,7 +126,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 314);
+            this.label2.Location = new System.Drawing.Point(36, 314);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 13);
             this.label2.TabIndex = 83;
@@ -168,7 +171,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(596, 78);
+            this.label5.Location = new System.Drawing.Point(596, 72);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 13);
             this.label5.TabIndex = 88;
@@ -232,11 +235,43 @@
             this.lblFaltaDia.TabIndex = 94;
             this.lblFaltaDia.Text = "0";
             // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimir.BackColor = System.Drawing.Color.MintCream;
+            this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnImprimir.Location = new System.Drawing.Point(829, 311);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(75, 65);
+            this.btnImprimir.TabIndex = 95;
+            this.btnImprimir.Text = "&Imprimir";
+            this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // dlgGuardarReportePDF
+            // 
+            this.dlgGuardarReportePDF.Filter = "\"pdf archivo (*.pdf)|*.pdf";
+            // 
+            // chkSalidasTodoElMes
+            // 
+            this.chkSalidasTodoElMes.AutoSize = true;
+            this.chkSalidasTodoElMes.Location = new System.Drawing.Point(596, 90);
+            this.chkSalidasTodoElMes.Name = "chkSalidasTodoElMes";
+            this.chkSalidasTodoElMes.Size = new System.Drawing.Size(84, 17);
+            this.chkSalidasTodoElMes.TabIndex = 96;
+            this.chkSalidasTodoElMes.Text = "Todo el mes";
+            this.chkSalidasTodoElMes.UseVisualStyleBackColor = true;
+            // 
             // frmAsistenciaMes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(933, 450);
+            this.Controls.Add(this.chkSalidasTodoElMes);
+            this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.lblFaltaDia);
             this.Controls.Add(this.lblMinutostarde);
             this.Controls.Add(this.label7);
@@ -287,5 +322,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblMinutostarde;
         private System.Windows.Forms.Label lblFaltaDia;
+        private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.SaveFileDialog dlgGuardarReportePDF;
+        private System.Windows.Forms.CheckBox chkSalidasTodoElMes;
     }
 }

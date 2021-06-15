@@ -9,17 +9,27 @@ namespace CapaDeNegocios.Asistencia
     public class cAsistenciaDia
     {
         List<cPicado> _ListaPicados;
+
+        cPicado _PicadoEntrada;
+        cPicado _PicadoSalida;
+
         DateTime _Dia;
+
         Boolean _Tarde;
         TipoFalta _Falta;
    
         int _MinutosTarde;
 
-        Boolean _PicadoSalida;
+        TipoDia _EventoDia;
+
         Boolean _DiaLibre;
         cTurnoDia _TurnoDiaTrabajador;
         List<cExcepcionesAsistencia> _ListaSalidas;
+
         cDiaFestivo _DiaFestivo;
+
+        TimeSpan _HorasTrabajadas;
+        TimeSpan _HorasAsignadas;
         
         public enum TipoFalta
         {
@@ -28,6 +38,13 @@ namespace CapaDeNegocios.Asistencia
             FaltaJustificada,
             FaltaTotal,
             SinFalta
+        }
+
+        public enum TipoDia
+        {
+            DiaLaborable,
+            DiaFestivo,
+             DiaLibre
         }
 
         public cAsistenciaDia()
@@ -118,18 +135,7 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
-        public bool PicadoSalida
-        {
-            get
-            {
-                return _PicadoSalida;
-            }
-
-            set
-            {
-                _PicadoSalida = value;
-            }
-        }
+       
 
         public bool DiaLibre
         {
@@ -170,88 +176,192 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
+        public cPicado PicadoEntrada
+        {
+            get
+            {
+                return _PicadoEntrada;
+            }
+
+            set
+            {
+                _PicadoEntrada = value;
+            }
+        }
+
+        public cPicado PicadoSalida
+        {
+            get
+            {
+                return _PicadoSalida;
+            }
+
+            set
+            {
+                _PicadoSalida = value;
+            }
+        }
+
+        public TipoDia EventoDia
+        {
+            get
+            {
+                return _EventoDia;
+            }
+
+            set
+            {
+                _EventoDia = value;
+            }
+        }
+
+        public TimeSpan HorasTrabajadas
+        {
+            get
+            {
+                return _HorasTrabajadas;
+            }
+
+            set
+            {
+                _HorasTrabajadas = value;
+            }
+        }
+
+        public TimeSpan HorasAsignadas
+        {
+            get
+            {
+                return _HorasAsignadas;
+            }
+
+            set
+            {
+                _HorasAsignadas = value;
+            }
+        }
+
+        private TipoDia DescubrirTipoDia ()
+        {
+            try
+            {
+                if (_DiaFestivo != null)
+                {
+                    return TipoDia.DiaFestivo;
+                }
+
+                if (_TurnoDiaTrabajador.CodigoTurnoDia == 0)
+                {
+                    return TipoDia.DiaLibre;
+                }
+
+                return TipoDia.DiaLaborable;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error : " + ex.Message);
+            }
+        }
+
         public void Actualizardatos()
         {
             try
             {
-                // Dia Libre
-                if (_TurnoDiaTrabajador.CodigoTurnoDia != 0)
+                _EventoDia = DescubrirTipoDia();
+
+                switch (_EventoDia)
                 {
-                    //Dia festivo
-                    if (DiaFestivo != null)
-                    {
-                        _DiaLibre = true;
-                        _Tarde = false;
-                        _Falta = TipoFalta.SinFalta;
-                        _MinutosTarde = 0;
-                    }
-                    else
-                    {
+                    case TipoDia.DiaLaborable:
                         //Verificamos que tiene turnos
                         if (_TurnoDiaTrabajador.ListaTurnos.Count > 0)
                         {
                             foreach (cTurno miTurno in _TurnoDiaTrabajador.ListaTurnos)
                             {
+                                List<cPicado> PicadosEntrada = new List<cPicado>();
+                                List<cPicado> PicadosSalida = new List<cPicado>();
+                                List<cPicado> PicadosSinEfecto = new List<cPicado>();
+
                                 foreach (cPicado miPicado in ListaPicados)
                                 {
-                                    //pico antes del horario
-                                    if (miPicado.Picado.TimeOfDay <= miTurno.InicioTurno.TimeOfDay)
+
+                                    //Si el picado es menor al horario de inicio de picado mas los minutos de tolerancia
+                                    if (miPicado.Picado.TimeOfDay <= miTurno.InicioTurno.AddMinutes(miTurno.ToleranciaFalta).TimeOfDay)
                                     {
-                                        _MinutosTarde = 0;
-                                        _Tarde = false;
-                                        _Falta = TipoFalta.SinFalta;
-                                        
+                                        PicadosEntrada.Add(miPicado);
+                                    }
+                                    else if (miPicado.Picado.TimeOfDay >= miTurno.FinTurno.TimeOfDay)
+                                    {
+                                        PicadosSalida.Add(miPicado);
                                     }
                                     else
                                     {
-                                        //pico despues del horario de inicio, pero antes del horario de fin
-                                        if (miPicado.Picado.TimeOfDay < miTurno.FinTurno.TimeOfDay)
-                                        {
-                                            _MinutosTarde = (miPicado.Picado.TimeOfDay - miTurno.InicioTurno.TimeOfDay).Minutes;
-                                            if (_MinutosTarde >= miTurno.ToleranciaInicio)
-                                            {
-                                                _Tarde = true;
-                                                _Falta = TipoFalta.SinFalta;
-                                            }
-                                            else
-                                            {
-                                                _Tarde = false;
-                                                _Falta = TipoFalta.SinFalta;
-                                            }
+                                        //Los picados quedan sin efecto.
+                                        PicadosSinEfecto.Add(miPicado);
+                                    }
+                                }
 
-                                            if (_MinutosTarde >= miTurno.ToleranciaFalta)
-                                            {
-                                                _Tarde = false;
-                                                _Falta = TipoFalta.FaltaPicadoEntrada;
-                                            }
-                                        }
-                                        //es el picado de salida
-                                        else
-                                        {
-                                            _PicadoSalida = true;
-                                        }
+                                if (PicadosEntrada.Count > 0)
+                                {
+                                    _PicadoEntrada = PicadosEntrada.Find(y => y.Picado == PicadosEntrada.Min(x => x.Picado));
+                                }
+                                else
+                                {
+                                    _PicadoEntrada = null;
+                                }
+                                if (PicadosSalida.Count > 0)
+                                {
+                                    _PicadoSalida = PicadosSalida.Find(y => y.Picado == PicadosSalida.Max(x => x.Picado));
+                                }
+                                else
+                                {
+                                    _PicadoSalida = null;
+                                }
+
+                                //calculos para picado de entrada
+                                if (_PicadoEntrada == null)
+                                {
+                                    _MinutosTarde = 0;
+                                    _Tarde = false;
+                                    _Falta = TipoFalta.FaltaPicadoEntrada;
+                                }
+                                else
+                                {
+                                    //pico antes del horario
+                                    if (_PicadoEntrada.Picado.TimeOfDay <= miTurno.InicioTurno.AddMinutes(miTurno.ToleranciaInicio).TimeOfDay)
+                                    {
+                                        MinutosTarde = 0;
+                                        _Tarde = false;
+                                        _Falta = TipoFalta.SinFalta;
+                                    }
+                                    else
+                                    {
+                                        MinutosTarde = (miTurno.InicioTurno.AddMinutes(miTurno.ToleranciaFalta) - _PicadoEntrada.Picado.TimeOfDay).Minute;
+                                        _Tarde = true;
+                                        _Falta = TipoFalta.SinFalta;
+                                    }
+
+                                }
+
+                                //Calculos para picado de salida
+
+                                if (_PicadoSalida == null)
+                                {
+                                    if (_Falta == TipoFalta.FaltaPicadoEntrada)
+                                    {
+                                        _Falta = TipoFalta.FaltaTotal;
+                                    }
+                                    else
+                                    {
+                                        _Falta = TipoFalta.FaltaTotal;
                                     }
                                 }
                             }
                         }
 
-                        if (_PicadoSalida == false)
-                        {
-                            if (_Falta == TipoFalta.SinFalta)
-                            {
-                                _Falta = TipoFalta.FaltaPicadoFinal;
-                            }
-                            else
-                            {
-                                _Falta = TipoFalta.FaltaTotal;
-                            }
-                            
-                        }
-
                         foreach (cExcepcionesAsistencia item in _ListaSalidas)
                         {
                             //Si la fecha de salida es la misma que el dia
-                            if ( _Dia.Date == item.InicioExcepcion.Date || _Dia.Date == item.FinExcepcion.Date)
+                            if (_Dia.Date == item.InicioExcepcion.Date || _Dia.Date == item.FinExcepcion.Date)
                             {
                                 if (item.InicioExcepcion.TimeOfDay <= _TurnoDiaTrabajador.ListaTurnos[0].InicioTurno.TimeOfDay)
                                 {
@@ -289,7 +399,7 @@ namespace CapaDeNegocios.Asistencia
                                         {
                                             _Falta = TipoFalta.SinFalta;
                                         }
-                                        
+
                                     }
                                 }
                             }
@@ -301,20 +411,35 @@ namespace CapaDeNegocios.Asistencia
                                 {
                                     _Falta = TipoFalta.FaltaJustificada;
                                 }
-                                
                                 _MinutosTarde = 0;
+                                _Tarde = false;
+
                             }
                         }
-                    }
-                
-                }
-
-                else
-                {
-                    _DiaLibre = true;
-                    _Tarde = false;
-                    _Falta = TipoFalta.SinFalta;
-                    _MinutosTarde = 0;
+                        if (_Falta == TipoFalta.SinFalta)
+                        {
+                            _HorasTrabajadas = (new DateTime(2000, 1, 1, 13, 0, 0).TimeOfDay - TurnoDiaTrabajador.ListaTurnos[0].InicioTurno.TimeOfDay) + (_PicadoSalida.Picado.TimeOfDay - new DateTime(2000, 1, 1, 14, 0, 0).TimeOfDay);
+                        }
+                        _HorasAsignadas = _HorasTrabajadas = (new DateTime(2000, 1, 1, 13, 0, 0).TimeOfDay - TurnoDiaTrabajador.ListaTurnos[0].InicioTurno.TimeOfDay) + (TurnoDiaTrabajador.ListaTurnos[0].FinTurno.TimeOfDay - new DateTime(2000, 1, 1, 14, 0, 0).TimeOfDay);
+                        break;
+                    case TipoDia.DiaFestivo:
+                        _DiaLibre = false;
+                        _Tarde = false;
+                        _Falta = TipoFalta.SinFalta;
+                        _MinutosTarde = 0;
+                        _HorasTrabajadas = new TimeSpan(0);
+                        _HorasAsignadas = new TimeSpan(0);
+                        break;
+                    case TipoDia.DiaLibre:
+                        _DiaLibre = true;
+                        _Tarde = false;
+                        _Falta = TipoFalta.SinFalta;
+                        _MinutosTarde = 0;
+                        _HorasTrabajadas = new TimeSpan(0);
+                        _HorasAsignadas = new TimeSpan(0);
+                        break;
+                    default:
+                        break;
                 }
             }
             catch (Exception ex)

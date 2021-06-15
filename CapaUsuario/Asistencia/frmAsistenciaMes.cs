@@ -62,12 +62,18 @@ namespace CapaUsuario.Asistencia
         private void CargarCalendario()
         {
             oAsistenciaMes = oCatalogoAsistencia.LLenarAsistencia(miTrabajador.OTrabajador, cboMes.SelectedIndex + 1, Convert.ToInt16(cboAño.Text), oCatalogoAsistencia.TraerHorarioTrabajador(miTrabajador.OTrabajador));
-            CalendarioAsistencia.MinDate = oAsistenciaMes.InicioMes;
-            CalendarioAsistencia.MaxDate = oAsistenciaMes.FinMes;
-            
-            
-
-
+            if (CalendarioAsistencia.MaxDate < oAsistenciaMes.InicioMes)
+            {
+                CalendarioAsistencia.MaxDate = oAsistenciaMes.FinMes;
+                CalendarioAsistencia.MinDate = oAsistenciaMes.InicioMes;
+                
+            }
+            else
+            {
+                CalendarioAsistencia.MinDate = oAsistenciaMes.InicioMes;
+                CalendarioAsistencia.MaxDate = oAsistenciaMes.FinMes;
+            }
+   
             oAsistenciaMes.ListaAsistenciaDia = oAsistenciaMes.LlenarAsistencias(oCatalogoAsistencia.ListaPicadoEntreFechas(miTrabajador, oAsistenciaMes.InicioMes, oAsistenciaMes.FinMes),
                                                                                                                     oAsistenciaMes.InicioMes,
                                                                                                                     oAsistenciaMes.FinMes,
@@ -108,7 +114,7 @@ namespace CapaUsuario.Asistencia
             {
                 dtgDetalleAsistencia.DataSource = oCatalogoAsistencia.ListaPicadoEntreFechas(miTrabajador, oAsistenciaMes.InicioMes, oAsistenciaMes.FinMes);
             }
-            dtgListaSalidas.DataSource = oCatalogoAsistencia.ListaSalidas(miTrabajador.OTrabajador);
+            dtgListaSalidas.DataSource = oCatalogoAsistencia.ListaSalidas(miTrabajador.OTrabajador, CalendarioAsistencia.SelectionStart);
 
             if (oAsistenciaMes.ListaAsistenciaDia.Count > 0)
             {
@@ -225,6 +231,26 @@ namespace CapaUsuario.Asistencia
         private void chkTodoElMes_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CapaDeNegocios.Reportes.cReporteAsistencia oReporte = new CapaDeNegocios.Reportes.cReporteAsistencia();
+
+                CapaDeNegocios.Reportes.cReportePDF miReporte = new CapaDeNegocios.Reportes.cReportePDF();
+
+                if (dlgGuardarReportePDF.ShowDialog() == DialogResult.OK)
+                {
+                    oReporte.ImprimirReporteAsistenciaXTrabajador(miTrabajador.OTrabajador, oAsistenciaMes, dlgGuardarReportePDF.FileName);
+                }    
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir reporte de asistencia." + ex.Message, "Reporte de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

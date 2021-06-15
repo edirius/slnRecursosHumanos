@@ -133,5 +133,12 @@ namespace CapaUsuario.Trabajador
             cboFinPeriodo.ValueMember = "idtmotivofinperiodo";
             cboFinPeriodo.Text = smotivofinperiodo;
         }
+
+        private void btnFechaFin_Click(object sender, EventArgs e)
+        {
+            dtpFechaFin.Format = DateTimePickerFormat.Custom;
+            dtpFechaFin.CustomFormat = " ";
+            cboFinPeriodo.Text = "";
+        }
     }
 }
