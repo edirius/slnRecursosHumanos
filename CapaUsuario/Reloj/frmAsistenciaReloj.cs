@@ -54,8 +54,8 @@ namespace CapaUsuario.Reloj
         private void Iniciar()
         {
             DarFormatoGrid();
-            dtpInicioFecha.Value = DateTime.Now;
-            dtpFinFecha.Value = DateTime.Now;
+            dtpInicioFecha.Value = DateTime.Now.Date;
+            dtpFinFecha.Value = DateTime.Now.Date.AddDays(1).AddMinutes(-1);
         }
 
         private void DarFormatoGrid()

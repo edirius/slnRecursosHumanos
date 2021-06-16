@@ -442,7 +442,7 @@ namespace CapaUsuario.Tareo
             try
             {
 
-                if (dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Selected == true)
+                if (dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Selected == true && dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value != null && dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value.ToString() != "")
                 {
                     int z = 0;
                     int contador = 0;
@@ -474,11 +474,26 @@ namespace CapaUsuario.Tareo
                         MessageBox.Show("El trabajador ya se encuentra en el tareo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
+                   
                     foreach (DataRow row in oDataTrabajador.Select("dni = '" + dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value + "'"))
                     {
                         contador += 1;
                         IdtTrabajador = row[0].ToString();
+                        //Parte para comprobar si el trabajador esta en otro tareo
+                        List<CapaDeNegocios.Tareos.cTareo> TareosConTrabajadorDuplicado = miTareo.BuscarTrabajadorTareo(miTrabajador.traerTrabajador(Convert.ToInt32(IdtTrabajador)), miTareo.FechaInicio);
+                        if ( TareosConTrabajadorDuplicado.Count > 0)
+                        {
+                            foreach (CapaDeNegocios.Tareos.cTareo item in TareosConTrabajadorDuplicado)
+                            {
+                                if (item.IdTTareo != miTareo.IdTTareo)
+                                {
+                                    MessageBox.Show("El trabajador que esta ingresando ya se encuentra en el tareo: " + item.Descripcion + " de la meta: " + item.Meta.Numero + ": " +
+                                    item.Meta.Nombre + "con " + item.ListaDetallesTareo[0].TotalDias + " dias, con el siguiente detalle de tareo " + item.ListaDetallesTareo[0].DiasTareo, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            
+                        }
+
                         if (ComprobarBajaTrabajador(Convert.ToInt32(IdtTrabajador)) == true)
                         {
                             dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = "";
@@ -627,7 +642,6 @@ namespace CapaUsuario.Tareo
                 else if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value) == "")
                 {
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
-                    MessageBox.Show("No existe el Trabajador, para agregar hacer clic en Nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 dgvDetalleTareo.Rows[e.RowIndex].Cells[dgvDetalleTareo.ColumnCount - 2].Value = TotalDias(e.RowIndex);
@@ -974,10 +988,35 @@ namespace CapaUsuario.Tareo
                 MessageBox.Show("No selecciono a ningun trabajador", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            PeriodoTrabajador(sidttrabajador);
-            CapaUsuario.Tareo.frmBajaTrabajador fBajaTrabajador = new CapaUsuario.Tareo.frmBajaTrabajador();
-            fBajaTrabajador.RecibirDatos(miTareo.FechaInicio, sidtperiodotrabajador);
-            fBajaTrabajador.ShowDialog();
+
+            List<CapaDeNegocios.Tareos.cTareo> TareosConTrabajadorDuplicado = miTareo.BuscarTrabajadorTareo(miTrabajador.traerTrabajador(Convert.ToInt32(sidttrabajador)), miTareo.FechaInicio);
+            bool trabajadorEncontrado = false;
+            if (TareosConTrabajadorDuplicado.Count > 0)
+            {
+
+                foreach (CapaDeNegocios.Tareos.cTareo item in TareosConTrabajadorDuplicado)
+                {
+                    if (item.IdTTareo != miTareo.IdTTareo)
+                    {
+                        trabajadorEncontrado = true;
+                        MessageBox.Show("El trabajador que quiere borrar ya se encuentra en el tareo: " + item.Descripcion + " de la meta: " + item.Meta.Numero + ": " +
+                        item.Meta.Nombre + "con " + item.ListaDetallesTareo[0].TotalDias + " dias, con el siguiente detalle de tareo " + item.ListaDetallesTareo[0].DiasTareo, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    }
+                    
+                }
+
+            }
+
+            if (!trabajadorEncontrado)
+            {
+                PeriodoTrabajador(sidttrabajador);
+                CapaUsuario.Tareo.frmBajaTrabajador fBajaTrabajador = new CapaUsuario.Tareo.frmBajaTrabajador();
+                fBajaTrabajador.RecibirDatos(miTareo.FechaInicio, sidtperiodotrabajador);
+                fBajaTrabajador.ShowDialog();
+            }
+
+            
         }
 
         private bool ComprobarBajaTrabajador(int IdtTrabajador)
