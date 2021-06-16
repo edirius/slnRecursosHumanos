@@ -726,6 +726,54 @@ namespace CapaUsuario.Tareo
             
         }
 
+        private DataTable OrdenarPorCategoria(DataTable odata)
+        {
+            DataTable AUXILIAR = odata.Clone();
+            foreach (DataRow item in odata.Rows)
+            {
+                if (item[1].ToString() == "MAESTRO DE OBRA")
+                {
+                    AUXILIAR.ImportRow(item);
+                }
+            }
+
+            foreach (DataRow item in odata.Rows)
+            {
+                if (item[1].ToString() == "ALMACENERO")
+                {
+                    AUXILIAR.ImportRow(item);
+                }
+            }
+
+            foreach (DataRow item in odata.Rows)
+            {
+                DataRow nueva;
+                nueva = item;
+                if (item[1].ToString() == "OPERARIO")
+                {
+                    AUXILIAR.ImportRow(item);
+                }
+            }
+
+            foreach (DataRow item in odata.Rows)
+            {
+                if (item[1].ToString() == "OFICIAL")
+                {
+                    AUXILIAR.ImportRow(item);
+                }
+            }
+
+            foreach (DataRow item in odata.Rows)
+            {
+                if (item[1].ToString() != "MAESTRO DE OBRA" && item[1].ToString() != "ALMACENERO" && item[1].ToString() != "OPERARIO" && item[1].ToString() != "OFICIAL")
+                {
+                    AUXILIAR.ImportRow(item);
+                }
+            }
+
+            return AUXILIAR;
+        }
+
         private void CargarDatos()
         {
             int contador = 0, contadordias = 0;
@@ -742,7 +790,7 @@ namespace CapaUsuario.Tareo
             string Cargo = "";
             string AFP = "";
             dgvDetalleTareo.Rows.Clear();
-            oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(miTareo.IdTTareo);
+            oDataDetalleTareo = OrdenarPorCategoria(miDetalleTareo.ListarDetalleTareo(miTareo.IdTTareo));
             foreach (DataRow row in oDataDetalleTareo.Rows)
             {
                 contador += 1;
