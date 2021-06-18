@@ -32,7 +32,7 @@ namespace CapaDeNegocios.Tareos
             }
             else
             {
-                throw new Exception("La plantilla Tareo.xltx no se encuentra en la ruta");
+                throw new Exception("La plantilla: " + AppDomain.CurrentDomain.BaseDirectory +  " Tareo.xltx no se encuentra en la ruta");
             }
             Dias_Mes();
             ImprimirTareo();
@@ -51,6 +51,7 @@ namespace CapaDeNegocios.Tareos
                 foreach (DataRow row in oImprimirTareo.Rows)
                 {
                     contador += 1;
+                    oHoja.Range["A2"].Formula = "HOJA DE INFORMACIÓN DE ASISTENCIA DE " +  row[10].ToString();
                     oHoja.Range["I8"].Formula = oImprimirTareo.Rows.Count;//TOTAL DE TRABAJADORES
                     oHoja.Range["O4"].Formula = row[1].ToString();//META
                     oHoja.Range["O6"].Formula = row[2].ToString();//NUMERO DE META

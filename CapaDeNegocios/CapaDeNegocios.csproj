@@ -193,6 +193,7 @@
     <Compile Include="Reportes\cMultiCeldaPDF.cs" />
     <Compile Include="Reportes\cReporteAsistencia.cs" />
     <Compile Include="Reportes\cReportePDF.cs" />
+    <Compile Include="Reportes\cReporteTareo.cs" />
     <Compile Include="Reportes\cResumenPlanillas.cs" />
     <Compile Include="Reportes\cTablaPDF.cs" />
     <Compile Include="Reportes\NumLetra.cs" />

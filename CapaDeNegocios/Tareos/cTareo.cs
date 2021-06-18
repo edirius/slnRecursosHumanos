@@ -112,9 +112,58 @@ namespace CapaDeNegocios.Tareos
             return true;
         }
 
+        private DataTable OrdenarPorCategoria(DataTable odata)
+        {
+            DataTable AUXILIAR = odata.Clone();
+            foreach (DataRow item in odata.Rows)
+            {
+                if (item[11].ToString() == "MAESTRO DE OBRA")
+                {
+                    AUXILIAR.ImportRow(item);
+                }
+            }
+
+            foreach (DataRow item in odata.Rows)
+            {
+                if (item[11].ToString() == "ALMACENERO")
+                {
+                    AUXILIAR.ImportRow(item);
+                }
+            }
+
+            foreach (DataRow item in odata.Rows)
+            {
+                DataRow nueva;
+                nueva = item;
+                if (item[11].ToString() == "OPERARIO")
+                {
+                    AUXILIAR.ImportRow(item);
+                }
+            }
+
+            foreach (DataRow item in odata.Rows)
+            {
+                if (item[11].ToString() == "OFICIAL")
+                {
+                    AUXILIAR.ImportRow(item);
+                }
+            }
+
+            foreach (DataRow item in odata.Rows)
+            {
+                if (item[11].ToString() != "MAESTRO DE OBRA" && item[11].ToString() != "ALMACENERO" && item[11].ToString() != "OPERARIO" && item[11].ToString() != "OFICIAL")
+                {
+                    AUXILIAR.ImportRow(item);
+                }
+            }
+
+            return AUXILIAR;
+        }
+
+
         public DataTable ImprimirTareo(int IdtMeta, int IdTTareo)
         {
-            return Conexion.GDatos.TraerDataTable("spTareoObras", IdtMeta, IdTTareo);
+            return OrdenarPorCategoria(Conexion.GDatos.TraerDataTable("spTareoObras", IdtMeta, IdTTareo));
         }
 
         public List<cTareo> BuscarTrabajadorTareo(cTrabajador oTrabajador, DateTime MesTareo)

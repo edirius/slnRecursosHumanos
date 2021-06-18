@@ -108,7 +108,7 @@ namespace CapaUsuario.Reloj
                         CapaDeNegocios.Asistencia.cPicado miPicado = new CapaDeNegocios.Asistencia.cPicado();
                         miPicado.Picado = item.FechaYHora;
                         miPicado.TrabajadorReloj = new CapaDeNegocios.Asistencia.cTrabajadorReloj();
-                        miPicado.TrabajadorReloj.CodigoReloj = Convert.ToInt16(item.IdUsuario);
+                        miPicado.TrabajadorReloj.CodigoReloj = Convert.ToInt32(item.IdUsuario);
 
                         if (oCatalogo.TraerPicadoRelojXTrabajadorFecha(miPicado.TrabajadorReloj.CodigoReloj, miPicado.Picado)== null)
                         {

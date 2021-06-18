@@ -149,7 +149,7 @@ namespace CapaUsuario.Trabajador
             miTrabajador.MiNacionalidad.Codigo = 1;
             miTrabajador.Essaludvida = false;
             miTrabajador.Scrt = true;
-
+            miPeriodoTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
             if (modoEdicion == false || modoAltatrabajador == true)
             {
 

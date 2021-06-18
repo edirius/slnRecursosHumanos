@@ -1162,6 +1162,7 @@ namespace CapaUsuario.Tareo
                             if (fNuevoObreroRacionamiento.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                             {
                                 fNuevoObreroRacionamiento.miTrabajador.ModificarTrabajador(fNuevoObreroRacionamiento.miTrabajador);
+                                fNuevoObreroRacionamiento.miPeriodoTrabajador.ModificarPeriodoTrabajador(fNuevoObreroRacionamiento.miPeriodoTrabajador);
                                 oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
                                 oDataAFP = miAFP.ObtenerListaAFP();
                                 oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
