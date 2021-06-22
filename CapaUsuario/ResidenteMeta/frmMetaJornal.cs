@@ -145,5 +145,54 @@ namespace CapaUsuario.ResidenteMeta
             }
             cboAño.Text = Convert.ToString(DateTime.Now.Year);
         }
+
+        private void btnAgregarCategoria_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmNuevaCategoriaJornal fNuevaCategoriaJornal = new frmNuevaCategoriaJornal();
+                fNuevaCategoriaJornal.oMetaJornal = new CapaDeNegocios.Obras.cMetaJornal();
+                fNuevaCategoriaJornal.oMetaJornal.Meta.Codigo = sidtmeta;
+                if (fNuevaCategoriaJornal.ShowDialog() == DialogResult.OK)
+                {
+                    miMejaJornal.CrearMetaJornal(fNuevaCategoriaJornal.oMetaJornal, fNuevaCategoriaJornal.oMetaJornal.Meta);
+                    CargarDatos();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la categoria: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnModificarCategoria_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvMetaJornal.SelectedCells.Count > 0)
+                {
+                    frmNuevaCategoriaJornal fNuevaCategoriaJornal = new frmNuevaCategoriaJornal();
+                    fNuevaCategoriaJornal.oMetaJornal = new CapaDeNegocios.Obras.cMetaJornal();
+
+                    fNuevaCategoriaJornal.oMetaJornal.Categoria = dgvMetaJornal.Rows[dgvMetaJornal.SelectedCells[0].RowIndex].Cells[2].Value.ToString();
+                    fNuevaCategoriaJornal.oMetaJornal.IdtMetaJornal =Convert.ToInt32( dgvMetaJornal.Rows[dgvMetaJornal.SelectedCells[0].RowIndex].Cells[1].Value.ToString());
+                    fNuevaCategoriaJornal.oMetaJornal.Jornal = Convert.ToDouble(dgvMetaJornal.Rows[dgvMetaJornal.SelectedCells[0].RowIndex].Cells[1].Value.ToString());
+
+                    if (fNuevaCategoriaJornal.ShowDialog() == DialogResult.OK)
+                    {
+                        miMejaJornal.ModificarMetaJornal(fNuevaCategoriaJornal.oMetaJornal, fNuevaCategoriaJornal.oMetaJornal.Meta);
+                        CargarDatos();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una categoria", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar la categoria: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

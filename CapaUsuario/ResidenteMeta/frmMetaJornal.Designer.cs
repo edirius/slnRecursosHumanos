@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.dgvMetaJornal = new System.Windows.Forms.DataGridView();
@@ -42,6 +42,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnCategorias = new System.Windows.Forms.Button();
+            this.btnAgregarCategoria = new System.Windows.Forms.Button();
+            this.btnModificarCategoria = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetaJornal)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,8 +83,8 @@
             // 
             this.dgvMetaJornal.AllowUserToAddRows = false;
             this.dgvMetaJornal.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvMetaJornal.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvMetaJornal.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMetaJornal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -197,11 +199,45 @@
             this.btnCategorias.UseVisualStyleBackColor = false;
             this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
             // 
+            // btnAgregarCategoria
+            // 
+            this.btnAgregarCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarCategoria.BackColor = System.Drawing.Color.MintCream;
+            this.btnAgregarCategoria.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregarCategoria.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAgregarCategoria.ImageIndex = 1;
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(15, 387);
+            this.btnAgregarCategoria.Name = "btnAgregarCategoria";
+            this.btnAgregarCategoria.Size = new System.Drawing.Size(92, 53);
+            this.btnAgregarCategoria.TabIndex = 90;
+            this.btnAgregarCategoria.Text = "Agregar Categoria";
+            this.btnAgregarCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarCategoria.UseVisualStyleBackColor = false;
+            this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
+            // 
+            // btnModificarCategoria
+            // 
+            this.btnModificarCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnModificarCategoria.BackColor = System.Drawing.Color.MintCream;
+            this.btnModificarCategoria.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnModificarCategoria.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnModificarCategoria.ImageIndex = 1;
+            this.btnModificarCategoria.Location = new System.Drawing.Point(113, 387);
+            this.btnModificarCategoria.Name = "btnModificarCategoria";
+            this.btnModificarCategoria.Size = new System.Drawing.Size(92, 53);
+            this.btnModificarCategoria.TabIndex = 91;
+            this.btnModificarCategoria.Text = "Modificar Categoria";
+            this.btnModificarCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnModificarCategoria.UseVisualStyleBackColor = false;
+            this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
+            // 
             // frmMetaJornal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(547, 452);
+            this.Controls.Add(this.btnModificarCategoria);
+            this.Controls.Add(this.btnAgregarCategoria);
             this.Controls.Add(this.btnCategorias);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnMeta);
@@ -236,5 +272,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCategorias;
+        private System.Windows.Forms.Button btnAgregarCategoria;
+        private System.Windows.Forms.Button btnModificarCategoria;
     }
 }

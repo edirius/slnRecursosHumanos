@@ -234,12 +234,16 @@ namespace CapaUsuario.ExportarSunat
                     miRegimenPensionarioTrabajador = miRegimenPensionarioTrabajador.TraerRegimenPensionario(Convert.ToInt16(dtgDatosPlanilla.SelectedRows[0].Cells[7].Value));
 
                     Trabajador.frmRegimenPensionarioTrabajador fRegimenPensionarioTrabajador = new Trabajador.frmRegimenPensionarioTrabajador();
-                    fRegimenPensionarioTrabajador.RecibirDatos(miRegimenPensionarioTrabajador.IdtRegimenPensionarioTrabajador, miRegimenPensionarioTrabajador.FechaInicio, miRegimenPensionarioTrabajador.FechaFin, miRegimenPensionarioTrabajador.CUSPP, miRegimenPensionarioTrabajador.TipoComision, miRegimenPensionarioTrabajador.IdtAFP, "", miRegimenPensionarioTrabajador.IdtPeriodoTrabajador, 2,miRegimenPensionarioTrabajador.FechaInicio, "");
+                    fRegimenPensionarioTrabajador.RecibirDatos(miRegimenPensionarioTrabajador.IdtRegimenPensionarioTrabajador, miRegimenPensionarioTrabajador.FechaInicio, miRegimenPensionarioTrabajador.FechaFin, miRegimenPensionarioTrabajador.CUSPP, miRegimenPensionarioTrabajador.TipoComision, miRegimenPensionarioTrabajador.IdtAFP, dtgDatosPlanilla.SelectedRows[0].Cells["nombre"].Value.ToString(), miRegimenPensionarioTrabajador.IdtPeriodoTrabajador, 2,miRegimenPensionarioTrabajador.FechaInicio, "");
                     if (fRegimenPensionarioTrabajador.ShowDialog() == DialogResult.OK)
                     {
 
                     }
                     
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una fila completa en el detalle de la izquierda.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)

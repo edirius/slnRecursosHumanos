@@ -716,6 +716,12 @@
     <Compile Include="ResidenteMeta\frmMetaJornal.Designer.cs">
       <DependentUpon>frmMetaJornal.cs</DependentUpon>
     </Compile>
+    <Compile Include="ResidenteMeta\frmNuevaCategoriaJornal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResidenteMeta\frmNuevaCategoriaJornal.Designer.cs">
+      <DependentUpon>frmNuevaCategoriaJornal.cs</DependentUpon>
+    </Compile>
     <Compile Include="ResidenteMeta\frmResidenteMeta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1680,6 +1686,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ResidenteMeta\frmMetaJornal.resx">
       <DependentUpon>frmMetaJornal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResidenteMeta\frmNuevaCategoriaJornal.resx">
+      <DependentUpon>frmNuevaCategoriaJornal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResidenteMeta\frmResidenteMeta.resx">
       <DependentUpon>frmResidenteMeta.cs</DependentUpon>

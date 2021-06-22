@@ -16,6 +16,13 @@ namespace CapaDeNegocios.Obras
         string scategoria;
         double sjornal;
 
+        cMeta _Meta;
+
+        public cMetaJornal()
+        {
+            _Meta = new cMeta();
+        }
+
         public int IdtMetaJornal
         {
             get { return sidtmetajornal; }
@@ -30,6 +37,19 @@ namespace CapaDeNegocios.Obras
         {
             get { return sjornal; }
             set { sjornal = value; }
+        }
+
+        public cMeta Meta
+        {
+            get
+            {
+                return _Meta;
+            }
+
+            set
+            {
+                _Meta = value;
+            }
         }
 
         public DataTable ListarMetaJornal(int Codigo)
