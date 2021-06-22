@@ -3674,10 +3674,10 @@ namespace CapaUsuario.Reportes
             }
 
             /*Indices de la secciones alineadas*/
-            iindice_nombre = BuscarIndiceColumna(odtPruebaCorta, "NOMBRE COMPLETO");
-            iindice_cargo = BuscarIndiceColumna(odtPruebaCorta, "CARGO");
-            iindice_fecha = BuscarIndiceColumna(odtPruebaCorta, "FECHA INICIO");
-            iindice_afi_com_cus = BuscarIndiceColumna(odtPruebaCorta, "AFIL. AFP/SNP \n\n COMISION \n\n CUSP ");
+            iindice_nombre = BuscarIndiceColumna(odtPrueba, "NOMBRE COMPLETO");
+            iindice_cargo = BuscarIndiceColumna(odtPrueba, "CARGO");
+            iindice_fecha = BuscarIndiceColumna(odtPrueba, "FECHA INICIO");
+            iindice_afi_com_cus = BuscarIndiceColumna(odtPrueba, "AFIL. AFP/SNP \n\n COMISION \n\n CUSP ");
 
             for (int i = 0; i < dgvPrueba.RowCount - 1; i++)
             {
@@ -3809,7 +3809,7 @@ namespace CapaUsuario.Reportes
 
                 iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
                 logo.ScalePercent(64f);
-                logo.SetAbsolutePosition(12f, pdfDoc.PageSize.Height - 36f - 100f);
+                logo.SetAbsolutePosition(12f, pdfDoc.PageSize.Height - 6f - 100f);
 
                 iTextSharp.text.Image oficinas = iTextSharp.text.Image.GetInstance(ruta_cuadro_oficinas);
                 oficinas.ScalePercent(64f);
@@ -3930,7 +3930,7 @@ namespace CapaUsuario.Reportes
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(tabla_firmas);
-                if (numeroRegimenLaboral == 4)
+                if (numeroRegimenLaboral == 5)
                 {
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(paragraph5);
