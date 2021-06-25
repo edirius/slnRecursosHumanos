@@ -827,8 +827,12 @@ namespace CapaUsuario.Planilla
                     }
                 }
             }
-            int diasfalta = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMesxFalta(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
-            dgvDetallePlanilla.Rows[fila].Cells[12].Value = DiasLaborados - diasfalta;
+            if (!((sidtregimenlaboral == 3 || sidtregimenlaboral == 5) && (splantilla == "PERSONAL OBRERO" || splantilla == "PERSONAL TECNICO" || splantilla == "RACIONAMIENTO")))
+            {
+                int diasfalta = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMesxFalta(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
+                dgvDetallePlanilla.Rows[fila].Cells[12].Value = DiasLaborados - diasfalta;
+            }
+            
             dgvDetallePlanilla.Rows[fila].Cells[13].Value = String.Format("{0:0.00}", PagoTotal);
         }
 
@@ -1047,6 +1051,15 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
+                        if (smdescuentos[i, 1].ToString() == "0705")
+                        {
+                            decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
+                            int diasfalta = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMesxFalta(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
+                            if (diasfalta > 0)
+                            {
+                                dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", PagoDia);
+                            }
+                        }
                         total_descuentos += decimal.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value), 2);
                     }
                 }
