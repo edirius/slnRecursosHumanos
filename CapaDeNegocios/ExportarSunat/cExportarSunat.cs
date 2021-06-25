@@ -55,7 +55,12 @@ namespace CapaDeNegocios.ExportarSunat
         {
             return Conexion.GDatos.TraerDataTable("spExportarAFPaExcel", idplanilla);
         }
-        
+
+        public DataTable ListarDescuentosXPlanilla(string idplanilla)
+        {
+            return Conexion.GDatos.TraerDataTable("spBuscarDescuentosPlanilla", idplanilla);
+        }
+
         public DataTable ListarTodoExportarAFPaExcel()
         {
             return Conexion.GDatos.TraerDataTable("spListarTodoExportarAFP");

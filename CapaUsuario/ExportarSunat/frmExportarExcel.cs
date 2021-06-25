@@ -254,6 +254,26 @@ namespace CapaUsuario.ExportarSunat
                 {
                     string Valor = fila.Cells["idtplanilla"].Value.ToString();
                     dataGridView.DataSource = oexp.ListarExportarAFPaExcel(Valor);
+                    System.Data.DataTable Nueva = new System.Data.DataTable();
+                    Nueva = oexp.ListarDescuentosXPlanilla(Valor);
+                    if (Nueva.Rows.Count > 0)
+                    {
+                        for (int i = 0; i < Nueva.Rows.Count; i++)
+                        {
+                            if (Nueva.Rows[i]["codigo"].ToString() == "0705" || Nueva.Rows[i]["codigo"].ToString() == "0704")
+                            {
+                                for (int j = 0; j < dataGridView.Rows.Count; j++)
+                                {
+                                    if (Nueva.Rows[i]["dni"].ToString() == dataGridView.Rows[j].Cells["DNI"].Value.ToString())
+                                    {
+                                        dataGridView.Rows[j].Cells["RemAsegurable"].Value = Convert.ToDouble(dataGridView.Rows[j].Cells["RemAsegurable"].Value) - Convert.ToDouble(Nueva.Rows[i]["monto"].ToString());
+                                    }
+                                    
+                                }
+                            }
+                            
+                        }
+                    }
                     AgregarTrabajadores();
 
                 }
@@ -286,6 +306,8 @@ namespace CapaUsuario.ExportarSunat
             }
             numerar();
             cont = 1;
+
+            
         }
         private void LimpiarGrid()
         {

@@ -45,6 +45,7 @@
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.miMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tTardanzaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsistenciaTrabajador)).BeginInit();
             this.miMenu.SuspendLayout();
             this.SuspendLayout();
@@ -219,11 +220,27 @@
             this.tTardanzaToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
             this.tTardanzaToolStripMenuItem.Text = "T = Tardanza";
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.MintCream;
+            this.button1.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.ImageKey = "NetByte Design Studio - 0849.png";
+            this.button1.Location = new System.Drawing.Point(15, 171);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 65);
+            this.button1.TabIndex = 78;
+            this.button1.Text = "&Actualizar con Datos del Reloj";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // frmDetalleAsistencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(977, 248);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cboMes);
             this.Controls.Add(this.cboAño);
             this.Controls.Add(this.label2);
@@ -260,5 +277,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ContextMenuStrip miMenu;
         private System.Windows.Forms.ToolStripMenuItem tTardanzaToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }
