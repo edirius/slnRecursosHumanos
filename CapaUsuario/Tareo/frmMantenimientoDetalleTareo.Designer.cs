@@ -437,7 +437,11 @@
             "PEON",
             "ALMACENERO",
             "GUARDIAN",
-            "VIVERISTA"});
+            "VIVERISTA",
+            "SERENO",
+            "COORDINADOR",
+            "SECRETARIO TECNICO",
+            "CONDUCTOR"});
             this.cboCategoria.Name = "cboCategoria";
             // 
             // Column4
