@@ -89,7 +89,7 @@ namespace CapaDeNegocios.Tareos
 
             foreach (DataRow item in odata.Rows)
             {
-                if (item[1].ToString() != "MAESTRO DE OBRA" && item[11].ToString() != "ALMACENERO" && item[11].ToString() != "OPERARIO" && item[11].ToString() != "OFICIAL")
+                if (item[1].ToString() != "MAESTRO DE OBRA" && item[1].ToString() != "ALMACENERO" && item[1].ToString() != "OPERARIO" && item[1].ToString() != "OFICIAL")
                 {
                     AUXILIAR.ImportRow(item);
                 }
