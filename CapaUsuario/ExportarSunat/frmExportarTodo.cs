@@ -319,40 +319,39 @@ namespace CapaUsuario.ExportarSunat
                     string ubigeo = fila.Cells["CodUbigeo"].Value.ToString();
                     ContenidoIDE = oExportar.ExportarDatosTrabajador(tipoDoc, dni, paisDoc, fechaNac.ToShortDateString(), apPaterno, apMaterno, nombres, nroSexo.ToString(), nacionalidad, telLargaDistancia, telefono, correo, tipoVia, nombreVia, nroVia, departamento, interior, manzana, lote, kilometro, block, etapa, tipoZona, nombreZona, referencia, ubigeo, tipoVia2, nombreVia2, nroVia2, departamento2, interior2, manzana2, lote2, kilometro2, block2, etapa2, tipoZona2, nombreZona2, referencia2, ubigeo2, indicadorAsistenciaESSALUD);
                     milistaIDE.Add(ContenidoIDE);
-                    SaveFileDialog Guardar = new SaveFileDialog();
-                    string RUC = "20177432360";
-                    string tipoArchivo = ".IDE";
-                    string rp = "RP_";
-                    string Titulo = rp + RUC + tipoArchivo;
-                    Guardar.FileName = Titulo;
-                    string Ruta = "";
-                    if (Guardar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    {
-
-                        if (File.Exists(Guardar.FileName))
-                        {
-                            File.Delete(Guardar.FileName);
-                        }
-                        if (Guardar.FileName.Contains(Titulo))
-                        {
-                            Ruta = Guardar.FileName;
-                            StreamWriter escribir = new StreamWriter(Ruta);//ruta del guardado
-                                                                           //StreamWriter escribir = new StreamWriter(@"C:\Users\Usuario\Desktop\Textos SUNAT\" + Titulo + "");//ruta del guardado
-                            for (int k = 0; k < milistaIDE.Count; k++)//mientras sea menor al contenido del arreglo(arraylist) guardará cada items k
-                            {
-                                escribir.WriteLine(milistaIDE[k]);//guarda en el bloc de notas 
-                            }
-                            escribir.Close();//cierra la escritura para que eje manejar por separado el bloc de notas
-                            MessageBox.Show("Datos Exportados Exitosamente");//mensaje de cierre exitoso
-
-                        }
-                    }
+                   
                 }
-                else
-                    MessageBox.Show("No ha seleccionado ningún trabajador para exportar");
+                
             }
-            
 
+            SaveFileDialog Guardar = new SaveFileDialog();
+            string RUC = "20177432360";
+            string tipoArchivo = ".IDE";
+            string rp = "RP_";
+            string Titulo = rp + RUC + tipoArchivo;
+            Guardar.FileName = Titulo;
+            string Ruta = "";
+            if (Guardar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+                if (File.Exists(Guardar.FileName))
+                {
+                    File.Delete(Guardar.FileName);
+                }
+                if (Guardar.FileName.Contains(Titulo))
+                {
+                    Ruta = Guardar.FileName;
+                    StreamWriter escribir = new StreamWriter(Ruta);//ruta del guardado
+                                                                   //StreamWriter escribir = new StreamWriter(@"C:\Users\Usuario\Desktop\Textos SUNAT\" + Titulo + "");//ruta del guardado
+                    for (int k = 0; k < milistaIDE.Count; k++)//mientras sea menor al contenido del arreglo(arraylist) guardará cada items k
+                    {
+                        escribir.WriteLine(milistaIDE[k]);//guarda en el bloc de notas 
+                    }
+                    escribir.Close();//cierra la escritura para que eje manejar por separado el bloc de notas
+                    MessageBox.Show("Datos Exportados Exitosamente");//mensaje de cierre exitoso
+
+                }
+            }
 
         }
         private void concatenarDatosTRA()
