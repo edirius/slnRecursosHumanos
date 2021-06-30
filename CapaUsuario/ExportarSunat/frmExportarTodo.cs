@@ -384,7 +384,8 @@ namespace CapaUsuario.ExportarSunat
                     string tipoPago = fila.Cells["TPRTTRA"].Value.ToString();
                     ConvertiraNumero(tipoPago);
                     string catOcupacional = "14";
-                    //string catOcupacional = dgvListar[22, i].Value.ToString();
+                    //fila.Cells["CodCOTRA"].Value.ToString(); ;
+                    
                     string convenio = fila.Cells["@CEDT"].Value.ToString();
                     string RUC = fila.Cells["@RUC"].Value.ToString();
                     string ContenidoTRA = oExportar.ExportarDatosTrabajador2(tipoDoc, dni, paisDoc, RegimenLaboral, SituacionEdu, Ocupacion, Discapacidad, CUSPP, SCTR, tipoContrato, regimenAlternativo, jornadaTrabajo, horarioNocturno, sindicalizado, nroPeriodicidad, remBasica, situacion, Renta5ta, situacionEsp, nroTipoPago, catOcupacional, convenio, RUC);

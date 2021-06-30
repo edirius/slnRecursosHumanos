@@ -143,7 +143,7 @@ namespace CapaDeNegocios.DatosLaborales
                 cRegimenPensionarioTrabajador nuevoPeriodoTrabajador = new cRegimenPensionarioTrabajador();
                 nuevoPeriodoTrabajador.IdtRegimenPensionarioTrabajador = Convert.ToInt16(listaPeriodos.Rows[0][0].ToString());
                 nuevoPeriodoTrabajador.sfechainicio = listaPeriodos.Rows[0][1].ToString();
-                nuevoPeriodoTrabajador.sfechafin = "";
+                nuevoPeriodoTrabajador.sfechafin = listaPeriodos.Rows[0][2].ToString(); ;
                 nuevoPeriodoTrabajador.CUSPP = listaPeriodos.Rows[0][3].ToString();
                 nuevoPeriodoTrabajador.TipoComision = listaPeriodos.Rows[0][4].ToString();
                 nuevoPeriodoTrabajador.IdtAFP = Convert.ToInt16(listaPeriodos.Rows[0][5].ToString());

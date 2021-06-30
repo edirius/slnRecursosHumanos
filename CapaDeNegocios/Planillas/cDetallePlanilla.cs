@@ -103,47 +103,47 @@ namespace CapaDeNegocios.Planillas
             switch (mes)
             {
                 case "ENERO":
-                    numeromes = 0;
-                    break;
-                case "FEBRERO":
                     numeromes = 1;
                     break;
-                case "MARZO":
+                case "FEBRERO":
                     numeromes = 2;
                     break;
-                case "ABRIL":
+                case "MARZO":
                     numeromes = 3;
                     break;
-                case "MAYO":
+                case "ABRIL":
                     numeromes = 4;
                     break;
-                case "JUNIO":
+                case "MAYO":
                     numeromes = 5;
                     break;
-                case "JULIO":
+                case "JUNIO":
                     numeromes = 6;
                     break;
-                case "AGOSTO":
+                case "JULIO":
                     numeromes = 7;
                     break;
-                case "SETIEMBRE":
+                case "AGOSTO":
                     numeromes = 8;
                     break;
-                case "OCTUBRE":
+                case "SETIEMBRE":
                     numeromes = 9;
                     break;
-                case "NOVIEMBRE":
+                case "OCTUBRE":
                     numeromes = 10;
                     break;
-                case "DICIEMBRE":
+                case "NOVIEMBRE":
                     numeromes = 11;
+                    break;
+                case "DICIEMBRE":
+                    numeromes = 12;
                     break;
                 
                 default:
                     break;
             }
-            miNuevoFecha = miNuevoFecha.AddYears(Convert.ToInt16(año));
-            miNuevoFecha = miNuevoFecha.AddMonths(numeromes);
+            miNuevoFecha = new DateTime(Convert.ToInt32(año), numeromes, 1);
+            
             return Conexion.GDatos.TraerDataTable("spListarDetallePlanillaParaAFP", IdtPlanilla, miNuevoFecha);
         }
 
