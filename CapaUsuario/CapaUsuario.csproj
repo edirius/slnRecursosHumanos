@@ -270,6 +270,8 @@
     </Compile>
     <Compile Include="ConvertImage.cs" />
     <Compile Include="cVariablesUsuario.cs" />
+    <Compile Include="ExportarSunat\cComparativoAFP.cs" />
+    <Compile Include="ExportarSunat\cDetalleComparativoAFP.cs" />
     <Compile Include="ExportarSunat\frmCompararDatosAFP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1963,12 +1965,16 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\check.bmp" />
+    <Content Include="Resources\question.png" />
     <None Include="Resources\logo_MuniMaras.png" />
     <None Include="Resources\pdf3.jpg" />
     <None Include="Resources\pdf2.jpg" />
     <None Include="Resources\pdf.jpg" />
     <None Include="Resources\gente-de-negocios-trabajando-siluetas-vector_72147497295.jpg" />
     <None Include="Resources\logo-muni.fw_.png" />
+    <Content Include="Resources\check.png" />
+    <Content Include="Resources\equis.png" />
     <Content Include="Resources\LogoCatca2.png" />
     <None Include="Resources\LogoCatca21.png" />
     <None Include="Resources\profuturo.jpg" />

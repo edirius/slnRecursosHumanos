@@ -462,6 +462,53 @@ namespace CapaUsuario.Planilla
             }
         }
 
+        //private void Mes(string pmes)
+        //{
+        //    switch (pmes)
+        //    {
+        //        case "ENERO":
+        //            smes = "01";
+        //            break;
+        //        case "FEBRERO":
+        //            smes = "02";
+        //            break;
+        //        case "MARZO":
+        //            smes = "03";
+        //            break;
+        //        case "ABRIL":
+        //            smes = "04";
+        //            break;
+        //        case "MAYO":
+        //            smes = "05";
+        //            break;
+        //        case "JUNIO":
+        //            smes = "06";
+        //            break;
+        //        case "JULIO":
+        //            smes = "07";
+        //            break;
+        //        case "AGOSTO":
+        //            smes = "08";
+        //            break;
+        //        case "SETIEMBRE":
+        //            smes = "09";
+        //            break;
+        //        case "OCTUBRE":
+        //            smes = "10";
+        //            break;
+        //        case "NOVIEMBRE":
+        //            smes = "11";
+        //            break;
+        //        case "DICIEMBRE":
+        //            smes = "12";
+        //            break;
+        //            //default:
+        //            //    Console.WriteLine("Default case");
+        //            //    break;
+        //    }
+        //}
+
+
         private void CargarTrabajador(int pidtrabajador, string tipoPlanilla)
         {
             bool TienAFP = false;
@@ -476,7 +523,9 @@ namespace CapaUsuario.Planilla
             {
                 Nombre = rowTrabajador[2].ToString() + " " + rowTrabajador[3].ToString() + " " + rowTrabajador[4].ToString();
                 DNI = rowTrabajador[1].ToString();
-                foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + pidtrabajador + "' and fechafin=''")) //and fechainicio <= '" + saño + "" + smes + "31' and(fechafin >= '" + saño + "" + smes + "01' or fechafin >= '')
+                String cadenada = "' and (fechafin='' or fechafin LIKE '___" + Mes(smes) + "%')";
+                DataRow[]  pruebaprueba = oDataPeriodoTrabajador.Select("idttrabajador = '" + pidtrabajador + "' and (fechafin='' or fechafin LIKE '%" + Mes(smes) + "%')");
+                foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + pidtrabajador + "' and (fechafin='' or fechafin LIKE '%" + Mes(smes) + "%')")) //and fechainicio <= '" + saño + "" + smes + "31' and(fechafin >= '" + saño + "" + smes + "01' or fechafin >= '')
                 {
                     FechaInicio = rowPeriodoTrabajador[1].ToString();
                     foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))

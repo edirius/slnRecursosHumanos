@@ -156,7 +156,8 @@ namespace CapaUsuario.ExportarSunat
                         //    headr++;
                         //}
                         //añadimos contenido de excel
-                        hoja_trabajo.Cells[i + 1, j + 1] = datagrid.Rows[i].Cells[j].Value.ToString();
+                        
+                        hoja_trabajo.Cells[i + 1, j + 1] = "'" + datagrid.Rows[i].Cells[j].Value.ToString();
                     }
 
                 }

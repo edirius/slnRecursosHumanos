@@ -38,6 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cbMes = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnComparar = new System.Windows.Forms.Button();
             this.checkSeleccionar = new System.Windows.Forms.CheckBox();
             this.bntListarTodo = new System.Windows.Forms.Button();
             this.dgvListarPlanillas = new System.Windows.Forms.DataGridView();
@@ -46,7 +47,6 @@
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ptAFP = new System.Windows.Forms.PictureBox();
-            this.btnComparar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarPlanillas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
@@ -83,7 +83,7 @@
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(154, 53);
             this.btnExportar.TabIndex = 43;
-            this.btnExportar.Text = "&Exportar Excel";
+            this.btnExportar.Text = "&Exportar Archivo para Consulta Masiva";
             this.btnExportar.UseVisualStyleBackColor = false;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
@@ -134,6 +134,20 @@
             this.groupBox1.Size = new System.Drawing.Size(1294, 85);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
+            // 
+            // btnComparar
+            // 
+            this.btnComparar.BackColor = System.Drawing.Color.MintCream;
+            this.btnComparar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnComparar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComparar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnComparar.Location = new System.Drawing.Point(1059, 19);
+            this.btnComparar.Name = "btnComparar";
+            this.btnComparar.Size = new System.Drawing.Size(154, 53);
+            this.btnComparar.TabIndex = 47;
+            this.btnComparar.Text = "&Comparar Resultados";
+            this.btnComparar.UseVisualStyleBackColor = false;
+            this.btnComparar.Click += new System.EventHandler(this.btnComparar_Click);
             // 
             // checkSeleccionar
             // 
@@ -232,20 +246,6 @@
             this.ptAFP.Size = new System.Drawing.Size(803, 70);
             this.ptAFP.TabIndex = 48;
             this.ptAFP.TabStop = false;
-            // 
-            // btnComparar
-            // 
-            this.btnComparar.BackColor = System.Drawing.Color.MintCream;
-            this.btnComparar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnComparar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComparar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnComparar.Location = new System.Drawing.Point(1059, 19);
-            this.btnComparar.Name = "btnComparar";
-            this.btnComparar.Size = new System.Drawing.Size(154, 53);
-            this.btnComparar.TabIndex = 47;
-            this.btnComparar.Text = "&Comparar Resultados";
-            this.btnComparar.UseVisualStyleBackColor = false;
-            this.btnComparar.Click += new System.EventHandler(this.btnComparar_Click);
             // 
             // frmConsultaMasivaSunat
             // 

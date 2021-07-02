@@ -15,6 +15,10 @@ namespace CapaUsuario.ExportarSunat
 {
     public partial class frmCompararDatosAFP : Form
     {
+        cComparativoAFP oComparativoAFP = new cComparativoAFP();
+
+        ImageConverter imageConverter = new ImageConverter();
+
         public frmCompararDatosAFP()
         {
             InitializeComponent();
@@ -95,7 +99,91 @@ namespace CapaUsuario.ExportarSunat
             dtgDatosExcel.Columns[11].Visible = false;
             dtgDatosExcel.Columns[12].Visible = false;
 
+            CompararResultados();
+        }
 
+        private void CompararResultados()
+        {
+            try
+            {
+                if (dtgDatosExcel.Rows.Count != dtgDatosPlanilla.Rows.Count)
+                {
+                    throw new cReglaNegociosException("El numero de filas de los datos no coinciden.");
+                }
+                for (int i = 0; i < dtgDatosPlanilla.RowCount; i++)
+                {
+                    cDetalleComparativoAFP nuevo = new cDetalleComparativoAFP();
+                    nuevo.Fila = i;
+
+                    if (dtgDatosPlanilla.Rows[i].Cells[8].Value.ToString() == "SNP")
+                    {
+                        if (dtgDatosExcel.Rows[i].Cells[13].Value.ToString() == "")
+                        {
+                            nuevo.ErrorAFP = false;
+                        }
+                        else
+                        {
+                            nuevo.ErrorAFP = true;
+                        }
+                    }
+                    else
+                    {
+                        //datos AFP
+                        if (dtgDatosPlanilla.Rows[i].Cells[8].Value.ToString() != dtgDatosExcel.Rows[i].Cells[13].Value.ToString())
+                        {
+                            nuevo.ErrorAFP = true;
+                        }
+                        else
+                        {
+                            nuevo.ErrorAFP = false;
+                        }
+
+                        //Datos cussp
+                        if (dtgDatosPlanilla.Rows[i].Cells[2].Value.ToString() != dtgDatosExcel.Rows[i].Cells[5].Value.ToString())
+                        {
+                            nuevo.ErrorCUSPP = true;
+                        }
+                        else
+                        {
+                            nuevo.ErrorCUSPP = false;
+                        }
+
+                        //Datos DNI
+                        if (dtgDatosPlanilla.Rows[i].Cells[1].Value.ToString() != dtgDatosExcel.Rows[i].Cells[1].Value.ToString())
+                        {
+                            nuevo.ErrorDNI = true;
+                        }
+                        else
+                        {
+                            nuevo.ErrorDNI = false;
+                        }
+
+                        //Datos Comision
+                        if (Convert.ToDouble(dtgDatosPlanilla.Rows[i].Cells[10].Value.ToString()) != Convert.ToDouble(dtgDatosExcel.Rows[i].Cells[14].Value.ToString()))
+                        {
+                            nuevo.ErrorComision = true;
+                        }
+                        else
+                        {
+                            nuevo.ErrorComision = false;
+                        }
+
+                    }
+                    if (nuevo.ErrorGeneral())
+                    {
+                        dtgDatosPlanilla.Rows[i].Cells["colCheck"].Value = imageConverter.ConvertTo(Properties.Resources.equis, System.Type.GetType("System.Byte[]"));
+                    }
+                    else
+                    {
+                        dtgDatosPlanilla.Rows[i].Cells["colCheck"].Value = imageConverter.ConvertTo(Properties.Resources.check, System.Type.GetType("System.Byte[]"));
+                    }
+                    oComparativoAFP.ListaDetalles.Add(nuevo);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al comparar los resultados: " + ex.Message);
+            }
         }
 
         private void frmCompararDatosAFP_Load(object sender, EventArgs e)
@@ -112,7 +200,21 @@ namespace CapaUsuario.ExportarSunat
             dtgDatosPlanilla.Columns[5].HeaderText = "Nombres";
             dtgDatosPlanilla.Columns[8].HeaderText = "AFP";
             dtgDatosPlanilla.Columns[9].HeaderText = "TIPO COMISION AFP";
+            DataGridViewColumn nuevo = new DataGridViewColumn();
+            nuevo.Name = "colCheck";
+            nuevo.HeaderText = "Correcto";
+            nuevo.CellTemplate = new DataGridViewImageCell();
 
+
+            dtgDatosPlanilla.Columns.Add(nuevo);
+
+            foreach (DataGridViewRow  item in dtgDatosPlanilla.Rows)
+            {
+                
+               
+                item.Cells["colCheck"].Value = imageConverter.ConvertTo(Properties.Resources.question, System.Type.GetType("System.Byte[]"));
+                
+            }
 
         }
 
@@ -249,6 +351,29 @@ namespace CapaUsuario.ExportarSunat
             catch (Exception ex)
             {
                 MessageBox.Show("Error en actualizar la afp. " + ex.Message, "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dtgDatosPlanilla_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgDatosPlanilla.Columns[e.ColumnIndex].Name == "colCheck")
+            {
+                cDetalleComparativoAFP auxiliar = new cDetalleComparativoAFP();
+
+                auxiliar = oComparativoAFP.ListaDetalles.Find(x => x.Fila == e.RowIndex);
+
+                if (auxiliar.ErrorAFP)
+                {
+                    mnuAFPError.Text = "Existe error en AFP";
+                }
+
+                if (auxiliar.ErrorCUSPP)
+                {
+                    mnuCUSSPError.Text = "Existe error en el CUSSP";
+                }
+
+                
+                mnuAFP.Show();
             }
         }
     }
