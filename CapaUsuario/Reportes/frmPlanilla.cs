@@ -2846,8 +2846,16 @@ namespace CapaUsuario.Reportes
                                         string abreviacion = maestroIngreso.Rows[0]["abreviacion"].ToString();
 
                                         int indice_Ingresos_clasificador = BuscarIndiceColumna(odtPrueba, abreviacion);
-                                        decimal montoClasificaor = Convert.ToDecimal(odtPrueba.Rows[odtPrueba.Rows.Count - 1][indice_Ingresos_clasificador]);
-                                        MontoConcepto = montoClasificaor.ToString("0.00");
+                                        if (indice_Ingresos_clasificador != -1)
+                                        {
+                                            decimal montoClasificaor = Convert.ToDecimal(odtPrueba.Rows[odtPrueba.Rows.Count - 1][indice_Ingresos_clasificador]);
+                                            MontoConcepto = montoClasificaor.ToString("0.00");
+                                        }
+                                        else
+                                        {
+                                            MontoConcepto = "0.00";
+                                        }
+                                        
                                         break;
                                 }
                             }
