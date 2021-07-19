@@ -171,5 +171,15 @@ namespace CapaUsuario.Sunat
         {
             return txtFormula.Text;
         }
+
+        private void btnDias_Click(object sender, EventArgs e)
+        {
+            txtFormula.Text = txtFormula.Text + "dd";
+        }
+
+        private void btnMes_Click(object sender, EventArgs e)
+        {
+            txtFormula.Text = txtFormula.Text + "mm";
+        }
     }
 }

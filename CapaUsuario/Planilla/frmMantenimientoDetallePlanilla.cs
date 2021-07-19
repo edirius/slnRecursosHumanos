@@ -955,7 +955,7 @@ namespace CapaUsuario.Planilla
                     }
                     else // tiene formula
                     {
-                        double result = CalcularFormula(fila, Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value), smingresos[i, 3].ToString());
+                        double result = CalcularFormula(fila, Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value), smingresos[i, 3].ToString(), dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
                         //verificamos que tiene algun dato fijo
                         if (oDatoFijo.TieneDatoFijo(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value.ToString()), Convert.ToInt16(smingresos[i, 0].ToString()), "INGRESOS"))
                         {
@@ -1258,7 +1258,7 @@ namespace CapaUsuario.Planilla
             //Calculo de la Formula
             if (codigo != "0605" && codigo != "0804")
             {
-                result = CalcularFormula(fila, remuneracion_afecta, formula);
+                result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
             }
 
             if (codigo =="0606")
@@ -1289,7 +1289,7 @@ namespace CapaUsuario.Planilla
                 SuspencionRenta4ta(Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
                 if (ssuspencionrenta4ta == false)
                 {
-                    result = CalcularFormula(fila, remuneracion_afecta, formula);
+                    result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
                 }
                 else
                 {
@@ -1323,7 +1323,7 @@ namespace CapaUsuario.Planilla
                 BuscarSCRT(Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
                 if (sscrt == true)
                 {
-                    result = CalcularFormula(fila, remuneracion_afecta, formula);
+                    result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
                 }
                 else
                 {
@@ -1468,17 +1468,56 @@ namespace CapaUsuario.Planilla
             return sEssalud;
         }
 
-        double CalcularFormula(int fila, double remuneracion, string formula)
+        double CalcularFormula(int fila, double remuneracion, string formula, string FechaInicio)
         {
             ExpressionParser parser = new ExpressionParser();
             DoubleValue sval = new DoubleValue();
             DoubleValue aoval = new DoubleValue();
             DoubleValue cval = new DoubleValue();
             DoubleValue psval = new DoubleValue();
+            DoubleValue ddval = new DoubleValue();
+            DoubleValue mmval = new DoubleValue();
+
             parser.Values.Add("s", sval);
             parser.Values.Add("ao", aoval);
             parser.Values.Add("c", cval);
             parser.Values.Add("ps", psval);
+            parser.Values.Add("dd", ddval);
+            parser.Values.Add("mm", mmval);
+
+            DateTime DateFechaInicio = Convert.ToDateTime(FechaInicio);
+            DateTime DateFechacalculo = new DateTime(2021, 06, 30);
+
+            int numeroMeses = Math.Abs((DateFechacalculo.Month - DateFechaInicio.Month) + 12 * (DateFechacalculo.Year - DateFechaInicio.Year));
+            TimeSpan Restafechas = DateFechacalculo - DateFechaInicio;
+
+            if (numeroMeses > 3)
+            {
+                numeroMeses = 3;
+            }
+
+            mmval.Value = numeroMeses;
+
+            switch (numeroMeses)
+            {
+                case 3:
+                    ddval.Value = 0;
+                    break;
+                case 2:
+                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 04, 30)) - DateFechaInicio).Days);
+                    break;
+                case 1:
+                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 05, 30)) - DateFechaInicio).Days);
+                    break;
+                case 0:
+                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 06, 30)) - DateFechaInicio).Days);
+                    break;
+                
+                default:
+                    break;
+            }
+
+
 
             sval.Value = remuneracion;
             aoval.Value = Convert.ToDouble(AporteObligatorio / 100);
