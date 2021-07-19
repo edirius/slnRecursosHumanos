@@ -69,5 +69,8 @@ namespace CapaDeNegocios.Planillas
             Conexion.GDatos.Ejecutar("spELiminarDetallePlanillaIngresos", IdtDetallePlanillaIngresos);
             return true;
         }
+
+        
+
     }
 }

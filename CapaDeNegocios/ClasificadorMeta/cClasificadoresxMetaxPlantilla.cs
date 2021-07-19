@@ -80,5 +80,10 @@ namespace CapaDeNegocios.ClasificadorMeta
                 throw new cReglaNegociosException("Error al traer clasificador-meta: " + ex.Message);
             }
         }
+
+        public DataTable BuscarMaestroIngresoXCodigo(string codigoMaestroIngreso)
+        {
+            return Conexion.GDatos.TraerDataTable("spBuscarTituloxCodigo", codigoMaestroIngreso);
+        }
     }
 }

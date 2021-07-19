@@ -2807,23 +2807,28 @@ namespace CapaUsuario.Reportes
                             
                             int index = item.Concepto.IndexOf("&&");
 
+                           
+
                             if (index != -1 )
                             {
                                 MontoConcepto = "";
                             }
                             else
                             {
+                                
+
+
                                 switch (item.Concepto)
                                 {
                                     case "Todo":
                                         MontoConcepto = (total_ingresos_total + total_a_empleador_total).ToString("0.00");
                                         break;
-                                    case "0122":
-                                        MontoConcepto = total_ingresos_total.ToString("0.00");
-                                        break;
-                                    case "2039":
-                                        MontoConcepto = total_ingresos_total.ToString("0.00");
-                                        break;
+                                    //case "0122":
+                                    //    MontoConcepto = total_ingresos_total.ToString("0.00");
+                                    //    break;
+                                    //case "2039":
+                                    //    MontoConcepto = total_ingresos_total.ToString("0.00");
+                                    //    break;
                                     case "0804":
                                         MontoConcepto = monto_essalud_seguro_regular.ToString("0.00");
                                         break;
@@ -2837,6 +2842,12 @@ namespace CapaUsuario.Reportes
                                         MontoConcepto = total_a_empleador_total.ToString("0.00");
                                         break;
                                     default:
+                                        DataTable maestroIngreso = oClasificadoresxMetaxPLantilla.BuscarMaestroIngresoXCodigo(item.Concepto);
+                                        string abreviacion = maestroIngreso.Rows[0]["abreviacion"].ToString();
+
+                                        int indice_Ingresos_clasificador = BuscarIndiceColumna(odtPrueba, abreviacion);
+                                        decimal montoClasificaor = Convert.ToDecimal(odtPrueba.Rows[odtPrueba.Rows.Count - 1][indice_Ingresos_clasificador]);
+                                        MontoConcepto = montoClasificaor.ToString("0.00");
                                         break;
                                 }
                             }
