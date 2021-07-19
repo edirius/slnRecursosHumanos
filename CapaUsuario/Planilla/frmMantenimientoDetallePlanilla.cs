@@ -1470,6 +1470,15 @@ namespace CapaUsuario.Planilla
 
         double CalcularFormula(int fila, double remuneracion, string formula, string FechaInicio)
         {
+            int index = formula.IndexOf("&&p");
+
+
+            if (index != -1)
+            {
+                string formula2 = formula.Substring(0, index);
+                formula = formula2;
+            }
+
             ExpressionParser parser = new ExpressionParser();
             DoubleValue sval = new DoubleValue();
             DoubleValue aoval = new DoubleValue();
@@ -1486,9 +1495,13 @@ namespace CapaUsuario.Planilla
             parser.Values.Add("mm", mmval);
 
             DateTime DateFechaInicio = Convert.ToDateTime(FechaInicio);
+            if (DateFechaInicio.Day == 1)
+            {
+                DateFechaInicio = DateFechaInicio.AddDays(-1);
+            }
             DateTime DateFechacalculo = new DateTime(2021, 06, 30);
 
-            int numeroMeses = Math.Abs((DateFechacalculo.Month - DateFechaInicio.Month) + 12 * (DateFechacalculo.Year - DateFechaInicio.Year));
+            int numeroMeses = ((DateFechacalculo.Month - DateFechaInicio.Month) + 12 * (DateFechacalculo.Year - DateFechaInicio.Year));
             TimeSpan Restafechas = DateFechacalculo - DateFechaInicio;
 
             if (numeroMeses > 3)
@@ -1514,11 +1527,57 @@ namespace CapaUsuario.Planilla
                     break;
                 
                 default:
+                    ddval.Value = 0;
+                    mmval.Value = 0;
                     break;
             }
 
+            if (index != -1)
+            {
+                numeroMeses = ((DateFechacalculo.Month - DateFechaInicio.Month) + 12 * (DateFechacalculo.Year - DateFechaInicio.Year));
+                if (numeroMeses > 6)
+                {
+                    numeroMeses = 6;
+                }
 
+                mmval.Value = numeroMeses;
 
+                switch (numeroMeses)
+                {
+                    case 6:
+                        ddval.Value = 0;
+                        break;
+                    case 5:
+                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 01, 30)) - DateFechaInicio).Days);
+                        break;
+
+                    case 4:
+                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 02, 30)) - DateFechaInicio).Days);
+                        break;
+                    case 3:
+                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 03, 30)) - DateFechaInicio).Days);
+                        break;
+                    case 2:
+                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 04, 30)) - DateFechaInicio).Days);
+                        break;
+                    case 1:
+                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 05, 30)) - DateFechaInicio).Days);
+                        break;
+                    case 0:
+                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 06, 30)) - DateFechaInicio).Days);
+                        break;
+
+                    default:
+                        ddval.Value = 0;
+                        mmval.Value = 0;
+                        break;
+                }
+            }
+
+            if (ddval.Value < 0)
+            {
+                ddval.Value = 0;
+            }
             sval.Value = remuneracion;
             aoval.Value = Convert.ToDouble(AporteObligatorio / 100);
             psval.Value = Convert.ToDouble(PrimaSeguros / 100);

@@ -32,6 +32,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnMes = new System.Windows.Forms.Button();
+            this.btnDias = new System.Windows.Forms.Button();
             this.btnParentesis2 = new System.Windows.Forms.Button();
             this.btnParentesis1 = new System.Windows.Forms.Button();
             this.btnAObligatorio = new System.Windows.Forms.Button();
@@ -54,8 +56,7 @@
             this.btn9 = new System.Windows.Forms.Button();
             this.btn8 = new System.Windows.Forms.Button();
             this.btn7 = new System.Windows.Forms.Button();
-            this.btnDias = new System.Windows.Forms.Button();
-            this.btnMes = new System.Windows.Forms.Button();
+            this.chkTipoRegimen = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,6 +106,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.chkTipoRegimen);
             this.groupBox1.Controls.Add(this.btnMes);
             this.groupBox1.Controls.Add(this.btnDias);
             this.groupBox1.Controls.Add(this.btnParentesis2);
@@ -135,6 +137,38 @@
             this.groupBox1.TabIndex = 107;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operadores";
+            // 
+            // btnMes
+            // 
+            this.btnMes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMes.BackColor = System.Drawing.Color.MintCream;
+            this.btnMes.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnMes.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnMes.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnMes.Location = new System.Drawing.Point(6, 181);
+            this.btnMes.Name = "btnMes";
+            this.btnMes.Size = new System.Drawing.Size(129, 35);
+            this.btnMes.TabIndex = 133;
+            this.btnMes.Text = "Meses al 30 jun";
+            this.btnMes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnMes.UseVisualStyleBackColor = false;
+            this.btnMes.Click += new System.EventHandler(this.btnMes_Click);
+            // 
+            // btnDias
+            // 
+            this.btnDias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDias.BackColor = System.Drawing.Color.MintCream;
+            this.btnDias.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDias.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnDias.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnDias.Location = new System.Drawing.Point(6, 140);
+            this.btnDias.Name = "btnDias";
+            this.btnDias.Size = new System.Drawing.Size(129, 35);
+            this.btnDias.TabIndex = 132;
+            this.btnDias.Text = "Dias al 30 junio";
+            this.btnDias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDias.UseVisualStyleBackColor = false;
+            this.btnDias.Click += new System.EventHandler(this.btnDias_Click);
             // 
             // btnParentesis2
             // 
@@ -488,37 +522,16 @@
             this.btn7.UseVisualStyleBackColor = false;
             this.btn7.Click += new System.EventHandler(this.btn7_Click);
             // 
-            // btnDias
+            // chkTipoRegimen
             // 
-            this.btnDias.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDias.BackColor = System.Drawing.Color.MintCream;
-            this.btnDias.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDias.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnDias.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnDias.Location = new System.Drawing.Point(6, 140);
-            this.btnDias.Name = "btnDias";
-            this.btnDias.Size = new System.Drawing.Size(129, 35);
-            this.btnDias.TabIndex = 132;
-            this.btnDias.Text = "Dias al 30 junio";
-            this.btnDias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDias.UseVisualStyleBackColor = false;
-            this.btnDias.Click += new System.EventHandler(this.btnDias_Click);
-            // 
-            // btnMes
-            // 
-            this.btnMes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMes.BackColor = System.Drawing.Color.MintCream;
-            this.btnMes.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnMes.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnMes.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnMes.Location = new System.Drawing.Point(6, 181);
-            this.btnMes.Name = "btnMes";
-            this.btnMes.Size = new System.Drawing.Size(129, 35);
-            this.btnMes.TabIndex = 133;
-            this.btnMes.Text = "Meses al 30 jun";
-            this.btnMes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnMes.UseVisualStyleBackColor = false;
-            this.btnMes.Click += new System.EventHandler(this.btnMes_Click);
+            this.chkTipoRegimen.AutoSize = true;
+            this.chkTipoRegimen.Location = new System.Drawing.Point(162, 194);
+            this.chkTipoRegimen.Name = "chkTipoRegimen";
+            this.chkTipoRegimen.Size = new System.Drawing.Size(96, 17);
+            this.chkTipoRegimen.TabIndex = 134;
+            this.chkTipoRegimen.Text = "Sector Privado";
+            this.chkTipoRegimen.UseVisualStyleBackColor = true;
+            this.chkTipoRegimen.Click += new System.EventHandler(this.chkTipoRegimen_Click);
             // 
             // frmFormula
             // 
@@ -535,6 +548,7 @@
             this.Text = "Formula";
             this.Load += new System.EventHandler(this.frmFormula_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -570,5 +584,6 @@
         private System.Windows.Forms.Button btnParentesis1;
         private System.Windows.Forms.Button btnMes;
         private System.Windows.Forms.Button btnDias;
+        private System.Windows.Forms.CheckBox chkTipoRegimen;
     }
 }

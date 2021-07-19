@@ -154,6 +154,7 @@ namespace CapaUsuario.Sunat
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+ 
             DialogResult = DialogResult.OK;
         }
 
@@ -169,6 +170,7 @@ namespace CapaUsuario.Sunat
 
         public String Formula()
         {
+           
             return txtFormula.Text;
         }
 
@@ -180,6 +182,25 @@ namespace CapaUsuario.Sunat
         private void btnMes_Click(object sender, EventArgs e)
         {
             txtFormula.Text = txtFormula.Text + "mm";
+        }
+
+        private void chkTipoRegimen_Click(object sender, EventArgs e)
+        {
+            string miFormula = txtFormula.Text;
+
+            if (chkTipoRegimen.Checked)
+            {
+                txtFormula.Text = txtFormula.Text + "&&p";
+            }
+            else
+            {
+                 int index = miFormula.IndexOf("&&p");
+                if (index != -1)
+                {
+                    miFormula = miFormula.Substring(0, index);
+                }
+                txtFormula.Text = miFormula;
+            }
         }
     }
 }
