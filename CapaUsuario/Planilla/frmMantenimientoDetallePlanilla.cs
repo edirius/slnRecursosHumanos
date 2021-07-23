@@ -1079,6 +1079,7 @@ namespace CapaUsuario.Planilla
                     {
                         dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].ReadOnly = true;
                     }
+                   
                     decimal number2 = 0;
                     if (decimal.TryParse(smdescuentos[i, 3].ToString(), out number2) == true)
                     {
@@ -1094,21 +1095,35 @@ namespace CapaUsuario.Planilla
                 }
                 else
                 {
+                    if (smdescuentos[i, 1].ToString() == "0705")
+                    {
+                        decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
+                        int diasfalta = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMesxFalta(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
+                        if (diasfalta > 0)
+                        {
+                            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", PagoDia);
+                        }
+                        else
+                        {
+                            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", 0);
+                        }
+                    }
+
                     if (dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value == null)//Verificamos si hay datos en Datagridview
                     {
                         dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", 0);
                     }
                     else
                     {
-                        if (smdescuentos[i, 1].ToString() == "0705")
-                        {
-                            decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
-                            int diasfalta = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMesxFalta(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
-                            if (diasfalta > 0)
-                            {
-                                dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", PagoDia);
-                            }
-                        }
+                        //if (smdescuentos[i, 1].ToString() == "0705")
+                        //{
+                        //    decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
+                        //    int diasfalta = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMesxFalta(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
+                        //    if (diasfalta > 0)
+                        //    {
+                        //        dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", PagoDia);
+                        //    }
+                        //}
                         total_descuentos += decimal.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value), 2);
                     }
                 }
@@ -1495,13 +1510,15 @@ namespace CapaUsuario.Planilla
             parser.Values.Add("mm", mmval);
 
             DateTime DateFechaInicio = Convert.ToDateTime(FechaInicio);
-            if (DateFechaInicio.Day == 1)
+            DateTime DateFechaInicioTemporal = DateFechaInicio;
+
+            if (DateFechaInicioTemporal.Day == 1)
             {
-                DateFechaInicio = DateFechaInicio.AddDays(-1);
+                DateFechaInicioTemporal = DateFechaInicioTemporal.AddDays(-1);
             }
             DateTime DateFechacalculo = new DateTime(2021, 06, 30);
 
-            int numeroMeses = ((DateFechacalculo.Month - DateFechaInicio.Month) + 12 * (DateFechacalculo.Year - DateFechaInicio.Year));
+            int numeroMeses = ((DateFechacalculo.Month - DateFechaInicioTemporal.Month) + 12 * (DateFechacalculo.Year - DateFechaInicioTemporal.Year));
             TimeSpan Restafechas = DateFechacalculo - DateFechaInicio;
 
             if (numeroMeses > 3)
@@ -1517,13 +1534,13 @@ namespace CapaUsuario.Planilla
                     ddval.Value = 0;
                     break;
                 case 2:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 04, 30)) - DateFechaInicio).Days);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 04, 30)) - DateFechaInicio).Days + 1);
                     break;
                 case 1:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 05, 30)) - DateFechaInicio).Days);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 05, 31)) - DateFechaInicio).Days + 1);
                     break;
                 case 0:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 06, 30)) - DateFechaInicio).Days);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 06, 30)) - DateFechaInicio).Days +1);
                     break;
                 
                 default:
