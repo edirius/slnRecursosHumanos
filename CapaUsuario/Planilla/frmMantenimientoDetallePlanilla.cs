@@ -101,41 +101,48 @@ namespace CapaUsuario.Planilla
         {
             try
             {
-                decimal pagoobrero = 0;
-                dgvDetallePlanilla.Rows.Clear();
-                DataTable oDataTareo = new DataTable();
-                DataTable oDataDetalleTareo = new DataTable();
-
-                CapaDeNegocios.Tareos.cTareo miTareo = new CapaDeNegocios.Tareos.cTareo();
-                CapaDeNegocios.Tareos.cDetalleTareo miDetalleTareo = new CapaDeNegocios.Tareos.cDetalleTareo();
-
-                oDataTareo = miTareo.ListarTareo(sidtmeta);
-                oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")));
-                foreach (DataRow rowdetalletareo in oDataDetalleTareo.Select("idttareo = '" + Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")) + "'"))
+                CapaUsuario.Tareo.frmImportarTareo fImportarTareo = new CapaUsuario.Tareo.frmImportarTareo();
+                fImportarTareo.RecibirDatos(0, splantilla, sidtmeta);
+                if (fImportarTareo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    pagoobrero = 0;
-                    if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
+                    decimal pagoobrero = 0;
+                    dgvDetallePlanilla.Rows.Clear();
+                    DataTable oDataTareo = new DataTable();
+                    DataTable oDataDetalleTareo = new DataTable();
+
+                    CapaDeNegocios.Tareos.cTareo miTareo = new CapaDeNegocios.Tareos.cTareo();
+                    CapaDeNegocios.Tareos.cDetalleTareo miDetalleTareo = new CapaDeNegocios.Tareos.cDetalleTareo();
+
+                    oDataTareo = miTareo.ListarTareo(sidtmeta);
+                    //oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")));
+                    oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(fImportarTareo.sidttareoimportar);
+                    //foreach (DataRow rowdetalletareo in oDataDetalleTareo.Select("idttareo = '" + Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")) + "'"))
+                    foreach (DataRow rowdetalletareo in oDataDetalleTareo.Select("idttareo = '" + fImportarTareo.sidttareoimportar + "'"))
                     {
-                        pagoobrero = MetaJornal(rowdetalletareo[1].ToString(), sidtmeta);
-                        if (pagoobrero == 0)
-                        {
-                            MessageBox.Show("La Remuneración de los Obreros no existe, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                    }
-                    CargarTrabajador(Convert.ToInt32(rowdetalletareo[4].ToString()), splantilla);
-                    if (dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[4].Value.ToString() == rowdetalletareo[4].ToString())
-                    {
-                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[7].Value = rowdetalletareo[1].ToString();
-                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[12].Value = rowdetalletareo[3].ToString();
+                        pagoobrero = 0;
                         if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
                         {
-                            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", pagoobrero);
+                            pagoobrero = MetaJornal(rowdetalletareo[1].ToString(), sidtmeta);
+                            if (pagoobrero == 0)
+                            {
+                                MessageBox.Show("La Remuneración de los Obreros no existe, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
+                        CargarTrabajador(Convert.ToInt32(rowdetalletareo[4].ToString()), splantilla);
+                        if (dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[4].Value.ToString() == rowdetalletareo[4].ToString())
+                        {
+                            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[7].Value = rowdetalletareo[1].ToString();
+                            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[12].Value = rowdetalletareo[3].ToString();
+                            if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
+                            {
+                                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", pagoobrero);
+                            }
+                        }
+                        TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
                     }
-                    TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
+                    btnImportar.Enabled = false;
                 }
-                btnImportar.Enabled = false;
             }
             catch(Exception EX)
             {
