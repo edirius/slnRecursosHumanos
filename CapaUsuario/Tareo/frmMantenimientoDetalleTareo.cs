@@ -42,6 +42,7 @@ namespace CapaUsuario.Tareo
 
         private void frmMantenimientoDetalleTareo_Load(object sender, EventArgs e)
         {
+            cargarListaCategorias();
             DibujarDataGrid(miTareo.FechaFin.Day - miTareo.FechaInicio.Day);
             MostrarColumnas();
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
@@ -51,6 +52,29 @@ namespace CapaUsuario.Tareo
             oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
             oDataCargo = miCargo.ListaCargos();
             CargarDatos();
+        }
+
+
+        private void cargarListaCategorias()
+        {
+            DataTable ListaCategorias = miDetalleTareo.ListarCategoriaTrabajador(miMeta.Codigo);
+            bool encontrado = false;
+            foreach (DataRow item in ListaCategorias.Rows)
+            {
+                encontrado = false;
+                for (int i = 0; i < cboCategoria.Items.Count; i++)
+                {
+                    if (cboCategoria.Items[i].ToString() == item[0].ToString())
+                    {
+                        encontrado = true;
+                    }
+                }
+                if (encontrado == false)
+                {
+                    cboCategoria.Items.Add(item[0].ToString());
+                }
+            }
+
         }
 
         private void btnImportar_Click(object sender, EventArgs e)

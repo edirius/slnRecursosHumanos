@@ -122,6 +122,10 @@ namespace CapaDeNegocios.Tareos
             return true;
         }
 
+        public DataTable ListarCategoriaTrabajador(int Idtmeta)
+        {
+            return Conexion.GDatos.TraerDataTable("splistarCategoriasTrabajador", Idtmeta);
+        }
 
     }
 }
