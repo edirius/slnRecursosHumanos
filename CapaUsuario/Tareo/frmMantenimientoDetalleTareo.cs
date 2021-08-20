@@ -535,11 +535,19 @@ namespace CapaUsuario.Tareo
 
 
                                     CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador AuxiliarRegimenPensionario = miRegimenPensionarioTrabajor.TraerUltimoRegimenPensionario(fNuevoObrero.miPeriodoTrabajador.IdtPeriodoTrabajador);
+                                    if (AuxiliarRegimenPensionario != null)
+                                    {
+                                        fNuevoObrero.miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+                                        fNuevoObrero.miRegimenPensionarioTrabajador.CUSPP = AuxiliarRegimenPensionario.CUSPP;
+                                        fNuevoObrero.miRegimenPensionarioTrabajador.IdtAFP = AuxiliarRegimenPensionario.IdtAFP;
+                                        fNuevoObrero.miRegimenPensionarioTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
 
-                                    fNuevoObrero.miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
-                                    fNuevoObrero.miRegimenPensionarioTrabajador.CUSPP = AuxiliarRegimenPensionario.CUSPP;
-                                    fNuevoObrero.miRegimenPensionarioTrabajador.IdtAFP = AuxiliarRegimenPensionario.IdtAFP;
-                                    fNuevoObrero.miRegimenPensionarioTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("El trabajador no tiene un sistema pensionario, debe llenar sus datos", "Regimen Pensionario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        fNuevoObrero.miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+                                    }
 
 
                                     fNuevoObrero.miRegimenSaludTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador();

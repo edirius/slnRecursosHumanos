@@ -374,6 +374,169 @@ namespace CapaDeNegocios.Reportes
          
         }
 
+        public void ImprimirReporteAsistenciaXTrabajadorXMes(cTrabajador oTrabajador, cAsistenciaMes oAsistenciaMes, string RutaArchivo)
+        {
+
+            cReportePDF oReporte = new cReportePDF();
+
+            oReporte.RutaArchivo = RutaArchivo;
+
+            cHojaPDF oHojaPDF = new cHojaPDF();
+
+
+            cTablaPDF TablaTituloPrincipal = new cTablaPDF();
+            TablaTituloPrincipal.columnas = 1;
+            TablaTituloPrincipal.anchoColumnas = new float[] { 500f };
+
+            cFilasPDF FilaTituloPrincipal = new cFilasPDF();
+
+            cCeldaPDF TituloPrincipal = new cCeldaPDF();
+            TituloPrincipal.Contenido = "Reporte de Asistencia del " + oAsistenciaMes.InicioMes.ToShortDateString() + " al " + oAsistenciaMes.FinMes.ToShortDateString();
+            TituloPrincipal.ColorFondo = System.Drawing.Color.LightGray;
+            FilaTituloPrincipal.ListaCeldas.Add(TituloPrincipal);
+
+            TablaTituloPrincipal.ListaFilas.Add(FilaTituloPrincipal);
+
+            cTablaPDF TablaTitulo1 = new cTablaPDF();
+            TablaTitulo1.columnas = 5;
+            TablaTitulo1.anchoColumnas = new float[] { 50f, 50f, 50f, 50f, 50f};
+
+            cFilasPDF FilaTitulo1 = new cFilasPDF();
+
+            cCeldaPDF LabelEmpresa = new cCeldaPDF();
+            LabelEmpresa.Contenido = "Empresa:";
+            FilaTitulo1.ListaCeldas.Add(LabelEmpresa);
+
+            cCeldaPDF NombreEmpresa = new cCeldaPDF();
+            NombreEmpresa.Contenido = "Municipalidad Distrital de Maras";
+            FilaTitulo1.ListaCeldas.Add(NombreEmpresa);
+
+            cCeldaPDF LabelRuc = new cCeldaPDF();
+            LabelRuc.Contenido = "RUC:";
+            FilaTitulo1.ListaCeldas.Add(LabelRuc);
+
+            cCeldaPDF NumeroRuc = new cCeldaPDF();
+            NumeroRuc.Contenido = "20177432360";
+            FilaTitulo1.ListaCeldas.Add(NumeroRuc);
+
+           
+
+            cTablaPDF TablaTitulo2 = new cTablaPDF();
+            TablaTitulo2.columnas = 3;
+            TablaTitulo2.anchoColumnas = new float[] { 50f, 50f, 50f };
+            cFilasPDF FilaTitulos2 = new cFilasPDF();
+
+            cCeldaPDF LabelDNI = new cCeldaPDF();
+            LabelDNI.Contenido = "DNI: ";
+            FilaTitulos2.ListaCeldas.Add(LabelDNI);
+
+            cCeldaPDF NumeroDNI = new cCeldaPDF();
+            NumeroDNI.Contenido = oTrabajador.Dni;
+            FilaTitulos2.ListaCeldas.Add(NumeroDNI);
+
+            cCeldaPDF LabelNombres = new cCeldaPDF();
+            LabelNombres.Contenido = oTrabajador.ApellidoPaterno + " " + oTrabajador.ApellidoMaterno + ", " + oTrabajador.Nombres;
+            FilaTitulos2.ListaCeldas.Add(LabelNombres);
+
+            TablaTitulo2.ListaFilas.Add(FilaTitulos2);
+
+            cTablaPDF TablaTitulo3 = new cTablaPDF();
+            TablaTitulo3.columnas = 4;
+            TablaTitulo3.anchoColumnas = new float[] { 50f, 50f, 50f, 50f };
+
+            cFilasPDF FilaTitulos3 = new cFilasPDF();
+
+            cCeldaPDF LabelCargo = new cCeldaPDF();
+            LabelCargo.Contenido = "Cargo: ";
+            FilaTitulos3.ListaCeldas.Add(LabelCargo);
+
+            cCeldaPDF NombreCargo = new cCeldaPDF();
+            NombreCargo.Contenido = "Cargo";
+            FilaTitulos3.ListaCeldas.Add(NombreCargo);
+
+            cCeldaPDF LabelPeriodo = new cCeldaPDF();
+            LabelPeriodo.Contenido = "Periodo: ";
+            FilaTitulos3.ListaCeldas.Add(LabelPeriodo);
+
+            cCeldaPDF ValorFechas = new cCeldaPDF();
+            ValorFechas.Contenido = oAsistenciaMes.InicioMes.ToShortDateString() + " Del: " + oAsistenciaMes.FinMes.ToShortDateString();
+            FilaTitulos3.ListaCeldas.Add(ValorFechas);
+
+            TablaTitulo3.ListaFilas.Add(FilaTitulos3);
+
+            //Encabezado de detalle de asistencia
+            int numeroDias = (oAsistenciaMes.FinMes - oAsistenciaMes.InicioMes).Days + 1;
+
+
+            cTablaPDF TablaDetalle = new cTablaPDF();
+            TablaDetalle.columnas = numeroDias;
+            TablaDetalle.anchoColumnas = new float[numeroDias];
+
+            for (int i = 0; i < numeroDias; i++)
+            {
+                TablaDetalle.anchoColumnas[i] = 50f;
+            }
+
+            cFilasPDF FilaTituloDetalle = new cFilasPDF();
+            cFilasPDF FilaTituloDetalle2 = new cFilasPDF();
+
+            for (int i = 0; i < numeroDias; i++)
+            {
+                cCeldaPDF labelTituloDetalle = new cCeldaPDF();
+                labelTituloDetalle.Contenido = ConvertirFecha(oAsistenciaMes.InicioMes.AddDays(i));
+                FilaTituloDetalle.ListaCeldas.Add(labelTituloDetalle);
+
+                cCeldaPDF labelTituloDetalle2 = new cCeldaPDF();
+                labelTituloDetalle2.Contenido = oAsistenciaMes.InicioMes.AddDays(i).Day .ToString();
+                FilaTituloDetalle2.ListaCeldas.Add(labelTituloDetalle2);
+            }
+
+            cFilasPDF FilaDetalle = new cFilasPDF();
+
+            for (int i = 0; i < numeroDias; i++)
+            {
+                cCeldaPDF labelDetalle = new cCeldaPDF();
+                if (oAsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.SinFalta || oAsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.FaltaJustificada)
+                {
+                    if (oAsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.SinFalta)
+                    {
+                        labelDetalle.Contenido = "N";
+                    }
+                    else
+                    {
+                        labelDetalle.Contenido = "J";
+                    }
+                }
+                else
+                {
+                    labelDetalle.Contenido = "F";
+                    labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                }
+                if (oAsistenciaMes.ListaAsistenciaDia[i].Tarde)
+                {
+                    labelDetalle.Contenido = "T";
+                    labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                }
+                FilaDetalle.ListaCeldas.Add(labelDetalle);
+            }
+
+            TablaDetalle.ListaFilas.Add(FilaTituloDetalle);
+            TablaDetalle.ListaFilas.Add(FilaTituloDetalle2);
+            TablaDetalle.ListaFilas.Add(FilaDetalle);
+
+            oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
+            oHojaPDF.ListaDeTablas.Add(TablaTitulo1);
+
+            oHojaPDF.ListaDeTablas.Add(TablaTitulo2);
+            oHojaPDF.ListaDeTablas.Add(TablaTitulo3);
+            oHojaPDF.ListaDeTablas.Add(TablaDetalle);
+            
+            oReporte.ListaHojasPDF.Add(oHojaPDF);
+
+            ImprimirReportePDF(oReporte);
+
+        }
+
 
         private void ImprimirReportePDF(cReportePDF oReportePDF)
         {
@@ -461,6 +624,29 @@ namespace CapaDeNegocios.Reportes
 
             }
             pdfDoc.Close();
+        }
+
+        private string ConvertirFecha(DateTime Fecha)
+        {
+            switch (Fecha.DayOfWeek)
+            {
+                case DayOfWeek.Sunday:
+                    return "D";
+                case DayOfWeek.Monday:
+                    return "L";
+                case DayOfWeek.Tuesday:
+                    return "M";
+                case DayOfWeek.Wednesday:
+                    return "M";
+                case DayOfWeek.Thursday:
+                    return "J";
+                case DayOfWeek.Friday:
+                    return "V";
+                case DayOfWeek.Saturday:
+                    return "S";
+                default:
+                    return "E";
+            }
         }
 
     }

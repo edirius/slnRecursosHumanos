@@ -61,45 +61,53 @@ namespace CapaUsuario.Asistencia
 
         private void CargarCalendario()
         {
-            oAsistenciaMes = oCatalogoAsistencia.LLenarAsistencia(miTrabajador.OTrabajador, cboMes.SelectedIndex + 1, Convert.ToInt16(cboAño.Text), oCatalogoAsistencia.TraerHorarioTrabajador(miTrabajador.OTrabajador));
-            if (CalendarioAsistencia.MaxDate < oAsistenciaMes.InicioMes)
+            CapaDeNegocios.Asistencia.cHorario miHorario = oCatalogoAsistencia.TraerHorarioTrabajador(miTrabajador.OTrabajador);
+
+            if (miHorario == null)
             {
-                CalendarioAsistencia.MaxDate = oAsistenciaMes.FinMes;
-                CalendarioAsistencia.MinDate = oAsistenciaMes.InicioMes;
-                
+                MessageBox.Show("El trabajador no tiene horario asignado. Asigne un horario.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                CalendarioAsistencia.MinDate = oAsistenciaMes.InicioMes;
-                CalendarioAsistencia.MaxDate = oAsistenciaMes.FinMes;
-            }
-   
-            oAsistenciaMes.ListaAsistenciaDia = oAsistenciaMes.LlenarAsistencias(oCatalogoAsistencia.ListaPicadoEntreFechas(miTrabajador, oAsistenciaMes.InicioMes, oAsistenciaMes.FinMes),
-                                                                                                                    oAsistenciaMes.InicioMes,
-                                                                                                                    oAsistenciaMes.FinMes,
-                                                                                                                    oCatalogoAsistencia.TraerHorarioTrabajador(miTrabajador.OTrabajador), 
-                                                                                                                    oCatalogoAsistencia.ListaSalidasEntreFechas(miTrabajador.OTrabajador, oAsistenciaMes.InicioMes, oAsistenciaMes.FinMes), 
-                                                                                                                    oCatalogoAsistencia.ListaDiaFestivo(CalendarioAsistencia.SelectionStart.Year));
-            oAsistenciaMes.Actualizardatos();
-
-            lblTotalFaltas.Text = oAsistenciaMes.TotalFaltasMes.ToString();
-            lblTotaltardanzas.Text = oAsistenciaMes.TotalMinutosTarde.ToString(); // .TotalTardanzas.ToString();
-
-            foreach (CapaDeNegocios.Asistencia.cAsistenciaDia item in oAsistenciaMes.ListaAsistenciaDia)
-            {
-                if ((item.Falta == CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaPicadoEntrada) || (item.Falta == CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaPicadoFinal) || (item.Falta == CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaTotal))
+                oAsistenciaMes = oCatalogoAsistencia.LLenarAsistencia(miTrabajador.OTrabajador, cboMes.SelectedIndex + 1, Convert.ToInt16(cboAño.Text), miHorario);
+                if (CalendarioAsistencia.MaxDate < oAsistenciaMes.InicioMes)
                 {
-                    CalendarioAsistencia.AddBoldedDate(item.Dia);
-                  
+                    CalendarioAsistencia.MaxDate = oAsistenciaMes.FinMes;
+                    CalendarioAsistencia.MinDate = oAsistenciaMes.InicioMes;
+
+                }
+                else
+                {
+                    CalendarioAsistencia.MinDate = oAsistenciaMes.InicioMes;
+                    CalendarioAsistencia.MaxDate = oAsistenciaMes.FinMes;
                 }
 
-                if (item.Tarde == true)
+                oAsistenciaMes.ListaAsistenciaDia = oAsistenciaMes.LlenarAsistencias(oCatalogoAsistencia.ListaPicadoEntreFechas(miTrabajador, oAsistenciaMes.InicioMes, oAsistenciaMes.FinMes),
+                                                                                                                        oAsistenciaMes.InicioMes,
+                                                                                                                        oAsistenciaMes.FinMes,
+                                                                                                                        oCatalogoAsistencia.TraerHorarioTrabajador(miTrabajador.OTrabajador),
+                                                                                                                        oCatalogoAsistencia.ListaSalidasEntreFechas(miTrabajador.OTrabajador, oAsistenciaMes.InicioMes, oAsistenciaMes.FinMes),
+                                                                                                                        oCatalogoAsistencia.ListaDiaFestivo(CalendarioAsistencia.SelectionStart.Year));
+                oAsistenciaMes.Actualizardatos();
+
+                lblTotalFaltas.Text = oAsistenciaMes.TotalFaltasMes.ToString();
+                lblTotaltardanzas.Text = oAsistenciaMes.TotalMinutosTarde.ToString(); // .TotalTardanzas.ToString();
+
+                foreach (CapaDeNegocios.Asistencia.cAsistenciaDia item in oAsistenciaMes.ListaAsistenciaDia)
                 {
-                    CalendarioAsistencia.AddBoldedDate(item.Dia);
+                    if ((item.Falta == CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaPicadoEntrada) || (item.Falta == CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaPicadoFinal) || (item.Falta == CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaTotal))
+                    {
+                        CalendarioAsistencia.AddBoldedDate(item.Dia);
+
+                    }
+
+                    if (item.Tarde == true)
+                    {
+                        CalendarioAsistencia.AddBoldedDate(item.Dia);
+                    }
+
                 }
-
             }
-
         }
 
       
@@ -246,6 +254,25 @@ namespace CapaUsuario.Asistencia
                     oReporte.ImprimirReporteAsistenciaXTrabajador(miTrabajador.OTrabajador, oAsistenciaMes, dlgGuardarReportePDF.FileName);
                 }    
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir reporte de asistencia." + ex.Message, "Reporte de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnImprimirMes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CapaDeNegocios.Reportes.cReporteAsistencia oReporte = new CapaDeNegocios.Reportes.cReporteAsistencia();
+
+                CapaDeNegocios.Reportes.cReportePDF miReporte = new CapaDeNegocios.Reportes.cReportePDF();
+
+                if (dlgGuardarReportePDF.ShowDialog() == DialogResult.OK)
+                {
+                    oReporte.ImprimirReporteAsistenciaXTrabajadorXMes(miTrabajador.OTrabajador, oAsistenciaMes, dlgGuardarReportePDF.FileName);
+                }
             }
             catch (Exception ex)
             {

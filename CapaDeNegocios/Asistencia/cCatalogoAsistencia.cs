@@ -154,7 +154,10 @@ namespace CapaDeNegocios.Asistencia
                 cHorario oHorario = new cHorario();
 
                 DataTable data = Conexion.GDatos.TraerDataTable("spTraerHorarioTrabajador", oTrabajador.IdTrabajador);
-
+                if (data.Rows.Count == 0)
+                {
+                    return null;
+                }
                 foreach (DataRow item in data.Rows)
                 {
                     oHorario.CodigoHorario = Convert.ToInt16(item["idthorario"].ToString());

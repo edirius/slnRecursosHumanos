@@ -52,6 +52,7 @@
             this.btnImprimir = new System.Windows.Forms.Button();
             this.dlgGuardarReportePDF = new System.Windows.Forms.SaveFileDialog();
             this.chkSalidasTodoElMes = new System.Windows.Forms.CheckBox();
+            this.btnImprimirMes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDetalleAsistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaSalidas)).BeginInit();
             this.SuspendLayout();
@@ -242,11 +243,11 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimir.Location = new System.Drawing.Point(829, 311);
+            this.btnImprimir.Location = new System.Drawing.Point(704, 300);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(75, 65);
+            this.btnImprimir.Size = new System.Drawing.Size(92, 65);
             this.btnImprimir.TabIndex = 95;
-            this.btnImprimir.Text = "&Imprimir";
+            this.btnImprimir.Text = "&Imprimir Asistencia ";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
@@ -265,11 +266,28 @@
             this.chkSalidasTodoElMes.Text = "Todo el mes";
             this.chkSalidasTodoElMes.UseVisualStyleBackColor = true;
             // 
+            // btnImprimirMes
+            // 
+            this.btnImprimirMes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirMes.BackColor = System.Drawing.Color.MintCream;
+            this.btnImprimirMes.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnImprimirMes.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnImprimirMes.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnImprimirMes.Location = new System.Drawing.Point(812, 300);
+            this.btnImprimirMes.Name = "btnImprimirMes";
+            this.btnImprimirMes.Size = new System.Drawing.Size(92, 65);
+            this.btnImprimirMes.TabIndex = 97;
+            this.btnImprimirMes.Text = "&Imprimir Asistencia Mes";
+            this.btnImprimirMes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImprimirMes.UseVisualStyleBackColor = false;
+            this.btnImprimirMes.Click += new System.EventHandler(this.btnImprimirMes_Click);
+            // 
             // frmAsistenciaMes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 450);
+            this.ClientSize = new System.Drawing.Size(933, 409);
+            this.Controls.Add(this.btnImprimirMes);
             this.Controls.Add(this.chkSalidasTodoElMes);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.lblFaltaDia);
@@ -325,5 +343,6 @@
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.SaveFileDialog dlgGuardarReportePDF;
         private System.Windows.Forms.CheckBox chkSalidasTodoElMes;
+        private System.Windows.Forms.Button btnImprimirMes;
     }
 }

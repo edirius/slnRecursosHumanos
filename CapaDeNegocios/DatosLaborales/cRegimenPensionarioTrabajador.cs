@@ -103,7 +103,8 @@ namespace CapaDeNegocios.DatosLaborales
 
                 if (listaPeriodos.Rows.Count == 0)
                 {
-                    throw new cReglaNegociosException("Error, el trabajador no esta activo ");
+                    return null;
+                    //throw new cReglaNegociosException("Error, el trabajador no esta activo ");
                 }
 
                 cRegimenPensionarioTrabajador nuevoPeriodoTrabajador = new cRegimenPensionarioTrabajador();

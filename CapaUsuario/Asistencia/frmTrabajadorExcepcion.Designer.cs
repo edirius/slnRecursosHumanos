@@ -61,17 +61,16 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAsistenciaMes = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnAsignarNumeroReloj = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeFiltro = new System.Windows.Forms.TreeView();
-            this.btnReporteContratos = new System.Windows.Forms.Button();
-            this.btnContratos = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.btnBuscarXMeta = new System.Windows.Forms.Button();
             this.cboMeta = new System.Windows.Forms.ComboBox();
             this.cboAño = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnDatosLaborales = new System.Windows.Forms.Button();
             this.btnDetalleTareo = new System.Windows.Forms.Button();
             this.btnBuscarAMaterno = new System.Windows.Forms.Button();
             this.btnBuscarAPaterno = new System.Windows.Forms.Button();
@@ -96,8 +95,6 @@
             this.fechafin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnAsignarNumeroReloj = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -167,6 +164,20 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
             // 
+            // btnAsignarNumeroReloj
+            // 
+            this.btnAsignarNumeroReloj.Image = global::CapaUsuario.Properties.Resources._112;
+            this.btnAsignarNumeroReloj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnAsignarNumeroReloj.Name = "btnAsignarNumeroReloj";
+            this.btnAsignarNumeroReloj.Size = new System.Drawing.Size(143, 25);
+            this.btnAsignarNumeroReloj.Text = "Asignar Numero Reloj";
+            this.btnAsignarNumeroReloj.Click += new System.EventHandler(this.btnAsignarNumeroReloj_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
+            // 
             // btnSalir
             // 
             this.btnSalir.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_17;
@@ -187,14 +198,11 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.btnReporteContratos);
-            this.splitContainer1.Panel2.Controls.Add(this.btnContratos);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarXMeta);
             this.splitContainer1.Panel2.Controls.Add(this.cboMeta);
             this.splitContainer1.Panel2.Controls.Add(this.cboAño);
             this.splitContainer1.Panel2.Controls.Add(this.label6);
-            this.splitContainer1.Panel2.Controls.Add(this.btnDatosLaborales);
             this.splitContainer1.Panel2.Controls.Add(this.btnDetalleTareo);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarAMaterno);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarAPaterno);
@@ -280,36 +288,6 @@
             this.treeFiltro.TabIndex = 0;
             this.treeFiltro.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeFiltro_NodeMouseClick);
             // 
-            // btnReporteContratos
-            // 
-            this.btnReporteContratos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnReporteContratos.BackColor = System.Drawing.Color.MintCream;
-            this.btnReporteContratos.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnReporteContratos.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnReporteContratos.ImageIndex = 1;
-            this.btnReporteContratos.Location = new System.Drawing.Point(449, 495);
-            this.btnReporteContratos.Name = "btnReporteContratos";
-            this.btnReporteContratos.Size = new System.Drawing.Size(114, 53);
-            this.btnReporteContratos.TabIndex = 41;
-            this.btnReporteContratos.Text = "&Reporte Contratos";
-            this.btnReporteContratos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnReporteContratos.UseVisualStyleBackColor = false;
-            // 
-            // btnContratos
-            // 
-            this.btnContratos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnContratos.BackColor = System.Drawing.Color.MintCream;
-            this.btnContratos.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnContratos.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnContratos.ImageIndex = 1;
-            this.btnContratos.Location = new System.Drawing.Point(569, 495);
-            this.btnContratos.Name = "btnContratos";
-            this.btnContratos.Size = new System.Drawing.Size(114, 53);
-            this.btnContratos.TabIndex = 40;
-            this.btnContratos.Text = "&Contratos";
-            this.btnContratos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnContratos.UseVisualStyleBackColor = false;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -356,21 +334,6 @@
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 35;
             this.label6.Text = "Meta :";
-            // 
-            // btnDatosLaborales
-            // 
-            this.btnDatosLaborales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDatosLaborales.BackColor = System.Drawing.Color.MintCream;
-            this.btnDatosLaborales.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDatosLaborales.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnDatosLaborales.ImageIndex = 1;
-            this.btnDatosLaborales.Location = new System.Drawing.Point(689, 495);
-            this.btnDatosLaborales.Name = "btnDatosLaborales";
-            this.btnDatosLaborales.Size = new System.Drawing.Size(114, 53);
-            this.btnDatosLaborales.TabIndex = 32;
-            this.btnDatosLaborales.Text = "&Datos Laborales";
-            this.btnDatosLaborales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnDatosLaborales.UseVisualStyleBackColor = false;
             // 
             // btnDetalleTareo
             // 
@@ -604,20 +567,6 @@
             this.descripcion.Name = "descripcion";
             this.descripcion.Visible = false;
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
-            // 
-            // btnAsignarNumeroReloj
-            // 
-            this.btnAsignarNumeroReloj.Image = global::CapaUsuario.Properties.Resources._112;
-            this.btnAsignarNumeroReloj.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAsignarNumeroReloj.Name = "btnAsignarNumeroReloj";
-            this.btnAsignarNumeroReloj.Size = new System.Drawing.Size(143, 25);
-            this.btnAsignarNumeroReloj.Text = "Asignar Numero Reloj";
-            this.btnAsignarNumeroReloj.Click += new System.EventHandler(this.btnAsignarNumeroReloj_Click);
-            // 
             // frmTrabajadorExcepcion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -654,14 +603,11 @@
         private System.Windows.Forms.ToolStripButton btnSalir;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TreeView treeFiltro;
-        private System.Windows.Forms.Button btnReporteContratos;
-        private System.Windows.Forms.Button btnContratos;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnBuscarXMeta;
         private System.Windows.Forms.ComboBox cboMeta;
         private System.Windows.Forms.ComboBox cboAño;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnDatosLaborales;
         private System.Windows.Forms.Button btnDetalleTareo;
         private System.Windows.Forms.Button btnBuscarAMaterno;
         private System.Windows.Forms.Button btnBuscarAPaterno;
