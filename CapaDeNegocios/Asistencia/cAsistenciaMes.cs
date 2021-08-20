@@ -155,7 +155,7 @@ namespace CapaDeNegocios.Asistencia
                 List<cAsistenciaDia> NuevaLista = new List<cAsistenciaDia>();
                 int numeroDias = 0;
                 numeroDias = (FechaFin - FechaInicio).Days + 1;
-
+                //comentario
                 for (int i = 0; i < numeroDias; i++)
                 {
                     cAsistenciaDia NuevaAsistencia = new cAsistenciaDia();
