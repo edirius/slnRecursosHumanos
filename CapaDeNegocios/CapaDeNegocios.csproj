@@ -65,6 +65,9 @@
   <ItemGroup>
     <Compile Include="AFPP\cAFP.cs" />
     <Compile Include="AFPP\cComisionesAFP.cs" />
+    <Compile Include="AsistenciaGeneral\cCatalogoJornadaLaboral.cs" />
+    <Compile Include="AsistenciaGeneral\cDetalleJornadaLaboral.cs" />
+    <Compile Include="AsistenciaGeneral\cJornadaLaboral.cs" />
     <Compile Include="Asistencia\cPicado.cs" />
     <Compile Include="Asistencia\cAsistenciaDia.cs" />
     <Compile Include="Asistencia\cAsistenciaMes.cs" />
@@ -192,6 +195,7 @@
     <Compile Include="Reportes\cHojaPDF.cs" />
     <Compile Include="Reportes\cMultiCeldaPDF.cs" />
     <Compile Include="Reportes\cReporteAsistencia.cs" />
+    <Compile Include="Reportes\cReporteMultipleAsistencia.cs" />
     <Compile Include="Reportes\cReportePDF.cs" />
     <Compile Include="Reportes\cReporteTareo.cs" />
     <Compile Include="Reportes\cResumenPlanillas.cs" />

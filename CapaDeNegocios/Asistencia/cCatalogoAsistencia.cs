@@ -907,7 +907,7 @@ namespace CapaDeNegocios.Asistencia
                 DataTable oData = new DataTable();
                 cPicado oPicado = null;
 
-                oData = Conexion.GDatos.TraerDataTable("spListarPicadoRelojxDia", idttrabajadorreloj, fecha);
+                oData = Conexion.GDatos.TraerDataTable("spListarPicadoRelojxFecha", idttrabajadorreloj, fecha);
                 foreach (DataRow item in oData.Rows)
                 {
                     oPicado = new cPicado();

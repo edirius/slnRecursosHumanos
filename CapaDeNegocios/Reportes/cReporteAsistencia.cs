@@ -398,8 +398,8 @@ namespace CapaDeNegocios.Reportes
             TablaTituloPrincipal.ListaFilas.Add(FilaTituloPrincipal);
 
             cTablaPDF TablaTitulo1 = new cTablaPDF();
-            TablaTitulo1.columnas = 5;
-            TablaTitulo1.anchoColumnas = new float[] { 50f, 50f, 50f, 50f, 50f};
+            TablaTitulo1.columnas = 4;
+            TablaTitulo1.anchoColumnas = new float[] { 50f, 50f, 50f, 50f};
 
             cFilasPDF FilaTitulo1 = new cFilasPDF();
 
@@ -418,67 +418,63 @@ namespace CapaDeNegocios.Reportes
             cCeldaPDF NumeroRuc = new cCeldaPDF();
             NumeroRuc.Contenido = "20177432360";
             FilaTitulo1.ListaCeldas.Add(NumeroRuc);
-
+            TablaTitulo1.ListaFilas.Add(FilaTitulo1);
            
 
             cTablaPDF TablaTitulo2 = new cTablaPDF();
-            TablaTitulo2.columnas = 3;
-            TablaTitulo2.anchoColumnas = new float[] { 50f, 50f, 50f };
+            TablaTitulo2.columnas = 1;
+            TablaTitulo2.anchoColumnas = new float[] { 100f};
             cFilasPDF FilaTitulos2 = new cFilasPDF();
 
             cCeldaPDF LabelDNI = new cCeldaPDF();
-            LabelDNI.Contenido = "DNI: ";
+            LabelDNI.Contenido = "";
             FilaTitulos2.ListaCeldas.Add(LabelDNI);
-
-            cCeldaPDF NumeroDNI = new cCeldaPDF();
-            NumeroDNI.Contenido = oTrabajador.Dni;
-            FilaTitulos2.ListaCeldas.Add(NumeroDNI);
-
-            cCeldaPDF LabelNombres = new cCeldaPDF();
-            LabelNombres.Contenido = oTrabajador.ApellidoPaterno + " " + oTrabajador.ApellidoMaterno + ", " + oTrabajador.Nombres;
-            FilaTitulos2.ListaCeldas.Add(LabelNombres);
 
             TablaTitulo2.ListaFilas.Add(FilaTitulos2);
 
-            cTablaPDF TablaTitulo3 = new cTablaPDF();
-            TablaTitulo3.columnas = 4;
-            TablaTitulo3.anchoColumnas = new float[] { 50f, 50f, 50f, 50f };
-
-            cFilasPDF FilaTitulos3 = new cFilasPDF();
-
-            cCeldaPDF LabelCargo = new cCeldaPDF();
-            LabelCargo.Contenido = "Cargo: ";
-            FilaTitulos3.ListaCeldas.Add(LabelCargo);
-
-            cCeldaPDF NombreCargo = new cCeldaPDF();
-            NombreCargo.Contenido = "Cargo";
-            FilaTitulos3.ListaCeldas.Add(NombreCargo);
-
-            cCeldaPDF LabelPeriodo = new cCeldaPDF();
-            LabelPeriodo.Contenido = "Periodo: ";
-            FilaTitulos3.ListaCeldas.Add(LabelPeriodo);
-
-            cCeldaPDF ValorFechas = new cCeldaPDF();
-            ValorFechas.Contenido = oAsistenciaMes.InicioMes.ToShortDateString() + " Del: " + oAsistenciaMes.FinMes.ToShortDateString();
-            FilaTitulos3.ListaCeldas.Add(ValorFechas);
-
-            TablaTitulo3.ListaFilas.Add(FilaTitulos3);
 
             //Encabezado de detalle de asistencia
             int numeroDias = (oAsistenciaMes.FinMes - oAsistenciaMes.InicioMes).Days + 1;
 
 
             cTablaPDF TablaDetalle = new cTablaPDF();
-            TablaDetalle.columnas = numeroDias;
-            TablaDetalle.anchoColumnas = new float[numeroDias];
+            TablaDetalle.columnas = numeroDias + 3;
+            TablaDetalle.anchoColumnas = new float[numeroDias + 3];
 
-            for (int i = 0; i < numeroDias; i++)
+
+            
+            TablaDetalle.anchoColumnas[0] = 50f;
+            TablaDetalle.anchoColumnas[1] = 300f;
+            TablaDetalle.anchoColumnas[2] = 120f;
+
+            for (int i = 3; i < numeroDias+ 3; i++)
             {
                 TablaDetalle.anchoColumnas[i] = 50f;
             }
 
             cFilasPDF FilaTituloDetalle = new cFilasPDF();
             cFilasPDF FilaTituloDetalle2 = new cFilasPDF();
+
+            cCeldaPDF TituloNro = new cCeldaPDF();
+            TituloNro.Contenido = "Nº";
+            FilaTituloDetalle.ListaCeldas.Add(TituloNro);
+
+            cCeldaPDF TituloNombres = new cCeldaPDF();
+            TituloNombres.Contenido = "Nombres";
+            FilaTituloDetalle.ListaCeldas.Add(TituloNombres);
+
+            cCeldaPDF TituloDNI = new cCeldaPDF();
+            TituloDNI.Contenido = "DNI";
+            FilaTituloDetalle.ListaCeldas.Add(TituloDNI);
+
+            cCeldaPDF Vacio1 = new cCeldaPDF();
+            FilaTituloDetalle2.ListaCeldas.Add(Vacio1);
+
+            cCeldaPDF Vacio2 = new cCeldaPDF();
+            FilaTituloDetalle2.ListaCeldas.Add(Vacio2);
+
+            cCeldaPDF Vacio3 = new cCeldaPDF();
+            FilaTituloDetalle2.ListaCeldas.Add(Vacio3);
 
             for (int i = 0; i < numeroDias; i++)
             {
@@ -492,6 +488,18 @@ namespace CapaDeNegocios.Reportes
             }
 
             cFilasPDF FilaDetalle = new cFilasPDF();
+
+            cCeldaPDF Numero = new cCeldaPDF();
+            Numero.Contenido = "1";
+            FilaDetalle.ListaCeldas.Add(Numero);
+
+            cCeldaPDF LabelNombres = new cCeldaPDF();
+            LabelNombres.Contenido = oTrabajador.ApellidoPaterno + " " + oTrabajador.ApellidoMaterno + ", " + oTrabajador.Nombres;
+            FilaDetalle.ListaCeldas.Add(LabelNombres);
+
+            cCeldaPDF NumeroDNI = new cCeldaPDF();
+            NumeroDNI.Contenido = oTrabajador.Dni;
+            FilaDetalle.ListaCeldas.Add(NumeroDNI);
 
             for (int i = 0; i < numeroDias; i++)
             {
@@ -524,13 +532,60 @@ namespace CapaDeNegocios.Reportes
             TablaDetalle.ListaFilas.Add(FilaTituloDetalle2);
             TablaDetalle.ListaFilas.Add(FilaDetalle);
 
+            cTablaPDF TablaLeyenda = new cTablaPDF();
+            TablaLeyenda.columnas = 2;
+            TablaLeyenda.anchoColumnas = new float[] { 20f, 20f};
+
+            cFilasPDF FilaDiaNormal = new cFilasPDF();
+            cCeldaPDF CeldaTituloDiaNormal = new cCeldaPDF();
+            CeldaTituloDiaNormal.Contenido = "Dia Normal";
+            FilaDiaNormal.ListaCeldas.Add(CeldaTituloDiaNormal);
+
+            cCeldaPDF CeldaDiaNormal = new cCeldaPDF();
+            CeldaDiaNormal.Contenido = "N";
+            FilaDiaNormal.ListaCeldas.Add(CeldaDiaNormal);
+
+            TablaLeyenda.ListaFilas.Add(FilaDiaNormal);
+
+            cFilasPDF FilaDiaJustificado = new cFilasPDF();
+            cCeldaPDF CeldaTituloDiaJustificado = new cCeldaPDF();
+            CeldaTituloDiaJustificado.Contenido = "Falta Justificada";
+            FilaDiaJustificado.ListaCeldas.Add(CeldaTituloDiaJustificado);
+
+            cCeldaPDF CeldaDiaJustificado = new cCeldaPDF();
+            CeldaDiaJustificado.Contenido = "J";
+            FilaDiaJustificado.ListaCeldas.Add(CeldaDiaJustificado);
+
+            TablaLeyenda.ListaFilas.Add(FilaDiaJustificado);
+
+            cFilasPDF FilaDiaFalta = new cFilasPDF();
+            cCeldaPDF CeldaTituloDiaFalta = new cCeldaPDF();
+            CeldaTituloDiaFalta.Contenido = "Falta Injustificada";
+            FilaDiaFalta.ListaCeldas.Add(CeldaTituloDiaFalta);
+
+            cCeldaPDF CeldaDiaFalta = new cCeldaPDF();
+            CeldaDiaFalta.Contenido = "F";
+            FilaDiaFalta.ListaCeldas.Add(CeldaDiaFalta);
+
+            TablaLeyenda.ListaFilas.Add(FilaDiaFalta);
+
+            cFilasPDF FilaDiaTarde = new cFilasPDF();
+            cCeldaPDF CeldaTituloDiatarde = new cCeldaPDF();
+            CeldaTituloDiatarde.Contenido = "Tardanza";
+            FilaDiaTarde.ListaCeldas.Add(CeldaTituloDiatarde);
+
+            cCeldaPDF CeldaDiatarde = new cCeldaPDF();
+            CeldaDiatarde.Contenido = "T";
+            FilaDiaTarde.ListaCeldas.Add(CeldaDiatarde);
+
+            TablaLeyenda.ListaFilas.Add(FilaDiaTarde);
+
             oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
             oHojaPDF.ListaDeTablas.Add(TablaTitulo1);
-
             oHojaPDF.ListaDeTablas.Add(TablaTitulo2);
-            oHojaPDF.ListaDeTablas.Add(TablaTitulo3);
             oHojaPDF.ListaDeTablas.Add(TablaDetalle);
-            
+            oHojaPDF.ListaDeTablas.Add(TablaLeyenda);
+
             oReporte.ListaHojasPDF.Add(oHojaPDF);
 
             ImprimirReportePDF(oReporte);
@@ -538,12 +593,255 @@ namespace CapaDeNegocios.Reportes
         }
 
 
+        public void ImprimirReporteAsistenciMultipleAsistencia(List<cReporteMultipleAsistencia> ListaMultiple, string RutaArchivo, DateTime Inicio, DateTime Fin)
+        {
+
+            cReportePDF oReporte = new cReportePDF();
+
+            oReporte.RutaArchivo = RutaArchivo;
+
+            cHojaPDF oHojaPDF = new cHojaPDF();
+
+
+            cTablaPDF TablaTituloPrincipal = new cTablaPDF();
+            TablaTituloPrincipal.columnas = 1;
+            TablaTituloPrincipal.anchoColumnas = new float[] { 500f };
+
+            cFilasPDF FilaTituloPrincipal = new cFilasPDF();
+
+            cCeldaPDF TituloPrincipal = new cCeldaPDF();
+            TituloPrincipal.Contenido = "Reporte de Asistencia del " +  Inicio.ToShortDateString() + " al " + Fin.ToShortDateString();
+            TituloPrincipal.ColorFondo = System.Drawing.Color.LightGray;
+            FilaTituloPrincipal.ListaCeldas.Add(TituloPrincipal);
+
+            TablaTituloPrincipal.ListaFilas.Add(FilaTituloPrincipal);
+
+            cTablaPDF TablaTitulo1 = new cTablaPDF();
+            TablaTitulo1.columnas = 4;
+            TablaTitulo1.anchoColumnas = new float[] { 50f, 50f, 50f, 50f };
+
+            cFilasPDF FilaTitulo1 = new cFilasPDF();
+
+            cCeldaPDF LabelEmpresa = new cCeldaPDF();
+            LabelEmpresa.Contenido = "Empresa:";
+            FilaTitulo1.ListaCeldas.Add(LabelEmpresa);
+
+            cCeldaPDF NombreEmpresa = new cCeldaPDF();
+            NombreEmpresa.Contenido = "Municipalidad Distrital de Maras";
+            FilaTitulo1.ListaCeldas.Add(NombreEmpresa);
+
+            cCeldaPDF LabelRuc = new cCeldaPDF();
+            LabelRuc.Contenido = "RUC:";
+            FilaTitulo1.ListaCeldas.Add(LabelRuc);
+
+            cCeldaPDF NumeroRuc = new cCeldaPDF();
+            NumeroRuc.Contenido = "20177432360";
+            FilaTitulo1.ListaCeldas.Add(NumeroRuc);
+            TablaTitulo1.ListaFilas.Add(FilaTitulo1);
+
+
+            cTablaPDF TablaTitulo2 = new cTablaPDF();
+            TablaTitulo2.columnas = 1;
+            TablaTitulo2.anchoColumnas = new float[] { 100f };
+            cFilasPDF FilaTitulos2 = new cFilasPDF();
+
+            cCeldaPDF LabelDNI = new cCeldaPDF();
+            LabelDNI.Contenido = "";
+            FilaTitulos2.ListaCeldas.Add(LabelDNI);
+
+            TablaTitulo2.ListaFilas.Add(FilaTitulos2);
+
+
+            //Encabezado de detalle de asistencia
+            int numeroDias = (Fin - Inicio).Days + 1;
+
+
+            cTablaPDF TablaDetalle = new cTablaPDF();
+            TablaDetalle.columnas = numeroDias + 3;
+            TablaDetalle.anchoColumnas = new float[numeroDias + 3];
+
+
+
+            TablaDetalle.anchoColumnas[0] = 50f;
+            TablaDetalle.anchoColumnas[1] = 300f;
+            TablaDetalle.anchoColumnas[2] = 120f;
+
+            for (int i = 3; i < numeroDias + 3; i++)
+            {
+                TablaDetalle.anchoColumnas[i] = 50f;
+            }
+
+            cFilasPDF FilaTituloDetalle = new cFilasPDF();
+            cFilasPDF FilaTituloDetalle2 = new cFilasPDF();
+
+            cCeldaPDF TituloNro = new cCeldaPDF();
+            TituloNro.Contenido = "Nº";
+            FilaTituloDetalle.ListaCeldas.Add(TituloNro);
+
+            cCeldaPDF TituloNombres = new cCeldaPDF();
+            TituloNombres.Contenido = "Nombres";
+            FilaTituloDetalle.ListaCeldas.Add(TituloNombres);
+
+            cCeldaPDF TituloDNI = new cCeldaPDF();
+            TituloDNI.Contenido = "DNI";
+            FilaTituloDetalle.ListaCeldas.Add(TituloDNI);
+
+            cCeldaPDF Vacio1 = new cCeldaPDF();
+            FilaTituloDetalle2.ListaCeldas.Add(Vacio1);
+
+            cCeldaPDF Vacio2 = new cCeldaPDF();
+            FilaTituloDetalle2.ListaCeldas.Add(Vacio2);
+
+            cCeldaPDF Vacio3 = new cCeldaPDF();
+            FilaTituloDetalle2.ListaCeldas.Add(Vacio3);
+
+            for (int i = 0; i < numeroDias; i++)
+            {
+                cCeldaPDF labelTituloDetalle = new cCeldaPDF();
+                labelTituloDetalle.Contenido = ConvertirFecha(Inicio.AddDays(i));
+                FilaTituloDetalle.ListaCeldas.Add(labelTituloDetalle);
+
+                cCeldaPDF labelTituloDetalle2 = new cCeldaPDF();
+                labelTituloDetalle2.Contenido = Inicio.AddDays(i).Day.ToString();
+                FilaTituloDetalle2.ListaCeldas.Add(labelTituloDetalle2);
+            }
+
+            TablaDetalle.ListaFilas.Add(FilaTituloDetalle);
+            TablaDetalle.ListaFilas.Add(FilaTituloDetalle2);
+
+            int contador = 1;
+            foreach (cReporteMultipleAsistencia item in ListaMultiple)
+            {
+                
+                cFilasPDF FilaDetalle = new cFilasPDF();
+
+                cCeldaPDF Numero = new cCeldaPDF();
+                Numero.Contenido = contador.ToString();
+                contador++;
+
+                FilaDetalle.ListaCeldas.Add(Numero);
+
+                cCeldaPDF LabelNombres = new cCeldaPDF();
+                LabelNombres.Contenido = item.Trabajador.ApellidoPaterno + " " + item.Trabajador.ApellidoMaterno + ", " + item.Trabajador.Nombres;
+                FilaDetalle.ListaCeldas.Add(LabelNombres);
+
+                cCeldaPDF NumeroDNI = new cCeldaPDF();
+                NumeroDNI.Contenido = item.Trabajador.Dni;
+                FilaDetalle.ListaCeldas.Add(NumeroDNI);
+
+                for (int i = 0; i < numeroDias; i++)
+                {
+                    cCeldaPDF labelDetalle = new cCeldaPDF();
+                    if (item.AsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.SinFalta || item.AsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.FaltaJustificada)
+                    {
+                        if (item.AsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.SinFalta)
+                        {
+                            labelDetalle.Contenido = "N";
+                        }
+                        else
+                        {
+                            labelDetalle.Contenido = "J";
+                        }
+                    }
+                    else
+                    {
+                        labelDetalle.Contenido = "F";
+                        labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                    }
+                    if (item.AsistenciaMes.ListaAsistenciaDia[i].Tarde)
+                    {
+                        labelDetalle.Contenido = "T";
+                        labelDetalle.ColorLetra = System.Drawing.Color.Orange;
+                        
+                    }
+                    FilaDetalle.ListaCeldas.Add(labelDetalle);
+                }
+
+                TablaDetalle.ListaFilas.Add(FilaDetalle);
+            }
+
+            cTablaPDF Tablavacia = new cTablaPDF();
+            Tablavacia.columnas = 1;
+            Tablavacia.anchoColumnas = new float[1] { 50f };
+            cFilasPDF FilaVacia = new cFilasPDF();
+            cCeldaPDF Celdavacia = new cCeldaPDF();
+            FilaVacia.ListaCeldas.Add(Celdavacia);
+            Tablavacia.ListaFilas.Add(FilaVacia);
+
+            cTablaPDF TablaLeyenda = new cTablaPDF();
+            TablaLeyenda.columnas = 2;
+            TablaLeyenda.anchoColumnas = new float[] { 20f, 20f };
+
+            cFilasPDF FilaDiaNormal = new cFilasPDF();
+            cCeldaPDF CeldaTituloDiaNormal = new cCeldaPDF();
+            CeldaTituloDiaNormal.Contenido = "Dia Normal";
+            FilaDiaNormal.ListaCeldas.Add(CeldaTituloDiaNormal);
+
+            cCeldaPDF CeldaDiaNormal = new cCeldaPDF();
+            CeldaDiaNormal.Contenido = "N";
+            FilaDiaNormal.ListaCeldas.Add(CeldaDiaNormal);
+
+            TablaLeyenda.ListaFilas.Add(FilaDiaNormal);
+
+            cFilasPDF FilaDiaJustificado = new cFilasPDF();
+            cCeldaPDF CeldaTituloDiaJustificado = new cCeldaPDF();
+            CeldaTituloDiaJustificado.Contenido = "Falta Justificada";
+            FilaDiaJustificado.ListaCeldas.Add(CeldaTituloDiaJustificado);
+
+            cCeldaPDF CeldaDiaJustificado = new cCeldaPDF();
+            CeldaDiaJustificado.Contenido = "J";
+            FilaDiaJustificado.ListaCeldas.Add(CeldaDiaJustificado);
+
+            TablaLeyenda.ListaFilas.Add(FilaDiaJustificado);
+
+            cFilasPDF FilaDiaFalta = new cFilasPDF();
+            cCeldaPDF CeldaTituloDiaFalta = new cCeldaPDF();
+            CeldaTituloDiaFalta.Contenido = "Falta Injustificada";
+            FilaDiaFalta.ListaCeldas.Add(CeldaTituloDiaFalta);
+
+            cCeldaPDF CeldaDiaFalta = new cCeldaPDF();
+            CeldaDiaFalta.Contenido = "F";
+            FilaDiaFalta.ListaCeldas.Add(CeldaDiaFalta);
+
+            TablaLeyenda.ListaFilas.Add(FilaDiaFalta);
+
+            cFilasPDF FilaDiaTarde = new cFilasPDF();
+            cCeldaPDF CeldaTituloDiatarde = new cCeldaPDF();
+            CeldaTituloDiatarde.Contenido = "Tardanza";
+            FilaDiaTarde.ListaCeldas.Add(CeldaTituloDiatarde);
+
+            cCeldaPDF CeldaDiatarde = new cCeldaPDF();
+            CeldaDiatarde.Contenido = "T";
+            FilaDiaTarde.ListaCeldas.Add(CeldaDiatarde);
+
+            TablaLeyenda.ListaFilas.Add(FilaDiaTarde);
+
+            oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
+            oHojaPDF.ListaDeTablas.Add(TablaTitulo1);
+            oHojaPDF.ListaDeTablas.Add(TablaTitulo2);
+            oHojaPDF.ListaDeTablas.Add(TablaDetalle);
+            oHojaPDF.ListaDeTablas.Add(Tablavacia);
+            oHojaPDF.ListaDeTablas.Add(TablaLeyenda);
+
+            oReporte.ListaHojasPDF.Add(oHojaPDF);
+
+            ImprimirReportePDF(oReporte);
+
+        }
+
         private void ImprimirReportePDF(cReportePDF oReportePDF)
         {
             iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);
             iTextSharp.text.Font fuenteTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 9, 1, iTextSharp.text.Color.BLUE);
             Document pdfDoc = new Document(PageSize.A4, 30, 9, 10, 10);
-            pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4);
+            if (oReportePDF.FormatoHoja == cReportePDF.enumFormatoHoja.Vertical)
+            {
+                pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+            }
+            else
+            {
+                pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+            }
             FileStream stream = new FileStream(oReportePDF.RutaArchivo, FileMode.Create);
             PdfWriter.GetInstance(pdfDoc, stream);
             pdfDoc.Open();

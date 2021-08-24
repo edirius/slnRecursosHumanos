@@ -70,6 +70,9 @@
             this.btnAprobacion = new System.Windows.Forms.Button();
             this.btnRenta5ta = new System.Windows.Forms.Button();
             this.chkQuinta = new System.Windows.Forms.CheckBox();
+            this.btnAsistenciaReloj = new System.Windows.Forms.Button();
+            this.btnImprimirReporteAsistencia = new System.Windows.Forms.Button();
+            this.dlgGuardarReportePDF = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -447,11 +450,49 @@
             this.chkQuinta.Text = "5ta cat";
             this.chkQuinta.UseVisualStyleBackColor = true;
             // 
+            // btnAsistenciaReloj
+            // 
+            this.btnAsistenciaReloj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAsistenciaReloj.BackColor = System.Drawing.Color.MintCream;
+            this.btnAsistenciaReloj.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAsistenciaReloj.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnAsistenciaReloj.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnAsistenciaReloj.Location = new System.Drawing.Point(235, 391);
+            this.btnAsistenciaReloj.Name = "btnAsistenciaReloj";
+            this.btnAsistenciaReloj.Size = new System.Drawing.Size(94, 65);
+            this.btnAsistenciaReloj.TabIndex = 101;
+            this.btnAsistenciaReloj.Text = "&Jornada Laboral";
+            this.btnAsistenciaReloj.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAsistenciaReloj.UseVisualStyleBackColor = false;
+            this.btnAsistenciaReloj.Click += new System.EventHandler(this.btnAsistenciaReloj_Click);
+            // 
+            // btnImprimirReporteAsistencia
+            // 
+            this.btnImprimirReporteAsistencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirReporteAsistencia.BackColor = System.Drawing.Color.MintCream;
+            this.btnImprimirReporteAsistencia.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnImprimirReporteAsistencia.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnImprimirReporteAsistencia.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnImprimirReporteAsistencia.Location = new System.Drawing.Point(335, 391);
+            this.btnImprimirReporteAsistencia.Name = "btnImprimirReporteAsistencia";
+            this.btnImprimirReporteAsistencia.Size = new System.Drawing.Size(94, 65);
+            this.btnImprimirReporteAsistencia.TabIndex = 102;
+            this.btnImprimirReporteAsistencia.Text = "&Imprimir Reporte Asistencia";
+            this.btnImprimirReporteAsistencia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImprimirReporteAsistencia.UseVisualStyleBackColor = false;
+            this.btnImprimirReporteAsistencia.Click += new System.EventHandler(this.btnImprimirReporteAsistencia_Click);
+            // 
+            // dlgGuardarReportePDF
+            // 
+            this.dlgGuardarReportePDF.Filter = "\"pdf archivo (*.pdf)|*.pdf";
+            // 
             // frmMantenimientoDetallePlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(929, 468);
+            this.Controls.Add(this.btnImprimirReporteAsistencia);
+            this.Controls.Add(this.btnAsistenciaReloj);
             this.Controls.Add(this.chkQuinta);
             this.Controls.Add(this.btnRenta5ta);
             this.Controls.Add(this.btnAprobacion);
@@ -518,5 +559,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalRemuneracio;
         private System.Windows.Forms.Button btnRenta5ta;
         private System.Windows.Forms.CheckBox chkQuinta;
+        private System.Windows.Forms.Button btnAsistenciaReloj;
+        private System.Windows.Forms.Button btnImprimirReporteAsistencia;
+        private System.Windows.Forms.SaveFileDialog dlgGuardarReportePDF;
     }
 }

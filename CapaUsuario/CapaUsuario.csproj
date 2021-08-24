@@ -112,6 +112,12 @@
     <Compile Include="AFP\frmListaAFPs.Designer.cs">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </Compile>
+    <Compile Include="AsistenciaGen\frmJornadaLaboral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AsistenciaGen\frmJornadaLaboral.Designer.cs">
+      <DependentUpon>frmJornadaLaboral.cs</DependentUpon>
+    </Compile>
     <Compile Include="Asistencia\AsignarCodigoReloj.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1386,6 +1392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AFP\frmListaAFPs.resx">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AsistenciaGen\frmJornadaLaboral.resx">
+      <DependentUpon>frmJornadaLaboral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Asistencia\AsignarCodigoReloj.resx">
       <DependentUpon>AsignarCodigoReloj.cs</DependentUpon>

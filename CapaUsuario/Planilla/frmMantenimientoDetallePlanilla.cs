@@ -1625,6 +1625,85 @@ namespace CapaUsuario.Planilla
             }
         }
 
+        private void btnAsistenciaReloj_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvDetallePlanilla.SelectedCells.Count > 0)
+                {
+                    AsistenciaGen.frmJornadaLaboral fJornadaLaboral = new AsistenciaGen.frmJornadaLaboral();
+                    fJornadaLaboral.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt32(dgvDetallePlanilla.Rows[dgvDetallePlanilla.SelectedCells[0].RowIndex].Cells[4].Value));
+                    fJornadaLaboral.Mes = new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1);
+                    if (fJornadaLaboral.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+                
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar la asistencia del reloj: " + ex.Message);
+            }
+        }
+
+        private void btnImprimirReporteAsistencia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CapaDeNegocios.Asistencia.cTrabajadorReloj miTrabajadorReloj;
+
+                CapaDeNegocios.AsistenciaGeneral.cCatalogoJornadaLaboral miCatalogo = new CapaDeNegocios.AsistenciaGeneral.cCatalogoJornadaLaboral();
+                CapaDeNegocios.Asistencia.cCatalogoAsistencia miCatalogoAsistencia = new CapaDeNegocios.Asistencia.cCatalogoAsistencia();
+                CapaDeNegocios.Asistencia.cHorario oHorario = new CapaDeNegocios.Asistencia.cHorario();
+
+                if (dgvDetallePlanilla.Rows.Count > 0)
+                {
+                    CapaDeNegocios.Reportes.cReporteAsistencia oReporte = new CapaDeNegocios.Reportes.cReporteAsistencia();
+
+                    CapaDeNegocios.Reportes.cReportePDF miReporte = new CapaDeNegocios.Reportes.cReportePDF();
+
+                    if (dlgGuardarReportePDF.ShowDialog() == DialogResult.OK)
+                    {
+                        List<CapaDeNegocios.Reportes.cReporteMultipleAsistencia> ListaMultiplesAsistencias = new List<CapaDeNegocios.Reportes.cReporteMultipleAsistencia>();
+                        DateTime Inicio = DateTime.Now;
+                        DateTime Fin = DateTime.Now;
+                        DateTime MesActual = new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1);
+
+                        for (int i = 0; i < dgvDetallePlanilla.Rows.Count; i++)
+                        {
+                            CapaDeNegocios.Reportes.cReporteMultipleAsistencia oMultiple = new CapaDeNegocios.Reportes.cReporteMultipleAsistencia();
+                            oMultiple.Trabajador = miTrabajador.traerTrabajador(Convert.ToInt32(dgvDetallePlanilla.Rows[i].Cells[4].Value));
+                            
+                            miTrabajadorReloj = miCatalogoAsistencia.TraerTrabajadorReloj(oMultiple.Trabajador);
+                            oHorario = miCatalogoAsistencia.TraerHorarioTrabajador(oMultiple.Trabajador);
+                            if (oHorario == null)
+                            {
+                                MessageBox.Show("No existe asignado horario para el trabajador: " + oMultiple.Trabajador.ApellidoPaterno + " " + oMultiple.Trabajador.ApellidoMaterno + ", " + oMultiple.Trabajador.Nombres);
+                            }
+                            oMultiple.AsistenciaMes = miCatalogoAsistencia.LLenarAsistencia(oMultiple.Trabajador, MesActual.Month, MesActual.Year, oHorario);
+                            Inicio = oMultiple.AsistenciaMes.InicioMes;
+                            Fin = oMultiple.AsistenciaMes.FinMes;
+                            oMultiple.AsistenciaMes.ListaAsistenciaDia = oMultiple.AsistenciaMes.LlenarAsistencias(miCatalogoAsistencia.ListaPicadoEntreFechas(miTrabajadorReloj, oMultiple.AsistenciaMes.InicioMes, oMultiple.AsistenciaMes.FinMes),
+                                                                                                                                   oMultiple.AsistenciaMes.InicioMes,
+                                                                                                                                   oMultiple.AsistenciaMes.FinMes,
+                                                                                                                                   miCatalogoAsistencia.TraerHorarioTrabajador(oMultiple.Trabajador),
+                                                                                                                                   miCatalogoAsistencia.ListaSalidasEntreFechas(oMultiple.Trabajador, oMultiple.AsistenciaMes.InicioMes, oMultiple.AsistenciaMes.FinMes),
+                                                                                                                                   miCatalogoAsistencia.ListaDiaFestivo(MesActual.Year));
+                            oMultiple.AsistenciaMes.Actualizardatos();
+                            ListaMultiplesAsistencias.Add(oMultiple);
+                        }
+                        oReporte.ImprimirReporteAsistenciMultipleAsistencia(ListaMultiplesAsistencias, dlgGuardarReportePDF.FileName,Inicio, Fin);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir reporte de asistencia." + ex.Message, "Reporte de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void DibujarDataGrid()
         {
             string abrev_ingresos = ""; string abrev_descuentos = ""; string abrev_atrabajador = ""; string abrev_aempleador = "";
