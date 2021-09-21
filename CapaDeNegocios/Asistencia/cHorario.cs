@@ -159,6 +159,37 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
+        public cTurnoDia DevolverTurnoDia(DateTime Fecha)
+        {
+            try
+            {
+                switch (Fecha.DayOfWeek)
+                {
+                    case DayOfWeek.Sunday:
+                        return _TurnoDomingo;
+                    case DayOfWeek.Monday:
+                        return _TurnoLunes;
+                    case DayOfWeek.Tuesday:
+                        return _TurnoMartes;
+                    case DayOfWeek.Wednesday:
+                        return _TurnoMiercoles;
+                    case DayOfWeek.Thursday:
+                        return _TurnoJueves;
+                    case DayOfWeek.Friday:
+                        return _TurnoViernes;
+                    case DayOfWeek.Saturday:
+                        return _TurnoSabado;
+                    default:
+                        return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo DevolverTurnoDia: " + ex.Message);
+            }
+        }
+
+
         //public List<cHorario> ListaHorarios()
         //{
         //    try

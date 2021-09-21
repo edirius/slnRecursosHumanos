@@ -31,6 +31,7 @@
             this.cboTipoSuspencionLaboral = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnOk = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             this.cboTipoSuspencionLaboral.FormattingEnabled = true;
             this.cboTipoSuspencionLaboral.Location = new System.Drawing.Point(6, 19);
             this.cboTipoSuspencionLaboral.Name = "cboTipoSuspencionLaboral";
-            this.cboTipoSuspencionLaboral.Size = new System.Drawing.Size(406, 21);
+            this.cboTipoSuspencionLaboral.Size = new System.Drawing.Size(429, 21);
             this.cboTipoSuspencionLaboral.TabIndex = 0;
             this.cboTipoSuspencionLaboral.SelectedIndexChanged += new System.EventHandler(this.cboTipoSuspencionLaboral_SelectedIndexChanged);
             // 
@@ -53,7 +54,7 @@
             this.groupBox1.Controls.Add(this.cboTipoSuspencionLaboral);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(418, 45);
+            this.groupBox1.Size = new System.Drawing.Size(441, 45);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Seleccione el Tipo de Suspencion";
@@ -61,7 +62,7 @@
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(436, 12);
+            this.btnOk.Location = new System.Drawing.Point(469, 12);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(55, 45);
             this.btnOk.TabIndex = 2;
@@ -69,11 +70,23 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.Location = new System.Drawing.Point(530, 12);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(55, 45);
+            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // frmBuscarSubsidio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 69);
+            this.ClientSize = new System.Drawing.Size(602, 69);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -92,5 +105,6 @@
         private System.Windows.Forms.ComboBox cboTipoSuspencionLaboral;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

@@ -14,8 +14,9 @@ namespace CapaUsuario.AsistenciaGen
 {
     public partial class frmJornadaLaboral : Form
     {
-        int filaseleccionada = 0;
+       
         int columnaseleccionada = 0;
+
 
         public cTrabajador miTrabajador;
         public DateTime Mes;
@@ -28,6 +29,8 @@ namespace CapaUsuario.AsistenciaGen
         CapaDeNegocios.Asistencia.cAsistenciaSuspencionLaboral miAsistenciaSuspencionLaboral = new CapaDeNegocios.Asistencia.cAsistenciaSuspencionLaboral();
         private CapaDeNegocios.AsistenciaGeneral.cJornadaLaboral miJornada = new CapaDeNegocios.AsistenciaGeneral.cJornadaLaboral();
         private CapaDeNegocios.Asistencia.cAsistenciaMes AsistenciaMes = new CapaDeNegocios.Asistencia.cAsistenciaMes();
+
+        private ViewJornadaLaboral vJordanaLaboral = new ViewJornadaLaboral();
 
         public frmJornadaLaboral()
         {
@@ -56,8 +59,18 @@ namespace CapaUsuario.AsistenciaGen
                 AsistenciaMes.Actualizardatos();
 
                 miJornada = miCatalogo.TraerJornadaLaboralEntreFechas(miTrabajador, AsistenciaMes.InicioMes, AsistenciaMes.FinMes);
+
+                //Llenar la vista jornada laboral
+                vJordanaLaboral.Inicio = AsistenciaMes.InicioMes;
+                vJordanaLaboral.Fin = AsistenciaMes.FinMes;
+                vJordanaLaboral.AsistenciaMes = AsistenciaMes;
+                vJordanaLaboral.OHorario = oHorario;
+                vJordanaLaboral.JornadaLaboral = miJornada;
+                vJordanaLaboral.LlenarDetalleJornadaLaboral();
+
                 DibujarDataGrid();
-                CargarDatosJornadaLaboral();
+                CargarDatosJornadaLaboral(vJordanaLaboral);
+                CalcularTotales();
 
             }
             catch (Exception ex)
@@ -66,46 +79,56 @@ namespace CapaUsuario.AsistenciaGen
             }
         }
 
-        private void CargarDatosJornadaLaboral()
+        private void CargarDatosJornadaLaboral(ViewJornadaLaboral miVistaJornada)
         {
             try
             {
-                int DiasMes = (AsistenciaMes.FinMes - AsistenciaMes.InicioMes).Days + 1;
+                int DiasMes = (miVistaJornada.Fin - miVistaJornada.Inicio).Days + 1;
                 for (int i = 0; i < DiasMes; i++)
                 {
-                    dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "N";
-
-                    foreach (CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral item in miJornada.ListaDetalleJornadaLaboral)
+                    foreach (DetalleViewJornadaLaboral item in miVistaJornada.ListaDetalleViewJornadaLaboral)
                     {
                         if (item.Dia.Date == AsistenciaMes.InicioMes.AddDays(i).Date)
-                        {
-                            switch (item.TipoDia)
+                        { 
+                            //Si es 0, no tiene asignado un turno
+                            if ((item.TurnoDia.CodigoTurnoDia == 0)|| (item.AsistenciaDia.EventoDia == CapaDeNegocios.Asistencia.cAsistenciaDia.TipoDia.DiaFestivo))
                             {
-                                case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Laborado:
-                                    dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "N";
-                                    break;
-                                case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Justificado:
-                                    dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "J";
-                                    break;
-                                case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Subsidiado:
-                                    dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "S";
-                                    break;
-                                case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.NoLaborado:
-                                    dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "F";
-                                    break;
-                                case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Tardanza:
-                                    dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "T";
-                                    break;
-                                case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Feriado:
-                                    dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "L";
-                                    break;
-                                default:
-                                    break;
+                                dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "L";
+                            }
+                            else
+                            {
+                                dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "N";
+                            }
+                            if (item.DetalleJornadaLaboral != null)
+                            {
+                                switch (item.DetalleJornadaLaboral.TipoDia)
+                                {
+                                    case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Laborado:
+                                        dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "N";
+                                        break;
+                                    case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Justificado:
+                                        dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "J";
+                                        break;
+                                    case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Subsidiado:
+                                        dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "S";
+                                        break;
+                                    case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.NoLaborado:
+                                        dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "F";
+                                        break;
+                                    case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Tardanza:
+                                        dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "T";
+                                        break;
+                                    case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Feriado:
+                                        dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "L";
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
                             
                         }
                     }
-                    
+
                 }
             }
             catch (Exception ex)
@@ -194,100 +217,72 @@ namespace CapaUsuario.AsistenciaGen
 
         private void btnSincronizarReloj_Click(object sender, EventArgs e)
         {
-            int DiasMes = (AsistenciaMes.FinMes - AsistenciaMes.InicioMes).Days + 1;
-            for (int i = 0; i < DiasMes; i++)
-            {
-                foreach (CapaDeNegocios.Asistencia.cAsistenciaDia item in AsistenciaMes.ListaAsistenciaDia)
-                {
-                    if (item.Dia.Date == AsistenciaMes.InicioMes.AddDays(i))
-                    {
-                        if (dgvAsistenciaTrabajador.Rows[0].Cells[i].Value.ToString() == "N" )
-                        {
-                            if (item.Tarde)
-                            {
-                                dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "T";
-                            }
-                            else if (item.DiaLibre)
-                            {
-                                dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "L";
-                            }
-                            else 
-                            {
-                                switch (item.Falta)
-                                {
-                                    case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaPicadoEntrada:
-                                        dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "F";
-                                        break;
-                                    case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaPicadoFinal:
-                                        dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "F";
-                                        break;
-                                    case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaJustificada:
-                                        dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "J";
-                                        break;
-                                    case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaTotal:
-                                        dgvAsistenciaTrabajador.Rows[0].Cells[i].Value = "F";
-                                        break;
-                                    case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.SinFalta:
-                                        break;
-                                    default:
-                                        break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+
+            miCatalogo.ActualizarDetalleSuspensionLaboral(vJordanaLaboral.AsistenciaMes, vJordanaLaboral.JornadaLaboral);
+            Iniciar();
+
         }
 
         private void miMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             CapaUsuario.Asistencia.frmBuscarSubsidio fBuscarSubsidio = new Asistencia.frmBuscarSubsidio();
-            CapaDeNegocios.Asistencia.cAsistenciaTrabajador miAsistencia = new CapaDeNegocios.Asistencia.cAsistenciaTrabajador();
-            miAsistencia.Fecha = AsistenciaMes.InicioMes.AddDays(filaseleccionada);
 
-            DataTable tablaAsistencia = new DataTable();
+            CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral NuevoDetalleJornadaLaboral = new CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral();
+            NuevoDetalleJornadaLaboral.Codigo = 0;
+            NuevoDetalleJornadaLaboral.Dia = vJordanaLaboral.AsistenciaMes.InicioMes.AddDays(columnaseleccionada).Date;
+            NuevoDetalleJornadaLaboral.Trabajador = vJordanaLaboral.AsistenciaMes.Trabajador;
 
             switch (e.ClickedItem.Text)
             {
-                case "L = Laborados":
-                    dgvAsistenciaTrabajador.Rows[filaseleccionada].Cells[columnaseleccionada].Value = "L";
+                case "N = Normal- Laborado":
+                    NuevoDetalleJornadaLaboral = null;
                     break;
                 case "T = Tardanza":
-                    dgvAsistenciaTrabajador.Rows[filaseleccionada].Cells[columnaseleccionada].Value = "T";
-                    miAsistencia.Tipo = "T";
-                    miAsistencia.CrearAsistenciaTrabajador(miAsistencia);
+                    NuevoDetalleJornadaLaboral.TipoDia = CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Tardanza;
                     break;
                 case "S = Subsidiados":
-                    
+
                     fBuscarSubsidio.RecibirDatos(true);
                     if (fBuscarSubsidio.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        dgvAsistenciaTrabajador.Rows[filaseleccionada].Cells[columnaseleccionada].Value = "S";
-                        miAsistencia.CrearAsistenciaTrabajador(miAsistencia);
-                        dgvAsistenciaTrabajador.Rows[0].Cells[columnaseleccionada].Value = fBuscarSubsidio.sidttiposuspencionlaboral;
-
-                        tablaAsistencia = miAsistencia.ListarAsistenciaTrabajador(miTrabajador.IdTrabajador);
-                        miAsistenciaSuspencionLaboral.IdtAsistenciaTrabajador = Convert.ToInt32(tablaAsistencia.Compute("MAX(idtasistenciatrabajador)", ""));
-                        miAsistenciaSuspencionLaboral.CrearAsistenciaSuspencionLaboral(miAsistenciaSuspencionLaboral);
+                        NuevoDetalleJornadaLaboral.TipoDia = CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Subsidiado;
+                        NuevoDetalleJornadaLaboral.SuspensionLaboral = new CapaDeNegocios.Sunat.cTipoSuspencionLaboral();
+                        NuevoDetalleJornadaLaboral.SuspensionLaboral.IdtTipoSuspencionLaboral = fBuscarSubsidio.sidttiposuspencionlaboral;
                     }
                     break;
                 case "F = No Laborados y no Subsidiados":
-                    dgvAsistenciaTrabajador.Rows[filaseleccionada].Cells[columnaseleccionada].Value = "F";
+                    NuevoDetalleJornadaLaboral.TipoDia = CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.NoLaborado;
                     fBuscarSubsidio.RecibirDatos(false);
                     if (fBuscarSubsidio.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        dgvAsistenciaTrabajador.Rows[0].Cells[columnaseleccionada].Value = fBuscarSubsidio.sidttiposuspencionlaboral;
+                        NuevoDetalleJornadaLaboral.SuspensionLaboral = new CapaDeNegocios.Sunat.cTipoSuspencionLaboral();
+                        NuevoDetalleJornadaLaboral.SuspensionLaboral.IdtTipoSuspencionLaboral = fBuscarSubsidio.sidttiposuspencionlaboral;
                     }
                     break;
             }
-            CalcularTotales();
+
+
+            if (dgvAsistenciaTrabajador.Rows[0].Cells[columnaseleccionada].Value.ToString() != "N")
+            {
+                foreach (CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral item in vJordanaLaboral.JornadaLaboral.ListaDetalleJornadaLaboral)
+                {
+                    if (item.Dia.Date == vJordanaLaboral.AsistenciaMes.InicioMes.AddDays(columnaseleccionada).Date)
+                    {
+                        miCatalogo.ActualizarDetalleSuspensionLaboral(item, NuevoDetalleJornadaLaboral);  
+                    }
+                }
+            }
+            else
+            {
+                miCatalogo.ActualizarDetalleSuspensionLaboral(null, NuevoDetalleJornadaLaboral);
+            }
+
+            Iniciar();
         }
 
         private void CalcularTotales()
         {
             int DiasMes = (AsistenciaMes.FinMes - AsistenciaMes.InicioMes).Days + 1;
-            if (dgvAsistenciaTrabajador.RowCount == 4)
-            {
                 int TotalLaborados = 0;
                 int TotalTardanzas = 0;
                 int TotalSubsidios = 0;
@@ -296,7 +291,7 @@ namespace CapaUsuario.AsistenciaGen
                 {
                     switch (dgvAsistenciaTrabajador.Rows[0].Cells[i].Value.ToString())
                     {
-                        case "L":
+                        case "N":
                             TotalLaborados += 1;
                             break;
                         case "T":
@@ -314,7 +309,6 @@ namespace CapaUsuario.AsistenciaGen
                 dgvAsistenciaTrabajador.Rows[0].Cells[DiasMes + 1].Value = TotalTardanzas;
                 dgvAsistenciaTrabajador.Rows[0].Cells[DiasMes + 2].Value = TotalSubsidios;
                 dgvAsistenciaTrabajador.Rows[0].Cells[DiasMes + 3].Value = TotalNoLaboradosNoSubsidiados;
-            }
         }
 
         private void dgvAsistenciaTrabajador_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -325,7 +319,7 @@ namespace CapaUsuario.AsistenciaGen
                 {
                     if (dgvAsistenciaTrabajador.Columns[e.ColumnIndex].Name != "txtTotalLaborados" && dgvAsistenciaTrabajador.Columns[e.ColumnIndex].Name != "txtTotalTardanza" && dgvAsistenciaTrabajador.Columns[e.ColumnIndex].Name != "txtTotalSubsidiados" && dgvAsistenciaTrabajador.Columns[e.ColumnIndex].Name != "txtTotalNoSubsidiadosNoLaborados")
                     {
-                        filaseleccionada = e.RowIndex;
+                        //filaseleccionada = e.RowIndex;
                         columnaseleccionada = e.ColumnIndex;
                         if (e.Button == MouseButtons.Right)
                         {
@@ -340,6 +334,158 @@ namespace CapaUsuario.AsistenciaGen
             {
                 MessageBox.Show(m.Message);
             }
+        }
+
+        private void dgvAsistenciaTrabajador_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (vJordanaLaboral.ListaDetalleViewJornadaLaboral.Count > 0)
+                {
+                    LlenarDetalle(vJordanaLaboral.ListaDetalleViewJornadaLaboral.Find(x => x.Dia.Date == vJordanaLaboral.Inicio.AddDays(e.ColumnIndex)));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al seleccionar celda: " + ex.Message);
+            }
+        }
+
+        private void LlenarDetalle(DetalleViewJornadaLaboral miDetalle)
+        {
+            try
+            {
+                lblTipoSuspension.Text = "";
+                if (miDetalle.TurnoDia.CodigoTurnoDia == 0)
+                {
+                    lblNombreTurno.Text = "Sin Turno";
+                    lblNombreTurno.ForeColor = Color.Black;
+                }
+                else
+                {
+                    if (miDetalle.AsistenciaDia.DiaFestivo == null)
+                    {
+                        lblNombreTurno.Text = "Dia Laborable";
+                        lblNombreTurno.ForeColor = Color.Blue;
+                    }
+                    else
+                    {
+                        lblNombreTurno.Text = "Dia Festivo: " + miDetalle.AsistenciaDia.DiaFestivo.Nombre;
+                        lblNombreTurno.ForeColor = Color.Red;
+                    }
+                }
+
+                //parte para llenar la jornada laboral
+                if (miDetalle.DetalleJornadaLaboral != null)
+                {
+                    switch (miDetalle.DetalleJornadaLaboral.TipoDia)
+                    {
+                        case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Laborado:
+                            lblTipoDia.Text = miDetalle.DetalleJornadaLaboral.TipoDia.ToString();
+                            lblTipoDia.ForeColor = Color.Black;
+                            lblTipoSuspension.Text = "";
+                            break;
+                        case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Justificado:
+                            lblTipoDia.Text = "Justificado";
+                            lblTipoDia.ForeColor = Color.Black;
+                            lblTipoSuspension.Text = "";
+                            break;
+                        case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Subsidiado:
+                            lblTipoDia.Text = "Subsidiado";
+                            lblTipoDia.ForeColor = Color.DarkBlue;
+                            if (miDetalle.DetalleJornadaLaboral.SuspensionLaboral != null)
+                            {
+                                lblTipoSuspension.Text = miDetalle.DetalleJornadaLaboral.SuspensionLaboral.Abreviacion;
+                                lblTipoSuspension.ForeColor = Color.DarkBlue;
+                            }
+                            break;
+                        case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.NoLaborado:
+                            lblTipoDia.Text = "Falta";
+                            lblTipoDia.ForeColor = Color.Red;
+                            if (miDetalle.DetalleJornadaLaboral.SuspensionLaboral != null)
+                            {
+                                lblTipoSuspension.Text = miDetalle.DetalleJornadaLaboral.SuspensionLaboral.Abreviacion;
+                                lblTipoSuspension.ForeColor = Color.Red;
+                            }
+                            break;
+                        case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Tardanza:
+                            lblTipoDia.Text = "Tardanza";
+                            lblTipoDia.ForeColor = Color.Red;
+                            lblTipoSuspension.Text = "";
+                            break;
+                        case CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Feriado:
+                            lblTipoDia.Text = "Feriado";
+                            lblTipoDia.ForeColor = Color.Red;
+                            lblTipoSuspension.Text = "";
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    lblTipoDia.Text = "Normal";
+                    lblTipoDia.ForeColor = Color.Black;
+                }
+
+                //parte para llenar el picado de entrada y salida
+
+                if (miDetalle.AsistenciaDia != null)
+                {
+                    if (miDetalle.AsistenciaDia.PicadoEntrada != null)
+                    {
+                        lblPicadoEntrada.Text = miDetalle.AsistenciaDia.PicadoEntrada.Picado.ToString();
+                        
+                    }
+                    
+                    if (miDetalle.AsistenciaDia.PicadoSalida != null)
+                    {
+                        lblPicadoSalida.Text = miDetalle.AsistenciaDia.PicadoSalida.Picado.ToString();
+                    }
+
+                    switch (miDetalle.AsistenciaDia.Falta)
+                    {
+                        case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaPicadoEntrada:
+                            lblPicadoEntrada.Text = "Sin Picado-Entrada";
+                            lblPicadoEntrada.ForeColor = Color.DarkOrange;
+                            break;
+                        case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaPicadoFinal:
+                            lblPicadoSalida.Text = "Sin Picado - Salida";
+                            lblPicadoSalida.ForeColor = Color.DarkOrange;
+                            break;
+                        case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaJustificada:
+                            lblPicadoEntrada.Text = "Falta Justificada";
+                            lblPicadoEntrada.ForeColor = Color.Blue;
+                            break;
+                        case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.FaltaTotal:
+                            lblPicadoEntrada.Text = "Sin Picado-Entrada";
+                            lblPicadoEntrada.ForeColor = Color.Orange;
+                            lblPicadoSalida.Text = "Sin Picado - Salida";
+                            lblPicadoSalida.ForeColor = Color.Orange;
+                            break;
+                        case CapaDeNegocios.Asistencia.cAsistenciaDia.TipoFalta.SinFalta:
+                            lblPicadoEntrada.ForeColor = Color.Black;
+                            lblPicadoSalida.ForeColor = Color.Black;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al llenar detalle: " + ex.Message) ;
+            }
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

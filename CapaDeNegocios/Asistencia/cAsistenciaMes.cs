@@ -255,5 +255,44 @@ namespace CapaDeNegocios.Asistencia
                 throw new cReglaNegociosException("Error al actualizar los datos de la asistencia del mes: " + ex.Message);
             }
         }
+
+        public cAsistenciaDia BuscarAsistenciaDiaXFecha(DateTime Fecha)
+        {
+            try
+            {
+                foreach (cAsistenciaDia item in _ListaAsistenciaDia)
+                {
+                    if (item.Dia.Date == Fecha.Date)
+                    {
+                        return item;
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo BuscarAsistenciaDiaXFecha: " + ex.Message);
+            }
+        }
+
+        public cExcepcionesAsistencia BuscarExcepcionAsistencia(DateTime Fecha)
+        {
+            try
+            {
+                foreach (cExcepcionesAsistencia item in _ListaSalidas)
+                {
+                    if (Fecha.Date >= item.InicioExcepcion.Date && Fecha.Date <= item.FinExcepcion )
+                    {
+                        return item;
+                    }
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo BuscarExcepcionAsistencia: " + ex.Message);
+            }
+        }
     }
 }

@@ -112,12 +112,14 @@
     <Compile Include="AFP\frmListaAFPs.Designer.cs">
       <DependentUpon>frmListaAFPs.cs</DependentUpon>
     </Compile>
+    <Compile Include="AsistenciaGen\DetalleViewJornadaLaboral.cs" />
     <Compile Include="AsistenciaGen\frmJornadaLaboral.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AsistenciaGen\frmJornadaLaboral.Designer.cs">
       <DependentUpon>frmJornadaLaboral.cs</DependentUpon>
     </Compile>
+    <Compile Include="AsistenciaGen\ViewJornadaLaboral.cs" />
     <Compile Include="Asistencia\AsignarCodigoReloj.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -24,6 +24,7 @@ namespace CapaDeNegocios.AsistenciaGeneral
         private enumTipoDiaJornada _TipoDia;
         private DateTime _Dia;
         private CapaDeNegocios.Sunat.cTipoSuspencionLaboral _SuspensionLaboral;
+        private cTrabajador _Trabajador;
 
         public enumTipoDiaJornada TipoDia
         {
@@ -74,6 +75,19 @@ namespace CapaDeNegocios.AsistenciaGeneral
             set
             {
                 _Codigo = value;
+            }
+        }
+
+        public cTrabajador Trabajador
+        {
+            get
+            {
+                return _Trabajador;
+            }
+
+            set
+            {
+                _Trabajador = value;
             }
         }
     }

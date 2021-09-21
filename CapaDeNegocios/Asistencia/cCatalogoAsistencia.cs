@@ -13,6 +13,7 @@ namespace CapaDeNegocios.Asistencia
         public cAsistenciaMes  LLenarAsistencia(cTrabajador miTrabajador, int mes, int año, cHorario HorarioTrabajador)
         {
             cAsistenciaMes oAsistenciaMes = new cAsistenciaMes();
+            oAsistenciaMes.Trabajador = miTrabajador;
             if (HorarioTrabajador.InicioMes == 1 )
             {
                 oAsistenciaMes.InicioMes = new DateTime(año, mes, 1);

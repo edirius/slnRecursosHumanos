@@ -83,5 +83,25 @@ namespace CapaDeNegocios.AsistenciaGeneral
                 _ListaDetalleJornadaLaboral = value;
             }
         }
+
+        public cDetalleJornadaLaboral DevolverDetalleJornadaXFecha(DateTime Fecha)
+        {
+            try
+            {
+                foreach (cDetalleJornadaLaboral item in _ListaDetalleJornadaLaboral)
+                {
+                    if (item.Dia.Date == Fecha.Date)
+                    {
+                        return item;
+                    }
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error el metodo DevolverDetalleJornadaXFecha: " + ex.Message);
+            }
+        }
     }
 }
