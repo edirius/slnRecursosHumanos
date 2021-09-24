@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CapaDeNegocios.Asistencia;
+using CapaDeNegocios.AsistenciaGeneral;
 
 namespace CapaDeNegocios.Reportes
 {
@@ -11,6 +12,7 @@ namespace CapaDeNegocios.Reportes
     {
         private cTrabajador _Trabajador;
         private CapaDeNegocios.Asistencia.cAsistenciaMes _AsistenciaMes;
+        private CapaDeNegocios.AsistenciaGeneral.cJornadaLaboral _JornadaLaboral;
 
         public cTrabajador Trabajador
         {
@@ -35,6 +37,19 @@ namespace CapaDeNegocios.Reportes
             set
             {
                 _AsistenciaMes = value;
+            }
+        }
+
+        public cJornadaLaboral JornadaLaboral
+        {
+            get
+            {
+                return _JornadaLaboral;
+            }
+
+            set
+            {
+                _JornadaLaboral = value;
             }
         }
     }

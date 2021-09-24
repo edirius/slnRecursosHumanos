@@ -623,7 +623,7 @@ namespace CapaDeNegocios.Reportes
             cFilasPDF FilaTitulo1 = new cFilasPDF();
 
             cCeldaPDF LabelEmpresa = new cCeldaPDF();
-            LabelEmpresa.Contenido = "Empresa:";
+            LabelEmpresa.Contenido = "Municipalidad:";
             FilaTitulo1.ListaCeldas.Add(LabelEmpresa);
 
             cCeldaPDF NombreEmpresa = new cCeldaPDF();
@@ -740,18 +740,64 @@ namespace CapaDeNegocios.Reportes
                         }
                         else
                         {
-                            labelDetalle.Contenido = "J";
+                            labelDetalle.Contenido = "C";
                         }
                     }
                     else
                     {
-                        labelDetalle.Contenido = "F";
-                        labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                        CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral jor = BuscarJornada(item.AsistenciaMes.ListaAsistenciaDia[i].Dia, item.JornadaLaboral);
+                        if (jor == null)
+                        {
+                            labelDetalle.Contenido = "C";
+                            labelDetalle.ColorLetra = System.Drawing.Color.Blue;
+                        }
+                        else
+                        {
+                            if (jor.TipoDia == AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.NoLaborado)
+                            {
+                                labelDetalle.Contenido = "F";
+                                labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                            }
+                            else
+                            {
+                                if (jor.TipoDia == AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Subsidiado)
+                                {
+                                    labelDetalle.Contenido = "S";
+                                    labelDetalle.ColorLetra = System.Drawing.Color.Blue;
+                                }
+                                if (jor.TipoDia == AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Tardanza)
+                                {
+                                    labelDetalle.Contenido = "T";
+                                    labelDetalle.ColorLetra = System.Drawing.Color.DarkOrange;
+                                }
+                            }
+                        }
+                        
                     }
                     if (item.AsistenciaMes.ListaAsistenciaDia[i].Tarde)
                     {
-                        labelDetalle.Contenido = "T";
-                        labelDetalle.ColorLetra = System.Drawing.Color.Orange;
+                        CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral jor = BuscarJornada(item.AsistenciaMes.ListaAsistenciaDia[i].Dia, item.JornadaLaboral);
+                        if (jor == null)
+                        {
+
+                            labelDetalle.Contenido = "N";
+                            labelDetalle.ColorLetra = System.Drawing.Color.Black;
+                        }
+                        else
+                        {
+                            if (jor.TipoDia == AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Tardanza)
+                            {
+
+                                labelDetalle.Contenido = "T";
+                                labelDetalle.ColorLetra = System.Drawing.Color.Orange;
+                            }
+                            else
+                            {
+                                labelDetalle.Contenido = "T";
+                                labelDetalle.ColorLetra = System.Drawing.Color.Orange;
+                            }
+                        }
+                        
                         
                     }
                     FilaDetalle.ListaCeldas.Add(labelDetalle);
@@ -785,11 +831,11 @@ namespace CapaDeNegocios.Reportes
 
             cFilasPDF FilaDiaJustificado = new cFilasPDF();
             cCeldaPDF CeldaTituloDiaJustificado = new cCeldaPDF();
-            CeldaTituloDiaJustificado.Contenido = "Falta Justificada";
+            CeldaTituloDiaJustificado.Contenido = "Comision";
             FilaDiaJustificado.ListaCeldas.Add(CeldaTituloDiaJustificado);
 
             cCeldaPDF CeldaDiaJustificado = new cCeldaPDF();
-            CeldaDiaJustificado.Contenido = "J";
+            CeldaDiaJustificado.Contenido = "C";
             FilaDiaJustificado.ListaCeldas.Add(CeldaDiaJustificado);
 
             TablaLeyenda.ListaFilas.Add(FilaDiaJustificado);
@@ -816,6 +862,17 @@ namespace CapaDeNegocios.Reportes
 
             TablaLeyenda.ListaFilas.Add(FilaDiaTarde);
 
+            cFilasPDF FilaDiaSUB = new cFilasPDF();
+            cCeldaPDF CeldaTituloDiaSUB = new cCeldaPDF();
+            CeldaTituloDiaSUB.Contenido = "Subsidiado";
+            FilaDiaSUB.ListaCeldas.Add(CeldaTituloDiaSUB);
+
+            cCeldaPDF CeldaDiaSUB = new cCeldaPDF();
+            CeldaDiaSUB.Contenido = "S";
+            FilaDiaSUB.ListaCeldas.Add(CeldaDiaSUB);
+
+            TablaLeyenda.ListaFilas.Add(FilaDiaSUB);
+
             oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
             oHojaPDF.ListaDeTablas.Add(TablaTitulo1);
             oHojaPDF.ListaDeTablas.Add(TablaTitulo2);
@@ -829,6 +886,21 @@ namespace CapaDeNegocios.Reportes
 
         }
 
+
+        public CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral BuscarJornada(DateTime fecha, CapaDeNegocios.AsistenciaGeneral.cJornadaLaboral JornadaLaboral)
+        {
+            CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral Jornada = null;
+            
+            foreach (CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral item in JornadaLaboral.ListaDetalleJornadaLaboral)
+            {
+                if (item.Dia.Date == fecha.Date)
+                {
+                    Jornada = item;
+                }
+            }
+
+            return Jornada;
+        }
         private void ImprimirReportePDF(cReportePDF oReportePDF)
         {
             iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);

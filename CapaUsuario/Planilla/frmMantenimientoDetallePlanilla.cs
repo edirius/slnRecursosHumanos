@@ -892,7 +892,7 @@ namespace CapaUsuario.Planilla
                     }
                 }
             }
-            if (!((sidtregimenlaboral == 3 || sidtregimenlaboral == 5) && (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")))
+            if (!((sidtregimenlaboral == 3 || sidtregimenlaboral == 5) && (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO" || splantilla == "PERSONAL TECNICO")))
             {
                 int diasfalta = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMesxFalta(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
                 dgvDetallePlanilla.Rows[fila].Cells[12].Value = DiasLaborados - diasfalta;
@@ -1753,6 +1753,7 @@ namespace CapaUsuario.Planilla
                             
                             miTrabajadorReloj = miCatalogoAsistencia.TraerTrabajadorReloj(oMultiple.Trabajador);
                             oHorario = miCatalogoAsistencia.TraerHorarioTrabajador(oMultiple.Trabajador);
+
                             if (oHorario == null)
                             {
                                 MessageBox.Show("No existe asignado horario para el trabajador: " + oMultiple.Trabajador.ApellidoPaterno + " " + oMultiple.Trabajador.ApellidoMaterno + ", " + oMultiple.Trabajador.Nombres);
@@ -1767,6 +1768,7 @@ namespace CapaUsuario.Planilla
                                                                                                                                    miCatalogoAsistencia.ListaSalidasEntreFechas(oMultiple.Trabajador, oMultiple.AsistenciaMes.InicioMes, oMultiple.AsistenciaMes.FinMes),
                                                                                                                                    miCatalogoAsistencia.ListaDiaFestivo(MesActual.Year));
                             oMultiple.AsistenciaMes.Actualizardatos();
+                            oMultiple.JornadaLaboral = miCatalogo.TraerJornadaLaboralEntreFechas(oMultiple.Trabajador, oMultiple.AsistenciaMes.InicioMes, oMultiple.AsistenciaMes.FinMes);
                             ListaMultiplesAsistencias.Add(oMultiple);
                         }
                         oReporte.ImprimirReporteAsistenciMultipleAsistencia(ListaMultiplesAsistencias, dlgGuardarReportePDF.FileName,Inicio, Fin);

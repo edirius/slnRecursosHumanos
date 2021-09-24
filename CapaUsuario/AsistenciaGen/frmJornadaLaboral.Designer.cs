@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAsistenciaTrabajador = new System.Windows.Forms.DataGridView();
             this.txtTrabajador = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -41,6 +41,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupInformacion = new System.Windows.Forms.GroupBox();
+            this.lblTipoSuspension = new System.Windows.Forms.Label();
             this.lblPicadoSalida = new System.Windows.Forms.Label();
             this.lblPicadoEntrada = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,7 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblNombreTurno = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblTipoSuspension = new System.Windows.Forms.Label();
+            this.lstPicados = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsistenciaTrabajador)).BeginInit();
             this.miMenu.SuspendLayout();
             this.groupInformacion.SuspendLayout();
@@ -59,19 +60,19 @@
             // 
             this.dgvAsistenciaTrabajador.AllowUserToAddRows = false;
             this.dgvAsistenciaTrabajador.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvAsistenciaTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvAsistenciaTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAsistenciaTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsistenciaTrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsistenciaTrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAsistenciaTrabajador.ColumnHeadersHeight = 35;
             this.dgvAsistenciaTrabajador.Location = new System.Drawing.Point(12, 57);
             this.dgvAsistenciaTrabajador.Name = "dgvAsistenciaTrabajador";
@@ -174,6 +175,15 @@
             this.groupInformacion.TabStop = false;
             this.groupInformacion.Text = "Informacion";
             // 
+            // lblTipoSuspension
+            // 
+            this.lblTipoSuspension.AutoSize = true;
+            this.lblTipoSuspension.Location = new System.Drawing.Point(21, 94);
+            this.lblTipoSuspension.Name = "lblTipoSuspension";
+            this.lblTipoSuspension.Size = new System.Drawing.Size(35, 13);
+            this.lblTipoSuspension.TabIndex = 8;
+            this.lblTipoSuspension.Text = "label5";
+            // 
             // lblPicadoSalida
             // 
             this.lblPicadoSalida.AutoSize = true;
@@ -242,20 +252,20 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Turno:";
             // 
-            // lblTipoSuspension
+            // lstPicados
             // 
-            this.lblTipoSuspension.AutoSize = true;
-            this.lblTipoSuspension.Location = new System.Drawing.Point(21, 94);
-            this.lblTipoSuspension.Name = "lblTipoSuspension";
-            this.lblTipoSuspension.Size = new System.Drawing.Size(35, 13);
-            this.lblTipoSuspension.TabIndex = 8;
-            this.lblTipoSuspension.Text = "label5";
+            this.lstPicados.FormattingEnabled = true;
+            this.lstPicados.Location = new System.Drawing.Point(823, 217);
+            this.lstPicados.Name = "lstPicados";
+            this.lstPicados.Size = new System.Drawing.Size(182, 95);
+            this.lstPicados.TabIndex = 73;
             // 
             // frmJornadaLaboral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1017, 334);
+            this.Controls.Add(this.lstPicados);
             this.Controls.Add(this.groupInformacion);
             this.Controls.Add(this.btnSincronizarReloj);
             this.Controls.Add(this.txtTrabajador);
@@ -295,5 +305,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblTipoSuspension;
+        private System.Windows.Forms.ListBox lstPicados;
     }
 }

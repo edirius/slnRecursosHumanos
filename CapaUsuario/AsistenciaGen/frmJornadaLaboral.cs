@@ -429,9 +429,14 @@ namespace CapaUsuario.AsistenciaGen
                 }
 
                 //parte para llenar el picado de entrada y salida
-
+                lstPicados.Items.Clear();
                 if (miDetalle.AsistenciaDia != null)
                 {
+                    
+                    foreach (CapaDeNegocios.Asistencia.cPicado item in miDetalle.AsistenciaDia.ListaPicados)
+                    {
+                        lstPicados.Items.Add(item.Picado);
+                    }
                     if (miDetalle.AsistenciaDia.PicadoEntrada != null)
                     {
                         lblPicadoEntrada.Text = miDetalle.AsistenciaDia.PicadoEntrada.Picado.ToString();
