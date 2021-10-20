@@ -352,7 +352,7 @@ namespace CapaDeNegocios.Asistencia
                                     }
                                     else
                                     {
-                                        _Falta = TipoFalta.FaltaTotal;
+                                        _Falta = TipoFalta.FaltaPicadoFinal;
                                     }
                                 }
                             }
@@ -363,6 +363,7 @@ namespace CapaDeNegocios.Asistencia
                             //Si la fecha de salida es la misma que el dia
                             if (_Dia.Date == item.InicioExcepcion.Date || _Dia.Date == item.FinExcepcion.Date)
                             {
+                                //Verificamos que la papeleta justifica el picado de entrada
                                 if (item.InicioExcepcion.TimeOfDay <= _TurnoDiaTrabajador.ListaTurnos[0].InicioTurno.TimeOfDay)
                                 {
                                     _MinutosTarde = 0;
@@ -379,7 +380,11 @@ namespace CapaDeNegocios.Asistencia
                                         }
                                         else
                                         {
-                                            _Falta = TipoFalta.SinFalta;
+                                            //if (_Falta != TipoFalta.FaltaPicadoFinal)
+                                            //{
+                                            //    _Falta = TipoFalta.SinFalta;
+                                            //}
+                                            
                                         }
                                     }
                                 }
@@ -391,15 +396,7 @@ namespace CapaDeNegocios.Asistencia
                                     }
                                     else
                                     {
-                                        if (_Falta == TipoFalta.FaltaPicadoEntrada)
-                                        {
-                                            _Falta = TipoFalta.FaltaJustificada;
-                                        }
-                                        else
-                                        {
-                                            _Falta = TipoFalta.SinFalta;
-                                        }
-
+                                        _Falta = TipoFalta.FaltaJustificada;
                                     }
                                 }
                             }

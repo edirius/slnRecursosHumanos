@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAsistenciaTrabajador = new System.Windows.Forms.DataGridView();
             this.txtTrabajador = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -51,6 +51,10 @@
             this.lblNombreTurno = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lstPicados = new System.Windows.Forms.ListBox();
+            this.lstListaSalidas = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnAgregarSalida = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsistenciaTrabajador)).BeginInit();
             this.miMenu.SuspendLayout();
             this.groupInformacion.SuspendLayout();
@@ -60,26 +64,26 @@
             // 
             this.dgvAsistenciaTrabajador.AllowUserToAddRows = false;
             this.dgvAsistenciaTrabajador.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvAsistenciaTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvAsistenciaTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAsistenciaTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsistenciaTrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsistenciaTrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAsistenciaTrabajador.ColumnHeadersHeight = 35;
             this.dgvAsistenciaTrabajador.Location = new System.Drawing.Point(12, 57);
             this.dgvAsistenciaTrabajador.Name = "dgvAsistenciaTrabajador";
             this.dgvAsistenciaTrabajador.ReadOnly = true;
             this.dgvAsistenciaTrabajador.RowHeadersVisible = false;
             this.dgvAsistenciaTrabajador.RowHeadersWidth = 25;
-            this.dgvAsistenciaTrabajador.Size = new System.Drawing.Size(993, 128);
+            this.dgvAsistenciaTrabajador.Size = new System.Drawing.Size(993, 135);
             this.dgvAsistenciaTrabajador.TabIndex = 9;
             this.dgvAsistenciaTrabajador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAsistenciaTrabajador_CellContentClick);
             this.dgvAsistenciaTrabajador.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAsistenciaTrabajador_CellMouseClick);
@@ -110,9 +114,9 @@
             this.btnSincronizarReloj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSincronizarReloj.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSincronizarReloj.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnSincronizarReloj.Location = new System.Drawing.Point(15, 275);
+            this.btnSincronizarReloj.Location = new System.Drawing.Point(15, 252);
             this.btnSincronizarReloj.Name = "btnSincronizarReloj";
-            this.btnSincronizarReloj.Size = new System.Drawing.Size(158, 38);
+            this.btnSincronizarReloj.Size = new System.Drawing.Size(82, 67);
             this.btnSincronizarReloj.TabIndex = 71;
             this.btnSincronizarReloj.Text = "Sincronizar con el reloj";
             this.btnSincronizarReloj.UseVisualStyleBackColor = false;
@@ -168,9 +172,9 @@
             this.groupInformacion.Controls.Add(this.label2);
             this.groupInformacion.Controls.Add(this.lblNombreTurno);
             this.groupInformacion.Controls.Add(this.label1);
-            this.groupInformacion.Location = new System.Drawing.Point(258, 205);
+            this.groupInformacion.Location = new System.Drawing.Point(108, 203);
             this.groupInformacion.Name = "groupInformacion";
-            this.groupInformacion.Size = new System.Drawing.Size(541, 117);
+            this.groupInformacion.Size = new System.Drawing.Size(471, 117);
             this.groupInformacion.TabIndex = 72;
             this.groupInformacion.TabStop = false;
             this.groupInformacion.Text = "Informacion";
@@ -187,7 +191,7 @@
             // lblPicadoSalida
             // 
             this.lblPicadoSalida.AutoSize = true;
-            this.lblPicadoSalida.Location = new System.Drawing.Point(358, 66);
+            this.lblPicadoSalida.Location = new System.Drawing.Point(329, 66);
             this.lblPicadoSalida.Name = "lblPicadoSalida";
             this.lblPicadoSalida.Size = new System.Drawing.Size(0, 13);
             this.lblPicadoSalida.TabIndex = 7;
@@ -195,7 +199,7 @@
             // lblPicadoEntrada
             // 
             this.lblPicadoEntrada.AutoSize = true;
-            this.lblPicadoEntrada.Location = new System.Drawing.Point(355, 28);
+            this.lblPicadoEntrada.Location = new System.Drawing.Point(329, 28);
             this.lblPicadoEntrada.Name = "lblPicadoEntrada";
             this.lblPicadoEntrada.Size = new System.Drawing.Size(0, 13);
             this.lblPicadoEntrada.TabIndex = 6;
@@ -255,16 +259,62 @@
             // lstPicados
             // 
             this.lstPicados.FormattingEnabled = true;
-            this.lstPicados.Location = new System.Drawing.Point(823, 217);
+            this.lstPicados.Location = new System.Drawing.Point(584, 221);
             this.lstPicados.Name = "lstPicados";
-            this.lstPicados.Size = new System.Drawing.Size(182, 95);
+            this.lstPicados.Size = new System.Drawing.Size(144, 95);
             this.lstPicados.TabIndex = 73;
+            // 
+            // lstListaSalidas
+            // 
+            this.lstListaSalidas.FormattingEnabled = true;
+            this.lstListaSalidas.Location = new System.Drawing.Point(733, 220);
+            this.lstListaSalidas.Name = "lstListaSalidas";
+            this.lstListaSalidas.Size = new System.Drawing.Size(272, 95);
+            this.lstListaSalidas.TabIndex = 74;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label5.Location = new System.Drawing.Point(586, 202);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 13);
+            this.label5.TabIndex = 75;
+            this.label5.Text = "Picados:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label6.Location = new System.Drawing.Point(733, 201);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 76;
+            this.label6.Text = "Salidas:";
+            // 
+            // btnAgregarSalida
+            // 
+            this.btnAgregarSalida.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarSalida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarSalida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarSalida.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAgregarSalida.Location = new System.Drawing.Point(733, 321);
+            this.btnAgregarSalida.Name = "btnAgregarSalida";
+            this.btnAgregarSalida.Size = new System.Drawing.Size(106, 28);
+            this.btnAgregarSalida.TabIndex = 77;
+            this.btnAgregarSalida.Text = "Agregar Salida";
+            this.btnAgregarSalida.UseVisualStyleBackColor = false;
+            this.btnAgregarSalida.Click += new System.EventHandler(this.btnAgregarSalida_Click);
             // 
             // frmJornadaLaboral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1017, 334);
+            this.ClientSize = new System.Drawing.Size(1017, 355);
+            this.Controls.Add(this.btnAgregarSalida);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lstListaSalidas);
             this.Controls.Add(this.lstPicados);
             this.Controls.Add(this.groupInformacion);
             this.Controls.Add(this.btnSincronizarReloj);
@@ -306,5 +356,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblTipoSuspension;
         private System.Windows.Forms.ListBox lstPicados;
+        private System.Windows.Forms.ListBox lstListaSalidas;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnAgregarSalida;
     }
 }

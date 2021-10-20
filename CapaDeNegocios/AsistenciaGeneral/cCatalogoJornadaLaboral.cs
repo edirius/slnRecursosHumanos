@@ -269,6 +269,7 @@ namespace CapaDeNegocios.AsistenciaGeneral
                 }
                 miAsistenciaTrabajador.EliminarAsistenciaTrabajador(item2.Codigo);
                 //luego creamos el nuevo
+                item2 = DevolverJornadaAPartirAsistencia(item, item2.Trabajador);
                 CrearJornadaLaboral(item2);
                 if (item2.SuspensionLaboral != null)
                 {

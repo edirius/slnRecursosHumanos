@@ -30,6 +30,8 @@ namespace CapaUsuario.AsistenciaGen
         private CapaDeNegocios.AsistenciaGeneral.cJornadaLaboral miJornada = new CapaDeNegocios.AsistenciaGeneral.cJornadaLaboral();
         private CapaDeNegocios.Asistencia.cAsistenciaMes AsistenciaMes = new CapaDeNegocios.Asistencia.cAsistenciaMes();
 
+        private CapaDeNegocios.Asistencia.cCatalogoAsistencia oCatalogoAsistencia = new CapaDeNegocios.Asistencia.cCatalogoAsistencia();
+
         private ViewJornadaLaboral vJordanaLaboral = new ViewJornadaLaboral();
 
         public frmJornadaLaboral()
@@ -476,6 +478,19 @@ namespace CapaUsuario.AsistenciaGen
                             break;
                     }
                 }
+
+                //parte para llenar las salidas
+                lstListaSalidas.Items.Clear();
+                if (miDetalle.AsistenciaDia != null)
+                {
+                    foreach (CapaDeNegocios.Asistencia.cExcepcionesAsistencia item in miDetalle.AsistenciaDia.ListaSalidas)
+                    {
+                        string dato = "";
+                        dato = item.Tipo.ToString() + " : " + item.InicioExcepcion.ToString() + " - " + item.FinExcepcion.ToString();
+                        
+                        lstListaSalidas.Items.Add(dato);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -491,6 +506,26 @@ namespace CapaUsuario.AsistenciaGen
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAgregarSalida_Click(object sender, EventArgs e)
+        {
+            Asistencia.frmMantenimientoSalidas fMantenimientoSalidas = new Asistencia.frmMantenimientoSalidas();
+            fMantenimientoSalidas.oSalidaTrabajador = new CapaDeNegocios.Asistencia.cExcepcionesAsistencia();
+            fMantenimientoSalidas.oSalidaTrabajador.InicioExcepcion = DateTime.Now;
+            fMantenimientoSalidas.oSalidaTrabajador.FinExcepcion = DateTime.Now;
+            fMantenimientoSalidas.oSalidaTrabajador.Trabajador = miTrabajador;
+
+            if (fMantenimientoSalidas.ShowDialog() == DialogResult.OK)
+            {
+                oCatalogoAsistencia.IngresarNuevaSalida(fMantenimientoSalidas.oSalidaTrabajador);
+                MessageBox.Show("Se ingreso correctamente.", "Ingreso salida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Iniciar();
+            }
+            else
+            {
+                MessageBox.Show("Se canceló la operación.", "Mantenimiento Salidas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
