@@ -3490,11 +3490,16 @@ namespace CapaUsuario.Reportes
                 PdfPTable tabla_firmas2;
                 if (numeroRegimenLaboral == 1 || numeroRegimenLaboral == 2 || numeroRegimenLaboral == 4)
                 {
-                    tabla_firmas = new PdfPTable(4);
+                    tabla_firmas = new PdfPTable(5);
                     tabla_firmas2 = new PdfPTable(2);
                     tabla_firmas.DefaultCell.BorderWidth = 0;
                     tabla_firmas2.DefaultCell.BorderWidth = 0;
                     //FIRMAS
+                    Paragraph firma_elabo = new Paragraph();
+                    firma_elabo.Alignment = Element.ALIGN_CENTER;
+                    firma_elabo.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    firma_elabo.Add("............................................. \n ELABORADO POR");
+
                     Paragraph firma_rrhh = new Paragraph();
                     firma_rrhh.Alignment = Element.ALIGN_CENTER;
                     firma_rrhh.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
@@ -3515,6 +3520,7 @@ namespace CapaUsuario.Reportes
                     firma_con.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
                     firma_con.Add("............................................. \n       TESORERIA");
                     //aÑADIENDO FIRMAS A LA TABLA FIRMAS
+                    tabla_firmas.AddCell(firma_elabo);
                     tabla_firmas.AddCell(firma_rrhh);
                     tabla_firmas.AddCell(firma_gm);
                     tabla_firmas.AddCell(firma_pre);
@@ -3527,6 +3533,11 @@ namespace CapaUsuario.Reportes
                     tabla_firmas.DefaultCell.BorderWidth = 0;
                     tabla_firmas2.DefaultCell.BorderWidth = 0;
                     //FIRMAS
+                    Paragraph firma_elabo = new Paragraph();
+                    firma_elabo.Alignment = Element.ALIGN_CENTER;
+                    firma_elabo.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    firma_elabo.Add("............................................. \n ELABORADO POR");
+
                     Paragraph p_rrhh = new Paragraph();
                     p_rrhh.Alignment = Element.ALIGN_CENTER;
                     p_rrhh.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
@@ -3557,6 +3568,7 @@ namespace CapaUsuario.Reportes
                     firma_SUb.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
                     firma_SUb.Add(" ............................................................. \n RESIDENCIA DE OBRAS");
                     //aÑADIENDO FIRMAS A LA TABLA FIRMAS
+                    tabla_firmas.AddCell(firma_elabo);
                     tabla_firmas.AddCell(p_rrhh);
                     tabla_firmas.AddCell(p_gm);
                     tabla_firmas.AddCell(p_pre);
