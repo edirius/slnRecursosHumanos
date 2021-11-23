@@ -1223,9 +1223,29 @@ namespace CapaUsuario.Planilla
                 if (sma_empleador[i, 3].ToString() != "" || sma_empleador[i, 1].ToString() == "0605" || sma_empleador[i, 1].ToString() == "0804")
                 {
                     CapaDeNegocios.Planillas.cPlanilla PlanillaEncontrada = new CapaDeNegocios.Planillas.cPlanilla();
-                     
 
-                    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].ReadOnly = true;
+                    PlanillaEncontrada = PlanillaEncontrada.TraerPlanilla(sidtplanilla);
+
+                    miTrabajador.IdTrabajador = Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value);
+                    miTrabajador =  miTrabajador.traerTrabajador(miTrabajador.IdTrabajador);
+
+                    PlanillaEncontrada = PlanillaEncontrada.TraerPLanillaConTrabajadorDuplicado(miTrabajador, PlanillaEncontrada.Mes, Convert.ToInt16(PlanillaEncontrada.Año), PlanillaEncontrada.IdtPlanilla);
+
+                    if (PlanillaEncontrada != null)
+                    {
+                        dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].ReadOnly = false;
+                    } 
+
+                    else
+                    {
+                        dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].ReadOnly = true;
+                    }
+
+                    if (PlanillaEncontrada != null)
+                    {
+                        MessageBox.Show("Se encontro al trabajador: " + miTrabajador.Nombres + " " + miTrabajador.ApellidoPaterno + " " + miTrabajador.ApellidoMaterno + "Cargo: " + PlanillaEncontrada.ListaDetallePlanilla[0].Cargo +
+                            " en la planilla Nro: " + PlanillaEncontrada.Numero + " " + PlanillaEncontrada.Descripcion);
+                    }
                     decimal number2 = 0;
                     if (decimal.TryParse(sma_empleador[i, 3].ToString(), out number2) == true)
                     {
@@ -1234,9 +1254,18 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        decimal result = IngresosAfectos(fila, sma_empleador[i, 1].ToString(), sma_empleador[i, 3].ToString());
-                        dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value = String.Format("{0:0.00}", result);
-                        total_aempleador += decimal.Round(Convert.ToDecimal(result), 2);
+                        if (PlanillaEncontrada == null || sma_empleador[i, 1].ToString() != "0804")
+                        {
+                            decimal result = IngresosAfectos(fila, sma_empleador[i, 1].ToString(), sma_empleador[i, 3].ToString());
+                            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value = String.Format("{0:0.00}", result);
+                            total_aempleador += decimal.Round(Convert.ToDecimal(result), 2);
+                        }
+                        else
+                        {
+                           
+                            total_aempleador += decimal.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value), 2);
+                        }
+                        
                     }
                 }
                 else

@@ -205,12 +205,12 @@ namespace CapaDeNegocios.Planillas
                 planillaAuxiliar.IdtMeta = Convert.ToInt16(tablaAuxiliar.Rows[0][5]);
                 planillaAuxiliar.IdtFuenteFinanciamiento = Convert.ToInt16(tablaAuxiliar.Rows[0][6]);
                 planillaAuxiliar.IdtRegimenLaboral = Convert.ToInt16(tablaAuxiliar.Rows[0][7]);
-                planillaAuxiliar.Descripcion = Convert.ToInt16(tablaAuxiliar.Rows[0][8]).ToString();
-                planillaAuxiliar.Plantilla = Convert.ToInt16(tablaAuxiliar.Rows[0][9]).ToString();
+                planillaAuxiliar.Descripcion = tablaAuxiliar.Rows[0][8].ToString();
+                planillaAuxiliar.Plantilla = tablaAuxiliar.Rows[0][9].ToString();
 
                 cDetallePlanilla detalle = new cDetallePlanilla();
                 detalle.IdtDetallePlanilla = Convert.ToInt16(tablaAuxiliar.Rows[0][10]);
-                detalle.Cargo = Convert.ToInt16(tablaAuxiliar.Rows[0][11]).ToString();
+                detalle.Cargo = tablaAuxiliar.Rows[0][11].ToString();
                 detalle.FechaInicio = Convert.ToDateTime(tablaAuxiliar.Rows[0][12]);
                 detalle.DiasLaborados = Convert.ToInt16(tablaAuxiliar.Rows[0][13]);
                 detalle.TotalIngresos = Convert.ToDecimal(tablaAuxiliar.Rows[0][14]);
@@ -221,13 +221,13 @@ namespace CapaDeNegocios.Planillas
                 detalle.IdtTrabajador = Convert.ToInt16(tablaAuxiliar.Rows[0][19]);
 
                 planillaAuxiliar.ListaDetallePlanilla = new List<cDetallePlanilla>();
-                listaDetallePlanilla.Add(detalle);
+                planillaAuxiliar.ListaDetallePlanilla.Add(detalle);
 
                 return planillaAuxiliar;
             }
             else
             {
-                throw new cReglaNegociosException("No existe filas para el id de planilla. Funcion: TraerPlanilla");
+                return null;
             }
         }
     }
