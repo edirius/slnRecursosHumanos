@@ -1222,6 +1222,9 @@ namespace CapaUsuario.Planilla
             {
                 if (sma_empleador[i, 3].ToString() != "" || sma_empleador[i, 1].ToString() == "0605" || sma_empleador[i, 1].ToString() == "0804")
                 {
+                    CapaDeNegocios.Planillas.cPlanilla PlanillaEncontrada = new CapaDeNegocios.Planillas.cPlanilla();
+                     
+
                     dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].ReadOnly = true;
                     decimal number2 = 0;
                     if (decimal.TryParse(sma_empleador[i, 3].ToString(), out number2) == true)

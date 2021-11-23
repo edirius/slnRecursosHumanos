@@ -23,6 +23,8 @@ namespace CapaDeNegocios.Planillas
         string sdescripcion;
         string splantilla;
 
+        private List<cDetallePlanilla> listaDetallePlanilla;
+
         public int IdtPlanilla
         {
             get { return sidtplanilla; }
@@ -72,6 +74,19 @@ namespace CapaDeNegocios.Planillas
         {
             get { return splantilla; }
             set { splantilla = value; }
+        }
+
+        public List<cDetallePlanilla> ListaDetallePlanilla
+        {
+            get
+            {
+                return listaDetallePlanilla;
+            }
+
+            set
+            {
+                listaDetallePlanilla = value;
+            }
         }
 
         public DataTable ListarFechaPlanilla(int pidtplanilla)
@@ -169,6 +184,48 @@ namespace CapaDeNegocios.Planillas
                 return planillaAuxiliar;
             }
            else
+            {
+                throw new cReglaNegociosException("No existe filas para el id de planilla. Funcion: TraerPlanilla");
+            }
+        }
+
+        public cPlanilla TraerPLanillaConTrabajadorDuplicado(cTrabajador TrabajadorDuplicado, string Mes, int anio, int codigoPlanillaActual)
+        {
+            cPlanilla planillaAuxiliar= null;
+            DataTable tablaAuxiliar;
+            tablaAuxiliar = Conexion.GDatos.TraerDataTable("spBuscarTrabajadorEnOtraPlanilla", Mes, anio, TrabajadorDuplicado.IdTrabajador, codigoPlanillaActual);
+            if (tablaAuxiliar.Rows.Count > 0)
+            {
+                planillaAuxiliar = new cPlanilla();
+                planillaAuxiliar.IdtPlanilla = Convert.ToInt16(tablaAuxiliar.Rows[0][0]);
+                planillaAuxiliar.Numero = Convert.ToString(tablaAuxiliar.Rows[0][1]);
+                planillaAuxiliar.Mes = Convert.ToString(tablaAuxiliar.Rows[0][2]);
+                planillaAuxiliar.Año = Convert.ToString(tablaAuxiliar.Rows[0][3]);
+                planillaAuxiliar.Fecha = Convert.ToDateTime(tablaAuxiliar.Rows[0][4]);
+                planillaAuxiliar.IdtMeta = Convert.ToInt16(tablaAuxiliar.Rows[0][5]);
+                planillaAuxiliar.IdtFuenteFinanciamiento = Convert.ToInt16(tablaAuxiliar.Rows[0][6]);
+                planillaAuxiliar.IdtRegimenLaboral = Convert.ToInt16(tablaAuxiliar.Rows[0][7]);
+                planillaAuxiliar.Descripcion = Convert.ToInt16(tablaAuxiliar.Rows[0][8]).ToString();
+                planillaAuxiliar.Plantilla = Convert.ToInt16(tablaAuxiliar.Rows[0][9]).ToString();
+
+                cDetallePlanilla detalle = new cDetallePlanilla();
+                detalle.IdtDetallePlanilla = Convert.ToInt16(tablaAuxiliar.Rows[0][10]);
+                detalle.Cargo = Convert.ToInt16(tablaAuxiliar.Rows[0][11]).ToString();
+                detalle.FechaInicio = Convert.ToDateTime(tablaAuxiliar.Rows[0][12]);
+                detalle.DiasLaborados = Convert.ToInt16(tablaAuxiliar.Rows[0][13]);
+                detalle.TotalIngresos = Convert.ToDecimal(tablaAuxiliar.Rows[0][14]);
+                detalle.TotalATrabajador = Convert.ToDecimal(tablaAuxiliar.Rows[0][15]);
+                detalle.TotalDescuentos = Convert.ToDecimal(tablaAuxiliar.Rows[0][16]);
+                detalle.TotalAEmpleador = Convert.ToDecimal(tablaAuxiliar.Rows[0][17]);
+                detalle.NetoaCobrar = Convert.ToDecimal(tablaAuxiliar.Rows[0][18]);
+                detalle.IdtTrabajador = Convert.ToInt16(tablaAuxiliar.Rows[0][19]);
+
+                planillaAuxiliar.ListaDetallePlanilla = new List<cDetallePlanilla>();
+                listaDetallePlanilla.Add(detalle);
+
+                return planillaAuxiliar;
+            }
+            else
             {
                 throw new cReglaNegociosException("No existe filas para el id de planilla. Funcion: TraerPlanilla");
             }

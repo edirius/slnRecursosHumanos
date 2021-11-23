@@ -338,6 +338,11 @@ namespace CapaUsuario.ExportarSunat
                     dgvListaPlanillas[0, i].Value = false;
                 }
         }
+
+        private void dgvListaPlanillas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 //

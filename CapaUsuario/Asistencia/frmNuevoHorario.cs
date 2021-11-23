@@ -139,8 +139,12 @@ namespace CapaUsuario.Asistencia
             {
                 cboTurnoDomingo.SelectedValue = 0;
             }
+            if (oHorario.InicioMes == 0)
+            {
+                oHorario.InicioMes = 1;
+            }
 
-            if (oHorario.InicioMes == 1)
+                if (oHorario.InicioMes == 1)
             {
                 chkInicioMensual.Checked = true;
                 numInicioMes.Value = 1;

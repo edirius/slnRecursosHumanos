@@ -203,6 +203,7 @@
             this.dgvListaPlanillas.Size = new System.Drawing.Size(1292, 396);
             this.dgvListaPlanillas.TabIndex = 42;
             this.dgvListaPlanillas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaPlanillas_CellClick);
+            this.dgvListaPlanillas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaPlanillas_CellContentClick);
             this.dgvListaPlanillas.SelectionChanged += new System.EventHandler(this.dgvListaPlanillas_SelectionChanged);
             // 
             // dgv2
