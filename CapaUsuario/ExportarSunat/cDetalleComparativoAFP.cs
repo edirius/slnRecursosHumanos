@@ -13,7 +13,12 @@ namespace CapaUsuario.ExportarSunat
         bool _ErrorAFP;
         bool _ErrorDNI;
         bool _ErrorComision;
+        bool _NoRevisado;
 
+        public cDetalleComparativoAFP()
+        {
+            _NoRevisado = false;
+        }
 
         public bool ErrorGeneral()
         {
@@ -82,6 +87,19 @@ namespace CapaUsuario.ExportarSunat
             set
             {
                 _ErrorComision = value;
+            }
+        }
+
+        public bool NoRevisado
+        {
+            get
+            {
+                return _NoRevisado;
+            }
+
+            set
+            {
+                _NoRevisado = value;
             }
         }
     }

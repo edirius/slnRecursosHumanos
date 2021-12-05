@@ -81,6 +81,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(131, 141);
+            this.txtNombre.MaxLength = 299;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(425, 20);
             this.txtNombre.TabIndex = 5;
@@ -97,9 +98,11 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(131, 100);
+            this.txtCodigo.MaxLength = 10;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(100, 20);
             this.txtCodigo.TabIndex = 7;
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             // 
             // txtActividadObra
             // 

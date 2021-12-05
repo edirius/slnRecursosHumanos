@@ -356,7 +356,7 @@ namespace CapaUsuario.ExportarSunat
 
         private void dtgDatosPlanilla_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dtgDatosPlanilla.Columns[e.ColumnIndex].Name == "colCheck")
+            if ((dtgDatosPlanilla.Columns[e.ColumnIndex].Name == "colCheck") && oComparativoAFP.ListaDetalles.Count > 0 )
             {
                 cDetalleComparativoAFP auxiliar = new cDetalleComparativoAFP();
 
@@ -372,7 +372,9 @@ namespace CapaUsuario.ExportarSunat
                     mnuCUSSPError.Text = "Existe error en el CUSSP";
                 }
 
-                
+                //mnuAFP.Left = dtgDatosPlanilla.Left + dtgDatosPlanilla.Size.Width; // dtgDatosPlanilla[e.ColumnIndex, e.RowIndex].Size.Width;
+                //mnuAFP.Top = dtgDatosPlanilla.Top + dtgDatosPlanilla[e.ColumnIndex, e.RowIndex].Size.Height;
+
                 mnuAFP.Show();
             }
         }

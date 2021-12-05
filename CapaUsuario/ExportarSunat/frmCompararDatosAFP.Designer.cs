@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCompararDatosAFP));
             this.dtgDatosPlanilla = new System.Windows.Forms.DataGridView();
+            this.mnuAFP = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuAFPError = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCUSSPError = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuComisionError = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDNIError = new System.Windows.Forms.ToolStripMenuItem();
             this.dtgDatosExcel = new System.Windows.Forms.DataGridView();
             this.btnCargar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,14 +45,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
-            this.mnuAFP = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.mnuAFPError = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuCUSSPError = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuComisionError = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDNIError = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatosPlanilla)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgDatosExcel)).BeginInit();
             this.mnuAFP.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgDatosExcel)).BeginInit();
             this.SuspendLayout();
             // 
             // dtgDatosPlanilla
@@ -55,6 +55,7 @@
             this.dtgDatosPlanilla.AllowUserToAddRows = false;
             this.dtgDatosPlanilla.AllowUserToDeleteRows = false;
             this.dtgDatosPlanilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgDatosPlanilla.ContextMenuStrip = this.mnuAFP;
             this.dtgDatosPlanilla.Location = new System.Drawing.Point(12, 170);
             this.dtgDatosPlanilla.Name = "dtgDatosPlanilla";
             this.dtgDatosPlanilla.ReadOnly = true;
@@ -64,6 +65,36 @@
             this.dtgDatosPlanilla.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgDatosPlanilla_CellFormatting);
             this.dtgDatosPlanilla.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dtgDatosPlanilla_RowsAdded);
             this.dtgDatosPlanilla.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dtgDatosPlanilla_Scroll);
+            // 
+            // mnuAFP
+            // 
+            this.mnuAFP.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuAFPError,
+            this.mnuCUSSPError,
+            this.mnuComisionError,
+            this.mnuDNIError});
+            this.mnuAFP.Name = "mnuAFP";
+            this.mnuAFP.Size = new System.Drawing.Size(68, 92);
+            // 
+            // mnuAFPError
+            // 
+            this.mnuAFPError.Name = "mnuAFPError";
+            this.mnuAFPError.Size = new System.Drawing.Size(67, 22);
+            // 
+            // mnuCUSSPError
+            // 
+            this.mnuCUSSPError.Name = "mnuCUSSPError";
+            this.mnuCUSSPError.Size = new System.Drawing.Size(67, 22);
+            // 
+            // mnuComisionError
+            // 
+            this.mnuComisionError.Name = "mnuComisionError";
+            this.mnuComisionError.Size = new System.Drawing.Size(67, 22);
+            // 
+            // mnuDNIError
+            // 
+            this.mnuDNIError.Name = "mnuDNIError";
+            this.mnuDNIError.Size = new System.Drawing.Size(67, 22);
             // 
             // dtgDatosExcel
             // 
@@ -171,40 +202,6 @@
             this.btnActualizar.UseVisualStyleBackColor = true;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
-            // mnuAFP
-            // 
-            this.mnuAFP.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuAFPError,
-            this.mnuCUSSPError,
-            this.mnuComisionError,
-            this.mnuDNIError});
-            this.mnuAFP.Name = "mnuAFP";
-            this.mnuAFP.Size = new System.Drawing.Size(181, 92);
-            // 
-            // mnuAFPError
-            // 
-            this.mnuAFPError.Name = "mnuAFPError";
-            this.mnuAFPError.Size = new System.Drawing.Size(180, 22);
-            this.mnuAFPError.Text = "toolStripMenuItem1";
-            // 
-            // mnuCUSSPError
-            // 
-            this.mnuCUSSPError.Name = "mnuCUSSPError";
-            this.mnuCUSSPError.Size = new System.Drawing.Size(180, 22);
-            this.mnuCUSSPError.Text = "toolStripMenuItem1";
-            // 
-            // mnuComisionError
-            // 
-            this.mnuComisionError.Name = "mnuComisionError";
-            this.mnuComisionError.Size = new System.Drawing.Size(180, 22);
-            this.mnuComisionError.Text = "toolStripMenuItem1";
-            // 
-            // mnuDNIError
-            // 
-            this.mnuDNIError.Name = "mnuDNIError";
-            this.mnuDNIError.Size = new System.Drawing.Size(180, 22);
-            this.mnuDNIError.Text = "toolStripMenuItem1";
-            // 
             // frmCompararDatosAFP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,8 +224,8 @@
             this.Load += new System.EventHandler(this.frmCompararDatosAFP_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmCompararDatosAFP_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatosPlanilla)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgDatosExcel)).EndInit();
             this.mnuAFP.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgDatosExcel)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -134,5 +134,13 @@ namespace CapaUsuario.Metas
                 txtMetaVinculo.Text = fVincularMeta.sdescripcion;
             }
         }
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

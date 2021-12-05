@@ -41,35 +41,73 @@ namespace CapaUsuario.Planilla
         {
             try
             {
-                bool bOk = false;
-                CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
-                miPlanilla.IdtPlanilla = sidtplanilla;
-                miPlanilla.Numero = txtNumero.Text;
-                miPlanilla.Mes = cboMes.Text;
-                miPlanilla.Año = cboAño.Text;
-                miPlanilla.Fecha = dtpFecha.Value;
-                miPlanilla.IdtMeta = sidtmeta;
-                miPlanilla.IdtFuenteFinanciamiento = sidtfuentefinanciamiento;
-                miPlanilla.IdtRegimenLaboral = sidtregimenlaboral;
-                miPlanilla.Descripcion = txtDescripcion.Text;
-                miPlanilla.Plantilla = cboPlantilla.Text;
-                if (iAccion == 1)
+                if (txtNumero.Text.Trim() == "" || cboMes.Text.Trim() == "" || cboAño.Text.Trim() == "" || sidtmeta == 0 || sidtfuentefinanciamiento == 0 || sidtregimenlaboral == 0 || txtDescripcion.Text.Trim() == "" || cboPlantilla.Text.Trim() == "" )
                 {
-                    miPlanilla.CrearPlanilla(miPlanilla);
-                    bOk = true;
-                }
-                if (iAccion == 2)
-                {
-                    miPlanilla.ModificarPlanilla(miPlanilla);
-                    bOk = true;
-                }
-                if (bOk == true)
-                {
-                    DialogResult = System.Windows.Forms.DialogResult.OK;
+                    if (txtNumero.Text.Trim() == "")
+                    {
+                        MessageBox.Show("Debe colocar un numero de planilla", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    if (cboMes.Text.Trim() == "")
+                    {
+                        MessageBox.Show("Debe escoger un mes.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    if (cboAño.Text.Trim() == "")
+                    {
+                        MessageBox.Show("Debe escoger un año.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    if (sidtmeta == 0)
+                    {
+                        MessageBox.Show("Debe escoger una meta.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    if (sidtfuentefinanciamiento == 0)
+                    {
+                        MessageBox.Show("Debe escoger una fuente de financiamiento.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    if (sidtregimenlaboral == 0)
+                    {
+                        MessageBox.Show("Debe escoger un Regimen Laboral.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    if (txtDescripcion.Text.Trim() == "")
+                    {
+                        MessageBox.Show("Debe escribir una descripción.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    if (cboPlantilla.Text.Trim() == "")
+                    {
+                        MessageBox.Show("Debe escoger una plantilla.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No se puede registrar estos datos", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bool bOk = false;
+                    CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
+                    miPlanilla.IdtPlanilla = sidtplanilla;
+                    miPlanilla.Numero = txtNumero.Text;
+                    miPlanilla.Mes = cboMes.Text;
+                    miPlanilla.Año = cboAño.Text;
+                    miPlanilla.Fecha = dtpFecha.Value;
+                    miPlanilla.IdtMeta = sidtmeta;
+                    miPlanilla.IdtFuenteFinanciamiento = sidtfuentefinanciamiento;
+                    miPlanilla.IdtRegimenLaboral = sidtregimenlaboral;
+                    miPlanilla.Descripcion = txtDescripcion.Text;
+                    miPlanilla.Plantilla = cboPlantilla.Text;
+                    if (iAccion == 1)
+                    {
+                        miPlanilla.CrearPlanilla(miPlanilla);
+                        bOk = true;
+                    }
+                    if (iAccion == 2)
+                    {
+                        miPlanilla.ModificarPlanilla(miPlanilla);
+                        bOk = true;
+                    }
+                    if (bOk == true)
+                    {
+                        DialogResult = System.Windows.Forms.DialogResult.OK;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se puede registrar estos datos", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch (Exception ex)
