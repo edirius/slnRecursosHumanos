@@ -205,7 +205,7 @@ namespace CapaUsuario.AsistenciaGen
                 dgvAsistenciaTrabajador.Columns["txtTotalSubsidiados"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 DataGridViewTextBoxColumn TotalNoSubsidiadosNoLaborados = new DataGridViewTextBoxColumn();
                 TotalNoSubsidiadosNoLaborados.Name = "txtTotalNoSubsidiadosNoLaborados";
-                TotalNoSubsidiadosNoLaborados.HeaderText = "Total No Sub. y No Lab.";
+                TotalNoSubsidiadosNoLaborados.HeaderText = "Total Faltas y No Sub.";
                 TotalNoSubsidiadosNoLaborados.Width = 60;
                 dgvAsistenciaTrabajador.Columns.Add(TotalNoSubsidiadosNoLaborados);
                 dgvAsistenciaTrabajador.Columns["txtTotalNoSubsidiadosNoLaborados"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -342,7 +342,8 @@ namespace CapaUsuario.AsistenciaGen
         {
             try
             {
-                if (vJordanaLaboral.ListaDetalleViewJornadaLaboral.Count > 0)
+                int DiasMes = (AsistenciaMes.FinMes - AsistenciaMes.InicioMes).Days + 1;
+                if (vJordanaLaboral.ListaDetalleViewJornadaLaboral.Count > 0 && e.ColumnIndex < DiasMes)
                 {
                     LlenarDetalle(vJordanaLaboral.ListaDetalleViewJornadaLaboral.Find(x => x.Dia.Date == vJordanaLaboral.Inicio.AddDays(e.ColumnIndex)));
                 }

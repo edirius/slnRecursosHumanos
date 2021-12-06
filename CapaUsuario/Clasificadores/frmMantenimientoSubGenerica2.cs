@@ -24,7 +24,7 @@ namespace CapaUsuario.Clasificadores
         {
             try
             {
-                oSubgenerica2.Codigo = oSubgenerica2.Subgenerica.Codigo + txtCodigo.Text;
+                oSubgenerica2.Codigo = lblGenerica.Text + txtCodigo.Text;
                 oSubgenerica2.Nombre = txtNombre.Text;
                 oSubgenerica2.Descripcion = txtDescripcion.Text;
                 this.DialogResult = DialogResult.OK;
