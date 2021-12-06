@@ -73,6 +73,8 @@ namespace CapaUsuario.Reportes
         string sNumeroPlanilla = "";
         string sRegimenLaboral = "";
 
+        string FechaTexto = "";
+
         //CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
         CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
 
@@ -82,6 +84,8 @@ namespace CapaUsuario.Reportes
         public frmPlanilla()
         {
             InitializeComponent();
+            DateTime Ahora = DateTime.Today;
+            CargarMes(Ahora);
         }
 
         public int BuscarIndiceColumna(DataTable odtPrueba, string titulo_columna)
@@ -208,6 +212,74 @@ namespace CapaUsuario.Reportes
             }
         }
 
+        public void CargarMes(DateTime FechaActual)
+        {
+            string Ahora = Convert.ToString(FechaActual.Date.Month);
+            switch (Ahora)
+            {
+                case "1":
+                    {
+                        FechaTexto = "ENERO";
+                        break;
+                    }
+                case "2":
+                    {
+                        FechaTexto = "FEBRERO";
+                        break;
+                    }
+                case "3":
+                    {
+                        FechaTexto = "MARZO";
+                        break;
+                    }
+                case "4":
+                    {
+                        FechaTexto = "ABRIL";
+                        break;
+                    }
+                case "5":
+                    {
+                        FechaTexto = "MAYO";
+                        break;
+                    }
+                case "6":
+                    {
+                        FechaTexto = "JUNIO";
+                        break;
+                    }
+                case "7":
+                    {
+                        FechaTexto = "JULIO";
+                        break;
+                    }
+                case "8":
+                    {
+                        FechaTexto = "AGOSTO";
+                        break;
+                    }
+                case "9":
+                    {
+                        FechaTexto = "SETIEMBRE";
+                        break;
+                    }
+                case "10":
+                    {
+                        FechaTexto = "OCTUBRE";
+                        break;
+                    }
+                case "11":
+                    {
+                        FechaTexto = "NOVIEMBRE";
+                        break;
+                    }
+                case "12":
+                    {
+                        FechaTexto = "DICIEMBRE";
+                        break;
+                    }
+            }
+        }
+
         private void frmPlanilla_Load(object sender, EventArgs e)
         {
             DataTable odtA = new DataTable();
@@ -242,6 +314,7 @@ namespace CapaUsuario.Reportes
             cboAño.DataSource = odtAños;
             cboAño.DisplayMember = "añó";
             cboAño.ValueMember = "año";
+            cboMes.Text = FechaTexto;
         }
 
         public void RecibirDatos(string pnumeroPlanilla)

@@ -273,6 +273,7 @@
             // 
             // cboAño
             // 
+            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAño.FormattingEnabled = true;
             this.cboAño.Location = new System.Drawing.Point(228, 22);
             this.cboAño.Name = "cboAño";
@@ -281,6 +282,7 @@
             // 
             // cboMes
             // 
+            this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMes.FormattingEnabled = true;
             this.cboMes.Location = new System.Drawing.Point(42, 22);
             this.cboMes.Name = "cboMes";
