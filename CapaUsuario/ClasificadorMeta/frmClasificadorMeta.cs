@@ -210,5 +210,44 @@ namespace CapaUsuario.ClasificadorMeta
                 MessageBox.Show("Erro al seleccionarclasificador: " + ex.Message);
             }
         }
+
+        private void btnEliminarClasificador_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dtgClasificadorMeta.SelectedRows.Count > 0)
+                {
+
+
+                    CapaDeNegocios.ClasificadorMeta.cClasificadorMeta oClasificadorMeta = new CapaDeNegocios.ClasificadorMeta.cClasificadorMeta();
+                    oClasificadorMeta.Meta = oMetaSeleccionada;
+                    oClasificadorMeta.Plantilla = oPlantillaSeleccionada;
+                    oClasificadorMeta.Especifica.IdtEspecifica2 = Convert.ToInt16(dtgClasificadorMeta.SelectedRows[0].Cells[2].Value.ToString());
+                    oClasificadorMeta.Especifica.Codigo = dtgClasificadorMeta.SelectedRows[0].Cells[3].Value.ToString();
+                    oClasificadorMeta.Idttdatosmetaclasificador = Convert.ToInt16(dtgClasificadorMeta.SelectedRows[0].Cells[0].Value.ToString());
+
+                    oClasificadorMeta.Concepto = dtgClasificadorMeta.SelectedRows[0].Cells[4].Value.ToString();
+                    if (MessageBox.Show("Desea eliminar el clasificador?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        oClasificadorxMetaxPlantilla.EliminarClasificadorMeta(oClasificadorMeta);
+                        CargarTabla();
+                        MessageBox.Show("Se elimino correctamente.", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("La operacion se canceló", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
+                else
+                {
+                    MessageBox.Show("Seleccione un concepto para eliminarlo", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro al seleccionarclasificador: " + ex.Message);
+            }
+        }
     }
 }

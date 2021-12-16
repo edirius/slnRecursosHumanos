@@ -34,16 +34,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboPlantilla = new System.Windows.Forms.ComboBox();
             this.dtgClasificadorMeta = new System.Windows.Forms.DataGridView();
-            this.btnEliminarClasificador = new System.Windows.Forms.Button();
-            this.btnModificarClasificador = new System.Windows.Forms.Button();
-            this.btnNuevoClasificador = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cboAño = new System.Windows.Forms.ComboBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Especifica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminarClasificador = new System.Windows.Forms.Button();
+            this.btnModificarClasificador = new System.Windows.Forms.Button();
+            this.btnNuevoClasificador = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboAño = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgClasificadorMeta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,6 +103,44 @@
             this.dtgClasificadorMeta.Size = new System.Drawing.Size(471, 170);
             this.dtgClasificadorMeta.TabIndex = 4;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "idttdatosmetaclasificador";
+            this.Column1.HeaderText = "ID";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // Plantilla
+            // 
+            this.Plantilla.DataPropertyName = "Plantilla";
+            this.Plantilla.HeaderText = "Plantilla";
+            this.Plantilla.Name = "Plantilla";
+            this.Plantilla.ReadOnly = true;
+            this.Plantilla.Width = 200;
+            // 
+            // Especifica
+            // 
+            this.Especifica.DataPropertyName = "Especifica";
+            this.Especifica.HeaderText = "Codigo Especifica";
+            this.Especifica.Name = "Especifica";
+            this.Especifica.ReadOnly = true;
+            this.Especifica.Visible = false;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Descripcion";
+            this.Column4.HeaderText = "Especifica";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Concepto";
+            this.Column5.HeaderText = "Concepto";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
             // btnEliminarClasificador
             // 
             this.btnEliminarClasificador.BackColor = System.Drawing.Color.MintCream;
@@ -114,6 +152,7 @@
             this.btnEliminarClasificador.TabIndex = 16;
             this.btnEliminarClasificador.Text = "Eliminar Clasificador";
             this.btnEliminarClasificador.UseVisualStyleBackColor = false;
+            this.btnEliminarClasificador.Click += new System.EventHandler(this.btnEliminarClasificador_Click);
             // 
             // btnModificarClasificador
             // 
@@ -161,44 +200,6 @@
             this.cboAño.Size = new System.Drawing.Size(144, 21);
             this.cboAño.TabIndex = 87;
             this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "idttdatosmetaclasificador";
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // Plantilla
-            // 
-            this.Plantilla.DataPropertyName = "Plantilla";
-            this.Plantilla.HeaderText = "Plantilla";
-            this.Plantilla.Name = "Plantilla";
-            this.Plantilla.ReadOnly = true;
-            this.Plantilla.Width = 200;
-            // 
-            // Especifica
-            // 
-            this.Especifica.DataPropertyName = "Especifica";
-            this.Especifica.HeaderText = "Codigo Especifica";
-            this.Especifica.Name = "Especifica";
-            this.Especifica.ReadOnly = true;
-            this.Especifica.Visible = false;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "Descripcion";
-            this.Column4.HeaderText = "Especifica";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "Concepto";
-            this.Column5.HeaderText = "Concepto";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
             // 
             // frmClasificadorMeta
             // 
