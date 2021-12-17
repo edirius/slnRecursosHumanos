@@ -586,6 +586,12 @@ namespace CapaUsuario
             }
         }
 
+        private void servidorIPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Usuarios.frmModificarServidor fModificarUsuarios = new Usuarios.frmModificarServidor();
+            fModificarUsuarios.ShowDialog();
+        }
+
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackupBBDDMySQL();

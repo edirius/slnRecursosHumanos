@@ -40,6 +40,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.btnCambiarServidor = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -127,6 +128,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnCambiarServidor);
             this.groupBox1.Controls.Add(this.lblMensaje);
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
             this.groupBox1.Controls.Add(this.txtUsuario);
@@ -159,6 +161,19 @@
             this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbImagen.TabIndex = 4;
             this.pbImagen.TabStop = false;
+            // 
+            // btnCambiarServidor
+            // 
+            this.btnCambiarServidor.Image = global::CapaUsuario.Properties.Resources._112;
+            this.btnCambiarServidor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCambiarServidor.Location = new System.Drawing.Point(265, 163);
+            this.btnCambiarServidor.Name = "btnCambiarServidor";
+            this.btnCambiarServidor.Size = new System.Drawing.Size(93, 23);
+            this.btnCambiarServidor.TabIndex = 9;
+            this.btnCambiarServidor.Text = "Servidor";
+            this.btnCambiarServidor.UseVisualStyleBackColor = true;
+            this.btnCambiarServidor.Visible = false;
+            this.btnCambiarServidor.Click += new System.EventHandler(this.btnCambiarServidor_Click);
             // 
             // frmLogin
             // 
@@ -199,5 +214,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvUsuarios;
+        private System.Windows.Forms.Button btnCambiarServidor;
     }
 }

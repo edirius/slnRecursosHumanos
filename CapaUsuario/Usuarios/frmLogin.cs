@@ -42,6 +42,7 @@ namespace CapaUsuario.Usuarios
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                btnCambiarServidor.Visible = true;
             }
         }
 
@@ -123,6 +124,12 @@ namespace CapaUsuario.Usuarios
             //    }
             //}
             //catch { }
+        }
+
+        private void btnCambiarServidor_Click(object sender, EventArgs e)
+        {
+            Usuarios.frmModificarServidor fModificarUsuarios = new Usuarios.frmModificarServidor();
+            fModificarUsuarios.ShowDialog();
         }
     }
 }

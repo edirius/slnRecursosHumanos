@@ -53,6 +53,9 @@
             this.mnuListaTurnos = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuListaDiasFestivos = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAsistenciaTrabajador = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnConexionReloj = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDescargarDatosReloj = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horasHombreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -122,9 +125,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnConexionReloj = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDescargarDatosReloj = new System.Windows.Forms.ToolStripMenuItem();
+            this.servidorIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -160,6 +161,7 @@
             this.newToolStripMenuItem,
             this.generarCopiaDeSeguridadToolStripMenuItem,
             this.restaurarCopiaDeSeguridadToolStripMenuItem,
+            this.servidorIPToolStripMenuItem,
             this.toolStripSeparator3,
             this.exitToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
@@ -334,6 +336,25 @@
             this.mnuAsistenciaTrabajador.Size = new System.Drawing.Size(297, 22);
             this.mnuAsistenciaTrabajador.Text = "Asistencia Trabajador";
             this.mnuAsistenciaTrabajador.Click += new System.EventHandler(this.mnuAsistenciaTrabajador_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(294, 6);
+            // 
+            // btnConexionReloj
+            // 
+            this.btnConexionReloj.Name = "btnConexionReloj";
+            this.btnConexionReloj.Size = new System.Drawing.Size(297, 22);
+            this.btnConexionReloj.Text = "Conexion con Reloj";
+            this.btnConexionReloj.Click += new System.EventHandler(this.btnConexionReloj_Click);
+            // 
+            // btnDescargarDatosReloj
+            // 
+            this.btnDescargarDatosReloj.Name = "btnDescargarDatosReloj";
+            this.btnDescargarDatosReloj.Size = new System.Drawing.Size(297, 22);
+            this.btnDescargarDatosReloj.Text = "Descargar Datos Reloj";
+            this.btnDescargarDatosReloj.Click += new System.EventHandler(this.btnDescargarDatosReloj_Click);
             // 
             // toolsMenu
             // 
@@ -886,24 +907,12 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // toolStripSeparator7
+            // servidorIPToolStripMenuItem
             // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(294, 6);
-            // 
-            // btnConexionReloj
-            // 
-            this.btnConexionReloj.Name = "btnConexionReloj";
-            this.btnConexionReloj.Size = new System.Drawing.Size(297, 22);
-            this.btnConexionReloj.Text = "Conexion con Reloj";
-            this.btnConexionReloj.Click += new System.EventHandler(this.btnConexionReloj_Click);
-            // 
-            // btnDescargarDatosReloj
-            // 
-            this.btnDescargarDatosReloj.Name = "btnDescargarDatosReloj";
-            this.btnDescargarDatosReloj.Size = new System.Drawing.Size(297, 22);
-            this.btnDescargarDatosReloj.Text = "Descargar Datos Reloj";
-            this.btnDescargarDatosReloj.Click += new System.EventHandler(this.btnDescargarDatosReloj_Click);
+            this.servidorIPToolStripMenuItem.Name = "servidorIPToolStripMenuItem";
+            this.servidorIPToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.servidorIPToolStripMenuItem.Text = "Servidor IP";
+            this.servidorIPToolStripMenuItem.Click += new System.EventHandler(this.servidorIPToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -1035,6 +1044,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem btnConexionReloj;
         private System.Windows.Forms.ToolStripMenuItem btnDescargarDatosReloj;
+        private System.Windows.Forms.ToolStripMenuItem servidorIPToolStripMenuItem;
     }
 }
 
