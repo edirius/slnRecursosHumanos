@@ -37,6 +37,7 @@ namespace CapaUsuario.Usuarios
         {
             try
             {
+                lblServidor.Text = "Conectando a: " + Settings.Default.ConexionMySql;
                 Conexion.IniciarSesion(Settings.Default.ConexionMySql, "bdpersonal", "root", "root");
             }
             catch (Exception ex)

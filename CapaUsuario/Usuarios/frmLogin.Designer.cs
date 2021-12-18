@@ -38,9 +38,10 @@
             this.lblMensaje = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCambiarServidor = new System.Windows.Forms.Button();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.pbImagen = new System.Windows.Forms.PictureBox();
-            this.btnCambiarServidor = new System.Windows.Forms.Button();
+            this.lblServidor = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -141,6 +142,19 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
+            // btnCambiarServidor
+            // 
+            this.btnCambiarServidor.Image = global::CapaUsuario.Properties.Resources._112;
+            this.btnCambiarServidor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCambiarServidor.Location = new System.Drawing.Point(265, 163);
+            this.btnCambiarServidor.Name = "btnCambiarServidor";
+            this.btnCambiarServidor.Size = new System.Drawing.Size(93, 23);
+            this.btnCambiarServidor.TabIndex = 9;
+            this.btnCambiarServidor.Text = "Servidor";
+            this.btnCambiarServidor.UseVisualStyleBackColor = true;
+            this.btnCambiarServidor.Visible = false;
+            this.btnCambiarServidor.Click += new System.EventHandler(this.btnCambiarServidor_Click);
+            // 
             // dgvUsuarios
             // 
             this.dgvUsuarios.AllowUserToAddRows = false;
@@ -162,18 +176,13 @@
             this.pbImagen.TabIndex = 4;
             this.pbImagen.TabStop = false;
             // 
-            // btnCambiarServidor
+            // lblServidor
             // 
-            this.btnCambiarServidor.Image = global::CapaUsuario.Properties.Resources._112;
-            this.btnCambiarServidor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCambiarServidor.Location = new System.Drawing.Point(265, 163);
-            this.btnCambiarServidor.Name = "btnCambiarServidor";
-            this.btnCambiarServidor.Size = new System.Drawing.Size(93, 23);
-            this.btnCambiarServidor.TabIndex = 9;
-            this.btnCambiarServidor.Text = "Servidor";
-            this.btnCambiarServidor.UseVisualStyleBackColor = true;
-            this.btnCambiarServidor.Visible = false;
-            this.btnCambiarServidor.Click += new System.EventHandler(this.btnCambiarServidor_Click);
+            this.lblServidor.AutoSize = true;
+            this.lblServidor.Location = new System.Drawing.Point(4, 392);
+            this.lblServidor.Name = "lblServidor";
+            this.lblServidor.Size = new System.Drawing.Size(0, 13);
+            this.lblServidor.TabIndex = 10;
             // 
             // frmLogin
             // 
@@ -181,6 +190,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(385, 405);
+            this.Controls.Add(this.lblServidor);
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.pbImagen);
             this.Controls.Add(this.groupBox1);
@@ -198,6 +208,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -215,5 +226,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.Button btnCambiarServidor;
+        private System.Windows.Forms.Label lblServidor;
     }
 }
