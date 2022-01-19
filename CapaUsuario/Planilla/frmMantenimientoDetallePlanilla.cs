@@ -972,6 +972,16 @@ namespace CapaUsuario.Planilla
                     else // tiene formula
                     {
                         double result = CalcularFormula(fila, Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value), smingresos[i, 3].ToString(), dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+
+                        // correccion error escolaridad
+                        if (smingresos[i, 1].ToString() == "2009")
+                        {
+                            if (result == 399.99)
+                            {
+                                result = 400;
+                            }
+                        }
+
                         //verificamos que tiene algun dato fijo
                         if (oDatoFijo.TieneDatoFijo(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value.ToString()), Convert.ToInt16(smingresos[i, 0].ToString()), "INGRESOS"))
                         {
@@ -1467,6 +1477,15 @@ namespace CapaUsuario.Planilla
                 result = Convert.ToDouble(essalud);
             }
 
+            //escolaridad
+            if (codigo == "2009")
+            {
+                if (result == 399.99)
+                {
+                    result = 400;
+                }
+            }
+
             decimal result99 = Convert.ToDecimal(result);
             //return Math.Round(result, 2, MidpointRounding.AwayFromZero);
             return Math.Round(result99, 2, MidpointRounding.AwayFromZero);
@@ -1557,9 +1576,16 @@ namespace CapaUsuario.Planilla
             }
             sNroMes = Convert.ToInt32(Mes(smes));
             sRemuneracion = Convert.ToDecimal(remuneracion_5ta);
-            sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(600);//suma de todos los ingresos incuido las gratificaciones
+            if (idttrabajador == 21) // ALCALDE
+            {
+                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(10600);//suma de todos los ingresos incuido las gratificaciones
+            }
+            else
+            {
+                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(600);//suma de todos los ingresos incuido las gratificaciones
+            }
             CapaDeNegocios.Planillas.cCalculo5taCategoria miCalculo5ta = new CapaDeNegocios.Planillas.cCalculo5taCategoria();
-            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sNroMes, sRemuneracion, sOtrosIngresos, sRemuMesAnt, sRetMesAnteriores, sUIT);
+            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sNroMes, sRemuneracion, sOtrosIngresos, sRemuMesAnt, sRetMesAnteriores, 4600);
             return sRenta5ta;
         }
 
@@ -1630,7 +1656,7 @@ namespace CapaUsuario.Planilla
             {
                 DateFechaInicioTemporal = DateFechaInicioTemporal.AddDays(-1);
             }
-            DateTime DateFechacalculo = new DateTime(2021, 11, 30);
+            DateTime DateFechacalculo = new DateTime(2021, 12, 31);
 
             int numeroMeses = ((DateFechacalculo.Month - DateFechaInicioTemporal.Month) + 12 * (DateFechacalculo.Year - DateFechaInicioTemporal.Year));
             TimeSpan Restafechas = DateFechacalculo - DateFechaInicio;
@@ -1648,13 +1674,13 @@ namespace CapaUsuario.Planilla
                     ddval.Value = 0;
                     break;
                 case 2:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 09, 30)) - DateFechaInicio).Days + 1);
-                    break;
-                case 1:
                     ddval.Value = Convert.ToDouble(((new DateTime(2021, 10, 31)) - DateFechaInicio).Days + 1);
                     break;
+                case 1:
+                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 11, 30)) - DateFechaInicio).Days + 1);
+                    break;
                 case 0:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 11, 30)) - DateFechaInicio).Days +1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 12, 31)) - DateFechaInicio).Days +1);
                     break;
                 
                 default:
@@ -1679,23 +1705,23 @@ namespace CapaUsuario.Planilla
                         ddval.Value = 0;
                         break;
                     case 5:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 06, 30)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 07, 31)) - DateFechaInicio).Days);
                         break;
 
                     case 4:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 07, 31)) - DateFechaInicio).Days);
-                        break;
-                    case 3:
                         ddval.Value = Convert.ToDouble(((new DateTime(2021, 08, 31)) - DateFechaInicio).Days);
                         break;
-                    case 2:
+                    case 3:
                         ddval.Value = Convert.ToDouble(((new DateTime(2021, 09, 30)) - DateFechaInicio).Days);
                         break;
-                    case 1:
+                    case 2:
                         ddval.Value = Convert.ToDouble(((new DateTime(2021, 10, 31)) - DateFechaInicio).Days);
                         break;
-                    case 0:
+                    case 1:
                         ddval.Value = Convert.ToDouble(((new DateTime(2021, 11, 30)) - DateFechaInicio).Days);
+                        break;
+                    case 0:
+                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 12, 31)) - DateFechaInicio).Days);
                         break;
 
                     default:

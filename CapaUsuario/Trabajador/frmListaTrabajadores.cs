@@ -474,5 +474,53 @@ namespace CapaUsuario.Trabajador
         {
 
         }
+
+        private void btnCambiarMeta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dtgListaTrabajadores.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un trabajador:", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    cTrabajador oTrabajador = new cTrabajador();
+                    oTrabajador.IdTrabajador = Convert.ToInt32(dtgListaTrabajadores.SelectedRows[0].Cells["id_trabajador"].Value);
+                    oTrabajador.Nombres = Convert.ToString(dtgListaTrabajadores.SelectedRows[0].Cells["nombres"].Value);
+                    oTrabajador.ApellidoPaterno = Convert.ToString(dtgListaTrabajadores.SelectedRows[0].Cells["apellidoPaterno"].Value);
+                    oTrabajador.ApellidoMaterno = Convert.ToString(dtgListaTrabajadores.SelectedRows[0].Cells["apellidoMaterno"].Value);
+
+                    CapaDeNegocios.DatosLaborales.cPeriodoTrabajador oPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+                    oPeriodoTrabajador = oPeriodoTrabajador.traerUltimoPeriodoTrabajador(oTrabajador.IdTrabajador);
+
+                    CapaDeNegocios.DatosLaborales.cRegimenTrabajador oRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                    oRegimenTrabajador = oRegimenTrabajador.TraerUltimoRegimenTrabajador(oPeriodoTrabajador.IdtPeriodoTrabajador);
+
+                    CapaDeNegocios.PlanillaNueva.blPlanilla oblPlanilla = new CapaDeNegocios.PlanillaNueva.blPlanilla();
+
+                    Trabajador.frmCambiarMeta fCambiarMeta = new frmCambiarMeta();
+                    fCambiarMeta.oMeta =  new CapaDeNegocios.Obras.cMeta();
+                    fCambiarMeta.oMeta = oblPlanilla.TraerMeta(oRegimenTrabajador.IdtMeta);
+
+                    fCambiarMeta.oTrabajador = oTrabajador;
+                    if (fCambiarMeta.ShowDialog() == DialogResult.OK)
+                    {
+                        oRegimenTrabajador.IdtMeta = fCambiarMeta.oMeta.Codigo;
+                        oRegimenTrabajador.ModificarRegimenTrabajador(oRegimenTrabajador);
+                        MessageBox.Show("Se ha realizado el cambio a la meta: " + fCambiarMeta.oMeta.Numero + " - " + fCambiarMeta.oMeta.Nombre, "Cambio Meta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se canceló la operacion", "Cancelacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar la lista de metas: " + ex.Message, "Meta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

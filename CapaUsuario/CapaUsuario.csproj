@@ -1128,6 +1128,12 @@
     <Compile Include="Reportes\tprovincia.cs">
       <DependentUpon>modPersonal.tt</DependentUpon>
     </Compile>
+    <Compile Include="Trabajador\frmCambiarMeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmCambiarMeta.Designer.cs">
+      <DependentUpon>frmCambiarMeta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trabajador\frmDepartamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1775,6 +1781,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmTareo.resx">
       <DependentUpon>frmTareo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmCambiarMeta.resx">
+      <DependentUpon>frmCambiarMeta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmDepartamento.resx">
       <DependentUpon>frmDepartamento.cs</DependentUpon>

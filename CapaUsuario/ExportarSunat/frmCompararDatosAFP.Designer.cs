@@ -129,7 +129,7 @@
             this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label4.Location = new System.Drawing.Point(737, 78);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 25);
+            this.label4.Size = new System.Drawing.Size(90, 25);
             this.label4.TabIndex = 52;
             this.label4.Text = "HABITAT";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -141,7 +141,7 @@
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.label3.Location = new System.Drawing.Point(558, 78);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 25);
+            this.label3.Size = new System.Drawing.Size(112, 25);
             this.label3.TabIndex = 51;
             this.label3.Text = "PROFUTURO";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

@@ -112,6 +112,7 @@
             this.menuCopiarNombre = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCopiarPaterno = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApellidoMaterno = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCambiarMeta = new System.Windows.Forms.Button();
             this.statusTrabajadores.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -255,6 +256,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.btnCambiarMeta);
             this.splitContainer1.Panel2.Controls.Add(this.btnReporteContratos);
             this.splitContainer1.Panel2.Controls.Add(this.btnContratos);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
@@ -761,6 +763,20 @@
             this.menuApellidoMaterno.Text = "Copiar Apellido Materno";
             this.menuApellidoMaterno.Click += new System.EventHandler(this.menuApellidoMaterno_Click);
             // 
+            // btnCambiarMeta
+            // 
+            this.btnCambiarMeta.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnCambiarMeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCambiarMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiarMeta.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCambiarMeta.Location = new System.Drawing.Point(295, 138);
+            this.btnCambiarMeta.Name = "btnCambiarMeta";
+            this.btnCambiarMeta.Size = new System.Drawing.Size(217, 23);
+            this.btnCambiarMeta.TabIndex = 42;
+            this.btnCambiarMeta.Text = "Cambiar la meta del ultimo Periodo";
+            this.btnCambiarMeta.UseVisualStyleBackColor = false;
+            this.btnCambiarMeta.Click += new System.EventHandler(this.btnCambiarMeta_Click);
+            // 
             // frmListaTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -848,5 +864,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.ToolStripButton btnDatosFijosxTrabajador;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.Button btnCambiarMeta;
     }
 }

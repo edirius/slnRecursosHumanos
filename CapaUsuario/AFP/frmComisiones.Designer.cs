@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmComisiones));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnIngresarDatosMesAnterior = new System.Windows.Forms.Button();
             this.btnNavegador = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.dtpMesComision = new System.Windows.Forms.DateTimePicker();
             this.lblAFP = new System.Windows.Forms.Label();
             this.webSBS = new System.Windows.Forms.WebBrowser();
-            this.btnIngresarDatosMesAnterior = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -102,6 +102,19 @@
             this.splitContainer1.Size = new System.Drawing.Size(1315, 440);
             this.splitContainer1.SplitterDistance = 280;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // btnIngresarDatosMesAnterior
+            // 
+            this.btnIngresarDatosMesAnterior.BackColor = System.Drawing.Color.MintCream;
+            this.btnIngresarDatosMesAnterior.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresarDatosMesAnterior.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnIngresarDatosMesAnterior.Location = new System.Drawing.Point(25, 283);
+            this.btnIngresarDatosMesAnterior.Name = "btnIngresarDatosMesAnterior";
+            this.btnIngresarDatosMesAnterior.Size = new System.Drawing.Size(236, 48);
+            this.btnIngresarDatosMesAnterior.TabIndex = 1;
+            this.btnIngresarDatosMesAnterior.Text = "Ingresar los datos del ultimo mes:";
+            this.btnIngresarDatosMesAnterior.UseVisualStyleBackColor = false;
+            this.btnIngresarDatosMesAnterior.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnNavegador
             // 
@@ -195,7 +208,7 @@
             65536});
             this.numRemuneracion.Location = new System.Drawing.Point(168, 242);
             this.numRemuneracion.Maximum = new decimal(new int[] {
-            10000,
+            15000,
             0,
             0,
             0});
@@ -344,19 +357,6 @@
             this.webSBS.Name = "webSBS";
             this.webSBS.Size = new System.Drawing.Size(1023, 415);
             this.webSBS.TabIndex = 46;
-            // 
-            // btnIngresarDatosMesAnterior
-            // 
-            this.btnIngresarDatosMesAnterior.BackColor = System.Drawing.Color.MintCream;
-            this.btnIngresarDatosMesAnterior.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngresarDatosMesAnterior.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnIngresarDatosMesAnterior.Location = new System.Drawing.Point(25, 283);
-            this.btnIngresarDatosMesAnterior.Name = "btnIngresarDatosMesAnterior";
-            this.btnIngresarDatosMesAnterior.Size = new System.Drawing.Size(236, 48);
-            this.btnIngresarDatosMesAnterior.TabIndex = 1;
-            this.btnIngresarDatosMesAnterior.Text = "Ingresar los datos del ultimo mes:";
-            this.btnIngresarDatosMesAnterior.UseVisualStyleBackColor = false;
-            this.btnIngresarDatosMesAnterior.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmComisiones
             // 
