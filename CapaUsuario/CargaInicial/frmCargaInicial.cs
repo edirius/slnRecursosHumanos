@@ -85,6 +85,7 @@ namespace CapaUsuario.CargaInicial
                                                         nuevoTrabajador.MiDistrito = trabajadorPlantilla.MiDistrito;
                                                         nuevoTrabajador.MiTipoZOna = trabajadorPlantilla.MiTipoZOna;
                                                         nuevoTrabajador.MiTipoVia = trabajadorPlantilla.MiTipoVia;
+                                                        nuevoTrabajador.NumeroVia = "0";
                                                         foreach (XmlNode item5 in item4.ChildNodes)
                                                         {
                                                             
