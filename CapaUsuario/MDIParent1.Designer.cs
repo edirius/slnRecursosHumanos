@@ -35,6 +35,7 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.servidorIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,7 +126,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.servidorIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cargaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -162,6 +163,7 @@
             this.generarCopiaDeSeguridadToolStripMenuItem,
             this.restaurarCopiaDeSeguridadToolStripMenuItem,
             this.servidorIPToolStripMenuItem,
+            this.cargaInicialToolStripMenuItem,
             this.toolStripSeparator3,
             this.exitToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
@@ -192,6 +194,13 @@
             this.restaurarCopiaDeSeguridadToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
             this.restaurarCopiaDeSeguridadToolStripMenuItem.Text = "Restaurar Base de Datos";
             this.restaurarCopiaDeSeguridadToolStripMenuItem.Click += new System.EventHandler(this.restaurarCopiaDeSeguridadToolStripMenuItem_Click);
+            // 
+            // servidorIPToolStripMenuItem
+            // 
+            this.servidorIPToolStripMenuItem.Name = "servidorIPToolStripMenuItem";
+            this.servidorIPToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.servidorIPToolStripMenuItem.Text = "Servidor IP";
+            this.servidorIPToolStripMenuItem.Click += new System.EventHandler(this.servidorIPToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -907,12 +916,12 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // servidorIPToolStripMenuItem
+            // cargaInicialToolStripMenuItem
             // 
-            this.servidorIPToolStripMenuItem.Name = "servidorIPToolStripMenuItem";
-            this.servidorIPToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
-            this.servidorIPToolStripMenuItem.Text = "Servidor IP";
-            this.servidorIPToolStripMenuItem.Click += new System.EventHandler(this.servidorIPToolStripMenuItem_Click);
+            this.cargaInicialToolStripMenuItem.Name = "cargaInicialToolStripMenuItem";
+            this.cargaInicialToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.cargaInicialToolStripMenuItem.Text = "Carga Inicial";
+            this.cargaInicialToolStripMenuItem.Click += new System.EventHandler(this.cargaInicialToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -1045,6 +1054,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnConexionReloj;
         private System.Windows.Forms.ToolStripMenuItem btnDescargarDatosReloj;
         private System.Windows.Forms.ToolStripMenuItem servidorIPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cargaInicialToolStripMenuItem;
     }
 }
 

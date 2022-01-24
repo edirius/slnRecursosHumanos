@@ -210,6 +210,18 @@
     <Compile Include="Asistencia\frmTrabajadorHorario.Designer.cs">
       <DependentUpon>frmTrabajadorHorario.cs</DependentUpon>
     </Compile>
+    <Compile Include="CargaInicial\frmCargaInicial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargaInicial\frmCargaInicial.Designer.cs">
+      <DependentUpon>frmCargaInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CargaInicial\frmDatosFijos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CargaInicial\frmDatosFijos.Designer.cs">
+      <DependentUpon>frmDatosFijos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clasificadores\frmListaClasificadoresGasto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1454,6 +1466,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Asistencia\frmTrabajadorHorario.resx">
       <DependentUpon>frmTrabajadorHorario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CargaInicial\frmCargaInicial.resx">
+      <DependentUpon>frmCargaInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CargaInicial\frmDatosFijos.resx">
+      <DependentUpon>frmDatosFijos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Clasificadores\frmListaClasificadoresGasto.resx">
       <DependentUpon>frmListaClasificadoresGasto.cs</DependentUpon>

@@ -592,6 +592,12 @@ namespace CapaUsuario
             fModificarUsuarios.ShowDialog();
         }
 
+        private void cargaInicialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CargaInicial.frmCargaInicial fCargaInicial = new CargaInicial.frmCargaInicial();
+            fCargaInicial.ShowDialog();
+        }
+
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackupBBDDMySQL();

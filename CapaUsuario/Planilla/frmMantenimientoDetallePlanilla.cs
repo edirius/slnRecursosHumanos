@@ -1578,7 +1578,9 @@ namespace CapaUsuario.Planilla
             sRemuneracion = Convert.ToDecimal(remuneracion_5ta);
             if (idttrabajador == 21) // ALCALDE
             {
-                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(10600);//suma de todos los ingresos incuido las gratificaciones
+                
+                //sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(10600);//suma de todos los ingresos incuido las gratificaciones
+                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(sRemuneracion);//suma de todos los ingresos incuido las gratificaciones
             }
             else
             {
