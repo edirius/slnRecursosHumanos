@@ -1580,7 +1580,7 @@ namespace CapaUsuario.Planilla
             {
                 
                 //sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(10600);//suma de todos los ingresos incuido las gratificaciones
-                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(sRemuneracion);//suma de todos los ingresos incuido las gratificaciones
+                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(sRemuneracion * 2);//suma de todos los ingresos incuido las gratificaciones
             }
             else
             {
