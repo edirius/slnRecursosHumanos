@@ -37,6 +37,10 @@ namespace CapaUsuario.Usuarios
         {
             try
             {
+                string ruta = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+                string ruta_imagen = ruta + "\\logo-muni-fw.png";
+                //string ruta_imagen = ruta + "\\logo_MuniMaras.png";
+                pbImagen.Image = new System.Drawing.Bitmap(ruta_imagen);
                 lblServidor.Text = "Conectando a: " + Settings.Default.ConexionMySql;
                 Conexion.IniciarSesion(Settings.Default.ConexionMySql, "bdpersonal", "root", "root");
             }
