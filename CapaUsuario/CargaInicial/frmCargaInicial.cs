@@ -14,12 +14,13 @@ using System.Xml;
 
 
 using System.Data.OleDb;
+using System.Reflection;
 
 namespace CapaUsuario.CargaInicial
 {
     public partial class frmCargaInicial : Form
     {
-        private List<cTrabajador> ListaTrabajadores = new List<cTrabajador>();
+        private List<cDetalleCargaInicial> ListaDetalles = new List<cDetalleCargaInicial>();
 
         private cTrabajador trabajadorPlantilla = new cTrabajador();
 
@@ -51,8 +52,7 @@ namespace CapaUsuario.CargaInicial
 
         private void LLenarGrid(string archivo, string hoja)
         {
-            
-
+          
             XmlDocument miXML = new XmlDocument();
             miXML.Load(archivo);
 
@@ -74,18 +74,20 @@ namespace CapaUsuario.CargaInicial
                                         {
                                             foreach (XmlNode item4 in item3.ChildNodes)
                                             {
-                                                if (item4.Name == "ss:Row")
+                                                if (item4.Name == "ss:Row" && item4.ChildNodes[0].Attributes[0].Value != "7")
                                                 {
+
                                                     int numero = Convert.ToInt32(item4.Attributes[0].Value);
 
                                                     if (numero >= 14)
                                                     {
-                                                        cTrabajador nuevoTrabajador = new cTrabajador();
-                                                        nuevoTrabajador.MiNacionalidad = trabajadorPlantilla.MiNacionalidad;
-                                                        nuevoTrabajador.MiDistrito = trabajadorPlantilla.MiDistrito;
-                                                        nuevoTrabajador.MiTipoZOna = trabajadorPlantilla.MiTipoZOna;
-                                                        nuevoTrabajador.MiTipoVia = trabajadorPlantilla.MiTipoVia;
-                                                        nuevoTrabajador.NumeroVia = "0";
+                                                        
+                                                        cDetalleCargaInicial nuevoDetalle = new cDetalleCargaInicial();
+                                                        nuevoDetalle.MiTrabajador.MiNacionalidad = trabajadorPlantilla.MiNacionalidad;
+                                                        nuevoDetalle.MiTrabajador.MiDistrito = trabajadorPlantilla.MiDistrito;
+                                                        nuevoDetalle.MiTrabajador.MiTipoZOna = trabajadorPlantilla.MiTipoZOna;
+                                                        nuevoDetalle.MiTrabajador.MiTipoVia = trabajadorPlantilla.MiTipoVia;
+                                                        nuevoDetalle.MiTrabajador.NumeroVia = "0";
                                                         foreach (XmlNode item5 in item4.ChildNodes)
                                                         {
                                                             
@@ -96,19 +98,19 @@ namespace CapaUsuario.CargaInicial
                                                                 //NODO CELL
                                                                 //dni
                                                                 case "2":
-                                                                    nuevoTrabajador.Dni = item5.ChildNodes[0].ChildNodes[0].Value;
+                                                                    nuevoDetalle.MiTrabajador.Dni = item5.ChildNodes[0].ChildNodes[0].Value;
                                                                     break;
                                                                 //apellido paterno
                                                                 case "3":
-                                                                    nuevoTrabajador.ApellidoPaterno = item5.ChildNodes[0].ChildNodes[0].Value;
+                                                                    nuevoDetalle.MiTrabajador.ApellidoPaterno = item5.ChildNodes[0].ChildNodes[0].Value;
                                                                     break;
                                                                 //apellido materno
                                                                 case "4":
-                                                                    nuevoTrabajador.ApellidoMaterno = item5.ChildNodes[0].ChildNodes[0].Value;
+                                                                    nuevoDetalle.MiTrabajador.ApellidoMaterno = item5.ChildNodes[0].ChildNodes[0].Value;
                                                                     break;
                                                                 //nombres
                                                                 case "5":
-                                                                    nuevoTrabajador.Nombres = item5.ChildNodes[0].ChildNodes[0].Value;
+                                                                    nuevoDetalle.MiTrabajador.Nombres = item5.ChildNodes[0].ChildNodes[0].Value;
                                                                     break;
                                                                 default:
                                                                     break;
@@ -116,7 +118,7 @@ namespace CapaUsuario.CargaInicial
 
                                                            
                                                         }
-                                                        ListaTrabajadores.Add(nuevoTrabajador);
+                                                        ListaDetalles.Add(nuevoDetalle);
                                                     }
                                                 }
                                             }
@@ -129,25 +131,33 @@ namespace CapaUsuario.CargaInicial
                     }
                 }
             }
-            dtgDatosExcel.DataSource = ListaTrabajadores;
+            cargarDatagrid();
+            
+        }
+
+
+        private void cargarDatagrid()
+        {
+            dtgDatosExcel.DataSource = ListaDetalles;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (ListaTrabajadores.Count == 0)
+                if (ListaDetalles.Count == 0)
                 {
                     MessageBox.Show("No hay datos para guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    foreach (cTrabajador item in ListaTrabajadores)
+                    foreach (cDetalleCargaInicial item in ListaDetalles)
                     {
                         int id;
-                        id = item.AgregarTrabajadorConID(item);
-                        item.IdTrabajador = id;
+                        id = item.MiTrabajador.AgregarTrabajadorConID(item.MiTrabajador);
+                        item.MiTrabajador.IdTrabajador = id;
                     }
+                    cargarDatagrid();
                 }
             }
             catch (Exception ex)
@@ -179,6 +189,45 @@ namespace CapaUsuario.CargaInicial
             {
                 MessageBox.Show("Error al dar datos fijos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dtgDatosExcel_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if ((dtgDatosExcel.Rows[e.RowIndex].DataBoundItem != null) && (dtgDatosExcel.Columns[e.ColumnIndex].DataPropertyName.Contains(".")))
+            {
+                e.Value = BindProperty(dtgDatosExcel.Rows[e.RowIndex].DataBoundItem, dtgDatosExcel.Columns[e.ColumnIndex].DataPropertyName);
+            }
+        }
+
+        private string BindProperty(object property, string propertyName)
+        {
+            string retValue = "";
+            if (propertyName.Contains("."))
+            {
+                PropertyInfo[] arrayProperties;
+                string leftPropertyName;
+                leftPropertyName = propertyName.Substring(0, propertyName.IndexOf("."));
+                arrayProperties = property.GetType().GetProperties();
+                foreach (PropertyInfo propertyInfo in arrayProperties)
+                {
+                    if (propertyInfo.Name == leftPropertyName)
+                    {
+                        retValue = BindProperty(
+                          propertyInfo.GetValue(property, null),
+                          propertyName.Substring(propertyName.IndexOf(".") + 1));
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                Type propertyType;
+                PropertyInfo propertyInfo;
+                propertyType = property.GetType();
+                propertyInfo = propertyType.GetProperty(propertyName);
+                retValue = propertyInfo.GetValue(property, null).ToString();
+            }
+            return retValue;
         }
     }
 }

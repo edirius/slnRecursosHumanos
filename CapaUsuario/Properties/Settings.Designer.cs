@@ -36,10 +36,28 @@ namespace CapaUsuario.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("192.168.1.60")]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
         public string ConexionMySql {
             get {
                 return ((string)(this["ConexionMySql"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Municipalidad Distrital de Maras")]
+        public string Empresa {
+            get {
+                return ((string)(this["Empresa"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20177432360")]
+        public string RUC {
+            get {
+                return ((string)(this["RUC"]));
             }
         }
     }

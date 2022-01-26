@@ -13,10 +13,16 @@
     <Setting Name="ConexionMySql" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;192.168.1.60&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;127.0.0.1&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;MySql.Data.MySqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">192.168.1.60</Value>
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="Empresa" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Municipalidad Distrital de Maras</Value>
+    </Setting>
+    <Setting Name="RUC" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">20177432360</Value>
     </Setting>
   </Settings>
 </SettingsFile>

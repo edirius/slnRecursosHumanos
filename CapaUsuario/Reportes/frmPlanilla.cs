@@ -18,6 +18,9 @@ using iTextSharp.text.html.simpleparser;
 using System.Collections.Generic;
 using iTextSharp;
 using System.Web;
+
+using CapaUsuario.Properties;
+
 //using iTextSharp.text.pdf.PdfWriter;
 
 
@@ -3453,7 +3456,7 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph = new Paragraph();
                 paragraph.Alignment = Element.ALIGN_CENTER;
                 paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
-                paragraph.Add("MUNICIPALIDAD DISTRITAL DE MARAS \n UNIDAD DE PERSONAL \n ");
+                paragraph.Add(Settings.Default.Empresa + " \n UNIDAD DE PERSONAL \n ");
                 paragraph.SpacingBefore = 0f;
                 paragraph.SpacingAfter = 0f;
                 

@@ -32,6 +32,10 @@
             this.dtgDatosExcel = new System.Windows.Forms.DataGridView();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnDatosFijos = new System.Windows.Forms.Button();
+            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colApellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatosExcel)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,11 +58,17 @@
             this.dtgDatosExcel.AllowUserToAddRows = false;
             this.dtgDatosExcel.AllowUserToDeleteRows = false;
             this.dtgDatosExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgDatosExcel.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colCodigo,
+            this.colNombres,
+            this.colApellidoPaterno,
+            this.colApellidoMaterno});
             this.dtgDatosExcel.Location = new System.Drawing.Point(38, 96);
             this.dtgDatosExcel.Name = "dtgDatosExcel";
             this.dtgDatosExcel.ReadOnly = true;
             this.dtgDatosExcel.Size = new System.Drawing.Size(770, 263);
             this.dtgDatosExcel.TabIndex = 50;
+            this.dtgDatosExcel.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgDatosExcel_CellFormatting);
             // 
             // btnSalvar
             // 
@@ -88,11 +98,39 @@
             this.btnDatosFijos.UseVisualStyleBackColor = false;
             this.btnDatosFijos.Click += new System.EventHandler(this.btnDatosFijos_Click);
             // 
+            // colCodigo
+            // 
+            this.colCodigo.DataPropertyName = "MiTrabajador.IdTrabajador";
+            this.colCodigo.HeaderText = "Codigo";
+            this.colCodigo.Name = "colCodigo";
+            this.colCodigo.ReadOnly = true;
+            // 
+            // colNombres
+            // 
+            this.colNombres.DataPropertyName = "MiTrabajador.Nombres";
+            this.colNombres.HeaderText = "Nombres";
+            this.colNombres.Name = "colNombres";
+            this.colNombres.ReadOnly = true;
+            // 
+            // colApellidoPaterno
+            // 
+            this.colApellidoPaterno.DataPropertyName = "MiTrabajador.ApellidoPaterno";
+            this.colApellidoPaterno.HeaderText = "Apellido Paterno";
+            this.colApellidoPaterno.Name = "colApellidoPaterno";
+            this.colApellidoPaterno.ReadOnly = true;
+            // 
+            // colApellidoMaterno
+            // 
+            this.colApellidoMaterno.DataPropertyName = "MiTrabajador.ApellidoMaterno";
+            this.colApellidoMaterno.HeaderText = "Apellido Materno";
+            this.colApellidoMaterno.Name = "colApellidoMaterno";
+            this.colApellidoMaterno.ReadOnly = true;
+            // 
             // frmCargaInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 460);
+            this.ClientSize = new System.Drawing.Size(823, 441);
             this.Controls.Add(this.btnDatosFijos);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.dtgDatosExcel);
@@ -111,5 +149,9 @@
         private System.Windows.Forms.DataGridView dtgDatosExcel;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnDatosFijos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNombres;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colApellidoPaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colApellidoMaterno;
     }
 }

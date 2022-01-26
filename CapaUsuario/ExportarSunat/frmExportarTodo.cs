@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CapaDeNegocios;
 using System.IO;
 using System.Collections;
+using CapaUsuario.Properties;
 
 namespace CapaUsuario.ExportarSunat
 {
@@ -35,7 +36,7 @@ namespace CapaUsuario.ExportarSunat
         string RegimenPensionario = "";
         string Ruta = "";
         string Titulo = "";
-        string RUC = "20177432360";
+        string RUC = Settings.Default.RUC;
         string tipoArchivo = ".PER";
         string rp = "RP_";
         string NroRegimenSalud = "";

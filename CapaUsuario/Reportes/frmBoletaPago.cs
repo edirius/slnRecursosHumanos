@@ -15,6 +15,8 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp;
 
+using CapaUsuario.Properties;
+
 namespace CapaUsuario.Reportes
 {
     public partial class frmBoletaPago : Form
@@ -226,11 +228,11 @@ namespace CapaUsuario.Reportes
 
                 //*-------------Primera parte de la boleta de pago */ 
                 odtD.Columns.Add("RUC:", typeof(string));
-                odtD.Columns.Add("20226560824", typeof(string));
+                odtD.Columns.Add(Settings.Default.RUC, typeof(string));
 
                 drFilaD = odtD.NewRow();
                 drFilaD.Delete();
-                drFilaD[0] = "EMPLEADOR:"; drFilaD[1] = "MUNICIPALIDAD DISTRITAL DE CCATCCA";
+                drFilaD[0] = "EMPLEADOR:"; drFilaD[1] = Settings.Default.Empresa;
                 odtD.Rows.InsertAt(drFilaD, 1);
 
                 drFilaD = odtD.NewRow();

@@ -16,6 +16,9 @@ using iTextSharp.text.pdf;
 using iTextSharp;
 using System.Runtime.InteropServices;
 
+using CapaUsuario.Properties;
+
+
 namespace CapaUsuario.Reportes
 {
     public partial class frmBoletaPagoXPlanilla : Form
@@ -631,12 +634,12 @@ namespace CapaUsuario.Reportes
 
                 drFilaD = odtD.NewRow();
                 drFilaD.Delete();
-                drFilaD[0] = "RUC:"; drFilaD[1] = "20226560824";
+                drFilaD[0] = "RUC:"; drFilaD[1] = Settings.Default.RUC;
                 odtD.Rows.InsertAt(drFilaD, 0);
 
                 drFilaD = odtD.NewRow();
                 drFilaD.Delete();
-                drFilaD[0] = "EMPLEADOR:"; drFilaD[1] = "MUNICIPALIDAD DISTRITAL DE CCATCCA";
+                drFilaD[0] = "EMPLEADOR:"; drFilaD[1] = Settings.Default.Empresa;
                 odtD.Rows.InsertAt(drFilaD, 1);
 
                 drFilaD = odtD.NewRow();

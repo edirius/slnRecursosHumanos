@@ -20,6 +20,10 @@ namespace CapaUsuario
     {
         public static CapaDeNegocios.Reloj.cServidorReloj oServidorReloj = new CapaDeNegocios.Reloj.cServidorReloj();
 
+        public static string NombreEmpresa;
+
+        public static string RUCEmpresa;
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -30,6 +34,8 @@ namespace CapaUsuario
             try
             {
                 Conexion.IniciarSesion(Settings.Default.ConexionMySql, "bdpersonal", "root", "root");
+                NombreEmpresa = Settings.Default.Empresa;
+                RUCEmpresa = Settings.Default.RUC;
                 //MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
             }
             catch (Exception ex)

@@ -11,6 +11,9 @@ using CapaDeNegocios;
 using System.IO;
 using System.Collections;
 
+using CapaUsuario.Properties;
+
+
 namespace CapaUsuario.ExportarSunat
 {
     public partial class frmExportarTributosDescuentosTrabajador : Form
@@ -36,6 +39,7 @@ namespace CapaUsuario.ExportarSunat
             label5.Visible = false;
             txtCodForm.Visible = false;
             txtRuc.Visible = false;
+            txtRuc.Text = Settings.Default.RUC;
             dgvListaPlanillas.Columns[0].Visible = false;
             dgvListaPlanillas.Columns[1].Width = 50;
             dgvListaPlanillas.Columns[2].Width = 75;
