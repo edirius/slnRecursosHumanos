@@ -3516,7 +3516,7 @@ namespace CapaUsuario.Reportes
 
                 fecha = Convert.ToDateTime( oPlanilla.ListarFechaPlanilla(sidtplanilla).Rows[0][1].ToString() );
 
-                paragraph6.Add("MARAS, " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
+                paragraph6.Add("YUCAY, " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
                 /*FEcha de hoy*/
                 //paragraph6.Add("CCATCCA, " + String.Format("{0:dd}" , fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
 
@@ -3837,7 +3837,7 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph = new Paragraph();
                 paragraph.Alignment = Element.ALIGN_CENTER;
                 paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
-                paragraph.Add("MUNICIPALIDAD DISTRITAL DE MARAS \n UNIDAD DE PERSONAL \n ");
+                paragraph.Add("MUNICIPALIDAD DISTRITAL DE YUCAY \n UNIDAD DE PERSONAL \n ");
 
                 Paragraph paragraph2 = new Paragraph();
                 paragraph2.Alignment = Element.ALIGN_RIGHT;
@@ -3881,7 +3881,7 @@ namespace CapaUsuario.Reportes
 
                 fecha = Convert.ToDateTime(oPlanilla.ListarFechaPlanilla(sidtplanilla).Rows[0][1].ToString());
 
-                paragraph6.Add("MARAS, " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
+                paragraph6.Add("YUCAY, " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
                 /*FEcha de hoy*/
                 //paragraph6.Add("CCATCCA, " + String.Format("{0:dd}" , fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
 
