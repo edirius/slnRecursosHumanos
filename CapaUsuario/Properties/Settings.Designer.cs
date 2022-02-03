@@ -60,5 +60,14 @@ namespace CapaUsuario.Properties {
                 return ((string)(this["RUC"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Maras")]
+        public string Lugar {
+            get {
+                return ((string)(this["Lugar"]));
+            }
+        }
     }
 }

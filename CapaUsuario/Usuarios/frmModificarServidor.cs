@@ -29,6 +29,9 @@ namespace CapaUsuario.Usuarios
         private void Iniciar()
         {
             txtIP.Text = Settings.Default.ConexionMySql;
+            txtEmpresa.Text = Settings.Default.Empresa;
+            txtRUC.Text = Settings.Default.RUC;
+            txtLugar.Text = Settings.Default.Lugar;
         }
 
         private void btnGuardarServidor_Click(object sender, EventArgs e)
@@ -45,6 +48,34 @@ namespace CapaUsuario.Usuarios
                         if (item.Attributes[0].Value == "CapaUsuario.Properties.Settings.ConexionMySql")
                         {
                             item.Attributes[1].Value = txtIP.Text;
+                        }
+                    }
+                }
+
+                if (element.Name.Equals("applicationSettings"))
+                {
+                    foreach (XmlNode item in element.ChildNodes)
+                    {
+                        if (item.Name.Equals("CapaUsuario.Properties.Settings"))
+                        {
+                            foreach (XmlNode item2 in item.ChildNodes)
+                            {
+                                if (item2.Attributes[0].Value == "Empresa")
+                                {
+                                    item2.FirstChild.FirstChild.Value = txtEmpresa.Text;
+                                }
+
+                                if (item2.Attributes[0].Value == "RUC")
+                                {
+                                    item2.FirstChild.FirstChild.Value = txtRUC.Text;
+                                }
+
+                                if (item2.Attributes[0].Value == "Lugar")
+                                {
+                                    item2.FirstChild.FirstChild.Value = txtLugar.Text;
+                                }
+                            }
+                            
                         }
                     }
                 }

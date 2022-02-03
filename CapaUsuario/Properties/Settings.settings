@@ -24,5 +24,8 @@
     <Setting Name="RUC" Type="System.String" Scope="Application">
       <Value Profile="(Default)">20177432360</Value>
     </Setting>
+    <Setting Name="Lugar" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Maras</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
