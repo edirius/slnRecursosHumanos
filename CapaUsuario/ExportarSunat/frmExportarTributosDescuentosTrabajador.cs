@@ -26,6 +26,8 @@ namespace CapaUsuario.ExportarSunat
         string FechaTexto = "";
         ArrayList milista = new ArrayList();
         ArrayList milistaJornada = new ArrayList();
+        ArrayList milistaSCTR = new ArrayList();
+
         public frmExportarTributosDescuentosTrabajador()
         {
             InitializeComponent();
@@ -199,6 +201,7 @@ namespace CapaUsuario.ExportarSunat
                 if (CheckJornada.Checked == true)
                 {
                     concatenarDatosJornadaLaboral();
+                    concatenarDatosSCTR();
                     concatenarDatos();
                     milista.Clear();
                     milistaJornada.Clear();
@@ -208,6 +211,7 @@ namespace CapaUsuario.ExportarSunat
                     concatenarDatos();
                     milista.Clear();
                 }
+
                 else MessageBox.Show("La planilla no tiene trabajadores para exportar");
             }
             else
@@ -276,6 +280,63 @@ namespace CapaUsuario.ExportarSunat
                 }
             }
         }
+
+
+        public void concatenarDatosSCTR()
+        {
+
+            string TituloJornada = "";
+            try
+            {
+                for (int i = 0; i < dgvJornadaLaboral.Rows.Count; i++)
+                {
+                    //obtenemos los datos de las columnas que queremos
+                    string mes = cbMes.Text;
+                    string año = cbAños.Text;
+                    string TipoDoc = dgvJornadaLaboral[0, i].Value.ToString();
+                    string dni = dgvJornadaLaboral[1, i].Value.ToString();
+                  
+                    string codigoformjornada = "0601";
+                    string Ruc = txtRuc.Text;
+                    string Palo = "|";
+                    ConvertirMes(mes);
+                    string Jornada = "";
+                    Jornada = TipoDoc + Palo + dni + Palo + "1" + Palo + "1.53" + Palo;
+                    TituloJornada = codigoformjornada + año + Nromes + txtRuc.Text + ".tas";
+                    milistaSCTR.Add(Jornada);//agregamos los datos concatenados al arreglo(ArrayList)
+                }
+
+            }
+            catch { }
+            SaveFileDialog Guardar = new SaveFileDialog();
+            Guardar.FileName = TituloJornada;
+            string Ruta = "";
+            if (TituloJornada != "")
+            {
+                if (Guardar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+
+                    if (File.Exists(Guardar.FileName))
+                    {
+                        File.Delete(Guardar.FileName);
+                    }
+                    if (Guardar.FileName.Contains(TituloJornada))
+                    {
+                        Ruta = Guardar.FileName;
+                        StreamWriter escribir = new StreamWriter(Ruta);//ruta del guardado
+                        //StreamWriter escribir = new StreamWriter(@"C:\Users\Usuario\Desktop\Textos SUNAT\" + Titulo + "");//ruta del guardado
+                        for (int k = 0; k < milistaSCTR.Count; k++)//mientras sea menor al contenido del arreglo(arraylist) guardará cada items k
+                        {
+                            escribir.WriteLine(milistaSCTR[k]);//guarda en el bloc de notas 
+                        }
+                        escribir.Close();//cierra la escritura para que eje manejar por separado el bloc de notas
+                        MessageBox.Show("Datos de Jornada laboral exportados Exitosamente");//mensaje de cierre exitoso
+
+                    }
+                }
+            }
+        }
+
         public void concatenarDatos()
         {
             

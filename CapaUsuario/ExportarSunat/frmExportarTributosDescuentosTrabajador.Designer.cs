@@ -47,6 +47,7 @@
             this.dgvDescuentos = new System.Windows.Forms.DataGridView();
             this.dgvAportaciones = new System.Windows.Forms.DataGridView();
             this.dgvJornadaLaboral = new System.Windows.Forms.DataGridView();
+            this.chkSCTR = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -197,6 +198,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkSCTR);
             this.groupBox1.Controls.Add(this.pbSunat);
             this.groupBox1.Controls.Add(this.CheckJornada);
             this.groupBox1.Controls.Add(this.bntListarTodo);
@@ -225,7 +227,7 @@
             // CheckJornada
             // 
             this.CheckJornada.AutoSize = true;
-            this.CheckJornada.Location = new System.Drawing.Point(821, 68);
+            this.CheckJornada.Location = new System.Drawing.Point(821, 69);
             this.CheckJornada.Name = "CheckJornada";
             this.CheckJornada.Size = new System.Drawing.Size(235, 17);
             this.CheckJornada.TabIndex = 34;
@@ -262,6 +264,16 @@
             this.dgvJornadaLaboral.RowHeadersVisible = false;
             this.dgvJornadaLaboral.Size = new System.Drawing.Size(274, 172);
             this.dgvJornadaLaboral.TabIndex = 44;
+            // 
+            // chkSCTR
+            // 
+            this.chkSCTR.AutoSize = true;
+            this.chkSCTR.Location = new System.Drawing.Point(1072, 69);
+            this.chkSCTR.Name = "chkSCTR";
+            this.chkSCTR.Size = new System.Drawing.Size(55, 17);
+            this.chkSCTR.TabIndex = 36;
+            this.chkSCTR.Text = "SCTR";
+            this.chkSCTR.UseVisualStyleBackColor = true;
             // 
             // frmExportarTributosDescuentosTrabajador
             // 
@@ -316,5 +328,6 @@
         private System.Windows.Forms.CheckBox CheckJornada;
         private System.Windows.Forms.DataGridView dgvJornadaLaboral;
         private System.Windows.Forms.PictureBox pbSunat;
+        private System.Windows.Forms.CheckBox chkSCTR;
     }
 }
