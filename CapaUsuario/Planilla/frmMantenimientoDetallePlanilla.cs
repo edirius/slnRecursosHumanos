@@ -1515,6 +1515,16 @@ namespace CapaUsuario.Planilla
             decimal sRetMesAnteriores = 0;
 
             int idttrabajador = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value);
+            cTrabajador miTrabajadorRentaQuinta = new cTrabajador();
+            miTrabajadorRentaQuinta =  miTrabajadorRentaQuinta.traerTrabajador(idttrabajador);
+
+            CapaDeNegocios.DatosLaborales.cPeriodoTrabajador oPeriodoTrabajadorRentaQuinta = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+            oPeriodoTrabajadorRentaQuinta = oPeriodoTrabajadorRentaQuinta.traerUltimoPeriodoTrabajador(miTrabajadorRentaQuinta.IdTrabajador);
+
+            CapaDeNegocios.DatosLaborales.cRegimenTrabajador oRegimenTrabajadorRentaQuinta = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+            oRegimenTrabajadorRentaQuinta = oRegimenTrabajadorRentaQuinta.TraerUltimoRegimenTrabajador(oPeriodoTrabajadorRentaQuinta.IdtPeriodoTrabajador);
+
+
             CapaDeNegocios.Planillas.cIngresos5taCategoria miIngresos5taCategoria = new CapaDeNegocios.Planillas.cIngresos5taCategoria();
             DataTable oDataIngresos5taCategoria = new DataTable();
             oDataIngresos5taCategoria = miIngresos5taCategoria.Ingresos5taCategoria(sidtplanilla, smes, saño, Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
@@ -1576,7 +1586,8 @@ namespace CapaUsuario.Planilla
             }
             sNroMes = Convert.ToInt32(Mes(smes));
             sRemuneracion = Convert.ToDecimal(remuneracion_5ta);
-            if (idttrabajador == 21) // ALCALDE
+
+            if (oRegimenTrabajadorRentaQuinta.IdtRegimenLaboral == 3 || oRegimenTrabajadorRentaQuinta.IdtRegimenLaboral == 4) // codigo 3 y 4 corresponde a regimen laboral 728 y 4 30057 servir
             {
                 
                 //sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(10600);//suma de todos los ingresos incuido las gratificaciones

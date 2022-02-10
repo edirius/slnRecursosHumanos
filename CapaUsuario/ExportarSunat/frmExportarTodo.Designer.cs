@@ -42,6 +42,7 @@
             this.checkPER = new System.Windows.Forms.CheckBox();
             this.checkTRA = new System.Windows.Forms.CheckBox();
             this.checkSelectAll = new System.Windows.Forms.CheckBox();
+            this.chkSRCT = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarTrabajadores)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +60,7 @@
             this.dgvListarTrabajadores.Name = "dgvListarTrabajadores";
             this.dgvListarTrabajadores.RowHeadersVisible = false;
             this.dgvListarTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListarTrabajadores.Size = new System.Drawing.Size(744, 437);
+            this.dgvListarTrabajadores.Size = new System.Drawing.Size(764, 437);
             this.dgvListarTrabajadores.TabIndex = 30;
             // 
             // label3
@@ -126,6 +127,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkSRCT);
             this.groupBox1.Controls.Add(this.checkEDU);
             this.groupBox1.Controls.Add(this.cbAños);
             this.groupBox1.Controls.Add(this.checkEST);
@@ -146,7 +148,7 @@
             // checkEDU
             // 
             this.checkEDU.AutoSize = true;
-            this.checkEDU.Location = new System.Drawing.Point(391, 90);
+            this.checkEDU.Location = new System.Drawing.Point(382, 90);
             this.checkEDU.Name = "checkEDU";
             this.checkEDU.Size = new System.Drawing.Size(49, 17);
             this.checkEDU.TabIndex = 42;
@@ -196,7 +198,7 @@
             // checkSelectAll
             // 
             this.checkSelectAll.AutoSize = true;
-            this.checkSelectAll.Location = new System.Drawing.Point(500, 90);
+            this.checkSelectAll.Location = new System.Drawing.Point(522, 90);
             this.checkSelectAll.Name = "checkSelectAll";
             this.checkSelectAll.Size = new System.Drawing.Size(188, 17);
             this.checkSelectAll.TabIndex = 43;
@@ -204,11 +206,21 @@
             this.checkSelectAll.UseVisualStyleBackColor = true;
             this.checkSelectAll.CheckedChanged += new System.EventHandler(this.checkSelectAll_CheckedChanged);
             // 
+            // chkSRCT
+            // 
+            this.chkSRCT.AutoSize = true;
+            this.chkSRCT.Location = new System.Drawing.Point(452, 90);
+            this.chkSRCT.Name = "chkSRCT";
+            this.chkSRCT.Size = new System.Drawing.Size(55, 17);
+            this.chkSRCT.TabIndex = 44;
+            this.chkSRCT.Text = "SRCT";
+            this.chkSRCT.UseVisualStyleBackColor = true;
+            // 
             // frmExportarTodo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 567);
+            this.ClientSize = new System.Drawing.Size(799, 567);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvListarTrabajadores);
             this.Name = "frmExportarTodo";
@@ -237,5 +249,6 @@
         private System.Windows.Forms.CheckBox checkTRA;
         private System.Windows.Forms.CheckBox checkIDE;
         private System.Windows.Forms.CheckBox checkSelectAll;
+        private System.Windows.Forms.CheckBox chkSRCT;
     }
 }

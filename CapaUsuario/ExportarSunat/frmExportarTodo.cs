@@ -34,6 +34,7 @@ namespace CapaUsuario.ExportarSunat
         string TipoTrabajador = "";
         string RegimenAseguramiento = "";
         string RegimenPensionario = "";
+        string SRCT = "";
         string Ruta = "";
         string Titulo = "";
         string RUC = Settings.Default.RUC;
@@ -462,6 +463,18 @@ namespace CapaUsuario.ExportarSunat
                     string indicadorTipoRegistro4 = fila.Cells["CodAFP"].Value.ToString();
                     RegimenPensionario = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro4, fechainicio4, fechafin4, indicadorTipoRegistro4, EPS);
                     milistaPER.Add(RegimenPensionario);
+
+                    //SRCT
+                    if (chkSRCT.Checked)
+                    {
+                        string tipoRegistro5 = "5";
+                        string fechainicio5 = fila.Cells["FechaInicioSalud"].Value.ToString();
+                        string fechafin5 = fila.Cells["FechaFinSalud"].Value.ToString();
+                        string indicadorTipoRegistro5 = "1";
+                        SRCT = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro5, fechainicio5, fechafin5, indicadorTipoRegistro5, EPS);
+                        milistaPER.Add(SRCT);
+                    }
+
                 }
             }
             //CrearCarpeta();
@@ -489,6 +502,8 @@ namespace CapaUsuario.ExportarSunat
                 }
             }
         }
+
+       
         public void concatenarDatosEST()
         {
             foreach (DataGridViewRow fila in dgvListarTrabajadores.Rows)
