@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CapaDeNegocios;
 using System.IO;
 using System.Collections;
+using CapaUsuario.Properties;
 
 using CapaUsuario.Properties;
 
@@ -31,6 +32,7 @@ namespace CapaUsuario.ExportarSunat
         public frmExportarTributosDescuentosTrabajador()
         {
             InitializeComponent();
+            txtRuc.Text = Properties.Settings.Default.RUC;
             DateTime Ahora = DateTime.Today;
             CargarMes(Ahora);
             cbMes.Text = FechaTexto;

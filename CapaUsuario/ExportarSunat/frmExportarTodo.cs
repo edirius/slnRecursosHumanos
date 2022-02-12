@@ -307,6 +307,15 @@ namespace CapaUsuario.ExportarSunat
                     string tipoVia = fila.Cells["CodTipoVia"].Value.ToString();
                     string nombreVia = fila.Cells["NombreVia"].Value.ToString();
                     string nroVia = fila.Cells["NroVia"].Value.ToString();
+                    if (nombreVia == "")
+                    {
+                        nombreVia = "0";
+                    }
+
+                    if (nroVia == "")
+                    {
+                        nroVia = "0";
+                    }
                     string departamento = "";
                     string interior = fila.Cells["Departamento"].Value.ToString();
 
@@ -317,6 +326,10 @@ namespace CapaUsuario.ExportarSunat
                     string etapa = "";
                     string tipoZona = fila.Cells["CodTipoZona"].Value.ToString();
                     string nombreZona = fila.Cells["NombreZona"].Value.ToString();
+                    if (nombreZona == "")
+                    {
+                        nombreZona = "0";
+                    }
                     string referencia = fila.Cells["Referencia"].Value.ToString();
                     string ubigeo = fila.Cells["CodUbigeo"].Value.ToString();
                     ContenidoIDE = oExportar.ExportarDatosTrabajador(tipoDoc, dni, paisDoc, fechaNac.ToShortDateString(), apPaterno, apMaterno, nombres, nroSexo.ToString(), nacionalidad, telLargaDistancia, telefono, correo, tipoVia, nombreVia, nroVia, departamento, interior, manzana, lote, kilometro, block, etapa, tipoZona, nombreZona, referencia, ubigeo, tipoVia2, nombreVia2, nroVia2, departamento2, interior2, manzana2, lote2, kilometro2, block2, etapa2, tipoZona2, nombreZona2, referencia2, ubigeo2, indicadorAsistenciaESSALUD);
@@ -397,7 +410,7 @@ namespace CapaUsuario.ExportarSunat
             }   
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
-            string ruc = "20177432360";
+            string ruc = Settings.Default.RUC;
             string tipoArchivo = ".TRA";
             string rp = "RP_";
             string Titulo = rp + ruc + tipoArchivo;
@@ -513,7 +526,7 @@ namespace CapaUsuario.ExportarSunat
                     string tipoDoc = fila.Cells["@TipoDoc"].Value.ToString();
                     string dni = fila.Cells["DNI"].Value.ToString();
                     string paisDoc = fila.Cells["@PaisEmisor"].Value.ToString();
-                    string ruc = "20177432360";
+                    string ruc = Settings.Default.RUC;
                     string Establecimientos = "";
                     string codEstab = "0000";
                     Establecimientos = oExportar.ExportarEstablecimiento(tipoDoc, dni, paisDoc, ruc, codEstab);
@@ -522,7 +535,7 @@ namespace CapaUsuario.ExportarSunat
             }
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
-            string RUC = "20177432360";
+            string RUC = Settings.Default.RUC;
             string tipoArchivo = ".EST";
             string rp = "RP_";
             string Titulo = rp + RUC + tipoArchivo;
@@ -570,7 +583,7 @@ namespace CapaUsuario.ExportarSunat
             }
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
-            string RUC = "20177432360";
+            string RUC = Settings.Default.RUC;
             string tipoArchivo = ".EDU";
             string rp = "RP_";
             string Titulo = rp + RUC + tipoArchivo;
