@@ -1613,13 +1613,13 @@ namespace CapaUsuario.Planilla
                 {
                     sEssalud = sRemuneracionBasica * 9 / 100;
                 }
-                else if (sRemuneracion >= sRemuneracionBasica && sRemuneracion <= sUIT * 55 / 100)
+                else if (sRemuneracion >= sRemuneracionBasica && sRemuneracion <= sUIT * 45 / 100)
                 {
                     sEssalud = sRemuneracion * 9 / 100;
                 }
                 else
                 {
-                    sEssalud = (sUIT * 55 / 100) * 9 / 100;
+                    sEssalud = (sUIT * 45 / 100) * 9 / 100;
                 }
             }
             else
