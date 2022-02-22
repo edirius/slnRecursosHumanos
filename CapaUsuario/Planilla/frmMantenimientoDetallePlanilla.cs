@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using info.lundin.math;
 using CapaDeNegocios;
+using System.Configuration;
+using CapaUsuario.Properties;
 
 namespace CapaUsuario.Planilla
 {
@@ -777,8 +779,22 @@ namespace CapaUsuario.Planilla
                     DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[12].Value);
                     if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
                     {
-                        PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 2);
-                        PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) ;
+                        if (Settings.Default.RUC == "20159377424" && sMes == 2)
+                        {
+
+                            PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+
+                            PagoDia = (PagoDia * 30) / 28;
+                            
+                            PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                        }
+                        else
+                        {
+                            PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 2);
+
+                            PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                        }
+                        
                     }
                     if (splantilla == "PERSONAL TECNICO")
                     {
