@@ -22,6 +22,7 @@ namespace CapaUsuario.Trabajador
         private string filtroSituacionLaboral = "Todos";
 
         private DataTable tablaAuxiliar;
+        private DataTable tablaAuxiliar2;
         public frmListaTrabajadores()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace CapaUsuario.Trabajador
         private void Iniciar()
         {
             tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
+            tablaAuxiliar2 = miListaTrabajadores.ObtenerListaTrabajadoresConReloj(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos",DateTime.Today);
 
             //tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
@@ -177,6 +179,7 @@ namespace CapaUsuario.Trabajador
         private void btnBuscarDNI_Click(object sender, EventArgs e)
         {
             tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            tablaAuxiliar2 = miListaTrabajadores.ObtenerListaTrabajadoresConReloj(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos", DateTime.Today);
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
             lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
         }
@@ -276,6 +279,7 @@ namespace CapaUsuario.Trabajador
                         break;
                 }
                 tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
+                tablaAuxiliar2 = miListaTrabajadores.ObtenerListaTrabajadoresConReloj(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos",DateTime.Today);
                 dtgListaTrabajadores.DataSource = tablaAuxiliar;
                 lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
             }
@@ -290,6 +294,7 @@ namespace CapaUsuario.Trabajador
             if (cboMeta.SelectedIndex >= 0)
             {
                 tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, cboMeta.SelectedValue.ToString());
+                tablaAuxiliar2 = miListaTrabajadores.ObtenerListaTrabajadoresConReloj(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, cboMeta.SelectedValue.ToString(),DateTime.Today);
                 dtgListaTrabajadores.DataSource = tablaAuxiliar;
                 lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
             }
@@ -521,6 +526,43 @@ namespace CapaUsuario.Trabajador
             {
                 MessageBox.Show("Error al mostrar la lista de metas: " + ex.Message, "Meta", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnImprimirListaReloj_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CapaDeNegocios.PDF.cPDF miPDF = new CapaDeNegocios.PDF.cPDF();
+
+                
+                miPDF.ImprimirListaTrabajadoresConReloj(tablaAuxiliar2, "Situacion Laboral: " + filtroSituacionLaboral + " Regimen:  " + filtroRegimeLaboral);
+
+
+                System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                proc.EnableRaisingEvents = false;
+                proc.StartInfo.FileName = @"c:\PDFs\listaTrabajadores.pdf";
+                proc.Start();
+
+                //ReporteTrabajador.rptReporteTrabajador objRpt;
+                //objRpt = new ReporteTrabajador.rptReporteTrabajador();
+
+
+                //// LA DE ARRIBA ES NUESTRA CADENA DE CONEXION DEL SERVIDOR
+
+                //ReporteTrabajador.dsTrabajador Ds = new ReporteTrabajador.dsTrabajador(); // ESTE ES EL NOMBRE DE NUESTRO DATASET
+                //Ds.Tables.Add(miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, cboMeta.SelectedValue.ToString()));  // ESTE Reportes ES EL NOMBRE DE NUESTRA TABLA DE DATOS QUE ESTA DENTRO DE NUESTRO DATASET
+
+                //objRpt.SetDataSource(tablaAuxiliar); // dtgListaTrabajadores.DataSource = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos")); 
+                //ReporteTrabajador.frmReporteListaTrabajadores fReporteListaTrabajadores = new ReporteTrabajador.frmReporteListaTrabajadores(); // ES EL FORM DONDE ESTA NUESTRO CRYSTAL REPORT VIEWER
+                //fReporteListaTrabajadores.crystalReportViewer1.ReportSource = objRpt; // ESTE ES NUESTRO REPORT VIEWER
+                //fReporteListaTrabajadores.ShowDialog(); // AQUI LO MUESTRA
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir la lista de trabajadores: " + ex.Message);
+
+            }
+
         }
     }
 }

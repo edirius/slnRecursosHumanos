@@ -528,6 +528,61 @@ namespace CapaDeNegocios
             return Conexion.GDatos.TraerDataTable("spListarTrabajadoresFiltro", filtro, fnombres + '%', fapellidoPaterno + '%', fapellidoMaterno + '%', fdni + '%', regimenfiltro, filtroMeta);
         }
 
+        public DataTable ObtenerListaTrabajadoresConReloj(string FiltroTrabajadores, string fnombres, string fapellidoPaterno, string fapellidoMaterno, string fdni, string fRegimen, string fmeta, DateTime Fecha)
+        {
+            string filtro = "t";
+            string regimenfiltro = "%";
+            string filtroMeta = "%";
+            switch (FiltroTrabajadores)
+            {
+                case "Activos":
+                    filtro = "a";
+                    break;
+                case "Inactivos":
+                    filtro = "i";
+                    break;
+                case "Todos":
+                    filtro = "t";
+                    break;
+                case "Sin Periodo Laboral":
+                    filtro = "s";
+                    break;
+            }
+
+            switch (fRegimen)
+            {
+                case "Todos":
+                    regimenfiltro = "%";
+                    break;
+                case "CAS":
+                    regimenfiltro = "15";
+                    break;
+                case "728":
+                    regimenfiltro = "01";
+                    break;
+                case "276":
+                    regimenfiltro = "02";
+                    break;
+                case "30057":
+                    regimenfiltro = "22";
+                    break;
+                case "racionamiento":
+                    regimenfiltro = "00";
+                    break;
+            }
+
+            if (fmeta != "Todos")
+            {
+                filtroMeta = fmeta;
+            }
+            else
+            {
+                filtroMeta = "%";
+            }
+            return Conexion.GDatos.TraerDataTable("spListarTrabajadoresFiltroReloj2", filtro, fnombres + '%', fapellidoPaterno + '%', fapellidoMaterno + '%', fdni + '%', regimenfiltro, filtroMeta, Fecha);
+        }
+
+
         public DataTable ListaTrabajadoresX()
         {
             return Conexion.GDatos.TraerDataTable("spListarXTrabajadores");

@@ -909,5 +909,187 @@ namespace CapaDeNegocios.PDF
             } 
 
         }
+
+
+        public void ImprimirListaTrabajadoresConReloj(DataTable ListaTrabajadores, string TipoFiltro)
+        {
+            FileInfo file = new FileInfo(@"c:\PDFs\listaTrabajadores.pdf");
+            bool estaAbierto = IsFileinUse(file, @"c:\PDFs\listaTrabajadores.pdf");
+
+
+            if (!estaAbierto)
+            {
+                Document doc = new Document(PageSize.A4, 9, 9, 40, 30);
+                doc.AddTitle("Lista Trabajadores " + TipoFiltro);
+                doc.AddCreator("EDIRIUS SOFT");
+
+                PdfWriter writer = PdfWriter.GetInstance(doc,
+                               new FileStream(@"c:\PDFs\listaTrabajadores.pdf", FileMode.Create));
+
+                doc.Open();
+
+
+                // Creamos el tipo de Font que vamos utilizar
+                iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 7f, iTextSharp.text.Font.NORMAL, Color.BLACK);
+
+                iTextSharp.text.Font _tituloFont = new iTextSharp.text.Font(iTextSharp.text.Font.HELVETICA, 12f, iTextSharp.text.Font.UNDERLINE, Color.BLACK);
+
+
+                // Creamos una tabla que contendrá el nombre, apellido y país
+                // de nuestros visitante.
+                PdfPTable tblTrabajadores = new PdfPTable(6);
+                float[] Ancho = new float[7];
+                Ancho[0] = 10;
+                Ancho[1] = 60;
+                Ancho[2] = 50;
+                Ancho[3] = 50;
+                Ancho[4] = 20;
+                Ancho[5] = 20;
+                Ancho[6] = 20;
+                //tblPrueba.SetWidths(Ancho );
+                tblTrabajadores.WidthPercentage = 100;
+                tblTrabajadores.DefaultCell.Padding = 1;
+                tblTrabajadores.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                iTextSharp.text.Color colorTitulos = new Color(240, 240, 240);
+                iTextSharp.text.Color colorBlanco = new Color(255, 255, 255);
+
+
+                //tabla de titulo
+                PdfPTable tblTitulo = new PdfPTable(1);
+                tblTitulo.DefaultCell.Padding = 1;
+                tblTitulo.HorizontalAlignment = Element.ALIGN_LEFT;
+
+                PdfPCell tituloPrincipal = new PdfPCell(new Phrase("Lista de Trabajadores", _tituloFont));
+                tituloPrincipal.HorizontalAlignment = Element.ALIGN_CENTER;
+                tituloPrincipal.BorderWidthBottom = 0f;
+                tituloPrincipal.BorderWidthLeft = 0f;
+                tituloPrincipal.BorderWidthRight = 0f;
+                tituloPrincipal.BorderWidthTop = 0f;
+                tituloPrincipal.BackgroundColor = colorBlanco;
+
+                tblTitulo.AddCell(tituloPrincipal);
+
+                PdfPCell tituloFiltro = new PdfPCell(new Phrase(TipoFiltro, _tituloFont));
+                tituloFiltro.HorizontalAlignment = Element.ALIGN_LEFT;
+                tituloFiltro.BorderWidthBottom = 0f;
+                tituloFiltro.BorderWidthLeft = 0f;
+                tituloFiltro.BorderWidthRight = 0f;
+                tituloFiltro.BorderWidthTop = 0f;
+                tituloFiltro.BackgroundColor = colorBlanco;
+                tblTitulo.AddCell(tituloFiltro);
+
+                PdfPCell tituloFecha = new PdfPCell(new Phrase("Fecha: " + DateTime.Today.ToShortDateString(), _tituloFont));
+                tituloFecha.HorizontalAlignment = Element.ALIGN_LEFT;
+                tituloFecha.BorderWidthBottom = 0f;
+                tituloFecha.BorderWidthLeft = 0f;
+                tituloFecha.BorderWidthRight = 0f;
+                tituloFecha.BorderWidthTop = 0f;
+                tituloFecha.BackgroundColor = colorBlanco;
+                tblTitulo.AddCell(tituloFecha);
+
+                // Configuramos el título de las columnas de la tabla
+                PdfPCell clNumero = new PdfPCell(new Phrase("N°", _standardFont));
+                clNumero.HorizontalAlignment = Element.ALIGN_LEFT;
+                clNumero.BackgroundColor = colorTitulos;
+                clNumero.BorderWidthBottom = 0.75f;
+
+                tblTrabajadores.AddCell(clNumero);
+
+                PdfPCell clDni = new PdfPCell(new Phrase("DNI", _standardFont));
+                clDni.HorizontalAlignment = Element.ALIGN_CENTER;
+                clDni.BackgroundColor = colorTitulos;
+                clDni.BorderWidthBottom = 0.75f;
+
+                tblTrabajadores.AddCell(clDni);
+
+                PdfPCell clNombre = new PdfPCell(new Phrase("NOMBRE COMPLETO", _standardFont));
+                clNombre.HorizontalAlignment = Element.ALIGN_LEFT;
+                clNombre.BackgroundColor = colorTitulos;
+                clNombre.BorderWidthBottom = 0.75f;
+
+                tblTrabajadores.AddCell(clNombre);
+
+                PdfPCell clApellido = new PdfPCell(new Phrase("CARGO", _standardFont));
+                clApellido.HorizontalAlignment = Element.ALIGN_CENTER;
+                clApellido.BackgroundColor = colorTitulos;
+                clApellido.BorderWidthBottom = 0.75f;
+                tblTrabajadores.AddCell(clApellido);
+
+                PdfPCell clFechaInicio = new PdfPCell(new Phrase("FECHA INICIO", _standardFont));
+                clFechaInicio.HorizontalAlignment = Element.ALIGN_CENTER;
+                clFechaInicio.BackgroundColor = colorTitulos;
+                clFechaInicio.BorderWidthBottom = 0.75f;
+                tblTrabajadores.AddCell(clFechaInicio);
+
+                PdfPCell clFechaPicado = new PdfPCell(new Phrase("FECHA PICADO", _standardFont));
+                clFechaInicio.HorizontalAlignment = Element.ALIGN_CENTER;
+                clFechaInicio.BackgroundColor = colorTitulos;
+                clFechaInicio.BorderWidthBottom = 0.75f;
+                tblTrabajadores.AddCell(clFechaPicado);
+
+
+                string ruta = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+                string ruta_imagen = ruta + "\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
+
+                int numero = 0;
+
+                foreach (DataRow row in ListaTrabajadores.Rows)
+                {
+                    numero += 1;
+                    PdfPCell celNumero = new PdfPCell(new Phrase(numero.ToString(), _standardFont));
+                    celNumero.HorizontalAlignment = Element.ALIGN_LEFT;
+                    celNumero.BackgroundColor = colorBlanco;
+                    celNumero.BorderWidthBottom = 0.75f;
+                    tblTrabajadores.AddCell(celNumero);
+
+                    PdfPCell celDNI = new PdfPCell(new Phrase(row[1].ToString(), _standardFont));
+                    celDNI.HorizontalAlignment = Element.ALIGN_CENTER;
+                    celDNI.BackgroundColor = colorBlanco;
+                    celDNI.BorderWidthBottom = 0.75f;
+                    tblTrabajadores.AddCell(celDNI);
+
+                    PdfPCell celNombre = new PdfPCell(new Phrase(row[2].ToString() + " " + row[3].ToString() + " " + row[4].ToString(), _standardFont));
+                    celNombre.HorizontalAlignment = Element.ALIGN_LEFT;
+                    celNombre.BackgroundColor = colorBlanco;
+                    celNombre.BorderWidthBottom = 0.75f;
+                    tblTrabajadores.AddCell(celNombre);
+
+                    PdfPCell celFechaInicio = new PdfPCell(new Phrase(row[8].ToString(), _standardFont));
+                    celFechaInicio.HorizontalAlignment = Element.ALIGN_CENTER;
+                    celFechaInicio.BackgroundColor = colorBlanco;
+                    celFechaInicio.BorderWidthBottom = 0.75f;
+                    tblTrabajadores.AddCell(celFechaInicio);
+
+                    PdfPCell celFecha2Inicio = new PdfPCell(new Phrase(row[7].ToString(), _standardFont));
+                    celFecha2Inicio.HorizontalAlignment = Element.ALIGN_CENTER;
+                    celFecha2Inicio.BackgroundColor = colorBlanco;
+                    celFecha2Inicio.BorderWidthBottom = 0.75f;
+                    tblTrabajadores.AddCell(celFecha2Inicio);
+
+                    PdfPCell celFechaPicado = new PdfPCell(new Phrase(row[9].ToString(), _standardFont));
+                    celFechaPicado.HorizontalAlignment = Element.ALIGN_CENTER;
+                    celFechaPicado.BackgroundColor = colorBlanco;
+                    celFechaPicado.BorderWidthBottom = 0.75f;
+                    tblTrabajadores.AddCell(celFechaPicado);
+                }
+
+                iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
+                logo.ScalePercent(64f);
+                logo.SetAbsolutePosition(12f, doc.PageSize.Height - 36f - 100f);
+
+                doc.Add(logo);
+                doc.Add(tblTitulo);
+                doc.Add(tblTrabajadores);
+                doc.Close();
+                writer.Close();
+            }
+
+            else
+            {
+                throw new cReglaNegociosException("Cerrar porfavor ListaTrabajadores.pdf");
+            }
+
+        }
     }
 }
