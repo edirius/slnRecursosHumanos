@@ -1285,6 +1285,12 @@
     <Compile Include="Trabajador\frmRegimenTrabajador.Designer.cs">
       <DependentUpon>frmRegimenTrabajador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trabajador\frmSeleccionarFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmSeleccionarFecha.Designer.cs">
+      <DependentUpon>frmSeleccionarFecha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trabajador\frmTipoVia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1872,6 +1878,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmRegimenTrabajador.resx">
       <DependentUpon>frmRegimenTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmSeleccionarFecha.resx">
+      <DependentUpon>frmSeleccionarFecha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmTipoVia.resx">
       <DependentUpon>frmTipoVia.cs</DependentUpon>

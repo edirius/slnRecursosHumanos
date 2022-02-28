@@ -32,8 +32,9 @@ namespace CapaUsuario.Trabajador
 
         private void Iniciar()
         {
+            dtpFecha.Value = DateTime.Today;
             tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
-            tablaAuxiliar2 = miListaTrabajadores.ObtenerListaTrabajadoresConReloj(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos",DateTime.Today);
+            tablaAuxiliar2 = miListaTrabajadores.ObtenerListaTrabajadoresConReloj(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos", dtpFecha.Value);
 
             //tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
@@ -54,6 +55,7 @@ namespace CapaUsuario.Trabajador
             cboMeta.ValueMember = "idtmeta";
             cboMeta.DataSource = oCadena.ListarMetas(Convert.ToInt16(cboAño.Text));
             treeFiltro.ExpandAll();
+            dtpFecha.Value = DateTime.Today;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -179,7 +181,7 @@ namespace CapaUsuario.Trabajador
         private void btnBuscarDNI_Click(object sender, EventArgs e)
         {
             tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
-            tablaAuxiliar2 = miListaTrabajadores.ObtenerListaTrabajadoresConReloj(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos", DateTime.Today);
+            tablaAuxiliar2 = miListaTrabajadores.ObtenerListaTrabajadoresConReloj(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos", dtpFecha.Value);
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
             lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
         }
@@ -279,7 +281,7 @@ namespace CapaUsuario.Trabajador
                         break;
                 }
                 tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
-                tablaAuxiliar2 = miListaTrabajadores.ObtenerListaTrabajadoresConReloj(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos",DateTime.Today);
+                tablaAuxiliar2 = miListaTrabajadores.ObtenerListaTrabajadoresConReloj(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos", dtpFecha.Value);
                 dtgListaTrabajadores.DataSource = tablaAuxiliar;
                 lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
             }
