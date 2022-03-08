@@ -47,6 +47,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rdbHorizontal = new System.Windows.Forms.RadioButton();
             this.rdbVertical = new System.Windows.Forms.RadioButton();
+            this.btnImprimirSegundoFormato = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_E)).BeginInit();
@@ -140,7 +141,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimir.Location = new System.Drawing.Point(129, 22);
+            this.btnImprimir.Location = new System.Drawing.Point(125, 19);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 65);
             this.btnImprimir.TabIndex = 91;
@@ -211,12 +212,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnImprimirSegundoFormato);
             this.groupBox2.Controls.Add(this.rdbHorizontal);
             this.groupBox2.Controls.Add(this.rdbVertical);
             this.groupBox2.Controls.Add(this.btnImprimir);
             this.groupBox2.Location = new System.Drawing.Point(21, 506);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(225, 93);
+            this.groupBox2.Size = new System.Drawing.Size(309, 93);
             this.groupBox2.TabIndex = 100;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Impresion de reporte.";
@@ -242,6 +244,22 @@
             this.rdbVertical.TabStop = true;
             this.rdbVertical.Text = "Vertical";
             this.rdbVertical.UseVisualStyleBackColor = true;
+            // 
+            // btnImprimirSegundoFormato
+            // 
+            this.btnImprimirSegundoFormato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirSegundoFormato.BackColor = System.Drawing.Color.MintCream;
+            this.btnImprimirSegundoFormato.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnImprimirSegundoFormato.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnImprimirSegundoFormato.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnImprimirSegundoFormato.Location = new System.Drawing.Point(219, 22);
+            this.btnImprimirSegundoFormato.Name = "btnImprimirSegundoFormato";
+            this.btnImprimirSegundoFormato.Size = new System.Drawing.Size(75, 65);
+            this.btnImprimirSegundoFormato.TabIndex = 94;
+            this.btnImprimirSegundoFormato.Text = "&Imprimir Segundo Formato";
+            this.btnImprimirSegundoFormato.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImprimirSegundoFormato.UseVisualStyleBackColor = false;
+            this.btnImprimirSegundoFormato.Click += new System.EventHandler(this.btnImprimirSegundoFormato_Click);
             // 
             // frmBoletaPagoXPlanilla
             // 
@@ -296,5 +314,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rdbHorizontal;
         private System.Windows.Forms.RadioButton rdbVertical;
+        private System.Windows.Forms.Button btnImprimirSegundoFormato;
     }
 }
