@@ -3627,7 +3627,15 @@ namespace CapaUsuario.Reportes
                     Paragraph p_pre = new Paragraph();
                     p_pre.Alignment = Element.ALIGN_CENTER;
                     p_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    p_pre.Add(" ....................................... \n PRESUPUESTO Y CONTABILIDAD");
+                    if (Settings.Default.RUC== "20177432360")
+                    {
+                        p_pre.Add(" ....................................... \n CONTABILIDAD");
+                    }
+                    else
+                    {
+                        p_pre.Add(" ....................................... \n PRESUPUESTO Y CONTABILIDAD");
+                    }
+                    
 
                     Paragraph p_con = new Paragraph();
                     p_con.Alignment = Element.ALIGN_CENTER;
