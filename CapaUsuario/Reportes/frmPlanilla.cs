@@ -3589,7 +3589,15 @@ namespace CapaUsuario.Reportes
                     Paragraph firma_pre = new Paragraph();
                     firma_pre.Alignment = Element.ALIGN_CENTER;
                     firma_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_pre.Add("............................................. \n CONTABILIDAD Y PRESUPUESTO ");
+                    if (Settings.Default.RUC == "20177432360")
+                    {
+                        firma_pre.Add("............................................. \n CONTABILIDAD");
+                    }
+                    
+                    else
+                    {
+                        firma_pre.Add("............................................. \n CONTABILIDAD Y PRESUPUESTO ");
+                    }
 
                     Paragraph firma_con = new Paragraph();
                     firma_con.Alignment = Element.ALIGN_CENTER;
