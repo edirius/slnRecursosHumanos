@@ -781,15 +781,22 @@ namespace CapaUsuario.Planilla
                     {
                         if (Settings.Default.RUC == "20159377424" && sMes == 2)
                         {
-
                             PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
 
                             PagoDia = (PagoDia * 30) / 28;
-                            
+
                             PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+
                         }
                         else
                         {
+                            if (Settings.Default.RUC == "20159377424" && (sMes == 3 || sMes == 7 || sMes == 8 || sMes == 10 || sMes == 12))
+                            {
+                                if (DiasLaborados == 31)
+                                {
+                                    DiasLaborados = 30;
+                                }
+                            }
                             PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 2);
 
                             PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
