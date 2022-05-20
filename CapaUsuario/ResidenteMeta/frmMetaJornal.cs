@@ -171,12 +171,13 @@ namespace CapaUsuario.ResidenteMeta
             {
                 if (dgvMetaJornal.SelectedCells.Count > 0)
                 {
-                    frmNuevaCategoriaJornal fNuevaCategoriaJornal = new frmNuevaCategoriaJornal();
+                    frmModificarcategoriaJornal fNuevaCategoriaJornal = new frmModificarcategoriaJornal();
                     fNuevaCategoriaJornal.oMetaJornal = new CapaDeNegocios.Obras.cMetaJornal();
 
                     fNuevaCategoriaJornal.oMetaJornal.Categoria = dgvMetaJornal.Rows[dgvMetaJornal.SelectedCells[0].RowIndex].Cells[2].Value.ToString();
                     fNuevaCategoriaJornal.oMetaJornal.IdtMetaJornal =Convert.ToInt32( dgvMetaJornal.Rows[dgvMetaJornal.SelectedCells[0].RowIndex].Cells[1].Value.ToString());
-                    fNuevaCategoriaJornal.oMetaJornal.Jornal = Convert.ToDouble(dgvMetaJornal.Rows[dgvMetaJornal.SelectedCells[0].RowIndex].Cells[1].Value.ToString());
+                    fNuevaCategoriaJornal.oMetaJornal.Jornal = Convert.ToDouble(dgvMetaJornal.Rows[dgvMetaJornal.SelectedCells[0].RowIndex].Cells[3].Value.ToString());
+                    fNuevaCategoriaJornal.oMetaJornal.Meta.Codigo = sidtmeta;
 
                     if (fNuevaCategoriaJornal.ShowDialog() == DialogResult.OK)
                     {

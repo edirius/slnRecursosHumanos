@@ -790,7 +790,7 @@ namespace CapaUsuario.Planilla
                         }
                         else
                         {
-                            if (Settings.Default.RUC == "20159377424" && (sMes == 3 || sMes == 7 || sMes == 8 || sMes == 10 || sMes == 12))
+                            if (Settings.Default.RUC == "20159377424" )
                             {
                                 if (DiasLaborados == 31)
                                 {

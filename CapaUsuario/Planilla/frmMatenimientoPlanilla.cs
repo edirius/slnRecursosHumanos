@@ -33,6 +33,7 @@ namespace CapaUsuario.Planilla
         string sfuentefinanciamiento = "";
         string sdescripcion = "";
         string splantilla = "";
+        string sobservaciones = "";
 
         string sRegimenLaboral = "";
 
@@ -73,7 +74,7 @@ namespace CapaUsuario.Planilla
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             CapaUsuario.Planilla.frmPlanilla fPlanilla = new frmPlanilla();
-            fPlanilla.RecibirDatos(0, "", "", "", DateTime.Today, 0, "", 0, "", 0, "", "", "", 1);
+            fPlanilla.RecibirDatos(0, "", "", "", DateTime.Today, 0, "", 0, "", 0, "", "", "", 1, "");
             if (fPlanilla.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -88,7 +89,7 @@ namespace CapaUsuario.Planilla
                 return;
             }
             CapaUsuario.Planilla.frmPlanilla fPlanilla = new frmPlanilla();
-            fPlanilla.RecibirDatos(sidtplanilla, snumero, smes, saño, sfecha, sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, sidtregimenlaboral, sRegimenLaboral, sdescripcion, splantilla, 2);
+            fPlanilla.RecibirDatos(sidtplanilla, snumero, smes, saño, sfecha, sidtmeta, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, sidtregimenlaboral, sRegimenLaboral, sdescripcion, splantilla, 2, sobservaciones);
             if (fPlanilla.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 CargarDatos();
@@ -161,7 +162,7 @@ namespace CapaUsuario.Planilla
                 sfuentefinanciamiento = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[10].Value);
                 sidtregimenlaboral = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[11].Value);
                 splantilla = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[12].Value);
-
+                sobservaciones = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[13].Value);
                 foreach (DataRow row in oRegimenLaboral.ListarRegimenLaboral().Select("idtregimenlaboral= '" + sidtregimenlaboral + "'"))
                 {
                     sRegimenLaboral = row[2].ToString();
@@ -227,7 +228,7 @@ namespace CapaUsuario.Planilla
                         sidtfuentefinanciamiento = Convert.ToInt32(roww[0]);
                         sfuentefinanciamiento = roww[2].ToString();
                     }
-                    dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, snumerometa, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString());
+                    dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, snumerometa, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString(), row[10].ToString());
                 }
                 if (dgvPlanilla.Rows.Count > 0)
                 {

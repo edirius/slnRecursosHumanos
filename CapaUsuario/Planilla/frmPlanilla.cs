@@ -22,6 +22,7 @@ namespace CapaUsuario.Planilla
         string sregimenlaboral;
         string saño;
         string splantilla;
+        string sobservacion;
 
         public frmPlanilla()
         {
@@ -90,6 +91,7 @@ namespace CapaUsuario.Planilla
                     miPlanilla.IdtRegimenLaboral = sidtregimenlaboral;
                     miPlanilla.Descripcion = txtDescripcion.Text;
                     miPlanilla.Plantilla = cboPlantilla.Text;
+                    miPlanilla.Observaciones = txtObservaciones.Text;
                     if (iAccion == 1)
                     {
                         miPlanilla.CrearPlanilla(miPlanilla);
@@ -152,7 +154,7 @@ namespace CapaUsuario.Planilla
             }
         }
 
-        public void RecibirDatos(int pidtplanilla, string pnumero, string pmes, string paño, DateTime pfecha, int pidtmeta, string pmeta, int pidtfuentefinanciamiento, string pfuentefinanciamiento, int pidtregimenlaboral, string pregimenlaboral, string pdescripcion, string pplanilla, int pAccion)
+        public void RecibirDatos(int pidtplanilla, string pnumero, string pmes, string paño, DateTime pfecha, int pidtmeta, string pmeta, int pidtfuentefinanciamiento, string pfuentefinanciamiento, int pidtregimenlaboral, string pregimenlaboral, string pdescripcion, string pplanilla, int pAccion , string pobservacion)
         {
             sidtplanilla = pidtplanilla;
             txtNumero.Text = pnumero;
@@ -168,6 +170,8 @@ namespace CapaUsuario.Planilla
             txtDescripcion.Text = pdescripcion;
             splantilla = pplanilla;
             iAccion = pAccion;
+            sobservacion = pobservacion;
+            txtObservaciones.Text = pobservacion;
         }
 
         private void CargarAños()

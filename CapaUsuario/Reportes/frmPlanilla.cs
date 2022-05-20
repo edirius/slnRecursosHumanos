@@ -1834,7 +1834,7 @@ namespace CapaUsuario.Reportes
                     else
                         MessageBox.Show("Plantilla sin datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-   //FINAL DE CESANTES
+ //FINAL DE CESANTES
                 else
                 {
 
@@ -3260,6 +3260,8 @@ namespace CapaUsuario.Reportes
 
             PdfPTable pdfTable = new PdfPTable(dgvPrueba.ColumnCount);
 
+            PdfPTable pdfObservaciones = new PdfPTable(1);
+
             PdfPTable pdfTable2 = new PdfPTable(dgvAFP.ColumnCount);
             PdfPTable pdfTableRedondear = new PdfPTable(dgvRedondear.ColumnCount);
             PdfPTable pdfTableEEFF = new PdfPTable(dgvEEFF.ColumnCount);
@@ -3277,6 +3279,10 @@ namespace CapaUsuario.Reportes
             pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
             pdfTable.DefaultCell.BorderWidth = 1;
             //pdfTable.DefaultCell.FixedHeight = 600f;
+
+            pdfObservaciones.DefaultCell.Padding = 1;
+            pdfObservaciones.HorizontalAlignment = Element.ALIGN_JUSTIFIED_ALL;
+            pdfObservaciones.DefaultCell.BorderWidth = 1;
 
             pdfTable2.DefaultCell.Padding = 1;
             pdfTable2.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -3314,6 +3320,24 @@ namespace CapaUsuario.Reportes
             int iindice_cargo = 0;
             int iindice_fecha = 0;
             int iindice_afi_com_cus = 0;
+
+            //parte para las observaciones
+            PdfPCell tituloObservaciones = new PdfPCell((new Phrase("OBSERVACIONES", new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+            tituloObservaciones.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+            tituloObservaciones.HorizontalAlignment = Element.ALIGN_CENTER;
+            pdfObservaciones.AddCell(tituloObservaciones);
+
+             CapaDeNegocios.Planillas.cPlanilla  planplnilla =  miPlanilla.TraerPlanilla(sidtplanilla);
+
+            if (planplnilla.Observaciones.Trim() != "")
+            {
+                PdfPCell tituloObservaciones2 = new PdfPCell((new Phrase(planplnilla.Observaciones, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                //tituloObservaciones2.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+                tituloObservaciones2.HorizontalAlignment = Element.ALIGN_LEFT;
+                pdfObservaciones.AddCell(tituloObservaciones2);
+
+            }
+            /* -------------fin observaciones ----------*/
 
             //Adding Header row
             foreach (DataGridViewColumn column in dgvPrueba.Columns)
@@ -3520,7 +3544,9 @@ namespace CapaUsuario.Reportes
                 /*FEcha de hoy*/
                 //paragraph6.Add("CCATCCA, " + String.Format("{0:dd}" , fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
 
-               
+
+                
+
 
 
                 PdfWriter.GetInstance(pdfDoc, stream);
@@ -3709,6 +3735,11 @@ namespace CapaUsuario.Reportes
                 column_one.AddElement(paragraph40);
                 column_one.AddElement(pdfTable);
                 //column_one.AddElement(paragraph5);
+                if (planplnilla.Observaciones.Trim() != "")
+                {
+                    column_one.AddElement(pdfObservaciones);
+                }
+
                 column_one.AddElement(paragraph6);
                 column_one.AddElement(tabla_bonus);
                 column_one.AddElement(paragraph5);
