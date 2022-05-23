@@ -1187,6 +1187,7 @@ namespace CapaUsuario.Planilla
                     {
                         decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
                         decimal diasfalta = 0;
+                        decimal totalMinutos = 0;
 
                         if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
                         {
@@ -1195,26 +1196,47 @@ namespace CapaUsuario.Planilla
                         else
                         {
                             miTrabajador.IdTrabajador = Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value);
-                            oHorario = miCatalogoAsistencia.TraerHorarioTrabajador(miTrabajador);
-                            if (oHorario != null)
+
+                            CapaDeNegocios.Asistencia.cAsistenciaTrabajador miAsistenciaTrabajador = new CapaDeNegocios.Asistencia.cAsistenciaTrabajador();
+                            DateTime mesActual = new DateTime(2022, Convert.ToInt32(Mes(smes)), 1);
+                            if (miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, mesActual).Rows.Count == 0)
                             {
-                                AsistenciaMes = miCatalogoAsistencia.LLenarAsistencia(miTrabajador, Convert.ToInt32(Mes(smes)), Convert.ToInt32(saño), oHorario);
-                                DataTable NUEVA = new DataTable();
-                                NUEVA = oAsistenciaTrabajador.ListarAsistenciaTrabajorEntreFechasXTardanza(miTrabajador.IdTrabajador, AsistenciaMes.InicioMes, AsistenciaMes.FinMes);
-                                diasfalta = NUEVA.Rows.Count;
-                                diasfalta = Math.Truncate(diasfalta / 3);
+                                totalMinutos = 0;
                             }
                             else
                             {
-                                MessageBox.Show("El trabajador no tiene horario, las faltas se tomaran desde el inicio del mes: " + dgvDetallePlanilla.Rows[fila].Cells[5].Value + " " + miTrabajador.Nombres + " " + miTrabajador.ApellidoPaterno + " " + miTrabajador.ApellidoMaterno);
+                                totalMinutos = Convert.ToInt16(miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, mesActual).Rows[0][3].ToString());
                             }
+
+                            //oHorario = miCatalogoAsistencia.TraerHorarioTrabajador(miTrabajador);
+                            //if (oHorario != null)
+                            //{
+                            //    AsistenciaMes = miCatalogoAsistencia.LLenarAsistencia(miTrabajador, Convert.ToInt32(Mes(smes)), Convert.ToInt32(saño), oHorario);
+                            //    DataTable NUEVA = new DataTable();
+                            //    NUEVA = oAsistenciaTrabajador.ListarAsistenciaTrabajorEntreFechasXTardanza(miTrabajador.IdTrabajador, AsistenciaMes.InicioMes, AsistenciaMes.FinMes);
+                            //    diasfalta = NUEVA.Rows.Count;
+                            //    diasfalta = Math.Truncate(diasfalta / 3);
+                            //}
+                            //else
+                            //{
+                            //    MessageBox.Show("El trabajador no tiene horario, las faltas se tomaran desde el inicio del mes: " + dgvDetallePlanilla.Rows[fila].Cells[5].Value + " " + miTrabajador.Nombres + " " + miTrabajador.ApellidoPaterno + " " + miTrabajador.ApellidoMaterno);
+                            //}
 
                         }
 
 
-                        if (diasfalta > 0)
+                        //if (diasfalta > 0)
+                        //{
+                        //    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", PagoDia * diasfalta);
+                        //}
+                        //else
+                        //{
+                        //    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", 0);
+                        //}
+
+                        if (totalMinutos > 0)
                         {
-                            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", PagoDia * diasfalta);
+                            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", PagoDia/8/60 * totalMinutos);
                         }
                         else
                         {

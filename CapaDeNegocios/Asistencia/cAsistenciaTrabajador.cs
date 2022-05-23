@@ -87,5 +87,28 @@ namespace CapaDeNegocios.Asistencia
             Conexion.GDatos.Ejecutar("spELiminarAsistenciaTrabajador", IdtAsistenciaTrabajador);
             return true;
         }
+
+        public DataTable ListarAsistenciaTrabajadorMesxTrabajador (int idtTrabajador, DateTime mes)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarTrabajadorAsistenciaMesxTrabajador", idtTrabajador, mes);
+        }
+
+        public Boolean CrearAsistenciaTrabajadorMesxTrabajador (int idtTrabajador, DateTime mes, int minutos)
+        {
+            Conexion.GDatos.Ejecutar("spCrearTrabajadorAsistenciaMes", idtTrabajador, mes, minutos);
+            return true;
+        }
+
+        public Boolean ModificarAsistenciaTrabajadorMesxTrabajador(int id, int idtTrabajador, DateTime mes, int minutos)
+        {
+            Conexion.GDatos.Ejecutar("spModificarTrabajadorAsistenciaMes", id,idtTrabajador, mes, minutos);
+            return true;
+        }
+
+        public Boolean EliminarAsistenciaTrabajadorMesxTrabajador(int id)
+        {
+            Conexion.GDatos.Ejecutar("spEliminarTrabajadorAsistenciaMes", id);
+            return true;
+        }
     }
 }

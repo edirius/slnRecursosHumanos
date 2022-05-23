@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDeNegocios;
-
+using CapaDeNegocios.Asistencia;
 
 namespace CapaUsuario.AsistenciaGen
 {
@@ -34,6 +34,9 @@ namespace CapaUsuario.AsistenciaGen
 
         private ViewJornadaLaboral vJordanaLaboral = new ViewJornadaLaboral();
 
+        private cAsistenciaTrabajador miAsistenciaTrabajador = new cAsistenciaTrabajador();
+
+
         public frmJornadaLaboral()
         {
             InitializeComponent();
@@ -42,6 +45,7 @@ namespace CapaUsuario.AsistenciaGen
         private void frmJornadaLaboral_Load(object sender, EventArgs e)
         {
             Iniciar();
+            CargarMinutos();
         }
 
         private void Iniciar()
@@ -527,6 +531,40 @@ namespace CapaUsuario.AsistenciaGen
             {
                 MessageBox.Show("Se canceló la operación.", "Mantenimiento Salidas", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void CargarMinutos()
+        {
+            if (miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, Mes).Rows.Count == 0)
+            {
+                txtTotalMinutos.Text = "0";
+            }
+            else
+            {
+                txtTotalMinutos.Text = miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, Mes).Rows[0][3].ToString();
+            }
+        }
+
+        private void btnGuardarMinutos_Click(object sender, EventArgs e)
+        {
+            if (miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, Mes).Rows.Count == 0)
+            {
+                miAsistenciaTrabajador.CrearAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, Mes, Convert.ToInt16(txtTotalMinutos.Text));
+            }
+            else
+            {
+                miAsistenciaTrabajador.ModificarAsistenciaTrabajadorMesxTrabajador(Convert.ToInt16(miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, Mes).Rows[0][0].ToString()),  miTrabajador.IdTrabajador, Mes, Convert.ToInt16(txtTotalMinutos.Text));
+            }
+        }
+
+        private void txtTotalMinutos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) )
+            {
+                e.Handled = true;
+            }
+
+           
         }
     }
 }

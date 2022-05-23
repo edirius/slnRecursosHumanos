@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAsistenciaTrabajador = new System.Windows.Forms.DataGridView();
             this.txtTrabajador = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,6 +55,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnAgregarSalida = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtTotalMinutos = new System.Windows.Forms.TextBox();
+            this.btnGuardarMinutos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsistenciaTrabajador)).BeginInit();
             this.miMenu.SuspendLayout();
             this.groupInformacion.SuspendLayout();
@@ -64,19 +67,19 @@
             // 
             this.dgvAsistenciaTrabajador.AllowUserToAddRows = false;
             this.dgvAsistenciaTrabajador.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvAsistenciaTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvAsistenciaTrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvAsistenciaTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAsistenciaTrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAsistenciaTrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvAsistenciaTrabajador.ColumnHeadersHeight = 35;
             this.dgvAsistenciaTrabajador.Location = new System.Drawing.Point(12, 57);
             this.dgvAsistenciaTrabajador.Name = "dgvAsistenciaTrabajador";
@@ -306,11 +309,48 @@
             this.btnAgregarSalida.UseVisualStyleBackColor = false;
             this.btnAgregarSalida.Click += new System.EventHandler(this.btnAgregarSalida_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(244, 336);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(105, 13);
+            this.label7.TabIndex = 78;
+            this.label7.Text = "Total Minutos Tarde:";
+            // 
+            // txtTotalMinutos
+            // 
+            this.txtTotalMinutos.Location = new System.Drawing.Point(356, 329);
+            this.txtTotalMinutos.MaxLength = 7;
+            this.txtTotalMinutos.Name = "txtTotalMinutos";
+            this.txtTotalMinutos.Size = new System.Drawing.Size(100, 20);
+            this.txtTotalMinutos.TabIndex = 79;
+            this.txtTotalMinutos.Text = "0";
+            this.txtTotalMinutos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalMinutos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalMinutos_KeyPress);
+            // 
+            // btnGuardarMinutos
+            // 
+            this.btnGuardarMinutos.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnGuardarMinutos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarMinutos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarMinutos.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnGuardarMinutos.Location = new System.Drawing.Point(462, 321);
+            this.btnGuardarMinutos.Name = "btnGuardarMinutos";
+            this.btnGuardarMinutos.Size = new System.Drawing.Size(117, 28);
+            this.btnGuardarMinutos.TabIndex = 80;
+            this.btnGuardarMinutos.Text = "Guardar Minutos";
+            this.btnGuardarMinutos.UseVisualStyleBackColor = false;
+            this.btnGuardarMinutos.Click += new System.EventHandler(this.btnGuardarMinutos_Click);
+            // 
             // frmJornadaLaboral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1017, 355);
+            this.Controls.Add(this.btnGuardarMinutos);
+            this.Controls.Add(this.txtTotalMinutos);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btnAgregarSalida);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -360,5 +400,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnAgregarSalida;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtTotalMinutos;
+        private System.Windows.Forms.Button btnGuardarMinutos;
     }
 }
