@@ -36,6 +36,7 @@
             this.generarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.servidorIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cargaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,7 +127,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.cargaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -201,6 +202,13 @@
             this.servidorIPToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
             this.servidorIPToolStripMenuItem.Text = "Servidor IP";
             this.servidorIPToolStripMenuItem.Click += new System.EventHandler(this.servidorIPToolStripMenuItem_Click);
+            // 
+            // cargaInicialToolStripMenuItem
+            // 
+            this.cargaInicialToolStripMenuItem.Name = "cargaInicialToolStripMenuItem";
+            this.cargaInicialToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.cargaInicialToolStripMenuItem.Text = "Carga Inicial";
+            this.cargaInicialToolStripMenuItem.Click += new System.EventHandler(this.cargaInicialToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -583,12 +591,13 @@
             // exportarTextoSUNATToolStripMenuItem
             // 
             this.exportarTextoSUNATToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tributosYDescuentosDelTrabajadorToolStripMenuItem,
-            this.exportarAExcelToolStripMenuItem,
             this.consultaMasivaAFPToolStripMenuItem,
-            this.exportarTodoToolStripMenuItem,
+            this.exportarAExcelToolStripMenuItem,
+            this.toolStripSeparator10,
+            this.tributosYDescuentosDelTrabajadorToolStripMenuItem,
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem,
-            this.datosDelPensionistaPENToolStripMenuItem});
+            this.datosDelPensionistaPENToolStripMenuItem,
+            this.exportarTodoToolStripMenuItem});
             this.exportarTextoSUNATToolStripMenuItem.Name = "exportarTextoSUNATToolStripMenuItem";
             this.exportarTextoSUNATToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
             this.exportarTextoSUNATToolStripMenuItem.Text = "Exportar datos - SUNAT";
@@ -637,7 +646,7 @@
             // 
             this.datosDelPensionistaPENToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources.logoSunat;
             this.datosDelPensionistaPENToolStripMenuItem.Name = "datosDelPensionistaPENToolStripMenuItem";
-            this.datosDelPensionistaPENToolStripMenuItem.Size = new System.Drawing.Size(340, 22);
+            this.datosDelPensionistaPENToolStripMenuItem.Size = new System.Drawing.Size(343, 22);
             this.datosDelPensionistaPENToolStripMenuItem.Text = "Datos del Pensionista(.PEN)";
             this.datosDelPensionistaPENToolStripMenuItem.Click += new System.EventHandler(this.datosDelPensionistaPENToolStripMenuItem_Click);
             // 
@@ -916,12 +925,10 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // cargaInicialToolStripMenuItem
+            // toolStripSeparator10
             // 
-            this.cargaInicialToolStripMenuItem.Name = "cargaInicialToolStripMenuItem";
-            this.cargaInicialToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
-            this.cargaInicialToolStripMenuItem.Text = "Carga Inicial";
-            this.cargaInicialToolStripMenuItem.Click += new System.EventHandler(this.cargaInicialToolStripMenuItem_Click);
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(337, 6);
             // 
             // frmPrincipal
             // 
@@ -1055,6 +1062,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnDescargarDatosReloj;
         private System.Windows.Forms.ToolStripMenuItem servidorIPToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cargaInicialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
     }
 }
 

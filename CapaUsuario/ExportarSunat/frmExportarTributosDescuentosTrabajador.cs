@@ -203,13 +203,21 @@ namespace CapaUsuario.ExportarSunat
                 if (CheckJornada.Checked == true)
                 {
                     concatenarDatosJornadaLaboral();
-                    concatenarDatosSCTR();
+                    if (chkSCTR.Checked)
+                    {
+                        concatenarDatosSCTR();
+                    }
+                    
                     concatenarDatos();
                     milista.Clear();
                     milistaJornada.Clear();
                 }
                 else if (dgvIngresos.Rows.Count != 0)
                 {
+                    if (chkSCTR.Checked)
+                    {
+                        concatenarDatosSCTR();
+                    }
                     concatenarDatos();
                     milista.Clear();
                 }
@@ -332,7 +340,7 @@ namespace CapaUsuario.ExportarSunat
                             escribir.WriteLine(milistaSCTR[k]);//guarda en el bloc de notas 
                         }
                         escribir.Close();//cierra la escritura para que eje manejar por separado el bloc de notas
-                        MessageBox.Show("Datos de Jornada laboral exportados Exitosamente");//mensaje de cierre exitoso
+                        MessageBox.Show("Datos de STRC exportados Exitosamente");//mensaje de cierre exitoso
 
                     }
                 }
@@ -400,8 +408,17 @@ namespace CapaUsuario.ExportarSunat
                     string codigoform = txtCodForm.Text;
                     string Ruc = txtRuc.Text;
                     ConvertirMes(mes);
+
                     Aportaciones = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
-                    milista.Add(Aportaciones);//agregamos los datos concatenados al arreglo(ArrayList)
+                    if ((codigo == "0704" || codigo == "0705") && Settings.Default.RUC == "20177432360")
+                    {
+                     
+                    }
+                    else
+                    {
+                        milista.Add(Aportaciones);//agregamos los datos concatenados al arreglo(ArrayList)
+                    }
+                   
                 }
             }
             catch

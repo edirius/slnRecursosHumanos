@@ -38,8 +38,8 @@ namespace CapaUsuario.ExportarSunat
             DataGridView datagrid = new DataGridView();
 
             OpenFileDialog fichero = new OpenFileDialog();
-            fichero.Filter = "Excel (*.xls)|*.xls|Excel (*.xlsx)|*.xlsx";
-            fichero.FileName = "consultaCUSPPMasiva.xls";
+            fichero.Filter = "Excel (*.xlsx)|*.xlsx| Excel (*.xls)|*.xls";
+            fichero.FileName = "consultaCUSPPMasiva.xlsX";
             if (fichero.ShowDialog() == DialogResult.OK)
             {
                 LLenarGrid(fichero.FileName, "Hoja1");
@@ -82,6 +82,7 @@ namespace CapaUsuario.ExportarSunat
                 }
                 catch (Exception ex)
                 {
+                    dtgDatosExcel.Columns.Clear();
                     //en caso de haber una excepcion que nos mande un mensaje de error
                     MessageBox.Show("Error, Verificar el archivo o el nombre de la hoja", ex.Message);
                 }
@@ -110,6 +111,7 @@ namespace CapaUsuario.ExportarSunat
                 {
                     throw new cReglaNegociosException("El numero de filas de los datos no coinciden.");
                 }
+                oComparativoAFP.ListaDetalles.Clear();
                 for (int i = 0; i < dtgDatosPlanilla.RowCount; i++)
                 {
                     cDetalleComparativoAFP nuevo = new cDetalleComparativoAFP();
@@ -188,6 +190,12 @@ namespace CapaUsuario.ExportarSunat
 
         private void frmCompararDatosAFP_Load(object sender, EventArgs e)
         {
+            Iniciar();
+        }
+
+        private void Iniciar()
+        {
+            dtgDatosPlanilla.Columns.Clear();
             dtgDatosPlanilla.DataSource = detallePlanilla.ListarDetallePlanillaParaAFP(planilla.IdtPlanilla, planilla.Mes, planilla.Año);
             dtgDatosPlanilla.Columns[0].Visible = false;
             dtgDatosPlanilla.Columns[6].Visible = false;
@@ -208,14 +216,13 @@ namespace CapaUsuario.ExportarSunat
 
             dtgDatosPlanilla.Columns.Add(nuevo);
 
-            foreach (DataGridViewRow  item in dtgDatosPlanilla.Rows)
+            foreach (DataGridViewRow item in dtgDatosPlanilla.Rows)
             {
-                
-               
-                item.Cells["colCheck"].Value = imageConverter.ConvertTo(Properties.Resources.question, System.Type.GetType("System.Byte[]"));
-                
-            }
 
+
+                item.Cells["colCheck"].Value = imageConverter.ConvertTo(Properties.Resources.question, System.Type.GetType("System.Byte[]"));
+
+            }
         }
 
         private void dtgDatosPlanilla_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -269,43 +276,51 @@ namespace CapaUsuario.ExportarSunat
 
         private void dtgDatosExcel_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dtgDatosExcel.Rows[e.RowIndex].Cells[0].Value != null)
+            try
             {
-                switch (dtgDatosExcel.Rows[e.RowIndex].Cells["AFP"].Value.ToString())
+                if (dtgDatosExcel.Rows[e.RowIndex].Cells[0].Value != null)
                 {
-                    case "PROFUTURO":
-                        foreach (DataGridViewCell celda in this.dtgDatosExcel.Rows[e.RowIndex].Cells)
-                        {
-                            celda.Style.BackColor = Color.LightGreen;
+                    switch (dtgDatosExcel.Rows[e.RowIndex].Cells["AFP"].Value.ToString())
+                    {
+                        case "PROFUTURO":
+                            foreach (DataGridViewCell celda in this.dtgDatosExcel.Rows[e.RowIndex].Cells)
+                            {
+                                celda.Style.BackColor = Color.LightGreen;
 
-                        }
-                        break;
-                    case "PRIMA":
-                        foreach (DataGridViewCell celda in this.dtgDatosExcel.Rows[e.RowIndex].Cells)
-                        {
-                            celda.Style.BackColor = Color.Orange;
+                            }
+                            break;
+                        case "PRIMA":
+                            foreach (DataGridViewCell celda in this.dtgDatosExcel.Rows[e.RowIndex].Cells)
+                            {
+                                celda.Style.BackColor = Color.Orange;
 
-                        }
-                        break;
-                    case "HABITAT":
-                        foreach (DataGridViewCell celda in this.dtgDatosExcel.Rows[e.RowIndex].Cells)
-                        {
-                            celda.Style.BackColor = Color.Red;
+                            }
+                            break;
+                        case "HABITAT":
+                            foreach (DataGridViewCell celda in this.dtgDatosExcel.Rows[e.RowIndex].Cells)
+                            {
+                                celda.Style.BackColor = Color.Red;
 
-                        }
-                        break;
-                    case "INTEGRA":
-                        foreach (DataGridViewCell celda in this.dtgDatosExcel.Rows[e.RowIndex].Cells)
-                        {
-                            celda.Style.BackColor = Color.LightBlue;
+                            }
+                            break;
+                        case "INTEGRA":
+                            foreach (DataGridViewCell celda in this.dtgDatosExcel.Rows[e.RowIndex].Cells)
+                            {
+                                celda.Style.BackColor = Color.LightBlue;
 
-                        }
-                        break;
-                    default:
-                        break;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
                 }
-
             }
+            catch (Exception EX)
+            {
+                MessageBox.Show("Error al cargar archivo: " + EX.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void frmCompararDatosAFP_Paint(object sender, PaintEventArgs e)
@@ -339,7 +354,11 @@ namespace CapaUsuario.ExportarSunat
                     fRegimenPensionarioTrabajador.RecibirDatos(miRegimenPensionarioTrabajador.IdtRegimenPensionarioTrabajador, miRegimenPensionarioTrabajador.FechaInicio, miRegimenPensionarioTrabajador.FechaFin, miRegimenPensionarioTrabajador.CUSPP, miRegimenPensionarioTrabajador.TipoComision, miRegimenPensionarioTrabajador.IdtAFP, dtgDatosPlanilla.SelectedRows[0].Cells["nombre"].Value.ToString(), miRegimenPensionarioTrabajador.IdtPeriodoTrabajador, 2,miRegimenPensionarioTrabajador.FechaInicio, "");
                     if (fRegimenPensionarioTrabajador.ShowDialog() == DialogResult.OK)
                     {
-
+                        Iniciar();
+                        if (dtgDatosExcel.RowCount > 0)
+                        {
+                            CompararResultados();
+                        }
                     }
                     
                 }
@@ -366,10 +385,27 @@ namespace CapaUsuario.ExportarSunat
                 {
                     mnuAFPError.Text = "Existe error en AFP";
                 }
+                else
+                {
+                    mnuAFPError.Text = "";
+                }
 
                 if (auxiliar.ErrorCUSPP)
                 {
                     mnuCUSSPError.Text = "Existe error en el CUSSP";
+                }
+                else
+                {
+                    mnuCUSSPError.Text = "";
+                }
+
+                if (auxiliar.ErrorComision)
+                {
+                    mnuComisionError.Text = "Existe error en la comision";
+                }
+                else
+                {
+                    mnuComisionError.Text = "";
                 }
 
                 //mnuAFP.Left = dtgDatosPlanilla.Left + dtgDatosPlanilla.Size.Width; // dtgDatosPlanilla[e.ColumnIndex, e.RowIndex].Size.Width;

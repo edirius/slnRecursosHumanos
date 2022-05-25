@@ -340,7 +340,7 @@ namespace CapaUsuario.ExportarSunat
             }
 
             SaveFileDialog Guardar = new SaveFileDialog();
-            string RUC = "20177432360";
+            string RUC = Settings.Default.RUC; 
             string tipoArchivo = ".IDE";
             string rp = "RP_";
             string Titulo = rp + RUC + tipoArchivo;
