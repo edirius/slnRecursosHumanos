@@ -35,13 +35,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cboAño = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnAprobar = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.btnAprobar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTareo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +53,7 @@
             this.cboMeta.FormattingEnabled = true;
             this.cboMeta.Location = new System.Drawing.Point(100, 25);
             this.cboMeta.Name = "cboMeta";
-            this.cboMeta.Size = new System.Drawing.Size(416, 21);
+            this.cboMeta.Size = new System.Drawing.Size(437, 21);
             this.cboMeta.TabIndex = 0;
             this.cboMeta.SelectedIndexChanged += new System.EventHandler(this.cboMeta_SelectedIndexChanged);
             // 
@@ -83,7 +83,7 @@
             this.dgvTareo.ReadOnly = true;
             this.dgvTareo.RowHeadersVisible = false;
             this.dgvTareo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTareo.Size = new System.Drawing.Size(504, 319);
+            this.dgvTareo.Size = new System.Drawing.Size(525, 319);
             this.dgvTareo.TabIndex = 1;
             this.dgvTareo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellClick);
             this.dgvTareo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellContentClick);
@@ -95,7 +95,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(433, 377);
+            this.btnSalir.Location = new System.Drawing.Point(454, 377);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 19;
@@ -132,6 +132,22 @@
             this.label2.TabIndex = 36;
             this.label2.Text = "Meta";
             // 
+            // btnAprobar
+            // 
+            this.btnAprobar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAprobar.BackColor = System.Drawing.Color.MintCream;
+            this.btnAprobar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAprobar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAprobar.ImageKey = "ssss.png";
+            this.btnAprobar.Location = new System.Drawing.Point(365, 377);
+            this.btnAprobar.Name = "btnAprobar";
+            this.btnAprobar.Size = new System.Drawing.Size(83, 53);
+            this.btnAprobar.TabIndex = 37;
+            this.btnAprobar.Text = "&Habilitar";
+            this.btnAprobar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAprobar.UseVisualStyleBackColor = false;
+            this.btnAprobar.Click += new System.EventHandler(this.btnAprobar_Click);
+            // 
             // Column1
             // 
             this.Column1.HeaderText = "IdtTareo";
@@ -141,60 +157,44 @@
             // 
             // Column2
             // 
-            this.Column2.FillWeight = 56.56068F;
+            this.Column2.FillWeight = 66.58148F;
             this.Column2.HeaderText = "Numero";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
-            this.Column3.FillWeight = 166.854F;
+            this.Column3.FillWeight = 54.16662F;
             this.Column3.HeaderText = "Tipo";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
-            this.Column4.FillWeight = 81.21828F;
+            this.Column4.FillWeight = 132.0382F;
             this.Column4.HeaderText = "Fecha Inicio";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
-            this.Column5.FillWeight = 95.36705F;
+            this.Column5.FillWeight = 203.0457F;
             this.Column5.HeaderText = "Fecha Fin";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
             // Column6
             // 
+            this.Column6.FillWeight = 44.168F;
             this.Column6.HeaderText = "Estado";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column6.Visible = false;
-            // 
-            // btnAprobar
-            // 
-            this.btnAprobar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAprobar.BackColor = System.Drawing.Color.MintCream;
-            this.btnAprobar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAprobar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAprobar.ImageKey = "ssss.png";
-            this.btnAprobar.Location = new System.Drawing.Point(344, 377);
-            this.btnAprobar.Name = "btnAprobar";
-            this.btnAprobar.Size = new System.Drawing.Size(83, 53);
-            this.btnAprobar.TabIndex = 37;
-            this.btnAprobar.Text = "&Habilitar";
-            this.btnAprobar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAprobar.UseVisualStyleBackColor = false;
-            this.btnAprobar.Click += new System.EventHandler(this.btnAprobar_Click);
             // 
             // frmHabilitarTareo
             // 
-            this.ClientSize = new System.Drawing.Size(528, 442);
+            this.ClientSize = new System.Drawing.Size(549, 442);
             this.Controls.Add(this.btnAprobar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboMeta);
@@ -220,12 +220,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboAño;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnAprobar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column6;
-        private System.Windows.Forms.Button btnAprobar;
     }
 }

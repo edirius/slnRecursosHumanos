@@ -43,6 +43,7 @@ namespace CapaUsuario.Tareo
             miTareo.Estado = false;
             miTareo.ModificarTareo(miTareo, miMeta);
             DialogResult = System.Windows.Forms.DialogResult.OK;
+            cboMeta_SelectedIndexChanged(sender, e);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -118,9 +119,14 @@ namespace CapaUsuario.Tareo
             foreach (DataRow row in miTareo.ListarTareo(sIdTMeta).Rows)
             {
                 dgvTareo.Rows.Add(row[0].ToString(), row[1].ToString(), row[4].ToString(), row[2].ToString(), row[3].ToString(), Convert.ToBoolean(row[5]));
-                if (Convert.ToBoolean(row[5]) == true)
+                
+            }
+
+            foreach (DataGridViewRow item in dgvTareo.Rows)
+            {
+                if (Convert.ToBoolean(item.Cells[5].Value) == true)
                 {
-                    dgvTareo.CurrentRow.DefaultCellStyle.BackColor = Color.Red;
+                    item.DefaultCellStyle.BackColor = Color.Red;
                 }
             }
             if (dgvTareo.Rows.Count > 0)

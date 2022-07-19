@@ -108,6 +108,11 @@ namespace CapaUsuario.Planilla
             CargarDatos();
         }
 
+        private void btnAprobacion_Click(object sender, EventArgs e)
+        {
+
+        }
+        
         private void btnImportar_Click(object sender, EventArgs e)
         {
             try
@@ -1714,7 +1719,7 @@ namespace CapaUsuario.Planilla
             {
                 DateFechaInicioTemporal = DateFechaInicioTemporal.AddDays(-1);
             }
-            DateTime DateFechacalculo = new DateTime(2021, 12, 31);
+            DateTime DateFechacalculo = new DateTime(2022, 06, 30);
 
             int numeroMeses = ((DateFechacalculo.Month - DateFechaInicioTemporal.Month) + 12 * (DateFechacalculo.Year - DateFechaInicioTemporal.Year));
             TimeSpan Restafechas = DateFechacalculo - DateFechaInicio;
@@ -1732,13 +1737,13 @@ namespace CapaUsuario.Planilla
                     ddval.Value = 0;
                     break;
                 case 2:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 10, 31)) - DateFechaInicio).Days + 1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2022, 04, 30)) - DateFechaInicio).Days + 1);
                     break;
                 case 1:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 11, 30)) - DateFechaInicio).Days + 1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2022, 05, 31)) - DateFechaInicio).Days + 1);
                     break;
                 case 0:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2021, 12, 31)) - DateFechaInicio).Days +1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2022, 06, 30)) - DateFechaInicio).Days +1);
                     break;
                 
                 default:
@@ -1763,23 +1768,23 @@ namespace CapaUsuario.Planilla
                         ddval.Value = 0;
                         break;
                     case 5:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 07, 31)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2022, 01, 31)) - DateFechaInicio).Days);
                         break;
 
                     case 4:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 08, 31)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2022, 02, 28)) - DateFechaInicio).Days);
                         break;
                     case 3:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 09, 30)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2022, 03, 31)) - DateFechaInicio).Days);
                         break;
                     case 2:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 10, 31)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2022, 04, 30)) - DateFechaInicio).Days);
                         break;
                     case 1:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 11, 30)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2022, 05, 31)) - DateFechaInicio).Days);
                         break;
                     case 0:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2021, 12, 31)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2022, 06, 30)) - DateFechaInicio).Days);
                         break;
 
                     default:
@@ -1896,6 +1901,7 @@ namespace CapaUsuario.Planilla
                 MessageBox.Show("Error al imprimir reporte de asistencia." + ex.Message, "Reporte de Asistencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void DibujarDataGrid()
         {
