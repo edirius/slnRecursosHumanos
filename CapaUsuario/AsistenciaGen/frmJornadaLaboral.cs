@@ -297,9 +297,12 @@ namespace CapaUsuario.AsistenciaGen
                 {
                     switch (dgvAsistenciaTrabajador.Rows[0].Cells[i].Value.ToString())
                     {
-                        case "N":
-                            TotalLaborados += 1;
-                            break;
+                        case "N" :
+                        TotalLaborados += 1;
+                        break;
+                    case "L":
+                        TotalLaborados += 1;
+                        break;
                         case "T":
                             TotalTardanzas += 1;
                             break;
