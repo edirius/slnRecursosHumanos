@@ -329,6 +329,12 @@
     <Compile Include="ExportarSunat\frmExportarTodo.Designer.cs">
       <DependentUpon>frmExportarTodo.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExportarSunat\frmExportarTributosDescuentos2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarSunat\frmExportarTributosDescuentos2.Designer.cs">
+      <DependentUpon>frmExportarTributosDescuentos2.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportarSunat\frmExportarTributosDescuentosTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1536,6 +1542,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmExportarTodo.resx">
       <DependentUpon>frmExportarTodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportarSunat\frmExportarTributosDescuentos2.resx">
+      <DependentUpon>frmExportarTributosDescuentos2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmExportarTributosDescuentosTrabajador.resx">
       <DependentUpon>frmExportarTributosDescuentosTrabajador.cs</DependentUpon>

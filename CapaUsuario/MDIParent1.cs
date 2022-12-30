@@ -604,6 +604,13 @@ namespace CapaUsuario
             fCargaInicial.ShowDialog();
         }
 
+        private void tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.frmExportarTributosDescuentos2 frmExportarTDT = new ExportarSunat.frmExportarTributosDescuentos2();
+            frmExportarTDT.MdiParent = this;
+            frmExportarTDT.Show();
+        }
+
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackupBBDDMySQL();
