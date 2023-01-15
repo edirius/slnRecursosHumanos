@@ -268,19 +268,20 @@ namespace CapaUsuario.AsistenciaGen
             }
 
 
-            if (dgvAsistenciaTrabajador.Rows[0].Cells[columnaseleccionada].Value.ToString() != "N")
+            if (dgvAsistenciaTrabajador.Rows[0].Cells[columnaseleccionada].Value.ToString() == "N" || dgvAsistenciaTrabajador.Rows[0].Cells[columnaseleccionada].Value.ToString() == "L")
+            {
+                miCatalogo.ActualizarDetalleSuspensionLaboral(null, NuevoDetalleJornadaLaboral);
+                
+            }
+            else
             {
                 foreach (CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral item in vJordanaLaboral.JornadaLaboral.ListaDetalleJornadaLaboral)
                 {
                     if (item.Dia.Date == vJordanaLaboral.AsistenciaMes.InicioMes.AddDays(columnaseleccionada).Date)
                     {
-                        miCatalogo.ActualizarDetalleSuspensionLaboral(item, NuevoDetalleJornadaLaboral);  
+                        miCatalogo.ActualizarDetalleSuspensionLaboral(item, NuevoDetalleJornadaLaboral);
                     }
                 }
-            }
-            else
-            {
-                miCatalogo.ActualizarDetalleSuspensionLaboral(null, NuevoDetalleJornadaLaboral);
             }
 
             Iniciar();

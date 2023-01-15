@@ -1648,7 +1648,7 @@ namespace CapaUsuario.Planilla
                 sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(600);//suma de todos los ingresos incuido las gratificaciones
             }
             CapaDeNegocios.Planillas.cCalculo5taCategoria miCalculo5ta = new CapaDeNegocios.Planillas.cCalculo5taCategoria();
-            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sNroMes, sRemuneracion, sOtrosIngresos, sRemuMesAnt, sRetMesAnteriores, 4600);
+            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sNroMes, sRemuneracion, sOtrosIngresos, sRemuMesAnt, sRetMesAnteriores, 4950);
             return sRenta5ta;
         }
 
