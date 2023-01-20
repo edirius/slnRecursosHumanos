@@ -54,6 +54,7 @@
             this.dtgNacionalidad.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgNacionalidad.Size = new System.Drawing.Size(370, 263);
             this.dtgNacionalidad.TabIndex = 0;
+            this.dtgNacionalidad.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgNacionalidad_CellContentClick);
             this.dtgNacionalidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtgNacionalidad_KeyDown);
             // 
             // idtNacionalidad

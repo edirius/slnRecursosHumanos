@@ -374,7 +374,7 @@ namespace CapaUsuario.Trabajador
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar las metas: " + ex.Message);
-                throw;
+                
             }
            
         }

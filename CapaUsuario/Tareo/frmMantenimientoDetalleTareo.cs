@@ -182,13 +182,12 @@ namespace CapaUsuario.Tareo
 
         private void btnAprobacion_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Está seguro de poner en aprobacion el Tareo de Obra, ya no podra Modificarlo.", "Confirmar Aprobacion", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+            if (MessageBox.Show("Está seguro de poner en aprobacion el Tareo de Obra, ya no podra Modificarlo.", "Confirmar Aprobacion", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
             {
-                return;
+                miTareo.Estado = true;
+                miTareo.ModificarTareo(miTareo, miMeta);
+                DialogResult = System.Windows.Forms.DialogResult.OK;
             }
-            miTareo.Estado = true;
-            miTareo.ModificarTareo(miTareo, miMeta);
-            DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
         private void btnNuevoTrabajador_Click(object sender, EventArgs e)

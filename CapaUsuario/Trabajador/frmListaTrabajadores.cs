@@ -75,6 +75,9 @@ namespace CapaUsuario.Trabajador
                 Trabajador.frmNuevoTrabajador fNuevoTrabajador = new frmNuevoTrabajador();
                 fNuevoTrabajador.miTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorServidorPersonal();
                 fNuevoTrabajador.miTrabajador.FechaNacimiento = DateTime.Now;
+                fNuevoTrabajador.miTrabajador.NombreVia = "N";
+                fNuevoTrabajador.miTrabajador.NombreZona = "N";
+                fNuevoTrabajador.modoEdicion = false;
                 if (fNuevoTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     miListaTrabajadores.AgregarTrabajador(fNuevoTrabajador.miTrabajador);
@@ -94,6 +97,7 @@ namespace CapaUsuario.Trabajador
             {
                 Trabajador.frmNuevoTrabajador fModificarTrabajador = new frmNuevoTrabajador();
                 fModificarTrabajador.miTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorServidorPersonal();
+                fModificarTrabajador.modoEdicion = true;
                 fModificarTrabajador.miTrabajador = fModificarTrabajador.miTrabajador.traerTrabajador(Convert.ToInt16(dtgListaTrabajadores.SelectedRows[0].Cells["id_trabajador"].Value.ToString()));
 
                 if (fModificarTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)

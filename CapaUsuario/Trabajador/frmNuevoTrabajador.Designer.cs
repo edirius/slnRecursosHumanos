@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNuevoTrabajador));
             this.tabTrabajador = new System.Windows.Forms.TabControl();
             this.tabDatosGenerales = new System.Windows.Forms.TabPage();
+            this.chkScrt = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtNroRenta4ta = new System.Windows.Forms.TextBox();
             this.chkRenta4ta = new System.Windows.Forms.CheckBox();
@@ -95,7 +96,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
             this.toolTrabajador = new System.Windows.Forms.ToolTip(this.components);
-            this.chkScrt = new System.Windows.Forms.CheckBox();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
@@ -182,6 +182,16 @@
             this.tabDatosGenerales.TabIndex = 0;
             this.tabDatosGenerales.Text = "Datos Generales";
             this.tabDatosGenerales.UseVisualStyleBackColor = true;
+            // 
+            // chkScrt
+            // 
+            this.chkScrt.AutoSize = true;
+            this.chkScrt.Location = new System.Drawing.Point(657, 545);
+            this.chkScrt.Name = "chkScrt";
+            this.chkScrt.Size = new System.Drawing.Size(55, 17);
+            this.chkScrt.TabIndex = 107;
+            this.chkScrt.Text = "SCRT";
+            this.chkScrt.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -586,6 +596,7 @@
             this.txtDNI.Size = new System.Drawing.Size(71, 20);
             this.txtDNI.TabIndex = 0;
             this.txtDNI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDNI.TextChanged += new System.EventHandler(this.txtDNI_TextChanged);
             this.txtDNI.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDNI_KeyDown);
             this.txtDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDNI_KeyPress);
             // 
@@ -771,16 +782,6 @@
             this.toolTrabajador.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.toolTrabajador.ForeColor = System.Drawing.Color.RoyalBlue;
             this.toolTrabajador.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            // 
-            // chkScrt
-            // 
-            this.chkScrt.AutoSize = true;
-            this.chkScrt.Location = new System.Drawing.Point(657, 545);
-            this.chkScrt.Name = "chkScrt";
-            this.chkScrt.Size = new System.Drawing.Size(55, 17);
-            this.chkScrt.TabIndex = 107;
-            this.chkScrt.Text = "SCRT";
-            this.chkScrt.UseVisualStyleBackColor = true;
             // 
             // frmNuevoTrabajador
             // 

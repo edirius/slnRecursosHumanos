@@ -42,6 +42,7 @@
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.pbImagen = new System.Windows.Forms.PictureBox();
             this.lblServidor = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -184,12 +185,23 @@
             this.lblServidor.Size = new System.Drawing.Size(0, 13);
             this.lblServidor.TabIndex = 10;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label3.Location = new System.Drawing.Point(305, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(80, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "V: 1901202301";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(385, 405);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.lblServidor);
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.pbImagen);
@@ -227,5 +239,6 @@
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.Button btnCambiarServidor;
         private System.Windows.Forms.Label lblServidor;
+        private System.Windows.Forms.Label label3;
     }
 }

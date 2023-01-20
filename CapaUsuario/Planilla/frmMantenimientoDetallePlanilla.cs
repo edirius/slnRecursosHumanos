@@ -252,103 +252,113 @@ namespace CapaUsuario.Planilla
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            bool bOk = false;
-            foreach (DataGridViewRow row in dgvDetallePlanilla.Rows)
+            try
             {
-                miDetallePlanilla.IdtDetallePlanilla = Convert.ToInt32(row.Cells[0].Value);
-                miDetallePlanilla.Cargo = Convert.ToString(row.Cells[7].Value);
-                miDetallePlanilla.FechaInicio = Convert.ToDateTime(row.Cells[10].Value);
-                miDetallePlanilla.DiasLaborados = Convert.ToInt32(row.Cells[12].Value);
-                miDetallePlanilla.TotalIngresos = Convert.ToDecimal(row.Cells[14 + con_ingresos].Value);
-                miDetallePlanilla.TotalATrabajador = Convert.ToDecimal(row.Cells[18 + con_ingresos + con_trabajador].Value);
-                miDetallePlanilla.TotalDescuentos = Convert.ToDecimal(row.Cells[19 + con_ingresos + con_trabajador + con_descuento].Value);
-                miDetallePlanilla.TotalAEmpleador = Convert.ToDecimal(row.Cells[21 + con_ingresos + con_trabajador + con_descuento + con_empleador].Value);
-                miDetallePlanilla.NetoaCobrar = Convert.ToDecimal(row.Cells[22 + con_ingresos + con_trabajador + con_descuento + con_empleador].Value);
-                miDetallePlanilla.IdtTrabajador = Convert.ToInt32(row.Cells[4].Value);
-                miDetallePlanilla.IdtPlanilla = sidtplanilla;
-                if (Convert.ToString(row.Cells[1].Value) == "I")
+                bool bOk = false;
+                foreach (DataGridViewRow row in dgvDetallePlanilla.Rows)
                 {
-                    miDetallePlanilla.CrearDetallePlanilla(miDetallePlanilla);
-                    oDataDetallePlanilla = miDetallePlanilla.ListarDetallePlanilla(sidtplanilla);
-                    miDetallePlanilla.IdtDetallePlanilla = Convert.ToInt32(oDataDetallePlanilla.Compute("MAX(idtdetalleplanilla)", ""));
-                    row.Cells[0].Value = miDetallePlanilla.IdtDetallePlanilla.ToString();
-                    row.Cells[1].Value = "M";
-                    bOk = true;
-                }
-                if (Convert.ToString(row.Cells[1].Value) == "M")
-                {
-                    miDetallePlanilla.ModificarDetallePlanilla(miDetallePlanilla);
-                    bOk = true;
-                }
-                miDetallePlanillaIngresos.EliminarDetallePlanillaIngresos(Convert.ToInt32(row.Cells[0].Value));
-                miDetallePlanillaATrabajador.EliminarDetallePlanillaATrabajador(Convert.ToInt32(row.Cells[0].Value));
-                miDetallePlanillaDescuentos.EliminarDetallePlanillaDescuentos(Convert.ToInt32(row.Cells[0].Value));
-                miDetallePlanillaAEmpleador.EliminarDetallePlanillaAEmpleador(Convert.ToInt32(row.Cells[0].Value));
-                if (con_ingresos > 0)
-                {
-                    for (int i = 0; i < con_ingresos; i++)
+                    miDetallePlanilla.IdtDetallePlanilla = Convert.ToInt32(row.Cells[0].Value);
+                    miDetallePlanilla.Cargo = Convert.ToString(row.Cells[7].Value);
+                    miDetallePlanilla.FechaInicio = Convert.ToDateTime(row.Cells[10].Value);
+                    miDetallePlanilla.DiasLaborados = Convert.ToInt32(row.Cells[12].Value);
+                    miDetallePlanilla.TotalIngresos = Convert.ToDecimal(row.Cells[14 + con_ingresos].Value);
+                    miDetallePlanilla.TotalATrabajador = Convert.ToDecimal(row.Cells[18 + con_ingresos + con_trabajador].Value);
+                    miDetallePlanilla.TotalDescuentos = Convert.ToDecimal(row.Cells[19 + con_ingresos + con_trabajador + con_descuento].Value);
+                    miDetallePlanilla.TotalAEmpleador = Convert.ToDecimal(row.Cells[21 + con_ingresos + con_trabajador + con_descuento + con_empleador].Value);
+                    miDetallePlanilla.NetoaCobrar = Convert.ToDecimal(row.Cells[22 + con_ingresos + con_trabajador + con_descuento + con_empleador].Value);
+                    miDetallePlanilla.IdtTrabajador = Convert.ToInt32(row.Cells[4].Value);
+                    miDetallePlanilla.IdtPlanilla = sidtplanilla;
+                    if (Convert.ToString(row.Cells[1].Value) == "I")
                     {
-                        string z = dgvDetallePlanilla.Columns[14 + i].Name.ToString();
-                        int x = dgvDetallePlanilla.Columns[14 + i].Name.Length;
-                        int y = Convert.ToInt32(dgvDetallePlanilla.Columns[14 + i].Name.Substring(1, x - 1));
-                        miDetallePlanillaIngresos.IdtDetallePlanillaIngresos = 0;
-                        miDetallePlanillaIngresos.Monto = Convert.ToDecimal(row.Cells[14 + i].Value);
-                        miDetallePlanillaIngresos.IdtMaestroIngresos = y;
-                        miDetallePlanillaIngresos.IdtDetallePlanilla = Convert.ToInt32(row.Cells[0].Value);
-                        miDetallePlanillaIngresos.CrearDetallePlanillaIngresos(miDetallePlanillaIngresos);
+                        miDetallePlanilla.CrearDetallePlanilla(miDetallePlanilla);
+                        oDataDetallePlanilla = miDetallePlanilla.ListarDetallePlanilla(sidtplanilla);
+                        miDetallePlanilla.IdtDetallePlanilla = Convert.ToInt32(oDataDetallePlanilla.Compute("MAX(idtdetalleplanilla)", ""));
+                        row.Cells[0].Value = miDetallePlanilla.IdtDetallePlanilla.ToString();
+                        row.Cells[1].Value = "M";
+                        bOk = true;
+                    }
+                    if (Convert.ToString(row.Cells[1].Value) == "M")
+                    {
+                        miDetallePlanilla.ModificarDetallePlanilla(miDetallePlanilla);
+                        bOk = true;
+                    }
+                    miDetallePlanillaIngresos.EliminarDetallePlanillaIngresos(Convert.ToInt32(row.Cells[0].Value));
+                    miDetallePlanillaATrabajador.EliminarDetallePlanillaATrabajador(Convert.ToInt32(row.Cells[0].Value));
+                    miDetallePlanillaDescuentos.EliminarDetallePlanillaDescuentos(Convert.ToInt32(row.Cells[0].Value));
+                    miDetallePlanillaAEmpleador.EliminarDetallePlanillaAEmpleador(Convert.ToInt32(row.Cells[0].Value));
+                    if (con_ingresos > 0)
+                    {
+                        for (int i = 0; i < con_ingresos; i++)
+                        {
+                            string z = dgvDetallePlanilla.Columns[14 + i].Name.ToString();
+                            int x = dgvDetallePlanilla.Columns[14 + i].Name.Length;
+                            int y = Convert.ToInt32(dgvDetallePlanilla.Columns[14 + i].Name.Substring(1, x - 1));
+                            miDetallePlanillaIngresos.IdtDetallePlanillaIngresos = 0;
+                            miDetallePlanillaIngresos.Monto = Convert.ToDecimal(row.Cells[14 + i].Value);
+                            miDetallePlanillaIngresos.IdtMaestroIngresos = y;
+                            miDetallePlanillaIngresos.IdtDetallePlanilla = Convert.ToInt32(row.Cells[0].Value);
+                            miDetallePlanillaIngresos.CrearDetallePlanillaIngresos(miDetallePlanillaIngresos);
+                        }
+                    }
+                    if (con_trabajador > 0)
+                    {
+                        for (int i = 0; i < con_trabajador; i++)
+                        {
+                            string z = dgvDetallePlanilla.Columns[18 + con_ingresos + i].Name.ToString();
+                            int x = dgvDetallePlanilla.Columns[18 + con_ingresos + i].Name.Length;
+                            int y = Convert.ToInt32(dgvDetallePlanilla.Columns[18 + con_ingresos + i].Name.Substring(1, x - 1));
+                            miDetallePlanillaATrabajador.IdtDetallePlanillaATrabajador = 0;
+                            miDetallePlanillaATrabajador.Monto = Convert.ToDecimal(row.Cells[18 + con_ingresos + i].Value);
+                            miDetallePlanillaATrabajador.IdtMaestroATrabajador = y;
+                            miDetallePlanillaATrabajador.IdtDetallePlanilla = Convert.ToInt32(row.Cells[0].Value);
+                            miDetallePlanillaATrabajador.CrearDetallePlanillaATrabajador(miDetallePlanillaATrabajador);
+                        }
+                    }
+                    if (con_descuento > 0)
+                    {
+                        for (int i = 0; i < con_descuento; i++)
+                        {
+                            string z = dgvDetallePlanilla.Columns[19 + con_ingresos + con_trabajador + i].Name.ToString();
+                            int x = dgvDetallePlanilla.Columns[19 + con_ingresos + con_trabajador + i].Name.Length;
+                            int y = Convert.ToInt32(dgvDetallePlanilla.Columns[19 + con_ingresos + con_trabajador + i].Name.Substring(1, x - 1));
+                            miDetallePlanillaDescuentos.IdtDetallePlanillaDescuentos = 0;
+                            miDetallePlanillaDescuentos.Monto = Convert.ToDecimal(row.Cells[19 + con_ingresos + con_trabajador + i].Value);
+                            miDetallePlanillaDescuentos.IdtMaestroDescuentos = y;
+                            miDetallePlanillaDescuentos.IdtDetallePlanilla = Convert.ToInt32(row.Cells[0].Value);
+                            miDetallePlanillaDescuentos.CrearDetallePlanillaDescuentos(miDetallePlanillaDescuentos);
+                        }
+                    }
+                    if (con_empleador > 0)
+                    {
+                        for (int i = 0; i < con_empleador; i++)
+                        {
+                            string z = dgvDetallePlanilla.Columns[21 + con_ingresos + con_trabajador + con_descuento + i].Name.ToString();
+                            int x = dgvDetallePlanilla.Columns[21 + con_ingresos + con_trabajador + con_descuento + i].Name.Length;
+                            int y = Convert.ToInt32(dgvDetallePlanilla.Columns[21 + con_ingresos + con_trabajador + con_descuento + i].Name.Substring(1, x - 1));
+                            miDetallePlanillaAEmpleador.IdtDetallePlanillaAEmpleador = 0;
+                            miDetallePlanillaAEmpleador.Monto = Convert.ToDecimal(row.Cells[21 + con_ingresos + con_trabajador + con_descuento + i].Value);
+                            miDetallePlanillaAEmpleador.IdtMaestroAEmpleador = y;
+                            miDetallePlanillaAEmpleador.IdtDetallePlanilla = Convert.ToInt32(row.Cells[0].Value);
+                            miDetallePlanillaAEmpleador.CrearDetallePlanillaAEmpleador(miDetallePlanillaAEmpleador);
+                        }
                     }
                 }
-                if (con_trabajador > 0)
+                if (bOk == false)
                 {
-                    for (int i = 0; i < con_trabajador; i++)
-                    {
-                        string z = dgvDetallePlanilla.Columns[18 + con_ingresos + i].Name.ToString();
-                        int x = dgvDetallePlanilla.Columns[18 + con_ingresos + i].Name.Length;
-                        int y = Convert.ToInt32(dgvDetallePlanilla.Columns[18 + con_ingresos + i].Name.Substring(1, x - 1));
-                        miDetallePlanillaATrabajador.IdtDetallePlanillaATrabajador = 0;
-                        miDetallePlanillaATrabajador.Monto = Convert.ToDecimal(row.Cells[18 + con_ingresos + i].Value);
-                        miDetallePlanillaATrabajador.IdtMaestroATrabajador = y;
-                        miDetallePlanillaATrabajador.IdtDetallePlanilla = Convert.ToInt32(row.Cells[0].Value);
-                        miDetallePlanillaATrabajador.CrearDetallePlanillaATrabajador(miDetallePlanillaATrabajador);
-                    }
+                    MessageBox.Show("No existen datos que se puedan registrar", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                if (con_descuento > 0)
+                else
                 {
-                    for (int i = 0; i < con_descuento; i++)
-                    {
-                        string z = dgvDetallePlanilla.Columns[19 + con_ingresos + con_trabajador + i].Name.ToString();
-                        int x = dgvDetallePlanilla.Columns[19 + con_ingresos + con_trabajador + i].Name.Length;
-                        int y = Convert.ToInt32(dgvDetallePlanilla.Columns[19 + con_ingresos + con_trabajador + i].Name.Substring(1, x - 1));
-                        miDetallePlanillaDescuentos.IdtDetallePlanillaDescuentos = 0;
-                        miDetallePlanillaDescuentos.Monto = Convert.ToDecimal(row.Cells[19 + con_ingresos + con_trabajador + i].Value);
-                        miDetallePlanillaDescuentos.IdtMaestroDescuentos = y;
-                        miDetallePlanillaDescuentos.IdtDetallePlanilla = Convert.ToInt32(row.Cells[0].Value);
-                        miDetallePlanillaDescuentos.CrearDetallePlanillaDescuentos(miDetallePlanillaDescuentos);
-                    }
+                    CargarDatos();
                 }
-                if (con_empleador > 0)
-                {
-                    for (int i = 0; i < con_empleador; i++)
-                    {
-                        string z = dgvDetallePlanilla.Columns[21 + con_ingresos + con_trabajador + con_descuento + i].Name.ToString();
-                        int x = dgvDetallePlanilla.Columns[21 + con_ingresos + con_trabajador + con_descuento + i].Name.Length;
-                        int y = Convert.ToInt32(dgvDetallePlanilla.Columns[21 + con_ingresos + con_trabajador + con_descuento + i].Name.Substring(1, x - 1));
-                        miDetallePlanillaAEmpleador.IdtDetallePlanillaAEmpleador = 0;
-                        miDetallePlanillaAEmpleador.Monto = Convert.ToDecimal(row.Cells[21 + con_ingresos + con_trabajador + con_descuento + i].Value);
-                        miDetallePlanillaAEmpleador.IdtMaestroAEmpleador = y;
-                        miDetallePlanillaAEmpleador.IdtDetallePlanilla = Convert.ToInt32(row.Cells[0].Value);
-                        miDetallePlanillaAEmpleador.CrearDetallePlanillaAEmpleador(miDetallePlanillaAEmpleador);
-                    }
-                }
+
+                MessageBox.Show("Datos Guardados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            if (bOk == false)
+            catch (Exception EX)
             {
-                MessageBox.Show("No existen datos que se puedan registrar", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al guardar los datos: " + EX.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                CargarDatos();
-            }
+           
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

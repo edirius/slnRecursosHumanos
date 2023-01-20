@@ -587,5 +587,93 @@ namespace CapaDeNegocios
         {
             return Conexion.GDatos.TraerDataTable("spListarXTrabajadores");
         }
+
+        public cTrabajador BuscarTrabajadorXDNI(string DNI)
+        {
+            cTrabajador miTrabajador = new cTrabajador();
+            DataTable dt = Conexion.GDatos.TraerDataTable("spBuscarTrabajadorXDNI", DNI);
+            if (dt.Rows.Count > 0)
+            {
+
+                miTrabajador.idTrabajador = Convert.ToInt16(dt.Rows[0][0]);
+                miTrabajador.nombres = Convert.ToString(dt.Rows[0][1]);
+                miTrabajador.apellidoPaterno = Convert.ToString(dt.Rows[0][2]);
+                miTrabajador.ApellidoMaterno = Convert.ToString(dt.Rows[0][3]);
+                switch (Convert.ToString(dt.Rows[0][4]))
+                {
+                    case "M":
+                        miTrabajador.sexo = EnumSexo.Masculino;
+                        break;
+                    case "F":
+                        miTrabajador.sexo = EnumSexo.Femenino;
+                        break;
+                    default:
+                        break;
+                }
+                switch (Convert.ToString(dt.Rows[0][5]))
+                {
+                    case "Casado":
+                        miTrabajador.estadoCivil = enumEstadoCivil.Casado;
+                        break;
+                    case "Soltero":
+                        miTrabajador.estadoCivil = enumEstadoCivil.Soltero;
+                        break;
+                    case "Divorciado":
+                        miTrabajador.estadoCivil = enumEstadoCivil.Divorciado;
+                        break;
+                    case "Viudo":
+                        miTrabajador.estadoCivil = enumEstadoCivil.Viudo;
+                        break;
+                    default:
+                        break;
+                }
+
+                miTrabajador.direccion = Convert.ToString(dt.Rows[0][6]);
+                miTrabajador.dni = Convert.ToString(dt.Rows[0][7]);
+                miTrabajador.celularPersonal = Convert.ToString(dt.Rows[0][8]);
+                miTrabajador.celularTrabajo = Convert.ToString(dt.Rows[0][9]);
+                miTrabajador.fechaNacimiento = Convert.ToDateTime(dt.Rows[0][10]);
+                if (dt.Rows[0][11] != DBNull.Value)
+                {
+                    miTrabajador.foto = (Byte[])(dt.Rows[0][11]);
+                }
+                else
+                {
+                    miTrabajador.foto = null;
+                }
+                miTrabajador.correoElectronico = Convert.ToString(dt.Rows[0][12]);
+                miTrabajador.miTipoVia = new cTipoVia();
+                miTrabajador.miTipoVia.Codigo = Convert.ToInt16(dt.Rows[0][13]);
+                miTrabajador.nombreVia = Convert.ToString(dt.Rows[0][14]);
+                miTrabajador.numeroVia = Convert.ToString(dt.Rows[0][15]);
+                miTrabajador.departamentoInterior = Convert.ToString(dt.Rows[0][16]);
+                miTrabajador.miTipoZOna = new cTipoZona();
+                miTrabajador.miTipoZOna.Codigo = Convert.ToInt16(dt.Rows[0][17]);
+                miTrabajador.nombreZona = Convert.ToString(dt.Rows[0][18]);
+                miTrabajador.Referencia = Convert.ToString(dt.Rows[0][19]);
+                miTrabajador.miDistrito = new cDistrito();
+                miTrabajador.miDistrito.Codigo = Convert.ToInt16(dt.Rows[0][20]);
+                miTrabajador.miNacionalidad = new cNacionalidad();
+                miTrabajador.miNacionalidad.Codigo = Convert.ToInt16(dt.Rows[0][21]);
+                miTrabajador.essaludvida = Convert.ToBoolean(dt.Rows[0][22]);
+                miTrabajador.ssuspencionrenta4ta = Convert.ToBoolean(dt.Rows[0][23]);
+                miTrabajador.nrorenta4ta = Convert.ToString(dt.Rows[0][24]);
+                miTrabajador.scrt = Convert.ToBoolean(dt.Rows[0][25]);
+                miTrabajador.miTipoVia = miTrabajador.miTipoVia.TraerTipoVia(miTrabajador.miTipoVia.Codigo);
+                miTrabajador.miTipoZOna = miTrabajador.miTipoZOna.TraerTipoZona(miTrabajador.miTipoZOna.Codigo);
+                miTrabajador.miNacionalidad = miTrabajador.miNacionalidad.TraerNacionalidad(miTrabajador.miNacionalidad.Codigo);
+                miTrabajador.miDistrito = miTrabajador.miDistrito.TraerDistrito(miTrabajador.miDistrito.Codigo);
+                miTrabajador.MiProvincia = new cProvincia();
+                miTrabajador.MiProvincia = miTrabajador.MiProvincia.TraerProvincia(miTrabajador.miDistrito.MiProvincia.Codigo);
+                miTrabajador.miDepartamento = new cDepartamento();
+                miTrabajador.miDepartamento = miTrabajador.miDepartamento.TraerDepartamento(miTrabajador.miProvincia.MiDepartamento.Codigo);
+
+                return miTrabajador;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

@@ -35,5 +35,20 @@ namespace CapaUsuario.Trabajador
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }
         }
+
+        private void dtgNacionalidad_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgNacionalidad.SelectedRows.Count > 0)
+            {
+                miNacionalidad.Codigo = Convert.ToInt16(dtgNacionalidad.SelectedRows[0].Cells[0].Value.ToString());
+                miNacionalidad.CodigoSunat = dtgNacionalidad.SelectedRows[0].Cells[1].Value.ToString();
+                miNacionalidad.Descripcion = dtgNacionalidad.SelectedRows[0].Cells[2].Value.ToString();
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una nacionalidad de la lista.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

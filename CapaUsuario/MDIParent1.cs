@@ -744,22 +744,25 @@ namespace CapaUsuario
                 if (dlgSalvarArchivo.ShowDialog() == DialogResult.OK)
                 {
                     file = dlgSalvarArchivo.FileName;
-                }
-
-                using (MySqlConnection conn = new MySqlConnection(constring))
-                {
-                    using (MySqlCommand cmd = new MySqlCommand())
+                    using (MySqlConnection conn = new MySqlConnection(constring))
                     {
-                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        using (MySqlCommand cmd = new MySqlCommand())
                         {
-                            cmd.Connection = conn;
-                            conn.Open();
-                            mb.ExportToFile(file);
-                            conn.Close();
-                            MessageBox.Show("Backup creado con exito.");
+                            using (MySqlBackup mb = new MySqlBackup(cmd))
+                            {
+                                cmd.Connection = conn;
+                                conn.Open();
+                                mb.ExportToFile(file);
+                                conn.Close();
+                                MessageBox.Show("Backup creado con exito.");
+                            }
                         }
-                    }
 
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Se ha cancelado la operacion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception exc)
@@ -798,22 +801,25 @@ namespace CapaUsuario
                 if (dlgAbrirArchivo.ShowDialog() == DialogResult.OK)
                 {
                     file = dlgAbrirArchivo.FileName;
-                }
-
-               
-                using (MySqlConnection conn = new MySqlConnection(constring))
-                {
-                    using (MySqlCommand cmd = new MySqlCommand())
+                
+                    using (MySqlConnection conn = new MySqlConnection(constring))
                     {
-                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        using (MySqlCommand cmd = new MySqlCommand())
                         {
-                            cmd.Connection = conn;
-                            conn.Open();
-                            mb.ImportFromFile(file);
-                            conn.Close();
-                            MessageBox.Show("Restauracion Exitosa");
+                            using (MySqlBackup mb = new MySqlBackup(cmd))
+                            {
+                                cmd.Connection = conn;
+                                conn.Open();
+                                mb.ImportFromFile(file);
+                                conn.Close();
+                                MessageBox.Show("Restauracion Exitosa");
+                            }
                         }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Se ha cancelado la operacion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception exc)
