@@ -2751,7 +2751,7 @@ namespace CapaUsuario.Reportes
                         odtATrabajador.Rows.Clear();
 
                         //Agregando columnas al cuadro de AFP
-                        odtATrabajador.Columns.Add("DESCUENTOS", typeof(string));
+                        odtATrabajador.Columns.Add("RESUMEN AFP", typeof(string));
                         odtATrabajador.Columns.Add(" ", typeof(string));
                         //Calculando cuadro de AFP
 
@@ -2826,7 +2826,11 @@ namespace CapaUsuario.Reportes
                             }
                             drFilaATrabajador[0] = arr_aportaciones_trabajador[k];
                             drFilaATrabajador[1] = sumatoria_afp;
-                            odtATrabajador.Rows.InsertAt(drFilaATrabajador, nn);
+                            if (arr_aportaciones_trabajador[k] != "SNP")
+                            {
+                                odtATrabajador.Rows.InsertAt(drFilaATrabajador, nn);
+                            }
+                            
                             nn++;
                         }
 
