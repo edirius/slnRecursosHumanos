@@ -91,6 +91,8 @@ namespace CapaUsuario.ExportarSunat
                 dgvListarTrabajadores.Columns["FechaInicio"].Visible = true;
                 dgvListarTrabajadores.Columns["FechaInicio"].Width = 78;
                 dgvListarTrabajadores.Columns["FechaInicio"].ReadOnly = true;
+                dgvListarTrabajadores.Columns["PlanillaD"].Visible = true;
+                dgvListarTrabajadores.Columns["PlanillaD"].Width = 150;
             }
         }
         private void ConvertiraNumero(string tipoPago)

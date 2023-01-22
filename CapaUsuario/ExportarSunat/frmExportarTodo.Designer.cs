@@ -36,13 +36,13 @@
             this.cbAños = new System.Windows.Forms.ComboBox();
             this.btnExportar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkSRCT = new System.Windows.Forms.CheckBox();
             this.checkEDU = new System.Windows.Forms.CheckBox();
             this.checkEST = new System.Windows.Forms.CheckBox();
             this.checkIDE = new System.Windows.Forms.CheckBox();
             this.checkPER = new System.Windows.Forms.CheckBox();
             this.checkTRA = new System.Windows.Forms.CheckBox();
             this.checkSelectAll = new System.Windows.Forms.CheckBox();
-            this.chkSRCT = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarTrabajadores)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +60,7 @@
             this.dgvListarTrabajadores.Name = "dgvListarTrabajadores";
             this.dgvListarTrabajadores.RowHeadersVisible = false;
             this.dgvListarTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListarTrabajadores.Size = new System.Drawing.Size(764, 437);
+            this.dgvListarTrabajadores.Size = new System.Drawing.Size(902, 437);
             this.dgvListarTrabajadores.TabIndex = 30;
             // 
             // label3
@@ -141,9 +141,19 @@
             this.groupBox1.Controls.Add(this.cbMes);
             this.groupBox1.Location = new System.Drawing.Point(7, -1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(744, 113);
+            this.groupBox1.Size = new System.Drawing.Size(902, 113);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
+            // 
+            // chkSRCT
+            // 
+            this.chkSRCT.AutoSize = true;
+            this.chkSRCT.Location = new System.Drawing.Point(452, 90);
+            this.chkSRCT.Name = "chkSRCT";
+            this.chkSRCT.Size = new System.Drawing.Size(55, 17);
+            this.chkSRCT.TabIndex = 44;
+            this.chkSRCT.Text = "SRCT";
+            this.chkSRCT.UseVisualStyleBackColor = true;
             // 
             // checkEDU
             // 
@@ -206,21 +216,11 @@
             this.checkSelectAll.UseVisualStyleBackColor = true;
             this.checkSelectAll.CheckedChanged += new System.EventHandler(this.checkSelectAll_CheckedChanged);
             // 
-            // chkSRCT
-            // 
-            this.chkSRCT.AutoSize = true;
-            this.chkSRCT.Location = new System.Drawing.Point(452, 90);
-            this.chkSRCT.Name = "chkSRCT";
-            this.chkSRCT.Size = new System.Drawing.Size(55, 17);
-            this.chkSRCT.TabIndex = 44;
-            this.chkSRCT.Text = "SRCT";
-            this.chkSRCT.UseVisualStyleBackColor = true;
-            // 
             // frmExportarTodo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(799, 567);
+            this.ClientSize = new System.Drawing.Size(946, 567);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvListarTrabajadores);
             this.Name = "frmExportarTodo";
