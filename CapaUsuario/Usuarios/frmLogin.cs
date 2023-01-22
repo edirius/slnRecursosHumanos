@@ -74,8 +74,9 @@ namespace CapaUsuario.Usuarios
             DataView objDataView = new DataView();
             try
             {
-                
-                
+                System.Data.DataTable odata = oUsuario.ListaUsuarios();
+                MessageBox.Show(odata.Columns[2].ColumnName);
+
                 objDataView.Table = oUsuario.ListaUsuarios();
                 Boolean encontrado = false;
                 for (int i = 0; i < objDataView.Table.Columns.Count; i++)
