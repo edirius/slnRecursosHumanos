@@ -34,9 +34,35 @@ namespace CapaUsuario.Metas
                 DataTable oDataMeta = new DataTable();
                 CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
                 oDataMeta = miMeta.ListarMetas();
-                foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+                Boolean encontrado = true;
+
+                for (int i = 0; i < oDataMeta.Columns.Count -1; i++)
                 {
-                    dtgListaMetas.Rows.Add(row[0].ToString(), row[1].ToString(), row[3].ToString(), row[2].ToString(), row[4].ToString(), row[5].ToString());
+                    if (oDataMeta.Columns[i].ColumnName == "año")
+                    {
+                        encontrado = true;
+                    }
+                    else
+                    {
+                        encontrado = false;
+                    }
+
+                }
+
+                if (encontrado)
+                {
+                    foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
+                    {
+                        dtgListaMetas.Rows.Add(row[0].ToString(), row[1].ToString(), row[3].ToString(), row[2].ToString(), row[4].ToString(), row[5].ToString());
+                    }
+                }
+                
+                else
+                {
+                    foreach (DataRow row in oDataMeta.Select("ano = '" + cboAño.Text + "'"))
+                    {
+                        dtgListaMetas.Rows.Add(row[0].ToString(), row[1].ToString(), row[3].ToString(), row[2].ToString(), row[4].ToString(), row[5].ToString());
+                    }
                 }
             }
         }
