@@ -71,9 +71,10 @@ namespace CapaUsuario.Usuarios
 
         public void IniciarSesion()
         {
+            DataView objDataView = new DataView();
             try
             {
-                DataView objDataView = new DataView();
+                
                 objDataView.Table = oUsuario.ListaUsuarios();
                 objDataView.RowFilter = "nombre='" + txtUsuario.Text + "' and contraseña='" + oUsuario.ObtenerSHA1(txtPass.Text) + "'";
                 dgvUsuarios.DataSource = objDataView;
@@ -99,7 +100,7 @@ namespace CapaUsuario.Usuarios
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + " " + objDataView.Table.Columns[1].ColumnName);
             }
 
             //string existe = "@a";
