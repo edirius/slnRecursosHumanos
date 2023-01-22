@@ -69,16 +69,17 @@ namespace CapaUsuario.Usuarios
             }
         }
 
-        public static System.Text.Encoding Default { get; }
+       
 
         public void IniciarSesion()
         {
             DataView objDataView = new DataView();
             try
             {
+                
                 System.Data.DataTable odata = oUsuario.ListaUsuarios();
                 MessageBox.Show(odata.Columns[2].ColumnName);
-                MessageBox.Show(Default.EncodingName);
+               
                 objDataView.Table = oUsuario.ListaUsuarios();
                 Boolean encontrado = false;
                 for (int i = 0; i < objDataView.Table.Columns.Count; i++)
