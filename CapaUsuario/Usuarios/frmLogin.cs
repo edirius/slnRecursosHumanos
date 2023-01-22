@@ -100,7 +100,7 @@ namespace CapaUsuario.Usuarios
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + " " + objDataView.Table.Columns[1].ColumnName, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + " " + objDataView.Table.Columns[2].ColumnName, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             //string existe = "@a";
