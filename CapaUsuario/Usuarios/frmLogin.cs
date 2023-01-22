@@ -75,8 +75,24 @@ namespace CapaUsuario.Usuarios
             try
             {
                 
+                
                 objDataView.Table = oUsuario.ListaUsuarios();
-                objDataView.RowFilter = "nombre='" + txtUsuario.Text + "' and contrasena='" + oUsuario.ObtenerSHA1(txtPass.Text) + "'";
+                Boolean encontrado = false;
+                for (int i = 0; i < objDataView.Table.Columns.Count; i++)
+                {
+                    if (objDataView.Table.Columns[i].ColumnName == "contraseña")
+                    {
+                        encontrado = true;
+                    }
+                }
+                if (encontrado)
+                {
+                    objDataView.RowFilter = "nombre='" + txtUsuario.Text + "' and contraseña='" + oUsuario.ObtenerSHA1(txtPass.Text) + "'";
+                }
+                else
+                {
+                    objDataView.RowFilter = "nombre='" + txtUsuario.Text + "' and contrasena='" + oUsuario.ObtenerSHA1(txtPass.Text) + "'";
+                }
                 dgvUsuarios.DataSource = objDataView;
                 if (objDataView.Count > 0)
                 {
