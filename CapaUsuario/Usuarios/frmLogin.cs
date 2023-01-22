@@ -76,7 +76,7 @@ namespace CapaUsuario.Usuarios
             {
                 
                 objDataView.Table = oUsuario.ListaUsuarios();
-                objDataView.RowFilter = "nombre='" + txtUsuario.Text + "' and contraseña='" + oUsuario.ObtenerSHA1(txtPass.Text) + "'";
+                objDataView.RowFilter = "nombre='" + txtUsuario.Text + "' and contrasena='" + oUsuario.ObtenerSHA1(txtPass.Text) + "'";
                 dgvUsuarios.DataSource = objDataView;
                 if (objDataView.Count > 0)
                 {
