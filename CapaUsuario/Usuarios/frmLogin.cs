@@ -73,30 +73,18 @@ namespace CapaUsuario.Usuarios
 
         public void IniciarSesion()
         {
-            DataView objDataView = new DataView();
+            
             try
             {
-                
+                DataView objDataView = new DataView();
                 System.Data.DataTable odata = oUsuario.ListaUsuarios();
                 MessageBox.Show(odata.Columns[2].ColumnName);
                
                 objDataView.Table = oUsuario.ListaUsuarios();
-                Boolean encontrado = false;
-                for (int i = 0; i < objDataView.Table.Columns.Count; i++)
-                {
-                    if (objDataView.Table.Columns[i].ColumnName == "contraseña")
-                    {
-                        encontrado = true;
-                    }
-                }
-                if (encontrado)
-                {
+                
+                                
                     objDataView.RowFilter = "nombre='" + txtUsuario.Text + "' and contraseña='" + oUsuario.ObtenerSHA1(txtPass.Text) + "'";
-                }
-                else
-                {
-                    objDataView.RowFilter = "nombre='" + txtUsuario.Text + "' and contrasena='" + oUsuario.ObtenerSHA1(txtPass.Text) + "'";
-                }
+                
                 dgvUsuarios.DataSource = objDataView;
                 if (objDataView.Count > 0)
                 {
@@ -120,7 +108,7 @@ namespace CapaUsuario.Usuarios
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + " " + objDataView.Table.Columns[2].ColumnName, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message + " ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             //string existe = "@a";

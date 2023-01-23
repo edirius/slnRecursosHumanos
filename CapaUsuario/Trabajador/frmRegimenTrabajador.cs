@@ -360,28 +360,13 @@ namespace CapaUsuario.Trabajador
                     CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miMeta = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
                     oDataMeta = miMeta.ListarMetas();
                     Dictionary<string, string> test = new Dictionary<string, string>();
-                    Boolean encontrado = false;
-                    for (int i = 0; i < oDataMeta.Columns.Count - 1; i++)
+
+                    foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
                     {
-                        if (oDataMeta.Columns[i].ColumnName == "año")
-                        {
-                            encontrado = true;
-                        }
+                        test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
                     }
-                    if (encontrado)
-                    {
-                        foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
-                        {
-                            test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
-                        }
-                    }
-                    else
-                    {
-                        foreach (DataRow row in oDataMeta.Select("ano = '" + cboAño.Text + "'"))
-                        {
-                            test.Add(row[0].ToString(), row[3].ToString() + " - " + row[2].ToString());
-                        }
-                    }
+
+                    
                     cboMeta.DataSource = new BindingSource(test, null);
                     cboMeta.DisplayMember = "Value";
                     cboMeta.ValueMember = "Key";

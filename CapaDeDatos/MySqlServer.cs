@@ -25,7 +25,9 @@ namespace CapaDeDatos
                         sCadena.Append("Database=<BASE>;");
                         sCadena.Append("Uid=<USER>;");
                         sCadena.Append("Pwd=<PASSWORD>;");
-                       
+                        sCadena.Append("CharSet=utf8;");
+
+                        
                         sCadena.Replace("<SERVIDOR>", Servidor);
                         sCadena.Replace("<BASE>", Base);
                         sCadena.Replace("<USER>", Usuario);
