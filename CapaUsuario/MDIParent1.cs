@@ -685,8 +685,20 @@ namespace CapaUsuario
                 else { toolsMenu.Visible = false; }
                 if (menuMeta == true) { windowsMenu.Visible = true; }
                 else { windowsMenu.Visible = false; }
-                if (menuPlanillas == true) { planillasToolStripMenuItem.Visible = true; }
-                else { planillasToolStripMenuItem.Visible = false; printPreviewToolStripButton.Visible = false; }
+                if (menuPlanillas == true) {
+                    planillasToolStripMenuItem.Visible = true;
+                    printPreviewToolStripButton.Visible = true;
+                    printToolStripButton.Visible = true;
+                    toolImportadorExcel.Visible = true;
+                    contratosToolStripMenuItem.Visible = true;
+                }
+                else {
+                    planillasToolStripMenuItem.Visible = false;
+                    printPreviewToolStripButton.Visible = false;
+                    printToolStripButton.Visible = false;
+                    toolImportadorExcel.Visible = false;
+                    contratosToolStripMenuItem.Visible = false;
+                }
                 if (menuSunatTablasParametricas == true) { sUNATToolStripMenuItem.Visible = true; }
                 else { sUNATToolStripMenuItem.Visible = false; }
                 if (menuExportarDatosSunat == true) { exportarTextoSUNATToolStripMenuItem.Visible = true; }

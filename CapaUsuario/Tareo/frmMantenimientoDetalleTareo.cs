@@ -571,6 +571,11 @@ namespace CapaUsuario.Tareo
                                             oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
                                             oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
                                         }
+                                        else
+                                        {
+                                            MessageBox.Show("Se cancelo la operacion", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                            return;
+                                        }
                                     }
 
                                 }

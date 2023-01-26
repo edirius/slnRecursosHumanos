@@ -78,7 +78,7 @@ namespace CapaUsuario.Usuarios
             {
                 DataView objDataView = new DataView();
                 System.Data.DataTable odata = oUsuario.ListaUsuarios();
-                MessageBox.Show(odata.Columns[2].ColumnName);
+                
                
                 objDataView.Table = oUsuario.ListaUsuarios();
                 
