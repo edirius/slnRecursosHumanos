@@ -70,10 +70,13 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDatosFijosxTrabajador = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnImprimirListaReloj = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeFiltro = new System.Windows.Forms.TreeView();
             this.imageLista = new System.Windows.Forms.ImageList(this.components);
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.btnCambiarMeta = new System.Windows.Forms.Button();
             this.btnReporteContratos = new System.Windows.Forms.Button();
             this.btnContratos = new System.Windows.Forms.Button();
@@ -113,9 +116,6 @@
             this.menuCopiarNombre = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCopiarPaterno = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApellidoMaterno = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnImprimirListaReloj = new System.Windows.Forms.ToolStripButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.statusTrabajadores.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -137,7 +137,7 @@
             this.lblNumeroTrabajadores});
             this.statusTrabajadores.Location = new System.Drawing.Point(0, 569);
             this.statusTrabajadores.Name = "statusTrabajadores";
-            this.statusTrabajadores.Size = new System.Drawing.Size(1043, 22);
+            this.statusTrabajadores.Size = new System.Drawing.Size(1092, 22);
             this.statusTrabajadores.TabIndex = 1;
             this.statusTrabajadores.Text = "statusStrip1";
             // 
@@ -164,7 +164,7 @@
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1043, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1092, 28);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -239,6 +239,15 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 28);
             // 
+            // btnImprimirListaReloj
+            // 
+            this.btnImprimirListaReloj.Image = global::CapaUsuario.Properties.Resources.chart;
+            this.btnImprimirListaReloj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImprimirListaReloj.Name = "btnImprimirListaReloj";
+            this.btnImprimirListaReloj.Size = new System.Drawing.Size(129, 25);
+            this.btnImprimirListaReloj.Text = "Imprimir Lista Reloj";
+            this.btnImprimirListaReloj.Click += new System.EventHandler(this.btnImprimirListaReloj_Click);
+            // 
             // btnSalir
             // 
             this.btnSalir.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_17;
@@ -285,8 +294,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.txtDNI);
             this.splitContainer1.Panel2.Controls.Add(this.dtgListaTrabajadores);
-            this.splitContainer1.Size = new System.Drawing.Size(1043, 541);
-            this.splitContainer1.SplitterDistance = 205;
+            this.splitContainer1.Size = new System.Drawing.Size(1092, 541);
+            this.splitContainer1.SplitterDistance = 214;
             this.splitContainer1.TabIndex = 3;
             // 
             // treeFiltro
@@ -355,7 +364,7 @@
             this.treeFiltro.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode13});
             this.treeFiltro.SelectedImageIndex = 0;
-            this.treeFiltro.Size = new System.Drawing.Size(205, 541);
+            this.treeFiltro.Size = new System.Drawing.Size(214, 541);
             this.treeFiltro.TabIndex = 0;
             this.treeFiltro.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeFiltro_AfterSelect);
             this.treeFiltro.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeFiltro_NodeMouseClick);
@@ -368,6 +377,22 @@
             this.imageLista.Images.SetKeyName(0, "161.ICO");
             this.imageLista.Images.SetKeyName(1, "WinXPSetV4 Icon 23.ico");
             this.imageLista.Images.SetKeyName(2, "123.ICO");
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(545, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "Fecha:";
+            // 
+            // dtpFecha
+            // 
+            this.dtpFecha.Location = new System.Drawing.Point(591, 7);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
+            this.dtpFecha.TabIndex = 43;
             // 
             // btnCambiarMeta
             // 
@@ -390,7 +415,7 @@
             this.btnReporteContratos.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnReporteContratos.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnReporteContratos.ImageIndex = 1;
-            this.btnReporteContratos.Location = new System.Drawing.Point(449, 485);
+            this.btnReporteContratos.Location = new System.Drawing.Point(493, 485);
             this.btnReporteContratos.Name = "btnReporteContratos";
             this.btnReporteContratos.Size = new System.Drawing.Size(114, 53);
             this.btnReporteContratos.TabIndex = 41;
@@ -406,7 +431,7 @@
             this.btnContratos.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnContratos.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnContratos.ImageIndex = 1;
-            this.btnContratos.Location = new System.Drawing.Point(569, 485);
+            this.btnContratos.Location = new System.Drawing.Point(613, 485);
             this.btnContratos.Name = "btnContratos";
             this.btnContratos.Size = new System.Drawing.Size(114, 53);
             this.btnContratos.TabIndex = 40;
@@ -471,7 +496,7 @@
             this.btnDatosLaborales.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDatosLaborales.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDatosLaborales.ImageIndex = 1;
-            this.btnDatosLaborales.Location = new System.Drawing.Point(689, 485);
+            this.btnDatosLaborales.Location = new System.Drawing.Point(733, 485);
             this.btnDatosLaborales.Name = "btnDatosLaborales";
             this.btnDatosLaborales.Size = new System.Drawing.Size(114, 53);
             this.btnDatosLaborales.TabIndex = 32;
@@ -652,7 +677,7 @@
             this.dtgListaTrabajadores.Name = "dtgListaTrabajadores";
             this.dtgListaTrabajadores.ReadOnly = true;
             this.dtgListaTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaTrabajadores.Size = new System.Drawing.Size(788, 271);
+            this.dtgListaTrabajadores.Size = new System.Drawing.Size(834, 271);
             this.dtgListaTrabajadores.TabIndex = 13;
             this.dtgListaTrabajadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellClick);
             this.dtgListaTrabajadores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellContentClick);
@@ -783,36 +808,11 @@
             this.menuApellidoMaterno.Text = "Copiar Apellido Materno";
             this.menuApellidoMaterno.Click += new System.EventHandler(this.menuApellidoMaterno_Click);
             // 
-            // btnImprimirListaReloj
-            // 
-            this.btnImprimirListaReloj.Image = global::CapaUsuario.Properties.Resources.chart;
-            this.btnImprimirListaReloj.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImprimirListaReloj.Name = "btnImprimirListaReloj";
-            this.btnImprimirListaReloj.Size = new System.Drawing.Size(129, 25);
-            this.btnImprimirListaReloj.Text = "Imprimir Lista Reloj";
-            this.btnImprimirListaReloj.Click += new System.EventHandler(this.btnImprimirListaReloj_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(545, 12);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
-            this.label5.TabIndex = 44;
-            this.label5.Text = "Fecha:";
-            // 
-            // dtpFecha
-            // 
-            this.dtpFecha.Location = new System.Drawing.Point(591, 7);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
-            this.dtpFecha.TabIndex = 43;
-            // 
             // frmListaTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1043, 591);
+            this.ClientSize = new System.Drawing.Size(1092, 591);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusTrabajadores);

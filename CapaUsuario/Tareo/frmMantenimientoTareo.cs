@@ -109,11 +109,7 @@ namespace CapaUsuario.Tareo
 
         private void btnDetalleTareo_Click(object sender, EventArgs e)
         {
-            if (sEstado == true)
-            {
-                MessageBox.Show("El Detalle del Tareo ya no se puede Modificar.", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            
             if (sIdTTareo == 0 || dgvTareo.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -240,7 +236,7 @@ namespace CapaUsuario.Tareo
                 cImprimirTareo.oImprimirTareo = miTareo.ImprimirTareo(sIdTMeta, sIdTTareo);
                 if (cImprimirTareo.oImprimirTareo.Rows.Count == 0)
                 {
-                    MessageBox.Show("Error al obtener tareos, o residente responsable de la meta: ");
+                    MessageBox.Show("El tareo esta vacio o no se encuentra el residente responsable de la meta: ");
                 }
                 else
                 {

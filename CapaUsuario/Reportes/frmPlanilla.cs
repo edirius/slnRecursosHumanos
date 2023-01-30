@@ -2529,7 +2529,7 @@ namespace CapaUsuario.Reportes
                             drFilaCorta[3] = odtPrueba.Rows[d][2];
 
                             if (odtPrueba.Rows[d][3].ToString() != "")
-                                drFilaCorta[4] = Convert.ToDateTime(odtPrueba.Rows[d][3]).Date.ToString("MM/dd/yyyy");
+                                drFilaCorta[4] = Convert.ToDateTime(odtPrueba.Rows[d][3]).Date.ToString("dd/MM/yyyy");
                         
                             //drFilaCorta[5] = odtPrueba.Rows[d][4];
 
