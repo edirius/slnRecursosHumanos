@@ -377,10 +377,50 @@ namespace CapaUsuario.ExportarSunat
             {
                 if (Convert.ToBoolean(fila.Cells["☑"].Value) == true)
                 {
-
-                    string tipoDoc = fila.Cells["@TipoDoc"].Value.ToString();
+                    //Periodos
+                    string tipoRegistro = "1";
                     string dni = fila.Cells["DNI"].Value.ToString();
-                    string paisDoc = fila.Cells["@PaisEmisor"].Value.ToString();
+                    DateTime fechainicio = Convert.ToDateTime(fila.Cells["FechaInicio"].Value.ToString());
+                    string fechafin = fila.Cells["FechaFin"].Value.ToString();
+                    string indicadorTipoRegistro = fila.Cells["CodMotivoFin"].Value.ToString();
+                    Periodos = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro, fechainicio.ToShortDateString(), fechafin, indicadorTipoRegistro, EPS);
+                    milistaPER.Add(Periodos);
+                    //TipoTrabajador
+                    string tipoRegistro2 = "2";
+                    DateTime fechainicio2 = Convert.ToDateTime(fila.Cells["FechaInicio"].Value.ToString());
+                    string fechafin2 = fila.Cells["FechaFin"].Value.ToString();
+                    string indicadorTipoRegistro2 = fila.Cells["CodSunatTT"].Value.ToString();
+                    TipoTrabajador = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro2, fechainicio2.ToShortDateString(), fechafin2, indicadorTipoRegistro2, EPS);
+                    milistaPER.Add(TipoTrabajador);
+                    //Regimen Aseguramiento Salud
+                    string tipoRegistro3 = "3";
+                    string fechainicio3 = fila.Cells["FechaInicioSalud"].Value.ToString();
+                    string fechafin3 = fila.Cells["FechaFinSalud"].Value.ToString();
+                    string indicadorTipoRegistro3 = fila.Cells["RegimenSalud"].Value.ToString();
+                    ConvertiraNumeroSalud(indicadorTipoRegistro3);
+                    RegimenAseguramiento = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro3, fechainicio3, fechafin3, NroRegimenSalud, EPS);
+                    milistaPER.Add(RegimenAseguramiento);
+                    //Regimen Pensionario
+                    string tipoRegistro4 = "4";
+                    string fechainicio4 = fila.Cells["FechaInicioRegPensionario"].Value.ToString();
+                    string fechafin4 = fila.Cells["FechaFinRegPensionario"].Value.ToString();
+                    string indicadorTipoRegistro4 = fila.Cells["CodAFP"].Value.ToString();
+                    RegimenPensionario = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro4, fechainicio4, fechafin4, indicadorTipoRegistro4, EPS);
+                    milistaPER.Add(RegimenPensionario);
+
+                    //SRCT
+                    if (chkSRCT.Checked)
+                    {
+                        string tipoRegistro5 = "5";
+                        string fechainicio5 = fila.Cells["FechaInicioSalud"].Value.ToString();
+                        string fechafin5 = fila.Cells["FechaFinSalud"].Value.ToString();
+                        string indicadorTipoRegistro5 = "1";
+                        SRCT = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro5, fechainicio5, fechafin5, indicadorTipoRegistro5, EPS);
+                        milistaPER.Add(SRCT);
+                    }
+
+
+                   // parte periodos
                     string RegimenLaboral = fila.Cells["CodRLTRA"].Value.ToString();
                     string SituacionEdu = fila.Cells["@SituacionEdu"].Value.ToString();
                     string Ocupacion = fila.Cells["CodOTRA"].Value.ToString();
@@ -400,12 +440,35 @@ namespace CapaUsuario.ExportarSunat
                     string situacionEsp = fila.Cells["@SE"].Value.ToString();
                     string tipoPago = fila.Cells["TPRTTRA"].Value.ToString();
                     ConvertiraNumero(tipoPago);
-                    string catOcupacional = "14";
+                    string catOcupacional;
+                    //string catOcupacional = "14";
                     //fila.Cells["CodCOTRA"].Value.ToString(); ;
-                    
+                    if (indicadorTipoRegistro2 == "20")
+                    {
+                        catOcupacional = "";
+                    }
+                    else
+                    {
+                        catOcupacional = fila.Cells["CodCOTRA"].Value.ToString();
+                    }
+                    //CAS
+                    if (indicadorTipoRegistro2== "67")
+                    {
+                        tipoContrato = "14";
+                    }
+
                     string convenio = fila.Cells["@CEDT"].Value.ToString();
-                    string RUC = fila.Cells["@RUC"].Value.ToString();
-                    string ContenidoTRA = oExportar.ExportarDatosTrabajador2(tipoDoc, dni, paisDoc, RegimenLaboral, SituacionEdu, Ocupacion, Discapacidad, CUSPP, SCTR, tipoContrato, regimenAlternativo, jornadaTrabajo, horarioNocturno, sindicalizado, nroPeriodicidad, remBasica, situacion, Renta5ta, situacionEsp, nroTipoPago, catOcupacional, convenio, RUC);
+                    string RUCTrabajador = fila.Cells["RUC"].Value.ToString();
+
+                    if (indicadorTipoRegistro2 == "67" || indicadorTipoRegistro2 == "23" || indicadorTipoRegistro2 == "66" || indicadorTipoRegistro2 == "71" || indicadorTipoRegistro2 == "73" || indicadorTipoRegistro2 == "77")
+                    {
+                        Renta5ta = "";
+                        convenio = "";
+                    }
+                    
+
+
+                    string ContenidoTRA = oExportar.ExportarDatosTrabajador2(tipoDoc, dni, paisDoc, RegimenLaboral, SituacionEdu, Ocupacion, Discapacidad, CUSPP, SCTR, tipoContrato, regimenAlternativo, jornadaTrabajo, horarioNocturno, sindicalizado, nroPeriodicidad, remBasica, situacion, Renta5ta, situacionEsp, nroTipoPago, catOcupacional, convenio, RUCTrabajador);
                     //MessageBox.Show(Contenido);
                     milistaTRA.Add(ContenidoTRA);
                 }
@@ -448,47 +511,7 @@ namespace CapaUsuario.ExportarSunat
             {
                 if (Convert.ToBoolean(fila.Cells["☑"].Value) == true)
                 {
-                    //Periodos
-                    string tipoRegistro = "1";
-                    string dni = fila.Cells["DNI"].Value.ToString();
-                    DateTime fechainicio = Convert.ToDateTime(fila.Cells["FechaInicio"].Value.ToString());
-                    string fechafin = fila.Cells["FechaFin"].Value.ToString();
-                    string indicadorTipoRegistro = fila.Cells["CodMotivoFin"].Value.ToString();
-                    Periodos = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro, fechainicio.ToShortDateString(), fechafin, indicadorTipoRegistro, EPS);
-                    milistaPER.Add(Periodos);
-                    //TipoTrabajador
-                    string tipoRegistro2 = "2";
-                    DateTime fechainicio2 = Convert.ToDateTime(fila.Cells["FechaInicio"].Value.ToString());
-                    string fechafin2 = fila.Cells["FechaFin"].Value.ToString();
-                    string indicadorTipoRegistro2 = fila.Cells["@CodSunatTT"].Value.ToString();
-                    TipoTrabajador = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro2, fechainicio2.ToShortDateString(), fechafin2, indicadorTipoRegistro2, EPS);
-                    milistaPER.Add(TipoTrabajador);
-                    //Regimen Aseguramiento Salud
-                    string tipoRegistro3 = "3";
-                    string fechainicio3 = fila.Cells["FechaInicioSalud"].Value.ToString();
-                    string fechafin3 = fila.Cells["FechaFinSalud"].Value.ToString();
-                    string indicadorTipoRegistro3 = fila.Cells["RegimenSalud"].Value.ToString();
-                    ConvertiraNumeroSalud(indicadorTipoRegistro3);
-                    RegimenAseguramiento = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro3, fechainicio3, fechafin3, NroRegimenSalud, EPS);
-                    milistaPER.Add(RegimenAseguramiento);
-                    //Regimen Pensionario
-                    string tipoRegistro4 = "4";
-                    string fechainicio4 = fila.Cells["FechaInicioRegPensionario"].Value.ToString();
-                    string fechafin4 = fila.Cells["FechaFinRegPensionario"].Value.ToString();
-                    string indicadorTipoRegistro4 = fila.Cells["CodAFP"].Value.ToString();
-                    RegimenPensionario = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro4, fechainicio4, fechafin4, indicadorTipoRegistro4, EPS);
-                    milistaPER.Add(RegimenPensionario);
-
-                    //SRCT
-                    if (chkSRCT.Checked)
-                    {
-                        string tipoRegistro5 = "5";
-                        string fechainicio5 = fila.Cells["FechaInicioSalud"].Value.ToString();
-                        string fechafin5 = fila.Cells["FechaFinSalud"].Value.ToString();
-                        string indicadorTipoRegistro5 = "1";
-                        SRCT = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro5, fechainicio5, fechafin5, indicadorTipoRegistro5, EPS);
-                        milistaPER.Add(SRCT);
-                    }
+                   
 
                 }
             }
