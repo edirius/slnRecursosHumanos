@@ -24,9 +24,12 @@ namespace CapaUsuario
 
         public static string RUCEmpresa;
 
+        
+
         public frmPrincipal()
         {
             InitializeComponent();
+           
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -36,6 +39,7 @@ namespace CapaUsuario
                 Conexion.IniciarSesion(Settings.Default.ConexionMySql, "bdpersonal", "root", "root");
                 NombreEmpresa = Settings.Default.Empresa;
                 RUCEmpresa = Settings.Default.RUC;
+               
                 //MessageBox.Show(String.Format("{0}", "Se conecto exitosamente"));
             }
             catch (Exception ex)
@@ -666,6 +670,13 @@ namespace CapaUsuario
                 habilitado = Convert.ToBoolean(fila.Cells["habilitado"].Value);
                 toolStripStatusLabel1.Text = Usuario;
                 toolStripStatusLabel2.Text = Cargo;
+                cTrabajador TrabajadorLogueado = new cTrabajador();
+                if (cVariablesUsuario.v_idtrabajador != "1" & cVariablesUsuario.v_idtrabajador != "")
+                {
+                    TrabajadorLogueado = TrabajadorLogueado.traerTrabajador(Convert.ToInt16(cVariablesUsuario.v_idtrabajador));
+                    toolStripStatusLabel3.Text = "Nombre Trabajador: " + TrabajadorLogueado.Nombres + " " + TrabajadorLogueado.ApellidoPaterno + " " + TrabajadorLogueado.ApellidoMaterno;
+                }
+                
                 cVariablesUsuario.v_cargo = fila.Cells["Cargo"].Value.ToString();
                 OcultarMenu();
             }

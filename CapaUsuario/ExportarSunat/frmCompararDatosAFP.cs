@@ -167,7 +167,15 @@ namespace CapaUsuario.ExportarSunat
                         }
                         else
                         {
-                            nuevo.ErrorComision = false;
+                            if (dtgDatosPlanilla.Rows[i].Cells[9].Value.ToString()=="")
+                            {
+                                nuevo.ErrorComision = true;
+                            }
+                            else
+                            {
+                                nuevo.ErrorComision = false;
+                            }
+                            
                         }
 
                     }

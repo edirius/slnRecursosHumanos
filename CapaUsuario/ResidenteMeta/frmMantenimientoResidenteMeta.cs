@@ -41,7 +41,7 @@ namespace CapaUsuario.ResidenteMeta
         {
             if (sIdTTrabajador == 0)
             {
-                MessageBox.Show("Debe seleccionar un trabjador", "Gestion del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe seleccionar un trabajador", "Gestion del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             ResidenteMeta.frmResidenteMeta fResidenteMeta = new ResidenteMeta.frmResidenteMeta();
@@ -104,7 +104,7 @@ namespace CapaUsuario.ResidenteMeta
             {
                 foreach (DataRow row1 in oDataTable1.Select("idtmeta = '" + row[1].ToString() + "'"))
                 {
-                    dgvResidenteMeta.Rows.Add(row[0].ToString(), row1[0].ToString(), row1[1].ToString(), row1[2].ToString());
+                    dgvResidenteMeta.Rows.Add(row[0].ToString(), row1[0].ToString(), row1[1].ToString(), row1[3].ToString() + " - " + row1[2].ToString());
                 }
             }
         }

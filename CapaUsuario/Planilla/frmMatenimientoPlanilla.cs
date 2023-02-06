@@ -228,7 +228,7 @@ namespace CapaUsuario.Planilla
                         sidtfuentefinanciamiento = Convert.ToInt32(roww[0]);
                         sfuentefinanciamiento = roww[2].ToString();
                     }
-                    dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, snumerometa, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString(), row[10].ToString());
+                    dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, snumerometa, snumerometa + " - " + smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString(), row[10].ToString());
                 }
                 if (dgvPlanilla.Rows.Count > 0)
                 {

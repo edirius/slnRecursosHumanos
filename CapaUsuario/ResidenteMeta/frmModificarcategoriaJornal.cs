@@ -27,7 +27,16 @@ namespace CapaUsuario.ResidenteMeta
         private void Iniciar()
         {
             txtNombreCategoria.Text = oMetaJornal.Categoria;
-            txtMonto.Text = oMetaJornal.Jornal.ToString();
+          txtMonto.Text = oMetaJornal.Jornal.ToString();
+            txtMensual.Text = oMetaJornal.Mensual.ToString();
+            if (oMetaJornal.Opcion)
+            {
+                cboOpcion.Text = "Mensual";
+            }
+            else
+            {
+                cboOpcion.Text = "Jornal";
+            }
 
         }
 
@@ -43,6 +52,15 @@ namespace CapaUsuario.ResidenteMeta
                 {
                     oMetaJornal.Categoria = txtNombreCategoria.Text;
                     oMetaJornal.Jornal = Convert.ToDouble(txtMonto.Text);
+                    oMetaJornal.Mensual = Convert.ToDouble(txtMensual.Text);
+                    if (cboOpcion.Text == "Jornal")
+                    {
+                        oMetaJornal.Opcion = false;
+                    }
+                    else
+                    {
+                        oMetaJornal.Opcion = true;
+                    }
                     DialogResult = DialogResult.OK;
                 }
 
@@ -59,6 +77,18 @@ namespace CapaUsuario.ResidenteMeta
         }
 
         private void txtMonto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsNumber(e.KeyChar) || char.IsPunctuation(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtMensual_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsNumber(e.KeyChar) || char.IsPunctuation(e.KeyChar))
             {

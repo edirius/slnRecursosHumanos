@@ -747,8 +747,8 @@ namespace CapaUsuario.Reportes
                     }
                 }
 
-                    /*Evaluando a plantillas CASO CESANTES y OTROS*/
-                    if (splantilla == "CESANTES")
+  /*Evaluando a plantillas CASO CESANTES y OTROS*/
+         if (splantilla == "CESANTES")
                 {
                     //Limpiando titulos de la plantilla
                     odtPrueba.Columns.Clear();
@@ -760,6 +760,7 @@ namespace CapaUsuario.Reportes
                     odtPrueba.Columns.Add("DNI", typeof(string));
                     odtPrueba.Columns.Add("FECHA INICIO", typeof(string));
                     odtPrueba.Columns.Add("SEC. FUNC.", typeof(string));
+                    odtPrueba.Columns.Add("AFP", typeof(string));
                     odtPrueba.Columns.Add("COMISION", typeof(string));
                     odtPrueba.Columns.Add("CUSP", typeof(string));
 
@@ -1713,7 +1714,65 @@ namespace CapaUsuario.Reportes
                         /*FIN DEBE */
 
                         /* HABER */
-                       
+
+                        iindice_snp_13 = BuscarIndiceColumna(odtPrueba, columna_snp);
+                        iindice_afp = BuscarIndiceColumna(odtPruebaCorta, "DEC. AFP");
+                        iindice_aportacion_entidad = BuscarIndiceColumna(odtPrueba, columna_aporte_entidad);
+                        iindice_neto_cobrar = BuscarIndiceColumna(odtPruebaCorta, "NETO A COBRAR");
+
+                        iindice_essalud_cbbsp = BuscarIndiceColumna(odtPrueba, columna_essalud_trabajador);
+                        iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtPrueba, columna_essalud_complementario);
+
+                        if (odtPruebaCorta.Rows.Count > 0) ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
+                        if (odtPrueba.Rows.Count > 0) ultima_fila_prueba = odtPrueba.Rows.Count - 1;
+
+
+
+                        if (iindice_snp_13 != -1)
+                        {
+                            snp_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_snp_13]);
+                            drFilaEEFF = odtEEFF.NewRow();
+                            drFilaEEFF.Delete();
+                            drFilaEEFF[0] = columna_snp;
+                            drFilaEEFF[2] = snp_total;
+                            haber_total += snp_total;
+                            odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                            lll++;
+                        }
+
+                        if (iindice_aportacion_entidad != -1)
+                            aportacion_entidad_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba_corta][iindice_aportacion_entidad]);
+
+
+
+                        if (iindice_afp != -1)
+                        {
+                            afp_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_afp]);
+                            //afp_total = afp_total + aportacion_entidad_total;
+                            drFilaEEFF = odtEEFF.NewRow();
+                            drFilaEEFF.Delete();
+                            drFilaEEFF[0] = "AFP";
+                            drFilaEEFF[2] = afp_total;
+
+                            haber_total += afp_total;
+
+                            odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                            lll++;
+                        }
+
+                        if (iindice_essalud_vida != -1)
+                        {
+                            //essalud_vida_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_essalud_vida]);
+                            drFilaEEFF = odtEEFF.NewRow();
+                            drFilaEEFF.Delete();
+                            drFilaEEFF[0] = "ESSALUD VIDA";
+                            drFilaEEFF[2] = monto_essalud_vida;
+                            haber_total += monto_essalud_vida;
+                            odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                            lll++;
+                        }
+
+
                         iindice_afp = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES TRABAJADOR");
                         iindice_aportacion_entidad = BuscarIndiceColumna(odtPrueba, columna_aporte_entidad);
                         iindice_neto_cobrar = BuscarIndiceColumna(odtPruebaCorta, "NETO A COBRAR");

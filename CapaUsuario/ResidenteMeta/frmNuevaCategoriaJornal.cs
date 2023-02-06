@@ -46,6 +46,16 @@ namespace CapaUsuario.ResidenteMeta
                 {
                     oMetaJornal.Categoria = txtNombreCategoria.Text;
                     oMetaJornal.Jornal = Convert.ToDouble(txtMonto.Text);
+                    oMetaJornal.Mensual = Convert.ToDouble(txtMensual.Text);
+                    if (cboOpcion.Text == "Jornal")
+                    {
+                        oMetaJornal.Opcion = false;
+                    }
+                    else
+                    {
+                        oMetaJornal.Opcion = true;
+                    }
+
                     DialogResult = DialogResult.OK;
                 }
 

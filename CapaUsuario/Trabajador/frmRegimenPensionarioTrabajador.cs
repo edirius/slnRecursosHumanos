@@ -32,6 +32,7 @@ namespace CapaUsuario.Trabajador
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            
             bool bOk = false;
             CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
             miRegimenPensionarioTrabajador.IdtRegimenPensionarioTrabajador = sidtregimenpensionariotrabajador;

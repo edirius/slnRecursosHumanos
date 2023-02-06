@@ -59,6 +59,17 @@ namespace CapaUsuario.ResidenteMeta
                 miMejaJornal.IdtMetaJornal = Convert.ToInt32(row.Cells[1].Value);
                 miMejaJornal.Categoria = Convert.ToString(row.Cells[2].Value);
                 miMejaJornal.Jornal = Convert.ToDouble(row.Cells[3].Value);
+                miMejaJornal.Mensual = Convert.ToDouble(row.Cells[4].Value);
+                //jornal = 0 false, Mensual = 1 true
+                if (row.Cells[5].Value == null || row.Cells[5].Value.ToString() == "Jornal")
+                {
+                    miMejaJornal.Opcion = false;
+                }
+                else
+                {
+                    miMejaJornal.Opcion = true;
+                }
+
                 miMeta.Codigo = sidtmeta;
                 if (Convert.ToString(row.Cells[0].Value) == "I")
                 {
@@ -121,6 +132,9 @@ namespace CapaUsuario.ResidenteMeta
 
         private void CargarDatos()
         {
+            string valorOpcion;
+            string valorMensual;
+
             dgvMetaJornal.Rows.Clear();
             oDataMetaJornal = miMejaJornal.ListarMetaJornal(sidtmeta);
             if (oDataMetaJornal.Rows.Count == 0)
@@ -132,7 +146,26 @@ namespace CapaUsuario.ResidenteMeta
                 btnCategorias.Enabled = false;
                 foreach (DataRow row in oDataMetaJornal.Rows)
                 {
-                    dgvMetaJornal.Rows.Add("M", row[0].ToString(), row[1].ToString(), row[2].ToString());
+                    //jornal = 0 false, Mensual = 1 true
+                    if (row[5].ToString() == "" || row[5].ToString() == "0")
+                    {
+                        valorOpcion = "Jornal";
+                        
+                    }
+                    else
+                    {
+                        valorOpcion = "Mensual";
+                    }
+
+                    if(row[4].ToString() == "")
+                    {
+                        valorMensual = "0";
+                    }
+                    else
+                    {
+                        valorMensual = row[4].ToString();
+                    }
+                    dgvMetaJornal.Rows.Add("M", row[0].ToString(), row[1].ToString(), row[2].ToString(), valorMensual, valorOpcion);
                 }
             }
         }
@@ -177,6 +210,18 @@ namespace CapaUsuario.ResidenteMeta
                     fNuevaCategoriaJornal.oMetaJornal.Categoria = dgvMetaJornal.Rows[dgvMetaJornal.SelectedCells[0].RowIndex].Cells[2].Value.ToString();
                     fNuevaCategoriaJornal.oMetaJornal.IdtMetaJornal =Convert.ToInt32( dgvMetaJornal.Rows[dgvMetaJornal.SelectedCells[0].RowIndex].Cells[1].Value.ToString());
                     fNuevaCategoriaJornal.oMetaJornal.Jornal = Convert.ToDouble(dgvMetaJornal.Rows[dgvMetaJornal.SelectedCells[0].RowIndex].Cells[3].Value.ToString());
+                    fNuevaCategoriaJornal.oMetaJornal.Mensual = Convert.ToDouble(dgvMetaJornal.Rows[dgvMetaJornal.SelectedCells[0].RowIndex].Cells[4].Value.ToString());
+
+                    //jornal = 0 false, Mensual = 1 true
+                    if (dgvMetaJornal.Rows[dgvMetaJornal.SelectedCells[0].RowIndex].Cells[5].Value.ToString() == "Jornal") 
+                    {
+                        fNuevaCategoriaJornal.oMetaJornal.Opcion = false;
+                    }
+                    else
+                    {
+                        fNuevaCategoriaJornal.oMetaJornal.Opcion = true;
+                    }
+                    
                     fNuevaCategoriaJornal.oMetaJornal.Meta.Codigo = sidtmeta;
 
                     if (fNuevaCategoriaJornal.ShowDialog() == DialogResult.OK)

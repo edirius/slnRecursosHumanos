@@ -91,6 +91,7 @@
             this.exportarAExcelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datosDelPensionistaPENToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarTodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -123,12 +124,12 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dgvPrivilegios = new System.Windows.Forms.DataGridView();
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -633,6 +634,13 @@
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Text = "Tributos y Descuentos del Trabajador(PDT-PLAME)";
             this.tributosYDescuentosDelTrabajadorToolStripMenuItem.Click += new System.EventHandler(this.tributosYDescuentosDelTrabajadorToolStripMenuItem_Click);
             // 
+            // tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem
+            // 
+            this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem.Name = "tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem";
+            this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem.Size = new System.Drawing.Size(351, 22);
+            this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem.Text = "Tributos y Descuentos del Trabajador(PDT-PLAME)-2";
+            this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem.Click += new System.EventHandler(this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem_Click);
+            // 
             // darDeBajaAlTrabajadorTREGISTROToolStripMenuItem
             // 
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources.logoSunat;
@@ -882,7 +890,8 @@
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
-            this.toolStripStatusLabel2});
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3});
             this.statusStrip.Location = new System.Drawing.Point(0, 431);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1219, 22);
@@ -900,6 +909,11 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(0, 17);
             // 
             // dgvPrivilegios
             // 
@@ -931,13 +945,6 @@
             // dlgAbrirArchivo
             // 
             this.dlgAbrirArchivo.FileName = "backup";
-            // 
-            // tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem
-            // 
-            this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem.Name = "tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem";
-            this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem.Size = new System.Drawing.Size(351, 22);
-            this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem.Text = "Tributos y Descuentos del Trabajador(PDT-PLAME)-2";
-            this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem.Click += new System.EventHandler(this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -1073,6 +1080,7 @@
         private System.Windows.Forms.ToolStripMenuItem cargaInicialToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripMenuItem tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
     }
 }
 

@@ -32,10 +32,6 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.dgvMetaJornal = new System.Windows.Forms.DataGridView();
-            this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtIdTMetaJornal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtJornal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnMeta = new System.Windows.Forms.Button();
             this.cboMeta = new System.Windows.Forms.ComboBox();
             this.cboAño = new System.Windows.Forms.ComboBox();
@@ -44,6 +40,12 @@
             this.btnCategorias = new System.Windows.Forms.Button();
             this.btnAgregarCategoria = new System.Windows.Forms.Button();
             this.btnModificarCategoria = new System.Windows.Forms.Button();
+            this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtIdTMetaJornal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtJornal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mensual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOpcion = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetaJornal)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +56,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(452, 387);
+            this.btnSalir.Location = new System.Drawing.Point(623, 387);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 30;
@@ -70,7 +72,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(363, 387);
+            this.btnNuevo.Location = new System.Drawing.Point(534, 387);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 28;
@@ -93,49 +95,22 @@
             this.txtAccion,
             this.txtIdTMetaJornal,
             this.txtCategoria,
-            this.txtJornal});
+            this.txtJornal,
+            this.mensual,
+            this.colOpcion});
             this.dgvMetaJornal.Location = new System.Drawing.Point(12, 52);
             this.dgvMetaJornal.MultiSelect = false;
             this.dgvMetaJornal.Name = "dgvMetaJornal";
             this.dgvMetaJornal.RowHeadersVisible = false;
             this.dgvMetaJornal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvMetaJornal.Size = new System.Drawing.Size(523, 329);
+            this.dgvMetaJornal.Size = new System.Drawing.Size(694, 329);
             this.dgvMetaJornal.TabIndex = 27;
-            // 
-            // txtAccion
-            // 
-            this.txtAccion.HeaderText = "Accion";
-            this.txtAccion.Name = "txtAccion";
-            this.txtAccion.ReadOnly = true;
-            this.txtAccion.Visible = false;
-            this.txtAccion.Width = 20;
-            // 
-            // txtIdTMetaJornal
-            // 
-            this.txtIdTMetaJornal.HeaderText = "IdTMetaJornal";
-            this.txtIdTMetaJornal.Name = "txtIdTMetaJornal";
-            this.txtIdTMetaJornal.ReadOnly = true;
-            this.txtIdTMetaJornal.Visible = false;
-            this.txtIdTMetaJornal.Width = 20;
-            // 
-            // txtCategoria
-            // 
-            this.txtCategoria.HeaderText = "Categoria";
-            this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.ReadOnly = true;
-            this.txtCategoria.Width = 350;
-            // 
-            // txtJornal
-            // 
-            this.txtJornal.HeaderText = "Jornal";
-            this.txtJornal.Name = "txtJornal";
-            this.txtJornal.Width = 125;
             // 
             // btnMeta
             // 
             this.btnMeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMeta.Font = new System.Drawing.Font("Wide Latin", 9.75F);
-            this.btnMeta.Location = new System.Drawing.Point(498, 25);
+            this.btnMeta.Location = new System.Drawing.Point(669, 25);
             this.btnMeta.Name = "btnMeta";
             this.btnMeta.Size = new System.Drawing.Size(37, 23);
             this.btnMeta.TabIndex = 1;
@@ -151,7 +126,7 @@
             this.cboMeta.FormattingEnabled = true;
             this.cboMeta.Location = new System.Drawing.Point(112, 25);
             this.cboMeta.Name = "cboMeta";
-            this.cboMeta.Size = new System.Drawing.Size(380, 21);
+            this.cboMeta.Size = new System.Drawing.Size(551, 21);
             this.cboMeta.TabIndex = 0;
             this.cboMeta.SelectedIndexChanged += new System.EventHandler(this.cboMeta_SelectedIndexChanged);
             // 
@@ -190,7 +165,7 @@
             this.btnCategorias.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCategorias.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCategorias.ImageIndex = 1;
-            this.btnCategorias.Location = new System.Drawing.Point(265, 387);
+            this.btnCategorias.Location = new System.Drawing.Point(436, 387);
             this.btnCategorias.Name = "btnCategorias";
             this.btnCategorias.Size = new System.Drawing.Size(92, 53);
             this.btnCategorias.TabIndex = 89;
@@ -206,7 +181,7 @@
             this.btnAgregarCategoria.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAgregarCategoria.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAgregarCategoria.ImageIndex = 1;
-            this.btnAgregarCategoria.Location = new System.Drawing.Point(15, 387);
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(186, 387);
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
             this.btnAgregarCategoria.Size = new System.Drawing.Size(92, 53);
             this.btnAgregarCategoria.TabIndex = 90;
@@ -222,7 +197,7 @@
             this.btnModificarCategoria.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificarCategoria.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificarCategoria.ImageIndex = 1;
-            this.btnModificarCategoria.Location = new System.Drawing.Point(113, 387);
+            this.btnModificarCategoria.Location = new System.Drawing.Point(284, 387);
             this.btnModificarCategoria.Name = "btnModificarCategoria";
             this.btnModificarCategoria.Size = new System.Drawing.Size(92, 53);
             this.btnModificarCategoria.TabIndex = 91;
@@ -231,11 +206,55 @@
             this.btnModificarCategoria.UseVisualStyleBackColor = false;
             this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
             // 
+            // txtAccion
+            // 
+            this.txtAccion.HeaderText = "Accion";
+            this.txtAccion.Name = "txtAccion";
+            this.txtAccion.ReadOnly = true;
+            this.txtAccion.Visible = false;
+            this.txtAccion.Width = 20;
+            // 
+            // txtIdTMetaJornal
+            // 
+            this.txtIdTMetaJornal.HeaderText = "IdTMetaJornal";
+            this.txtIdTMetaJornal.Name = "txtIdTMetaJornal";
+            this.txtIdTMetaJornal.ReadOnly = true;
+            this.txtIdTMetaJornal.Visible = false;
+            this.txtIdTMetaJornal.Width = 20;
+            // 
+            // txtCategoria
+            // 
+            this.txtCategoria.HeaderText = "Categoria";
+            this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.ReadOnly = true;
+            this.txtCategoria.Width = 350;
+            // 
+            // txtJornal
+            // 
+            this.txtJornal.HeaderText = "Jornal";
+            this.txtJornal.Name = "txtJornal";
+            this.txtJornal.Width = 125;
+            // 
+            // mensual
+            // 
+            this.mensual.DataPropertyName = "mensual";
+            this.mensual.HeaderText = "Mensual";
+            this.mensual.Name = "mensual";
+            // 
+            // colOpcion
+            // 
+            this.colOpcion.HeaderText = "Opcion";
+            this.colOpcion.Items.AddRange(new object[] {
+            "Jornal",
+            "Mensual"});
+            this.colOpcion.Name = "colOpcion";
+            this.colOpcion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // frmMetaJornal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 452);
+            this.ClientSize = new System.Drawing.Size(718, 452);
             this.Controls.Add(this.btnModificarCategoria);
             this.Controls.Add(this.btnAgregarCategoria);
             this.Controls.Add(this.btnCategorias);
@@ -264,15 +283,17 @@
         private System.Windows.Forms.DataGridView dgvMetaJornal;
         private System.Windows.Forms.Button btnMeta;
         private System.Windows.Forms.ComboBox cboMeta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtAccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtIdTMetaJornal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtCategoria;
-        private System.Windows.Forms.DataGridViewTextBoxColumn txtJornal;
         private System.Windows.Forms.ComboBox cboAño;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCategorias;
         private System.Windows.Forms.Button btnAgregarCategoria;
         private System.Windows.Forms.Button btnModificarCategoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtAccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtIdTMetaJornal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtCategoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn txtJornal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mensual;
+        private System.Windows.Forms.DataGridViewComboBoxColumn colOpcion;
     }
 }

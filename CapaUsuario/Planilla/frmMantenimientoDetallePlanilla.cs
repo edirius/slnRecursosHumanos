@@ -11,6 +11,7 @@ using info.lundin.math;
 using CapaDeNegocios;
 using System.Configuration;
 using CapaUsuario.Properties;
+using CapaDeNegocios.Obras;
 
 namespace CapaUsuario.Planilla
 {
@@ -118,10 +119,11 @@ namespace CapaUsuario.Planilla
             try
             {
                 CapaUsuario.Tareo.frmImportarTareo fImportarTareo = new CapaUsuario.Tareo.frmImportarTareo();
+                cMetaJornal miMetaJornal = new cMetaJornal();
                 fImportarTareo.RecibirDatos(0, splantilla, sidtmeta);
                 if (fImportarTareo.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    decimal pagoobrero = 0;
+                   
                     dgvDetallePlanilla.Rows.Clear();
                     DataTable oDataTareo = new DataTable();
                     DataTable oDataDetalleTareo = new DataTable();
@@ -135,24 +137,45 @@ namespace CapaUsuario.Planilla
                     //foreach (DataRow rowdetalletareo in oDataDetalleTareo.Select("idttareo = '" + Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")) + "'"))
                     foreach (DataRow rowdetalletareo in oDataDetalleTareo.Select("idttareo = '" + fImportarTareo.sidttareoimportar + "'"))
                     {
-                        pagoobrero = 0;
+                        
                         if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
                         {
-                            pagoobrero = MetaJornal(rowdetalletareo[1].ToString(), sidtmeta);
-                            if (pagoobrero == 0)
+                            miMetaJornal = MetaJornal(rowdetalletareo[1].ToString(), sidtmeta);
+                            if (miMetaJornal.Opcion == false)
                             {
-                                MessageBox.Show("La Remuneración de los Obreros no existe, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
+                                if (miMetaJornal.Jornal == 0)
+                                {
+                                    MessageBox.Show("La Remuneración de los Obreros no existe o es 0.00, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                if (miMetaJornal.Mensual == 0)
+                                {
+                                    MessageBox.Show("La Remuneración de los Obreros Mensual no existe o es 0.00, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
                             }
                         }
                         CargarTrabajador(Convert.ToInt32(rowdetalletareo[4].ToString()), splantilla);
                         if (dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[4].Value.ToString() == rowdetalletareo[4].ToString())
                         {
                             dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[7].Value = rowdetalletareo[1].ToString();
+                            //dias laborados col 12
                             dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[12].Value = rowdetalletareo[3].ToString();
                             if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
                             {
-                                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", pagoobrero);
+                                //monto jornal o mensual col 11
+                                if (miMetaJornal.Opcion == false)
+                                {
+                                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", miMetaJornal.Jornal);
+                                }
+                                else
+                                {
+                                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", miMetaJornal.Mensual);
+                                }
+                                
                             }
                         }
                         TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
@@ -462,6 +485,7 @@ namespace CapaUsuario.Planilla
         {
             contador = 0;
             dgvDetallePlanilla.Rows.Clear();
+            cMetaJornal miMetaJornal = new cMetaJornal();
 
             oDataDetallePlanilla = miDetallePlanilla.ListarDetallePlanilla(sidtplanilla);
             foreach (DataRow row in oDataDetallePlanilla.Rows)
@@ -469,9 +493,18 @@ namespace CapaUsuario.Planilla
                 CargarTrabajador(Convert.ToInt32(row[09].ToString()),splantilla);
                 if (splantilla == "PERSONAL OBRERO")
                 {
-                    decimal pagoobrero = 0;
-                    pagoobrero = MetaJornal(row[01].ToString(), sidtmeta);
-                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", pagoobrero);
+                    //false = jornal true = mensual
+
+                    miMetaJornal = MetaJornal(row[01].ToString(), sidtmeta);
+                    if (miMetaJornal.Opcion == false)
+                    {
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", miMetaJornal.Jornal);
+                    }
+                    else
+                    {
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", miMetaJornal.Mensual);
+                    }
+                    
                 }
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[0].Value = row[0].ToString();//IdtDetallePlanilla
                 dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[1].Value = "M";
@@ -676,18 +709,17 @@ namespace CapaUsuario.Planilla
             else { dgvDetallePlanilla.Rows[fila].Cells[17 + con_ingresos].Value = Cuspp; }
         }
 
-        decimal MetaJornal(string categoria, int meta)
+        CapaDeNegocios.Obras.cMetaJornal MetaJornal(string categoria, int meta)
         {
-            decimal pagoobrero = 0;
             DataTable oDataMejaJornal = new DataTable();
             CapaDeNegocios.Obras.cMetaJornal miMetaJornal = new CapaDeNegocios.Obras.cMetaJornal();
             oDataMejaJornal = miMetaJornal.ListarMetaJornal(sidtmeta);
 
             foreach (DataRow rowmetajornal in oDataMejaJornal.Select("categoria = '" + categoria + "' AND idtmeta='" + meta + "'"))
             {
-                pagoobrero = Convert.ToDecimal(rowmetajornal[2].ToString());
+                miMetaJornal = miMetaJornal.TraerMetaJornal(Convert.ToInt16(rowmetajornal[0].ToString()));
             }
-            return pagoobrero;
+            return miMetaJornal;
         }
 
         private void CargarIngresos(int pidtdetalleplanilla, int fila)
@@ -779,157 +811,81 @@ namespace CapaUsuario.Planilla
             int DiaInicio = Convert.ToDateTime(dgvDetallePlanilla.Rows[fila].Cells[10].Value).Day;
             int DiasMes = DateTime.DaysInMonth(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)));
             int sMes = Convert.ToInt32(Mes(smes));
+
+            int DiasNoLaborados=0;
+            //dias suspendidos por falta que no entra al descuento de planilla
             int diasSuspendidos = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMes(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
             decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
 
+            Boolean PagoMensual = true;
+            
             if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
             {
+                cMetaJornal miMetaJornal = new cMetaJornal();
+                miMetaJornal = MetaJornal(dgvDetallePlanilla.Rows[fila].Cells[7].Value.ToString(), sidtmeta);
+                PagoMensual = miMetaJornal.Opcion;
+
                 PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
             }
-            DiasLaborados = 1 + DateTime.DaysInMonth(AñoInicio, MesInicio) - DiaInicio;
-            if ((sidtregimenlaboral == 3 || sidtregimenlaboral == 5) && (splantilla == "PERSONAL OBRERO" || splantilla == "PERSONAL TECNICO" || splantilla == "RACIONAMIENTO"))
+
+            
+
+            if ((sidtregimenlaboral == 3 || sidtregimenlaboral == 5) && (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO"))
             {
-                if (dgvDetallePlanilla.Rows[fila].Cells[12].Value != "")
+                if (dgvDetallePlanilla.Rows[fila].Cells[12].Value.ToString() != "")
                 {
+                    
                     DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[12].Value);
+                    DiasNoLaborados = DiasMes - DiasLaborados;
                     if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
                     {
-                        if (Settings.Default.RUC == "20159377424" && sMes == 2)
+                        if (PagoMensual == false)
                         {
-                            PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
-
-                            PagoDia = (PagoDia * 30) / 28;
-
-                            PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
-
-                        }
-                        else
-                        {
-                            if (Settings.Default.RUC == "20159377424" )
-                            {
-                                if (DiasLaborados == 31)
-                                {
-                                    DiasLaborados = 30;
-                                }
-                            }
                             PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 2);
 
                             PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
                         }
-                        
-                    }
-                    if (splantilla == "PERSONAL TECNICO")
-                    {
-                        if (sMes != 2)
-                        {
-                            if (DiasLaborados == 31)
-                            {
-                                PagoTotal = Math.Round(PagoDia * (DiasLaborados - 1), 2);
-                            }
-                            else
-                            {
-                                PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
-                            }
-                        }
+
                         else
                         {
-                            PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 28;
-                            PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
+                            PagoTotal = CalcularRemuneracionMensual(DiasLaborados, DiasNoLaborados,   Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value));
+
+                            PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value)/30;
                         }
+                        
                     }
                 }
             }
             else
             {
-                if (Convert.ToInt32(saño) > AñoInicio)
+
+                //Significa que el empleado empezo este mes
+                if (Convert.ToInt32(saño) == AñoInicio &&  sMes == MesInicio)
                 {
-                    if (diasSuspendidos > 0)
-                    {
-                        DiasLaborados = DiasMes - diasSuspendidos;
-                        if (diasSuspendidos > DiasLaborados)
-                        {
-                            PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
-                        }
-                        else
-                        {
-                            PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) - Math.Round((PagoDia * diasSuspendidos),2);
-                        }
-                    }
-                    else
-                    {
-                        DiasLaborados = DiasMes;
-                        PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
-                    }
-                    
+                    DiasLaborados = 1 + DateTime.DaysInMonth(AñoInicio, MesInicio) - DiaInicio;
+
+                    DiasNoLaborados = diasSuspendidos + (DiasMes - DiasLaborados);
                 }
                 else
                 {
-                    if (sMes > MesInicio)
-                    {
-                        if (diasSuspendidos > 0)
-                        {
-                            DiasLaborados = DiasMes - diasSuspendidos;
-                            if (diasSuspendidos > DiasLaborados)
-                            {
-                                PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
-                            }
-                            else
-                            {
-                                PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) - Math.Round((PagoDia * diasSuspendidos),2);
-                            }
-                        }
-                        else
-                        {
-                            DiasLaborados = DiasMes;
-                            PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
-                        }
-                       
-                    }
-                    else
-                    {
-                        if (DiasLaborados == DiasMes)
-                        {
-                            if (diasSuspendidos > 0)
-                            {
-                                DiasLaborados = DiasMes - diasSuspendidos;
-                                if (diasSuspendidos > DiasLaborados)
-                                {
-                                    PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
-                                }
-                                else
-                                {
-                                    PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) - Math.Round((PagoDia * diasSuspendidos),2);
-                                }
-                            }
-                            else
-                            {
-                                PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
-                            }
-                            
-                        }
-                        else
-                        {
-                            if (diasSuspendidos > 0)
-                            {
-                                DiasLaborados = DiasLaborados - diasSuspendidos;
-                                if (diasSuspendidos > DiasLaborados)
-                                {
-                                    PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
-                                }
-                                else
-                                {
-                                    PagoTotal = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) - Math.Round((PagoDia * diasSuspendidos),2);
-                                }
-                            }
-                            else
-                            {
-                                PagoTotal = Math.Round(PagoDia * DiasLaborados, 2);
-                            }
-                            
-                        }
-                    }
+                    DiasLaborados = DiasMes - diasSuspendidos;
+                    DiasNoLaborados = diasSuspendidos;
                 }
+
+                //SE HACE ESTA CONDICIONAL  porque los dias del tareo prima sobre la fecha de inicio ejemplo, la fecha de inicio puede ser 12 de febrero, pero los dias marcados son 20 
+                if (splantilla == "PERSONAL TECNICO")
+                {
+                    DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[12].Value);
+                    DiasNoLaborados = DiasMes - DiasLaborados;
+                }
+
+                PagoTotal = CalcularRemuneracionMensual(DiasLaborados, DiasNoLaborados, Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value));
+
+                PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
+
+
             }
+
             if (!((sidtregimenlaboral == 3 || sidtregimenlaboral == 5) && (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO" || splantilla == "PERSONAL TECNICO")))
             {
                 int diasfalta = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMesxFalta(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
@@ -939,6 +895,29 @@ namespace CapaUsuario.Planilla
             dgvDetallePlanilla.Rows[fila].Cells[13].Value = String.Format("{0:0.00}", PagoTotal);
         }
 
+
+        private decimal CalcularRemuneracionMensual(int diasLaborados, int diasNoLaborados, decimal Monto)
+        {
+            decimal Remuneracion = 0;
+            if (diasNoLaborados == 0)
+            {
+                return Monto;
+            }
+            else
+            {
+                if (diasLaborados > diasNoLaborados)
+                {
+                    Remuneracion = Math.Round(Monto - (Math.Round(Monto / 30, 2) * diasNoLaborados),2); 
+                }
+                else
+                {
+                    Remuneracion = Math.Round(Math.Round(Monto / 30, 2) * diasLaborados,2);
+                }
+
+                return Remuneracion;
+            }
+            
+        }
         private void Ingresos_5ta(int fila)
         {
             int celda_inicio_ingresos = 14;

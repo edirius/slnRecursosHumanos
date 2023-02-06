@@ -34,6 +34,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombreCategoria = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.cboOpcion = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtMensual = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -43,7 +47,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageIndex = 1;
-            this.btnCancelar.Location = new System.Drawing.Point(264, 107);
+            this.btnCancelar.Location = new System.Drawing.Point(264, 196);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(92, 53);
             this.btnCancelar.TabIndex = 97;
@@ -59,7 +63,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageIndex = 1;
-            this.btnAceptar.Location = new System.Drawing.Point(115, 107);
+            this.btnAceptar.Location = new System.Drawing.Point(115, 196);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(92, 53);
             this.btnAceptar.TabIndex = 96;
@@ -105,11 +109,54 @@
             this.label1.TabIndex = 92;
             this.label1.Text = "Nueva Categoria :";
             // 
+            // cboOpcion
+            // 
+            this.cboOpcion.FormattingEnabled = true;
+            this.cboOpcion.Items.AddRange(new object[] {
+            "Jornal",
+            "Mensual"});
+            this.cboOpcion.Location = new System.Drawing.Point(112, 138);
+            this.cboOpcion.Name = "cboOpcion";
+            this.cboOpcion.Size = new System.Drawing.Size(121, 21);
+            this.cboOpcion.TabIndex = 101;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 146);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 100;
+            this.label4.Text = "Opcion :";
+            // 
+            // txtMensual
+            // 
+            this.txtMensual.Location = new System.Drawing.Point(112, 97);
+            this.txtMensual.MaxLength = 11;
+            this.txtMensual.Name = "txtMensual";
+            this.txtMensual.Size = new System.Drawing.Size(100, 20);
+            this.txtMensual.TabIndex = 99;
+            this.txtMensual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMensual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMensual_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 104);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 98;
+            this.label3.Text = "Monto Mensual :";
+            // 
             // frmModificarcategoriaJornal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 195);
+            this.ClientSize = new System.Drawing.Size(395, 284);
+            this.Controls.Add(this.cboOpcion);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtMensual);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtMonto);
@@ -133,5 +180,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNombreCategoria;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboOpcion;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtMensual;
+        private System.Windows.Forms.Label label3;
     }
 }

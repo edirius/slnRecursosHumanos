@@ -539,6 +539,7 @@ namespace CapaUsuario.Tareo
                                         fNuevoObrero.miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
                                         fNuevoObrero.miRegimenPensionarioTrabajador.CUSPP = AuxiliarRegimenPensionario.CUSPP;
                                         fNuevoObrero.miRegimenPensionarioTrabajador.IdtAFP = AuxiliarRegimenPensionario.IdtAFP;
+                                        fNuevoObrero.miRegimenPensionarioTrabajador.TipoComision = AuxiliarRegimenPensionario.TipoComision;
                                         fNuevoObrero.miRegimenPensionarioTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
 
                                     }

@@ -21,6 +21,7 @@ namespace CapaUsuario.Usuarios
     public partial class frmLogin : Form
     {
         public string Usuario;
+        
         CapaDeNegocios.Usuario.cUsuario oUsuario = new CapaDeNegocios.Usuario.cUsuario();
         ////MySqlConnection Con = new MySqlConnection(Settings.Default.ConexionMySql, "bdPersonal", "root", "root");
         //MySqlConnection cn = new MySqlConnection("Server =  192.168.1.60; Uid = root; Password = root; Database = bdPersonal");
@@ -90,11 +91,13 @@ namespace CapaUsuario.Usuarios
                 {
                     frmPrincipal Principal = new frmPrincipal();
                     MessageBox.Show("Bienvenido al Sistema de Planillas usuario " + txtUsuario.Text + ".", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Principal.DarPrivilegios(txtUsuario.Text);
+                   
+                    
                     cVariablesUsuario.v_idtrabajador = dgvUsuarios.Rows[0].Cells[4].Value.ToString();
                     cVariablesUsuario.v_idusuario = dgvUsuarios.Rows[0].Cells[0].Value.ToString();
                     cVariablesUsuario.v_usuario = dgvUsuarios.Rows[0].Cells[1].Value.ToString();
                     cVariablesUsuario.v_password = dgvUsuarios.Rows[0].Cells[2].Value.ToString();
+                    Principal.DarPrivilegios(txtUsuario.Text);
                     Principal.Show();
                     this.Hide();
                 }
