@@ -96,9 +96,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
             this.toolTrabajador = new System.Windows.Forms.ToolTip(this.components);
+            this.txtValidador = new System.Windows.Forms.TextBox();
+            this.picValidado = new System.Windows.Forms.PictureBox();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.SuspendLayout();
             // 
             // tabTrabajador
@@ -113,6 +116,8 @@
             // 
             // tabDatosGenerales
             // 
+            this.tabDatosGenerales.Controls.Add(this.picValidado);
+            this.tabDatosGenerales.Controls.Add(this.txtValidador);
             this.tabDatosGenerales.Controls.Add(this.chkScrt);
             this.tabDatosGenerales.Controls.Add(this.label11);
             this.tabDatosGenerales.Controls.Add(this.txtNroRenta4ta);
@@ -783,6 +788,22 @@
             this.toolTrabajador.ForeColor = System.Drawing.Color.RoyalBlue;
             this.toolTrabajador.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // txtValidador
+            // 
+            this.txtValidador.Location = new System.Drawing.Point(213, 50);
+            this.txtValidador.Name = "txtValidador";
+            this.txtValidador.Size = new System.Drawing.Size(34, 20);
+            this.txtValidador.TabIndex = 108;
+            this.txtValidador.TextChanged += new System.EventHandler(this.txtValidador_TextChanged);
+            // 
+            // picValidado
+            // 
+            this.picValidado.Location = new System.Drawing.Point(254, 50);
+            this.picValidado.Name = "picValidado";
+            this.picValidado.Size = new System.Drawing.Size(21, 20);
+            this.picValidado.TabIndex = 109;
+            this.picValidado.TabStop = false;
+            // 
             // frmNuevoTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -799,6 +820,7 @@
             this.tabDatosGenerales.ResumeLayout(false);
             this.tabDatosGenerales.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picValidado)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -871,5 +893,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtNroRenta4ta;
         private System.Windows.Forms.CheckBox chkScrt;
+        private System.Windows.Forms.TextBox txtValidador;
+        private System.Windows.Forms.PictureBox picValidado;
     }
 }

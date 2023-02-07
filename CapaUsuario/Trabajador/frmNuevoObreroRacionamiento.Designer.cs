@@ -56,6 +56,9 @@
             this.txtDNI = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.picValidado = new System.Windows.Forms.PictureBox();
+            this.txtValidador = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.SuspendLayout();
             // 
             // label13
@@ -305,7 +308,7 @@
             this.txtDNI.Location = new System.Drawing.Point(106, 12);
             this.txtDNI.MaxLength = 8;
             this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(215, 20);
+            this.txtDNI.Size = new System.Drawing.Size(112, 20);
             this.txtDNI.TabIndex = 91;
             this.txtDNI.TextChanged += new System.EventHandler(this.txtDNI_TextChanged);
             // 
@@ -327,11 +330,30 @@
             this.label1.TabIndex = 106;
             this.label1.Text = "DNI :";
             // 
+            // picValidado
+            // 
+            this.picValidado.Location = new System.Drawing.Point(275, 12);
+            this.picValidado.Name = "picValidado";
+            this.picValidado.Size = new System.Drawing.Size(21, 20);
+            this.picValidado.TabIndex = 120;
+            this.picValidado.TabStop = false;
+            // 
+            // txtValidador
+            // 
+            this.txtValidador.Location = new System.Drawing.Point(234, 12);
+            this.txtValidador.MaxLength = 1;
+            this.txtValidador.Name = "txtValidador";
+            this.txtValidador.Size = new System.Drawing.Size(34, 20);
+            this.txtValidador.TabIndex = 119;
+            this.txtValidador.TextChanged += new System.EventHandler(this.txtValidador_TextChanged);
+            // 
             // frmNuevoObreroRacionamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 291);
+            this.Controls.Add(this.picValidado);
+            this.Controls.Add(this.txtValidador);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dtpFechaInicio);
             this.Controls.Add(this.label11);
@@ -364,6 +386,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Obrero Racionamiento";
             this.Load += new System.EventHandler(this.frmNuevoObreroRacionamiento_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picValidado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,5 +421,7 @@
         private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox picValidado;
+        private System.Windows.Forms.TextBox txtValidador;
     }
 }

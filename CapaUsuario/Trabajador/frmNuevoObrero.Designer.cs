@@ -63,7 +63,10 @@
             this.cboAFP = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.picValidado = new System.Windows.Forms.PictureBox();
+            this.txtValidador = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -151,7 +154,7 @@
             this.txtDNI.Location = new System.Drawing.Point(117, 12);
             this.txtDNI.MaxLength = 8;
             this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(215, 20);
+            this.txtDNI.Size = new System.Drawing.Size(89, 20);
             this.txtDNI.TabIndex = 0;
             this.txtDNI.TextChanged += new System.EventHandler(this.txtDNI_TextChanged);
             // 
@@ -425,11 +428,30 @@
             this.dtpFechaInicio.Size = new System.Drawing.Size(204, 20);
             this.dtpFechaInicio.TabIndex = 8;
             // 
+            // picValidado
+            // 
+            this.picValidado.Location = new System.Drawing.Point(264, 12);
+            this.picValidado.Name = "picValidado";
+            this.picValidado.Size = new System.Drawing.Size(21, 20);
+            this.picValidado.TabIndex = 111;
+            this.picValidado.TabStop = false;
+            // 
+            // txtValidador
+            // 
+            this.txtValidador.Location = new System.Drawing.Point(223, 12);
+            this.txtValidador.MaxLength = 1;
+            this.txtValidador.Name = "txtValidador";
+            this.txtValidador.Size = new System.Drawing.Size(34, 20);
+            this.txtValidador.TabIndex = 110;
+            this.txtValidador.TextChanged += new System.EventHandler(this.txtValidador_TextChanged);
+            // 
             // frmNuevoObrero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(630, 354);
+            this.Controls.Add(this.picValidado);
+            this.Controls.Add(this.txtValidador);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dtpFechaInicio);
             this.Controls.Add(this.groupBox1);
@@ -465,6 +487,7 @@
             this.Load += new System.EventHandler(this.frmNuevoObrero_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picValidado)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -506,5 +529,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtCUSPP;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.PictureBox picValidado;
+        private System.Windows.Forms.TextBox txtValidador;
     }
 }

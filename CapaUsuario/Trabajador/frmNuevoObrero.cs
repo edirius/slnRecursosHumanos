@@ -12,6 +12,9 @@ namespace CapaUsuario.Trabajador
 {
     public partial class frmNuevoObrero : Form
     {
+        bool Validado = false;
+        int numeroIntentos = 0;
+
         int sidtmeta = 0;
         int sidtafp = 0;
         int sidttrabajador = 0;
@@ -103,6 +106,25 @@ namespace CapaUsuario.Trabajador
             {
                 MessageBox.Show("El DNI no es correcto, no se puede Guardar al nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+            if (modoEdicion == false)
+            {
+                if (Validado == false)
+                {
+                    if (numeroIntentos < 3)
+                    {
+                        txtValidador.Focus();
+                        numeroIntentos++;
+                        MessageBox.Show("Ingrese el digito validador correcto para poder guardar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usted no ha validado el DNI con el digito validador 3 veces, verifique bien el DNI porque puede traer datos incorrectos al consultar AFP y demas procesos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+
             }
             if (txtDNI.Text == "" || txtNombre.Text == "" || txtApePaterno.Text == "" || txtApeMaterno.Text == "" || cboDepartamento.Text == "" || cboProvincia.Text == "" || cboDistrito.Text == "" || cboAFP.Text == "")
             {
@@ -332,6 +354,73 @@ namespace CapaUsuario.Trabajador
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
+        }
+
+        private void txtValidador_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDNI.Text.Length == 8)
+            {
+                if (ValidateIdentificationDocumentPeru(txtDNI.Text + txtValidador.Text) == true)
+                {
+                    picValidado.Image = Properties.Resources.check;
+                    Validado = true;
+                }
+                else
+                {
+                    picValidado.Image = Properties.Resources.equis;
+                    Validado = false;
+                }
+            }
+        }
+
+        public bool ValidateIdentificationDocumentPeru(string identificationDocument)
+        {
+            if (!string.IsNullOrEmpty(identificationDocument))
+            {
+                int addition = 0;
+                int[] hash = { 5, 4, 3, 2, 7, 6, 5, 4, 3, 2 };
+                int identificationDocumentLength = identificationDocument.Length;
+
+                string identificationComponent = identificationDocument.Substring(0, identificationDocumentLength - 1);
+
+                int identificationComponentLength = identificationComponent.Length;
+
+                int diff = hash.Length - identificationComponentLength;
+
+                for (int i = identificationComponentLength - 1; i >= 0; i--)
+                {
+                    addition += (identificationComponent[i] - '0') * hash[i + diff];
+                }
+
+                addition = 11 - (addition % 11);
+
+                if (addition == 11)
+                {
+                    addition = 0;
+                }
+
+                char last = char.ToUpperInvariant(identificationDocument[identificationDocumentLength - 1]);
+
+                if (identificationDocumentLength == 11)
+                {
+                    // The identification document corresponds to a RUC.
+                    return addition.Equals(last - '0');
+                }
+                else if (char.IsDigit(last))
+                {
+                    // The identification document corresponds to a DNI with a number as verification digit.
+                    char[] hashNumbers = { '6', '7', '8', '9', '0', '1', '1', '2', '3', '4', '5' };
+                    return last.Equals(hashNumbers[addition]);
+                }
+                else if (char.IsLetter(last))
+                {
+                    // The identification document corresponds to a DNI with a letter as verification digit.
+                    char[] hashLetters = { 'K', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
+                    return last.Equals(hashLetters[addition]);
+                }
+            }
+
+            return false;
         }
     }
 }

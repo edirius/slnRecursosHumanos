@@ -17,6 +17,11 @@ namespace CapaUsuario.Trabajador
 {
     public partial class frmNuevoTrabajador : Form
     {
+        int numeroIntentos = 0;
+
+        bool Validado = false;
+        ImageConverter imageConverter = new ImageConverter();
+
         public cTrabajador miTrabajador;
         //public cPeriodo miPeriodo ;
         public Boolean modoEdicion;
@@ -106,6 +111,27 @@ namespace CapaUsuario.Trabajador
                     txtTipoZona.Focus();
                     throw new cReglaNegociosException("Seleccione un tipo de zona.");
                 }
+
+                if (modoEdicion == false)
+                {
+                    if (Validado== false)
+                    {
+                        if (numeroIntentos < 3)
+                        {
+                            txtValidador.Focus();
+                            numeroIntentos++;
+                            throw new cReglaNegociosException("Ingrese el digito validador");
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Usted no ha validado el DNI con el digito validador, verifique bien el DNI porque puede traer datos incorrectos al consultar AFP y demas procesos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                    }
+
+                }
+
                 miTrabajador.IdTrabajador = Convert.ToInt16(txtCodigo.Text);
                 miTrabajador.Dni = txtDNI.Text;
                 miTrabajador.Nombres = txtNombres.Text;
@@ -834,8 +860,78 @@ namespace CapaUsuario.Trabajador
                         MessageBox.Show("El DNI ingresado ya pertenece a otro Obrero:" + TrabajadorDNI.Nombres + " "  + TrabajadorDNI.ApellidoPaterno + " " + TrabajadorDNI.ApellidoMaterno, "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtDNI.Text = "";
                     }
+
+                    
                 }
             }
+        }
+
+        public static bool ValidateIdentificationDocumentPeru(string identificationDocument)
+        {
+            if (!string.IsNullOrEmpty(identificationDocument))
+            {
+                int addition = 0;
+                int[] hash = { 5, 4, 3, 2, 7, 6, 5, 4, 3, 2 };
+                int identificationDocumentLength = identificationDocument.Length;
+
+                string identificationComponent = identificationDocument.Substring(0, identificationDocumentLength - 1);
+
+                int identificationComponentLength = identificationComponent.Length;
+
+                int diff = hash.Length - identificationComponentLength;
+
+                for (int i = identificationComponentLength - 1; i >= 0; i--)
+                {
+                    addition += (identificationComponent[i] - '0') * hash[i + diff];
+                }
+
+                addition = 11 - (addition % 11);
+
+                if (addition == 11)
+                {
+                    addition = 0;
+                }
+
+                char last = char.ToUpperInvariant(identificationDocument[identificationDocumentLength - 1]);
+
+                if (identificationDocumentLength == 11)
+                {
+                    // The identification document corresponds to a RUC.
+                    return addition.Equals(last - '0');
+                }
+                else if (char.IsDigit(last))
+                {
+                    // The identification document corresponds to a DNI with a number as verification digit.
+                    char[] hashNumbers = { '6', '7', '8', '9', '0', '1', '1', '2', '3', '4', '5' };
+                    return last.Equals(hashNumbers[addition]);
+                }
+                else if (char.IsLetter(last))
+                {
+                    // The identification document corresponds to a DNI with a letter as verification digit.
+                    char[] hashLetters = { 'K', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };
+                    return last.Equals(hashLetters[addition]);
+                }
+            }
+
+            return false;
+        }
+
+        private void txtValidador_TextChanged(object sender, EventArgs e)
+        {
+            if (txtDNI.Text.Length == 8)
+            {
+                if (ValidateIdentificationDocumentPeru(txtDNI.Text + txtValidador.Text)== true)
+                {
+                    picValidado.Image = Properties.Resources.check;
+                    Validado = true;
+                } 
+                else
+                {
+                    picValidado.Image =  Properties.Resources.equis;
+                    Validado = false;
+                }
+            }
+            
         }
     }
 }
