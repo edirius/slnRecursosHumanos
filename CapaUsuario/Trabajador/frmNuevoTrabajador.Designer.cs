@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNuevoTrabajador));
             this.tabTrabajador = new System.Windows.Forms.TabControl();
             this.tabDatosGenerales = new System.Windows.Forms.TabPage();
+            this.picValidado = new System.Windows.Forms.PictureBox();
+            this.txtValidador = new System.Windows.Forms.TextBox();
             this.chkScrt = new System.Windows.Forms.CheckBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtNroRenta4ta = new System.Windows.Forms.TextBox();
@@ -96,12 +98,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
             this.toolTrabajador = new System.Windows.Forms.ToolTip(this.components);
-            this.txtValidador = new System.Windows.Forms.TextBox();
-            this.picValidado = new System.Windows.Forms.PictureBox();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).BeginInit();
             this.SuspendLayout();
             // 
             // tabTrabajador
@@ -187,6 +187,23 @@
             this.tabDatosGenerales.TabIndex = 0;
             this.tabDatosGenerales.Text = "Datos Generales";
             this.tabDatosGenerales.UseVisualStyleBackColor = true;
+            // 
+            // picValidado
+            // 
+            this.picValidado.Location = new System.Drawing.Point(254, 50);
+            this.picValidado.Name = "picValidado";
+            this.picValidado.Size = new System.Drawing.Size(21, 20);
+            this.picValidado.TabIndex = 109;
+            this.picValidado.TabStop = false;
+            // 
+            // txtValidador
+            // 
+            this.txtValidador.Location = new System.Drawing.Point(213, 50);
+            this.txtValidador.MaxLength = 1;
+            this.txtValidador.Name = "txtValidador";
+            this.txtValidador.Size = new System.Drawing.Size(34, 20);
+            this.txtValidador.TabIndex = 108;
+            this.txtValidador.TextChanged += new System.EventHandler(this.txtValidador_TextChanged);
             // 
             // chkScrt
             // 
@@ -788,22 +805,6 @@
             this.toolTrabajador.ForeColor = System.Drawing.Color.RoyalBlue;
             this.toolTrabajador.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // txtValidador
-            // 
-            this.txtValidador.Location = new System.Drawing.Point(213, 50);
-            this.txtValidador.Name = "txtValidador";
-            this.txtValidador.Size = new System.Drawing.Size(34, 20);
-            this.txtValidador.TabIndex = 108;
-            this.txtValidador.TextChanged += new System.EventHandler(this.txtValidador_TextChanged);
-            // 
-            // picValidado
-            // 
-            this.picValidado.Location = new System.Drawing.Point(254, 50);
-            this.picValidado.Name = "picValidado";
-            this.picValidado.Size = new System.Drawing.Size(21, 20);
-            this.picValidado.TabIndex = 109;
-            this.picValidado.TabStop = false;
-            // 
             // frmNuevoTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -819,8 +820,8 @@
             this.tabTrabajador.ResumeLayout(false);
             this.tabDatosGenerales.ResumeLayout(false);
             this.tabDatosGenerales.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFoto)).EndInit();
             this.ResumeLayout(false);
 
         }

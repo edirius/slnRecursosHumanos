@@ -233,6 +233,7 @@ namespace CapaUsuario.Trabajador
             }
             if (bOk == true)
             {
+                MessageBox.Show("Datos Guardados", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }
             else

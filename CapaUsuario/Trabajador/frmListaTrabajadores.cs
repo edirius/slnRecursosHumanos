@@ -82,7 +82,8 @@ namespace CapaUsuario.Trabajador
                 {
                     miListaTrabajadores.AgregarTrabajador(fNuevoTrabajador.miTrabajador);
                     tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
-                    dtgListaTrabajadores.DataSource = tablaAuxiliar; 
+                    dtgListaTrabajadores.DataSource = tablaAuxiliar;
+                    MessageBox.Show("Datos Guardados", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception f)
@@ -106,6 +107,7 @@ namespace CapaUsuario.Trabajador
                     tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral);
                     dtgListaTrabajadores.DataSource = tablaAuxiliar;
                     lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
+                    MessageBox.Show("Datos Guardados", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception g)
