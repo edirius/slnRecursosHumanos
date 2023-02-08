@@ -3651,14 +3651,26 @@ namespace CapaUsuario.Reportes
                 tabla_bonus.DefaultCell.BorderWidth = 0;
 
                 //tabla que continene rrhh, gerencia municipal, presupuesto y contabilidad
+                int NumeroFirmas = 0;
+                if (chkFirmaElaborado.Checked){NumeroFirmas++;}
+                if (chkFirmaRecursos.Checked){NumeroFirmas++;}
+                if (chkFirmaGerencia.Checked) { NumeroFirmas++; }
+                if (chkFirmaContabilidad.Checked) { NumeroFirmas++; }
+                if (chkFirmaTesoreria.Checked) { NumeroFirmas++; }
+                if (chkFirmaResidencia.Checked) { NumeroFirmas++; }
+
                 PdfPTable tabla_firmas;
                 PdfPTable tabla_firmas2;
-                if (numeroRegimenLaboral == 1 || numeroRegimenLaboral == 2 || numeroRegimenLaboral == 4)
+
+                if (NumeroFirmas < 6)
                 {
-                    tabla_firmas = new PdfPTable(5);
+                   
+
+                    tabla_firmas = new PdfPTable(NumeroFirmas);
                     tabla_firmas2 = new PdfPTable(2);
+
                     tabla_firmas.DefaultCell.BorderWidth = 0;
-                    tabla_firmas2.DefaultCell.BorderWidth = 0;
+
                     //FIRMAS
                     Paragraph firma_elabo = new Paragraph();
                     firma_elabo.Alignment = Element.ALIGN_CENTER;
@@ -3678,29 +3690,32 @@ namespace CapaUsuario.Reportes
                     Paragraph firma_pre = new Paragraph();
                     firma_pre.Alignment = Element.ALIGN_CENTER;
                     firma_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    if (Settings.Default.RUC == "20177432360")
-                    {
-                        firma_pre.Add("............................................. \n CONTABILIDAD");
-                    }
+                    firma_pre.Add("............................................. \n CONTABILIDAD Y PRESUPUESTO ");
                     
-                    else
-                    {
-                        firma_pre.Add("............................................. \n CONTABILIDAD Y PRESUPUESTO ");
-                    }
 
                     Paragraph firma_con = new Paragraph();
                     firma_con.Alignment = Element.ALIGN_CENTER;
                     firma_con.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
                     firma_con.Add("............................................. \n       TESORERIA");
+
+                    Paragraph firma_SUb = new Paragraph();
+                    firma_SUb.Alignment = Element.ALIGN_CENTER;
+                    firma_SUb.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                    firma_SUb.Add(" ............................................................. \n RESIDENCIA DE OBRAS");
+                    
                     //aÑADIENDO FIRMAS A LA TABLA FIRMAS
-                    tabla_firmas.AddCell(firma_elabo);
-                    tabla_firmas.AddCell(firma_rrhh);
-                    tabla_firmas.AddCell(firma_gm);
-                    tabla_firmas.AddCell(firma_pre);
-                    tabla_firmas.AddCell(firma_con);
+
+                    if (chkFirmaElaborado.Checked) tabla_firmas.AddCell(firma_elabo);
+                    if (chkFirmaRecursos.Checked) tabla_firmas.AddCell(firma_rrhh);
+                    if (chkFirmaGerencia.Checked) tabla_firmas.AddCell(firma_gm);
+                    if (chkFirmaContabilidad.Checked) tabla_firmas.AddCell(firma_pre);
+                    if (chkFirmaTesoreria.Checked) tabla_firmas.AddCell(firma_con);
+                    if (chkFirmaResidencia.Checked) tabla_firmas.AddCell(firma_SUb);
                 }
+
                 else
                 {
+
                     tabla_firmas = new PdfPTable(4);
                     tabla_firmas2 = new PdfPTable(2);
                     tabla_firmas.DefaultCell.BorderWidth = 0;
@@ -3724,15 +3739,7 @@ namespace CapaUsuario.Reportes
                     Paragraph p_pre = new Paragraph();
                     p_pre.Alignment = Element.ALIGN_CENTER;
                     p_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    if (Settings.Default.RUC== "20177432360")
-                    {
-                        p_pre.Add(" ....................................... \n CONTABILIDAD");
-                    }
-                    else
-                    {
-                        p_pre.Add(" ....................................... \n PRESUPUESTO Y CONTABILIDAD");
-                    }
-                    
+                    p_pre.Add(" ....................................... \n PRESUPUESTO Y/O CONTABILIDAD");
 
                     Paragraph p_con = new Paragraph();
                     p_con.Alignment = Element.ALIGN_CENTER;
@@ -3756,8 +3763,11 @@ namespace CapaUsuario.Reportes
                     tabla_firmas.AddCell(p_con);
                     tabla_firmas2.AddCell(firma_Tes);
                     tabla_firmas2.AddCell(firma_SUb);
+
                 }
 
+             
+             
                 //instanciando una columna y 3 columnas
                 //Columnas 
                 MultiColumnText column_one = new MultiColumnText();
@@ -3812,7 +3822,8 @@ namespace CapaUsuario.Reportes
                 column_one.AddElement(paragraph5);
                 //column_one.AddElement(paragraph5);
                 column_one.AddElement(tabla_firmas);
-                if (numeroRegimenLaboral == 3)
+
+                if (NumeroFirmas > 5)
                 {
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(paragraph5);

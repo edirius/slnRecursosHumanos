@@ -37,7 +37,7 @@ namespace CapaUsuario.Reportes
 
         //string ruta = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
 
-        string Reporte = ""; string sestado; int sidtmeta; int sidttareo; int sidtplanilla; int sidttrabajador;
+        string Reporte = ""; string sestado; int sidtmeta; int sidttareo; int sidtplanilla; int sidttrabajador; string smunicipalidad;
 
         public MostrarReportes()
         {
@@ -69,6 +69,7 @@ namespace CapaUsuario.Reportes
                     CapaUsuario.Reportes.crResumenPlanillas crResumenPlanillas = new crResumenPlanillas();
                     Estado(crResumenPlanillas, sestado);
                     IdtPlanilla(crResumenPlanillas, sidtplanilla);
+                    Municipalidad(crResumenPlanillas, smunicipalidad);
                     crystalReportViewer1.ReportSource = crResumenPlanillas;
                     crystalReportViewer1.Refresh();
                 }
@@ -93,11 +94,12 @@ namespace CapaUsuario.Reportes
             sidttareo = pidttareo;
         }
 
-        public void ResumenPlanillas(string tipo, string pestado, int pidtplanilla)
+        public void ResumenPlanillas(string tipo, string pestado, int pidtplanilla, string pmunicipalidad)
         {
             Reporte = tipo;
             sestado = pestado;
             sidtplanilla = pidtplanilla;
+            smunicipalidad = pmunicipalidad;
         }
 
         public void ReporteContratos(string tipo, int pidttrabajador)
@@ -111,6 +113,15 @@ namespace CapaUsuario.Reportes
             crParameterDiscreteValue.Value = pestado;
             crParameterFieldDefinitions = rpt.DataDefinition.ParameterFields;
             crParameterFieldDefinition = crParameterFieldDefinitions["pestado"];
+            crParameterValues.Add(crParameterDiscreteValue);
+            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+        }
+
+        private void Municipalidad(ReportClass rpt, string pmunicipalidad)
+        {
+            crParameterDiscreteValue.Value = pmunicipalidad;
+            crParameterFieldDefinitions = rpt.DataDefinition.ParameterFields;
+            crParameterFieldDefinition = crParameterFieldDefinitions["pMunicipalidad"];
             crParameterValues.Add(crParameterDiscreteValue);
             crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
         }

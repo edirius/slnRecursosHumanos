@@ -14,6 +14,7 @@ using System.Reflection;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp;
+using CapaUsuario.Properties;
 //using iTextSharp.text.pdf.PdfWriter;
 
 namespace CapaUsuario.Reportes
@@ -68,7 +69,7 @@ namespace CapaUsuario.Reportes
             { MessageBox.Show(m.Message); }
 
             CapaUsuario.Reportes.MostrarReportes Reportes = new MostrarReportes();
-            Reportes.ResumenPlanillas("ResumenPlanillas", "DESACTIVO", 0);
+            Reportes.ResumenPlanillas("ResumenPlanillas", "DESACTIVO", 0, Settings.Default.Empresa.ToUpper());
             Reportes.MdiParent = this.MdiParent;
             Reportes.Show();
         }

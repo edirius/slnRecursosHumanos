@@ -57,12 +57,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chkAltoColumna = new System.Windows.Forms.CheckBox();
             this.txtAltoColumnas = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkFirmaElaborado = new System.Windows.Forms.CheckBox();
+            this.chkFirmaRecursos = new System.Windows.Forms.CheckBox();
+            this.chkFirmaGerencia = new System.Windows.Forms.CheckBox();
+            this.chkFirmaContabilidad = new System.Windows.Forms.CheckBox();
+            this.chkFirmaTesoreria = new System.Windows.Forms.CheckBox();
+            this.chkFirmaResidencia = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRedondear)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEEFF)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -72,7 +80,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimir.Location = new System.Drawing.Point(12, 460);
+            this.btnImprimir.Location = new System.Drawing.Point(12, 469);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 65);
             this.btnImprimir.TabIndex = 87;
@@ -130,7 +138,7 @@
             this.dgvPlanilla.ReadOnly = true;
             this.dgvPlanilla.RowHeadersVisible = false;
             this.dgvPlanilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPlanilla.Size = new System.Drawing.Size(837, 380);
+            this.dgvPlanilla.Size = new System.Drawing.Size(837, 371);
             this.dgvPlanilla.TabIndex = 94;
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick_1);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick_1);
@@ -328,11 +336,95 @@
             this.txtAltoColumnas.TextChanged += new System.EventHandler(this.txtAltoColumnas_TextChanged);
             this.txtAltoColumnas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAltoColumnas_KeyPress);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.chkFirmaResidencia);
+            this.groupBox2.Controls.Add(this.chkFirmaTesoreria);
+            this.groupBox2.Controls.Add(this.chkFirmaContabilidad);
+            this.groupBox2.Controls.Add(this.chkFirmaGerencia);
+            this.groupBox2.Controls.Add(this.chkFirmaRecursos);
+            this.groupBox2.Controls.Add(this.chkFirmaElaborado);
+            this.groupBox2.Location = new System.Drawing.Point(392, 451);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(422, 100);
+            this.groupBox2.TabIndex = 104;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Firmas";
+            // 
+            // chkFirmaElaborado
+            // 
+            this.chkFirmaElaborado.AutoSize = true;
+            this.chkFirmaElaborado.Checked = true;
+            this.chkFirmaElaborado.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkFirmaElaborado.Location = new System.Drawing.Point(18, 20);
+            this.chkFirmaElaborado.Name = "chkFirmaElaborado";
+            this.chkFirmaElaborado.Size = new System.Drawing.Size(95, 17);
+            this.chkFirmaElaborado.TabIndex = 0;
+            this.chkFirmaElaborado.Text = "Elaborado por:";
+            this.chkFirmaElaborado.UseVisualStyleBackColor = true;
+            // 
+            // chkFirmaRecursos
+            // 
+            this.chkFirmaRecursos.AutoSize = true;
+            this.chkFirmaRecursos.Checked = true;
+            this.chkFirmaRecursos.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkFirmaRecursos.Location = new System.Drawing.Point(147, 18);
+            this.chkFirmaRecursos.Name = "chkFirmaRecursos";
+            this.chkFirmaRecursos.Size = new System.Drawing.Size(119, 17);
+            this.chkFirmaRecursos.TabIndex = 1;
+            this.chkFirmaRecursos.Text = "Recursos Humanos";
+            this.chkFirmaRecursos.UseVisualStyleBackColor = true;
+            // 
+            // chkFirmaGerencia
+            // 
+            this.chkFirmaGerencia.AutoSize = true;
+            this.chkFirmaGerencia.Checked = true;
+            this.chkFirmaGerencia.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkFirmaGerencia.Location = new System.Drawing.Point(18, 43);
+            this.chkFirmaGerencia.Name = "chkFirmaGerencia";
+            this.chkFirmaGerencia.Size = new System.Drawing.Size(117, 17);
+            this.chkFirmaGerencia.TabIndex = 2;
+            this.chkFirmaGerencia.Text = "Gerencia Municipal";
+            this.chkFirmaGerencia.UseVisualStyleBackColor = true;
+            // 
+            // chkFirmaContabilidad
+            // 
+            this.chkFirmaContabilidad.AutoSize = true;
+            this.chkFirmaContabilidad.Location = new System.Drawing.Point(147, 43);
+            this.chkFirmaContabilidad.Name = "chkFirmaContabilidad";
+            this.chkFirmaContabilidad.Size = new System.Drawing.Size(165, 17);
+            this.chkFirmaContabilidad.TabIndex = 3;
+            this.chkFirmaContabilidad.Text = "Presupuesto y/o Contabilidad";
+            this.chkFirmaContabilidad.UseVisualStyleBackColor = true;
+            // 
+            // chkFirmaTesoreria
+            // 
+            this.chkFirmaTesoreria.AutoSize = true;
+            this.chkFirmaTesoreria.Checked = true;
+            this.chkFirmaTesoreria.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkFirmaTesoreria.Location = new System.Drawing.Point(18, 66);
+            this.chkFirmaTesoreria.Name = "chkFirmaTesoreria";
+            this.chkFirmaTesoreria.Size = new System.Drawing.Size(70, 17);
+            this.chkFirmaTesoreria.TabIndex = 4;
+            this.chkFirmaTesoreria.Text = "Tesoreria";
+            this.chkFirmaTesoreria.UseVisualStyleBackColor = true;
+            // 
+            // chkFirmaResidencia
+            // 
+            this.chkFirmaResidencia.AutoSize = true;
+            this.chkFirmaResidencia.Location = new System.Drawing.Point(147, 66);
+            this.chkFirmaResidencia.Name = "chkFirmaResidencia";
+            this.chkFirmaResidencia.Size = new System.Drawing.Size(125, 17);
+            this.chkFirmaResidencia.TabIndex = 5;
+            this.chkFirmaResidencia.Text = "Residencia de Obras";
+            this.chkFirmaResidencia.UseVisualStyleBackColor = true;
+            // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 537);
+            this.ClientSize = new System.Drawing.Size(861, 546);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txtAltoColumnas);
             this.Controls.Add(this.chkAltoColumna);
             this.Controls.Add(this.groupBox1);
@@ -354,6 +446,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvEEFF)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,5 +482,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Plantilla;
         private System.Windows.Forms.CheckBox chkAltoColumna;
         private System.Windows.Forms.TextBox txtAltoColumnas;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox chkFirmaElaborado;
+        private System.Windows.Forms.CheckBox chkFirmaContabilidad;
+        private System.Windows.Forms.CheckBox chkFirmaGerencia;
+        private System.Windows.Forms.CheckBox chkFirmaRecursos;
+        private System.Windows.Forms.CheckBox chkFirmaResidencia;
+        private System.Windows.Forms.CheckBox chkFirmaTesoreria;
     }
 }

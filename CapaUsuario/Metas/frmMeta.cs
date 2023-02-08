@@ -69,6 +69,11 @@ namespace CapaUsuario.Metas
             txtCodigo.Text = Convert.ToString(miMeta.Numero);
             txtNombre.Text = miMeta.Nombre;
             numAño.Value = miMeta.Año;
+
+            //txtActividadObra.Text = miMeta.ActividadObra.Nombre;
+            //txtGrupoFuncional.Text = miMeta.GrupoFuncional.Nombre;
+            
+
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
