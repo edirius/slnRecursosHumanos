@@ -182,5 +182,47 @@ namespace CapaDeNegocios.Obras
         {
             return Conexion.GDatos.TraerDataTable("spListarMetasXAño", año); 
         }
+
+        public cActividadObra TraerActividadObra(int codigo)
+        {
+            DataTable Actividades = new DataTable();
+            cActividadObra miActividad = new cActividadObra();
+            miActividad.ProductoProyecto = new cProductoProyecto();
+            Actividades = Conexion.GDatos.TraerDataTable("spTraerActividadObra", codigo);
+            if (Actividades.Rows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                miActividad.Codigo = Convert.ToInt16(Actividades.Rows[0][0].ToString());
+                miActividad.Nombre = Actividades.Rows[0][1].ToString();
+                miActividad.ActividadObra = Actividades.Rows[0][2].ToString();
+                miActividad.Año = Convert.ToInt16(Actividades.Rows[0][3].ToString());
+                miActividad.ProductoProyecto.Codigo = Convert.ToInt16(Actividades.Rows[0][4].ToString());
+                return miActividad;
+            }
+        }
+
+        public cGrupoFuncional TraerGrupoFuncional(int codigo)
+        {
+            DataTable Grupos = new DataTable();
+            cGrupoFuncional miGrupo = new cGrupoFuncional();
+            miGrupo.DivisionFuncional = new cDivisionFuncional();
+            Grupos = Conexion.GDatos.TraerDataTable("spTraerGrupoFuncional", codigo);
+            if (Grupos.Rows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                miGrupo.Codigo = Convert.ToInt16(Grupos.Rows[0][0].ToString());
+                miGrupo.Nombre = Grupos.Rows[0][1].ToString();
+                miGrupo.GrupoFuncional = Grupos.Rows[0][2].ToString();
+                miGrupo.Año = Convert.ToInt16(Grupos.Rows[0][3].ToString());
+                miGrupo.DivisionFuncional.Codigo = Convert.ToInt16(Grupos.Rows[0][4].ToString());
+                return miGrupo;
+            }
+        }
     }
 }

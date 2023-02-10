@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace CapaUsuario.Tareo
 {
@@ -259,6 +260,31 @@ namespace CapaUsuario.Tareo
             public override string ToString()
             {
                 return Text;
+            }
+        }
+
+        private void btnImprimir2_Click(object sender, EventArgs e)
+        {
+            CapaDeNegocios.Tareos.cImprimirTareo2 oImprimir = new CapaDeNegocios.Tareos.cImprimirTareo2();
+
+            SaveFileDialog fichero = new SaveFileDialog();
+            fichero.Filter = "Excel (*.xls)|*.xls";
+            fichero.FileName = "Tareo_nro_" + sNumero + "_" + sFechaInicio.ToString("MMMM") + "_" + sFechaInicio.ToString("yyyy") + ".xls";
+
+            if (fichero.ShowDialog() == DialogResult.OK )
+            {
+                oImprimir.ruta = fichero.FileName;
+                oImprimir.tablaTareo = miTareo.ImprimirTareo(sIdTMeta, sIdTTareo);
+                if (oImprimir.tablaTareo.Rows.Count == 0)
+                {
+                    MessageBox.Show("El tareo esta vacio o no se encuentra el residente responsable de la meta: ");
+                }
+                else
+                {
+                    oImprimir.fechainicio = sFechaInicio;
+                    oImprimir.Imprimir();
+                    //oImprimir.Main();
+                }
             }
         }
     }

@@ -53,9 +53,12 @@ namespace CapaUsuario.Metas
             Metas.frmMeta fMiMeta = new frmMeta();
             fMiMeta.miMeta = new cMeta();
             fMiMeta.miMeta.Año = DateTime.Now.Year;
+            fMiMeta.miMeta.GrupoFuncional = new cGrupoFuncional();
+            fMiMeta.miMeta.ActividadObra = new cActividadObra();
             if (fMiMeta.ShowDialog() == System.Windows.Forms.DialogResult.OK )
             {
                 miCadena.CrearMeta(fMiMeta.miMeta);
+                MessageBox.Show("Datos Guardados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Iniciar();
             }
         }
@@ -72,12 +75,13 @@ namespace CapaUsuario.Metas
                 fMiMeta.miMeta.Año = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[1].Value);
                 fMiMeta.miMeta.Numero = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[2].Value);
                 fMiMeta.miMeta.Nombre = Convert.ToString(dtgListaMetas.SelectedRows[0].Cells[3].Value);
-                fMiMeta.miMeta.GrupoFuncional.Codigo = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[4].Value);
-                fMiMeta.miMeta.ActividadObra.Codigo  = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[5].Value);
+                fMiMeta.miMeta.GrupoFuncional = miCadena.TraerGrupoFuncional(Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[4].Value.ToString()));
+                fMiMeta.miMeta.ActividadObra = miCadena.TraerActividadObra(Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[5].Value));
 
                 if (fMiMeta.ShowDialog() == System.Windows.Forms.DialogResult.OK )
                 {
                     miCadena.ModificarMeta(fMiMeta.miMeta);
+                    MessageBox.Show("Datos Guardados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dtgListaMetas.DataSource = miCadena.ListarMetas();
                 }
             }

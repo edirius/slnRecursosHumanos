@@ -96,6 +96,8 @@ namespace CapaUsuario.Variables
                 dgvFuenteFinanciamiento.Rows[dgvFuenteFinanciamiento.Rows.Count - 1].Cells[1].Selected = true;
                 DataGridViewCellEventArgs cea = new DataGridViewCellEventArgs(0, dgvFuenteFinanciamiento.Rows.Count - 1);
                 dgvFuenteFinanciamiento_CellClick(dgvFuenteFinanciamiento, cea);
+                dgvFuenteFinanciamiento.Columns[1].Width = 50;
+                dgvFuenteFinanciamiento.Columns[2].Width = 250;
             }
         }
     }

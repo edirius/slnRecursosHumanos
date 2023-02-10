@@ -835,12 +835,11 @@
             // 
             // newToolStripButton
             // 
-            this.newToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.newToolStripButton.Image = global::CapaUsuario.Properties.Resources._99;
             this.newToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.newToolStripButton.Name = "newToolStripButton";
-            this.newToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.newToolStripButton.Text = "New";
+            this.newToolStripButton.Size = new System.Drawing.Size(113, 22);
+            this.newToolStripButton.Text = "Comisiones AFP";
             this.newToolStripButton.ToolTipText = "Comisiones AFP";
             this.newToolStripButton.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -851,12 +850,11 @@
             // 
             // helpToolStripButton
             // 
-            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.helpToolStripButton.Image = global::CapaUsuario.Properties.Resources._161;
             this.helpToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.helpToolStripButton.Name = "helpToolStripButton";
-            this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.helpToolStripButton.Text = "Help";
+            this.helpToolStripButton.Size = new System.Drawing.Size(94, 22);
+            this.helpToolStripButton.Text = "Trabajadores";
             this.helpToolStripButton.ToolTipText = "Trabajadores";
             this.helpToolStripButton.Click += new System.EventHandler(this.mantenimientoDeTrabajadoresToolStripMenuItem_Click);
             // 
@@ -867,22 +865,20 @@
             // 
             // printPreviewToolStripButton
             // 
-            this.printPreviewToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.printPreviewToolStripButton.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_61;
             this.printPreviewToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.printPreviewToolStripButton.Name = "printPreviewToolStripButton";
-            this.printPreviewToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.printPreviewToolStripButton.Size = new System.Drawing.Size(70, 22);
             this.printPreviewToolStripButton.Text = "Planillas";
             this.printPreviewToolStripButton.Click += new System.EventHandler(this.planillaToolStripMenuItem_Click);
             // 
             // printToolStripButton
             // 
-            this.printToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.printToolStripButton.Image = global::CapaUsuario.Properties.Resources._17;
             this.printToolStripButton.ImageTransparentColor = System.Drawing.Color.Black;
             this.printToolStripButton.Name = "printToolStripButton";
-            this.printToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.printToolStripButton.Text = "Print";
+            this.printToolStripButton.Size = new System.Drawing.Size(73, 22);
+            this.printToolStripButton.Text = "Imprimir";
             this.printToolStripButton.ToolTipText = "Reportes";
             this.printToolStripButton.Click += new System.EventHandler(this.planillaToolStripMenuItem2_Click);
             // 

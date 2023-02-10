@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMantenimientoTareo));
             this.btnMeta = new System.Windows.Forms.Button();
             this.cboMeta = new System.Windows.Forms.ComboBox();
@@ -48,6 +48,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cboAño = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnImprimir2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTareo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             // 
             this.btnMeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnMeta.Location = new System.Drawing.Point(507, 37);
+            this.btnMeta.Location = new System.Drawing.Point(577, 37);
             this.btnMeta.Name = "btnMeta";
             this.btnMeta.Size = new System.Drawing.Size(64, 23);
             this.btnMeta.TabIndex = 1;
@@ -71,7 +72,7 @@
             this.cboMeta.FormattingEnabled = true;
             this.cboMeta.Location = new System.Drawing.Point(46, 39);
             this.cboMeta.Name = "cboMeta";
-            this.cboMeta.Size = new System.Drawing.Size(455, 21);
+            this.cboMeta.Size = new System.Drawing.Size(525, 21);
             this.cboMeta.TabIndex = 0;
             this.cboMeta.SelectedIndexChanged += new System.EventHandler(this.cboMeta_SelectedIndexChanged);
             // 
@@ -80,8 +81,8 @@
             this.dgvTareo.AllowUserToAddRows = false;
             this.dgvTareo.AllowUserToDeleteRows = false;
             this.dgvTareo.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvTareo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvTareo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTareo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -101,7 +102,7 @@
             this.dgvTareo.ReadOnly = true;
             this.dgvTareo.RowHeadersVisible = false;
             this.dgvTareo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTareo.Size = new System.Drawing.Size(559, 346);
+            this.dgvTareo.Size = new System.Drawing.Size(629, 346);
             this.dgvTareo.TabIndex = 1;
             this.dgvTareo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellClick);
             this.dgvTareo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellContentClick);
@@ -157,7 +158,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(488, 418);
+            this.btnSalir.Location = new System.Drawing.Point(558, 418);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 19;
@@ -173,7 +174,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEliminar.ImageKey = "118.png";
-            this.btnEliminar.Location = new System.Drawing.Point(399, 418);
+            this.btnEliminar.Location = new System.Drawing.Point(473, 418);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(83, 53);
             this.btnEliminar.TabIndex = 18;
@@ -189,7 +190,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificar.ImageKey = "13.png";
-            this.btnModificar.Location = new System.Drawing.Point(310, 418);
+            this.btnModificar.Location = new System.Drawing.Point(387, 418);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(83, 53);
             this.btnModificar.TabIndex = 17;
@@ -205,7 +206,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(221, 418);
+            this.btnNuevo.Location = new System.Drawing.Point(301, 418);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 16;
@@ -274,9 +275,26 @@
             this.label2.TabIndex = 36;
             this.label2.Text = "Meta";
             // 
+            // btnImprimir2
+            // 
+            this.btnImprimir2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimir2.BackColor = System.Drawing.Color.MintCream;
+            this.btnImprimir2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.btnImprimir2.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnImprimir2.ImageIndex = 1;
+            this.btnImprimir2.Location = new System.Drawing.Point(220, 418);
+            this.btnImprimir2.Name = "btnImprimir2";
+            this.btnImprimir2.Size = new System.Drawing.Size(83, 53);
+            this.btnImprimir2.TabIndex = 37;
+            this.btnImprimir2.Text = "&Imprimir 2da Opcion";
+            this.btnImprimir2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImprimir2.UseVisualStyleBackColor = false;
+            this.btnImprimir2.Click += new System.EventHandler(this.btnImprimir2_Click);
+            // 
             // frmMantenimientoTareo
             // 
-            this.ClientSize = new System.Drawing.Size(583, 483);
+            this.ClientSize = new System.Drawing.Size(653, 483);
+            this.Controls.Add(this.btnImprimir2);
             this.Controls.Add(this.btnMeta);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cboMeta);
@@ -320,5 +338,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column6;
+        private System.Windows.Forms.Button btnImprimir2;
     }
 }

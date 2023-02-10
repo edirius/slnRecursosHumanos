@@ -70,19 +70,37 @@ namespace CapaUsuario.Metas
             txtNombre.Text = miMeta.Nombre;
             numAño.Value = miMeta.Año;
 
-            //txtActividadObra.Text = miMeta.ActividadObra.Nombre;
-            //txtGrupoFuncional.Text = miMeta.GrupoFuncional.Nombre;
+            txtActividadObra.Text = miMeta.ActividadObra.Nombre;
+            txtGrupoFuncional.Text = miMeta.GrupoFuncional.Nombre;
             
 
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            miMeta.Numero = Convert.ToInt16(txtCodigo.Text);
-            miMeta.Nombre = txtNombre.Text;
-            miMeta.Año = Convert.ToInt16(numAño.Value);
-            miMeta.idtmetavinculo = sidmetavinculo;
-            DialogResult = System.Windows.Forms.DialogResult.OK;
+            try
+            {
+                if (miMeta.ActividadObra.Codigo == 0)
+                {
+                    MessageBox.Show("Seleccione una Actividad Obra", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (miMeta.GrupoFuncional.Codigo == 0)
+                {
+                    MessageBox.Show("Seleccione un Grupo Funcional", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                miMeta.Numero = Convert.ToInt16(txtCodigo.Text);
+                miMeta.Nombre = txtNombre.Text;
+                miMeta.Año = Convert.ToInt16(numAño.Value);
+                miMeta.idtmetavinculo = sidmetavinculo;
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error al guardar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
