@@ -265,27 +265,36 @@ namespace CapaUsuario.Tareo
 
         private void btnImprimir2_Click(object sender, EventArgs e)
         {
-            CapaDeNegocios.Tareos.cImprimirTareo2 oImprimir = new CapaDeNegocios.Tareos.cImprimirTareo2();
-
-            SaveFileDialog fichero = new SaveFileDialog();
-            fichero.Filter = "Excel (*.xls)|*.xls";
-            fichero.FileName = "Tareo_nro_" + sNumero + "_" + sFechaInicio.ToString("MMMM") + "_" + sFechaInicio.ToString("yyyy") + ".xls";
-
-            if (fichero.ShowDialog() == DialogResult.OK )
+            try
             {
-                oImprimir.ruta = fichero.FileName;
-                oImprimir.tablaTareo = miTareo.ImprimirTareo(sIdTMeta, sIdTTareo);
-                if (oImprimir.tablaTareo.Rows.Count == 0)
+                CapaDeNegocios.Tareos.cImprimirTareo2 oImprimir = new CapaDeNegocios.Tareos.cImprimirTareo2();
+
+                SaveFileDialog fichero = new SaveFileDialog();
+                fichero.Filter = "Excel (*.xls)|*.xls";
+                fichero.FileName = "Tareo_nro_" + sNumero + "_" + sFechaInicio.ToString("MMMM") + "_" + sFechaInicio.ToString("yyyy") + ".xls";
+
+                if (fichero.ShowDialog() == DialogResult.OK)
                 {
-                    MessageBox.Show("El tareo esta vacio o no se encuentra el residente responsable de la meta: ");
-                }
-                else
-                {
-                    oImprimir.fechainicio = sFechaInicio;
-                    oImprimir.Imprimir();
-                    //oImprimir.Main();
+                    oImprimir.ruta = fichero.FileName;
+                    oImprimir.tablaTareo = miTareo.ImprimirTareo(sIdTMeta, sIdTTareo);
+                    if (oImprimir.tablaTareo.Rows.Count == 0)
+                    {
+                        MessageBox.Show("El tareo esta vacio o no se encuentra el residente responsable de la meta: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        oImprimir.fechainicio = sFechaInicio;
+                        oImprimir.Imprimir();
+                        //oImprimir.Main();
+                        MessageBox.Show("Excel Exportado.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }
