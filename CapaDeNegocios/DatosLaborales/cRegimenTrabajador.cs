@@ -211,5 +211,114 @@ namespace CapaDeNegocios.DatosLaborales
                 throw new cReglaNegociosException("Error en traer el regimen laboral del trabajador: " + ex.Message);
             }
         }
+
+        /// <summary>
+        /// Metodo para traer el ultimo regimen del trabajador.
+        /// idtregimentrabajador, condicion, servidorconfianza, numerodocumento, periodicidad, tipopago, montopago, fechainicio, fechafin, ruc,
+        /// idtregimenlaboral, idttipotrabajador, idttipocontrato, idtcategoriaocupacional, idtocupacion, idtcargo, idtmeta, idtperiodotrabajador
+        /// </summary>
+        /// <param name="idtPeriodoTrabajador"></param>
+        /// <returns></returns>
+        public cRegimenTrabajador TraerRegimenTrabajadorMes(int idtPeriodoTrabajador, DateTime Fecha)
+        {
+            try
+            {
+                List<cRegimenTrabajador> listaPeriodosTrabajador = new List<cRegimenTrabajador>();
+
+                DataTable listaPeriodos;
+                listaPeriodos = Conexion.GDatos.TraerDataTable("spListarRegimenTrabajador", idtPeriodoTrabajador);
+
+                foreach (DataRow item in listaPeriodos.Rows)
+                {
+                    //convierte la fecha al primer dia del mes
+                    DateTime fechaRegimenInicio = convertirFecha(item[7].ToString(),true);
+                    DateTime fechaRegimenFin;
+                    if ((item[8] == null) || (item[8].ToString() == ""))
+                    {
+                        fechaRegimenFin = new DateTime(3000, 12, 31);
+                    }
+                    else
+                    {
+                        fechaRegimenFin = convertirFecha(item[8].ToString(),false);
+                    }
+                        
+                    if ( Fecha.Date >= fechaRegimenInicio.Date && Fecha.Date <= fechaRegimenFin)
+                    {
+                        cRegimenTrabajador nuevoPeriodoTrabajador = new cRegimenTrabajador();
+                        nuevoPeriodoTrabajador.IdtRegimenTrabajador = Convert.ToInt16(item[0].ToString());
+                        nuevoPeriodoTrabajador.Condicion = item[1].ToString();
+                        nuevoPeriodoTrabajador.ServidorConfianza = Convert.ToBoolean(item[2]);
+                        nuevoPeriodoTrabajador.NumeroDocumento = item[3].ToString();
+                        nuevoPeriodoTrabajador.Periodicidad = item[4].ToString();
+                        nuevoPeriodoTrabajador.TipoPago = item[5].ToString();
+                        nuevoPeriodoTrabajador.MontoPago = Convert.ToDecimal(item[6]);
+                        nuevoPeriodoTrabajador.FechaInicio = item[7].ToString();
+                        nuevoPeriodoTrabajador.sfechafin = "";
+                        nuevoPeriodoTrabajador.RUC = item[9].ToString();
+                        nuevoPeriodoTrabajador.IdtRegimenLaboral = Convert.ToInt16(item[10].ToString());
+                        nuevoPeriodoTrabajador.IdtTipoTrabajador = Convert.ToInt16(item[11].ToString());
+                        nuevoPeriodoTrabajador.IdtTipoContrato = Convert.ToInt16(item[12].ToString());
+                        nuevoPeriodoTrabajador.IdtCategoriaOcupacional = Convert.ToInt16(item[13].ToString());
+                        nuevoPeriodoTrabajador.IdtOcupacion = Convert.ToInt16(item[14].ToString());
+                        nuevoPeriodoTrabajador.IdtCargo = Convert.ToInt16(item[15].ToString());
+                        nuevoPeriodoTrabajador.IdtMeta = Convert.ToInt16(item[16].ToString());
+                        nuevoPeriodoTrabajador.IdtPeriodoTrabajador = Convert.ToInt16(item[17]);
+                        listaPeriodosTrabajador.Add(nuevoPeriodoTrabajador);
+                    }
+
+                }
+
+                if (listaPeriodosTrabajador.Count == 0)
+                {
+                    throw new cReglaNegociosException("Error,  el regimen laboral del  trabajador no existe para el mes " + Fecha.ToString("MMM") + "/" +Fecha.Year.ToString());
+                }
+                else
+                {
+                    return listaPeriodosTrabajador[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en traer el regimen laboral del trabajador: " + ex.Message);
+            }
+        }
+
+        public DateTime convertirFecha(string Fecha, bool Inicio)
+        {
+            if (Fecha.Length == 10 )
+            {
+                if (Inicio)
+                {
+                    return new DateTime(Convert.ToInt16(Fecha.Substring(6, 4)), Convert.ToInt16(Fecha.Substring(3, 2)), 1);
+                }
+                //para fecha fin
+                else
+                {
+                    
+                    return new DateTime(Convert.ToInt16(Fecha.Substring(6, 4)), Convert.ToInt16(Fecha.Substring(3, 2)), DateTime.DaysInMonth(Convert.ToInt16(Fecha.Substring(6, 4)), Convert.ToInt16(Fecha.Substring(3, 2))));
+                }
+            }
+            else
+            {
+                if (Fecha.Length == 9)
+                {
+                    if (Inicio)
+                    {
+                        return new DateTime(Convert.ToInt16(Fecha.Substring(5, 4)), Convert.ToInt16(Fecha.Substring(2, 2)), 1);
+                    }
+                    //para fecha fin
+                    else
+                    {
+
+                        return new DateTime(Convert.ToInt16(Fecha.Substring(5, 4)), Convert.ToInt16(Fecha.Substring(2, 2)), DateTime.DaysInMonth(Convert.ToInt16(Fecha.Substring(5, 4)), Convert.ToInt16(Fecha.Substring(2, 2))));
+                    }
+                    
+                }
+                else
+                {
+                    throw new cReglaNegociosException("Error convertir Fecha: la logntiud no es correcta 10 o 9"  );
+                }
+            }
+        }
     }
 }

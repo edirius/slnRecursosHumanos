@@ -690,6 +690,29 @@ namespace CapaUsuario.Planilla
                     }
                     oDataComisionAFP = miComisionAFP.ListarComisionAFP(Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()));
                     int DiasMes = DateTime.DaysInMonth(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)));
+
+                    bool encontradoAFP = false;
+                    // 5 es onp y 6 es vacio y 7 es null
+                    if (Convert.ToInt16(rowRegimenPensionarioTrabajador[5]) >= 5)
+                    {
+                        encontradoAFP = true;
+                    }
+
+                    for (int i = 0; i < oDataComisionAFP.Rows.Count - 1; i++)
+                    {
+                        DateTime diaAFP = Convert.ToDateTime(oDataComisionAFP.Rows[i]["mes"]);
+
+                        
+                        if (diaAFP.Month == Convert.ToInt16(Mes(smes)) && diaAFP.Year == Convert.ToInt16(saño) )
+                        {
+                            encontradoAFP = true;
+                        }
+                    }
+                    if (encontradoAFP == false)
+                    {
+                        MessageBox.Show("No se encontro los datos de comisiones para la AFP " + AFP + " del mes " + smes + "/" + saño + ". El calculo sera 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                     foreach (DataRow rowComisionAFP in oDataComisionAFP.Select("mes >= '01/" + Mes(smes) + "/" + saño + "' AND mes <= '" + DiasMes + "/" + Mes(smes) + "/" + saño + "'"))
                     {
                         PrimaSeguros = Convert.ToDecimal(rowComisionAFP[3].ToString());
@@ -1561,7 +1584,7 @@ namespace CapaUsuario.Planilla
             oPeriodoTrabajadorRentaQuinta = oPeriodoTrabajadorRentaQuinta.traerUltimoPeriodoTrabajador(miTrabajadorRentaQuinta.IdTrabajador);
 
             CapaDeNegocios.DatosLaborales.cRegimenTrabajador oRegimenTrabajadorRentaQuinta = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
-            oRegimenTrabajadorRentaQuinta = oRegimenTrabajadorRentaQuinta.TraerUltimoRegimenTrabajador(oPeriodoTrabajadorRentaQuinta.IdtPeriodoTrabajador);
+            oRegimenTrabajadorRentaQuinta = oRegimenTrabajadorRentaQuinta.TraerRegimenTrabajadorMes(oPeriodoTrabajadorRentaQuinta.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)),1));
 
 
             CapaDeNegocios.Planillas.cIngresos5taCategoria miIngresos5taCategoria = new CapaDeNegocios.Planillas.cIngresos5taCategoria();
