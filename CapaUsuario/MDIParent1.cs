@@ -760,7 +760,7 @@ namespace CapaUsuario
                 //}
 
                 
-                string constring = "server=" + Settings.Default.ConexionMySql + ";user=root;pwd=root;database=bdpersonal;";
+                string constring = "server=" + Settings.Default.ConexionMySql + ";user=root;pwd=root;database=bdpersonal;CharSet=utf8;";
                 string file =  "D:\\backup.sql";
 
                 dlgSalvarArchivo.Filter = "Archivo sql (*.sql)|*.SQL|Todos los archivos (*.*)|*.*";
@@ -818,7 +818,7 @@ namespace CapaUsuario
                 
 
                
-                string constring = "server="+ Settings.Default.ConexionMySql + "; user=root; pwd=root;database=bdpersonal;";
+                string constring = "server="+ Settings.Default.ConexionMySql + "; user=root; pwd=root;database=bdpersonal;CharSet=utf8;";
                 string file = "D:\\backup.sql";
                 dlgAbrirArchivo.Filter = "Archivo sql (*.sql)|*.SQL|Todos los archivos (*.*)|*.*";
                 if (dlgAbrirArchivo.ShowDialog() == DialogResult.OK)
