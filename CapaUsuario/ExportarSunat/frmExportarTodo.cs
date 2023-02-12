@@ -73,14 +73,14 @@ namespace CapaUsuario.ExportarSunat
                 dgvListarTrabajadores.Columns["Nro"].Width = 40;
                 dgvListarTrabajadores.Columns["Nro"].ReadOnly = true;
                 dgvListarTrabajadores.Columns["Nombres"].Visible = true;
-                dgvListarTrabajadores.Columns["Nombres"].Width = 150;
+                dgvListarTrabajadores.Columns["Nombres"].Width = 140;
                 dgvListarTrabajadores.Columns["Nombres"].DisplayIndex = 4;
                 dgvListarTrabajadores.Columns["Nombres"].ReadOnly = true;
                 dgvListarTrabajadores.Columns["ApellidoPaterno"].Visible = true;
-                dgvListarTrabajadores.Columns["ApellidoPaterno"].Width = 150;
+                dgvListarTrabajadores.Columns["ApellidoPaterno"].Width = 140;
                 dgvListarTrabajadores.Columns["ApellidoPaterno"].ReadOnly = true;
                 dgvListarTrabajadores.Columns["ApellidoMaterno"].Visible = true;
-                dgvListarTrabajadores.Columns["ApellidoMaterno"].Width = 150;
+                dgvListarTrabajadores.Columns["ApellidoMaterno"].Width = 140;
                 dgvListarTrabajadores.Columns["ApellidoMaterno"].ReadOnly = true;
                 dgvListarTrabajadores.Columns["DNI"].Visible = true;
                 dgvListarTrabajadores.Columns["DNI"].Width = 75;
@@ -92,7 +92,7 @@ namespace CapaUsuario.ExportarSunat
                 dgvListarTrabajadores.Columns["FechaInicio"].Width = 78;
                 dgvListarTrabajadores.Columns["FechaInicio"].ReadOnly = true;
                 dgvListarTrabajadores.Columns["PlanillaD"].Visible = true;
-                dgvListarTrabajadores.Columns["PlanillaD"].Width = 150;
+                dgvListarTrabajadores.Columns["PlanillaD"].Width = 180;
             }
         }
         private void ConvertiraNumero(string tipoPago)
@@ -304,7 +304,7 @@ namespace CapaUsuario.ExportarSunat
                     string correo = fila.Cells["Email"].Value.ToString();
                     if (correo == "")
                     {
-                        correo = "munimaras@gmail.com";
+                        correo = nombres.Substring(0,3).Trim() + apPaterno.Substring(0,3).Trim() + apMaterno.Substring(0,3).Trim() + "@gmail.com";
                     }
                     string tipoVia = fila.Cells["CodTipoVia"].Value.ToString();
                     string nombreVia = fila.Cells["NombreVia"].Value.ToString();
@@ -381,41 +381,46 @@ namespace CapaUsuario.ExportarSunat
                     string tipoRegistro = "1";
                     string dni = fila.Cells["DNI"].Value.ToString();
                     DateTime fechainicio = Convert.ToDateTime(fila.Cells["FechaInicio"].Value.ToString());
-                    string fechafin = fila.Cells["FechaFin"].Value.ToString();
+                    //string fechafin = fila.Cells["FechaFin"].Value.ToString();
+                    string fechafin = "";
                     string indicadorTipoRegistro = fila.Cells["CodMotivoFin"].Value.ToString();
                     Periodos = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro, fechainicio.ToShortDateString(), fechafin, indicadorTipoRegistro, EPS);
                     milistaPER.Add(Periodos);
                     //TipoTrabajador
                     string tipoRegistro2 = "2";
                     DateTime fechainicio2 = Convert.ToDateTime(fila.Cells["FechaInicio"].Value.ToString());
-                    string fechafin2 = fila.Cells["FechaFin"].Value.ToString();
+                    //string fechafin2 = fila.Cells["FechaFin"].Value.ToString();
+                    string fechafin2 = "";
                     string indicadorTipoRegistro2 = fila.Cells["CodSunatTT"].Value.ToString();
                     TipoTrabajador = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro2, fechainicio2.ToShortDateString(), fechafin2, indicadorTipoRegistro2, EPS);
                     milistaPER.Add(TipoTrabajador);
                     //Regimen Aseguramiento Salud
                     string tipoRegistro3 = "3";
-                    string fechainicio3 = fila.Cells["FechaInicioSalud"].Value.ToString();
-                    string fechafin3 = fila.Cells["FechaFinSalud"].Value.ToString();
+                    DateTime fechainicio3 = Convert.ToDateTime(fila.Cells["FechaInicioSalud"].Value.ToString());
+                    string fechafin3 = "";
+                    //string fechafin3 = fila.Cells["FechaFinSalud"].Value.ToString();
                     string indicadorTipoRegistro3 = fila.Cells["RegimenSalud"].Value.ToString();
                     ConvertiraNumeroSalud(indicadorTipoRegistro3);
-                    RegimenAseguramiento = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro3, fechainicio3, fechafin3, NroRegimenSalud, EPS);
+                    RegimenAseguramiento = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro3, fechainicio3.ToShortDateString(), fechafin3, NroRegimenSalud, EPS);
                     milistaPER.Add(RegimenAseguramiento);
                     //Regimen Pensionario
                     string tipoRegistro4 = "4";
-                    string fechainicio4 = fila.Cells["FechaInicioRegPensionario"].Value.ToString();
-                    string fechafin4 = fila.Cells["FechaFinRegPensionario"].Value.ToString();
+                    DateTime fechainicio4 = Convert.ToDateTime(fila.Cells["FechaInicioRegPensionario"].Value.ToString());
+                    string fechafin4 = "";
+                    //string fechafin4 = fila.Cells["FechaFinRegPensionario"].Value.ToString();
                     string indicadorTipoRegistro4 = fila.Cells["CodAFP"].Value.ToString();
-                    RegimenPensionario = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro4, fechainicio4, fechafin4, indicadorTipoRegistro4, EPS);
+                    RegimenPensionario = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro4, fechainicio4.ToShortDateString(), fechafin4, indicadorTipoRegistro4, EPS);
                     milistaPER.Add(RegimenPensionario);
 
                     //SRCT
                     if (chkSRCT.Checked)
                     {
                         string tipoRegistro5 = "5";
-                        string fechainicio5 = fila.Cells["FechaInicioSalud"].Value.ToString();
-                        string fechafin5 = fila.Cells["FechaFinSalud"].Value.ToString();
+                        DateTime fechainicio5 = Convert.ToDateTime(fila.Cells["FechaInicioSalud"].Value.ToString());
+                        string fechafin5 = "";
+                        //string fechafin5 = fila.Cells["FechaFinSalud"].Value.ToString();
                         string indicadorTipoRegistro5 = "1";
-                        SRCT = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro5, fechainicio5, fechafin5, indicadorTipoRegistro5, EPS);
+                        SRCT = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro5, fechainicio5.ToShortDateString(), fechafin5, indicadorTipoRegistro5, EPS);
                         milistaPER.Add(SRCT);
                     }
 

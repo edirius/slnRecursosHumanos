@@ -111,9 +111,11 @@
             this.txtCelular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCelular.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCelular.Location = new System.Drawing.Point(413, 12);
+            this.txtCelular.MaxLength = 9;
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(194, 20);
             this.txtCelular.TabIndex = 92;
+            this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelular_KeyPress);
             // 
             // label9
             // 
@@ -311,6 +313,7 @@
             this.txtDNI.Size = new System.Drawing.Size(112, 20);
             this.txtDNI.TabIndex = 91;
             this.txtDNI.TextChanged += new System.EventHandler(this.txtDNI_TextChanged);
+            this.txtDNI.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDNI_KeyPress);
             // 
             // label2
             // 

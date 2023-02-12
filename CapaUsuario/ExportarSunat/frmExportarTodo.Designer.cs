@@ -50,7 +50,6 @@
             // dgvListarTrabajadores
             // 
             this.dgvListarTrabajadores.AllowUserToAddRows = false;
-            this.dgvListarTrabajadores.AllowUserToResizeColumns = false;
             this.dgvListarTrabajadores.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dgvListarTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
