@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CapaUsuario.Trabajador
 {
-    public partial class frmNuevoObrero : Form
+    public partial class frmNuevoTecnico : Form
     {
         bool Validado = false;
         int numeroIntentos = 0;
@@ -19,7 +19,13 @@ namespace CapaUsuario.Trabajador
         int sidtafp = 0;
         int sidttrabajador = 0;
         int sidtperiodotrabajador = 0;
-        
+        string scategoriaocupacional = "";
+        string socupacion = "";
+        string scargo = "";
+        int sidtcategoriaocupacional = 0;
+        int sidtocupacion = 0;
+        int sidtcargo = 0;
+
         DataTable oDataTrabajador = new DataTable();
         DataTable oDataPeriodoTrabajador = new DataTable();
 
@@ -37,25 +43,28 @@ namespace CapaUsuario.Trabajador
         CapaDeNegocios.cNacionalidad miNacionalidad = new CapaDeNegocios.cNacionalidad();
 
         public CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
-        public  CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+        public CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
         public CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador miRegimenSaludTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador();
         public CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
 
         public DateTime fechaInicio;
         public DateTime fechaFin;
 
-        public frmNuevoObrero()
+        public frmNuevoTecnico()
         {
             InitializeComponent();
         }
 
-        private void frmNuevoObrero_Load(object sender, EventArgs e)
+        private void frmNuevoTecnico_Load(object sender, EventArgs e)
         {
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
             CargarDepartamento();
             CargarAFP();
+            CargarCategoriaOcupacional();
+            CargarOcupacion();
+            CargarCargo();
             LimitarMes();
-            
+
             if (modoEdicion || modoAltaTrabajador)
             {
                 CargarTrabajador();
@@ -66,6 +75,7 @@ namespace CapaUsuario.Trabajador
         {
             dtpFechaInicio.MinDate = fechaInicio;
             dtpFechaInicio.MaxDate = fechaFin;
+            dtpFechaNacimiento.MaxDate = DateTime.Now;
         }
         public void CargarTrabajador()
         {
@@ -85,20 +95,115 @@ namespace CapaUsuario.Trabajador
             }
 
             dtpFechaNacimiento.Value = miTrabajador.FechaNacimiento;
-            dtpFechaInicio.Value = Convert.ToDateTime(miPeriodoTrabajador.FechaInicio) ;
+            dtpFechaInicio.Value = Convert.ToDateTime(miPeriodoTrabajador.FechaInicio);
             txtDireccion.Text = miTrabajador.Direccion;
             cboDepartamento.SelectedValue = miTrabajador.MiDepartamento.Codigo;
             cboProvincia.SelectedValue = miTrabajador.MiProvincia.Codigo;
             cboDistrito.SelectedValue = miTrabajador.MiDistrito.Codigo;
 
+            cboOcupacion.SelectedValue = miRegimenTrabajador.IdtOcupacion;
+            cboCategoriaOcupacional.SelectedValue = miRegimenTrabajador.IdtCategoriaOcupacional;
+            cboCargo.SelectedValue = miRegimenTrabajador.IdtCargo;
 
             txtCUSPP.Text = miRegimenPensionarioTrabajador.CUSPP;
             cboTipoComision.Text = miRegimenPensionarioTrabajador.TipoComision;
             cboAFP.SelectedValue = miRegimenPensionarioTrabajador.IdtAFP;
             sidtafp = miRegimenPensionarioTrabajador.IdtAFP;
             sidtperiodotrabajador = miRegimenPensionarioTrabajador.IdtPeriodoTrabajador;
-            
 
+
+        }
+
+        private void CargarCategoriaOcupacional()
+        {
+            CapaDeNegocios.DatosLaborales.cCategoriaOcupacional miCategoriaOcupacional = new CapaDeNegocios.DatosLaborales.cCategoriaOcupacional();
+            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            foreach (DataRow row in miCategoriaOcupacional.ListarCategoriaOcupacional().Rows)
+            {
+                coleccion.Add(Convert.ToString(row["descripcion"]));
+            }
+            cboCategoriaOcupacional.DataSource = miCategoriaOcupacional.ListarCategoriaOcupacional();
+            cboCategoriaOcupacional.DisplayMember = "descripcion";
+            cboCategoriaOcupacional.ValueMember = "idtcategoriaocupacional";
+            cboCategoriaOcupacional.AutoCompleteCustomSource = coleccion;
+            cboCategoriaOcupacional.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboCategoriaOcupacional.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            if (scategoriaocupacional == "") { cboCategoriaOcupacional.SelectedIndex = -1; }
+            else { cboCategoriaOcupacional.Text = scategoriaocupacional; }
+        }
+
+        private void CargarOcupacion()
+        {
+            CapaDeNegocios.DatosLaborales.cOcupacion miOcupacion = new CapaDeNegocios.DatosLaborales.cOcupacion();
+            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            foreach (DataRow row in miOcupacion.ListarOcupacion().Rows)
+            {
+                coleccion.Add(Convert.ToString(row["descripcion"]));
+            }
+            cboOcupacion.DataSource = miOcupacion.ListarOcupacion();
+            cboOcupacion.DisplayMember = "descripcion";
+            cboOcupacion.ValueMember = "idtocupacion";
+            cboOcupacion.AutoCompleteCustomSource = coleccion;
+            cboOcupacion.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboOcupacion.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            if (socupacion == "") { cboOcupacion.SelectedIndex = -1; }
+            else { cboOcupacion.Text = socupacion; }
+        }
+
+        private void CargarCargo()
+        {
+            CapaDeNegocios.Contrato.cCargo miCargo = new CapaDeNegocios.Contrato.cCargo();
+            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            foreach (DataRow row in miCargo.ListaCargos().Rows)
+            {
+                coleccion.Add(Convert.ToString(row["descripcion"]));
+            }
+            cboCargo.DataSource = miCargo.ListaCargos();
+            cboCargo.DisplayMember = "descripcion";
+            cboCargo.ValueMember = "idtcargo";
+            cboCargo.AutoCompleteCustomSource = coleccion;
+            cboCargo.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboCargo.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            if (scargo == "") { cboCargo.SelectedIndex = -1; }
+            else { cboCargo.Text = scargo; }
+        }
+
+        public void RecibirDatos(int pidtmeta)
+        {
+            sidtmeta = pidtmeta;
+        }
+
+        private void CargarDepartamento()
+        {
+            cboDepartamento.DataSource = miDepartamento.ListaDepartamentos();
+            cboDepartamento.DisplayMember = "descripcion";
+            cboDepartamento.ValueMember = "idtdepartamento";
+            cboDepartamento.SelectedIndex = -1;
+        }
+
+        private void CargarProvincia()
+        {
+            cboProvincia.DataSource = miProvincia.ListarProvincias(miDepartamento);
+            cboProvincia.DisplayMember = "descripcion";
+            cboProvincia.ValueMember = "idtprovincia";
+            cboProvincia.SelectedIndex = -1;
+        }
+
+        private void CargarDistrito()
+        {
+            cboDistrito.DataSource = miDistrito.ListarDistritos(miProvincia);
+            cboDistrito.DisplayMember = "descripcion";
+            cboDistrito.ValueMember = "idtdistrito";
+            cboDistrito.SelectedIndex = -1;
+        }
+
+        private void CargarAFP()
+        {
+            CapaDeNegocios.cListaAFP miAFP = new CapaDeNegocios.cListaAFP();
+            cboAFP.DataSource = miAFP.ObtenerListaAFP();
+            cboAFP.DisplayMember = "nombre";
+            cboAFP.ValueMember = "idtafp";
+            cboAFP.SelectedIndex = -1;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -135,7 +240,7 @@ namespace CapaUsuario.Trabajador
 
             DateTime edadTrabajador = new DateTime(1, 1, 1);
             edadTrabajador = edadTrabajador + (DateTime.Now.Date - dtpFechaNacimiento.Value.Date);
-            if ((edadTrabajador.Year -1) < 18)
+            if ((edadTrabajador.Year - 1) < 18)
             {
                 MessageBox.Show("La edad del trabajador es: " + (edadTrabajador.Year - 1).ToString() + " años.");
                 return;
@@ -173,8 +278,6 @@ namespace CapaUsuario.Trabajador
 
             if (modoEdicion == false || modoAltaTrabajador == true)
             {
-
-
                 if (modoAltaTrabajador == false)
                 {
                     sidttrabajador = miTrabajador.AgregarTrabajadorConID(miTrabajador);
@@ -188,7 +291,7 @@ namespace CapaUsuario.Trabajador
 
 
                 miPeriodoTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
-               
+
                 miPeriodoTrabajador.FechaFin = "";
                 miPeriodoTrabajador.IdtMotivoFinPeriodo = 1;
                 miPeriodoTrabajador.IdtTrabajador = sidttrabajador;
@@ -198,23 +301,23 @@ namespace CapaUsuario.Trabajador
 
 
                 miRegimenPensionarioTrabajador.IdtRegimenPensionarioTrabajador = 0;
-               
+
                 miRegimenPensionarioTrabajador.FechaFin = "";
-                
-               
+
+
                 miRegimenPensionarioTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
                 miRegimenPensionarioTrabajador.CrearRegimenPensionarioTrabajador(miRegimenPensionarioTrabajador);
 
-               
+
                 miRegimenSaludTrabajador.IdtRegimenSaludTrabajador = 0;
                 miRegimenSaludTrabajador.RegimenSalud = "ESSALUD REGULAR (Exclusivamente)";
-               
+
                 miRegimenSaludTrabajador.FechaFin = "";
                 miRegimenSaludTrabajador.EntidadPrestadoraSalud = "";
                 miRegimenSaludTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
                 miRegimenSaludTrabajador.CrearRegimenSaludTrabajador(miRegimenSaludTrabajador);
 
-                
+
                 miRegimenTrabajador.IdtRegimenTrabajador = 0;
                 miRegimenTrabajador.Condicion = "CONTRATADO";
                 miRegimenTrabajador.ServidorConfianza = false;
@@ -222,22 +325,22 @@ namespace CapaUsuario.Trabajador
                 miRegimenTrabajador.Periodicidad = "MENSUAL";
                 miRegimenTrabajador.TipoPago = "EFECTIVO";
                 miRegimenTrabajador.MontoPago = 0;
-                
+
                 miRegimenTrabajador.FechaFin = "";
                 miRegimenTrabajador.RUC = "";
                 miRegimenTrabajador.IdtRegimenLaboral = 3;
                 miRegimenTrabajador.IdtTipoTrabajador = 2;
                 miRegimenTrabajador.IdtTipoContrato = 15;
-                miRegimenTrabajador.IdtCategoriaOcupacional = 5;
-                miRegimenTrabajador.IdtOcupacion = 1;
-                miRegimenTrabajador.IdtCargo = 49;
+                miRegimenTrabajador.IdtCategoriaOcupacional = sidtcategoriaocupacional;
+                miRegimenTrabajador.IdtOcupacion = sidtocupacion;
+                miRegimenTrabajador.IdtCargo = sidtcargo;
                 miRegimenTrabajador.IdtMeta = sidtmeta;
                 miRegimenTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
                 miRegimenTrabajador.CrearRegimenTrabajador(miRegimenTrabajador);
 
                 bOk = true;
             }
-           else
+            else
             {
                 bOk = true;
             }
@@ -275,7 +378,6 @@ namespace CapaUsuario.Trabajador
                     }
                 }
             }
-            
         }
 
         private void cboDepartamento_SelectedIndexChanged(object sender, EventArgs e)
@@ -322,49 +424,6 @@ namespace CapaUsuario.Trabajador
                     txtCUSPP.Enabled = true;
                 }
             }
-        }
-
-        public void RecibirDatos(int pidtmeta)
-        {
-            sidtmeta = pidtmeta;
-        }
-
-        private void CargarDepartamento()
-        {
-            cboDepartamento.DataSource = miDepartamento.ListaDepartamentos();
-            cboDepartamento.DisplayMember = "descripcion";
-            cboDepartamento.ValueMember = "idtdepartamento";
-            cboDepartamento.SelectedIndex = -1;
-        }
-
-        private void CargarProvincia()
-        {
-            cboProvincia.DataSource = miProvincia.ListarProvincias(miDepartamento);
-            cboProvincia.DisplayMember = "descripcion";
-            cboProvincia.ValueMember = "idtprovincia";
-            cboProvincia.SelectedIndex = -1;
-        }
-
-        private void CargarDistrito()
-        {
-            cboDistrito.DataSource = miDistrito.ListarDistritos(miProvincia);
-            cboDistrito.DisplayMember = "descripcion";
-            cboDistrito.ValueMember = "idtdistrito";
-            cboDistrito.SelectedIndex = -1;
-        }
-
-        private void CargarAFP()
-        {
-            CapaDeNegocios.cListaAFP miAFP = new CapaDeNegocios.cListaAFP();
-            cboAFP.DataSource = miAFP.ObtenerListaAFP();
-            cboAFP.DisplayMember = "nombre";
-            cboAFP.ValueMember = "idtafp";
-            cboAFP.SelectedIndex = -1; 
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
         }
 
         private void txtValidador_TextChanged(object sender, EventArgs e)
@@ -469,6 +528,30 @@ namespace CapaUsuario.Trabajador
                 {
                     e.Handled = true;
                 }
+            }
+        }
+
+        private void cboCategoriaOcupacional_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCategoriaOcupacional.Text != "System.Data.DataRowView" && cboCategoriaOcupacional.ValueMember != "")
+            {
+                sidtcategoriaocupacional = Convert.ToInt32(cboCategoriaOcupacional.SelectedValue);
+            }
+        }
+
+        private void cboOcupacion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboOcupacion.Text != "System.Data.DataRowView" && cboOcupacion.ValueMember != "")
+            {
+                sidtocupacion = Convert.ToInt32(cboOcupacion.SelectedValue);
+            }
+        }
+
+        private void cboCargo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCargo.Text != "System.Data.DataRowView" && cboCargo.ValueMember != "")
+            {
+                sidtcargo = Convert.ToInt32(cboCargo.SelectedValue);
             }
         }
     }

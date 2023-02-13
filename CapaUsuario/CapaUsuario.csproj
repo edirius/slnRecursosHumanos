@@ -1246,6 +1246,12 @@
     <Compile Include="Trabajador\frmNuevoObreroRacionamiento.Designer.cs">
       <DependentUpon>frmNuevoObreroRacionamiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trabajador\frmNuevoTecnico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmNuevoTecnico.Designer.cs">
+      <DependentUpon>frmNuevoTecnico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trabajador\frmNuevoTipoTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1875,6 +1881,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmNuevoObreroRacionamiento.resx">
       <DependentUpon>frmNuevoObreroRacionamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmNuevoTecnico.resx">
+      <DependentUpon>frmNuevoTecnico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmNuevoTipoTrabajador.resx">
       <DependentUpon>frmNuevoTipoTrabajador.cs</DependentUpon>

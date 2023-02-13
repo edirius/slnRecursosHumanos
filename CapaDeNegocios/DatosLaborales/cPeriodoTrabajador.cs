@@ -110,5 +110,58 @@ namespace CapaDeNegocios.DatosLaborales
                 throw new cReglaNegociosException("Error en traer el periodo del trabajador: " + ex.Message);
             }
         }
+
+        /// <summary>
+        /// Metodo para traer los periodos que tiene el trabajador segun el mes que se pide
+        /// </summary>
+        /// <param name="idTrabajaddor"></param>
+        /// <param name="mesBuscado"></param>
+        /// <returns></returns>
+        public List<cPeriodoTrabajador> traerPeriodosMesTrabajador(int idTrabajador, DateTime mesBuscado)
+        {
+            try
+            {
+                List<cPeriodoTrabajador> ListaPeriodosParaRetornar = new List<cPeriodoTrabajador>(); 
+
+                DataTable listaPeriodos;
+                listaPeriodos = Conexion.GDatos.TraerDataTable("spListarPeriodoTrabajador", idTrabajador);
+                if (listaPeriodos.Rows.Count == 0)
+                {
+                    throw new cReglaNegociosException("Error, no existe periodos para el trabajador ");
+                }
+
+                DateTime fechaFinTemporal;
+                DateTime fechaInicioTemporal;
+                foreach (DataRow  item in listaPeriodos.Rows)
+                {
+                    if (item[2] == null || item[2].ToString()== "")
+                    {
+                        fechaFinTemporal = new DateTime(3000, 12, 31); 
+                    }
+                    else
+                    {
+                        fechaFinTemporal = Convert.ToDateTime(item[2].ToString());
+                    }
+
+                    fechaInicioTemporal = Convert.ToDateTime(item[1].ToString());
+
+                    if (new DateTime(mesBuscado.Year, mesBuscado.Month, 1).Date >= new DateTime(fechaInicioTemporal.Year, fechaInicioTemporal.Month, 1) && new DateTime(mesBuscado.Year, mesBuscado.Month,DateTime.DaysInMonth(mesBuscado.Year, mesBuscado.Month))<= new DateTime(fechaFinTemporal.Year, fechaFinTemporal.Month, DateTime.DaysInMonth(fechaFinTemporal.Year, fechaFinTemporal.Month))) 
+                    {
+                        cPeriodoTrabajador nuevoPeriodoTrabajador = new cPeriodoTrabajador();
+                        nuevoPeriodoTrabajador.IdtPeriodoTrabajador = Convert.ToInt16(item[0].ToString());
+                        nuevoPeriodoTrabajador.sfechainicio = item[1].ToString();
+                        nuevoPeriodoTrabajador.sfechafin = item[2].ToString();
+                        nuevoPeriodoTrabajador.IdtMotivoFinPeriodo = Convert.ToInt16(item[3].ToString());
+                        nuevoPeriodoTrabajador.IdtTrabajador = Convert.ToInt16(item[4].ToString());
+                        ListaPeriodosParaRetornar.Add(nuevoPeriodoTrabajador);
+                    }
+                }
+                return ListaPeriodosParaRetornar;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo traerPeriodosMesTrabajador-cperiodoTrabajador: " + ex.Message);
+            }
+        }
     }
 }

@@ -483,118 +483,88 @@ namespace CapaUsuario.Planilla
 
         private void CargarDatos()
         {
-            contador = 0;
-            dgvDetallePlanilla.Rows.Clear();
-            cMetaJornal miMetaJornal = new cMetaJornal();
-
-            oDataDetallePlanilla = miDetallePlanilla.ListarDetallePlanilla(sidtplanilla);
-            foreach (DataRow row in oDataDetallePlanilla.Rows)
+            try
             {
-                CargarTrabajador(Convert.ToInt32(row[09].ToString()),splantilla);
-                if (splantilla == "PERSONAL OBRERO")
-                {
-                    //false = jornal true = mensual
+                contador = 0;
+                dgvDetallePlanilla.Rows.Clear();
+                cMetaJornal miMetaJornal = new cMetaJornal();
 
-                    miMetaJornal = MetaJornal(row[01].ToString(), sidtmeta);
-                    if (miMetaJornal.Opcion == false)
+                oDataDetallePlanilla = miDetallePlanilla.ListarDetallePlanilla(sidtplanilla);
+                foreach (DataRow row in oDataDetallePlanilla.Rows)
+                {
+                    CargarTrabajador(Convert.ToInt32(row[09].ToString()), splantilla);
+                    if (splantilla == "PERSONAL OBRERO")
                     {
-                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", miMetaJornal.Jornal);
+                        //false = jornal true = mensual
+
+                        miMetaJornal = MetaJornal(row[01].ToString(), sidtmeta);
+                        if (miMetaJornal.Opcion == false)
+                        {
+                            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", miMetaJornal.Jornal);
+                        }
+                        else
+                        {
+                            dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", miMetaJornal.Mensual);
+                        }
+
                     }
-                    else
-                    {
-                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", miMetaJornal.Mensual);
-                    }
-                    
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[0].Value = row[0].ToString();//IdtDetallePlanilla
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[1].Value = "M";
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[7].Value = row[1].ToString();//Cargo
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[10].Value = row[2].ToString();//Fecha Inicio
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[14 + con_ingresos].Value = row[4].ToString();
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[18 + con_ingresos + con_trabajador].Value = row[5].ToString();
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[19 + con_ingresos + con_trabajador + con_descuento].Value = row[6].ToString();
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[21 + con_ingresos + con_trabajador + con_descuento + con_empleador].Value = row[7].ToString();
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[22 + con_ingresos + con_trabajador + con_descuento + con_empleador].Value = row[8].ToString();
+                    CargarIngresos(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
+                    CargarATrabajador(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
+                    CargarDescuentos(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
+                    CargarAEmpleador(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[12].Value = row[3].ToString();//Dias Laborados
+                    TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
+                    DatosAFP(dgvDetallePlanilla.RowCount - 1);
+                    CalcularTotalDescuentos(dgvDetallePlanilla.RowCount - 1);
+                    btnImportar.Enabled = false;
+                    btnCalcular.Text = "Volver a Calcular";
                 }
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[0].Value = row[0].ToString();//IdtDetallePlanilla
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[1].Value = "M";
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[7].Value = row[1].ToString();//Cargo
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[10].Value = row[2].ToString();//Fecha Inicio
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[14 + con_ingresos].Value = row[4].ToString();
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[18 + con_ingresos + con_trabajador].Value = row[5].ToString();
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[19 + con_ingresos + con_trabajador + con_descuento].Value = row[6].ToString();
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[21 + con_ingresos + con_trabajador + con_descuento + con_empleador].Value = row[7].ToString();
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[22 + con_ingresos + con_trabajador + con_descuento + con_empleador].Value = row[8].ToString();
-                CargarIngresos(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
-                CargarATrabajador(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
-                CargarDescuentos(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
-                CargarAEmpleador(Convert.ToInt32(row[0].ToString()), dgvDetallePlanilla.RowCount - 1);
-                dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[12].Value = row[3].ToString();//Dias Laborados
-                TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
-                DatosAFP(dgvDetallePlanilla.RowCount - 1);
-                CalcularTotalDescuentos(dgvDetallePlanilla.RowCount - 1);
-                btnImportar.Enabled = false;
-                btnCalcular.Text = "Volver a Calcular";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en cargarDatos: " + ex.Message);
             }
         }
 
-        //private void Mes(string pmes)
-        //{
-        //    switch (pmes)
-        //    {
-        //        case "ENERO":
-        //            smes = "01";
-        //            break;
-        //        case "FEBRERO":
-        //            smes = "02";
-        //            break;
-        //        case "MARZO":
-        //            smes = "03";
-        //            break;
-        //        case "ABRIL":
-        //            smes = "04";
-        //            break;
-        //        case "MAYO":
-        //            smes = "05";
-        //            break;
-        //        case "JUNIO":
-        //            smes = "06";
-        //            break;
-        //        case "JULIO":
-        //            smes = "07";
-        //            break;
-        //        case "AGOSTO":
-        //            smes = "08";
-        //            break;
-        //        case "SETIEMBRE":
-        //            smes = "09";
-        //            break;
-        //        case "OCTUBRE":
-        //            smes = "10";
-        //            break;
-        //        case "NOVIEMBRE":
-        //            smes = "11";
-        //            break;
-        //        case "DICIEMBRE":
-        //            smes = "12";
-        //            break;
-        //            //default:
-        //            //    Console.WriteLine("Default case");
-        //            //    break;
-        //    }
-        //}
-
-
+        /// <summary>
+        /// Procedimiento para cargar los datos de un trabajador por su id al datagrid dgvDetallePlanilla
+        /// </summary>
+        /// <param name="pidtrabajador"></param>
+        /// <param name="tipoPlanilla"></param>
         private void CargarTrabajador(int pidtrabajador, string tipoPlanilla)
         {
-            bool TienAFP = false;
-            string Nombre = "";
-            string DNI = "";
-            string FechaInicio = "";
-            string MontoPago = "";
-            int IdtCargo = 0;
-            string Cargo = "";
-
-            foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + pidtrabajador + "'"))
+            try
             {
-                Nombre = rowTrabajador[2].ToString() + " " + rowTrabajador[3].ToString() + " " + rowTrabajador[4].ToString();
-                DNI = rowTrabajador[1].ToString();
-                String cadenada = "' and (fechafin='' or fechafin LIKE '___" + Mes(smes) + "/" + saño + "')";
-                DataRow[]  pruebaprueba = oDataPeriodoTrabajador.Select("idttrabajador = '" + pidtrabajador + "' and (fechafin='' or fechafin LIKE '_" + Mes(smes) + "%')");
-                foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + pidtrabajador + "' and (fechafin='' or fechafin LIKE '%" + Mes(smes) + "/" + saño + "')")) //and fechainicio <= '" + saño + "" + smes + "31' and(fechafin >= '" + saño + "" + smes + "01' or fechafin >= '')
+                bool TienAFP = false;
+                string Nombre = "";
+                string DNI = "";
+                string FechaInicio = "";
+                string MontoPago = "";
+                int IdtCargo = 0;
+                string Cargo = "";
+
+                foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + pidtrabajador + "'"))
                 {
-                    FechaInicio = rowPeriodoTrabajador[1].ToString();
-                    foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                    Nombre = rowTrabajador[2].ToString() + " " + rowTrabajador[3].ToString() + " " + rowTrabajador[4].ToString();
+                    DNI = rowTrabajador[1].ToString();
+
+                    List<CapaDeNegocios.DatosLaborales.cPeriodoTrabajador> AuxiliarPeriodoTrabajador = miPeriodoTrabajador.traerPeriodosMesTrabajador(pidtrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1));
+
+                    if (AuxiliarPeriodoTrabajador.Count == 0)
+                    {
+                        throw new cReglaNegociosException("No hay periodos para el trabajador: " + Nombre + " y el mes " + smes + "/" + saño);
+                    }
+                    FechaInicio = AuxiliarPeriodoTrabajador[0].FechaInicio;
+                    foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(AuxiliarPeriodoTrabajador[0].IdtPeriodoTrabajador) + "'"))
                     {
                         MontoPago = rowRegimenTrabajador[6].ToString();
                         foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + Convert.ToInt32(rowRegimenTrabajador[15].ToString()) + "'"))
@@ -606,13 +576,12 @@ namespace CapaUsuario.Planilla
 
                     if (tipoPlanilla == "RACIONAMIENTO")
                     {
-                       
-                            contador += 1;
-                            dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio, MontoPago, "", "");
-                                           }
+                        contador += 1;
+                        dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio, MontoPago, "", "");
+                    }
                     else
                     {
-                        foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
+                        foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(AuxiliarPeriodoTrabajador[0].IdtPeriodoTrabajador) + "'"))
                         {
                             TienAFP = true;
                         }
@@ -626,8 +595,11 @@ namespace CapaUsuario.Planilla
                             dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio, MontoPago, "", "");
                         }
                     }
-                    
                 }
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException(" Error en el metodo cargarTrabajador: " + ex.Message);
             }
         }
 

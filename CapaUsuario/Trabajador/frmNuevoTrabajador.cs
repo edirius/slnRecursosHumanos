@@ -76,6 +76,14 @@ namespace CapaUsuario.Trabajador
         {
             try
             {
+                DateTime edadTrabajador = new DateTime(1, 1, 1);
+                edadTrabajador = edadTrabajador + (DateTime.Now.Date - dtpFechaNacimiento.Value.Date);
+                if ((edadTrabajador.Year - 1) < 18)
+                {
+                    MessageBox.Show("La edad del trabajador es: " + (edadTrabajador.Year - 1).ToString() + " años.");
+                    return;
+                }
+
                 if (txtNacionalidad.Text == "")
                 {
                     txtNacionalidad.Focus();

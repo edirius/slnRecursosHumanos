@@ -65,6 +65,8 @@
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.picValidado = new System.Windows.Forms.PictureBox();
             this.txtValidador = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtCorreoElectronico = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +78,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(543, 277);
+            this.btnCancelar.Location = new System.Drawing.Point(543, 340);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 14;
@@ -92,7 +94,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(462, 277);
+            this.btnAceptar.Location = new System.Drawing.Point(462, 340);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 13;
@@ -219,7 +221,7 @@
             // 
             this.cboDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDepartamento.FormattingEnabled = true;
-            this.cboDepartamento.Location = new System.Drawing.Point(403, 191);
+            this.cboDepartamento.Location = new System.Drawing.Point(403, 225);
             this.cboDepartamento.Name = "cboDepartamento";
             this.cboDepartamento.Size = new System.Drawing.Size(215, 21);
             this.cboDepartamento.TabIndex = 10;
@@ -229,7 +231,7 @@
             // 
             this.cboProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProvincia.FormattingEnabled = true;
-            this.cboProvincia.Location = new System.Drawing.Point(402, 218);
+            this.cboProvincia.Location = new System.Drawing.Point(402, 252);
             this.cboProvincia.Name = "cboProvincia";
             this.cboProvincia.Size = new System.Drawing.Size(215, 21);
             this.cboProvincia.TabIndex = 11;
@@ -238,7 +240,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(317, 194);
+            this.label7.Location = new System.Drawing.Point(317, 228);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 13);
             this.label7.TabIndex = 79;
@@ -299,7 +301,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(339, 221);
+            this.label10.Location = new System.Drawing.Point(339, 255);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 13);
             this.label10.TabIndex = 85;
@@ -309,7 +311,7 @@
             // 
             this.cboDistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDistrito.FormattingEnabled = true;
-            this.cboDistrito.Location = new System.Drawing.Point(402, 245);
+            this.cboDistrito.Location = new System.Drawing.Point(402, 279);
             this.cboDistrito.Name = "cboDistrito";
             this.cboDistrito.Size = new System.Drawing.Size(215, 21);
             this.cboDistrito.TabIndex = 12;
@@ -318,7 +320,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(352, 248);
+            this.label11.Location = new System.Drawing.Point(352, 282);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(45, 13);
             this.label11.TabIndex = 87;
@@ -335,7 +337,7 @@
             this.groupBox1.Controls.Add(this.cboTipoComision);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.cboAFP);
-            this.groupBox1.Location = new System.Drawing.Point(12, 191);
+            this.groupBox1.Location = new System.Drawing.Point(12, 218);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(299, 116);
             this.groupBox1.TabIndex = 88;
@@ -448,11 +450,33 @@
             this.txtValidador.TabIndex = 110;
             this.txtValidador.TextChanged += new System.EventHandler(this.txtValidador_TextChanged);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(10, 194);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(100, 13);
+            this.label16.TabIndex = 113;
+            this.label16.Text = "Correo Electronico :";
+            // 
+            // txtCorreoElectronico
+            // 
+            this.txtCorreoElectronico.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCorreoElectronico.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCorreoElectronico.Location = new System.Drawing.Point(118, 191);
+            this.txtCorreoElectronico.MaxLength = 49;
+            this.txtCorreoElectronico.Name = "txtCorreoElectronico";
+            this.txtCorreoElectronico.Size = new System.Drawing.Size(499, 20);
+            this.txtCorreoElectronico.TabIndex = 112;
+            // 
             // frmNuevoObrero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 354);
+            this.ClientSize = new System.Drawing.Size(630, 409);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.txtCorreoElectronico);
             this.Controls.Add(this.picValidado);
             this.Controls.Add(this.txtValidador);
             this.Controls.Add(this.label13);
@@ -534,5 +558,7 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.PictureBox picValidado;
         private System.Windows.Forms.TextBox txtValidador;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtCorreoElectronico;
     }
 }
