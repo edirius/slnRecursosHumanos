@@ -262,6 +262,7 @@ namespace CapaUsuario.Tareo
                 else
                 {
                     CargarDatos();
+                    MessageBox.Show("Datos guardados", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -1096,7 +1097,7 @@ namespace CapaUsuario.Tareo
                     if (item.IdTTareo != miTareo.IdTTareo)
                     {
                         trabajadorEncontrado = true;
-                        MessageBox.Show("El trabajador que quiere borrar ya se encuentra en el tareo: " + item.Descripcion + " de la meta: " + item.Meta.Numero + ": " +
+                        MessageBox.Show("El trabajador que quiere dar  de baja ya se encuentra en el tareo: " + item.Descripcion + " de la meta: " + item.Meta.Numero + ": " +
                         item.Meta.Nombre + "con " + item.ListaDetallesTareo[0].TotalDias + " dias, con el siguiente detalle de tareo " + item.ListaDetallesTareo[0].DiasTareo, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                     }
