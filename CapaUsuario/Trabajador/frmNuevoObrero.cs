@@ -261,7 +261,19 @@ namespace CapaUsuario.Trabajador
         {
             if (modoEdicion == true || modoAltaTrabajador)
             {
-
+                if (txtDNI.Text.Length == 8)
+                {
+                    if (txtDNI.Text != miTrabajador.Dni)
+                    {
+                        foreach (DataRow row in oDataTrabajador.Select("dni = '" + txtDNI.Text + "'"))
+                        {
+                            MessageBox.Show("El DNI ingresado ya pertenece a otro Obrero:" + row[0].ToString() + " " + row[1].ToString() + " " + row[2].ToString() + " " + row[3].ToString() + " " + row[4].ToString(), "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtDNI.Text = miTrabajador.Dni;
+                            return;
+                        }
+                    }
+                    
+                }
             }
             else
             {

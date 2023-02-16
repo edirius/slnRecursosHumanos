@@ -856,7 +856,20 @@ namespace CapaUsuario.Trabajador
         {
             if (modoEdicion == true )
             {
+                if (txtDNI.Text.Length == 8)
+                {
+                    cTrabajador TrabajadorDNI = miTrabajador.BuscarTrabajadorXDNI(txtDNI.Text);
+                    if (txtDNI.Text != miTrabajador.Dni)
+                    {
+                        if (TrabajadorDNI != null)
+                        {
+                            MessageBox.Show("El DNI ingresado ya pertenece a otro Obrero:" + TrabajadorDNI.Nombres + " " + TrabajadorDNI.ApellidoPaterno + " " + TrabajadorDNI.ApellidoMaterno, "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtDNI.Text = miTrabajador.Dni;
+                            return;
+                        }
+                    }
 
+                }
             }
             else
             {
