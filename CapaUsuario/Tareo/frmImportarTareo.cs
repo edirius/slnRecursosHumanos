@@ -80,9 +80,13 @@ namespace CapaUsuario.Tareo
             CapaDeNegocios.Tareos.cTareo miTareo = new CapaDeNegocios.Tareos.cTareo();
             dgvTareo.Rows.Clear();
             oDataTareo = miTareo.ListarTareo(sidtmeta);
-            foreach (DataRow row in oDataTareo.Select("descripcion = '" + sdescripcion + "' and idttareo <> '" + sidttareo + "'"))
+            foreach (DataRow row in oDataTareo.Rows)
             {
-                dgvTareo.Rows.Add(row[0].ToString(), row[1].ToString(), row[4].ToString(), row[2].ToString(), row[3].ToString(), Convert.ToBoolean(row[5]));
+                if (sidttareo != Convert.ToInt16(row[0]))
+                {
+                    dgvTareo.Rows.Add(row[0].ToString(), row[1].ToString(), row[4].ToString(), row[2].ToString(), row[3].ToString(), Convert.ToBoolean(row[5]));
+                }
+                
             }
             if (dgvTareo.Rows.Count > 0)
             {

@@ -52,6 +52,7 @@ namespace CapaUsuario.Planilla
         bool sessaludvida;
         bool sscrt;
 
+        bool esTareo= false;
         
 
         DataTable oDataDetallePlanilla = new DataTable();
@@ -138,14 +139,14 @@ namespace CapaUsuario.Planilla
                     foreach (DataRow rowdetalletareo in oDataDetalleTareo.Select("idttareo = '" + fImportarTareo.sidttareoimportar + "'"))
                     {
                         
-                        if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
+                        if (esTareo)
                         {
                             miMetaJornal = MetaJornal(rowdetalletareo[1].ToString(), sidtmeta);
                             if (miMetaJornal.Opcion == false)
                             {
                                 if (miMetaJornal.Jornal == 0)
                                 {
-                                    MessageBox.Show("La Remuneración de los Obreros no existe o es 0.00, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("La Remuneración de los Obreros diaria: " + rowdetalletareo[1].ToString() + " no existe o es 0.00, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
                             }
@@ -153,7 +154,7 @@ namespace CapaUsuario.Planilla
                             {
                                 if (miMetaJornal.Mensual == 0)
                                 {
-                                    MessageBox.Show("La Remuneración de los Obreros Mensual no existe o es 0.00, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("La Remuneración de los Obreros Mensual: "  + rowdetalletareo[1].ToString() + " no existe o es 0.00, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
                             }
@@ -164,7 +165,7 @@ namespace CapaUsuario.Planilla
                             dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[7].Value = rowdetalletareo[1].ToString();
                             //dias laborados col 12
                             dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[12].Value = rowdetalletareo[3].ToString();
-                            if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
+                            if (esTareo)
                             {
                                 //monto jornal o mensual col 11
                                 if (miMetaJornal.Opcion == false)
@@ -469,16 +470,7 @@ namespace CapaUsuario.Planilla
             sidtregimenlaboral = pidtregimenlaboral;
             txtRegimenLaboral.Text = pregimenlaboral;
             splantilla = pplantilla;
-            if (pregimenlaboral == "REGIMEN 728" || pregimenlaboral == "RACIONAMIENTO")
-            {
-                btnAgregarTrabajador.Visible = false;
-                btnImportar.Visible = true;
-            }
-            else
-            {
-                btnAgregarTrabajador.Visible = true;
-                btnImportar.Visible = false;
-            }
+           
         }
 
         private void CargarDatos()
@@ -493,7 +485,7 @@ namespace CapaUsuario.Planilla
                 foreach (DataRow row in oDataDetallePlanilla.Rows)
                 {
                     CargarTrabajador(Convert.ToInt32(row[09].ToString()), splantilla);
-                    if (splantilla == "PERSONAL OBRERO")
+                    if (esTareo)
                     {
                         //false = jornal true = mensual
 
@@ -506,7 +498,6 @@ namespace CapaUsuario.Planilla
                         {
                             dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[11].Value = String.Format("{0:0.00}", miMetaJornal.Mensual);
                         }
-
                     }
                     dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[0].Value = row[0].ToString();//IdtDetallePlanilla
                     dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[1].Value = "M";
@@ -552,6 +543,22 @@ namespace CapaUsuario.Planilla
                 int IdtCargo = 0;
                 string Cargo = "";
 
+                CapaDeNegocios.Planillas.cPlanilla PlanillaEncontrada = new CapaDeNegocios.Planillas.cPlanilla();
+
+                PlanillaEncontrada = PlanillaEncontrada.TraerPlanilla(sidtplanilla);
+
+                miTrabajador.IdTrabajador = pidtrabajador;
+                miTrabajador = miTrabajador.traerTrabajador(miTrabajador.IdTrabajador);
+
+                PlanillaEncontrada = PlanillaEncontrada.TraerPLanillaConTrabajadorDuplicado(miTrabajador, PlanillaEncontrada.Mes, Convert.ToInt16(PlanillaEncontrada.Año), PlanillaEncontrada.IdtPlanilla);
+
+                if (PlanillaEncontrada != null)
+                {
+                    MessageBox.Show("Se encontro al trabajador: " + miTrabajador.Nombres + " " + miTrabajador.ApellidoPaterno + " " + miTrabajador.ApellidoMaterno + " Cargo: " + PlanillaEncontrada.ListaDetallePlanilla[0].Cargo +
+                        " en la planilla Nro: " + PlanillaEncontrada.Numero + " " + PlanillaEncontrada.Descripcion, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+
                 foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + pidtrabajador + "'"))
                 {
                     Nombre = rowTrabajador[2].ToString() + " " + rowTrabajador[3].ToString() + " " + rowTrabajador[4].ToString();
@@ -587,7 +594,7 @@ namespace CapaUsuario.Planilla
                         }
                         if (TienAFP == false)
                         {
-                            MessageBox.Show("El trabajador " + Nombre + " no tiene datos de AFP.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("El trabajador " + DNI + " : " + Nombre + " no tiene datos de AFP. No se podra agregar al trabajador. Corrija su periodo en Mantenimiento de Trabajadores", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
@@ -814,46 +821,31 @@ namespace CapaUsuario.Planilla
 
             Boolean PagoMensual = true;
             
-            if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
+            if (esTareo)
             {
                 cMetaJornal miMetaJornal = new cMetaJornal();
                 miMetaJornal = MetaJornal(dgvDetallePlanilla.Rows[fila].Cells[7].Value.ToString(), sidtmeta);
                 PagoMensual = miMetaJornal.Opcion;
 
                 PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
-            }
-
-            
-
-            if ((sidtregimenlaboral == 3 || sidtregimenlaboral == 5) && (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO"))
-            {
-                if (dgvDetallePlanilla.Rows[fila].Cells[12].Value.ToString() != "")
+                DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[12].Value);
+                DiasNoLaborados = DiasMes - DiasLaborados;
+                if (PagoMensual == false)
                 {
-                    
-                    DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[12].Value);
-                    DiasNoLaborados = DiasMes - DiasLaborados;
-                    if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
-                    {
-                        if (PagoMensual == false)
-                        {
-                            PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 2);
+                    PagoTotal = Math.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) * DiasLaborados, 2);
 
-                            PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
-                        }
+                    PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                }
 
-                        else
-                        {
-                            PagoTotal = CalcularRemuneracionMensual(DiasLaborados, DiasNoLaborados,   Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value));
+                else
+                {
+                    PagoTotal = CalcularRemuneracionMensual(DiasLaborados, DiasNoLaborados, Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value));
 
-                            PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value)/30;
-                        }
-                        
-                    }
+                    PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
                 }
             }
             else
             {
-
                 //Significa que el empleado empezo este mes
                 if (Convert.ToInt32(saño) == AñoInicio &&  sMes == MesInicio)
                 {
@@ -1287,8 +1279,8 @@ namespace CapaUsuario.Planilla
 
                     if (PlanillaEncontrada != null)
                     {
-                        MessageBox.Show("Se encontro al trabajador: " + miTrabajador.Nombres + " " + miTrabajador.ApellidoPaterno + " " + miTrabajador.ApellidoMaterno + "Cargo: " + PlanillaEncontrada.ListaDetallePlanilla[0].Cargo +
-                            " en la planilla Nro: " + PlanillaEncontrada.Numero + " " + PlanillaEncontrada.Descripcion);
+                        MessageBox.Show("Se encontro al trabajador: " + miTrabajador.Nombres + " " + miTrabajador.ApellidoPaterno + " " + miTrabajador.ApellidoMaterno + " Cargo: " + PlanillaEncontrada.ListaDetallePlanilla[0].Cargo +
+                            " en la planilla Nro: " + PlanillaEncontrada.Numero + " " + PlanillaEncontrada.Descripcion + ": Tendra que calcular su essalud manualmente ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     decimal number2 = 0;
                     if (decimal.TryParse(sma_empleador[i, 3].ToString(), out number2) == true)
@@ -1915,6 +1907,21 @@ namespace CapaUsuario.Planilla
             oDataMaestroAEmpleador = miMaestroAEmpleador.ListarMaestroAportacionesEmpleador();
 
             smingresos = new string[oDataPlantillaPlanilla.Rows.Count, 18];
+
+            if (Convert.ToBoolean(oDataPlantillaPlanilla.Rows[0][5]))
+            {
+                btnAgregarTrabajador.Visible = false;
+                btnImportar.Visible = true;
+                esTareo = true;
+            }
+            else
+            {
+                btnAgregarTrabajador.Visible = true;
+                btnImportar.Visible = false;
+
+                esTareo = false;
+            }
+
             foreach (DataRow row in oDataPlantillaPlanilla.Select("tipo='INGRESOS'"))
             {
                 foreach (DataRow rowmingresos in oDataMaestroIngresos.Select("idtmaestroingresos = '" + row[4].ToString() + "'"))

@@ -161,6 +161,7 @@ namespace CapaUsuario.Planilla
                 MessageBox.Show("No existen datos para Guardar, agrege por lo menos un detalle.", "Gestion del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            miPlantillaPlanilla.Tareo = chkTareo.Checked;
             foreach (DataGridViewRow rowDgvIngresos in dgvMaestroIngresos.Rows)
             {
                 miPlantillaPlanilla.IdtPlantillaPlanilla = Convert.ToInt32(rowDgvIngresos.Cells[2].Value);
@@ -380,6 +381,18 @@ namespace CapaUsuario.Planilla
             oDataMaestroATrabajador = miMaestroATrabajador.ListarMaestroAportacionesTrabajador();
             CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador miMaestroAEmpleador = new CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador();
             oDataMaestroAEmpleador = miMaestroAEmpleador.ListarMaestroAportacionesEmpleador();
+
+            if (oDataPlantillaPlanilla.Rows.Count != 0)
+            {
+                if (Convert.ToBoolean(oDataPlantillaPlanilla.Rows[0][5]))
+                {
+                    chkTareo.Checked = true;
+                }
+                else
+                {
+                    chkTareo.Checked = false;
+                }
+            }
 
             foreach (DataRow row in oDataPlantillaPlanilla.Rows)
             {

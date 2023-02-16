@@ -66,7 +66,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(466, 346);
+            this.btnSalir.Location = new System.Drawing.Point(535, 346);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 27;
@@ -82,7 +82,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEliminar.ImageKey = "118.png";
-            this.btnEliminar.Location = new System.Drawing.Point(377, 346);
+            this.btnEliminar.Location = new System.Drawing.Point(446, 346);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(83, 53);
             this.btnEliminar.TabIndex = 26;
@@ -98,7 +98,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificar.ImageKey = "13.png";
-            this.btnModificar.Location = new System.Drawing.Point(288, 346);
+            this.btnModificar.Location = new System.Drawing.Point(357, 346);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(83, 53);
             this.btnModificar.TabIndex = 25;
@@ -114,7 +114,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(199, 346);
+            this.btnNuevo.Location = new System.Drawing.Point(268, 346);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 24;
@@ -159,7 +159,7 @@
             this.dgvMaestroIngresos.ReadOnly = true;
             this.dgvMaestroIngresos.RowHeadersVisible = false;
             this.dgvMaestroIngresos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMaestroIngresos.Size = new System.Drawing.Size(537, 274);
+            this.dgvMaestroIngresos.Size = new System.Drawing.Size(606, 274);
             this.dgvMaestroIngresos.TabIndex = 23;
             this.dgvMaestroIngresos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroIngresos_CellClick);
             this.dgvMaestroIngresos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroIngresos_CellContentClick);
@@ -172,7 +172,7 @@
             this.groupBox2.Controls.Add(this.cboTipo);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(537, 48);
+            this.groupBox2.Size = new System.Drawing.Size(606, 48);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tipo";
@@ -181,7 +181,7 @@
             // 
             this.btnTipo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnTipo.Location = new System.Drawing.Point(467, 19);
+            this.btnTipo.Location = new System.Drawing.Point(536, 19);
             this.btnTipo.Name = "btnTipo";
             this.btnTipo.Size = new System.Drawing.Size(64, 23);
             this.btnTipo.TabIndex = 1;
@@ -207,16 +207,16 @@
             "kkkk"});
             this.cboTipo.Location = new System.Drawing.Point(6, 19);
             this.cboTipo.Name = "cboTipo";
-            this.cboTipo.Size = new System.Drawing.Size(455, 21);
+            this.cboTipo.Size = new System.Drawing.Size(524, 21);
             this.cboTipo.TabIndex = 0;
             this.cboTipo.SelectedIndexChanged += new System.EventHandler(this.cboTipo_SelectedIndexChanged);
             // 
             // Column1
             // 
-            this.Column1.HeaderText = "idtmaestroingresos";
+            this.Column1.HeaderText = "ID";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
+            this.Column1.Width = 50;
             // 
             // Column2
             // 
@@ -364,7 +364,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(561, 411);
+            this.ClientSize = new System.Drawing.Size(630, 411);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);

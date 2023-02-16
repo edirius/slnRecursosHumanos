@@ -17,6 +17,7 @@ namespace CapaDeNegocios.Planillas
         int sorden;
         string stipo;
         int scodigo;
+        bool stareo;
 
         public int IdtPlantillaPlanilla
         {
@@ -44,6 +45,19 @@ namespace CapaDeNegocios.Planillas
             set { scodigo = value; }
         }
 
+        public bool Tareo
+        {
+            get
+            {
+                return stareo;
+            }
+
+            set
+            {
+                stareo = value;
+            }
+        }
+
         public DataTable ListarDescripcionPlantillaPlanilla()
         {
             return Conexion.GDatos.TraerDataTable("spListarDescripcionPlantillaPlanilla");
@@ -56,13 +70,13 @@ namespace CapaDeNegocios.Planillas
 
         public Boolean CrearPlantillaPlanilla(cPlantillaPlanilla miPlantillaPlanilla)
         {
-            Conexion.GDatos.Ejecutar("spCrearPlantillaPlanilla", miPlantillaPlanilla.Descripcion, miPlantillaPlanilla.Orden, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo);
+            Conexion.GDatos.Ejecutar("spCrearPlantillaPlanilla", miPlantillaPlanilla.Descripcion, miPlantillaPlanilla.Orden, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo, miPlantillaPlanilla.Tareo);
             return true;
         }
 
         public Boolean ModificarPlantillaPlanilla(cPlantillaPlanilla miPlantillaPlanilla)
         {
-            Conexion.GDatos.Ejecutar("spModificarPlantillaPlanilla", miPlantillaPlanilla.IdtPlantillaPlanilla, miPlantillaPlanilla.Descripcion, miPlantillaPlanilla.Orden, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo);
+            Conexion.GDatos.Ejecutar("spModificarPlantillaPlanilla", miPlantillaPlanilla.IdtPlantillaPlanilla, miPlantillaPlanilla.Descripcion, miPlantillaPlanilla.Orden, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo, miPlantillaPlanilla.Tareo);
             return true;
         }
 

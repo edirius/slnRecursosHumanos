@@ -1334,6 +1334,7 @@ namespace CapaUsuario.Tareo
                 oDataAFP = miAFP.ObtenerListaAFP();
                 oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
                 oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
+                oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
             }
         }
     }

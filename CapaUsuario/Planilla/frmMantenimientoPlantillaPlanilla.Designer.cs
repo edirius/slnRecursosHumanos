@@ -50,6 +50,7 @@
             this.dgvMaestroATrabajador = new System.Windows.Forms.DataGridView();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.chkTareo = new System.Windows.Forms.CheckBox();
             this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AccionIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtIdTMaestroIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,13 +58,6 @@
             this.OrdenIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtCodigoMaestroIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDescripcionMaestroIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.AccionDescuentos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdDescuentos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrdenDescuentos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AccionTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +65,13 @@
             this.OrdenTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.AccionDescuentos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdDescuentos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrdenDescuentos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AccionEmpleador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,7 +97,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(728, 388);
+            this.btnSalir.Location = new System.Drawing.Point(792, 388);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 30;
@@ -112,7 +113,7 @@
             this.btnAgregar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAgregar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAgregar.ImageIndex = 1;
-            this.btnAgregar.Location = new System.Drawing.Point(461, 388);
+            this.btnAgregar.Location = new System.Drawing.Point(525, 388);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(83, 53);
             this.btnAgregar.TabIndex = 28;
@@ -128,7 +129,7 @@
             this.groupBox2.Controls.Add(this.cboDescripcion);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(799, 48);
+            this.groupBox2.Size = new System.Drawing.Size(863, 48);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Descripción";
@@ -141,7 +142,7 @@
             this.cboDescripcion.FormattingEnabled = true;
             this.cboDescripcion.Location = new System.Drawing.Point(6, 19);
             this.cboDescripcion.Name = "cboDescripcion";
-            this.cboDescripcion.Size = new System.Drawing.Size(787, 21);
+            this.cboDescripcion.Size = new System.Drawing.Size(851, 21);
             this.cboDescripcion.TabIndex = 0;
             this.cboDescripcion.SelectedIndexChanged += new System.EventHandler(this.cboDescripcion_SelectedIndexChanged);
             // 
@@ -150,7 +151,7 @@
             this.groupBox1.Controls.Add(this.dgvMaestroIngresos);
             this.groupBox1.Location = new System.Drawing.Point(12, 66);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(395, 155);
+            this.groupBox1.Size = new System.Drawing.Size(425, 155);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Maestro Ingresos";
@@ -186,7 +187,7 @@
             this.dgvMaestroIngresos.RowHeadersVisible = false;
             this.dgvMaestroIngresos.RowHeadersWidth = 25;
             this.dgvMaestroIngresos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvMaestroIngresos.Size = new System.Drawing.Size(383, 130);
+            this.dgvMaestroIngresos.Size = new System.Drawing.Size(413, 130);
             this.dgvMaestroIngresos.TabIndex = 9;
             this.dgvMaestroIngresos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroIngresos_CellClick);
             this.dgvMaestroIngresos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroIngresos_CellContentClick);
@@ -195,9 +196,9 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.dgvMaestroDescuentos);
-            this.groupBox3.Location = new System.Drawing.Point(416, 66);
+            this.groupBox3.Location = new System.Drawing.Point(449, 66);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(395, 155);
+            this.groupBox3.Size = new System.Drawing.Size(420, 155);
             this.groupBox3.TabIndex = 32;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Descuentos";
@@ -233,7 +234,7 @@
             this.dgvMaestroDescuentos.RowHeadersVisible = false;
             this.dgvMaestroDescuentos.RowHeadersWidth = 25;
             this.dgvMaestroDescuentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvMaestroDescuentos.Size = new System.Drawing.Size(383, 130);
+            this.dgvMaestroDescuentos.Size = new System.Drawing.Size(408, 130);
             this.dgvMaestroDescuentos.TabIndex = 10;
             this.dgvMaestroDescuentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroDescuentos_CellClick);
             this.dgvMaestroDescuentos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroDescuentos_CellContentClick);
@@ -242,9 +243,9 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.dgvMaestroAEmpleador);
-            this.groupBox4.Location = new System.Drawing.Point(416, 227);
+            this.groupBox4.Location = new System.Drawing.Point(448, 227);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(395, 155);
+            this.groupBox4.Size = new System.Drawing.Size(421, 155);
             this.groupBox4.TabIndex = 34;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Maestro Aportaciones Empleador";
@@ -280,7 +281,7 @@
             this.dgvMaestroAEmpleador.RowHeadersVisible = false;
             this.dgvMaestroAEmpleador.RowHeadersWidth = 25;
             this.dgvMaestroAEmpleador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvMaestroAEmpleador.Size = new System.Drawing.Size(383, 130);
+            this.dgvMaestroAEmpleador.Size = new System.Drawing.Size(409, 130);
             this.dgvMaestroAEmpleador.TabIndex = 12;
             this.dgvMaestroAEmpleador.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroAEmpleador_CellClick);
             this.dgvMaestroAEmpleador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroAEmpleador_CellContentClick);
@@ -290,7 +291,7 @@
             this.groupBox5.Controls.Add(this.dgvMaestroATrabajador);
             this.groupBox5.Location = new System.Drawing.Point(12, 227);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(395, 155);
+            this.groupBox5.Size = new System.Drawing.Size(425, 155);
             this.groupBox5.TabIndex = 33;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Maestro Aportaciones Trabajador";
@@ -326,7 +327,7 @@
             this.dgvMaestroATrabajador.RowHeadersVisible = false;
             this.dgvMaestroATrabajador.RowHeadersWidth = 25;
             this.dgvMaestroATrabajador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvMaestroATrabajador.Size = new System.Drawing.Size(383, 130);
+            this.dgvMaestroATrabajador.Size = new System.Drawing.Size(413, 130);
             this.dgvMaestroATrabajador.TabIndex = 11;
             this.dgvMaestroATrabajador.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroATrabajador_CellClick);
             this.dgvMaestroATrabajador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroATrabajador_CellContentClick);
@@ -338,7 +339,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(550, 388);
+            this.btnNuevo.Location = new System.Drawing.Point(614, 388);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 35;
@@ -354,7 +355,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnGuardar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnGuardar.ImageIndex = 1;
-            this.btnGuardar.Location = new System.Drawing.Point(639, 388);
+            this.btnGuardar.Location = new System.Drawing.Point(703, 388);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(83, 53);
             this.btnGuardar.TabIndex = 36;
@@ -362,6 +363,16 @@
             this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // chkTareo
+            // 
+            this.chkTareo.AutoSize = true;
+            this.chkTareo.Location = new System.Drawing.Point(18, 402);
+            this.chkTareo.Name = "chkTareo";
+            this.chkTareo.Size = new System.Drawing.Size(115, 17);
+            this.chkTareo.TabIndex = 37;
+            this.chkTareo.Text = "Cargado por Tareo";
+            this.chkTareo.UseVisualStyleBackColor = true;
             // 
             // btnEliminar
             // 
@@ -388,10 +399,9 @@
             // 
             // IdIngresos
             // 
-            this.IdIngresos.HeaderText = "IdIngresos";
+            this.IdIngresos.HeaderText = "ID";
             this.IdIngresos.Name = "IdIngresos";
             this.IdIngresos.ReadOnly = true;
-            this.IdIngresos.Visible = false;
             this.IdIngresos.Width = 50;
             // 
             // OrdenIngresos
@@ -414,58 +424,6 @@
             this.txtDescripcionMaestroIngresos.Name = "txtDescripcionMaestroIngresos";
             this.txtDescripcionMaestroIngresos.ReadOnly = true;
             this.txtDescripcionMaestroIngresos.Width = 250;
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            this.dataGridViewButtonColumn1.HeaderText = "";
-            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewButtonColumn1.Width = 30;
-            // 
-            // AccionDescuentos
-            // 
-            this.AccionDescuentos.HeaderText = "AccionDescuentos";
-            this.AccionDescuentos.Name = "AccionDescuentos";
-            this.AccionDescuentos.ReadOnly = true;
-            this.AccionDescuentos.Visible = false;
-            this.AccionDescuentos.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "IdTPlantillaPlanilla";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // IdDescuentos
-            // 
-            this.IdDescuentos.HeaderText = "IdDescuentos";
-            this.IdDescuentos.Name = "IdDescuentos";
-            this.IdDescuentos.ReadOnly = true;
-            this.IdDescuentos.Visible = false;
-            this.IdDescuentos.Width = 50;
-            // 
-            // OrdenDescuentos
-            // 
-            this.OrdenDescuentos.HeaderText = "Nro";
-            this.OrdenDescuentos.Name = "OrdenDescuentos";
-            this.OrdenDescuentos.ReadOnly = true;
-            this.OrdenDescuentos.Width = 25;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "CODIGO";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "DESCRIPCION";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 250;
             // 
             // dataGridViewButtonColumn2
             // 
@@ -492,10 +450,9 @@
             // 
             // IdTrabajador
             // 
-            this.IdTrabajador.HeaderText = "IdTrabajador";
+            this.IdTrabajador.HeaderText = "ID";
             this.IdTrabajador.Name = "IdTrabajador";
             this.IdTrabajador.ReadOnly = true;
-            this.IdTrabajador.Visible = false;
             this.IdTrabajador.Width = 50;
             // 
             // OrdenTrabajador
@@ -518,6 +475,57 @@
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Width = 250;
+            // 
+            // dataGridViewButtonColumn1
+            // 
+            this.dataGridViewButtonColumn1.HeaderText = "";
+            this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
+            this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewButtonColumn1.Width = 30;
+            // 
+            // AccionDescuentos
+            // 
+            this.AccionDescuentos.HeaderText = "AccionDescuentos";
+            this.AccionDescuentos.Name = "AccionDescuentos";
+            this.AccionDescuentos.ReadOnly = true;
+            this.AccionDescuentos.Visible = false;
+            this.AccionDescuentos.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "IdTPlantillaPlanilla";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // IdDescuentos
+            // 
+            this.IdDescuentos.HeaderText = "ID";
+            this.IdDescuentos.Name = "IdDescuentos";
+            this.IdDescuentos.ReadOnly = true;
+            this.IdDescuentos.Width = 50;
+            // 
+            // OrdenDescuentos
+            // 
+            this.OrdenDescuentos.HeaderText = "Nro";
+            this.OrdenDescuentos.Name = "OrdenDescuentos";
+            this.OrdenDescuentos.ReadOnly = true;
+            this.OrdenDescuentos.Width = 25;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "CODIGO";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "DESCRIPCION";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Width = 250;
             // 
             // dataGridViewButtonColumn3
             // 
@@ -544,10 +552,9 @@
             // 
             // IdEmpleador
             // 
-            this.IdEmpleador.HeaderText = "IdEmpleador";
+            this.IdEmpleador.HeaderText = "ID";
             this.IdEmpleador.Name = "IdEmpleador";
             this.IdEmpleador.ReadOnly = true;
-            this.IdEmpleador.Visible = false;
             this.IdEmpleador.Width = 50;
             // 
             // OrdenEmpleador
@@ -575,7 +582,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 453);
+            this.ClientSize = new System.Drawing.Size(887, 453);
+            this.Controls.Add(this.chkTareo);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.groupBox4);
@@ -600,6 +608,7 @@
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaestroATrabajador)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -619,6 +628,7 @@
         private System.Windows.Forms.DataGridView dgvMaestroATrabajador;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.CheckBox chkTareo;
         private System.Windows.Forms.DataGridViewButtonColumn btnEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn AccionIngresos;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtIdTMaestroIngresos;
