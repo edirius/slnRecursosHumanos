@@ -20,30 +20,10 @@ namespace CapaDeNegocios.Planillas
             ImpuestoAnual = CalculoImpuestoAnual(RentaNetaProyectada, UIT);
             ImpuestoCalculado = ImpuestoAnual - RetMesAnteriores;
 
-            if (NroMes == 1 || NroMes == 2 || NroMes == 3)
-            {
-                ImpuestoAPagar = ImpuestoCalculado / 12;
-            }
-            else if (NroMes == 4)
-            {
-                ImpuestoAPagar = ImpuestoCalculado / 9;
-            }
-            else if (NroMes == 5 || NroMes == 6 || NroMes == 7)
-            {
-                ImpuestoAPagar = ImpuestoCalculado / 8;
-            }
-            else if (NroMes == 8)
-            {
-                ImpuestoAPagar = ImpuestoCalculado / 5;
-            }
-            else if(NroMes == 9 || NroMes == 10 || NroMes == 11)
-            {
-                ImpuestoAPagar = ImpuestoCalculado / 4;
-            }
-            else
-            {
-                ImpuestoAPagar = ImpuestoCalculado;
-            }
+            int numeroMeses = 12 - NroMes + 1;
+
+            ImpuestoAPagar = ImpuestoCalculado / numeroMeses;
+            
             return ImpuestoAPagar;
         }
 

@@ -21,6 +21,10 @@ namespace CapaUsuario.ExportarSunat
         ArrayList milistaPER = new ArrayList();
         ArrayList milistaEST = new ArrayList();
         ArrayList milistaEDU = new ArrayList();
+
+        List<cDatosIdentificacion> ListaDatosIdentificacion = new List<ExportarSunat.cDatosIdentificacion>();
+        List<cDatosTrabajador> ListaDatosTrabajador = new List<cDatosTrabajador>();
+        List<cDatosPeriodo> ListaDatosPeriodo = new List<cDatosPeriodo>();
         string FechaTexto = "";
         string ContenidoIDE = "";
         int nroSexo = 0;
@@ -280,62 +284,93 @@ namespace CapaUsuario.ExportarSunat
             {
                 if (Convert.ToBoolean(fila.Cells["☑"].Value) == true)
                 {
+                    cDatosIdentificacion oDatosIdenticacion = new cDatosIdentificacion();
+
                     string tipoVia2 = "", nombreVia2 = "", nroVia2 = "", departamento2 = "", interior2 = "", manzana2 = "", lote2 = "",
                     kilometro2 = "", block2 = "", etapa2 = "", tipoZona2 = "", nombreZona2 = "", referencia2 = "",
                     ubigeo2 = "", indicadorAsistenciaESSALUD = "1";
+                    oDatosIdenticacion.IndicadorEssalud.Valor = indicadorAsistenciaESSALUD;
+
                     // obtenemos los datos de las columnas que queremos
                     string tipoDoc = "01";
+                    oDatosIdenticacion.TipoDocumento.Valor = tipoDoc;
                     string dni = fila.Cells["DNI"].Value.ToString();
+                    oDatosIdenticacion.NumeroDocumento.Valor = dni;
                     string paisDoc = "604";
+                    oDatosIdenticacion.PaisEmisor.Valor = paisDoc;
                     string apPaterno = fila.Cells["ApellidoPaterno"].Value.ToString();
+                    oDatosIdenticacion.ApellidoPaterno.Valor = apPaterno;
                     string apMaterno = fila.Cells["ApellidoMaterno"].Value.ToString();
+                    oDatosIdenticacion.ApellidoMaterno.Valor = apMaterno;
                     string nombres = fila.Cells["Nombres"].Value.ToString();
+                    oDatosIdenticacion.Nombres.Valor = nombres;
                     DateTime fechaNac = Convert.ToDateTime(fila.Cells["FechaNac"].Value.ToString());
+                    oDatosIdenticacion.FechaNacimiento.Valor = fechaNac.ToShortDateString();
                     string sexo = fila.Cells["Sexo"].Value.ToString();
                     Sexo(sexo);
+                    oDatosIdenticacion.Sexo.Valor = nroSexo.ToString();
                     string nacionalidad = fila.Cells["CodNac"].Value.ToString();
+                    oDatosIdenticacion.Nacionalidad.Valor = nacionalidad;
                     string telLargaDistancia = "";
+                    oDatosIdenticacion.TelefonoLargaDistancia.Valor = telLargaDistancia;
                     string telefono = fila.Cells["Celular"].Value.ToString();
                     if (telefono == "")
                     {
                         telefono = "984696969";
                     }
                     else;
+                    oDatosIdenticacion.Telefono.Valor = telefono;
                     string correo = fila.Cells["Email"].Value.ToString();
                     if (correo == "")
                     {
                         correo = nombres.Substring(0,3).Trim() + apPaterno.Substring(0,3).Trim() + apMaterno.Substring(0,3).Trim() + "@gmail.com";
                     }
+                    oDatosIdenticacion.CorreoElectronico.Valor = correo;
                     string tipoVia = fila.Cells["CodTipoVia"].Value.ToString();
+                    oDatosIdenticacion.TipoVia.Valor = tipoVia;
                     string nombreVia = fila.Cells["NombreVia"].Value.ToString();
+                    
                     string nroVia = fila.Cells["NroVia"].Value.ToString();
+                    
                     if (nombreVia == "")
                     {
                         nombreVia = "0";
                     }
-
+                    oDatosIdenticacion.NombreVia.Valor = nombreVia;
                     if (nroVia == "")
                     {
                         nroVia = "0";
                     }
+                    oDatosIdenticacion.NumeroVia.Valor = nroVia;
                     string departamento = "";
+                    oDatosIdenticacion.Departamento.Valor = departamento;
                     string interior = fila.Cells["Departamento"].Value.ToString();
-
+                    oDatosIdenticacion.Interior.Valor = interior;
                     string manzana = "";
+                    oDatosIdenticacion.Manzana.Valor = manzana;
                     string lote = "";
+                    oDatosIdenticacion.Lote.Valor = lote;
                     string kilometro = "";
+                    oDatosIdenticacion.Kilometro.Valor = kilometro;
                     string block = "";
+                    oDatosIdenticacion.Block.Valor = block;
                     string etapa = "";
+                    oDatosIdenticacion.Etapa.Valor = etapa;
                     string tipoZona = fila.Cells["CodTipoZona"].Value.ToString();
+                    oDatosIdenticacion.TipoZona.Valor = tipoZona;
                     string nombreZona = fila.Cells["NombreZona"].Value.ToString();
                     if (nombreZona == "")
                     {
                         nombreZona = "0";
                     }
+                    oDatosIdenticacion.NombreZona.Valor = nombreZona;
                     string referencia = fila.Cells["Referencia"].Value.ToString();
+                    oDatosIdenticacion.Referencia.Valor = referencia;
                     string ubigeo = fila.Cells["CodUbigeo"].Value.ToString();
+                    oDatosIdenticacion.Ubigeo.Valor = ubigeo;
                     ContenidoIDE = oExportar.ExportarDatosTrabajador(tipoDoc, dni, paisDoc, fechaNac.ToShortDateString(), apPaterno, apMaterno, nombres, nroSexo.ToString(), nacionalidad, telLargaDistancia, telefono, correo, tipoVia, nombreVia, nroVia, departamento, interior, manzana, lote, kilometro, block, etapa, tipoZona, nombreZona, referencia, ubigeo, tipoVia2, nombreVia2, nroVia2, departamento2, interior2, manzana2, lote2, kilometro2, block2, etapa2, tipoZona2, nombreZona2, referencia2, ubigeo2, indicadorAsistenciaESSALUD);
                     milistaIDE.Add(ContenidoIDE);
+                    ListaDatosIdentificacion.Add(oDatosIdenticacion);
                    
                 }
                 
@@ -384,6 +419,19 @@ namespace CapaUsuario.ExportarSunat
                     //string fechafin = fila.Cells["FechaFin"].Value.ToString();
                     string fechafin = "";
                     string indicadorTipoRegistro = fila.Cells["CodMotivoFin"].Value.ToString();
+                    cDatosPeriodo oDatoPeriodo = new cDatosPeriodo();
+
+                    oDatoPeriodo.TipoDocumento.Valor = tipoDoc;
+                    oDatoPeriodo.NumeroDocumento.Valor = dni;
+                    oDatoPeriodo.PaisEmisor.Valor = paisDoc;
+                    oDatoPeriodo.Categoria.Valor = Categoria;
+                    oDatoPeriodo.TipoRegistro.Valor = tipoRegistro;
+                    oDatoPeriodo.FechaInicio.Valor = fechainicio.ToShortDateString();
+                    oDatoPeriodo.FechaFin.Valor = fechafin;
+                    oDatoPeriodo.IndicadorTipoRegistro.Valor = indicadorTipoRegistro;
+                    oDatoPeriodo.EpsServiciosPropios.Valor = EPS;
+                    ListaDatosPeriodo.Add(oDatoPeriodo);
+
                     Periodos = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro, fechainicio.ToShortDateString(), fechafin, indicadorTipoRegistro, EPS);
                     milistaPER.Add(Periodos);
                     //TipoTrabajador
@@ -392,6 +440,19 @@ namespace CapaUsuario.ExportarSunat
                     //string fechafin2 = fila.Cells["FechaFin"].Value.ToString();
                     string fechafin2 = "";
                     string indicadorTipoRegistro2 = fila.Cells["CodSunatTT"].Value.ToString();
+
+                    cDatosPeriodo oDatoPeriodo2 = new cDatosPeriodo();
+                    oDatoPeriodo2.TipoDocumento.Valor = tipoDoc;
+                    oDatoPeriodo2.NumeroDocumento.Valor = dni;
+                    oDatoPeriodo2.PaisEmisor.Valor = paisDoc;
+                    oDatoPeriodo2.Categoria.Valor = Categoria;
+                    oDatoPeriodo2.TipoRegistro.Valor = tipoRegistro2;
+                    oDatoPeriodo2.FechaInicio.Valor = fechainicio2.ToShortDateString();
+                    oDatoPeriodo2.FechaFin.Valor = fechafin2;
+                    oDatoPeriodo2.IndicadorTipoRegistro.Valor = indicadorTipoRegistro2;
+                    oDatoPeriodo2.EpsServiciosPropios.Valor = EPS;
+                    ListaDatosPeriodo.Add(oDatoPeriodo2);
+
                     TipoTrabajador = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro2, fechainicio2.ToShortDateString(), fechafin2, indicadorTipoRegistro2, EPS);
                     milistaPER.Add(TipoTrabajador);
                     //Regimen Aseguramiento Salud
@@ -401,6 +462,19 @@ namespace CapaUsuario.ExportarSunat
                     //string fechafin3 = fila.Cells["FechaFinSalud"].Value.ToString();
                     string indicadorTipoRegistro3 = fila.Cells["RegimenSalud"].Value.ToString();
                     ConvertiraNumeroSalud(indicadorTipoRegistro3);
+
+                    cDatosPeriodo oDatoPeriodo3 = new cDatosPeriodo();
+                    oDatoPeriodo3.TipoDocumento.Valor = tipoDoc;
+                    oDatoPeriodo3.NumeroDocumento.Valor = dni;
+                    oDatoPeriodo3.PaisEmisor.Valor = paisDoc;
+                    oDatoPeriodo3.Categoria.Valor = Categoria;
+                    oDatoPeriodo3.TipoRegistro.Valor = tipoRegistro3;
+                    oDatoPeriodo3.FechaInicio.Valor = fechainicio3.ToShortDateString();
+                    oDatoPeriodo3.FechaFin.Valor = fechafin3;
+                    oDatoPeriodo3.IndicadorTipoRegistro.Valor = NroRegimenSalud;
+                    oDatoPeriodo3.EpsServiciosPropios.Valor = EPS;
+                    ListaDatosPeriodo.Add(oDatoPeriodo3);
+
                     RegimenAseguramiento = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro3, fechainicio3.ToShortDateString(), fechafin3, NroRegimenSalud, EPS);
                     milistaPER.Add(RegimenAseguramiento);
                     //Regimen Pensionario
@@ -409,6 +483,20 @@ namespace CapaUsuario.ExportarSunat
                     string fechafin4 = "";
                     //string fechafin4 = fila.Cells["FechaFinRegPensionario"].Value.ToString();
                     string indicadorTipoRegistro4 = fila.Cells["CodAFP"].Value.ToString();
+
+                    cDatosPeriodo oDatoPeriodo4 = new cDatosPeriodo();
+
+                    oDatoPeriodo4.TipoDocumento.Valor = tipoDoc;
+                    oDatoPeriodo4.NumeroDocumento.Valor = dni;
+                    oDatoPeriodo4.PaisEmisor.Valor = paisDoc;
+                    oDatoPeriodo4.Categoria.Valor = Categoria;
+                    oDatoPeriodo4.TipoRegistro.Valor = tipoRegistro4;
+                    oDatoPeriodo4.FechaInicio.Valor = fechainicio4.ToShortDateString();
+                    oDatoPeriodo4.FechaFin.Valor = fechafin4;
+                    oDatoPeriodo4.IndicadorTipoRegistro.Valor = indicadorTipoRegistro4;
+                    oDatoPeriodo4.EpsServiciosPropios.Valor = EPS;
+                    ListaDatosPeriodo.Add(oDatoPeriodo4);
+
                     RegimenPensionario = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro4, fechainicio4.ToShortDateString(), fechafin4, indicadorTipoRegistro4, EPS);
                     milistaPER.Add(RegimenPensionario);
 
@@ -420,6 +508,20 @@ namespace CapaUsuario.ExportarSunat
                         string fechafin5 = "";
                         //string fechafin5 = fila.Cells["FechaFinSalud"].Value.ToString();
                         string indicadorTipoRegistro5 = "1";
+
+                        cDatosPeriodo oDatoPeriodo5 = new cDatosPeriodo();
+
+                        oDatoPeriodo5.TipoDocumento.Valor = tipoDoc;
+                        oDatoPeriodo5.NumeroDocumento.Valor = dni;
+                        oDatoPeriodo5.PaisEmisor.Valor = paisDoc;
+                        oDatoPeriodo5.Categoria.Valor = Categoria;
+                        oDatoPeriodo5.TipoRegistro.Valor = tipoRegistro5;
+                        oDatoPeriodo5.FechaInicio.Valor = fechainicio5.ToShortDateString();
+                        oDatoPeriodo5.FechaFin.Valor = fechafin5;
+                        oDatoPeriodo5.IndicadorTipoRegistro.Valor = indicadorTipoRegistro5;
+                        oDatoPeriodo5.EpsServiciosPropios.Valor = EPS;
+                        ListaDatosPeriodo.Add(oDatoPeriodo5);
+
                         SRCT = oExportar.ExportarPeriodos(tipoDoc, dni, paisDoc, Categoria, tipoRegistro5, fechainicio5.ToShortDateString(), fechafin5, indicadorTipoRegistro5, EPS);
                         milistaPER.Add(SRCT);
                     }
@@ -470,8 +572,32 @@ namespace CapaUsuario.ExportarSunat
                         Renta5ta = "";
                         convenio = "";
                     }
-                    
 
+                    cDatosTrabajador oDataTrabajador = new cDatosTrabajador();
+                    oDataTrabajador.TipoDocumento.Valor = tipoDoc;
+                    oDataTrabajador.NumeroDocumento.Valor = dni;
+                    oDataTrabajador.PaisEmisor.Valor = paisDoc;
+                    oDataTrabajador.RegimenLaboral.Valor = RegimenLaboral;
+                    oDataTrabajador.SituacionEducativa.Valor = SituacionEdu;
+                    oDataTrabajador.Ocupacion.Valor = Ocupacion;
+                    oDataTrabajador.Discapacidad.Valor = Discapacidad;
+                    oDataTrabajador.Cuspp.Valor = CUSPP;
+                    oDataTrabajador.SctrPension.Valor = SCTR;
+                    oDataTrabajador.TipoContrato.Valor = tipoContrato;
+                    oDataTrabajador.SujetoRegimenAlternativo.Valor = regimenAlternativo;
+                    oDataTrabajador.SujetoJornadaMaxima.Valor = jornadaTrabajo;
+                    oDataTrabajador.SujetoHorarioNocturno.Valor = horarioNocturno;
+                    oDataTrabajador.Sindicalizado.Valor = sindicalizado;
+                    oDataTrabajador.PeriocidadIngreso.Valor = nroPeriodicidad;
+                    oDataTrabajador.MontoRemuneracionBasica.Valor = remBasica;
+                    oDataTrabajador.Situacion.Valor = situacion;
+                    oDataTrabajador.Renta5taExonerada.Valor = Renta5ta;
+                    oDataTrabajador.SituacionEspecial.Valor = situacionEsp;
+                    oDataTrabajador.TipoPago.Valor = nroTipoPago;
+                    oDataTrabajador.CategoriaOcupacion.Valor = catOcupacional;
+                    oDataTrabajador.ConvenioPagoDobleTributacion.Valor = convenio;
+                    oDataTrabajador.Ruc.Valor = RUCTrabajador;
+                    ListaDatosTrabajador.Add(oDataTrabajador);
 
                     string ContenidoTRA = oExportar.ExportarDatosTrabajador2(tipoDoc, dni, paisDoc, RegimenLaboral, SituacionEdu, Ocupacion, Discapacidad, CUSPP, SCTR, tipoContrato, regimenAlternativo, jornadaTrabajo, horarioNocturno, sindicalizado, nroPeriodicidad, remBasica, situacion, Renta5ta, situacionEsp, nroTipoPago, catOcupacional, convenio, RUCTrabajador);
                     //MessageBox.Show(Contenido);
@@ -705,7 +831,24 @@ namespace CapaUsuario.ExportarSunat
 
         private void frmExportarTodo_Load(object sender, EventArgs e)
         {
+            tipMensaje.SetToolTip(checkIDE, "Incluir Datos de Identificacion");
+            tipMensaje.SetToolTip(checkPER, "Incluir Datos de Periodos");
+            tipMensaje.SetToolTip(checkEST, "Incluir Datos de Establecimiento");
+            tipMensaje.SetToolTip(checkTRA, "Incluir Datos de Trabajo");
+            tipMensaje.SetToolTip(checkEDU, "Incluir Datos de Educacion");
+            tipMensaje.SetToolTip(chkSRCT, "Incluir Datos de SRCT");
+        }
 
+        private void btnVerCodificacion_Click(object sender, EventArgs e)
+        {
+            frmVerCodificacion fVerCodificacion = new frmVerCodificacion();
+            fVerCodificacion.ListaDatosIdentificacion = ListaDatosIdentificacion;
+            fVerCodificacion.ListaDatosTrabajador = ListaDatosTrabajador;
+            fVerCodificacion.ListaDatosPeriodos = ListaDatosPeriodo;
+            if (fVerCodificacion.ShowDialog() == DialogResult.OK)
+            {
+
+            }                
         }
     }
 }

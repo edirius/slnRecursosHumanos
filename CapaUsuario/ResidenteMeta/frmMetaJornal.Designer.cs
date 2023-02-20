@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.dgvMetaJornal = new System.Windows.Forms.DataGridView();
@@ -224,26 +226,33 @@
             // 
             // txtCategoria
             // 
-            this.txtCategoria.HeaderText = "Categoria";
+            this.txtCategoria.HeaderText = "CATEGORIA";
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.ReadOnly = true;
             this.txtCategoria.Width = 350;
             // 
             // txtJornal
             // 
-            this.txtJornal.HeaderText = "Jornal";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.txtJornal.DefaultCellStyle = dataGridViewCellStyle2;
+            this.txtJornal.HeaderText = "JORNAL";
             this.txtJornal.Name = "txtJornal";
-            this.txtJornal.Width = 125;
             // 
             // mensual
             // 
             this.mensual.DataPropertyName = "mensual";
-            this.mensual.HeaderText = "Mensual";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.mensual.DefaultCellStyle = dataGridViewCellStyle3;
+            this.mensual.HeaderText = "MENSUAL";
             this.mensual.Name = "mensual";
             // 
             // colOpcion
             // 
-            this.colOpcion.HeaderText = "Opcion";
+            this.colOpcion.HeaderText = "OPCION";
             this.colOpcion.Items.AddRange(new object[] {
             "Jornal",
             "Mensual"});

@@ -42,15 +42,6 @@
             this.cboDescripcion = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvMaestroIngresos = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dgvMaestroDescuentos = new System.Windows.Forms.DataGridView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dgvMaestroAEmpleador = new System.Windows.Forms.DataGridView();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dgvMaestroATrabajador = new System.Windows.Forms.DataGridView();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.chkTareo = new System.Windows.Forms.CheckBox();
             this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AccionIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtIdTMaestroIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,13 +49,8 @@
             this.OrdenIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtCodigoMaestroIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDescripcionMaestroIngresos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.AccionTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrdenTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dgvMaestroDescuentos = new System.Windows.Forms.DataGridView();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AccionDescuentos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +58,8 @@
             this.OrdenDescuentos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dgvMaestroAEmpleador = new System.Windows.Forms.DataGridView();
             this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AccionEmpleador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +67,19 @@
             this.OrdenEmpleador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.dgvMaestroATrabajador = new System.Windows.Forms.DataGridView();
+            this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.AccionTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrdenTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.chkTareo = new System.Windows.Forms.CheckBox();
+            this.chkMetaJornal = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaestroIngresos)).BeginInit();
@@ -192,188 +193,6 @@
             this.dgvMaestroIngresos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroIngresos_CellClick);
             this.dgvMaestroIngresos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroIngresos_CellContentClick);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.dgvMaestroDescuentos);
-            this.groupBox3.Location = new System.Drawing.Point(449, 66);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(420, 155);
-            this.groupBox3.TabIndex = 32;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Descuentos";
-            // 
-            // dgvMaestroDescuentos
-            // 
-            this.dgvMaestroDescuentos.AllowUserToAddRows = false;
-            this.dgvMaestroDescuentos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvMaestroDescuentos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvMaestroDescuentos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMaestroDescuentos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvMaestroDescuentos.ColumnHeadersHeight = 20;
-            this.dgvMaestroDescuentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewButtonColumn1,
-            this.AccionDescuentos,
-            this.dataGridViewTextBoxColumn1,
-            this.IdDescuentos,
-            this.OrdenDescuentos,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
-            this.dgvMaestroDescuentos.Location = new System.Drawing.Point(6, 19);
-            this.dgvMaestroDescuentos.Name = "dgvMaestroDescuentos";
-            this.dgvMaestroDescuentos.RowHeadersVisible = false;
-            this.dgvMaestroDescuentos.RowHeadersWidth = 25;
-            this.dgvMaestroDescuentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvMaestroDescuentos.Size = new System.Drawing.Size(408, 130);
-            this.dgvMaestroDescuentos.TabIndex = 10;
-            this.dgvMaestroDescuentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroDescuentos_CellClick);
-            this.dgvMaestroDescuentos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroDescuentos_CellContentClick);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.dgvMaestroAEmpleador);
-            this.groupBox4.Location = new System.Drawing.Point(448, 227);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(421, 155);
-            this.groupBox4.TabIndex = 34;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Maestro Aportaciones Empleador";
-            // 
-            // dgvMaestroAEmpleador
-            // 
-            this.dgvMaestroAEmpleador.AllowUserToAddRows = false;
-            this.dgvMaestroAEmpleador.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvMaestroAEmpleador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvMaestroAEmpleador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMaestroAEmpleador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvMaestroAEmpleador.ColumnHeadersHeight = 20;
-            this.dgvMaestroAEmpleador.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewButtonColumn3,
-            this.AccionEmpleador,
-            this.dataGridViewTextBoxColumn7,
-            this.IdEmpleador,
-            this.OrdenEmpleador,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9});
-            this.dgvMaestroAEmpleador.Location = new System.Drawing.Point(6, 19);
-            this.dgvMaestroAEmpleador.Name = "dgvMaestroAEmpleador";
-            this.dgvMaestroAEmpleador.RowHeadersVisible = false;
-            this.dgvMaestroAEmpleador.RowHeadersWidth = 25;
-            this.dgvMaestroAEmpleador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvMaestroAEmpleador.Size = new System.Drawing.Size(409, 130);
-            this.dgvMaestroAEmpleador.TabIndex = 12;
-            this.dgvMaestroAEmpleador.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroAEmpleador_CellClick);
-            this.dgvMaestroAEmpleador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroAEmpleador_CellContentClick);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.dgvMaestroATrabajador);
-            this.groupBox5.Location = new System.Drawing.Point(12, 227);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(425, 155);
-            this.groupBox5.TabIndex = 33;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Maestro Aportaciones Trabajador";
-            // 
-            // dgvMaestroATrabajador
-            // 
-            this.dgvMaestroATrabajador.AllowUserToAddRows = false;
-            this.dgvMaestroATrabajador.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvMaestroATrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvMaestroATrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMaestroATrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvMaestroATrabajador.ColumnHeadersHeight = 20;
-            this.dgvMaestroATrabajador.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewButtonColumn2,
-            this.AccionTrabajador,
-            this.dataGridViewTextBoxColumn4,
-            this.IdTrabajador,
-            this.OrdenTrabajador,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
-            this.dgvMaestroATrabajador.Location = new System.Drawing.Point(6, 19);
-            this.dgvMaestroATrabajador.Name = "dgvMaestroATrabajador";
-            this.dgvMaestroATrabajador.RowHeadersVisible = false;
-            this.dgvMaestroATrabajador.RowHeadersWidth = 25;
-            this.dgvMaestroATrabajador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvMaestroATrabajador.Size = new System.Drawing.Size(413, 130);
-            this.dgvMaestroATrabajador.TabIndex = 11;
-            this.dgvMaestroATrabajador.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroATrabajador_CellClick);
-            this.dgvMaestroATrabajador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroATrabajador_CellContentClick);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNuevo.BackColor = System.Drawing.Color.MintCream;
-            this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(614, 388);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(83, 53);
-            this.btnNuevo.TabIndex = 35;
-            this.btnNuevo.Text = "&Nuevo";
-            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnNuevo.UseVisualStyleBackColor = false;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardar.BackColor = System.Drawing.Color.MintCream;
-            this.btnGuardar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnGuardar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnGuardar.ImageIndex = 1;
-            this.btnGuardar.Location = new System.Drawing.Point(703, 388);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(83, 53);
-            this.btnGuardar.TabIndex = 36;
-            this.btnGuardar.Text = "&Guardar";
-            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnGuardar.UseVisualStyleBackColor = false;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // chkTareo
-            // 
-            this.chkTareo.AutoSize = true;
-            this.chkTareo.Location = new System.Drawing.Point(18, 402);
-            this.chkTareo.Name = "chkTareo";
-            this.chkTareo.Size = new System.Drawing.Size(115, 17);
-            this.chkTareo.TabIndex = 37;
-            this.chkTareo.Text = "Cargado por Tareo";
-            this.chkTareo.UseVisualStyleBackColor = true;
-            // 
             // btnEliminar
             // 
             this.btnEliminar.HeaderText = "";
@@ -425,56 +244,52 @@
             this.txtDescripcionMaestroIngresos.ReadOnly = true;
             this.txtDescripcionMaestroIngresos.Width = 250;
             // 
-            // dataGridViewButtonColumn2
+            // groupBox3
             // 
-            this.dataGridViewButtonColumn2.HeaderText = "";
-            this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
-            this.dataGridViewButtonColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewButtonColumn2.Width = 30;
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.dgvMaestroDescuentos);
+            this.groupBox3.Location = new System.Drawing.Point(449, 66);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(420, 155);
+            this.groupBox3.TabIndex = 32;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Descuentos";
             // 
-            // AccionTrabajador
+            // dgvMaestroDescuentos
             // 
-            this.AccionTrabajador.HeaderText = "AccionTrabajador";
-            this.AccionTrabajador.Name = "AccionTrabajador";
-            this.AccionTrabajador.ReadOnly = true;
-            this.AccionTrabajador.Visible = false;
-            this.AccionTrabajador.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "IdTPlantillaPlanilla";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Visible = false;
-            this.dataGridViewTextBoxColumn4.Width = 50;
-            // 
-            // IdTrabajador
-            // 
-            this.IdTrabajador.HeaderText = "ID";
-            this.IdTrabajador.Name = "IdTrabajador";
-            this.IdTrabajador.ReadOnly = true;
-            this.IdTrabajador.Width = 50;
-            // 
-            // OrdenTrabajador
-            // 
-            this.OrdenTrabajador.HeaderText = "Nro";
-            this.OrdenTrabajador.Name = "OrdenTrabajador";
-            this.OrdenTrabajador.ReadOnly = true;
-            this.OrdenTrabajador.Width = 25;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.HeaderText = "CODIGO";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "DESCRIPCION";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 250;
+            this.dgvMaestroDescuentos.AllowUserToAddRows = false;
+            this.dgvMaestroDescuentos.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvMaestroDescuentos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvMaestroDescuentos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMaestroDescuentos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvMaestroDescuentos.ColumnHeadersHeight = 20;
+            this.dgvMaestroDescuentos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewButtonColumn1,
+            this.AccionDescuentos,
+            this.dataGridViewTextBoxColumn1,
+            this.IdDescuentos,
+            this.OrdenDescuentos,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3});
+            this.dgvMaestroDescuentos.Location = new System.Drawing.Point(6, 19);
+            this.dgvMaestroDescuentos.Name = "dgvMaestroDescuentos";
+            this.dgvMaestroDescuentos.RowHeadersVisible = false;
+            this.dgvMaestroDescuentos.RowHeadersWidth = 25;
+            this.dgvMaestroDescuentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvMaestroDescuentos.Size = new System.Drawing.Size(408, 130);
+            this.dgvMaestroDescuentos.TabIndex = 10;
+            this.dgvMaestroDescuentos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroDescuentos_CellClick);
+            this.dgvMaestroDescuentos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroDescuentos_CellContentClick);
             // 
             // dataGridViewButtonColumn1
             // 
@@ -527,6 +342,53 @@
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 250;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.dgvMaestroAEmpleador);
+            this.groupBox4.Location = new System.Drawing.Point(448, 227);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(421, 155);
+            this.groupBox4.TabIndex = 34;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Maestro Aportaciones Empleador";
+            // 
+            // dgvMaestroAEmpleador
+            // 
+            this.dgvMaestroAEmpleador.AllowUserToAddRows = false;
+            this.dgvMaestroAEmpleador.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvMaestroAEmpleador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvMaestroAEmpleador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMaestroAEmpleador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvMaestroAEmpleador.ColumnHeadersHeight = 20;
+            this.dgvMaestroAEmpleador.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewButtonColumn3,
+            this.AccionEmpleador,
+            this.dataGridViewTextBoxColumn7,
+            this.IdEmpleador,
+            this.OrdenEmpleador,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9});
+            this.dgvMaestroAEmpleador.Location = new System.Drawing.Point(6, 19);
+            this.dgvMaestroAEmpleador.Name = "dgvMaestroAEmpleador";
+            this.dgvMaestroAEmpleador.RowHeadersVisible = false;
+            this.dgvMaestroAEmpleador.RowHeadersWidth = 25;
+            this.dgvMaestroAEmpleador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvMaestroAEmpleador.Size = new System.Drawing.Size(409, 130);
+            this.dgvMaestroAEmpleador.TabIndex = 12;
+            this.dgvMaestroAEmpleador.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroAEmpleador_CellClick);
+            this.dgvMaestroAEmpleador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroAEmpleador_CellContentClick);
+            // 
             // dataGridViewButtonColumn3
             // 
             this.dataGridViewButtonColumn3.HeaderText = "";
@@ -578,11 +440,161 @@
             this.dataGridViewTextBoxColumn9.ReadOnly = true;
             this.dataGridViewTextBoxColumn9.Width = 250;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.dgvMaestroATrabajador);
+            this.groupBox5.Location = new System.Drawing.Point(12, 227);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(425, 155);
+            this.groupBox5.TabIndex = 33;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Maestro Aportaciones Trabajador";
+            // 
+            // dgvMaestroATrabajador
+            // 
+            this.dgvMaestroATrabajador.AllowUserToAddRows = false;
+            this.dgvMaestroATrabajador.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvMaestroATrabajador.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvMaestroATrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMaestroATrabajador.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvMaestroATrabajador.ColumnHeadersHeight = 20;
+            this.dgvMaestroATrabajador.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewButtonColumn2,
+            this.AccionTrabajador,
+            this.dataGridViewTextBoxColumn4,
+            this.IdTrabajador,
+            this.OrdenTrabajador,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.dgvMaestroATrabajador.Location = new System.Drawing.Point(6, 19);
+            this.dgvMaestroATrabajador.Name = "dgvMaestroATrabajador";
+            this.dgvMaestroATrabajador.RowHeadersVisible = false;
+            this.dgvMaestroATrabajador.RowHeadersWidth = 25;
+            this.dgvMaestroATrabajador.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvMaestroATrabajador.Size = new System.Drawing.Size(413, 130);
+            this.dgvMaestroATrabajador.TabIndex = 11;
+            this.dgvMaestroATrabajador.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroATrabajador_CellClick);
+            this.dgvMaestroATrabajador.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaestroATrabajador_CellContentClick);
+            // 
+            // dataGridViewButtonColumn2
+            // 
+            this.dataGridViewButtonColumn2.HeaderText = "";
+            this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
+            this.dataGridViewButtonColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewButtonColumn2.Width = 30;
+            // 
+            // AccionTrabajador
+            // 
+            this.AccionTrabajador.HeaderText = "AccionTrabajador";
+            this.AccionTrabajador.Name = "AccionTrabajador";
+            this.AccionTrabajador.ReadOnly = true;
+            this.AccionTrabajador.Visible = false;
+            this.AccionTrabajador.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "IdTPlantillaPlanilla";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Visible = false;
+            this.dataGridViewTextBoxColumn4.Width = 50;
+            // 
+            // IdTrabajador
+            // 
+            this.IdTrabajador.HeaderText = "ID";
+            this.IdTrabajador.Name = "IdTrabajador";
+            this.IdTrabajador.ReadOnly = true;
+            this.IdTrabajador.Width = 50;
+            // 
+            // OrdenTrabajador
+            // 
+            this.OrdenTrabajador.HeaderText = "Nro";
+            this.OrdenTrabajador.Name = "OrdenTrabajador";
+            this.OrdenTrabajador.ReadOnly = true;
+            this.OrdenTrabajador.Width = 25;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "CODIGO";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "DESCRIPCION";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 250;
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNuevo.BackColor = System.Drawing.Color.MintCream;
+            this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnNuevo.ImageIndex = 1;
+            this.btnNuevo.Location = new System.Drawing.Point(614, 388);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(83, 53);
+            this.btnNuevo.TabIndex = 35;
+            this.btnNuevo.Text = "&Nuevo";
+            this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardar.BackColor = System.Drawing.Color.MintCream;
+            this.btnGuardar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnGuardar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnGuardar.ImageIndex = 1;
+            this.btnGuardar.Location = new System.Drawing.Point(703, 388);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(83, 53);
+            this.btnGuardar.TabIndex = 36;
+            this.btnGuardar.Text = "&Guardar";
+            this.btnGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // chkTareo
+            // 
+            this.chkTareo.AutoSize = true;
+            this.chkTareo.Location = new System.Drawing.Point(18, 402);
+            this.chkTareo.Name = "chkTareo";
+            this.chkTareo.Size = new System.Drawing.Size(115, 17);
+            this.chkTareo.TabIndex = 37;
+            this.chkTareo.Text = "Cargado por Tareo";
+            this.chkTareo.UseVisualStyleBackColor = true;
+            // 
+            // chkMetaJornal
+            // 
+            this.chkMetaJornal.AutoSize = true;
+            this.chkMetaJornal.Location = new System.Drawing.Point(171, 402);
+            this.chkMetaJornal.Name = "chkMetaJornal";
+            this.chkMetaJornal.Size = new System.Drawing.Size(142, 17);
+            this.chkMetaJornal.TabIndex = 38;
+            this.chkMetaJornal.Text = "Cargado por Meta Jornal";
+            this.chkMetaJornal.UseVisualStyleBackColor = true;
+            // 
             // frmMantenimientoPlantillaPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(887, 453);
+            this.Controls.Add(this.chkMetaJornal);
             this.Controls.Add(this.chkTareo);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnNuevo);
@@ -657,5 +669,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OrdenTrabajador;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.CheckBox chkMetaJornal;
     }
 }

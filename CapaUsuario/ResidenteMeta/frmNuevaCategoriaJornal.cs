@@ -31,16 +31,16 @@ namespace CapaUsuario.ResidenteMeta
         {
             txtNombreCategoria.Text = oMetaJornal.Categoria;
             txtMonto.Text = oMetaJornal.Jornal.ToString();
-            
+            txtMensual.Text = oMetaJornal.Mensual.ToString();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtNombreCategoria.Text.Trim() == "" || txtMonto.Text.Trim() == "")
+                if (txtNombreCategoria.Text.Trim() == "" || txtMonto.Text.Trim() == "" || txtMensual.Text.Trim() == "")
                 {
-                    MessageBox.Show("Debe ingresar un nombre/ monto de la categoria.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Debe ingresar un nombre/ monto y monto mensual de la categoria.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {

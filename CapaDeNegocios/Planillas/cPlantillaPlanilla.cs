@@ -18,6 +18,7 @@ namespace CapaDeNegocios.Planillas
         string stipo;
         int scodigo;
         bool stareo;
+        bool smetaJornal;
 
         public int IdtPlantillaPlanilla
         {
@@ -58,6 +59,19 @@ namespace CapaDeNegocios.Planillas
             }
         }
 
+        public bool MetaJornal
+        {
+            get
+            {
+                return smetaJornal;
+            }
+
+            set
+            {
+                smetaJornal = value;
+            }
+        }
+
         public DataTable ListarDescripcionPlantillaPlanilla()
         {
             return Conexion.GDatos.TraerDataTable("spListarDescripcionPlantillaPlanilla");
@@ -70,13 +84,13 @@ namespace CapaDeNegocios.Planillas
 
         public Boolean CrearPlantillaPlanilla(cPlantillaPlanilla miPlantillaPlanilla)
         {
-            Conexion.GDatos.Ejecutar("spCrearPlantillaPlanilla", miPlantillaPlanilla.Descripcion, miPlantillaPlanilla.Orden, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo, miPlantillaPlanilla.Tareo);
+            Conexion.GDatos.Ejecutar("spCrearPlantillaPlanilla", miPlantillaPlanilla.Descripcion, miPlantillaPlanilla.Orden, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo, miPlantillaPlanilla.Tareo, miPlantillaPlanilla.MetaJornal);
             return true;
         }
 
         public Boolean ModificarPlantillaPlanilla(cPlantillaPlanilla miPlantillaPlanilla)
         {
-            Conexion.GDatos.Ejecutar("spModificarPlantillaPlanilla", miPlantillaPlanilla.IdtPlantillaPlanilla, miPlantillaPlanilla.Descripcion, miPlantillaPlanilla.Orden, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo, miPlantillaPlanilla.Tareo);
+            Conexion.GDatos.Ejecutar("spModificarPlantillaPlanilla", miPlantillaPlanilla.IdtPlantillaPlanilla, miPlantillaPlanilla.Descripcion, miPlantillaPlanilla.Orden, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo, miPlantillaPlanilla.Tareo, miPlantillaPlanilla.MetaJornal);
             return true;
         }
 

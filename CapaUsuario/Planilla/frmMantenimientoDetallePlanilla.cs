@@ -38,7 +38,7 @@ namespace CapaUsuario.Planilla
         double sRemuneracion_5ta = 0;
         string[] sIngresosDesc_5ta;
         double[,] sIngresos_5ta;
-
+        
         string AFP = "";
         string Cuspp = "";
         string TipoComision = "";
@@ -53,7 +53,7 @@ namespace CapaUsuario.Planilla
         bool sscrt;
 
         bool esTareo= false;
-        
+        bool esMetaJornal = false;
 
         DataTable oDataDetallePlanilla = new DataTable();
         DataTable oDataTrabajador = new DataTable();
@@ -133,13 +133,15 @@ namespace CapaUsuario.Planilla
                     CapaDeNegocios.Tareos.cDetalleTareo miDetalleTareo = new CapaDeNegocios.Tareos.cDetalleTareo();
 
                     oDataTareo = miTareo.ListarTareo(sidtmeta);
+                   
+                   
                     //oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")));
                     oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(fImportarTareo.sidttareoimportar);
                     //foreach (DataRow rowdetalletareo in oDataDetalleTareo.Select("idttareo = '" + Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")) + "'"))
                     foreach (DataRow rowdetalletareo in oDataDetalleTareo.Select("idttareo = '" + fImportarTareo.sidttareoimportar + "'"))
                     {
                         
-                        if (esTareo)
+                        if (esTareo && esMetaJornal)
                         {
                             miMetaJornal = MetaJornal(rowdetalletareo[1].ToString(), sidtmeta);
                             if (miMetaJornal.Opcion == false)
@@ -165,7 +167,7 @@ namespace CapaUsuario.Planilla
                             dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[7].Value = rowdetalletareo[1].ToString();
                             //dias laborados col 12
                             dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[12].Value = rowdetalletareo[3].ToString();
-                            if (esTareo)
+                            if (esTareo && esMetaJornal)
                             {
                                 //monto jornal o mensual col 11
                                 if (miMetaJornal.Opcion == false)
@@ -485,7 +487,7 @@ namespace CapaUsuario.Planilla
                 foreach (DataRow row in oDataDetallePlanilla.Rows)
                 {
                     CargarTrabajador(Convert.ToInt32(row[09].ToString()), splantilla);
-                    if (esTareo)
+                    if (esTareo && esMetaJornal)
                     {
                         //false = jornal true = mensual
 
@@ -821,7 +823,7 @@ namespace CapaUsuario.Planilla
 
             Boolean PagoMensual = true;
             
-            if (esTareo)
+            if (esTareo && esMetaJornal)
             {
                 cMetaJornal miMetaJornal = new cMetaJornal();
                 miMetaJornal = MetaJornal(dgvDetallePlanilla.Rows[fila].Cells[7].Value.ToString(), sidtmeta);
@@ -1569,44 +1571,12 @@ namespace CapaUsuario.Planilla
                 }
                 else
                 {
+                    sRetMesAnteriores += Convert.ToDecimal(rowingresos[2]);//suma de las retenciones de 5tacategoria totales
+
+                    //Codigo para probar
                     if (smes == "ENERO" || smes == "FEBRERO" || smes == "MARZO")
                     {
-                        sRetMesAnteriores = 0;
-                    }
-                    else if (smes == "ABRIL")
-                    {
-                        if (rowingresos[1].ToString() == "ENERO" || rowingresos[1].ToString() == "FEBRERO" || rowingresos[1].ToString() == "MARZO")
-                        {
-                            sRetMesAnteriores += Convert.ToDecimal(rowingresos[2]);//suma de las retenciones de 5tacategoria totales
-                        }
-                    }
-                    else if (smes == "MAYO" || smes == "JUNIO" || smes == "JULIO")
-                    {
-                        if (rowingresos[1].ToString() == "ENERO" || rowingresos[1].ToString() == "FEBRERO" || rowingresos[1].ToString() == "MARZO" || rowingresos[1].ToString() == "ABRIL")
-                        {
-                            sRetMesAnteriores += Convert.ToDecimal(rowingresos[2]);//suma de las retenciones de 5tacategoria totales
-                        }
-                    }
-                    else if (smes == "AGOSTO")
-                    {
-                        if (rowingresos[1].ToString() != "AGOSTO" && rowingresos[1].ToString() != "SETIEMBRE" && rowingresos[1].ToString() != "OCTUBRE" && rowingresos[1].ToString() != "NOVIEMBRE" && rowingresos[1].ToString() != "DICIEMBRE")
-                        {
-                            sRetMesAnteriores += Convert.ToDecimal(rowingresos[2]);//suma de las retenciones de 5tacategoria totales
-                        }
-                    }
-                    else if (smes == "SETIEMBRE" || smes == "OCTUBRE" || smes == "NOVIEMBRE")
-                    {
-                        if (rowingresos[1].ToString() != "SETIEMBRE" && rowingresos[1].ToString() != "OCTUBRE" && rowingresos[1].ToString() != "NOVIEMBRE" && rowingresos[1].ToString() != "DICIEMBRE")
-                        {
-                            sRetMesAnteriores += Convert.ToDecimal(rowingresos[2]);//suma de las retenciones de 5tacategoria totales
-                        }
-                    }
-                    else if (smes == "DICIEMBRE")
-                    {
-                        if (rowingresos[1].ToString() != "DICIEMBRE")
-                        {
-                            sRetMesAnteriores += Convert.ToDecimal(rowingresos[2]);//suma de las retenciones de 5tacategoria totales
-                        }
+                        
                     }
                 }
             }
@@ -1920,6 +1890,15 @@ namespace CapaUsuario.Planilla
                 btnImportar.Visible = false;
 
                 esTareo = false;
+            }
+
+            if (Convert.ToBoolean(oDataPlantillaPlanilla.Rows[0][6]))
+            {
+                esMetaJornal = true;
+            }
+            else
+            {
+                esMetaJornal = false;
             }
 
             foreach (DataRow row in oDataPlantillaPlanilla.Select("tipo='INGRESOS'"))

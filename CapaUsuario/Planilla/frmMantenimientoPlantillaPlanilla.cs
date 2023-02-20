@@ -162,6 +162,7 @@ namespace CapaUsuario.Planilla
                 return;
             }
             miPlantillaPlanilla.Tareo = chkTareo.Checked;
+            miPlantillaPlanilla.MetaJornal = chkMetaJornal.Checked;
             foreach (DataGridViewRow rowDgvIngresos in dgvMaestroIngresos.Rows)
             {
                 miPlantillaPlanilla.IdtPlantillaPlanilla = Convert.ToInt32(rowDgvIngresos.Cells[2].Value);
@@ -391,6 +392,15 @@ namespace CapaUsuario.Planilla
                 else
                 {
                     chkTareo.Checked = false;
+                }
+
+                if (Convert.ToBoolean(oDataPlantillaPlanilla.Rows[0][6]))
+                {
+                    chkMetaJornal.Checked = true;
+                }
+                else
+                {
+                    chkMetaJornal.Checked = false;
                 }
             }
 

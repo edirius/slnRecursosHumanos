@@ -41,7 +41,7 @@ namespace CapaUsuario.AFP
         private void btnNavegador_Click_1(object sender, EventArgs e)
         {
             this.Size = new Size(1350, 479);
-            webSBS.Navigate("https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/Paginas/comision_prima.aspx");
+            webSBS.Navigate("https://www.sbs.gob.pe/app/spp/empleadores/comisiones_spp/paginas/comision_prima.aspx");
             this.StartPosition = FormStartPosition.CenterScreen;
             //Navegador.frmNavegador miNavegador = new Navegador.frmNavegador();
             //miNavegador.Direccion = "http://www.sbs.gob.pe/usuarios/categoria/comisiones-y-primas-de-seguro-del-spp/277/c-277";
