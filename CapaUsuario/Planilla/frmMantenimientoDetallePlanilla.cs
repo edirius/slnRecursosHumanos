@@ -1329,6 +1329,7 @@ namespace CapaUsuario.Planilla
             double suma_ingresos = 0;
             double result = 0;
             double remuneracion_5ta = 0;
+            double remuneracionBasica = 0;
             double otrosingresos_5ta = 0;
 
             //Calculamos la remuneracion afecta
@@ -1378,6 +1379,7 @@ namespace CapaUsuario.Planilla
                             if (smingresos[i, 1].ToString() == "0121" || smingresos[i, 1].ToString() == "0122" || smingresos[i, 1].ToString() == "2039")
                             {
                                 remuneracion_5ta = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                                remuneracionBasica = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value); 
                             }
                             else
                             {
@@ -1466,7 +1468,7 @@ namespace CapaUsuario.Planilla
             //renta de 5ta Categoria A_Trabajador
             if (codigo == "0605")
             {
-                decimal renta5ta = CalculoRenta5ta(fila, remuneracion_5ta, otrosingresos_5ta);
+                decimal renta5ta = CalculoRenta5ta(fila, remuneracion_5ta, otrosingresos_5ta, remuneracionBasica);
                 //result = decimal.Round(Convert.ToDecimal(renta5ta), 2);
                 if (renta5ta < 0)
                 {
@@ -1533,7 +1535,7 @@ namespace CapaUsuario.Planilla
             dgvDetallePlanilla.Rows[fila].Cells[22 + con_ingresos + con_trabajador + con_descuento + con_empleador].Value = String.Format("{0:0.00}", T);
         }
 
-        private decimal CalculoRenta5ta(int fila, double remuneracion_5ta, double otrosingresos_5ta)
+        private decimal CalculoRenta5ta(int fila, double remuneracion_5ta, double otrosingresos_5ta, double remuneracionBasica)
         {
             decimal sRenta5ta = 0;
             int sNroMes = 0;
@@ -1541,6 +1543,7 @@ namespace CapaUsuario.Planilla
             decimal sOtrosIngresos = 0;
             decimal sRemuMesAnt = 0;
             decimal sRetMesAnteriores = 0;
+            decimal sRemuneracionBasica = 0;
 
             int idttrabajador = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value);
             cTrabajador miTrabajadorRentaQuinta = new cTrabajador();
@@ -1582,12 +1585,21 @@ namespace CapaUsuario.Planilla
             }
             sNroMes = Convert.ToInt32(Mes(smes));
             sRemuneracion = Convert.ToDecimal(remuneracion_5ta);
+            sRemuneracionBasica = Convert.ToDecimal(remuneracionBasica);
 
             if (oRegimenTrabajadorRentaQuinta.IdtRegimenLaboral == 3 || oRegimenTrabajadorRentaQuinta.IdtRegimenLaboral == 4) // codigo 3 y 4 corresponde a regimen laboral 728 y 4 30057 servir
             {
-                
+
                 //sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(10600);//suma de todos los ingresos incuido las gratificaciones
-                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(sRemuneracion * 2);//suma de todos los ingresos incuido las gratificaciones
+                if (Settings.Default.RUC == "20159377696")
+                {
+                    sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(sRemuneracionBasica * 2) + Convert.ToDecimal(sRemuneracionBasica) * Convert.ToDecimal(0.18);//suma de todos los ingresos incuido las gratificaciones
+                }
+                else
+                {
+                    sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(sRemuneracionBasica * 2);//suma de todos los ingresos incuido las gratificaciones
+                }
+                
             }
             else
             {
