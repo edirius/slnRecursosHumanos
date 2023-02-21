@@ -852,7 +852,7 @@ namespace CapaUsuario.Tareo
                 foreach (DataRow row1 in oDataTrabajador.Select("id_trabajador = '" + row[4].ToString() + "'"))
                 {
                     IdtTrabajador = row1[0].ToString();
-                    Nombre = row1[4].ToString() + " " + row1[3].ToString() + ", " + row1[2].ToString();
+                    Nombre =  row1[3].ToString() + " " +  row1[4].ToString() + ", " + row1[2].ToString();
                     DNI = row1[1].ToString();
                     Sexo = row1[5].ToString();
                     foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + Convert.ToInt32(row1[0].ToString()) + "'"))
