@@ -395,8 +395,10 @@ namespace CapaUsuario.ExportarSunat
 
             try
             {
+                string auxiliardni="";
                 for (int i = 0; i < dgvAportaciones.Rows.Count; i++)
                 {
+                    
                     //obtenemos los datos de las columnas que queremos
                     string mes = dgvAportaciones[1, i].Value.ToString();
                     string año = dgvAportaciones[2, i].Value.ToString();
@@ -416,7 +418,24 @@ namespace CapaUsuario.ExportarSunat
                     }
                     else
                     {
-                        milista.Add(Aportaciones);//agregamos los datos concatenados al arreglo(ArrayList)
+                        if (codigo == "0608" && Convert.ToDouble(Monto) != 0)
+                        {
+                            auxiliardni = dni;
+                        }
+                       
+
+                        if (codigo != "0601")
+                        {
+                            milista.Add(Aportaciones);//agregamos los datos concatenados al arreglo(ArrayList)
+                        }
+                        else
+                        {
+                            if (auxiliardni == dni)
+                            {
+                                milista.Add(Aportaciones);//agregamos los datos concatenados al arreglo(ArrayList)
+                                auxiliardni = "";
+                            }
+                        }
                     }
                    
                 }
