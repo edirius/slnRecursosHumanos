@@ -13,6 +13,7 @@ namespace CapaUsuario.Tareo
     public partial class frmMantenimientoDetalleTareo : Form
     {
         int sidttrabajador = 0;
+        string fechaInicioTrabajador = "";
         int sidtperiodotrabajador = 0;
         DateTime auxiliar;
 
@@ -418,6 +419,15 @@ namespace CapaUsuario.Tareo
             if (e.RowIndex != -1)
             {
                 sidttrabajador = Convert.ToInt32(dgvDetalleTareo.Rows[e.RowIndex].Cells[4].Value);
+                if (dgvDetalleTareo.Rows[e.RowIndex].Cells[10].Value == null)
+                {
+                    fechaInicioTrabajador = "";
+                }
+                else
+                {
+                    fechaInicioTrabajador = dgvDetalleTareo.Rows[e.RowIndex].Cells[10].Value.ToString();
+                }
+                
                 if (dgvDetalleTareo.Rows[e.RowIndex].Cells[12].Selected == true)
                 {
                     LlenarDias(e.RowIndex, "x");
@@ -1110,7 +1120,7 @@ namespace CapaUsuario.Tareo
             {
                 PeriodoTrabajador(sidttrabajador);
                 CapaUsuario.Tareo.frmBajaTrabajador fBajaTrabajador = new CapaUsuario.Tareo.frmBajaTrabajador();
-                fBajaTrabajador.RecibirDatos(miTareo.FechaInicio, sidtperiodotrabajador);
+                fBajaTrabajador.RecibirDatos(miTareo.FechaInicio, sidtperiodotrabajador, fechaInicioTrabajador);
                 fBajaTrabajador.ShowDialog();
             }
 

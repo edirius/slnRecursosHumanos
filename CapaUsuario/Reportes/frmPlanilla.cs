@@ -1919,6 +1919,8 @@ namespace CapaUsuario.Reportes
                     //Determinar si la consulta esta vacio
                     odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(sidtplanilla, pRegimenLaboral,pmes_nro, paño);
 
+                    odtPlanilla= buscarDuplicados(odtPlanilla);
+
                     odtPrueba.Clear();
 
 
@@ -3269,6 +3271,38 @@ namespace CapaUsuario.Reportes
             return AFP;
         }
 
+
+        public DataTable buscarDuplicados(DataTable auxiliar)
+        {
+            string dni = "";
+            string dni2 = "";
+            int encontrados = 0;
+            int contador = 0;
+            int contador2 = 0;
+            foreach (DataRow item in auxiliar.Rows)
+            {
+                dni = item[2].ToString();
+                dni2 = "";
+                contador = 0;
+                foreach (DataRow item2 in auxiliar.Rows)
+                {
+                    contador = contador + 1;
+                    dni2 = item2[2].ToString();
+                    if (dni == dni2)
+                    {
+                        encontrados = encontrados + 1;
+                    }
+
+                    if (encontrados > 1)
+                    {
+                        contador2 = contador;
+                    }
+                }
+            }
+            auxiliar.Rows[contador2 - 1].Delete();
+            auxiliar.AcceptChanges();
+            return auxiliar;
+        }
         public int mayor(int a, int b)
         {
             int mayor = 0;

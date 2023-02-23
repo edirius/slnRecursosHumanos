@@ -1281,7 +1281,8 @@ namespace CapaUsuario.Planilla
 
                     if (PlanillaEncontrada != null)
                     {
-                        MessageBox.Show("Se encontro al trabajador: " + miTrabajador.Nombres + " " + miTrabajador.ApellidoPaterno + " " + miTrabajador.ApellidoMaterno + " Cargo: " + PlanillaEncontrada.ListaDetallePlanilla[0].Cargo +
+                        
+                        MessageBox.Show("Se encontro al trabajador: " + miTrabajador.Dni + ": " + miTrabajador.Nombres + " " + miTrabajador.ApellidoPaterno + " " + miTrabajador.ApellidoMaterno + " Cargo: " + PlanillaEncontrada.ListaDetallePlanilla[0].Cargo +
                             " en la planilla Nro: " + PlanillaEncontrada.Numero + " " + PlanillaEncontrada.Descripcion + ": Tendra que calcular su essalud manualmente ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     decimal number2 = 0;

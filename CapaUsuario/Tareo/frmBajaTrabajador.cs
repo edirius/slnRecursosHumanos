@@ -68,7 +68,7 @@ namespace CapaUsuario.Tareo
             }
         }
 
-        public void RecibirDatos(DateTime fechainicio, int pidtperiodotrabajador)
+        public void RecibirDatos(DateTime fechainicio, int pidtperiodotrabajador, string fechaInicioTrabajador)
         {
             sidtperiodotrabajador = pidtperiodotrabajador;
             int AñoInicio = fechainicio.Year;
@@ -76,6 +76,7 @@ namespace CapaUsuario.Tareo
             int DiasMes = DateTime.DaysInMonth(AñoInicio, MesInicio);
             string fechafin = DiasMes + "/" + MesInicio + "/" + AñoInicio;
             monthCalendar1.MaxDate = Convert.ToDateTime(fechafin);
+            monthCalendar1.MinDate = Convert.ToDateTime(fechaInicioTrabajador);
         }
 
         private void CargarMotivoFinPeriodo()

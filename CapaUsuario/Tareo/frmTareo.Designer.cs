@@ -183,6 +183,7 @@
             this.cboDescripcion.Items.AddRange(new object[] {
             "PERSONAL TECNICO",
             "PERSONAL OBRERO",
+            "SUPERVISION",
             "RACIONAMIENTO"});
             this.cboDescripcion.Location = new System.Drawing.Point(85, 64);
             this.cboDescripcion.Name = "cboDescripcion";

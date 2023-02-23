@@ -178,7 +178,7 @@ namespace CapaUsuario.Tareo
                 CapaDeNegocios.Obras.cCadenaProgramaticaFuncional miCadena = new CapaDeNegocios.Obras.cCadenaProgramaticaFuncional();
                 oDataMeta = miCadena.ListarMetas();
                 Dictionary<string, string> test = new Dictionary<string, string>();
-                if (cVariablesUsuario.v_cargo == "ADMINISTRADOR")
+                if (cVariablesUsuario.v_cargo == "ADMINISTRADOR" || cVariablesUsuario.v_cargo == "SUPERVISOR")
                 {
                     foreach (DataRow row in oDataMeta.Select("año = '" + cboAño.Text + "'"))
                     {
