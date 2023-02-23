@@ -693,7 +693,7 @@ namespace CapaUsuario.Reportes
                     odtPrueba.Columns.Add("JORNAL DIARIO", typeof(string));
                     odtPrueba.Columns.Add("NETO A COBRAR", typeof(string));
                     odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamiento(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
-
+                    odtPlanilla = buscarDuplicados(odtPlanilla);
                     odtPrueba.Clear();
 
                     indice_prueba_dias_laborados = BuscarIndiceColumna(odtPrueba, "DIAS LABORADOS");
@@ -2432,7 +2432,7 @@ namespace CapaUsuario.Reportes
 
                         //Planilla por mes y regimen laboral
                         odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(sidtplanilla, pRegimenLaboral,pmes_nro, paño);
-
+                        odtPlanilla = buscarDuplicados(odtPlanilla);
                         int ll = 0;
                         //esribir datos de planilla
                         int total_prueba_corta = odtPrueba.Rows.Count;
@@ -3274,33 +3274,57 @@ namespace CapaUsuario.Reportes
 
         public DataTable buscarDuplicados(DataTable auxiliar)
         {
-            string dni = "";
-            string dni2 = "";
-            int encontrados = 0;
+           
             int contador = 0;
-            int contador2 = 0;
-            foreach (DataRow item in auxiliar.Rows)
+
+
+
+            List<string> dniDuplicados = new List<string>();
+            DataTable auxiliar2;
+            auxiliar2 = auxiliar;
+
+            for (int i = 0; i < auxiliar.Rows.Count; i++)
             {
-                dni = item[2].ToString();
-                dni2 = "";
                 contador = 0;
-                foreach (DataRow item2 in auxiliar.Rows)
+                for (int j = 0; j < auxiliar.Rows.Count; j++)
                 {
-                    contador = contador + 1;
-                    dni2 = item2[2].ToString();
-                    if (dni == dni2)
+                    if (auxiliar.Rows[i][2].ToString() == auxiliar.Rows[j][2].ToString())
                     {
-                        encontrados = encontrados + 1;
+                        contador = contador + 1;
+                        
                     }
 
-                    if (encontrados > 1)
+                    if (contador > 1)
                     {
-                        contador2 = contador;
+                        dniDuplicados.Add(auxiliar.Rows[i][2].ToString());
+                        break;
                     }
                 }
             }
-            auxiliar.Rows[contador2 - 1].Delete();
-            auxiliar.AcceptChanges();
+
+            
+            IEnumerable <string> dniDuplicadosEnum = dniDuplicados.Distinct();
+            foreach (string item in dniDuplicadosEnum)
+            {
+                auxiliar2 = QuitarDuplicado(auxiliar2, item);
+            }
+
+
+            return auxiliar2;
+        }
+
+        public DataTable QuitarDuplicado(DataTable auxiliar, string dni)
+        {
+            for (int i = 0; i < auxiliar.Rows.Count; i++)
+            {
+                if (auxiliar.Rows[i][2].ToString() == dni)
+                {
+                    auxiliar.Rows[i].Delete();
+                    auxiliar.AcceptChanges();
+                    break;
+                }
+            }
+
             return auxiliar;
         }
         public int mayor(int a, int b)
