@@ -88,7 +88,7 @@ namespace CapaUsuario.Planilla
         private CapaDeNegocios.Asistencia.cHorario oHorario = new CapaDeNegocios.Asistencia.cHorario();
         private CapaDeNegocios.Asistencia.cAsistenciaMes AsistenciaMes = new CapaDeNegocios.Asistencia.cAsistenciaMes();
 
-
+        private CapaDeNegocios.Tareos.cPlantillaTareo oPlantillaTareo = new CapaDeNegocios.Tareos.cPlantillaTareo();
 
         public frmMantenimientoDetallePlanilla()
         {
@@ -133,7 +133,8 @@ namespace CapaUsuario.Planilla
                     CapaDeNegocios.Tareos.cDetalleTareo miDetalleTareo = new CapaDeNegocios.Tareos.cDetalleTareo();
 
                     oDataTareo = miTareo.ListarTareo(sidtmeta);
-                   
+
+                    oPlantillaTareo = oPlantillaTareo.TraerPlantillaTareoXNombre(fImportarTareo.sdescripcion);
                    
                     //oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(Convert.ToInt32(oDataTareo.Compute("MAX(idttareo)", "descripcion = '" + splantilla + "'")));
                     oDataDetalleTareo = miDetalleTareo.ListarDetalleTareo(fImportarTareo.sidttareoimportar);
@@ -412,7 +413,7 @@ namespace CapaUsuario.Planilla
                     }
                     if (Convert.ToString(dgvDetallePlanilla.Rows[e.RowIndex].Cells[0].Value) == "")
                     {
-                        MessageBox.Show("No existena datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No existen datos que se puedan Eliminar", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     if (MessageBox.Show("Está seguro que desea eliminar al Trabajador de la Planilla", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
@@ -823,7 +824,7 @@ namespace CapaUsuario.Planilla
 
             Boolean PagoMensual = true;
             
-            if (esTareo && esMetaJornal)
+            if (esMetaJornal)
             {
                 cMetaJornal miMetaJornal = new cMetaJornal();
                 miMetaJornal = MetaJornal(dgvDetallePlanilla.Rows[fila].Cells[7].Value.ToString(), sidtmeta);
@@ -862,7 +863,7 @@ namespace CapaUsuario.Planilla
                 }
 
                 //SE HACE ESTA CONDICIONAL  porque los dias del tareo prima sobre la fecha de inicio ejemplo, la fecha de inicio puede ser 12 de febrero, pero los dias marcados son 20 
-                if (splantilla == "PERSONAL TECNICO")
+                if (esTareo)
                 {
                     DiasLaborados = Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[12].Value);
                     DiasNoLaborados = DiasMes - DiasLaborados;
@@ -871,8 +872,6 @@ namespace CapaUsuario.Planilla
                 PagoTotal = CalcularRemuneracionMensual(DiasLaborados, DiasNoLaborados, Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value));
 
                 PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
-
-
             }
 
             if (!((sidtregimenlaboral == 3 || sidtregimenlaboral == 5) && (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO" || splantilla == "PERSONAL TECNICO")))
@@ -1267,7 +1266,7 @@ namespace CapaUsuario.Planilla
                     miTrabajador.IdTrabajador = Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value);
                     miTrabajador =  miTrabajador.traerTrabajador(miTrabajador.IdTrabajador);
 
-                    PlanillaEncontrada = PlanillaEncontrada.TraerPLanillaConTrabajadorDuplicado(miTrabajador, PlanillaEncontrada.Mes, Convert.ToInt16(PlanillaEncontrada.Año), PlanillaEncontrada.IdtPlanilla);
+                    PlanillaEncontrada = PlanillaEncontrada.TraerPLanillaConTrabajadorDuplicadoConCargasSociales(miTrabajador, PlanillaEncontrada.Mes, Convert.ToInt16(PlanillaEncontrada.Año), PlanillaEncontrada.IdtPlanilla);
 
                     if (PlanillaEncontrada != null)
                     {

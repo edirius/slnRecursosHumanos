@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaDeNegocios;
 
 namespace CapaUsuario.Tareo
 {
@@ -16,6 +17,10 @@ namespace CapaUsuario.Tareo
         int sIdTMeta = 0;
         int iAccion;
 
+        string descripcionTareo;
+
+        CapaDeNegocios.Tareos.cPlantillaTareo oPlantillatareos = new CapaDeNegocios.Tareos.cPlantillaTareo();
+
         public frmTareo()
         {
             InitializeComponent();
@@ -23,7 +28,24 @@ namespace CapaUsuario.Tareo
 
         private void frmTareo_Load(object sender, EventArgs e)
         {
+            if (iAccion== 1)
+            {
+                DateTime hoydia = DateTime.Now;
+                dptFechaInicio.Value = new DateTime(hoydia.Year, hoydia.Month, 1);
+                dptFechaFin.Value = dptFechaInicio.Value.AddMonths(1).AddDays(-1);
+            }
+            
+            cargarTiposTareos();
+        }
 
+        private void cargarTiposTareos()
+        {
+            DataTable ListaPlantillastareos = oPlantillatareos.ListarPlantillaTareos();
+            foreach (DataRow item in ListaPlantillastareos.Rows)
+            {
+                cboDescripcion.Items.Add(item[1]);
+            }
+            cboDescripcion.Text = descripcionTareo;
         }
 
         private void Btn_Aceptar_Click(object sender, EventArgs e)
@@ -71,6 +93,7 @@ namespace CapaUsuario.Tareo
             dptFechaInicio.Value = pFechaInicio;
             dptFechaFin.Value = pFechaFin;
             cboDescripcion.Text = pDescripcion;
+            descripcionTareo = pDescripcion;
             chkActivo.Checked = pEstado;
             sIdTMeta = pIdTMeta;
             txtMeta.Text = pNombre;

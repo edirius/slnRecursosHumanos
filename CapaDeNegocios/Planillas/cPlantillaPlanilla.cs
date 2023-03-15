@@ -99,5 +99,26 @@ namespace CapaDeNegocios.Planillas
             Conexion.GDatos.Ejecutar("spELiminarPlantillaPlanilla", IdtPlantillaPlanilla);
             return true;
         }
+
+        public cPlantillaPlanilla TraerPlantillaxDescripcion(string pdescripcion)
+        {
+            DataTable auxiliar = Conexion.GDatos.TraerDataTable("spListarPlantillaPlanilla", pdescripcion);
+            if (auxiliar.Rows.Count > 0)
+            {
+                cPlantillaPlanilla oPlantilla = new cPlantillaPlanilla();
+                oPlantilla.IdtPlantillaPlanilla = Convert.ToInt32(auxiliar.Rows[0][0].ToString());
+                oPlantilla.Descripcion = auxiliar.Rows[0][1].ToString();
+                oPlantilla.Orden = Convert.ToInt32(auxiliar.Rows[0][2].ToString());
+                oPlantilla.Tipo = auxiliar.Rows[0][3].ToString();
+                oPlantilla.Codigo = Convert.ToInt32(auxiliar.Rows[0][4]);
+                oPlantilla.Tareo = Convert.ToBoolean(auxiliar.Rows[0][5]);
+                oPlantilla.MetaJornal = Convert.ToBoolean(auxiliar.Rows[0][6]);
+                return oPlantilla;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

@@ -54,6 +54,27 @@ namespace CapaDeNegocios.Sunat
             return Conexion.GDatos.TraerDataTable("spListarMaestroAportacionesEmpleador");
         }
 
+        public cMaestroAportacionesEmpleador TraerAportacionEmpleadorXId(int idAportacionEmpleador)
+        {
+            cMaestroAportacionesEmpleador maestroAportacion = new cMaestroAportacionesEmpleador();
+            DataTable auxiliar = Conexion.GDatos.TraerDataTable("spTraerAportacionEmpleadorXID");
+            if (auxiliar.Rows.Count > 0 )
+            {
+                maestroAportacion.IdtMaestroAportacionesEmpleador = Convert.ToInt32(auxiliar.Rows[0][0].ToString());
+                maestroAportacion.Codigo = auxiliar.Rows[0][1].ToString();
+                maestroAportacion.Descripcion = auxiliar.Rows[0][2].ToString();
+                maestroAportacion.Calculo = auxiliar.Rows[0][3].ToString();
+                maestroAportacion.Abreviacion = auxiliar.Rows[0][4].ToString();
+
+                return maestroAportacion;
+
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public Boolean CrearMaestroAportacionesEmpleador(cMaestroAportacionesEmpleador miMaestroAportacionesEmpleador)
         {
             Conexion.GDatos.Ejecutar("spCrearMaestroAportacionesEmpleador", miMaestroAportacionesEmpleador.Codigo, miMaestroAportacionesEmpleador.Descripcion, miMaestroAportacionesEmpleador.Calculo,miMaestroAportacionesEmpleador.Abreviacion);

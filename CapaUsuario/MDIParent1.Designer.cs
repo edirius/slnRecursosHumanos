@@ -130,6 +130,8 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
+            this.plantillaDeTareosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -412,7 +414,9 @@
             this.metaJornalToolStripMenuItem,
             this.toolStripSeparator4,
             this.menuClasificadores,
-            this.asignarClasificadoresToolStripMenuItem});
+            this.asignarClasificadoresToolStripMenuItem,
+            this.toolStripSeparator11,
+            this.plantillaDeTareosToolStripMenuItem});
             this.windowsMenu.Name = "windowsMenu";
             this.windowsMenu.Size = new System.Drawing.Size(46, 20);
             this.windowsMenu.Text = "Meta";
@@ -942,6 +946,18 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
+            // plantillaDeTareosToolStripMenuItem
+            // 
+            this.plantillaDeTareosToolStripMenuItem.Name = "plantillaDeTareosToolStripMenuItem";
+            this.plantillaDeTareosToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.plantillaDeTareosToolStripMenuItem.Text = "Plantilla de Tareos";
+            this.plantillaDeTareosToolStripMenuItem.Click += new System.EventHandler(this.plantillaDeTareosToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(204, 6);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1077,6 +1093,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripMenuItem tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripMenuItem plantillaDeTareosToolStripMenuItem;
     }
 }
 

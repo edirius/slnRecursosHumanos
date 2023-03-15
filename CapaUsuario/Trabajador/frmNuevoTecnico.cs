@@ -232,7 +232,7 @@ namespace CapaUsuario.Trabajador
                 }
 
             }
-            if (txtDNI.Text == "" || txtNombre.Text == "" || txtApePaterno.Text == "" || txtApeMaterno.Text == "" || cboDepartamento.Text == "" || cboProvincia.Text == "" || cboDistrito.Text == "" || cboAFP.Text == "")
+            if (txtDNI.Text.Trim() == "" || txtNombre.Text.Trim() == "" || txtApePaterno.Text.Trim() == "" || txtApeMaterno.Text.Trim() == "" || cboDepartamento.Text.Trim() == "" || cboProvincia.Text.Trim() == "" || cboDistrito.Text == "" || cboAFP.Text == "" || cboCategoriaOcupacional.Text == "" || cboOcupacion.Text == "" || cboCargo.Text == "")
             {
                 MessageBox.Show("Existen datos en Blanco, no se puede Guardar al nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

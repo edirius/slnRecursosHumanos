@@ -12,7 +12,7 @@ namespace CapaUsuario.Tareo
 {
     public partial class frmImportarTareo : Form
     {
-        string sdescripcion = "";
+        public string sdescripcion = "";
         int sidttareo= 0;
         int sidtmeta = 0;
         public int sidttareoimportar = 0;

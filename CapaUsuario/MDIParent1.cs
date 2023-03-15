@@ -615,6 +615,13 @@ namespace CapaUsuario
             frmExportarTDT.Show();
         }
 
+        private void plantillaDeTareosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Tareo.frmListaPlantillaTareos fListaTareos = new Tareo.frmListaPlantillaTareos();
+            fListaTareos.MdiParent = this;
+            fListaTareos.Show();
+        }
+
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackupBBDDMySQL();

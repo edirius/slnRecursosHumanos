@@ -52,6 +52,35 @@ namespace CapaDeNegocios.Planillas
             return Conexion.GDatos.TraerDataTable("spListarDetallePlanillaAEmpleador", IdtDetallePlanilla);
         }
 
+        public cDetallePlanillaAEmpleador TraerEssalud(int idtDetallePlanilla)
+        {
+            DataTable auxiliar = Conexion.GDatos.TraerDataTable("spListarDetallePlanillaAEmpleador", IdtDetallePlanilla);
+            if (auxiliar.Rows.Count > 0)
+            {
+                for (int i = 0; i < auxiliar.Rows.Count; i++)
+                {
+                    cDetallePlanillaAEmpleador oDetalle = new cDetallePlanillaAEmpleador();
+                    oDetalle.IdtDetallePlanillaAEmpleador = Convert.ToInt32(auxiliar.Rows[i][0].ToString());
+                    oDetalle.Monto = Convert.ToDecimal(auxiliar.Rows[i][1].ToString());
+                    oDetalle.IdtMaestroAEmpleador = Convert.ToInt32(auxiliar.Rows[i][2].ToString());
+                    oDetalle.IdtDetallePlanilla = Convert.ToInt32(auxiliar.Rows[i][3].ToString());
+
+                    Sunat.cMaestroAportacionesEmpleador oMaestroAportacion = new Sunat.cMaestroAportacionesEmpleador();
+                    oMaestroAportacion = oMaestroAportacion.TraerAportacionEmpleadorXId(oDetalle.IdtMaestroAEmpleador);
+                    //el codigo 0804 corresponde a essalud
+                    if (oMaestroAportacion.Codigo == "0804")
+                    {
+                        return oDetalle;
+                    }
+                }
+
+                return null;
+            }
+            else
+            {
+                return null;
+            }
+        }
         public Boolean CrearDetallePlanillaAEmpleador(cDetallePlanillaAEmpleador miDetallePlanillaAEmpleador)
         {
             Conexion.GDatos.Ejecutar("spCrearDetallePlanillaAEmpleador", miDetallePlanillaAEmpleador.Monto, miDetallePlanillaAEmpleador.IdtMaestroAEmpleador, miDetallePlanillaAEmpleador.IdtDetallePlanilla);

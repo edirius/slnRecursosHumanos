@@ -116,6 +116,7 @@
             this.menuCopiarNombre = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCopiarPaterno = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApellidoMaterno = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolRenta5ta = new System.Windows.Forms.ToolStripLabel();
             this.statusTrabajadores.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -159,6 +160,7 @@
             this.btnImprimirLista,
             this.toolStripSeparator4,
             this.btnDatosFijosxTrabajador,
+            this.toolRenta5ta,
             this.toolStripSeparator5,
             this.btnImprimirListaReloj,
             this.btnSalir});
@@ -808,6 +810,14 @@
             this.menuApellidoMaterno.Text = "Copiar Apellido Materno";
             this.menuApellidoMaterno.Click += new System.EventHandler(this.menuApellidoMaterno_Click);
             // 
+            // toolRenta5ta
+            // 
+            this.toolRenta5ta.Image = global::CapaUsuario.Properties.Resources._99;
+            this.toolRenta5ta.Name = "toolRenta5ta";
+            this.toolRenta5ta.Size = new System.Drawing.Size(94, 25);
+            this.toolRenta5ta.Text = "Renta 5ta Ant";
+            this.toolRenta5ta.Click += new System.EventHandler(this.toolRenta5ta_Click);
+            // 
             // frmListaTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -899,5 +909,6 @@
         private System.Windows.Forms.ToolStripButton btnImprimirListaReloj;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.ToolStripLabel toolRenta5ta;
     }
 }

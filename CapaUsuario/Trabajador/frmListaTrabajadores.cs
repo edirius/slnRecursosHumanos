@@ -572,5 +572,34 @@ namespace CapaUsuario.Trabajador
             }
 
         }
+
+        private void toolRenta5ta_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dtgListaTrabajadores.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un trabajador:", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    cTrabajador oTrabajador = new cTrabajador();
+                    oTrabajador.IdTrabajador = Convert.ToInt32(dtgListaTrabajadores.SelectedRows[0].Cells["id_trabajador"].Value);
+                    oTrabajador.Nombres = Convert.ToString(dtgListaTrabajadores.SelectedRows[0].Cells["nombres"].Value);
+                    oTrabajador.ApellidoPaterno = Convert.ToString(dtgListaTrabajadores.SelectedRows[0].Cells["apellidoPaterno"].Value);
+                    oTrabajador.ApellidoMaterno = Convert.ToString(dtgListaTrabajadores.SelectedRows[0].Cells["apellidoMaterno"].Value);
+                    frmListaRenta5taAnteriores fLista5ta = new frmListaRenta5taAnteriores();
+                    fLista5ta.oTrabajador = oTrabajador;
+                    if (fLista5ta.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar datos fijos del trabajador: frmListaTrabajadores: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

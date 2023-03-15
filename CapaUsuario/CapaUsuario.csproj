@@ -1040,6 +1040,12 @@
     <Compile Include="Tareo\frmImportarTareo.Designer.cs">
       <DependentUpon>frmImportarTareo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tareo\frmListaPlantillaTareos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tareo\frmListaPlantillaTareos.Designer.cs">
+      <DependentUpon>frmListaPlantillaTareos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tareo\frmMantenimientoDetalleTareo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1057,6 +1063,12 @@
     </Compile>
     <Compile Include="Tareo\frmHorasHombre.designer.cs">
       <DependentUpon>frmHorasHombre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tareo\frmMantenimientoPlantillaTareo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tareo\frmMantenimientoPlantillaTareo.Designer.cs">
+      <DependentUpon>frmMantenimientoPlantillaTareo.cs</DependentUpon>
     </Compile>
     <Compile Include="Tareo\frmMantenimientoTareo.cs">
       <SubType>Form</SubType>
@@ -1214,6 +1226,12 @@
     <Compile Include="Asistencia\frmAsistenciaTrabajadores.Designer.cs">
       <DependentUpon>frmAsistenciaTrabajadores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trabajador\frmListaRenta5taAnteriores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmListaRenta5taAnteriores.Designer.cs">
+      <DependentUpon>frmListaRenta5taAnteriores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trabajador\frmListaTrabajadores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1225,6 +1243,12 @@
     </Compile>
     <Compile Include="Trabajador\frmMantenimientoRegimenTrabajador.Designer.cs">
       <DependentUpon>frmMantenimientoRegimenTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Trabajador\frmMantenimientoRenta5taAnt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trabajador\frmMantenimientoRenta5taAnt.Designer.cs">
+      <DependentUpon>frmMantenimientoRenta5taAnt.cs</DependentUpon>
     </Compile>
     <Compile Include="Trabajador\frmMantenimientoSeguroSocial.cs">
       <SubType>Form</SubType>
@@ -1838,6 +1862,9 @@
     <EmbeddedResource Include="Tareo\frmImportarTareo.resx">
       <DependentUpon>frmImportarTareo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tareo\frmListaPlantillaTareos.resx">
+      <DependentUpon>frmListaPlantillaTareos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmMantenimientoDetalleTareo.resx">
       <DependentUpon>frmMantenimientoDetalleTareo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1846,6 +1873,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmHorasHombre.resx">
       <DependentUpon>frmHorasHombre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tareo\frmMantenimientoPlantillaTareo.resx">
+      <DependentUpon>frmMantenimientoPlantillaTareo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmMantenimientoTareo.resx">
       <DependentUpon>frmMantenimientoTareo.cs</DependentUpon>
@@ -1874,11 +1904,17 @@
     <EmbeddedResource Include="Asistencia\frmAsistenciaTrabajadores.resx">
       <DependentUpon>frmAsistenciaTrabajadores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmListaRenta5taAnteriores.resx">
+      <DependentUpon>frmListaRenta5taAnteriores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmListaTrabajadores.resx">
       <DependentUpon>frmListaTrabajadores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmMantenimientoRegimenTrabajador.resx">
       <DependentUpon>frmMantenimientoRegimenTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trabajador\frmMantenimientoRenta5taAnt.resx">
+      <DependentUpon>frmMantenimientoRenta5taAnt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trabajador\frmMantenimientoSeguroSocial.resx">
       <DependentUpon>frmMantenimientoSeguroSocial.cs</DependentUpon>

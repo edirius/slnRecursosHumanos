@@ -195,6 +195,7 @@
     <Compile Include="Reloj\Helper\SDKHelper.cs" />
     <Compile Include="Reloj\Helper\SearchforUSBCom.cs" />
     <Compile Include="Reloj\Utilities\UniversalStatic.cs" />
+    <Compile Include="RentaQuinta\cRenta5taAnteriores.cs" />
     <Compile Include="RentaQuinta\cRentaQuinta.cs" />
     <Compile Include="RentaQuinta\cRentaQuintaMensual.cs" />
     <Compile Include="RentaQuinta\cRentaQuintaIngresos.cs" />
@@ -224,6 +225,7 @@
     <Compile Include="Tareos\cImprimirHorasHombre.cs" />
     <Compile Include="Tareos\cImprimirTareo.cs" />
     <Compile Include="Tareos\cImprimirTareo2.cs" />
+    <Compile Include="Tareos\cPlantillaTareo.cs" />
     <Compile Include="Tareos\cTareoHorasAcumuladas.cs" />
     <Compile Include="Tareos\cTareo.cs" />
     <Compile Include="Trabajadores\cDatosFijo.cs" />

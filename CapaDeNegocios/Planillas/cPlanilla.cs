@@ -26,6 +26,8 @@ namespace CapaDeNegocios.Planillas
 
         private List<cDetallePlanilla> listaDetallePlanilla;
 
+        private cPlantillaPlanilla oPlantilla = new cPlantillaPlanilla();
+
         public int IdtPlanilla
         {
             get { return sidtplanilla; }
@@ -233,6 +235,58 @@ namespace CapaDeNegocios.Planillas
                 planillaAuxiliar.ListaDetallePlanilla.Add(detalle);
 
                 return planillaAuxiliar;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public cPlanilla TraerPLanillaConTrabajadorDuplicadoConCargasSociales(cTrabajador TrabajadorDuplicado, string Mes, int anio, int codigoPlanillaActual)
+        {
+            cPlanilla planillaAuxiliar = null;
+            DataTable tablaAuxiliar;
+            tablaAuxiliar = Conexion.GDatos.TraerDataTable("spBuscarTrabajadorEnOtraPlanilla", Mes, anio, TrabajadorDuplicado.IdTrabajador, codigoPlanillaActual);
+            if (tablaAuxiliar.Rows.Count > 0)
+            {
+                planillaAuxiliar = new cPlanilla();
+                planillaAuxiliar.IdtPlanilla = Convert.ToInt16(tablaAuxiliar.Rows[0][0]);
+                planillaAuxiliar.Numero = Convert.ToString(tablaAuxiliar.Rows[0][1]);
+                planillaAuxiliar.Mes = Convert.ToString(tablaAuxiliar.Rows[0][2]);
+                planillaAuxiliar.Año = Convert.ToString(tablaAuxiliar.Rows[0][3]);
+                planillaAuxiliar.Fecha = Convert.ToDateTime(tablaAuxiliar.Rows[0][4]);
+                planillaAuxiliar.IdtMeta = Convert.ToInt16(tablaAuxiliar.Rows[0][5]);
+                planillaAuxiliar.IdtFuenteFinanciamiento = Convert.ToInt16(tablaAuxiliar.Rows[0][6]);
+                planillaAuxiliar.IdtRegimenLaboral = Convert.ToInt16(tablaAuxiliar.Rows[0][7]);
+                planillaAuxiliar.Descripcion = tablaAuxiliar.Rows[0][8].ToString();
+                planillaAuxiliar.Plantilla = tablaAuxiliar.Rows[0][9].ToString();
+                planillaAuxiliar.Observaciones = tablaAuxiliar.Rows[0][10].ToString();
+
+                cDetallePlanilla detalle = new cDetallePlanilla();
+                detalle.IdtDetallePlanilla = Convert.ToInt16(tablaAuxiliar.Rows[0][11]);
+                detalle.Cargo = tablaAuxiliar.Rows[0][12].ToString();
+                detalle.FechaInicio = Convert.ToDateTime(tablaAuxiliar.Rows[0][13]);
+                detalle.DiasLaborados = Convert.ToInt16(tablaAuxiliar.Rows[0][14]);
+                detalle.TotalIngresos = Convert.ToDecimal(tablaAuxiliar.Rows[0][15]);
+                detalle.TotalATrabajador = Convert.ToDecimal(tablaAuxiliar.Rows[0][16]);
+                detalle.TotalDescuentos = Convert.ToDecimal(tablaAuxiliar.Rows[0][17]);
+                detalle.TotalAEmpleador = Convert.ToDecimal(tablaAuxiliar.Rows[0][18]);
+                detalle.NetoaCobrar = Convert.ToDecimal(tablaAuxiliar.Rows[0][19]);
+                detalle.IdtTrabajador = Convert.ToInt16(tablaAuxiliar.Rows[0][20]);
+
+                planillaAuxiliar.ListaDetallePlanilla = new List<cDetallePlanilla>();
+                planillaAuxiliar.ListaDetallePlanilla.Add(detalle);
+
+                oPlantilla = oPlantilla.TraerPlantillaxDescripcion(planillaAuxiliar.Plantilla);
+                if (oPlantilla.Descripcion == "RACIONAMIENTO")
+                {
+                    return null;
+                }
+                else
+                {
+                    return planillaAuxiliar;
+                }
+                
             }
             else
             {

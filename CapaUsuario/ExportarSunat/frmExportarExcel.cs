@@ -78,6 +78,10 @@ namespace CapaUsuario.ExportarSunat
                 hoja_trabajo = (Microsoft.Office.Interop.Excel.Worksheet)libros_trabajo.Worksheets.get_Item(1);
                 int headr = 1;
                 //Recorremos el DataGridView rellenando la hoja de trabajo
+
+                Microsoft.Office.Interop.Excel.Range oRng = hoja_trabajo.get_Range("D1", "D" + dgv2.Columns.Count +1);
+                oRng.NumberFormat = "@";
+
                 for (int i = 0; i < dgv2.Rows.Count; i++)
                 {
 
@@ -90,6 +94,7 @@ namespace CapaUsuario.ExportarSunat
                         //    headr++;
                         //}
                         //añadimos contenido de excel
+                       
                         hoja_trabajo.Cells[i + 1, j + 1] = dgv2.Rows[i].Cells[j].Value.ToString();
                     }
 
