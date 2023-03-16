@@ -169,7 +169,12 @@ namespace CapaUsuario.Tareo
                     }
                     else
                     {
-                        //MessageBox.Show("El trabajador se encuentra de Baja, no se puede agregar al Tareo.", "Gestion de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        foreach (DataRow row1 in oDataTrabajador.Select("id_trabajador = '" + IdtTrabajador + "'"))
+                        {
+                            Nombre = row1[2].ToString() + " " + row1[3].ToString() + ", " + row1[4].ToString();
+                            DNI = row1[1].ToString();
+                        }
+                            MessageBox.Show("El trabajador: " + DNI + ": " + Nombre + " se encuentra de Baja, no se puede agregar al Tareo.", "Gestion de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 if (contador == 0)
