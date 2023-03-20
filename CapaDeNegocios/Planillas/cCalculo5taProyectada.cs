@@ -20,6 +20,8 @@ namespace CapaDeNegocios.Planillas
         public double sRemMesAnt = 0;
         public double sIngMesAnt = 0;
         public double sRetMesAnt = 0;
+        public double sIngresosOtroLugar = 0;
+        public double sRetencionesOtroLugar = 0;
 
         public double[,] srentas = new double[3, 12];
 
@@ -84,7 +86,7 @@ namespace CapaDeNegocios.Planillas
                         }
                     }
                 }
-                double CAL5TA = Convert.ToDouble(miCalculo5ta.CalculoRentaMensual(j + 1, Convert.ToDecimal(sRemuneracion), Convert.ToDecimal(sIngreso), Convert.ToDecimal(sRemMesAnt + sIngMesAnt), Convert.ToDecimal(sRetMesAnt), Convert.ToDecimal(sUIT)));
+                double CAL5TA = Convert.ToDouble(miCalculo5ta.CalculoRentaMensual(j + 1, Convert.ToDecimal(sRemuneracion), Convert.ToDecimal(sIngreso), Convert.ToDecimal(sRemMesAnt + sIngMesAnt), Convert.ToDecimal(sRetMesAnt), Convert.ToDecimal(sUIT), Convert.ToDecimal(sRetencionesOtroLugar), Convert.ToDecimal(sIngresosOtroLugar)));
                 srentas[2, j] = Math.Round(CAL5TA, 2);
             }
         }

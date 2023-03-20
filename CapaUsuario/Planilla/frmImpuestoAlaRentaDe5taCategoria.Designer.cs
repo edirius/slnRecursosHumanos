@@ -46,6 +46,10 @@
             this.cbUIT = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cbAños = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtIngresosOtroLugar = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtRetencionesOtroLugar = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +64,7 @@
             // 
             // txtIRM
             // 
-            this.txtIRM.Location = new System.Drawing.Point(202, 276);
+            this.txtIRM.Location = new System.Drawing.Point(208, 317);
             this.txtIRM.Name = "txtIRM";
             this.txtIRM.Size = new System.Drawing.Size(77, 20);
             this.txtIRM.TabIndex = 39;
@@ -68,7 +72,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(40, 279);
+            this.label13.Location = new System.Drawing.Point(46, 320);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(148, 13);
             this.label13.TabIndex = 38;
@@ -76,6 +80,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtRetencionesOtroLugar);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.txtIngresosOtroLugar);
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.btncalcular);
             this.groupBox2.Controls.Add(this.txtRetencionesAnteriores);
             this.groupBox2.Controls.Add(this.label7);
@@ -91,14 +99,14 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(26, 40);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(444, 321);
+            this.groupBox2.Size = new System.Drawing.Size(444, 358);
             this.groupBox2.TabIndex = 37;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Calculo del Impuesto";
             // 
             // btncalcular
             // 
-            this.btncalcular.Location = new System.Drawing.Point(156, 202);
+            this.btncalcular.Location = new System.Drawing.Point(156, 253);
             this.btncalcular.Name = "btncalcular";
             this.btncalcular.Size = new System.Drawing.Size(144, 38);
             this.btncalcular.TabIndex = 46;
@@ -231,11 +239,43 @@
             this.cbAños.TabIndex = 45;
             this.cbAños.SelectedIndexChanged += new System.EventHandler(this.cbAños_SelectedIndexChanged);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(82, 190);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 13);
+            this.label4.TabIndex = 47;
+            this.label4.Text = "Ingresos Otro Lugar:";
+            // 
+            // txtIngresosOtroLugar
+            // 
+            this.txtIngresosOtroLugar.Location = new System.Drawing.Point(200, 190);
+            this.txtIngresosOtroLugar.Name = "txtIngresosOtroLugar";
+            this.txtIngresosOtroLugar.Size = new System.Drawing.Size(100, 20);
+            this.txtIngresosOtroLugar.TabIndex = 48;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(61, 225);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 13);
+            this.label5.TabIndex = 49;
+            this.label5.Text = "Retenciones Otro Lugar:";
+            // 
+            // txtRetencionesOtroLugar
+            // 
+            this.txtRetencionesOtroLugar.Location = new System.Drawing.Point(200, 225);
+            this.txtRetencionesOtroLugar.Name = "txtRetencionesOtroLugar";
+            this.txtRetencionesOtroLugar.Size = new System.Drawing.Size(100, 20);
+            this.txtRetencionesOtroLugar.TabIndex = 50;
+            // 
             // frmImpuestoAlaRentaDe5taCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(513, 377);
+            this.ClientSize = new System.Drawing.Size(513, 410);
             this.Controls.Add(this.cbAños);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cbUIT);
@@ -272,5 +312,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbAños;
         private System.Windows.Forms.Button btncalcular;
+        private System.Windows.Forms.TextBox txtRetencionesOtroLugar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtIngresosOtroLugar;
+        private System.Windows.Forms.Label label4;
     }
 }

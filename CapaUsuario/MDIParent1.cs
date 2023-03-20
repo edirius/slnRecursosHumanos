@@ -419,7 +419,10 @@ namespace CapaUsuario
 
         private void restaurarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RestaurarBBDDMySql();
+            if (MessageBox.Show("Con esta accion se borrara toda la informacion actual: Desea restaurar el backup???", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)== DialogResult.Yes)
+            {
+                RestaurarBBDDMySql();
+            }
         }
 
         private void trabajadoresToolStripMenuItem1_Click(object sender, EventArgs e)

@@ -528,6 +528,8 @@ namespace CapaUsuario.Reportes
 
                 int indice_prueba_dias_laborados = 0;
                 int indice_prueba_corta_dias_laborados = 0;
+                int indice_cuenta_bancaria = 0;
+                int indice_prueba_corta_cuenta_bancaria = 0;
 
                 string[] arr_ingresos = new string[160];
                 string[] arr_descuento = new string[160];
@@ -692,7 +694,15 @@ namespace CapaUsuario.Reportes
                     odtPrueba.Columns.Add("DIAS LABORADOS", typeof(string));
                     odtPrueba.Columns.Add("JORNAL DIARIO", typeof(string));
                     odtPrueba.Columns.Add("NETO A COBRAR", typeof(string));
-                    odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamiento(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
+                    if (Settings.Default.RUC == "20147495600")
+                    {
+                        odtPrueba.Columns.Add("CUENTA BANCARIA", typeof(string));
+                        odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamiento(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
+                    }
+                    else
+                    {
+                        odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamientoBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
+                    }
                     odtPlanilla = buscarDuplicados(odtPlanilla);
                     odtPrueba.Clear();
 
@@ -722,16 +732,25 @@ namespace CapaUsuario.Reportes
                             drFila[4] = row[12];
                             drFila[5] = Math.Round(Convert.ToDecimal(row[11]) / Convert.ToDecimal(row[12]),2);
                             drFila[6] = row[11];
-
-                            sumatoria = sumatoria + Convert.ToDecimal(row[11]);
+                            if (Settings.Default.RUC == "20147495600")
+                            {
+                                drFila[7] = row[13];
+                            }
+                           sumatoria = sumatoria + Convert.ToDecimal(row[11]);
 
                             //odtPrueba.Rows.Add(drFila);
                             odtPrueba.Rows.InsertAt(drFila, k);
 
                             k++;
                         }
-
-                        odtPrueba.Columns.Add("FIRMA", typeof(string));
+                        if (Settings.Default.RUC == "20147495600")
+                        {
+                            odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
+                        }
+                        else
+                        {
+                            odtPrueba.Columns.Add("FIRMA", typeof(string));
+                        }
 
                         this.dgvPrueba.DataSource = odtPrueba;
 
@@ -1917,7 +1936,14 @@ namespace CapaUsuario.Reportes
 
                     //odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(pMes, pRegimenLaboral);
                     //Determinar si la consulta esta vacio
-                    odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(sidtplanilla, pRegimenLaboral,pmes_nro, paño);
+                    if (Settings.Default.RUC == "20147495600")
+                    {
+                        odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
+                    }
+                    else
+                    {
+                        odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
+                    }
 
                     odtPlanilla= buscarDuplicados(odtPlanilla);
 
@@ -2145,6 +2171,16 @@ namespace CapaUsuario.Reportes
                                 indice_prueba_dias_laborados = BuscarIndiceColumna(odtPrueba, "DIAS LABORADOS");
                             }
 
+                            if (Settings.Default.RUC == "20147495600")
+                            {
+                                if (!ExisteColumnaTexto(odtPrueba, "CUENTA BANCARIA"))
+                                {
+                                    odtPrueba.Columns.Add("CUENTA BANCARIA", typeof(string));
+                                    indice_cuenta_bancaria = BuscarIndiceColumna(odtPrueba, "CUENTA BANCARIA");
+                                }
+
+                                drFila[indice_cuenta_bancaria] = row[16];
+                            }
 
 
                             //drFila[indice_neto_cobrar] = renumeracion - total_descuentos + total_ingresos + total_trabajador + total_empleador;
@@ -2620,6 +2656,17 @@ namespace CapaUsuario.Reportes
                                 odtPruebaCorta.Columns.Add("DIAS LABORADOS", typeof(string));
                                 indice_prueba_corta_dias_laborados = BuscarIndiceColumna(odtPruebaCorta, "DIAS LABORADOS");
                                 indice_prueba_dias_laborados = BuscarIndiceColumna(odtPrueba, "DIAS LABORADOS");
+                            }
+
+                            if (Settings.Default.RUC == "20147495600")
+                            {
+                                if (!ExisteColumnaTexto(odtPruebaCorta, "CUENTA BANCARIA"))
+                                {
+                                    odtPruebaCorta.Columns.Add("CUENTA BANCARIA", typeof(string));
+                                    indice_prueba_corta_cuenta_bancaria = BuscarIndiceColumna(odtPruebaCorta, "CUENTA BANCARIA");
+                                    indice_cuenta_bancaria = BuscarIndiceColumna(odtPrueba, "CUENTA BANCARIA");
+                                }
+                                drFilaCorta[indice_prueba_corta_cuenta_bancaria] = odtPrueba.Rows[d][indice_cuenta_bancaria];
                             }
 
                             string neto_cobrar = odtPrueba.Rows[d][indice_prueba_neto_cobrar].ToString();
@@ -3601,7 +3648,14 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph = new Paragraph();
                 paragraph.Alignment = Element.ALIGN_CENTER;
                 paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
-                paragraph.Add(Settings.Default.Empresa + " \n UNIDAD DE PERSONAL \n ");
+                if (Settings.Default.RUC == "20147495600")
+                {
+                    paragraph.Add(Settings.Default.Empresa + " \n UNIDAD DE PERSONAL \n ");
+                }
+                else
+                {
+                    paragraph.Add(Settings.Default.Empresa + " \n OFICINA DE RECURSOS HUMANOS \n ");
+                }
                 paragraph.SpacingBefore = 0f;
                 paragraph.SpacingAfter = 0f;
                 
@@ -3609,7 +3663,7 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph2 = new Paragraph();
                 paragraph2.Alignment = Element.ALIGN_RIGHT;
                 paragraph2.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                paragraph2.Add("PLANILLA Nº" + sNumeroPlanilla + " - " + saño + " \n ");
+                paragraph2.Add("PLANILLA Nº " + sNumeroPlanilla + " - " + saño + " \n ");
                 paragraph2.SpacingBefore = 0f;
                 paragraph2.SpacingAfter = 0f;
                 paragraph2.SetLeading(0, 0);
@@ -3708,6 +3762,8 @@ namespace CapaUsuario.Reportes
                 PdfPTable tabla_bonus = new PdfPTable(3);
                 tabla_bonus.DefaultCell.BorderWidth = 0;
 
+
+
                 //tabla que continene rrhh, gerencia municipal, presupuesto y contabilidad
                 int NumeroFirmas = 0;
                 if (chkFirmaElaborado.Checked){NumeroFirmas++;}
@@ -3716,111 +3772,105 @@ namespace CapaUsuario.Reportes
                 if (chkFirmaContabilidad.Checked) { NumeroFirmas++; }
                 if (chkFirmaTesoreria.Checked) { NumeroFirmas++; }
                 if (chkFirmaResidencia.Checked) { NumeroFirmas++; }
+                if (chkSubGerenciaObras.Checked) { NumeroFirmas++; }
+                if (chkSupervision.Checked) { NumeroFirmas++; }
+                if (chkFirmaPresupuesto.Checked) { NumeroFirmas++; }
 
                 PdfPTable tabla_firmas;
                 PdfPTable tabla_firmas2;
+                PdfPTable tabla_firmas3;
 
-                if (NumeroFirmas < 6)
+                List<Paragraph> ArregloFirmas = new List<Paragraph>(); 
+
+                //Se coloca en una sola tabla
+                if (NumeroFirmas <= 4)
                 {
-                   
-
                     tabla_firmas = new PdfPTable(NumeroFirmas);
-                    tabla_firmas2 = new PdfPTable(2);
-
                     tabla_firmas.DefaultCell.BorderWidth = 0;
-
-                    //FIRMAS
-                    Paragraph firma_elabo = new Paragraph();
-                    firma_elabo.Alignment = Element.ALIGN_CENTER;
-                    firma_elabo.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_elabo.Add("............................................. \n ELABORADO POR");
-
-                    Paragraph firma_rrhh = new Paragraph();
-                    firma_rrhh.Alignment = Element.ALIGN_CENTER;
-                    firma_rrhh.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_rrhh.Add("............................................. \n RECURSOS HUMANOS");
-
-                    Paragraph firma_gm = new Paragraph();
-                    firma_gm.Alignment = Element.ALIGN_CENTER;
-                    firma_gm.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_gm.Add("............................................. \n GERENCIA MUNICIPAL");
-
-                    Paragraph firma_pre = new Paragraph();
-                    firma_pre.Alignment = Element.ALIGN_CENTER;
-                    firma_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_pre.Add("............................................. \n CONTABILIDAD Y PRESUPUESTO ");
-                    
-
-                    Paragraph firma_con = new Paragraph();
-                    firma_con.Alignment = Element.ALIGN_CENTER;
-                    firma_con.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_con.Add("............................................. \n       TESORERIA");
-
-                    Paragraph firma_SUb = new Paragraph();
-                    firma_SUb.Alignment = Element.ALIGN_CENTER;
-                    firma_SUb.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_SUb.Add(" ............................................................. \n RESIDENCIA DE OBRAS");
-                    
-                    //aÑADIENDO FIRMAS A LA TABLA FIRMAS
-
-                    if (chkFirmaElaborado.Checked) tabla_firmas.AddCell(firma_elabo);
-                    if (chkFirmaRecursos.Checked) tabla_firmas.AddCell(firma_rrhh);
-                    if (chkFirmaGerencia.Checked) tabla_firmas.AddCell(firma_gm);
-                    if (chkFirmaContabilidad.Checked) tabla_firmas.AddCell(firma_pre);
-                    if (chkFirmaTesoreria.Checked) tabla_firmas.AddCell(firma_con);
-                    if (chkFirmaResidencia.Checked) tabla_firmas.AddCell(firma_SUb);
+                    tabla_firmas2 = new PdfPTable(1);
+                    tabla_firmas3 = new PdfPTable(1);
+                    foreach (CheckBox item in this.groupBox2.Controls.OfType<CheckBox>().OrderBy(tb => tb.TabIndex))
+                    {
+                        if (item.Name != "chkAltoColumna" && item.Checked== true)
+                        {
+                            Paragraph auxiliar = new Paragraph();
+                            auxiliar.Alignment = Element.ALIGN_CENTER;
+                            auxiliar.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                            auxiliar.Add(".............................................\n   " + item.Text);
+                            tabla_firmas.AddCell(auxiliar);
+                        }
+                    }
                 }
-
                 else
                 {
+                    // se coloca en 2 tablas
+                    if (NumeroFirmas <=8)
+                    {
+                        tabla_firmas = new PdfPTable(4);
+                        tabla_firmas2 = new PdfPTable(NumeroFirmas-4);
+                        tabla_firmas.DefaultCell.BorderWidth = 0;
+                        tabla_firmas2.DefaultCell.BorderWidth = 0;
+                        tabla_firmas3 = new PdfPTable(1);
 
-                    tabla_firmas = new PdfPTable(4);
-                    tabla_firmas2 = new PdfPTable(2);
-                    tabla_firmas.DefaultCell.BorderWidth = 0;
-                    tabla_firmas2.DefaultCell.BorderWidth = 0;
-                    //FIRMAS
-                    Paragraph firma_elabo = new Paragraph();
-                    firma_elabo.Alignment = Element.ALIGN_CENTER;
-                    firma_elabo.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_elabo.Add("............................................. \n ELABORADO POR");
+                        int contador = 0;
+                        foreach (CheckBox item in this.groupBox2.Controls.OfType<CheckBox>().OrderBy(tb => tb.TabIndex))
+                        {
+                            
+                            if (item.Name != "chkAltoColumna" && item.Checked == true)
+                            {
+                                contador++;
+                                Paragraph auxiliar = new Paragraph();
+                                auxiliar.Alignment = Element.ALIGN_CENTER;
+                                auxiliar.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                                auxiliar.Add(".............................................\n   " + item.Text);
+                                if (contador <=4)
+                                {
+                                    tabla_firmas.AddCell(auxiliar);
+                                }
+                                else
+                                {
+                                    tabla_firmas2.AddCell(auxiliar);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        tabla_firmas = new PdfPTable(3);
+                        tabla_firmas2 = new PdfPTable(3);
+                        tabla_firmas3 = new PdfPTable(3);
+                        tabla_firmas.DefaultCell.BorderWidth = 0;
+                        tabla_firmas2.DefaultCell.BorderWidth = 0;
+                        tabla_firmas3.DefaultCell.BorderWidth = 0;
 
-                    Paragraph p_rrhh = new Paragraph();
-                    p_rrhh.Alignment = Element.ALIGN_CENTER;
-                    p_rrhh.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    p_rrhh.Add(" ............................................. \n   RECURSOS HUMANOS");
-
-                    Paragraph p_gm = new Paragraph();
-                    p_gm.Alignment = Element.ALIGN_CENTER;
-                    p_gm.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    p_gm.Add(" ............................................... \n   GERENCIA MUNICIPAL");
-
-                    Paragraph p_pre = new Paragraph();
-                    p_pre.Alignment = Element.ALIGN_CENTER;
-                    p_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    p_pre.Add(" ....................................... \n PRESUPUESTO Y/O CONTABILIDAD");
-
-                    Paragraph p_con = new Paragraph();
-                    p_con.Alignment = Element.ALIGN_CENTER;
-                    p_con.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    p_con.Add(" ");
-
-                    Paragraph firma_Tes = new Paragraph();
-                    firma_Tes.Alignment = Element.ALIGN_CENTER;
-                    firma_Tes.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_Tes.Add(" ............................................... \n          TESORERIA");
-
-                    Paragraph firma_SUb = new Paragraph();
-                    firma_SUb.Alignment = Element.ALIGN_CENTER;
-                    firma_SUb.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_SUb.Add(" ............................................................. \n RESIDENCIA DE OBRAS");
-                    //aÑADIENDO FIRMAS A LA TABLA FIRMAS
-                    tabla_firmas.AddCell(firma_elabo);
-                    tabla_firmas.AddCell(p_rrhh);
-                    tabla_firmas.AddCell(p_gm);
-                    tabla_firmas.AddCell(p_pre);
-                    tabla_firmas.AddCell(p_con);
-                    tabla_firmas2.AddCell(firma_Tes);
-                    tabla_firmas2.AddCell(firma_SUb);
+                        int contador = 0;
+                        foreach (CheckBox item in this.groupBox2.Controls.OfType<CheckBox>().OrderBy(tb => tb.TabIndex))
+                        {
+                            if (item.Name != "chkAltoColumna" && item.Checked == true)
+                            {
+                                contador++;
+                                Paragraph auxiliar = new Paragraph();
+                                auxiliar.Alignment = Element.ALIGN_CENTER;
+                                auxiliar.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                                auxiliar.Add(".............................................\n   " + item.Text);
+                                if (contador <= 3)
+                                {
+                                    tabla_firmas.AddCell(auxiliar);
+                                }
+                                else
+                                {
+                                    if (contador <= 6)
+                                    {
+                                        tabla_firmas2.AddCell(auxiliar);
+                                    }
+                                    else
+                                    {
+                                        tabla_firmas3.AddCell(auxiliar);
+                                    }
+                                }
+                            }
+                        }
+                    }
 
                 }
 
@@ -3881,15 +3931,23 @@ namespace CapaUsuario.Reportes
                 //column_one.AddElement(paragraph5);
                 column_one.AddElement(tabla_firmas);
 
-                if (NumeroFirmas > 5)
+                if (NumeroFirmas <= 9)
                 {
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(paragraph5);
-                    column_one.AddElement(paragraph5);
                     column_one.AddElement(tabla_firmas2);
+                }
+                if (NumeroFirmas == 9)
+                {
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(tabla_firmas3);
                 }
                 pdfDoc.Add(logo);
                 pdfDoc.Add(oficinas);
@@ -4106,9 +4164,7 @@ namespace CapaUsuario.Reportes
                 tabla_bonus.DefaultCell.BorderWidth = 0;
 
                 //tabla que continene rrhh, gerencia municipal, presupuesto y contabilidad
-                PdfPTable tabla_firmas;
-                PdfPTable tabla_firmas2;
-
+                //tabla que continene rrhh, gerencia municipal, presupuesto y contabilidad
                 int NumeroFirmas = 0;
                 if (chkFirmaElaborado.Checked) { NumeroFirmas++; }
                 if (chkFirmaRecursos.Checked) { NumeroFirmas++; }
@@ -4116,111 +4172,108 @@ namespace CapaUsuario.Reportes
                 if (chkFirmaContabilidad.Checked) { NumeroFirmas++; }
                 if (chkFirmaTesoreria.Checked) { NumeroFirmas++; }
                 if (chkFirmaResidencia.Checked) { NumeroFirmas++; }
+                if (chkSubGerenciaObras.Checked) { NumeroFirmas++; }
+                if (chkSupervision.Checked) { NumeroFirmas++; }
+                if (chkFirmaPresupuesto.Checked) { NumeroFirmas++; }
 
-                if (NumeroFirmas < 6)
+                PdfPTable tabla_firmas;
+                PdfPTable tabla_firmas2;
+                PdfPTable tabla_firmas3;
+
+                List<Paragraph> ArregloFirmas = new List<Paragraph>();
+
+                //Se coloca en una sola tabla
+                if (NumeroFirmas <= 4)
                 {
-
-
                     tabla_firmas = new PdfPTable(NumeroFirmas);
-                    tabla_firmas2 = new PdfPTable(2);
-
                     tabla_firmas.DefaultCell.BorderWidth = 0;
-
-                    //FIRMAS
-                    Paragraph firma_elabo = new Paragraph();
-                    firma_elabo.Alignment = Element.ALIGN_CENTER;
-                    firma_elabo.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_elabo.Add("............................................. \n ELABORADO POR");
-
-                    Paragraph firma_rrhh = new Paragraph();
-                    firma_rrhh.Alignment = Element.ALIGN_CENTER;
-                    firma_rrhh.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_rrhh.Add("............................................. \n RECURSOS HUMANOS");
-
-                    Paragraph firma_gm = new Paragraph();
-                    firma_gm.Alignment = Element.ALIGN_CENTER;
-                    firma_gm.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_gm.Add("............................................. \n GERENCIA MUNICIPAL");
-
-                    Paragraph firma_pre = new Paragraph();
-                    firma_pre.Alignment = Element.ALIGN_CENTER;
-                    firma_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_pre.Add("............................................. \n CONTABILIDAD Y PRESUPUESTO ");
-
-
-                    Paragraph firma_con = new Paragraph();
-                    firma_con.Alignment = Element.ALIGN_CENTER;
-                    firma_con.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_con.Add("............................................. \n       TESORERIA");
-
-                    Paragraph firma_SUb = new Paragraph();
-                    firma_SUb.Alignment = Element.ALIGN_CENTER;
-                    firma_SUb.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_SUb.Add(" ............................................................. \n RESIDENCIA DE OBRAS");
-
-                    //aÑADIENDO FIRMAS A LA TABLA FIRMAS
-
-                    if (chkFirmaElaborado.Checked) tabla_firmas.AddCell(firma_elabo);
-                    if (chkFirmaRecursos.Checked) tabla_firmas.AddCell(firma_rrhh);
-                    if (chkFirmaGerencia.Checked) tabla_firmas.AddCell(firma_gm);
-                    if (chkFirmaContabilidad.Checked) tabla_firmas.AddCell(firma_pre);
-                    if (chkFirmaTesoreria.Checked) tabla_firmas.AddCell(firma_con);
-                    if (chkFirmaResidencia.Checked) tabla_firmas.AddCell(firma_SUb);
+                    tabla_firmas2 = new PdfPTable(1);
+                    tabla_firmas3 = new PdfPTable(1);
+                    foreach (CheckBox item in this.groupBox2.Controls.OfType<CheckBox>().OrderBy(tb => tb.TabIndex))
+                    {
+                        if (item.Name != "chkAltoColumna" && item.Checked == true)
+                        {
+                            Paragraph auxiliar = new Paragraph();
+                            auxiliar.Alignment = Element.ALIGN_CENTER;
+                            auxiliar.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                            auxiliar.Add(".............................................\n   " + item.Text);
+                            tabla_firmas.AddCell(auxiliar);
+                        }
+                    }
                 }
-
                 else
                 {
+                    // se coloca en 2 tablas
+                    if (NumeroFirmas <= 8)
+                    {
+                        tabla_firmas = new PdfPTable(4);
+                        tabla_firmas2 = new PdfPTable(NumeroFirmas - 4);
+                        tabla_firmas.DefaultCell.BorderWidth = 0;
+                        tabla_firmas2.DefaultCell.BorderWidth = 0;
+                        tabla_firmas3 = new PdfPTable(1);
 
-                    tabla_firmas = new PdfPTable(4);
-                    tabla_firmas2 = new PdfPTable(2);
-                    tabla_firmas.DefaultCell.BorderWidth = 0;
-                    tabla_firmas2.DefaultCell.BorderWidth = 0;
-                    //FIRMAS
-                    Paragraph firma_elabo = new Paragraph();
-                    firma_elabo.Alignment = Element.ALIGN_CENTER;
-                    firma_elabo.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_elabo.Add("............................................. \n ELABORADO POR");
+                        int contador = 0;
+                        foreach (CheckBox item in this.groupBox2.Controls.OfType<CheckBox>().OrderBy(tb => tb.TabIndex))
+                        {
 
-                    Paragraph p_rrhh = new Paragraph();
-                    p_rrhh.Alignment = Element.ALIGN_CENTER;
-                    p_rrhh.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    p_rrhh.Add(" ............................................. \n   RECURSOS HUMANOS");
+                            if (item.Name != "chkAltoColumna" && item.Checked == true)
+                            {
+                                contador++;
+                                Paragraph auxiliar = new Paragraph();
+                                auxiliar.Alignment = Element.ALIGN_CENTER;
+                                auxiliar.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                                auxiliar.Add(".............................................\n   " + item.Text);
+                                if (contador <= 4)
+                                {
+                                    tabla_firmas.AddCell(auxiliar);
+                                }
+                                else
+                                {
+                                    tabla_firmas2.AddCell(auxiliar);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        tabla_firmas = new PdfPTable(3);
+                        tabla_firmas2 = new PdfPTable(3);
+                        tabla_firmas3 = new PdfPTable(3);
+                        tabla_firmas.DefaultCell.BorderWidth = 0;
+                        tabla_firmas2.DefaultCell.BorderWidth = 0;
+                        tabla_firmas3.DefaultCell.BorderWidth = 0;
 
-                    Paragraph p_gm = new Paragraph();
-                    p_gm.Alignment = Element.ALIGN_CENTER;
-                    p_gm.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    p_gm.Add(" ............................................... \n   GERENCIA MUNICIPAL");
-
-                    Paragraph p_pre = new Paragraph();
-                    p_pre.Alignment = Element.ALIGN_CENTER;
-                    p_pre.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    p_pre.Add(" ....................................... \n PRESUPUESTO Y/O CONTABILIDAD");
-
-                    Paragraph p_con = new Paragraph();
-                    p_con.Alignment = Element.ALIGN_CENTER;
-                    p_con.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    p_con.Add(" ");
-
-                    Paragraph firma_Tes = new Paragraph();
-                    firma_Tes.Alignment = Element.ALIGN_CENTER;
-                    firma_Tes.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_Tes.Add(" ............................................... \n          TESORERIA");
-
-                    Paragraph firma_SUb = new Paragraph();
-                    firma_SUb.Alignment = Element.ALIGN_CENTER;
-                    firma_SUb.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                    firma_SUb.Add(" ............................................................. \n RESIDENCIA DE OBRAS");
-                    //aÑADIENDO FIRMAS A LA TABLA FIRMAS
-                    tabla_firmas.AddCell(firma_elabo);
-                    tabla_firmas.AddCell(p_rrhh);
-                    tabla_firmas.AddCell(p_gm);
-                    tabla_firmas.AddCell(p_pre);
-                    tabla_firmas.AddCell(p_con);
-                    tabla_firmas2.AddCell(firma_Tes);
-                    tabla_firmas2.AddCell(firma_SUb);
+                        int contador = 0;
+                        foreach (CheckBox item in this.groupBox2.Controls.OfType<CheckBox>().OrderBy(tb => tb.TabIndex))
+                        {
+                            if (item.Name != "chkAltoColumna" && item.Checked == true)
+                            {
+                                contador++;
+                                Paragraph auxiliar = new Paragraph();
+                                auxiliar.Alignment = Element.ALIGN_CENTER;
+                                auxiliar.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                                auxiliar.Add(".............................................\n   " + item.Text);
+                                if (contador <= 3)
+                                {
+                                    tabla_firmas.AddCell(auxiliar);
+                                }
+                                else
+                                {
+                                    if (contador <= 6)
+                                    {
+                                        tabla_firmas2.AddCell(auxiliar);
+                                    }
+                                    else
+                                    {
+                                        tabla_firmas3.AddCell(auxiliar);
+                                    }
+                                }
+                            }
+                        }
+                    }
 
                 }
-                
+            
                 //instanciando una columna y 3 columnas
                 //Columnas 
                 MultiColumnText column_one = new MultiColumnText();
@@ -4229,10 +4282,6 @@ namespace CapaUsuario.Reportes
 
                 MultiColumnText column_3 = new MultiColumnText();
                 column_3.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 4);
-
-                //Agrupando tabla titular
-          
-
 
                 //Agregando una columna 
                 column_one.AddElement(paragraph);
@@ -4250,17 +4299,24 @@ namespace CapaUsuario.Reportes
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph5);
-                column_one.AddElement(paragraph5);
                 column_one.AddElement(tabla_firmas);
-                if (numeroRegimenLaboral == 5)
+                if (NumeroFirmas <= 9)
                 {
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(paragraph5);
-                    column_one.AddElement(paragraph5);
                     column_one.AddElement(tabla_firmas2);
+                }
+                if (NumeroFirmas == 9)
+                {
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(paragraph5);
+                    column_one.AddElement(tabla_firmas3);
                 }
                 pdfDoc.Add(logo);
                 pdfDoc.Add(oficinas);

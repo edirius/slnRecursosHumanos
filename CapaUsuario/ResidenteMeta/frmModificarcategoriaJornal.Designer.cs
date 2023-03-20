@@ -92,6 +92,7 @@
             // 
             // cboOpcion
             // 
+            this.cboOpcion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOpcion.FormattingEnabled = true;
             this.cboOpcion.Items.AddRange(new object[] {
             "Jornal",
@@ -104,7 +105,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(41, 120);
+            this.label4.Location = new System.Drawing.Point(44, 119);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 13);
             this.label4.TabIndex = 108;
@@ -122,7 +123,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2, 85);
+            this.label3.Location = new System.Drawing.Point(7, 85);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 106;
@@ -136,11 +137,12 @@
             this.txtMonto.Size = new System.Drawing.Size(100, 20);
             this.txtMonto.TabIndex = 105;
             this.txtMonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress_1);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 52);
+            this.label2.Location = new System.Drawing.Point(52, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 104;
@@ -158,11 +160,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 18);
+            this.label1.Location = new System.Drawing.Point(39, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 102;
-            this.label1.Text = "Nueva Categoria :";
+            this.label1.Text = "Categoria :";
             // 
             // frmModificarcategoriaJornal
             // 

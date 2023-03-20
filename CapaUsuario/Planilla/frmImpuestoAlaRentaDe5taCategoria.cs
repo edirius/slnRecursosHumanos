@@ -32,7 +32,9 @@ namespace CapaUsuario.Planilla
             decimal RemuMesAnt = Convert.ToDecimal(txtRemAnteriores.Text);
             decimal RetMesAnteriores = Convert.ToDecimal(txtRetencionesAnteriores.Text);
             decimal UIT = Convert.ToDecimal(cbUIT.Text);
-            decimal ImpuestoRentaMensual = oCalculo.CalculoRentaMensual(NroMes, Remuneracion, OtrosIngresos, RemuMesAnt, RetMesAnteriores, UIT);
+            decimal IngresosOtroLugar = Convert.ToDecimal(txtIngresosOtroLugar.Text);
+            decimal RetencionesOtroLugar = Convert.ToDecimal(txtRetencionesOtroLugar.Text);
+            decimal ImpuestoRentaMensual = oCalculo.CalculoRentaMensual(NroMes, Remuneracion, OtrosIngresos, RemuMesAnt, RetMesAnteriores, UIT,RetencionesOtroLugar, IngresosOtroLugar);
             txtIRM.Text = Convert.ToString(Decimal.Round(ImpuestoRentaMensual, 2));
         }
 

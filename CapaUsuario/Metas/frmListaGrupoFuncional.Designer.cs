@@ -108,6 +108,7 @@
             // 
             // cboDivisionFuncional
             // 
+            this.cboDivisionFuncional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDivisionFuncional.FormattingEnabled = true;
             this.cboDivisionFuncional.Location = new System.Drawing.Point(119, 52);
             this.cboDivisionFuncional.Name = "cboDivisionFuncional";
@@ -117,6 +118,7 @@
             // 
             // cboFuncion
             // 
+            this.cboFuncion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFuncion.FormattingEnabled = true;
             this.cboFuncion.Location = new System.Drawing.Point(119, 13);
             this.cboFuncion.Name = "cboFuncion";
@@ -136,7 +138,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 21);
+            this.label1.Location = new System.Drawing.Point(59, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 5;

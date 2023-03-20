@@ -73,6 +73,8 @@
             this.cboOcupacion = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.cboCargo = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtCuentaBancaria = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -94,7 +96,7 @@
             this.txtCorreoElectronico.Location = new System.Drawing.Point(111, 197);
             this.txtCorreoElectronico.MaxLength = 49;
             this.txtCorreoElectronico.Name = "txtCorreoElectronico";
-            this.txtCorreoElectronico.Size = new System.Drawing.Size(500, 20);
+            this.txtCorreoElectronico.Size = new System.Drawing.Size(432, 20);
             this.txtCorreoElectronico.TabIndex = 176;
             // 
             // picValidado
@@ -142,7 +144,7 @@
             this.groupBox1.Controls.Add(this.cboTipoComision);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.cboAFP);
-            this.groupBox1.Location = new System.Drawing.Point(6, 303);
+            this.groupBox1.Location = new System.Drawing.Point(6, 349);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(300, 116);
             this.groupBox1.TabIndex = 172;
@@ -223,7 +225,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(346, 367);
+            this.label11.Location = new System.Drawing.Point(346, 413);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(45, 13);
             this.label11.TabIndex = 171;
@@ -233,7 +235,7 @@
             // 
             this.cboDistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDistrito.FormattingEnabled = true;
-            this.cboDistrito.Location = new System.Drawing.Point(396, 364);
+            this.cboDistrito.Location = new System.Drawing.Point(396, 410);
             this.cboDistrito.Name = "cboDistrito";
             this.cboDistrito.Size = new System.Drawing.Size(215, 21);
             this.cboDistrito.TabIndex = 158;
@@ -242,7 +244,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(333, 340);
+            this.label10.Location = new System.Drawing.Point(333, 386);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 13);
             this.label10.TabIndex = 170;
@@ -252,10 +254,10 @@
             // 
             this.txtCelular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCelular.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCelular.Location = new System.Drawing.Point(397, 18);
+            this.txtCelular.Location = new System.Drawing.Point(482, 18);
             this.txtCelular.MaxLength = 9;
             this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(215, 20);
+            this.txtCelular.Size = new System.Drawing.Size(130, 20);
             this.txtCelular.TabIndex = 147;
             this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelular_KeyPress);
             // 
@@ -263,7 +265,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(346, 21);
+            this.label9.Location = new System.Drawing.Point(419, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(45, 13);
             this.label9.TabIndex = 169;
@@ -303,7 +305,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(311, 313);
+            this.label7.Location = new System.Drawing.Point(311, 359);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 13);
             this.label7.TabIndex = 167;
@@ -313,7 +315,7 @@
             // 
             this.cboProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProvincia.FormattingEnabled = true;
-            this.cboProvincia.Location = new System.Drawing.Point(396, 337);
+            this.cboProvincia.Location = new System.Drawing.Point(396, 383);
             this.cboProvincia.Name = "cboProvincia";
             this.cboProvincia.Size = new System.Drawing.Size(215, 21);
             this.cboProvincia.TabIndex = 157;
@@ -323,7 +325,7 @@
             // 
             this.cboDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDepartamento.FormattingEnabled = true;
-            this.cboDepartamento.Location = new System.Drawing.Point(397, 310);
+            this.cboDepartamento.Location = new System.Drawing.Point(397, 356);
             this.cboDepartamento.Name = "cboDepartamento";
             this.cboDepartamento.Size = new System.Drawing.Size(215, 21);
             this.cboDepartamento.TabIndex = 156;
@@ -374,7 +376,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(538, 407);
+            this.btnCancelar.Location = new System.Drawing.Point(538, 454);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 160;
@@ -390,7 +392,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(457, 407);
+            this.btnAceptar.Location = new System.Drawing.Point(457, 454);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 159;
@@ -477,11 +479,11 @@
             // 
             // label17
             // 
-            this.label17.Location = new System.Drawing.Point(23, 252);
+            this.label17.Location = new System.Drawing.Point(8, 252);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(81, 27);
+            this.label17.Size = new System.Drawing.Size(96, 27);
             this.label17.TabIndex = 181;
-            this.label17.Text = "Ocupación y/o Profesion :";
+            this.label17.Text = "Ocupación y/o Profesion SUNAT:";
             // 
             // label18
             // 
@@ -534,11 +536,30 @@
             this.cboCargo.TabIndex = 182;
             this.cboCargo.SelectedIndexChanged += new System.EventHandler(this.cboCargo_SelectedIndexChanged);
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(14, 314);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(89, 13);
+            this.label20.TabIndex = 184;
+            this.label20.Text = "Cuenta Bancaria:";
+            // 
+            // txtCuentaBancaria
+            // 
+            this.txtCuentaBancaria.Location = new System.Drawing.Point(110, 309);
+            this.txtCuentaBancaria.MaxLength = 25;
+            this.txtCuentaBancaria.Name = "txtCuentaBancaria";
+            this.txtCuentaBancaria.Size = new System.Drawing.Size(156, 20);
+            this.txtCuentaBancaria.TabIndex = 185;
+            // 
             // frmNuevoTecnico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(634, 484);
+            this.ClientSize = new System.Drawing.Size(634, 531);
+            this.Controls.Add(this.txtCuentaBancaria);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.cboCargo);
             this.Controls.Add(this.label17);
@@ -636,5 +657,7 @@
         private System.Windows.Forms.ComboBox cboOcupacion;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox cboCargo;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtCuentaBancaria;
     }
 }

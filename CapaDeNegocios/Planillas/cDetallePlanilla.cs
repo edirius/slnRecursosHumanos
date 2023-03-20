@@ -84,12 +84,20 @@ namespace CapaDeNegocios.Planillas
             return Conexion.GDatos.TraerDataTable("spListarPlanillaXMesYRegimenLaboral", pidPlanilla, pidRegimenLaboral, pmes,  paño);
         }
 
+        public DataTable ListarPlanillaXMesYRegimenLaboralBancaria(int pidPlanilla, int pidRegimenLaboral, string pmes, string paño)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarPlanillaXMesYRegimenLaboralBancaria", pidPlanilla, pidRegimenLaboral, pmes, paño);
+        }
 
         public DataTable ListarPlanillaXMesYRegimenLaboralRacionamiento(int pidPlanilla, int pidRegimenLaboral, string pmes, string paño)
         {
             return Conexion.GDatos.TraerDataTable("spListarPlanillaXMesYRegimenLaboralRacionamiento", pidPlanilla, pidRegimenLaboral, pmes, paño);
         }
 
+        public DataTable ListarPlanillaXMesYRegimenLaboralRacionamientoBancaria(int pidPlanilla, int pidRegimenLaboral, string pmes, string paño)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarPlanillaXMesYRegimenLaboralRacionamientoBancaria", pidPlanilla, pidRegimenLaboral, pmes, paño);
+        }
 
         public DataTable ListarDetallePlanilla(int IdtPlanilla)
         {
@@ -163,6 +171,18 @@ namespace CapaDeNegocios.Planillas
         {
             Conexion.GDatos.Ejecutar("spELiminarDetallePlanilla", IdtDetallePlanilla);
             return true;
+        }
+
+        /// <summary>
+        /// Funcion que devuelve una tabla con los detalles de planilla que encontro posteriores a la fecha tentativa de baja
+        /// </summary>
+        /// <param name="fechaTentativaBaja"></param>
+        /// <param name="idtTrabajadorBaja"></param>
+        /// <returns></returns>
+        public DataTable EncontrarDetallesPosteriorFecha(DateTime fechaTentativaBaja, int idtTrabajadorBaja)
+        {
+            DataTable auxiliar = Conexion.GDatos.TraerDataTable("spTraerDetallesPosterioresFecha", fechaTentativaBaja, idtTrabajadorBaja);
+            return auxiliar;
         }
     }
 }

@@ -106,7 +106,7 @@ namespace CapaUsuario.Trabajador
                 {
                     if (MessageBox.Show("¿Desea eliminar la renta de 5ta categoria?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question)== DialogResult.Yes)
                     {
-                        oRenta.EliminarRenta5taAnterior(oRenta.TraerRenta5taAnteriores(Convert.ToInt32(dtgListaRenta5ta.SelectedRows[0].Cells[0].Value)));
+                        oRenta.EliminarRenta5taAnterior( oRenta.TraerRenta5taAnteriores(Convert.ToInt32(dtgListaRenta5ta.SelectedRows[0].Cells[0].Value)));
                         cargarRentas();
                     }
                 }

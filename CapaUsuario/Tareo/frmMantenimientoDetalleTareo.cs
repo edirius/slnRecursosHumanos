@@ -1022,6 +1022,25 @@ namespace CapaUsuario.Tareo
                 col.HeaderText = auxiliarDiaSemana;
                 col.Width = 20;
                 dgvDetalleTareo.Columns.Add(col);
+                if (oPlantillatareo.Descripcion.Contains("OBRERO"))
+                {
+                    btnNuevoTrabajador.Visible = true;
+                    btnNuevoTrabajadorTecnico.Visible = false;
+                    btnNuevoTrabajadorRacionamiento.Visible = false;
+                }
+                else
+                {
+                    btnNuevoTrabajador.Visible = false;
+                    btnNuevoTrabajadorTecnico.Visible = true;
+                    btnNuevoTrabajadorRacionamiento.Visible = false;
+                }
+
+                if (oPlantillatareo.Racionamiento == true)
+                {
+                    btnNuevoTrabajador.Visible = false;
+                    btnNuevoTrabajadorTecnico.Visible = false;
+                    btnNuevoTrabajadorRacionamiento.Visible = true;
+                }
             }
             DataGridViewTextBoxColumn TotalDias = new DataGridViewTextBoxColumn();
             TotalDias.Name = "txtTotalDias";
@@ -1033,6 +1052,8 @@ namespace CapaUsuario.Tareo
             TotalHoras.HeaderText = "Total Horas";
             TotalHoras.Width = 40;
             dgvDetalleTareo.Columns.Add(TotalHoras);
+
+          
         }
 
         private void MostrarColumnas()
@@ -1145,7 +1166,7 @@ namespace CapaUsuario.Tareo
             {
                 PeriodoTrabajador(sidttrabajador);
                 CapaUsuario.Tareo.frmBajaTrabajador fBajaTrabajador = new CapaUsuario.Tareo.frmBajaTrabajador();
-                fBajaTrabajador.RecibirDatos(miTareo.FechaInicio, sidtperiodotrabajador, fechaInicioTrabajador);
+                fBajaTrabajador.RecibirDatos(miTareo.FechaInicio, sidtperiodotrabajador, fechaInicioTrabajador, Convert.ToInt32(sidttrabajador));
                 fBajaTrabajador.ShowDialog();
             }
 

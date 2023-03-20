@@ -1605,8 +1605,21 @@ namespace CapaUsuario.Planilla
             {
                 sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(600);//suma de todos los ingresos incuido las gratificaciones
             }
+
+            decimal sRetencionesOtroLugar = 0;
+            decimal sIngresosOtroLugar = 0;
+
+            CapaDeNegocios.RentaQuinta.cRenta5taAnteriores oRentaOtroLugar = new CapaDeNegocios.RentaQuinta.cRenta5taAnteriores();
+            DataTable auxiliarRentasOtrosLugares = oRentaOtroLugar.ListarRenta5taAnteriores( miTrabajador.traerTrabajador(idttrabajador), Convert.ToInt16(saño));
+
+            for (int i = 0; i < auxiliarRentasOtrosLugares.Rows.Count; i++)
+            {
+                sRetencionesOtroLugar += Convert.ToDecimal(auxiliarRentasOtrosLugares.Rows[i][3].ToString());
+                sIngresosOtroLugar += Convert.ToDecimal(auxiliarRentasOtrosLugares.Rows[i][2].ToString());
+            }
+
             CapaDeNegocios.Planillas.cCalculo5taCategoria miCalculo5ta = new CapaDeNegocios.Planillas.cCalculo5taCategoria();
-            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sNroMes, sRemuneracion, sOtrosIngresos, sRemuMesAnt, sRetMesAnteriores, 4950);
+            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sNroMes, sRemuneracion, sOtrosIngresos, sRemuMesAnt, sRetMesAnteriores, 4950, sRetencionesOtroLugar, sIngresosOtroLugar);
             return sRenta5ta;
         }
 

@@ -67,6 +67,8 @@
             this.txtValidador = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtCorreoElectronico = new System.Windows.Forms.TextBox();
+            this.txtCuentaBancaria = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.SuspendLayout();
@@ -78,7 +80,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(543, 328);
+            this.btnCancelar.Location = new System.Drawing.Point(543, 395);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 14;
@@ -94,7 +96,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(462, 328);
+            this.btnAceptar.Location = new System.Drawing.Point(462, 395);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 13;
@@ -221,7 +223,7 @@
             // 
             this.cboDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDepartamento.FormattingEnabled = true;
-            this.cboDepartamento.Location = new System.Drawing.Point(403, 225);
+            this.cboDepartamento.Location = new System.Drawing.Point(403, 267);
             this.cboDepartamento.Name = "cboDepartamento";
             this.cboDepartamento.Size = new System.Drawing.Size(215, 21);
             this.cboDepartamento.TabIndex = 10;
@@ -231,7 +233,7 @@
             // 
             this.cboProvincia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProvincia.FormattingEnabled = true;
-            this.cboProvincia.Location = new System.Drawing.Point(402, 252);
+            this.cboProvincia.Location = new System.Drawing.Point(402, 294);
             this.cboProvincia.Name = "cboProvincia";
             this.cboProvincia.Size = new System.Drawing.Size(215, 21);
             this.cboProvincia.TabIndex = 11;
@@ -240,7 +242,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(317, 228);
+            this.label7.Location = new System.Drawing.Point(317, 270);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 13);
             this.label7.TabIndex = 79;
@@ -281,10 +283,10 @@
             // 
             this.txtCelular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCelular.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCelular.Location = new System.Drawing.Point(403, 12);
+            this.txtCelular.Location = new System.Drawing.Point(496, 12);
             this.txtCelular.MaxLength = 9;
             this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(215, 20);
+            this.txtCelular.Size = new System.Drawing.Size(122, 20);
             this.txtCelular.TabIndex = 2;
             this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelular_KeyPress);
             // 
@@ -292,7 +294,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(352, 15);
+            this.label9.Location = new System.Drawing.Point(445, 15);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(45, 13);
             this.label9.TabIndex = 83;
@@ -301,7 +303,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(339, 255);
+            this.label10.Location = new System.Drawing.Point(339, 297);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(57, 13);
             this.label10.TabIndex = 85;
@@ -311,7 +313,7 @@
             // 
             this.cboDistrito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDistrito.FormattingEnabled = true;
-            this.cboDistrito.Location = new System.Drawing.Point(402, 279);
+            this.cboDistrito.Location = new System.Drawing.Point(402, 321);
             this.cboDistrito.Name = "cboDistrito";
             this.cboDistrito.Size = new System.Drawing.Size(215, 21);
             this.cboDistrito.TabIndex = 12;
@@ -320,7 +322,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(352, 282);
+            this.label11.Location = new System.Drawing.Point(352, 324);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(45, 13);
             this.label11.TabIndex = 87;
@@ -337,7 +339,7 @@
             this.groupBox1.Controls.Add(this.cboTipoComision);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.cboAFP);
-            this.groupBox1.Location = new System.Drawing.Point(12, 218);
+            this.groupBox1.Location = new System.Drawing.Point(12, 260);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(299, 116);
             this.groupBox1.TabIndex = 88;
@@ -467,14 +469,33 @@
             this.txtCorreoElectronico.Location = new System.Drawing.Point(118, 191);
             this.txtCorreoElectronico.MaxLength = 49;
             this.txtCorreoElectronico.Name = "txtCorreoElectronico";
-            this.txtCorreoElectronico.Size = new System.Drawing.Size(499, 20);
+            this.txtCorreoElectronico.Size = new System.Drawing.Size(399, 20);
             this.txtCorreoElectronico.TabIndex = 112;
+            // 
+            // txtCuentaBancaria
+            // 
+            this.txtCuentaBancaria.Location = new System.Drawing.Point(117, 219);
+            this.txtCuentaBancaria.MaxLength = 25;
+            this.txtCuentaBancaria.Name = "txtCuentaBancaria";
+            this.txtCuentaBancaria.Size = new System.Drawing.Size(156, 20);
+            this.txtCuentaBancaria.TabIndex = 187;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(21, 224);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(89, 13);
+            this.label20.TabIndex = 186;
+            this.label20.Text = "Cuenta Bancaria:";
             // 
             // frmNuevoObrero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 397);
+            this.ClientSize = new System.Drawing.Size(630, 464);
+            this.Controls.Add(this.txtCuentaBancaria);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.txtCorreoElectronico);
             this.Controls.Add(this.picValidado);
@@ -560,5 +581,7 @@
         private System.Windows.Forms.TextBox txtValidador;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtCorreoElectronico;
+        private System.Windows.Forms.TextBox txtCuentaBancaria;
+        private System.Windows.Forms.Label label20;
     }
 }

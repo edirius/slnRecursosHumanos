@@ -35,8 +35,14 @@ namespace CapaUsuario.Trabajador
             CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
             miPeriodoTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
             miPeriodoTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
-            if (dtpFechaFin.Format == DateTimePickerFormat.Custom) { miPeriodoTrabajador.FechaFin = ""; }
-            else { miPeriodoTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString(); }
+            if (dtpFechaFin.Format == DateTimePickerFormat.Custom)
+            {
+                miPeriodoTrabajador.FechaFin = "";
+            }
+            else
+            {
+                miPeriodoTrabajador.FechaFin = dtpFechaFin.Value.ToShortDateString();
+            }
             miPeriodoTrabajador.IdtMotivoFinPeriodo = sidtmotivofinperiodo;
             miPeriodoTrabajador.IdtTrabajador = sidttrabajador;
 
@@ -88,6 +94,40 @@ namespace CapaUsuario.Trabajador
 
         private void dtpFechaFin_ValueChanged(object sender, EventArgs e)
         {
+            CapaDeNegocios.Planillas.cDetallePlanilla oDetalle = new CapaDeNegocios.Planillas.cDetallePlanilla();
+            string sfechafin = dtpFechaFin.Value.ToShortDateString();
+
+            DataTable auxiliar = oDetalle.EncontrarDetallesPosteriorFecha(dtpFechaFin.Value, sidttrabajador);
+
+            if (auxiliar.Rows.Count > 0)
+            {
+                string mensaje = "";
+                if (auxiliar.Rows.Count > 2)
+                {
+                    for (int i = 0; i < 2; i++)
+                    {
+                        mensaje = mensaje + auxiliar.Rows[i][1].ToString() + " " + auxiliar.Rows[i][13].ToString() + " " + auxiliar.Rows[i][14].ToString() + Environment.NewLine;
+                    }
+
+                    mensaje = mensaje + "." + Environment.NewLine;
+                    mensaje = mensaje + "." + Environment.NewLine;
+                    mensaje = mensaje + "." + Environment.NewLine;
+                }
+                else
+                {
+                    for (int i = 0; i < auxiliar.Rows.Count; i++)
+                    {
+                        mensaje = mensaje + auxiliar.Rows[i][1].ToString() + " " + auxiliar.Rows[i][13].ToString() + " " + auxiliar.Rows[i][14].ToString() + Environment.NewLine;
+                    }
+                }
+
+                MessageBox.Show("Error al dar de baja al trabajador con la fecha: " + sfechafin + ". Se encontró planillas posteriores al mes que quiere dar de baja:  " + Environment.NewLine + mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpFechaFin.Format = DateTimePickerFormat.Custom;
+                dtpFechaFin.CustomFormat = " ";
+                cboFinPeriodo.Text = "";
+                return;
+            }
+
             dtpFechaFin.Format = DateTimePickerFormat.Long;
         }
 

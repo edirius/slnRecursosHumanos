@@ -229,11 +229,11 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(4, 49);
+            this.label29.Location = new System.Drawing.Point(20, 49);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(108, 13);
+            this.label29.Size = new System.Drawing.Size(87, 13);
             this.label29.TabIndex = 13;
-            this.label29.Text = "Numero Documento :";
+            this.label29.Text = "Numero Cuenta :";
             // 
             // txtNumero
             // 

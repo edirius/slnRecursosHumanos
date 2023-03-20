@@ -93,6 +93,7 @@
             // 
             // cboOpcion
             // 
+            this.cboOpcion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboOpcion.FormattingEnabled = true;
             this.cboOpcion.Items.AddRange(new object[] {
             "Jornal",
@@ -119,6 +120,7 @@
             this.txtMensual.Size = new System.Drawing.Size(100, 20);
             this.txtMensual.TabIndex = 101;
             this.txtMensual.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMensual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMensual_KeyPress);
             // 
             // label3
             // 
@@ -137,6 +139,7 @@
             this.txtMonto.Size = new System.Drawing.Size(100, 20);
             this.txtMonto.TabIndex = 99;
             this.txtMonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress_1);
             // 
             // label2
             // 

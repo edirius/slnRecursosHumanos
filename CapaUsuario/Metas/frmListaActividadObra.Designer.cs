@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaActividadObra));
             this.dtgActividadObra = new System.Windows.Forms.DataGridView();
             this.idtactividadobra = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,8 +49,8 @@
             // 
             this.dtgActividadObra.AllowUserToAddRows = false;
             this.dtgActividadObra.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
-            this.dtgActividadObra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            this.dtgActividadObra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgActividadObra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgActividadObra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idtactividadobra,
@@ -108,6 +108,7 @@
             // 
             // cboProductoProyecto
             // 
+            this.cboProductoProyecto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProductoProyecto.FormattingEnabled = true;
             this.cboProductoProyecto.Location = new System.Drawing.Point(166, 44);
             this.cboProductoProyecto.Name = "cboProductoProyecto";
@@ -126,6 +127,7 @@
             // 
             // cboProgramaPresupuestal
             // 
+            this.cboProgramaPresupuestal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProgramaPresupuestal.FormattingEnabled = true;
             this.cboProgramaPresupuestal.Location = new System.Drawing.Point(166, 10);
             this.cboProgramaPresupuestal.Name = "cboProgramaPresupuestal";

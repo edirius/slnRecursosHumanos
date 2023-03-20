@@ -10,15 +10,20 @@ namespace CapaDeNegocios.Planillas
 {
     public class cCalculo5taCategoria
     {
-        public decimal CalculoRentaMensual(int NroMes, decimal Remuneracion, decimal OtrosIngresos, decimal RemuMesAnt, decimal RetMesAnteriores, decimal UIT)
+        public decimal CalculoRentaMensual(int NroMes, decimal Remuneracion, decimal OtrosIngresos, decimal RemuMesAnt, decimal RetMesAnteriores, decimal UIT, decimal retencionesOtroLugar, decimal ingresosOtroLugar)
         {
             decimal ImpuestoAnual = 0;
             decimal ImpuestoCalculado = 0;
             decimal ImpuestoAPagar = 0;
-            decimal RentaNetaProyectada = ((13 - NroMes) * Remuneracion) + OtrosIngresos + RemuMesAnt;
+            decimal RentaNetaProyectada = ((13 - NroMes) * Remuneracion) + OtrosIngresos + RemuMesAnt + ingresosOtroLugar;
 
             ImpuestoAnual = CalculoImpuestoAnual(RentaNetaProyectada, UIT);
-            ImpuestoCalculado = ImpuestoAnual - RetMesAnteriores;
+            ImpuestoCalculado = ImpuestoAnual - RetMesAnteriores - retencionesOtroLugar;
+
+            if (ImpuestoCalculado <0)
+            {
+                ImpuestoCalculado = 0;
+            }
 
             int numeroMeses = 12 - NroMes + 1;
 

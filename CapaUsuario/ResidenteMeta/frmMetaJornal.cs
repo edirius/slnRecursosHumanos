@@ -79,11 +79,13 @@ namespace CapaUsuario.ResidenteMeta
                     row.Cells[1].Value = miMejaJornal.IdtMetaJornal.ToString();
                     row.Cells[0].Value = "M";
                     bOk = true;
+                    MessageBox.Show("Se creo la meta jornal", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 if (Convert.ToString(row.Cells[0].Value) == "M")
                 {
                     miMejaJornal.ModificarMetaJornal(miMejaJornal, miMeta);
                     bOk = true;
+                    MessageBox.Show("Se modificó la meta jornal", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             if (bOk == false)

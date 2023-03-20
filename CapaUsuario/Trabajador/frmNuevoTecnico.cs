@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace CapaUsuario.Trabajador
 {
@@ -213,6 +214,13 @@ namespace CapaUsuario.Trabajador
                 MessageBox.Show("El DNI no es correcto, no se puede Guardar al nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            if (!EsvalidoCorreoElectronico(txtCorreoElectronico.Text))
+            {
+                MessageBox.Show("El correo es invalido, debe contener @ y .com y sin Ñ ", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (modoEdicion == false)
             {
                 if (Validado == false)
@@ -321,7 +329,7 @@ namespace CapaUsuario.Trabajador
                 miRegimenTrabajador.IdtRegimenTrabajador = 0;
                 miRegimenTrabajador.Condicion = "CONTRATADO";
                 miRegimenTrabajador.ServidorConfianza = false;
-                miRegimenTrabajador.NumeroDocumento = "";
+                miRegimenTrabajador.NumeroDocumento = txtCuentaBancaria.Text;
                 miRegimenTrabajador.Periodicidad = "MENSUAL";
                 miRegimenTrabajador.TipoPago = "EFECTIVO";
                 miRegimenTrabajador.MontoPago = 0;
@@ -565,6 +573,22 @@ namespace CapaUsuario.Trabajador
             {
                 sidtcargo = Convert.ToInt32(cboCargo.SelectedValue);
             }
+        }
+
+
+        private bool EsvalidoCorreoElectronico(string correo)
+        {
+            // Expresión regular para validar un correo electrónico.
+            // Esta expresión permite letras, números, guiones, puntos y subrayados en el nombre de usuario y el dominio,
+            // y admite dominios de segundo nivel de dos a seis letras (por ejemplo, .com, .net, .org, .edu, etc.).
+            // También permite que el nombre de dominio tenga un subdominio opcional.
+            string expresionRegular = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$";
+
+            // Se crea una instancia de la clase Regex con la expresión regular.
+            Regex regex = new Regex(expresionRegular);
+
+            // Se devuelve si el correo electrónico coincide con la expresión regular.
+            return regex.IsMatch(correo);
         }
     }
 }
