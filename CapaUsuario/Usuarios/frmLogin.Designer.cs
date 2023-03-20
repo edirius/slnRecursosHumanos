@@ -52,7 +52,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(86, 19);
+            this.label1.Location = new System.Drawing.Point(82, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 13);
             this.label1.TabIndex = 0;
@@ -61,7 +61,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(71, 50);
+            this.label2.Location = new System.Drawing.Point(67, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 1;
@@ -70,14 +70,14 @@
             // txtUsuario
             // 
             this.txtUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtUsuario.Location = new System.Drawing.Point(141, 16);
+            this.txtUsuario.Location = new System.Drawing.Point(137, 30);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(140, 20);
             this.txtUsuario.TabIndex = 2;
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(141, 47);
+            this.txtPass.Location = new System.Drawing.Point(137, 61);
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '●';
             this.txtPass.Size = new System.Drawing.Size(140, 20);
@@ -170,7 +170,7 @@
             // pbImagen
             // 
             this.pbImagen.Image = global::CapaUsuario.Properties.Resources.logo_MuniMaras;
-            this.pbImagen.Location = new System.Drawing.Point(96, 23);
+            this.pbImagen.Location = new System.Drawing.Point(96, 39);
             this.pbImagen.Name = "pbImagen";
             this.pbImagen.Size = new System.Drawing.Size(188, 177);
             this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -189,18 +189,18 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(305, 9);
+            this.label3.Location = new System.Drawing.Point(291, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 13);
+            this.label3.Size = new System.Drawing.Size(92, 13);
             this.label3.TabIndex = 11;
-            this.label3.Text = "V: 1403202301";
+            this.label3.Text = "V: 1.17 19032023";
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(385, 405);
+            this.ClientSize = new System.Drawing.Size(385, 413);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblServidor);
             this.Controls.Add(this.dgvUsuarios);
