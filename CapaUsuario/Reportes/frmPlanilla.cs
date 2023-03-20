@@ -697,11 +697,11 @@ namespace CapaUsuario.Reportes
                     if (Settings.Default.RUC == "20147495600")
                     {
                         odtPrueba.Columns.Add("CUENTA BANCARIA", typeof(string));
-                        odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamiento(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
+                        odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamientoBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
                     }
                     else
                     {
-                        odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamientoBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
+                        odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamiento(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
                     }
                     odtPlanilla = buscarDuplicados(odtPlanilla);
                     odtPrueba.Clear();
@@ -2210,6 +2210,12 @@ namespace CapaUsuario.Reportes
                             {
                                 if (odtPrueba.Rows[l][i].ToString().Trim() == "")
                                     odtPrueba.Rows[l][i] = "0.00";
+
+                                if (i == indice_cuenta_bancaria)
+                                {
+                                    if (odtPrueba.Rows[l][i].ToString().Trim() == "0.00")
+                                        odtPrueba.Rows[l][i] = "-";
+                                }
                             }
                         }
 
@@ -3389,6 +3395,7 @@ namespace CapaUsuario.Reportes
         public float[] GetTamañoColumnas(DataGridView dg)
         {
             float[] values = new float[dg.ColumnCount];
+
             for (int i = 0; i < dg.ColumnCount; i++)
             {
                 values[i] = (float)dg.Columns[i].Width;
@@ -3399,6 +3406,13 @@ namespace CapaUsuario.Reportes
 
                 if (i == dg.ColumnCount - 1) values[i] = 300;
                 if (i == dg.ColumnCount - 2) values[i] = 50;
+
+                if (Settings.Default.RUC == "20147495600" )
+                {
+                    if (i == dg.ColumnCount - 1) values[i] = 250;
+                    if (i == dg.ColumnCount - 2) values[i] = 150;
+                    if (i == dg.ColumnCount - 3) values[i] = 50;
+                }
                 if (i == 5) values[i] = 50;
                 if (i == 6) values[i] = 120;
             }
@@ -3650,11 +3664,12 @@ namespace CapaUsuario.Reportes
                 paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
                 if (Settings.Default.RUC == "20147495600")
                 {
-                    paragraph.Add(Settings.Default.Empresa + " \n UNIDAD DE PERSONAL \n ");
+                    paragraph.Add(Settings.Default.Empresa + " \n OFICINA DE RECURSOS HUMANOS \n ");
                 }
                 else
                 {
-                    paragraph.Add(Settings.Default.Empresa + " \n OFICINA DE RECURSOS HUMANOS \n ");
+                    paragraph.Add(Settings.Default.Empresa + " \n UNIDAD DE PERSONAL \n ");
+                    
                 }
                 paragraph.SpacingBefore = 0f;
                 paragraph.SpacingAfter = 0f;
@@ -4079,7 +4094,7 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph2 = new Paragraph();
                 paragraph2.Alignment = Element.ALIGN_RIGHT;
                 paragraph2.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                paragraph2.Add("PLANILLA Nº" + sNumeroPlanilla + " - " + saño + " \n ");
+                paragraph2.Add("PLANILLA Nº " + sNumeroPlanilla + " - " + saño + " \n ");
 
                 Paragraph paragraph3 = new Paragraph();
                 paragraph3.Alignment = Element.ALIGN_CENTER;
