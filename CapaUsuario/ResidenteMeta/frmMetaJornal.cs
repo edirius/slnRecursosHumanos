@@ -242,5 +242,39 @@ namespace CapaUsuario.ResidenteMeta
                 MessageBox.Show("Error al modificar la categoria: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnExportarExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CapaDeNegocios.Meta.cImprimirMetaJornal oImprimir = new CapaDeNegocios.Meta.cImprimirMetaJornal();
+                CapaDeNegocios.Obras.cMetaJornal oMetaJornal = new CapaDeNegocios.Obras.cMetaJornal();
+
+                SaveFileDialog fichero = new SaveFileDialog();
+                fichero.Filter = "Excel (*.xls)|*.xls";
+                fichero.FileName = "ListaMetaJornal" + cboAño.Text + ".xls";
+
+                if (fichero.ShowDialog() == DialogResult.OK)
+                {
+                    oImprimir.ruta = fichero.FileName;
+                    oImprimir.tablaMetaJornal = oMetaJornal.TraerMetaJornalxAnio(Convert.ToInt16(cboAño.Text));
+                    if (oImprimir.tablaMetaJornal.Rows.Count == 0)
+                    {
+                        MessageBox.Show("La consulta esta vacia o no hay metas para el año: " + cboAño.Text, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+
+                        oImprimir.Imprimir();
+                        //oImprimir.Main();
+                        MessageBox.Show("Excel Exportado.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

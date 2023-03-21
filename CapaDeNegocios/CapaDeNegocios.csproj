@@ -148,6 +148,7 @@
     <Compile Include="ImportadorDatos\archivoImportador.cs" />
     <Compile Include="ImportadorDatos\ImportadorExcel.cs" />
     <Compile Include="Institucion.cs" />
+    <Compile Include="Meta\cImprimirMetaJornal.cs" />
     <Compile Include="Obras\cActividadObra.cs" />
     <Compile Include="Obras\cCadenaProgramaticaFuncional.cs" />
     <Compile Include="Obras\cDivisionFuncional.cs" />

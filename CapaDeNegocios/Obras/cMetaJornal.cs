@@ -137,5 +137,11 @@ namespace CapaDeNegocios.Obras
                 return null;
             }
         }
+
+        public DataTable TraerMetaJornalxAnio(int anio)
+        {
+            DataTable oTabla = Conexion.GDatos.TraerDataTable("spListarMetaJornalxAnio", anio);
+            return oTabla;
+        }
     }
 }

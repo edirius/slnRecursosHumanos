@@ -34,6 +34,12 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.dgvMetaJornal = new System.Windows.Forms.DataGridView();
+            this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtIdTMetaJornal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtJornal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mensual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOpcion = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.btnMeta = new System.Windows.Forms.Button();
             this.cboMeta = new System.Windows.Forms.ComboBox();
             this.cboAño = new System.Windows.Forms.ComboBox();
@@ -42,12 +48,7 @@
             this.btnCategorias = new System.Windows.Forms.Button();
             this.btnAgregarCategoria = new System.Windows.Forms.Button();
             this.btnModificarCategoria = new System.Windows.Forms.Button();
-            this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtIdTMetaJornal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtJornal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mensual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOpcion = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMetaJornal)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,6 +108,57 @@
             this.dgvMetaJornal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvMetaJornal.Size = new System.Drawing.Size(694, 329);
             this.dgvMetaJornal.TabIndex = 27;
+            // 
+            // txtAccion
+            // 
+            this.txtAccion.HeaderText = "Accion";
+            this.txtAccion.Name = "txtAccion";
+            this.txtAccion.ReadOnly = true;
+            this.txtAccion.Visible = false;
+            this.txtAccion.Width = 20;
+            // 
+            // txtIdTMetaJornal
+            // 
+            this.txtIdTMetaJornal.HeaderText = "IdTMetaJornal";
+            this.txtIdTMetaJornal.Name = "txtIdTMetaJornal";
+            this.txtIdTMetaJornal.ReadOnly = true;
+            this.txtIdTMetaJornal.Visible = false;
+            this.txtIdTMetaJornal.Width = 20;
+            // 
+            // txtCategoria
+            // 
+            this.txtCategoria.HeaderText = "CATEGORIA";
+            this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.ReadOnly = true;
+            this.txtCategoria.Width = 350;
+            // 
+            // txtJornal
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.txtJornal.DefaultCellStyle = dataGridViewCellStyle2;
+            this.txtJornal.HeaderText = "JORNAL";
+            this.txtJornal.Name = "txtJornal";
+            // 
+            // mensual
+            // 
+            this.mensual.DataPropertyName = "mensual";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.mensual.DefaultCellStyle = dataGridViewCellStyle3;
+            this.mensual.HeaderText = "MENSUAL";
+            this.mensual.Name = "mensual";
+            // 
+            // colOpcion
+            // 
+            this.colOpcion.HeaderText = "OPCION";
+            this.colOpcion.Items.AddRange(new object[] {
+            "Jornal",
+            "Mensual"});
+            this.colOpcion.Name = "colOpcion";
+            this.colOpcion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // btnMeta
             // 
@@ -208,62 +260,28 @@
             this.btnModificarCategoria.UseVisualStyleBackColor = false;
             this.btnModificarCategoria.Click += new System.EventHandler(this.btnModificarCategoria_Click);
             // 
-            // txtAccion
+            // btnExportarExcel
             // 
-            this.txtAccion.HeaderText = "Accion";
-            this.txtAccion.Name = "txtAccion";
-            this.txtAccion.ReadOnly = true;
-            this.txtAccion.Visible = false;
-            this.txtAccion.Width = 20;
-            // 
-            // txtIdTMetaJornal
-            // 
-            this.txtIdTMetaJornal.HeaderText = "IdTMetaJornal";
-            this.txtIdTMetaJornal.Name = "txtIdTMetaJornal";
-            this.txtIdTMetaJornal.ReadOnly = true;
-            this.txtIdTMetaJornal.Visible = false;
-            this.txtIdTMetaJornal.Width = 20;
-            // 
-            // txtCategoria
-            // 
-            this.txtCategoria.HeaderText = "CATEGORIA";
-            this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.ReadOnly = true;
-            this.txtCategoria.Width = 350;
-            // 
-            // txtJornal
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.txtJornal.DefaultCellStyle = dataGridViewCellStyle2;
-            this.txtJornal.HeaderText = "JORNAL";
-            this.txtJornal.Name = "txtJornal";
-            // 
-            // mensual
-            // 
-            this.mensual.DataPropertyName = "mensual";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.mensual.DefaultCellStyle = dataGridViewCellStyle3;
-            this.mensual.HeaderText = "MENSUAL";
-            this.mensual.Name = "mensual";
-            // 
-            // colOpcion
-            // 
-            this.colOpcion.HeaderText = "OPCION";
-            this.colOpcion.Items.AddRange(new object[] {
-            "Jornal",
-            "Mensual"});
-            this.colOpcion.Name = "colOpcion";
-            this.colOpcion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnExportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportarExcel.BackColor = System.Drawing.Color.MintCream;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnExportarExcel.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExportarExcel.ImageIndex = 1;
+            this.btnExportarExcel.Location = new System.Drawing.Point(12, 387);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(92, 53);
+            this.btnExportarExcel.TabIndex = 92;
+            this.btnExportarExcel.Text = "&Exportar Excel";
+            this.btnExportarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExportarExcel.UseVisualStyleBackColor = false;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
             // 
             // frmMetaJornal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 452);
+            this.Controls.Add(this.btnExportarExcel);
             this.Controls.Add(this.btnModificarCategoria);
             this.Controls.Add(this.btnAgregarCategoria);
             this.Controls.Add(this.btnCategorias);
@@ -304,5 +322,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txtJornal;
         private System.Windows.Forms.DataGridViewTextBoxColumn mensual;
         private System.Windows.Forms.DataGridViewComboBoxColumn colOpcion;
+        private System.Windows.Forms.Button btnExportarExcel;
     }
 }
