@@ -3654,7 +3654,7 @@ namespace CapaUsuario.Reportes
             using (FileStream stream = new FileStream(folderPath + "Planilla.pdf", FileMode.Create))
             {
 
-                Document pdfDoc = new Document(PageSize.A4, 9, 9, 30, 30);
+                Document pdfDoc = new Document(PageSize.A4, 9, 9, 10, 10);
                 pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
 
                 
@@ -3790,7 +3790,7 @@ namespace CapaUsuario.Reportes
                 if (chkSubGerenciaObras.Checked) { NumeroFirmas++; }
                 if (chkSupervision.Checked) { NumeroFirmas++; }
                 if (chkFirmaPresupuesto.Checked) { NumeroFirmas++; }
-
+                if (chkGerenciaAdministracion.Checked) { NumeroFirmas++; }
                 PdfPTable tabla_firmas;
                 PdfPTable tabla_firmas2;
                 PdfPTable tabla_firmas3;
@@ -3798,7 +3798,7 @@ namespace CapaUsuario.Reportes
                 List<Paragraph> ArregloFirmas = new List<Paragraph>(); 
 
                 //Se coloca en una sola tabla
-                if (NumeroFirmas <= 4)
+                if (NumeroFirmas <= 5)
                 {
                     tabla_firmas = new PdfPTable(NumeroFirmas);
                     tabla_firmas.DefaultCell.BorderWidth = 0;
@@ -3853,7 +3853,7 @@ namespace CapaUsuario.Reportes
                     {
                         tabla_firmas = new PdfPTable(3);
                         tabla_firmas2 = new PdfPTable(3);
-                        tabla_firmas3 = new PdfPTable(3);
+                        tabla_firmas3 = new PdfPTable(NumeroFirmas- 6);
                         tabla_firmas.DefaultCell.BorderWidth = 0;
                         tabla_firmas2.DefaultCell.BorderWidth = 0;
                         tabla_firmas3.DefaultCell.BorderWidth = 0;
@@ -3946,7 +3946,7 @@ namespace CapaUsuario.Reportes
                 //column_one.AddElement(paragraph5);
                 column_one.AddElement(tabla_firmas);
 
-                if (NumeroFirmas <= 9)
+                if (NumeroFirmas <= 10)
                 {
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(paragraph5);
@@ -3955,7 +3955,7 @@ namespace CapaUsuario.Reportes
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(tabla_firmas2);
                 }
-                if (NumeroFirmas == 9)
+                if (NumeroFirmas >= 9)
                 {
                     column_one.AddElement(paragraph5);
                     column_one.AddElement(paragraph5);

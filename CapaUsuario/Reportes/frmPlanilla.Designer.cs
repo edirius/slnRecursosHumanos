@@ -58,15 +58,16 @@
             this.chkAltoColumna = new System.Windows.Forms.CheckBox();
             this.txtAltoColumnas = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkSupervision = new System.Windows.Forms.CheckBox();
+            this.chkSubGerenciaObras = new System.Windows.Forms.CheckBox();
+            this.chkFirmaPresupuesto = new System.Windows.Forms.CheckBox();
             this.chkFirmaResidencia = new System.Windows.Forms.CheckBox();
             this.chkFirmaTesoreria = new System.Windows.Forms.CheckBox();
             this.chkFirmaContabilidad = new System.Windows.Forms.CheckBox();
             this.chkFirmaGerencia = new System.Windows.Forms.CheckBox();
             this.chkFirmaRecursos = new System.Windows.Forms.CheckBox();
             this.chkFirmaElaborado = new System.Windows.Forms.CheckBox();
-            this.chkFirmaPresupuesto = new System.Windows.Forms.CheckBox();
-            this.chkSubGerenciaObras = new System.Windows.Forms.CheckBox();
-            this.chkSupervision = new System.Windows.Forms.CheckBox();
+            this.chkGerenciaAdministracion = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
@@ -341,6 +342,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkGerenciaAdministracion);
             this.groupBox2.Controls.Add(this.chkSupervision);
             this.groupBox2.Controls.Add(this.chkSubGerenciaObras);
             this.groupBox2.Controls.Add(this.chkFirmaPresupuesto);
@@ -350,12 +352,42 @@
             this.groupBox2.Controls.Add(this.chkFirmaGerencia);
             this.groupBox2.Controls.Add(this.chkFirmaRecursos);
             this.groupBox2.Controls.Add(this.chkFirmaElaborado);
-            this.groupBox2.Location = new System.Drawing.Point(392, 451);
+            this.groupBox2.Location = new System.Drawing.Point(328, 451);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(543, 100);
+            this.groupBox2.Size = new System.Drawing.Size(607, 100);
             this.groupBox2.TabIndex = 104;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Firmas";
+            // 
+            // chkSupervision
+            // 
+            this.chkSupervision.AutoSize = true;
+            this.chkSupervision.Location = new System.Drawing.Point(345, 66);
+            this.chkSupervision.Name = "chkSupervision";
+            this.chkSupervision.Size = new System.Drawing.Size(187, 17);
+            this.chkSupervision.TabIndex = 8;
+            this.chkSupervision.Text = "SUPERVISION Y/O INSPECTOR";
+            this.chkSupervision.UseVisualStyleBackColor = true;
+            // 
+            // chkSubGerenciaObras
+            // 
+            this.chkSubGerenciaObras.AutoSize = true;
+            this.chkSubGerenciaObras.Location = new System.Drawing.Point(345, 43);
+            this.chkSubGerenciaObras.Name = "chkSubGerenciaObras";
+            this.chkSubGerenciaObras.Size = new System.Drawing.Size(106, 17);
+            this.chkSubGerenciaObras.TabIndex = 7;
+            this.chkSubGerenciaObras.Text = "SUB GERENCIA";
+            this.chkSubGerenciaObras.UseVisualStyleBackColor = true;
+            // 
+            // chkFirmaPresupuesto
+            // 
+            this.chkFirmaPresupuesto.AutoSize = true;
+            this.chkFirmaPresupuesto.Location = new System.Drawing.Point(345, 18);
+            this.chkFirmaPresupuesto.Name = "chkFirmaPresupuesto";
+            this.chkFirmaPresupuesto.Size = new System.Drawing.Size(107, 17);
+            this.chkFirmaPresupuesto.TabIndex = 6;
+            this.chkFirmaPresupuesto.Text = "PRESUPUESTO";
+            this.chkFirmaPresupuesto.UseVisualStyleBackColor = true;
             // 
             // chkFirmaResidencia
             // 
@@ -427,35 +459,15 @@
             this.chkFirmaElaborado.Text = "ELABORADOR POR:";
             this.chkFirmaElaborado.UseVisualStyleBackColor = true;
             // 
-            // chkFirmaPresupuesto
+            // chkGerenciaAdministracion
             // 
-            this.chkFirmaPresupuesto.AutoSize = true;
-            this.chkFirmaPresupuesto.Location = new System.Drawing.Point(345, 18);
-            this.chkFirmaPresupuesto.Name = "chkFirmaPresupuesto";
-            this.chkFirmaPresupuesto.Size = new System.Drawing.Size(107, 17);
-            this.chkFirmaPresupuesto.TabIndex = 6;
-            this.chkFirmaPresupuesto.Text = "PRESUPUESTO";
-            this.chkFirmaPresupuesto.UseVisualStyleBackColor = true;
-            // 
-            // chkSubGerenciaObras
-            // 
-            this.chkSubGerenciaObras.AutoSize = true;
-            this.chkSubGerenciaObras.Location = new System.Drawing.Point(345, 43);
-            this.chkSubGerenciaObras.Name = "chkSubGerenciaObras";
-            this.chkSubGerenciaObras.Size = new System.Drawing.Size(106, 17);
-            this.chkSubGerenciaObras.TabIndex = 7;
-            this.chkSubGerenciaObras.Text = "SUB GERENCIA";
-            this.chkSubGerenciaObras.UseVisualStyleBackColor = true;
-            // 
-            // chkSupervision
-            // 
-            this.chkSupervision.AutoSize = true;
-            this.chkSupervision.Location = new System.Drawing.Point(345, 66);
-            this.chkSupervision.Name = "chkSupervision";
-            this.chkSupervision.Size = new System.Drawing.Size(187, 17);
-            this.chkSupervision.TabIndex = 8;
-            this.chkSupervision.Text = "SUPERVISION Y/O INSPECTOR";
-            this.chkSupervision.UseVisualStyleBackColor = true;
+            this.chkGerenciaAdministracion.AutoSize = true;
+            this.chkGerenciaAdministracion.Location = new System.Drawing.Point(494, 18);
+            this.chkGerenciaAdministracion.Name = "chkGerenciaAdministracion";
+            this.chkGerenciaAdministracion.Size = new System.Drawing.Size(195, 17);
+            this.chkGerenciaAdministracion.TabIndex = 2;
+            this.chkGerenciaAdministracion.Text = "GERENCIA DE ADMINISTRACION";
+            this.chkGerenciaAdministracion.UseVisualStyleBackColor = true;
             // 
             // frmPlanilla
             // 
@@ -530,5 +542,6 @@
         private System.Windows.Forms.CheckBox chkFirmaPresupuesto;
         private System.Windows.Forms.CheckBox chkSupervision;
         private System.Windows.Forms.CheckBox chkSubGerenciaObras;
+        private System.Windows.Forms.CheckBox chkGerenciaAdministracion;
     }
 }
