@@ -46,7 +46,7 @@ namespace CapaUsuario.Trabajador
             }
             catch (Exception f)
             {
-                MessageBox.Show(f.Message);
+                MessageBox.Show("Error al agregar cargo: " + f.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

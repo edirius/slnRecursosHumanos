@@ -88,6 +88,7 @@
             // 
             // cboTipoConcepto
             // 
+            this.cboTipoConcepto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoConcepto.FormattingEnabled = true;
             this.cboTipoConcepto.Items.AddRange(new object[] {
             "INGRESOS",
@@ -129,7 +130,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(34, 255);
+            this.label2.Location = new System.Drawing.Point(365, 258);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 12;
@@ -137,10 +138,11 @@
             // 
             // txtMonto
             // 
-            this.txtMonto.Location = new System.Drawing.Point(118, 247);
+            this.txtMonto.Location = new System.Drawing.Point(411, 251);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(100, 20);
             this.txtMonto.TabIndex = 13;
+            this.txtMonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtMonto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMonto_KeyPress);
             // 
             // frmNuevoDatoFijo

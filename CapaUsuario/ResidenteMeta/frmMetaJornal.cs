@@ -53,49 +53,58 @@ namespace CapaUsuario.ResidenteMeta
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            bool bOk = false;
-            foreach (DataGridViewRow row in dgvMetaJornal.Rows)
+            try
             {
-                miMejaJornal.IdtMetaJornal = Convert.ToInt32(row.Cells[1].Value);
-                miMejaJornal.Categoria = Convert.ToString(row.Cells[2].Value);
-                miMejaJornal.Jornal = Convert.ToDouble(row.Cells[3].Value);
-                miMejaJornal.Mensual = Convert.ToDouble(row.Cells[4].Value);
-                //jornal = 0 false, Mensual = 1 true
-                if (row.Cells[5].Value == null || row.Cells[5].Value.ToString() == "Jornal")
+                bool bOk = false;
+                foreach (DataGridViewRow row in dgvMetaJornal.Rows)
                 {
-                    miMejaJornal.Opcion = false;
+                    miMejaJornal.IdtMetaJornal = Convert.ToInt32(row.Cells[1].Value);
+                    miMejaJornal.Categoria = Convert.ToString(row.Cells[2].Value);
+                    miMejaJornal.Jornal = Convert.ToDouble(row.Cells[3].Value);
+                    miMejaJornal.Mensual = Convert.ToDouble(row.Cells[4].Value);
+                    //jornal = 0 false, Mensual = 1 true
+                    if (row.Cells[5].Value == null || row.Cells[5].Value.ToString() == "Jornal")
+                    {
+                        miMejaJornal.Opcion = false;
+                    }
+                    else
+                    {
+                        miMejaJornal.Opcion = true;
+                    }
+
+                    miMeta.Codigo = sidtmeta;
+                    if (Convert.ToString(row.Cells[0].Value) == "I")
+                    {
+                        miMejaJornal.CrearMetaJornal(miMejaJornal, miMeta);
+                        oDataMetaJornal = miMejaJornal.ListarMetaJornal(miMeta.Codigo);
+                        miMejaJornal.IdtMetaJornal = Convert.ToInt32(oDataMetaJornal.Compute("MAX(idtmetajornal)", ""));
+                        row.Cells[1].Value = miMejaJornal.IdtMetaJornal.ToString();
+                        row.Cells[0].Value = "M";
+                        bOk = true;
+
+                    }
+                    if (Convert.ToString(row.Cells[0].Value) == "M")
+                    {
+                        miMejaJornal.ModificarMetaJornal(miMejaJornal, miMeta);
+                        bOk = true;
+
+                    }
+                }
+                if (bOk == false)
+                {
+                    MessageBox.Show("No existen datos que se puedan registrar", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    miMejaJornal.Opcion = true;
-                }
-
-                miMeta.Codigo = sidtmeta;
-                if (Convert.ToString(row.Cells[0].Value) == "I")
-                {
-                    miMejaJornal.CrearMetaJornal(miMejaJornal, miMeta);
-                    oDataMetaJornal = miMejaJornal.ListarMetaJornal(miMeta.Codigo);
-                    miMejaJornal.IdtMetaJornal = Convert.ToInt32(oDataMetaJornal.Compute("MAX(idtmetajornal)", ""));
-                    row.Cells[1].Value = miMejaJornal.IdtMetaJornal.ToString();
-                    row.Cells[0].Value = "M";
-                    bOk = true;
-                    MessageBox.Show("Se creo la meta jornal", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                if (Convert.ToString(row.Cells[0].Value) == "M")
-                {
-                    miMejaJornal.ModificarMetaJornal(miMejaJornal, miMeta);
-                    bOk = true;
-                    MessageBox.Show("Se modificó la meta jornal", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se guardaron los datos de meta jornal.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarDatos();
                 }
             }
-            if (bOk == false)
+            catch (Exception ex)
             {
-                MessageBox.Show("No existen datos que se puedan registrar", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al guardar los datos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                CargarDatos();
-            }
+         
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

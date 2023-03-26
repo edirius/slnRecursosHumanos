@@ -66,6 +66,7 @@
             this.cboCategoriaOcupacional = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cboTipoTrabajador = new System.Windows.Forms.ComboBox();
+            this.btnAgregarCargo = new System.Windows.Forms.Button();
             this.gbPeriodoCOntrato.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupMontoPago)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -311,7 +312,7 @@
             this.cboCargo.FormattingEnabled = true;
             this.cboCargo.Location = new System.Drawing.Point(107, 155);
             this.cboCargo.Name = "cboCargo";
-            this.cboCargo.Size = new System.Drawing.Size(432, 21);
+            this.cboCargo.Size = new System.Drawing.Size(204, 21);
             this.cboCargo.TabIndex = 14;
             this.cboCargo.SelectedIndexChanged += new System.EventHandler(this.cboCargo_SelectedIndexChanged);
             // 
@@ -426,6 +427,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnAgregarCargo);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
@@ -522,6 +524,22 @@
             this.cboTipoTrabajador.TabIndex = 8;
             this.cboTipoTrabajador.SelectedIndexChanged += new System.EventHandler(this.cboTipoTrabajador_SelectedIndexChanged);
             // 
+            // btnAgregarCargo
+            // 
+            this.btnAgregarCargo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarCargo.BackColor = System.Drawing.Color.MintCream;
+            this.btnAgregarCargo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregarCargo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAgregarCargo.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnAgregarCargo.Location = new System.Drawing.Point(331, 155);
+            this.btnAgregarCargo.Name = "btnAgregarCargo";
+            this.btnAgregarCargo.Size = new System.Drawing.Size(119, 30);
+            this.btnAgregarCargo.TabIndex = 62;
+            this.btnAgregarCargo.Text = "A&gregar Cargo";
+            this.btnAgregarCargo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarCargo.UseVisualStyleBackColor = false;
+            this.btnAgregarCargo.Click += new System.EventHandler(this.btnAgregarCargo_Click);
+            // 
             // frmRegimenTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -589,5 +607,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox cboAño;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnAgregarCargo;
     }
 }

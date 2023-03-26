@@ -110,7 +110,7 @@ namespace CapaUsuario.Tareo
                 foreach (DataRow row in oDataDetalleTareo.Rows)
                 {
                     IdtTrabajador = row[4].ToString();
-                    if (ComprobarBajaTrabajador(Convert.ToInt32(IdtTrabajador)) == false)
+                    if (ComprobarBajaTrabajador(Convert.ToInt32(IdtTrabajador), miTareo.FechaInicio) == false)
                     {
                         contador += 1;
                         dgvDetalleTareo.Rows.Add();
@@ -549,7 +549,7 @@ namespace CapaUsuario.Tareo
                             
                         }
 
-                        if (ComprobarBajaTrabajador(Convert.ToInt32(IdtTrabajador)) == true)
+                        if (ComprobarBajaTrabajador(Convert.ToInt32(IdtTrabajador), miTareo.FechaInicio) == true)
                         {
                             dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = "";
                             if (MessageBox.Show("El trabajador se encuentra de Baja, desea darle de alta?", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Error) == DialogResult.Yes)
@@ -1173,22 +1173,21 @@ namespace CapaUsuario.Tareo
             
         }
 
-        private bool ComprobarBajaTrabajador(int IdtTrabajador)
+        private bool ComprobarBajaTrabajador(int IdtTrabajador, DateTime mesBuscadoTareo)
         {
             bool Baja = false;
-            DataTable oDataPeriodoTrabajador = new DataTable();
-            oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(IdtTrabajador);
-            foreach (DataRow row in oDataPeriodoTrabajador.Rows)
+            CapaDeNegocios.DatosLaborales.cPeriodoTrabajador oPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+            List<CapaDeNegocios.DatosLaborales.cPeriodoTrabajador> AuxiliarPeriodoTrabajador = oPeriodoTrabajador.traerPeriodosMesTrabajador(IdtTrabajador, mesBuscadoTareo);
+
+            if (AuxiliarPeriodoTrabajador.Count > 0 )
             {
-                if (row[2].ToString() != "")
-                {
-                    Baja = true;
-                }
-                else
-                {
-                    Baja = false;
-                }
+                Baja = false;
             }
+            else
+            {
+                Baja = true;
+            }
+
             return Baja;
         }
 

@@ -58,6 +58,10 @@ namespace CapaUsuario.Trabajador
         {
             try
             {
+                if (cboMeta.SelectedIndex == -1)
+                {
+                    throw new Exception("Debe seleccionar una meta");
+                }
                 if (cboRegimenLaboral.SelectedIndex == -1)
                 {
                     throw new Exception("Debe seleccionar un Regimen Laboral");
@@ -66,6 +70,7 @@ namespace CapaUsuario.Trabajador
                 {
                     throw new Exception("Debe seleccionar un tipo de trabajador");
                 }
+
                 bool bOk = false;
                 CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
                 miRegimenTrabajador.IdtRegimenTrabajador = sidtregimentrabajador;
@@ -109,7 +114,7 @@ namespace CapaUsuario.Trabajador
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al crear o modifica el regimen del trabajador: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al crear o modificar el regimen del trabajador: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
         }
@@ -406,6 +411,24 @@ namespace CapaUsuario.Trabajador
                 {
                     cboAño.Text = row[1].ToString();
                 }
+            }
+        }
+
+        private void btnAgregarCargo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frnNuevoCargo fCargo = new frnNuevoCargo();
+                fCargo.miCargo = new CapaDeNegocios.Contrato.cCargo();
+                if (fCargo.ShowDialog() == DialogResult.OK)
+                {
+                    fCargo.miCargo.AgregarCargo(fCargo.miCargo);
+                    CargarCargo();
+                }
+            }
+            catch (Exception f)
+            {
+                MessageBox.Show("Error al agregar cargo: " + f.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
