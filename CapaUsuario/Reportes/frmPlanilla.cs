@@ -3683,8 +3683,14 @@ namespace CapaUsuario.Reportes
                 }
                 else
                 {
-                    paragraph.Add(Settings.Default.Empresa + " \n UNIDAD DE PERSONAL \n ");
-                    
+                    if (Settings.Default.RUC == "20159308708")
+                    {
+                        paragraph.Add(Settings.Default.Empresa + " \n SUB GERENCIA DE RECURSOS HUMANOS \n ");
+                    }
+                    else
+                    {
+                        paragraph.Add(Settings.Default.Empresa + " \n UNIDAD DE PERSONAL \n ");
+                    }
                 }
                 paragraph.SpacingBefore = 0f;
                 paragraph.SpacingAfter = 0f;
@@ -4104,7 +4110,21 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph = new Paragraph();
                 paragraph.Alignment = Element.ALIGN_CENTER;
                 paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
-                paragraph.Add(Settings.Default.Empresa + "\n UNIDAD DE PERSONAL \n ");
+                if (Settings.Default.RUC == "20147495600")
+                {
+                    paragraph.Add(Settings.Default.Empresa + " \n OFICINA DE RECURSOS HUMANOS \n ");
+                }
+                else
+                {
+                    if (Settings.Default.RUC == "20159308708")
+                    {
+                        paragraph.Add(Settings.Default.Empresa + " \n SUB GERENCIA DE RECURSOS HUMANOS \n ");
+                    }
+                    else
+                    {
+                        paragraph.Add(Settings.Default.Empresa + " \n UNIDAD DE PERSONAL \n ");
+                    }
+                }
 
                 Paragraph paragraph2 = new Paragraph();
                 paragraph2.Alignment = Element.ALIGN_RIGHT;
