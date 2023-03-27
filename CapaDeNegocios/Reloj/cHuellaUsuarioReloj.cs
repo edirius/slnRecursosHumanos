@@ -19,6 +19,10 @@ namespace CapaDeNegocios.Reloj
         int _IdwMinute = 0;
         int _IdwSecond = 0;
         int _IdwWorkcode = 0;
+        cTrabajador _miTrabajador;
+
+        string _nombres;
+
         DateTime _FechaYHora;
 
         public cUsuarioReloj UsuarioReloj
@@ -174,6 +178,32 @@ namespace CapaDeNegocios.Reloj
             set
             {
                 _FechaYHora = value;
+            }
+        }
+
+        public cTrabajador MiTrabajador
+        {
+            get
+            {
+                return _miTrabajador;
+            }
+
+            set
+            {
+                _miTrabajador = value;
+            }
+        }
+
+        public string Nombres
+        {
+            get
+            {
+                return _nombres;
+            }
+
+            set
+            {
+                _nombres = value;
             }
         }
 

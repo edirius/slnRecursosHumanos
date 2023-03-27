@@ -3669,7 +3669,7 @@ namespace CapaUsuario.Reportes
             using (FileStream stream = new FileStream(folderPath + "Planilla.pdf", FileMode.Create))
             {
 
-                Document pdfDoc = new Document(PageSize.A4, 9, 9, 10, 10);
+                Document pdfDoc = new Document(PageSize.A4, 9, 9, 25, 10);
                 pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
 
                 

@@ -28,21 +28,21 @@ namespace CapaUsuario.Reloj
 
             try
             {
-                if (chkRangoFechas.Checked == false)
-                {
-                    ListaHuellasReloj = oServidorReloj.sta_readAttLog(oServidorReloj.Reloj);
-                    dtgListaPicados.DataSource = ListaHuellasReloj;
-                }
-                else
-                {
-                    ListaHuellasReloj = oServidorReloj.sta_readAttLog(oServidorReloj.Reloj, dtpInicioFecha.Text.Trim().ToString(), dtpFinFecha.Text.Trim().ToString());
-                    dtgListaPicados.DataSource = ListaHuellasReloj;
-                }
-                
+                ListaHuellasReloj = oServidorReloj.sta_readAttLog(oServidorReloj.Reloj);
+                ListaHuellasReloj = oCatalogo.FiltrarHuellasPorFecha(ListaHuellasReloj, dtpInicioFecha.Value, dtpFinFecha.Value);
+                oCatalogo.LlenarDatosDelTrabajadorListaReloj(ListaHuellasReloj);
+                dtgListaPicados.DataSource = ListaHuellasReloj;
+
+
+                //if (chkRangoFechas.Checked == true)
+                //{
+                //    ListaHuellasReloj = oServidorReloj.sta_readAttLog(oServidorReloj.Reloj, dtpInicioFecha.Text.Trim().ToString(), dtpFinFecha.Text.Trim().ToString());
+                //    dtgListaPicados.DataSource = ListaHuellasReloj;
+                //}
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al obtener los registros del reloj: " + ex.Message);
+                MessageBox.Show("Error al obtener los registros del reloj: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -66,6 +66,10 @@ namespace CapaUsuario.Reloj
             dtgListaPicados.Columns["colIdUsuario"].DataPropertyName = "IdUsuario";
             dtgListaPicados.Columns.Add("colFechaYHora", "Fecha y Hora");
             dtgListaPicados.Columns["colFechaYHora"].DataPropertyName = "FechaYHora";
+
+            dtgListaPicados.Columns.Add("colNombres", "Nombres");
+            dtgListaPicados.Columns["colNombres"].DataPropertyName = "Nombres";
+
             dtgListaPicados.Columns.Add("colIdwVerifyMode", "IdwVerifyMode");
             dtgListaPicados.Columns["colIdwVerifyMode"].DataPropertyName = "IdwVerifyMode";
             dtgListaPicados.Columns.Add("colIdwInOutMode", "IdwInOutMode");
@@ -86,6 +90,7 @@ namespace CapaUsuario.Reloj
             dtgListaPicados.Columns["colIdwSecond"].DataPropertyName = "IdwSecond";
 
             dtgListaPicados.Columns["colFechaYHora"].Width = 200;
+            dtgListaPicados.Columns["colNombres"].Width = 300;
             dtgListaPicados.Columns["colIdwYear"].Visible = false;
             dtgListaPicados.Columns["colIdwMonth"].Visible = false;
             dtgListaPicados.Columns["colIdwDay"].Visible = false;
@@ -130,17 +135,42 @@ namespace CapaUsuario.Reloj
             }
         }
 
-        private void chkRangoFechas_CheckedChanged(object sender, EventArgs e)
+        private void btnFiltrarRangoFecha_Click(object sender, EventArgs e)
         {
-            if (chkRangoFechas.Checked)
+
+        }
+
+        private void btnExportarExcel_Click(object sender, EventArgs e)
+        {
+            try
             {
-                dtpFinFecha.Enabled = true;
-                dtpInicioFecha.Enabled = true;
+                CapaDeNegocios.Reloj.cImprimirExcelAsistenciaReloj oImprimir = new CapaDeNegocios.Reloj.cImprimirExcelAsistenciaReloj();
+                
+
+                SaveFileDialog fichero = new SaveFileDialog();
+                fichero.Filter = "Excel (*.xls)|*.xls";
+                fichero.FileName = "AsistenciaDel_" + dtpInicioFecha.Value.ToString("dd_MM_yyyy") + "_al_" + dtpFinFecha.Value.ToString("dd_MM_yyyy") + ".xls";
+
+                if (fichero.ShowDialog() == DialogResult.OK)
+                {
+                    oImprimir.ruta = fichero.FileName;
+                    oImprimir.ListaUsuarios = ListaHuellasReloj;
+                    if (oImprimir.ListaUsuarios.Count == 0)
+                    {
+                        MessageBox.Show("La consulta esta vacia o no hay picados para exportar a excel. ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+
+                        oImprimir.Imprimir(dtpInicioFecha.Value, dtpFinFecha.Value);
+                        //oImprimir.Main();
+                        MessageBox.Show("Excel Exportado.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                dtpFinFecha.Enabled = false;
-                dtpInicioFecha.Enabled = false;
+                MessageBox.Show("Error al imprimir: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

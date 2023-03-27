@@ -190,6 +190,7 @@ namespace CapaUsuario.Planilla
             catch(Exception EX)
             {
                 MessageBox.Show(EX.Message);
+
             }
         } 
 
@@ -573,8 +574,28 @@ namespace CapaUsuario.Planilla
                     {
                         throw new cReglaNegociosException("No hay periodos para el trabajador: " + Nombre + " y el mes " + smes + "/" + saño);
                     }
-                    FechaInicio = AuxiliarPeriodoTrabajador[0].FechaInicio;
-                    foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(AuxiliarPeriodoTrabajador[0].IdtPeriodoTrabajador) + "'"))
+
+                    int numeroPeriodoTrabajadorAlegir = 0;
+
+                    if (AuxiliarPeriodoTrabajador.Count > 1)
+                    {
+                        int conta=0;
+                        foreach (CapaDeNegocios.DatosLaborales.cPeriodoTrabajador item in AuxiliarPeriodoTrabajador)
+                        {
+                            
+                            CapaDeNegocios.DatosLaborales.cRegimenTrabajador auxiliarPeriodoTrabajadorDoble = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                            auxiliarPeriodoTrabajadorDoble = auxiliarPeriodoTrabajadorDoble.TraerRegimenTrabajadorMes(item.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)),1));
+                            if (auxiliarPeriodoTrabajadorDoble.IdtMeta == sidtmeta)
+                            {
+                                numeroPeriodoTrabajadorAlegir = conta;
+                            }
+                            conta++;
+                        }
+                    }
+                    
+                    
+                    FechaInicio = AuxiliarPeriodoTrabajador[numeroPeriodoTrabajadorAlegir].FechaInicio;
+                    foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(AuxiliarPeriodoTrabajador[numeroPeriodoTrabajadorAlegir].IdtPeriodoTrabajador) + "'"))
                     {
                         MontoPago = rowRegimenTrabajador[6].ToString();
                         foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + Convert.ToInt32(rowRegimenTrabajador[15].ToString()) + "'"))
@@ -591,7 +612,7 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(AuxiliarPeriodoTrabajador[0].IdtPeriodoTrabajador) + "'"))
+                        foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(AuxiliarPeriodoTrabajador[numeroPeriodoTrabajadorAlegir].IdtPeriodoTrabajador) + "'"))
                         {
                             TienAFP = true;
                         }

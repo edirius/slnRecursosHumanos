@@ -188,6 +188,7 @@
     <Compile Include="Reloj\cCatalogoPrivilegiosReloj.cs" />
     <Compile Include="Reloj\cHuellaDedo.cs" />
     <Compile Include="Reloj\cHuellaUsuarioReloj.cs" />
+    <Compile Include="Reloj\cImprimirExcelAsistenciaReloj.cs" />
     <Compile Include="Reloj\cPrivilegioReloj.cs" />
     <Compile Include="Reloj\cReloj.cs" />
     <Compile Include="Reloj\cServidorReloj.cs" />

@@ -155,6 +155,16 @@ namespace CapaDeNegocios.Reloj
         {
             List<cHuellaUsuarioReloj> ListaHuellasReloj = new List<cHuellaUsuarioReloj>();
 
+            //CODIGO PARA PROBAR
+            cHuellaUsuarioReloj AUXAUX = new cHuellaUsuarioReloj();
+            AUXAUX.IdUsuario = "41919785";
+            AUXAUX.FechaYHora = DateTime.Now;
+            ListaHuellasReloj.Add(AUXAUX);
+
+            return ListaHuellasReloj;
+            //FIN DEL CODIGO PARAPROBAR
+
+
             if (oReloj.Conectado == false)
             {
                 throw new cReglaNegociosException("*Por favor conectar el reloj primero!");

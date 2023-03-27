@@ -923,6 +923,37 @@ namespace CapaDeNegocios.Asistencia
                 throw new cReglaNegociosException("Error al traer el picado del reloj: " + ex.Message);
             }
         }
+
+        public List<CapaDeNegocios.Reloj.cHuellaUsuarioReloj> FiltrarHuellasPorFecha(List<CapaDeNegocios.Reloj.cHuellaUsuarioReloj> ListaOriginal, DateTime FechaInicioParaFiltrar, DateTime FechaFinParaFiltrar)
+        {
+            List<CapaDeNegocios.Reloj.cHuellaUsuarioReloj> AuxiliarHuellas = new List<Reloj.cHuellaUsuarioReloj>();
+            foreach (CapaDeNegocios.Reloj.cHuellaUsuarioReloj item in ListaOriginal)
+            {
+                if (item.FechaYHora >= FechaInicioParaFiltrar && item.FechaYHora <= FechaFinParaFiltrar)
+                {
+                    AuxiliarHuellas.Add(item);
+                }
+            }
+
+            return AuxiliarHuellas;
+        }
+
+        public void LlenarDatosDelTrabajadorListaReloj (List<CapaDeNegocios.Reloj.cHuellaUsuarioReloj> ListaOriginal)
+        {
+            foreach (CapaDeNegocios.Reloj.cHuellaUsuarioReloj item in ListaOriginal)
+            {
+                item.MiTrabajador = TraerTrabajadorXCodigoReloj(Convert.ToInt32(item.IdUsuario));
+                if (item.MiTrabajador == null)
+                {
+                    item.Nombres = "No existe codigo para el codigo del reloj: " + item.IdUsuario;
+                }
+                else
+                {
+                    item.Nombres = item.MiTrabajador.Nombres + " " + item.MiTrabajador.ApellidoPaterno + " " + item.MiTrabajador.ApellidoMaterno;
+                }
+            }
+        }
+
         #endregion
     }
 }
