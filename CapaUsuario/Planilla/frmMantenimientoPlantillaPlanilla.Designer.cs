@@ -80,6 +80,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.chkTareo = new System.Windows.Forms.CheckBox();
             this.chkMetaJornal = new System.Windows.Forms.CheckBox();
+            this.chkDescuento = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaestroIngresos)).BeginInit();
@@ -589,11 +590,22 @@
             this.chkMetaJornal.Text = "Cargado por Meta Jornal";
             this.chkMetaJornal.UseVisualStyleBackColor = true;
             // 
+            // chkDescuento
+            // 
+            this.chkDescuento.AutoSize = true;
+            this.chkDescuento.Location = new System.Drawing.Point(335, 402);
+            this.chkDescuento.Name = "chkDescuento";
+            this.chkDescuento.Size = new System.Drawing.Size(136, 17);
+            this.chkDescuento.TabIndex = 39;
+            this.chkDescuento.Text = "Total afecto descuento";
+            this.chkDescuento.UseVisualStyleBackColor = true;
+            // 
             // frmMantenimientoPlantillaPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(887, 453);
+            this.Controls.Add(this.chkDescuento);
             this.Controls.Add(this.chkMetaJornal);
             this.Controls.Add(this.chkTareo);
             this.Controls.Add(this.btnGuardar);
@@ -670,5 +682,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.CheckBox chkMetaJornal;
+        private System.Windows.Forms.CheckBox chkDescuento;
     }
 }

@@ -97,6 +97,7 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(100, 20);
             this.txtNumero.TabIndex = 86;
+            this.txtNumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtNumero.TextChanged += new System.EventHandler(this.txtNumero_TextChanged);
             this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 

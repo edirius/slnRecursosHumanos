@@ -156,12 +156,12 @@ namespace CapaDeNegocios.Reloj
             List<cHuellaUsuarioReloj> ListaHuellasReloj = new List<cHuellaUsuarioReloj>();
 
             //CODIGO PARA PROBAR
-            cHuellaUsuarioReloj AUXAUX = new cHuellaUsuarioReloj();
-            AUXAUX.IdUsuario = "41919785";
-            AUXAUX.FechaYHora = DateTime.Now;
-            ListaHuellasReloj.Add(AUXAUX);
+            //cHuellaUsuarioReloj AUXAUX = new cHuellaUsuarioReloj();
+            //AUXAUX.IdUsuario = "41919785";
+            //AUXAUX.FechaYHora = DateTime.Now;
+            //ListaHuellasReloj.Add(AUXAUX);
 
-            return ListaHuellasReloj;
+            //return ListaHuellasReloj;
             //FIN DEL CODIGO PARAPROBAR
 
 

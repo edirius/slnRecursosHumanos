@@ -19,6 +19,7 @@ namespace CapaDeNegocios.Planillas
         int scodigo;
         bool stareo;
         bool smetaJornal;
+        bool sdescuentoAfectaTotal;
 
         public int IdtPlantillaPlanilla
         {
@@ -72,6 +73,19 @@ namespace CapaDeNegocios.Planillas
             }
         }
 
+        public bool DescuentoAfectaTotal
+        {
+            get
+            {
+                return sdescuentoAfectaTotal;
+            }
+
+            set
+            {
+                sdescuentoAfectaTotal = value;
+            }
+        }
+
         public DataTable ListarDescripcionPlantillaPlanilla()
         {
             return Conexion.GDatos.TraerDataTable("spListarDescripcionPlantillaPlanilla");
@@ -84,13 +98,13 @@ namespace CapaDeNegocios.Planillas
 
         public Boolean CrearPlantillaPlanilla(cPlantillaPlanilla miPlantillaPlanilla)
         {
-            Conexion.GDatos.Ejecutar("spCrearPlantillaPlanilla", miPlantillaPlanilla.Descripcion, miPlantillaPlanilla.Orden, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo, miPlantillaPlanilla.Tareo, miPlantillaPlanilla.MetaJornal);
+            Conexion.GDatos.Ejecutar("spCrearPlantillaPlanilla", miPlantillaPlanilla.Descripcion, miPlantillaPlanilla.Orden, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo, miPlantillaPlanilla.Tareo, miPlantillaPlanilla.MetaJornal, miPlantillaPlanilla.DescuentoAfectaTotal);
             return true;
         }
 
         public Boolean ModificarPlantillaPlanilla(cPlantillaPlanilla miPlantillaPlanilla)
         {
-            Conexion.GDatos.Ejecutar("spModificarPlantillaPlanilla", miPlantillaPlanilla.IdtPlantillaPlanilla, miPlantillaPlanilla.Descripcion, miPlantillaPlanilla.Orden, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo, miPlantillaPlanilla.Tareo, miPlantillaPlanilla.MetaJornal);
+            Conexion.GDatos.Ejecutar("spModificarPlantillaPlanilla", miPlantillaPlanilla.IdtPlantillaPlanilla, miPlantillaPlanilla.Descripcion, miPlantillaPlanilla.Orden, miPlantillaPlanilla.Tipo, miPlantillaPlanilla.Codigo, miPlantillaPlanilla.Tareo, miPlantillaPlanilla.MetaJornal, DescuentoAfectaTotal);
             return true;
         }
 
@@ -113,6 +127,7 @@ namespace CapaDeNegocios.Planillas
                 oPlantilla.Codigo = Convert.ToInt32(auxiliar.Rows[0][4]);
                 oPlantilla.Tareo = Convert.ToBoolean(auxiliar.Rows[0][5]);
                 oPlantilla.MetaJornal = Convert.ToBoolean(auxiliar.Rows[0][6]);
+                oPlantilla.DescuentoAfectaTotal = Convert.ToBoolean(auxiliar.Rows[0][7]);
                 return oPlantilla;
             }
             else

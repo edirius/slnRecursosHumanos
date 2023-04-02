@@ -163,6 +163,7 @@ namespace CapaUsuario.Planilla
             }
             miPlantillaPlanilla.Tareo = chkTareo.Checked;
             miPlantillaPlanilla.MetaJornal = chkMetaJornal.Checked;
+            miPlantillaPlanilla.DescuentoAfectaTotal = chkDescuento.Checked;
             foreach (DataGridViewRow rowDgvIngresos in dgvMaestroIngresos.Rows)
             {
                 miPlantillaPlanilla.IdtPlantillaPlanilla = Convert.ToInt32(rowDgvIngresos.Cells[2].Value);
@@ -401,6 +402,14 @@ namespace CapaUsuario.Planilla
                 else
                 {
                     chkMetaJornal.Checked = false;
+                }
+                if (Convert.ToBoolean(oDataPlantillaPlanilla.Rows[0][7]))
+                {
+                    chkDescuento.Checked = true;
+                }
+                else
+                {
+                    chkDescuento.Checked = false;
                 }
             }
 
