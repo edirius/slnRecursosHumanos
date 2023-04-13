@@ -111,6 +111,7 @@
             // 
             // cboTipoSalidas
             // 
+            this.cboTipoSalidas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoSalidas.FormattingEnabled = true;
             this.cboTipoSalidas.Location = new System.Drawing.Point(88, 37);
             this.cboTipoSalidas.Name = "cboTipoSalidas";
@@ -150,6 +151,7 @@
             // txtComentario
             // 
             this.txtComentario.Location = new System.Drawing.Point(88, 78);
+            this.txtComentario.MaxLength = 399;
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.Size = new System.Drawing.Size(250, 128);

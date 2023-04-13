@@ -283,6 +283,7 @@ namespace CapaUsuario.Trabajador
             miRegimenPensionarioTrabajador.IdtAFP = sidtafp;
             miRegimenSaludTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
             miRegimenTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
+            miRegimenTrabajador.NumeroDocumento = txtCuentaBancaria.Text;
 
             if (modoEdicion == false || modoAltaTrabajador == true)
             {
@@ -329,7 +330,7 @@ namespace CapaUsuario.Trabajador
                 miRegimenTrabajador.IdtRegimenTrabajador = 0;
                 miRegimenTrabajador.Condicion = "CONTRATADO";
                 miRegimenTrabajador.ServidorConfianza = false;
-                miRegimenTrabajador.NumeroDocumento = txtCuentaBancaria.Text;
+               
                 miRegimenTrabajador.Periodicidad = "MENSUAL";
                 miRegimenTrabajador.TipoPago = "EFECTIVO";
                 miRegimenTrabajador.MontoPago = 0;

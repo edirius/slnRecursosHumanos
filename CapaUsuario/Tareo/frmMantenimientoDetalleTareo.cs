@@ -1253,6 +1253,7 @@ namespace CapaUsuario.Tareo
                         fNuevoObreroRacionamiento.RecibirDatos(miMeta.Codigo);
                         fNuevoObreroRacionamiento.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt16(dgvDetalleTareo.Rows[dgvDetalleTareo.SelectedCells[0].RowIndex].Cells[4].Value));
                         fNuevoObreroRacionamiento.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoObreroRacionamiento.miTrabajador.IdTrabajador);
+                        fNuevoObreroRacionamiento.miRegimenTrabajador = fNuevoObreroRacionamiento.miRegimenTrabajador.TraerUltimoRegimenTrabajador(fNuevoObreroRacionamiento.miPeriodoTrabajador.IdtPeriodoTrabajador);
                         fNuevoObreroRacionamiento.fechaInicio = miTareo.FechaInicio;
                         fNuevoObreroRacionamiento.fechaFin = miTareo.FechaFin;
                         fNuevoObreroRacionamiento.modoEdicion = true;
@@ -1268,6 +1269,7 @@ namespace CapaUsuario.Tareo
                             {
                                 fNuevoObreroRacionamiento.miTrabajador.ModificarTrabajador(fNuevoObreroRacionamiento.miTrabajador);
                                 fNuevoObreroRacionamiento.miPeriodoTrabajador.ModificarPeriodoTrabajador(fNuevoObreroRacionamiento.miPeriodoTrabajador);
+                                fNuevoObreroRacionamiento.miRegimenTrabajador.ModificarRegimenTrabajador(fNuevoObreroRacionamiento.miRegimenTrabajador);
                                 oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
                                 oDataAFP = miAFP.ObtenerListaAFP();
                                 oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);

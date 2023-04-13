@@ -15,6 +15,8 @@ namespace CapaUsuario.Asistencia
     {
         public CapaDeNegocios.Asistencia.cExcepcionesAsistencia oSalidaTrabajador;
 
+        CapaDeNegocios.Asistencia.cTipoSalida oTipoSalida = new CapaDeNegocios.Asistencia.cTipoSalida();
+
         public frmMantenimientoSalidas()
         {
             InitializeComponent();
@@ -28,9 +30,12 @@ namespace CapaUsuario.Asistencia
         public void Iniciar()
         {
             lblNombredelTrabajador.Text = oSalidaTrabajador.Trabajador.Nombres + " " + oSalidaTrabajador.Trabajador.ApellidoPaterno + " " + oSalidaTrabajador.Trabajador.ApellidoMaterno;
-            cboTipoSalidas.Items.Add("Comision");
-            cboTipoSalidas.Items.Add("Salud");
-            cboTipoSalidas.Items.Add("Personal");
+            cboTipoSalidas.DataSource = oTipoSalida.TraerTiposSalida();
+            cboTipoSalidas.DisplayMember = "Descripcion";
+
+            //cboTipoSalidas.Items.Add("Comision");
+            //cboTipoSalidas.Items.Add("Salud");
+            //cboTipoSalidas.Items.Add("Personal");
 
             cboTipoSalidas.Text = oSalidaTrabajador.Tipo;
             txtComentario.Text = oSalidaTrabajador.Comentario;

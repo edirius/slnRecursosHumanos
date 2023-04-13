@@ -88,6 +88,7 @@
     <Compile Include="Asistencia\cHorario.cs" />
     <Compile Include="Asistencia\cHorarioTrabajador.cs" />
     <Compile Include="Asistencia\cReglaAsistencia.cs" />
+    <Compile Include="Asistencia\cTipoSalida.cs" />
     <Compile Include="Asistencia\cTrabajadorReloj.cs" />
     <Compile Include="Asistencia\cTurno.cs" />
     <Compile Include="Asistencia\cTurnoDia.cs" />

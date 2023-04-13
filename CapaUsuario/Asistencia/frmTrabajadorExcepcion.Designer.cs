@@ -565,7 +565,6 @@
             this.descripcion.DataPropertyName = "descripcion";
             this.descripcion.HeaderText = "Cargo";
             this.descripcion.Name = "descripcion";
-            this.descripcion.Visible = false;
             // 
             // frmTrabajadorExcepcion
             // 
@@ -622,6 +621,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.DataGridView dtgListaTrabajadores;
+        private System.Windows.Forms.ToolStripButton btnAsignarNumeroReloj;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_trabajador;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombres;
@@ -632,7 +633,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechafin;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.ToolStripButton btnAsignarNumeroReloj;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }

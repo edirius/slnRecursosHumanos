@@ -69,6 +69,7 @@
             this.btnImprimirLista = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDatosFijosxTrabajador = new System.Windows.Forms.ToolStripButton();
+            this.toolRenta5ta = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnImprimirListaReloj = new System.Windows.Forms.ToolStripButton();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
@@ -100,6 +101,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtDNI = new System.Windows.Forms.TextBox();
             this.dtgListaTrabajadores = new System.Windows.Forms.DataGridView();
+            this.menuAuxiliar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuCopiarDNI = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCopiarNombreCompleto = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCopiarNombre = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuCopiarPaterno = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuApellidoMaterno = new System.Windows.Forms.ToolStripMenuItem();
             this.id_trabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,13 +117,6 @@
             this.fechafin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.menuAuxiliar = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuCopiarDNI = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCopiarNombreCompleto = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCopiarNombre = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCopiarPaterno = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuApellidoMaterno = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolRenta5ta = new System.Windows.Forms.ToolStripLabel();
             this.statusTrabajadores.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -235,6 +235,14 @@
             this.btnDatosFijosxTrabajador.Size = new System.Drawing.Size(84, 25);
             this.btnDatosFijosxTrabajador.Text = "Datos Fijos";
             this.btnDatosFijosxTrabajador.Click += new System.EventHandler(this.btnDatosFijosxTrabajador_Click);
+            // 
+            // toolRenta5ta
+            // 
+            this.toolRenta5ta.Image = global::CapaUsuario.Properties.Resources._99;
+            this.toolRenta5ta.Name = "toolRenta5ta";
+            this.toolRenta5ta.Size = new System.Drawing.Size(94, 25);
+            this.toolRenta5ta.Text = "Renta 5ta Ant";
+            this.toolRenta5ta.Click += new System.EventHandler(this.toolRenta5ta_Click);
             // 
             // toolStripSeparator5
             // 
@@ -684,6 +692,52 @@
             this.dtgListaTrabajadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellClick);
             this.dtgListaTrabajadores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellContentClick);
             // 
+            // menuAuxiliar
+            // 
+            this.menuAuxiliar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuCopiarDNI,
+            this.menuCopiarNombreCompleto,
+            this.menuCopiarNombre,
+            this.menuCopiarPaterno,
+            this.menuApellidoMaterno});
+            this.menuAuxiliar.Name = "menuAuxiliar";
+            this.menuAuxiliar.Size = new System.Drawing.Size(213, 114);
+            // 
+            // menuCopiarDNI
+            // 
+            this.menuCopiarDNI.Name = "menuCopiarDNI";
+            this.menuCopiarDNI.Size = new System.Drawing.Size(212, 22);
+            this.menuCopiarDNI.Text = "CopiarDNI";
+            this.menuCopiarDNI.Click += new System.EventHandler(this.menuCopiarDNI_Click);
+            // 
+            // menuCopiarNombreCompleto
+            // 
+            this.menuCopiarNombreCompleto.Name = "menuCopiarNombreCompleto";
+            this.menuCopiarNombreCompleto.Size = new System.Drawing.Size(212, 22);
+            this.menuCopiarNombreCompleto.Text = "Copiar Nombre Completo";
+            this.menuCopiarNombreCompleto.Click += new System.EventHandler(this.menuCopiarNombreCompleto_Click);
+            // 
+            // menuCopiarNombre
+            // 
+            this.menuCopiarNombre.Name = "menuCopiarNombre";
+            this.menuCopiarNombre.Size = new System.Drawing.Size(212, 22);
+            this.menuCopiarNombre.Text = "Copiar Nombre";
+            this.menuCopiarNombre.Click += new System.EventHandler(this.menuCopiarNombre_Click);
+            // 
+            // menuCopiarPaterno
+            // 
+            this.menuCopiarPaterno.Name = "menuCopiarPaterno";
+            this.menuCopiarPaterno.Size = new System.Drawing.Size(212, 22);
+            this.menuCopiarPaterno.Text = "Copiar Apellido Paterno";
+            this.menuCopiarPaterno.Click += new System.EventHandler(this.menuCopiarPaterno_Click);
+            // 
+            // menuApellidoMaterno
+            // 
+            this.menuApellidoMaterno.Name = "menuApellidoMaterno";
+            this.menuApellidoMaterno.Size = new System.Drawing.Size(212, 22);
+            this.menuApellidoMaterno.Text = "Copiar Apellido Materno";
+            this.menuApellidoMaterno.Click += new System.EventHandler(this.menuApellidoMaterno_Click);
+            // 
             // id_trabajador
             // 
             this.id_trabajador.DataPropertyName = "id_trabajador";
@@ -762,61 +816,6 @@
             this.descripcion.HeaderText = "Cargo";
             this.descripcion.Name = "descripcion";
             this.descripcion.ReadOnly = true;
-            this.descripcion.Visible = false;
-            // 
-            // menuAuxiliar
-            // 
-            this.menuAuxiliar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuCopiarDNI,
-            this.menuCopiarNombreCompleto,
-            this.menuCopiarNombre,
-            this.menuCopiarPaterno,
-            this.menuApellidoMaterno});
-            this.menuAuxiliar.Name = "menuAuxiliar";
-            this.menuAuxiliar.Size = new System.Drawing.Size(213, 114);
-            // 
-            // menuCopiarDNI
-            // 
-            this.menuCopiarDNI.Name = "menuCopiarDNI";
-            this.menuCopiarDNI.Size = new System.Drawing.Size(212, 22);
-            this.menuCopiarDNI.Text = "CopiarDNI";
-            this.menuCopiarDNI.Click += new System.EventHandler(this.menuCopiarDNI_Click);
-            // 
-            // menuCopiarNombreCompleto
-            // 
-            this.menuCopiarNombreCompleto.Name = "menuCopiarNombreCompleto";
-            this.menuCopiarNombreCompleto.Size = new System.Drawing.Size(212, 22);
-            this.menuCopiarNombreCompleto.Text = "Copiar Nombre Completo";
-            this.menuCopiarNombreCompleto.Click += new System.EventHandler(this.menuCopiarNombreCompleto_Click);
-            // 
-            // menuCopiarNombre
-            // 
-            this.menuCopiarNombre.Name = "menuCopiarNombre";
-            this.menuCopiarNombre.Size = new System.Drawing.Size(212, 22);
-            this.menuCopiarNombre.Text = "Copiar Nombre";
-            this.menuCopiarNombre.Click += new System.EventHandler(this.menuCopiarNombre_Click);
-            // 
-            // menuCopiarPaterno
-            // 
-            this.menuCopiarPaterno.Name = "menuCopiarPaterno";
-            this.menuCopiarPaterno.Size = new System.Drawing.Size(212, 22);
-            this.menuCopiarPaterno.Text = "Copiar Apellido Paterno";
-            this.menuCopiarPaterno.Click += new System.EventHandler(this.menuCopiarPaterno_Click);
-            // 
-            // menuApellidoMaterno
-            // 
-            this.menuApellidoMaterno.Name = "menuApellidoMaterno";
-            this.menuApellidoMaterno.Size = new System.Drawing.Size(212, 22);
-            this.menuApellidoMaterno.Text = "Copiar Apellido Materno";
-            this.menuApellidoMaterno.Click += new System.EventHandler(this.menuApellidoMaterno_Click);
-            // 
-            // toolRenta5ta
-            // 
-            this.toolRenta5ta.Image = global::CapaUsuario.Properties.Resources._99;
-            this.toolRenta5ta.Name = "toolRenta5ta";
-            this.toolRenta5ta.Size = new System.Drawing.Size(94, 25);
-            this.toolRenta5ta.Text = "Renta 5ta Ant";
-            this.toolRenta5ta.Click += new System.EventHandler(this.toolRenta5ta_Click);
             // 
             // frmListaTrabajadores
             // 
@@ -893,6 +892,13 @@
         private System.Windows.Forms.ToolStripStatusLabel lblNumeroTrabajadores;
         private System.Windows.Forms.Button btnContratos;
         private System.Windows.Forms.Button btnReporteContratos;
+        private System.Windows.Forms.ToolStripButton btnDatosFijosxTrabajador;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.Button btnCambiarMeta;
+        private System.Windows.Forms.ToolStripButton btnImprimirListaReloj;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.ToolStripLabel toolRenta5ta;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_trabajador;
         private System.Windows.Forms.DataGridViewTextBoxColumn dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombres;
@@ -903,12 +909,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechafin;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.ToolStripButton btnDatosFijosxTrabajador;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.Button btnCambiarMeta;
-        private System.Windows.Forms.ToolStripButton btnImprimirListaReloj;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
-        private System.Windows.Forms.ToolStripLabel toolRenta5ta;
     }
 }

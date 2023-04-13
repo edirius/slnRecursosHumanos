@@ -190,11 +190,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(42, 168);
+            this.label6.Location = new System.Drawing.Point(8, 168);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.Size = new System.Drawing.Size(89, 13);
             this.label6.TabIndex = 111;
-            this.label6.Text = "Direccion :";
+            this.label6.Text = "Cuenta Bancaria:";
             // 
             // txtDireccion
             // 
@@ -202,8 +202,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDireccion.Location = new System.Drawing.Point(106, 165);
+            this.txtDireccion.MaxLength = 25;
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(501, 20);
+            this.txtDireccion.Size = new System.Drawing.Size(162, 20);
             this.txtDireccion.TabIndex = 100;
             // 
             // txtApeMaterno

@@ -355,6 +355,7 @@ namespace CapaUsuario.ExportarSunat
                     ConvertirMes(mes);
                     Ingresos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
                     Titulo = oExportar.ExportarTitulo(codigoform, año, Nromes, Ruc);
+                    
                     milista.Add(Ingresos);//agregamos los datos concatenados al arreglo(ArrayList)
                 }
             }

@@ -30,7 +30,11 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtRuc = new System.Windows.Forms.TextBox();
             this.chkSCTR = new System.Windows.Forms.CheckBox();
+            this.pbSunat = new System.Windows.Forms.PictureBox();
             this.CheckJornada = new System.Windows.Forms.CheckBox();
             this.bntListarTodo = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
@@ -38,12 +42,7 @@
             this.cbMes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbAños = new System.Windows.Forms.ComboBox();
-            this.pbSunat = new System.Windows.Forms.PictureBox();
             this.dgvListaPlanillas = new System.Windows.Forms.DataGridView();
-            this.txtRuc = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtCodForm = new System.Windows.Forms.TextBox();
             this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colNro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMes = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +51,7 @@
             this.colMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescripcionPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdtPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCodForm = new System.Windows.Forms.TextBox();
             this.dgvIngresos = new System.Windows.Forms.DataGridView();
             this.dgvDescuentos = new System.Windows.Forms.DataGridView();
             this.dgvAportaciones = new System.Windows.Forms.DataGridView();
@@ -87,6 +87,32 @@
             this.groupBox1.Text = "Buscar trabajadores por fecha:";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(896, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(103, 13);
+            this.label5.TabIndex = 43;
+            this.label5.Text = "RUC de la Empresa:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(612, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "CodFormulario:";
+            // 
+            // txtRuc
+            // 
+            this.txtRuc.Location = new System.Drawing.Point(786, 0);
+            this.txtRuc.Name = "txtRuc";
+            this.txtRuc.Size = new System.Drawing.Size(83, 20);
+            this.txtRuc.TabIndex = 43;
+            this.txtRuc.Text = "20177432360";
+            // 
             // chkSCTR
             // 
             this.chkSCTR.AutoSize = true;
@@ -96,6 +122,16 @@
             this.chkSCTR.TabIndex = 36;
             this.chkSCTR.Text = "SCTR";
             this.chkSCTR.UseVisualStyleBackColor = true;
+            // 
+            // pbSunat
+            // 
+            this.pbSunat.Image = global::CapaUsuario.Properties.Resources.logoamplio;
+            this.pbSunat.Location = new System.Drawing.Point(16, 19);
+            this.pbSunat.Name = "pbSunat";
+            this.pbSunat.Size = new System.Drawing.Size(184, 54);
+            this.pbSunat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbSunat.TabIndex = 35;
+            this.pbSunat.TabStop = false;
             // 
             // CheckJornada
             // 
@@ -183,16 +219,6 @@
             this.cbAños.TabIndex = 30;
             this.cbAños.SelectedIndexChanged += new System.EventHandler(this.cbAños_SelectedIndexChanged);
             // 
-            // pbSunat
-            // 
-            this.pbSunat.Image = global::CapaUsuario.Properties.Resources.logoamplio;
-            this.pbSunat.Location = new System.Drawing.Point(16, 19);
-            this.pbSunat.Name = "pbSunat";
-            this.pbSunat.Size = new System.Drawing.Size(184, 54);
-            this.pbSunat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbSunat.TabIndex = 35;
-            this.pbSunat.TabStop = false;
-            // 
             // dgvListaPlanillas
             // 
             this.dgvListaPlanillas.AllowUserToAddRows = false;
@@ -217,40 +243,6 @@
             this.dgvListaPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaPlanillas.Size = new System.Drawing.Size(1292, 368);
             this.dgvListaPlanillas.TabIndex = 42;
-            // 
-            // txtRuc
-            // 
-            this.txtRuc.Location = new System.Drawing.Point(786, 0);
-            this.txtRuc.Name = "txtRuc";
-            this.txtRuc.Size = new System.Drawing.Size(83, 20);
-            this.txtRuc.TabIndex = 43;
-            this.txtRuc.Text = "20177432360";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(612, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 13);
-            this.label2.TabIndex = 43;
-            this.label2.Text = "CodFormulario:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(896, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 13);
-            this.label5.TabIndex = 43;
-            this.label5.Text = "RUC de la Empresa:";
-            // 
-            // txtCodForm
-            // 
-            this.txtCodForm.Location = new System.Drawing.Point(707, 5);
-            this.txtCodForm.Name = "txtCodForm";
-            this.txtCodForm.Size = new System.Drawing.Size(83, 20);
-            this.txtCodForm.TabIndex = 43;
-            this.txtCodForm.Text = "0601";
             // 
             // chk
             // 
@@ -306,6 +298,14 @@
             this.colIdtPlanilla.Name = "colIdtPlanilla";
             this.colIdtPlanilla.Visible = false;
             // 
+            // txtCodForm
+            // 
+            this.txtCodForm.Location = new System.Drawing.Point(707, 5);
+            this.txtCodForm.Name = "txtCodForm";
+            this.txtCodForm.Size = new System.Drawing.Size(83, 20);
+            this.txtCodForm.TabIndex = 43;
+            this.txtCodForm.Text = "0601";
+            // 
             // dgvIngresos
             // 
             this.dgvIngresos.AllowUserToAddRows = false;
@@ -359,7 +359,8 @@
             this.Controls.Add(this.dgvAportaciones);
             this.Controls.Add(this.dgvJornadaLaboral);
             this.Name = "frmExportarTributosDescuentos2";
-            this.Text = "frmExportarTributosDescuentos2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Exportar Tributos y Descuentos";
             this.Load += new System.EventHandler(this.frmExportarTributosDescuentos2_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -465,8 +465,6 @@ namespace CapaUsuario.Reportes
             bool estaAbierto = IsFileinUse(file, "C:\\PDFs\\Planilla.pdf");
             if (!estaAbierto)
             {
-
-
                 decimal haber_total = 0;
 
 
@@ -770,6 +768,7 @@ namespace CapaUsuario.Reportes
                 }
                 else
                 {
+                    #region Planilla Racionamiento
                     if (splantilla == "RACIONAMIENTO")
                     {
                         //Limpiando titulos de la plantilla
@@ -860,6 +859,9 @@ namespace CapaUsuario.Reportes
                             exportar_a_pdf_Racionamiento(sidtregimenlaboral);
                         }
                     }
+                    #endregion
+
+                    #region Planilla Cesantes
                     else
                     {
                         /*Evaluando a plantillas CASO CESANTES y OTROS*/
@@ -891,10 +893,7 @@ namespace CapaUsuario.Reportes
 
                             if (odtPlanilla.Rows.Count > 0)
                             {
-                                //Consultar meta de planilla
-
-
-                                //recorrer consulta de planilla por id plantilla y regimen laboral
+                              //recorrer consulta de planilla por id plantilla y regimen laboral
                                 foreach (DataRow row in odtPlanilla.Rows)
                                 {
 
@@ -2009,11 +2008,12 @@ namespace CapaUsuario.Reportes
                             else
                                 MessageBox.Show("Plantilla sin datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+
+                        #endregion
                         //FINAL DE CESANTES
+                        #region Planilla Normal
                         else
                         {
-
-
                             //Limpiando titulos de la plantilla
                             odtPrueba.Columns.Clear();
 
@@ -3405,6 +3405,7 @@ namespace CapaUsuario.Reportes
                             else
                                 MessageBox.Show("Plantilla sin datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                        #endregion
                     }
                 }
        }

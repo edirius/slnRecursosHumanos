@@ -618,7 +618,7 @@ namespace CapaUsuario.Planilla
                         }
                         if (TienAFP == false)
                         {
-                            MessageBox.Show("El trabajador " + DNI + " : " + Nombre + " no tiene datos de AFP. No se podra agregar al trabajador. Corrija su periodo en Mantenimiento de Trabajadores", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("El trabajador " + DNI + " : " + Nombre + " no tiene datos de AFP. No se podra agregar al trabajador. Corrija su periodo en Mantenimiento de Trabajadores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
@@ -1924,6 +1924,7 @@ namespace CapaUsuario.Planilla
 
             smingresos = new string[oDataPlantillaPlanilla.Rows.Count, 18];
 
+            //codigo para ocultar los botones para cargar tareos segun la opcion de la plantilla, columna 5
             if (Convert.ToBoolean(oDataPlantillaPlanilla.Rows[0][5]))
             {
                 btnAgregarTrabajador.Visible = false;
@@ -1938,6 +1939,7 @@ namespace CapaUsuario.Planilla
                 esTareo = false;
             }
 
+            // codigo para asignar si se va a sacar de la meta jornal o no, segun la columna 6 de la plantilla
             if (Convert.ToBoolean(oDataPlantillaPlanilla.Rows[0][6]))
             {
                 esMetaJornal = true;
@@ -2121,7 +2123,9 @@ namespace CapaUsuario.Planilla
 
         private void MostrarColumnas()
         {
+            //columna remuneracion o jornal
             dgvDetallePlanilla.Columns[11].Visible = false;
+            //columna remuneracion total
             dgvDetallePlanilla.Columns[13].Visible = false;
             dgvDetallePlanilla.Columns["SUMA_DESCUENTOS"].Visible = false;
             dgvDetallePlanilla.Columns["TOTAL_A_EMPLEADOR"].Visible = false;

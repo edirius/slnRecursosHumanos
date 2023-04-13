@@ -896,7 +896,7 @@ namespace CapaDeNegocios.PDF
                 logo.ScalePercent(64f);
                 logo.SetAbsolutePosition(12f, doc.PageSize.Height - 36f - 100f);
 
-                doc.Add(logo);
+                //doc.Add(logo);
                 doc.Add(tblTitulo);
                 doc.Add(tblTrabajadores);
                 doc.Close();

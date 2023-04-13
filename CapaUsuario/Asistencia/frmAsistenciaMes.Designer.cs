@@ -62,7 +62,7 @@
             this.CalendarioAsistencia.BoldedDates = new System.DateTime[] {
         new System.DateTime(2021, 5, 24, 0, 0, 0, 0)};
             this.CalendarioAsistencia.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.CalendarioAsistencia.Location = new System.Drawing.Point(33, 113);
+            this.CalendarioAsistencia.Location = new System.Drawing.Point(17, 113);
             this.CalendarioAsistencia.Name = "CalendarioAsistencia";
             this.CalendarioAsistencia.TabIndex = 0;
             this.CalendarioAsistencia.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.CalendarioAsistencia_DateChanged);
@@ -84,7 +84,7 @@
             // 
             this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMes.FormattingEnabled = true;
-            this.cboMes.Location = new System.Drawing.Point(160, 71);
+            this.cboMes.Location = new System.Drawing.Point(132, 54);
             this.cboMes.Name = "cboMes";
             this.cboMes.Size = new System.Drawing.Size(121, 21);
             this.cboMes.TabIndex = 79;
@@ -93,17 +93,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 55);
+            this.label1.Location = new System.Drawing.Point(17, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 80;
-            this.label1.Text = "Periodo: ";
+            this.label1.Text = "PERIODO: ";
             // 
             // cboAño
             // 
             this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAño.FormattingEnabled = true;
-            this.cboAño.Location = new System.Drawing.Point(45, 71);
+            this.cboAño.Location = new System.Drawing.Point(17, 54);
             this.cboAño.Name = "cboAño";
             this.cboAño.Size = new System.Drawing.Size(81, 21);
             this.cboAño.TabIndex = 81;
@@ -121,7 +121,7 @@
             this.dtgDetalleAsistencia.Name = "dtgDetalleAsistencia";
             this.dtgDetalleAsistencia.ReadOnly = true;
             this.dtgDetalleAsistencia.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgDetalleAsistencia.Size = new System.Drawing.Size(222, 150);
+            this.dtgDetalleAsistencia.Size = new System.Drawing.Size(222, 162);
             this.dtgDetalleAsistencia.TabIndex = 82;
             // 
             // label2
@@ -186,7 +186,7 @@
             this.dtgListaSalidas.Location = new System.Drawing.Point(596, 113);
             this.dtgListaSalidas.Name = "dtgListaSalidas";
             this.dtgListaSalidas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaSalidas.Size = new System.Drawing.Size(308, 150);
+            this.dtgListaSalidas.Size = new System.Drawing.Size(308, 162);
             this.dtgListaSalidas.TabIndex = 89;
             // 
             // chkTodoElMes

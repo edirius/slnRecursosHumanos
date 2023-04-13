@@ -38,18 +38,18 @@ namespace CapaUsuario.Asistencia
                 cboAño.Items.Add(DateTime.Now.Year - i);
             }
 
-            cboMes.Items.Add("Enero");
-            cboMes.Items.Add("Febrero");
-            cboMes.Items.Add("Marzo");
-            cboMes.Items.Add("Abril");
-            cboMes.Items.Add("Mayo");
-            cboMes.Items.Add("Junio");
-            cboMes.Items.Add("Julio");
-            cboMes.Items.Add("Agosto");
-            cboMes.Items.Add("Setiembre");
-            cboMes.Items.Add("Octubre");
-            cboMes.Items.Add("Noviembre");
-            cboMes.Items.Add("Diciembre");
+            cboMes.Items.Add("ENERO");
+            cboMes.Items.Add("FEBRERO");
+            cboMes.Items.Add("MARZO");
+            cboMes.Items.Add("ABRIL");
+            cboMes.Items.Add("MAYO");
+            cboMes.Items.Add("JUNIO");
+            cboMes.Items.Add("JULIO");
+            cboMes.Items.Add("AGOSTO");
+            cboMes.Items.Add("SETIEMBRE");
+            cboMes.Items.Add("OCTUBRE");
+            cboMes.Items.Add("NOVIEMBRE");
+            cboMes.Items.Add("DICIEMBRE");
 
             cboMes.SelectedIndex = DateTime.Now.Month - 1;
 

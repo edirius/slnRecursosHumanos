@@ -74,6 +74,8 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.menuClasificadores = new System.Windows.Forms.ToolStripMenuItem();
             this.asignarClasificadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.plantillaDeTareosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plantillaPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -130,8 +132,6 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.plantillaDeTareosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -353,6 +353,7 @@
             // 
             // mnuAsistenciaTrabajador
             // 
+            this.mnuAsistenciaTrabajador.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_62;
             this.mnuAsistenciaTrabajador.Name = "mnuAsistenciaTrabajador";
             this.mnuAsistenciaTrabajador.Size = new System.Drawing.Size(297, 22);
             this.mnuAsistenciaTrabajador.Text = "Asistencia Trabajador";
@@ -500,6 +501,18 @@
             this.asignarClasificadoresToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.asignarClasificadoresToolStripMenuItem.Text = "Asignar Clasificadores";
             this.asignarClasificadoresToolStripMenuItem.Click += new System.EventHandler(this.asignarClasificadoresToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(204, 6);
+            // 
+            // plantillaDeTareosToolStripMenuItem
+            // 
+            this.plantillaDeTareosToolStripMenuItem.Name = "plantillaDeTareosToolStripMenuItem";
+            this.plantillaDeTareosToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.plantillaDeTareosToolStripMenuItem.Text = "Plantilla de Tareos";
+            this.plantillaDeTareosToolStripMenuItem.Click += new System.EventHandler(this.plantillaDeTareosToolStripMenuItem_Click);
             // 
             // planillasToolStripMenuItem
             // 
@@ -945,18 +958,6 @@
             // dlgAbrirArchivo
             // 
             this.dlgAbrirArchivo.FileName = "backup";
-            // 
-            // plantillaDeTareosToolStripMenuItem
-            // 
-            this.plantillaDeTareosToolStripMenuItem.Name = "plantillaDeTareosToolStripMenuItem";
-            this.plantillaDeTareosToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.plantillaDeTareosToolStripMenuItem.Text = "Plantilla de Tareos";
-            this.plantillaDeTareosToolStripMenuItem.Click += new System.EventHandler(this.plantillaDeTareosToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator11
-            // 
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(204, 6);
             // 
             // frmPrincipal
             // 

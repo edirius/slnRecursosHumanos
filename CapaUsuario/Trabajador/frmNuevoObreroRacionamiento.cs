@@ -35,6 +35,7 @@ namespace CapaUsuario.Trabajador
         CapaDeNegocios.cNacionalidad miNacionalidad = new CapaDeNegocios.cNacionalidad();
 
         public CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+        public  CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
         public DateTime fechaInicio;
         public DateTime fechaFin;
 
@@ -84,7 +85,7 @@ namespace CapaUsuario.Trabajador
             cboProvincia.SelectedValue = miTrabajador.MiProvincia.Codigo;
             cboDistrito.SelectedValue = miTrabajador.MiDistrito.Codigo;
 
-
+            txtDireccion.Text = miRegimenTrabajador.NumeroDocumento;
          
 
 
@@ -168,7 +169,7 @@ namespace CapaUsuario.Trabajador
             miTrabajador.FechaNacimiento = dtpFechaNacimiento.Value;
             miTrabajador.Dni = txtDNI.Text;
             miTrabajador.CelularPersonal = txtCelular.Text;
-            miTrabajador.Direccion = txtDireccion.Text;
+            //miTrabajador.Direccion = txtDireccion.Text;
             miTrabajador.MiDistrito = miDistrito;
             miTrabajador.MiDistrito.Codigo = miDistrito.Codigo;
 
@@ -181,6 +182,7 @@ namespace CapaUsuario.Trabajador
             miTrabajador.Essaludvida = false;
             miTrabajador.Scrt = true;
             miPeriodoTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
+            miRegimenTrabajador.NumeroDocumento = txtDireccion.Text;
             if (modoEdicion == false || modoAltatrabajador == true)
             {
 
@@ -207,11 +209,11 @@ namespace CapaUsuario.Trabajador
 
 
 
-                CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                
                 miRegimenTrabajador.IdtRegimenTrabajador = 0;
                 miRegimenTrabajador.Condicion = "CONTRATADO";
                 miRegimenTrabajador.ServidorConfianza = false;
-                miRegimenTrabajador.NumeroDocumento = "";
+                
                 miRegimenTrabajador.Periodicidad = "MENSUAL";
                 miRegimenTrabajador.TipoPago = "EFECTIVO";
                 miRegimenTrabajador.MontoPago = 0;
