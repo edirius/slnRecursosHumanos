@@ -45,9 +45,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.mnuAFP2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuCopiarCUSPP = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatosPlanilla)).BeginInit();
             this.mnuAFP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatosExcel)).BeginInit();
+            this.mnuAFP2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtgDatosPlanilla
@@ -101,9 +104,12 @@
             this.dtgDatosExcel.AllowUserToAddRows = false;
             this.dtgDatosExcel.AllowUserToDeleteRows = false;
             this.dtgDatosExcel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgDatosExcel.ContextMenuStrip = this.mnuAFP2;
             this.dtgDatosExcel.Location = new System.Drawing.Point(634, 170);
+            this.dtgDatosExcel.MultiSelect = false;
             this.dtgDatosExcel.Name = "dtgDatosExcel";
             this.dtgDatosExcel.ReadOnly = true;
+            this.dtgDatosExcel.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgDatosExcel.Size = new System.Drawing.Size(574, 263);
             this.dtgDatosExcel.TabIndex = 1;
             this.dtgDatosExcel.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgDatosExcel_CellFormatting);
@@ -194,13 +200,30 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(930, 79);
+            this.btnActualizar.BackColor = System.Drawing.Color.MintCream;
+            this.btnActualizar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnActualizar.Location = new System.Drawing.Point(930, 61);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(75, 23);
+            this.btnActualizar.Size = new System.Drawing.Size(92, 42);
             this.btnActualizar.TabIndex = 55;
-            this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Text = "&Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // mnuAFP2
+            // 
+            this.mnuAFP2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuCopiarCUSPP});
+            this.mnuAFP2.Name = "mnuAFP2";
+            this.mnuAFP2.Size = new System.Drawing.Size(149, 26);
+            // 
+            // mnuCopiarCUSPP
+            // 
+            this.mnuCopiarCUSPP.Name = "mnuCopiarCUSPP";
+            this.mnuCopiarCUSPP.Size = new System.Drawing.Size(148, 22);
+            this.mnuCopiarCUSPP.Text = "Copiar CUSPP";
+            this.mnuCopiarCUSPP.Click += new System.EventHandler(this.mnuCopiarCUSPP_Click);
             // 
             // frmCompararDatosAFP
             // 
@@ -226,6 +249,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatosPlanilla)).EndInit();
             this.mnuAFP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatosExcel)).EndInit();
+            this.mnuAFP2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -247,5 +271,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuCUSSPError;
         private System.Windows.Forms.ToolStripMenuItem mnuComisionError;
         private System.Windows.Forms.ToolStripMenuItem mnuDNIError;
+        private System.Windows.Forms.ContextMenuStrip mnuAFP2;
+        private System.Windows.Forms.ToolStripMenuItem mnuCopiarCUSPP;
     }
 }

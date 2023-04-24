@@ -744,9 +744,9 @@ namespace CapaUsuario.Reportes
 
                             k++;
                         }
-                        if (Settings.Default.RUC == "20147495600")
+                        if (Settings.Default.RUC == "20159308708")
                         {
-                            odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
+                           // odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
                         }
                         else
                         {
@@ -837,13 +837,13 @@ namespace CapaUsuario.Reportes
 
                                 k++;
                             }
-                            if (Settings.Default.RUC == "20147495600")
+                            if (Settings.Default.RUC == "20159308708")
                             {
-                                odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
+                                //odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
                             }
                             else
                             {
-                                odtPrueba.Columns.Add("FIRMA", typeof(string));
+                                odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
                             }
 
                             this.dgvPrueba.DataSource = odtPrueba;
@@ -1683,8 +1683,15 @@ namespace CapaUsuario.Reportes
                                     ll++;
                                 }
 
+                                if (Settings.Default.RUC == "20159308708")
+                                {
 
-                                odtPruebaCorta.Columns.Add("FIRMA", typeof(string));
+                                }
+                                else
+                                {
+                                    odtPruebaCorta.Columns.Add("OBSERVACIONES", typeof(string));
+                                }
+                                
 
                                 this.dgvPrueba.DataSource = odtPruebaCorta;
 
@@ -2962,8 +2969,15 @@ namespace CapaUsuario.Reportes
                                     ll++;
                                 }
 
+                                if (Settings.Default.RUC == "20159308708")
+                                {
 
-                                odtPruebaCorta.Columns.Add("FIRMA", typeof(string));
+                                }
+                                else
+                                {
+                                    odtPruebaCorta.Columns.Add("OBSERVACIONES", typeof(string));
+                                }
+                                
 
                                 this.dgvPrueba.DataSource = odtPruebaCorta;
 
@@ -3519,6 +3533,14 @@ namespace CapaUsuario.Reportes
                     if (i == dg.ColumnCount - 1) values[i] = 250;
                     if (i == dg.ColumnCount - 2) values[i] = 150;
                     if (i == dg.ColumnCount - 3) values[i] = 50;
+                }
+                if (Settings.Default.RUC== "20159308708")
+                {
+                    if (i == 4) values[i] = 110;
+                    if (i == 6) values[i] = 110;
+                    if (i == dg.ColumnCount - 1) values[i] = 50;
+                    if (i == dg.ColumnCount - 2) values[i] = 150;
+                   
                 }
                 if (i == 5) values[i] = 50;
                 if (i == 6) values[i] = 120;

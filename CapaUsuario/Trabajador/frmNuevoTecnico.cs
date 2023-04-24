@@ -246,6 +246,12 @@ namespace CapaUsuario.Trabajador
                 return;
             }
 
+            if (cboOcupacion.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar una ocupacion de la lista", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DateTime edadTrabajador = new DateTime(1, 1, 1);
             edadTrabajador = edadTrabajador + (DateTime.Now.Date - dtpFechaNacimiento.Value.Date);
             if ((edadTrabajador.Year - 1) < 18)

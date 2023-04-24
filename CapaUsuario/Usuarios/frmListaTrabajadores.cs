@@ -36,21 +36,29 @@ namespace CapaUsuario.Usuarios
         {
             try
             {
-                frmMantenimientoUsuarios fNuevoUsuario = new frmMantenimientoUsuarios();
-                fNuevoUsuario.miUsuario = new CapaDeNegocios.Usuario.cUsuario();
-                fNuevoUsuario.miUsuario.Trabajador.IdTrabajador = Convert.ToInt16(dtgListaUsuarios.SelectedRows[0].Cells[0].Value);
-                fNuevoUsuario.miUsuario.Trabajador.Nombres = Convert.ToString(dtgListaUsuarios.SelectedRows[0].Cells[1].Value);
-                fNuevoUsuario.miUsuario.Trabajador.ApellidoPaterno = Convert.ToString(dtgListaUsuarios.SelectedRows[0].Cells[2].Value);
-                fNuevoUsuario.miUsuario.Trabajador.ApellidoMaterno = Convert.ToString(dtgListaUsuarios.SelectedRows[0].Cells[3].Value);
-                if (fNuevoUsuario.ShowDialog() == DialogResult.OK)
+                if (Convert.ToBoolean(dtgListaUsuarios.SelectedRows[0].Cells[5].Value)== true)
                 {
-                    fNuevoUsuario.miUsuario.CrearUsuario(fNuevoUsuario.miUsuario);
-                    dtgListaUsuarios.DataSource = MiUsuario.ListaUsuariosTrabajadores();
+                    MessageBox.Show("El trabajador ya tiene un usuario", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    frmMantenimientoUsuarios fNuevoUsuario = new frmMantenimientoUsuarios();
+                    fNuevoUsuario.miUsuario = new CapaDeNegocios.Usuario.cUsuario();
+                    fNuevoUsuario.miUsuario.Trabajador.IdTrabajador = Convert.ToInt16(dtgListaUsuarios.SelectedRows[0].Cells[0].Value);
+                    fNuevoUsuario.miUsuario.Trabajador.Nombres = Convert.ToString(dtgListaUsuarios.SelectedRows[0].Cells[1].Value);
+                    fNuevoUsuario.miUsuario.Trabajador.ApellidoPaterno = Convert.ToString(dtgListaUsuarios.SelectedRows[0].Cells[2].Value);
+                    fNuevoUsuario.miUsuario.Trabajador.ApellidoMaterno = Convert.ToString(dtgListaUsuarios.SelectedRows[0].Cells[3].Value);
+                    if (fNuevoUsuario.ShowDialog() == DialogResult.OK)
+                    {
+                        fNuevoUsuario.miUsuario.CrearUsuario(fNuevoUsuario.miUsuario);
+                        MessageBox.Show("Usuario Creado", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dtgListaUsuarios.DataSource = MiUsuario.ListaUsuariosTrabajadores();
+                    }
                 }
             }
             catch (Exception f)
             {
-                MessageBox.Show(f.Message);
+                MessageBox.Show(f.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

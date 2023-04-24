@@ -363,6 +363,7 @@ namespace CapaUsuario.ExportarSunat
                     if (fRegimenPensionarioTrabajador.ShowDialog() == DialogResult.OK)
                     {
                         Iniciar();
+                        MessageBox.Show("Recuerde calcular de nuevo en el menu de planilla, para actualizar los montos de afp", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (dtgDatosExcel.RowCount > 0)
                         {
                             CompararResultados();
@@ -392,34 +393,57 @@ namespace CapaUsuario.ExportarSunat
                 if (auxiliar.ErrorAFP)
                 {
                     mnuAFPError.Text = "Existe error en AFP";
+                    mnuAFPError.Image = CapaUsuario.Properties.Resources.equis;
                 }
                 else
                 {
                     mnuAFPError.Text = "";
+                    mnuAFPError.Image = null;
                 }
 
                 if (auxiliar.ErrorCUSPP)
                 {
                     mnuCUSSPError.Text = "Existe error en el CUSSP";
+                    mnuCUSSPError.Image = CapaUsuario.Properties.Resources.equis;
                 }
                 else
                 {
                     mnuCUSSPError.Text = "";
+                    mnuCUSSPError.Image = null;
                 }
 
                 if (auxiliar.ErrorComision)
                 {
                     mnuComisionError.Text = "Existe error en la comision";
+                    mnuComisionError.Image = CapaUsuario.Properties.Resources.equis;
                 }
                 else
                 {
                     mnuComisionError.Text = "";
+                    mnuComisionError.Image = null;
                 }
 
                 //mnuAFP.Left = dtgDatosPlanilla.Left + dtgDatosPlanilla.Size.Width; // dtgDatosPlanilla[e.ColumnIndex, e.RowIndex].Size.Width;
                 //mnuAFP.Top = dtgDatosPlanilla.Top + dtgDatosPlanilla[e.ColumnIndex, e.RowIndex].Size.Height;
 
-                mnuAFP.Show();
+                mnuAFP.Show(this, new Point(dtgDatosPlanilla.Location.X, dtgDatosPlanilla.Location.Y));
+            }
+        }
+
+        private void mnuCopiarCUSPP_Click(object sender, EventArgs e)
+        {
+            if (dtgDatosExcel.SelectedRows.Count > 0)
+            {
+                if (dtgDatosExcel.SelectedRows[0].Cells[5].Value.ToString().Trim() == "")
+                {
+                    MessageBox.Show("El CUSPP esta vacio.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("CUSPP copiado: " + dtgDatosExcel.SelectedRows[0].Cells[5].Value.ToString(), "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Clipboard.SetDataObject(dtgDatosExcel.SelectedRows[0].Cells[5].Value.ToString());
+                }
+                
             }
         }
     }
