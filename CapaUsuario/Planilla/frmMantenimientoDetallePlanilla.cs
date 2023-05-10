@@ -569,41 +569,53 @@ namespace CapaUsuario.Planilla
                     DNI = rowTrabajador[1].ToString();
 
                     List<CapaDeNegocios.DatosLaborales.cPeriodoTrabajador> AuxiliarPeriodoTrabajador = miPeriodoTrabajador.traerPeriodosMesTrabajador(pidtrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1));
+                    List<CapaDeNegocios.DatosLaborales.cRegimenTrabajador> ListaRegimenTrabajador = new List<CapaDeNegocios.DatosLaborales.cRegimenTrabajador>();
+                    List<CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador> ListaPeriodoAFP = new List<CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador>();
+
+                    CapaDeNegocios.DatosLaborales.cPeriodoTrabajador PeriodoElegido = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+                    CapaDeNegocios.DatosLaborales.cRegimenTrabajador RegimenElegido = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                    CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador AFPElegido = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
 
                     if (AuxiliarPeriodoTrabajador.Count == 0)
                     {
                         throw new cReglaNegociosException("No hay periodos para el trabajador: " + Nombre + " y el mes " + smes + "/" + saño);
                     }
 
-                    int numeroPeriodoTrabajadorAlegir = 0;
-
-                    if (AuxiliarPeriodoTrabajador.Count > 1)
+                    if (AuxiliarPeriodoTrabajador.Count > 0)
                     {
-                        int conta=0;
                         foreach (CapaDeNegocios.DatosLaborales.cPeriodoTrabajador item in AuxiliarPeriodoTrabajador)
                         {
                             
-                            CapaDeNegocios.DatosLaborales.cRegimenTrabajador auxiliarPeriodoTrabajadorDoble = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
-                            auxiliarPeriodoTrabajadorDoble = auxiliarPeriodoTrabajadorDoble.TraerRegimenTrabajadorMes(item.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)),1));
-                            if (auxiliarPeriodoTrabajadorDoble.IdtMeta == sidtmeta)
+                            CapaDeNegocios.DatosLaborales.cRegimenTrabajador auxiliarRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+
+                            ListaRegimenTrabajador = auxiliarRegimenTrabajador.TraerRegimenTrabajadorMes(item.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1));
+                            ListaPeriodoAFP = AFPElegido.TraerRegimenPensionarioxMes(item.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1));
+
+                            ListaRegimenTrabajador = auxiliarRegimenTrabajador.TraerRegimenTrabajadorMes(item.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)),1));
+
+                            foreach (CapaDeNegocios.DatosLaborales.cRegimenTrabajador item2 in ListaRegimenTrabajador)
                             {
-                                numeroPeriodoTrabajadorAlegir = conta;
+                                if (item2.IdtMeta == sidtmeta)
+                                {
+                                    PeriodoElegido = item;
+                                    RegimenElegido = item2;
+                                    FechaInicio = PeriodoElegido.FechaInicio;
+                                    MontoPago = RegimenElegido.MontoPago.ToString();
+                                    foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + RegimenElegido.IdtCargo.ToString() + "'"))
+                                    {
+                                        IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
+                                        Cargo = rowCargo[1].ToString();
+                                    }
+                                }
                             }
-                            conta++;
+
                         }
                     }
                     
                     
-                    FechaInicio = AuxiliarPeriodoTrabajador[numeroPeriodoTrabajadorAlegir].FechaInicio;
-                    foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(AuxiliarPeriodoTrabajador[numeroPeriodoTrabajadorAlegir].IdtPeriodoTrabajador) + "'"))
-                    {
-                        MontoPago = rowRegimenTrabajador[6].ToString();
-                        foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + Convert.ToInt32(rowRegimenTrabajador[15].ToString()) + "'"))
-                        {
-                            IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
-                            Cargo = rowCargo[1].ToString();
-                        }
-                    }
+                    FechaInicio = PeriodoElegido.FechaInicio;
+
+                    
 
                     if (tipoPlanilla == "RACIONAMIENTO")
                     {
@@ -612,19 +624,24 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(AuxiliarPeriodoTrabajador[numeroPeriodoTrabajadorAlegir].IdtPeriodoTrabajador) + "'"))
+                        if (ListaPeriodoAFP.Count > 0)
                         {
                             TienAFP = true;
-                        }
-                        if (TienAFP == false)
-                        {
-                            MessageBox.Show("El trabajador " + DNI + " : " + Nombre + " no tiene datos de AFP. No se podra agregar al trabajador. Corrija su periodo en Mantenimiento de Trabajadores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
+                            AFPElegido = ListaPeriodoAFP[ListaPeriodoAFP.Count - 1];
+                            foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + AFPElegido.IdtAFP.ToString() + "'"))
+                            {
+                                AFP = rowAFP[1].ToString();
+                            }
+
                             contador += 1;
                             dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio, MontoPago, "", "");
                         }
+                        else
+                        {
+                            TienAFP = false;
+                            MessageBox.Show("El trabajador " + DNI + " : " + Nombre + " no tiene datos de AFP. No se podra agregar al trabajador. Corrija su periodo en Mantenimiento de Trabajadores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
                     }
                 }
             }
@@ -1573,8 +1590,19 @@ namespace CapaUsuario.Planilla
             CapaDeNegocios.DatosLaborales.cPeriodoTrabajador oPeriodoTrabajadorRentaQuinta = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
             oPeriodoTrabajadorRentaQuinta = oPeriodoTrabajadorRentaQuinta.traerUltimoPeriodoTrabajador(miTrabajadorRentaQuinta.IdTrabajador);
 
+            List<CapaDeNegocios.DatosLaborales.cRegimenTrabajador> ListaRegimenTrabajador = new List<CapaDeNegocios.DatosLaborales.cRegimenTrabajador>();
+
             CapaDeNegocios.DatosLaborales.cRegimenTrabajador oRegimenTrabajadorRentaQuinta = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
-            oRegimenTrabajadorRentaQuinta = oRegimenTrabajadorRentaQuinta.TraerRegimenTrabajadorMes(oPeriodoTrabajadorRentaQuinta.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)),1));
+            ListaRegimenTrabajador = oRegimenTrabajadorRentaQuinta.TraerRegimenTrabajadorMes(oPeriodoTrabajadorRentaQuinta.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1));
+
+            foreach(CapaDeNegocios.DatosLaborales.cRegimenTrabajador item in ListaRegimenTrabajador)
+            {
+                if (item.IdtMeta == sidtmeta)
+                {
+                    oRegimenTrabajadorRentaQuinta = item;
+                }
+            }
+            
 
 
             CapaDeNegocios.Planillas.cIngresos5taCategoria miIngresos5taCategoria = new CapaDeNegocios.Planillas.cIngresos5taCategoria();

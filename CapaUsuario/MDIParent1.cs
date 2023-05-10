@@ -446,6 +446,13 @@ namespace CapaUsuario
             fPlanillas.Show();
         }
 
+        private void mnuResumenXDetallePlanillas_Click(object sender, EventArgs e)
+        {
+            Reportes.frmResumenDetallePlanilla fResumenDetalle = new Reportes.frmResumenDetallePlanilla();
+            fResumenDetalle.MdiParent = this;
+            fResumenDetalle.Show();
+        }
+
         private void residenteMetaToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();
@@ -623,6 +630,13 @@ namespace CapaUsuario
             Tareo.frmListaPlantillaTareos fListaTareos = new Tareo.frmListaPlantillaTareos();
             fListaTareos.MdiParent = this;
             fListaTareos.Show();
+        }
+
+        private void analiticoPlanillasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reportes.frmAnaliticoPlanilla fAnaliticoPlanilla = new Reportes.frmAnaliticoPlanilla();
+            fAnaliticoPlanilla.MdiParent = this;
+            fAnaliticoPlanilla.Show();
         }
 
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)

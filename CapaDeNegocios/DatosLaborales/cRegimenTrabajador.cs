@@ -219,10 +219,11 @@ namespace CapaDeNegocios.DatosLaborales
         /// </summary>
         /// <param name="idtPeriodoTrabajador"></param>
         /// <returns></returns>
-        public cRegimenTrabajador TraerRegimenTrabajadorMes(int idtPeriodoTrabajador, DateTime Fecha)
+        public List<cRegimenTrabajador> TraerRegimenTrabajadorMes(int idtPeriodoTrabajador, DateTime Fecha)
         {
             try
             {
+                Fecha = new DateTime(Fecha.Year, Fecha.Month, 1);
                 List<cRegimenTrabajador> listaPeriodosTrabajador = new List<cRegimenTrabajador>();
 
                 DataTable listaPeriodos;
@@ -232,6 +233,7 @@ namespace CapaDeNegocios.DatosLaborales
                 {
                     //convierte la fecha al primer dia del mes
                     DateTime fechaRegimenInicio = convertirFecha(item[7].ToString(),true);
+                    fechaRegimenInicio = new DateTime(fechaRegimenInicio.Year, fechaRegimenInicio.Month, 1);
                     DateTime fechaRegimenFin;
                     if ((item[8] == null) || (item[8].ToString() == ""))
                     {
@@ -274,7 +276,7 @@ namespace CapaDeNegocios.DatosLaborales
                 }
                 else
                 {
-                    return listaPeriodosTrabajador[0];
+                    return listaPeriodosTrabajador;
                 }
             }
             catch (Exception ex)

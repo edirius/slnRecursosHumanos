@@ -25,7 +25,7 @@ namespace CapaDeNegocios.Planillas
         string sobservaciones;
 
         private List<cDetallePlanilla> listaDetallePlanilla;
-
+        private cMeta miMeta;
         private cPlantillaPlanilla oPlantilla = new cPlantillaPlanilla();
 
         public int IdtPlanilla
@@ -95,6 +95,19 @@ namespace CapaDeNegocios.Planillas
             set
             {
                 listaDetallePlanilla = value;
+            }
+        }
+
+        public cMeta MiMeta
+        {
+            get
+            {
+                return miMeta;
+            }
+
+            set
+            {
+                miMeta = value;
             }
         }
 
@@ -190,6 +203,8 @@ namespace CapaDeNegocios.Planillas
                 planillaAuxiliar.IdtMeta = Convert.ToInt16(tablaAuxiliar.Rows[0][5]);
                 planillaAuxiliar.IdtFuenteFinanciamiento = Convert.ToInt16(tablaAuxiliar.Rows[0][6]);
                 planillaAuxiliar.IdtRegimenLaboral = Convert.ToInt16(tablaAuxiliar.Rows[0][7]);
+                planillaAuxiliar.Descripcion = Convert.ToString(tablaAuxiliar.Rows[0][8]);
+                planillaAuxiliar.Plantilla = Convert.ToString(tablaAuxiliar.Rows[0][8]);
                 planillaAuxiliar.Observaciones = Convert.ToString(tablaAuxiliar.Rows[0][10]);
                 return planillaAuxiliar;
             }
@@ -291,6 +306,42 @@ namespace CapaDeNegocios.Planillas
             else
             {
                 return null;
+            }
+        }
+
+        public void LlenarDetallesPlanilla()
+        {
+            try
+            {
+                this.ListaDetallePlanilla = new List<cDetallePlanilla>();
+                DataTable auxiliar = Conexion.GDatos.TraerDataTable("spTraerDetallePlanilla", this.IdtPlanilla);
+                cCadenaProgramaticaFuncional oCadena = new cCadenaProgramaticaFuncional();
+                this.miMeta = oCadena.TraerMeta(this.IdtMeta);
+
+                foreach (DataRow item in auxiliar.Rows)
+                {
+                    cDetallePlanilla detalle = new cDetallePlanilla();
+                    detalle.IdtDetallePlanilla = Convert.ToInt32(item[0].ToString());
+                    detalle.Cargo = item[1].ToString();
+                    detalle.FechaInicio = Convert.ToDateTime(item[2].ToString());
+                    detalle.DiasLaborados = Convert.ToInt16(item[3].ToString());
+                    detalle.TotalIngresos = Convert.ToDecimal(item[4].ToString());
+                    detalle.TotalATrabajador = Convert.ToDecimal(item[5].ToString());
+                    detalle.TotalDescuentos = Convert.ToDecimal(item[6].ToString());
+                    detalle.TotalAEmpleador = Convert.ToDecimal(item[7].ToString());
+                    detalle.NetoaCobrar = Convert.ToDecimal(item[8].ToString());
+                    detalle.IdtTrabajador = Convert.ToInt32(item[9].ToString());
+                    detalle.IdtPlanilla = Convert.ToInt32(item[10].ToString());
+                    detalle.STrabajador = new cTrabajador();
+                    detalle.STrabajador = detalle.STrabajador.traerTrabajador(detalle.IdtTrabajador);
+                    this.ListaDetallePlanilla.Add(detalle);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error al traer los detalles de la planilla " + this.IdtPlanilla + " Error en la conexion de la base de datos: " + ex.Message);
             }
         }
     }

@@ -6,18 +6,28 @@ using System.Threading.Tasks;
 
 using System.Data;
 using CapaDeDatos;
-using CapaDeNegocios.Obras;
+using CapaDeNegocios.DatosLaborales;
 
 namespace CapaDeNegocios.Tareos
 {
     public class cDetalleTareo
     {
+
         int sidtdetalletareo;
         string scategoria;
         string sdiastareo;
         int stotaldias;
         int sidttrabajador;
         int sidttareo;
+
+        cPeriodoTrabajador periodoTrabajador;
+        cRegimenPensionarioTrabajador periodoAFP;
+        cRegimenTrabajador periodoRegimen;
+        CapaDeNegocios.cAFP afp;
+        public cDetalleTareo()
+        {
+            
+        }
 
         public int IdTDetalleTareo
         {
@@ -48,6 +58,58 @@ namespace CapaDeNegocios.Tareos
         {
             get { return sidttareo; }
             set { sidttareo = value; }
+        }
+
+        public cPeriodoTrabajador PeriodoTrabajador
+        {
+            get
+            {
+                return periodoTrabajador;
+            }
+
+            set
+            {
+                periodoTrabajador = value;
+            }
+        }
+
+        public cRegimenPensionarioTrabajador PeriodoAFP
+        {
+            get
+            {
+                return periodoAFP;
+            }
+
+            set
+            {
+                periodoAFP = value;
+            }
+        }
+
+        public cRegimenTrabajador PeriodoRegimen
+        {
+            get
+            {
+                return periodoRegimen;
+            }
+
+            set
+            {
+                periodoRegimen = value;
+            }
+        }
+
+        public cAFP Afp
+        {
+            get
+            {
+                return afp;
+            }
+
+            set
+            {
+                afp = value;
+            }
         }
 
         private DataTable OrdenarPorCategoria(DataTable odata)

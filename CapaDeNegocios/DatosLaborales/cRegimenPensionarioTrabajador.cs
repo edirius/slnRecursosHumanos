@@ -160,5 +160,96 @@ namespace CapaDeNegocios.DatosLaborales
             }
         }
 
+
+        /// <summary>
+        /// Metodo para traer los regimen pensionarios dentro de un mes por el periodo de un trabajador
+        /// </summary>
+        /// <param name="pidtPeriodoTrabajador"></param>
+        /// <param name="MesBuscado"></param>
+        /// <returns></returns>
+        public List<cRegimenPensionarioTrabajador> TraerRegimenPensionarioxMes(int pidtPeriodoTrabajador, DateTime MesBuscado)
+        {
+
+            try
+            {
+                List<cRegimenPensionarioTrabajador> ListaRegimePensionario = new List<cRegimenPensionarioTrabajador>();
+
+                MesBuscado = new DateTime(MesBuscado.Year, MesBuscado.Month, 1);
+
+                DataTable listaPeriodos;
+                listaPeriodos = Conexion.GDatos.TraerDataTable("spTraerPeriodosAFPxPeriodo", pidtPeriodoTrabajador);
+
+                foreach (DataRow item in listaPeriodos.Rows)
+                {
+                    DateTime fechaRegimenInicio = convertirFecha(item[1].ToString(), true);
+                    fechaRegimenInicio = new DateTime(fechaRegimenInicio.Year, fechaRegimenInicio.Month, 1);
+                    DateTime fechaRegimenFin;
+                    if ((item[2] == null) || (item[2].ToString() == ""))
+                    {
+                        fechaRegimenFin = new DateTime(3000, 12, 31);
+                    }
+                    else
+                    {
+                        fechaRegimenFin = convertirFecha(item[2].ToString(), false);
+                    }
+
+                    if (MesBuscado.Date >= fechaRegimenInicio && MesBuscado.Date <= fechaRegimenFin)
+                    {
+                        cRegimenPensionarioTrabajador nuevoPeriodoTrabajador = new cRegimenPensionarioTrabajador();
+                        nuevoPeriodoTrabajador.IdtRegimenPensionarioTrabajador = Convert.ToInt16(listaPeriodos.Rows[0][0].ToString());
+                        nuevoPeriodoTrabajador.sfechainicio = listaPeriodos.Rows[0][1].ToString();
+                        nuevoPeriodoTrabajador.sfechafin = listaPeriodos.Rows[0][2].ToString(); ;
+                        nuevoPeriodoTrabajador.CUSPP = listaPeriodos.Rows[0][3].ToString();
+                        nuevoPeriodoTrabajador.TipoComision = listaPeriodos.Rows[0][4].ToString();
+                        nuevoPeriodoTrabajador.IdtAFP = Convert.ToInt16(listaPeriodos.Rows[0][5].ToString());
+                        nuevoPeriodoTrabajador.IdtPeriodoTrabajador = Convert.ToInt16(listaPeriodos.Rows[0][6].ToString());
+                        ListaRegimePensionario.Add(nuevoPeriodoTrabajador);
+                    }
+                }
+                return ListaRegimePensionario;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en traer el periodo del trabajador: " + ex.Message);
+            }
+        }
+
+        public DateTime convertirFecha(string Fecha, bool Inicio)
+        {
+            if (Fecha.Length == 10)
+            {
+                if (Inicio)
+                {
+                    return new DateTime(Convert.ToInt16(Fecha.Substring(6, 4)), Convert.ToInt16(Fecha.Substring(3, 2)), 1);
+                }
+                //para fecha fin
+                else
+                {
+
+                    return new DateTime(Convert.ToInt16(Fecha.Substring(6, 4)), Convert.ToInt16(Fecha.Substring(3, 2)), DateTime.DaysInMonth(Convert.ToInt16(Fecha.Substring(6, 4)), Convert.ToInt16(Fecha.Substring(3, 2))));
+                }
+            }
+            else
+            {
+                if (Fecha.Length == 9)
+                {
+                    if (Inicio)
+                    {
+                        return new DateTime(Convert.ToInt16(Fecha.Substring(5, 4)), Convert.ToInt16(Fecha.Substring(2, 2)), 1);
+                    }
+                    //para fecha fin
+                    else
+                    {
+
+                        return new DateTime(Convert.ToInt16(Fecha.Substring(5, 4)), Convert.ToInt16(Fecha.Substring(2, 2)), DateTime.DaysInMonth(Convert.ToInt16(Fecha.Substring(5, 4)), Convert.ToInt16(Fecha.Substring(2, 2))));
+                    }
+
+                }
+                else
+                {
+                    throw new cReglaNegociosException("Error convertir Fecha: la logntiud no es correcta 10 o 9");
+                }
+            }
+        }
     }
 }

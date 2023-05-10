@@ -97,6 +97,13 @@ namespace CapaUsuario.Usuarios
                     cVariablesUsuario.v_idusuario = dgvUsuarios.Rows[0].Cells[0].Value.ToString();
                     cVariablesUsuario.v_usuario = dgvUsuarios.Rows[0].Cells[1].Value.ToString();
                     cVariablesUsuario.v_password = dgvUsuarios.Rows[0].Cells[2].Value.ToString();
+
+                    cDatosGenerales oDatosGenerales = new cDatosGenerales();
+
+                    cDatosGeneralesEmpresa.NombreEmpresa = oDatosGenerales.Nombre;
+                    cDatosGeneralesEmpresa.RUC = oDatosGenerales.Ruc;
+                    cDatosGeneralesEmpresa.Lugar = oDatosGenerales.Lugar;
+                    cDatosGeneralesEmpresa.NombreOficina = oDatosGenerales.NombreOficina;
                     Principal.DarPrivilegios(txtUsuario.Text);
                     Principal.Show();
                     this.Hide();

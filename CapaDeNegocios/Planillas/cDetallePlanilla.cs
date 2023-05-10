@@ -22,6 +22,7 @@ namespace CapaDeNegocios.Planillas
         decimal snetoacobrar;
         int sidttrabajador;
         int sidtplanilla;
+        cTrabajador sTrabajador;
 
         public int IdtDetallePlanilla
         {
@@ -77,6 +78,19 @@ namespace CapaDeNegocios.Planillas
         {
             get { return sidtplanilla; }
             set { sidtplanilla = value; }
+        }
+
+        public cTrabajador STrabajador
+        {
+            get
+            {
+                return sTrabajador;
+            }
+
+            set
+            {
+                sTrabajador = value;
+            }
         }
 
         public DataTable ListarPlanillaXMesYRegimenLaboral(int pidPlanilla, int pidRegimenLaboral, string pmes, string paño)

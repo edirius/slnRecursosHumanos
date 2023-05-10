@@ -183,6 +183,34 @@ namespace CapaDeNegocios.Obras
             return Conexion.GDatos.TraerDataTable("spListarMetasXAño", año); 
         }
 
+        public cMeta TraerMeta(int codigo)
+        {
+            try
+            {
+                cMeta oMeta = new cMeta();
+                DataTable meta = new DataTable();
+                meta = Conexion.GDatos.TraerDataTable("spTraerMetaxID", codigo);
+                if (meta.Rows.Count == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    oMeta.Codigo = Convert.ToInt32(meta.Rows[0][0].ToString());
+                    oMeta.Año = Convert.ToInt16(meta.Rows[0][1].ToString());
+                    oMeta.Numero = Convert.ToInt16(meta.Rows[0][3].ToString());
+                    oMeta.Nombre = Convert.ToString(meta.Rows[0][2]);
+                    oMeta.GrupoFuncional = TraerGrupoFuncional(Convert.ToInt32(meta.Rows[0][4].ToString()));
+                    oMeta.ActividadObra = TraerActividadObra(Convert.ToInt32(meta.Rows[0][5].ToString()));
+                    return oMeta;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error al traer la meta: Error en la conexion con el servidor: " + ex.Message);
+            }
+        }
+
         public cActividadObra TraerActividadObra(int codigo)
         {
             DataTable Actividades = new DataTable();
@@ -195,7 +223,7 @@ namespace CapaDeNegocios.Obras
             }
             else
             {
-                miActividad.Codigo = Convert.ToInt16(Actividades.Rows[0][0].ToString());
+                miActividad.Codigo = Convert.ToInt32(Actividades.Rows[0][0].ToString());
                 miActividad.Nombre = Actividades.Rows[0][1].ToString();
                 miActividad.ActividadObra = Actividades.Rows[0][2].ToString();
                 miActividad.Año = Convert.ToInt16(Actividades.Rows[0][3].ToString());

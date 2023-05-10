@@ -107,6 +107,8 @@
             this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.globalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.impresionPlanillasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuResumenXDetallePlanillas = new System.Windows.Forms.ToolStripMenuItem();
+            this.analiticoPlanillasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -693,7 +695,9 @@
             this.declaraciónJuradaDeToolStripMenuItem,
             this.certificadoDeRetencionesDeQuintaCategoriaToolStripMenuItem,
             this.globalToolStripMenuItem,
-            this.impresionPlanillasToolStripMenuItem});
+            this.impresionPlanillasToolStripMenuItem,
+            this.mnuResumenXDetallePlanillas,
+            this.analiticoPlanillasToolStripMenuItem});
             this.reportesToolStripMenuItem1.Name = "reportesToolStripMenuItem1";
             this.reportesToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
             this.reportesToolStripMenuItem1.Text = "Reportes";
@@ -764,6 +768,20 @@
             this.impresionPlanillasToolStripMenuItem.Text = "Impresion Planillas";
             this.impresionPlanillasToolStripMenuItem.Visible = false;
             this.impresionPlanillasToolStripMenuItem.Click += new System.EventHandler(this.impresionPlanillasToolStripMenuItem_Click);
+            // 
+            // mnuResumenXDetallePlanillas
+            // 
+            this.mnuResumenXDetallePlanillas.Name = "mnuResumenXDetallePlanillas";
+            this.mnuResumenXDetallePlanillas.Size = new System.Drawing.Size(357, 22);
+            this.mnuResumenXDetallePlanillas.Text = "Reporte Nro Trabajadores x Planilla";
+            this.mnuResumenXDetallePlanillas.Click += new System.EventHandler(this.mnuResumenXDetallePlanillas_Click);
+            // 
+            // analiticoPlanillasToolStripMenuItem
+            // 
+            this.analiticoPlanillasToolStripMenuItem.Name = "analiticoPlanillasToolStripMenuItem";
+            this.analiticoPlanillasToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.analiticoPlanillasToolStripMenuItem.Text = "Analitico Planillas";
+            this.analiticoPlanillasToolStripMenuItem.Click += new System.EventHandler(this.analiticoPlanillasToolStripMenuItem_Click);
             // 
             // helpMenu
             // 
@@ -1096,6 +1114,8 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
         private System.Windows.Forms.ToolStripMenuItem plantillaDeTareosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuResumenXDetallePlanillas;
+        private System.Windows.Forms.ToolStripMenuItem analiticoPlanillasToolStripMenuItem;
     }
 }
 

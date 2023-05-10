@@ -232,6 +232,7 @@
     <Compile Include="CargaInicial\frmDatosFijos.Designer.cs">
       <DependentUpon>frmDatosFijos.cs</DependentUpon>
     </Compile>
+    <Compile Include="cDatosGeneralesEmpresa.cs" />
     <Compile Include="Clasificadores\frmListaClasificadoresGasto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -426,11 +427,23 @@
       <DependentUpon>crTareo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\frmAnaliticoPlanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmAnaliticoPlanilla.Designer.cs">
+      <DependentUpon>frmAnaliticoPlanilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\frmPlanilla2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Reportes\frmPlanilla2.Designer.cs">
       <DependentUpon>frmPlanilla2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\frmResumenDetallePlanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmResumenDetallePlanilla.Designer.cs">
+      <DependentUpon>frmResumenDetallePlanilla.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\frmResumenPlanillas.cs">
       <SubType>Form</SubType>
@@ -1695,8 +1708,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crTareo.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmAnaliticoPlanilla.resx">
+      <DependentUpon>frmAnaliticoPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmPlanilla2.resx">
       <DependentUpon>frmPlanilla2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmResumenDetallePlanilla.resx">
+      <DependentUpon>frmResumenDetallePlanilla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmResumenPlanillas.resx">
       <DependentUpon>frmResumenPlanillas.cs</DependentUpon>
