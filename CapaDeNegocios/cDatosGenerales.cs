@@ -14,6 +14,7 @@ namespace CapaDeNegocios
         string ruc;
         string lugar;
         string nombreOficina;
+        Boolean tecnicos276;
 
         public cDatosGenerales()
         {
@@ -26,6 +27,7 @@ namespace CapaDeNegocios
                     this.ruc = item[2].ToString();
                     this.lugar = item[3].ToString();
                     this.nombreOficina = item[4].ToString();
+                    this.tecnicos276 = Convert.ToBoolean(item[6]);
                 }
             }
             catch (Exception ex)
@@ -84,6 +86,19 @@ namespace CapaDeNegocios
             set
             {
                 nombreOficina = value;
+            }
+        }
+
+        public bool Tecnicos276
+        {
+            get
+            {
+                return tecnicos276;
+            }
+
+            set
+            {
+                tecnicos276 = value;
             }
         }
     }

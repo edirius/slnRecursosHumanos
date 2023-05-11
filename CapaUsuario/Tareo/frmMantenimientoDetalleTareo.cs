@@ -90,10 +90,9 @@ namespace CapaUsuario.Tareo
                 string Nombre = "";
                 string DNI = "";
                 string Sexo = "";
-                string FechaInicio = "";
                 int IdtCargo = 0;
                 string Cargo = "";
-                string AFP = "";
+
 
                 int pIdTTareo = 0;
                 int contador = 0;
@@ -118,32 +117,29 @@ namespace CapaUsuario.Tareo
                             Nombre = row1[3].ToString() + " " + row1[4].ToString() + ", " + row1[2].ToString();
                             DNI = row1[1].ToString();
                             Sexo = row1[5].ToString();
-                            foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + Convert.ToInt32(row1[0].ToString()) + "'"))
+                            CapaDeNegocios.Tareos.cDetalleTareo midetalletareo = LlenarDetalletareo(Convert.ToInt32(IdtTrabajador), Nombre);
+
+                            foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + midetalletareo.PeriodoRegimen.IdtCargo.ToString() + "'"))
                             {
-                                FechaInicio = rowPeriodoTrabajador[1].ToString();
-                                foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
-                                {
-                                    foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + Convert.ToInt32(rowRegimenTrabajador[15].ToString()) + "'"))
-                                    {
-                                        IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
-                                        Cargo = rowCargo[1].ToString();
-                                    }
-                                }
-                                foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
-                                {
-                                    foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()) + "'"))
-                                    {
-                                        AFP = rowAFP[1].ToString();
-                                    }
-                                }
+                                IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
+                                Cargo = rowCargo[1].ToString();
                             }
+
                             dgvDetalleTareo.Rows[fila].Cells[4].Value = IdtTrabajador;
                             dgvDetalleTareo.Rows[fila].Cells[5].Value = Nombre;
                             dgvDetalleTareo.Rows[fila].Cells[6].Value = DNI;
                             dgvDetalleTareo.Rows[fila].Cells[7].Value = Sexo;
                             dgvDetalleTareo.Rows[fila].Cells[8].Value = Cargo;
-                            dgvDetalleTareo.Rows[fila].Cells[10].Value = FechaInicio;
-                            dgvDetalleTareo.Rows[fila].Cells[11].Value = AFP;
+                            dgvDetalleTareo.Rows[fila].Cells[10].Value = midetalletareo.PeriodoTrabajador.FechaInicio;
+                            dgvDetalleTareo.Rows[fila].Cells[11].Value = midetalletareo.PeriodoTrabajador.FechaFin;
+                            if (midetalletareo.Afp != null)
+                            {
+                                dgvDetalleTareo.Rows[fila].Cells[12].Value = midetalletareo.Afp.Nombre;
+                            }
+                            else
+                            {
+                                dgvDetalleTareo.Rows[fila].Cells[12].Value = "";
+                            }
 
                             if (oPlantillatareo.Jornal == false)
                             {
@@ -319,7 +315,8 @@ namespace CapaUsuario.Tareo
                     fechaInicioTrabajador = dgvDetalleTareo.Rows[e.RowIndex].Cells[10].Value.ToString();
                 }
                 
-                if (dgvDetalleTareo.Rows[e.RowIndex].Cells[12].Selected == true)
+                //Codigo para llenar las x
+                if (dgvDetalleTareo.Rows[e.RowIndex].Cells[13].Selected == true)
                 {
                     LlenarDias(e.RowIndex, "x");
                     dgvDetalleTareo.Rows[e.RowIndex].Cells[dgvDetalleTareo.ColumnCount - 2].Value = TotalDias(e.RowIndex);
@@ -375,10 +372,8 @@ namespace CapaUsuario.Tareo
                     string Nombre = "";
                     string DNI = "";
                     string Sexo = "";
-                    string FechaInicio = "";
                     int IdtCargo = 0;
                     string Cargo = "";
-                    string AFP = "";
 
                     int fila = e.RowIndex;
                     string DNIingresado = dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value.ToString();
@@ -429,6 +424,7 @@ namespace CapaUsuario.Tareo
                                     Trabajador.frmNuevoObrero fNuevoObrero = new Trabajador.frmNuevoObrero();
                                     fNuevoObrero.RecibirDatos(miMeta.Codigo);
                                     fNuevoObrero.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt32(IdtTrabajador));
+
 
                                     fNuevoObrero.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoObrero.miTrabajador.IdTrabajador);
                                     fNuevoObrero.miPeriodoTrabajador.FechaInicio = miTareo.FechaInicio.ToShortDateString();
@@ -522,28 +518,18 @@ namespace CapaUsuario.Tareo
                             }
 
                         }
-                        Nombre = row[2].ToString() + " " + row[3].ToString() + ", " + row[4].ToString();
+                        Nombre = row[3].ToString() + " " + row[4].ToString() + ", " + row[2].ToString();
                         DNI = row[1].ToString();
                         Sexo = row[5].ToString();
-                        foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + Convert.ToInt32(row[0].ToString()) + "'"))
+
+                        CapaDeNegocios.Tareos.cDetalleTareo midetalletareo = LlenarDetalletareo(Convert.ToInt32(IdtTrabajador), Nombre);
+
+                        foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + midetalletareo.PeriodoRegimen.IdtCargo.ToString() + "'"))
                         {
-                            FechaInicio = rowPeriodoTrabajador[1].ToString();
-                            foreach (DataRow rowRegimenTrabajador in oDataRegimenTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
-                            {
-                                foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + Convert.ToInt32(rowRegimenTrabajador[15].ToString()) + "'"))
-                                {
-                                    IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
-                                    Cargo = rowCargo[1].ToString();
-                                }
-                            }
-                            foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
-                            {
-                                foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()) + "'"))
-                                {
-                                    AFP = rowAFP[1].ToString();
-                                }
-                            }
+                            IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
+                            Cargo = rowCargo[1].ToString();
                         }
+
                         if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value) == "") { dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value = "I"; }
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[3].Value = e.RowIndex + 1;
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[4].Value = IdtTrabajador;
@@ -551,9 +537,19 @@ namespace CapaUsuario.Tareo
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = DNI;
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[7].Value = Sexo;
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[8].Value = Cargo;
-                        dgvDetalleTareo.Rows[e.RowIndex].Cells[10].Value = FechaInicio;
-                        dgvDetalleTareo.Rows[e.RowIndex].Cells[11].Value = "";
-                        dgvDetalleTareo.Rows[e.RowIndex].Cells[12].Value = AFP;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[10].Value = midetalletareo.PeriodoTrabajador.FechaInicio;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[11].Value = midetalletareo.PeriodoTrabajador.FechaFin;
+
+                        if (midetalletareo.Afp != null)
+                        {
+                            dgvDetalleTareo.Rows[fila].Cells[12].Value = midetalletareo.Afp.Nombre;
+                        }
+                        else
+                        {
+                            dgvDetalleTareo.Rows[fila].Cells[12].Value = "";
+                        }
+
+                   
                     }
                     if (contador == 0)
                     {
@@ -563,6 +559,7 @@ namespace CapaUsuario.Tareo
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[8].Value = "";
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[10].Value = "";
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[11].Value = "";
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[12].Value = "";
                         MessageBox.Show("No existe el Trabajador, para agregar hacer clic en Nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
@@ -584,7 +581,7 @@ namespace CapaUsuario.Tareo
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error en buscar el dni: " + ex.Message);
+                MessageBox.Show("Error en buscar el dni: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -1020,7 +1017,7 @@ namespace CapaUsuario.Tareo
                 auxiliar = miTareo.FechaInicio.AddDays(i);
                 //if (auxiliar.DayOfWeek != DayOfWeek.Sunday)//si es domingo
                 //{
-                dgvDetalleTareo.Rows[fila].Cells[13 + i].Value = caracter;
+                dgvDetalleTareo.Rows[fila].Cells[14 + i].Value = caracter;
                 //}
             }
         }
@@ -1030,7 +1027,7 @@ namespace CapaUsuario.Tareo
             int contadordias = 0;
             for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
             {
-                if (Convert.ToString(dgvDetalleTareo.Rows[fila].Cells[13 + i].Value) == "x" || Convert.ToString(dgvDetalleTareo.Rows[fila].Cells[13 + i].Value) == "X")
+                if (Convert.ToString(dgvDetalleTareo.Rows[fila].Cells[14 + i].Value) == "x" || Convert.ToString(dgvDetalleTareo.Rows[fila].Cells[14 + i].Value) == "X")
                 {
                     contadordias += 1;
                 }
@@ -1043,9 +1040,9 @@ namespace CapaUsuario.Tareo
             double contadorhoras = 0;
             for (int i = 0; i <= (miTareo.FechaFin.Day - miTareo.FechaInicio.Day); i++)
             {
-                if (dgvDetalleTareo.Rows[fila].Cells[13 + i].Value != null)
+                if (dgvDetalleTareo.Rows[fila].Cells[14 + i].Value != null)
                 {
-                    if (dgvDetalleTareo.Rows[fila].Cells[13 + i].Value.ToString() == "x" || dgvDetalleTareo.Rows[fila].Cells[13 + i].Value.ToString() == "X")
+                    if (dgvDetalleTareo.Rows[fila].Cells[14 + i].Value.ToString() == "x" || dgvDetalleTareo.Rows[fila].Cells[14 + i].Value.ToString() == "X")
                     {
                         auxiliar = miTareo.FechaInicio.AddDays(i);
                         if (auxiliar.DayOfWeek == DayOfWeek.Sunday)//si es domingo

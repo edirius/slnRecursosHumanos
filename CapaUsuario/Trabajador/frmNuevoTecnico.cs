@@ -343,8 +343,19 @@ namespace CapaUsuario.Trabajador
 
                 miRegimenTrabajador.FechaFin = "";
                 miRegimenTrabajador.RUC = "";
-                miRegimenTrabajador.IdtRegimenLaboral = 3;
-                miRegimenTrabajador.IdtTipoTrabajador = 2;
+                CapaDeNegocios.cDatosGenerales misDatosGenerales = new CapaDeNegocios.cDatosGenerales();
+
+                if (misDatosGenerales.Tecnicos276)
+                {
+                    miRegimenTrabajador.IdtRegimenLaboral = 2;
+                }
+                else
+                {
+                    miRegimenTrabajador.IdtRegimenLaboral = 3;
+                }
+                
+
+                miRegimenTrabajador.IdtTipoTrabajador = 12;
                 miRegimenTrabajador.IdtTipoContrato = 15;
                 miRegimenTrabajador.IdtCategoriaOcupacional = sidtcategoriaocupacional;
                 miRegimenTrabajador.IdtOcupacion = sidtocupacion;
