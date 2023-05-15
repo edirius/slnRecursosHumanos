@@ -77,6 +77,7 @@ namespace CapaUsuario.Trabajador
             dtpFechaInicio.MinDate = fechaInicio;
             dtpFechaInicio.MaxDate = fechaFin;
             dtpFechaNacimiento.MaxDate = DateTime.Now;
+            dtpFechaNacimiento.Value = DateTime.Now.AddYears(-1);
         }
         public void CargarTrabajador()
         {
@@ -240,15 +241,29 @@ namespace CapaUsuario.Trabajador
                 }
 
             }
-            if (txtDNI.Text.Trim() == "" || txtNombre.Text.Trim() == "" || txtApePaterno.Text.Trim() == "" || txtApeMaterno.Text.Trim() == "" || cboDepartamento.Text.Trim() == "" || cboProvincia.Text.Trim() == "" || cboDistrito.Text == "" || cboAFP.Text == "" || cboCategoriaOcupacional.Text == "" || cboOcupacion.Text == "" || cboCargo.Text == "")
+            if (txtDNI.Text.Trim() == "" || txtNombre.Text.Trim() == "" || txtApePaterno.Text.Trim() == "" || txtApeMaterno.Text.Trim() == "" || cboDepartamento.Text.Trim() == "" || cboProvincia.Text.Trim() == "" || cboDistrito.Text == "" || cboAFP.Text == "" )
             {
                 MessageBox.Show("Existen datos en Blanco, no se puede Guardar al nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            if (cboCategoriaOcupacional.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar una categoria ocupacional de la lista", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboCategoriaOcupacional.Focus();
+                return;
+            }
+
+            if (cboCargo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un cargo de la lista", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboCargo.Focus();
+                return;
+            }
             if (cboOcupacion.SelectedIndex == -1)
             {
                 MessageBox.Show("Debe seleccionar una ocupacion de la lista", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboOcupacion.Focus();
                 return;
             }
 

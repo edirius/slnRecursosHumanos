@@ -339,6 +339,7 @@
             this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 166;
             this.label6.Text = "Direccion :";
+            this.label6.Visible = false;
             // 
             // txtDireccion
             // 
@@ -349,6 +350,7 @@
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(502, 20);
             this.txtDireccion.TabIndex = 155;
+            this.txtDireccion.Visible = false;
             // 
             // txtApeMaterno
             // 
