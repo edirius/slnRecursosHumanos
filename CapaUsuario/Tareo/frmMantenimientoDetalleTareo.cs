@@ -227,11 +227,11 @@ namespace CapaUsuario.Tareo
                     {
                         if (i >= miTareo.FechaInicio.Day && i <= miTareo.FechaFin.Day)
                         {
-                            if (Convert.ToString(row.Cells[12 + i - contadordias].Value) == "")
+                            if (Convert.ToString(row.Cells[13 + i - contadordias].Value) == "")
                             {
                                 diastareo += "0";
                             }
-                            diastareo += Convert.ToString(row.Cells[12 + i - contadordias].Value);
+                            diastareo += Convert.ToString(row.Cells[13 + i - contadordias].Value);
                         }
                         else
                         {

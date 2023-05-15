@@ -67,6 +67,7 @@ namespace CapaUsuario.Trabajador
         {
             dtpFechaInicio.MinDate = fechaInicio;
             dtpFechaInicio.MaxDate = fechaFin;
+            dtpFechaNacimiento.Value = DateTime.Now.AddYears(-1);
         }
         public void CargarTrabajador()
         {

@@ -241,15 +241,28 @@ namespace CapaUsuario.Trabajador
                 }
 
             }
-            if (txtDNI.Text.Trim() == "" || txtNombre.Text.Trim() == "" || txtApePaterno.Text.Trim() == "" || txtApeMaterno.Text.Trim() == "" || cboDepartamento.Text.Trim() == "" || cboProvincia.Text.Trim() == "" || cboDistrito.Text == "" || cboAFP.Text == "" )
+            if (txtDNI.Text.Trim() == "" || txtNombre.Text.Trim() == "" || txtApePaterno.Text.Trim() == "" || txtApeMaterno.Text.Trim() == ""  )
             {
-                MessageBox.Show("Existen datos en Blanco, no se puede Guardar al nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe registrar el dni, nombre, apellido paterno, apellido materno del nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (cboDepartamento.Text.Trim() == "" || cboProvincia.Text.Trim() == "" || cboDistrito.Text == "" )
+            {
+                MessageBox.Show("Debe registrar el departamento, provincia y distrito  del nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (cboAFP.Text == "")
+            {
+                MessageBox.Show("Debe registrar una afp del nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (cboCategoriaOcupacional.SelectedIndex == -1)
             {
                 MessageBox.Show("Debe seleccionar una categoria ocupacional de la lista", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboCategoriaOcupacional.BackColor = Color.LightBlue;
                 cboCategoriaOcupacional.Focus();
                 return;
             }
@@ -257,12 +270,15 @@ namespace CapaUsuario.Trabajador
             if (cboCargo.SelectedIndex == -1)
             {
                 MessageBox.Show("Debe seleccionar un cargo de la lista", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboCargo.BackColor = Color.LightBlue;
                 cboCargo.Focus();
+
                 return;
             }
             if (cboOcupacion.SelectedIndex == -1)
             {
                 MessageBox.Show("Debe seleccionar una ocupacion de la lista", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboOcupacion.BackColor = Color.LightBlue;
                 cboOcupacion.Focus();
                 return;
             }
