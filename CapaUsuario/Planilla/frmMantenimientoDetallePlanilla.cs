@@ -609,6 +609,25 @@ namespace CapaUsuario.Planilla
                                 }
                             }
 
+                            //error cuando no encuentra un periodo = a la meta
+                            if ( PeriodoElegido.IdtPeriodoTrabajador == 0)
+                            {
+                                PeriodoElegido = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+                                PeriodoElegido = item;
+                                foreach (CapaDeNegocios.DatosLaborales.cRegimenTrabajador item2 in ListaRegimenTrabajador)
+                                {
+                                    RegimenElegido = item2;
+                                    FechaInicio = PeriodoElegido.FechaInicio;
+                                    MontoPago = RegimenElegido.MontoPago.ToString();
+                                    foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + RegimenElegido.IdtCargo.ToString() + "'"))
+                                    {
+                                        IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
+                                        Cargo = rowCargo[1].ToString();
+                                    }
+                                }
+
+                            }
+
                         }
                     }
                     
