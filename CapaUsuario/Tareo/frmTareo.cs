@@ -50,6 +50,12 @@ namespace CapaUsuario.Tareo
 
         private void Btn_Aceptar_Click(object sender, EventArgs e)
         {
+            if (cboDescripcion.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un tipo de tareo: Obrero, Tecnico, etc", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cboDescripcion.Focus();
+                return;
+            }
             bool bOk = false;
             CapaDeNegocios.Tareos.cTareo miTareo = new CapaDeNegocios.Tareos.cTareo();
             CapaDeNegocios.Obras.cMeta miMeta = new CapaDeNegocios.Obras.cMeta();
