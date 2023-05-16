@@ -144,12 +144,16 @@ namespace CapaUsuario.Planilla
                         
                         if (esTareo && esMetaJornal)
                         {
+                            if (rowdetalletareo[1].ToString() == "")
+                            {
+                                MessageBox.Show("No se selecciono la categoria en el tareo. Verifique el tareo que todos los trabajadores tengan categoria seleccionada ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                             miMetaJornal = MetaJornal(rowdetalletareo[1].ToString(), sidtmeta);
                             if (miMetaJornal.Opcion == false)
                             {
                                 if (miMetaJornal.Jornal == 0)
                                 {
-                                    MessageBox.Show("La Remuneración de los Obreros diaria: " + rowdetalletareo[1].ToString() + " no existe o es 0.00, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("La Remuneración de los Obreros diaria para la siguiente categoria: '" + rowdetalletareo[1].ToString() + "', no existe o es 0.00, debe crearlo en MetaJornal. o verifique que todos los obreros del tareo tengan categoria", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
                             }
@@ -157,7 +161,7 @@ namespace CapaUsuario.Planilla
                             {
                                 if (miMetaJornal.Mensual == 0)
                                 {
-                                    MessageBox.Show("La Remuneración de los Obreros Mensual: "  + rowdetalletareo[1].ToString() + " no existe o es 0.00, debe crearlo en MetaJornal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("La Remuneración de los Obreros Mensual para la siguiente categoria: '"  + rowdetalletareo[1].ToString() + "', no existe o es 0.00, debe crearlo en MetaJornal. o verifique que todos los obreros del tareo tengan categoria", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     return;
                                 }
                             }

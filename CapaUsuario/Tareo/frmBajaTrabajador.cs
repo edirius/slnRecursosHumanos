@@ -33,6 +33,11 @@ namespace CapaUsuario.Tareo
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (cboFinPeriodo.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar un motivo de baja, el mas usual es terminacion de la obra o servicio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (MessageBox.Show("Está seguro que desea Dar de Baja al Trabajador, este ya no aparecera en proximos tareos", "Gestion de Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
             {
                 return;

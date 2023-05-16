@@ -18,8 +18,7 @@ using iTextSharp.text.html.simpleparser;
 using System.Collections.Generic;
 using iTextSharp;
 using System.Web;
-
-using CapaUsuario.Properties;
+using System.Globalization;
 
 //using iTextSharp.text.pdf.PdfWriter;
 
@@ -81,11 +80,14 @@ namespace CapaUsuario.Reportes
         //CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
         CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
 
+        CapaDeNegocios.cDatosGenerales oDatosGenerales = new CapaDeNegocios.cDatosGenerales();
+
 
         string numeroPlanilla = "";
 
         public frmPlanilla()
         {
+           
             InitializeComponent();
             DateTime Ahora = DateTime.Today;
             CargarMes(Ahora);
@@ -285,7 +287,7 @@ namespace CapaUsuario.Reportes
 
         private void frmPlanilla_Load(object sender, EventArgs e)
         {
-            if (Settings.Default.RUC== "20159308708")
+            if (oDatosGenerales.Ruc == "20159308708")
             {
                 chkSubGerenciaObras.Text = "GERENCIA";
             }
@@ -695,7 +697,7 @@ namespace CapaUsuario.Reportes
                     odtPrueba.Columns.Add("NRO. SESIONES", typeof(string));
                     odtPrueba.Columns.Add("PAGO x SESION", typeof(string));
                     odtPrueba.Columns.Add("NETO A COBRAR", typeof(string));
-                    if (Settings.Default.RUC == "20147495600")
+                    if (oDatosGenerales.Ruc == "20147495600")
                     {
                         odtPrueba.Columns.Add("CUENTA BANCARIA", typeof(string));
                         odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamientoBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
@@ -737,7 +739,7 @@ namespace CapaUsuario.Reportes
                             drFila[4] = row[12];
                             drFila[5] = Math.Round(Convert.ToDecimal(row[11]) / Convert.ToDecimal(row[12]), 2);
                             drFila[6] = row[11];
-                            if (Settings.Default.RUC == "20147495600")
+                            if (oDatosGenerales.Ruc == "20147495600")
                             {
                                 drFila[7] = row[13];
                             }
@@ -748,7 +750,7 @@ namespace CapaUsuario.Reportes
 
                             k++;
                         }
-                        if (Settings.Default.RUC == "20159308708")
+                        if (oDatosGenerales.Ruc == "20159308708")
                         {
                            // odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
                         }
@@ -787,7 +789,7 @@ namespace CapaUsuario.Reportes
                         odtPrueba.Columns.Add("DIAS LABORADOS", typeof(string));
                         odtPrueba.Columns.Add("JORNAL DIARIO", typeof(string));
                         odtPrueba.Columns.Add("NETO A COBRAR", typeof(string));
-                        if (Settings.Default.RUC == "20147495600")
+                        if (oDatosGenerales.Ruc == "20147495600")
                         {
                             odtPrueba.Columns.Add("CUENTA BANCARIA", typeof(string));
                             odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamientoBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
@@ -830,7 +832,7 @@ namespace CapaUsuario.Reportes
                                 drFila[4] = row[12];
                                 drFila[5] = Math.Round(Convert.ToDecimal(row[11]) / Convert.ToDecimal(row[12]), 2);
                                 drFila[6] = row[11];
-                                if (Settings.Default.RUC == "20147495600")
+                                if (oDatosGenerales.Ruc == "20147495600")
                                 {
                                     drFila[7] = row[13];
                                 }
@@ -841,7 +843,7 @@ namespace CapaUsuario.Reportes
 
                                 k++;
                             }
-                            if (Settings.Default.RUC == "20159308708")
+                            if (oDatosGenerales.Ruc == "20159308708")
                             {
                                 //odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
                             }
@@ -1687,7 +1689,7 @@ namespace CapaUsuario.Reportes
                                     ll++;
                                 }
 
-                                if (Settings.Default.RUC == "20159308708")
+                                if (oDatosGenerales.Ruc == "20159308708")
                                 {
 
                                 }
@@ -2039,7 +2041,7 @@ namespace CapaUsuario.Reportes
                                     odtPrueba.Columns.Add("PERIODO", typeof(string));
                                     odtPrueba.Columns.Add("TOTAL DIAS LABORADOS", typeof(string));
                                     odtPrueba.Columns.Add("TOTAL CTS", typeof(string));
-                                    if (Settings.Default.RUC == "20147495600")
+                                    if (oDatosGenerales.Ruc == "20147495600")
                                     {
                                         odtPrueba.Columns.Add("CUENTA BANCARIA", typeof(string));
                                         odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamientoBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
@@ -2092,7 +2094,7 @@ namespace CapaUsuario.Reportes
                                             
                                             
                                             drFila[6] = row[11];
-                                            if (Settings.Default.RUC == "20147495600")
+                                            if (oDatosGenerales.Ruc == "20147495600")
                                             {
                                                 drFila[7] = row[13];
                                             }
@@ -2103,7 +2105,7 @@ namespace CapaUsuario.Reportes
 
                                             k++;
                                         }
-                                        if (Settings.Default.RUC == "20159308708")
+                                        if (oDatosGenerales.Ruc == "20159308708")
                                         {
                                             //odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
                                         }
@@ -2149,7 +2151,7 @@ namespace CapaUsuario.Reportes
 
                                 //odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(pMes, pRegimenLaboral);
                                 //Determinar si la consulta esta vacio
-                                if (Settings.Default.RUC == "20147495600")
+                                if (oDatosGenerales.Ruc == "20147495600")
                                 {
                                     odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
                                 }
@@ -2392,7 +2394,7 @@ namespace CapaUsuario.Reportes
                                             indice_prueba_dias_laborados = BuscarIndiceColumna(odtPrueba, "DIAS LABORADOS");
                                         }
 
-                                        if (Settings.Default.RUC == "20147495600")
+                                        if (oDatosGenerales.Ruc == "20147495600")
                                         {
                                             if (!ExisteColumnaTexto(odtPrueba, "CUENTA BANCARIA"))
                                             {
@@ -2885,7 +2887,7 @@ namespace CapaUsuario.Reportes
                                             indice_prueba_dias_laborados = BuscarIndiceColumna(odtPrueba, "DIAS LABORADOS");
                                         }
 
-                                        if (Settings.Default.RUC == "20147495600")
+                                        if (oDatosGenerales.Ruc == "20147495600")
                                         {
                                             if (!ExisteColumnaTexto(odtPruebaCorta, "CUENTA BANCARIA"))
                                             {
@@ -3078,7 +3080,7 @@ namespace CapaUsuario.Reportes
                                         ll++;
                                     }
 
-                                    if (Settings.Default.RUC == "20159308708")
+                                    if (oDatosGenerales.Ruc == "20159308708")
                                     {
 
                                     }
@@ -3350,7 +3352,8 @@ namespace CapaUsuario.Reportes
                                     /*3er cuadro de la ultima parte de la planilla*/
                                     odtEEFF.Columns.Clear();
                                     odtEEFF.Rows.Clear();
-                                    /*Insertando columnas DEBE Y HABER*/
+
+                      /*Insertando columnas DEBE Y HABER*/
                                     odtEEFF.Columns.Add(" ", typeof(string));
                                     odtEEFF.Columns.Add("DEBE", typeof(string));
                                     odtEEFF.Columns.Add("HABER", typeof(string));
@@ -3368,7 +3371,7 @@ namespace CapaUsuario.Reportes
                                         drFilaEEFF = odtEEFF.NewRow();
                                         drFilaEEFF.Delete();
                                         drFilaEEFF[0] = "TOTAL INGRESOS";
-                                        drFilaEEFF[1] = total_ingresos_total;
+                                        drFilaEEFF[1] = total_ingresos_total.ToString("c", new CultureInfo("es-PE"));
                                         total_debe += total_ingresos_total;
                                         odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
                                         lll++;
@@ -3380,7 +3383,7 @@ namespace CapaUsuario.Reportes
                                         drFilaEEFF = odtEEFF.NewRow();
                                         drFilaEEFF.Delete();
                                         drFilaEEFF[0] = "TOTAL APORTACIONES EMPLEADOR";
-                                        drFilaEEFF[1] = total_a_empleador_total;
+                                        drFilaEEFF[1] = total_a_empleador_total.ToString("c", new CultureInfo("es-PE"));
                                         total_debe += total_a_empleador_total;
                                         odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
                                         lll++;
@@ -3408,7 +3411,7 @@ namespace CapaUsuario.Reportes
                                         drFilaEEFF = odtEEFF.NewRow();
                                         drFilaEEFF.Delete();
                                         drFilaEEFF[0] = columna_snp;
-                                        drFilaEEFF[2] = snp_total;
+                                        drFilaEEFF[2] = snp_total.ToString("c", new CultureInfo("es-PE"));
                                         haber_total += snp_total;
                                         odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
                                         lll++;
@@ -3426,7 +3429,7 @@ namespace CapaUsuario.Reportes
                                         drFilaEEFF = odtEEFF.NewRow();
                                         drFilaEEFF.Delete();
                                         drFilaEEFF[0] = "AFP";
-                                        drFilaEEFF[2] = afp_total;
+                                        drFilaEEFF[2] = afp_total.ToString("c", new CultureInfo("es-PE"));
 
                                         haber_total += afp_total;
 
@@ -3440,7 +3443,7 @@ namespace CapaUsuario.Reportes
                                         drFilaEEFF = odtEEFF.NewRow();
                                         drFilaEEFF.Delete();
                                         drFilaEEFF[0] = "ESSALUD VIDA";
-                                        drFilaEEFF[2] = monto_essalud_vida;
+                                        drFilaEEFF[2] = monto_essalud_vida.ToString("c", new CultureInfo("es-PE"));
                                         haber_total += monto_essalud_vida;
                                         odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
                                         lll++;
@@ -3452,7 +3455,7 @@ namespace CapaUsuario.Reportes
                                         drFilaEEFF = odtEEFF.NewRow();
                                         drFilaEEFF.Delete();
                                         drFilaEEFF[0] = "NETO A COBRAR";
-                                        drFilaEEFF[2] = neto_cobrar_total;
+                                        drFilaEEFF[2] = neto_cobrar_total.ToString("c", new CultureInfo("es-PE"));
                                         haber_total += neto_cobrar_total;
                                         odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
                                         lll++;
@@ -3476,7 +3479,7 @@ namespace CapaUsuario.Reportes
                                             drFilaEEFF = odtEEFF.NewRow();
                                             drFilaEEFF.Delete();
                                             drFilaEEFF[0] = titulo_maestro_descuento;
-                                            drFilaEEFF[2] = ad_total;
+                                            drFilaEEFF[2] = ad_total.ToString("c", new CultureInfo("es-PE"));
                                             haber_total += ad_total;
                                             odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
                                             lll++;
@@ -3501,7 +3504,7 @@ namespace CapaUsuario.Reportes
                                             drFilaEEFF = odtEEFF.NewRow();
                                             drFilaEEFF.Delete();
                                             drFilaEEFF[0] = titulo_maestro_Aportacion;
-                                            drFilaEEFF[2] = ad_total;
+                                            drFilaEEFF[2] = ad_total.ToString("c", new CultureInfo("es-PE"));
                                             haber_total += ad_total;
                                             odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
                                             lll++;
@@ -3514,8 +3517,8 @@ namespace CapaUsuario.Reportes
                                     drFilaEEFF = odtEEFF.NewRow();
                                     drFilaEEFF.Delete();
                                     drFilaEEFF[0] = "TOTAL";
-                                    drFilaEEFF[1] = total_debe;
-                                    drFilaEEFF[2] = haber_total;
+                                    drFilaEEFF[1] = total_debe.ToString("c", new CultureInfo("es-PE"));
+                                    drFilaEEFF[2] = haber_total.ToString("c", new CultureInfo("es-PE"));
                                     odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
 
                                     dgvEEFF.DataSource = odtEEFF;
@@ -3639,13 +3642,13 @@ namespace CapaUsuario.Reportes
                 if (i == dg.ColumnCount - 1) values[i] = 300;
                 if (i == dg.ColumnCount - 2) values[i] = 50;
 
-                if (Settings.Default.RUC == "20147495600" )
+                if (oDatosGenerales.Ruc == "20147495600" )
                 {
                     if (i == dg.ColumnCount - 1) values[i] = 250;
                     if (i == dg.ColumnCount - 2) values[i] = 150;
                     if (i == dg.ColumnCount - 3) values[i] = 50;
                 }
-                if (Settings.Default.RUC== "20159308708")
+                if (oDatosGenerales.Ruc == "20159308708")
                 {
                     if (i == 4) values[i] = 110;
                     if (i == 6) values[i] = 110;
@@ -3902,21 +3905,10 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph = new Paragraph();
                 paragraph.Alignment = Element.ALIGN_CENTER;
                 paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
-                if (Settings.Default.RUC == "20147495600")
-                {
-                    paragraph.Add(Settings.Default.Empresa + " \n OFICINA DE RECURSOS HUMANOS \n ");
-                }
-                else
-                {
-                    if (Settings.Default.RUC == "20159308708")
-                    {
-                        paragraph.Add(Settings.Default.Empresa + " \n SUB GERENCIA DE RECURSOS HUMANOS \n ");
-                    }
-                    else
-                    {
-                        paragraph.Add(Settings.Default.Empresa + " \n UNIDAD DE PERSONAL \n ");
-                    }
-                }
+               
+                paragraph.Add(oDatosGenerales.Nombre + " \n " + oDatosGenerales.NombreOficina + " \n ");
+
+               
                 paragraph.SpacingBefore = 0f;
                 paragraph.SpacingAfter = 0f;
                 
@@ -3976,7 +3968,7 @@ namespace CapaUsuario.Reportes
 
                 fecha = Convert.ToDateTime( oPlanilla.ListarFechaPlanilla(sidtplanilla).Rows[0][1].ToString() );
 
-                paragraph6.Add(Settings.Default.Lugar +  ", " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
+                paragraph6.Add(oDatosGenerales.Lugar +  ", " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
                 /*FEcha de hoy*/
                 //paragraph6.Add("CCATCCA, " + String.Format("{0:dd}" , fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
 
@@ -4322,21 +4314,10 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph = new Paragraph();
                 paragraph.Alignment = Element.ALIGN_CENTER;
                 paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
-                if (Settings.Default.RUC == "20147495600")
-                {
-                    paragraph.Add(Settings.Default.Empresa + " \n OFICINA DE RECURSOS HUMANOS \n ");
-                }
-                else
-                {
-                    if (Settings.Default.RUC == "20159308708")
-                    {
-                        paragraph.Add(Settings.Default.Empresa + " \n SUB GERENCIA DE RECURSOS HUMANOS \n ");
-                    }
-                    else
-                    {
-                        paragraph.Add(Settings.Default.Empresa + " \n UNIDAD DE PERSONAL \n ");
-                    }
-                }
+
+                paragraph.Add(oDatosGenerales.Nombre + " \n " + oDatosGenerales.NombreOficina + " \n ");
+
+                
 
                 Paragraph paragraph2 = new Paragraph();
                 paragraph2.Alignment = Element.ALIGN_RIGHT;
@@ -4380,7 +4361,7 @@ namespace CapaUsuario.Reportes
 
                 fecha = Convert.ToDateTime(oPlanilla.ListarFechaPlanilla(sidtplanilla).Rows[0][1].ToString());
 
-                paragraph6.Add(Settings.Default.Lugar + ", " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
+                paragraph6.Add(oDatosGenerales.Lugar + ", " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
                 /*FEcha de hoy*/
                 //paragraph6.Add("CCATCCA, " + String.Format("{0:dd}" , fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
 
@@ -4704,21 +4685,8 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph = new Paragraph();
                 paragraph.Alignment = Element.ALIGN_CENTER;
                 paragraph.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 12);
-                if (Settings.Default.RUC == "20147495600")
-                {
-                    paragraph.Add(Settings.Default.Empresa + " \n OFICINA DE RECURSOS HUMANOS \n ");
-                }
-                else
-                {
-                    if (Settings.Default.RUC == "20159308708")
-                    {
-                        paragraph.Add(Settings.Default.Empresa + " \n SUB GERENCIA DE RECURSOS HUMANOS \n ");
-                    }
-                    else
-                    {
-                        paragraph.Add(Settings.Default.Empresa + " \n UNIDAD DE PERSONAL \n ");
-                    }
-                }
+
+                paragraph.Add(oDatosGenerales.Nombre + " \n " + oDatosGenerales.NombreOficina + " \n ");
 
                 Paragraph paragraph2 = new Paragraph();
                 paragraph2.Alignment = Element.ALIGN_RIGHT;
@@ -4762,7 +4730,7 @@ namespace CapaUsuario.Reportes
 
                 fecha = Convert.ToDateTime(oPlanilla.ListarFechaPlanilla(sidtplanilla).Rows[0][1].ToString());
 
-                paragraph6.Add(Settings.Default.Lugar + ", " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
+                paragraph6.Add(oDatosGenerales.Lugar + ", " + String.Format("{0:dd}", fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
                 /*FEcha de hoy*/
                 //paragraph6.Add("CCATCCA, " + String.Format("{0:dd}" , fecha) + " DE " + String.Format("{0:MMMM}", fecha).ToUpper() + " DEL " + String.Format("{0:yyyy}", fecha) + ". \n");
 
