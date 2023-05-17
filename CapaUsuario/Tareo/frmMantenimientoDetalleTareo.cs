@@ -1335,15 +1335,21 @@ namespace CapaUsuario.Tareo
         {
             try
             {
-                frmNuevaJornal fNuevaCategoriaJornal = new frmNuevaJornal();
-                fNuevaCategoriaJornal.oMetaJornal = new CapaDeNegocios.Obras.cMetaJornal();
-                fNuevaCategoriaJornal.oMetaJornal.Meta.Codigo = miMeta.Codigo;
-                if (fNuevaCategoriaJornal.ShowDialog() == DialogResult.OK)
+                if (MessageBox.Show("Recuerde que la Nueva Categoria que va a agregar debe ser acorde a su expediente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information)== DialogResult.OK)
                 {
-                    fNuevaCategoriaJornal.oMetaJornal.CrearMetaJornal(fNuevaCategoriaJornal.oMetaJornal, fNuevaCategoriaJornal.oMetaJornal.Meta);
-                    cargarListaCategorias();
-                    MessageBox.Show("Categoria agregada: ", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmNuevaJornal fNuevaCategoriaJornal = new frmNuevaJornal();
+                    fNuevaCategoriaJornal.oMetaJornal = new CapaDeNegocios.Obras.cMetaJornal();
+                    fNuevaCategoriaJornal.oMetaJornal.Meta.Codigo = miMeta.Codigo;
+                    if (fNuevaCategoriaJornal.ShowDialog() == DialogResult.OK)
+                    {
+                        fNuevaCategoriaJornal.oMetaJornal.CrearMetaJornal(fNuevaCategoriaJornal.oMetaJornal, fNuevaCategoriaJornal.oMetaJornal.Meta);
+                        cargarListaCategorias();
+                        MessageBox.Show("Categoria agregada: ", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
+                
+
+                
             }
             catch (Exception ex)
             {
