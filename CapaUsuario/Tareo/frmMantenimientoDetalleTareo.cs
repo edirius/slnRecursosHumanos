@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaUsuario.ResidenteMeta;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -1327,6 +1328,26 @@ namespace CapaUsuario.Tareo
                 oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
                 oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
                 oDataRegimenTrabajador = miRegimenTrabajor.ListarRegimenTrabajador(0);
+            }
+        }
+
+        private void btnAgregarCategoria_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmNuevaJornal fNuevaCategoriaJornal = new frmNuevaJornal();
+                fNuevaCategoriaJornal.oMetaJornal = new CapaDeNegocios.Obras.cMetaJornal();
+                fNuevaCategoriaJornal.oMetaJornal.Meta.Codigo = miMeta.Codigo;
+                if (fNuevaCategoriaJornal.ShowDialog() == DialogResult.OK)
+                {
+                    fNuevaCategoriaJornal.oMetaJornal.CrearMetaJornal(fNuevaCategoriaJornal.oMetaJornal, fNuevaCategoriaJornal.oMetaJornal.Meta);
+                    cargarListaCategorias();
+                    MessageBox.Show("Categoria agregada: ", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar la categoria: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

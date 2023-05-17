@@ -1089,6 +1089,12 @@
     <Compile Include="Tareo\frmMantenimientoTareo.designer.cs">
       <DependentUpon>frmMantenimientoTareo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tareo\frmNuevaJornal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tareo\frmNuevaJornal.Designer.cs">
+      <DependentUpon>frmNuevaJornal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tareo\frmTareo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1898,6 +1904,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmMantenimientoTareo.resx">
       <DependentUpon>frmMantenimientoTareo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tareo\frmNuevaJornal.resx">
+      <DependentUpon>frmNuevaJornal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmTareo.resx">
       <DependentUpon>frmTareo.cs</DependentUpon>

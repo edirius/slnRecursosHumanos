@@ -28,14 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvDetalleTareo = new System.Windows.Forms.DataGridView();
+            this.txtIdTDetalleTareo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnProceso = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.txtNro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtIdTTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtApellidosNombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboCategoria = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtSistemaPensiones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkMarca = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.txtMeta = new System.Windows.Forms.TextBox();
@@ -55,20 +69,7 @@
             this.btnInsertarNuevaFila = new System.Windows.Forms.Button();
             this.btnEliminarFila = new System.Windows.Forms.Button();
             this.btnNuevoTrabajadorTecnico = new System.Windows.Forms.Button();
-            this.txtIdTDetalleTareo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnProceso = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.txtNro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtIdTTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtApellidosNombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtDNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cboCategoria = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtSistemaPensiones = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chkMarca = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnAgregarCategoria = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalleTareo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,19 +77,19 @@
             // 
             this.dgvDetalleTareo.AllowUserToAddRows = false;
             this.dgvDetalleTareo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvDetalleTareo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvDetalleTareo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvDetalleTareo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDetalleTareo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDetalleTareo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvDetalleTareo.ColumnHeadersHeight = 35;
             this.dgvDetalleTareo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.txtIdTDetalleTareo,
@@ -116,6 +117,122 @@
             this.dgvDetalleTareo.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalleTareo_CellEndEdit);
             this.dgvDetalleTareo.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDetalleTareo_EditingControlShowing);
             this.dgvDetalleTareo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvDetalleTareo_KeyPress);
+            // 
+            // txtIdTDetalleTareo
+            // 
+            this.txtIdTDetalleTareo.HeaderText = "ID";
+            this.txtIdTDetalleTareo.Name = "txtIdTDetalleTareo";
+            this.txtIdTDetalleTareo.ReadOnly = true;
+            this.txtIdTDetalleTareo.Visible = false;
+            this.txtIdTDetalleTareo.Width = 30;
+            // 
+            // txtAccion
+            // 
+            this.txtAccion.HeaderText = "Accion";
+            this.txtAccion.Name = "txtAccion";
+            this.txtAccion.Visible = false;
+            this.txtAccion.Width = 30;
+            // 
+            // btnProceso
+            // 
+            this.btnProceso.HeaderText = "";
+            this.btnProceso.Name = "btnProceso";
+            this.btnProceso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnProceso.Width = 30;
+            // 
+            // txtNro
+            // 
+            this.txtNro.HeaderText = "NRO";
+            this.txtNro.Name = "txtNro";
+            this.txtNro.ReadOnly = true;
+            this.txtNro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtNro.Width = 30;
+            // 
+            // txtIdTTrabajador
+            // 
+            this.txtIdTTrabajador.HeaderText = "IdTTrabajador";
+            this.txtIdTTrabajador.Name = "txtIdTTrabajador";
+            this.txtIdTTrabajador.ReadOnly = true;
+            this.txtIdTTrabajador.Visible = false;
+            this.txtIdTTrabajador.Width = 50;
+            // 
+            // txtApellidosNombres
+            // 
+            this.txtApellidosNombres.HeaderText = "APELLIDOS Y NOMBRES";
+            this.txtApellidosNombres.Name = "txtApellidosNombres";
+            this.txtApellidosNombres.ReadOnly = true;
+            this.txtApellidosNombres.Width = 275;
+            // 
+            // txtDNI
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.txtDNI.DefaultCellStyle = dataGridViewCellStyle10;
+            this.txtDNI.HeaderText = "DNI";
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtDNI.Width = 75;
+            // 
+            // Column2
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle11;
+            this.Column2.HeaderText = "Sexo";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 30;
+            // 
+            // Column3
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle12;
+            this.Column3.HeaderText = "CATEGORIA";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 170;
+            // 
+            // cboCategoria
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.cboCategoria.DefaultCellStyle = dataGridViewCellStyle13;
+            this.cboCategoria.HeaderText = "CATEGORIA";
+            this.cboCategoria.Items.AddRange(new object[] {
+            "MAESTRO DE OBRA",
+            "OPERARIO",
+            "OFICIAL",
+            "PEON",
+            "ALMACENERO",
+            "GUARDIAN"});
+            this.cboCategoria.Name = "cboCategoria";
+            this.cboCategoria.Width = 170;
+            // 
+            // Column4
+            // 
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle14;
+            this.Column4.HeaderText = "Fecha Inicio";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 75;
+            // 
+            // colFechaFin
+            // 
+            this.colFechaFin.HeaderText = "Fecha Fin";
+            this.colFechaFin.Name = "colFechaFin";
+            this.colFechaFin.ReadOnly = true;
+            this.colFechaFin.Width = 75;
+            // 
+            // txtSistemaPensiones
+            // 
+            this.txtSistemaPensiones.HeaderText = "SIS PENSIONES";
+            this.txtSistemaPensiones.Name = "txtSistemaPensiones";
+            this.txtSistemaPensiones.ReadOnly = true;
+            this.txtSistemaPensiones.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // chkMarca
+            // 
+            this.chkMarca.HeaderText = "Marcar Todo";
+            this.chkMarca.Name = "chkMarca";
+            this.chkMarca.Width = 45;
             // 
             // btnCancelar
             // 
@@ -374,127 +491,28 @@
             this.btnNuevoTrabajadorTecnico.UseVisualStyleBackColor = false;
             this.btnNuevoTrabajadorTecnico.Click += new System.EventHandler(this.btnNuevoTrabajadorTecnico_Click);
             // 
-            // txtIdTDetalleTareo
+            // btnAgregarCategoria
             // 
-            this.txtIdTDetalleTareo.HeaderText = "ID";
-            this.txtIdTDetalleTareo.Name = "txtIdTDetalleTareo";
-            this.txtIdTDetalleTareo.ReadOnly = true;
-            this.txtIdTDetalleTareo.Visible = false;
-            this.txtIdTDetalleTareo.Width = 30;
-            // 
-            // txtAccion
-            // 
-            this.txtAccion.HeaderText = "Accion";
-            this.txtAccion.Name = "txtAccion";
-            this.txtAccion.Visible = false;
-            this.txtAccion.Width = 30;
-            // 
-            // btnProceso
-            // 
-            this.btnProceso.HeaderText = "";
-            this.btnProceso.Name = "btnProceso";
-            this.btnProceso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnProceso.Width = 30;
-            // 
-            // txtNro
-            // 
-            this.txtNro.HeaderText = "NRO";
-            this.txtNro.Name = "txtNro";
-            this.txtNro.ReadOnly = true;
-            this.txtNro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.txtNro.Width = 30;
-            // 
-            // txtIdTTrabajador
-            // 
-            this.txtIdTTrabajador.HeaderText = "IdTTrabajador";
-            this.txtIdTTrabajador.Name = "txtIdTTrabajador";
-            this.txtIdTTrabajador.ReadOnly = true;
-            this.txtIdTTrabajador.Visible = false;
-            this.txtIdTTrabajador.Width = 50;
-            // 
-            // txtApellidosNombres
-            // 
-            this.txtApellidosNombres.HeaderText = "APELLIDOS Y NOMBRES";
-            this.txtApellidosNombres.Name = "txtApellidosNombres";
-            this.txtApellidosNombres.ReadOnly = true;
-            this.txtApellidosNombres.Width = 275;
-            // 
-            // txtDNI
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.txtDNI.DefaultCellStyle = dataGridViewCellStyle3;
-            this.txtDNI.HeaderText = "DNI";
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.txtDNI.Width = 75;
-            // 
-            // Column2
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column2.HeaderText = "Sexo";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 30;
-            // 
-            // Column3
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column3.HeaderText = "CATEGORIA";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 170;
-            // 
-            // cboCategoria
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.cboCategoria.DefaultCellStyle = dataGridViewCellStyle6;
-            this.cboCategoria.HeaderText = "CATEGORIA";
-            this.cboCategoria.Items.AddRange(new object[] {
-            "MAESTRO DE OBRA",
-            "OPERARIO",
-            "OFICIAL",
-            "PEON",
-            "ALMACENERO",
-            "GUARDIAN"});
-            this.cboCategoria.Name = "cboCategoria";
-            this.cboCategoria.Width = 170;
-            // 
-            // Column4
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle7;
-            this.Column4.HeaderText = "Fecha Inicio";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 75;
-            // 
-            // colFechaFin
-            // 
-            this.colFechaFin.HeaderText = "Fecha Fin";
-            this.colFechaFin.Name = "colFechaFin";
-            this.colFechaFin.ReadOnly = true;
-            this.colFechaFin.Width = 75;
-            // 
-            // txtSistemaPensiones
-            // 
-            this.txtSistemaPensiones.HeaderText = "SIS PENSIONES";
-            this.txtSistemaPensiones.Name = "txtSistemaPensiones";
-            this.txtSistemaPensiones.ReadOnly = true;
-            this.txtSistemaPensiones.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // chkMarca
-            // 
-            this.chkMarca.HeaderText = "Marcar Todo";
-            this.chkMarca.Name = "chkMarca";
-            this.chkMarca.Width = 45;
+            this.btnAgregarCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarCategoria.BackColor = System.Drawing.Color.MintCream;
+            this.btnAgregarCategoria.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregarCategoria.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnAgregarCategoria.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(221, 403);
+            this.btnAgregarCategoria.Name = "btnAgregarCategoria";
+            this.btnAgregarCategoria.Size = new System.Drawing.Size(83, 65);
+            this.btnAgregarCategoria.TabIndex = 85;
+            this.btnAgregarCategoria.Text = "Añadir Nueva Categoria";
+            this.btnAgregarCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarCategoria.UseVisualStyleBackColor = false;
+            this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
             // 
             // frmMantenimientoDetalleTareo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1105, 480);
+            this.Controls.Add(this.btnAgregarCategoria);
             this.Controls.Add(this.btnNuevoTrabajadorTecnico);
             this.Controls.Add(this.btnEliminarFila);
             this.Controls.Add(this.btnInsertarNuevaFila);
@@ -562,5 +580,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colFechaFin;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtSistemaPensiones;
         private System.Windows.Forms.DataGridViewCheckBoxColumn chkMarca;
+        private System.Windows.Forms.Button btnAgregarCategoria;
     }
 }

@@ -82,9 +82,57 @@ namespace CapaDeNegocios.Obras
             }
         }
 
+        /// <summary>
+        /// Metodo para traer una tabla con la lista de metas jornales de una meta
+        /// </summary>
+        /// <param name="Codigo">Codigo de la meta</param>
+        /// <returns></returns>
         public DataTable ListarMetaJornal(int Codigo)
         {
             return Conexion.GDatos.TraerDataTable("spListarMetaJornal", Codigo);
+        }
+
+        public List<cMetaJornal> TraerMetasJornalesPorMeta(int codigoMeta)
+        {
+            List<cMetaJornal> lista = new List<cMetaJornal>();
+            try
+            {
+                DataTable tablaJornal = Conexion.GDatos.TraerDataTable("spListarMetaJornal", codigoMeta);
+                
+                foreach (DataRow item in tablaJornal.Rows )
+                {
+                    cMetaJornal auxiliar = new cMetaJornal();
+                    auxiliar.sidtmetajornal = Convert.ToInt32(item[0]);
+                    auxiliar.Categoria = item[1].ToString();
+                    auxiliar.Jornal = Convert.ToDouble(item[2]);
+                    auxiliar.Meta = new cMeta();
+                    auxiliar.Meta.Codigo = Convert.ToInt32(item[3]);
+                    if (item[4] is DBNull)
+                    {
+                        auxiliar.Mensual = 0;
+                    }
+                    else
+                    {
+                        auxiliar.Mensual = Convert.ToDouble(item[4]);
+                    }
+
+                    if (item[5] is DBNull)
+                    {
+                        auxiliar.Opcion = false;
+                    }
+                    else
+                    {
+                        auxiliar.Opcion = Convert.ToBoolean(item[5]);
+                    }
+                    lista.Add(auxiliar);
+                }
+                return lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public Boolean CrearMetaJornal(cMetaJornal miMetaJornal, cMeta miMeta)
