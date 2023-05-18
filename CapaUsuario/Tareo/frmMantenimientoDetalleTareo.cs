@@ -1346,6 +1346,10 @@ namespace CapaUsuario.Tareo
                         cargarListaCategorias();
                         MessageBox.Show("Categoria agregada: ", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    else
+                    {
+                        MessageBox.Show("Operacion cancelada ", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 
 
