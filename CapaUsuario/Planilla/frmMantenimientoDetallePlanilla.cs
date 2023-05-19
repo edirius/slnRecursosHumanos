@@ -954,14 +954,16 @@ namespace CapaUsuario.Planilla
             }
             else
             {
-                if (diasLaborados > diasNoLaborados)
-                {
-                    Remuneracion = Math.Round(Monto - (Math.Round(Monto / 30, 2) * diasNoLaborados),2); 
-                }
-                else
-                {
-                    Remuneracion = Math.Round(Math.Round(Monto / 30, 2) * diasLaborados,2);
-                }
+                Remuneracion = Math.Round(Math.Round(Monto / 30, 2) * diasLaborados, 2);
+                //Parallel el futuro
+                //if (diasLaborados > diasNoLaborados)
+                //{
+                //    Remuneracion = Math.Round(Monto - (Math.Round(Monto / 30, 2) * diasNoLaborados),2); 
+                //}
+                //else
+                //{
+                //    Remuneracion = Math.Round(Math.Round(Monto / 30, 2) * diasLaborados,2);
+                //}
 
                 return Remuneracion;
             }
