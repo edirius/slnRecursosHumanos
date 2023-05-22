@@ -46,7 +46,7 @@ namespace CapaUsuario.Tareo
 
         private void frmMantenimientoDetalleTareo_Load(object sender, EventArgs e)
         {
-            cargarListaCategorias();
+            cargarListaCategorias(); // carga las categoria que estan creadas para la meta
             DibujarDataGrid(miTareo.FechaFin.Day - miTareo.FechaInicio.Day);
             MostrarColumnas();
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
@@ -762,29 +762,43 @@ namespace CapaUsuario.Tareo
                     Sexo = row1[5].ToString();
 
                     CapaDeNegocios.Tareos.cDetalleTareo midetalletareo = LlenarDetalletareo(Convert.ToInt32(IdtTrabajador), Nombre);
-
-                    foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + midetalletareo.PeriodoRegimen.IdtCargo.ToString() + "'"))
+                    if (midetalletareo.PeriodoTrabajador != null)
                     {
-                        IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
-                        Cargo = rowCargo[1].ToString();
+                        foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + midetalletareo.PeriodoRegimen.IdtCargo.ToString() + "'"))
+                        {
+                            IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
+                            Cargo = rowCargo[1].ToString();
+                        }
+                        dgvDetalleTareo.Rows[fila].Cells[8].Value = Cargo;
+                        dgvDetalleTareo.Rows[fila].Cells[10].Value = midetalletareo.PeriodoTrabajador.FechaInicio;
+                        dgvDetalleTareo.Rows[fila].Cells[11].Value = midetalletareo.PeriodoTrabajador.FechaFin;
+
+                        if (midetalletareo.Afp != null)
+                        {
+                            dgvDetalleTareo.Rows[fila].Cells[12].Value = midetalletareo.Afp.Nombre;
+                        }
+                        else
+                        {
+                            dgvDetalleTareo.Rows[fila].Cells[12].Value = "";
+                        }
                     }
-                
+                    else
+                    {
+                        MessageBox.Show("No existe periodo para el trabajador: " + DNI + ": " + Nombre + "para el mes de este tareo " + miTareo.FechaInicio.ToString("MMMM") + "/" + miTareo.FechaInicio.ToString("yyyy") + ": Eliminelo con el Boton Eliminar Fila o dele de alta con la tecla Enter en su DNI","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dgvDetalleTareo.Rows[fila].Cells[8].Value = Cargo;
+                        dgvDetalleTareo.Rows[fila].Cells[10].Value = "SIN PERIODO";
+                        dgvDetalleTareo.Rows[fila].Cells[10].ErrorText = "No se tiene periodo para el trabajador para este tareo, eliminelo de la fila, o reingrese al trabajador en su DNI con enter";
+                        //dgvDetalleTareo.Rows[fila].Cells[10].Style = DataGridViewCellStyle
+                        dgvDetalleTareo.Rows[fila].Cells[11].Value = "";
+                    }
 
                     dgvDetalleTareo.Rows[fila].Cells[4].Value = IdtTrabajador;
                     dgvDetalleTareo.Rows[fila].Cells[5].Value = Nombre;
                     dgvDetalleTareo.Rows[fila].Cells[6].Value = DNI;
                     dgvDetalleTareo.Rows[fila].Cells[7].Value = Sexo;
-                    dgvDetalleTareo.Rows[fila].Cells[8].Value = Cargo;
-                    dgvDetalleTareo.Rows[fila].Cells[10].Value = midetalletareo.PeriodoTrabajador.FechaInicio;
-                    dgvDetalleTareo.Rows[fila].Cells[11].Value = midetalletareo.PeriodoTrabajador.FechaFin;
-                    if (midetalletareo.Afp != null)
-                    {
-                        dgvDetalleTareo.Rows[fila].Cells[12].Value = midetalletareo.Afp.Nombre;
-                    }
-                    else
-                    {
-                        dgvDetalleTareo.Rows[fila].Cells[12].Value = "";
-                    }
+
+                    
+                    
 
                     if (oPlantillatareo.Jornal == false)
                     {
@@ -1074,40 +1088,63 @@ namespace CapaUsuario.Tareo
 
         private void btnBajaTrabajador_Click(object sender, EventArgs e)
         {
-            if (sidttrabajador == 0)
+            try
             {
-                MessageBox.Show("No selecciono a ningun trabajador", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            List<CapaDeNegocios.Tareos.cTareo> TareosConTrabajadorDuplicado = miTareo.BuscarTrabajadorTareo(miTrabajador.traerTrabajador(Convert.ToInt32(sidttrabajador)), miTareo.FechaInicio);
-            bool trabajadorEncontrado = false;
-            if (TareosConTrabajadorDuplicado.Count > 0)
-            {
-
-                foreach (CapaDeNegocios.Tareos.cTareo item in TareosConTrabajadorDuplicado)
+                if (sidttrabajador == 0)
                 {
-                    if (item.IdTTareo != miTareo.IdTTareo)
-                    {
-                        trabajadorEncontrado = true;
-                        MessageBox.Show("El trabajador que quiere dar  de baja ya se encuentra en el tareo: " + item.Descripcion + " de la meta: " + item.Meta.Numero + ": " +
-                        item.Meta.Nombre + "con " + item.ListaDetallesTareo[0].TotalDias + " dias, con el siguiente detalle de tareo " + item.ListaDetallesTareo[0].DiasTareo, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    }
-                    
+                    MessageBox.Show("No selecciono a ningun trabajador", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
-            }
+                List<CapaDeNegocios.Tareos.cTareo> TareosConTrabajadorDuplicado = miTareo.BuscarTrabajadorTareo(miTrabajador.traerTrabajador(Convert.ToInt32(sidttrabajador)), miTareo.FechaInicio);
+                bool trabajadorEncontrado = false;
+                if (TareosConTrabajadorDuplicado.Count > 0)
+                {
 
-            if (!trabajadorEncontrado)
+                    foreach (CapaDeNegocios.Tareos.cTareo item in TareosConTrabajadorDuplicado)
+                    {
+                        if (item.IdTTareo != miTareo.IdTTareo)
+                        {
+                            trabajadorEncontrado = true;
+                            MessageBox.Show("El trabajador que quiere dar  de baja ya se encuentra en el tareo: " + item.Descripcion + " de la meta: " + item.Meta.Numero + ": " +
+                            item.Meta.Nombre + "con " + item.ListaDetallesTareo[0].TotalDias + " dias, con el siguiente detalle de tareo " + item.ListaDetallesTareo[0].DiasTareo, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        }
+
+                    }
+
+                }
+
+                if (!trabajadorEncontrado)
+                {
+                    PeriodoTrabajador(sidttrabajador);
+                    CapaUsuario.Tareo.frmBajaTrabajador fBajaTrabajador = new CapaUsuario.Tareo.frmBajaTrabajador();
+                    fBajaTrabajador.RecibirDatos(miTareo.FechaInicio, sidtperiodotrabajador, fechaInicioTrabajador, Convert.ToInt32(sidttrabajador));
+                    if (fBajaTrabajador.ShowDialog() == DialogResult.OK)
+                    {
+                        MessageBox.Show("Se dio de baja al trabajador con fecha: " + fBajaTrabajador.sfechafin, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        int indiceFila;
+                        indiceFila = dgvDetalleTareo.CurrentCell.RowIndex;
+                        if ((Convert.ToDateTime(fBajaTrabajador.sfechafin).Month == miTareo.FechaInicio.Month) && (Convert.ToDateTime(fBajaTrabajador.sfechafin).Year == miTareo.FechaInicio.Year))
+                        {
+                            dgvDetalleTareo.Rows[indiceFila].Cells[11].Value = fBajaTrabajador.sfechafin;
+                        }
+                        else
+                        {
+                            miDetalleTareo.IdTDetalleTareo = Convert.ToInt32(dgvDetalleTareo.Rows[indiceFila].Cells[0].Value);
+                            miDetalleTareo.EliminarDetalleTareo(miDetalleTareo.IdTDetalleTareo);
+                            MessageBox.Show("Se quito al trabajador del tareo, porque su fecha de baja: " + fBajaTrabajador.sfechafin + ", es menor a la fecha del tareo: " + miTareo.FechaInicio.ToString("MMMM/yyyy") , "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CargarDatos();
+                        }
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
             {
-                PeriodoTrabajador(sidttrabajador);
-                CapaUsuario.Tareo.frmBajaTrabajador fBajaTrabajador = new CapaUsuario.Tareo.frmBajaTrabajador();
-                fBajaTrabajador.RecibirDatos(miTareo.FechaInicio, sidtperiodotrabajador, fechaInicioTrabajador, Convert.ToInt32(sidttrabajador));
-                fBajaTrabajador.ShowDialog();
+                MessageBox.Show("Error al dar de baja al trabajador: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            
         }
 
         private bool ComprobarBajaTrabajador(int IdtTrabajador, DateTime mesBuscadoTareo)

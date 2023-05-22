@@ -12,7 +12,7 @@ namespace CapaUsuario.Tareo
 {
     public partial class frmBajaTrabajador : Form
     {
-        string sfechafin = "";
+        public string sfechafin = "";
         int sidtperiodotrabajador = 0;
         int sidtmotivofinperiodo = 0;
         int sidtTRabajador = 0;
@@ -33,8 +33,11 @@ namespace CapaUsuario.Tareo
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (cboFinPeriodo.SelectedIndex == -1)
+            if (cboFinPeriodo.SelectedIndex == -1 || cboFinPeriodo.SelectedIndex == 0)
             {
+                cboFinPeriodo.BackColor = Color.LightBlue;
+                cboFinPeriodo.Focus();
+                
                 MessageBox.Show("Debe seleccionar un motivo de baja, el mas usual es terminacion de la obra o servicio", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

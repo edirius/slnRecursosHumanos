@@ -48,11 +48,12 @@ namespace CapaUsuario.Trabajador
         {
             oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
             CargarDepartamento();
+            LimitarMes();
             if (modoEdicion)
             {
                 CargarTrabajador();
             }
-            LimitarMes();
+           
         }
 
         public void LimitarMes()

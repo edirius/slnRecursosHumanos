@@ -193,7 +193,7 @@ namespace CapaUsuario.Planilla
             }
             catch(Exception EX)
             {
-                MessageBox.Show(EX.Message);
+                MessageBox.Show(EX.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         } 
