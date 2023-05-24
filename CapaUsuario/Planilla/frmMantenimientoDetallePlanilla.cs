@@ -1251,7 +1251,7 @@ namespace CapaUsuario.Planilla
                             miTrabajador.IdTrabajador = Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value);
 
                             CapaDeNegocios.Asistencia.cAsistenciaTrabajador miAsistenciaTrabajador = new CapaDeNegocios.Asistencia.cAsistenciaTrabajador();
-                            DateTime mesActual = new DateTime(2022, Convert.ToInt32(Mes(smes)), 1);
+                            DateTime mesActual = new DateTime(DateTime.Now.Year, Convert.ToInt32(Mes(smes)), 1);
                             if (miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, mesActual).Rows.Count == 0)
                             {
                                 totalMinutos = 0;
@@ -1482,18 +1482,18 @@ namespace CapaUsuario.Planilla
                 remuneracion_afecta = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value);
             }
 
-            //Restamos las faltas y tardanzas a la remuneracion afecta
-            if (remuneracion_afecta != 0)
-            {
-                for (int i = 0; i < con_descuento; i++)
-                {
-                    string xxx = smdescuentos[i, 1].ToString();
-                    if ((smdescuentos[i, 1].ToString() == "0704" || smdescuentos[i, 1].ToString() == "0705") && (Settings.Default.RUC != "20177432360"))
-                    {
-                        remuneracion_afecta -= Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_descuentos + con_ingresos + con_trabajador + i].Value);
-                    }
-                }
-            }
+ //Restamos las faltas y tardanzas a la remuneracion afecta
+            //if (remuneracion_afecta != 0)
+            //{
+            //    for (int i = 0; i < con_descuento; i++)
+            //    {
+            //        string xxx = smdescuentos[i, 1].ToString();
+            //        if ((smdescuentos[i, 1].ToString() == "0704" || smdescuentos[i, 1].ToString() == "0705") && (Settings.Default.RUC != "20177432360"))
+            //        {
+            //            remuneracion_afecta -= Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_descuentos + con_ingresos + con_trabajador + i].Value);
+            //        }
+            //    }
+            //}
 
             //Calculo de la Formula
             if (codigo != "0605" && codigo != "0804")

@@ -39,6 +39,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.abreviacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AfectoTotal = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMaestroDescuentos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,7 +122,8 @@
             this.Column2,
             this.Column3,
             this.Column4,
-            this.abreviacion});
+            this.abreviacion,
+            this.AfectoTotal});
             this.dgvMaestroDescuentos.Cursor = System.Windows.Forms.Cursors.Default;
             this.dgvMaestroDescuentos.Location = new System.Drawing.Point(12, 12);
             this.dgvMaestroDescuentos.MultiSelect = false;
@@ -168,6 +170,13 @@
             this.abreviacion.Name = "abreviacion";
             this.abreviacion.ReadOnly = true;
             // 
+            // AfectoTotal
+            // 
+            this.AfectoTotal.HeaderText = "AfectoTotal";
+            this.AfectoTotal.Name = "AfectoTotal";
+            this.AfectoTotal.ReadOnly = true;
+            this.AfectoTotal.Visible = false;
+            // 
             // frmMantenimientoMaestroDescuentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,5 +209,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn abreviacion;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn AfectoTotal;
     }
 }

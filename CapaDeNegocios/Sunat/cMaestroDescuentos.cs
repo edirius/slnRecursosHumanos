@@ -17,6 +17,7 @@ namespace CapaDeNegocios.Sunat
         string sdescripcion;
         string scalculo;
         string sabreviacion;
+        bool afectoSueldo;
 
         public int IdtMaestroDescuentos
         {
@@ -45,6 +46,19 @@ namespace CapaDeNegocios.Sunat
             set { sabreviacion = value; }
         }
 
+        public bool AfectoSueldo
+        {
+            get
+            {
+                return afectoSueldo;
+            }
+
+            set
+            {
+                afectoSueldo = value;
+            }
+        }
+
         public DataTable ListarMaestroDescuentos()
         {
             return Conexion.GDatos.TraerDataTable("spListarMaestroDescuentos");
@@ -57,13 +71,13 @@ namespace CapaDeNegocios.Sunat
 
         public Boolean CrearMaestroDescuentos(cMaestroDescuentos miMaestroDescuentos)
         {
-            Conexion.GDatos.Ejecutar("spCrearMaestroDescuentos", miMaestroDescuentos.Codigo, miMaestroDescuentos.Descripcion, miMaestroDescuentos.Calculo, miMaestroDescuentos.Abreviacion);
+            Conexion.GDatos.Ejecutar("spCrearMaestroDescuentos", miMaestroDescuentos.Codigo, miMaestroDescuentos.Descripcion, miMaestroDescuentos.Calculo, miMaestroDescuentos.Abreviacion, miMaestroDescuentos.AfectoSueldo);
             return true;
         }
 
         public Boolean ModificarMaestroDescuentos(cMaestroDescuentos miMaestroDescuentos)
         {
-            Conexion.GDatos.Ejecutar("spModificarMaestroDescuentos", miMaestroDescuentos.IdtMaestroDescuentos, miMaestroDescuentos.Codigo, miMaestroDescuentos.Descripcion, miMaestroDescuentos.Calculo, miMaestroDescuentos.Abreviacion);
+            Conexion.GDatos.Ejecutar("spModificarMaestroDescuentos", miMaestroDescuentos.IdtMaestroDescuentos, miMaestroDescuentos.Codigo, miMaestroDescuentos.Descripcion, miMaestroDescuentos.Calculo, miMaestroDescuentos.Abreviacion, miMaestroDescuentos.AfectoSueldo);
             return true;
         }
 

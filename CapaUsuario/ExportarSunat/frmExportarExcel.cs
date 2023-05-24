@@ -265,7 +265,7 @@ namespace CapaUsuario.ExportarSunat
                     {
                         for (int i = 0; i < Nueva.Rows.Count; i++)
                         {
-                            if (Nueva.Rows[i]["codigo"].ToString() == "0705" || Nueva.Rows[i]["codigo"].ToString() == "0704")
+                            if (Convert.ToBoolean(Nueva.Rows[i]["afectoTotal"]))
                             {
                                 for (int j = 0; j < dataGridView.Rows.Count; j++)
                                 {
@@ -273,9 +273,13 @@ namespace CapaUsuario.ExportarSunat
                                     {
                                         dataGridView.Rows[j].Cells["RemAsegurable"].Value = Convert.ToDouble(dataGridView.Rows[j].Cells["RemAsegurable"].Value) - Convert.ToDouble(Nueva.Rows[i]["monto"].ToString());
                                     }
-                                    
+
                                 }
                             }
+                            //if (Nueva.Rows[i]["codigo"].ToString() == "0705" || Nueva.Rows[i]["codigo"].ToString() == "0704")
+                            //{
+                                
+                            //}
                             
                         }
                     }
