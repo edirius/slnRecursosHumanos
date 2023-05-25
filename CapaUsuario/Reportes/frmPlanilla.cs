@@ -2112,8 +2112,12 @@ namespace CapaUsuario.Reportes
                                         else
                                         {
                                             odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
-                                        odtPrueba.Rows[0][8] = " SUELDO ALCALDE = (4752.21*4/12)";
+                                        if (oDatosGenerales.Ruc== "20147495600")
+                                        {
+                                            odtPrueba.Rows[0][8] = " SUELDO ALCALDE = (4752.21*4/12)";
                                         }
+                                        odtPrueba.Rows[0][7] = " SUELDO ALCALDE = (4752.21*4/12)";
+                                    }
 
                                         this.dgvPrueba.DataSource = odtPrueba;
 
