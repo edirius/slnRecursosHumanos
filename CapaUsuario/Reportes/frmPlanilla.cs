@@ -2116,7 +2116,11 @@ namespace CapaUsuario.Reportes
                                         {
                                             odtPrueba.Rows[0][8] = " SUELDO ALCALDE = (4752.21*4/12)";
                                         }
-                                        odtPrueba.Rows[0][7] = " SUELDO ALCALDE = (4752.21*4/12)";
+                                        else
+                                        {
+                                            odtPrueba.Rows[0][7] = " SUELDO ALCALDE = (4752.21*4/12)";
+                                        }
+                                        
                                     }
 
                                         this.dgvPrueba.DataSource = odtPrueba;
