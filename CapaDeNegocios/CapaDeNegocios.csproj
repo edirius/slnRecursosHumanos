@@ -213,6 +213,7 @@
     <Compile Include="Reportes\cReporteMultipleAsistencia.cs" />
     <Compile Include="Reportes\cReporteNroTrabajadores.cs" />
     <Compile Include="Reportes\cReportePDF.cs" />
+    <Compile Include="Reportes\cReportePlanilla.cs" />
     <Compile Include="Reportes\cReporteResumenAnalitico.cs" />
     <Compile Include="Reportes\cReporteTareo.cs" />
     <Compile Include="Reportes\cResumenPlanillas.cs" />

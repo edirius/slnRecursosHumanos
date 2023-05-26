@@ -48,6 +48,7 @@
             this.btnVincularMetas = new System.Windows.Forms.Button();
             this.txtMetaVinculo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblContador = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numAño)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,11 +81,13 @@
             // 
             // txtNombre
             // 
+            this.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombre.Location = new System.Drawing.Point(131, 141);
             this.txtNombre.MaxLength = 299;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(425, 20);
             this.txtNombre.TabIndex = 5;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // label4
             // 
@@ -221,11 +224,23 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Vincular Metas Anteriores:";
             // 
+            // lblContador
+            // 
+            this.lblContador.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblContador.Location = new System.Drawing.Point(505, 168);
+            this.lblContador.Name = "lblContador";
+            this.lblContador.Size = new System.Drawing.Size(51, 23);
+            this.lblContador.TabIndex = 19;
+            this.lblContador.Text = "0/299";
+            this.lblContador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tipMeta.SetToolTip(this.lblContador, "Numero de caracteres del nombre de la meta");
+            // 
             // frmMeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(621, 348);
+            this.Controls.Add(this.lblContador);
             this.Controls.Add(this.btnVincularMetas);
             this.Controls.Add(this.txtMetaVinculo);
             this.Controls.Add(this.label6);
@@ -274,5 +289,6 @@
         private System.Windows.Forms.Button btnVincularMetas;
         private System.Windows.Forms.TextBox txtMetaVinculo;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblContador;
     }
 }

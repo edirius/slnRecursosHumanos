@@ -82,7 +82,7 @@ namespace CapaUsuario.Metas
                 {
                     miCadena.ModificarMeta(fMiMeta.miMeta);
                     MessageBox.Show("Datos Guardados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dtgListaMetas.DataSource = miCadena.ListarMetas();
+                    Iniciar();
                 }
             }
             else
@@ -93,24 +93,36 @@ namespace CapaUsuario.Metas
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dtgListaMetas.SelectedRows.Count > 0)
+            try
             {
-                miMeta = new cMeta();
-                miMeta.ActividadObra = new cActividadObra();
-                miMeta.GrupoFuncional = new cGrupoFuncional();
-                miMeta.Codigo = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[0].Value);
-                miMeta.Año = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[1].Value);
-                miMeta.Numero = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[2].Value);
-                miMeta.Nombre = Convert.ToString(dtgListaMetas.SelectedRows[0].Cells[3].Value);
-                miMeta.GrupoFuncional.Codigo = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[4].Value);
-                miMeta.ActividadObra.Codigo = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[5].Value);
-                    miCadena.EliminarMeta(miMeta);
-                    dtgListaMetas.DataSource = miCadena.ListarMetas();
+                if (dtgListaMetas.SelectedRows.Count > 0)
+                {
+                    miMeta = new cMeta();
+                    miMeta.ActividadObra = new cActividadObra();
+                    miMeta.GrupoFuncional = new cGrupoFuncional();
+                    miMeta.Codigo = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[0].Value);
+                    miMeta.Año = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[1].Value);
+                    miMeta.Numero = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[2].Value);
+                    miMeta.Nombre = Convert.ToString(dtgListaMetas.SelectedRows[0].Cells[3].Value);
+
+                    if (MessageBox.Show("¿Desea eliminar la meta " + miMeta.Numero + " - " + miMeta.Nombre + "?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        miMeta.GrupoFuncional.Codigo = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[4].Value);
+                        miMeta.ActividadObra.Codigo = Convert.ToInt16(dtgListaMetas.SelectedRows[0].Cells[5].Value);
+                        miCadena.EliminarMeta(miMeta);
+                        Iniciar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una meta para eliminarla", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe seleccionar una meta");
+                MessageBox.Show("Error al eliminar la meta, la meta esta usada en un tareo o compruebe la conexion de su red: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
         }
 
         private void CargarAños()

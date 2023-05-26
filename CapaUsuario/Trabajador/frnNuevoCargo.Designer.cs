@@ -33,15 +33,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.lblContador = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtCargo
             // 
+            this.txtCargo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCargo.Location = new System.Drawing.Point(75, 27);
             this.txtCargo.MaxLength = 99;
             this.txtCargo.Name = "txtCargo";
             this.txtCargo.Size = new System.Drawing.Size(293, 20);
             this.txtCargo.TabIndex = 5;
+            this.txtCargo.TextChanged += new System.EventHandler(this.txtCargo_TextChanged);
             // 
             // label2
             // 
@@ -78,11 +81,22 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // lblContador
+            // 
+            this.lblContador.AutoSize = true;
+            this.lblContador.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblContador.Location = new System.Drawing.Point(75, 54);
+            this.lblContador.Name = "lblContador";
+            this.lblContador.Size = new System.Drawing.Size(30, 13);
+            this.lblContador.TabIndex = 8;
+            this.lblContador.Text = "0/99";
+            // 
             // frnNuevoCargo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 152);
+            this.Controls.Add(this.lblContador);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtCargo);
@@ -103,5 +117,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label lblContador;
     }
 }

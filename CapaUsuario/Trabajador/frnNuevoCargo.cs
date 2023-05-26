@@ -38,8 +38,12 @@ namespace CapaUsuario.Trabajador
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void txtCargo_TextChanged(object sender, EventArgs e)
+        {
+            lblContador.Text = txtCargo.Text.Length.ToString() + "/99";
         }
     }
 }

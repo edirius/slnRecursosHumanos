@@ -165,5 +165,10 @@ namespace CapaUsuario.Metas
                 e.Handled = true;
             }
         }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            lblContador.Text = txtNombre.TextLength.ToString() + "/299";
+        }
     }
 }
