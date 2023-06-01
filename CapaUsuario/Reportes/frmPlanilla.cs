@@ -841,7 +841,7 @@ namespace CapaUsuario.Reportes
                                 drFila[4] = row[12];
                                 if (chkJornalRacionamiento.Checked)
                                 {
-                                    drFila[5] = Math.Round(Convert.ToDecimal(row[11]) / 30, 2);
+                                    drFila[5] = Math.Round(Convert.ToDecimal(row[11]) / Convert.ToDecimal(row[12]), 2);
                                 }
                                 else
                                 {
