@@ -787,8 +787,16 @@ namespace CapaUsuario.Reportes
                         odtPrueba.Columns.Add("DNI", typeof(string));
 
                         odtPrueba.Columns.Add("DIAS LABORADOS", typeof(string));
-   //OJO
-                        odtPrueba.Columns.Add("MENSUAL", typeof(string));
+                        //OJO
+                        if (chkJornalRacionamiento.Checked)
+                        {
+                            odtPrueba.Columns.Add("JORNAL", typeof(string));
+                        }
+                        else
+                        {
+                            odtPrueba.Columns.Add("MENSUAL", typeof(string));
+                        }
+                        
                         odtPrueba.Columns.Add("NETO A COBRAR", typeof(string));
                         if (oDatosGenerales.Ruc == "20147495600")
                         {
@@ -831,7 +839,15 @@ namespace CapaUsuario.Reportes
                                 drFila[2] = row[1];
                                 drFila[3] = row[2];
                                 drFila[4] = row[12];
-                                drFila[5] = row[11]; // Math.Round(Convert.ToDecimal(row[11]) / Convert.ToDecimal(row[12]), 2);
+                                if (chkJornalRacionamiento.Checked)
+                                {
+                                    drFila[5] = Math.Round(Convert.ToDecimal(row[11]) / 30, 2);
+                                }
+                                else
+                                {
+                                    drFila[5] = row[11]; // Math.Round(Convert.ToDecimal(row[11]) / Convert.ToDecimal(row[12]), 2);
+                                }
+                                
                                 drFila[6] = row[11];
                                 if (oDatosGenerales.Ruc == "20147495600")
                                 {

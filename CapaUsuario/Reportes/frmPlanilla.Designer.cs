@@ -58,6 +58,7 @@
             this.chkAltoColumna = new System.Windows.Forms.CheckBox();
             this.txtAltoColumnas = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkGerenciaAdministracion = new System.Windows.Forms.CheckBox();
             this.chkSupervision = new System.Windows.Forms.CheckBox();
             this.chkSubGerenciaObras = new System.Windows.Forms.CheckBox();
             this.chkFirmaPresupuesto = new System.Windows.Forms.CheckBox();
@@ -67,7 +68,7 @@
             this.chkFirmaGerencia = new System.Windows.Forms.CheckBox();
             this.chkFirmaRecursos = new System.Windows.Forms.CheckBox();
             this.chkFirmaElaborado = new System.Windows.Forms.CheckBox();
-            this.chkGerenciaAdministracion = new System.Windows.Forms.CheckBox();
+            this.chkJornalRacionamiento = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
@@ -359,6 +360,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Firmas";
             // 
+            // chkGerenciaAdministracion
+            // 
+            this.chkGerenciaAdministracion.AutoSize = true;
+            this.chkGerenciaAdministracion.Location = new System.Drawing.Point(494, 18);
+            this.chkGerenciaAdministracion.Name = "chkGerenciaAdministracion";
+            this.chkGerenciaAdministracion.Size = new System.Drawing.Size(195, 17);
+            this.chkGerenciaAdministracion.TabIndex = 2;
+            this.chkGerenciaAdministracion.Text = "GERENCIA DE ADMINISTRACION";
+            this.chkGerenciaAdministracion.UseVisualStyleBackColor = true;
+            // 
             // chkSupervision
             // 
             this.chkSupervision.AutoSize = true;
@@ -459,21 +470,22 @@
             this.chkFirmaElaborado.Text = "ELABORADOR POR:";
             this.chkFirmaElaborado.UseVisualStyleBackColor = true;
             // 
-            // chkGerenciaAdministracion
+            // chkJornalRacionamiento
             // 
-            this.chkGerenciaAdministracion.AutoSize = true;
-            this.chkGerenciaAdministracion.Location = new System.Drawing.Point(494, 18);
-            this.chkGerenciaAdministracion.Name = "chkGerenciaAdministracion";
-            this.chkGerenciaAdministracion.Size = new System.Drawing.Size(195, 17);
-            this.chkGerenciaAdministracion.TabIndex = 2;
-            this.chkGerenciaAdministracion.Text = "GERENCIA DE ADMINISTRACION";
-            this.chkGerenciaAdministracion.UseVisualStyleBackColor = true;
+            this.chkJornalRacionamiento.AutoSize = true;
+            this.chkJornalRacionamiento.Location = new System.Drawing.Point(776, 13);
+            this.chkJornalRacionamiento.Name = "chkJornalRacionamiento";
+            this.chkJornalRacionamiento.Size = new System.Drawing.Size(159, 17);
+            this.chkJornalRacionamiento.TabIndex = 105;
+            this.chkJornalRacionamiento.Text = "Incluir Jornal Racionamiento";
+            this.chkJornalRacionamiento.UseVisualStyleBackColor = true;
             // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 546);
+            this.Controls.Add(this.chkJornalRacionamiento);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txtAltoColumnas);
             this.Controls.Add(this.chkAltoColumna);
@@ -543,5 +555,6 @@
         private System.Windows.Forms.CheckBox chkSupervision;
         private System.Windows.Forms.CheckBox chkSubGerenciaObras;
         private System.Windows.Forms.CheckBox chkGerenciaAdministracion;
+        private System.Windows.Forms.CheckBox chkJornalRacionamiento;
     }
 }
