@@ -38,7 +38,7 @@ namespace CapaUsuario.Usuarios
         {
             try
             {
-                string ruta = Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory());
+                string ruta = System.IO.Directory.GetCurrentDirectory();
                 //string ruta = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
                 string ruta_imagen = ruta + "\\logo-muni-fw.png";
                 //string ruta_imagen = ruta + "\\logo_MuniMaras.png";
