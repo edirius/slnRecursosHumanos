@@ -270,14 +270,7 @@ namespace CapaDeNegocios.DatosLaborales
 
                 }
 
-                if (listaPeriodosTrabajador.Count == 0)
-                {
-                    throw new cReglaNegociosException("Error,  el regimen laboral del  trabajador no existe para el mes " + Fecha.ToString("MMM") + "/" +Fecha.Year.ToString());
-                }
-                else
-                {
-                    return listaPeriodosTrabajador;
-                }
+                return listaPeriodosTrabajador;
             }
             catch (Exception ex)
             {

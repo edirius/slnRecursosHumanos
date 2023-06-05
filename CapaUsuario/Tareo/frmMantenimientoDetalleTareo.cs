@@ -523,7 +523,19 @@ namespace CapaUsuario.Tareo
                         DNI = row[1].ToString();
                         Sexo = row[5].ToString();
 
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[3].Value = e.RowIndex + 1;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[4].Value = IdtTrabajador;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[5].Value = Nombre;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = DNI;
+                        dgvDetalleTareo.Rows[e.RowIndex].Cells[7].Value = Sexo;
+
+                        if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value) == "") { dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value = "I"; }
+
                         CapaDeNegocios.Tareos.cDetalleTareo midetalletareo = LlenarDetalletareo(Convert.ToInt32(IdtTrabajador), Nombre);
+                        if (midetalletareo.PeriodoTrabajador == null)
+                        {
+
+                        }
 
                         foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + midetalletareo.PeriodoRegimen.IdtCargo.ToString() + "'"))
                         {
@@ -531,12 +543,8 @@ namespace CapaUsuario.Tareo
                             Cargo = rowCargo[1].ToString();
                         }
 
-                        if (Convert.ToString(dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value) == "") { dgvDetalleTareo.Rows[e.RowIndex].Cells[1].Value = "I"; }
-                        dgvDetalleTareo.Rows[e.RowIndex].Cells[3].Value = e.RowIndex + 1;
-                        dgvDetalleTareo.Rows[e.RowIndex].Cells[4].Value = IdtTrabajador;
-                        dgvDetalleTareo.Rows[e.RowIndex].Cells[5].Value = Nombre;
-                        dgvDetalleTareo.Rows[e.RowIndex].Cells[6].Value = DNI;
-                        dgvDetalleTareo.Rows[e.RowIndex].Cells[7].Value = Sexo;
+                       
+                        
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[8].Value = Cargo;
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[10].Value = midetalletareo.PeriodoTrabajador.FechaInicio;
                         dgvDetalleTareo.Rows[e.RowIndex].Cells[11].Value = midetalletareo.PeriodoTrabajador.FechaFin;
@@ -884,42 +892,50 @@ namespace CapaUsuario.Tareo
                     ListaRegimenTrabajador = auxiliarRegimenTrabajador.TraerRegimenTrabajadorMes(item.IdtPeriodoTrabajador, miTareo.FechaInicio);
                     ListaPeriodoAFP = AFPElegido.TraerRegimenPensionarioxMes(item.IdtPeriodoTrabajador, miTareo.FechaInicio);
 
-                    foreach (CapaDeNegocios.DatosLaborales.cRegimenTrabajador item2 in ListaRegimenTrabajador)
+                    if (ListaRegimenTrabajador.Count > 0)
                     {
-                        if (item2.IdtMeta == miMeta.Codigo)
-                        {
-                            oDetalletareo.PeriodoTrabajador = item;
-                            oDetalletareo.PeriodoRegimen = item2;
-                        }
-                    }
-                    //error cuando no encuentra un periodo = a la meta
-                    if (oDetalletareo.PeriodoTrabajador == null)
-                    {
-                        oDetalletareo.PeriodoTrabajador = item;
                         foreach (CapaDeNegocios.DatosLaborales.cRegimenTrabajador item2 in ListaRegimenTrabajador)
                         {
-                            oDetalletareo.PeriodoRegimen = item2;
-                        }
-                    }
-
-                    if (!oPlantillatareo.Racionamiento)
-                    {
-                        if (ListaPeriodoAFP.Count > 0)
-                        {
-                            oDetalletareo.PeriodoAFP = ListaPeriodoAFP[ListaPeriodoAFP.Count - 1];
-                            oDetalletareo.Afp = new CapaDeNegocios.cAFP();
-
-                            foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + oDetalletareo.PeriodoAFP.IdtAFP.ToString() + "'"))
+                            if (item2.IdtMeta == miMeta.Codigo)
                             {
-                                oDetalletareo.Afp.CodigoAFP = oDetalletareo.PeriodoAFP.IdtAFP;
-                                 oDetalletareo.Afp.Nombre = rowAFP[1].ToString();
+                                oDetalletareo.PeriodoTrabajador = item;
+                                oDetalletareo.PeriodoRegimen = item2;
                             }
                         }
-                        else
+                        //error cuando no encuentra un periodo = a la meta
+                        if (oDetalletareo.PeriodoTrabajador == null)
                         {
-                            MessageBox.Show("No hay Periodo de afp para el el trabajador: " + pNombre + "para el mes " + miTareo.FechaInicio.ToShortDateString(), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            oDetalletareo.PeriodoTrabajador = item;
+                            foreach (CapaDeNegocios.DatosLaborales.cRegimenTrabajador item2 in ListaRegimenTrabajador)
+                            {
+                                oDetalletareo.PeriodoRegimen = item2;
+                            }
+                        }
+
+                        if (!oPlantillatareo.Racionamiento)
+                        {
+                            if (ListaPeriodoAFP.Count > 0)
+                            {
+                                oDetalletareo.PeriodoAFP = ListaPeriodoAFP[ListaPeriodoAFP.Count - 1];
+                                oDetalletareo.Afp = new CapaDeNegocios.cAFP();
+
+                                foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + oDetalletareo.PeriodoAFP.IdtAFP.ToString() + "'"))
+                                {
+                                    oDetalletareo.Afp.CodigoAFP = oDetalletareo.PeriodoAFP.IdtAFP;
+                                    oDetalletareo.Afp.Nombre = rowAFP[1].ToString();
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("No hay Periodo de afp para el el trabajador: " + pNombre + "para el mes " + miTareo.FechaInicio.ToShortDateString(), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("No hay ningun Regimen para el trabajador: " + pNombre + "para el mes " + miTareo.FechaInicio.ToShortDateString(), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    
 
                 }
             }
@@ -1187,47 +1203,89 @@ namespace CapaUsuario.Tareo
 
                 if (dgvDetalleTareo.SelectedCells.Count > 0)
                 {
-                    //if (miTareo.Descripcion == "PERSONAL OBRERO")
-                    //{
-                    //    Trabajador.frmNuevoObrero fNuevoObrero = new Trabajador.frmNuevoObrero();
-                    //    fNuevoObrero.RecibirDatos(miMeta.Codigo);
-                    //    fNuevoObrero.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt16(dgvDetalleTareo.Rows[dgvDetalleTareo.SelectedCells[0].RowIndex].Cells[4].Value));
-                    //    fNuevoObrero.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoObrero.miTrabajador.IdTrabajador);
-                    //    fNuevoObrero.miRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.TraerUltimoRegimenPensionario(fNuevoObrero.miPeriodoTrabajador.IdtPeriodoTrabajador);
-                    //    fNuevoObrero.miRegimenSaludTrabajador = fNuevoObrero.miRegimenSaludTrabajador.TraerUltimoRegimenSalud(fNuevoObrero.miPeriodoTrabajador.IdtPeriodoTrabajador);
-                    //    fNuevoObrero.miRegimenTrabajador = fNuevoObrero.miRegimenTrabajador.TraerUltimoRegimenTrabajador(fNuevoObrero.miPeriodoTrabajador.IdtPeriodoTrabajador);
-                    //    fNuevoObrero.fechaInicio = miTareo.FechaInicio;
-                    //    fNuevoObrero.fechaFin = miTareo.FechaFin;
-                    //    fNuevoObrero.modoEdicion = true;
-                    //    if (Convert.ToDateTime(fNuevoObrero.miPeriodoTrabajador.FechaInicio) < fNuevoObrero.fechaInicio)
-                    //    {
-                    //        MessageBox.Show("No se puede modificar trabajadores que ya han sido ingresados en tareos anteriores o con fecha de inicio anterior a la fecha del tareo.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //    }
-                    //    else
-                    //    {
-                    //        if (fNuevoObrero.ShowDialog() == DialogResult.OK)
-                    //        {
-                    //            fNuevoObrero.miTrabajador.ModificarTrabajador(fNuevoObrero.miTrabajador);
-                    //            fNuevoObrero.miPeriodoTrabajador.ModificarPeriodoTrabajador(fNuevoObrero.miPeriodoTrabajador);
-                    //            fNuevoObrero.miRegimenPensionarioTrabajador.ModificarRegimenPensionarioTrabajador(fNuevoObrero.miRegimenPensionarioTrabajador);
-                    //            fNuevoObrero.miRegimenSaludTrabajador.ModificarRegimenSaludTrabajador(fNuevoObrero.miRegimenSaludTrabajador);
-                    //            fNuevoObrero.miRegimenTrabajador.ModificarRegimenTrabajador(fNuevoObrero.miRegimenTrabajador);
+                    miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt16(dgvDetalleTareo.Rows[dgvDetalleTareo.SelectedCells[0].RowIndex].Cells[4].Value));
+                    List<CapaDeNegocios.DatosLaborales.cPeriodoTrabajador> ListaPeriodos = miPeriodoTrabajador.traerPeriodosMesTrabajador(miTrabajador.IdTrabajador, miTareo.FechaInicio);
+                    CapaDeNegocios.DatosLaborales.cPeriodoTrabajador auxiliarPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+                    CapaDeNegocios.DatosLaborales.cRegimenTrabajador auxiliarRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                    CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador auxiliarRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+                    CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador auxiliarSaludTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador();
 
-                    //            oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
-                    //            oDataAFP = miAFP.ObtenerListaAFP();
-                    //            oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
-                    //            oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
-                    //        }
-                    //    }
-                        
-                    //}
+                    if (ListaPeriodos.Count > 0)
+                    {
+                        foreach (CapaDeNegocios.DatosLaborales.cPeriodoTrabajador item in ListaPeriodos)
+                        {
+                            List<CapaDeNegocios.DatosLaborales.cRegimenTrabajador> ListaRegimenes = auxiliarRegimenTrabajador.TraerRegimenTrabajadorMes(item.IdtPeriodoTrabajador, miTareo.FechaInicio);
+
+
+                            if (ListaRegimenes.Count > 0)
+                            {
+                                foreach (CapaDeNegocios.DatosLaborales.cRegimenTrabajador item2 in ListaRegimenes)
+                                {
+                                    if (item2.IdtMeta == miMeta.Codigo)
+                                    {
+                                        auxiliarPeriodoTrabajador = item;
+                                        auxiliarRegimenTrabajador = item2;
+                                    }
+                                }
+                                //error cuando no encuentra un periodo = a la meta
+                                if (auxiliarPeriodoTrabajador.IdtPeriodoTrabajador == 0)
+                                {
+                                    auxiliarPeriodoTrabajador = item;
+                                    foreach (CapaDeNegocios.DatosLaborales.cRegimenTrabajador item2 in ListaRegimenes)
+                                    {
+                                        auxiliarRegimenTrabajador = item2;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                auxiliarPeriodoTrabajador = item;
+                                auxiliarRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                                auxiliarRegimenTrabajador.IdtPeriodoTrabajador = item.IdtPeriodoTrabajador;
+                                auxiliarRegimenTrabajador.FechaInicio = item.FechaInicio;
+                            }
+
+                            if (!oPlantillatareo.Racionamiento)
+                            {
+                                List<CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador> ListaPeriodoAFP = auxiliarRegimenPensionarioTrabajador.TraerRegimenPensionarioxMes(auxiliarPeriodoTrabajador.IdtPeriodoTrabajador, miTareo.FechaInicio);
+                                List<CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador> ListaSalud = auxiliarSaludTrabajador.ListaPeriodosSalud(auxiliarPeriodoTrabajador.IdtPeriodoTrabajador);
+                                if (ListaPeriodoAFP.Count > 0)
+                                {
+                                    auxiliarRegimenPensionarioTrabajador = ListaPeriodoAFP[ListaPeriodoAFP.Count - 1];
+                                }
+                                else
+                                {
+                                    auxiliarRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+                                    auxiliarRegimenPensionarioTrabajador.IdtPeriodoTrabajador = item.IdtPeriodoTrabajador;
+                                    auxiliarRegimenPensionarioTrabajador.FechaInicio = item.FechaInicio;
+                                }
+
+                                if (ListaSalud.Count > 0)
+                                {
+                                    auxiliarSaludTrabajador = ListaSalud[ListaSalud.Count - 1];
+                                }
+                                else
+                                {
+                                    auxiliarSaludTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador();
+                                    auxiliarSaludTrabajador.FechaInicio = item.FechaInicio;
+                                    auxiliarSaludTrabajador.IdtPeriodoTrabajador = item.IdtPeriodoTrabajador;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No existe periodos para el trabajador, ingrese nuevo periodo con enter en el dni.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+
                     if (oPlantillatareo.Racionamiento == true)
                     {
                         Trabajador.frmNuevoObreroRacionamiento fNuevoObreroRacionamiento = new Trabajador.frmNuevoObreroRacionamiento();
                         fNuevoObreroRacionamiento.RecibirDatos(miMeta.Codigo);
-                        fNuevoObreroRacionamiento.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt16(dgvDetalleTareo.Rows[dgvDetalleTareo.SelectedCells[0].RowIndex].Cells[4].Value));
-                        fNuevoObreroRacionamiento.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoObreroRacionamiento.miTrabajador.IdTrabajador);
-                        fNuevoObreroRacionamiento.miRegimenTrabajador = fNuevoObreroRacionamiento.miRegimenTrabajador.TraerUltimoRegimenTrabajador(fNuevoObreroRacionamiento.miPeriodoTrabajador.IdtPeriodoTrabajador);
+                        fNuevoObreroRacionamiento.miTrabajador = miTrabajador;
+                        fNuevoObreroRacionamiento.miPeriodoTrabajador = auxiliarPeriodoTrabajador;
+                        fNuevoObreroRacionamiento.miRegimenTrabajador = auxiliarRegimenTrabajador;
                         fNuevoObreroRacionamiento.fechaInicio = miTareo.FechaInicio;
                         fNuevoObreroRacionamiento.fechaFin = miTareo.FechaFin;
                         fNuevoObreroRacionamiento.modoEdicion = true;
@@ -1243,24 +1301,30 @@ namespace CapaUsuario.Tareo
                             {
                                 fNuevoObreroRacionamiento.miTrabajador.ModificarTrabajador(fNuevoObreroRacionamiento.miTrabajador);
                                 fNuevoObreroRacionamiento.miPeriodoTrabajador.ModificarPeriodoTrabajador(fNuevoObreroRacionamiento.miPeriodoTrabajador);
-                                fNuevoObreroRacionamiento.miRegimenTrabajador.ModificarRegimenTrabajador(fNuevoObreroRacionamiento.miRegimenTrabajador);
+                                if (fNuevoObreroRacionamiento.miRegimenTrabajador.IdtRegimenTrabajador == 0)
+                                {
+                                    fNuevoObreroRacionamiento.miRegimenTrabajador.CrearRegimenTrabajador(fNuevoObreroRacionamiento.miRegimenTrabajador);
+                                }
+                                else
+                                {
+                                    fNuevoObreroRacionamiento.miRegimenTrabajador.ModificarRegimenTrabajador(fNuevoObreroRacionamiento.miRegimenTrabajador);
+                                }
                                 oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
                                 oDataAFP = miAFP.ObtenerListaAFP();
                                 oDataPeriodoTrabajador = miPeriodoTrabajador.ListarPeriodoTrabajador(0);
                                 oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
                             }
                         }
-                        
                     }
                     else
                     {
                         Trabajador.frmNuevoTecnico fNuevoTecnico = new Trabajador.frmNuevoTecnico();
                         fNuevoTecnico.RecibirDatos(miMeta.Codigo);
-                        fNuevoTecnico.miTrabajador = miTrabajador.traerTrabajador(Convert.ToInt16(dgvDetalleTareo.Rows[dgvDetalleTareo.SelectedCells[0].RowIndex].Cells[4].Value));
-                        fNuevoTecnico.miPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(fNuevoTecnico.miTrabajador.IdTrabajador);
-                        fNuevoTecnico.miRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.TraerUltimoRegimenPensionario(fNuevoTecnico.miPeriodoTrabajador.IdtPeriodoTrabajador);
-                        fNuevoTecnico.miRegimenSaludTrabajador = fNuevoTecnico.miRegimenSaludTrabajador.TraerUltimoRegimenSalud(fNuevoTecnico.miPeriodoTrabajador.IdtPeriodoTrabajador);
-                        fNuevoTecnico.miRegimenTrabajador = fNuevoTecnico.miRegimenTrabajador.TraerUltimoRegimenTrabajador(fNuevoTecnico.miPeriodoTrabajador.IdtPeriodoTrabajador);
+                        fNuevoTecnico.miTrabajador = miTrabajador;
+                        fNuevoTecnico.miPeriodoTrabajador = auxiliarPeriodoTrabajador;
+                        fNuevoTecnico.miRegimenPensionarioTrabajador = auxiliarRegimenPensionarioTrabajador ;
+                        fNuevoTecnico.miRegimenSaludTrabajador = auxiliarSaludTrabajador ;
+                        fNuevoTecnico.miRegimenTrabajador = auxiliarRegimenTrabajador;
                         fNuevoTecnico.fechaInicio = miTareo.FechaInicio;
                         fNuevoTecnico.fechaFin = miTareo.FechaFin;
                         fNuevoTecnico.modoEdicion = true;
@@ -1274,9 +1338,33 @@ namespace CapaUsuario.Tareo
                             {
                                 fNuevoTecnico.miTrabajador.ModificarTrabajador(fNuevoTecnico.miTrabajador);
                                 fNuevoTecnico.miPeriodoTrabajador.ModificarPeriodoTrabajador(fNuevoTecnico.miPeriodoTrabajador);
-                                fNuevoTecnico.miRegimenPensionarioTrabajador.ModificarRegimenPensionarioTrabajador(fNuevoTecnico.miRegimenPensionarioTrabajador);
-                                fNuevoTecnico.miRegimenSaludTrabajador.ModificarRegimenSaludTrabajador(fNuevoTecnico.miRegimenSaludTrabajador);
-                                fNuevoTecnico.miRegimenTrabajador.ModificarRegimenTrabajador(fNuevoTecnico.miRegimenTrabajador);
+                                if (fNuevoTecnico.miRegimenPensionarioTrabajador.IdtRegimenPensionarioTrabajador == 0)
+                                {
+                                    fNuevoTecnico.miRegimenPensionarioTrabajador.CrearRegimenPensionarioTrabajador(fNuevoTecnico.miRegimenPensionarioTrabajador);
+                                }
+                                else
+                                {
+                                    fNuevoTecnico.miRegimenPensionarioTrabajador.ModificarRegimenPensionarioTrabajador(fNuevoTecnico.miRegimenPensionarioTrabajador);
+                                }
+
+                                if (fNuevoTecnico.miRegimenSaludTrabajador.IdtRegimenSaludTrabajador == 0)
+                                {
+                                    fNuevoTecnico.miRegimenSaludTrabajador.CrearRegimenSaludTrabajador(fNuevoTecnico.miRegimenSaludTrabajador);
+                                }
+                                else
+                                {
+                                    fNuevoTecnico.miRegimenSaludTrabajador.ModificarRegimenSaludTrabajador(fNuevoTecnico.miRegimenSaludTrabajador);
+                                }
+
+                                if (fNuevoTecnico.miRegimenTrabajador.IdtRegimenTrabajador == 0)
+                                {
+                                    fNuevoTecnico.miRegimenTrabajador.CrearRegimenTrabajador(fNuevoTecnico.miRegimenTrabajador);
+                                }
+                                else
+                                {
+                                    fNuevoTecnico.miRegimenTrabajador.ModificarRegimenTrabajador(fNuevoTecnico.miRegimenTrabajador);
+                                }
+                                
 
                                 oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Todos");
                                 oDataAFP = miAFP.ObtenerListaAFP();

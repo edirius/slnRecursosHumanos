@@ -322,6 +322,35 @@ namespace CapaUsuario.Trabajador
             miRegimenTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
             miRegimenTrabajador.NumeroDocumento = txtCuentaBancaria.Text;
 
+            miRegimenTrabajador.Condicion = "CONTRATADO";
+            miRegimenTrabajador.ServidorConfianza = false;
+
+            miRegimenTrabajador.Periodicidad = "MENSUAL";
+            miRegimenTrabajador.TipoPago = "EFECTIVO";
+            miRegimenTrabajador.MontoPago = 0;
+
+            miRegimenTrabajador.FechaFin = "";
+            miRegimenTrabajador.RUC = "";
+            miRegimenTrabajador.IdtCategoriaOcupacional = sidtcategoriaocupacional;
+            miRegimenTrabajador.IdtOcupacion = sidtocupacion;
+            miRegimenTrabajador.IdtCargo = sidtcargo;
+            miRegimenTrabajador.IdtMeta = sidtmeta;
+
+            CapaDeNegocios.cDatosGenerales misDatosGenerales = new CapaDeNegocios.cDatosGenerales();
+
+            if (misDatosGenerales.Tecnicos276)
+            {
+                miRegimenTrabajador.IdtRegimenLaboral = 2;
+            }
+            else
+            {
+                miRegimenTrabajador.IdtRegimenLaboral = 3;
+            }
+
+
+            miRegimenTrabajador.IdtTipoTrabajador = 12;
+            miRegimenTrabajador.IdtTipoContrato = 15;
+
             if (modoEdicion == false || modoAltaTrabajador == true)
             {
                 if (modoAltaTrabajador == false)
@@ -365,33 +394,8 @@ namespace CapaUsuario.Trabajador
 
 
                 miRegimenTrabajador.IdtRegimenTrabajador = 0;
-                miRegimenTrabajador.Condicion = "CONTRATADO";
-                miRegimenTrabajador.ServidorConfianza = false;
                
-                miRegimenTrabajador.Periodicidad = "MENSUAL";
-                miRegimenTrabajador.TipoPago = "EFECTIVO";
-                miRegimenTrabajador.MontoPago = 0;
-
-                miRegimenTrabajador.FechaFin = "";
-                miRegimenTrabajador.RUC = "";
-                CapaDeNegocios.cDatosGenerales misDatosGenerales = new CapaDeNegocios.cDatosGenerales();
-
-                if (misDatosGenerales.Tecnicos276)
-                {
-                    miRegimenTrabajador.IdtRegimenLaboral = 2;
-                }
-                else
-                {
-                    miRegimenTrabajador.IdtRegimenLaboral = 3;
-                }
                 
-
-                miRegimenTrabajador.IdtTipoTrabajador = 12;
-                miRegimenTrabajador.IdtTipoContrato = 15;
-                miRegimenTrabajador.IdtCategoriaOcupacional = sidtcategoriaocupacional;
-                miRegimenTrabajador.IdtOcupacion = sidtocupacion;
-                miRegimenTrabajador.IdtCargo = sidtcargo;
-                miRegimenTrabajador.IdtMeta = sidtmeta;
                 miRegimenTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
                 miRegimenTrabajador.CrearRegimenTrabajador(miRegimenTrabajador);
 

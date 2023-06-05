@@ -126,5 +126,37 @@ namespace CapaDeNegocios.DatosLaborales
                 throw new cReglaNegociosException("Error en traer el periodo de regimen de salud trabajador: " + ex.Message);
             }
         }
+
+        public List<cRegimenSaludTrabajador> ListaPeriodosSalud (int idtPeriodoTrabajador)
+        {
+            try
+            {
+                List<cRegimenSaludTrabajador> listaPeriodosTrabajador = new List<cRegimenSaludTrabajador>();
+
+                DataTable listaPeriodos;
+                listaPeriodos = Conexion.GDatos.TraerDataTable("spListarRegimenSaludTrabajador", idtPeriodoTrabajador);
+
+                foreach (DataRow item in listaPeriodos.Rows)
+                {
+                    if ((item[3] == null) || (item[3].ToString() == ""))
+                    {
+                        cRegimenSaludTrabajador nuevoPeriodoTrabajador = new cRegimenSaludTrabajador();
+                        nuevoPeriodoTrabajador.IdtRegimenSaludTrabajador = Convert.ToInt16(item[0].ToString());
+                        nuevoPeriodoTrabajador.RegimenSalud = item[1].ToString();
+                        nuevoPeriodoTrabajador.sfechainicio = item[2].ToString();
+                        nuevoPeriodoTrabajador.sfechafin = "";
+                        nuevoPeriodoTrabajador.EntidadPrestadoraSalud = item[4].ToString();
+                        nuevoPeriodoTrabajador.IdtPeriodoTrabajador = Convert.ToInt16(item[5]);
+                        listaPeriodosTrabajador.Add(nuevoPeriodoTrabajador);
+                    }
+
+                }
+                return listaPeriodosTrabajador;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en traer el periodo de regimen de salud trabajador: " + ex.Message);
+            }
+        }
     }
 }
