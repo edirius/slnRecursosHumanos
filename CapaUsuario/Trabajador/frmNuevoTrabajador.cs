@@ -201,7 +201,14 @@ namespace CapaUsuario.Trabajador
 
                 miTrabajador.Essaludvida = chkEssaludVida.Checked;
                 miTrabajador.Suspencionrenta4ta = chkRenta4ta.Checked;
-                miTrabajador.NroRenta4ta = txtNroRenta4ta.Text;
+                if (chkSCRTP.Checked)
+                {
+                    miTrabajador.NroRenta4ta = "1";
+                }
+                else
+                {
+                    miTrabajador.NroRenta4ta = "0";
+                }
                 miTrabajador.Scrt = chkScrt.Checked;
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }
@@ -809,16 +816,7 @@ namespace CapaUsuario.Trabajador
 
         private void chkRenta4ta_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkRenta4ta.Checked == true)
-            {
-                label11.Visible = true;
-                txtNroRenta4ta.Visible = true;
-            }
-            else
-            {
-                label11.Visible = false;
-                txtNroRenta4ta.Visible = false;
-            }
+           
         }
 
         private void txtCelularTrabajo_KeyPress(object sender, KeyPressEventArgs e)

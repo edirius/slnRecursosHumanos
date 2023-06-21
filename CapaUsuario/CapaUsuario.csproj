@@ -433,6 +433,12 @@
     <Compile Include="Reportes\frmAnaliticoPlanilla.Designer.cs">
       <DependentUpon>frmAnaliticoPlanilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\frmBoletaPagoxTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmBoletaPagoxTrabajador.Designer.cs">
+      <DependentUpon>frmBoletaPagoxTrabajador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\frmPlanilla2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1716,6 +1722,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmAnaliticoPlanilla.resx">
       <DependentUpon>frmAnaliticoPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmBoletaPagoxTrabajador.resx">
+      <DependentUpon>frmBoletaPagoxTrabajador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmPlanilla2.resx">
       <DependentUpon>frmPlanilla2.cs</DependentUpon>

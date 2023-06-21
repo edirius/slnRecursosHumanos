@@ -51,6 +51,7 @@ namespace CapaUsuario.Planilla
         bool ssuspencionrenta4ta;
         bool sessaludvida;
         bool sscrt;
+        bool sscrtp;
 
         bool esTareo= false;
         bool esMetaJornal = false;
@@ -719,6 +720,30 @@ namespace CapaUsuario.Planilla
                 sscrt = Convert.ToBoolean(rowTrabajador[8]);
             }
         }
+
+        private void BuscarSCRTPension(int pidtrabajador)
+        {
+            foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + pidtrabajador + "'"))
+            {
+                if (rowTrabajador[9] is DBNull || rowTrabajador[9].ToString() =="")
+                {
+                    sscrtp = false;
+                }
+                else
+                {
+                    if (rowTrabajador[9].ToString().Substring(0, 1) == "1")
+                    {
+                        sscrtp = true;
+                    }
+                    else
+                    {
+                        sscrtp = false;
+                    }
+                }
+
+            }
+        }
+
         private void DatosAFP(int fila)
         {   
             foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + dgvDetallePlanilla.Rows[fila].Cells[4].Value.ToString() + "'"))
@@ -1199,7 +1224,26 @@ namespace CapaUsuario.Planilla
                 {
                     if (smdescuentos[i, 1].ToString() == "0705")
                     {
-                        decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
+                        cMetaJornal miMetaJornal = new cMetaJornal();
+
+                        miMetaJornal = MetaJornal(dgvDetallePlanilla.Rows[fila].Cells[7].ToString(), sidtmeta);
+                        decimal PagoDia;
+                        PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
+
+                        if (esTareo && esMetaJornal)
+                        {
+                            if (miMetaJornal.Opcion == false)
+                            {
+                                PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                            }
+                            else
+                            {
+                                PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
+                            }
+                        }
+
+                            
+                         
                         int diasfalta = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMesxFalta(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
 
                         if (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO")
@@ -1238,7 +1282,25 @@ namespace CapaUsuario.Planilla
                     //TARDANZAS
                     if (smdescuentos[i, 1].ToString() == "0704")
                     {
-                        decimal PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
+
+                        cMetaJornal miMetaJornal = new cMetaJornal();
+
+                        miMetaJornal = MetaJornal(dgvDetallePlanilla.Rows[fila].Cells[7].ToString(), sidtmeta);
+                        decimal PagoDia;
+                        PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
+
+                        if (esTareo && esMetaJornal)
+                        {
+                            if (miMetaJornal.Opcion == false)
+                            {
+                                PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                            }
+                            else
+                            {
+                                PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
+                            }
+                        }
+
                         decimal diasfalta = 0;
                         decimal totalMinutos = 0;
 
@@ -1558,10 +1620,23 @@ namespace CapaUsuario.Planilla
 
             //seguro complementario de riesgo
 
-            if (codigo == "0806")
+            if (codigo == "0806" || codigo == "0810")
             {
                 BuscarSCRT(Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
                 if (sscrt == true)
+                {
+                    result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                }
+                else
+                {
+                    result = 0;
+                }
+            }
+
+            if (codigo == "0805")
+            {
+                BuscarSCRTPension(Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
+                if(sscrtp == true)
                 {
                     result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
                 }

@@ -134,6 +134,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
+            this.boletaPago2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -689,6 +690,7 @@
             this.reportesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.boletaPagoToolStripMenuItem1,
             this.boletaPagoPorPlanillaToolStripMenuItem,
+            this.boletaPago2ToolStripMenuItem,
             this.planillaToolStripMenuItem2,
             this.trabajadoresToolStripMenuItem,
             this.personalToolStripMenuItem,
@@ -977,6 +979,13 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
+            // boletaPago2ToolStripMenuItem
+            // 
+            this.boletaPago2ToolStripMenuItem.Name = "boletaPago2ToolStripMenuItem";
+            this.boletaPago2ToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.boletaPago2ToolStripMenuItem.Text = "Boleta Pago 2";
+            this.boletaPago2ToolStripMenuItem.Click += new System.EventHandler(this.boletaPago2ToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1116,6 +1125,7 @@
         private System.Windows.Forms.ToolStripMenuItem plantillaDeTareosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuResumenXDetallePlanillas;
         private System.Windows.Forms.ToolStripMenuItem analiticoPlanillasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem boletaPago2ToolStripMenuItem;
     }
 }
 

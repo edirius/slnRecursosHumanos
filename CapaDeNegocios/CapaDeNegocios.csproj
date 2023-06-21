@@ -205,11 +205,13 @@
     <Compile Include="RentaQuinta\cRentaQuintaIngresos.cs" />
     <Compile Include="Reportes\cBoletaPago.cs" />
     <Compile Include="Reportes\cCeldaPDF.cs" />
+    <Compile Include="Reportes\cDetalleReporteBoletaXTrabajador.cs" />
     <Compile Include="Reportes\cFilasPDF.cs" />
     <Compile Include="Reportes\cHojaPDF.cs" />
     <Compile Include="Reportes\cImprimirReportePDF.cs" />
     <Compile Include="Reportes\cMultiCeldaPDF.cs" />
     <Compile Include="Reportes\cReporteAsistencia.cs" />
+    <Compile Include="Reportes\cReporteBoletasXTrabajador.cs" />
     <Compile Include="Reportes\cReporteMultipleAsistencia.cs" />
     <Compile Include="Reportes\cReporteNroTrabajadores.cs" />
     <Compile Include="Reportes\cReportePDF.cs" />
@@ -274,6 +276,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="BoletaPago\" />
     <Folder Include="dlls\" />
   </ItemGroup>
   <ItemGroup>

@@ -270,6 +270,8 @@ namespace CapaDeDatos
         public int Ejecutar(string procedimientoAlmacenado, params  Object[] args)
         {
             var com = Comando(procedimientoAlmacenado);
+            //cambio
+            com.CommandTimeout = 60;
             CargarParametros(com, args);
             var resp = com.ExecuteNonQuery();
             for (var i = 0; i < com.Parameters.Count; i++)

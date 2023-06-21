@@ -35,7 +35,6 @@
             this.picValidado = new System.Windows.Forms.PictureBox();
             this.txtValidador = new System.Windows.Forms.TextBox();
             this.chkScrt = new System.Windows.Forms.CheckBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.txtNroRenta4ta = new System.Windows.Forms.TextBox();
             this.chkRenta4ta = new System.Windows.Forms.CheckBox();
             this.chkEssaludVida = new System.Windows.Forms.CheckBox();
@@ -98,6 +97,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
             this.toolTrabajador = new System.Windows.Forms.ToolTip(this.components);
+            this.chkSCRTP = new System.Windows.Forms.CheckBox();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
@@ -116,10 +116,10 @@
             // 
             // tabDatosGenerales
             // 
+            this.tabDatosGenerales.Controls.Add(this.chkSCRTP);
             this.tabDatosGenerales.Controls.Add(this.picValidado);
             this.tabDatosGenerales.Controls.Add(this.txtValidador);
             this.tabDatosGenerales.Controls.Add(this.chkScrt);
-            this.tabDatosGenerales.Controls.Add(this.label11);
             this.tabDatosGenerales.Controls.Add(this.txtNroRenta4ta);
             this.tabDatosGenerales.Controls.Add(this.chkRenta4ta);
             this.tabDatosGenerales.Controls.Add(this.chkEssaludVida);
@@ -215,21 +215,13 @@
             this.chkScrt.Text = "SCRT";
             this.chkScrt.UseVisualStyleBackColor = true;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(533, 594);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 13);
-            this.label11.TabIndex = 106;
-            this.label11.Text = "Nro Renta 4ta  :";
-            // 
             // txtNroRenta4ta
             // 
             this.txtNroRenta4ta.Location = new System.Drawing.Point(622, 591);
             this.txtNroRenta4ta.Name = "txtNroRenta4ta";
             this.txtNroRenta4ta.Size = new System.Drawing.Size(127, 20);
             this.txtNroRenta4ta.TabIndex = 105;
+            this.txtNroRenta4ta.Visible = false;
             // 
             // chkRenta4ta
             // 
@@ -805,6 +797,16 @@
             this.toolTrabajador.ForeColor = System.Drawing.Color.RoyalBlue;
             this.toolTrabajador.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // chkSCRTP
+            // 
+            this.chkSCRTP.AutoSize = true;
+            this.chkSCRTP.Location = new System.Drawing.Point(536, 591);
+            this.chkSCRTP.Name = "chkSCRTP";
+            this.chkSCRTP.Size = new System.Drawing.Size(106, 17);
+            this.chkSCRTP.TabIndex = 110;
+            this.chkSCRTP.Text = "SCRT-PENSION";
+            this.chkSCRTP.UseVisualStyleBackColor = true;
+            // 
             // frmNuevoTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -891,10 +893,10 @@
         private System.Windows.Forms.Button btnTipoZona;
         private System.Windows.Forms.CheckBox chkEssaludVida;
         private System.Windows.Forms.CheckBox chkRenta4ta;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtNroRenta4ta;
         private System.Windows.Forms.CheckBox chkScrt;
         private System.Windows.Forms.TextBox txtValidador;
         private System.Windows.Forms.PictureBox picValidado;
+        private System.Windows.Forms.CheckBox chkSCRTP;
     }
 }

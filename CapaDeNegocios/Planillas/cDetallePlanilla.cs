@@ -23,6 +23,11 @@ namespace CapaDeNegocios.Planillas
         int sidttrabajador;
         int sidtplanilla;
         cTrabajador sTrabajador;
+        List<cDetallePlanillaIngresos> listaIngresos;
+        List<cDetallePlanillaDescuentos> listaDescuentos;
+        List<cDetallePlanillaATrabajador> listaAportacionesTrabajador;
+        List<cDetallePlanillaAEmpleador> listaAportacionesEmpleador;
+
 
         public int IdtDetallePlanilla
         {
@@ -80,6 +85,14 @@ namespace CapaDeNegocios.Planillas
             set { sidtplanilla = value; }
         }
 
+        public cDetallePlanilla()
+        {
+            this.listaIngresos = new List<cDetallePlanillaIngresos>();
+            this.listaDescuentos = new List<cDetallePlanillaDescuentos>();
+            this.listaAportacionesTrabajador = new List<cDetallePlanillaATrabajador>();
+            this.listaAportacionesEmpleador = new List<cDetallePlanillaAEmpleador>();
+        }
+
         public cTrabajador STrabajador
         {
             get
@@ -90,6 +103,58 @@ namespace CapaDeNegocios.Planillas
             set
             {
                 sTrabajador = value;
+            }
+        }
+
+        public List<cDetallePlanillaIngresos> ListaIngresos
+        {
+            get
+            {
+                return listaIngresos;
+            }
+
+            set
+            {
+                listaIngresos = value;
+            }
+        }
+
+        public List<cDetallePlanillaDescuentos> ListaDescuentos
+        {
+            get
+            {
+                return listaDescuentos;
+            }
+
+            set
+            {
+                listaDescuentos = value;
+            }
+        }
+
+        public List<cDetallePlanillaATrabajador> ListaAportacionesTrabajador
+        {
+            get
+            {
+                return listaAportacionesTrabajador;
+            }
+
+            set
+            {
+                listaAportacionesTrabajador = value;
+            }
+        }
+
+        public List<cDetallePlanillaAEmpleador> ListaAportacionesEmpleador
+        {
+            get
+            {
+                return listaAportacionesEmpleador;
+            }
+
+            set
+            {
+                listaAportacionesEmpleador = value;
             }
         }
 
@@ -197,6 +262,91 @@ namespace CapaDeNegocios.Planillas
         {
             DataTable auxiliar = Conexion.GDatos.TraerDataTable("spTraerDetallesPosterioresFecha", fechaTentativaBaja, idtTrabajadorBaja);
             return auxiliar;
+        }
+
+        /// <summary>
+        /// Metodo para traer el detalle de planilla x su id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>objeto detalle de planilla</returns>
+        public cDetallePlanilla TraerDetallePlanillaxCodigo(int id)
+        {
+            try
+            {
+                cDetallePlanilla auxiliar = new cDetallePlanilla();
+                DataTable tabla = Conexion.GDatos.TraerDataTable("spTrearDetallePlanillaXID", id);
+                if (tabla.Rows.Count > 0)
+                {
+                    foreach (DataRow item in tabla.Rows)
+                    {
+                        auxiliar.IdtDetallePlanilla = Convert.ToInt32(item[0].ToString());
+                        auxiliar.Cargo = item[1].ToString();
+                        auxiliar.FechaInicio = Convert.ToDateTime(item[2].ToString());
+                        auxiliar.DiasLaborados = Convert.ToInt16(item[3].ToString());
+                        auxiliar.TotalIngresos = Convert.ToDecimal(item[4].ToString());
+                        auxiliar.TotalATrabajador = Convert.ToDecimal(item[5].ToString());
+                        auxiliar.TotalDescuentos = Convert.ToDecimal(item[6].ToString());
+                        auxiliar.TotalAEmpleador = Convert.ToDecimal(item[7].ToString());
+                        auxiliar.NetoaCobrar = Convert.ToDecimal(item[8].ToString());
+                        auxiliar.IdtTrabajador = Convert.ToInt32(item[9].ToString());
+                        auxiliar.IdtPlanilla = Convert.ToInt32(item[10].ToString());
+                    }
+
+                    DataTable tablaIngresos = Conexion.GDatos.TraerDataTable("spTraerDetalleIngresos", id);
+                    foreach (DataRow item in tablaIngresos.Rows)
+                    {
+                        cDetallePlanillaIngresos ingresos = new cDetallePlanillaIngresos();
+                        ingresos.IdtDetallePlanillaIngresos = Convert.ToInt32(item[0].ToString());
+                        ingresos.Monto = Convert.ToDecimal(item[1].ToString());
+                        ingresos.IdtMaestroIngresos = Convert.ToInt32(item[2].ToString());
+                        ingresos.IdtDetallePlanilla = Convert.ToInt32(item[3].ToString());
+                        auxiliar.listaIngresos.Add(ingresos);
+                    }
+
+                    DataTable tablaDescuentos = Conexion.GDatos.TraerDataTable("spTraerDetalleDescuentos", id);
+                    foreach (DataRow item in tablaDescuentos.Rows)
+                    {
+                        cDetallePlanillaDescuentos descuentos = new cDetallePlanillaDescuentos();
+                        descuentos.IdtDetallePlanillaDescuentos = Convert.ToInt32(item[0].ToString());
+                        descuentos.Monto = Convert.ToDecimal(item[1].ToString());
+                        descuentos.IdtMaestroDescuentos = Convert.ToInt32(item[2].ToString());
+                        descuentos.IdtDetallePlanilla = Convert.ToInt32(item[3].ToString());
+                        auxiliar.ListaDescuentos.Add(descuentos);
+                    }
+
+                    DataTable tablaAportacionesTrabajador = Conexion.GDatos.TraerDataTable("spTraerDetalleAportacionesTrabajador", id);
+                    foreach (DataRow item in tablaAportacionesTrabajador.Rows)
+                    {
+                        cDetallePlanillaATrabajador aportacionTrabajador = new cDetallePlanillaATrabajador();
+                        aportacionTrabajador.IdtDetallePlanillaATrabajador = Convert.ToInt32(item[0].ToString());
+                        aportacionTrabajador.Monto = Convert.ToDecimal(item[1].ToString());
+                        aportacionTrabajador.IdtMaestroATrabajador = Convert.ToInt32(item[2].ToString());
+                        aportacionTrabajador.IdtDetallePlanilla = Convert.ToInt32(item[3].ToString());
+                        auxiliar.listaAportacionesTrabajador.Add(aportacionTrabajador);
+                    }
+
+                    DataTable tablaAportacionesEmpleador = Conexion.GDatos.TraerDataTable("spTraerDetalleAportacionesEmpleador", id);
+                    foreach (DataRow item in tablaAportacionesEmpleador.Rows)
+                    {
+                        cDetallePlanillaAEmpleador aportacionEmpleador = new cDetallePlanillaAEmpleador();
+                        aportacionEmpleador.IdtDetallePlanillaAEmpleador = Convert.ToInt32(item[0].ToString());
+                        aportacionEmpleador.Monto = Convert.ToDecimal(item[1].ToString());
+                        aportacionEmpleador.IdtMaestroAEmpleador = Convert.ToInt32(item[2].ToString());
+                        aportacionEmpleador.IdtDetallePlanilla = Convert.ToInt32(item[3].ToString());
+                        auxiliar.listaAportacionesEmpleador.Add(aportacionEmpleador);
+                    }
+
+                    return auxiliar;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo TraerDetallePlanillaxCodigo: " + ex.Message);
+            }
         }
     }
 }

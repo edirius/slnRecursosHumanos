@@ -33,6 +33,7 @@ namespace CapaDeDatos
                         sCadena.Replace("<USER>", Usuario);
                         sCadena.Replace("<PASSWORD>", Password);
 
+                        //return "Server=MYSQL8001.site4now.net;Database=db_a85d09_ediriu2;Uid=a85d09_ediriu2;Pwd=bahamut0;SslMode = 0;CharSet=utf8;";
                         return sCadena.ToString();
                     }
                     throw new Exception("No se puede establecer la cadena de conexión en la clase DatosSQLServer");
