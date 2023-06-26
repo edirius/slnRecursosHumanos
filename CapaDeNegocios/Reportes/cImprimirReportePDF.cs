@@ -201,7 +201,7 @@ namespace CapaDeNegocios.Reportes
 
         public void ImprimirReportePDFBOLETA(cReportePDF oReportePDF)
         {
-            string ruta = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            string ruta = System.IO.Directory.GetCurrentDirectory();
 
             string ruta_imagen = ruta + "\\logo-muni-fw.png";
 
