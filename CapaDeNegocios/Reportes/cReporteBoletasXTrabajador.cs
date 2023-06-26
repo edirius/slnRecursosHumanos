@@ -219,11 +219,11 @@ namespace CapaDeNegocios.Reportes
                         {
                             if (AFPElegido.IdtAFP == 5)
                             {
-                                celdaCargo.Contenido = "Cargo: " + item.Cargo + "                           REGIMEN PENSIONARIO: " + AFPElegido.Afp.Nombre                    ;
+                                celdaCargo.Contenido = "Cargo: " + item.Cargo + "                           REGIMEN PENSIONARIO: " + AFPElegido.Afp.Nombre + "      DIAS LABORADOS:  " + item.DiasLaborados;
                             }
                             else
                             {
-                                celdaCargo.Contenido = "Cargo: " + item.Cargo + "                           REGIMEN PENSIONARIO: " + AFPElegido.Afp.Nombre + "                  CUSPP: " + AFPElegido.CUSPP;
+                                celdaCargo.Contenido = "Cargo: " + item.Cargo + "                           REGIMEN PENSIONARIO: " + AFPElegido.Afp.Nombre + "                  CUSPP: " + AFPElegido.CUSPP + "      DIAS LABORADOS:  " + item.DiasLaborados;
                             }
                             
                         }
