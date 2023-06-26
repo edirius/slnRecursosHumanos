@@ -183,6 +183,7 @@
     <Compile Include="Planillas\cDetallePlanillaIngresos.cs" />
     <Compile Include="Planillas\cIngresos.cs" />
     <Compile Include="Planillas\cIngresos5taCategoria.cs" />
+    <Compile Include="Planillas\cMaestroAportacionE.cs" />
     <Compile Include="Planillas\cMaestroIngresos.cs" />
     <Compile Include="Planillas\cPlanilla.cs" />
     <Compile Include="Planillas\cPlantillaPlanilla.cs" />

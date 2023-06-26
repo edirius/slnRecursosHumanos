@@ -28,6 +28,7 @@ namespace CapaDeNegocios.Planillas
         List<cDetallePlanillaATrabajador> listaAportacionesTrabajador;
         List<cDetallePlanillaAEmpleador> listaAportacionesEmpleador;
 
+        private CapaDeNegocios.PlanillaNueva.blPlanilla oPlanilla = new PlanillaNueva.blPlanilla();
 
         public int IdtDetallePlanilla
         {
@@ -300,6 +301,7 @@ namespace CapaDeNegocios.Planillas
                         ingresos.Monto = Convert.ToDecimal(item[1].ToString());
                         ingresos.IdtMaestroIngresos = Convert.ToInt32(item[2].ToString());
                         ingresos.IdtDetallePlanilla = Convert.ToInt32(item[3].ToString());
+                        ingresos.MaestroIngresos = oPlanilla.TraerMaestroIngresos(ingresos.IdtMaestroIngresos);
                         auxiliar.listaIngresos.Add(ingresos);
                     }
 
@@ -311,6 +313,7 @@ namespace CapaDeNegocios.Planillas
                         descuentos.Monto = Convert.ToDecimal(item[1].ToString());
                         descuentos.IdtMaestroDescuentos = Convert.ToInt32(item[2].ToString());
                         descuentos.IdtDetallePlanilla = Convert.ToInt32(item[3].ToString());
+                        descuentos.MaestroDescuento = oPlanilla.TraerMaestroDescuento(descuentos.IdtMaestroDescuentos);
                         auxiliar.ListaDescuentos.Add(descuentos);
                     }
 
@@ -322,6 +325,7 @@ namespace CapaDeNegocios.Planillas
                         aportacionTrabajador.Monto = Convert.ToDecimal(item[1].ToString());
                         aportacionTrabajador.IdtMaestroATrabajador = Convert.ToInt32(item[2].ToString());
                         aportacionTrabajador.IdtDetallePlanilla = Convert.ToInt32(item[3].ToString());
+                        aportacionTrabajador.MaestroAportacionTrabajador = oPlanilla.TraerMaestroAportacionesTrabajador(aportacionTrabajador.IdtMaestroATrabajador);
                         auxiliar.listaAportacionesTrabajador.Add(aportacionTrabajador);
                     }
 
@@ -333,6 +337,7 @@ namespace CapaDeNegocios.Planillas
                         aportacionEmpleador.Monto = Convert.ToDecimal(item[1].ToString());
                         aportacionEmpleador.IdtMaestroAEmpleador = Convert.ToInt32(item[2].ToString());
                         aportacionEmpleador.IdtDetallePlanilla = Convert.ToInt32(item[3].ToString());
+                        aportacionEmpleador.MaestroAportacionE = oPlanilla.TraerMaestroAportacionesEmpleador(aportacionEmpleador.IdtMaestroAEmpleador);
                         auxiliar.listaAportacionesEmpleador.Add(aportacionEmpleador);
                     }
 

@@ -15,6 +15,7 @@ namespace CapaDeNegocios.Planillas
         decimal smonto;
         int sidtmaestroingresos;
         int sidtdetalleplanilla;
+        Sunat.cMaestroIngresos maestroIngresos;
 
         public int IdtDetallePlanillaIngresos
         {
@@ -35,6 +36,19 @@ namespace CapaDeNegocios.Planillas
         {
             get { return sidtdetalleplanilla; }
             set { sidtdetalleplanilla = value; }
+        }
+
+        public Sunat.cMaestroIngresos MaestroIngresos
+        {
+            get
+            {
+                return maestroIngresos;
+            }
+
+            set
+            {
+                maestroIngresos = value;
+            }
         }
 
         public DataTable ListarPlanillaXIngresosXBoletaPago(int pidPlanilla, int pidtregimenlaboral, int pid_trabajador)

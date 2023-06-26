@@ -183,9 +183,10 @@ namespace CapaUsuario.Trabajador
             if (modoEdicion == false || modoAltaTrabajador == true)
             {
 
-
+                miTrabajador.NroRenta4ta = "1";
                 if (modoAltaTrabajador == false)
                 {
+                    
                     sidttrabajador = miTrabajador.AgregarTrabajadorConID(miTrabajador);
                 }
                 else

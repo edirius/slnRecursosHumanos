@@ -69,6 +69,21 @@ namespace CapaUsuario.Trabajador
             chkEssaludVida.Checked = miTrabajador.Essaludvida;
             chkRenta4ta.Checked = miTrabajador.Suspencionrenta4ta;
             chkScrt.Checked = miTrabajador.Scrt;
+            if (miTrabajador.NroRenta4ta == "" )
+            {
+                chkSCRTP.Checked = false;
+            }
+            else
+            {
+                if (miTrabajador.NroRenta4ta.Substring(0,1)== "1")
+                {
+                    chkSCRTP.Checked = true;
+                }
+                else
+                {
+                    chkSCRTP.Checked = false;
+                }
+            }
             txtNroRenta4ta.Text = miTrabajador.NroRenta4ta;
         }
 

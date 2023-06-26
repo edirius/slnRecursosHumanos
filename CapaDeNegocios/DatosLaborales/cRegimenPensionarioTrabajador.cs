@@ -18,6 +18,7 @@ namespace CapaDeNegocios.DatosLaborales
         string stipocomision;
         int sidtafp;
         int sidtperiodotrabajor;
+        private cAFP afp;
 
         public int IdtRegimenPensionarioTrabajador
         {
@@ -53,6 +54,19 @@ namespace CapaDeNegocios.DatosLaborales
         {
             get { return sidtperiodotrabajor; }
             set { sidtperiodotrabajor = value; }
+        }
+
+        public cAFP Afp
+        {
+            get
+            {
+                return afp;
+            }
+
+            set
+            {
+                afp = value;
+            }
         }
 
         public DataTable ListarRegimenPensionarioTrabajador(int IdtPeriodoTrabajador)
