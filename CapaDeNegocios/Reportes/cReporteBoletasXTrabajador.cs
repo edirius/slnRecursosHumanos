@@ -205,7 +205,7 @@ namespace CapaDeNegocios.Reportes
                         cFilasPDF filaNombre = new cFilasPDF();
 
                         cCeldaPDF celdaNombre = new cCeldaPDF();
-                        celdaNombre.Contenido = "Nombre: " + item.Trabajador.Nombres + " " + item.Trabajador.ApellidoPaterno + " " + item.Trabajador.ApellidoMaterno + "                        DNI: " + item.Trabajador.Dni  +  "                Nro. Planilla: "  + item.Numero;
+                        celdaNombre.Contenido = "Nombre: " + item.Trabajador.Nombres + " " + item.Trabajador.ApellidoPaterno + " " + item.Trabajador.ApellidoMaterno + "                        DNI: " + item.Trabajador.Dni  +  "                Nro. Planilla: "  + item.Numero + "      DIAS LABORADOS:  " + item.DiasLaborados;
                         celdaNombre.QuitarBordes();
                         celdaNombre.AltoColumna = 12;
                         celdaNombre.Alineamiento = enumAlineamiento.izquierda;
@@ -219,11 +219,11 @@ namespace CapaDeNegocios.Reportes
                         {
                             if (AFPElegido.IdtAFP == 5)
                             {
-                                celdaCargo.Contenido = "Cargo: " + item.Cargo + "                           REGIMEN PENSIONARIO: " + AFPElegido.Afp.Nombre + "      DIAS LABORADOS:  " + item.DiasLaborados;
+                                celdaCargo.Contenido = "Cargo: " + item.Cargo + "                           REGIMEN PENSIONARIO: " + AFPElegido.Afp.Nombre;
                             }
                             else
                             {
-                                celdaCargo.Contenido = "Cargo: " + item.Cargo + "                           REGIMEN PENSIONARIO: " + AFPElegido.Afp.Nombre + "                  CUSPP: " + AFPElegido.CUSPP + "      DIAS LABORADOS:  " + item.DiasLaborados;
+                                celdaCargo.Contenido = "Cargo: " + item.Cargo + "                           REGIMEN PENSIONARIO: " + AFPElegido.Afp.Nombre + "                  CUSPP: " + AFPElegido.CUSPP;
                             }
                             
                         }
