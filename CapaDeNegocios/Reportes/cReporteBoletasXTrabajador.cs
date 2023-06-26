@@ -143,7 +143,7 @@ namespace CapaDeNegocios.Reportes
                         cCeldaPDF TituloEmpresa = new cCeldaPDF();
                         TituloEmpresa.Contenido = oDatosGenerales.Nombre + " RUC: " + oDatosGenerales.Ruc;
                         TituloEmpresa.QuitarBordes();
-                        TituloEmpresa.AltoColumna = 15;
+                        TituloEmpresa.AltoColumna = 12;
                         TituloEmpresa.ImagenTranasparente = true;
                         FilaTituloPrincipal.ListaCeldas.Add(TituloEmpresa);
 
@@ -158,7 +158,7 @@ namespace CapaDeNegocios.Reportes
                         }
                         
                         TituloPrincipal.QuitarBordes();
-                        TituloPrincipal.AltoColumna = 15;
+                        TituloPrincipal.AltoColumna = 12;
                         TituloPrincipal.ImagenTranasparente = true;
                         FilaTituloPrincipal.ListaCeldas.Add(TituloPrincipal);
 
@@ -197,7 +197,7 @@ namespace CapaDeNegocios.Reportes
                         cCeldaPDF NombreMeta = new cCeldaPDF();
                         NombreMeta.Contenido = "Meta: " + item.Meta.Numero + " " + item.Meta.Nombre;
                         NombreMeta.QuitarBordes();
-                        NombreMeta.AltoColumna = 15;
+                        NombreMeta.AltoColumna = 12;
                         NombreMeta.Alineamiento = enumAlineamiento.izquierda;
                         FilaMeta.ListaCeldas.Add(NombreMeta);
                         TablaTituloPrincipal.ListaFilas.Add(FilaMeta);
@@ -205,9 +205,9 @@ namespace CapaDeNegocios.Reportes
                         cFilasPDF filaNombre = new cFilasPDF();
 
                         cCeldaPDF celdaNombre = new cCeldaPDF();
-                        celdaNombre.Contenido = "Nombre: " + item.Trabajador.Nombres + " " + item.Trabajador.ApellidoPaterno + " " + item.Trabajador.ApellidoMaterno + "                        DNI: " + item.Trabajador.Dni ;
+                        celdaNombre.Contenido = "Nombre: " + item.Trabajador.Nombres + " " + item.Trabajador.ApellidoPaterno + " " + item.Trabajador.ApellidoMaterno + "                        DNI: " + item.Trabajador.Dni  +  "                Nro. Planilla: "  + item.Numero;
                         celdaNombre.QuitarBordes();
-                        celdaNombre.AltoColumna = 15;
+                        celdaNombre.AltoColumna = 12;
                         celdaNombre.Alineamiento = enumAlineamiento.izquierda;
                         filaNombre.ListaCeldas.Add(celdaNombre);
                         TablaTituloPrincipal.ListaFilas.Add(filaNombre);
@@ -233,7 +233,7 @@ namespace CapaDeNegocios.Reportes
                         }
                         
                         celdaCargo.QuitarBordes();
-                        celdaCargo.AltoColumna = 15;
+                        celdaCargo.AltoColumna = 12;
                         celdaCargo.Alineamiento = enumAlineamiento.izquierda;
                         filaCargo.ListaCeldas.Add(celdaCargo);
                         TablaTituloPrincipal.ListaFilas.Add(filaCargo);
@@ -253,18 +253,34 @@ namespace CapaDeNegocios.Reportes
                         cFilasPDF FilaTituloIngreso = new cFilasPDF();
 
                         cCeldaPDF celdaVacia = new cCeldaPDF();
-                        celdaVacia.AltoColumna = 15;
+                        celdaVacia.AltoColumna = 12;
                         celdaVacia.QuitarBordes();
                         celdaVacia.BordeAnchos.AnchoAbajo = 1;
 
                         cCeldaPDF TituloIngreso = new cCeldaPDF();
                         TituloIngreso.Contenido = "INGRESOS";
                         TituloIngreso.QuitarBordes();
-                        TituloIngreso.AltoColumna = 15;
+                        TituloIngreso.AltoColumna = 12;
                         TituloIngreso.BordeAnchos.AnchoAbajo = 1;
                         FilaTituloIngreso.ListaCeldas.Add(TituloIngreso);
                         FilaTituloIngreso.ListaCeldas.Add(celdaVacia);
                         TablaTituloIngreso.ListaFilas.Add(FilaTituloIngreso);
+
+
+                        cFilasPDF FilaTituloConcepto = new cFilasPDF();
+                        cCeldaPDF TituloConcepto = new cCeldaPDF();
+                        TituloConcepto.Contenido = "Concepto";
+                        TituloConcepto.QuitarBordes();
+                        TituloConcepto.AltoColumna = 12;
+                        FilaTituloConcepto.ListaCeldas.Add(TituloConcepto);
+
+                        cCeldaPDF TituloMonto = new cCeldaPDF();
+                        TituloMonto.Contenido = "Monto";
+                        TituloMonto.QuitarBordes();
+                        TituloMonto.AltoColumna = 12;
+                        FilaTituloConcepto.ListaCeldas.Add(TituloMonto);
+                        TablaTituloIngreso.ListaFilas.Add(FilaTituloConcepto);
+
 
                         foreach (cDetallePlanillaIngresos item2 in item.DetallePlanilla.ListaIngresos)
                         {
@@ -272,13 +288,13 @@ namespace CapaDeNegocios.Reportes
                             cCeldaPDF NombreIngreso = new cCeldaPDF();
                             NombreIngreso.Contenido = item2.MaestroIngresos.Abreviacion;
                             NombreIngreso.QuitarBordes();
-                            NombreIngreso.AltoColumna = 15;
+                            NombreIngreso.AltoColumna = 10;
                             FilaIngresos.ListaCeldas.Add(NombreIngreso);
 
                             cCeldaPDF MontoIngreso = new cCeldaPDF();
                             MontoIngreso.Contenido = item2.Monto.ToString();
                             MontoIngreso.QuitarBordes();
-                            MontoIngreso.AltoColumna = 15;
+                            MontoIngreso.AltoColumna = 10;
                             FilaIngresos.ListaCeldas.Add(MontoIngreso);
 
                             TablaTituloIngreso.ListaFilas.Add(FilaIngresos);
@@ -299,12 +315,13 @@ namespace CapaDeNegocios.Reportes
 
                         cCeldaPDF TituloDescuento = new cCeldaPDF();
                         TituloDescuento.Contenido = "DESCUENTOS";
-                        TituloDescuento.AltoColumna = 15;
+                        TituloDescuento.AltoColumna = 12;
                         TituloDescuento.QuitarBordes();
                         TituloDescuento.BordeAnchos.AnchoAbajo = 1;
                         FilaTituloDescuento.ListaCeldas.Add(TituloDescuento);
                         FilaTituloDescuento.ListaCeldas.Add(celdaVacia);
                         TablaDescuento.ListaFilas.Add(FilaTituloDescuento);
+                        TablaDescuento.ListaFilas.Add(FilaTituloConcepto);
 
                         foreach  (cDetallePlanillaDescuentos item3 in item.DetallePlanilla.ListaDescuentos)
                         {
@@ -312,12 +329,12 @@ namespace CapaDeNegocios.Reportes
                             cCeldaPDF NombreDescuento = new cCeldaPDF();
                             NombreDescuento.Contenido = item3.MaestroDescuento.Abreviacion;
                             NombreDescuento.QuitarBordes();
-                            NombreDescuento.AltoColumna = 15;
+                            NombreDescuento.AltoColumna = 10;
                             FilaDescuentos.ListaCeldas.Add(NombreDescuento);
 
                             cCeldaPDF MontoDescuento = new cCeldaPDF();
                             MontoDescuento.Contenido = item3.Monto.ToString();
-                            MontoDescuento.AltoColumna = 15;
+                            MontoDescuento.AltoColumna = 10;
                             MontoDescuento.QuitarBordes(); 
                             FilaDescuentos.ListaCeldas.Add(MontoDescuento);
 
@@ -333,13 +350,13 @@ namespace CapaDeNegocios.Reportes
                             cCeldaPDF NombreAportacion = new cCeldaPDF();
                             NombreAportacion.Contenido = item4.MaestroAportacionTrabajador.Abreviacion;
                             NombreAportacion.QuitarBordes();
-                            NombreAportacion.AltoColumna = 15;
+                            NombreAportacion.AltoColumna = 10;
                             FilaAportacionTrabajador.ListaCeldas.Add(NombreAportacion);
 
                             cCeldaPDF MontoAportacionTrabajador = new cCeldaPDF();
                             MontoAportacionTrabajador.Contenido = item4.Monto.ToString();
                             MontoAportacionTrabajador.QuitarBordes();
-                            MontoAportacionTrabajador.AltoColumna = 15;
+                            MontoAportacionTrabajador.AltoColumna = 10;
                             FilaAportacionTrabajador.ListaCeldas.Add(MontoAportacionTrabajador);
 
                             TablaDescuento.ListaFilas.Add(FilaAportacionTrabajador);
@@ -360,25 +377,25 @@ namespace CapaDeNegocios.Reportes
                         cCeldaPDF TituloAportacionesEmpleador = new cCeldaPDF();
                         TituloAportacionesEmpleador.Contenido = "APORTACIONES EMPL.";
                         TituloAportacionesEmpleador.QuitarBordes();
-                        TituloAportacionesEmpleador.AltoColumna = 15;
+                        TituloAportacionesEmpleador.AltoColumna = 12;
                         TituloAportacionesEmpleador.BordeAnchos.AnchoAbajo = 1;
                         FilaTituloAportacionesEmpleador.ListaCeldas.Add(TituloAportacionesEmpleador);
                         FilaTituloAportacionesEmpleador.ListaCeldas.Add(celdaVacia);
                         TablaAportacionesEmpleador.ListaFilas.Add(FilaTituloAportacionesEmpleador);
-
+                        TablaAportacionesEmpleador.ListaFilas.Add(FilaTituloConcepto);
                         foreach (cDetallePlanillaAEmpleador item5 in item.DetallePlanilla.ListaAportacionesEmpleador)
                         {
                             cFilasPDF FilaAportacionEmpleador = new cFilasPDF();
                             cCeldaPDF NombreAportacionE = new cCeldaPDF();
                             NombreAportacionE.Contenido = item5.MaestroAportacionE.Abreviacion;
                             NombreAportacionE.QuitarBordes();
-                            NombreAportacionE.AltoColumna = 15;
+                            NombreAportacionE.AltoColumna = 10;
                             FilaAportacionEmpleador.ListaCeldas.Add(NombreAportacionE);
 
                             cCeldaPDF MontoAportacionEmpleador = new cCeldaPDF();
                             MontoAportacionEmpleador.Contenido = item5.Monto.ToString();
                             MontoAportacionEmpleador.QuitarBordes();
-                            MontoAportacionEmpleador.AltoColumna = 15;
+                            MontoAportacionEmpleador.AltoColumna = 10;
                             FilaAportacionEmpleador.ListaCeldas.Add(MontoAportacionEmpleador);
 
                             TablaAportacionesEmpleador.ListaFilas.Add(FilaAportacionEmpleador);
@@ -405,6 +422,28 @@ namespace CapaDeNegocios.Reportes
                         filaSub.ListaCeldas.Add(celdaSubtotal);
 
                         tablaSubtotal.ListaFilas.Add(filaSub);
+
+
+                        cTablaPDF tablaFirmas = new cTablaPDF();
+                        tablaFirmas.columnas = 2;
+                        tablaFirmas.anchoColumnas = new float[] { 50f, 50f };
+
+                        cFilasPDF filaFirmas = new cFilasPDF();
+                        cCeldaPDF FirmaTrabajador = new cCeldaPDF();
+                        FirmaTrabajador.QuitarBordes();
+                        FirmaTrabajador.Contenido = "TRABAJADOR";
+                        FirmaTrabajador.AltoColumna = 70;
+                        FirmaTrabajador.Alineamiento = enumAlineamiento.abajo;
+                        filaFirmas.ListaCeldas.Add(FirmaTrabajador);
+
+                        cCeldaPDF FirmaEmpleador = new cCeldaPDF();
+                        FirmaEmpleador.QuitarBordes();
+                        FirmaEmpleador.Contenido = "EMPLEADOR";
+                        FirmaEmpleador.AltoColumna = 70;
+                        FirmaEmpleador.Alineamiento = enumAlineamiento.abajo;
+                        filaFirmas.ListaCeldas.Add(FirmaEmpleador);
+
+                        tablaFirmas.ListaFilas.Add(filaFirmas);
 
 
                         //cTablaPDF subtotalIngresos = new cTablaPDF();
@@ -477,6 +516,7 @@ namespace CapaDeNegocios.Reportes
                         oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
                         oHojaPDF.ListaDeTablas.Add(TablaDetalle);
                         oHojaPDF.ListaDeTablas.Add(tablaSubtotal);
+                        oHojaPDF.ListaDeTablas.Add(tablaFirmas);
                         oReporte.ListaHojasPDF.Add(oHojaPDF);
                     }
 

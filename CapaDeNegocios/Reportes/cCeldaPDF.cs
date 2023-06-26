@@ -28,7 +28,8 @@ namespace CapaDeNegocios.Reportes
         defecto = 1,
         derecha = 2,
         izquierda = 3,
-        centro = 4
+        centro = 4,
+        abajo= 5
     }
 
     public class cCeldaPDF

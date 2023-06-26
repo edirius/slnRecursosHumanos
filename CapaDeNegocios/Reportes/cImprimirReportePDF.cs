@@ -208,7 +208,7 @@ namespace CapaDeNegocios.Reportes
 
             iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);
             iTextSharp.text.Font fuenteTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 9, 1, iTextSharp.text.Color.BLUE);
-            Document pdfDoc = new Document(PageSize.A4, 80, 9, 40, 10);
+            Document pdfDoc = new Document(PageSize.A4, 80, 9, 10, 10);
 
             pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
             FileStream stream = new FileStream(oReportePDF.RutaArchivo, FileMode.Create);
@@ -217,8 +217,8 @@ namespace CapaDeNegocios.Reportes
 
             iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
             logo.ScalePercent(64f);
-            logo.SetAbsolutePosition(22f, pdfDoc.PageSize.Height - 100f);
-
+            //logo.SetAbsolutePosition(5f, pdfDoc.PageSize.Height - 100f);
+            logo.SetAbsolutePosition(10f, pdfDoc.PageSize.Height - Convert.ToSingle(logo.Height * 0.64)-10f);
             pdfDoc.Add(logo);
 
            
@@ -277,6 +277,10 @@ namespace CapaDeNegocios.Reportes
                                                         case enumAlineamiento.centro:
                                                             cell.HorizontalAlignment = Element.ALIGN_CENTER;
                                                             break;
+                                                        case enumAlineamiento.abajo:
+                                                            cell.VerticalAlignment = Element.ALIGN_BOTTOM;
+                                                            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                                            break;
                                                     }
 
                                                     cell.UseVariableBorders = true;
@@ -313,6 +317,10 @@ namespace CapaDeNegocios.Reportes
                                                     cell.HorizontalAlignment = Element.ALIGN_LEFT;
                                                     break;
                                                 case enumAlineamiento.centro:
+                                                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                                    break;
+                                                case enumAlineamiento.abajo:
+                                                    cell.VerticalAlignment = Element.ALIGN_BOTTOM;
                                                     cell.HorizontalAlignment = Element.ALIGN_CENTER;
                                                     break;
                                             }
@@ -356,6 +364,10 @@ namespace CapaDeNegocios.Reportes
                                         cell.HorizontalAlignment = Element.ALIGN_LEFT;
                                         break;
                                     case enumAlineamiento.centro:
+                                        cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                        break;
+                                    case enumAlineamiento.abajo:
+                                        cell.VerticalAlignment = Element.ALIGN_BOTTOM;
                                         cell.HorizontalAlignment = Element.ALIGN_CENTER;
                                         break;
                                 }
