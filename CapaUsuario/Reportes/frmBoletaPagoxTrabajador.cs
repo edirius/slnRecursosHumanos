@@ -44,31 +44,23 @@ namespace CapaUsuario.Reportes
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar) || e.KeyChar == '\b' || e.KeyChar== (char)Keys.Delete)
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
+           
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtDNI.Text.Length < 8)
+                if (esValidoDNI(txtDNI.Text))
                 {
-                    MessageBox.Show("El dni debe contener 8 caracteres.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    oTrabajador = oTrabajador.BuscarTrabajadorXDNI(txtDNI.Text);
+                    miReporte = new CapaDeNegocios.Reportes.cReporteBoletasXTrabajador(oTrabajador);
+                    miReporte.TraerListaPLanillas(oTrabajador, Convert.ToInt16(cboAño.Text));
+                    dtgBoletasPago.DataSource = miReporte.ListaBoletasXAño;
                 }
                 else
                 {
                    
-                    oTrabajador=  oTrabajador.BuscarTrabajadorXDNI(txtDNI.Text);
-                    miReporte = new CapaDeNegocios.Reportes.cReporteBoletasXTrabajador(oTrabajador);
-                    miReporte.TraerListaPLanillas(oTrabajador, Convert.ToInt16(cboAño.Text));
-                    dtgBoletasPago.DataSource = miReporte.ListaBoletasXAño;
                     
                 }
             }
@@ -77,6 +69,35 @@ namespace CapaUsuario.Reportes
                 MessageBox.Show("Error en el metodo buscar: " + ex.Message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
+        }
+
+        private bool esValidoDNI(string dni)
+        {
+            if (dni.Length != 8)
+            {
+                MessageBox.Show("El DNI ingresado debe contener 8 caractere", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            bool esErroneo = false;
+
+            for (int i = 0; i < dni.Length; i++)
+            {
+                int check=0;
+                
+                if (!int.TryParse(dni.Substring(i, 1), out check))
+                {
+                    esErroneo = true;
+                }  
+            }
+
+            if (esErroneo)
+            {
+                MessageBox.Show("Uno de los caracteres del dni no es numerico", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
+
+            return true;
         }
 
         private void btnImprimirBoleta_Click(object sender, EventArgs e)
@@ -123,6 +144,8 @@ namespace CapaUsuario.Reportes
                         }
                     }
                 }
+
+
             }
             catch (Exception ex)
             {

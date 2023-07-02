@@ -349,8 +349,8 @@ namespace CapaDeNegocios.Reportes
                         cCeldaPDF TituloMonto = new cCeldaPDF();
                         TituloMonto.Contenido = "Monto";
                         TituloMonto.QuitarBordes();
-                       
                         TituloMonto.AltoColumna = 12;
+
                         FilaTituloConcepto.ListaCeldas.Add(TituloMonto);
                         TablaTituloIngreso.ListaFilas.Add(FilaTituloConcepto);
 
@@ -462,7 +462,25 @@ namespace CapaDeNegocios.Reportes
                         FilaTituloAportacionesEmpleador.ListaCeldas.Add(TituloAportacionesEmpleador);
                         FilaTituloAportacionesEmpleador.ListaCeldas.Add(celdaVaciaFinal);
                         TablaAportacionesEmpleador.ListaFilas.Add(FilaTituloAportacionesEmpleador);
-                        TablaAportacionesEmpleador.ListaFilas.Add(FilaTituloConcepto);
+
+                        cFilasPDF FilaTituloConcepto2 = new cFilasPDF();
+                        cCeldaPDF TituloConcepto2 = new cCeldaPDF();
+                        TituloConcepto2.Contenido = "Concepto";
+                        TituloConcepto2.QuitarBordes();
+                        TituloConcepto2.BordeAnchos.AnchoIzquierda = 1;
+                        TituloConcepto2.AltoColumna = 12;
+                        FilaTituloConcepto2.ListaCeldas.Add(TituloConcepto2);
+
+                        cCeldaPDF TituloMonto2 = new cCeldaPDF();
+                        TituloMonto2.Contenido = "Monto";
+                        TituloMonto2.QuitarBordes();
+                        TituloMonto2.BordeAnchos.AnchoDerecha = 1;
+                        TituloMonto2.AltoColumna = 12;
+
+                        
+                        FilaTituloConcepto2.ListaCeldas.Add(TituloMonto2);
+
+                        TablaAportacionesEmpleador.ListaFilas.Add(FilaTituloConcepto2);
                         foreach (cDetallePlanillaAEmpleador item5 in item.DetallePlanilla.ListaAportacionesEmpleador)
                         {
                             cFilasPDF FilaAportacionEmpleador = new cFilasPDF();
