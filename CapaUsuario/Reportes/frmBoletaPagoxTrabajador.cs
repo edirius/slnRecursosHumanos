@@ -94,7 +94,22 @@ namespace CapaUsuario.Reportes
                     fichero.FileName = "BoletaPago_" + oTrabajador.Dni + DateTime.Now.Month + ".pdf";
                     if (fichero.ShowDialog() == DialogResult.OK)
                     {
-                        miReporte.ImprimirReporteBoleta(fichero.FileName);
+                        if (rdnBoletaDuplicada.Checked)
+                        {
+                            miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.BoletaDuplicada);
+                        }
+                        else
+                        {
+                            if (rdnDosBoletas.Checked)
+                            {
+                                miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.DosBoletaXPagina);
+                            }
+                            else
+                            {
+                                miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.UnaBoletaxPagina);
+                            }
+                        }
+
                         FileInfo file = new FileInfo(fichero.FileName);
                         bool estaAbierto = false;
                         estaAbierto = IsFileinUse(file, fichero.FileName);

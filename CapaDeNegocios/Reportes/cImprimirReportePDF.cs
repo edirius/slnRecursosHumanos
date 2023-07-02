@@ -23,7 +23,7 @@ namespace CapaDeNegocios.Reportes
 
             iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);
             iTextSharp.text.Font fuenteTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 9, 1, iTextSharp.text.Color.BLUE);
-            Document pdfDoc = new Document(PageSize.A4, 80, 9, 40, 10);
+            Document pdfDoc = new Document(PageSize.A4, 80, 9, 0, 0);
 
             pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
             FileStream stream = new FileStream(oReportePDF.RutaArchivo, FileMode.Create);
@@ -208,20 +208,23 @@ namespace CapaDeNegocios.Reportes
 
             iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);
             iTextSharp.text.Font fuenteTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 9, 1, iTextSharp.text.Color.BLUE);
+            Rectangle tamañoHoja = new Rectangle(841, 298); // 841   595
+
             Document pdfDoc = new Document(PageSize.A4, 80, 9, 10, 10);
 
             pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+            //pdfDoc.SetPageSize(tamañoHoja);
             FileStream stream = new FileStream(oReportePDF.RutaArchivo, FileMode.Create);
             PdfWriter.GetInstance(pdfDoc, stream);
             pdfDoc.Open();
 
             iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
-            logo.ScalePercent(64f);
+            logo.ScalePercent(44f);
             //logo.SetAbsolutePosition(5f, pdfDoc.PageSize.Height - 100f);
-            logo.SetAbsolutePosition(10f, pdfDoc.PageSize.Height - Convert.ToSingle(logo.Height * 0.64)-10f);
-            pdfDoc.Add(logo);
+            //logo.SetAbsolutePosition(10f, pdfDoc.PageSize.Height - Convert.ToSingle(logo.Height * 0.64)-10f);
+            //pdfDoc.Add(logo);
 
-           
+
 
             foreach (cHojaPDF item in oReportePDF.ListaHojasPDF)
             {
@@ -231,7 +234,8 @@ namespace CapaDeNegocios.Reportes
                     PdfPTable pdfTable = new PdfPTable(item2.columnas);
                     pdfTable.DefaultCell.Padding = 0;
                     pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
-                    pdfTable.DefaultCell.BorderWidth = 1;
+                    //pdfTable.DefaultCell.BorderWidth = 1;
+                    pdfTable.DefaultCell.BorderWidth = Rectangle.NO_BORDER;
                     pdfTable.SetWidths(item2.anchoColumnas);
 
                     foreach (cFilasPDF item3 in item2.ListaFilas)
@@ -251,12 +255,16 @@ namespace CapaDeNegocios.Reportes
                                         {
                                             PdfPTable oNuevaTabla2 = new PdfPTable(item6.TablaPDF.columnas);
                                             oNuevaTabla2.SetWidths(item6.TablaPDF.anchoColumnas);
-                                            oNuevaTabla.DefaultCell.Border = Rectangle.NO_BORDER;
+                                            oNuevaTabla2.DefaultCell.Border = Rectangle.NO_BORDER;
                                             foreach (cFilasPDF item7 in item6.TablaPDF.ListaFilas)
                                             {
                                                 foreach (cCeldaPDF item8 in item7.ListaCeldas)
                                                 {
                                                     PdfPCell cell = new PdfPCell((new Phrase(item8.Contenido, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, new iTextSharp.text.Color(item8.ColorLetra)))));
+                                                    if (item8.esImagen)
+                                                    {
+                                                        cell = new PdfPCell(logo);
+                                                    }
                                                     if (!item8.ImagenTranasparente)
                                                     {
                                                         cell.BackgroundColor = new iTextSharp.text.Color(item8.ColorFondo);
@@ -283,6 +291,23 @@ namespace CapaDeNegocios.Reportes
                                                             break;
                                                     }
 
+                                                    switch (item8.ALineamientoVertical)
+                                                    {
+                                                        case enumAlineamientoVertical.defecto:
+                                                            cell.VerticalAlignment = Element.ALIGN_CENTER;
+                                                            break;
+                                                        case enumAlineamientoVertical.arriba:
+                                                            cell.VerticalAlignment = Element.ALIGN_TOP;
+                                                            break;
+                                                        case enumAlineamientoVertical.centro:
+                                                            cell.VerticalAlignment = Element.ALIGN_CENTER;
+                                                            break;
+                                                        case enumAlineamientoVertical.abajo:
+                                                            cell.VerticalAlignment = Element.ALIGN_BOTTOM;
+                                                            break;
+                                                        default:
+                                                            break;
+                                                    }
                                                     cell.UseVariableBorders = true;
                                                     cell.BorderWidth = item8.AnchoBorde;
                                                     cell.BorderWidthBottom = item8.BordeAnchos.AnchoAbajo;
@@ -295,7 +320,10 @@ namespace CapaDeNegocios.Reportes
                                                 }
                                                 oNuevaTabla2.CompleteRow();
                                             }
+                                           
+                                            
                                             oNuevaTabla.AddCell(oNuevaTabla2);
+
                                         }
                                         else
                                         {
@@ -303,6 +331,10 @@ namespace CapaDeNegocios.Reportes
                                             if (!item6.ImagenTranasparente)
                                             {
                                                 cell.BackgroundColor = new iTextSharp.text.Color(item6.ColorFondo);
+                                            }
+                                            if (item6.esImagen)
+                                            {
+                                                cell = new PdfPCell(logo);
                                             }
 
                                             switch (item6.Alineamiento)
@@ -322,6 +354,23 @@ namespace CapaDeNegocios.Reportes
                                                 case enumAlineamiento.abajo:
                                                     cell.VerticalAlignment = Element.ALIGN_BOTTOM;
                                                     cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                                                    break;
+                                            }
+                                            switch (item6.ALineamientoVertical)
+                                            {
+                                                case enumAlineamientoVertical.defecto:
+                                                    cell.VerticalAlignment = Element.ALIGN_CENTER;
+                                                    break;
+                                                case enumAlineamientoVertical.arriba:
+                                                    cell.VerticalAlignment = Element.ALIGN_TOP;
+                                                    break;
+                                                case enumAlineamientoVertical.centro:
+                                                    cell.VerticalAlignment = Element.ALIGN_CENTER;
+                                                    break;
+                                                case enumAlineamientoVertical.abajo:
+                                                    cell.VerticalAlignment = Element.ALIGN_BOTTOM;
+                                                    break;
+                                                default:
                                                     break;
                                             }
 
@@ -344,9 +393,18 @@ namespace CapaDeNegocios.Reportes
                             }
                             else
                             {
-                                PdfPCell cell = new PdfPCell((new Phrase(item4.Contenido, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, new iTextSharp.text.Color(item4.ColorLetra)))));
+                                PdfPCell cell;
                                 //cell = new PdfPCell(new Phrase(column.HeaderText));
                                 //PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                                if (item4.esImagen)
+                                {
+                                    cell = new PdfPCell(logo);
+                                }
+                                else
+                                {
+                                    cell = new PdfPCell((new Phrase(item4.Contenido, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, new iTextSharp.text.Color(item4.ColorLetra)))));
+                                }
+
                                 if (!item4.ImagenTranasparente)
                                 {
                                     cell.BackgroundColor = new iTextSharp.text.Color(item4.ColorFondo);
@@ -371,7 +429,30 @@ namespace CapaDeNegocios.Reportes
                                         cell.HorizontalAlignment = Element.ALIGN_CENTER;
                                         break;
                                 }
-                                cell.FixedHeight = item4.AltoColumna;
+
+                                switch (item4.ALineamientoVertical)
+                                {
+                                    case enumAlineamientoVertical.defecto:
+                                        cell.VerticalAlignment = Element.ALIGN_CENTER;
+                                        break;
+                                    case enumAlineamientoVertical.arriba:
+                                        cell.VerticalAlignment = Element.ALIGN_TOP;
+                                        break;
+                                    case enumAlineamientoVertical.centro:
+                                        cell.VerticalAlignment = Element.ALIGN_CENTER;
+                                        break;
+                                    case enumAlineamientoVertical.abajo:
+                                        cell.VerticalAlignment = Element.ALIGN_BOTTOM;
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                                if (!item4.esImagen)
+                                {
+                                    cell.FixedHeight = item4.AltoColumna;
+                                }
+                                
                                 cell.UseVariableBorders = true;
                                 cell.BorderWidth = item4.AnchoBorde;
                                 cell.BorderWidthBottom = item4.BordeAnchos.AnchoAbajo;
@@ -391,7 +472,7 @@ namespace CapaDeNegocios.Reportes
 
                 }
                 pdfDoc.NewPage();
-                pdfDoc.Add(logo);
+                //pdfDoc.Add(logo);
             }
 
             pdfDoc.Close();

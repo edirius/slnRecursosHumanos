@@ -32,6 +32,14 @@ namespace CapaDeNegocios.Reportes
         abajo= 5
     }
 
+    public enum enumAlineamientoVertical
+    {
+        defecto = 1,
+        arriba = 2,
+        centro =3,
+        abajo = 4
+    }
+
     public class cCeldaPDF
     {
         public string Contenido { get; set; }
@@ -44,9 +52,12 @@ namespace CapaDeNegocios.Reportes
         public Borde BordeAnchos { get; set; }
         public Boolean ImagenTranasparente { get; set; }
         public enumAlineamiento Alineamiento { get; set; }
+        public enumAlineamientoVertical ALineamientoVertical { get; set; }
 
+        public Boolean esImagen { get; set; }
         public cCeldaPDF()
         {
+            esImagen = false;
             Negrita = false;
             ColorFondo = Color.White;
             ColorLetra = Color.Black;
@@ -55,6 +66,7 @@ namespace CapaDeNegocios.Reportes
             BordeAnchos = new Borde();
             ImagenTranasparente = false;
             Alineamiento = enumAlineamiento.defecto;
+            ALineamientoVertical = enumAlineamientoVertical.defecto;
         }
 
         public cCeldaPDF(string contenido)
