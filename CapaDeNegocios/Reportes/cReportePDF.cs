@@ -17,10 +17,12 @@ namespace CapaDeNegocios.Reportes
         public List<cHojaPDF> ListaHojasPDF { get; set; }
         public string RutaArchivo { get; set; }
         public enumFormatoHoja FormatoHoja { get; set; }
+        public Single TamañoDefectoLetra { get; set; }
         public cReportePDF()
         {
             FormatoHoja = enumFormatoHoja.Vertical;
             ListaHojasPDF = new List<cHojaPDF>();
+            TamañoDefectoLetra = 7f;
         }
     }
 }

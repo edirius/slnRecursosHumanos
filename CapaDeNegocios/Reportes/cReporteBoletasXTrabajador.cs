@@ -127,7 +127,7 @@ namespace CapaDeNegocios.Reportes
 
        
 
-        public void ImprimirReporteBoleta(string RutaArchivo, OpcionesReporteBoleta opciones)
+        public void ImprimirReporteBoleta(string RutaArchivo, OpcionesReporteBoleta opciones, Single tamañoLetra)
         {
             try
             {
@@ -136,7 +136,7 @@ namespace CapaDeNegocios.Reportes
                 if (this.listaBoletasXAño.Count > 0)
                 {
                     cReportePDF oReporte = new cReportePDF();
-
+                    oReporte.TamañoDefectoLetra = tamañoLetra;
                     oReporte.RutaArchivo = RutaArchivo;
                     int numeroBoletasImpresas = 0;
 
@@ -193,6 +193,7 @@ namespace CapaDeNegocios.Reportes
                         TituloEmpresa.AltoColumna = 24;
                         TituloEmpresa.Alineamiento = enumAlineamiento.abajo;
                         TituloEmpresa.ALineamientoVertical = enumAlineamientoVertical.abajo;
+                        TituloEmpresa.TamañoLetra = oReporte.TamañoDefectoLetra;
                         TituloEmpresa.ImagenTranasparente = true;
                         filaTitulos.ListaCeldas.Add(TituloEmpresa);
 
@@ -221,6 +222,7 @@ namespace CapaDeNegocios.Reportes
                         
                         TituloPrincipal.QuitarBordes();
                         TituloPrincipal.AltoColumna = 12;
+                        TituloPrincipal.TamañoLetra = oReporte.TamañoDefectoLetra;
                         TituloPrincipal.ImagenTranasparente = true;
                         filaTitulos.ListaCeldas.Add(TituloPrincipal);
 
@@ -244,6 +246,7 @@ namespace CapaDeNegocios.Reportes
                         }
                         tituloRegimen.QuitarBordes();
                         tituloRegimen.ImagenTranasparente = true;
+                        tituloRegimen.TamañoLetra = oReporte.TamañoDefectoLetra;
                         filaTitulos.ListaCeldas.Add(tituloRegimen);
 
                         cCeldaPDF tituloMes = new cCeldaPDF();
@@ -251,6 +254,7 @@ namespace CapaDeNegocios.Reportes
                         tituloMes.AltoColumna = 12;
                         tituloMes.QuitarBordes();
                         tituloMes.ImagenTranasparente = true;
+                        tituloMes.TamañoLetra = oReporte.TamañoDefectoLetra;
                         filaTitulos.ListaCeldas.Add(tituloMes);
 
                         TablaTitulos.ListaFilas.Add(filaTitulos);
@@ -271,6 +275,7 @@ namespace CapaDeNegocios.Reportes
                         NombreMeta.QuitarBordes();
                         NombreMeta.AltoColumna = 12;
                         NombreMeta.Alineamiento = enumAlineamiento.izquierda;
+                        NombreMeta.TamañoLetra = oReporte.TamañoDefectoLetra;
                         FilaMeta.ListaCeldas.Add(NombreMeta);
                         TablaTituloPrincipal.ListaFilas.Add(FilaMeta);
 
@@ -281,6 +286,7 @@ namespace CapaDeNegocios.Reportes
                         celdaNombre.QuitarBordes();
                         celdaNombre.AltoColumna = 12;
                         celdaNombre.Alineamiento = enumAlineamiento.izquierda;
+                        celdaNombre.TamañoLetra = oReporte.TamañoDefectoLetra;
                         filaNombre.ListaCeldas.Add(celdaNombre);
                         TablaTituloPrincipal.ListaFilas.Add(filaNombre);
 
@@ -307,6 +313,7 @@ namespace CapaDeNegocios.Reportes
                         celdaCargo.QuitarBordes();
                         celdaCargo.AltoColumna = 12;
                         celdaCargo.Alineamiento = enumAlineamiento.izquierda;
+                        celdaCargo.TamañoLetra = oReporte.TamañoDefectoLetra;
                         filaCargo.ListaCeldas.Add(celdaCargo);
                         TablaTituloPrincipal.ListaFilas.Add(filaCargo);
 
@@ -333,6 +340,7 @@ namespace CapaDeNegocios.Reportes
                         TituloIngreso.BordeAnchos.AnchoArriba = 1;
                         TituloIngreso.AltoColumna = 12;
                         TituloIngreso.BordeAnchos.AnchoAbajo = 1;
+                        TituloIngreso.TamañoLetra = oReporte.TamañoDefectoLetra;
                         FilaTituloIngreso.ListaCeldas.Add(TituloIngreso);
                         FilaTituloIngreso.ListaCeldas.Add(celdaVacia);
                         TablaTituloIngreso.ListaFilas.Add(FilaTituloIngreso);
@@ -344,11 +352,13 @@ namespace CapaDeNegocios.Reportes
                         TituloConcepto.QuitarBordes();
                         TituloConcepto.BordeAnchos.AnchoIzquierda = 1;
                         TituloConcepto.AltoColumna = 12;
+                        TituloConcepto.TamañoLetra = oReporte.TamañoDefectoLetra;
                         FilaTituloConcepto.ListaCeldas.Add(TituloConcepto);
 
                         cCeldaPDF TituloMonto = new cCeldaPDF();
                         TituloMonto.Contenido = "Monto";
                         TituloMonto.QuitarBordes();
+                        TituloMonto.TamañoLetra = oReporte.TamañoDefectoLetra;
                         TituloMonto.AltoColumna = 12;
 
                         FilaTituloConcepto.ListaCeldas.Add(TituloMonto);
@@ -363,12 +373,14 @@ namespace CapaDeNegocios.Reportes
                             NombreIngreso.QuitarBordes();
                             NombreIngreso.BordeAnchos.AnchoIzquierda = 1;
                             NombreIngreso.AltoColumna = 10;
+                            NombreIngreso.TamañoLetra = oReporte.TamañoDefectoLetra;
                             FilaIngresos.ListaCeldas.Add(NombreIngreso);
 
                             cCeldaPDF MontoIngreso = new cCeldaPDF();
                             MontoIngreso.Contenido = item2.Monto.ToString();
                             MontoIngreso.QuitarBordes();
                             MontoIngreso.AltoColumna = 10;
+                            MontoIngreso.TamañoLetra = oReporte.TamañoDefectoLetra;
                             FilaIngresos.ListaCeldas.Add(MontoIngreso);
 
                             TablaTituloIngreso.ListaFilas.Add(FilaIngresos);
@@ -394,6 +406,7 @@ namespace CapaDeNegocios.Reportes
                         TituloDescuento.BordeAnchos.AnchoIzquierda = 1;
                         TituloDescuento.BordeAnchos.AnchoAbajo = 1;
                         TituloDescuento.BordeAnchos.AnchoArriba = 1;
+                        TituloDescuento.TamañoLetra = oReporte.TamañoDefectoLetra;
                         FilaTituloDescuento.ListaCeldas.Add(TituloDescuento);
                         FilaTituloDescuento.ListaCeldas.Add(celdaVacia);
                         TablaDescuento.ListaFilas.Add(FilaTituloDescuento);
@@ -407,6 +420,7 @@ namespace CapaDeNegocios.Reportes
                             NombreDescuento.QuitarBordes();
                             NombreDescuento.BordeAnchos.AnchoIzquierda = 1;
                             NombreDescuento.AltoColumna = 10;
+                            NombreDescuento.TamañoLetra = oReporte.TamañoDefectoLetra;
                             FilaDescuentos.ListaCeldas.Add(NombreDescuento);
 
                             cCeldaPDF MontoDescuento = new cCeldaPDF();
@@ -429,12 +443,14 @@ namespace CapaDeNegocios.Reportes
                             NombreAportacion.QuitarBordes();
                             NombreAportacion.BordeAnchos.AnchoIzquierda = 1;
                             NombreAportacion.AltoColumna = 10;
+                            NombreAportacion.TamañoLetra = oReporte.TamañoDefectoLetra;
                             FilaAportacionTrabajador.ListaCeldas.Add(NombreAportacion);
 
                             cCeldaPDF MontoAportacionTrabajador = new cCeldaPDF();
                             MontoAportacionTrabajador.Contenido = item4.Monto.ToString();
                             MontoAportacionTrabajador.QuitarBordes();
                             MontoAportacionTrabajador.AltoColumna = 10;
+                            MontoAportacionTrabajador.TamañoLetra = oReporte.TamañoDefectoLetra;
                             FilaAportacionTrabajador.ListaCeldas.Add(MontoAportacionTrabajador);
 
                             TablaDescuento.ListaFilas.Add(FilaAportacionTrabajador);
@@ -459,6 +475,7 @@ namespace CapaDeNegocios.Reportes
                         TituloAportacionesEmpleador.BordeAnchos.AnchoAbajo = 1;
                         TituloAportacionesEmpleador.BordeAnchos.AnchoArriba = 1;
                         TituloAportacionesEmpleador.BordeAnchos.AnchoIzquierda = 1;
+                        TituloAportacionesEmpleador.TamañoLetra = oReporte.TamañoDefectoLetra;
                         FilaTituloAportacionesEmpleador.ListaCeldas.Add(TituloAportacionesEmpleador);
                         FilaTituloAportacionesEmpleador.ListaCeldas.Add(celdaVaciaFinal);
                         TablaAportacionesEmpleador.ListaFilas.Add(FilaTituloAportacionesEmpleador);
@@ -469,12 +486,14 @@ namespace CapaDeNegocios.Reportes
                         TituloConcepto2.QuitarBordes();
                         TituloConcepto2.BordeAnchos.AnchoIzquierda = 1;
                         TituloConcepto2.AltoColumna = 12;
+                        TituloConcepto2.TamañoLetra = oReporte.TamañoDefectoLetra;
                         FilaTituloConcepto2.ListaCeldas.Add(TituloConcepto2);
 
                         cCeldaPDF TituloMonto2 = new cCeldaPDF();
                         TituloMonto2.Contenido = "Monto";
                         TituloMonto2.QuitarBordes();
                         TituloMonto2.BordeAnchos.AnchoDerecha = 1;
+                        TituloMonto2.TamañoLetra = oReporte.TamañoDefectoLetra;
                         TituloMonto2.AltoColumna = 12;
 
                         
@@ -489,6 +508,7 @@ namespace CapaDeNegocios.Reportes
                             NombreAportacionE.QuitarBordes();
                             NombreAportacionE.BordeAnchos.AnchoIzquierda = 1;
                             NombreAportacionE.AltoColumna = 10;
+                            NombreAportacionE.TamañoLetra = oReporte.TamañoDefectoLetra;
                             FilaAportacionEmpleador.ListaCeldas.Add(NombreAportacionE);
 
                             cCeldaPDF MontoAportacionEmpleador = new cCeldaPDF();
@@ -496,6 +516,7 @@ namespace CapaDeNegocios.Reportes
                             MontoAportacionEmpleador.QuitarBordes();
                             MontoAportacionEmpleador.BordeAnchos.AnchoDerecha = 1;
                             MontoAportacionEmpleador.AltoColumna = 10;
+                            MontoAportacionEmpleador.TamañoLetra = oReporte.TamañoDefectoLetra;
                             FilaAportacionEmpleador.ListaCeldas.Add(MontoAportacionEmpleador);
 
                             TablaAportacionesEmpleador.ListaFilas.Add(FilaAportacionEmpleador);
@@ -516,7 +537,15 @@ namespace CapaDeNegocios.Reportes
 
                         cFilasPDF filaSub = new cFilasPDF();
                         cCeldaPDF celdaSubtotal = new cCeldaPDF();
-                        celdaSubtotal.Contenido = "TOTAL INGRESOS:   " + item.TotalIngresos.ToString("c", new CultureInfo("es-PE")) + "                TOTAL DESCUENTOS:   " + (item.TotalDescuentos + item.TotalATrabajador).ToString("c", new CultureInfo("es-PE")) + "            TOTAL APORTAC. EMPLEADOR: " + item.TotalAEmpleador.ToString("c", new CultureInfo("es-PE")) + "             NETO A COBRAR: " + item.NetoACobrar.ToString("c", new CultureInfo("es-PE"));
+                        if (oReporte.TamañoDefectoLetra == 7)
+                        {
+                            celdaSubtotal.Contenido = "TOTAL INGRESOS:   " + item.TotalIngresos.ToString("c", new CultureInfo("es-PE")) + "                TOTAL DESCUENTOS:   " + (item.TotalDescuentos + item.TotalATrabajador).ToString("c", new CultureInfo("es-PE")) + "            TOTAL APORTAC. EMPLEADOR: " + item.TotalAEmpleador.ToString("c", new CultureInfo("es-PE")) + "             NETO A COBRAR: " + item.NetoACobrar.ToString("c", new CultureInfo("es-PE"));
+                        }
+                        else
+                        {
+                            celdaSubtotal.Contenido = "TOTAL INGRESOS:   " + item.TotalIngresos.ToString("c", new CultureInfo("es-PE")) + "          TOTAL DESCUENTOS:   " + (item.TotalDescuentos + item.TotalATrabajador).ToString("c", new CultureInfo("es-PE")) + "       TOTAL APORTAC. EMPLEADOR:  " + item.TotalAEmpleador.ToString("c", new CultureInfo("es-PE")) + "             NETO A COBRAR: " + item.NetoACobrar.ToString("c", new CultureInfo("es-PE"));
+                        }
+                        celdaSubtotal.TamañoLetra = oReporte.TamañoDefectoLetra;
                         celdaSubtotal.Alineamiento = enumAlineamiento.izquierda;
 
                         filaSub.ListaCeldas.Add(celdaSubtotal);

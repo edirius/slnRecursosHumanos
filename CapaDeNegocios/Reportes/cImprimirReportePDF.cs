@@ -260,7 +260,7 @@ namespace CapaDeNegocios.Reportes
                                             {
                                                 foreach (cCeldaPDF item8 in item7.ListaCeldas)
                                                 {
-                                                    PdfPCell cell = new PdfPCell((new Phrase(item8.Contenido, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, new iTextSharp.text.Color(item8.ColorLetra)))));
+                                                    PdfPCell cell = new PdfPCell((new Phrase(item8.Contenido, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, item8.TamañoLetra, iTextSharp.text.Font.BOLD, new iTextSharp.text.Color(item8.ColorLetra)))));
                                                     if (item8.esImagen)
                                                     {
                                                         cell = new PdfPCell(logo);
@@ -327,7 +327,7 @@ namespace CapaDeNegocios.Reportes
                                         }
                                         else
                                         {
-                                            PdfPCell cell = new PdfPCell((new Phrase(item6.Contenido, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, new iTextSharp.text.Color(item6.ColorLetra)))));
+                                            PdfPCell cell = new PdfPCell((new Phrase(item6.Contenido, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, item6.TamañoLetra, iTextSharp.text.Font.BOLD, new iTextSharp.text.Color(item6.ColorLetra)))));
                                             if (!item6.ImagenTranasparente)
                                             {
                                                 cell.BackgroundColor = new iTextSharp.text.Color(item6.ColorFondo);
@@ -402,7 +402,7 @@ namespace CapaDeNegocios.Reportes
                                 }
                                 else
                                 {
-                                    cell = new PdfPCell((new Phrase(item4.Contenido, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, new iTextSharp.text.Color(item4.ColorLetra)))));
+                                    cell = new PdfPCell((new Phrase(item4.Contenido, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, item4.TamañoLetra, iTextSharp.text.Font.BOLD, new iTextSharp.text.Color(item4.ColorLetra)))));
                                 }
 
                                 if (!item4.ImagenTranasparente)

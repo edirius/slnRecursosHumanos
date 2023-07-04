@@ -53,6 +53,7 @@ namespace CapaDeNegocios.Reportes
         public Boolean ImagenTranasparente { get; set; }
         public enumAlineamiento Alineamiento { get; set; }
         public enumAlineamientoVertical ALineamientoVertical { get; set; }
+        public Single TamañoLetra { get; set; }
 
         public Boolean esImagen { get; set; }
         public cCeldaPDF()
@@ -67,6 +68,7 @@ namespace CapaDeNegocios.Reportes
             ImagenTranasparente = false;
             Alineamiento = enumAlineamiento.defecto;
             ALineamientoVertical = enumAlineamientoVertical.defecto;
+            TamañoLetra = 7f;
         }
 
         public cCeldaPDF(string contenido)
