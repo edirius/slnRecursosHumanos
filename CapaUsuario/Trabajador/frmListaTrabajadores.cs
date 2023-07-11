@@ -78,6 +78,7 @@ namespace CapaUsuario.Trabajador
                 fNuevoTrabajador.miTrabajador.NombreVia = "N";
                 fNuevoTrabajador.miTrabajador.NombreZona = "N";
                 fNuevoTrabajador.modoEdicion = false;
+                fNuevoTrabajador.miTrabajador.NroRenta4ta = "";
                 if (fNuevoTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     miListaTrabajadores.AgregarTrabajador(fNuevoTrabajador.miTrabajador);
