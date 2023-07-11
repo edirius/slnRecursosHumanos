@@ -41,6 +41,11 @@ namespace CapaDeNegocios.ExportarSunat
         {
             return Conexion.GDatos.TraerDataTable("spJornadaLaboralTrabajadores", numero);
         }
+
+        public DataTable ListarTrabajadoresPorPlanillaAportacionesEmpleador(string numero)
+        {
+            return Conexion.GDatos.TraerDataTable("spExportarAportacionesE", numero);
+        }
         //spListarMaestroIngresosporTipo
         public DataTable ListarMaestroIngresosxTipo(string Tipo)
         {

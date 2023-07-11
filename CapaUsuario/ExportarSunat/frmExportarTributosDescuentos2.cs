@@ -23,7 +23,8 @@ namespace CapaUsuario.ExportarSunat
         ArrayList milista = new ArrayList();
         ArrayList milistaJornada = new ArrayList();
         ArrayList milistaSCTR = new ArrayList();
-
+        DataTable aportacionesE = new DataTable();
+        
         public frmExportarTributosDescuentos2()
         {
             InitializeComponent();
@@ -152,6 +153,7 @@ namespace CapaUsuario.ExportarSunat
                         dgvDescuentos.DataSource = oExportar.ListarTrabajadoresPorPlanillaDescuentos(numero);
                         dgvAportaciones.DataSource = oExportar.ListarTrabajadoresPorPlanillaAportaciones(numero);
                         dgvJornadaLaboral.DataSource = oExportar.ListarJornadaLaboralTrabajadores(numero);
+                        aportacionesE = oExportar.ListarTrabajadoresPorPlanillaAportacionesEmpleador(numero);
 
                         if (CheckJornada.Checked == true)
                         {

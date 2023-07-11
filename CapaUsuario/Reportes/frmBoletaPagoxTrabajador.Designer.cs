@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cboAño = new System.Windows.Forms.ComboBox();
@@ -157,8 +157,8 @@
             // 
             this.dtgBoletasPago.AllowUserToAddRows = false;
             this.dtgBoletasPago.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Lavender;
-            this.dtgBoletasPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Lavender;
+            this.dtgBoletasPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgBoletasPago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgBoletasPago.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDPLANILLA,
@@ -494,6 +494,16 @@
             // numTamañoLetra
             // 
             this.numTamañoLetra.Location = new System.Drawing.Point(740, 398);
+            this.numTamañoLetra.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.numTamañoLetra.Minimum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
             this.numTamañoLetra.Name = "numTamañoLetra";
             this.numTamañoLetra.Size = new System.Drawing.Size(46, 20);
             this.numTamañoLetra.TabIndex = 98;
