@@ -2044,8 +2044,10 @@ namespace CapaUsuario.Reportes
                        
                         else
                         {
-                            if (splantilla == "CTS")
+                            if (splantilla == "CTS" || splantilla == "GRATIFICACION")
                             {
+                                if (splantilla == "CTS")
+                                {
                                     //Limpiando titulos de la plantilla
                                     odtPrueba.Columns.Clear();
 
@@ -2098,7 +2100,7 @@ namespace CapaUsuario.Reportes
                                             drFila[1] = row[0];
                                             drFila[2] = row[1];
                                             drFila[3] = row[2];
-                                            if (Convert.ToDateTime(row[3].ToString()) < new DateTime(2022, 11,1))
+                                            if (Convert.ToDateTime(row[3].ToString()) < new DateTime(2022, 11, 1))
                                             {
                                                 drFila[4] = "DEL 01/11/2022 AL 30/04/2023";
                                                 drFila[5] = "6 MESES";
@@ -2108,8 +2110,8 @@ namespace CapaUsuario.Reportes
                                                 drFila[4] = "DEL 01/01/2023 AL 30/04/2023";
                                                 drFila[5] = "4 MESES";
                                             }
-                                            
-                                            
+
+
                                             drFila[6] = row[11];
                                             if (oDatosGenerales.Ruc == "20147495600")
                                             {
@@ -2129,16 +2131,16 @@ namespace CapaUsuario.Reportes
                                         else
                                         {
                                             odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
-                                        if (oDatosGenerales.Ruc== "20147495600")
-                                        {
-                                            odtPrueba.Rows[0][8] = " SUELDO ALCALDE = (4752.21*4/12)";
+                                            if (oDatosGenerales.Ruc == "20147495600")
+                                            {
+                                                odtPrueba.Rows[0][8] = " SUELDO ALCALDE = (4752.21*4/12)";
+                                            }
+                                            else
+                                            {
+                                                odtPrueba.Rows[0][7] = " SUELDO ALCALDE = (4752.21*4/12)";
+                                            }
+
                                         }
-                                        else
-                                        {
-                                            odtPrueba.Rows[0][7] = " SUELDO ALCALDE = (4752.21*4/12)";
-                                        }
-                                        
-                                    }
 
                                         this.dgvPrueba.DataSource = odtPrueba;
 
@@ -2152,6 +2154,117 @@ namespace CapaUsuario.Reportes
 
                                         exportar_a_pdf_CTS(sidtregimenlaboral);
                                     }
+                                }
+                                else
+                                {
+                                    //Limpiando titulos de la plantilla
+                                    odtPrueba.Columns.Clear();
+
+                                    //Establecer titulos de la planilla
+                                    odtPrueba.Columns.Add("Nro.", typeof(string));
+                                    odtPrueba.Columns.Add("NOMBRE COMPLETO", typeof(string));
+                                    odtPrueba.Columns.Add("CARGO", typeof(string));
+                                    odtPrueba.Columns.Add("DNI", typeof(string));
+
+                                    odtPrueba.Columns.Add("PERIODO", typeof(string));
+                                    odtPrueba.Columns.Add("TOTAL DIAS LABORADOS", typeof(string));
+                                    odtPrueba.Columns.Add("TOTAL GRATIFICACION", typeof(string));
+                                    if (oDatosGenerales.Ruc == "20147495600")
+                                    {
+                                        odtPrueba.Columns.Add("CUENTA BANCARIA", typeof(string));
+                                        odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamientoBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
+                                    }
+                                    else
+                                    {
+                                        odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamiento(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
+                                    }
+                                    odtPlanilla = buscarDuplicados(odtPlanilla);
+                                    odtPrueba.Clear();
+
+                                    indice_prueba_dias_laborados = BuscarIndiceColumna(odtPrueba, "PERIODO");
+                                    indice_neto_cobrar = BuscarIndiceColumna(odtPrueba, "TOTAL GRATIFICACION");
+
+                                    DataTable auxiliarNumeroTrabPlanilla = oPlanilla.ListarDetallePlanilla(sidtplanilla);
+
+                                    if (odtPlanilla.Rows.Count != auxiliarNumeroTrabPlanilla.Rows.Count)
+                                    {
+                                        MessageBox.Show("El numero de trabajadores " + odtPlanilla.Rows.Count.ToString() + " , es diferente al numero de trabajadores activos en el mes " + auxiliarNumeroTrabPlanilla.Rows.Count.ToString(), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+                                    if (odtPlanilla.Rows.Count > 0)
+                                    {
+                                        //Consultar meta de planilla
+                                        decimal sumatoria = 0;
+                                        int indice = 0;
+                                        //recorrer consulta de planilla por id plantilla y regimen laboral
+                                        foreach (DataRow row in odtPlanilla.Rows)
+                                        {
+                                            indice++;
+
+                                            drFila = odtPrueba.NewRow();
+                                            drFila.Delete();
+                                            //Determinar en base al id del trabajador sus ingresos
+                                            pidTrabajador = Convert.ToInt32(row[5]);
+
+                                            drFila[0] = indice.ToString();
+                                            drFila[1] = row[0];
+                                            drFila[2] = row[1];
+                                            drFila[3] = row[2];
+                                            if (Convert.ToDateTime(row[3].ToString()) < new DateTime(2022, 11, 1))
+                                            {
+                                                drFila[4] = "DEL 01/01/2023 AL 30/06/2023";
+                                                drFila[5] = "6 MESES";
+                                            }
+                                            else
+                                            {
+                                                drFila[4] = "DEL 01/01/2023 AL 30/06/2023";
+                                                drFila[5] = "6 MESES";
+                                            }
+
+
+                                            drFila[6] = row[11];
+                                            if (oDatosGenerales.Ruc == "20147495600")
+                                            {
+                                                drFila[7] = row[13];
+                                            }
+                                            sumatoria = sumatoria + Convert.ToDecimal(row[11]);
+
+                                            //odtPrueba.Rows.Add(drFila);
+                                            odtPrueba.Rows.InsertAt(drFila, k);
+
+                                            k++;
+                                        }
+                                        if (oDatosGenerales.Ruc == "20159308708")
+                                        {
+                                            //odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
+                                        }
+                                        else
+                                        {
+                                            odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
+                                            if (oDatosGenerales.Ruc == "20147495600")
+                                            {
+                                                odtPrueba.Rows[0][8] = " SUELDO ALCALDE = (4752.21*6/6)";
+                                            }
+                                            else
+                                            {
+                                                odtPrueba.Rows[0][7] = " SUELDO ALCALDE = (4752.21*6/6)";
+                                            }
+
+                                        }
+
+                                        this.dgvPrueba.DataSource = odtPrueba;
+
+                                        drFila = odtPrueba.NewRow();
+                                        //Insertando totales de las obligaciones
+                                        drFila[0] = "TOTAL";
+                                        drFila[6] = sumatoria;
+
+                                        odtPrueba.Rows.InsertAt(drFila, k);
+
+
+                                        exportar_a_pdf_CTS(sidtregimenlaboral);
+                                    }
+                                }
+                                    
 
                             }
                             else
@@ -4716,7 +4829,7 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph2 = new Paragraph();
                 paragraph2.Alignment = Element.ALIGN_RIGHT;
                 paragraph2.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
-                paragraph2.Add("LIQUIDACION CTS Nº " + sNumeroPlanilla + " - " + saño + " \n ");
+                paragraph2.Add("PLANILLA Nº " + sNumeroPlanilla + " - " + saño + " \n ");
 
                 Paragraph paragraph3 = new Paragraph();
                 paragraph3.Alignment = Element.ALIGN_CENTER;
