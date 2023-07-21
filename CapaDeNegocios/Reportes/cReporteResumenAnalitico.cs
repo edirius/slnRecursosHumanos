@@ -103,7 +103,7 @@ namespace CapaDeNegocios.Reportes
                 FilaSubtitulos.ListaCeldas.Add(sTituloNumero);
 
                 cCeldaPDF sTituloNombre = new cCeldaPDF();
-                sTituloNombre.Contenido = "Nombres";
+                sTituloNombre.Contenido = "DNI - Nombres";
                 sTituloNombre.ColorFondo = colorFondo;
                 FilaSubtitulos.ListaCeldas.Add(sTituloNombre);
 
@@ -176,7 +176,8 @@ namespace CapaDeNegocios.Reportes
                     filaItem.ListaCeldas.Add(sNumero);
 
                     cCeldaPDF sNombre = new cCeldaPDF();
-                    sNombre.Contenido = item.STrabajador.Nombres + " " + item.STrabajador.ApellidoPaterno + " " + item.STrabajador.ApellidoMaterno ;
+                    sNombre.Contenido = item.STrabajador.Dni + " -  " + item.STrabajador.Nombres + " " + item.STrabajador.ApellidoPaterno + " " + item.STrabajador.ApellidoMaterno ;
+                    sNombre.Alineamiento = enumAlineamiento.izquierda;
                     sNombre.QuitarBordes();
                     filaItem.ListaCeldas.Add(sNombre);
 

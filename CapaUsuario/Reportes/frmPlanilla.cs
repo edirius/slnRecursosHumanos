@@ -683,6 +683,8 @@ namespace CapaUsuario.Reportes
                 DataRow drFilaATrabajador = odtATrabajador.NewRow();
                 DataRow drFilaRedondear = odtRedondear.NewRow();
                 DataRow drFilaEEFF = odtEEFF.NewRow();
+
+                #region Regidores
                 if (splantilla == "REGIDORES")
                 {
                     //Limpiando titulos de la plantilla
@@ -772,6 +774,7 @@ namespace CapaUsuario.Reportes
                         exportar_a_pdf_Racionamiento(sidtregimenlaboral);
                     }
                 }
+                #endregion
                 else
                 {
                     #region Planilla Racionamiento
@@ -2044,6 +2047,7 @@ namespace CapaUsuario.Reportes
                        
                         else
                         {
+                            #region CTSyGratificacion
                             if (splantilla == "CTS" || splantilla == "GRATIFICACION")
                             {
                                 if (splantilla == "CTS")
@@ -2267,6 +2271,7 @@ namespace CapaUsuario.Reportes
                                     
 
                             }
+#endregion
                             else
                             {
                                 #region Planilla Normal

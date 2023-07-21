@@ -50,10 +50,10 @@ namespace CapaDeNegocios.PDF
             }
         }
 
-        public void ImprimirPlanilla(cnPlanilla miPLanilla)
+        public void ImprimirPlanilla(cnPlanilla miPLanilla, string rutaArchivo)
         {
-            FileInfo file = new FileInfo("C:\\PDFs\\DeclaracionJurada.pdf");
-            bool estaAbierto = IsFileinUse(file, "C:\\PDFs\\DeclaracionJurada.pdf");
+            FileInfo file = new FileInfo(rutaArchivo);
+            bool estaAbierto = IsFileinUse(file, rutaArchivo);
 
          
             blPlanilla oblPlanilla = new blPlanilla();
@@ -63,7 +63,7 @@ namespace CapaDeNegocios.PDF
            
 
             PdfWriter writer = PdfWriter.GetInstance(doc,
-                            new FileStream(@"c:\PDFs\listaTrabajadores.pdf", FileMode.Create));
+                            new FileStream(rutaArchivo, FileMode.Create));
 
             // Le colocamos el título y el autor
             // **Nota: Esto no será visible en el documento
@@ -905,7 +905,7 @@ namespace CapaDeNegocios.PDF
 
             else
             {
-                throw new cReglaNegociosException("Cerrar porfavor ListaTrabajadores.pdf");
+                throw new cReglaNegociosException("Cerrar porfavor  ListaTrabajadores.pdf");
             } 
 
         }

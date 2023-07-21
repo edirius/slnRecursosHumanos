@@ -1285,7 +1285,7 @@ namespace CapaUsuario.Planilla
 
                         cMetaJornal miMetaJornal = new cMetaJornal();
 
-                        miMetaJornal = MetaJornal(dgvDetallePlanilla.Rows[fila].Cells[7].ToString(), sidtmeta);
+                        miMetaJornal = MetaJornal(dgvDetallePlanilla.Rows[fila].Cells[7].Value.ToString(), sidtmeta);
                         decimal PagoDia;
                         PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
 

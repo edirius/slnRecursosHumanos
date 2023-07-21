@@ -646,6 +646,13 @@ namespace CapaUsuario
             fBoletaPagoXTrabajador.Show();
         }
 
+        private void planilla2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reportes.frmPlanilla2 fPlanilla2 = new Reportes.frmPlanilla2();
+            fPlanilla2.MdiParent = this;
+            fPlanilla2.Show();
+        }
+
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackupBBDDMySQL();

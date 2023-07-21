@@ -82,6 +82,7 @@
             // 
             // cboAño
             // 
+            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAño.FormattingEnabled = true;
             this.cboAño.Location = new System.Drawing.Point(228, 22);
             this.cboAño.Name = "cboAño";
@@ -90,6 +91,7 @@
             // 
             // cboMes
             // 
+            this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMes.FormattingEnabled = true;
             this.cboMes.Location = new System.Drawing.Point(42, 22);
             this.cboMes.Name = "cboMes";
@@ -134,7 +136,7 @@
             this.dtgListaPlanillas.Name = "dtgListaPlanillas";
             this.dtgListaPlanillas.ReadOnly = true;
             this.dtgListaPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaPlanillas.Size = new System.Drawing.Size(642, 275);
+            this.dtgListaPlanillas.Size = new System.Drawing.Size(755, 275);
             this.dtgListaPlanillas.TabIndex = 103;
             // 
             // btnImprimir
@@ -143,12 +145,11 @@
             this.btnImprimir.BackColor = System.Drawing.Color.MintCream;
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnImprimir.Image = global::CapaUsuario.Properties.Resources.pdf3;
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnImprimir.ImageKey = "(none)";
-            this.btnImprimir.Location = new System.Drawing.Point(22, 417);
+            this.btnImprimir.Location = new System.Drawing.Point(22, 419);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(88, 78);
+            this.btnImprimir.Size = new System.Drawing.Size(76, 63);
             this.btnImprimir.TabIndex = 104;
             this.btnImprimir.Text = "&Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -217,13 +218,13 @@
             this.fuenteFinanciamiento.HeaderText = "Fuente de Financiamiento";
             this.fuenteFinanciamiento.Name = "fuenteFinanciamiento";
             this.fuenteFinanciamiento.ReadOnly = true;
-            this.fuenteFinanciamiento.Width = 50;
+            this.fuenteFinanciamiento.Width = 150;
             // 
             // frmPlanilla2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 507);
+            this.ClientSize = new System.Drawing.Size(832, 507);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.dtgListaPlanillas);
             this.Controls.Add(this.groupBox1);

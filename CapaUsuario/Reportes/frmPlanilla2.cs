@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDeNegocios;
+using System.IO;
 
 namespace CapaUsuario.Reportes
 {
@@ -93,12 +94,66 @@ namespace CapaUsuario.Reportes
             CapaDeNegocios.PlanillaNueva.blPlanilla oblPlanilla = new CapaDeNegocios.PlanillaNueva.blPlanilla();
             CapaDeNegocios.PlanillaNueva.cnPlanilla oPlanilla = new CapaDeNegocios.PlanillaNueva.cnPlanilla();
             CapaDeNegocios.PDF.cPDF miPdf = new CapaDeNegocios.PDF.cPDF();
-             
+
             oPlanilla = oblPlanilla.TraerPlanilla(Convert.ToInt16(dtgListaPlanillas.SelectedRows[0].Cells[0].Value));
 
-            miPdf.ImprimirPlanilla(oPlanilla);
+            SaveFileDialog fichero = new SaveFileDialog();
+            fichero.Filter = "PDF (*.pdf)|*.pdf";
+            fichero.FileName = "PLANILLA_" + oPlanilla.numeroPlanilla + "_" + oPlanilla.Mes + "_" + oPlanilla.Año + ".pdf";
+            if (fichero.ShowDialog() == DialogResult.OK)
+            {
+                //miPdf.ImprimirPlanilla(oPlanilla, fichero.FileName);
 
-        
+                CapaDeNegocios.Reportes.cReportePlanilla oReportePlanilla = new CapaDeNegocios.Reportes.cReportePlanilla();
+
+                oReportePlanilla.ImprimirPLanilla(oPlanilla, fichero.FileName, 7);
+
+                FileInfo file = new FileInfo(fichero.FileName);
+                bool estaAbierto = false;
+                estaAbierto = IsFileinUse(file, fichero.FileName);
+
+                if (!estaAbierto)
+                {
+                    System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                    proc.EnableRaisingEvents = false;
+                    proc.StartInfo.FileName = fichero.FileName;
+                    proc.Start();
+                }
+            }
+        }
+
+      protected virtual bool IsFileinUse(FileInfo file, string path)
+        {
+            FileStream stream = null;
+
+            if (!File.Exists(path))
+            {
+                return false;
+            }
+            else
+            {
+                try
+                {
+                    stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+
+                }
+                catch (IOException)
+                {
+                    //the file is unavailable because it is:
+                    //still being written to
+                    //or being processed by another thread
+                    //or does not exist (has already been processed)
+                    return true;
+
+                }
+                finally
+                {
+                    if (stream != null)
+                        stream.Close();
+                }
+                return false;
+            }
         }
     }
+    
 }

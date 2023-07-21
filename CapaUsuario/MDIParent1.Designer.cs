@@ -100,6 +100,7 @@
             this.reportesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.boletaPagoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.boletaPagoPorPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.boletaPago2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planillaToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.trabajadoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -134,7 +135,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.boletaPago2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.planilla2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -699,7 +700,8 @@
             this.globalToolStripMenuItem,
             this.impresionPlanillasToolStripMenuItem,
             this.mnuResumenXDetallePlanillas,
-            this.analiticoPlanillasToolStripMenuItem});
+            this.analiticoPlanillasToolStripMenuItem,
+            this.planilla2ToolStripMenuItem});
             this.reportesToolStripMenuItem1.Name = "reportesToolStripMenuItem1";
             this.reportesToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
             this.reportesToolStripMenuItem1.Text = "Reportes";
@@ -718,6 +720,13 @@
             this.boletaPagoPorPlanillaToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
             this.boletaPagoPorPlanillaToolStripMenuItem.Text = "Boleta Pago por Planilla";
             this.boletaPagoPorPlanillaToolStripMenuItem.Click += new System.EventHandler(this.boletaPagoPorPlanillaToolStripMenuItem_Click);
+            // 
+            // boletaPago2ToolStripMenuItem
+            // 
+            this.boletaPago2ToolStripMenuItem.Name = "boletaPago2ToolStripMenuItem";
+            this.boletaPago2ToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.boletaPago2ToolStripMenuItem.Text = "Boleta Pago 2";
+            this.boletaPago2ToolStripMenuItem.Click += new System.EventHandler(this.boletaPago2ToolStripMenuItem_Click);
             // 
             // planillaToolStripMenuItem2
             // 
@@ -979,12 +988,12 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // boletaPago2ToolStripMenuItem
+            // planilla2ToolStripMenuItem
             // 
-            this.boletaPago2ToolStripMenuItem.Name = "boletaPago2ToolStripMenuItem";
-            this.boletaPago2ToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
-            this.boletaPago2ToolStripMenuItem.Text = "Boleta Pago 2";
-            this.boletaPago2ToolStripMenuItem.Click += new System.EventHandler(this.boletaPago2ToolStripMenuItem_Click);
+            this.planilla2ToolStripMenuItem.Name = "planilla2ToolStripMenuItem";
+            this.planilla2ToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.planilla2ToolStripMenuItem.Text = "Planilla 2";
+            this.planilla2ToolStripMenuItem.Click += new System.EventHandler(this.planilla2ToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -1126,6 +1135,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuResumenXDetallePlanillas;
         private System.Windows.Forms.ToolStripMenuItem analiticoPlanillasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem boletaPago2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem planilla2ToolStripMenuItem;
     }
 }
 
