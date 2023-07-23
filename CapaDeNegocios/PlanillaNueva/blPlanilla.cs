@@ -215,7 +215,7 @@ namespace CapaDeNegocios.PlanillaNueva
                     for (int i = 0; i < ListaDetallesAuxiliar.Rows.Count; i++)
                     {
                         cnDetallePlanilla detalleAuxiliar = new cnDetallePlanilla();
-                        detalleAuxiliar.codigo = Convert.ToInt16(ListaDetallesAuxiliar.Rows[i][0]); 
+                        detalleAuxiliar.codigo = Convert.ToInt32(ListaDetallesAuxiliar.Rows[i][0]); 
                         detalleAuxiliar.numero = i + 1;
                         detalleAuxiliar.cargo = Convert.ToString(ListaDetallesAuxiliar.Rows[i][1]);
                         detalleAuxiliar.fechaInicio = Convert.ToDateTime(ListaDetallesAuxiliar.Rows[i][2]);
@@ -225,7 +225,7 @@ namespace CapaDeNegocios.PlanillaNueva
                         detalleAuxiliar.totalDescuentos = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][6]);
                         detalleAuxiliar.totalAportacionesEmpleador = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][7]);
                         detalleAuxiliar.netoACobrar = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][8]);
-                        detalleAuxiliar.miTrabajador = TraerTrabajador (Convert.ToInt16(ListaDetallesAuxiliar.Rows[i][9]));
+                        detalleAuxiliar.miTrabajador = TraerTrabajador (Convert.ToInt32(ListaDetallesAuxiliar.Rows[i][9]));
                         detalleAuxiliar.ListaDetalleIngresos = TraerListaIngresos(detalleAuxiliar);
                         detalleAuxiliar.ListaDetalleEgresos = TraerListaDescuentos(detalleAuxiliar);
                         detalleAuxiliar.ListaDetalleAportacionesTrabajador = TraerListaAportacionesTrabajador(detalleAuxiliar);
@@ -257,7 +257,7 @@ namespace CapaDeNegocios.PlanillaNueva
                     for (int i = 0; i < ListaAuxiliarIngresos.Rows.Count; i++)
                     {
                         cnDetallePlanillaIngresos ingresoAuxiliar = new cnDetallePlanillaIngresos();
-                        ingresoAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarIngresos.Rows[i][0]);
+                        ingresoAuxiliar.Codigo = Convert.ToInt32(ListaAuxiliarIngresos.Rows[i][0]);
                         ingresoAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarIngresos.Rows[i][1]);
                         ingresoAuxiliar.MaestroIngresos = TraerMaestroIngresos(Convert.ToInt16(ListaAuxiliarIngresos.Rows[i][2]));
                         miListaDetalleIngresos.Add(ingresoAuxiliar);
@@ -325,7 +325,7 @@ namespace CapaDeNegocios.PlanillaNueva
                     for (int i = 0; i < ListaAuxiliarEgresos.Rows.Count; i++)
                     {
                         cnDetallePlanillaEgresos descuentoAuxiliar = new  cnDetallePlanillaEgresos();
-                        descuentoAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarEgresos.Rows[0][0]);
+                        descuentoAuxiliar.Codigo = Convert.ToInt32(ListaAuxiliarEgresos.Rows[0][0]);
                         descuentoAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarEgresos.Rows[0][1]);
                         descuentoAuxiliar.MaestroDescuentos = TraerMaestroDescuento(Convert.ToInt16(ListaAuxiliarEgresos.Rows[0][2]));  
                         miListaDetalleDescuentos.Add(descuentoAuxiliar);
@@ -378,7 +378,7 @@ namespace CapaDeNegocios.PlanillaNueva
                     for (int i = 0; i < ListaAuxiliarAportacionesTrabajador.Rows.Count; i++)
                     {
                         cnDetallePlanillaAportacionesTrabajador aportacionAuxiliar = new cnDetallePlanillaAportacionesTrabajador();
-                        aportacionAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarAportacionesTrabajador.Rows[i][0]);
+                        aportacionAuxiliar.Codigo = Convert.ToInt32(ListaAuxiliarAportacionesTrabajador.Rows[i][0]);
                         aportacionAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarAportacionesTrabajador.Rows[i][1]);
                         aportacionAuxiliar.MaestroAportacionTrabajador = TraerMaestroAportacionesTrabajador(Convert.ToInt16(ListaAuxiliarAportacionesTrabajador.Rows[i][2]));
                         miListaAportacionesTrabajador.Add(aportacionAuxiliar);
@@ -432,7 +432,7 @@ namespace CapaDeNegocios.PlanillaNueva
                     for (int i = 0; i < ListaAuxiliarAportacionesEmpleador.Rows.Count; i++)
                     {
                         cnDetallePlanillaAportacionesEmpleador aportacionAuxiliar = new cnDetallePlanillaAportacionesEmpleador();
-                        aportacionAuxiliar.Codigo = Convert.ToInt16(ListaAuxiliarAportacionesEmpleador.Rows[i][0]);
+                        aportacionAuxiliar.Codigo = Convert.ToInt32(ListaAuxiliarAportacionesEmpleador.Rows[i][0]);
                         aportacionAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarAportacionesEmpleador.Rows[i][1]);
                         aportacionAuxiliar.MaestroAportacionesEmpleador = TraerMaestroAportacionesEmpleador(Convert.ToInt16(ListaAuxiliarAportacionesEmpleador.Rows[i][2]));
                         miListaAportacionesEmpleador.Add(aportacionAuxiliar);

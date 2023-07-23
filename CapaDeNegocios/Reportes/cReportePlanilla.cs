@@ -147,12 +147,80 @@ namespace CapaDeNegocios.Reportes
             FilaEncabezado1.ListaCeldas.Add(celdaNro);
 
             cCeldaPDF celdaNombres = new cCeldaPDF();
-            celdaNombres.Contenido = "Nombres";
+
+            
+
+            cTablaPDF TablaNombres = new cTablaPDF();
+            TablaNombres.columnas = 1;
+            TablaNombres.anchoColumnas = new float[] { 100f };
+
+            cFilasPDF filaNombres = new cFilasPDF();
+
+            cCeldaPDF celdaTituloNombre = new cCeldaPDF();
+            celdaTituloNombre.Contenido = "Nombres y Apellidos";
+            filaNombres.ListaCeldas.Add(celdaTituloNombre);
+
+            cCeldaPDF celdaTituloDNI = new cCeldaPDF();
+            celdaTituloDNI.Contenido = "DNI";
+            filaNombres.ListaCeldas.Add(celdaTituloDNI);
+
+            cCeldaPDF celdaTituloFechaInicio = new cCeldaPDF();
+            celdaTituloFechaInicio.Contenido = "Fecha Inicio";
+            filaNombres.ListaCeldas.Add(celdaTituloFechaInicio);
+
+            cCeldaPDF celdaTituloCargo = new cCeldaPDF();
+            celdaTituloCargo.Contenido = "CARGO";
+            filaNombres.ListaCeldas.Add(celdaTituloCargo);
+
+            TablaNombres.ListaFilas.Add(filaNombres);
+
+            celdaNombres.TablaPDF = TablaNombres;
             FilaEncabezado1.ListaCeldas.Add(celdaNombres);
 
+
+    
+
+            cTablaPDF tablaTituloIngresos = new cTablaPDF();
+            tablaTituloIngresos.columnas = 1;
+            tablaTituloIngresos.anchoColumnas = new float[] { 100f };
+
+            cFilasPDF filaTituloIngresos = new cFilasPDF();
+
+
+            cCeldaPDF celdaTituloTodosIngresos = new cCeldaPDF();
+            celdaTituloTodosIngresos.Contenido = "Ingresos";
+            filaTituloIngresos.ListaCeldas.Add(celdaTituloTodosIngresos);
+
+            cCeldaPDF celdaContieneTodosIngresos = new cCeldaPDF();
+
+
+            cTablaPDF tablaIngresos = new cTablaPDF();
+            int numeroColumnas = miPLanilla.ListaDetalle[0].ListaDetalleIngresos.Count;
+
+            tablaIngresos.columnas = numeroColumnas;
+            tablaIngresos.anchoColumnas = TraerArregloSegunTamaño(numeroColumnas);
+
+            cFilasPDF filaIngresos = new cFilasPDF();
+
+            foreach (cnDetallePlanillaIngresos item in miPLanilla.ListaDetalle[0].ListaDetalleIngresos)
+            {
+                cCeldaPDF celdaTituloIngresos = new cCeldaPDF();
+                celdaTituloIngresos.Contenido = item.MaestroIngresos.Abreviacion;
+                filaIngresos.ListaCeldas.Add(celdaTituloIngresos);
+            }
+
+            tablaIngresos.ListaFilas.Add(filaIngresos);
+            celdaContieneTodosIngresos.TablaPDF = tablaIngresos;
+
+            filaTituloIngresos.ListaCeldas.Add(celdaContieneTodosIngresos);
+
+            tablaTituloIngresos.ListaFilas.Add(filaTituloIngresos);
+
             cCeldaPDF celdaIngresos = new cCeldaPDF();
-            celdaIngresos.Contenido = "Ingresos";
+            celdaIngresos.TablaPDF = tablaTituloIngresos;
+
             FilaEncabezado1.ListaCeldas.Add(celdaIngresos);
+
 
             cCeldaPDF celdaTotalIngresos = new cCeldaPDF();
             celdaTotalIngresos.Contenido = "Total Ingresos";
@@ -200,5 +268,21 @@ namespace CapaDeNegocios.Reportes
             oReporte.ListaHojasPDF.Add(oHojaAuxiliar);
             Impresion.ImprimirReportePDF(oReporte);
         }
+
+        public float[] TraerArregloSegunTamaño(int numero)
+        {
+            float[] arreglo = new float[] { };
+
+            Array.Resize(ref arreglo, numero);
+
+            for (int i = 0; i < numero; i++)
+            {
+                arreglo[i] = 100f;
+            }
+
+            return arreglo;
+        }
     }
+
+    
 }

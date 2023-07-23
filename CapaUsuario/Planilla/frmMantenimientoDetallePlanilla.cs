@@ -1047,7 +1047,7 @@ namespace CapaUsuario.Planilla
 
             for (int i = 0; i < con_ingresos; i++)
             {
-                if (smingresos[i, 3].ToString() != "")//Verficamos que no tenga Formula
+                if (smingresos[i, 3].ToString() != "" && !chkAguinaldo.Checked)//Verficamos que no tenga Formula
                 {
                     dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].ReadOnly = true;
                     decimal number2 = 0;
@@ -1726,7 +1726,11 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        sOtrosIngresos += Convert.ToDecimal(rowingresos[2]);
+                        if (rowingresos[4].ToString()== "1")
+                        {
+                            sOtrosIngresos += Convert.ToDecimal(rowingresos[2]);
+                        }
+                        
                     }
                 }
                 else

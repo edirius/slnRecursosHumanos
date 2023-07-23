@@ -73,6 +73,7 @@
             this.btnAsistenciaReloj = new System.Windows.Forms.Button();
             this.btnImprimirReporteAsistencia = new System.Windows.Forms.Button();
             this.dlgGuardarReportePDF = new System.Windows.Forms.SaveFileDialog();
+            this.chkAguinaldo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -487,11 +488,22 @@
             // 
             this.dlgGuardarReportePDF.Filter = "\"pdf archivo (*.pdf)|*.pdf";
             // 
+            // chkAguinaldo
+            // 
+            this.chkAguinaldo.AutoSize = true;
+            this.chkAguinaldo.Location = new System.Drawing.Point(769, 11);
+            this.chkAguinaldo.Name = "chkAguinaldo";
+            this.chkAguinaldo.Size = new System.Drawing.Size(61, 17);
+            this.chkAguinaldo.TabIndex = 103;
+            this.chkAguinaldo.Text = "Aguinal";
+            this.chkAguinaldo.UseVisualStyleBackColor = true;
+            // 
             // frmMantenimientoDetallePlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(929, 468);
+            this.Controls.Add(this.chkAguinaldo);
             this.Controls.Add(this.btnImprimirReporteAsistencia);
             this.Controls.Add(this.btnAsistenciaReloj);
             this.Controls.Add(this.chkQuinta);
@@ -563,5 +575,6 @@
         private System.Windows.Forms.Button btnAsistenciaReloj;
         private System.Windows.Forms.Button btnImprimirReporteAsistencia;
         private System.Windows.Forms.SaveFileDialog dlgGuardarReportePDF;
+        private System.Windows.Forms.CheckBox chkAguinaldo;
     }
 }
