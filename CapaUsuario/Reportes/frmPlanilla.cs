@@ -882,6 +882,97 @@ namespace CapaUsuario.Reportes
                             odtPrueba.Rows.InsertAt(drFila, k);
 
 
+                            /* Cuadro de redondear a entero */
+                            odtRedondear.Columns.Clear();
+                            odtRedondear.Rows.Clear();
+
+                            CapaDeNegocios.Obras.cMeta ooMeta = new CapaDeNegocios.Obras.cMeta();
+                            CapaDeNegocios.Planillas.cPlantillaPlanilla ooPlantilla = new CapaDeNegocios.Planillas.cPlantillaPlanilla();
+                            List<CapaDeNegocios.ClasificadorMeta.cClasificadorMeta> ListaClasificadoresMeta = new List<CapaDeNegocios.ClasificadorMeta.cClasificadorMeta>();
+                            ooMeta.Codigo = sidtmeta;
+                            ooPlantilla.Descripcion = splantilla;
+
+
+
+                            ListaClasificadoresMeta = oClasificadoresxMetaxPLantilla.ListaClasificadoresMeta(ooPlantilla, ooMeta);
+                            //Agregando columnas al cuadro redondear a entero
+                            odtRedondear.Columns.Add("Clasificador", typeof(string));
+                            odtRedondear.Columns.Add("Concepto", typeof(string));
+                            odtRedondear.Columns.Add("Monto", typeof(string));
+
+                            //iindice_total_ingresos = BuscarIndiceColumna(odtPruebaCorta, "TOTAL");
+                            ////iindice_total_a_empleador = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES EMPLEADOR");
+
+                            //ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
+                            //total_ingresos_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_total_ingresos]);
+
+                            //ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
+                            ////total_a_empleador_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_total_a_empleador]);
+
+                            foreach (CapaDeNegocios.ClasificadorMeta.cClasificadorMeta item in ListaClasificadoresMeta)
+                            {
+                                string MontoConcepto = "";
+
+                                int index = item.Concepto.IndexOf("&&");
+
+
+
+                                if (index != -1)
+                                {
+                                    MontoConcepto = "";
+                                }
+                                else
+                                {
+
+
+
+                                    switch (item.Concepto)
+                                    {
+                                        case "Todo":
+                                            MontoConcepto = sumatoria.ToString("0.00");
+                                            break;
+                                        //case "0122":
+                                        //    MontoConcepto = total_ingresos_total.ToString("0.00");
+                                        //    break;
+                                        //case "2039":
+                                        //    MontoConcepto = total_ingresos_total.ToString("0.00");
+                                        //    break;
+                                        case "0804":
+                                            MontoConcepto = monto_essalud_seguro_regular.ToString("0.00");
+                                            break;
+                                        case "0806":
+                                            MontoConcepto = monto_essalud_seguro_complementario.ToString("0.00");
+                                            break;
+                                        case "Total Ingresos":
+                                            MontoConcepto = total_ingresos_total.ToString("0.00");
+                                            break;
+                                        case "Total Aportaciones":
+                                            MontoConcepto = total_a_empleador_total.ToString("0.00");
+                                            break;
+                                        default:
+                                            DataTable maestroIngreso = oClasificadoresxMetaxPLantilla.BuscarMaestroIngresoXCodigo(item.Concepto);
+                                            string abreviacion = maestroIngreso.Rows[0]["abreviacion"].ToString();
+
+                                            int indice_Ingresos_clasificador = BuscarIndiceColumna(odtPrueba, abreviacion);
+                                            if (indice_Ingresos_clasificador != -1)
+                                            {
+                                                decimal montoClasificaor = Convert.ToDecimal(odtPrueba.Rows[odtPrueba.Rows.Count - 1][indice_Ingresos_clasificador]);
+                                                MontoConcepto = montoClasificaor.ToString("0.00");
+                                            }
+                                            else
+                                            {
+                                                MontoConcepto = "0.00";
+                                            }
+
+                                            break;
+                                    }
+                                }
+                                odtRedondear.Rows.Add(item.Especifica.Codigo, item.Especifica.Nombre, MontoConcepto);
+                                dgvRedondear.DataSource = odtRedondear;
+                            }
+
+
+
                             exportar_a_pdf_Racionamiento(sidtregimenlaboral);
                         }
                     }
@@ -4356,7 +4447,7 @@ namespace CapaUsuario.Reportes
 
             PdfPTable pdfTable = new PdfPTable(dgvPrueba.ColumnCount);
 
-          
+            PdfPTable pdfTableRedondear = new PdfPTable(dgvRedondear.ColumnCount);
 
             Phrase objP = new Phrase("A", fuente);
             Phrase objP2 = new Phrase("A", fuente);
@@ -4382,6 +4473,15 @@ namespace CapaUsuario.Reportes
 
             pdfTable.SetWidths(headerwidths);
             pdfTable.WidthPercentage = 100;
+
+
+            pdfTableRedondear.DefaultCell.Padding = 1;
+            pdfTableRedondear.HorizontalAlignment = Element.ALIGN_LEFT;
+            pdfTableRedondear.DefaultCell.BorderWidth = 1;
+
+
+            pdfTableRedondear.SetWidths(headerwidths3);
+            pdfTableRedondear.WidthPercentage = 100;
 
             int iindice_nombre = 0;
             int iindice_cargo = 0;
@@ -4429,10 +4529,35 @@ namespace CapaUsuario.Reportes
                 pdfTable.CompleteRow();
             }
 
-          
-            
 
-          
+            /* ------------- dgvRedondear ----------- */
+
+            foreach (DataGridViewColumn column in dgvRedondear.Columns)
+            {
+                cell3 = new PdfPCell((new Phrase(column.HeaderText, new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                //cell = new PdfPCell(new Phrase(column.HeaderText));
+                //PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText));
+                cell3.BackgroundColor = new iTextSharp.text.Color(240, 240, 240);
+                // objH = new Phrase(column.HeaderText, fuenteTitulo);
+                pdfTableRedondear.AddCell(cell3);
+            }
+
+            for (int k = 0; k < dgvRedondear.RowCount - 1; k++)
+            {
+                for (int l = 0; l < dgvRedondear.ColumnCount; l++)
+                {
+                    cell3 = new PdfPCell((new Phrase(dgvRedondear[l, k].Value.ToString(), new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                    cell3.HorizontalAlignment = Element.ALIGN_RIGHT;
+                    pdfTableRedondear.AddCell(cell3);
+                }
+                pdfTableRedondear.CompleteRow();
+            }
+
+            /* -------------fin dgvRedondear ----------*/
+
+
+
+
             /*----------------fin dgvEEFF*/
 
             //Exporting to PDF
@@ -4659,7 +4784,14 @@ namespace CapaUsuario.Reportes
                     }
 
                 }
-            
+
+                tabla_bonus.AddCell(pdfTableRedondear);
+                PdfPCell celdaVacia = new PdfPCell((new Phrase("", new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 7f, iTextSharp.text.Font.BOLD, iTextSharp.text.Color.BLACK))));
+                celdaVacia.Border = 0;
+
+                tabla_bonus.AddCell(celdaVacia);
+                tabla_bonus.AddCell(celdaVacia);
+
                 //instanciando una columna y 3 columnas
                 //Columnas 
                 MultiColumnText column_one = new MultiColumnText();
@@ -4679,7 +4811,11 @@ namespace CapaUsuario.Reportes
                 column_one.AddElement(pdfTable);
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph6);
-                column_one.AddElement(tabla_bonus);
+                if (dgvRedondear.RowCount > 1)
+                {
+                    column_one.AddElement(tabla_bonus);
+                }
+                
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph5);
