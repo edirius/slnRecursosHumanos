@@ -1861,6 +1861,15 @@ namespace CapaUsuario.Planilla
                 numeroMeses = 3;
             }
 
+            if (Settings.Default.RUC == "20159377696")
+            {
+                if (numeroMeses > 1)
+                {
+                    numeroMeses = 1;
+                }
+            }
+
+
             mmval.Value = numeroMeses;
 
             switch (numeroMeses)
@@ -1893,6 +1902,14 @@ namespace CapaUsuario.Planilla
                 }
 
                 mmval.Value = numeroMeses;
+
+                if (Settings.Default.RUC == "20159377696")
+                {
+                    if(numeroMeses > 1)
+                    {
+                        numeroMeses = 1;
+                    }
+                }
 
                 switch (numeroMeses)
                 {
