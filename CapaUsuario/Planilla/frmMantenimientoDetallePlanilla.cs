@@ -1845,6 +1845,17 @@ namespace CapaUsuario.Planilla
             parser.Values.Add("mm", mmval);
 
             DateTime DateFechaInicio = Convert.ToDateTime(FechaInicio);
+
+            if (Settings.Default.RUC == "20159377696")
+            {
+                if (DateFechaInicio <= (new DateTime(2023, 6, 1)))
+                {
+                    DateFechaInicio =  new DateTime(2023, 6, 1);
+                }
+                
+            }
+
+
             DateTime DateFechaInicioTemporal = DateFechaInicio;
 
             if (DateFechaInicioTemporal.Day == 1)
@@ -1861,13 +1872,7 @@ namespace CapaUsuario.Planilla
                 numeroMeses = 3;
             }
 
-            if (Settings.Default.RUC == "20159377696")
-            {
-                if (numeroMeses > 1)
-                {
-                    numeroMeses = 1;
-                }
-            }
+            
 
 
             mmval.Value = numeroMeses;
@@ -1895,21 +1900,17 @@ namespace CapaUsuario.Planilla
 
             if (index != -1)
             {
-                numeroMeses = ((DateFechacalculo.Month - DateFechaInicio.Month) + 12 * (DateFechacalculo.Year - DateFechaInicio.Year));
+                numeroMeses = ((DateFechacalculo.Month - DateFechaInicioTemporal.Month) + 12 * (DateFechacalculo.Year - DateFechaInicioTemporal.Year));
                 if (numeroMeses > 6)
                 {
                     numeroMeses = 6;
                 }
 
-                mmval.Value = numeroMeses;
+                
 
-                if (Settings.Default.RUC == "20159377696")
-                {
-                    if(numeroMeses > 1)
-                    {
-                        numeroMeses = 1;
-                    }
-                }
+             
+
+                mmval.Value = numeroMeses;
 
                 switch (numeroMeses)
                 {
