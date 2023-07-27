@@ -4454,8 +4454,20 @@ namespace CapaUsuario.Reportes
             iTextSharp.text.Font fuenteTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 9, 1, iTextSharp.text.Color.BLUE);
 
             PdfPTable pdfTable = new PdfPTable(dgvPrueba.ColumnCount);
+            PdfPTable pdfTableRedondear;
+            float[] headerwidths3;
 
-            PdfPTable pdfTableRedondear = new PdfPTable(dgvRedondear.ColumnCount);
+            if (dgvRedondear.ColumnCount > 0)
+            {
+                pdfTableRedondear  = new PdfPTable(dgvRedondear.ColumnCount);
+                headerwidths3 = GetTamañoColumnas2(dgvRedondear);
+            }
+            
+            else
+            {
+                pdfTableRedondear = new PdfPTable(1);
+                headerwidths3 = new float[] { 100f};
+            }
 
             Phrase objP = new Phrase("A", fuente);
             Phrase objP2 = new Phrase("A", fuente);
@@ -4473,7 +4485,7 @@ namespace CapaUsuario.Reportes
 
             float[] headerwidths = GetTamañoColumnas(dgvPrueba);
             float[] headerwidths2 = GetTamañoColumnas2(dgvAFP);
-            float[] headerwidths3 = GetTamañoColumnas2(dgvRedondear);
+           
             float[] headerwidths4 = GetTamañoColumnas2(dgvEEFF);
             //float[] headerwidths = { 2f, 6f, 6f, 3f, 5f, 8f, 5f, 5f, 5f, 5f };
 
@@ -4819,6 +4831,8 @@ namespace CapaUsuario.Reportes
                 column_one.AddElement(pdfTable);
                 column_one.AddElement(paragraph5);
                 column_one.AddElement(paragraph6);
+
+                //SI LA PLANILLA DE RACIONAMIENTO NO TIENE , NO SE AGREGA
                 if (dgvRedondear.RowCount > 1)
                 {
                     column_one.AddElement(tabla_bonus);
