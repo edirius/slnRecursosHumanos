@@ -365,9 +365,9 @@
             this.chkGerenciaAdministracion.AutoSize = true;
             this.chkGerenciaAdministracion.Location = new System.Drawing.Point(494, 18);
             this.chkGerenciaAdministracion.Name = "chkGerenciaAdministracion";
-            this.chkGerenciaAdministracion.Size = new System.Drawing.Size(195, 17);
+            this.chkGerenciaAdministracion.Size = new System.Drawing.Size(114, 17);
             this.chkGerenciaAdministracion.TabIndex = 2;
-            this.chkGerenciaAdministracion.Text = "GERENCIA DE ADMINISTRACION";
+            this.chkGerenciaAdministracion.Text = "JEFE DE OFICINA";
             this.chkGerenciaAdministracion.UseVisualStyleBackColor = true;
             // 
             // chkSupervision

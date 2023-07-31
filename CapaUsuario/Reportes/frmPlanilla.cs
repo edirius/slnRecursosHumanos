@@ -290,6 +290,7 @@ namespace CapaUsuario.Reportes
             if (oDatosGenerales.Ruc == "20159308708")
             {
                 chkSubGerenciaObras.Text = "GERENCIA";
+                chkGerenciaAdministracion.Text = "GERENCIA DE ADMINISTRACION";
             }
             DataTable odtA = new DataTable();
             DataTable odtAños = new DataTable();
