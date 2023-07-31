@@ -722,7 +722,7 @@ namespace CapaUsuario.Tareo
 
             foreach (DataRow item in odata.Rows)
             {
-                if (item[1].ToString() == "OFICIAL")
+                if (item[1].ToString().Contains("OFICIAL"))
                 {
                     AUXILIAR.ImportRow(item);
                 }
@@ -730,7 +730,7 @@ namespace CapaUsuario.Tareo
 
             foreach (DataRow item in odata.Rows)
             {
-                if (item[1].ToString() != "MAESTRO DE OBRA" && item[1].ToString() != "ALMACENERO" && item[1].ToString() != "OPERARIO" && item[1].ToString() != "OFICIAL")
+                if (item[1].ToString() != "MAESTRO DE OBRA" && item[1].ToString() != "ALMACENERO" && item[1].ToString() != "OPERARIO" && !item[1].ToString().Contains("OFICIAL"))
                 {
                     AUXILIAR.ImportRow(item);
                 }
