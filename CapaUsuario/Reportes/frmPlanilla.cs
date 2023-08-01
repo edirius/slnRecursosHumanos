@@ -772,6 +772,96 @@ namespace CapaUsuario.Reportes
                         odtPrueba.Rows.InsertAt(drFila, k);
 
 
+                        /* Cuadro de redondear a entero */
+                        odtRedondear.Columns.Clear();
+                        odtRedondear.Rows.Clear();
+
+                        CapaDeNegocios.Obras.cMeta ooMeta = new CapaDeNegocios.Obras.cMeta();
+                        CapaDeNegocios.Planillas.cPlantillaPlanilla ooPlantilla = new CapaDeNegocios.Planillas.cPlantillaPlanilla();
+                        List<CapaDeNegocios.ClasificadorMeta.cClasificadorMeta> ListaClasificadoresMeta = new List<CapaDeNegocios.ClasificadorMeta.cClasificadorMeta>();
+                        ooMeta.Codigo = sidtmeta;
+                        ooPlantilla.Descripcion = splantilla;
+
+
+
+                        ListaClasificadoresMeta = oClasificadoresxMetaxPLantilla.ListaClasificadoresMeta(ooPlantilla, ooMeta);
+                        //Agregando columnas al cuadro redondear a entero
+                        odtRedondear.Columns.Add("Clasificador", typeof(string));
+                        odtRedondear.Columns.Add("Concepto", typeof(string));
+                        odtRedondear.Columns.Add("Monto", typeof(string));
+
+                        //iindice_total_ingresos = BuscarIndiceColumna(odtPruebaCorta, "TOTAL");
+                        ////iindice_total_a_empleador = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES EMPLEADOR");
+
+                        //ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
+                        //total_ingresos_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_total_ingresos]);
+
+                        //ultima_fila_prueba_corta = odtPruebaCorta.Rows.Count - 1;
+                        ////total_a_empleador_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_total_a_empleador]);
+
+                        foreach (CapaDeNegocios.ClasificadorMeta.cClasificadorMeta item in ListaClasificadoresMeta)
+                        {
+                            string MontoConcepto = "";
+
+                            int index = item.Concepto.IndexOf("&&");
+
+
+
+                            if (index != -1)
+                            {
+                                MontoConcepto = "";
+                            }
+                            else
+                            {
+
+
+
+                                switch (item.Concepto)
+                                {
+                                    case "Todo":
+                                        MontoConcepto = sumatoria.ToString("0.00");
+                                        break;
+                                    //case "0122":
+                                    //    MontoConcepto = total_ingresos_total.ToString("0.00");
+                                    //    break;
+                                    //case "2039":
+                                    //    MontoConcepto = total_ingresos_total.ToString("0.00");
+                                    //    break;
+                                    case "0804":
+                                        MontoConcepto = monto_essalud_seguro_regular.ToString("0.00");
+                                        break;
+                                    case "0806":
+                                        MontoConcepto = monto_essalud_seguro_complementario.ToString("0.00");
+                                        break;
+                                    case "Total Ingresos":
+                                        MontoConcepto = total_ingresos_total.ToString("0.00");
+                                        break;
+                                    case "Total Aportaciones":
+                                        MontoConcepto = total_a_empleador_total.ToString("0.00");
+                                        break;
+                                    default:
+                                        DataTable maestroIngreso = oClasificadoresxMetaxPLantilla.BuscarMaestroIngresoXCodigo(item.Concepto);
+                                        string abreviacion = maestroIngreso.Rows[0]["abreviacion"].ToString();
+
+                                        int indice_Ingresos_clasificador = BuscarIndiceColumna(odtPrueba, abreviacion);
+                                        if (indice_Ingresos_clasificador != -1)
+                                        {
+                                            decimal montoClasificaor = Convert.ToDecimal(odtPrueba.Rows[odtPrueba.Rows.Count - 1][indice_Ingresos_clasificador]);
+                                            MontoConcepto = montoClasificaor.ToString("0.00");
+                                        }
+                                        else
+                                        {
+                                            MontoConcepto = "0.00";
+                                        }
+
+                                        break;
+                                }
+                            }
+                            odtRedondear.Rows.Add(item.Especifica.Codigo, item.Especifica.Nombre, MontoConcepto);
+                            dgvRedondear.DataSource = odtRedondear;
+                        }
+
+
                         exportar_a_pdf_Racionamiento(sidtregimenlaboral);
                     }
                 }

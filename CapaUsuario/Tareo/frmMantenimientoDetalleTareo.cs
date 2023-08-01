@@ -735,8 +735,16 @@ namespace CapaUsuario.Tareo
                     AUXILIAR.ImportRow(item);
                 }
             }
-
-            return AUXILIAR;
+            if (odata.Rows.Count != AUXILIAR.Rows.Count)
+            {
+                MessageBox.Show("Error al ordenar el tareo: ", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return odata;
+            }
+            else
+            {
+                return AUXILIAR;
+            }
+            
         }
 
         private void CargarDatos()
