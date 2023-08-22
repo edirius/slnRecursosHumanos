@@ -17,6 +17,11 @@ namespace CapaUsuario.Reportes
             InitializeComponent();
            
         }
+        CapaDeNegocios.PlanillaNueva.blPlanilla oblPlanilla = new CapaDeNegocios.PlanillaNueva.blPlanilla();
+        CapaDeNegocios.PlanillaNueva.cnPlanilla oPlanilla = new CapaDeNegocios.PlanillaNueva.cnPlanilla();
+
+
+        
 
         CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
         string FechaTexto = "";
@@ -242,7 +247,9 @@ namespace CapaUsuario.Reportes
                         {
                             if (Convert.ToBoolean(row.Cells["☑"].Value) == true)
                             {
-                                miResumenAnalitico = new CapaDeNegocios.Reportes.cReporteResumenAnalitico(miPlanilla.TraerPlanilla(Convert.ToInt32(row.Cells[0].Value)), fichero.FileName);
+                                oPlanilla = oblPlanilla.TraerPlanilla(Convert.ToInt16(Convert.ToInt32(row.Cells[0].Value)));
+
+                                miResumenAnalitico = new CapaDeNegocios.Reportes.cReporteResumenAnalitico(oPlanilla, fichero.FileName);
                             }
                         }
                     }

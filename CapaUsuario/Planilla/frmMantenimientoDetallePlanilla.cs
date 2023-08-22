@@ -1226,12 +1226,13 @@ namespace CapaUsuario.Planilla
                     {
                         cMetaJornal miMetaJornal = new cMetaJornal();
 
-                        miMetaJornal = MetaJornal(dgvDetallePlanilla.Rows[fila].Cells[7].ToString(), sidtmeta);
+                        miMetaJornal = MetaJornal(dgvDetallePlanilla.Rows[fila].Cells[7].Value.ToString(), sidtmeta);
                         decimal PagoDia;
                         PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
 
                         if (esTareo && esMetaJornal)
                         {
+                            //opcion false es diario
                             if (miMetaJornal.Opcion == false)
                             {
                                 PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
@@ -1544,18 +1545,23 @@ namespace CapaUsuario.Planilla
                 remuneracion_afecta = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value);
             }
 
- //Restamos las faltas y tardanzas a la remuneracion afecta
-            //if (remuneracion_afecta != 0)
-            //{
-            //    for (int i = 0; i < con_descuento; i++)
-            //    {
-            //        string xxx = smdescuentos[i, 1].ToString();
-            //        if ((smdescuentos[i, 1].ToString() == "0704" || smdescuentos[i, 1].ToString() == "0705") && (Settings.Default.RUC != "20177432360"))
-            //        {
-            //            remuneracion_afecta -= Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_descuentos + con_ingresos + con_trabajador + i].Value);
-            //        }
-            //    }
-            //}
+
+            //Restamos las faltas y tardanzas a la remuneracion afecta
+            if (remuneracion_afecta != 0)
+            {
+                for (int i = 0; i < con_descuento; i++)
+                {
+                    string xxx = smdescuentos[i, 1].ToString();
+                    if (smdescuentos[i,5].ToString() == "1")
+                    {
+                        if (smdescuentos[i, 1].ToString() == "0704" || smdescuentos[i, 1].ToString() == "0705")
+                        {
+                            remuneracion_afecta -= Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_descuentos + con_ingresos + con_trabajador + i].Value);
+                        }
+                    }
+                    
+                }
+            }
 
             //Calculo de la Formula
             if (codigo != "0605" && codigo != "0804")
@@ -2204,7 +2210,7 @@ namespace CapaUsuario.Planilla
             dgvDetallePlanilla.Columns["SUMA_A_TRABAJADOR"].Width = 50;
             dgvDetallePlanilla.Columns["SUMA_A_TRABAJADOR"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            smdescuentos = new string[oDataPlantillaPlanilla.Rows.Count, 4];
+            smdescuentos = new string[oDataPlantillaPlanilla.Rows.Count, 6];
             foreach (DataRow row in oDataPlantillaPlanilla.Select("tipo='DESCUENTOS'"))
             {
                 foreach (DataRow rowmdescuentos in oDataMaestroDescuentos.Select("idtmaestrodescuentos = '" + row[4].ToString() + "'"))
@@ -2214,6 +2220,8 @@ namespace CapaUsuario.Planilla
                     smdescuentos[con_descuento, 1] = rowmdescuentos[1].ToString();
                     smdescuentos[con_descuento, 2] = rowmdescuentos[2].ToString();
                     smdescuentos[con_descuento, 3] = rowmdescuentos[3].ToString();
+                    smdescuentos[con_descuento, 4] = rowmdescuentos[4].ToString();
+                    smdescuentos[con_descuento, 5] = rowmdescuentos[5].ToString();
                     abrev_descuentos = rowmdescuentos[4].ToString();
                 }
                 con_descuento += 1;

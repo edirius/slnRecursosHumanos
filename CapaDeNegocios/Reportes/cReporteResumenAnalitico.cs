@@ -16,7 +16,7 @@ namespace CapaDeNegocios.Reportes
 {
     public class cReporteResumenAnalitico
     {
-        public cReporteResumenAnalitico(cPlanilla miPlanilla, string ruta)
+        public cReporteResumenAnalitico(CapaDeNegocios.PlanillaNueva.cnPlanilla miPlanilla, string ruta)
         {
             try
             {
@@ -28,7 +28,6 @@ namespace CapaDeNegocios.Reportes
                 cReportePDF oReporte = new cReportePDF();
                 oReporte.RutaArchivo = ruta;
 
-                miPlanilla.LlenarDetallesPlanilla();
 
                 cHojaPDF oHojaPDF = new cHojaPDF();
 
@@ -81,20 +80,20 @@ namespace CapaDeNegocios.Reportes
                 oTablaTitulo.anchoColumnas = new float[] { 100 };
 
                 cFilasPDF filaTitulo = new cFilasPDF();
-                cCeldaPDF TituloCelda = new cCeldaPDF("Nro y Descripcion: " +  miPlanilla.Numero + " - " +  miPlanilla.Descripcion);
+                cCeldaPDF TituloCelda = new cCeldaPDF("Nro y Descripcion: " +  miPlanilla.numeroPlanilla + " - " +  miPlanilla.Descripcion);
                 TituloCelda.BordeAnchos.AnchoAbajo = 0f;
                 filaTitulo.ListaCeldas.Add(TituloCelda);
                 oTablaTitulo.ListaFilas.Add(filaTitulo);
 
                 cFilasPDF filaMeta = new cFilasPDF();
-                cCeldaPDF TituloMeta = new cCeldaPDF("Meta: " + miPlanilla.MiMeta.Numero + " - " + miPlanilla.MiMeta.Nombre);
+                cCeldaPDF TituloMeta = new cCeldaPDF("Meta: " + miPlanilla.Meta.Numero + " - " + miPlanilla.Meta.Nombre);
                 TituloMeta.BordeAnchos.AnchoArriba = 0f;
                 filaMeta.ListaCeldas.Add(TituloMeta);
                 oTablaTitulo.ListaFilas.Add(filaMeta);
 
                 cTablaPDF TablaSubtitulos = new cTablaPDF();
-                TablaSubtitulos.columnas = 9;
-                TablaSubtitulos.anchoColumnas = new float[] { 10, 40, 40,10, 20, 20, 20, 20 , 20 };
+                TablaSubtitulos.columnas = 10;
+                TablaSubtitulos.anchoColumnas = new float[] { 10, 40, 40,10, 20, 20, 20, 20, 20 , 20 };
 
                 cFilasPDF FilaSubtitulos = new cFilasPDF();
                 cCeldaPDF sTituloNumero = new cCeldaPDF();
@@ -117,8 +116,26 @@ namespace CapaDeNegocios.Reportes
                 sTituloDias.ColorFondo = colorFondo;
                 FilaSubtitulos.ListaCeldas.Add(sTituloDias);
 
+                cCeldaPDF sTituloMontoIngresos = new cCeldaPDF();
+                sTituloMontoIngresos.Contenido = "Ingresos";
+                sTituloMontoIngresos.ColorFondo = colorFondo;
+
+                string CadenaTituIngresos = "";
+
+                if (miPlanilla.ListaDetalle[0].ListaDetalleIngresos.Count > 1)
+                {
+                    foreach (PlanillaNueva.cnDetallePlanillaIngresos item2 in miPlanilla.ListaDetalle[0].ListaDetalleIngresos)
+                    {
+                        CadenaTituIngresos = CadenaTituIngresos + item2.MaestroIngresos.Abreviacion + Environment.NewLine;
+                    }
+                    sTituloMontoIngresos.Contenido = CadenaTituIngresos;
+                }
+
+
+                FilaSubtitulos.ListaCeldas.Add(sTituloMontoIngresos);
+
                 cCeldaPDF sTituloMonto = new cCeldaPDF();
-                sTituloMonto.Contenido = "Monto";
+                sTituloMonto.Contenido = "Total Ingresos";
                 sTituloMonto.ColorFondo = colorFondo;
                 FilaSubtitulos.ListaCeldas.Add(sTituloMonto);
 
@@ -148,26 +165,27 @@ namespace CapaDeNegocios.Reportes
                 oHojaPDF.ListaDeTablas.Add(TablaSubtitulos);
 
                 cTablaPDF TablaDetalles = new cTablaPDF();
-                TablaDetalles.columnas = 9;
-                TablaDetalles.anchoColumnas = new float[] { 10, 40, 40, 10, 20, 20, 20, 20, 20 };
+                TablaDetalles.columnas = 10;
+                TablaDetalles.anchoColumnas = new float[] { 10, 40, 40, 10,20, 20, 20, 20, 20, 20 };
 
                 int contador=0;
-                decimal sumaTotalIngresos=0;
-                decimal sumaTotalAportaciones=0;
-                decimal sumaTotalAportacionesEmpleador=0;
-                decimal sumaTotalDescuentos=0;
-                decimal SumaTotalPlanilla=0;
-                decimal SumaTotalNeto = 0;
+                double sumaTotalIngresos=0;
+                double sumaTotalAportaciones =0;
+                double sumaTotalAportacionesEmpleador =0;
+                double sumaTotalDescuentos =0;
+                double SumaTotalPlanilla =0;
+                double SumaTotalNeto = 0;
 
-                foreach (cDetallePlanilla item in miPlanilla.ListaDetallePlanilla)
+                foreach ( PlanillaNueva.cnDetallePlanilla item in miPlanilla.ListaDetalle)
                 {
                     contador++;
-                    sumaTotalIngresos += item.TotalIngresos;
-                    sumaTotalAportaciones += item.TotalATrabajador;
-                    sumaTotalDescuentos += item.TotalDescuentos;
-                    SumaTotalPlanilla += (item.TotalIngresos + item.TotalAEmpleador);
-                    sumaTotalAportacionesEmpleador += item.TotalAEmpleador;
-                    SumaTotalNeto += item.NetoaCobrar;
+                    
+                    sumaTotalIngresos += item.totalIngreso;
+                    sumaTotalAportaciones += item.totalAportacionesTrabajador;
+                    sumaTotalDescuentos += item.totalDescuentos;
+                    SumaTotalPlanilla += (item.totalIngreso + item.totalAportacionesEmpleador);
+                    sumaTotalAportacionesEmpleador += item.totalAportacionesEmpleador;
+                    SumaTotalNeto += item.netoACobrar;
 
                     cFilasPDF filaItem = new cFilasPDF();
                     cCeldaPDF sNumero = new cCeldaPDF();
@@ -176,43 +194,61 @@ namespace CapaDeNegocios.Reportes
                     filaItem.ListaCeldas.Add(sNumero);
 
                     cCeldaPDF sNombre = new cCeldaPDF();
-                    sNombre.Contenido = item.STrabajador.Dni + " -  " + item.STrabajador.Nombres + " " + item.STrabajador.ApellidoPaterno + " " + item.STrabajador.ApellidoMaterno ;
+                    sNombre.Contenido = item.miTrabajador.Dni + " -  " + item.miTrabajador.Nombres + " " + item.miTrabajador.ApellidoPaterno + " " + item.miTrabajador.ApellidoMaterno ;
                     sNombre.Alineamiento = enumAlineamiento.izquierda;
                     sNombre.QuitarBordes();
                     filaItem.ListaCeldas.Add(sNombre);
 
                     cCeldaPDF sCargo = new cCeldaPDF();
-                    sCargo.Contenido = item.Cargo;
+                    sCargo.Contenido = item.cargo;
                     sCargo.QuitarBordes();
                     filaItem.ListaCeldas.Add(sCargo);
 
                     cCeldaPDF sDias = new cCeldaPDF();
-                    sDias.Contenido = item.DiasLaborados.ToString();
+                    sDias.Contenido = item.diasLaborados.ToString();
                     sDias.QuitarBordes();
                     filaItem.ListaCeldas.Add(sDias);
 
+                    cCeldaPDF sMontoIngresos = new cCeldaPDF();
+                    sMontoIngresos.Contenido = item.totalIngreso.ToString("c", new CultureInfo("es-PE"));
+                    sMontoIngresos.QuitarBordes();
+                    
+
+                    string CadenaIngresos = "";
+
+                    if (item.ListaDetalleIngresos.Count > 1)
+                    {
+                        foreach (PlanillaNueva.cnDetallePlanillaIngresos item2 in item.ListaDetalleIngresos)
+                        {
+                            CadenaIngresos = CadenaIngresos + item2.Monto.ToString("c", new CultureInfo("es-PE")) + Environment.NewLine; 
+                        }
+                        sMontoIngresos.Contenido = CadenaIngresos;
+                    }
+
+                    filaItem.ListaCeldas.Add(sMontoIngresos);
+
                     cCeldaPDF sMonto = new cCeldaPDF();
-                    sMonto.Contenido = item.TotalIngresos.ToString("c", new CultureInfo("es-PE"));
+                    sMonto.Contenido = item.totalIngreso.ToString("c", new CultureInfo("es-PE"));
                     sMonto.QuitarBordes();
                     filaItem.ListaCeldas.Add(sMonto);
 
                     cCeldaPDF sDescuentos = new cCeldaPDF();
-                    sDescuentos.Contenido = (item.TotalATrabajador + item.TotalDescuentos).ToString("c", new CultureInfo("es-PE"));
+                    sDescuentos.Contenido = (item.totalAportacionesTrabajador + item.totalDescuentos).ToString("c", new CultureInfo("es-PE"));
                     sDescuentos.QuitarBordes();
                     filaItem.ListaCeldas.Add(sDescuentos);
 
                     cCeldaPDF sNeto = new cCeldaPDF();
-                    sNeto.Contenido = item.NetoaCobrar.ToString("c", new CultureInfo("es-PE"));
+                    sNeto.Contenido = item.netoACobrar.ToString("c", new CultureInfo("es-PE"));
                     sNeto.QuitarBordes();
                     filaItem.ListaCeldas.Add(sNeto);
 
                     cCeldaPDF sAPortacion = new cCeldaPDF();
-                    sAPortacion.Contenido = item.TotalAEmpleador.ToString("c", new CultureInfo("es-PE"));
+                    sAPortacion.Contenido = item.totalAportacionesEmpleador.ToString("c", new CultureInfo("es-PE"));
                     sAPortacion.QuitarBordes();
                     filaItem.ListaCeldas.Add(sAPortacion);
 
                     cCeldaPDF sTotal = new cCeldaPDF();
-                    sTotal.Contenido = (item.TotalAEmpleador + item.TotalIngresos).ToString("c", new CultureInfo("es-PE"));
+                    sTotal.Contenido = (item.totalAportacionesEmpleador + item.totalIngreso).ToString("c", new CultureInfo("es-PE"));
                     sTotal.QuitarBordes();
                     sTotal.Alineamiento = enumAlineamiento.derecha;
                     filaItem.ListaCeldas.Add(sTotal);
