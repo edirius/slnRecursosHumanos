@@ -150,8 +150,9 @@ namespace CapaDeNegocios.PlanillaNueva
                 }
                 else
                 {
-                    throw new cReglaNegociosException("blPlanilla: No existe regimen pensionarios para el trabajador.");
+                    return listaRegimenPensionario;
                 }
+            
             }
             catch (Exception e)
             {
