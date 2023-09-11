@@ -12,7 +12,6 @@ using System.IO;
 using System.Collections;
 using CapaUsuario.Properties;
 
-using CapaUsuario.Properties;
 
 
 namespace CapaUsuario.ExportarSunat
@@ -20,7 +19,8 @@ namespace CapaUsuario.ExportarSunat
     public partial class frmExportarTributosDescuentosTrabajador : Form
     {
         CapaDeNegocios.ExportarSunat.cExportarSunat oExportar = new CapaDeNegocios.ExportarSunat.cExportarSunat();
-        
+        CapaDeNegocios.PlanillaNueva.blPlanilla oPlanilla = new CapaDeNegocios.PlanillaNueva.blPlanilla();
+
         string Ingresos, Descuentos, Aportaciones = ""; 
         string Titulo = "";
         string Nromes = "";
@@ -44,13 +44,7 @@ namespace CapaUsuario.ExportarSunat
             txtCodForm.Visible = false;
             txtRuc.Visible = false;
             txtRuc.Text = Settings.Default.RUC;
-            dgvListaPlanillas.Columns[0].Visible = false;
-            dgvListaPlanillas.Columns[1].Width = 50;
-            dgvListaPlanillas.Columns[2].Width = 75;
-            dgvListaPlanillas.Columns[3].Width = 50;
-            dgvListaPlanillas.Columns[4].Width = 130;
-            dgvListaPlanillas.Columns[5].Width = 637;
-            dgvListaPlanillas.Columns[6].Width = 330;
+           
         }
         private void ConvertirMes(string MES)
         {
@@ -198,70 +192,151 @@ namespace CapaUsuario.ExportarSunat
         }
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            if (dgvListaPlanillas.Rows.Count != 0)
+            milista.Clear();
+            milistaJornada.Clear();
+            milistaSCTR.Clear();
+
+            if (dgvListaPlanillas.Rows.Count > 0)
             {
-                if (CheckJornada.Checked == true)
+                foreach (DataGridViewRow fila in dgvListaPlanillas.Rows)
                 {
-                    concatenarDatosJornadaLaboral();
-                    if (chkSCTR.Checked)
+                    if (Convert.ToBoolean(fila.Cells["CHK"].Value) == true)
                     {
-                        concatenarDatosSCTR();
+                        CapaDeNegocios.PlanillaNueva.cnPlanilla miPlanilla = new CapaDeNegocios.PlanillaNueva.cnPlanilla();
+                        miPlanilla = oPlanilla.TraerPlanilla(Convert.ToInt32(fila.Cells["colIdtPlanilla"].Value.ToString()));
+                        foreach(CapaDeNegocios.PlanillaNueva.cnDetallePlanilla detalle in miPlanilla.ListaDetalle)
+                        {
+                            string mes = miPlanilla.Mes ;
+                            string año = miPlanilla.Año;
+                            string TipoDoc = "01";
+                            string dni = detalle.miTrabajador.Dni;
+                            string NHO = "192";
+                            string NMO = "";
+                            string NHS = "";
+                            string NMS = "";
+
+                            string Ruc = txtRuc.Text;
+                            string Palo = "|";
+                            ConvertirMes(mes);
+                            string Jornada = "";
+                            Jornada = TipoDoc + Palo + dni + Palo + NHO + Palo + NMO + Palo + NHS + Palo + NMS + Palo;
+
+                            milistaJornada.Add(Jornada);//agregamos los datos concatenados al arreglo(ArrayList)
+
+
+                            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaIngresos ingreso in detalle.ListaDetalleIngresos)
+                            {
+                                if (!(ingreso.MaestroIngresos.Codigo == "0000" || ingreso.MaestroIngresos.Informativa == true))
+                                {
+                                    string codigo = ingreso.MaestroIngresos.Codigo;
+                                    string MontoDevengado = ingreso.Monto.ToString();
+                                    string Monto = ingreso.Monto.ToString();
+                                    string codigoform = "0601";
+                                    ConvertirMes(mes);
+                                    Ingresos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
+                                    Titulo = oExportar.ExportarTitulo(codigoform, año, Nromes, Ruc);
+                                    milista.Add(Ingresos);//agregamos los datos concatenados al arreglo(ArrayList)
+                                }
+                            }
+                            bool EstaEnSNP = false;
+
+                            foreach(CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador aportacionT in detalle.ListaDetalleAportacionesTrabajador)
+                            {
+                                //si cumple, esta en SNP
+                                if (aportacionT.MaestroAportacionTrabajador.Codigo == "0607" && aportacionT.Monto > 0)
+                                {
+                                    EstaEnSNP = true;
+                                }
+                            }
+
+                            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador aportacionT in detalle.ListaDetalleAportacionesTrabajador)
+                            {
+                                //si cumple, esta en SNP
+                                if (EstaEnSNP && (aportacionT.MaestroAportacionTrabajador.Codigo == "0608" || aportacionT.MaestroAportacionTrabajador.Codigo == "0601" || aportacionT.MaestroAportacionTrabajador.Codigo == "0606" || aportacionT.MaestroAportacionTrabajador.Codigo == "0607"))
+                                {
+                                    // no importar
+                                }
+                                else
+                                {
+                                    if (!(aportacionT.MaestroAportacionTrabajador.Codigo == "0607" || aportacionT.MaestroAportacionTrabajador.Codigo == "0604"))
+                                    {
+                                        string codigo = aportacionT.MaestroAportacionTrabajador.Codigo;
+                                        string MontoDevengado = aportacionT.Monto.ToString();
+                                        string Monto = aportacionT.Monto.ToString();
+                                        ConvertirMes(mes);
+                                        Aportaciones = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
+                                        milista.Add(Aportaciones);//agregamos los datos concatenados al arreglo(ArrayList)
+                                    }
+
+                                }
+                            }
+
+                            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaEgresos descuento in detalle.ListaDetalleEgresos)
+                            {
+                                if (chkDescuentos.Checked == true )
+                                {
+                                    string codigo = descuento.MaestroDescuentos.Codigo;
+                                    string MontoDevengado = descuento.Monto.ToString();
+                                    string Monto = descuento.Monto.ToString();
+                                    Descuentos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
+                                    milista.Add(Descuentos);//agregamos los datos concatenados al arreglo(ArrayList)
+                                }
+                                else
+                                {
+                                    if (descuento.MaestroDescuentos.Codigo != "0704" && descuento.MaestroDescuentos.Codigo != "0705")
+                                    {
+                                        string codigo = descuento.MaestroDescuentos.Codigo;
+                                        string MontoDevengado = descuento.Monto.ToString();
+                                        string Monto = descuento.Monto.ToString();
+                                        Descuentos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
+                                        milista.Add(Descuentos);//agregamos los datos concatenados al arreglo(ArrayList)
+                                    }
+                                }
+                            }
+                            
+                            foreach(CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesEmpleador aportacionE in detalle.ListaDetalleAportacionesEmpleador)
+                            {
+                                if (aportacionE.Monto > 0 && aportacionE.MaestroAportacionesEmpleador.Codigo == "0806")
+                                {
+                                    ConvertirMes(mes);
+                                    string srct = "";
+                                    srct = TipoDoc + Palo + dni + Palo + "1" + Palo + "1.53" + Palo;
+
+                                    milistaSCTR.Add(srct);//agregamos los datos concatenados al arreglo(ArrayList)
+                                }
+                            }
+                        }
                     }
-                    
-                    concatenarDatos();
-                    milista.Clear();
-                    milistaJornada.Clear();
-                }
-                else if (dgvIngresos.Rows.Count != 0)
-                {
-                    if (chkSCTR.Checked)
-                    {
-                        concatenarDatosSCTR();
-                    }
-                    concatenarDatos();
-                    milista.Clear();
                 }
 
-                else MessageBox.Show("La planilla no tiene trabajadores para exportar");
+                SalvarDatosRem();
+                if (CheckJornada.Checked == true)
+                {
+                    SalvarDatosJornadaLaboral();
+                }
+
+                if (chkSCTR.Checked)
+                {
+                    SalvarDatosSRCT();
+                }
             }
             else
             {
-                MessageBox.Show("No ha seleccionado ninguna planilla");
-            } 
+                MessageBox.Show("No esta seleccionado ninguna planilla.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         public void CrearCarpeta()
         {
             DirectoryInfo di = Directory.CreateDirectory(@"C:\Users\Usuario\Desktop\Textos SUNAT");//ruta de la carpeta
         }
-        public void concatenarDatosJornadaLaboral()
-        {
-            
-            string TituloJornada = "";
-            try
-            {
-                for (int i = 0; i < dgvJornadaLaboral.Rows.Count; i++)
-                {
-                    //obtenemos los datos de las columnas que queremos
-                    string mes = cbMes.Text;
-                    string año = cbAños.Text;
-                    string TipoDoc = dgvJornadaLaboral[0, i].Value.ToString();
-                    string dni = dgvJornadaLaboral[1, i].Value.ToString();
-                    string NHO = dgvJornadaLaboral[2, i].Value.ToString();
-                    string NMO = dgvJornadaLaboral[3, i].Value.ToString();
-                    string NHS = dgvJornadaLaboral[4, i].Value.ToString();
-                    string NMS = dgvJornadaLaboral[5, i].Value.ToString();
-                    string codigoformjornada = "0601";
-                    string Ruc = txtRuc.Text;
-                    string Palo = "|";
-                    ConvertirMes(mes);
-                    string Jornada = "";
-                    Jornada = TipoDoc + Palo + dni + Palo + NHO + Palo + NMO + Palo + NHS + Palo + NMS + Palo;
-                    TituloJornada = codigoformjornada + año + Nromes + txtRuc.Text + ".jor";
-                    milistaJornada.Add(Jornada);//agregamos los datos concatenados al arreglo(ArrayList)
-                }
 
-            }
-            catch { }
+
+        public void SalvarDatosJornadaLaboral()
+        {
+            string año = cbAños.Text;
+            string codigoformjornada = "0601";
+            string TituloJornada = "";
+            TituloJornada = codigoformjornada + año + Nromes + txtRuc.Text + ".jor";
             SaveFileDialog Guardar = new SaveFileDialog();
             Guardar.FileName = TituloJornada;
             string Ruta = "";
@@ -291,159 +366,8 @@ namespace CapaUsuario.ExportarSunat
             }
         }
 
-
-        public void concatenarDatosSCTR()
+        private void SalvarDatosRem()
         {
-
-            string TituloJornada = "";
-            try
-            {
-                for (int i = 0; i < dgvJornadaLaboral.Rows.Count; i++)
-                {
-                    //obtenemos los datos de las columnas que queremos
-                    string mes = cbMes.Text;
-                    string año = cbAños.Text;
-                    string TipoDoc = dgvJornadaLaboral[0, i].Value.ToString();
-                    string dni = dgvJornadaLaboral[1, i].Value.ToString();
-                  
-                    string codigoformjornada = "0601";
-                    string Ruc = txtRuc.Text;
-                    string Palo = "|";
-                    ConvertirMes(mes);
-                    string Jornada = "";
-                    Jornada = TipoDoc + Palo + dni + Palo + "1" + Palo + "1.53" + Palo;
-                    TituloJornada = codigoformjornada + año + Nromes + txtRuc.Text + ".tas";
-                    milistaSCTR.Add(Jornada);//agregamos los datos concatenados al arreglo(ArrayList)
-                }
-
-            }
-            catch { }
-            SaveFileDialog Guardar = new SaveFileDialog();
-            Guardar.FileName = TituloJornada;
-            string Ruta = "";
-            if (TituloJornada != "")
-            {
-                if (Guardar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-
-                    if (File.Exists(Guardar.FileName))
-                    {
-                        File.Delete(Guardar.FileName);
-                    }
-                    if (Guardar.FileName.Contains(TituloJornada))
-                    {
-                        Ruta = Guardar.FileName;
-                        StreamWriter escribir = new StreamWriter(Ruta);//ruta del guardado
-                        //StreamWriter escribir = new StreamWriter(@"C:\Users\Usuario\Desktop\Textos SUNAT\" + Titulo + "");//ruta del guardado
-                        for (int k = 0; k < milistaSCTR.Count; k++)//mientras sea menor al contenido del arreglo(arraylist) guardará cada items k
-                        {
-                            escribir.WriteLine(milistaSCTR[k]);//guarda en el bloc de notas 
-                        }
-                        escribir.Close();//cierra la escritura para que eje manejar por separado el bloc de notas
-                        MessageBox.Show("Datos de STRC exportados Exitosamente");//mensaje de cierre exitoso
-
-                    }
-                }
-            }
-        }
-
-        public void concatenarDatos()
-        {
-            
-            try
-            {
-                for (int i = 0; i < dgvIngresos.Rows.Count; i++)
-                {
-                    //obtenemos los datos de las columnas que queremos
-                    string mes = dgvIngresos[1, i].Value.ToString();
-                    string año = dgvIngresos[2, i].Value.ToString();
-                    string dni = dgvIngresos[3, i].Value.ToString();
-                    string codigo = dgvIngresos[4, i].Value.ToString();
-                    string MontoDevengado = dgvIngresos[5, i].Value.ToString();
-                    string Monto = dgvIngresos[5, i].Value.ToString();
-                    string TipoDoc = "01";
-                    string codigoform = txtCodForm.Text;
-                    string Ruc = txtRuc.Text;
-                    ConvertirMes(mes);
-                    Ingresos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
-                    Titulo = oExportar.ExportarTitulo(codigoform, año, Nromes, Ruc);
-                    milista.Add(Ingresos);//agregamos los datos concatenados al arreglo(ArrayList)
-                }
-            }
-            catch
-            {
-            }
-            try
-            {
-                for (int i = 0; i < dgvDescuentos.Rows.Count; i++)
-                {
-                    //obtenemos los datos de las columnas que queremos
-                    string mes = dgvDescuentos[1, i].Value.ToString();
-                    string año = dgvDescuentos[2, i].Value.ToString();
-                    string dni = dgvDescuentos[3, i].Value.ToString();
-                    string codigo = dgvDescuentos[4, i].Value.ToString();
-                    string MontoDevengado = dgvDescuentos[5, i].Value.ToString();
-                    string Monto = dgvDescuentos[5, i].Value.ToString();
-                    string TipoDoc = "01";
-                    Descuentos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
-                    milista.Add(Descuentos);//agregamos los datos concatenados al arreglo(ArrayList)
-                }
-            }
-            catch
-            {
-            }
-
-            try
-            {
-                string auxiliardni="";
-                for (int i = 0; i < dgvAportaciones.Rows.Count; i++)
-                {
-                    
-                    //obtenemos los datos de las columnas que queremos
-                    string mes = dgvAportaciones[1, i].Value.ToString();
-                    string año = dgvAportaciones[2, i].Value.ToString();
-                    string dni = dgvAportaciones[3, i].Value.ToString();
-                    string codigo = dgvAportaciones[4, i].Value.ToString();
-                    string MontoDevengado = dgvAportaciones[5, i].Value.ToString();
-                    string Monto = dgvAportaciones[5, i].Value.ToString();
-                    string TipoDoc = "01";
-                    string codigoform = txtCodForm.Text;
-                    string Ruc = txtRuc.Text;
-                    ConvertirMes(mes);
-
-                    Aportaciones = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
-                    if ((codigo == "0704" || codigo == "0705") && Settings.Default.RUC == "20177432360")
-                    {
-                     
-                    }
-                    else
-                    {
-                        if (codigo == "0608" && Convert.ToDouble(Monto) != 0)
-                        {
-                            auxiliardni = dni;
-                        }
-                       
-
-                        if (codigo != "0601")
-                        {
-                            milista.Add(Aportaciones);//agregamos los datos concatenados al arreglo(ArrayList)
-                        }
-                        else
-                        {
-                            if (auxiliardni == dni)
-                            {
-                                milista.Add(Aportaciones);//agregamos los datos concatenados al arreglo(ArrayList)
-                                auxiliardni = "";
-                            }
-                        }
-                    }
-                   
-                }
-            }
-            catch
-            {
-            }
-            //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
             Guardar.FileName = Titulo;
             string Ruta = "";
@@ -473,25 +397,46 @@ namespace CapaUsuario.ExportarSunat
             }
             else
                 MessageBox.Show("No hay datos para Exportar");
-            
+        }
+
+
+        public void SalvarDatosSRCT()
+        {
+            string TituloJornada = "";
+            string codigoformjornada = "0601";
+            string año = cbAños.Text;
+            TituloJornada = codigoformjornada + año + Nromes + txtRuc.Text + ".tas";
+            SaveFileDialog Guardar = new SaveFileDialog();
+            Guardar.FileName = TituloJornada;
+            string Ruta = "";
+            if (TituloJornada != "")
+            {
+                if (Guardar.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+
+                    if (File.Exists(Guardar.FileName))
+                    {
+                        File.Delete(Guardar.FileName);
+                    }
+                    if (Guardar.FileName.Contains(TituloJornada))
+                    {
+                        Ruta = Guardar.FileName;
+                        StreamWriter escribir = new StreamWriter(Ruta);//ruta del guardado
+                        //StreamWriter escribir = new StreamWriter(@"C:\Users\Usuario\Desktop\Textos SUNAT\" + Titulo + "");//ruta del guardado
+                        for (int k = 0; k < milistaSCTR.Count; k++)//mientras sea menor al contenido del arreglo(arraylist) guardará cada items k
+                        {
+                            escribir.WriteLine(milistaSCTR[k]);//guarda en el bloc de notas 
+                        }
+                        escribir.Close();//cierra la escritura para que eje manejar por separado el bloc de notas
+                        MessageBox.Show("Datos de STRC exportados Exitosamente");//mensaje de cierre exitoso
+
+                    }
+                }
+            }
         }
 
         private void dgvListaPlanillas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
-                string numero = "";
-                numero = dgvListaPlanillas[0, Valor].Value.ToString();
-                dgvIngresos.DataSource = oExportar.ListarTrabajadoresPorPlanillaIngresos(numero);
-                dgvDescuentos.DataSource = oExportar.ListarTrabajadoresPorPlanillaDescuentos(numero);
-                dgvAportaciones.DataSource = oExportar.ListarTrabajadoresPorPlanillaAportaciones(numero);
-                dgvJornadaLaboral.DataSource = oExportar.ListarJornadaLaboralTrabajadores(numero);
-            }
-            catch
-            {
-
-            }
         }
         private void cbMes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -512,23 +457,10 @@ namespace CapaUsuario.ExportarSunat
             pbSunat.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
+       
+
         private void dgvListaPlanillas_SelectionChanged(object sender, EventArgs e)
         {
-            try
-            {
-                int Valor = dgvListaPlanillas.CurrentCell.RowIndex;
-                string numero = "";
-                numero = dgvListaPlanillas[0, Valor].Value.ToString();
-                dgvIngresos.DataSource = oExportar.ListarTrabajadoresPorPlanillaIngresos(numero);
-                dgvDescuentos.DataSource = oExportar.ListarTrabajadoresPorPlanillaDescuentos(numero);
-                dgvAportaciones.DataSource = oExportar.ListarTrabajadoresPorPlanillaAportaciones(numero);
-                dgvJornadaLaboral.DataSource = oExportar.ListarJornadaLaboralTrabajadores(numero);
-            }
-            catch 
-            {
-
-            }   
-            
         }
 
         private void CheckJornada_CheckedChanged(object sender, EventArgs e)
@@ -538,7 +470,7 @@ namespace CapaUsuario.ExportarSunat
 
         private void bntListarTodo_Click(object sender, EventArgs e)
         {
-            dgvListaPlanillas.DataSource = oExportar.ListarPlanillas(cbAños.Text);
+            
         }
         private void CargarAños()
         {

@@ -106,6 +106,7 @@ namespace CapaDeNegocios.PlanillaNueva
                     miTrabajador.Nombres = Convert.ToString(TablaTrabajador.Rows[0][1]);
                     miTrabajador.ApellidoPaterno = Convert.ToString(TablaTrabajador.Rows[0][2]);
                     miTrabajador.ApellidoMaterno = Convert.ToString(TablaTrabajador.Rows[0][3]);
+                    miTrabajador.Dni = Convert.ToString(TablaTrabajador.Rows[0][7]);
                     miTrabajador.ListaRegimenPensionario = TraerRegimenPensionario(miTrabajador.IdTrabajador);
                     TablaTrabajador.Dispose();
                 }

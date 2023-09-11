@@ -29,43 +29,34 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dgvIngresos = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodForm = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRuc = new System.Windows.Forms.TextBox();
             this.btnExportar = new System.Windows.Forms.Button();
-            this.dgvListaPlanillas = new System.Windows.Forms.DataGridView();
             this.cbMes = new System.Windows.Forms.ComboBox();
             this.cbAños = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.bntListarTodo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkSCTR = new System.Windows.Forms.CheckBox();
             this.pbSunat = new System.Windows.Forms.PictureBox();
             this.CheckJornada = new System.Windows.Forms.CheckBox();
-            this.dgvDescuentos = new System.Windows.Forms.DataGridView();
-            this.dgvAportaciones = new System.Windows.Forms.DataGridView();
-            this.dgvJornadaLaboral = new System.Windows.Forms.DataGridView();
-            this.chkSCTR = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
+            this.dgvListaPlanillas = new System.Windows.Forms.DataGridView();
+            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colNro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAño = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescripcionPlantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescripcionPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIdtPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkDescuentos = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSunat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDescuentos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAportaciones)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJornadaLaboral)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvIngresos
-            // 
-            this.dgvIngresos.AllowUserToAddRows = false;
-            this.dgvIngresos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvIngresos.Location = new System.Drawing.Point(12, 297);
-            this.dgvIngresos.Name = "dgvIngresos";
-            this.dgvIngresos.RowHeadersVisible = false;
-            this.dgvIngresos.Size = new System.Drawing.Size(312, 172);
-            this.dgvIngresos.TabIndex = 0;
             // 
             // label2
             // 
@@ -113,24 +104,6 @@
             this.btnExportar.Text = "&Exportar datos";
             this.btnExportar.UseVisualStyleBackColor = false;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
-            // 
-            // dgvListaPlanillas
-            // 
-            this.dgvListaPlanillas.AllowUserToAddRows = false;
-            this.dgvListaPlanillas.AllowUserToResizeColumns = false;
-            this.dgvListaPlanillas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaPlanillas.Location = new System.Drawing.Point(11, 101);
-            this.dgvListaPlanillas.Name = "dgvListaPlanillas";
-            this.dgvListaPlanillas.ReadOnly = true;
-            this.dgvListaPlanillas.RowHeadersVisible = false;
-            this.dgvListaPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListaPlanillas.Size = new System.Drawing.Size(1292, 368);
-            this.dgvListaPlanillas.TabIndex = 28;
-            this.dgvListaPlanillas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaPlanillas_CellClick);
-            this.dgvListaPlanillas.SelectionChanged += new System.EventHandler(this.dgvListaPlanillas_SelectionChanged);
             // 
             // cbMes
             // 
@@ -198,6 +171,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkDescuentos);
             this.groupBox1.Controls.Add(this.chkSCTR);
             this.groupBox1.Controls.Add(this.pbSunat);
             this.groupBox1.Controls.Add(this.CheckJornada);
@@ -213,6 +187,16 @@
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar trabajadores por fecha:";
+            // 
+            // chkSCTR
+            // 
+            this.chkSCTR.AutoSize = true;
+            this.chkSCTR.Location = new System.Drawing.Point(1072, 69);
+            this.chkSCTR.Name = "chkSCTR";
+            this.chkSCTR.Size = new System.Drawing.Size(55, 17);
+            this.chkSCTR.TabIndex = 36;
+            this.chkSCTR.Text = "SCTR";
+            this.chkSCTR.UseVisualStyleBackColor = true;
             // 
             // pbSunat
             // 
@@ -235,99 +219,144 @@
             this.CheckJornada.UseVisualStyleBackColor = true;
             this.CheckJornada.CheckedChanged += new System.EventHandler(this.CheckJornada_CheckedChanged);
             // 
-            // dgvDescuentos
+            // dgvListaPlanillas
             // 
-            this.dgvDescuentos.AllowUserToAddRows = false;
-            this.dgvDescuentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDescuentos.Location = new System.Drawing.Point(368, 297);
-            this.dgvDescuentos.Name = "dgvDescuentos";
-            this.dgvDescuentos.RowHeadersVisible = false;
-            this.dgvDescuentos.Size = new System.Drawing.Size(302, 172);
-            this.dgvDescuentos.TabIndex = 42;
+            this.dgvListaPlanillas.AllowUserToAddRows = false;
+            this.dgvListaPlanillas.AllowUserToDeleteRows = false;
+            this.dgvListaPlanillas.AllowUserToResizeColumns = false;
+            this.dgvListaPlanillas.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaPlanillas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.chk,
+            this.colNro,
+            this.colMes,
+            this.colAño,
+            this.colDescripcionPlantilla,
+            this.colMeta,
+            this.colDescripcionPlanilla,
+            this.colIdtPlanilla});
+            this.dgvListaPlanillas.Location = new System.Drawing.Point(12, 101);
+            this.dgvListaPlanillas.Name = "dgvListaPlanillas";
+            this.dgvListaPlanillas.RowHeadersVisible = false;
+            this.dgvListaPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvListaPlanillas.Size = new System.Drawing.Size(1292, 368);
+            this.dgvListaPlanillas.TabIndex = 45;
             // 
-            // dgvAportaciones
+            // chk
             // 
-            this.dgvAportaciones.AllowUserToAddRows = false;
-            this.dgvAportaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAportaciones.Location = new System.Drawing.Point(717, 297);
-            this.dgvAportaciones.Name = "dgvAportaciones";
-            this.dgvAportaciones.RowHeadersVisible = false;
-            this.dgvAportaciones.Size = new System.Drawing.Size(274, 172);
-            this.dgvAportaciones.TabIndex = 43;
+            this.chk.HeaderText = "S";
+            this.chk.Name = "chk";
+            this.chk.Width = 50;
             // 
-            // dgvJornadaLaboral
+            // colNro
             // 
-            this.dgvJornadaLaboral.AllowUserToAddRows = false;
-            this.dgvJornadaLaboral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvJornadaLaboral.Location = new System.Drawing.Point(1029, 297);
-            this.dgvJornadaLaboral.Name = "dgvJornadaLaboral";
-            this.dgvJornadaLaboral.RowHeadersVisible = false;
-            this.dgvJornadaLaboral.Size = new System.Drawing.Size(274, 172);
-            this.dgvJornadaLaboral.TabIndex = 44;
+            this.colNro.DataPropertyName = "Nro";
+            this.colNro.HeaderText = "Nro";
+            this.colNro.Name = "colNro";
+            this.colNro.Width = 50;
             // 
-            // chkSCTR
+            // colMes
             // 
-            this.chkSCTR.AutoSize = true;
-            this.chkSCTR.Location = new System.Drawing.Point(1072, 69);
-            this.chkSCTR.Name = "chkSCTR";
-            this.chkSCTR.Size = new System.Drawing.Size(55, 17);
-            this.chkSCTR.TabIndex = 36;
-            this.chkSCTR.Text = "SCTR";
-            this.chkSCTR.UseVisualStyleBackColor = true;
+            this.colMes.DataPropertyName = "Mes";
+            this.colMes.HeaderText = "Mes";
+            this.colMes.Name = "colMes";
+            // 
+            // colAño
+            // 
+            this.colAño.DataPropertyName = "Año";
+            this.colAño.HeaderText = "Año";
+            this.colAño.Name = "colAño";
+            this.colAño.Width = 80;
+            // 
+            // colDescripcionPlantilla
+            // 
+            this.colDescripcionPlantilla.DataPropertyName = "DescripcionPlantilla";
+            this.colDescripcionPlantilla.HeaderText = "DescripcionPlantilla";
+            this.colDescripcionPlantilla.Name = "colDescripcionPlantilla";
+            this.colDescripcionPlantilla.Width = 200;
+            // 
+            // colMeta
+            // 
+            this.colMeta.DataPropertyName = "Meta";
+            this.colMeta.HeaderText = "Meta";
+            this.colMeta.Name = "colMeta";
+            this.colMeta.Width = 350;
+            // 
+            // colDescripcionPlanilla
+            // 
+            this.colDescripcionPlanilla.DataPropertyName = "DescripcionPlanilla";
+            this.colDescripcionPlanilla.HeaderText = "DescripcionPlanilla";
+            this.colDescripcionPlanilla.Name = "colDescripcionPlanilla";
+            this.colDescripcionPlanilla.Width = 350;
+            // 
+            // colIdtPlanilla
+            // 
+            this.colIdtPlanilla.DataPropertyName = "idtPlanilla";
+            this.colIdtPlanilla.HeaderText = "idtPlanilla";
+            this.colIdtPlanilla.Name = "colIdtPlanilla";
+            this.colIdtPlanilla.Visible = false;
+            // 
+            // chkDescuentos
+            // 
+            this.chkDescuentos.AutoSize = true;
+            this.chkDescuentos.Location = new System.Drawing.Point(1159, 69);
+            this.chkDescuentos.Name = "chkDescuentos";
+            this.chkDescuentos.Size = new System.Drawing.Size(114, 17);
+            this.chkDescuentos.TabIndex = 37;
+            this.chkDescuentos.Text = "Incluir Descuentos";
+            this.chkDescuentos.UseVisualStyleBackColor = true;
             // 
             // frmExportarTributosDescuentosTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1315, 489);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvListaPlanillas);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtRuc);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCodForm);
-            this.Controls.Add(this.dgvIngresos);
-            this.Controls.Add(this.dgvDescuentos);
-            this.Controls.Add(this.dgvAportaciones);
-            this.Controls.Add(this.dgvJornadaLaboral);
             this.Name = "frmExportarTributosDescuentosTrabajador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generar archivos de importación de tributos y descuentos del trabajador(PDT-PLAME" +
     ")";
             this.Load += new System.EventHandler(this.frmExportarTributosDescuentosTrabajador_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIngresos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSunat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDescuentos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAportaciones)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvJornadaLaboral)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvIngresos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCodForm;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtRuc;
         private System.Windows.Forms.Button btnExportar;
-        private System.Windows.Forms.DataGridView dgvListaPlanillas;
         private System.Windows.Forms.ComboBox cbMes;
         private System.Windows.Forms.ComboBox cbAños;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button bntListarTodo;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgvDescuentos;
-        private System.Windows.Forms.DataGridView dgvAportaciones;
         private System.Windows.Forms.CheckBox CheckJornada;
-        private System.Windows.Forms.DataGridView dgvJornadaLaboral;
         private System.Windows.Forms.PictureBox pbSunat;
         private System.Windows.Forms.CheckBox chkSCTR;
+        private System.Windows.Forms.DataGridView dgvListaPlanillas;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn chk;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAño;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcionPlantilla;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMeta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcionPlanilla;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIdtPlanilla;
+        private System.Windows.Forms.CheckBox chkDescuentos;
     }
 }

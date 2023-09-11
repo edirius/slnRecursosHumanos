@@ -237,7 +237,7 @@ namespace CapaUsuario.Trabajador
                 miRegimenTrabajador.RUC = "";
                 miRegimenTrabajador.IdtRegimenLaboral = 3;
                 miRegimenTrabajador.IdtTipoTrabajador = 2;
-                miRegimenTrabajador.IdtTipoContrato = 15;
+                miRegimenTrabajador.IdtTipoContrato = 9;
                 miRegimenTrabajador.IdtCategoriaOcupacional = 5;
                 miRegimenTrabajador.IdtOcupacion = 1;
                 miRegimenTrabajador.IdtCargo = 49;
