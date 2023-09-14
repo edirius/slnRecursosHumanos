@@ -408,7 +408,11 @@ namespace CapaDeNegocios
                 default:
                     break;
             }
+
+          
             codigo = Convert.ToInt32( Conexion.GDatos.TraerValorEscalar("spCrearTrabajador", trabajador.Nombres, trabajador.ApellidoPaterno, trabajador.ApellidoMaterno, sexo, trabajador.EstadoCivil.ToString(), trabajador.Direccion, trabajador.Dni, trabajador.CelularPersonal, trabajador.CelularTrabajo, trabajador.FechaNacimiento, trabajador.Foto, trabajador.CorreoElectronico, trabajador.MiTipoVia.Codigo, trabajador.NombreVia, trabajador.NumeroVia, trabajador.DepartamentoInterior, trabajador.MiTipoZOna.Codigo, trabajador.NombreZona, trabajador.Referencia, trabajador.MiDistrito.Codigo, trabajador.MiNacionalidad.Codigo, essalud, trabajador.Suspencionrenta4ta, trabajador.NroRenta4ta, trabajador.scrt));
+
+
 
             return codigo;
         }

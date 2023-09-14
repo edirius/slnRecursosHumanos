@@ -8,13 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using CapaDeNegocios;
 using System.Windows.Forms;
+using miExcel = Microsoft.Office.Interop.Excel;
 
 namespace CapaUsuario.ImportadorExcel
 {
+   
+
     public partial class frmImportadorExcel : Form
     {
         private CapaDeNegocios.ImportadorDatos.ImportadorExcel miImportadorExcel;
-        CapaDeNegocios.cTrabajador miTrabajador = new CapaDeNegocios.cTrabajador();
+        List<FilasExcel> misTrabajadores = new List<FilasExcel>();
+
+        private Microsoft.Office.Interop.Excel.Application oExcel;
+        private object oMissing;
+        private Microsoft.Office.Interop.Excel.Workbook oLibro;
+        private Microsoft.Office.Interop.Excel.Worksheet oHoja;
+
+        private cTrabajador trabajadorPlantilla = new cTrabajador();
+        private CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodo = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+        private CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miPeriodoAFP = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+
         public frmImportadorExcel()
         {
             InitializeComponent();
@@ -32,14 +45,91 @@ namespace CapaUsuario.ImportadorExcel
                 dlgAbrirExcel.DefaultExt = "*.xls||*.xlxs";
                 if (dlgAbrirExcel.ShowDialog() == DialogResult.OK)
                 {
-                    miImportadorExcel = new CapaDeNegocios.ImportadorDatos.ImportadorExcel(dlgAbrirExcel.FileName);
-                    if (miImportadorExcel.ImportarDatosBasicos())
+
+                    //miImportadorExcel = new CapaDeNegocios.ImportadorDatos.ImportadorExcel(dlgAbrirExcel.FileName);
+                    //if (miImportadorExcel.ImportarDatosBasicos())
+                    //{
+                    //    for (int i = 0; i < miImportadorExcel.Nombres.Count; i++)
+                    //    {
+                    //        lstListaNombres.Items.Add(miImportadorExcel.Nombres[i].Nombres);
+                    //    }
+
+                    //}
+
+                    try
                     {
-                        for (int i = 0; i < miImportadorExcel.Nombres.Count; i++)
+                        string RutaExcel = dlgAbrirExcel.FileName;
+
+                            oExcel = new Microsoft.Office.Interop.Excel.Application(); ;
+                            oMissing = System.Reflection.Missing.Value;
+                            oLibro = oExcel.Workbooks.Add(RutaExcel);
+                            oHoja = (Microsoft.Office.Interop.Excel.Worksheet)oExcel.ActiveSheet;
+                            oExcel.Visible = true;
+
+                        int filaInicioBusqueda = 2;
+
+                        if (oHoja != null)
                         {
-                            lstListaNombres.Items.Add(miImportadorExcel.Nombres[i].Nombres);
+                            var valorCelda = (string)(oHoja.Cells[filaInicioBusqueda, 2] as Microsoft.Office.Interop.Excel.Range).Value;
+                            while (!(valorCelda == "") && !(valorCelda == null))
+                            {
+                                FilasExcel nombre = new FilasExcel();
+                                nombre.dni = valorCelda;
+                                nombre.cusspp = (string)(oHoja.Cells[filaInicioBusqueda, 6] as Microsoft.Office.Interop.Excel.Range).Value;
+                                switch ((string)(oHoja.Cells[filaInicioBusqueda, 14] as Microsoft.Office.Interop.Excel.Range).Value)
+                                {
+                                    case "HABITAT":
+                                        nombre.codigoafp = 1;
+                                        nombre.afp = "HABITAT";
+                                        break;
+                                    case "PROFUTURO":
+                                        nombre.codigoafp = 4;
+                                        nombre.afp = "PROFUTURO";
+                                        break;
+                                    case "INTEGRA":
+                                        nombre.codigoafp = 2;
+                                        nombre.afp = "INTEGRA";
+                                        break;
+                                    case "PRIMA":
+                                        nombre.codigoafp = 3;
+                                        nombre.afp = "PRIMA";
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                                if ((string)(oHoja.Cells[filaInicioBusqueda, 15] as Microsoft.Office.Interop.Excel.Range).Value == "0" || (string)(oHoja.Cells[filaInicioBusqueda, 15] as Microsoft.Office.Interop.Excel.Range).Value == "0.00")
+                                {
+                                    nombre.tipocomision = "MIXTA";
+                                }
+                                else
+                                {
+                                    nombre.tipocomision = "FLUJO";
+                                }
+
+                                trabajadorPlantilla =  trabajadorPlantilla.BuscarTrabajadorXDNI(nombre.dni);
+
+                                nombre.codigoTrabajador = trabajadorPlantilla.IdTrabajador;
+
+                                miPeriodo = miPeriodo.traerUltimoPeriodoTrabajador(nombre.codigoTrabajador);
+                                nombre.codigoPeriodo = miPeriodo.IdtPeriodoTrabajador;
+                                miPeriodoAFP = miPeriodoAFP.TraerUltimoRegimenPensionario(miPeriodo.IdtPeriodoTrabajador);
+                                nombre.codigoPensionario = miPeriodoAFP.IdtRegimenPensionarioTrabajador;
+
+
+                                
+
+                                filaInicioBusqueda += 1;
+                                valorCelda = (string)(oHoja.Cells[filaInicioBusqueda, 2] as Microsoft.Office.Interop.Excel.Range).Value;
+                                misTrabajadores.Add(nombre);
+                            }
+                            dtgLista.DataSource = misTrabajadores;
+                            
                         }
-                        
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new cReglaNegociosException("Error al abrir archivo excel: ImportadorExcel.cs : " + ex.Message);
                     }
                 }
             }
@@ -59,25 +149,7 @@ namespace CapaUsuario.ImportadorExcel
             for (int i = 0; i < miImportadorExcel.Nombres.Count; i++)
             {
                 
-                miTrabajador.Nombres = miImportadorExcel.Nombres[i].Nombres;
-                miTrabajador.ApellidoPaterno = miImportadorExcel.Nombres[i].ApellidoPaterno;
-                miTrabajador.ApellidoMaterno = miImportadorExcel.Nombres[i].ApellidoMaterno;
-                miTrabajador.Sexo = CapaDeNegocios.EnumSexo.Masculino;
-                miTrabajador.FechaNacimiento = DateTime.Today;
-                miTrabajador.Dni = miImportadorExcel.Nombres[i].Dni;
-                miTrabajador.CelularPersonal = "";
-                miTrabajador.Direccion = "";
-                miTrabajador.MiDistrito = new cDistrito();
-                miTrabajador.MiDistrito.Codigo = 789;
-
-                miTrabajador.MiTipoVia = new cTipoVia();
-                miTrabajador.MiTipoVia.Codigo = 1;
-                miTrabajador.MiTipoZOna = new cTipoZona();
-                miTrabajador.MiTipoZOna.Codigo = 1;
-                miTrabajador.MiNacionalidad = new cNacionalidad();
-                miTrabajador.MiNacionalidad.Codigo = 1;
-
-                sidttrabajador = miTrabajador.AgregarTrabajadorConID(miTrabajador);
+              
                 //oDataTrabajador = miTrabajador.ObtenerListaTrabajadores("Sin Periodo Laboral", "", "", "", "", "Todos", "Todos");
                 //sidttrabajador = Convert.ToInt32(oDataTrabajador.Compute("MAX(id_trabajador)", ""));
 
@@ -135,5 +207,17 @@ namespace CapaUsuario.ImportadorExcel
             }
 
         }
+    }
+
+    public class FilasExcel
+    {
+        public string dni { get; set; }
+        public string cusspp { get; set; }
+        public string afp { get; set; }
+        public int codigoafp { get; set; }
+        public string tipocomision { get; set; }
+        public int codigoTrabajador { get; set; }
+        public int codigoPeriodo { get; set; }
+        public int codigoPensionario { get; set; }
     }
 }

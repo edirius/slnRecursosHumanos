@@ -21,7 +21,7 @@ namespace CapaUsuario.CargaInicial
             miTrabajador = new cTrabajador();
             miPeriodo = new cPeriodoTrabajador();
             miPeriodoAFP = new cRegimenPensionarioTrabajador();
-            miPeriodoSalud = new cRegimenSaludTrabajador();
+            MiPeriodoSalud = new cRegimenSaludTrabajador();
             miTipoTrabajador = new cRegimenTrabajador();
         }
 
@@ -77,6 +77,17 @@ namespace CapaUsuario.CargaInicial
             }
         }
 
-       
+        public cRegimenSaludTrabajador MiPeriodoSalud
+        {
+            get
+            {
+                return miPeriodoSalud;
+            }
+
+            set
+            {
+                miPeriodoSalud = value;
+            }
+        }
     }
 }

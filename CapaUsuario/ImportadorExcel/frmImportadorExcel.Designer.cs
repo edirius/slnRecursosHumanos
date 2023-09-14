@@ -33,8 +33,9 @@
             this.txtRuta = new System.Windows.Forms.TextBox();
             this.dlgAbrirExcel = new System.Windows.Forms.OpenFileDialog();
             this.btnEscogerExcel = new System.Windows.Forms.Button();
-            this.lstListaNombres = new System.Windows.Forms.ListView();
             this.btnImportar = new System.Windows.Forms.Button();
+            this.dtgLista = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgLista)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -67,14 +68,6 @@
             this.btnEscogerExcel.UseVisualStyleBackColor = true;
             this.btnEscogerExcel.Click += new System.EventHandler(this.btnEscogerExcel_Click);
             // 
-            // lstListaNombres
-            // 
-            this.lstListaNombres.Location = new System.Drawing.Point(82, 113);
-            this.lstListaNombres.Name = "lstListaNombres";
-            this.lstListaNombres.Size = new System.Drawing.Size(505, 239);
-            this.lstListaNombres.TabIndex = 3;
-            this.lstListaNombres.UseCompatibleStateImageBehavior = false;
-            // 
             // btnImportar
             // 
             this.btnImportar.Location = new System.Drawing.Point(82, 377);
@@ -85,13 +78,21 @@
             this.btnImportar.UseVisualStyleBackColor = true;
             this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
             // 
+            // dtgLista
+            // 
+            this.dtgLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgLista.Location = new System.Drawing.Point(82, 86);
+            this.dtgLista.Name = "dtgLista";
+            this.dtgLista.Size = new System.Drawing.Size(549, 235);
+            this.dtgLista.TabIndex = 5;
+            // 
             // frmImportadorExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 414);
+            this.Controls.Add(this.dtgLista);
             this.Controls.Add(this.btnImportar);
-            this.Controls.Add(this.lstListaNombres);
             this.Controls.Add(this.btnEscogerExcel);
             this.Controls.Add(this.txtRuta);
             this.Controls.Add(this.label1);
@@ -99,6 +100,7 @@
             this.Name = "frmImportadorExcel";
             this.Text = "Llenar Datos Excel";
             this.Load += new System.EventHandler(this.frmImportadorExcel_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgLista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -110,7 +112,7 @@
         private System.Windows.Forms.TextBox txtRuta;
         private System.Windows.Forms.OpenFileDialog dlgAbrirExcel;
         private System.Windows.Forms.Button btnEscogerExcel;
-        private System.Windows.Forms.ListView lstListaNombres;
         private System.Windows.Forms.Button btnImportar;
+        private System.Windows.Forms.DataGridView dtgLista;
     }
 }

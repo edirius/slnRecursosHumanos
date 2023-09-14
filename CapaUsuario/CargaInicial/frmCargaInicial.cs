@@ -153,9 +153,70 @@ namespace CapaUsuario.CargaInicial
                 {
                     foreach (cDetalleCargaInicial item in ListaDetalles)
                     {
-                        int id;
-                        id = item.MiTrabajador.AgregarTrabajadorConID(item.MiTrabajador);
-                        item.MiTrabajador.IdTrabajador = id;
+                        if (item.MiTrabajador.BuscarTrabajadorXDNI(item.MiTrabajador.Dni) != null)
+                        {
+
+                        } 
+                        else
+                        {
+                            int id;
+                            item.MiTrabajador.Scrt = true;
+                            item.MiTrabajador.NroRenta4ta = "1";
+                            item.MiTrabajador.FechaNacimiento = new DateTime(2022, 1, 1);
+
+                            id = item.MiTrabajador.AgregarTrabajadorConID(item.MiTrabajador);
+                            item.MiTrabajador.IdTrabajador = id;
+
+                            item.MiPeriodo = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+                            item.MiPeriodo.FechaInicio = "01/08/2023";
+                            item.MiPeriodo.FechaFin = "";
+                            item.MiPeriodo.IdtMotivoFinPeriodo = 1;
+                            item.MiPeriodo.IdtTrabajador = id;
+                            item.MiPeriodo.CrearPeriodoTrabajador(item.MiPeriodo);
+
+                            item.MiPeriodo = item.MiPeriodo.traerUltimoPeriodoTrabajador(id);
+
+                            item.MiPeriodoAFP = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+                            item.MiPeriodoAFP.IdtAFP = 5;
+                            item.MiPeriodoAFP.FechaInicio = "01/08/2023";
+                            item.MiPeriodoAFP.FechaFin = "";
+                            item.MiPeriodoAFP.IdtPeriodoTrabajador = item.MiPeriodo.IdtPeriodoTrabajador;
+
+                            item.MiPeriodoAFP.CrearRegimenPensionarioTrabajador(item.MiPeriodoAFP);
+
+                            item.MiPeriodoSalud = new CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador();
+                            item.MiPeriodoSalud.IdtRegimenSaludTrabajador = 0;
+                            item.MiPeriodoSalud.RegimenSalud = "ESSALUD REGULAR (Exclusivamente)";
+
+                            item.MiPeriodoSalud.FechaInicio = "01/08/2023";
+                            item.MiPeriodoSalud.FechaFin = "";
+                            item.MiPeriodoSalud.EntidadPrestadoraSalud = "";
+                            item.MiPeriodoSalud.IdtPeriodoTrabajador = item.MiPeriodo.IdtPeriodoTrabajador;
+                            item.MiPeriodoSalud.CrearRegimenSaludTrabajador(item.MiPeriodoSalud);
+
+
+                            item.MiTipoTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                            item.MiTipoTrabajador.IdtRegimenTrabajador = 0;
+                            item.MiTipoTrabajador.Condicion = "CONTRATADO";
+                            item.MiTipoTrabajador.ServidorConfianza = false;
+
+                            item.MiTipoTrabajador.Periodicidad = "MENSUAL";
+                            item.MiTipoTrabajador.TipoPago = "EFECTIVO";
+                            item.MiTipoTrabajador.MontoPago = 0;
+                            item.MiTipoTrabajador.FechaInicio = "01/08/2023";
+                            item.MiTipoTrabajador.FechaFin = "";
+                            item.MiTipoTrabajador.RUC = "";
+                            item.MiTipoTrabajador.IdtRegimenLaboral = 2;
+                            item.MiTipoTrabajador.IdtTipoTrabajador = 2;
+                            item.MiTipoTrabajador.IdtTipoContrato = 9;
+                            item.MiTipoTrabajador.IdtCategoriaOcupacional = 5;
+                            item.MiTipoTrabajador.IdtOcupacion = 1;
+                            item.MiTipoTrabajador.IdtCargo = 49;
+                            item.MiTipoTrabajador.IdtMeta = 88;
+                            item.MiTipoTrabajador.IdtPeriodoTrabajador = item.MiPeriodo.IdtPeriodoTrabajador;
+                            item.MiTipoTrabajador.CrearRegimenTrabajador(item.MiTipoTrabajador);
+                        }
+                        
                     }
                     cargarDatagrid();
                 }
