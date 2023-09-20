@@ -44,7 +44,10 @@ namespace CapaUsuario.Usuarios
                 //string ruta_imagen = ruta + "\\logo_MuniMaras.png";
                 pbImagen.Image = new System.Drawing.Bitmap(ruta_imagen);
                 lblServidor.Text = "Conectando a: " + Settings.Default.ConexionMySql;
+                //Server = MYSQL5049.site4now.net; Database = db_a9f03e_edirius; Uid = a9f03e_edirius; Pwd = YOUR_DB_PASSWORD
                 Conexion.IniciarSesion(Settings.Default.ConexionMySql, "bdpersonal", "root", "root");
+                //Conexion.IniciarSesion("MYSQL5049.site4now.net", "db_a9f03e_edirius", "a9f03e_edirius", "bahamut0");
+
             }
             catch (Exception ex)
             {

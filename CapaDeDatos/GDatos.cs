@@ -106,11 +106,19 @@ namespace CapaDeDatos
 
         // Obtiene un DataTable a partir de un Procedimiento Almacenado.
         public DataTable TraerDataTable(string procedimientoAlmacenado)
-        { return TraerDataSet(procedimientoAlmacenado).Tables[0].Copy(); } // end TraerDataTable
+        {
+            CerrarConexion();
+            Autenticar();
+            return TraerDataSet(procedimientoAlmacenado).Tables[0].Copy();
+        } // end TraerDataTable
 
         //Obtiene un DataSet a partir de un Procedimiento Almacenado y sus parámetros.
         public DataTable TraerDataTable(string procedimientoAlmacenado, params Object[] args)
-        { return TraerDataSet(procedimientoAlmacenado, args).Tables[0].Copy(); } // end TraerDataTable
+        {
+            CerrarConexion();
+            Autenticar();
+            return TraerDataSet(procedimientoAlmacenado, args).Tables[0].Copy();
+        } // end TraerDataTable
 
         //Obtiene un DataTable a partir de un Query SQL
         public DataTable TraerDataTableSql(string comandoSql)
@@ -119,6 +127,9 @@ namespace CapaDeDatos
         // Obtiene un DataReader a partir de un Procedimiento Almacenado.
         public IDataReader TraerDataReader(string procedimientoAlmacenado)
         {
+            CerrarConexion();
+            Autenticar();
+
             var com = Comando(procedimientoAlmacenado);
             return com.ExecuteReader();
         } // end TraerDataReader 
@@ -269,6 +280,8 @@ namespace CapaDeDatos
         //Ejecuta un Procedimiento Almacenado en la base, utilizando los parámetros. 
         public int Ejecutar(string procedimientoAlmacenado, params  Object[] args)
         {
+            CerrarConexion();
+            Autenticar();
             var com = Comando(procedimientoAlmacenado);
             //cambio
             com.CommandTimeout = 60;

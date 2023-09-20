@@ -1209,7 +1209,7 @@ namespace CapaUsuario.Planilla
                 case "AGOSTO":
                     x = "08";
                     break;
-                case "SEPTIEMBRE":
+                case "SETIEMBRE":
                     x = "09";
                     break;
                 case "OCTUBRE":
