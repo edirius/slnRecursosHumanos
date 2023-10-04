@@ -46,7 +46,7 @@ namespace CapaUsuario.Usuarios
                 lblServidor.Text = "Conectando a: " + Settings.Default.ConexionMySql;
                 //Server = MYSQL5049.site4now.net; Database = db_a9f03e_edirius; Uid = a9f03e_edirius; Pwd = YOUR_DB_PASSWORD
                 Conexion.IniciarSesion(Settings.Default.ConexionMySql, "bdpersonal", "root", "root");
-                //Conexion.IniciarSesion("MYSQL5049.site4now.net", "db_a9f03e_edirius", "a9f03e_edirius", "bahamut0");
+                //Conexion.IniciarSesion("MYSQL8001.site4now.net", "db_a85d09_ediriu2", "a85d09_ediriu2", "bahamut0");
 
             }
             catch (Exception ex)
