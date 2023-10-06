@@ -198,7 +198,7 @@ namespace CapaUsuario.ExportarSunat
                     }
                 case "9":
                     {
-                        FechaTexto = "SEPTIEMBRE";
+                        FechaTexto = "SETIEMBRE";
                         break;
                     }
                 case "10":

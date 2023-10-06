@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvListarTrabajadores = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.cbMes = new System.Windows.Forms.ComboBox();
@@ -37,6 +37,7 @@
             this.cbAños = new System.Windows.Forms.ComboBox();
             this.btnExportar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnVerCodificacion = new System.Windows.Forms.Button();
             this.chkSRCT = new System.Windows.Forms.CheckBox();
             this.checkEDU = new System.Windows.Forms.CheckBox();
             this.checkEST = new System.Windows.Forms.CheckBox();
@@ -45,7 +46,6 @@
             this.checkTRA = new System.Windows.Forms.CheckBox();
             this.checkSelectAll = new System.Windows.Forms.CheckBox();
             this.tipMensaje = new System.Windows.Forms.ToolTip(this.components);
-            this.btnVerCodificacion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListarTrabajadores)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -54,8 +54,8 @@
             // 
             this.dgvListarTrabajadores.AllowUserToAddRows = false;
             this.dgvListarTrabajadores.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListarTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListarTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListarTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListarTrabajadores.GridColor = System.Drawing.Color.White;
             this.dgvListarTrabajadores.Location = new System.Drawing.Point(7, 118);
@@ -87,7 +87,7 @@
             "JUNIO",
             "JULIO",
             "AGOSTO",
-            "SEPTIEMBRE",
+            "SETIEMBRE",
             "OCTUBRE",
             "NOVIEMBRE",
             "DICIEMBRE"});
@@ -150,6 +150,22 @@
             this.groupBox1.Size = new System.Drawing.Size(902, 113);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
+            // 
+            // btnVerCodificacion
+            // 
+            this.btnVerCodificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVerCodificacion.BackColor = System.Drawing.Color.MintCream;
+            this.btnVerCodificacion.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnVerCodificacion.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnVerCodificacion.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnVerCodificacion.Location = new System.Drawing.Point(786, 19);
+            this.btnVerCodificacion.Name = "btnVerCodificacion";
+            this.btnVerCodificacion.Size = new System.Drawing.Size(100, 50);
+            this.btnVerCodificacion.TabIndex = 61;
+            this.btnVerCodificacion.Text = "&Ver Codificacion";
+            this.btnVerCodificacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnVerCodificacion.UseVisualStyleBackColor = false;
+            this.btnVerCodificacion.Click += new System.EventHandler(this.btnVerCodificacion_Click);
             // 
             // chkSRCT
             // 
@@ -221,22 +237,6 @@
             this.checkSelectAll.Text = "Seleccionar todos los trabajadores";
             this.checkSelectAll.UseVisualStyleBackColor = true;
             this.checkSelectAll.CheckedChanged += new System.EventHandler(this.checkSelectAll_CheckedChanged);
-            // 
-            // btnVerCodificacion
-            // 
-            this.btnVerCodificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVerCodificacion.BackColor = System.Drawing.Color.MintCream;
-            this.btnVerCodificacion.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnVerCodificacion.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnVerCodificacion.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnVerCodificacion.Location = new System.Drawing.Point(786, 19);
-            this.btnVerCodificacion.Name = "btnVerCodificacion";
-            this.btnVerCodificacion.Size = new System.Drawing.Size(100, 50);
-            this.btnVerCodificacion.TabIndex = 61;
-            this.btnVerCodificacion.Text = "&Ver Codificacion";
-            this.btnVerCodificacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnVerCodificacion.UseVisualStyleBackColor = false;
-            this.btnVerCodificacion.Click += new System.EventHandler(this.btnVerCodificacion_Click);
             // 
             // frmExportarTodo
             // 
