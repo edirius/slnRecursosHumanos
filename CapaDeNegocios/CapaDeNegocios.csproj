@@ -230,9 +230,12 @@
     <Compile Include="Sunat\cMaestroDescuentos.cs" />
     <Compile Include="Sunat\cMaestroIngresos.cs" />
     <Compile Include="Sunat\cTipoSuspencionLaboral.cs" />
+    <Compile Include="Tareos\cArchivoExcel.cs" />
+    <Compile Include="Tareos\cDetalleArchivoExcel.cs" />
     <Compile Include="Tareos\cDetalleTareo.cs" />
     <Compile Include="Tareos\cDiasTareo.cs" />
     <Compile Include="DatosLaborales\cOcupacion.cs" />
+    <Compile Include="Tareos\cImportarExcelTareo.cs" />
     <Compile Include="Tareos\cImprimirHorasHombre.cs" />
     <Compile Include="Tareos\cImprimirTareo.cs" />
     <Compile Include="Tareos\cImprimirTareo2.cs" />

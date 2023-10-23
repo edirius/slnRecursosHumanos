@@ -1493,5 +1493,13 @@ namespace CapaUsuario.Tareo
                 MessageBox.Show("Error al agregar la categoria: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnImportartareo_Click(object sender, EventArgs e)
+        {
+            Tareo.frmImportarExcel fImportarExcel = new frmImportarExcel();
+            fImportarExcel.oMeta = miMeta;
+            fImportarExcel.otareo = miTareo;
+            fImportarExcel.Show();
+        }
     }
 }

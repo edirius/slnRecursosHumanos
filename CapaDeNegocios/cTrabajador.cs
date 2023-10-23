@@ -679,5 +679,18 @@ namespace CapaDeNegocios
                 return null;
             }
         }
+
+        public int BuscarTrabajadorXDNIFormaCorta(string DNI)
+        {
+            DataTable dt = Conexion.GDatos.TraerDataTable("spBuscarTrabajadorXDNI", DNI);
+            if (dt.Rows.Count > 0)
+            {
+                return Convert.ToInt16(dt.Rows[0][0]); 
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

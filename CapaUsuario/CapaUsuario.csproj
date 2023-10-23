@@ -1053,6 +1053,12 @@
     <Compile Include="Metas\frmVincularMetas.Designer.cs">
       <DependentUpon>frmVincularMetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tareo\frmImportarExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tareo\frmImportarExcel.Designer.cs">
+      <DependentUpon>frmImportarExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tareo\frmImportarTareo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1892,6 +1898,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Metas\frmVincularMetas.resx">
       <DependentUpon>frmVincularMetas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tareo\frmImportarExcel.resx">
+      <DependentUpon>frmImportarExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tareo\frmImportarTareo.resx">
       <DependentUpon>frmImportarTareo.cs</DependentUpon>

@@ -35,9 +35,9 @@ namespace CapaDeDatos
 
                         //return "Server=MYSQL8001.site4now.net;Database=db_a85d09_ediriu2;Uid=a85d09_ediriu2;Pwd=bahamut0;SslMode = 0;CharSet=utf8;";
 
-                        return "Server=35.238.210.153;Database=bdpersonal;Uid=root;Pwd=root;SslMode = 0;CharSet=utf8;";
+                        //return "Server=35.238.210.153;Database=bdpersonal;Uid=root;Pwd=root;SslMode = 0;CharSet=utf8;";
 
-                        //return sCadena.ToString();
+                        return sCadena.ToString();
                     }
                     throw new Exception("No se puede establecer la cadena de conexión en la clase DatosSQLServer");
                 }
