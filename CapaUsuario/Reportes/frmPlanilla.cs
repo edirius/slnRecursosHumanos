@@ -2692,7 +2692,9 @@ namespace CapaUsuario.Reportes
                                             drFila[1] = row[1];
                                             drFila[2] = row[2];
                                             drFila[3] = row[3];
-                                            drFila[4] = row[6];
+                                            //secuencia funcional
+                                            drFila[4] = smeta_numero;
+                                            //drFila[4] = row[6];
                                             drFila[5] = row[7];
                                             drFila[6] = row[8];
                                             drFila[7] = row[9];

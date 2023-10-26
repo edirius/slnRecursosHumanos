@@ -33,17 +33,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.lblContador = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblContador);
             this.panel1.Controls.Add(this.txtNombreCategoria);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(11, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(381, 54);
+            this.panel1.Size = new System.Drawing.Size(381, 64);
             this.panel1.TabIndex = 99;
             // 
             // txtNombreCategoria
@@ -53,6 +55,7 @@
             this.txtNombreCategoria.Name = "txtNombreCategoria";
             this.txtNombreCategoria.Size = new System.Drawing.Size(268, 20);
             this.txtNombreCategoria.TabIndex = 97;
+            this.txtNombreCategoria.TextChanged += new System.EventHandler(this.txtNombreCategoria_TextChanged);
             // 
             // label1
             // 
@@ -70,7 +73,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageIndex = 1;
-            this.btnCancelar.Location = new System.Drawing.Point(300, 82);
+            this.btnCancelar.Location = new System.Drawing.Point(300, 103);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(92, 53);
             this.btnCancelar.TabIndex = 98;
@@ -86,7 +89,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageIndex = 1;
-            this.btnAceptar.Location = new System.Drawing.Point(151, 82);
+            this.btnAceptar.Location = new System.Drawing.Point(151, 103);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(92, 53);
             this.btnAceptar.TabIndex = 97;
@@ -95,11 +98,21 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // lblContador
+            // 
+            this.lblContador.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblContador.Location = new System.Drawing.Point(320, 36);
+            this.lblContador.Name = "lblContador";
+            this.lblContador.Size = new System.Drawing.Size(51, 23);
+            this.lblContador.TabIndex = 98;
+            this.lblContador.Text = "0/45";
+            this.lblContador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmNuevaJornal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 147);
+            this.ClientSize = new System.Drawing.Size(410, 168);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -120,5 +133,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label lblContador;
     }
 }

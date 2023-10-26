@@ -72,5 +72,10 @@ namespace CapaUsuario.Tareo
         {
             DialogResult = DialogResult.Cancel;
         }
+
+        private void txtNombreCategoria_TextChanged(object sender, EventArgs e)
+        {
+            lblContador.Text = txtNombreCategoria.TextLength.ToString() + "/45";
+        }
     }
 }
