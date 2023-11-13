@@ -2294,7 +2294,7 @@ namespace CapaUsuario.Reportes
                                             else
                                             {
                                                 drFila[4] = "DEL 01/05/2023 AL 30/10/2023";
-                                                drFila[5] = "4 MESES";
+                                                drFila[5] = "6 MESES";
                                             }
 
 
