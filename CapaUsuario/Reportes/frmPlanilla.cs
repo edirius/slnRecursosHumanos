@@ -2319,11 +2319,11 @@ namespace CapaUsuario.Reportes
                                             odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
                                             if (oDatosGenerales.Ruc == "20147495600")
                                             {
-                                                odtPrueba.Rows[0][8] = " SUELDO ALCALDE = (4100.00*6/12)";
+                                                odtPrueba.Rows[0][8] = " SUELDO ALCALDE = (5300.00*6/12)";
                                             }
                                             else
                                             {
-                                                odtPrueba.Rows[0][7] = " SUELDO ALCALDE = (4100.00*6/12)";
+                                                odtPrueba.Rows[0][7] = " SUELDO ALCALDE = (5300.00*6/12)";
                                             }
 
                                         }
