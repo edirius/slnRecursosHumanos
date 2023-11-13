@@ -653,6 +653,12 @@ namespace CapaUsuario
             fPlanilla2.Show();
         }
 
+        private void verficadorDNIToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImportadorExcel.frmVerificadorDNI fVerificadorDNI = new ImportadorExcel.frmVerificadorDNI();
+            fVerificadorDNI.Show();
+        }
+
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackupBBDDMySQL();

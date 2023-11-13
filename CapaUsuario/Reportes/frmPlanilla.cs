@@ -2288,12 +2288,12 @@ namespace CapaUsuario.Reportes
                                             drFila[3] = row[2];
                                             if (Convert.ToDateTime(row[3].ToString()) < new DateTime(2022, 11, 1))
                                             {
-                                                drFila[4] = "DEL 01/11/2022 AL 30/04/2023";
+                                                drFila[4] = "DEL 01/05/2023 AL 30/10/2023";
                                                 drFila[5] = "6 MESES";
                                             }
                                             else
                                             {
-                                                drFila[4] = "DEL 01/01/2023 AL 30/04/2023";
+                                                drFila[4] = "DEL 01/05/2023 AL 30/10/2023";
                                                 drFila[5] = "4 MESES";
                                             }
 
@@ -2319,11 +2319,11 @@ namespace CapaUsuario.Reportes
                                             odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
                                             if (oDatosGenerales.Ruc == "20147495600")
                                             {
-                                                odtPrueba.Rows[0][8] = " SUELDO ALCALDE = (4752.21*4/12)";
+                                                odtPrueba.Rows[0][8] = " SUELDO ALCALDE = (4100.00*6/12)";
                                             }
                                             else
                                             {
-                                                odtPrueba.Rows[0][7] = " SUELDO ALCALDE = (4752.21*4/12)";
+                                                odtPrueba.Rows[0][7] = " SUELDO ALCALDE = (4100.00*6/12)";
                                             }
 
                                         }

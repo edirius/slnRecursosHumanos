@@ -110,6 +110,7 @@
             this.impresionPlanillasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuResumenXDetallePlanillas = new System.Windows.Forms.ToolStripMenuItem();
             this.analiticoPlanillasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.planilla2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -135,7 +136,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.planilla2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verficadorDNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -173,6 +174,7 @@
             this.restaurarCopiaDeSeguridadToolStripMenuItem,
             this.servidorIPToolStripMenuItem,
             this.cargaInicialToolStripMenuItem,
+            this.verficadorDNIToolStripMenuItem,
             this.toolStripSeparator3,
             this.exitToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
@@ -794,6 +796,13 @@
             this.analiticoPlanillasToolStripMenuItem.Text = "Analitico Planillas";
             this.analiticoPlanillasToolStripMenuItem.Click += new System.EventHandler(this.analiticoPlanillasToolStripMenuItem_Click);
             // 
+            // planilla2ToolStripMenuItem
+            // 
+            this.planilla2ToolStripMenuItem.Name = "planilla2ToolStripMenuItem";
+            this.planilla2ToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.planilla2ToolStripMenuItem.Text = "Planilla 2";
+            this.planilla2ToolStripMenuItem.Click += new System.EventHandler(this.planilla2ToolStripMenuItem_Click);
+            // 
             // helpMenu
             // 
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -988,12 +997,12 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // planilla2ToolStripMenuItem
+            // verficadorDNIToolStripMenuItem
             // 
-            this.planilla2ToolStripMenuItem.Name = "planilla2ToolStripMenuItem";
-            this.planilla2ToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
-            this.planilla2ToolStripMenuItem.Text = "Planilla 2";
-            this.planilla2ToolStripMenuItem.Click += new System.EventHandler(this.planilla2ToolStripMenuItem_Click);
+            this.verficadorDNIToolStripMenuItem.Name = "verficadorDNIToolStripMenuItem";
+            this.verficadorDNIToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.verficadorDNIToolStripMenuItem.Text = "Verficador DNI";
+            this.verficadorDNIToolStripMenuItem.Click += new System.EventHandler(this.verficadorDNIToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -1136,6 +1145,7 @@
         private System.Windows.Forms.ToolStripMenuItem analiticoPlanillasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem boletaPago2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planilla2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verficadorDNIToolStripMenuItem;
     }
 }
 

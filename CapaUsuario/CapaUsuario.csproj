@@ -85,6 +85,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
@@ -376,6 +377,12 @@
     </Compile>
     <Compile Include="ImportadorExcel\frmImportadorExcel.Designer.cs">
       <DependentUpon>frmImportadorExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportadorExcel\frmVerificadorDNI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportadorExcel\frmVerificadorDNI.Designer.cs">
+      <DependentUpon>frmVerificadorDNI.cs</DependentUpon>
     </Compile>
     <Compile Include="Planilla\frmImpuestoAlaRentaDe5taCategoria.cs">
       <SubType>Form</SubType>
@@ -1641,6 +1648,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImportadorExcel\frmImportadorExcel.resx">
       <DependentUpon>frmImportadorExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportadorExcel\frmVerificadorDNI.resx">
+      <DependentUpon>frmVerificadorDNI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIParent1.resx">
       <DependentUpon>MDIParent1.cs</DependentUpon>
