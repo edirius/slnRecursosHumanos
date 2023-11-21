@@ -2317,13 +2317,25 @@ namespace CapaUsuario.Reportes
                                         else
                                         {
                                             odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
-                                            if (oDatosGenerales.Ruc == "20147495600")
+                                            switch (oDatosGenerales.Ruc)
                                             {
-                                                odtPrueba.Rows[0][8] = " SUELDO ALCALDE = (5300.00*6/12)";
-                                            }
-                                            else
-                                            {
-                                                odtPrueba.Rows[0][7] = " SUELDO ALCALDE = (5300.00*6/12)";
+                                                case "20147495600":
+                                                        odtPrueba.Rows[0][8] = " SUELDO ALCALDE = ((4752.21 + 4752.21/6)*6/12)";
+                                                    break;
+                                                case "20159377696":
+                                                    odtPrueba.Rows[0][7] = " SUELDO ALCALDE = ((4752.21 + 4752.21/6)*6/12)";
+                                                    break;
+                                                case "20159377424":
+                                                    odtPrueba.Rows[0][7] = " SUELDO ALCALDE = ((4152.21 + 4152.21/6)*6/12)";
+                                                    break;
+                                                case "20177432360":
+                                                    odtPrueba.Rows[0][7] = " SUELDO ALCALDE = ((5300 + 5300/6)*6/12)";
+                                                    break;
+                                                case "20200737211":
+                                                    odtPrueba.Rows[0][7] = " SUELDO ALCALDE = ((5352.21+ 5352.21/6)*6/12)";
+                                                    break;
+                                                default:
+                                                    break;
                                             }
 
                                         }
