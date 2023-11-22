@@ -523,6 +523,8 @@ namespace CapaUsuario.Reportes
                 decimal monto_essalud_seguro_regular = 0;
                 decimal monto_essalud_cbbsp = 0;
                 decimal monto_essalud_seguro_complementario = 0;
+                decimal monto_essalud_seguro_complementario_Pension = 0;
+                decimal monto_essalud_seguro_complementario_Privado = 0;
 
                 decimal monto_snp_dl = 0;
 
@@ -572,6 +574,8 @@ namespace CapaUsuario.Reportes
                 string columna_essalud_regular = "";
                 string columna_essalud_trabajador = "";
                 string columna_essalud_complementario = "";
+                string columna_essalud_trabajador_pension = "";
+                string columna_essalud_complementario_privado = "";
                 string columna_aporte_entidad = "";
                 string columna_renta_5ta = "";
                 string columna_snp = "";
@@ -658,6 +662,9 @@ namespace CapaUsuario.Reportes
                 int iindice_remuneracion_permanente = 0;
                 int iindice_ingresos_cas = 0;
                 int iindice_aportacion_trabajador = 0;
+
+                int iindice_seguro_essalud_privado = 0;
+                int iindice_seguro_pension = 0;
 
                 int iindice_total_ingresos = 0;
                 int iindice_total_a_empleador = 0;
@@ -3279,6 +3286,12 @@ namespace CapaUsuario.Reportes
                                             columna_essalud_complementario = oMaestroAEmpleador.ListarAbreviacionDeIdtmaestroaempleador(7).Rows[0][1].ToString();
                                             iindice_essalud_seguro_complementario = BuscarIndiceColumna(odtPrueba, columna_essalud_complementario);
 
+                                            columna_essalud_complementario_privado = oMaestroAEmpleador.ListarAbreviacionDeIdtmaestroaempleador(15).Rows[0][1].ToString();
+                                            iindice_seguro_essalud_privado = BuscarIndiceColumna(odtPrueba, columna_essalud_complementario_privado);
+
+                                            columna_essalud_trabajador_pension = oMaestroAEmpleador.ListarAbreviacionDeIdtmaestroaempleador(16).Rows[0][1].ToString();
+                                            iindice_seguro_pension = BuscarIndiceColumna(odtPrueba, columna_essalud_trabajador_pension);
+
                                             columna_aporte_entidad = oMaestroAEmpleador.ListarAbreviacionDeIdtmaestroaempleador(14).Rows[0][1].ToString();
                                             iindice_aporte_entidad = BuscarIndiceColumna(odtPrueba, columna_aporte_entidad);
 
@@ -3373,6 +3386,12 @@ namespace CapaUsuario.Reportes
 
                                                     if (iindice_essalud_seguro_complementario != -1)
                                                         monto_essalud_seguro_complementario += Convert.ToDecimal(odtPrueba.Rows[l][iindice_essalud_seguro_complementario]);
+
+                                                    if (iindice_seguro_essalud_privado != -1)
+                                                        monto_essalud_seguro_complementario_Privado += Convert.ToDecimal(odtPrueba.Rows[l][iindice_seguro_essalud_privado]);
+
+                                                    if (iindice_seguro_pension != -1)
+                                                        monto_essalud_seguro_complementario_Pension += Convert.ToDecimal(odtPrueba.Rows[l][iindice_seguro_pension]);
 
                                                     //Sumatoria SNP
                                                     if (iindice_snp_dl != -1)
@@ -3606,6 +3625,12 @@ namespace CapaUsuario.Reportes
                                                     case "0806":
                                                         MontoConcepto = monto_essalud_seguro_complementario.ToString("0.00");
                                                         break;
+                                                    case "0810":
+                                                        MontoConcepto = monto_essalud_seguro_complementario_Privado.ToString("0.00");
+                                                        break;
+                                                    case "0805":
+                                                        MontoConcepto = monto_essalud_seguro_complementario_Pension.ToString("0.00");
+                                                        break;
                                                     case "Total Ingresos":
                                                         MontoConcepto = total_ingresos_total.ToString("0.00");
                                                         break;
@@ -3613,6 +3638,7 @@ namespace CapaUsuario.Reportes
                                                         MontoConcepto = total_a_empleador_total.ToString("0.00");
                                                         break;
                                                     default:
+                                                        
                                                         DataTable maestroIngreso = oClasificadoresxMetaxPLantilla.BuscarMaestroIngresoXCodigo(item.Concepto);
                                                         string abreviacion = maestroIngreso.Rows[0]["abreviacion"].ToString();
 
