@@ -304,6 +304,20 @@ namespace CapaUsuario.ExportarSunat
 
                                     milistaSCTR.Add(srct);//agregamos los datos concatenados al arreglo(ArrayList)
                                 }
+
+                                if (aportacionE.Monto > 0 && (aportacionE.MaestroAportacionesEmpleador.Codigo == "0805" || aportacionE.MaestroAportacionesEmpleador.Codigo == "0810"))
+                                {
+                                    if (aportacionE.MaestroAportacionesEmpleador.Codigo == "0810")
+                                    {
+                                        aportacionE.MaestroAportacionesEmpleador.Codigo = "0814";
+                                    }
+                                    string codigo = aportacionE.MaestroAportacionesEmpleador.Codigo;
+                                    string MontoDevengado = aportacionE.Monto.ToString();
+                                    string Monto = aportacionE.Monto.ToString();
+                                    ConvertirMes(mes);
+                                    Aportaciones = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
+                                    milista.Add(Aportaciones);//agregamos los datos concatenados al arreglo(ArrayList)
+                                }
                             }
                         }
                     }

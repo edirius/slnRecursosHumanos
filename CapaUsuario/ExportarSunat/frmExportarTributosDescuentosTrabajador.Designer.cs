@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.bntListarTodo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkDescuentos = new System.Windows.Forms.CheckBox();
             this.chkSCTR = new System.Windows.Forms.CheckBox();
             this.pbSunat = new System.Windows.Forms.PictureBox();
             this.CheckJornada = new System.Windows.Forms.CheckBox();
@@ -52,7 +53,6 @@
             this.colMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescripcionPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdtPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chkDescuentos = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSunat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
@@ -188,14 +188,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Buscar trabajadores por fecha:";
             // 
+            // chkDescuentos
+            // 
+            this.chkDescuentos.AutoSize = true;
+            this.chkDescuentos.Location = new System.Drawing.Point(1159, 69);
+            this.chkDescuentos.Name = "chkDescuentos";
+            this.chkDescuentos.Size = new System.Drawing.Size(114, 17);
+            this.chkDescuentos.TabIndex = 37;
+            this.chkDescuentos.Text = "Incluir Descuentos";
+            this.chkDescuentos.UseVisualStyleBackColor = true;
+            // 
             // chkSCTR
             // 
             this.chkSCTR.AutoSize = true;
-            this.chkSCTR.Location = new System.Drawing.Point(1072, 69);
+            this.chkSCTR.Location = new System.Drawing.Point(1042, 69);
             this.chkSCTR.Name = "chkSCTR";
-            this.chkSCTR.Size = new System.Drawing.Size(55, 17);
+            this.chkSCTR.Size = new System.Drawing.Size(108, 17);
             this.chkSCTR.TabIndex = 36;
-            this.chkSCTR.Text = "SCTR";
+            this.chkSCTR.Text = "SCTR-ESSALUD";
             this.chkSCTR.UseVisualStyleBackColor = true;
             // 
             // pbSunat
@@ -211,7 +221,7 @@
             // CheckJornada
             // 
             this.CheckJornada.AutoSize = true;
-            this.CheckJornada.Location = new System.Drawing.Point(821, 69);
+            this.CheckJornada.Location = new System.Drawing.Point(787, 70);
             this.CheckJornada.Name = "CheckJornada";
             this.CheckJornada.Size = new System.Drawing.Size(235, 17);
             this.CheckJornada.TabIndex = 34;
@@ -297,16 +307,6 @@
             this.colIdtPlanilla.HeaderText = "idtPlanilla";
             this.colIdtPlanilla.Name = "colIdtPlanilla";
             this.colIdtPlanilla.Visible = false;
-            // 
-            // chkDescuentos
-            // 
-            this.chkDescuentos.AutoSize = true;
-            this.chkDescuentos.Location = new System.Drawing.Point(1159, 69);
-            this.chkDescuentos.Name = "chkDescuentos";
-            this.chkDescuentos.Size = new System.Drawing.Size(114, 17);
-            this.chkDescuentos.TabIndex = 37;
-            this.chkDescuentos.Text = "Incluir Descuentos";
-            this.chkDescuentos.UseVisualStyleBackColor = true;
             // 
             // frmExportarTributosDescuentosTrabajador
             // 
