@@ -1047,7 +1047,7 @@ namespace CapaUsuario.Planilla
 
             for (int i = 0; i < con_ingresos; i++)
             {
-                if (smingresos[i, 3].ToString() != "" && !chkAguinaldo.Checked)//Verficamos que no tenga Formula
+                if (smingresos[i, 3].ToString() != "" && !chkAguinaldo.Checked && !chkAFP.Checked)//Verficamos que no tenga Formula
                 {
                     dgvDetallePlanilla.Rows[fila].Cells[inicio_ingresos + i].ReadOnly = true;
                     decimal number2 = 0;
@@ -1128,7 +1128,7 @@ namespace CapaUsuario.Planilla
             {
                 if (sma_trabajador[i, 3].ToString() != "" || sma_trabajador[i, 1].ToString() == "0605" || sma_trabajador[i, 1].ToString() == "0804")
                 {
-                    if (!(sma_trabajador[i, 1].ToString() == "0605"))
+                    if (!(sma_trabajador[i, 1].ToString() == "0605") && !(chkAFP.Checked && (sma_trabajador[i, 1].ToString() == "0601" || sma_trabajador[i, 1].ToString() == "0606" || sma_trabajador[i, 1].ToString() == "0608")))
                     {
                         dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].ReadOnly = true;
                     }
@@ -1143,7 +1143,7 @@ namespace CapaUsuario.Planilla
                     {
                         
                         decimal result = IngresosAfectos(fila, sma_trabajador[i, 1].ToString(), sma_trabajador[i, 3].ToString());
-                        if (result == 0 && (sma_trabajador[i, 1].ToString() =="0605"))
+                        if (result == 0 && (sma_trabajador[i, 1].ToString() =="0605" || (chkAFP.Checked && (sma_trabajador[i, 1].ToString() == "0601" || sma_trabajador[i, 1].ToString() == "0606" || sma_trabajador[i, 1].ToString() == "0608"))))
                         {
                             dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value = dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + i].Value;
 
@@ -1566,7 +1566,22 @@ namespace CapaUsuario.Planilla
             //Calculo de la Formula
             if (codigo != "0605" && codigo != "0804")
             {
-                result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                if ((codigo == "0606") || (codigo == "0601") || (codigo== "0608"))
+                {
+                    if (chkAFP.Checked)
+                    {
+                       
+                    }
+                    else
+                    {
+                        result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                    }
+                }
+                else
+                {
+                    result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                }
+                
             }
 
             if (codigo =="0606")
@@ -1852,14 +1867,14 @@ namespace CapaUsuario.Planilla
 
             DateTime DateFechaInicio = Convert.ToDateTime(FechaInicio);
 
-            if (Settings.Default.RUC == "20159377696")
-            {
-                if (DateFechaInicio <= (new DateTime(2023, 6, 1)))
-                {
-                    DateFechaInicio =  new DateTime(2023, 6, 1);
-                }
+            //if (Settings.Default.RUC == "20159377696")
+            //{
+            //    if (DateFechaInicio <= (new DateTime(2023, 6, 1)))
+            //    {
+            //        DateFechaInicio =  new DateTime(2023, 6, 1);
+            //    }
                 
-            }
+            //}
 
 
             DateTime DateFechaInicioTemporal = DateFechaInicio;
@@ -1868,7 +1883,7 @@ namespace CapaUsuario.Planilla
             {
                 DateFechaInicioTemporal = DateFechaInicioTemporal.AddDays(-1);
             }
-            DateTime DateFechacalculo = new DateTime(2023, 06, 30);
+            DateTime DateFechacalculo = new DateTime(2023, 11, 30);
 
             int numeroMeses = ((DateFechacalculo.Month - DateFechaInicioTemporal.Month) + 12 * (DateFechacalculo.Year - DateFechaInicioTemporal.Year));
             TimeSpan Restafechas = DateFechacalculo - DateFechaInicio;
@@ -1889,13 +1904,13 @@ namespace CapaUsuario.Planilla
                     ddval.Value = 0;
                     break;
                 case 2:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2023, 04, 30)) - DateFechaInicio).Days + 1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2023, 09, 30)) - DateFechaInicio).Days + 1);
                     break;
                 case 1:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2023, 05, 31)) - DateFechaInicio).Days + 1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2023, 10, 31)) - DateFechaInicio).Days + 1);
                     break;
                 case 0:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2023, 06, 30)) - DateFechaInicio).Days +1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2023, 11, 30)) - DateFechaInicio).Days +1);
                     break;
                 
                 default:
@@ -1924,23 +1939,23 @@ namespace CapaUsuario.Planilla
                         ddval.Value = 0;
                         break;
                     case 5:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2023, 01, 31)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2023, 07, 31)) - DateFechaInicio).Days);
                         break;
 
                     case 4:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2023, 02, 28)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2023, 08, 31)) - DateFechaInicio).Days);
                         break;
                     case 3:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2023, 03, 31)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2023, 09, 30)) - DateFechaInicio).Days);
                         break;
                     case 2:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2023, 04, 30)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2023, 10, 31)) - DateFechaInicio).Days);
                         break;
                     case 1:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2023, 05, 31)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2023, 11, 30)) - DateFechaInicio).Days);
                         break;
                     case 0:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2023, 06, 30)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2023, 12, 31)) - DateFechaInicio).Days);
                         break;
 
                     default:

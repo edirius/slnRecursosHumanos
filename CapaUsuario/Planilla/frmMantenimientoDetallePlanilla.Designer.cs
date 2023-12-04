@@ -74,6 +74,7 @@
             this.btnImprimirReporteAsistencia = new System.Windows.Forms.Button();
             this.dlgGuardarReportePDF = new System.Windows.Forms.SaveFileDialog();
             this.chkAguinaldo = new System.Windows.Forms.CheckBox();
+            this.chkAFP = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -498,11 +499,22 @@
             this.chkAguinaldo.Text = "Aguinal";
             this.chkAguinaldo.UseVisualStyleBackColor = true;
             // 
+            // chkAFP
+            // 
+            this.chkAFP.AutoSize = true;
+            this.chkAFP.Location = new System.Drawing.Point(902, 11);
+            this.chkAFP.Name = "chkAFP";
+            this.chkAFP.Size = new System.Drawing.Size(46, 17);
+            this.chkAFP.TabIndex = 104;
+            this.chkAFP.Text = "AFP";
+            this.chkAFP.UseVisualStyleBackColor = true;
+            // 
             // frmMantenimientoDetallePlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(929, 468);
+            this.Controls.Add(this.chkAFP);
             this.Controls.Add(this.chkAguinaldo);
             this.Controls.Add(this.btnImprimirReporteAsistencia);
             this.Controls.Add(this.btnAsistenciaReloj);
@@ -576,5 +588,6 @@
         private System.Windows.Forms.Button btnImprimirReporteAsistencia;
         private System.Windows.Forms.SaveFileDialog dlgGuardarReportePDF;
         private System.Windows.Forms.CheckBox chkAguinaldo;
+        private System.Windows.Forms.CheckBox chkAFP;
     }
 }
