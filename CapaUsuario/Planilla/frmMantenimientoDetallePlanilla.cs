@@ -1915,13 +1915,13 @@ namespace CapaUsuario.Planilla
                 DateFechaInicioTemporal2 = DateFechaInicioTemporal2.AddMonths(1); // añadiendo meses
             }
 
-            while (DateFechaInicioTemporal2 <= DateFechacalculo2) // finalmente comprobamos los dias que ha cumplido
+            while (DateFechaInicioTemporal2.AddDays(1) <= DateFechacalculo2) // finalmente comprobamos los dias que ha cumplido
             {
                 Dias = Dias + 1;
                 DateFechaInicioTemporal2 = DateFechaInicioTemporal2.AddDays(1);
             }
 
-            ddval2.Value = Dias;
+            ddval2.Value = Dias +1;
             mmval2.Value = Meses;
 
 
