@@ -32,6 +32,7 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkTipoRegimen = new System.Windows.Forms.CheckBox();
             this.btnMes = new System.Windows.Forms.Button();
             this.btnDias = new System.Windows.Forms.Button();
             this.btnParentesis2 = new System.Windows.Forms.Button();
@@ -56,7 +57,8 @@
             this.btn9 = new System.Windows.Forms.Button();
             this.btn8 = new System.Windows.Forms.Button();
             this.btn7 = new System.Windows.Forms.Button();
-            this.chkTipoRegimen = new System.Windows.Forms.CheckBox();
+            this.btnDiasInicio = new System.Windows.Forms.Button();
+            this.btnMesesInicio = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,6 +140,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operadores";
             // 
+            // chkTipoRegimen
+            // 
+            this.chkTipoRegimen.AutoSize = true;
+            this.chkTipoRegimen.Location = new System.Drawing.Point(162, 194);
+            this.chkTipoRegimen.Name = "chkTipoRegimen";
+            this.chkTipoRegimen.Size = new System.Drawing.Size(96, 17);
+            this.chkTipoRegimen.TabIndex = 134;
+            this.chkTipoRegimen.Text = "Sector Privado";
+            this.chkTipoRegimen.UseVisualStyleBackColor = true;
+            this.chkTipoRegimen.Click += new System.EventHandler(this.chkTipoRegimen_Click);
+            // 
             // btnMes
             // 
             this.btnMes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -149,7 +162,7 @@
             this.btnMes.Name = "btnMes";
             this.btnMes.Size = new System.Drawing.Size(129, 35);
             this.btnMes.TabIndex = 133;
-            this.btnMes.Text = "Meses al 30 jun";
+            this.btnMes.Text = "Meses al 30 Nov";
             this.btnMes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMes.UseVisualStyleBackColor = false;
             this.btnMes.Click += new System.EventHandler(this.btnMes_Click);
@@ -165,7 +178,7 @@
             this.btnDias.Name = "btnDias";
             this.btnDias.Size = new System.Drawing.Size(129, 35);
             this.btnDias.TabIndex = 132;
-            this.btnDias.Text = "Dias al 30 junio";
+            this.btnDias.Text = "Dias al 30 Nov";
             this.btnDias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDias.UseVisualStyleBackColor = false;
             this.btnDias.Click += new System.EventHandler(this.btnDias_Click);
@@ -522,22 +535,45 @@
             this.btn7.UseVisualStyleBackColor = false;
             this.btn7.Click += new System.EventHandler(this.btn7_Click);
             // 
-            // chkTipoRegimen
+            // btnDiasInicio
             // 
-            this.chkTipoRegimen.AutoSize = true;
-            this.chkTipoRegimen.Location = new System.Drawing.Point(162, 194);
-            this.chkTipoRegimen.Name = "chkTipoRegimen";
-            this.chkTipoRegimen.Size = new System.Drawing.Size(96, 17);
-            this.chkTipoRegimen.TabIndex = 134;
-            this.chkTipoRegimen.Text = "Sector Privado";
-            this.chkTipoRegimen.UseVisualStyleBackColor = true;
-            this.chkTipoRegimen.Click += new System.EventHandler(this.chkTipoRegimen_Click);
+            this.btnDiasInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDiasInicio.BackColor = System.Drawing.Color.MintCream;
+            this.btnDiasInicio.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDiasInicio.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnDiasInicio.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnDiasInicio.Location = new System.Drawing.Point(18, 261);
+            this.btnDiasInicio.Name = "btnDiasInicio";
+            this.btnDiasInicio.Size = new System.Drawing.Size(129, 35);
+            this.btnDiasInicio.TabIndex = 135;
+            this.btnDiasInicio.Text = "Dias Inicio";
+            this.btnDiasInicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnDiasInicio.UseVisualStyleBackColor = false;
+            this.btnDiasInicio.Click += new System.EventHandler(this.btnDiasInicio_Click);
+            // 
+            // btnMesesInicio
+            // 
+            this.btnMesesInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMesesInicio.BackColor = System.Drawing.Color.MintCream;
+            this.btnMesesInicio.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnMesesInicio.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnMesesInicio.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnMesesInicio.Location = new System.Drawing.Point(18, 302);
+            this.btnMesesInicio.Name = "btnMesesInicio";
+            this.btnMesesInicio.Size = new System.Drawing.Size(129, 35);
+            this.btnMesesInicio.TabIndex = 136;
+            this.btnMesesInicio.Text = "Meses Inicio";
+            this.btnMesesInicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnMesesInicio.UseVisualStyleBackColor = false;
+            this.btnMesesInicio.Click += new System.EventHandler(this.btnMesesInicio_Click);
             // 
             // frmFormula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 357);
+            this.Controls.Add(this.btnMesesInicio);
+            this.Controls.Add(this.btnDiasInicio);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -585,5 +621,7 @@
         private System.Windows.Forms.Button btnMes;
         private System.Windows.Forms.Button btnDias;
         private System.Windows.Forms.CheckBox chkTipoRegimen;
+        private System.Windows.Forms.Button btnDiasInicio;
+        private System.Windows.Forms.Button btnMesesInicio;
     }
 }

@@ -1857,6 +1857,8 @@ namespace CapaUsuario.Planilla
             DoubleValue psval = new DoubleValue();
             DoubleValue ddval = new DoubleValue();
             DoubleValue mmval = new DoubleValue();
+            DoubleValue ddval2 = new DoubleValue();
+            DoubleValue mmval2 = new DoubleValue();
 
             parser.Values.Add("s", sval);
             parser.Values.Add("ao", aoval);
@@ -1864,6 +1866,8 @@ namespace CapaUsuario.Planilla
             parser.Values.Add("ps", psval);
             parser.Values.Add("dd", ddval);
             parser.Values.Add("mm", mmval);
+            parser.Values.Add("zz", ddval2);
+            parser.Values.Add("yy", mmval2);
 
             DateTime DateFechaInicio = Convert.ToDateTime(FechaInicio);
 
@@ -1878,25 +1882,53 @@ namespace CapaUsuario.Planilla
 
 
             DateTime DateFechaInicioTemporal = DateFechaInicio;
+            DateTime DateFechaInicioTemporal2 = DateFechaInicio;
 
             if (DateFechaInicioTemporal.Day == 1)
             {
                 DateFechaInicioTemporal = DateFechaInicioTemporal.AddDays(-1);
             }
             DateTime DateFechacalculo = new DateTime(2023, 11, 30);
+            DateTime DateFechacalculo2 = new DateTime(2023, 12, 31);
 
             int numeroMeses = ((DateFechacalculo.Month - DateFechaInicioTemporal.Month) + 12 * (DateFechacalculo.Year - DateFechaInicioTemporal.Year));
+            
             TimeSpan Restafechas = DateFechacalculo - DateFechaInicio;
 
             if (numeroMeses > 3)
             {
                 numeroMeses = 3;
             }
+            int Años=0;
+            int Meses = 0;
+            int Dias = 0;
 
-            
+            while (DateFechaInicioTemporal2.AddYears(1) <= DateFechacalculo2) // comprobamos los años que ha cumplido
+            {
+                Años = Años + 1;
+                DateFechaInicioTemporal2 = DateFechaInicioTemporal2.AddYears(1); // añadiendo años a la fecha de nacimiento
+            }
+
+            while (DateFechaInicioTemporal2.AddMonths(1) <= DateFechacalculo2) // comprobamos los meses que ha cumplido
+            {
+                Meses = Meses + 1;
+                DateFechaInicioTemporal2 = DateFechaInicioTemporal2.AddMonths(1); // añadiendo meses
+            }
+
+            while (DateFechaInicioTemporal2 <= DateFechacalculo2) // finalmente comprobamos los dias que ha cumplido
+            {
+                Dias = Dias + 1;
+                DateFechaInicioTemporal2 = DateFechaInicioTemporal2.AddDays(1);
+            }
+
+            ddval2.Value = Dias;
+            mmval2.Value = Meses;
 
 
             mmval.Value = numeroMeses;
+            
+
+            
 
             switch (numeroMeses)
             {

@@ -202,5 +202,15 @@ namespace CapaUsuario.Sunat
                 txtFormula.Text = miFormula;
             }
         }
+
+        private void btnDiasInicio_Click(object sender, EventArgs e)
+        {
+            txtFormula.Text = txtFormula.Text + "zz";
+        }
+
+        private void btnMesesInicio_Click(object sender, EventArgs e)
+        {
+            txtFormula.Text = txtFormula.Text + "yy";
+        }
     }
 }
