@@ -1924,6 +1924,11 @@ namespace CapaUsuario.Planilla
             ddval2.Value = Dias +1;
             mmval2.Value = Meses;
 
+            if (ddval2.Value == 31)
+            {
+                ddval2.Value = 0;
+                mmval2.Value = Meses +1;
+            }
 
             mmval.Value = numeroMeses;
             
