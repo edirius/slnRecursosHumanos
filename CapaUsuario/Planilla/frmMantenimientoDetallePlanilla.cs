@@ -1903,32 +1903,49 @@ namespace CapaUsuario.Planilla
             int Meses = 0;
             int Dias = 0;
 
+            // si es 1 se considera todo un mes
+            if (DateFechaInicioTemporal2.Day == 1)
+            {
+                Meses++;
+                DateFechaInicioTemporal2 = DateFechaInicioTemporal2.AddMonths(1);
+                Dias = 0;
+            }
+            else
+            //calculamos los dias
+            {
+                int mestemporal = DateFechaInicioTemporal2.Month;
+
+                while (DateFechaInicioTemporal2.Month == mestemporal) // finalmente comprobamos los dias que ha cumplido
+                {
+                    Dias = Dias + 1;
+                    DateFechaInicioTemporal2 = DateFechaInicioTemporal2.AddDays(1);
+                }
+            }
+
             while (DateFechaInicioTemporal2.AddYears(1) <= DateFechacalculo2) // comprobamos los años que ha cumplido
             {
                 Años = Años + 1;
                 DateFechaInicioTemporal2 = DateFechaInicioTemporal2.AddYears(1); // añadiendo años a la fecha de nacimiento
             }
 
-            while (DateFechaInicioTemporal2.AddMonths(1) <= DateFechacalculo2) // comprobamos los meses que ha cumplido
+
+            while (DateFechaInicioTemporal2 <= DateFechacalculo2) // comprobamos los meses que ha cumplido
             {
                 Meses = Meses + 1;
                 DateFechaInicioTemporal2 = DateFechaInicioTemporal2.AddMonths(1); // añadiendo meses
             }
 
-            while (DateFechaInicioTemporal2.AddDays(1) <= DateFechacalculo2) // finalmente comprobamos los dias que ha cumplido
-            {
-                Dias = Dias + 1;
-                DateFechaInicioTemporal2 = DateFechaInicioTemporal2.AddDays(1);
-            }
 
-            ddval2.Value = Dias +1;
+            
+
+            
+
+            
+
+            ddval2.Value = Dias;
             mmval2.Value = Meses;
 
-            if (ddval2.Value == 31)
-            {
-                ddval2.Value = 0;
-                mmval2.Value = Meses +1;
-            }
+            
 
             mmval.Value = numeroMeses;
             
