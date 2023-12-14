@@ -75,6 +75,7 @@
             this.dlgGuardarReportePDF = new System.Windows.Forms.SaveFileDialog();
             this.chkAguinaldo = new System.Windows.Forms.CheckBox();
             this.chkAFP = new System.Windows.Forms.CheckBox();
+            this.btnVerDetalleTrabajador = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,7 +86,7 @@
             this.btnImportar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImportar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImportar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImportar.Location = new System.Drawing.Point(679, 38);
+            this.btnImportar.Location = new System.Drawing.Point(880, 38);
             this.btnImportar.Name = "btnImportar";
             this.btnImportar.Size = new System.Drawing.Size(238, 46);
             this.btnImportar.TabIndex = 91;
@@ -110,7 +111,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(843, 391);
+            this.btnCancelar.Location = new System.Drawing.Point(1044, 391);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(74, 65);
             this.btnCancelar.TabIndex = 86;
@@ -126,7 +127,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(762, 391);
+            this.btnAceptar.Location = new System.Drawing.Point(963, 391);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 85;
@@ -143,7 +144,7 @@
             this.txtMeta.Enabled = false;
             this.txtMeta.Location = new System.Drawing.Point(135, 38);
             this.txtMeta.Name = "txtMeta";
-            this.txtMeta.Size = new System.Drawing.Size(538, 20);
+            this.txtMeta.Size = new System.Drawing.Size(739, 20);
             this.txtMeta.TabIndex = 84;
             // 
             // label6
@@ -219,7 +220,7 @@
             this.dgvDetallePlanilla.Name = "dgvDetallePlanilla";
             this.dgvDetallePlanilla.RowHeadersVisible = false;
             this.dgvDetallePlanilla.RowHeadersWidth = 25;
-            this.dgvDetallePlanilla.Size = new System.Drawing.Size(905, 295);
+            this.dgvDetallePlanilla.Size = new System.Drawing.Size(1106, 295);
             this.dgvDetallePlanilla.TabIndex = 79;
             this.dgvDetallePlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellClick);
             this.dgvDetallePlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellContentClick);
@@ -358,7 +359,7 @@
             this.txtFuenteFinanciamiento.Enabled = false;
             this.txtFuenteFinanciamiento.Location = new System.Drawing.Point(135, 64);
             this.txtFuenteFinanciamiento.Name = "txtFuenteFinanciamiento";
-            this.txtFuenteFinanciamiento.Size = new System.Drawing.Size(538, 20);
+            this.txtFuenteFinanciamiento.Size = new System.Drawing.Size(739, 20);
             this.txtFuenteFinanciamiento.TabIndex = 93;
             // 
             // label1
@@ -386,7 +387,7 @@
             this.btnAgregarTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAgregarTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAgregarTrabajador.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAgregarTrabajador.Location = new System.Drawing.Point(584, 391);
+            this.btnAgregarTrabajador.Location = new System.Drawing.Point(785, 391);
             this.btnAgregarTrabajador.Name = "btnAgregarTrabajador";
             this.btnAgregarTrabajador.Size = new System.Drawing.Size(83, 65);
             this.btnAgregarTrabajador.TabIndex = 96;
@@ -402,7 +403,7 @@
             this.btnCalcular.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCalcular.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCalcular.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnCalcular.Location = new System.Drawing.Point(673, 391);
+            this.btnCalcular.Location = new System.Drawing.Point(874, 391);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(83, 65);
             this.btnCalcular.TabIndex = 97;
@@ -434,7 +435,7 @@
             this.btnRenta5ta.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnRenta5ta.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnRenta5ta.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnRenta5ta.Location = new System.Drawing.Point(484, 391);
+            this.btnRenta5ta.Location = new System.Drawing.Point(685, 391);
             this.btnRenta5ta.Name = "btnRenta5ta";
             this.btnRenta5ta.Size = new System.Drawing.Size(94, 65);
             this.btnRenta5ta.TabIndex = 99;
@@ -460,7 +461,7 @@
             this.btnAsistenciaReloj.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAsistenciaReloj.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnAsistenciaReloj.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAsistenciaReloj.Location = new System.Drawing.Point(235, 391);
+            this.btnAsistenciaReloj.Location = new System.Drawing.Point(436, 391);
             this.btnAsistenciaReloj.Name = "btnAsistenciaReloj";
             this.btnAsistenciaReloj.Size = new System.Drawing.Size(94, 65);
             this.btnAsistenciaReloj.TabIndex = 101;
@@ -476,7 +477,7 @@
             this.btnImprimirReporteAsistencia.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimirReporteAsistencia.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnImprimirReporteAsistencia.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimirReporteAsistencia.Location = new System.Drawing.Point(335, 391);
+            this.btnImprimirReporteAsistencia.Location = new System.Drawing.Point(536, 391);
             this.btnImprimirReporteAsistencia.Name = "btnImprimirReporteAsistencia";
             this.btnImprimirReporteAsistencia.Size = new System.Drawing.Size(94, 65);
             this.btnImprimirReporteAsistencia.TabIndex = 102;
@@ -509,11 +510,28 @@
             this.chkAFP.Text = "AFP";
             this.chkAFP.UseVisualStyleBackColor = true;
             // 
+            // btnVerDetalleTrabajador
+            // 
+            this.btnVerDetalleTrabajador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVerDetalleTrabajador.BackColor = System.Drawing.Color.MintCream;
+            this.btnVerDetalleTrabajador.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnVerDetalleTrabajador.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnVerDetalleTrabajador.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnVerDetalleTrabajador.Location = new System.Drawing.Point(954, 2);
+            this.btnVerDetalleTrabajador.Name = "btnVerDetalleTrabajador";
+            this.btnVerDetalleTrabajador.Size = new System.Drawing.Size(164, 34);
+            this.btnVerDetalleTrabajador.TabIndex = 105;
+            this.btnVerDetalleTrabajador.Text = "&Ver Detalle Trabajador";
+            this.btnVerDetalleTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnVerDetalleTrabajador.UseVisualStyleBackColor = false;
+            this.btnVerDetalleTrabajador.Click += new System.EventHandler(this.btnVerDetalleTrabajador_Click);
+            // 
             // frmMantenimientoDetallePlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 468);
+            this.ClientSize = new System.Drawing.Size(1130, 468);
+            this.Controls.Add(this.btnVerDetalleTrabajador);
             this.Controls.Add(this.chkAFP);
             this.Controls.Add(this.chkAguinaldo);
             this.Controls.Add(this.btnImprimirReporteAsistencia);
@@ -589,5 +607,6 @@
         private System.Windows.Forms.SaveFileDialog dlgGuardarReportePDF;
         private System.Windows.Forms.CheckBox chkAguinaldo;
         private System.Windows.Forms.CheckBox chkAFP;
+        private System.Windows.Forms.Button btnVerDetalleTrabajador;
     }
 }

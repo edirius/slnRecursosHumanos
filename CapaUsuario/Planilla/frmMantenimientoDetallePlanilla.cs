@@ -2127,6 +2127,27 @@ namespace CapaUsuario.Planilla
             }
         }
 
+        private void btnVerDetalleTrabajador_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvDetallePlanilla.SelectedCells.Count > 0)
+                {
+                    frmDetallePagosTrabajador fDetalle = new frmDetallePagosTrabajador();
+                    fDetalle.oTrabajador = miTrabajador.traerTrabajador(Convert.ToInt32(dgvDetallePlanilla.Rows[dgvDetallePlanilla.SelectedCells[0].RowIndex].Cells[4].Value));
+                    if (fDetalle.ShowDialog() == DialogResult.OK)
+                    {
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al mostrar la asistencia del reloj: " + ex.Message);
+            }
+        }
 
         private void DibujarDataGrid()
         {
