@@ -522,6 +522,7 @@
             this.btnImportartareo.Text = "Importar tareo";
             this.btnImportartareo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImportartareo.UseVisualStyleBackColor = false;
+            this.btnImportartareo.Visible = false;
             this.btnImportartareo.Click += new System.EventHandler(this.btnImportartareo_Click);
             // 
             // frmMantenimientoDetalleTareo
