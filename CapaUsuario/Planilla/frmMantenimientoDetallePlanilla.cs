@@ -1741,7 +1741,7 @@ namespace CapaUsuario.Planilla
             {
                 if (rowingresos[0].ToString() == "Ingresos")
                 {
-                    if (rowingresos[3].ToString() == "0121" || rowingresos[3].ToString() == "0122" || rowingresos[3].ToString() == "2039" || rowingresos[3].ToString() == "0114"  || rowingresos[3].ToString() == "0406" || rowingresos[3].ToString() == "0312")
+                    if (rowingresos[3].ToString() == "0121" || rowingresos[3].ToString() == "0122" || rowingresos[3].ToString() == "2039" || rowingresos[3].ToString() == "0114"  || rowingresos[3].ToString() == "0406" || rowingresos[3].ToString() == "0312" || rowingresos[3].ToString() == "2041")
                     {
                         sRemuMesAnt += Convert.ToDecimal(rowingresos[2]);//suma de las remuneraciones totales
                     }
@@ -1785,7 +1785,7 @@ namespace CapaUsuario.Planilla
             }
             else
             {
-                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(600);//suma de todos los ingresos incuido las gratificaciones
+                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta);// + Convert.ToDecimal(600);//suma de todos los ingresos incuido las gratificaciones
             }
 
             decimal sRetencionesOtroLugar = 0;
