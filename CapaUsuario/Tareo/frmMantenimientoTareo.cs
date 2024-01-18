@@ -209,7 +209,15 @@ namespace CapaUsuario.Tareo
             dgvTareo.Rows.Clear();
             foreach (DataRow row in miTareo.ListarTareo(sIdTMeta).Rows)
             {
-                dgvTareo.Rows.Add(row[0].ToString(), row[1].ToString(), row[4].ToString(), Convert.ToDateTime(row[2].ToString()), row[3].ToString(), Convert.ToBoolean(row[5]), row[7].ToString(), row[8].ToString());
+                if (row.Table.Columns.Count > 7)
+                {
+                    dgvTareo.Rows.Add(row[0].ToString(), row[1].ToString(), row[4].ToString(), Convert.ToDateTime(row[2].ToString()), row[3].ToString(), Convert.ToBoolean(row[5]), row[7].ToString(), row[8].ToString());
+                }
+                else
+                {
+                    dgvTareo.Rows.Add(row[0].ToString(), row[1].ToString(), row[4].ToString(), Convert.ToDateTime(row[2].ToString()), row[3].ToString(), Convert.ToBoolean(row[5]));
+                }
+                
             }
             if (dgvTareo.Rows.Count > 0)
             {
