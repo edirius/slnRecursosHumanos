@@ -419,9 +419,27 @@ namespace CapaUsuario
 
         private void restaurarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string value="";
+
             if (MessageBox.Show("Con esta accion se borrara toda la informacion actual: Desea restaurar el backup???", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)== DialogResult.Yes)
             {
-                RestaurarBBDDMySql();
+                
+                var dialogResult = DialogResult2.InputBox("Password", "Ingrese el password del admin:", ref value);
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    if (value == "12345678")
+                    {
+                        RestaurarBBDDMySql();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error en el password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+
+                
             }
         }
 
@@ -658,6 +676,8 @@ namespace CapaUsuario
             ImportadorExcel.frmVerificadorDNI fVerificadorDNI = new ImportadorExcel.frmVerificadorDNI();
             fVerificadorDNI.Show();
         }
+
+        
 
         private void generarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {

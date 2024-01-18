@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDeNegocios;
 
+
 namespace CapaUsuario.Usuarios
 {
     public partial class frmListaTrabajadores : Form
@@ -111,6 +112,27 @@ namespace CapaUsuario.Usuarios
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            dtgListaUsuarios.DataSource = MiUsuario.ListaUsuariosTrabajadoresFiltro("%"+ txtFiltro.Text + "%");
+            
+        }
+
+        private void btnNuevoResidente_Click(object sender, EventArgs e)
+        {
+            int idMeta = 1;
+
+            Trabajador.frmNuevoTecnico fNuevoTecnico = new Trabajador.frmNuevoTecnico();
+            fNuevoTecnico.RecibirDatos(idMeta);
+            fNuevoTecnico.fechaInicio = new DateTime(DateTime.Now.Date.Year, DateTime.Now.Date.Month, 1);
+            fNuevoTecnico.fechaFin = new DateTime(DateTime.Now.Date.Year, DateTime.Now.Date.Month, 1).AddMonths(1).AddDays(-1);
+            if (fNuevoTecnico.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+
         }
     }
 }

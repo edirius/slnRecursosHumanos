@@ -37,6 +37,7 @@
             this.restaurarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.servidorIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verficadorDNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -136,7 +137,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.verficadorDNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -172,6 +173,7 @@
             this.newToolStripMenuItem,
             this.generarCopiaDeSeguridadToolStripMenuItem,
             this.restaurarCopiaDeSeguridadToolStripMenuItem,
+            this.toolStripSeparator12,
             this.servidorIPToolStripMenuItem,
             this.cargaInicialToolStripMenuItem,
             this.verficadorDNIToolStripMenuItem,
@@ -219,6 +221,13 @@
             this.cargaInicialToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
             this.cargaInicialToolStripMenuItem.Text = "Carga Inicial";
             this.cargaInicialToolStripMenuItem.Click += new System.EventHandler(this.cargaInicialToolStripMenuItem_Click);
+            // 
+            // verficadorDNIToolStripMenuItem
+            // 
+            this.verficadorDNIToolStripMenuItem.Name = "verficadorDNIToolStripMenuItem";
+            this.verficadorDNIToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.verficadorDNIToolStripMenuItem.Text = "Verficador DNI";
+            this.verficadorDNIToolStripMenuItem.Click += new System.EventHandler(this.verficadorDNIToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -997,12 +1006,10 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // verficadorDNIToolStripMenuItem
+            // toolStripSeparator12
             // 
-            this.verficadorDNIToolStripMenuItem.Name = "verficadorDNIToolStripMenuItem";
-            this.verficadorDNIToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
-            this.verficadorDNIToolStripMenuItem.Text = "Verficador DNI";
-            this.verficadorDNIToolStripMenuItem.Click += new System.EventHandler(this.verficadorDNIToolStripMenuItem_Click);
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(260, 6);
             // 
             // frmPrincipal
             // 
@@ -1146,6 +1153,7 @@
         private System.Windows.Forms.ToolStripMenuItem boletaPago2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planilla2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verficadorDNIToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
     }
 }
 

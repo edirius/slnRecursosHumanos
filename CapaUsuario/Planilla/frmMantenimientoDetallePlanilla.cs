@@ -1801,7 +1801,7 @@ namespace CapaUsuario.Planilla
             }
 
             CapaDeNegocios.Planillas.cCalculo5taCategoria miCalculo5ta = new CapaDeNegocios.Planillas.cCalculo5taCategoria();
-            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sNroMes, sRemuneracion, sOtrosIngresos, sRemuMesAnt, sRetMesAnteriores, 4950, sRetencionesOtroLugar, sIngresosOtroLugar);
+            sRenta5ta = miCalculo5ta.CalculoRentaMensual(sNroMes, sRemuneracion, sOtrosIngresos, sRemuMesAnt, sRetMesAnteriores, sUIT, sRetencionesOtroLugar, sIngresosOtroLugar);
             return sRenta5ta;
         }
 

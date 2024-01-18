@@ -112,7 +112,12 @@ namespace CapaDeNegocios.Usuario
         {
             return Conexion.GDatos.TraerDataTable("spListaUsuariosTrabajadores"); 
         }
-        
+
+        public DataTable ListaUsuariosTrabajadoresFiltro(string filtro)
+        {
+            return Conexion.GDatos.TraerDataTable("spListaUsuariosTrabajadoresFiltro", filtro);
+        }
+
         public DataTable ListaUsuarios()
         {
             return Conexion.GDatos.TraerDataTable("spListarUsuarios");

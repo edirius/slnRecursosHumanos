@@ -306,6 +306,7 @@
     </Compile>
     <Compile Include="ConvertImage.cs" />
     <Compile Include="cVariablesUsuario.cs" />
+    <Compile Include="DialogResult.cs" />
     <Compile Include="ExportarSunat\cComparativoAFP.cs" />
     <Compile Include="ExportarSunat\cDatoArchivoExportacion.cs" />
     <Compile Include="ExportarSunat\cDatosIdentificacion.cs" />

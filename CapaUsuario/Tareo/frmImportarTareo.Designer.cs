@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.dgvTareo = new System.Windows.Forms.DataGridView();
@@ -38,6 +40,8 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.idtPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Planilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTareo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,7 +52,7 @@
             this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnOK.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnOK.ImageKey = "ssss.png";
-            this.btnOK.Location = new System.Drawing.Point(279, 299);
+            this.btnOK.Location = new System.Drawing.Point(297, 299);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(83, 53);
             this.btnOK.TabIndex = 40;
@@ -64,7 +68,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(368, 299);
+            this.btnSalir.Location = new System.Drawing.Point(386, 299);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 39;
@@ -91,7 +95,9 @@
             this.Column3,
             this.Column4,
             this.Column5,
-            this.Column6});
+            this.Column6,
+            this.idtPlanilla,
+            this.Planilla});
             this.dgvTareo.Cursor = System.Windows.Forms.Cursors.Default;
             this.dgvTareo.Location = new System.Drawing.Point(12, 12);
             this.dgvTareo.MultiSelect = false;
@@ -99,7 +105,7 @@
             this.dgvTareo.ReadOnly = true;
             this.dgvTareo.RowHeadersVisible = false;
             this.dgvTareo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTareo.Size = new System.Drawing.Size(439, 281);
+            this.dgvTareo.Size = new System.Drawing.Size(457, 281);
             this.dgvTareo.TabIndex = 38;
             this.dgvTareo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellClick);
             this.dgvTareo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellContentClick);
@@ -127,8 +133,11 @@
             // 
             // Column4
             // 
+            dataGridViewCellStyle2.Format = "MMMM yyyy";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column4.FillWeight = 81.21828F;
-            this.Column4.HeaderText = "Fecha Inicio";
+            this.Column4.HeaderText = "Mes";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
@@ -138,6 +147,7 @@
             this.Column5.HeaderText = "Fecha Fin";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            this.Column5.Visible = false;
             // 
             // Column6
             // 
@@ -148,11 +158,26 @@
             this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Column6.Visible = false;
             // 
+            // idtPlanilla
+            // 
+            this.idtPlanilla.HeaderText = "idtPlanilla";
+            this.idtPlanilla.Name = "idtPlanilla";
+            this.idtPlanilla.ReadOnly = true;
+            this.idtPlanilla.Visible = false;
+            // 
+            // Planilla
+            // 
+            dataGridViewCellStyle3.NullValue = null;
+            this.Planilla.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Planilla.HeaderText = "Planilla";
+            this.Planilla.Name = "Planilla";
+            this.Planilla.ReadOnly = true;
+            // 
             // frmImportarTareo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 364);
+            this.ClientSize = new System.Drawing.Size(481, 364);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.dgvTareo);
@@ -177,5 +202,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idtPlanilla;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Planilla;
     }
 }

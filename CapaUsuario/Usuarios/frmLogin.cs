@@ -51,7 +51,7 @@ namespace CapaUsuario.Usuarios
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Error al conectar al Servidor : " +  ex.Message);
                 btnCambiarServidor.Visible = true;
             }
         }

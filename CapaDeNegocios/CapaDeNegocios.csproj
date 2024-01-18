@@ -246,6 +246,7 @@
     <Compile Include="Tareos\cPlantillaTareo.cs" />
     <Compile Include="Tareos\cTareoHorasAcumuladas.cs" />
     <Compile Include="Tareos\cTareo.cs" />
+    <Compile Include="Tareos\cTareoPlanilla.cs" />
     <Compile Include="Trabajadores\cDatosFijo.cs" />
     <Compile Include="Trabajadores\cTrabajador276.cs" />
     <Compile Include="Trabajadores\cTrabajadorCas.cs" />

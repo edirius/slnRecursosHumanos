@@ -29,16 +29,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMantenimientoTareo));
             this.btnMeta = new System.Windows.Forms.Button();
             this.cboMeta = new System.Windows.Forms.ComboBox();
             this.dgvTareo = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
@@ -49,6 +45,14 @@
             this.cboAño = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnImprimir2 = new System.Windows.Forms.Button();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colidtPLanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNumeroPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTareo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,7 +98,9 @@
             this.Column3,
             this.Column4,
             this.Column5,
-            this.Column6});
+            this.Column6,
+            this.colidtPLanilla,
+            this.colNumeroPlanilla});
             this.dgvTareo.Cursor = System.Windows.Forms.Cursors.Default;
             this.dgvTareo.Location = new System.Drawing.Point(12, 66);
             this.dgvTareo.MultiSelect = false;
@@ -106,50 +112,6 @@
             this.dgvTareo.TabIndex = 1;
             this.dgvTareo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellClick);
             this.dgvTareo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "IdtTareo";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.FillWeight = 31.48679F;
-            this.Column2.HeaderText = "Numero";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 182.7411F;
-            this.Column3.HeaderText = "Tipo";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 92.88604F;
-            this.Column4.HeaderText = "Fecha Inicio";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.FillWeight = 92.88604F;
-            this.Column5.HeaderText = "Fecha Fin";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Estado";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column6.Visible = false;
             // 
             // btnSalir
             // 
@@ -291,6 +253,72 @@
             this.btnImprimir2.UseVisualStyleBackColor = false;
             this.btnImprimir2.Click += new System.EventHandler(this.btnImprimir2_Click);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "IdtTareo";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.FillWeight = 31.48679F;
+            this.Column2.HeaderText = "Numero";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.FillWeight = 182.7411F;
+            this.Column3.HeaderText = "Tipo";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "MMMM-yyyy";
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column4.FillWeight = 92.88604F;
+            this.Column4.HeaderText = "Mes";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.ToolTipText = "Mes del tareo";
+            // 
+            // Column5
+            // 
+            this.Column5.FillWeight = 92.88604F;
+            this.Column5.HeaderText = "Fecha Fin";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Visible = false;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Estado";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column6.Visible = false;
+            // 
+            // colidtPLanilla
+            // 
+            this.colidtPLanilla.HeaderText = "idtPlanilla";
+            this.colidtPLanilla.Name = "colidtPLanilla";
+            this.colidtPLanilla.ReadOnly = true;
+            this.colidtPLanilla.Visible = false;
+            // 
+            // colNumeroPlanilla
+            // 
+            dataGridViewCellStyle3.NullValue = " ";
+            this.colNumeroPlanilla.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colNumeroPlanilla.HeaderText = "Planilla";
+            this.colNumeroPlanilla.Name = "colNumeroPlanilla";
+            this.colNumeroPlanilla.ReadOnly = true;
+            this.colNumeroPlanilla.ToolTipText = "Numero de Planilla del Tareo";
+            // 
             // frmMantenimientoTareo
             // 
             this.ClientSize = new System.Drawing.Size(653, 483);
@@ -332,12 +360,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboAño;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnImprimir2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column6;
-        private System.Windows.Forms.Button btnImprimir2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colidtPLanilla;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNumeroPlanilla;
     }
 }

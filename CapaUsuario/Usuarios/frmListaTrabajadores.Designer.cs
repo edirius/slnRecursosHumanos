@@ -31,10 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaTrabajadores));
             this.dtgListaUsuarios = new System.Windows.Forms.DataGridView();
-            this.btnCrearUsuario = new System.Windows.Forms.Button();
-            this.btnDeshabilitar = new System.Windows.Forms.Button();
-            this.btnModificarUsuario = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.idTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,7 +38,14 @@
             this.sexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Usuario = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Habilitado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnCrearUsuario = new System.Windows.Forms.Button();
+            this.btnDeshabilitar = new System.Windows.Forms.Button();
+            this.btnModificarUsuario = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnNuevoResidente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaUsuarios)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -62,70 +65,14 @@
             this.sexo,
             this.Usuario,
             this.Habilitado});
-            this.dtgListaUsuarios.Location = new System.Drawing.Point(7, 8);
+            this.dtgListaUsuarios.Location = new System.Drawing.Point(7, 52);
             this.dtgListaUsuarios.MultiSelect = false;
             this.dtgListaUsuarios.Name = "dtgListaUsuarios";
             this.dtgListaUsuarios.ReadOnly = true;
             this.dtgListaUsuarios.RowHeadersVisible = false;
             this.dtgListaUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaUsuarios.Size = new System.Drawing.Size(721, 356);
+            this.dtgListaUsuarios.Size = new System.Drawing.Size(759, 356);
             this.dtgListaUsuarios.TabIndex = 15;
-            // 
-            // btnCrearUsuario
-            // 
-            this.btnCrearUsuario.BackColor = System.Drawing.Color.MintCream;
-            this.btnCrearUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCrearUsuario.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCrearUsuario.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCrearUsuario.Location = new System.Drawing.Point(3, 3);
-            this.btnCrearUsuario.Name = "btnCrearUsuario";
-            this.btnCrearUsuario.Size = new System.Drawing.Size(141, 45);
-            this.btnCrearUsuario.TabIndex = 16;
-            this.btnCrearUsuario.Text = "Crear Usuario";
-            this.btnCrearUsuario.UseVisualStyleBackColor = false;
-            this.btnCrearUsuario.Click += new System.EventHandler(this.btnCrearUsuario_Click);
-            // 
-            // btnDeshabilitar
-            // 
-            this.btnDeshabilitar.BackColor = System.Drawing.Color.MintCream;
-            this.btnDeshabilitar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeshabilitar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeshabilitar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnDeshabilitar.Location = new System.Drawing.Point(297, 3);
-            this.btnDeshabilitar.Name = "btnDeshabilitar";
-            this.btnDeshabilitar.Size = new System.Drawing.Size(141, 45);
-            this.btnDeshabilitar.TabIndex = 17;
-            this.btnDeshabilitar.Text = "Deshabilitar Usuario";
-            this.btnDeshabilitar.UseVisualStyleBackColor = false;
-            this.btnDeshabilitar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnModificarUsuario
-            // 
-            this.btnModificarUsuario.BackColor = System.Drawing.Color.MintCream;
-            this.btnModificarUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnModificarUsuario.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificarUsuario.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnModificarUsuario.Location = new System.Drawing.Point(150, 3);
-            this.btnModificarUsuario.Name = "btnModificarUsuario";
-            this.btnModificarUsuario.Size = new System.Drawing.Size(141, 45);
-            this.btnModificarUsuario.TabIndex = 18;
-            this.btnModificarUsuario.Text = "Modificar Usuario";
-            this.btnModificarUsuario.UseVisualStyleBackColor = false;
-            this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificarUsuario_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.BackColor = System.Drawing.Color.MintCream;
-            this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnSalir.Location = new System.Drawing.Point(444, 3);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(143, 45);
-            this.btnSalir.TabIndex = 19;
-            this.btnSalir.Text = "&Salir";
-            this.btnSalir.UseVisualStyleBackColor = false;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // idTrabajador
             // 
@@ -188,6 +135,62 @@
             this.Habilitado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Habilitado.Width = 80;
             // 
+            // btnCrearUsuario
+            // 
+            this.btnCrearUsuario.BackColor = System.Drawing.Color.MintCream;
+            this.btnCrearUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCrearUsuario.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearUsuario.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCrearUsuario.Location = new System.Drawing.Point(3, 3);
+            this.btnCrearUsuario.Name = "btnCrearUsuario";
+            this.btnCrearUsuario.Size = new System.Drawing.Size(141, 45);
+            this.btnCrearUsuario.TabIndex = 16;
+            this.btnCrearUsuario.Text = "Crear Usuario";
+            this.btnCrearUsuario.UseVisualStyleBackColor = false;
+            this.btnCrearUsuario.Click += new System.EventHandler(this.btnCrearUsuario_Click);
+            // 
+            // btnDeshabilitar
+            // 
+            this.btnDeshabilitar.BackColor = System.Drawing.Color.MintCream;
+            this.btnDeshabilitar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeshabilitar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeshabilitar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnDeshabilitar.Location = new System.Drawing.Point(297, 3);
+            this.btnDeshabilitar.Name = "btnDeshabilitar";
+            this.btnDeshabilitar.Size = new System.Drawing.Size(141, 45);
+            this.btnDeshabilitar.TabIndex = 17;
+            this.btnDeshabilitar.Text = "Deshabilitar Usuario";
+            this.btnDeshabilitar.UseVisualStyleBackColor = false;
+            this.btnDeshabilitar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnModificarUsuario
+            // 
+            this.btnModificarUsuario.BackColor = System.Drawing.Color.MintCream;
+            this.btnModificarUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnModificarUsuario.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificarUsuario.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnModificarUsuario.Location = new System.Drawing.Point(150, 3);
+            this.btnModificarUsuario.Name = "btnModificarUsuario";
+            this.btnModificarUsuario.Size = new System.Drawing.Size(141, 45);
+            this.btnModificarUsuario.TabIndex = 18;
+            this.btnModificarUsuario.Text = "Modificar Usuario";
+            this.btnModificarUsuario.UseVisualStyleBackColor = false;
+            this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificarUsuario_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackColor = System.Drawing.Color.MintCream;
+            this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSalir.Location = new System.Drawing.Point(444, 3);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(143, 45);
+            this.btnSalir.TabIndex = 19;
+            this.btnSalir.Text = "&Salir";
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 4;
@@ -199,18 +202,53 @@
             this.tableLayoutPanel1.Controls.Add(this.btnSalir, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnModificarUsuario, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnDeshabilitar, 2, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(72, 381);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(74, 423);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 51);
             this.tableLayoutPanel1.TabIndex = 20;
+            // 
+            // txtFiltro
+            // 
+            this.txtFiltro.Location = new System.Drawing.Point(119, 13);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(123, 20);
+            this.txtFiltro.TabIndex = 21;
+            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Buscar por Nombres:";
+            // 
+            // btnNuevoResidente
+            // 
+            this.btnNuevoResidente.BackColor = System.Drawing.Color.MintCream;
+            this.btnNuevoResidente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNuevoResidente.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoResidente.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnNuevoResidente.Location = new System.Drawing.Point(635, 6);
+            this.btnNuevoResidente.Name = "btnNuevoResidente";
+            this.btnNuevoResidente.Size = new System.Drawing.Size(131, 34);
+            this.btnNuevoResidente.TabIndex = 23;
+            this.btnNuevoResidente.Text = "&Nuevo Residente";
+            this.btnNuevoResidente.UseVisualStyleBackColor = false;
+            this.btnNuevoResidente.Click += new System.EventHandler(this.btnNuevoResidente_Click);
             // 
             // frmListaTrabajadores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(737, 449);
+            this.ClientSize = new System.Drawing.Size(778, 486);
+            this.Controls.Add(this.btnNuevoResidente);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.dtgListaUsuarios);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -221,6 +259,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaUsuarios)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -239,5 +278,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Habilitado;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox txtFiltro;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnNuevoResidente;
     }
 }
