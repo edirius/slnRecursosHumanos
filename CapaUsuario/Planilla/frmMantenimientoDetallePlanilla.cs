@@ -1888,7 +1888,7 @@ namespace CapaUsuario.Planilla
             {
                 DateFechaInicioTemporal = DateFechaInicioTemporal.AddDays(-1);
             }
-            DateTime DateFechacalculo = new DateTime(2023, 11, 30);
+            DateTime DateFechacalculo = new DateTime(2023, 12, 31);
             DateTime DateFechacalculo2 = new DateTime(2023, 12, 31);
 
             int numeroMeses = ((DateFechacalculo.Month - DateFechaInicioTemporal.Month) + 12 * (DateFechacalculo.Year - DateFechaInicioTemporal.Year));
@@ -1958,13 +1958,13 @@ namespace CapaUsuario.Planilla
                     ddval.Value = 0;
                     break;
                 case 2:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2023, 09, 30)) - DateFechaInicio).Days + 1);
-                    break;
-                case 1:
                     ddval.Value = Convert.ToDouble(((new DateTime(2023, 10, 31)) - DateFechaInicio).Days + 1);
                     break;
+                case 1:
+                    ddval.Value = Convert.ToDouble(((new DateTime(2023, 11, 30)) - DateFechaInicio).Days + 1);
+                    break;
                 case 0:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2023, 11, 30)) - DateFechaInicio).Days +1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2023, 12, 31)) - DateFechaInicio).Days +1);
                     break;
                 
                 default:
