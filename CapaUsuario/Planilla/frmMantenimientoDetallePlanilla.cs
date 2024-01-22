@@ -985,7 +985,7 @@ namespace CapaUsuario.Planilla
                 }
                 else
                 {
-                    Remuneracion = Math.Round(Math.Round(Monto / 30, 2) * diasLaborados, 2);
+                    Remuneracion = Math.Round((Monto / 30) * diasLaborados, 2);
                 }
                 
                 //Parallel el futuro
@@ -1512,14 +1512,56 @@ namespace CapaUsuario.Planilla
                         {
                             if (smingresos[i, 1].ToString() == "0121" || smingresos[i, 1].ToString() == "0122" || smingresos[i, 1].ToString() == "2039")
                             {
-                                remuneracion_5ta = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
-                                remuneracionBasica = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value); 
+                                if (esMetaJornal)
+                                {
+                                    cMetaJornal miMetaJornal = new cMetaJornal();
+                                    miMetaJornal = MetaJornal(dgvDetallePlanilla.Rows[fila].Cells[7].Value.ToString(), sidtmeta);
+                                    if (miMetaJornal.Opcion == false)
+                                    {
+                                        remuneracion_5ta = miMetaJornal.Jornal * 30;
+                                        remuneracionBasica = miMetaJornal.Jornal * 30;
+                                    }
+                                    else
+                                    {
+                                        remuneracion_5ta = miMetaJornal.Mensual;
+                                        remuneracionBasica = miMetaJornal.Mensual;
+                                    }
+                                }
+                                else
+                                {
+                                    remuneracion_5ta = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                                    remuneracionBasica = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+
+                                    //remuneracion_5ta = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                                    //remuneracionBasica = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                                }
+                                
                             }
                             else
                             {
+                                
+                                
                                 if (smingresos[i, 1].ToString() == "0114")
                                 {
-                                    remuneracion_5ta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                                    if (esMetaJornal)
+                                    {
+                                        cMetaJornal miMetaJornal = new cMetaJornal();
+                                        miMetaJornal = MetaJornal(dgvDetallePlanilla.Rows[fila].Cells[7].Value.ToString(), sidtmeta);
+                                        if (miMetaJornal.Opcion == false)
+                                        {
+                                            remuneracion_5ta += remuneracionBasica / 12;
+                                        }
+                                        else
+                                        {
+                                            remuneracion_5ta += remuneracionBasica / 12;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        remuneracion_5ta +=  remuneracionBasica/12;
+                                        //remuneracion_5ta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                                    }
+
                                 }
                                 else
                                 {
@@ -1785,7 +1827,7 @@ namespace CapaUsuario.Planilla
             }
             else
             {
-                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta);// + Convert.ToDecimal(600);//suma de todos los ingresos incuido las gratificaciones
+                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(600);//suma de todos los ingresos incuido las gratificaciones
             }
 
             decimal sRetencionesOtroLugar = 0;

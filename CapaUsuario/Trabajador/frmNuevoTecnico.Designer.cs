@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label16 = new System.Windows.Forms.Label();
             this.txtCorreoElectronico = new System.Windows.Forms.TextBox();
             this.picValidado = new System.Windows.Forms.PictureBox();
@@ -75,6 +76,8 @@
             this.cboCargo = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtCuentaBancaria = new System.Windows.Forms.TextBox();
+            this.btnArroba = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +117,7 @@
             this.txtValidador.Name = "txtValidador";
             this.txtValidador.Size = new System.Drawing.Size(34, 20);
             this.txtValidador.TabIndex = 174;
+            this.toolTip1.SetToolTip(this.txtValidador, "Digito Verificador");
             this.txtValidador.TextChanged += new System.EventHandler(this.txtValidador_TextChanged);
             // 
             // label13
@@ -555,11 +559,23 @@
             this.txtCuentaBancaria.Size = new System.Drawing.Size(156, 20);
             this.txtCuentaBancaria.TabIndex = 185;
             // 
+            // btnArroba
+            // 
+            this.btnArroba.Location = new System.Drawing.Point(550, 195);
+            this.btnArroba.Name = "btnArroba";
+            this.btnArroba.Size = new System.Drawing.Size(35, 23);
+            this.btnArroba.TabIndex = 186;
+            this.btnArroba.Text = "@";
+            this.toolTip1.SetToolTip(this.btnArroba, "Insertar @");
+            this.btnArroba.UseVisualStyleBackColor = true;
+            this.btnArroba.Click += new System.EventHandler(this.btnArroba_Click);
+            // 
             // frmNuevoTecnico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 531);
+            this.Controls.Add(this.btnArroba);
             this.Controls.Add(this.txtCuentaBancaria);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
@@ -661,5 +677,7 @@
         private System.Windows.Forms.ComboBox cboCargo;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtCuentaBancaria;
+        private System.Windows.Forms.Button btnArroba;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
