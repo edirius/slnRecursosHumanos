@@ -508,5 +508,10 @@ namespace CapaUsuario.Trabajador
             // Se devuelve si el correo electrónico coincide con la expresión regular.
             return regex.IsMatch(correo);
         }
+
+        private void btnArroba_Click(object sender, EventArgs e)
+        {
+            txtCorreoElectronico.Text = txtCorreoElectronico.Text + "@";
+        }
     }
 }

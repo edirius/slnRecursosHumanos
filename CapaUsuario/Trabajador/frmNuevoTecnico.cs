@@ -51,6 +51,8 @@ namespace CapaUsuario.Trabajador
         public DateTime fechaInicio;
         public DateTime fechaFin;
 
+        private DataTable ListaOcupaciones;
+
         public frmNuevoTecnico()
         {
             InitializeComponent();
@@ -137,17 +139,18 @@ namespace CapaUsuario.Trabajador
         private void CargarOcupacion()
         {
             CapaDeNegocios.DatosLaborales.cOcupacion miOcupacion = new CapaDeNegocios.DatosLaborales.cOcupacion();
-            AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
-            foreach (DataRow row in miOcupacion.ListarOcupacion().Rows)
-            {
-                coleccion.Add(Convert.ToString(row["descripcion"]));
-            }
-            cboOcupacion.DataSource = miOcupacion.ListarOcupacion();
+            //AutoCompleteStringCollection coleccion = new AutoCompleteStringCollection();
+            //foreach (DataRow row in miOcupacion.ListarOcupacion().Rows)
+            //{
+            //    coleccion.Add(Convert.ToString(row["descripcion"]));
+            //}
+            ListaOcupaciones = miOcupacion.ListarOcupacion();
+            cboOcupacion.DataSource = ListaOcupaciones;
             cboOcupacion.DisplayMember = "descripcion";
             cboOcupacion.ValueMember = "idtocupacion";
-            cboOcupacion.AutoCompleteCustomSource = coleccion;
-            cboOcupacion.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cboOcupacion.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            //cboOcupacion.AutoCompleteCustomSource = coleccion;
+            //cboOcupacion.AutoCompleteMode = AutoCompleteMode.Suggest;
+            //cboOcupacion.AutoCompleteSource = AutoCompleteSource.CustomSource;
             if (socupacion == "") { cboOcupacion.SelectedIndex = -1; }
             else { cboOcupacion.Text = socupacion; }
         }
@@ -648,6 +651,41 @@ namespace CapaUsuario.Trabajador
         private void btnArroba_Click(object sender, EventArgs e)
         {
             txtCorreoElectronico.Text = txtCorreoElectronico.Text + "@";
+        }
+
+        private void cboOcupacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if (cboOcupacion.Text == "")
+                {
+                    cboOcupacion.DataSource = ListaOcupaciones;
+                }
+                else
+                {
+                    serchOnCMB(ListaOcupaciones, cboOcupacion);
+                }
+                
+            }
+
+
+            //string filteredColumn = "descripcion";
+            //string searchedText = cboOcupacion.Text;
+            //DataTable dt = (DataTable)cboOcupacion.DataSource;
+
+            ////query
+            //var qry = from DataRow dr in dt.Rows
+            //          where dr[filteredColumn].ToString().ToLower().Contains(searchedText.ToLower())
+            //          select dr;
+            //dt = qry.CopyToDataTable();
+            //this.cboOcupacion.DataSource = dt;
+        }
+
+        private void serchOnCMB(System.Data.DataTable dt, ComboBox cmb)
+        {
+
+            dt.DefaultView.RowFilter = string.Format("descripcion LIKE '%{0}%'", cmb.Text);
+            cmb.DataSource = dt;
         }
     }
 }

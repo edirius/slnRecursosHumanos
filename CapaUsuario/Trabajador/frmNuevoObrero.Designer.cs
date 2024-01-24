@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.txtApePaterno = new System.Windows.Forms.TextBox();
@@ -69,6 +70,8 @@
             this.txtCorreoElectronico = new System.Windows.Forms.TextBox();
             this.txtCuentaBancaria = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.btnArroba = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.SuspendLayout();
@@ -450,6 +453,7 @@
             this.txtValidador.Name = "txtValidador";
             this.txtValidador.Size = new System.Drawing.Size(34, 20);
             this.txtValidador.TabIndex = 110;
+            this.toolTip1.SetToolTip(this.txtValidador, "Digito Verificador- Al costado del numero de dni");
             this.txtValidador.TextChanged += new System.EventHandler(this.txtValidador_TextChanged);
             // 
             // label16
@@ -489,11 +493,23 @@
             this.label20.TabIndex = 186;
             this.label20.Text = "Cuenta Bancaria:";
             // 
+            // btnArroba
+            // 
+            this.btnArroba.Location = new System.Drawing.Point(523, 189);
+            this.btnArroba.Name = "btnArroba";
+            this.btnArroba.Size = new System.Drawing.Size(35, 23);
+            this.btnArroba.TabIndex = 188;
+            this.btnArroba.Text = "@";
+            this.toolTip1.SetToolTip(this.btnArroba, "Insertar @ al correo eletronico");
+            this.btnArroba.UseVisualStyleBackColor = true;
+            this.btnArroba.Click += new System.EventHandler(this.btnArroba_Click);
+            // 
             // frmNuevoObrero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(630, 464);
+            this.Controls.Add(this.btnArroba);
             this.Controls.Add(this.txtCuentaBancaria);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label16);
@@ -583,5 +599,7 @@
         private System.Windows.Forms.TextBox txtCorreoElectronico;
         private System.Windows.Forms.TextBox txtCuentaBancaria;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnArroba;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

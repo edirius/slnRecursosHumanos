@@ -509,6 +509,7 @@
             this.cboCategoriaOcupacional.Name = "cboCategoriaOcupacional";
             this.cboCategoriaOcupacional.Size = new System.Drawing.Size(432, 21);
             this.cboCategoriaOcupacional.TabIndex = 178;
+            this.toolTip1.SetToolTip(this.cboCategoriaOcupacional, "Seleccionar Profesional, Tecnico, Auxiliar u Obrero");
             this.cboCategoriaOcupacional.SelectedIndexChanged += new System.EventHandler(this.cboCategoriaOcupacional_SelectedIndexChanged);
             // 
             // cboOcupacion
@@ -520,7 +521,10 @@
             this.cboOcupacion.Name = "cboOcupacion";
             this.cboOcupacion.Size = new System.Drawing.Size(432, 21);
             this.cboOcupacion.TabIndex = 179;
+            this.toolTip1.SetToolTip(this.cboOcupacion, "Presione Enter para filtrar, borre todo el texto para mostrar todas las ocupacion" +
+        "es");
             this.cboOcupacion.SelectedIndexChanged += new System.EventHandler(this.cboOcupacion_SelectedIndexChanged);
+            this.cboOcupacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboOcupacion_KeyPress);
             // 
             // label19
             // 
