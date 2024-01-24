@@ -747,7 +747,15 @@ namespace CapaUsuario.Reportes
                             drFila[2] = row[1];
                             drFila[3] = row[2];
                             drFila[4] = row[12];
-                            drFila[5] = Math.Round(Convert.ToDecimal(row[11]) / Convert.ToDecimal(row[12]), 2);
+                            if (Convert.ToDecimal(row[12]) == 0)
+                            {
+                                drFila[5] = 0;
+                            }
+                            else
+                            {
+                                drFila[5] = Math.Round(Convert.ToDecimal(row[11]) / Convert.ToDecimal(row[12]), 2);
+                            }
+                            
                             drFila[6] = row[11];
                             if (oDatosGenerales.Ruc == "20147495600")
                             {
