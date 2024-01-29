@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using CapaDeNegocios.VerificadorDNI;
 
 namespace CapaUsuario.Trabajador
 {
@@ -511,11 +512,13 @@ namespace CapaUsuario.Trabajador
                 {
                     picValidado.Image = Properties.Resources.check;
                     Validado = true;
+                    btnTraerNombre.Visible = true;
                 }
                 else
                 {
                     picValidado.Image = Properties.Resources.equis;
                     Validado = false;
+                    btnTraerNombre.Visible = false;
                 }
             }
         }
@@ -655,11 +658,13 @@ namespace CapaUsuario.Trabajador
 
         private void cboOcupacion_KeyPress(object sender, KeyPressEventArgs e)
         {
+            
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
                 if (cboOcupacion.Text == "")
                 {
                     cboOcupacion.DataSource = ListaOcupaciones;
+                    cboOcupacion.DroppedDown = true;
                 }
                 else
                 {
@@ -686,6 +691,49 @@ namespace CapaUsuario.Trabajador
 
             dt.DefaultView.RowFilter = string.Format("descripcion LIKE '%{0}%'", cmb.Text);
             cmb.DataSource = dt;
+            cboOcupacion.DroppedDown = true;
+        }
+
+        private ToolTip tt;
+
+        private void cboOcupacion_Enter(object sender, EventArgs e)
+        {
+            cboOcupacion.DroppedDown = true;
+            tt = new ToolTip();
+            tt.InitialDelay = 0;
+            tt.IsBalloon = true;
+            tt.ToolTipIcon = ToolTipIcon.Info;
+            //tt.Show(string.Empty, cboOcupacion);
+            tt.Show("Escriba un filtro y luego presione Enter para filtrar. Ejemplo: Abogado", cboOcupacion, 0);
+            
+        }
+
+        private void txtValidador_Enter(object sender, EventArgs e)
+        {
+            tt = new ToolTip();
+            tt.InitialDelay = 0;
+            tt.IsBalloon = true;
+            tt.ToolTipIcon = ToolTipIcon.Info;
+            tt.Show(string.Empty, txtValidador);
+            tt.Show("Digito Verificador: Se encuentra al costado del numero de DNI", txtValidador, 0);
+        }
+
+        private void btnTraerNombre_Click(object sender, EventArgs e)
+        {
+            cVerificadorDNI Verificador = new cVerificadorDNI();
+            trabajadorValidado MiTrabajadorValidado;
+            MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(txtDNI.Text);
+            if ( MiTrabajadorValidado != null)
+            {
+                txtNombre.Text = MiTrabajadorValidado.Data.nombres;
+                txtApePaterno.Text = MiTrabajadorValidado.Data.apellido_paterno;
+                txtApeMaterno.Text = MiTrabajadorValidado.Data.apellido_materno;
+            }
+            else
+            {
+                MessageBox.Show("Error al traer los datos, ingrese los nombres manualmente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }

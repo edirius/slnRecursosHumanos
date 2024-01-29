@@ -58,6 +58,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.picValidado = new System.Windows.Forms.PictureBox();
             this.txtValidador = new System.Windows.Forms.TextBox();
+            this.btnTraerNombre = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,10 +111,10 @@
             // 
             this.txtCelular.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCelular.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCelular.Location = new System.Drawing.Point(413, 12);
+            this.txtCelular.Location = new System.Drawing.Point(502, 12);
             this.txtCelular.MaxLength = 9;
             this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(194, 20);
+            this.txtCelular.Size = new System.Drawing.Size(105, 20);
             this.txtCelular.TabIndex = 92;
             this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelular_KeyPress);
             // 
@@ -121,7 +122,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(362, 15);
+            this.label9.Location = new System.Drawing.Point(451, 15);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(45, 13);
             this.label9.TabIndex = 114;
@@ -351,11 +352,29 @@
             this.txtValidador.TabIndex = 119;
             this.txtValidador.TextChanged += new System.EventHandler(this.txtValidador_TextChanged);
             // 
+            // btnTraerNombre
+            // 
+            this.btnTraerNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTraerNombre.BackColor = System.Drawing.Color.MintCream;
+            this.btnTraerNombre.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnTraerNombre.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnTraerNombre.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnTraerNombre.Location = new System.Drawing.Point(302, 6);
+            this.btnTraerNombre.Name = "btnTraerNombre";
+            this.btnTraerNombre.Size = new System.Drawing.Size(117, 26);
+            this.btnTraerNombre.TabIndex = 190;
+            this.btnTraerNombre.Text = "&Traer Nombre de Internet";
+            this.btnTraerNombre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnTraerNombre.UseVisualStyleBackColor = false;
+            this.btnTraerNombre.Visible = false;
+            this.btnTraerNombre.Click += new System.EventHandler(this.btnTraerNombre_Click);
+            // 
             // frmNuevoObreroRacionamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 291);
+            this.Controls.Add(this.btnTraerNombre);
             this.Controls.Add(this.picValidado);
             this.Controls.Add(this.txtValidador);
             this.Controls.Add(this.label13);
@@ -427,5 +446,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox picValidado;
         private System.Windows.Forms.TextBox txtValidador;
+        private System.Windows.Forms.Button btnTraerNombre;
     }
 }

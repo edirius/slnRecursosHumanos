@@ -12,6 +12,7 @@ using CapaDeNegocios.Contrato;
 using CapaDeNegocios.Obras;
 using CapaDeNegocios.Trabajadores;
 using CapaDeNegocios.DatosLaborales;
+using CapaDeNegocios.VerificadorDNI;
 
 namespace CapaUsuario.Trabajador
 {
@@ -958,14 +959,33 @@ namespace CapaUsuario.Trabajador
                 {
                     picValidado.Image = Properties.Resources.check;
                     Validado = true;
+                    btnTraerNombre.Visible = true;
                 } 
                 else
                 {
                     picValidado.Image =  Properties.Resources.equis;
                     Validado = false;
+                    btnTraerNombre.Visible = false;
                 }
             }
             
+        }
+
+        private void btnTraerNombre_Click(object sender, EventArgs e)
+        {
+            cVerificadorDNI Verificador = new cVerificadorDNI();
+            trabajadorValidado MiTrabajadorValidado;
+            MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(txtDNI.Text);
+            if (MiTrabajadorValidado != null)
+            {
+                txtNombres.Text = MiTrabajadorValidado.Data.nombres;
+                txtApellidoPaterno.Text = MiTrabajadorValidado.Data.apellido_paterno;
+                txtApellidoMaterno.Text = MiTrabajadorValidado.Data.apellido_materno;
+            }
+            else
+            {
+                MessageBox.Show("Error al traer los datos, ingrese los nombres manualmente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

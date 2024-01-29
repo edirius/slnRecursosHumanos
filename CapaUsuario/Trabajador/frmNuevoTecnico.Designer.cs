@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.label16 = new System.Windows.Forms.Label();
             this.txtCorreoElectronico = new System.Windows.Forms.TextBox();
             this.picValidado = new System.Windows.Forms.PictureBox();
@@ -77,7 +76,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.txtCuentaBancaria = new System.Windows.Forms.TextBox();
             this.btnArroba = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnTraerNombre = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -117,8 +116,8 @@
             this.txtValidador.Name = "txtValidador";
             this.txtValidador.Size = new System.Drawing.Size(34, 20);
             this.txtValidador.TabIndex = 174;
-            this.toolTip1.SetToolTip(this.txtValidador, "Digito Verificador");
             this.txtValidador.TextChanged += new System.EventHandler(this.txtValidador_TextChanged);
+            this.txtValidador.Enter += new System.EventHandler(this.txtValidador_Enter);
             // 
             // label13
             // 
@@ -509,7 +508,6 @@
             this.cboCategoriaOcupacional.Name = "cboCategoriaOcupacional";
             this.cboCategoriaOcupacional.Size = new System.Drawing.Size(432, 21);
             this.cboCategoriaOcupacional.TabIndex = 178;
-            this.toolTip1.SetToolTip(this.cboCategoriaOcupacional, "Seleccionar Profesional, Tecnico, Auxiliar u Obrero");
             this.cboCategoriaOcupacional.SelectedIndexChanged += new System.EventHandler(this.cboCategoriaOcupacional_SelectedIndexChanged);
             // 
             // cboOcupacion
@@ -521,9 +519,8 @@
             this.cboOcupacion.Name = "cboOcupacion";
             this.cboOcupacion.Size = new System.Drawing.Size(432, 21);
             this.cboOcupacion.TabIndex = 179;
-            this.toolTip1.SetToolTip(this.cboOcupacion, "Presione Enter para filtrar, borre todo el texto para mostrar todas las ocupacion" +
-        "es");
             this.cboOcupacion.SelectedIndexChanged += new System.EventHandler(this.cboOcupacion_SelectedIndexChanged);
+            this.cboOcupacion.Enter += new System.EventHandler(this.cboOcupacion_Enter);
             this.cboOcupacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cboOcupacion_KeyPress);
             // 
             // label19
@@ -570,15 +567,32 @@
             this.btnArroba.Size = new System.Drawing.Size(35, 23);
             this.btnArroba.TabIndex = 186;
             this.btnArroba.Text = "@";
-            this.toolTip1.SetToolTip(this.btnArroba, "Insertar @");
             this.btnArroba.UseVisualStyleBackColor = true;
             this.btnArroba.Click += new System.EventHandler(this.btnArroba_Click);
+            // 
+            // btnTraerNombre
+            // 
+            this.btnTraerNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTraerNombre.BackColor = System.Drawing.Color.MintCream;
+            this.btnTraerNombre.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnTraerNombre.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnTraerNombre.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnTraerNombre.Location = new System.Drawing.Point(284, 12);
+            this.btnTraerNombre.Name = "btnTraerNombre";
+            this.btnTraerNombre.Size = new System.Drawing.Size(117, 26);
+            this.btnTraerNombre.TabIndex = 187;
+            this.btnTraerNombre.Text = "&Traer Nombre de Internet";
+            this.btnTraerNombre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnTraerNombre.UseVisualStyleBackColor = false;
+            this.btnTraerNombre.Visible = false;
+            this.btnTraerNombre.Click += new System.EventHandler(this.btnTraerNombre_Click);
             // 
             // frmNuevoTecnico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 531);
+            this.Controls.Add(this.btnTraerNombre);
             this.Controls.Add(this.btnArroba);
             this.Controls.Add(this.txtCuentaBancaria);
             this.Controls.Add(this.label20);
@@ -682,6 +696,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtCuentaBancaria;
         private System.Windows.Forms.Button btnArroba;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnTraerNombre;
     }
 }

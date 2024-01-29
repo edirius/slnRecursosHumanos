@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNuevoTrabajador));
             this.tabTrabajador = new System.Windows.Forms.TabControl();
             this.tabDatosGenerales = new System.Windows.Forms.TabPage();
+            this.chkSCRTP = new System.Windows.Forms.CheckBox();
             this.picValidado = new System.Windows.Forms.PictureBox();
             this.txtValidador = new System.Windows.Forms.TextBox();
             this.chkScrt = new System.Windows.Forms.CheckBox();
@@ -97,7 +98,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
             this.toolTrabajador = new System.Windows.Forms.ToolTip(this.components);
-            this.chkSCRTP = new System.Windows.Forms.CheckBox();
+            this.btnTraerNombre = new System.Windows.Forms.Button();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
@@ -116,6 +117,7 @@
             // 
             // tabDatosGenerales
             // 
+            this.tabDatosGenerales.Controls.Add(this.btnTraerNombre);
             this.tabDatosGenerales.Controls.Add(this.chkSCRTP);
             this.tabDatosGenerales.Controls.Add(this.picValidado);
             this.tabDatosGenerales.Controls.Add(this.txtValidador);
@@ -187,6 +189,16 @@
             this.tabDatosGenerales.TabIndex = 0;
             this.tabDatosGenerales.Text = "Datos Generales";
             this.tabDatosGenerales.UseVisualStyleBackColor = true;
+            // 
+            // chkSCRTP
+            // 
+            this.chkSCRTP.AutoSize = true;
+            this.chkSCRTP.Location = new System.Drawing.Point(536, 591);
+            this.chkSCRTP.Name = "chkSCRTP";
+            this.chkSCRTP.Size = new System.Drawing.Size(106, 17);
+            this.chkSCRTP.TabIndex = 110;
+            this.chkSCRTP.Text = "SCRT-PENSION";
+            this.chkSCRTP.UseVisualStyleBackColor = true;
             // 
             // picValidado
             // 
@@ -797,15 +809,22 @@
             this.toolTrabajador.ForeColor = System.Drawing.Color.RoyalBlue;
             this.toolTrabajador.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // chkSCRTP
+            // btnTraerNombre
             // 
-            this.chkSCRTP.AutoSize = true;
-            this.chkSCRTP.Location = new System.Drawing.Point(536, 591);
-            this.chkSCRTP.Name = "chkSCRTP";
-            this.chkSCRTP.Size = new System.Drawing.Size(106, 17);
-            this.chkSCRTP.TabIndex = 110;
-            this.chkSCRTP.Text = "SCRT-PENSION";
-            this.chkSCRTP.UseVisualStyleBackColor = true;
+            this.btnTraerNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTraerNombre.BackColor = System.Drawing.Color.MintCream;
+            this.btnTraerNombre.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnTraerNombre.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnTraerNombre.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnTraerNombre.Location = new System.Drawing.Point(291, 47);
+            this.btnTraerNombre.Name = "btnTraerNombre";
+            this.btnTraerNombre.Size = new System.Drawing.Size(117, 26);
+            this.btnTraerNombre.TabIndex = 190;
+            this.btnTraerNombre.Text = "&Traer Nombre de Internet";
+            this.btnTraerNombre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnTraerNombre.UseVisualStyleBackColor = false;
+            this.btnTraerNombre.Visible = false;
+            this.btnTraerNombre.Click += new System.EventHandler(this.btnTraerNombre_Click);
             // 
             // frmNuevoTrabajador
             // 
@@ -898,5 +917,6 @@
         private System.Windows.Forms.TextBox txtValidador;
         private System.Windows.Forms.PictureBox picValidado;
         private System.Windows.Forms.CheckBox chkSCRTP;
+        private System.Windows.Forms.Button btnTraerNombre;
     }
 }

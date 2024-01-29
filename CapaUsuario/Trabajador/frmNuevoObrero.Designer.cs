@@ -72,6 +72,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.btnArroba = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnTraerNombre = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.SuspendLayout();
@@ -504,11 +505,29 @@
             this.btnArroba.UseVisualStyleBackColor = true;
             this.btnArroba.Click += new System.EventHandler(this.btnArroba_Click);
             // 
+            // btnTraerNombre
+            // 
+            this.btnTraerNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTraerNombre.BackColor = System.Drawing.Color.MintCream;
+            this.btnTraerNombre.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnTraerNombre.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnTraerNombre.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnTraerNombre.Location = new System.Drawing.Point(303, 9);
+            this.btnTraerNombre.Name = "btnTraerNombre";
+            this.btnTraerNombre.Size = new System.Drawing.Size(117, 26);
+            this.btnTraerNombre.TabIndex = 189;
+            this.btnTraerNombre.Text = "&Traer Nombre de Internet";
+            this.btnTraerNombre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnTraerNombre.UseVisualStyleBackColor = false;
+            this.btnTraerNombre.Visible = false;
+            this.btnTraerNombre.Click += new System.EventHandler(this.btnTraerNombre_Click);
+            // 
             // frmNuevoObrero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(630, 464);
+            this.Controls.Add(this.btnTraerNombre);
             this.Controls.Add(this.btnArroba);
             this.Controls.Add(this.txtCuentaBancaria);
             this.Controls.Add(this.label20);
@@ -601,5 +620,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button btnArroba;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnTraerNombre;
     }
 }

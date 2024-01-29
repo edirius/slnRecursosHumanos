@@ -35,6 +35,7 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.servidorIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.verficadorDNIToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,7 +138,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuResidenteMeta = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -173,6 +174,7 @@
             this.newToolStripMenuItem,
             this.generarCopiaDeSeguridadToolStripMenuItem,
             this.restaurarCopiaDeSeguridadToolStripMenuItem,
+            this.mnuResidenteMeta,
             this.toolStripSeparator12,
             this.servidorIPToolStripMenuItem,
             this.cargaInicialToolStripMenuItem,
@@ -207,6 +209,11 @@
             this.restaurarCopiaDeSeguridadToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
             this.restaurarCopiaDeSeguridadToolStripMenuItem.Text = "Restaurar Base de Datos";
             this.restaurarCopiaDeSeguridadToolStripMenuItem.Click += new System.EventHandler(this.restaurarCopiaDeSeguridadToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(260, 6);
             // 
             // servidorIPToolStripMenuItem
             // 
@@ -1006,10 +1013,12 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // toolStripSeparator12
+            // mnuResidenteMeta
             // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(260, 6);
+            this.mnuResidenteMeta.Name = "mnuResidenteMeta";
+            this.mnuResidenteMeta.Size = new System.Drawing.Size(263, 22);
+            this.mnuResidenteMeta.Text = "Residente-Meta";
+            this.mnuResidenteMeta.Click += new System.EventHandler(this.mnuResidenteMeta_Click);
             // 
             // frmPrincipal
             // 
@@ -1154,6 +1163,7 @@
         private System.Windows.Forms.ToolStripMenuItem planilla2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem verficadorDNIToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator12;
+        private System.Windows.Forms.ToolStripMenuItem mnuResidenteMeta;
     }
 }
 
