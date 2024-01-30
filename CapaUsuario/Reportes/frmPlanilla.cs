@@ -4364,7 +4364,7 @@ namespace CapaUsuario.Reportes
 
                 //string imageURL = "C:\\Users\\ADVANCE\\Source\\Repos\\slnRecursosHumanos\\slnRecursosHumanos\\Recursos Varios\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
                 //string ruta = Directory.GetCurrentDirectory();
-                string ruta= Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+                string ruta = System.IO.Directory.GetCurrentDirectory();
 
                 string ruta_imagen = ruta + "\\logo-muni-fw.png";
 
@@ -4801,7 +4801,7 @@ namespace CapaUsuario.Reportes
 
                 //string imageURL = "C:\\Users\\ADVANCE\\Source\\Repos\\slnRecursosHumanos\\slnRecursosHumanos\\Recursos Varios\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
                 //string ruta = Directory.GetCurrentDirectory();
-                string ruta = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+                string ruta = System.IO.Directory.GetCurrentDirectory();
                 //string ruta2 = Application.StartupPath;
                 //string ruta3 = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
 
@@ -5183,7 +5183,7 @@ namespace CapaUsuario.Reportes
 
                 //string imageURL = "C:\\Users\\ADVANCE\\Source\\Repos\\slnRecursosHumanos\\slnRecursosHumanos\\Recursos Varios\\MUNICIPALIDAD-DISTRITAL-DE-CCATCCA-2.png";
                 //string ruta = Directory.GetCurrentDirectory();
-                string ruta = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+                string ruta = System.IO.Directory.GetCurrentDirectory();
                 //string ruta2 = Application.StartupPath;
                 //string ruta3 = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
 
