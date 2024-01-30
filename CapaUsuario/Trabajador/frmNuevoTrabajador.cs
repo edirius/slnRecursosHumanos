@@ -975,7 +975,7 @@ namespace CapaUsuario.Trabajador
         {
             cVerificadorDNI Verificador = new cVerificadorDNI();
             trabajadorValidado MiTrabajadorValidado;
-            MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(txtDNI.Text);
+            MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(txtDNI.Text, cDatosGeneralesEmpresa.Bearer);
             if (MiTrabajadorValidado != null)
             {
                 txtNombres.Text = MiTrabajadorValidado.Data.nombres;

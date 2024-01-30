@@ -108,6 +108,7 @@ namespace CapaUsuario.Usuarios
                     cDatosGeneralesEmpresa.RUC = oDatosGenerales.Ruc;
                     cDatosGeneralesEmpresa.Lugar = oDatosGenerales.Lugar;
                     cDatosGeneralesEmpresa.NombreOficina = oDatosGenerales.NombreOficina;
+                    cDatosGeneralesEmpresa.Bearer = oDatosGenerales.Bearer;
                     Principal.DarPrivilegios(txtUsuario.Text);
                     Principal.Show();
                     this.Hide();

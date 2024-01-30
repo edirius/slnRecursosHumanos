@@ -12,6 +12,6 @@ namespace CapaUsuario
         public static string RUC;
         public static string Lugar;
         public static string NombreOficina;
-
+        public static string Bearer;
     }
 }

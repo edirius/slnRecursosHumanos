@@ -16,7 +16,7 @@ namespace CapaDeNegocios.VerificadorDNI
         HttpClient client;
         private string URL = "";
 
-        public trabajadorValidado TraerTrabajadorValidado(string myDNI)
+        public trabajadorValidado TraerTrabajadorValidado(string myDNI, string bearer)
         {
             try
             {
@@ -30,7 +30,7 @@ namespace CapaDeNegocios.VerificadorDNI
                 client.BaseAddress = new Uri(URL);
 
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer 6449af0dcdd7991b8d2c956a6312a2f63ff76eef85c50113b6c90a97d0d42e5f");
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + bearer);
 
 
 

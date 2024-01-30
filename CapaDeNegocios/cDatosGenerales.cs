@@ -15,6 +15,7 @@ namespace CapaDeNegocios
         string lugar;
         string nombreOficina;
         Boolean tecnicos276;
+        string bearer;
 
         public cDatosGenerales()
         {
@@ -28,6 +29,7 @@ namespace CapaDeNegocios
                     this.lugar = item[3].ToString();
                     this.nombreOficina = item[4].ToString();
                     this.tecnicos276 = Convert.ToBoolean(item[6]);
+                    this.bearer = item[7].ToString();
                 }
             }
             catch (Exception ex)
@@ -99,6 +101,19 @@ namespace CapaDeNegocios
             set
             {
                 tecnicos276 = value;
+            }
+        }
+
+        public string Bearer
+        {
+            get
+            {
+                return bearer;
+            }
+
+            set
+            {
+                bearer = value;
             }
         }
     }
