@@ -938,7 +938,7 @@ namespace CapaUsuario.Planilla
                 //Significa que el empleado empezo este mes
                 if (Convert.ToInt32(saño) == AñoInicio &&  sMes == MesInicio)
                 {
-                    DiasLaborados = 1 + DateTime.DaysInMonth(AñoInicio, MesInicio) - DiaInicio;
+                    DiasLaborados = 1 + DateTime.DaysInMonth(AñoInicio, MesInicio) - DiaInicio - diasSuspendidos;
 
                     DiasNoLaborados = diasSuspendidos + (DiasMes - DiasLaborados);
                 }
