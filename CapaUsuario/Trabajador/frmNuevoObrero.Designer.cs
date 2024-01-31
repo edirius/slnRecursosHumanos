@@ -71,7 +71,7 @@
             this.txtCuentaBancaria = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.btnArroba = new System.Windows.Forms.Button();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btnTraerNombre = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
@@ -454,7 +454,7 @@
             this.txtValidador.Name = "txtValidador";
             this.txtValidador.Size = new System.Drawing.Size(34, 20);
             this.txtValidador.TabIndex = 110;
-            this.toolTip1.SetToolTip(this.txtValidador, "Digito Verificador- Al costado del numero de dni");
+            this.toolTip.SetToolTip(this.txtValidador, "Digito Verificador- Al costado del numero de dni");
             this.txtValidador.TextChanged += new System.EventHandler(this.txtValidador_TextChanged);
             // 
             // label16
@@ -501,9 +501,13 @@
             this.btnArroba.Size = new System.Drawing.Size(35, 23);
             this.btnArroba.TabIndex = 188;
             this.btnArroba.Text = "@";
-            this.toolTip1.SetToolTip(this.btnArroba, "Insertar @ al correo eletronico");
+            this.toolTip.SetToolTip(this.btnArroba, "Insertar @ al correo eletronico");
             this.btnArroba.UseVisualStyleBackColor = true;
             this.btnArroba.Click += new System.EventHandler(this.btnArroba_Click);
+            // 
+            // toolTip
+            // 
+            this.toolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
             // btnTraerNombre
             // 
@@ -619,7 +623,7 @@
         private System.Windows.Forms.TextBox txtCuentaBancaria;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button btnArroba;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Button btnTraerNombre;
     }
 }

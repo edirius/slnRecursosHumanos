@@ -985,6 +985,7 @@ namespace CapaUsuario.Planilla
                 }
                 else
                 {
+                    //Remuneracion = Math.Round(Math.Round(Monto / 30, 2) * diasLaborados, 2);
                     Remuneracion = Math.Round((Monto / 30) * diasLaborados, 2);
                 }
                 
@@ -1097,7 +1098,8 @@ namespace CapaUsuario.Planilla
 
                         if (smingresos[i, 17].ToString() == "0")//Verificamos que la columna no sea Informativa.
                         {
-                            total_ingresos += decimal.Round(Convert.ToDecimal(result), 2);
+                            total_ingresos += Math.Round(Convert.ToDecimal(result), 2, MidpointRounding.AwayFromZero);
+                            //total_ingresos += decimal.Round(Convert.ToDecimal(result), 2);
                         }
                     }
                 }
