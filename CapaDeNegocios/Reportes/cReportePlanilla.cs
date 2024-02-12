@@ -261,6 +261,12 @@ namespace CapaDeNegocios.Reportes
 
             TablaDetalle.ListaFilas.Add(FilaEncabezado1);
 
+            foreach (cnDetallePlanilla item in miPLanilla.ListaDetalle)
+            {
+                cFilasPDF FilaDetalle = new cFilasPDF();
+
+            }
+
             oHojaAuxiliar.ListaDeTablas.Add(TablaLogo);
             oHojaAuxiliar.ListaDeTablas.Add(TablaTituloPrincipal);
             oHojaAuxiliar.ListaDeTablas.Add(TablaDetalle);

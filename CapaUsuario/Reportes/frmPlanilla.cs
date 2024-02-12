@@ -707,7 +707,7 @@ namespace CapaUsuario.Reportes
                     odtPrueba.Columns.Add("NRO. SESIONES", typeof(string));
                     odtPrueba.Columns.Add("PAGO x SESION", typeof(string));
                     odtPrueba.Columns.Add("NETO A COBRAR", typeof(string));
-                    if (oDatosGenerales.Ruc == "20147495600")
+                    if (chkCuentaBancaria.Checked)
                     {
                         odtPrueba.Columns.Add("CUENTA BANCARIA", typeof(string));
                         odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamientoBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
@@ -757,7 +757,7 @@ namespace CapaUsuario.Reportes
                             }
                             
                             drFila[6] = row[11];
-                            if (oDatosGenerales.Ruc == "20147495600")
+                            if (chkCuentaBancaria.Checked)
                             {
                                 drFila[7] = row[13];
                             }
@@ -907,7 +907,7 @@ namespace CapaUsuario.Reportes
                         }
                         
                         odtPrueba.Columns.Add("NETO A COBRAR", typeof(string));
-                        if (oDatosGenerales.Ruc == "20147495600")
+                        if (chkCuentaBancaria.Checked)
                         {
                             odtPrueba.Columns.Add("CUENTA BANCARIA", typeof(string));
                             odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamientoBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
@@ -958,7 +958,7 @@ namespace CapaUsuario.Reportes
                                 }
                                 
                                 drFila[6] = row[11];
-                                if (oDatosGenerales.Ruc == "20147495600")
+                                if (chkCuentaBancaria.Checked)
                                 {
                                     drFila[7] = row[13];
                                 }
@@ -2261,7 +2261,7 @@ namespace CapaUsuario.Reportes
                                     odtPrueba.Columns.Add("PERIODO", typeof(string));
                                     odtPrueba.Columns.Add("TOTAL DIAS LABORADOS", typeof(string));
                                     odtPrueba.Columns.Add("TOTAL CTS", typeof(string));
-                                    if (oDatosGenerales.Ruc == "20147495600")
+                                    if (chkCuentaBancaria.Checked)
                                     {
                                         odtPrueba.Columns.Add("CUENTA BANCARIA", typeof(string));
                                         odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamientoBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
@@ -2314,7 +2314,7 @@ namespace CapaUsuario.Reportes
 
 
                                             drFila[6] = row[11];
-                                            if (oDatosGenerales.Ruc == "20147495600")
+                                            if (chkCuentaBancaria.Checked)
                                             {
                                                 drFila[7] = row[13];
                                             }
@@ -2382,7 +2382,7 @@ namespace CapaUsuario.Reportes
                                     odtPrueba.Columns.Add("PERIODO", typeof(string));
                                     odtPrueba.Columns.Add("TOTAL DIAS LABORADOS", typeof(string));
                                     odtPrueba.Columns.Add("TOTAL GRATIFICACION", typeof(string));
-                                    if (oDatosGenerales.Ruc == "20147495600")
+                                    if (chkCuentaBancaria.Checked)
                                     {
                                         odtPrueba.Columns.Add("CUENTA BANCARIA", typeof(string));
                                         odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamientoBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
@@ -2435,7 +2435,7 @@ namespace CapaUsuario.Reportes
 
 
                                             drFila[6] = row[11];
-                                            if (oDatosGenerales.Ruc == "20147495600")
+                                            if (chkCuentaBancaria.Checked)
                                             {
                                                 drFila[7] = row[13];
                                             }
@@ -2509,7 +2509,7 @@ namespace CapaUsuario.Reportes
 
                                     //odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(pMes, pRegimenLaboral);
                                     //Determinar si la consulta esta vacio
-                                    if (oDatosGenerales.Ruc == "20147495600")
+                                    if (chkCuentaBancaria.Checked)
                                     {
                                         odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralBancaria(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
                                     }
@@ -2754,7 +2754,7 @@ namespace CapaUsuario.Reportes
                                                 indice_prueba_dias_laborados = BuscarIndiceColumna(odtPrueba, "DIAS LABORADOS");
                                             }
 
-                                            if (oDatosGenerales.Ruc == "20147495600")
+                                            if (chkCuentaBancaria.Checked)
                                             {
                                                 if (!ExisteColumnaTexto(odtPrueba, "CUENTA BANCARIA"))
                                                 {
@@ -3247,7 +3247,7 @@ namespace CapaUsuario.Reportes
                                                 indice_prueba_dias_laborados = BuscarIndiceColumna(odtPrueba, "DIAS LABORADOS");
                                             }
 
-                                            if (oDatosGenerales.Ruc == "20147495600")
+                                            if (chkCuentaBancaria.Checked)
                                             {
                                                 if (!ExisteColumnaTexto(odtPruebaCorta, "CUENTA BANCARIA"))
                                                 {
@@ -4023,7 +4023,7 @@ namespace CapaUsuario.Reportes
                 if (i == dg.ColumnCount - 1) values[i] = 300;
                 if (i == dg.ColumnCount - 2) values[i] = 50;
 
-                if (oDatosGenerales.Ruc == "20147495600" )
+                if (chkCuentaBancaria.Checked)
                 {
                     if (i == dg.ColumnCount - 1) values[i] = 250;
                     if (i == dg.ColumnCount - 2) values[i] = 150;

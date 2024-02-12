@@ -845,10 +845,80 @@ namespace CapaUsuario.ExportarSunat
             fVerCodificacion.ListaDatosIdentificacion = ListaDatosIdentificacion;
             fVerCodificacion.ListaDatosTrabajador = ListaDatosTrabajador;
             fVerCodificacion.ListaDatosPeriodos = ListaDatosPeriodo;
+            fVerCodificacion.Periodo = new DateTime(Convert.ToInt16(cbAños.Text), ConvertirMes(cbMes.Text), 1);
             if (fVerCodificacion.ShowDialog() == DialogResult.OK)
             {
 
             }                
+        }
+
+        private int ConvertirMes(string mes)
+        {
+            int numeroMes = 0;
+            switch (mes)
+            {
+                case "ENERO":
+                    {
+                        numeroMes = 1;
+                        break;
+                    }
+                case "FEBRERO":
+                    {
+                        numeroMes = 2;
+                        break;
+                    }
+                case "MARZO":
+                    {
+                        numeroMes = 3;
+                        break;
+                    }
+                case "ABRIL":
+                    {
+                        numeroMes = 4;
+                        break;
+                    }
+                case "MAYO":
+                    {
+                        numeroMes = 5;
+                        break;
+                    }
+                case "JUNIO":
+                    {
+                        numeroMes = 6;
+                        break;
+                    }
+                case "JULIO":
+                    {
+                        numeroMes = 7;
+                        break;
+                    }
+                case "AGOSTO":
+                    {
+                        numeroMes = 8;
+                        break;
+                    }
+                case "SETIEMBRE":
+                    {
+                        numeroMes = 9;
+                        break;
+                    }
+                case "OCTUBRE":
+                    {
+                        numeroMes = 10;
+                        break;
+                    }
+                case "NOVIEMBRE":
+                    {
+                        numeroMes = 11;
+                        break;
+                    }
+                case "DICIEMBRE":
+                    {
+                        numeroMes =12;
+                        break;
+                    }
+            }
+            return numeroMes;
         }
     }
 }

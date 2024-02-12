@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPlanilla2));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -57,9 +58,9 @@
             this.groupBox1.Controls.Add(this.cboMes);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(22, 27);
+            this.groupBox1.Location = new System.Drawing.Point(23, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(505, 75);
+            this.groupBox1.Size = new System.Drawing.Size(510, 63);
             this.groupBox1.TabIndex = 102;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtrar por:";
@@ -71,7 +72,7 @@
             this.btnBuscar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnBuscar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnBuscar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnBuscar.Location = new System.Drawing.Point(383, 19);
+            this.btnBuscar.Location = new System.Drawing.Point(389, 15);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 34);
             this.btnBuscar.TabIndex = 105;
@@ -110,7 +111,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Location = new System.Drawing.Point(6, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 0;
@@ -120,7 +121,7 @@
             // 
             this.dtgListaPlanillas.AllowUserToAddRows = false;
             this.dtgListaPlanillas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.PaleTurquoise;
             this.dtgListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaPlanillas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -132,11 +133,11 @@
             this.numeroMeta,
             this.Nombre,
             this.fuenteFinanciamiento});
-            this.dtgListaPlanillas.Location = new System.Drawing.Point(22, 124);
+            this.dtgListaPlanillas.Location = new System.Drawing.Point(23, 81);
             this.dtgListaPlanillas.Name = "dtgListaPlanillas";
             this.dtgListaPlanillas.ReadOnly = true;
             this.dtgListaPlanillas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaPlanillas.Size = new System.Drawing.Size(755, 275);
+            this.dtgListaPlanillas.Size = new System.Drawing.Size(938, 330);
             this.dtgListaPlanillas.TabIndex = 103;
             // 
             // btnImprimir
@@ -147,7 +148,7 @@
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnImprimir.ImageKey = "(none)";
-            this.btnImprimir.Location = new System.Drawing.Point(22, 419);
+            this.btnImprimir.Location = new System.Drawing.Point(23, 429);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(76, 63);
             this.btnImprimir.TabIndex = 104;
@@ -178,7 +179,7 @@
             this.Descripcion.HeaderText = "Descripcion";
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 200;
+            this.Descripcion.Width = 250;
             // 
             // Mes
             // 
@@ -199,6 +200,8 @@
             // numeroMeta
             // 
             this.numeroMeta.DataPropertyName = "NroMeta";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.numeroMeta.DefaultCellStyle = dataGridViewCellStyle2;
             this.numeroMeta.HeaderText = "Meta";
             this.numeroMeta.Name = "numeroMeta";
             this.numeroMeta.ReadOnly = true;
@@ -224,7 +227,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 507);
+            this.ClientSize = new System.Drawing.Size(999, 519);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.dtgListaPlanillas);
             this.Controls.Add(this.groupBox1);

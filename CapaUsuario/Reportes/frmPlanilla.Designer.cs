@@ -69,6 +69,7 @@
             this.chkFirmaRecursos = new System.Windows.Forms.CheckBox();
             this.chkFirmaElaborado = new System.Windows.Forms.CheckBox();
             this.chkJornalRacionamiento = new System.Windows.Forms.CheckBox();
+            this.chkCuentaBancaria = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
@@ -480,11 +481,22 @@
             this.chkJornalRacionamiento.Text = "Incluir Jornal Racionamiento";
             this.chkJornalRacionamiento.UseVisualStyleBackColor = true;
             // 
+            // chkCuentaBancaria
+            // 
+            this.chkCuentaBancaria.AutoSize = true;
+            this.chkCuentaBancaria.Location = new System.Drawing.Point(776, 34);
+            this.chkCuentaBancaria.Name = "chkCuentaBancaria";
+            this.chkCuentaBancaria.Size = new System.Drawing.Size(135, 17);
+            this.chkCuentaBancaria.TabIndex = 106;
+            this.chkCuentaBancaria.Text = "Incluir Cuenta bancaria";
+            this.chkCuentaBancaria.UseVisualStyleBackColor = true;
+            // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 546);
+            this.Controls.Add(this.chkCuentaBancaria);
             this.Controls.Add(this.chkJornalRacionamiento);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.txtAltoColumnas);
@@ -556,5 +568,6 @@
         private System.Windows.Forms.CheckBox chkSubGerenciaObras;
         private System.Windows.Forms.CheckBox chkGerenciaAdministracion;
         private System.Windows.Forms.CheckBox chkJornalRacionamiento;
+        private System.Windows.Forms.CheckBox chkCuentaBancaria;
     }
 }

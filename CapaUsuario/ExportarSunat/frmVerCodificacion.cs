@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaDeNegocios.Trabajadores;
 
 namespace CapaUsuario.ExportarSunat
 {
@@ -15,6 +16,7 @@ namespace CapaUsuario.ExportarSunat
         public List<cDatosIdentificacion> ListaDatosIdentificacion;
         public List<cDatosTrabajador> ListaDatosTrabajador;
         public List<cDatosPeriodo> ListaDatosPeriodos;
+        public DateTime Periodo;
 
         public frmVerCodificacion()
         {
@@ -213,6 +215,36 @@ namespace CapaUsuario.ExportarSunat
             }
 
             dtgDatosIdentificacion.AllowUserToAddRows = false;
+            lblFecha.Text = Periodo.ToString("MMMM/yyyy");
+        }
+
+        private void btnCambiarDatos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dtgDatosIdentificacion.SelectedCells.Count > 0)
+                {
+                    Trabajador.frmNuevoTrabajador fModificarTrabajador = new Trabajador.frmNuevoTrabajador();
+                    fModificarTrabajador.modoEdicion = true;
+                    fModificarTrabajador.miTrabajador = new CapaDeNegocios.cTrabajador();
+                    fModificarTrabajador.miTrabajador = fModificarTrabajador.miTrabajador.BuscarTrabajadorXDNI(dtgDatosIdentificacion.Rows[dtgDatosIdentificacion.SelectedCells[0].RowIndex].Cells[2].Value.ToString());
+
+                    if (fModificarTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        fModificarTrabajador.miTrabajador.ModificarTrabajador(fModificarTrabajador.miTrabajador);
+                        MessageBox.Show("Datos Guardados", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No hay datos seleccionados", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception g)
+            {
+                MessageBox.Show(g.Message);
+
+            }
         }
     }
 }
