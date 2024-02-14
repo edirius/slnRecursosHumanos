@@ -80,6 +80,14 @@ namespace CapaUsuario.Reportes
                     crystalReportViewer1.ReportSource = crReporteContratos;
                     crystalReportViewer1.Refresh();
                 }
+                else if (Reporte == "ResumenPlanillasDetallado")
+                {
+                    Reportes.crResumenPlanillasDetallado crReporteDetallado = new crResumenPlanillasDetallado();
+                    
+                    Municipalidad(crReporteDetallado, smunicipalidad);
+                    crystalReportViewer1.ReportSource = crReporteDetallado;
+                    crystalReportViewer1.Refresh();
+                }
             }
             catch (Exception m)
             {

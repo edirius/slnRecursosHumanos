@@ -427,6 +427,12 @@
       <DependentUpon>crReporteContratos.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\crResumenPlanillasDetallado.cs">
+      <DependentUpon>crResumenPlanillasDetallado.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reportes\crResumenPlanillas.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1737,6 +1743,10 @@
     <EmbeddedResource Include="Reportes\crReporteContratos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crReporteContratos.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\crResumenPlanillasDetallado.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crResumenPlanillasDetallado.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\crResumenPlanillas.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

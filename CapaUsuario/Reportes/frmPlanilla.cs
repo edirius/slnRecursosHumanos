@@ -2105,17 +2105,17 @@ namespace CapaUsuario.Reportes
                                     lll++;
                                 }
 
-                                if (iindice_essalud_vida != -1)
-                                {
-                                    //essalud_vida_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_essalud_vida]);
-                                    drFilaEEFF = odtEEFF.NewRow();
-                                    drFilaEEFF.Delete();
-                                    drFilaEEFF[0] = "ESSALUD VIDA";
-                                    drFilaEEFF[2] = monto_essalud_vida;
-                                    haber_total += monto_essalud_vida;
-                                    odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
-                                    lll++;
-                                }
+                                //if (iindice_essalud_vida != -1)
+                                //{
+                                //    //essalud_vida_total = Convert.ToDecimal(odtPruebaCorta.Rows[ultima_fila_prueba_corta][iindice_essalud_vida]);
+                                //    drFilaEEFF = odtEEFF.NewRow();
+                                //    drFilaEEFF.Delete();
+                                //    drFilaEEFF[0] = "ESSALUD VIDA";
+                                //    drFilaEEFF[2] = monto_essalud_vida;
+                                //    haber_total += monto_essalud_vida;
+                                //    odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                                //    lll++;
+                                //}
 
 
                                 iindice_afp = BuscarIndiceColumna(odtPruebaCorta, "TOTAL APORTACIONES TRABAJADOR");

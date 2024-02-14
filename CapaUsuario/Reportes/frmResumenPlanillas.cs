@@ -145,5 +145,27 @@ namespace CapaUsuario.Reportes
             dgvPlanilla.Columns["☑"].DisplayIndex = 0;
             dgvPlanilla.Columns["☑"].Width = 30;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CapaDeNegocios.Reportes.cResumenPlanillas miResumenPlanilla = new CapaDeNegocios.Reportes.cResumenPlanillas();
+            try
+            {
+                foreach (DataGridViewRow row in dgvPlanilla.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells["☑"].Value) == true)
+                    {
+                        miResumenPlanilla.ResumenPlanillaDetallado("ACTIVO", Convert.ToInt32(row.Cells["IdtPlanilla"].Value));
+                    }
+                }
+            }
+            catch (Exception m)
+            { MessageBox.Show(m.Message); }
+
+            CapaUsuario.Reportes.MostrarReportes Reportes = new MostrarReportes();
+            Reportes.ResumenPlanillas("ResumenPlanillasDetallado", "DESACTIVO", 0, Settings.Default.Empresa.ToUpper());
+            Reportes.MdiParent = this.MdiParent;
+            Reportes.Show();
+        }
     }
 }

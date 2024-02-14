@@ -239,6 +239,42 @@ namespace CapaUsuario.ExportarSunat
            
         }
 
+        public ArrayList SumarDuplicados(ArrayList lista)
+        {
+            string cadena = "";
+            Boolean encontrado = false;
+            for (int i = 0; i < lista.Count-1; i++)
+            {
+                cadena = lista[i].ToString().Substring(0, 16);
+                encontrado = false;
+                for (int j = 0; j < lista.Count; j++)
+                {
+                    if (i!=j)
+                    {
+                        if (cadena == lista[j].ToString().Substring(0, 16))
+                        {
+                            encontrado = true;
+                            lista[i]= sumarCadenas(lista[i].ToString(), lista[j].ToString());
+                        }
+                    }
+                    
+                }
+            }
+            return lista;
+        }
+
+        private string sumarCadenas(string cadena1, string cadena2)
+        {
+            string palo = "|";
+            string[] valor1 = cadena1.Split('|');
+            string[] valor2 = cadena2.Split('|');
+
+            double monto1 = Convert.ToDouble(valor1[4]);
+            double monto2 = Convert.ToDouble(valor2[4]);
+            string nuevaCadena = (monto1 + monto2).ToString();
+            return nuevaCadena;
+        }
+
         public void SalvarDatosJornadaLaboral()
         {
             string año = cbAños.Text;

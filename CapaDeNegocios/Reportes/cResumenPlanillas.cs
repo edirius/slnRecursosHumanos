@@ -15,5 +15,11 @@ namespace CapaDeNegocios.Reportes
             Conexion.GDatos.Ejecutar("spPlanillaTotal", estado, idtplanilla);
             return true;
         }
+
+        public Boolean ResumenPlanillaDetallado(string estado, int idtplanilla)
+        {
+            Conexion.GDatos.Ejecutar("spPlanillaDetalleTotal", estado, idtplanilla);
+            return true;
+        }
     }
 }
