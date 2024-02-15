@@ -167,7 +167,7 @@ namespace CapaUsuario.ExportarSunat
 
             //CrearCarpeta();
             SaveFileDialog Guardar = new SaveFileDialog();
-            string RUC = "20177432360";
+            string RUC = Properties.Settings.Default.RUC;
             string tipoArchivo = ".PER";
             string rp = "RP_";
             string Titulo = rp + RUC + tipoArchivo;

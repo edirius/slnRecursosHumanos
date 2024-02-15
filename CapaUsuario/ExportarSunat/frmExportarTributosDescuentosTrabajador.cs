@@ -296,6 +296,7 @@ namespace CapaUsuario.ExportarSunat
                             
                             foreach(CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesEmpleador aportacionE in detalle.ListaDetalleAportacionesEmpleador)
                             {
+                                //806 es el codigo de essalud
                                 if (aportacionE.Monto > 0 && aportacionE.MaestroAportacionesEmpleador.Codigo == "0806")
                                 {
                                     ConvertirMes(mes);
@@ -339,6 +340,61 @@ namespace CapaUsuario.ExportarSunat
                 MessageBox.Show("No esta seleccionado ninguna planilla.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+
+        public ArrayList SumarDuplicados(ArrayList lista)
+        {
+            string cadena = "";
+            ArrayList NuevaLista = new ArrayList();
+            Boolean encontrado = false;
+            for (int i = 0; i < lista.Count - 1; i++)
+            {
+                if (lista[i].ToString()!="")
+                {
+                    cadena = lista[i].ToString().Substring(0, 16);
+                }
+                else
+                {
+                    cadena = "";
+                }
+                encontrado = false;
+                for (int j = 0; j < lista.Count; j++)
+                {
+                    if (i != j )
+                    {
+                        if ( (lista[j].ToString()!= "") && (cadena == lista[j].ToString().Substring(0, 16)))
+                        {
+                            encontrado = true;
+                            lista[i] = sumarCadenas(lista[i].ToString(), lista[j].ToString());
+                            lista[j] = "";
+                        }
+                    }
+
+                }
+            }
+
+            for (int i = 0; i < lista.Count - 1; i++)
+            {
+                if (lista[i].ToString() !="")
+                {
+                    NuevaLista.Add(lista[i]);
+                }
+                
+            }
+            return NuevaLista;
+        }
+
+        private string sumarCadenas(string cadena1, string cadena2)
+        {
+            string[] valor1 = cadena1.Split('|');
+            string[] valor2 = cadena2.Split('|');
+
+            double monto1 = Convert.ToDouble(valor1[4]);
+            double monto2 = Convert.ToDouble(valor2[4]);
+            string nuevaCadena = oExportar.ExportarTexto(valor1[0], valor1[1], valor1[2], (monto1 + monto2).ToString(), (monto1 + monto2).ToString());
+            return nuevaCadena;
+        }
+
         public void CrearCarpeta()
         {
             DirectoryInfo di = Directory.CreateDirectory(@"C:\Users\Usuario\Desktop\Textos SUNAT");//ruta de la carpeta
@@ -383,6 +439,10 @@ namespace CapaUsuario.ExportarSunat
 
         private void SalvarDatosRem()
         {
+            if (chkDuplicados.Checked)
+            {
+                milista = SumarDuplicados(milista);
+            }
             SaveFileDialog Guardar = new SaveFileDialog();
             Guardar.FileName = Titulo;
             string Ruta = "";
@@ -481,6 +541,14 @@ namespace CapaUsuario.ExportarSunat
         private void CheckJornada_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnMarcarTodo_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow fila in dgvListaPlanillas.Rows)
+            {
+                fila.Cells["CHK"].Value = true;
+            }
         }
 
         private void bntListarTodo_Click(object sender, EventArgs e)

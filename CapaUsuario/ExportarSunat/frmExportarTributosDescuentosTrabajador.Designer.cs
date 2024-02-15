@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodForm = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,6 +53,8 @@
             this.colMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescripcionPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdtPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkDuplicados = new System.Windows.Forms.CheckBox();
+            this.btnMarcarTodo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSunat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
@@ -171,6 +173,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnMarcarTodo);
+            this.groupBox1.Controls.Add(this.chkDuplicados);
             this.groupBox1.Controls.Add(this.chkDescuentos);
             this.groupBox1.Controls.Add(this.chkSCTR);
             this.groupBox1.Controls.Add(this.pbSunat);
@@ -235,8 +239,8 @@
             this.dgvListaPlanillas.AllowUserToDeleteRows = false;
             this.dgvListaPlanillas.AllowUserToResizeColumns = false;
             this.dgvListaPlanillas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgvListaPlanillas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListaPlanillas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaPlanillas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chk,
@@ -308,6 +312,29 @@
             this.colIdtPlanilla.Name = "colIdtPlanilla";
             this.colIdtPlanilla.Visible = false;
             // 
+            // chkDuplicados
+            // 
+            this.chkDuplicados.AutoSize = true;
+            this.chkDuplicados.Location = new System.Drawing.Point(1158, 19);
+            this.chkDuplicados.Name = "chkDuplicados";
+            this.chkDuplicados.Size = new System.Drawing.Size(133, 17);
+            this.chkDuplicados.TabIndex = 38;
+            this.chkDuplicados.Text = "Comprobar Duplicados";
+            this.chkDuplicados.UseVisualStyleBackColor = true;
+            // 
+            // btnMarcarTodo
+            // 
+            this.btnMarcarTodo.BackColor = System.Drawing.Color.MintCream;
+            this.btnMarcarTodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcarTodo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnMarcarTodo.Location = new System.Drawing.Point(3, 71);
+            this.btnMarcarTodo.Name = "btnMarcarTodo";
+            this.btnMarcarTodo.Size = new System.Drawing.Size(107, 24);
+            this.btnMarcarTodo.TabIndex = 39;
+            this.btnMarcarTodo.Text = "&Marcar Todo";
+            this.btnMarcarTodo.UseVisualStyleBackColor = false;
+            this.btnMarcarTodo.Click += new System.EventHandler(this.btnMarcarTodo_Click);
+            // 
             // frmExportarTributosDescuentosTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -358,5 +385,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcionPlanilla;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdtPlanilla;
         private System.Windows.Forms.CheckBox chkDescuentos;
+        private System.Windows.Forms.CheckBox chkDuplicados;
+        private System.Windows.Forms.Button btnMarcarTodo;
     }
 }

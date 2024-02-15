@@ -509,6 +509,10 @@ namespace CapaUsuario.ExportarSunat
                         //string fechafin5 = fila.Cells["FechaFinSalud"].Value.ToString();
                         string indicadorTipoRegistro5 = "1";
 
+                        if (RUC == "20200737211")
+                        {
+                            indicadorTipoRegistro5 = "2";
+                        }
                         cDatosPeriodo oDatoPeriodo5 = new cDatosPeriodo();
 
                         oDatoPeriodo5.TipoDocumento.Valor = tipoDoc;
