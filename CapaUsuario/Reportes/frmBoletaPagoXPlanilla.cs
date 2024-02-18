@@ -1964,12 +1964,12 @@ namespace CapaUsuario.Reportes
 
             drFilaD = odtD.NewRow();
             drFilaD.Delete();
-            drFilaD[0] = "PERIODO:"; drFilaD[1] = sMes + "/" + sAño;
+            drFilaD[0] = "PERIODO:"; drFilaD[1] = sMes + " / " + sAño;
             odtD.Rows.InsertAt(drFilaD, 2);
 
             drFilaD = odtD.NewRow();
             drFilaD.Delete();
-            drFilaD[0] = "PDT PLANILLA ELECTRONICA - PLAME "; drFilaD[1] = "NUMERO DE ORDEN:";
+            drFilaD[0] = "PLANILLA ELECTRONICA "; drFilaD[1] = "NUMERO DE ORDEN:";
             odtD.Rows.InsertAt(drFilaD, 3);
 
             odtEB.Columns.Clear();
