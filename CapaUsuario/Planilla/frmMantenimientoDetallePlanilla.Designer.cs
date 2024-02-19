@@ -76,6 +76,7 @@
             this.chkAguinaldo = new System.Windows.Forms.CheckBox();
             this.chkAFP = new System.Windows.Forms.CheckBox();
             this.btnVerDetalleTrabajador = new System.Windows.Forms.Button();
+            this.chkObservaciones = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -526,11 +527,24 @@
             this.btnVerDetalleTrabajador.UseVisualStyleBackColor = false;
             this.btnVerDetalleTrabajador.Click += new System.EventHandler(this.btnVerDetalleTrabajador_Click);
             // 
+            // chkObservaciones
+            // 
+            this.chkObservaciones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkObservaciones.AutoSize = true;
+            this.chkObservaciones.Location = new System.Drawing.Point(171, 391);
+            this.chkObservaciones.Name = "chkObservaciones";
+            this.chkObservaciones.Size = new System.Drawing.Size(48, 17);
+            this.chkObservaciones.TabIndex = 106;
+            this.chkObservaciones.Text = "OBS";
+            this.chkObservaciones.UseVisualStyleBackColor = true;
+            this.chkObservaciones.CheckedChanged += new System.EventHandler(this.chkObservaciones_CheckedChanged);
+            // 
             // frmMantenimientoDetallePlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1130, 468);
+            this.Controls.Add(this.chkObservaciones);
             this.Controls.Add(this.btnVerDetalleTrabajador);
             this.Controls.Add(this.chkAFP);
             this.Controls.Add(this.chkAguinaldo);
@@ -608,5 +622,6 @@
         private System.Windows.Forms.CheckBox chkAguinaldo;
         private System.Windows.Forms.CheckBox chkAFP;
         private System.Windows.Forms.Button btnVerDetalleTrabajador;
+        private System.Windows.Forms.CheckBox chkObservaciones;
     }
 }

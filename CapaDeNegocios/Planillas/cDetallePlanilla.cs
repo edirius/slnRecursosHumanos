@@ -20,6 +20,12 @@ namespace CapaDeNegocios.Planillas
         decimal stotaldescuentos;
         decimal stotalaempleador;
         decimal snetoacobrar;
+        decimal ssueldopactado;
+        decimal ssueldoafecto;
+        string sobservacion;
+        int sspensiones;
+        bool sjornal;
+
         int sidttrabajador;
         int sidtplanilla;
         cTrabajador sTrabajador;
@@ -159,6 +165,72 @@ namespace CapaDeNegocios.Planillas
             }
         }
 
+        public decimal Sueldopactado
+        {
+            get
+            {
+                return ssueldopactado;
+            }
+
+            set
+            {
+                ssueldopactado = value;
+            }
+        }
+
+
+        public decimal Sueldoafecto
+        {
+            get
+            {
+                return ssueldoafecto;
+            }
+
+            set
+            {
+                ssueldoafecto = value;
+            }
+        }
+
+        public string Observacion
+        {
+            get
+            {
+                return sobservacion;
+            }
+
+            set
+            {
+                sobservacion = value;
+            }
+        }
+
+        public int SPensiones
+        {
+            get
+            {
+                return sspensiones;
+            }
+
+            set
+            {
+                sspensiones = value;
+            }
+        }
+
+        public bool Jornal
+        {
+            get
+            {
+                return sjornal;
+            }
+
+            set
+            {
+                sjornal = value;
+            }
+        }
+
         public DataTable ListarPlanillaXMesYRegimenLaboral(int pidPlanilla, int pidRegimenLaboral, string pmes, string paño)
         {
             return Conexion.GDatos.TraerDataTable("spListarPlanillaXMesYRegimenLaboral", pidPlanilla, pidRegimenLaboral, pmes,  paño);
@@ -237,13 +309,13 @@ namespace CapaDeNegocios.Planillas
 
         public Boolean CrearDetallePlanilla(cDetallePlanilla miDetallePlanilla)
         {
-            Conexion.GDatos.Ejecutar("spCrearDetallePlanilla", miDetallePlanilla.Cargo, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.NetoaCobrar, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla);
+            Conexion.GDatos.Ejecutar("spCrearDetallePlanilla", miDetallePlanilla.Cargo, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.NetoaCobrar, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla, miDetallePlanilla.Sueldopactado, miDetallePlanilla.Sueldoafecto, miDetallePlanilla.Observacion, miDetallePlanilla.SPensiones, miDetallePlanilla.Jornal);
             return true;
         }
 
         public Boolean ModificarDetallePlanilla(cDetallePlanilla miDetallePlanilla)
         {
-            Conexion.GDatos.Ejecutar("spModificarDetallePlanilla", miDetallePlanilla.IdtDetallePlanilla, miDetallePlanilla.Cargo, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.NetoaCobrar, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla);
+            Conexion.GDatos.Ejecutar("spModificarDetallePlanilla", miDetallePlanilla.IdtDetallePlanilla, miDetallePlanilla.Cargo, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.NetoaCobrar, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla, miDetallePlanilla.Sueldopactado, miDetallePlanilla.Sueldoafecto, miDetallePlanilla.Observacion, miDetallePlanilla.SPensiones, miDetallePlanilla.Jornal);
             return true;
         }
 

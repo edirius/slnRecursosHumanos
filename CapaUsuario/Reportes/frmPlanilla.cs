@@ -538,6 +538,9 @@ namespace CapaUsuario.Reportes
                 int indice_cuenta_bancaria = 0;
                 int indice_prueba_corta_cuenta_bancaria = 0;
 
+                int indice_observaciones = 0;
+                int indice_prueba_corta_observaciones = 0;
+
                 string[] arr_ingresos = new string[160];
                 string[] arr_descuento = new string[160];
                 string[] arr_a_empleador = new string[160];
@@ -916,6 +919,16 @@ namespace CapaUsuario.Reportes
                         {
                             odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamiento(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
                         }
+
+                        if (oDatosGenerales.Ruc == "20159308708")
+                        {
+                            //odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
+                        }
+                        else
+                        {
+                            odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
+                        }
+
                         odtPlanilla = buscarDuplicados(odtPlanilla);
                         odtPrueba.Clear();
 
@@ -961,6 +974,11 @@ namespace CapaUsuario.Reportes
                                 if (chkCuentaBancaria.Checked)
                                 {
                                     drFila[7] = row[13];
+                                    drFila[8] = row[14];
+                                }
+                                else
+                                {
+                                    drFila[7] = row[13];
                                 }
                                 sumatoria = sumatoria + Convert.ToDecimal(row[11]);
 
@@ -969,14 +987,7 @@ namespace CapaUsuario.Reportes
 
                                 k++;
                             }
-                            if (oDatosGenerales.Ruc == "20159308708")
-                            {
-                                //odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
-                            }
-                            else
-                            {
-                                odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
-                            }
+                            
 
                             this.dgvPrueba.DataSource = odtPrueba;
 
@@ -2765,6 +2776,20 @@ namespace CapaUsuario.Reportes
                                                 drFila[indice_cuenta_bancaria] = row[16];
                                             }
 
+                                            if (!ExisteColumnaTexto(odtPrueba, "OBSERVACIONES"))
+                                            {
+                                                odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
+                                                indice_observaciones = BuscarIndiceColumna(odtPrueba, "OBSERVACIONES");
+                                                if (chkCuentaBancaria.Checked)
+                                                {
+                                                    drFila[indice_observaciones] = row[17];
+                                                }
+                                                else
+                                                {
+                                                    drFila[indice_observaciones] = row[16];
+                                                }
+                                                
+                                            }
 
                                             //drFila[indice_neto_cobrar] = renumeracion - total_descuentos + total_ingresos + total_trabajador + total_empleador;
                                             drFila[indice_neto_cobrar] = Convert.ToDecimal(row[14]);
@@ -3258,6 +3283,21 @@ namespace CapaUsuario.Reportes
                                                 drFilaCorta[indice_prueba_corta_cuenta_bancaria] = odtPrueba.Rows[d][indice_cuenta_bancaria];
                                             }
 
+                                            if(!ExisteColumnaTexto(odtPruebaCorta, "OBSERVACIONES"))
+                                            {
+                                                if (oDatosGenerales.Ruc == "20159308708")
+                                                {
+
+                                                }
+                                                else
+                                                {
+                                                    odtPruebaCorta.Columns.Add("OBSERVACIONES", typeof(string));
+                                                    indice_prueba_corta_observaciones = BuscarIndiceColumna(odtPruebaCorta, "OBSERVACIONES");
+                                                    indice_observaciones = BuscarIndiceColumna(odtPrueba, "OBSERVACIONES");
+                                                    drFilaCorta[indice_prueba_corta_observaciones] = odtPrueba.Rows[d][indice_observaciones];
+                                                }
+                                            }
+
                                             string neto_cobrar = odtPrueba.Rows[d][indice_prueba_neto_cobrar].ToString();
 
                                             drFilaCorta[indice_prueba_corta_dias_laborados] = odtPrueba.Rows[d][indice_prueba_dias_laborados];
@@ -3452,14 +3492,7 @@ namespace CapaUsuario.Reportes
                                             ll++;
                                         }
 
-                                        if (oDatosGenerales.Ruc == "20159308708")
-                                        {
-
-                                        }
-                                        else
-                                        {
-                                            odtPruebaCorta.Columns.Add("OBSERVACIONES", typeof(string));
-                                        }
+                                        
 
 
                                         this.dgvPrueba.DataSource = odtPruebaCorta;
