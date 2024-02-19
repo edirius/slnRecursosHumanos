@@ -2790,6 +2790,18 @@ namespace CapaUsuario.Reportes
                                                 }
                                                 
                                             }
+                                            else
+                                            {
+                                                indice_observaciones = BuscarIndiceColumna(odtPrueba, "OBSERVACIONES");
+                                                if (chkCuentaBancaria.Checked)
+                                                {
+                                                    drFila[indice_observaciones] = row[17];
+                                                }
+                                                else
+                                                {
+                                                    drFila[indice_observaciones] = row[16];
+                                                }
+                                            }
 
                                             //drFila[indice_neto_cobrar] = renumeracion - total_descuentos + total_ingresos + total_trabajador + total_empleador;
                                             drFila[indice_neto_cobrar] = Convert.ToDecimal(row[14]);
@@ -3292,6 +3304,20 @@ namespace CapaUsuario.Reportes
                                                 else
                                                 {
                                                     odtPruebaCorta.Columns.Add("OBSERVACIONES", typeof(string));
+                                                    indice_prueba_corta_observaciones = BuscarIndiceColumna(odtPruebaCorta, "OBSERVACIONES");
+                                                    indice_observaciones = BuscarIndiceColumna(odtPrueba, "OBSERVACIONES");
+                                                    drFilaCorta[indice_prueba_corta_observaciones] = odtPrueba.Rows[d][indice_observaciones];
+                                                }
+                                            }
+                                            else
+                                            {
+                                                if (oDatosGenerales.Ruc == "20159308708")
+                                                {
+
+                                                }
+                                                else
+                                                {
+                                                   
                                                     indice_prueba_corta_observaciones = BuscarIndiceColumna(odtPruebaCorta, "OBSERVACIONES");
                                                     indice_observaciones = BuscarIndiceColumna(odtPrueba, "OBSERVACIONES");
                                                     drFilaCorta[indice_prueba_corta_observaciones] = odtPrueba.Rows[d][indice_observaciones];
