@@ -45,9 +45,9 @@ namespace CapaDeNegocios.VerificadorDNI
 
                 return myTra;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return null;
+                throw new cReglaNegociosException(ex.Message);
 
             }
 

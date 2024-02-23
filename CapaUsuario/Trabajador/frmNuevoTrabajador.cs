@@ -973,19 +973,27 @@ namespace CapaUsuario.Trabajador
 
         private void btnTraerNombre_Click(object sender, EventArgs e)
         {
-            cVerificadorDNI Verificador = new cVerificadorDNI();
-            trabajadorValidado MiTrabajadorValidado;
-            MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(txtDNI.Text, cDatosGeneralesEmpresa.Bearer);
-            if (MiTrabajadorValidado != null)
+            try
             {
-                txtNombres.Text = MiTrabajadorValidado.Data.nombres;
-                txtApellidoPaterno.Text = MiTrabajadorValidado.Data.apellido_paterno;
-                txtApellidoMaterno.Text = MiTrabajadorValidado.Data.apellido_materno;
+                cVerificadorDNI Verificador = new cVerificadorDNI();
+                trabajadorValidado MiTrabajadorValidado;
+                MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(txtDNI.Text, cDatosGeneralesEmpresa.Bearer);
+                if (MiTrabajadorValidado != null)
+                {
+                    txtNombres.Text = MiTrabajadorValidado.Data.nombres;
+                    txtApellidoPaterno.Text = MiTrabajadorValidado.Data.apellido_paterno;
+                    txtApellidoMaterno.Text = MiTrabajadorValidado.Data.apellido_materno;
+                }
+                else
+                {
+                    MessageBox.Show("Error al traer los datos, ingrese los nombres manualmente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Error al traer los datos, ingrese los nombres manualmente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se pudo traer el nombre de internet: " + ex.Message, "Error" , MessageBoxButtons.OK, MessageBoxIcon.Error );
             }
+            
         }
     }
 }

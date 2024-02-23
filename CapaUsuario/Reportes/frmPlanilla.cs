@@ -2822,7 +2822,7 @@ namespace CapaUsuario.Reportes
                                             k++;
                                         }
 
-                                        //Rellenar con 0.00  los campos en blanco
+                                        //Rellenar con 0.00  los campos en blanco menos el de observacion
 
                                         for (int i = 0; i < odtPrueba.Columns.Count; i++)
                                         {
@@ -2831,7 +2831,7 @@ namespace CapaUsuario.Reportes
                                                 if (odtPrueba.Rows[l][i].ToString().Trim() == "")
                                                     odtPrueba.Rows[l][i] = "0.00";
 
-                                                if (i == indice_cuenta_bancaria)
+                                                if (i == indice_cuenta_bancaria || i == indice_observaciones)
                                                 {
                                                     if (odtPrueba.Rows[l][i].ToString().Trim() == "0.00")
                                                         odtPrueba.Rows[l][i] = "-";
