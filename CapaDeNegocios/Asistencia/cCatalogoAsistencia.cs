@@ -157,7 +157,16 @@ namespace CapaDeNegocios.Asistencia
                 DataTable data = Conexion.GDatos.TraerDataTable("spTraerHorarioTrabajador", oTrabajador.IdTrabajador);
                 if (data.Rows.Count == 0)
                 {
-                    return null;
+                    oHorario.CodigoHorario = 1;
+                    oHorario.NombreHorario = "HORARIO NORMAL";
+                    oHorario.TurnoLunes = TraerTurnoDia(1);
+                    oHorario.TurnoMartes = TraerTurnoDia(1);
+                    oHorario.TurnoMiercoles = TraerTurnoDia(1);
+                    oHorario.TurnoJueves = TraerTurnoDia(1);
+                    oHorario.TurnoViernes = TraerTurnoDia(1);
+                    oHorario.TurnoSabado = TraerTurnoDia(0);
+                    oHorario.TurnoDomingo = TraerTurnoDia(0);
+                    oHorario.InicioMes = Convert.ToInt16(1);
                 }
                 foreach (DataRow item in data.Rows)
                 {
@@ -730,6 +739,12 @@ namespace CapaDeNegocios.Asistencia
                 DataTable data = new DataTable();
                 data = Conexion.GDatos.TraerDataTable("spBuscarTrabajadorReloj", oTrabajador.IdTrabajador);
 
+                if (data.Rows.Count == 0)
+                {
+                    oTrabajadorReloj = new cTrabajadorReloj();
+                    oTrabajadorReloj.CodigoReloj = Convert.ToInt32(oTrabajador.Dni) ;
+                    oTrabajadorReloj.OTrabajador = oTrabajador;
+                }
                 foreach (DataRow item in data.Rows)
                 {
                     oTrabajadorReloj = new cTrabajadorReloj();

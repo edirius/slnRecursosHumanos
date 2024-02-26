@@ -971,7 +971,7 @@ namespace CapaUsuario.Planilla
 
                 else
                 {
-                    PagoTotal = CalcularRemuneracionMensual(DiasLaborados, DiasNoLaborados, Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value));
+                    PagoTotal = CalcularRemuneracionMensual(DiasLaborados, DiasNoLaborados, Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value), 0);
 
                     PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
                     dgvDetallePlanilla.Rows[fila].Cells["JORNAL"].Value = 0;
@@ -1016,7 +1016,7 @@ namespace CapaUsuario.Planilla
                     DiasNoLaborados = DiasMes - DiasLaborados;
                 }
 
-                PagoTotal = CalcularRemuneracionMensual(DiasLaborados, DiasNoLaborados, Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value));
+                PagoTotal = CalcularRemuneracionMensual(DiasLaborados, DiasNoLaborados, Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value), diasSuspendidos);
 
                 PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
             }
@@ -1042,18 +1042,18 @@ namespace CapaUsuario.Planilla
             
 
 
-            if (!((sidtregimenlaboral == 3 || sidtregimenlaboral == 5) && (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO" || splantilla == "PERSONAL TECNICO")))
-            {
-                int diasfalta = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMesxFalta(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
-                dgvDetallePlanilla.Rows[fila].Cells[12].Value = DiasLaborados - diasfalta;
-            }
+            //if (!((sidtregimenlaboral == 3 || sidtregimenlaboral == 5) && (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO" || splantilla == "PERSONAL TECNICO")))
+            //{
+            //    int diasfalta = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMesxFalta(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
+            //    dgvDetallePlanilla.Rows[fila].Cells[12].Value = DiasLaborados - diasfalta;
+            //}
             
             dgvDetallePlanilla.Rows[fila].Cells[13].Value = String.Format("{0:0.00}", PagoTotal);
             dgvDetallePlanilla.Rows[fila].Cells["SUELDOPACTADO"].Value = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
         }
 
 
-        private decimal CalcularRemuneracionMensual(int diasLaborados, int diasNoLaborados, decimal Monto)
+        private decimal CalcularRemuneracionMensual(int diasLaborados, int diasNoLaborados, decimal Monto, int diassuspendidos)
         {
             decimal Remuneracion = 0;
             if (diasNoLaborados == 0 )
@@ -1062,15 +1062,25 @@ namespace CapaUsuario.Planilla
             }
             else
             {
-                if (diasLaborados == 30)
+                //significa que tiene descuentos
+                if (diassuspendidos > 0)
                 {
-                    return Monto;
+                    Remuneracion = Monto - Math.Round((Monto / 30) * diassuspendidos, 2);
                 }
                 else
                 {
-                    //Remuneracion = Math.Round(Math.Round(Monto / 30, 2) * diasLaborados, 2);
-                    Remuneracion = Math.Round((Monto / 30) * diasLaborados, 2);
+                    if (diasLaborados == 30)
+                    {
+                        return Monto;
+                    }
+                    else
+                    {
+                        //Remuneracion = Math.Round(Math.Round(Monto / 30, 2) * diasLaborados, 2);
+                        Remuneracion = Math.Round((Monto / 30) * diasLaborados, 2);
+                    }
                 }
+
+                
                 
                 //Parallel el futuro
                 //if (diasLaborados > diasNoLaborados)

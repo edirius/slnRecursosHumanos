@@ -70,6 +70,7 @@
             this.chkFirmaElaborado = new System.Windows.Forms.CheckBox();
             this.chkJornalRacionamiento = new System.Windows.Forms.CheckBox();
             this.chkCuentaBancaria = new System.Windows.Forms.CheckBox();
+            this.chkSueldoPactado = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
@@ -491,11 +492,22 @@
             this.chkCuentaBancaria.Text = "Incluir Cuenta bancaria";
             this.chkCuentaBancaria.UseVisualStyleBackColor = true;
             // 
+            // chkSueldoPactado
+            // 
+            this.chkSueldoPactado.AutoSize = true;
+            this.chkSueldoPactado.Location = new System.Drawing.Point(776, 57);
+            this.chkSueldoPactado.Name = "chkSueldoPactado";
+            this.chkSueldoPactado.Size = new System.Drawing.Size(133, 17);
+            this.chkSueldoPactado.TabIndex = 107;
+            this.chkSueldoPactado.Text = "Incluir Sueldo Pactado";
+            this.chkSueldoPactado.UseVisualStyleBackColor = true;
+            // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 546);
+            this.Controls.Add(this.chkSueldoPactado);
             this.Controls.Add(this.chkCuentaBancaria);
             this.Controls.Add(this.chkJornalRacionamiento);
             this.Controls.Add(this.groupBox2);
@@ -569,5 +581,6 @@
         private System.Windows.Forms.CheckBox chkGerenciaAdministracion;
         private System.Windows.Forms.CheckBox chkJornalRacionamiento;
         private System.Windows.Forms.CheckBox chkCuentaBancaria;
+        private System.Windows.Forms.CheckBox chkSueldoPactado;
     }
 }

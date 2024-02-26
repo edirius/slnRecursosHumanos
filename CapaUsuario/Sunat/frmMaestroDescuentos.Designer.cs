@@ -50,7 +50,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(391, 229);
+            this.btnCancelar.Location = new System.Drawing.Point(391, 245);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 104;
@@ -66,7 +66,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(310, 229);
+            this.btnAceptar.Location = new System.Drawing.Point(310, 245);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 103;
@@ -119,7 +119,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 148);
+            this.label2.Location = new System.Drawing.Point(31, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 106;
@@ -130,7 +130,7 @@
             this.txtFormula.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFormula.Enabled = false;
-            this.txtFormula.Location = new System.Drawing.Point(87, 145);
+            this.txtFormula.Location = new System.Drawing.Point(87, 147);
             this.txtFormula.MaxLength = 300;
             this.txtFormula.Name = "txtFormula";
             this.txtFormula.Size = new System.Drawing.Size(379, 20);
@@ -143,7 +143,7 @@
             this.btnFormula.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnFormula.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnFormula.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnFormula.Location = new System.Drawing.Point(229, 229);
+            this.btnFormula.Location = new System.Drawing.Point(229, 245);
             this.btnFormula.Name = "btnFormula";
             this.btnFormula.Size = new System.Drawing.Size(75, 65);
             this.btnFormula.TabIndex = 107;
@@ -156,7 +156,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 175);
+            this.label4.Location = new System.Drawing.Point(12, 174);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 106;
@@ -185,16 +185,16 @@
             this.chkAfectoNeto.AutoSize = true;
             this.chkAfectoNeto.Location = new System.Drawing.Point(87, 221);
             this.chkAfectoNeto.Name = "chkAfectoNeto";
-            this.chkAfectoNeto.Size = new System.Drawing.Size(83, 17);
+            this.chkAfectoNeto.Size = new System.Drawing.Size(161, 17);
             this.chkAfectoNeto.TabIndex = 110;
-            this.chkAfectoNeto.Text = "Afecto Neto";
+            this.chkAfectoNeto.Text = "Afecto Neto (No Informativa)";
             this.chkAfectoNeto.UseVisualStyleBackColor = true;
             // 
             // frmMaestroDescuentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 306);
+            this.ClientSize = new System.Drawing.Size(478, 322);
             this.Controls.Add(this.chkAfectoNeto);
             this.Controls.Add(this.chkAfectoSueldo);
             this.Controls.Add(this.txtAbreviacion);

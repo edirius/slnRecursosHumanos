@@ -2557,6 +2557,34 @@ namespace CapaUsuario.Reportes
                                             pidTrabajador = Convert.ToInt32(row[5]);
                                             odtPlanillaXIngresos = oPlanillaIngresos.ListarPlanillaXIngresos(sidtplanilla, pRegimenLaboral, pidTrabajador);
 
+                                            if ((new DateTime(sfecha.Year, sfecha.Month, 1) >= new DateTime(2024,2,1)) && chkSueldoPactado.Checked )
+                                            {
+                                                if (BuscarIndiceColumna(odtPrueba, "SUELDO PACTADO") == -1)
+                                                {
+                                                    odtPrueba.Columns.Add("SUELDO PACTADO", typeof(string));
+                                                    total_tipo_ingreso++;
+                                                    arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
+                                                    t++;
+                                                }
+                                                
+
+                                                indice_ingreso = BuscarIndiceColumna(odtPrueba, "SUELDO PACTADO");
+                                                if (row[11].ToString() == "")
+                                                    drFila[indice_ingreso] = 0.00;
+                                                else
+                                                {
+                                                    if (chkCuentaBancaria.Checked)
+                                                    {
+                                                        drFila[indice_ingreso] = row[18];
+                                                    }
+                                                    else
+                                                    {
+                                                        drFila[indice_ingreso] = row[17];
+                                                    }
+                                                }
+                                                    
+                                            }
+
                                             foreach (DataRow row_i in odtPlanillaXIngresos.Rows)
                                             {
                                                 // si no existe columna agregar titulo

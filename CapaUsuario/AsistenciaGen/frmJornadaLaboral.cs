@@ -551,14 +551,24 @@ namespace CapaUsuario.AsistenciaGen
 
         private void btnGuardarMinutos_Click(object sender, EventArgs e)
         {
-            if (miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, Mes).Rows.Count == 0)
+            try
             {
-                miAsistenciaTrabajador.CrearAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, Mes, Convert.ToInt16(txtTotalMinutos.Text));
+                if (miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, Mes).Rows.Count == 0)
+                {
+                    miAsistenciaTrabajador.CrearAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, Mes, Convert.ToInt16(txtTotalMinutos.Text));
+                }
+                else
+                {
+                    miAsistenciaTrabajador.ModificarAsistenciaTrabajadorMesxTrabajador(Convert.ToInt16(miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, Mes).Rows[0][0].ToString()), miTrabajador.IdTrabajador, Mes, Convert.ToInt16(txtTotalMinutos.Text));
+                }
+
+                MessageBox.Show("Minutos guardados", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else
+            catch (Exception ex)
             {
-                miAsistenciaTrabajador.ModificarAsistenciaTrabajadorMesxTrabajador(Convert.ToInt16(miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, Mes).Rows[0][0].ToString()),  miTrabajador.IdTrabajador, Mes, Convert.ToInt16(txtTotalMinutos.Text));
+                MessageBox.Show("Hubo un error al guardar los minutos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private void txtTotalMinutos_KeyPress(object sender, KeyPressEventArgs e)
