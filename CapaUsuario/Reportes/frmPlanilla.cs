@@ -3913,14 +3913,19 @@ namespace CapaUsuario.Reportes
 
                                             if (iindice_ad != -1)
                                             {
-                                                ad_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_ad]);
-                                                drFilaEEFF = odtEEFF.NewRow();
-                                                drFilaEEFF.Delete();
-                                                drFilaEEFF[0] = titulo_maestro_descuento;
-                                                drFilaEEFF[2] = ad_total.ToString("c", new CultureInfo("es-PE"));
-                                                haber_total += ad_total;
-                                                odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
-                                                lll++;
+                                                // verificamos que el descuento afecte al neto
+                                                if (Convert.ToBoolean(odtMaestroDescuentos.Rows[i][6]) == true)
+                                                {
+                                                    ad_total = Convert.ToDecimal(odtPrueba.Rows[ultima_fila_prueba][iindice_ad]);
+                                                    drFilaEEFF = odtEEFF.NewRow();
+                                                    drFilaEEFF.Delete();
+                                                    drFilaEEFF[0] = titulo_maestro_descuento;
+                                                    drFilaEEFF[2] = ad_total.ToString("c", new CultureInfo("es-PE"));
+                                                    haber_total += ad_total;
+                                                    odtEEFF.Rows.InsertAt(drFilaEEFF, lll);
+                                                    lll++;
+                                                }
+                                                
                                             }
                                         }
 

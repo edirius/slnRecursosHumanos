@@ -40,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtAbreviacion = new System.Windows.Forms.TextBox();
             this.chkAfectoSueldo = new System.Windows.Forms.CheckBox();
+            this.chkAfectoNeto = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -179,11 +180,22 @@
             this.chkAfectoSueldo.Text = "Afecto Sueldo";
             this.chkAfectoSueldo.UseVisualStyleBackColor = true;
             // 
+            // chkAfectoNeto
+            // 
+            this.chkAfectoNeto.AutoSize = true;
+            this.chkAfectoNeto.Location = new System.Drawing.Point(87, 221);
+            this.chkAfectoNeto.Name = "chkAfectoNeto";
+            this.chkAfectoNeto.Size = new System.Drawing.Size(83, 17);
+            this.chkAfectoNeto.TabIndex = 110;
+            this.chkAfectoNeto.Text = "Afecto Neto";
+            this.chkAfectoNeto.UseVisualStyleBackColor = true;
+            // 
             // frmMaestroDescuentos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 306);
+            this.Controls.Add(this.chkAfectoNeto);
             this.Controls.Add(this.chkAfectoSueldo);
             this.Controls.Add(this.txtAbreviacion);
             this.Controls.Add(this.btnFormula);
@@ -220,5 +232,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtAbreviacion;
         private System.Windows.Forms.CheckBox chkAfectoSueldo;
+        private System.Windows.Forms.CheckBox chkAfectoNeto;
     }
 }

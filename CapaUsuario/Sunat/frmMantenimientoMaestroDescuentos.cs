@@ -18,6 +18,7 @@ namespace CapaUsuario.Sunat
         string scalculo = "";
         string sabreviacion = "";
         bool sAfectoDescuentos = false;
+        bool sAfectoNeto = false;
 
         CapaDeNegocios.Sunat.cMaestroDescuentos miMaestroDescuentos = new CapaDeNegocios.Sunat.cMaestroDescuentos();
 
@@ -33,43 +34,70 @@ namespace CapaUsuario.Sunat
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            CapaUsuario.Sunat.frmMaestroDescuentos fMaestroDescuentos = new CapaUsuario.Sunat.frmMaestroDescuentos();
-            fMaestroDescuentos.RecibirDatos(0, "", "", "","", 1, false);
-            if (fMaestroDescuentos.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                CargarDatos();
+                CapaUsuario.Sunat.frmMaestroDescuentos fMaestroDescuentos = new CapaUsuario.Sunat.frmMaestroDescuentos();
+                fMaestroDescuentos.RecibirDatos(0, "", "", "", "", 1, false, true);
+                if (fMaestroDescuentos.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    MessageBox.Show("Se agrego el descuento.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarDatos();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error al crear el descuento: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (sidtmaestrodescuentos == 0 && dgvMaestroDescuentos.SelectedRows.Count > 0)
+            try
             {
-                MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (sidtmaestrodescuentos == 0 && dgvMaestroDescuentos.SelectedRows.Count > 0)
+                {
+                    MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                CapaUsuario.Sunat.frmMaestroDescuentos fMaestroDescuentos = new CapaUsuario.Sunat.frmMaestroDescuentos();
+                fMaestroDescuentos.RecibirDatos(sidtmaestrodescuentos, scodigo, sdescripcion, scalculo, sabreviacion, 2, sAfectoDescuentos, sAfectoNeto);
+                if (fMaestroDescuentos.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    MessageBox.Show("Se modificó el descuento.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarDatos();
+                }
             }
-            CapaUsuario.Sunat.frmMaestroDescuentos fMaestroDescuentos = new CapaUsuario.Sunat.frmMaestroDescuentos();
-            fMaestroDescuentos.RecibirDatos(sidtmaestrodescuentos, scodigo, sdescripcion, scalculo,sabreviacion, 2, sAfectoDescuentos);
-            if (fMaestroDescuentos.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            catch (Exception ex)
             {
-                CargarDatos();
+                MessageBox.Show("Hubo un error al modificar el descuento: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (sidtmaestrodescuentos == 0 && dgvMaestroDescuentos.SelectedRows.Count > 0)
+            try
             {
-                MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                if (sidtmaestrodescuentos == 0 && dgvMaestroDescuentos.SelectedRows.Count > 0)
+                {
+                    MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (MessageBox.Show("Está seguro que desea eliminar el Maestro Descuentos", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    miMaestroDescuentos.IdtMaestroDescuentos = sidtmaestrodescuentos;
+                    miMaestroDescuentos.EliminarMaestroDescuentos(miMaestroDescuentos);
+                    MessageBox.Show("Se eliminó el descuento.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarDatos();
+                }
             }
-            if (MessageBox.Show("Está seguro que desea eliminar el Maestro Descuentos", "Confirmar Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.No)
+            catch (Exception ex)
             {
-                return;
+                MessageBox.Show("Hubo un error al eliminar el descuento: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            miMaestroDescuentos.IdtMaestroDescuentos = sidtmaestrodescuentos;
-            miMaestroDescuentos.EliminarMaestroDescuentos(miMaestroDescuentos);
-            CargarDatos();
+            
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -90,6 +118,7 @@ namespace CapaUsuario.Sunat
             scalculo = Convert.ToString(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[3].Value);
             sabreviacion = Convert.ToString(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[4].Value);
             sAfectoDescuentos = Convert.ToBoolean(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[5].Value);
+            sAfectoNeto = Convert.ToBoolean(dgvMaestroDescuentos.Rows[e.RowIndex].Cells[6].Value);
         }
 
         private void CargarDatos()
@@ -97,7 +126,7 @@ namespace CapaUsuario.Sunat
             dgvMaestroDescuentos.Rows.Clear();
             foreach (DataRow row in miMaestroDescuentos.ListarMaestroDescuentos().Rows)
             {
-                dgvMaestroDescuentos.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5]);
+                dgvMaestroDescuentos.Rows.Add(row[0].ToString(), row[1].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), row[5], row[6]);
             }
             if (dgvMaestroDescuentos.Rows.Count > 0)
             {

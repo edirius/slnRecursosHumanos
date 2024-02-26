@@ -65,6 +65,7 @@ namespace CapaUsuario.Planilla
         DataTable oDataCargo = new DataTable();
         DataTable oDataAFP = new DataTable();
         DataTable oDataComisionAFP = new DataTable();
+        DataTable oDataPlantillaPlanilla = new DataTable();
 
         CapaDeNegocios.Trabajadores.cDatosFijo oDatoFijo = new CapaDeNegocios.Trabajadores.cDatosFijo(0);
         CapaDeNegocios.Planillas.cDetallePlanilla miDetallePlanilla = new CapaDeNegocios.Planillas.cDetallePlanilla();
@@ -287,6 +288,11 @@ namespace CapaUsuario.Planilla
         {
             try
             {
+                if(Convert.ToInt32(saño)<=2023)
+                {
+                    MessageBox.Show("No se puede modificar planillas de años anteriores al actual", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 bool bOk = false;
                 foreach (DataGridViewRow row in dgvDetallePlanilla.Rows)
                 {
@@ -1015,6 +1021,27 @@ namespace CapaUsuario.Planilla
                 PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
             }
 
+            //VEMOS SI SE DESCUENTA LAS TARDANZAS
+            int totalMinutos = 0;
+            if (Convert.ToBoolean(oDataPlantillaPlanilla.Rows[0][7]) == true)
+            {
+                miTrabajador.IdTrabajador = Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value);
+
+                CapaDeNegocios.Asistencia.cAsistenciaTrabajador miAsistenciaTrabajador = new CapaDeNegocios.Asistencia.cAsistenciaTrabajador();
+                DateTime mesActual = new DateTime(DateTime.Now.Year, Convert.ToInt32(Mes(smes)), 1);
+                if (miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, mesActual).Rows.Count == 0)
+                {
+                    totalMinutos = 0;
+                }
+                else
+                {
+                    totalMinutos = Convert.ToInt16(miAsistenciaTrabajador.ListarAsistenciaTrabajadorMesxTrabajador(miTrabajador.IdTrabajador, mesActual).Rows[0][3].ToString());
+                    PagoTotal = PagoTotal - PagoDia / 60 / 8 * totalMinutos;
+                }
+            }
+            
+
+
             if (!((sidtregimenlaboral == 3 || sidtregimenlaboral == 5) && (splantilla == "PERSONAL OBRERO" || splantilla == "RACIONAMIENTO" || splantilla == "PERSONAL TECNICO")))
             {
                 int diasfalta = oAsistenciaTrabajador.ListarAsistenciaTrabajadorxMesxFalta(Convert.ToInt16(dgvDetallePlanilla.Rows[fila].Cells[4].Value), new DateTime(Convert.ToInt32(saño), Convert.ToInt32(Mes(smes)), 1)).Rows.Count;
@@ -1280,6 +1307,7 @@ namespace CapaUsuario.Planilla
                 }
                 else
                 {
+                    //INASISTENCIAS
                     if (smdescuentos[i, 1].ToString() == "0705")
                     {
                         cMetaJornal miMetaJornal = new cMetaJornal();
@@ -1433,7 +1461,14 @@ namespace CapaUsuario.Planilla
                         //        dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value = String.Format("{0:0.00}", PagoDia);
                         //    }
                         //}
-                        total_descuentos += decimal.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value), 2);
+
+                        //VERIFICAMOS si esta afecto al neto
+                        if (Convert.ToBoolean(Convert.ToInt16(smdescuentos[i, 6].ToString())) == true)
+                        {
+                            total_descuentos += decimal.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + i].Value), 2);
+                        }
+
+                        
                     }
                 }
 
@@ -1880,21 +1915,12 @@ namespace CapaUsuario.Planilla
 
             if (oRegimenTrabajadorRentaQuinta.IdtRegimenLaboral == 3 || oRegimenTrabajadorRentaQuinta.IdtRegimenLaboral == 4) // codigo 3 y 4 corresponde a regimen laboral 728 y 4 30057 servir
             {
-
                 //sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(10600);//suma de todos los ingresos incuido las gratificaciones
-                if (Settings.Default.RUC == "20159377696")
-                {
-                    sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(sRemuneracionBasica * 2) + Convert.ToDecimal(sRemuneracionBasica) * Convert.ToDecimal(0.18);//suma de todos los ingresos incuido las gratificaciones
-                }
-                else
-                {
-                    sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(sRemuneracionBasica * 2);//suma de todos los ingresos incuido las gratificaciones
-                }
-                
+                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(sRemuneracionBasica * 2);//suma de todos los ingresos incuido las gratificaciones
             }
             else
             {
-                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(600);//suma de todos los ingresos incuido las gratificaciones
+                sOtrosIngresos += Convert.ToDecimal(otrosingresos_5ta) + Convert.ToDecimal(600);//suma de todos los ingresos incuido los aguinaldos
             }
 
             decimal sRetencionesOtroLugar = 0;
@@ -2272,7 +2298,7 @@ namespace CapaUsuario.Planilla
             int j = dgvDetallePlanilla.ColumnCount;
             DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
 
-            DataTable oDataPlantillaPlanilla = new DataTable();
+            
             CapaDeNegocios.Planillas.cPlantillaPlanilla miPlantillaPlanilla = new CapaDeNegocios.Planillas.cPlantillaPlanilla();
             oDataPlantillaPlanilla = miPlantillaPlanilla.ListarPlantillaPlanilla(splantilla);
 
@@ -2416,7 +2442,7 @@ namespace CapaUsuario.Planilla
             dgvDetallePlanilla.Columns["SUMA_A_TRABAJADOR"].Width = 50;
             dgvDetallePlanilla.Columns["SUMA_A_TRABAJADOR"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            smdescuentos = new string[oDataPlantillaPlanilla.Rows.Count, 6];
+            smdescuentos = new string[oDataPlantillaPlanilla.Rows.Count, 7];
             foreach (DataRow row in oDataPlantillaPlanilla.Select("tipo='DESCUENTOS'"))
             {
                 foreach (DataRow rowmdescuentos in oDataMaestroDescuentos.Select("idtmaestrodescuentos = '" + row[4].ToString() + "'"))
@@ -2428,6 +2454,7 @@ namespace CapaUsuario.Planilla
                     smdescuentos[con_descuento, 3] = rowmdescuentos[3].ToString();
                     smdescuentos[con_descuento, 4] = rowmdescuentos[4].ToString();
                     smdescuentos[con_descuento, 5] = rowmdescuentos[5].ToString();
+                    smdescuentos[con_descuento, 6] = rowmdescuentos[6].ToString();
                     abrev_descuentos = rowmdescuentos[4].ToString();
                 }
                 con_descuento += 1;

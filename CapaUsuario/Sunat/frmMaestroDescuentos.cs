@@ -45,6 +45,7 @@ namespace CapaUsuario.Sunat
             miMaestroDescuentos.Calculo = txtFormula.Text;
             miMaestroDescuentos.Abreviacion = txtAbreviacion.Text;
             miMaestroDescuentos.AfectoSueldo = chkAfectoSueldo.Checked;
+            miMaestroDescuentos.AfectoNeto = chkAfectoNeto.Checked;
             if (iAccion == 1)
             {
                 miMaestroDescuentos.CrearMaestroDescuentos(miMaestroDescuentos);
@@ -70,7 +71,7 @@ namespace CapaUsuario.Sunat
             DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
-        public void RecibirDatos(int pidtmaestrodescuentos, string pcodigo, string pdescripcion, string pcalculo,string pAbreviacion, int piAccion, bool pAfectoTotal)
+        public void RecibirDatos(int pidtmaestrodescuentos, string pcodigo, string pdescripcion, string pcalculo,string pAbreviacion, int piAccion, bool pAfectoTotal, bool pAfectoNeto)
         {
             sidtmaestrodescuentos = pidtmaestrodescuentos;
             txtCodigo.Text = pcodigo;
@@ -79,6 +80,7 @@ namespace CapaUsuario.Sunat
             txtAbreviacion.Text = pAbreviacion;
             iAccion = piAccion;
             chkAfectoSueldo.Checked = pAfectoTotal;
+            chkAfectoNeto.Checked = pAfectoNeto;
         }
     }
 }
