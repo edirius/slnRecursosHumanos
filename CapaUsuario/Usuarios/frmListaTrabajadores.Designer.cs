@@ -206,7 +206,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 51F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(590, 51);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
@@ -237,7 +237,7 @@
             this.btnNuevoResidente.Name = "btnNuevoResidente";
             this.btnNuevoResidente.Size = new System.Drawing.Size(131, 34);
             this.btnNuevoResidente.TabIndex = 23;
-            this.btnNuevoResidente.Text = "&Nuevo Residente";
+            this.btnNuevoResidente.Text = "&Metas, Residente";
             this.btnNuevoResidente.UseVisualStyleBackColor = false;
             this.btnNuevoResidente.Click += new System.EventHandler(this.btnNuevoResidente_Click);
             // 

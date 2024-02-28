@@ -124,14 +124,13 @@ namespace CapaUsuario.Usuarios
         {
             int idMeta = 1;
 
-            Trabajador.frmNuevoTecnico fNuevoTecnico = new Trabajador.frmNuevoTecnico();
-            fNuevoTecnico.RecibirDatos(idMeta);
-            fNuevoTecnico.fechaInicio = new DateTime(DateTime.Now.Date.Year, DateTime.Now.Date.Month, 1);
-            fNuevoTecnico.fechaFin = new DateTime(DateTime.Now.Date.Year, DateTime.Now.Date.Month, 1).AddMonths(1).AddDays(-1);
-            if (fNuevoTecnico.ShowDialog() == DialogResult.OK)
+            frmEscogerMeta fEscogerMeta = new frmEscogerMeta();
+            if (fEscogerMeta.ShowDialog()== DialogResult.OK)
             {
 
             }
+
+            
 
         }
     }

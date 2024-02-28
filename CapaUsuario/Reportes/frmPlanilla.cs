@@ -978,7 +978,11 @@ namespace CapaUsuario.Reportes
                                 }
                                 else
                                 {
-                                    drFila[7] = row[13];
+                                    if (oDatosGenerales.Ruc != "20159308708")
+                                    {
+                                        drFila[7] = row[13];
+                                    }
+                                        
                                 }
                                 sumatoria = sumatoria + Convert.ToDecimal(row[11]);
 

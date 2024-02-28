@@ -31,17 +31,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMantenimientoMetas));
             this.dtgListaMetas = new System.Windows.Forms.DataGridView();
-            this.idtMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.año = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idGrupoFuncional = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idActividadObra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cboAño = new System.Windows.Forms.ComboBox();
+            this.idActividadObra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idGrupoFuncional = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.año = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idtMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaMetas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,49 +69,6 @@
             this.dtgListaMetas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListaMetas.Size = new System.Drawing.Size(677, 244);
             this.dtgListaMetas.TabIndex = 0;
-            // 
-            // idtMeta
-            // 
-            this.idtMeta.DataPropertyName = "idtMeta";
-            this.idtMeta.HeaderText = "idtMeta";
-            this.idtMeta.Name = "idtMeta";
-            this.idtMeta.Visible = false;
-            // 
-            // numero
-            // 
-            this.numero.DataPropertyName = "Año";
-            this.numero.HeaderText = "Año";
-            this.numero.Name = "numero";
-            this.numero.Visible = false;
-            this.numero.Width = 50;
-            // 
-            // año
-            // 
-            this.año.DataPropertyName = "Numero";
-            this.año.HeaderText = "Numero";
-            this.año.Name = "año";
-            this.año.Width = 50;
-            // 
-            // nombre
-            // 
-            this.nombre.DataPropertyName = "nombre";
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            this.nombre.Width = 600;
-            // 
-            // idGrupoFuncional
-            // 
-            this.idGrupoFuncional.DataPropertyName = "idGrupoFuncional";
-            this.idGrupoFuncional.HeaderText = "idGrupoFuncional";
-            this.idGrupoFuncional.Name = "idGrupoFuncional";
-            this.idGrupoFuncional.Visible = false;
-            // 
-            // idActividadObra
-            // 
-            this.idActividadObra.DataPropertyName = "idActividadObra";
-            this.idActividadObra.HeaderText = "idActividadObra";
-            this.idActividadObra.Name = "idActividadObra";
-            this.idActividadObra.Visible = false;
             // 
             // btnEliminar
             // 
@@ -174,6 +131,49 @@
             this.cboAño.Size = new System.Drawing.Size(147, 21);
             this.cboAño.TabIndex = 34;
             this.cboAño.SelectedIndexChanged += new System.EventHandler(this.cboAño_SelectedIndexChanged);
+            // 
+            // idActividadObra
+            // 
+            this.idActividadObra.DataPropertyName = "idActividadObra";
+            this.idActividadObra.HeaderText = "idActividadObra";
+            this.idActividadObra.Name = "idActividadObra";
+            this.idActividadObra.Visible = false;
+            // 
+            // idGrupoFuncional
+            // 
+            this.idGrupoFuncional.DataPropertyName = "idGrupoFuncional";
+            this.idGrupoFuncional.HeaderText = "idGrupoFuncional";
+            this.idGrupoFuncional.Name = "idGrupoFuncional";
+            this.idGrupoFuncional.Visible = false;
+            // 
+            // nombre
+            // 
+            this.nombre.DataPropertyName = "nombre";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            this.nombre.Width = 600;
+            // 
+            // año
+            // 
+            this.año.DataPropertyName = "Numero";
+            this.año.HeaderText = "Numero";
+            this.año.Name = "año";
+            this.año.Width = 50;
+            // 
+            // numero
+            // 
+            this.numero.DataPropertyName = "Año";
+            this.numero.HeaderText = "Año";
+            this.numero.Name = "numero";
+            this.numero.Visible = false;
+            this.numero.Width = 50;
+            // 
+            // idtMeta
+            // 
+            this.idtMeta.DataPropertyName = "idtMeta";
+            this.idtMeta.HeaderText = "idtMeta";
+            this.idtMeta.Name = "idtMeta";
+            this.idtMeta.Visible = false;
             // 
             // frmMantenimientoMetas
             // 
