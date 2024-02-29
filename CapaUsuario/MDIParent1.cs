@@ -784,8 +784,7 @@ namespace CapaUsuario
                 else { sUNATToolStripMenuItem.Visible = false; }
                 if (menuExportarDatosSunat == true) { exportarTextoSUNATToolStripMenuItem.Visible = true; }
                 else { exportarTextoSUNATToolStripMenuItem.Visible = false; }
-                if (menuReportes == true) { reportesToolStripMenuItem1.Visible = true; }
-                else { reportesToolStripMenuItem1.Visible = false; printToolStripButton.Visible = false; }
+               
                 if (menuBoletas == true)
                 {
                     reportesToolStripMenuItem1.Visible = true;
@@ -803,6 +802,21 @@ namespace CapaUsuario
                 {
                     reportesToolStripMenuItem1.Visible = false; printToolStripButton.Visible = false;
                 }
+
+                if (menuReportes == true)
+                {
+                    reportesToolStripMenuItem1.Visible = true;
+                    planilla2ToolStripMenuItem.Visible = true;
+                    planillaToolStripMenuItem2.Visible = true;
+                    personalToolStripMenuItem.Visible = true;
+                    trabajadoresToolStripMenuItem.Visible = true;
+                    globalToolStripMenuItem.Visible = true;
+                    impresionPlanillasToolStripMenuItem.Visible = true;
+                    mnuResumenXDetallePlanillas.Visible = true;
+                    analiticoPlanillasToolStripMenuItem.Visible = true;
+                    declaraciónJuradaDeToolStripMenuItem.Visible = true;
+                }
+                else { reportesToolStripMenuItem1.Visible = false; printToolStripButton.Visible = false; }
             }
             else
             {
