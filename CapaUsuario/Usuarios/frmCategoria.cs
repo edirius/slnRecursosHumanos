@@ -39,6 +39,7 @@ namespace CapaUsuario.Usuarios
             CheckTablas.Checked = miPrivilegio.MenuTablasParametricass;
             CheckExportar.Checked = miPrivilegio.MenuExportarDatos;
             CheckReportes.Checked = miPrivilegio.MenuReportes;
+            chkMenuBoletas.Checked = miPrivilegio.MenuBoletas;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -53,6 +54,7 @@ namespace CapaUsuario.Usuarios
             miPrivilegio.MenuTablasParametricass = CheckTablas.Checked;
             miPrivilegio.MenuExportarDatos = CheckExportar.Checked;
             miPrivilegio.MenuReportes = CheckReportes.Checked;
+            miPrivilegio.MenuBoletas = chkMenuBoletas.Checked;
             DialogResult = DialogResult.OK;
         }
 

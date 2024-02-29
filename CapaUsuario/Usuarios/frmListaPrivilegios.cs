@@ -60,6 +60,7 @@ namespace CapaUsuario.Usuarios
                 fModificarPrivilegio.miPrivilegio.MenuTablasParametricass = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[8].Value);
                 fModificarPrivilegio.miPrivilegio.MenuExportarDatos = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[9].Value);
                 fModificarPrivilegio.miPrivilegio.MenuReportes = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[10].Value);
+                fModificarPrivilegio.miPrivilegio.MenuBoletas = Convert.ToBoolean(dtgPrivilegios.SelectedRows[0].Cells[11].Value);
 
                 if (fModificarPrivilegio.ShowDialog() == DialogResult.OK)
                 {

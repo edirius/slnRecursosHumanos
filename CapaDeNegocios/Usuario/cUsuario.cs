@@ -148,7 +148,7 @@ namespace CapaDeNegocios.Usuario
         }
         public DataTable ObtenerPrivilegios(string Usuario)
         {
-            return Conexion.GDatos.TraerDataTable("spObtenerPrivilegios", Usuario);
+            return Conexion.GDatos.TraerDataTable("spObtenerPrivilegios2", Usuario);
         }
         public cUsuario BuscarUsuarioPorCodigo(int codigo)
         {

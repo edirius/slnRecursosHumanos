@@ -415,7 +415,7 @@ namespace CapaUsuario
         //Dar privilegios al usuario según su cargo
         CapaUsuario.Usuarios.frmLogin FrmLogin = new CapaUsuario.Usuarios.frmLogin();
         CapaDeNegocios.Usuario.cUsuario oUsu = new CapaDeNegocios.Usuario.cUsuario();
-        bool menuAFP, menuUsuario, menuTrabajadores, menuTareos, menuMeta, menuPlanillas, menuSunatTablasParametricas, menuExportarDatosSunat, menuReportes, habilitado;
+        bool menuAFP, menuUsuario, menuTrabajadores, menuTareos, menuMeta, menuPlanillas, menuSunatTablasParametricas, menuExportarDatosSunat, menuReportes, menuBoletas, habilitado;
 
         private void restaurarCopiaDeSeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -736,6 +736,7 @@ namespace CapaUsuario
                 menuSunatTablasParametricas = Convert.ToBoolean(fila.Cells["menuSunatTablasParametricas"].Value);
                 menuExportarDatosSunat = Convert.ToBoolean(fila.Cells["menuExportarDatosSunat"].Value);
                 menuReportes = Convert.ToBoolean(fila.Cells["menuReportes"].Value);
+                menuBoletas = Convert.ToBoolean(fila.Cells["menuBoletas"].Value);
                 habilitado = Convert.ToBoolean(fila.Cells["habilitado"].Value);
                 toolStripStatusLabel1.Text = Usuario;
                 toolStripStatusLabel2.Text = Cargo;
@@ -785,6 +786,23 @@ namespace CapaUsuario
                 else { exportarTextoSUNATToolStripMenuItem.Visible = false; }
                 if (menuReportes == true) { reportesToolStripMenuItem1.Visible = true; }
                 else { reportesToolStripMenuItem1.Visible = false; printToolStripButton.Visible = false; }
+                if (menuBoletas == true)
+                {
+                    reportesToolStripMenuItem1.Visible = true;
+                    planilla2ToolStripMenuItem.Visible = false;
+                    planillaToolStripMenuItem2.Visible = false;
+                    personalToolStripMenuItem.Visible = false;
+                    trabajadoresToolStripMenuItem.Visible = false;
+                    globalToolStripMenuItem.Visible = false;
+                    impresionPlanillasToolStripMenuItem.Visible = false;
+                    mnuResumenXDetallePlanillas.Visible = false;
+                    analiticoPlanillasToolStripMenuItem.Visible = false;
+                    declaraciónJuradaDeToolStripMenuItem.Visible = false;
+                }
+                else
+                {
+                    reportesToolStripMenuItem1.Visible = false; printToolStripButton.Visible = false;
+                }
             }
             else
             {

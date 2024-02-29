@@ -73,6 +73,8 @@ namespace CapaDeNegocios.Usuario
         public bool MenuTablasParametricass { get; set; }
         public bool MenuExportarDatos { get; set; }
         public bool MenuReportes { get; set; }
+        public bool MenuBoletas { get;  set; }
+
 
         public DataTable ListaPrivilegios()
         {
@@ -81,12 +83,12 @@ namespace CapaDeNegocios.Usuario
 
         public int AgregarPrivilegio (cPrivilegio NuevoPrivilegio)
         {
-            return Conexion.GDatos.Ejecutar("spCrearPrivilegios", NuevoPrivilegio.Descripcion, NuevoPrivilegio.MenuAFP, NuevoPrivilegio.MenuUsuario, NuevoPrivilegio.MenuTrabajadores, NuevoPrivilegio.MenuTareos, NuevoPrivilegio.MenuMetas, NuevoPrivilegio.MenuPlanillas, NuevoPrivilegio.MenuTablasParametricass, NuevoPrivilegio.MenuExportarDatos, NuevoPrivilegio.MenuReportes);
+            return Conexion.GDatos.Ejecutar("spCrearPrivilegios2", NuevoPrivilegio.Descripcion, NuevoPrivilegio.MenuAFP, NuevoPrivilegio.MenuUsuario, NuevoPrivilegio.MenuTrabajadores, NuevoPrivilegio.MenuTareos, NuevoPrivilegio.MenuMetas, NuevoPrivilegio.MenuPlanillas, NuevoPrivilegio.MenuTablasParametricass, NuevoPrivilegio.MenuExportarDatos, NuevoPrivilegio.MenuReportes, NuevoPrivilegio.MenuBoletas);
         }
 
         public int ModificarPrivilegio (cPrivilegio PrivilegioModificar)
         {
-            return Conexion.GDatos.Ejecutar("spModificarPrivilegios", PrivilegioModificar.codigo, PrivilegioModificar.Descripcion, PrivilegioModificar.MenuAFP, PrivilegioModificar.MenuUsuario, PrivilegioModificar.MenuTrabajadores, PrivilegioModificar.MenuTareos, PrivilegioModificar.MenuMetas, PrivilegioModificar.MenuPlanillas, PrivilegioModificar.MenuTablasParametricass, PrivilegioModificar.MenuExportarDatos, PrivilegioModificar.MenuReportes);
+            return Conexion.GDatos.Ejecutar("spModificarPrivilegios2", PrivilegioModificar.codigo, PrivilegioModificar.Descripcion, PrivilegioModificar.MenuAFP, PrivilegioModificar.MenuUsuario, PrivilegioModificar.MenuTrabajadores, PrivilegioModificar.MenuTareos, PrivilegioModificar.MenuMetas, PrivilegioModificar.MenuPlanillas, PrivilegioModificar.MenuTablasParametricass, PrivilegioModificar.MenuExportarDatos, PrivilegioModificar.MenuReportes, PrivilegioModificar.MenuBoletas);
         }
 
         public int EliminarPrivilegio (cPrivilegio PrivilegioAEliminar)

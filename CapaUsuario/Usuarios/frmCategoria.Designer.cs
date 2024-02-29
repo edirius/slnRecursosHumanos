@@ -43,6 +43,7 @@
             this.CheckTablas = new System.Windows.Forms.CheckBox();
             this.CheckExportar = new System.Windows.Forms.CheckBox();
             this.CheckReportes = new System.Windows.Forms.CheckBox();
+            this.chkMenuBoletas = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,6 +110,7 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.chkMenuBoletas, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.CheckMeta, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnAceptar, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 1, 5);
@@ -120,7 +122,7 @@
             this.tableLayoutPanel1.Controls.Add(this.CheckTablas, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.CheckExportar, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.CheckReportes, 1, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 53);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(9, 53);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -129,6 +131,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(348, 168);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
@@ -202,6 +205,16 @@
             this.CheckReportes.Text = "Menu Reportes";
             this.CheckReportes.UseVisualStyleBackColor = true;
             // 
+            // chkMenuBoletas
+            // 
+            this.chkMenuBoletas.AutoSize = true;
+            this.chkMenuBoletas.Location = new System.Drawing.Point(177, 104);
+            this.chkMenuBoletas.Name = "chkMenuBoletas";
+            this.chkMenuBoletas.Size = new System.Drawing.Size(91, 17);
+            this.chkMenuBoletas.TabIndex = 8;
+            this.chkMenuBoletas.Text = "Menu Boletas";
+            this.chkMenuBoletas.UseVisualStyleBackColor = true;
+            // 
             // frmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,5 +252,6 @@
         private System.Windows.Forms.CheckBox CheckExportar;
         private System.Windows.Forms.CheckBox CheckReportes;
         private System.Windows.Forms.CheckBox CheckMeta;
+        private System.Windows.Forms.CheckBox chkMenuBoletas;
     }
 }
