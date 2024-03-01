@@ -36,6 +36,7 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.chkMenuBoletas = new System.Windows.Forms.CheckBox();
             this.CheckMeta = new System.Windows.Forms.CheckBox();
             this.CheckTareos = new System.Windows.Forms.CheckBox();
             this.CheckTrabadores = new System.Windows.Forms.CheckBox();
@@ -43,14 +44,14 @@
             this.CheckTablas = new System.Windows.Forms.CheckBox();
             this.CheckExportar = new System.Windows.Forms.CheckBox();
             this.CheckReportes = new System.Windows.Forms.CheckBox();
-            this.chkMenuBoletas = new System.Windows.Forms.CheckBox();
+            this.lblContador = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 24);
+            this.label1.Location = new System.Drawing.Point(9, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 0;
@@ -59,10 +60,12 @@
             // txtDescripcion
             // 
             this.txtDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDescripcion.Location = new System.Drawing.Point(70, 21);
+            this.txtDescripcion.Location = new System.Drawing.Point(70, 12);
+            this.txtDescripcion.MaxLength = 45;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(286, 20);
             this.txtDescripcion.TabIndex = 1;
+            this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
             // 
             // checkMenuAFP
             // 
@@ -122,7 +125,7 @@
             this.tableLayoutPanel1.Controls.Add(this.CheckTablas, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.CheckExportar, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.CheckReportes, 1, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(9, 53);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 61);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -134,6 +137,16 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(348, 168);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // chkMenuBoletas
+            // 
+            this.chkMenuBoletas.AutoSize = true;
+            this.chkMenuBoletas.Location = new System.Drawing.Point(177, 104);
+            this.chkMenuBoletas.Name = "chkMenuBoletas";
+            this.chkMenuBoletas.Size = new System.Drawing.Size(91, 17);
+            this.chkMenuBoletas.TabIndex = 8;
+            this.chkMenuBoletas.Text = "Menu Boletas";
+            this.chkMenuBoletas.UseVisualStyleBackColor = true;
             // 
             // CheckMeta
             // 
@@ -205,21 +218,22 @@
             this.CheckReportes.Text = "Menu Reportes";
             this.CheckReportes.UseVisualStyleBackColor = true;
             // 
-            // chkMenuBoletas
+            // lblContador
             // 
-            this.chkMenuBoletas.AutoSize = true;
-            this.chkMenuBoletas.Location = new System.Drawing.Point(177, 104);
-            this.chkMenuBoletas.Name = "chkMenuBoletas";
-            this.chkMenuBoletas.Size = new System.Drawing.Size(91, 17);
-            this.chkMenuBoletas.TabIndex = 8;
-            this.chkMenuBoletas.Text = "Menu Boletas";
-            this.chkMenuBoletas.UseVisualStyleBackColor = true;
+            this.lblContador.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblContador.Location = new System.Drawing.Point(305, 35);
+            this.lblContador.Name = "lblContador";
+            this.lblContador.Size = new System.Drawing.Size(51, 23);
+            this.lblContador.TabIndex = 20;
+            this.lblContador.Text = "0/45";
+            this.lblContador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // frmCategoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(369, 233);
+            this.ClientSize = new System.Drawing.Size(369, 241);
+            this.Controls.Add(this.lblContador);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.label1);
@@ -253,5 +267,6 @@
         private System.Windows.Forms.CheckBox CheckReportes;
         private System.Windows.Forms.CheckBox CheckMeta;
         private System.Windows.Forms.CheckBox chkMenuBoletas;
+        private System.Windows.Forms.Label lblContador;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListaPrivilegios));
             this.dtgPrivilegios = new System.Windows.Forms.DataGridView();
             this.idtPrivilegio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,12 +42,12 @@
             this.menuSunatTablasParametricas = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuExportarDatos = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.menuReportes = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.mnuBoletas = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPrivilegios)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dtgPrivilegios
@@ -55,6 +56,8 @@
             this.dtgPrivilegios.AllowUserToDeleteRows = false;
             this.dtgPrivilegios.AllowUserToResizeColumns = false;
             this.dtgPrivilegios.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dtgPrivilegios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgPrivilegios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgPrivilegios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idtPrivilegio,
@@ -67,13 +70,14 @@
             this.menuPlanillas,
             this.menuSunatTablasParametricas,
             this.menuExportarDatos,
-            this.menuReportes});
+            this.menuReportes,
+            this.mnuBoletas});
             this.dtgPrivilegios.Location = new System.Drawing.Point(12, 12);
             this.dtgPrivilegios.Name = "dtgPrivilegios";
             this.dtgPrivilegios.ReadOnly = true;
             this.dtgPrivilegios.RowHeadersVisible = false;
             this.dtgPrivilegios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgPrivilegios.Size = new System.Drawing.Size(901, 209);
+            this.dtgPrivilegios.Size = new System.Drawing.Size(956, 209);
             this.dtgPrivilegios.TabIndex = 0;
             // 
             // idtPrivilegio
@@ -175,61 +179,75 @@
             this.menuReportes.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.menuReportes.Width = 70;
             // 
+            // mnuBoletas
+            // 
+            this.mnuBoletas.DataPropertyName = "menuBoletas";
+            this.mnuBoletas.HeaderText = "Menu Boletas";
+            this.mnuBoletas.Name = "mnuBoletas";
+            this.mnuBoletas.ReadOnly = true;
+            this.mnuBoletas.Width = 70;
+            // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(4, 4);
+            this.btnNuevo.BackColor = System.Drawing.Color.MintCream;
+            this.btnNuevo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnNuevo.Location = new System.Drawing.Point(12, 237);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(147, 40);
+            this.btnNuevo.Size = new System.Drawing.Size(98, 40);
             this.btnNuevo.TabIndex = 1;
-            this.btnNuevo.Text = "&Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Text = "&Nuevo Privilegio";
+            this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(318, 4);
+            this.btnEliminar.BackColor = System.Drawing.Color.MintCream;
+            this.btnEliminar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnEliminar.Location = new System.Drawing.Point(254, 237);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(142, 40);
+            this.btnEliminar.Size = new System.Drawing.Size(106, 40);
             this.btnEliminar.TabIndex = 2;
-            this.btnEliminar.Text = "&Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Text = "&Eliminar Privilegio";
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(158, 4);
+            this.btnModificar.BackColor = System.Drawing.Color.MintCream;
+            this.btnModificar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnModificar.Location = new System.Drawing.Point(129, 237);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(152, 40);
+            this.btnModificar.Size = new System.Drawing.Size(97, 40);
             this.btnModificar.TabIndex = 3;
-            this.btnModificar.Text = "&Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Text = "&Modificar Privilegio";
+            this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // tableLayoutPanel1
+            // btnSalir
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.47368F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.69828F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.11207F));
-            this.tableLayoutPanel1.Controls.Add(this.btnNuevo, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnEliminar, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnModificar, 1, 0);
-            this.tableLayoutPanel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(241, 233);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(464, 48);
-            this.tableLayoutPanel1.TabIndex = 4;
+            this.btnSalir.BackColor = System.Drawing.Color.MintCream;
+            this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSalir.Location = new System.Drawing.Point(879, 241);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(89, 40);
+            this.btnSalir.TabIndex = 5;
+            this.btnSalir.Text = "&Salir";
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmListaPrivilegios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 294);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(980, 296);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnNuevo);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.dtgPrivilegios);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListaPrivilegios";
@@ -237,7 +255,6 @@
             this.Text = "Lista de Privilegios";
             this.Load += new System.EventHandler(this.frmListaPrivilegios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgPrivilegios)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -259,6 +276,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn menuSunatTablasParametricas;
         private System.Windows.Forms.DataGridViewCheckBoxColumn menuExportarDatos;
         private System.Windows.Forms.DataGridViewCheckBoxColumn menuReportes;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn mnuBoletas;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

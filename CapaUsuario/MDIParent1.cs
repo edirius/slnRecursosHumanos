@@ -677,6 +677,15 @@ namespace CapaUsuario
             fVerificadorDNI.Show();
         }
 
+        private void mnuPrivilegios_Click(object sender, EventArgs e)
+        {
+            Usuarios.frmListaPrivilegios fListaPrivilegios = new Usuarios.frmListaPrivilegios();
+            if (fListaPrivilegios.ShowDialog()== DialogResult.OK)
+            {
+
+            }
+        }
+
         private void mnuResidenteMeta_Click(object sender, EventArgs e)
         {
             ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();

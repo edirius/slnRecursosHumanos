@@ -62,5 +62,10 @@ namespace CapaUsuario.Usuarios
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+            lblContador.Text = txtDescripcion.Text.Length.ToString() + "/45";
+        }
     }
 }
