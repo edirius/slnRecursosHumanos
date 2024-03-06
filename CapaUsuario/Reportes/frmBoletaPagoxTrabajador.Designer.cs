@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cboAño = new System.Windows.Forms.ComboBox();
@@ -71,11 +71,15 @@
             this.rdnUnaBoleta = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.numTamañoLetra = new System.Windows.Forms.NumericUpDown();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rdnVertical = new System.Windows.Forms.RadioButton();
+            this.rdnHorizontal = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgBoletasPago)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTamañoLetra)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -157,8 +161,8 @@
             // 
             this.dtgBoletasPago.AllowUserToAddRows = false;
             this.dtgBoletasPago.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Lavender;
-            this.dtgBoletasPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Lavender;
+            this.dtgBoletasPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgBoletasPago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgBoletasPago.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDPLANILLA,
@@ -430,7 +434,7 @@
             this.btnBoletaXAnio.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnBoletaXAnio.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnBoletaXAnio.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnBoletaXAnio.Location = new System.Drawing.Point(126, 361);
+            this.btnBoletaXAnio.Location = new System.Drawing.Point(113, 361);
             this.btnBoletaXAnio.Name = "btnBoletaXAnio";
             this.btnBoletaXAnio.Size = new System.Drawing.Size(89, 57);
             this.btnBoletaXAnio.TabIndex = 95;
@@ -443,9 +447,9 @@
             this.groupBox3.Controls.Add(this.rdnDosBoletas);
             this.groupBox3.Controls.Add(this.rdnBoletaDuplicada);
             this.groupBox3.Controls.Add(this.rdnUnaBoleta);
-            this.groupBox3.Location = new System.Drawing.Point(237, 362);
+            this.groupBox3.Location = new System.Drawing.Point(216, 362);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(415, 60);
+            this.groupBox3.Size = new System.Drawing.Size(361, 60);
             this.groupBox3.TabIndex = 96;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Opciones";
@@ -485,7 +489,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(658, 405);
+            this.label3.Location = new System.Drawing.Point(737, 371);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 97;
@@ -513,11 +517,45 @@
             0,
             0});
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.rdnVertical);
+            this.groupBox4.Controls.Add(this.rdnHorizontal);
+            this.groupBox4.Location = new System.Drawing.Point(591, 362);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(140, 60);
+            this.groupBox4.TabIndex = 97;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Opciones";
+            // 
+            // rdnVertical
+            // 
+            this.rdnVertical.AutoSize = true;
+            this.rdnVertical.Location = new System.Drawing.Point(18, 36);
+            this.rdnVertical.Name = "rdnVertical";
+            this.rdnVertical.Size = new System.Drawing.Size(60, 17);
+            this.rdnVertical.TabIndex = 1;
+            this.rdnVertical.Text = "Vertical";
+            this.rdnVertical.UseVisualStyleBackColor = true;
+            // 
+            // rdnHorizontal
+            // 
+            this.rdnHorizontal.AutoSize = true;
+            this.rdnHorizontal.Checked = true;
+            this.rdnHorizontal.Location = new System.Drawing.Point(18, 16);
+            this.rdnHorizontal.Name = "rdnHorizontal";
+            this.rdnHorizontal.Size = new System.Drawing.Size(72, 17);
+            this.rdnHorizontal.TabIndex = 0;
+            this.rdnHorizontal.TabStop = true;
+            this.rdnHorizontal.Text = "Horizontal";
+            this.rdnHorizontal.UseVisualStyleBackColor = true;
+            // 
             // frmBoletaPagoxTrabajador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(916, 434);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.numTamañoLetra);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox3);
@@ -537,6 +575,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numTamañoLetra)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -586,5 +626,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Trabajador;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numTamañoLetra;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RadioButton rdnVertical;
+        private System.Windows.Forms.RadioButton rdnHorizontal;
     }
 }

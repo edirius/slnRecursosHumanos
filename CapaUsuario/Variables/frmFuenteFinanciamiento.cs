@@ -65,5 +65,10 @@ namespace CapaUsuario.Variables
             txtDescripcion.Text = pdescripcion;
             iAccion = pAccion;
         }
+
+        private void txtDescripcion_TextChanged(object sender, EventArgs e)
+        {
+            lblContador.Text = txtDescripcion.Text.Length + "/45";
+        }
     }
 }

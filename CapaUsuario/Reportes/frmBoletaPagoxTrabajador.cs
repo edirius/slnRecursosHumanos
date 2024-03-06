@@ -117,18 +117,40 @@ namespace CapaUsuario.Reportes
                     {
                         if (rdnBoletaDuplicada.Checked)
                         {
-                            miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.BoletaDuplicada, Convert.ToSingle(numTamañoLetra.Value));
-                        }
-                        else
-                        {
-                            if (rdnDosBoletas.Checked)
+                            if (rdnHorizontal.Checked)
                             {
-                                miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.DosBoletaXPagina, Convert.ToSingle(numTamañoLetra.Value));
+                                miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.BoletaDuplicada, Convert.ToSingle(numTamañoLetra.Value));
                             }
                             else
                             {
-                                miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.UnaBoletaxPagina, Convert.ToSingle(numTamañoLetra.Value));
+                                miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.BoletaDuplicada, Convert.ToSingle(numTamañoLetra.Value), CapaDeNegocios.Reportes.OpcionesPaginaReporteBoleta.Vertical);
                             }
+                        }
+                        else
+                        {
+                            if (rdnHorizontal.Checked)
+                            {
+                                if (rdnDosBoletas.Checked)
+                                {
+                                    miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.DosBoletaXPagina, Convert.ToSingle(numTamañoLetra.Value));
+                                }
+                                else
+                                {
+                                    miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.UnaBoletaxPagina, Convert.ToSingle(numTamañoLetra.Value));
+                                }
+                            }
+                            else
+                            {
+                                if (rdnDosBoletas.Checked)
+                                {
+                                    miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.DosBoletaXPagina, Convert.ToSingle(numTamañoLetra.Value), CapaDeNegocios.Reportes.OpcionesPaginaReporteBoleta.Vertical);
+                                }
+                                else
+                                {
+                                    miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.UnaBoletaxPagina, Convert.ToSingle(numTamañoLetra.Value), CapaDeNegocios.Reportes.OpcionesPaginaReporteBoleta.Vertical);
+                                }
+                            }
+                            
                         }
 
                         FileInfo file = new FileInfo(fichero.FileName);

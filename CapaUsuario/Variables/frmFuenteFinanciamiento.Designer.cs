@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.lblContador = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -44,7 +45,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(287, 64);
+            this.btnCancelar.Location = new System.Drawing.Point(287, 85);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 88;
@@ -69,7 +70,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(206, 64);
+            this.btnAceptar.Location = new System.Drawing.Point(206, 85);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 87;
@@ -90,22 +91,37 @@
             // txtCodigo
             // 
             this.txtCodigo.Location = new System.Drawing.Point(81, 12);
+            this.txtCodigo.MaxLength = 6;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(100, 20);
             this.txtCodigo.TabIndex = 89;
             // 
             // txtDescripcion
             // 
+            this.txtDescripcion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescripcion.Location = new System.Drawing.Point(81, 38);
+            this.txtDescripcion.MaxLength = 45;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(281, 20);
             this.txtDescripcion.TabIndex = 90;
+            this.txtDescripcion.TextChanged += new System.EventHandler(this.txtDescripcion_TextChanged);
+            // 
+            // lblContador
+            // 
+            this.lblContador.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.lblContador.Location = new System.Drawing.Point(311, 59);
+            this.lblContador.Name = "lblContador";
+            this.lblContador.Size = new System.Drawing.Size(51, 23);
+            this.lblContador.TabIndex = 91;
+            this.lblContador.Text = "0/45";
+            this.lblContador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // frmFuenteFinanciamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 141);
+            this.ClientSize = new System.Drawing.Size(374, 162);
+            this.Controls.Add(this.lblContador);
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.btnCancelar);
@@ -130,5 +146,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.Label lblContador;
     }
 }
