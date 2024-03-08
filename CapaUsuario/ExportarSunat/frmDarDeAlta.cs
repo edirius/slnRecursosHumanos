@@ -25,7 +25,7 @@ namespace CapaUsuario.ExportarSunat
         private void CargarAños()
         {
             string años = "";
-            for (int i = DateTime.Now.Year; i >= 2000; i--)
+            for (int i = DateTime.Now.Year; i >= 2020; i--)
             {
                 cbAños.Items.Add(i);
             }

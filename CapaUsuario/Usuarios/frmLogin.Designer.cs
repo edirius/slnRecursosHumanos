@@ -193,7 +193,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 13);
             this.label3.TabIndex = 11;
-            this.label3.Text = "V: 2.04 19022024";
+            this.label3.Text = "V: 2.05 08032024";
             // 
             // frmLogin
             // 
