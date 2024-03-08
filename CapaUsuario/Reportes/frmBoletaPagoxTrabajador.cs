@@ -128,26 +128,27 @@ namespace CapaUsuario.Reportes
                         }
                         else
                         {
-                            if (rdnHorizontal.Checked)
+                            if (rdnUnaBoleta.Checked)
                             {
-                                if (rdnDosBoletas.Checked)
+                                if (rdnHorizontal.Checked)
+                                {
+                                    miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.UnaBoletaxPagina, Convert.ToSingle(numTamañoLetra.Value));
+                                }
+                                else
+                                {
+                                    miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.UnaBoletaxPagina, Convert.ToSingle(numTamañoLetra.Value), CapaDeNegocios.Reportes.OpcionesPaginaReporteBoleta.Vertical);
+                                }
+                            }
+                            else
+                            {
+                                //miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.UnaBoletaxPagina, Convert.ToSingle(numTamañoLetra.Value), CapaDeNegocios.Reportes.OpcionesPaginaReporteBoleta.Vertical);
+                                if (rdnHorizontal.Checked)
                                 {
                                     miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.DosBoletaXPagina, Convert.ToSingle(numTamañoLetra.Value));
                                 }
                                 else
                                 {
-                                    miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.UnaBoletaxPagina, Convert.ToSingle(numTamañoLetra.Value));
-                                }
-                            }
-                            else
-                            {
-                                if (rdnDosBoletas.Checked)
-                                {
                                     miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.DosBoletaXPagina, Convert.ToSingle(numTamañoLetra.Value), CapaDeNegocios.Reportes.OpcionesPaginaReporteBoleta.Vertical);
-                                }
-                                else
-                                {
-                                    miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.UnaBoletaxPagina, Convert.ToSingle(numTamañoLetra.Value), CapaDeNegocios.Reportes.OpcionesPaginaReporteBoleta.Vertical);
                                 }
                             }
                             

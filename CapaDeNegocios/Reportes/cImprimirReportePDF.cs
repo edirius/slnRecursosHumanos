@@ -514,11 +514,12 @@ namespace CapaDeNegocios.Reportes
                 {
                     PdfPTable pdfTable = new PdfPTable(item2.columnas);
                     pdfTable.DefaultCell.Padding = 0;
-                    pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                    //pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                    pdfTable.HorizontalAlignment = Element.ALIGN_JUSTIFIED;
                     //pdfTable.DefaultCell.BorderWidth = 1;
                     pdfTable.DefaultCell.BorderWidth = Rectangle.NO_BORDER;
                     pdfTable.SetWidths(item2.anchoColumnas);
-
+                    pdfTable.WidthPercentage = 100;
                     foreach (cFilasPDF item3 in item2.ListaFilas)
                     {
                         foreach (cCeldaPDF item4 in item3.ListaCeldas)

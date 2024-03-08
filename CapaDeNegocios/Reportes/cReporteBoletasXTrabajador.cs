@@ -675,6 +675,9 @@ namespace CapaDeNegocios.Reportes
             }
         }
 
+
+       
+
         public void ImprimirReporteBoleta(string RutaArchivo, OpcionesReporteBoleta opciones, Single tamañoLetra, OpcionesPaginaReporteBoleta OpcionBoleta)
         {
             try
@@ -1075,26 +1078,54 @@ namespace CapaDeNegocios.Reportes
                         cFilasPDF FilaSubtotal = new cFilasPDF();
 
                         cTablaPDF tablaSubtotal = new cTablaPDF();
-                        tablaSubtotal.columnas = 1;
-                        tablaSubtotal.anchoColumnas = new float[] { 500f };
+                        tablaSubtotal.columnas = 2;
+                        tablaSubtotal.anchoColumnas = new float[] { 500f, 500f };
 
                         cFilasPDF filaSub = new cFilasPDF();
-                        cCeldaPDF celdaSubtotal = new cCeldaPDF();
-                        if (oReporte.TamañoDefectoLetra == 7)
-                        {
-                            celdaSubtotal.Contenido = "TOTAL INGRESOS:   " + item.TotalIngresos.ToString("c", new CultureInfo("es-PE")) + "                TOTAL DESCUENTOS:   " + (item.TotalDescuentos + item.TotalATrabajador).ToString("c", new CultureInfo("es-PE")) + "            TOTAL APORTAC. EMPLEADOR: " + item.TotalAEmpleador.ToString("c", new CultureInfo("es-PE")) + "             NETO A COBRAR: " + item.NetoACobrar.ToString("c", new CultureInfo("es-PE"));
-                        }
-                        else
-                        {
-                            celdaSubtotal.Contenido = "TOTAL INGRESOS:   " + item.TotalIngresos.ToString("c", new CultureInfo("es-PE")) + "          TOTAL DESCUENTOS:   " + (item.TotalDescuentos + item.TotalATrabajador).ToString("c", new CultureInfo("es-PE")) + "       TOTAL APORTAC. EMPLEADOR:  " + item.TotalAEmpleador.ToString("c", new CultureInfo("es-PE")) + "             NETO A COBRAR: " + item.NetoACobrar.ToString("c", new CultureInfo("es-PE"));
-                        }
-                        celdaSubtotal.TamañoLetra = oReporte.TamañoDefectoLetra;
-                        celdaSubtotal.Alineamiento = enumAlineamiento.izquierda;
+                        cCeldaPDF celdaSubtotal1 = new cCeldaPDF();
+                        celdaSubtotal1.Contenido = "TOTAL INGRESOS:            " + item.TotalIngresos.ToString("c", new CultureInfo("es-PE"));
+                        celdaSubtotal1.QuitarBordes();
+                        celdaSubtotal1.BordeAnchos.AnchoArriba = 1;
+                        celdaSubtotal1.BordeAnchos.AnchoIzquierda = 1;
+                        celdaSubtotal1.TamañoLetra = oReporte.TamañoDefectoLetra;
+                        celdaSubtotal1.Alineamiento = enumAlineamiento.izquierda;
 
-                        filaSub.ListaCeldas.Add(celdaSubtotal);
+                        cCeldaPDF celdaSubtotal2 = new cCeldaPDF();
+                        celdaSubtotal2.Contenido = "TOTAL DESCUENTOS:   " + (item.TotalDescuentos + item.TotalATrabajador).ToString("c", new CultureInfo("es-PE")) + " \n";
+                        celdaSubtotal2.TamañoLetra = oReporte.TamañoDefectoLetra;
+                        celdaSubtotal2.QuitarBordes();
+                        celdaSubtotal2.BordeAnchos.AnchoArriba = 1;
+                        celdaSubtotal2.BordeAnchos.AnchoDerecha = 1;
+                        
+                        celdaSubtotal2.Alineamiento = enumAlineamiento.izquierda;
+
+                        filaSub.ListaCeldas.Add(celdaSubtotal1);
+                        filaSub.ListaCeldas.Add(celdaSubtotal2);
+
+                        cFilasPDF filaSub2 = new cFilasPDF();
+                        cCeldaPDF celdaSubtotal3 = new cCeldaPDF();
+                        celdaSubtotal3.Contenido = "TOTAL APORTAC. EMPLEADOR: " + item.TotalAEmpleador.ToString("c", new CultureInfo("es-PE"));
+                        celdaSubtotal3.TamañoLetra = oReporte.TamañoDefectoLetra;
+                        celdaSubtotal3.QuitarBordes();
+                        celdaSubtotal3.BordeAnchos.AnchoAbajo = 1;
+                        celdaSubtotal3.BordeAnchos.AnchoIzquierda = 1;
+                        
+                        celdaSubtotal3.Alineamiento = enumAlineamiento.izquierda;
+
+                        cCeldaPDF celdaSubtotal4 = new cCeldaPDF();
+                        celdaSubtotal4.Contenido = "NETO A COBRAR:    " + item.NetoACobrar.ToString("c", new CultureInfo("es-PE"));
+                        celdaSubtotal4.TamañoLetra = oReporte.TamañoDefectoLetra;
+                        celdaSubtotal4.QuitarBordes();
+                        celdaSubtotal4.BordeAnchos.AnchoAbajo = 1;
+                        celdaSubtotal4.BordeAnchos.AnchoDerecha = 1;
+                        
+                        celdaSubtotal4.Alineamiento = enumAlineamiento.izquierda;
+
+                        filaSub2.ListaCeldas.Add(celdaSubtotal3);
+                        filaSub2.ListaCeldas.Add(celdaSubtotal4);
 
                         tablaSubtotal.ListaFilas.Add(filaSub);
-
+                        tablaSubtotal.ListaFilas.Add(filaSub2);
 
                         cTablaPDF tablaFirmas = new cTablaPDF();
                         tablaFirmas.columnas = 2;
@@ -1132,39 +1163,46 @@ namespace CapaDeNegocios.Reportes
                         cFilasPDF fila3 = new cFilasPDF();
                         cFilasPDF fila4 = new cFilasPDF();
                         cFilasPDF fila5 = new cFilasPDF();
+
+
                         cCeldaPDF celda1 = new cCeldaPDF();
                         celda1.TablaPDF = TablaLogo;
                         fila1.ListaCeldas.Add(celda1);
-                        fila1.ListaCeldas.Add(celdaVacia2);
-                        fila1.ListaCeldas.Add(celda1);
-                        tablaA.ListaFilas.Add(fila1);
                         cCeldaPDF celda2 = new cCeldaPDF();
                         celda2.TablaPDF = TablaTituloPrincipal;
                         fila2.ListaCeldas.Add(celda2);
-                        fila2.ListaCeldas.Add(celdaVacia2);
-                        fila2.ListaCeldas.Add(celda2);
-                        tablaA.ListaFilas.Add(fila2);
                         cCeldaPDF celda3 = new cCeldaPDF();
                         celda3.TablaPDF = TablaDetalle;
                         fila3.ListaCeldas.Add(celda3);
-                        fila3.ListaCeldas.Add(celdaVacia2);
-                        fila3.ListaCeldas.Add(celda3);
-                        tablaA.ListaFilas.Add(fila3);
                         cCeldaPDF celda4 = new cCeldaPDF();
                         celda4.TablaPDF = tablaSubtotal;
                         fila4.ListaCeldas.Add(celda4);
-                        fila4.ListaCeldas.Add(celdaVacia2);
-                        fila4.ListaCeldas.Add(celda4);
-                        tablaA.ListaFilas.Add(fila4);
                         cCeldaPDF celda5 = new cCeldaPDF();
                         celda5.TablaPDF = tablaFirmas;
                         fila5.ListaCeldas.Add(celda5);
-                        fila5.ListaCeldas.Add(celdaVacia2);
-                        fila5.ListaCeldas.Add(celda5);
-                        tablaA.ListaFilas.Add(fila5);
 
                         if (opciones == OpcionesReporteBoleta.UnaBoletaxPagina)
                         {
+                            fila1.ListaCeldas.Add(celdaVacia2);
+                            fila1.ListaCeldas.Add(celdaVacia2);
+                            tablaA.ListaFilas.Add(fila1);
+
+                            fila2.ListaCeldas.Add(celdaVacia2);
+                            fila2.ListaCeldas.Add(celdaVacia2);
+                            tablaA.ListaFilas.Add(fila2);
+
+                            fila3.ListaCeldas.Add(celdaVacia2);
+                            fila3.ListaCeldas.Add(celdaVacia2);
+                            tablaA.ListaFilas.Add(fila3);
+
+                            fila4.ListaCeldas.Add(celdaVacia2);
+                            fila4.ListaCeldas.Add(celdaVacia2);
+                            tablaA.ListaFilas.Add(fila4);
+
+                            fila5.ListaCeldas.Add(celdaVacia2);
+                            fila5.ListaCeldas.Add(celdaVacia2);
+                            tablaA.ListaFilas.Add(fila5);
+
                             cHojaPDF oHojaPDF = new cHojaPDF();
                             oHojaPDF.ListaDeTablas.Add(tablaA);
                             oReporte.ListaHojasPDF.Add(oHojaPDF);
@@ -1172,6 +1210,26 @@ namespace CapaDeNegocios.Reportes
 
                         if (opciones == OpcionesReporteBoleta.BoletaDuplicada)
                         {
+                            fila1.ListaCeldas.Add(celdaVacia2);
+                            fila1.ListaCeldas.Add(celda1);
+                            tablaA.ListaFilas.Add(fila1);
+
+                            fila2.ListaCeldas.Add(celdaVacia2);
+                            fila2.ListaCeldas.Add(celda2);
+                            tablaA.ListaFilas.Add(fila2);
+
+                            fila3.ListaCeldas.Add(celdaVacia2);
+                            fila3.ListaCeldas.Add(celda3);
+                            tablaA.ListaFilas.Add(fila3);
+
+                            fila4.ListaCeldas.Add(celdaVacia2);
+                            fila4.ListaCeldas.Add(celda4);
+                            tablaA.ListaFilas.Add(fila4);
+
+                            fila5.ListaCeldas.Add(celdaVacia2);
+                            fila5.ListaCeldas.Add(celda5);
+                            tablaA.ListaFilas.Add(fila5);
+
                             cHojaPDF oHojaPDF = new cHojaPDF();
                             oHojaPDF.ListaDeTablas.Add(tablaA);
                             oReporte.ListaHojasPDF.Add(oHojaPDF);
@@ -1179,7 +1237,7 @@ namespace CapaDeNegocios.Reportes
 
                         if (opciones == OpcionesReporteBoleta.DosBoletaXPagina)
                         {
-                            if ((numeroBoletasImpresas % 2) != 0)
+                            if ((numeroBoletasImpresas % 2) != 0) //es impar
                             {
                                 oHojaAuxiliar.ListaDeTablas.Add(TablaLogo);
                                 oHojaAuxiliar.ListaDeTablas.Add(TablaTituloPrincipal);
@@ -1188,39 +1246,88 @@ namespace CapaDeNegocios.Reportes
                                 oHojaAuxiliar.ListaDeTablas.Add(tablaFirmas);
                                 if (numeroBoletasImpresas == listaBoletasXAño.Count)
                                 {
+                                    fila1.ListaCeldas.Add(celdaVacia2);
+                                    fila1.ListaCeldas.Add(celdaVacia2);
+                                    tablaA.ListaFilas.Add(fila1);
+
+                                    fila2.ListaCeldas.Add(celdaVacia2);
+                                    fila2.ListaCeldas.Add(celdaVacia2);
+                                    tablaA.ListaFilas.Add(fila2);
+
+                                    fila3.ListaCeldas.Add(celdaVacia2);
+                                    fila3.ListaCeldas.Add(celdaVacia2);
+                                    tablaA.ListaFilas.Add(fila3);
+
+                                    fila4.ListaCeldas.Add(celdaVacia2);
+                                    fila4.ListaCeldas.Add(celdaVacia2);
+                                    tablaA.ListaFilas.Add(fila4);
+
+                                    fila5.ListaCeldas.Add(celdaVacia2);
+                                    fila5.ListaCeldas.Add(celdaVacia2);
+                                    tablaA.ListaFilas.Add(fila5);
+
                                     cHojaPDF oHojaPDF = new cHojaPDF();
-                                    oHojaPDF.ListaDeTablas.Add(TablaLogo);
-                                    oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
-                                    oHojaPDF.ListaDeTablas.Add(TablaDetalle);
-                                    oHojaPDF.ListaDeTablas.Add(tablaSubtotal);
-                                    oHojaPDF.ListaDeTablas.Add(tablaFirmas);
+                                    oHojaPDF.ListaDeTablas.Add(tablaA);
                                     oReporte.ListaHojasPDF.Add(oHojaPDF);
                                 }
                             }
                             else
                             {
                                 cHojaPDF oHojaPDF = new cHojaPDF();
-                                foreach (cTablaPDF item0 in oHojaAuxiliar.ListaDeTablas)
-                                {
-                                    oHojaPDF.ListaDeTablas.Add(item0);
 
-                                }
+                                cCeldaPDF celda1B = new cCeldaPDF();
+                                cCeldaPDF celda2B = new cCeldaPDF();
+                                cCeldaPDF celda3B = new cCeldaPDF();
+                                cCeldaPDF celda4B = new cCeldaPDF();
+                                cCeldaPDF celda5B = new cCeldaPDF();
+                                fila1 = new cFilasPDF();
+                                fila2 = new cFilasPDF();
+                                fila3 = new cFilasPDF();
+                                fila4 = new cFilasPDF();
+                                fila5 = new cFilasPDF();
 
-                                //foreach (cTablaPDF item0 in oHojaAuxiliar.ListaDeTablas)
-                                //{
-                                //    oHojaAuxiliar.ListaDeTablas.Remove(item0);
-                                //}
-                                oHojaPDF.ListaDeTablas.Add(TablaLogo);
-                                oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
-                                oHojaPDF.ListaDeTablas.Add(TablaDetalle);
-                                oHojaPDF.ListaDeTablas.Add(tablaSubtotal);
-                                oHojaPDF.ListaDeTablas.Add(tablaFirmas);
+                                celda1B.TablaPDF = oHojaAuxiliar.ListaDeTablas[0];
+                                celda2B.TablaPDF = oHojaAuxiliar.ListaDeTablas[1];
+                                celda3B.TablaPDF = oHojaAuxiliar.ListaDeTablas[2];
+                                celda4B.TablaPDF = oHojaAuxiliar.ListaDeTablas[3];
+                                celda5B.TablaPDF = oHojaAuxiliar.ListaDeTablas[4];
+
+                                fila1.ListaCeldas.Add(celda1B);
+                                fila1.ListaCeldas.Add(celdaVacia2);
+                                fila1.ListaCeldas.Add(celda1);
+                                tablaA.ListaFilas.Add(fila1);
+
+                                fila2.ListaCeldas.Add(celda2B);
+                                fila2.ListaCeldas.Add(celdaVacia2);
+                                fila2.ListaCeldas.Add(celda2);
+                                tablaA.ListaFilas.Add(fila2);
+
+                                fila3.ListaCeldas.Add(celda3B);
+                                fila3.ListaCeldas.Add(celdaVacia2);
+                                fila3.ListaCeldas.Add(celda3);
+                                tablaA.ListaFilas.Add(fila3);
+
+                                fila4.ListaCeldas.Add(celda4B);
+                                fila4.ListaCeldas.Add(celdaVacia2);
+                                fila4.ListaCeldas.Add(celda4);
+                                tablaA.ListaFilas.Add(fila4);
+
+                                fila5.ListaCeldas.Add(celda5B);
+                                fila5.ListaCeldas.Add(celdaVacia2);
+                                fila5.ListaCeldas.Add(celda5);
+                                tablaA.ListaFilas.Add(fila5);
+
+                                oHojaPDF.ListaDeTablas.Add(tablaA);
                                 oReporte.ListaHojasPDF.Add(oHojaPDF);
 
                                 oHojaAuxiliar = new cHojaPDF();
 
                             }
                         }
+
+                        
+
+                        
                     }
 
                     Impresion.ImprimirReportePDFBOLETAVERTICAL(oReporte);

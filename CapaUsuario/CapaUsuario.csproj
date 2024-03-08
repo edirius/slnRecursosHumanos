@@ -325,6 +325,12 @@
     <Compile Include="ExportarSunat\frmConsultaMasivaSunat.Designer.cs">
       <DependentUpon>frmConsultaMasivaSunat.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExportarSunat\frmDarDeAlta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarSunat\frmDarDeAlta.Designer.cs">
+      <DependentUpon>frmDarDeAlta.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExportarSunat\frmDarDeBajaTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1640,6 +1646,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmConsultaMasivaSunat.resx">
       <DependentUpon>frmConsultaMasivaSunat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportarSunat\frmDarDeAlta.resx">
+      <DependentUpon>frmDarDeAlta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmDarDeBajaTrabajador.resx">
       <DependentUpon>frmDarDeBajaTrabajador.cs</DependentUpon>
