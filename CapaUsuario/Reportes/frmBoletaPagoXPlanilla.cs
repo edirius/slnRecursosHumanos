@@ -756,7 +756,7 @@ namespace CapaUsuario.Reportes
 
                 dias_laborados = Convert.ToInt32(odtC.Rows[0][0]);
 
-                mes_dias = nro_dias_mes(8, 2016);
+                mes_dias = nro_dias_mes(Convert.ToInt16(pmes_nro), Convert.ToInt16( paño));
 
                 odtC.Rows[0][1] = mes_dias - dias_laborados;
                 odtC.Rows[0][2] = 0;
