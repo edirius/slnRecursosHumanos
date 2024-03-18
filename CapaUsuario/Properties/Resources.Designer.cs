@@ -413,9 +413,29 @@ namespace CapaUsuario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap user_card {
+            get {
+                object obj = ResourceManager.GetObject("user_card", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap user_computer_1 {
             get {
                 object obj = ResourceManager.GetObject("user_computer-1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap users_green_3 {
+            get {
+                object obj = ResourceManager.GetObject("users_green-3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

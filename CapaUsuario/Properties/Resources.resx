@@ -139,11 +139,11 @@
   <data name="AFPS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AFPS.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="check" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="161" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\161.ICO;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user_computer-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user_computer-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="WinXPSetV4 Icon 61" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WinXPSetV4 Icon 61.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,8 +157,14 @@
   <data name="WinXPSetV4 Icon 17" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WinXPSetV4 Icon 17.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="users_green-3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\users_green-3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logoamplio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logoamplio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="integra" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\integra.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="98" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\98.ICO;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,8 +190,8 @@
   <data name="99" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\99.ICO;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete_page" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete_page.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="check" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\check.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="download" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\download.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,10 +235,10 @@
   <data name="LogoCatca2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LogoCatca21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="integra" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\integra.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="delete_page" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_page.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="user_computer-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user_computer-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="user_card" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user_card.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

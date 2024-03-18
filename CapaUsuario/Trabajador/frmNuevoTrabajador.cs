@@ -995,5 +995,11 @@ namespace CapaUsuario.Trabajador
             }
             
         }
+
+        private void btnArroba_Click(object sender, EventArgs e)
+        {
+            int cursor = txtCorreo.SelectionStart;
+            txtCorreo.Text = txtCorreo.Text.Insert(cursor, "@");
+        }
     }
 }

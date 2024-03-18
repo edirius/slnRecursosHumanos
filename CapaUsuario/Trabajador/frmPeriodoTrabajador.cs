@@ -87,7 +87,7 @@ namespace CapaUsuario.Trabajador
 
         private void dtpFechaInicio_ValueChanged(object sender, EventArgs e)
         {
-            dtpFechaFin.MinDate = dtpFechaInicio.Value.AddDays(1);
+            dtpFechaFin.MinDate = dtpFechaInicio.Value;
             dtpFechaFin.Format = DateTimePickerFormat.Custom;
             dtpFechaFin.CustomFormat = " ";
         }

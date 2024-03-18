@@ -2205,6 +2205,8 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\user_card.png" />
+    <None Include="Resources\users_green-3.png" />
     <None Include="Resources\user_computer-1.png" />
     <None Include="Resources\check.bmp" />
     <Content Include="Resources\question.png" />

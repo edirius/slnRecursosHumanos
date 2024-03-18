@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNuevoTrabajador));
             this.tabTrabajador = new System.Windows.Forms.TabControl();
             this.tabDatosGenerales = new System.Windows.Forms.TabPage();
+            this.btnTraerNombre = new System.Windows.Forms.Button();
             this.chkSCRTP = new System.Windows.Forms.CheckBox();
             this.picValidado = new System.Windows.Forms.PictureBox();
             this.txtValidador = new System.Windows.Forms.TextBox();
@@ -98,7 +99,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ofdAbrirImagen = new System.Windows.Forms.OpenFileDialog();
             this.toolTrabajador = new System.Windows.Forms.ToolTip(this.components);
-            this.btnTraerNombre = new System.Windows.Forms.Button();
+            this.btnArroba = new System.Windows.Forms.Button();
             this.tabTrabajador.SuspendLayout();
             this.tabDatosGenerales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
@@ -117,6 +118,7 @@
             // 
             // tabDatosGenerales
             // 
+            this.tabDatosGenerales.Controls.Add(this.btnArroba);
             this.tabDatosGenerales.Controls.Add(this.btnTraerNombre);
             this.tabDatosGenerales.Controls.Add(this.chkSCRTP);
             this.tabDatosGenerales.Controls.Add(this.picValidado);
@@ -189,6 +191,23 @@
             this.tabDatosGenerales.TabIndex = 0;
             this.tabDatosGenerales.Text = "Datos Generales";
             this.tabDatosGenerales.UseVisualStyleBackColor = true;
+            // 
+            // btnTraerNombre
+            // 
+            this.btnTraerNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTraerNombre.BackColor = System.Drawing.Color.MintCream;
+            this.btnTraerNombre.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnTraerNombre.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnTraerNombre.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnTraerNombre.Location = new System.Drawing.Point(291, 47);
+            this.btnTraerNombre.Name = "btnTraerNombre";
+            this.btnTraerNombre.Size = new System.Drawing.Size(117, 26);
+            this.btnTraerNombre.TabIndex = 190;
+            this.btnTraerNombre.Text = "&Traer Nombre de Internet";
+            this.btnTraerNombre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnTraerNombre.UseVisualStyleBackColor = false;
+            this.btnTraerNombre.Visible = false;
+            this.btnTraerNombre.Click += new System.EventHandler(this.btnTraerNombre_Click);
             // 
             // chkSCRTP
             // 
@@ -809,22 +828,16 @@
             this.toolTrabajador.ForeColor = System.Drawing.Color.RoyalBlue;
             this.toolTrabajador.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // btnTraerNombre
+            // btnArroba
             // 
-            this.btnTraerNombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTraerNombre.BackColor = System.Drawing.Color.MintCream;
-            this.btnTraerNombre.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnTraerNombre.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnTraerNombre.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnTraerNombre.Location = new System.Drawing.Point(291, 47);
-            this.btnTraerNombre.Name = "btnTraerNombre";
-            this.btnTraerNombre.Size = new System.Drawing.Size(117, 26);
-            this.btnTraerNombre.TabIndex = 190;
-            this.btnTraerNombre.Text = "&Traer Nombre de Internet";
-            this.btnTraerNombre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnTraerNombre.UseVisualStyleBackColor = false;
-            this.btnTraerNombre.Visible = false;
-            this.btnTraerNombre.Click += new System.EventHandler(this.btnTraerNombre_Click);
+            this.btnArroba.Location = new System.Drawing.Point(365, 406);
+            this.btnArroba.Name = "btnArroba";
+            this.btnArroba.Size = new System.Drawing.Size(30, 23);
+            this.btnArroba.TabIndex = 191;
+            this.btnArroba.Text = "@";
+            this.toolTrabajador.SetToolTip(this.btnArroba, "Inserta @ en el correo electronico");
+            this.btnArroba.UseVisualStyleBackColor = true;
+            this.btnArroba.Click += new System.EventHandler(this.btnArroba_Click);
             // 
             // frmNuevoTrabajador
             // 
@@ -918,5 +931,6 @@
         private System.Windows.Forms.PictureBox picValidado;
         private System.Windows.Forms.CheckBox chkSCRTP;
         private System.Windows.Forms.Button btnTraerNombre;
+        private System.Windows.Forms.Button btnArroba;
     }
 }

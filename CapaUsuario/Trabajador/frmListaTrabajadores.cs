@@ -195,7 +195,7 @@ namespace CapaUsuario.Trabajador
 
         private void btnBuscarNombre_Click(object sender, EventArgs e)
         {
-            miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            tablaAuxiliar =  miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
             lblNumeroTrabajadores.Text = "Nro de trabajadores: " + dtgListaTrabajadores.Rows.Count.ToString();
         }

@@ -223,7 +223,7 @@ namespace CapaUsuario.Trabajador
             }
             if (pfechafin == "")
             {
-                dtpFechaFin.MinDate = Convert.ToDateTime(pfechainicioperiodo).AddDays(1);
+                dtpFechaFin.MinDate = Convert.ToDateTime(pfechainicioperiodo);
                 if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
                 dtpFechaFin.Value = Convert.ToDateTime(pfechainicioperiodo).AddDays(1);
                 dtpFechaFin.Format = DateTimePickerFormat.Custom;
@@ -233,14 +233,14 @@ namespace CapaUsuario.Trabajador
             {
                 if (pAccion == 1)
                 {
-                    dtpFechaFin.MinDate = Convert.ToDateTime(pfechafin).AddDays(1);
+                    dtpFechaFin.MinDate = Convert.ToDateTime(pfechafin);
                     if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
                     dtpFechaFin.Format = DateTimePickerFormat.Custom;
                     dtpFechaFin.CustomFormat = " ";
                 }
                 else
                 {
-                    dtpFechaFin.MinDate = Convert.ToDateTime(pfechainicio).AddDays(1);
+                    dtpFechaFin.MinDate = Convert.ToDateTime(pfechainicio);
                     if (pfechafinperiodo != "") { dtpFechaFin.MaxDate = Convert.ToDateTime(pfechafinperiodo); }
                     dtpFechaFin.Value = Convert.ToDateTime(pfechafin);
                 }
