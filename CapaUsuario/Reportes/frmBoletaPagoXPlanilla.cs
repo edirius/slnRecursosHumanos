@@ -514,7 +514,37 @@ namespace CapaUsuario.Reportes
                     MultiColumnText columns = new MultiColumnText();
                     columns.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 1);
                     //Agregando pdfTable A, B, C, D, E a pdfDoc
-                    columns.AddElement(pdfTableD);
+
+                    if (chkIncluirLogo.Checked)
+                    {
+                        string ruta = System.IO.Directory.GetCurrentDirectory();
+
+                        string ruta_imagen = ruta + "\\logo-muni-fw.png";
+
+                        iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
+                        logo.ScalePercent(54f);
+                        logo.SetAbsolutePosition(12f, pdfDoc.PageSize.Height - 100f);
+                        logo.Border = 0;
+
+                        PdfPTable pdftabledd = new PdfPTable(5);
+                        float[] anchosNuevos = new float[] { 20, 100, 5, 20, 100 };
+                        pdftabledd.SetWidths(anchosNuevos);
+                        pdftabledd.WidthPercentage = 100;
+                        pdftabledd.AddCell(logo);
+                        pdftabledd.AddCell(pdfTableD);
+                        pdftabledd.AddCell(paragraph);
+                        pdftabledd.AddCell(logo);
+                        pdftabledd.AddCell(pdfTableD);
+                        columns.AddElement(pdftabledd);
+
+                    }
+                    else
+                    {
+                        columns.AddElement(pdfTableD);
+                    }
+
+
+                    //columns.AddElement(pdfTableD);
                     columns.AddElement(paragraph);
                     columns.AddElement(pdfTableA);
                     columns.AddElement(pdfTableB);
@@ -667,7 +697,7 @@ namespace CapaUsuario.Reportes
 
                 drFilaD = odtD.NewRow();
                 drFilaD.Delete();
-                drFilaD[0] = "PDT PLANILLA ELECTRONICA - PLAME "; drFilaD[1] = "NUMERO DE ORDEN:";
+                drFilaD[0] = "PLANILLA ELECTRONICA - PLAME "; drFilaD[1] = "NUMERO DE ORDEN:";
                 odtD.Rows.InsertAt(drFilaD, 3);
 
                 odtEB.Columns.Clear();
@@ -685,14 +715,22 @@ namespace CapaUsuario.Reportes
                 drFilaEB = odtEB.NewRow();
                 drFilaEB[0] = " ";
                 odtEB.Rows.InsertAt(drFilaEB, 3);
-
-                odtD2 = MergeTablesByIndex(odtD,odtEB );
+            //CAMBIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+            if (chkIncluirLogo.Checked)
+            {
+                odtD2 = odtD;
+            }
+            else
+            {
+                odtD2 = MergeTablesByIndex(odtD, odtEB);
                 odtD2 = MergeTablesByIndex(odtD2, odtD);
+            }
+
 
             /*------------Fin primera parte de la boleta de pago */
-            
+
             /*---------inicio parte a de boleta de pago */
-                odtA.Columns.Clear();
+            odtA.Columns.Clear();
                 odtA.Rows.Clear();
                 odtA = oBoletaPago.ListarPlanillaXMesYRegimenLaboralYTrabajadorA(sidtplanilla, sidtregimenlaboral,sidttrabajador, pmes,pmes_nro, paño);
 
@@ -1584,6 +1622,11 @@ namespace CapaUsuario.Reportes
             CapaDeNegocios.Reportes.cBoletaPago oBoletaPago = new CapaDeNegocios.Reportes.cBoletaPago();
             CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
 
+            if (cDatosGeneralesEmpresa.RUC == "20200737211")
+            {
+                chkIncluirLogo.Checked = true;
+            }
+
             int numero_boleta_pago = 0;
 
             //dgvBoletaPago.DataSource = oPlanilla.ListarBoletaPagoXMesYRegimenLaboral();
@@ -1855,8 +1898,37 @@ namespace CapaUsuario.Reportes
                     //Columnas 
                     MultiColumnText columns = new MultiColumnText();
                     columns.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 1);
+
+
+                    if (chkIncluirLogo.Checked)
+                    {
+                        string ruta = System.IO.Directory.GetCurrentDirectory();
+
+                        string ruta_imagen = ruta + "\\logo-muni-fw.png";
+
+                        iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
+                        logo.ScalePercent(54f);
+                        logo.SetAbsolutePosition(12f, pdfDoc.PageSize.Height - 100f);
+                        logo.Border = 0;
+
+                        PdfPTable pdftabledd = new PdfPTable(5);
+                        float[] anchosNuevos = new float[] { 20, 100, 5, 20, 100 };
+                        pdftabledd.SetWidths(anchosNuevos);
+                        pdftabledd.WidthPercentage = 100;
+                        pdftabledd.AddCell(logo);
+                        pdftabledd.AddCell(pdfTableD);
+                        pdftabledd.AddCell(paragraph);
+                        pdftabledd.AddCell(logo);
+                        pdftabledd.AddCell(pdfTableD);
+                        columns.AddElement(pdftabledd);
+
+                    }
+                    else
+                    {
+                        columns.AddElement(pdfTableD);
+                    }
                     //Agregando pdfTable A, B, C, D, E a pdfDoc
-                    columns.AddElement(pdfTableD);
+                    
                     columns.AddElement(paragraph);
                     columns.AddElement(pdfTableA);
                     columns.AddElement(pdfTableB);
@@ -1867,7 +1939,7 @@ namespace CapaUsuario.Reportes
                     columns.AddElement(paragraph3);
 
                     pdfDoc.Add(columns);
-
+                   
                 }
 
                 if (!boleta_pago_vacia)

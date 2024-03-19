@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBoletaPago));
             this.btnImprimir = new System.Windows.Forms.Button();
             this.dgvBoletaPago_A = new System.Windows.Forms.DataGridView();
@@ -47,6 +47,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rdbHorizontal = new System.Windows.Forms.RadioButton();
             this.rdbVertical = new System.Windows.Forms.RadioButton();
+            this.chkIncluirLogo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_A)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_C)).BeginInit();
@@ -132,8 +133,8 @@
             // 
             this.dgvBoletaPago.AllowUserToAddRows = false;
             this.dgvBoletaPago.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.dgvBoletaPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBoletaPago.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -241,11 +242,22 @@
             this.rdbVertical.Text = "Vertical";
             this.rdbVertical.UseVisualStyleBackColor = true;
             // 
+            // chkIncluirLogo
+            // 
+            this.chkIncluirLogo.AutoSize = true;
+            this.chkIncluirLogo.Location = new System.Drawing.Point(567, 32);
+            this.chkIncluirLogo.Name = "chkIncluirLogo";
+            this.chkIncluirLogo.Size = new System.Drawing.Size(81, 17);
+            this.chkIncluirLogo.TabIndex = 102;
+            this.chkIncluirLogo.Text = "Incluir Logo";
+            this.chkIncluirLogo.UseVisualStyleBackColor = true;
+            // 
             // frmBoletaPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(752, 565);
+            this.Controls.Add(this.chkIncluirLogo);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvBoletaPago);
@@ -272,6 +284,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -293,5 +306,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rdbHorizontal;
         private System.Windows.Forms.RadioButton rdbVertical;
+        private System.Windows.Forms.CheckBox chkIncluirLogo;
     }
 }

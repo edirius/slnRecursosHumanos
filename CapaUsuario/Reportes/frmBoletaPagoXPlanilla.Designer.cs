@@ -45,9 +45,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnImprimirSegundoFormato = new System.Windows.Forms.Button();
             this.rdbHorizontal = new System.Windows.Forms.RadioButton();
             this.rdbVertical = new System.Windows.Forms.RadioButton();
-            this.btnImprimirSegundoFormato = new System.Windows.Forms.Button();
+            this.chkIncluirLogo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_E)).BeginInit();
@@ -223,6 +224,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Impresion de reporte.";
             // 
+            // btnImprimirSegundoFormato
+            // 
+            this.btnImprimirSegundoFormato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirSegundoFormato.BackColor = System.Drawing.Color.MintCream;
+            this.btnImprimirSegundoFormato.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnImprimirSegundoFormato.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnImprimirSegundoFormato.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnImprimirSegundoFormato.Location = new System.Drawing.Point(219, 22);
+            this.btnImprimirSegundoFormato.Name = "btnImprimirSegundoFormato";
+            this.btnImprimirSegundoFormato.Size = new System.Drawing.Size(75, 65);
+            this.btnImprimirSegundoFormato.TabIndex = 94;
+            this.btnImprimirSegundoFormato.Text = "&Imprimir Segundo Formato";
+            this.btnImprimirSegundoFormato.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImprimirSegundoFormato.UseVisualStyleBackColor = false;
+            this.btnImprimirSegundoFormato.Click += new System.EventHandler(this.btnImprimirSegundoFormato_Click);
+            // 
             // rdbHorizontal
             // 
             this.rdbHorizontal.AutoSize = true;
@@ -245,27 +262,22 @@
             this.rdbVertical.Text = "Vertical";
             this.rdbVertical.UseVisualStyleBackColor = true;
             // 
-            // btnImprimirSegundoFormato
+            // chkIncluirLogo
             // 
-            this.btnImprimirSegundoFormato.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimirSegundoFormato.BackColor = System.Drawing.Color.MintCream;
-            this.btnImprimirSegundoFormato.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnImprimirSegundoFormato.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnImprimirSegundoFormato.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimirSegundoFormato.Location = new System.Drawing.Point(219, 22);
-            this.btnImprimirSegundoFormato.Name = "btnImprimirSegundoFormato";
-            this.btnImprimirSegundoFormato.Size = new System.Drawing.Size(75, 65);
-            this.btnImprimirSegundoFormato.TabIndex = 94;
-            this.btnImprimirSegundoFormato.Text = "&Imprimir Segundo Formato";
-            this.btnImprimirSegundoFormato.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnImprimirSegundoFormato.UseVisualStyleBackColor = false;
-            this.btnImprimirSegundoFormato.Click += new System.EventHandler(this.btnImprimirSegundoFormato_Click);
+            this.chkIncluirLogo.AutoSize = true;
+            this.chkIncluirLogo.Location = new System.Drawing.Point(573, 34);
+            this.chkIncluirLogo.Name = "chkIncluirLogo";
+            this.chkIncluirLogo.Size = new System.Drawing.Size(81, 17);
+            this.chkIncluirLogo.TabIndex = 103;
+            this.chkIncluirLogo.Text = "Incluir Logo";
+            this.chkIncluirLogo.UseVisualStyleBackColor = true;
             // 
             // frmBoletaPagoXPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 611);
+            this.Controls.Add(this.chkIncluirLogo);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvBoletaPago);
@@ -292,6 +304,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -315,5 +328,6 @@
         private System.Windows.Forms.RadioButton rdbHorizontal;
         private System.Windows.Forms.RadioButton rdbVertical;
         private System.Windows.Forms.Button btnImprimirSegundoFormato;
+        private System.Windows.Forms.CheckBox chkIncluirLogo;
     }
 }

@@ -73,6 +73,11 @@ namespace CapaUsuario.Reportes
             DataTable odtAños = new DataTable();
             DataTable odtPlanilla = new DataTable();
 
+            if (cDatosGeneralesEmpresa.RUC == "20200737211")
+            {
+                chkIncluirLogo.Checked = true;
+            }
+
             CapaDeNegocios.Reportes.cBoletaPago oBoletaPago = new CapaDeNegocios.Reportes.cBoletaPago();
             CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
 
