@@ -247,7 +247,7 @@ namespace CapaUsuario.Reportes
 
                 drFilaD = odtD.NewRow();
                 drFilaD.Delete();
-                drFilaD[0] = "PDT PLANILLA ELECTRONICA - PLAME "; drFilaD[1] = "NUMERO DE ORDEN:";
+                drFilaD[0] = "PLANILLA ELECTRONICA"; drFilaD[1] = "NUMERO DE ORDEN:";
                 odtD.Rows.InsertAt(drFilaD, 3);
                 /*------------Fin primera parte de la boleta de pago */
 
@@ -523,6 +523,8 @@ namespace CapaUsuario.Reportes
             PdfPTable pdfTableB = new PdfPTable(dgvBoletaPago_B.ColumnCount);
             PdfPTable pdfTableC = new PdfPTable(dgvBoletaPago_C.ColumnCount);
             PdfPTable pdfTableE = new PdfPTable(dgvBoletaPago_E.ColumnCount);
+
+          
 
             PdfPCell cell;
   
@@ -857,16 +859,114 @@ namespace CapaUsuario.Reportes
             MultiColumnText columns = new MultiColumnText();
             columns.AddRegularColumns(36f, pdfDoc.PageSize.Width - 36f, 24f, 1);
 
-            //Agregando pdfTable A, B, C, D, E a pdfDoc
-            columns.AddElement(pdfTableD);
-            columns.AddElement(paragraph);
-            columns.AddElement(pdfTableA);
-            columns.AddElement(pdfTableB);
-            columns.AddElement(pdfTableC);
-            columns.AddElement(paragraph);
-            columns.AddElement(pdfTableE);
-            columns.AddElement(paragraph2);
-            columns.AddElement(paragraph3);
+            if (chkIncluirLogo.Checked)
+            {
+                string ruta = System.IO.Directory.GetCurrentDirectory();
+
+                string ruta_imagen = ruta + "\\logo-muni-fw.png";
+
+                iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
+                logo.ScalePercent(54f);
+                logo.SetAbsolutePosition(12f, pdfDoc.PageSize.Height - 100f);
+                logo.Border = 0;
+
+                PdfPTable pdftabledd = new PdfPTable(5);
+                pdftabledd.DefaultCell.BorderWidth = 0;
+                float[] anchosNuevos = new float[] { 20, 100, 5, 20, 100 };
+                pdftabledd.SetWidths(anchosNuevos);
+                pdftabledd.WidthPercentage = 100;
+                pdftabledd.AddCell(logo);
+                pdftabledd.AddCell(pdfTableD);
+                pdftabledd.AddCell(paragraph);
+                pdftabledd.AddCell(logo);
+                pdftabledd.AddCell(pdfTableD);
+                columns.AddElement(pdftabledd);
+
+            }
+            else
+            {
+                columns.AddElement(pdfTableD);
+            }
+
+            if (rdn2xHoja.Checked)
+            {
+                
+
+                PdfPTable pdftableAA = new PdfPTable(3);
+                pdftableAA.DefaultCell.BorderWidth = 0;
+                float[] anchosNuevos = new float[] { 100, 5, 100 };
+                pdftableAA.SetWidths(anchosNuevos);
+                pdftableAA.WidthPercentage = 100;
+                pdftableAA.AddCell(pdfTableA);
+                pdftableAA.AddCell(paragraph);
+                pdftableAA.AddCell(pdfTableA);
+
+                PdfPTable pdftableBB = new PdfPTable(3);
+                pdftableBB.DefaultCell.BorderWidth = 0;
+                pdftableBB.SetWidths(anchosNuevos);
+                pdftableBB.WidthPercentage = 100;
+                pdftableBB.AddCell(pdfTableB);
+                pdftableBB.AddCell(paragraph);
+                pdftableBB.AddCell(pdfTableB);
+
+                PdfPTable pdftableCC = new PdfPTable(3);
+                pdftableCC.DefaultCell.BorderWidth = 0;
+                pdftableCC.SetWidths(anchosNuevos);
+                pdftableCC.WidthPercentage = 100;
+                pdftableCC.AddCell(pdfTableC);
+                pdftableCC.AddCell(paragraph);
+                pdftableCC.AddCell(pdfTableC);
+
+                
+                PdfPTable pdftableEE = new PdfPTable(3);
+                pdftableEE.DefaultCell.BorderWidth = 0;
+                pdftableEE.SetWidths(anchosNuevos);
+                pdftableEE.WidthPercentage = 100;
+                pdftableEE.AddCell(pdfTableE);
+                pdftableEE.AddCell(paragraph);
+                pdftableEE.AddCell(pdfTableE);
+
+                PdfPTable pdftable22 = new PdfPTable(3);
+                pdftable22.DefaultCell.BorderWidth = 0;
+                pdftable22.SetWidths(anchosNuevos);
+                pdftable22.WidthPercentage = 100;
+                pdftable22.AddCell(paragraph2);
+                pdftable22.AddCell(paragraph);
+                pdftable22.AddCell(paragraph2);
+
+                PdfPTable pdftable33 = new PdfPTable(3);
+                pdftable33.DefaultCell.BorderWidth = 0;
+                pdftable33.SetWidths(anchosNuevos);
+                pdftable33.WidthPercentage = 100;
+                pdftable33.AddCell(paragraph3);
+                pdftable33.AddCell(paragraph);
+                pdftable33.AddCell(paragraph3);
+
+
+                columns.AddElement(paragraph);
+                columns.AddElement(pdftableAA);
+                columns.AddElement(pdftableBB);
+                columns.AddElement(pdftableCC);
+                columns.AddElement(paragraph);
+                columns.AddElement(pdftableEE);
+                columns.AddElement(pdftable22);
+                columns.AddElement(pdftable33);
+
+            }
+            else
+            {
+                //Agregando pdfTable A, B, C, D, E a pdfDoc
+                //columns.AddElement(pdfTableD);
+                columns.AddElement(paragraph);
+                columns.AddElement(pdfTableA);
+                columns.AddElement(pdfTableB);
+                columns.AddElement(pdfTableC);
+                columns.AddElement(paragraph);
+                columns.AddElement(pdfTableE);
+                columns.AddElement(paragraph2);
+                columns.AddElement(paragraph3);
+            }
+            
  
             pdfDoc.Add(columns);
 

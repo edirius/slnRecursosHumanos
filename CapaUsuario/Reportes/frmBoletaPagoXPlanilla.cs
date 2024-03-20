@@ -527,6 +527,7 @@ namespace CapaUsuario.Reportes
                         logo.Border = 0;
 
                         PdfPTable pdftabledd = new PdfPTable(5);
+                        pdftabledd.DefaultCell.BorderWidth = 0;
                         float[] anchosNuevos = new float[] { 20, 100, 5, 20, 100 };
                         pdftabledd.SetWidths(anchosNuevos);
                         pdftabledd.WidthPercentage = 100;
@@ -1909,17 +1910,26 @@ namespace CapaUsuario.Reportes
                         iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(ruta_imagen);
                         logo.ScalePercent(54f);
                         logo.SetAbsolutePosition(12f, pdfDoc.PageSize.Height - 100f);
-                        logo.Border = 0;
+                       
+
+                        Paragraph paragraph55 = new Paragraph();
+
+                        paragraph55.Alignment = Element.ALIGN_CENTER;
+                        paragraph55.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 8);
+                        paragraph55.Add(" ");
+
 
                         PdfPTable pdftabledd = new PdfPTable(5);
+                        pdftabledd.DefaultCell.BorderWidth = 0;
                         float[] anchosNuevos = new float[] { 20, 100, 5, 20, 100 };
                         pdftabledd.SetWidths(anchosNuevos);
                         pdftabledd.WidthPercentage = 100;
                         pdftabledd.AddCell(logo);
                         pdftabledd.AddCell(pdfTableD);
-                        pdftabledd.AddCell(paragraph);
+                        pdftabledd.AddCell(paragraph55);
                         pdftabledd.AddCell(logo);
                         pdftabledd.AddCell(pdfTableD);
+                        
                         columns.AddElement(pdftabledd);
 
                     }
@@ -2060,8 +2070,17 @@ namespace CapaUsuario.Reportes
             drFilaEB[0] = " ";
             odtEB.Rows.InsertAt(drFilaEB, 3);
 
-            odtD2 = MergeTablesByIndex(odtD, odtEB);
-            odtD2 = MergeTablesByIndex(odtD2, odtD);
+            if (chkIncluirLogo.Checked)
+            {
+                odtD2 = odtD;
+            }
+            else
+            {
+                odtD2 = MergeTablesByIndex(odtD, odtEB);
+                odtD2 = MergeTablesByIndex(odtD2, odtD);
+            }
+
+            
 
             /*------------Fin primera parte de la boleta de pago */
 

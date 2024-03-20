@@ -48,6 +48,9 @@
             this.rdbHorizontal = new System.Windows.Forms.RadioButton();
             this.rdbVertical = new System.Windows.Forms.RadioButton();
             this.chkIncluirLogo = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rdn2xHoja = new System.Windows.Forms.RadioButton();
+            this.rdn1Hoja = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_A)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_C)).BeginInit();
@@ -57,6 +60,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnImprimir
@@ -252,11 +256,45 @@
             this.chkIncluirLogo.Text = "Incluir Logo";
             this.chkIncluirLogo.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.rdn1Hoja);
+            this.groupBox3.Controls.Add(this.rdn2xHoja);
+            this.groupBox3.Location = new System.Drawing.Point(330, 486);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(137, 65);
+            this.groupBox3.TabIndex = 103;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Boleta";
+            // 
+            // rdn2xHoja
+            // 
+            this.rdn2xHoja.AutoSize = true;
+            this.rdn2xHoja.Checked = true;
+            this.rdn2xHoja.Location = new System.Drawing.Point(17, 23);
+            this.rdn2xHoja.Name = "rdn2xHoja";
+            this.rdn2xHoja.Size = new System.Drawing.Size(64, 17);
+            this.rdn2xHoja.TabIndex = 0;
+            this.rdn2xHoja.TabStop = true;
+            this.rdn2xHoja.Text = "2 x Hoja";
+            this.rdn2xHoja.UseVisualStyleBackColor = true;
+            // 
+            // rdn1Hoja
+            // 
+            this.rdn1Hoja.AutoSize = true;
+            this.rdn1Hoja.Location = new System.Drawing.Point(17, 42);
+            this.rdn1Hoja.Name = "rdn1Hoja";
+            this.rdn1Hoja.Size = new System.Drawing.Size(64, 17);
+            this.rdn1Hoja.TabIndex = 1;
+            this.rdn1Hoja.Text = "1 x Hoja";
+            this.rdn1Hoja.UseVisualStyleBackColor = true;
+            // 
             // frmBoletaPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(752, 565);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.chkIncluirLogo);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -283,6 +321,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,5 +347,8 @@
         private System.Windows.Forms.RadioButton rdbHorizontal;
         private System.Windows.Forms.RadioButton rdbVertical;
         private System.Windows.Forms.CheckBox chkIncluirLogo;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton rdn1Hoja;
+        private System.Windows.Forms.RadioButton rdn2xHoja;
     }
 }
