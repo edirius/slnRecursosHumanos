@@ -825,7 +825,17 @@ namespace CapaUsuario
                     analiticoPlanillasToolStripMenuItem.Visible = true;
                     declaraciónJuradaDeToolStripMenuItem.Visible = true;
                 }
-                else { reportesToolStripMenuItem1.Visible = false; printToolStripButton.Visible = false; }
+                else {
+                    if (menuBoletas)
+                    {
+                        reportesToolStripMenuItem1.Visible = true;
+                    }
+                    else
+                    {
+                        reportesToolStripMenuItem1.Visible = false;
+                    }
+                    printToolStripButton.Visible = false;
+                }
             }
             else
             {
