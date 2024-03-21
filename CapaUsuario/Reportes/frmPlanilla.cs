@@ -296,7 +296,7 @@ namespace CapaUsuario.Reportes
             if (oDatosGenerales.Ruc == "20201545430")
             {
                 chkFirmaContabilidad.Text = "PRESUPUESTO Y CONTABILIDAD";
-                chkGerenciaAdministracion.Text = "GERENCIA DE ADMINISTRACION";
+                
             }
 
             DataTable odtA = new DataTable();
