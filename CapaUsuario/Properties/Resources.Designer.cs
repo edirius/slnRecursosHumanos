@@ -143,6 +143,16 @@ namespace CapaUsuario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap address_book_card_users {
+            get {
+                object obj = ResourceManager.GetObject("address_book_card_users", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AFPS {
             get {
                 object obj = ResourceManager.GetObject("AFPS", resourceCulture);
@@ -206,6 +216,26 @@ namespace CapaUsuario.Properties {
         internal static System.Drawing.Bitmap equis {
             get {
                 object obj = ResourceManager.GetObject("equis", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap excel_001 {
+            get {
+                object obj = ResourceManager.GetObject("excel_001", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exit_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("exit_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -353,6 +383,16 @@ namespace CapaUsuario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pdf1 {
+            get {
+                object obj = ResourceManager.GetObject("pdf1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pdf2 {
             get {
                 object obj = ResourceManager.GetObject("pdf2", resourceCulture);
@@ -366,6 +406,16 @@ namespace CapaUsuario.Properties {
         internal static System.Drawing.Bitmap pdf3 {
             get {
                 object obj = ResourceManager.GetObject("pdf3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pdf32x32 {
+            get {
+                object obj = ResourceManager.GetObject("pdf32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

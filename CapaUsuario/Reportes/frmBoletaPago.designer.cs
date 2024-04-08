@@ -49,8 +49,10 @@
             this.rdbVertical = new System.Windows.Forms.RadioButton();
             this.chkIncluirLogo = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.rdn2xHoja = new System.Windows.Forms.RadioButton();
             this.rdn1Hoja = new System.Windows.Forms.RadioButton();
+            this.rdn2xHoja = new System.Windows.Forms.RadioButton();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_A)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_B)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBoletaPago_C)).BeginInit();
@@ -144,15 +146,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBoletaPago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBoletaPago.Cursor = System.Windows.Forms.Cursors.Default;
-            this.dgvBoletaPago.Location = new System.Drawing.Point(12, 84);
+            this.dgvBoletaPago.Location = new System.Drawing.Point(12, 103);
             this.dgvBoletaPago.MultiSelect = false;
             this.dgvBoletaPago.Name = "dgvBoletaPago";
             this.dgvBoletaPago.ReadOnly = true;
             this.dgvBoletaPago.RowHeadersVisible = false;
             this.dgvBoletaPago.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBoletaPago.Size = new System.Drawing.Size(728, 377);
+            this.dgvBoletaPago.Size = new System.Drawing.Size(728, 358);
             this.dgvBoletaPago.TabIndex = 90;
             this.dgvBoletaPago.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBoletaPago_CellContentClick_1);
+            this.dgvBoletaPago.SelectionChanged += new System.EventHandler(this.dgvBoletaPago_SelectionChanged);
             // 
             // groupBox1
             // 
@@ -249,7 +252,7 @@
             // chkIncluirLogo
             // 
             this.chkIncluirLogo.AutoSize = true;
-            this.chkIncluirLogo.Location = new System.Drawing.Point(567, 32);
+            this.chkIncluirLogo.Location = new System.Drawing.Point(659, 22);
             this.chkIncluirLogo.Name = "chkIncluirLogo";
             this.chkIncluirLogo.Size = new System.Drawing.Size(81, 17);
             this.chkIncluirLogo.TabIndex = 102;
@@ -267,6 +270,16 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Boleta";
             // 
+            // rdn1Hoja
+            // 
+            this.rdn1Hoja.AutoSize = true;
+            this.rdn1Hoja.Location = new System.Drawing.Point(17, 42);
+            this.rdn1Hoja.Name = "rdn1Hoja";
+            this.rdn1Hoja.Size = new System.Drawing.Size(64, 17);
+            this.rdn1Hoja.TabIndex = 1;
+            this.rdn1Hoja.Text = "1 x Hoja";
+            this.rdn1Hoja.UseVisualStyleBackColor = true;
+            // 
             // rdn2xHoja
             // 
             this.rdn2xHoja.AutoSize = true;
@@ -279,21 +292,30 @@
             this.rdn2xHoja.Text = "2 x Hoja";
             this.rdn2xHoja.UseVisualStyleBackColor = true;
             // 
-            // rdn1Hoja
+            // txtFiltro
             // 
-            this.rdn1Hoja.AutoSize = true;
-            this.rdn1Hoja.Location = new System.Drawing.Point(17, 42);
-            this.rdn1Hoja.Name = "rdn1Hoja";
-            this.rdn1Hoja.Size = new System.Drawing.Size(64, 17);
-            this.rdn1Hoja.TabIndex = 1;
-            this.rdn1Hoja.Text = "1 x Hoja";
-            this.rdn1Hoja.UseVisualStyleBackColor = true;
+            this.txtFiltro.Location = new System.Drawing.Point(640, 45);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(100, 20);
+            this.txtFiltro.TabIndex = 104;
+            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(572, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 105;
+            this.label3.Text = "Filtro:";
             // 
             // frmBoletaPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(752, 565);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.chkIncluirLogo);
             this.Controls.Add(this.groupBox2);
@@ -350,5 +372,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton rdn1Hoja;
         private System.Windows.Forms.RadioButton rdn2xHoja;
+        private System.Windows.Forms.TextBox txtFiltro;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -218,6 +218,7 @@
     <Compile Include="Reportes\cMultiCeldaPDF.cs" />
     <Compile Include="Reportes\cReporteAsistencia.cs" />
     <Compile Include="Reportes\cReporteBoletasXTrabajador.cs" />
+    <Compile Include="Reportes\cReporteMensualTrabajadores.cs" />
     <Compile Include="Reportes\cReporteMultipleAsistencia.cs" />
     <Compile Include="Reportes\cReporteNroTrabajadores.cs" />
     <Compile Include="Reportes\cReportePDF.cs" />
@@ -226,7 +227,9 @@
     <Compile Include="Reportes\cReporteTareo.cs" />
     <Compile Include="Reportes\cResumenPlanillas.cs" />
     <Compile Include="Reportes\cTablaPDF.cs" />
+    <Compile Include="Reportes\General\cReporteGeneral.cs" />
     <Compile Include="Reportes\NumLetra.cs" />
+    <Compile Include="Reportes\ReporteMensual\cReporteUnicoMonto.cs" />
     <Compile Include="ResidenteMeta\cBuscarTrabajador.cs" />
     <Compile Include="ResidenteMeta\cResidenteMeta.cs" />
     <Compile Include="Sexo.cs" />

@@ -33,9 +33,11 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPrivilegios = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuResidenteMeta = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.generarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restaurarCopiaDeSeguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuResidenteMeta = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.servidorIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargaInicialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,8 +141,6 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.mnuPrivilegios = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -200,6 +200,26 @@
             this.newToolStripMenuItem.Text = "Mantenimiento de Usuarios";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
+            // mnuPrivilegios
+            // 
+            this.mnuPrivilegios.Image = global::CapaUsuario.Properties.Resources.user_computer_1;
+            this.mnuPrivilegios.Name = "mnuPrivilegios";
+            this.mnuPrivilegios.Size = new System.Drawing.Size(263, 22);
+            this.mnuPrivilegios.Text = "Mantenimiento de Privilegios";
+            this.mnuPrivilegios.Click += new System.EventHandler(this.mnuPrivilegios_Click);
+            // 
+            // mnuResidenteMeta
+            // 
+            this.mnuResidenteMeta.Name = "mnuResidenteMeta";
+            this.mnuResidenteMeta.Size = new System.Drawing.Size(263, 22);
+            this.mnuResidenteMeta.Text = "Residente-Meta";
+            this.mnuResidenteMeta.Click += new System.EventHandler(this.mnuResidenteMeta_Click);
+            // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(260, 6);
+            // 
             // generarCopiaDeSeguridadToolStripMenuItem
             // 
             this.generarCopiaDeSeguridadToolStripMenuItem.Name = "generarCopiaDeSeguridadToolStripMenuItem";
@@ -213,13 +233,6 @@
             this.restaurarCopiaDeSeguridadToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
             this.restaurarCopiaDeSeguridadToolStripMenuItem.Text = "Restaurar Base de Datos";
             this.restaurarCopiaDeSeguridadToolStripMenuItem.Click += new System.EventHandler(this.restaurarCopiaDeSeguridadToolStripMenuItem_Click);
-            // 
-            // mnuResidenteMeta
-            // 
-            this.mnuResidenteMeta.Name = "mnuResidenteMeta";
-            this.mnuResidenteMeta.Size = new System.Drawing.Size(263, 22);
-            this.mnuResidenteMeta.Text = "Residente-Meta";
-            this.mnuResidenteMeta.Click += new System.EventHandler(this.mnuResidenteMeta_Click);
             // 
             // toolStripSeparator12
             // 
@@ -767,6 +780,7 @@
             // 
             // trabajadoresToolStripMenuItem
             // 
+            this.trabajadoresToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources.address_book_card_users;
             this.trabajadoresToolStripMenuItem.Name = "trabajadoresToolStripMenuItem";
             this.trabajadoresToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
             this.trabajadoresToolStripMenuItem.Text = "Trabajadores";
@@ -1023,19 +1037,6 @@
             // dlgAbrirArchivo
             // 
             this.dlgAbrirArchivo.FileName = "backup";
-            // 
-            // mnuPrivilegios
-            // 
-            this.mnuPrivilegios.Image = global::CapaUsuario.Properties.Resources.user_computer_1;
-            this.mnuPrivilegios.Name = "mnuPrivilegios";
-            this.mnuPrivilegios.Size = new System.Drawing.Size(263, 22);
-            this.mnuPrivilegios.Text = "Mantenimiento de Privilegios";
-            this.mnuPrivilegios.Click += new System.EventHandler(this.mnuPrivilegios_Click);
-            // 
-            // toolStripSeparator13
-            // 
-            this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(260, 6);
             // 
             // frmPrincipal
             // 

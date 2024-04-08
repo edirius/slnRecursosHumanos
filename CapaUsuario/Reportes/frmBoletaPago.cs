@@ -567,7 +567,8 @@ namespace CapaUsuario.Reportes
                 
                 Phrase objH_A = new Phrase("A", fuenteTitulo);
                 Phrase objP_A = new Phrase("A", fuente);
-                float[] headerwidths_A = GetTamañoColumnas(dgvBoletaPago_A);
+                //float[] headerwidths_A = GetTamañoColumnas(dgvBoletaPago_A);
+                float[] headerwidths_A = new float[] { 20, 30, 50, 50 };
                 pdfTableA.DefaultCell.Padding = 1;
                 pdfTableA.HorizontalAlignment = Element.ALIGN_LEFT;
                 pdfTableA.DefaultCell.BorderWidth = 1;
@@ -994,15 +995,7 @@ namespace CapaUsuario.Reportes
 
         private void dgvBoletaPago_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            int numero_filas = dgvBoletaPago.Rows.Count;
-            if (e.RowIndex != -1)
-            {
-                sidtplanilla = Convert.ToInt32(dgvBoletaPago.Rows[e.RowIndex].Cells[0].Value);
-                sidttrabajador = Convert.ToInt32(dgvBoletaPago.Rows[e.RowIndex].Cells[1].Value);
-                sidtregimenlaboral = Convert.ToInt32(dgvBoletaPago.Rows[e.RowIndex].Cells[3].Value);
-                sMes = dgvBoletaPago.Rows[e.RowIndex].Cells[5].Value.ToString();
-                sAño = dgvBoletaPago.Rows[e.RowIndex].Cells[6].Value.ToString();
-            }
+            
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -1032,6 +1025,8 @@ namespace CapaUsuario.Reportes
             //Llenar data table BoletaPago verificando que tenga mas de un registro
             dgvBoletaPago.DataSource = oPlanilla.ListarPlanillaTrabajadorX(pmes, paño);
 
+            
+
             int numero_boleta_pago = dgvBoletaPago.Rows.Count;
 
             if (numero_boleta_pago > 0)
@@ -1058,6 +1053,25 @@ namespace CapaUsuario.Reportes
                 MessageBox.Show("No hay datos para esta consulta.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
-    
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            //DataView midata = new DataView(((DataTable)dgvBoletaPago.DataSource));
+            //midata.RowFilter = "'NOMBRE COMPLETO' LIKE '%" + txtFiltro.Text + "%'";
+            //dgvBoletaPago.DataSource = midata;
+            ((DataTable)dgvBoletaPago.DataSource).DefaultView.RowFilter = "[NOMBRE COMPLETO] LIKE '%" + txtFiltro.Text + "%'";
+        }
+
+        private void dgvBoletaPago_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvBoletaPago.SelectedRows.Count > 0)
+            {
+                sidtplanilla = Convert.ToInt32(dgvBoletaPago.SelectedRows[0].Cells[0].Value);
+                sidttrabajador = Convert.ToInt32(dgvBoletaPago.SelectedRows[0].Cells[1].Value);
+                sidtregimenlaboral = Convert.ToInt32(dgvBoletaPago.SelectedRows[0].Cells[3].Value);
+                sMes = dgvBoletaPago.SelectedRows[0].Cells[5].Value.ToString();
+                sAño = dgvBoletaPago.SelectedRows[0].Cells[6].Value.ToString();
+            }
+        }
     }
 }

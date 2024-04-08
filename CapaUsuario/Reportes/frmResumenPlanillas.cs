@@ -167,5 +167,16 @@ namespace CapaUsuario.Reportes
             Reportes.MdiParent = this.MdiParent;
             Reportes.Show();
         }
+
+        private void chkSeleccionarTodo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkSeleccionarTodo.Checked)
+            {
+                for (int i = 0; i < dgvPlanilla.Rows.Count; i++)
+                {
+                    dgvPlanilla.Rows[i].Cells["☑"].Value = true;
+                }
+            }
+        }
     }
 }

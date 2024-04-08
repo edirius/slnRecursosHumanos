@@ -50,6 +50,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.chkSeleccionarTodo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -285,11 +286,23 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // chkSeleccionarTodo
+            // 
+            this.chkSeleccionarTodo.AutoSize = true;
+            this.chkSeleccionarTodo.Location = new System.Drawing.Point(1027, 14);
+            this.chkSeleccionarTodo.Name = "chkSeleccionarTodo";
+            this.chkSeleccionarTodo.Size = new System.Drawing.Size(106, 17);
+            this.chkSeleccionarTodo.TabIndex = 36;
+            this.chkSeleccionarTodo.Text = "Seleccionar todo";
+            this.chkSeleccionarTodo.UseVisualStyleBackColor = true;
+            this.chkSeleccionarTodo.CheckedChanged += new System.EventHandler(this.chkSeleccionarTodo_CheckedChanged);
+            // 
             // frmResumenPlanillas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 536);
+            this.Controls.Add(this.chkSeleccionarTodo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -332,5 +345,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdtRegimenLaboral;
         private System.Windows.Forms.DataGridViewTextBoxColumn Plantilla;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox chkSeleccionarTodo;
     }
 }

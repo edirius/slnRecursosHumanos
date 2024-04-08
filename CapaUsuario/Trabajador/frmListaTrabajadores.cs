@@ -74,7 +74,7 @@ namespace CapaUsuario.Trabajador
             {
                 Trabajador.frmNuevoTrabajador fNuevoTrabajador = new frmNuevoTrabajador();
                 fNuevoTrabajador.miTrabajador = new CapaDeNegocios.Trabajadores.cTrabajadorServidorPersonal();
-                fNuevoTrabajador.miTrabajador.FechaNacimiento = DateTime.Now;
+                fNuevoTrabajador.miTrabajador.FechaNacimiento = DateTime.Now.AddYears(-1);
                 fNuevoTrabajador.miTrabajador.NombreVia = "N";
                 fNuevoTrabajador.miTrabajador.NombreZona = "N";
                 fNuevoTrabajador.modoEdicion = false;

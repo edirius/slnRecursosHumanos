@@ -25,6 +25,11 @@ namespace CapaUsuario.Reportes
 
         private void frmBoletaPagoxTrabajador_Load(object sender, EventArgs e)
         {
+            if (cDatosGeneralesEmpresa.RUC == "20200737211")
+            {
+                rdnBoletaDuplicada.Checked = true;
+                rdnVertical.Checked = true;
+            }
             CargarAños();
         }
 

@@ -698,7 +698,7 @@ namespace CapaUsuario.Reportes
 
                 drFilaD = odtD.NewRow();
                 drFilaD.Delete();
-                drFilaD[0] = "PLANILLA ELECTRONICA - PLAME "; drFilaD[1] = "NUMERO DE ORDEN:";
+                drFilaD[0] = "PLANILLA ELECTRONICA "; drFilaD[1] = "NUMERO DE ORDEN:";
                 odtD.Rows.InsertAt(drFilaD, 3);
 
                 odtEB.Columns.Clear();
@@ -1626,6 +1626,7 @@ namespace CapaUsuario.Reportes
             if (cDatosGeneralesEmpresa.RUC == "20200737211")
             {
                 chkIncluirLogo.Checked = true;
+                rdbHorizontal.Checked = true;
             }
 
             int numero_boleta_pago = 0;

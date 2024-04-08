@@ -2209,6 +2209,11 @@
     <None Include="Resources\users_green-3.png" />
     <None Include="Resources\user_computer-1.png" />
     <None Include="Resources\check.bmp" />
+    <None Include="Resources\excel_001.ico" />
+    <None Include="Resources\pdf.ico" />
+    <None Include="Resources\pdf32x32.ico" />
+    <None Include="Resources\exit_32x32.ico" />
+    <None Include="Resources\address_book_card_users.ico" />
     <Content Include="Resources\question.png" />
     <None Include="Resources\logo_MuniMaras.png" />
     <None Include="Resources\pdf3.jpg" />
