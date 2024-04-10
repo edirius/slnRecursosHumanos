@@ -353,7 +353,7 @@ namespace CapaUsuario.Trabajador
 
 
             miRegimenTrabajador.IdtTipoTrabajador = 12;
-            miRegimenTrabajador.IdtTipoContrato = 15;
+            miRegimenTrabajador.IdtTipoContrato = 9;
 
             if (modoEdicion == false || modoAltaTrabajador == true)
             {
