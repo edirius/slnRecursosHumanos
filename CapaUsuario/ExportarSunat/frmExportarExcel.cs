@@ -61,7 +61,7 @@ namespace CapaUsuario.ExportarSunat
             cbAños.Text = años;
             cbAños.Text = Convert.ToString(DateTime.Now.Year);
         }
-        private void ExportarDataGridViewExcel(DataGridView datagrid)
+        private void ExportarDataGridViewExcel(DataGridView datagrid, Boolean todoSSS)
         {
             //añadir la siguiente referencia al proyecto de tipo COM:
             //Microsoft Excel 12.0 Object Library
@@ -84,18 +84,16 @@ namespace CapaUsuario.ExportarSunat
 
                 for (int i = 0; i < dgv2.Rows.Count; i++)
                 {
-
                     for (int j = 0; j < dgv2.Columns.Count; j++)
                     {
-                        //if (headr <= datagrid.Columns.Count)//añadimos cabecera de excel
-                        //{
-                        //    string cabesa = datagrid.Columns[j].HeaderCell.Value.ToString();
-                        //    hoja_trabajo.Cells[i + 1, j + 1] = datagrid.Columns[j].HeaderCell.Value.ToString();
-                        //    headr++;
-                        //}
-                        //añadimos contenido de excel
-                       
                         hoja_trabajo.Cells[i + 1, j + 1] = dgv2.Rows[i].Cells[j].Value.ToString();
+                        if (todoSSS)
+                        {
+                            if (j == 7 || j == 8 || j == 9)
+                            {
+                                hoja_trabajo.Cells[i + 1, j + 1] = "S";
+                            }
+                        }
                     }
 
                 }
@@ -129,7 +127,7 @@ namespace CapaUsuario.ExportarSunat
             {
                 if (dgv2.Rows.Count != 0)
                 {
-                    ExportarDataGridViewExcel(dgv2);
+                    ExportarDataGridViewExcel(dgv2, chkSSS.Checked);
                 }
                 else
                     MessageBox.Show("No se encontraron datos para la exportación.");

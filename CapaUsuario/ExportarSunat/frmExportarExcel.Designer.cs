@@ -60,6 +60,7 @@
             this.txt14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pbAFPNET = new System.Windows.Forms.PictureBox();
+            this.chkSSS = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaPlanillas)).BeginInit();
@@ -345,11 +346,22 @@
             this.pbAFPNET.TabIndex = 44;
             this.pbAFPNET.TabStop = false;
             // 
+            // chkSSS
+            // 
+            this.chkSSS.AutoSize = true;
+            this.chkSSS.Location = new System.Drawing.Point(1098, 13);
+            this.chkSSS.Name = "chkSSS";
+            this.chkSSS.Size = new System.Drawing.Size(187, 17);
+            this.chkSSS.TabIndex = 45;
+            this.chkSSS.Text = "Poner a todos los trabajdores SSS";
+            this.chkSSS.UseVisualStyleBackColor = true;
+            // 
             // frmExportarExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1310, 591);
+            this.Controls.Add(this.chkSSS);
             this.Controls.Add(this.pbAFPNET);
             this.Controls.Add(this.dgvListaPlanillas);
             this.Controls.Add(this.groupBox2);
@@ -367,6 +379,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbAFPNET)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -399,5 +412,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn txt15;
         private System.Windows.Forms.CheckBox checkSeleccionar;
         private System.Windows.Forms.PictureBox pbAFPNET;
+        private System.Windows.Forms.CheckBox chkSSS;
     }
 }
