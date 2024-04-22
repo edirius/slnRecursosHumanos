@@ -398,7 +398,7 @@
             this.chkFirmaPresupuesto.Location = new System.Drawing.Point(345, 18);
             this.chkFirmaPresupuesto.Name = "chkFirmaPresupuesto";
             this.chkFirmaPresupuesto.Size = new System.Drawing.Size(107, 17);
-            this.chkFirmaPresupuesto.TabIndex = 6;
+            this.chkFirmaPresupuesto.TabIndex = 3;
             this.chkFirmaPresupuesto.Text = "PRESUPUESTO";
             this.chkFirmaPresupuesto.UseVisualStyleBackColor = true;
             // 
