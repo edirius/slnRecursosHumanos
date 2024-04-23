@@ -301,7 +301,7 @@ namespace CapaUsuario.Reportes
 
             if (oDatosGenerales.Ruc == "20195499765")
             {
-                chkFirmaGerencia.Text  = "OGA";
+                chkFirmaGerencia.Text  = "        OGA";
 
             }
 
