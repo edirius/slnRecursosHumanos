@@ -101,30 +101,32 @@ namespace CapaUsuario.Reportes
                 case 0:
                     tipo = "i";
                     CapaDeNegocios.Sunat.cMaestroIngresos oMaestroIngresos = new CapaDeNegocios.Sunat.cMaestroIngresos();
-                    cboConceptos.DataSource = oMaestroIngresos.ListarMaestroIngresos("");
                     cboConceptos.DisplayMember = "descripcion";
                     cboConceptos.ValueMember = "idtmaestroingresos";
+                    cboConceptos.DataSource = oMaestroIngresos.ListarMaestroIngresos("");
                     break;
                 case 1:
                     tipo = "d";
                     CapaDeNegocios.Sunat.cMaestroDescuentos oMaestroDescuentos = new CapaDeNegocios.Sunat.cMaestroDescuentos();
-                    cboConceptos.DataSource = oMaestroDescuentos.ListarMaestroDescuentos();
                     cboConceptos.DisplayMember = "descripcion";
                     cboConceptos.ValueMember = "idtmaestrodescuentos";
+                    cboConceptos.DataSource = oMaestroDescuentos.ListarMaestroDescuentos();
                     break;
                 case 2:
                     tipo = "t";
                     CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador oMaestroAportacionesTrabajador = new CapaDeNegocios.Sunat.cMaestroAportacionesTrabajador();
-                    cboConceptos.DataSource = oMaestroAportacionesTrabajador.ListarMaestroAportacionesTrabajador();
                     cboConceptos.DisplayMember = "descripcion";
                     cboConceptos.ValueMember = "idtmaestroaportacionestrabajador";
+                    cboConceptos.DataSource = oMaestroAportacionesTrabajador.ListarMaestroAportacionesTrabajador();
+                    
                     break;
                 case 3:
                     tipo = "a";
                     CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador oMaestroAportacionesEmpleador = new CapaDeNegocios.Sunat.cMaestroAportacionesEmpleador();
-                    cboConceptos.DataSource = oMaestroAportacionesEmpleador.ListarMaestroAportacionesEmpleador();
                     cboConceptos.DisplayMember = "descripcion";
                     cboConceptos.ValueMember = "idtmaestroaportacionesempleador";
+                    cboConceptos.DataSource = oMaestroAportacionesEmpleador.ListarMaestroAportacionesEmpleador();
+                   
                     break;
                 default:
                     tipo = "i";

@@ -789,9 +789,10 @@
             // 
             // personalToolStripMenuItem
             // 
+            this.personalToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources.search_file_2;
             this.personalToolStripMenuItem.Name = "personalToolStripMenuItem";
             this.personalToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
-            this.personalToolStripMenuItem.Text = "Personal";
+            this.personalToolStripMenuItem.Text = "Reporte x Concepto";
             this.personalToolStripMenuItem.Click += new System.EventHandler(this.personalToolStripMenuItem_Click);
             // 
             // declaraciónJuradaDeToolStripMenuItem
@@ -882,6 +883,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutToolStripMenuItem.Text = "&Sobre ... ...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // toolImportadorExcel
             // 

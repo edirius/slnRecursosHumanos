@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cboMes = new System.Windows.Forms.ComboBox();
@@ -112,8 +112,8 @@
             // 
             this.dgvListaTrabajadores.AllowUserToAddRows = false;
             this.dgvListaTrabajadores.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.LightBlue;
-            this.dgvListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            this.dgvListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListaTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaTrabajadores.Location = new System.Drawing.Point(6, 19);
             this.dgvListaTrabajadores.Name = "dgvListaTrabajadores";
@@ -192,7 +192,7 @@
             "APORTACIONES EMPLEADOR"});
             this.cboTipo.Location = new System.Drawing.Point(415, 14);
             this.cboTipo.Name = "cboTipo";
-            this.cboTipo.Size = new System.Drawing.Size(121, 21);
+            this.cboTipo.Size = new System.Drawing.Size(168, 21);
             this.cboTipo.TabIndex = 50;
             this.cboTipo.SelectedIndexChanged += new System.EventHandler(this.cboTipo_SelectedIndexChanged);
             // 
@@ -208,7 +208,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(556, 17);
+            this.label4.Location = new System.Drawing.Point(630, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 53;
@@ -218,9 +218,9 @@
             // 
             this.cboConceptos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboConceptos.FormattingEnabled = true;
-            this.cboConceptos.Location = new System.Drawing.Point(629, 13);
+            this.cboConceptos.Location = new System.Drawing.Point(703, 13);
             this.cboConceptos.Name = "cboConceptos";
-            this.cboConceptos.Size = new System.Drawing.Size(279, 21);
+            this.cboConceptos.Size = new System.Drawing.Size(318, 21);
             this.cboConceptos.TabIndex = 52;
             this.cboConceptos.SelectedIndexChanged += new System.EventHandler(this.cboConceptos_SelectedIndexChanged);
             // 

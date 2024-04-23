@@ -686,6 +686,12 @@ namespace CapaUsuario
             }
         }
 
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About.AboutBox1 fSobre = new About.AboutBox1();
+            fSobre.ShowDialog();
+        }
+
         private void mnuResidenteMeta_Click(object sender, EventArgs e)
         {
             ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();

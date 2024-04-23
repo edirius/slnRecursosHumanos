@@ -299,6 +299,12 @@ namespace CapaUsuario.Reportes
                 
             }
 
+            if (oDatosGenerales.Ruc == "20195499765")
+            {
+                chkFirmaGerencia.Text  = "OGA";
+
+            }
+
             DataTable odtA = new DataTable();
             DataTable odtAños = new DataTable();
             DataTable odtPlanilla = new DataTable();
