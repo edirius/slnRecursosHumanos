@@ -61,7 +61,7 @@
             // 
             this.btnMeta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnMeta.Location = new System.Drawing.Point(577, 37);
+            this.btnMeta.Location = new System.Drawing.Point(607, 37);
             this.btnMeta.Name = "btnMeta";
             this.btnMeta.Size = new System.Drawing.Size(64, 23);
             this.btnMeta.TabIndex = 1;
@@ -77,7 +77,7 @@
             this.cboMeta.FormattingEnabled = true;
             this.cboMeta.Location = new System.Drawing.Point(46, 39);
             this.cboMeta.Name = "cboMeta";
-            this.cboMeta.Size = new System.Drawing.Size(525, 21);
+            this.cboMeta.Size = new System.Drawing.Size(555, 21);
             this.cboMeta.TabIndex = 0;
             this.cboMeta.SelectedIndexChanged += new System.EventHandler(this.cboMeta_SelectedIndexChanged);
             // 
@@ -109,7 +109,7 @@
             this.dgvTareo.ReadOnly = true;
             this.dgvTareo.RowHeadersVisible = false;
             this.dgvTareo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTareo.Size = new System.Drawing.Size(629, 346);
+            this.dgvTareo.Size = new System.Drawing.Size(659, 346);
             this.dgvTareo.TabIndex = 1;
             this.dgvTareo.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellClick);
             this.dgvTareo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTareo_CellContentClick);
@@ -187,7 +187,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(558, 418);
+            this.btnSalir.Location = new System.Drawing.Point(588, 418);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 19;
@@ -203,7 +203,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEliminar.ImageKey = "118.png";
-            this.btnEliminar.Location = new System.Drawing.Point(473, 418);
+            this.btnEliminar.Location = new System.Drawing.Point(503, 418);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(83, 53);
             this.btnEliminar.TabIndex = 18;
@@ -219,7 +219,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificar.ImageKey = "13.png";
-            this.btnModificar.Location = new System.Drawing.Point(387, 418);
+            this.btnModificar.Location = new System.Drawing.Point(417, 418);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(83, 53);
             this.btnModificar.TabIndex = 17;
@@ -235,11 +235,11 @@
             this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(301, 418);
+            this.btnNuevo.Location = new System.Drawing.Point(331, 418);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 16;
-            this.btnNuevo.Text = "&Nuevo";
+            this.btnNuevo.Text = "&Nuevo Tareo";
             this.btnNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
@@ -267,7 +267,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.button1.ImageIndex = 1;
-            this.button1.Location = new System.Drawing.Point(132, 418);
+            this.button1.Location = new System.Drawing.Point(152, 418);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 53);
             this.button1.TabIndex = 21;
@@ -311,7 +311,7 @@
             this.btnImprimir2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir2.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir2.ImageIndex = 1;
-            this.btnImprimir2.Location = new System.Drawing.Point(220, 418);
+            this.btnImprimir2.Location = new System.Drawing.Point(238, 418);
             this.btnImprimir2.Name = "btnImprimir2";
             this.btnImprimir2.Size = new System.Drawing.Size(83, 53);
             this.btnImprimir2.TabIndex = 37;
@@ -322,7 +322,7 @@
             // 
             // frmMantenimientoTareo
             // 
-            this.ClientSize = new System.Drawing.Size(653, 483);
+            this.ClientSize = new System.Drawing.Size(683, 483);
             this.Controls.Add(this.btnImprimir2);
             this.Controls.Add(this.btnMeta);
             this.Controls.Add(this.label2);

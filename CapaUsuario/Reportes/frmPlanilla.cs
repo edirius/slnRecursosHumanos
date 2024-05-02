@@ -2287,7 +2287,7 @@ namespace CapaUsuario.Reportes
                                     odtPrueba.Columns.Add("DNI", typeof(string));
 
                                     odtPrueba.Columns.Add("PERIODO", typeof(string));
-                                    odtPrueba.Columns.Add("TOTAL DIAS LABORADOS", typeof(string));
+                                    odtPrueba.Columns.Add("TOTAL TIEMPO LABORADO", typeof(string));
                                     odtPrueba.Columns.Add("TOTAL CTS", typeof(string));
                                     if (chkCuentaBancaria.Checked)
                                     {
@@ -2298,7 +2298,16 @@ namespace CapaUsuario.Reportes
                                     {
                                         odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboralRacionamiento(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
                                     }
-                                    odtPlanilla = buscarDuplicados(odtPlanilla);
+
+                                    if (oDatosGenerales.Ruc == "20159308708")
+                                    {
+                                        //odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
+                                    }
+                                    else
+                                    {
+                                        odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
+                                    }
+                                        odtPlanilla = buscarDuplicados(odtPlanilla);
                                     odtPrueba.Clear();
 
                                     indice_prueba_dias_laborados = BuscarIndiceColumna(odtPrueba, "PERIODO");
@@ -2331,12 +2340,12 @@ namespace CapaUsuario.Reportes
                                             drFila[3] = row[2];
                                             if (Convert.ToDateTime(row[3].ToString()) < new DateTime(2022, 11, 1))
                                             {
-                                                drFila[4] = "DEL 01/05/2023 AL 30/10/2023";
+                                                drFila[4] = "DEL 01/11/2023 AL 30/04/2024";
                                                 drFila[5] = "6 MESES";
                                             }
                                             else
                                             {
-                                                drFila[4] = "DEL 01/05/2023 AL 30/10/2023";
+                                                drFila[4] = "DEL 01/11/2023 AL 30/04/2024";
                                                 drFila[5] = "6 MESES";
                                             }
 
@@ -2345,43 +2354,22 @@ namespace CapaUsuario.Reportes
                                             if (chkCuentaBancaria.Checked)
                                             {
                                                 drFila[7] = row[13];
+                                                drFila[8] = row[14];
+                                            }
+                                            else
+                                            {
+                                                drFila[7] = row[13];
                                             }
                                             sumatoria = sumatoria + Convert.ToDecimal(row[11]);
 
                                             //odtPrueba.Rows.Add(drFila);
                                             odtPrueba.Rows.InsertAt(drFila, k);
 
+                                            
+
                                             k++;
                                         }
-                                        if (oDatosGenerales.Ruc == "20159308708")
-                                        {
-                                            //odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
-                                        }
-                                        else
-                                        {
-                                            odtPrueba.Columns.Add("OBSERVACIONES", typeof(string));
-                                            switch (oDatosGenerales.Ruc)
-                                            {
-                                                case "20147495600":
-                                                        odtPrueba.Rows[0][8] = " SUELDO ALCALDE = ((4752.21 + 4752.21/6)*6/12)";
-                                                    break;
-                                                case "20159377696":
-                                                    odtPrueba.Rows[0][7] = " SUELDO ALCALDE = ((4752.21 + 4752.21/6)*6/12)";
-                                                    break;
-                                                case "20159377424":
-                                                    odtPrueba.Rows[0][7] = " SUELDO ALCALDE = ((4152.21 + 4152.21/6)*6/12)";
-                                                    break;
-                                                case "20177432360":
-                                                    odtPrueba.Rows[0][7] = " SUELDO ALCALDE = ((5300 + 5300/6)*6/12)";
-                                                    break;
-                                                case "20200737211":
-                                                    odtPrueba.Rows[0][7] = " SUELDO ALCALDE = ((5352.21+ 5352.21/6)*6/12)";
-                                                    break;
-                                                default:
-                                                    break;
-                                            }
-
-                                        }
+                                       
 
                                         this.dgvPrueba.DataSource = odtPrueba;
 
