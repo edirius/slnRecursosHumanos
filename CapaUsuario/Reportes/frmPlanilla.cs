@@ -2287,7 +2287,7 @@ namespace CapaUsuario.Reportes
                                     odtPrueba.Columns.Add("DNI", typeof(string));
 
                                     odtPrueba.Columns.Add("PERIODO", typeof(string));
-                                    odtPrueba.Columns.Add("TOTAL TIEMPO LABORADO", typeof(string));
+                                    odtPrueba.Columns.Add("TOTAL TIEMPO COMPUTABLE", typeof(string));
                                     odtPrueba.Columns.Add("TOTAL CTS", typeof(string));
                                     if (chkCuentaBancaria.Checked)
                                     {
