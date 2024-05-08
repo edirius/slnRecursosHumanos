@@ -71,6 +71,7 @@
             this.chkJornalRacionamiento = new System.Windows.Forms.CheckBox();
             this.chkCuentaBancaria = new System.Windows.Forms.CheckBox();
             this.chkSueldoPactado = new System.Windows.Forms.CheckBox();
+            this.btnExportarExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAFP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrueba)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
@@ -87,9 +88,9 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimir.Location = new System.Drawing.Point(11, 469);
+            this.btnImprimir.Location = new System.Drawing.Point(12, 461);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(75, 65);
+            this.btnImprimir.Size = new System.Drawing.Size(75, 56);
             this.btnImprimir.TabIndex = 87;
             this.btnImprimir.Text = "&Imprimir";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -145,7 +146,7 @@
             this.dgvPlanilla.ReadOnly = true;
             this.dgvPlanilla.RowHeadersVisible = false;
             this.dgvPlanilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPlanilla.Size = new System.Drawing.Size(923, 371);
+            this.dgvPlanilla.Size = new System.Drawing.Size(1030, 371);
             this.dgvPlanilla.TabIndex = 94;
             this.dgvPlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellClick_1);
             this.dgvPlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPlanilla_CellContentClick_1);
@@ -502,11 +503,28 @@
             this.chkSueldoPactado.Text = "Incluir Sueldo Pactado";
             this.chkSueldoPactado.UseVisualStyleBackColor = true;
             // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportarExcel.BackColor = System.Drawing.Color.MintCream;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnExportarExcel.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExportarExcel.Image = global::CapaUsuario.Properties.Resources.excel_001;
+            this.btnExportarExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportarExcel.Location = new System.Drawing.Point(942, 461);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(110, 53);
+            this.btnExportarExcel.TabIndex = 108;
+            this.btnExportarExcel.Text = "E&xportar Excel";
+            this.btnExportarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExportarExcel.UseVisualStyleBackColor = false;
+            // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 546);
+            this.ClientSize = new System.Drawing.Size(1054, 546);
+            this.Controls.Add(this.btnExportarExcel);
             this.Controls.Add(this.chkSueldoPactado);
             this.Controls.Add(this.chkCuentaBancaria);
             this.Controls.Add(this.chkJornalRacionamiento);
@@ -582,5 +600,6 @@
         private System.Windows.Forms.CheckBox chkJornalRacionamiento;
         private System.Windows.Forms.CheckBox chkCuentaBancaria;
         private System.Windows.Forms.CheckBox chkSueldoPactado;
+        private System.Windows.Forms.Button btnExportarExcel;
     }
 }
