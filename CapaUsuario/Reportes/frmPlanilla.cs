@@ -2336,7 +2336,7 @@ namespace CapaUsuario.Reportes
 
                                             drFila[0] = indice.ToString();
                                             drFila[1] = row[0];
-                                            drFila[2] = row[1];
+                                            drFila[2] = row[1];   
                                             drFila[3] = row[2];
                                             if (Convert.ToDateTime(row[3].ToString()) < new DateTime(2023, 11, 1))
                                             {
@@ -2686,6 +2686,18 @@ namespace CapaUsuario.Reportes
                                                     total_tipo_a_trabajador++;
                                                     arr_a_trabajador[t] = (odtPrueba.Columns.Count - 1).ToString();
                                                     t++;
+                                                }
+
+                                                //COmprobacion de snp
+
+                                                if (row_t[8].ToString() == "SNP" || row_t[8].ToString() == "SNP 13%")
+                                                {
+                                                    if (Convert.ToDouble(row_t[9]) > 0) //Osea que esta en onp
+                                                    {
+                                                        row[7] = "SNP";
+                                                        row[8] = "-";
+                                                        row[9] = "-";
+                                                    }
                                                 }
                                                 //Buscar indice del titulo respectivo al monto
                                                 indice_a_trabajador = BuscarIndiceColumna(odtPrueba, row_t[8].ToString());
@@ -5599,6 +5611,44 @@ namespace CapaUsuario.Reportes
         private void txtAltoColumnas_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnExportarExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                CapaDeNegocios.PlanillaNueva.blPlanilla blPlanilla = new CapaDeNegocios.PlanillaNueva.blPlanilla();
+                CapaDeNegocios.PlanillaNueva.cnPlanilla oPlanilla = new CapaDeNegocios.PlanillaNueva.cnPlanilla();
+                CapaDeNegocios.Reportes.Planilla.cReporteExcel oReporte = new CapaDeNegocios.Reportes.Planilla.cReporteExcel();
+
+                oPlanilla = blPlanilla.TraerPlanilla(sidtplanilla);
+
+                SaveFileDialog fichero = new SaveFileDialog();
+                fichero.Filter = "xls (*.xls)|*.xls";
+                fichero.FileName = "Planilla_" + oPlanilla.numeroPlanilla + "_" + cboMes.Text + "_" + cboAño.Text + ".xls";
+                if (fichero.ShowDialog() == DialogResult.OK)
+                {
+                    oReporte.ExportarPlanillaExcel(fichero.FileName, oPlanilla, cDatosGeneralesEmpresa.RUC, cDatosGeneralesEmpresa.NombreEmpresa, cDatosGeneralesEmpresa.Lugar, cDatosGeneralesEmpresa.NombreOficina);
+                    FileInfo file = new FileInfo(fichero.FileName);
+                    bool estaAbierto = IsFileinUse(file, fichero.FileName);
+
+                    if (!estaAbierto)
+                    {
+                        System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                        proc.EnableRaisingEvents = false;
+                        proc.StartInfo.FileName = fichero.FileName;
+                        proc.Start();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El archivo ya esta abierto", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al exportar a excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

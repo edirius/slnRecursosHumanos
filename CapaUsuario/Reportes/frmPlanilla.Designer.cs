@@ -518,6 +518,7 @@
             this.btnExportarExcel.Text = "E&xportar Excel";
             this.btnExportarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExportarExcel.UseVisualStyleBackColor = false;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
             // 
             // frmPlanilla
             // 

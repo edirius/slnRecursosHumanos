@@ -322,14 +322,15 @@ namespace CapaDeNegocios.PlanillaNueva
             {
                 List<cnDetallePlanillaEgresos> miListaDetalleDescuentos = new List<cnDetallePlanillaEgresos>();
                 DataTable ListaAuxiliarEgresos = Conexion.GDatos.TraerDataTable("spTraerDetalleDescuentos", miDetallePlanilla.codigo);
+
                 if (ListaAuxiliarEgresos.Rows.Count > 0)
                 {
                     for (int i = 0; i < ListaAuxiliarEgresos.Rows.Count; i++)
                     {
                         cnDetallePlanillaEgresos descuentoAuxiliar = new  cnDetallePlanillaEgresos();
-                        descuentoAuxiliar.Codigo = Convert.ToInt32(ListaAuxiliarEgresos.Rows[0][0]);
-                        descuentoAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarEgresos.Rows[0][1]);
-                        descuentoAuxiliar.MaestroDescuentos = TraerMaestroDescuento(Convert.ToInt16(ListaAuxiliarEgresos.Rows[0][2]));  
+                        descuentoAuxiliar.Codigo = Convert.ToInt32(ListaAuxiliarEgresos.Rows[i][0]);
+                        descuentoAuxiliar.Monto = Convert.ToDouble(ListaAuxiliarEgresos.Rows[i][1]);
+                        descuentoAuxiliar.MaestroDescuentos = TraerMaestroDescuento(Convert.ToInt16(ListaAuxiliarEgresos.Rows[i][2]));  
                         miListaDetalleDescuentos.Add(descuentoAuxiliar);
                     }
                 }
