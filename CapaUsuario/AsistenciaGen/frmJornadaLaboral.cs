@@ -225,6 +225,8 @@ namespace CapaUsuario.AsistenciaGen
         {
 
             miCatalogo.ActualizarDetalleSuspensionLaboral(vJordanaLaboral.AsistenciaMes, vJordanaLaboral.JornadaLaboral);
+            
+            txtTotalMinutos.Text = vJordanaLaboral.AsistenciaMes.TotalMinutosTarde.ToString();
             Iniciar();
 
         }

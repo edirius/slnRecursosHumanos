@@ -329,13 +329,16 @@ namespace CapaDeNegocios.Asistencia
                                     //pico antes del horario
                                     if (_PicadoEntrada.Picado.TimeOfDay <= miTurno.InicioTurno.AddMinutes(miTurno.ToleranciaInicio).TimeOfDay)
                                     {
-                                        MinutosTarde = 0;
+                                        _MinutosTarde = 0;
                                         _Tarde = false;
                                         _Falta = TipoFalta.SinFalta;
                                     }
                                     else
                                     {
-                                        MinutosTarde = (miTurno.InicioTurno.AddMinutes(miTurno.ToleranciaFalta) - _PicadoEntrada.Picado.TimeOfDay).Minute;
+                                        TimeSpan A = miTurno.InicioTurno.TimeOfDay;
+                                        TimeSpan B = _PicadoEntrada.Picado.TimeOfDay;
+                                        TimeSpan C = B - A;
+                                        _MinutosTarde = (_PicadoEntrada.Picado.TimeOfDay - miTurno.InicioTurno.TimeOfDay ).Minutes;
                                         _Tarde = true;
                                         _Falta = TipoFalta.SinFalta;
                                     }

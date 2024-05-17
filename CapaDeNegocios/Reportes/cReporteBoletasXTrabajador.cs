@@ -779,7 +779,7 @@ namespace CapaDeNegocios.Reportes
                                 tituloRegimen.Contenido = "D.L. 1057 CAS";
                                 break;
                             case 2:
-                                tituloRegimen.Contenido = "D.L. 726";
+                                tituloRegimen.Contenido = "D.L. 276";
                                 break;
                             case 3:
                                 tituloRegimen.Contenido = "D.L. 728";
