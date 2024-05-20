@@ -19,7 +19,11 @@ namespace CapaDeNegocios.PlanillaNueva
         public double totalAportacionesTrabajador { get; set; }
         public double totalDescuentos { get; set; }
         public double totalAportacionesEmpleador { get; set; }
+        public double totalDescuentoAFP { get; set; }
         public double netoACobrar { get; set; }
+        public cAFP afp { get; set; }
+        public string cuspp { get; set; }
+        public string comision { get; set; }
 
         public List<cnDetallePlanillaIngresos> ListaDetalleIngresos { get; set; }
         public List<cnDetallePlanillaEgresos > ListaDetalleEgresos { get; set; }
@@ -33,6 +37,7 @@ namespace CapaDeNegocios.PlanillaNueva
             ListaDetalleEgresos = new List<cnDetallePlanillaEgresos>();
             ListaDetalleAportacionesEmpleador = new List<cnDetallePlanillaAportacionesEmpleador>();
             ListaDetalleAportacionesTrabajador = new List<cnDetallePlanillaAportacionesTrabajador>();
+            
         }
     }
 }

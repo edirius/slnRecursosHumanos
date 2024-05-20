@@ -231,6 +231,13 @@ namespace CapaDeNegocios.PlanillaNueva
                         detalleAuxiliar.ListaDetalleIngresos = TraerListaIngresos(detalleAuxiliar);
                         detalleAuxiliar.ListaDetalleEgresos = TraerListaDescuentos(detalleAuxiliar);
                         detalleAuxiliar.ListaDetalleAportacionesTrabajador = TraerListaAportacionesTrabajador(detalleAuxiliar);
+                        foreach (cnDetallePlanillaAportacionesTrabajador item in detalleAuxiliar.ListaDetalleAportacionesTrabajador)
+                        {
+                            if (item.MaestroAportacionTrabajador.Codigo == "0608" || item.MaestroAportacionTrabajador.Codigo == "0601" || item.MaestroAportacionTrabajador.Codigo == "0606")
+                            {
+                                detalleAuxiliar.totalDescuentoAFP += item.Monto;
+                            }
+                        }
                         detalleAuxiliar.ListaDetalleAportacionesEmpleador = TraerListaAportacionesEmpleador(detalleAuxiliar);
                         ListaDetalles.Add(detalleAuxiliar);
                     }
@@ -533,6 +540,8 @@ namespace CapaDeNegocios.PlanillaNueva
                 {
                     auxiliarDetalle.ListaDetalleAportacionesEmpleador[n].Monto += miPlanilla.ListaDetalle[i].ListaDetalleAportacionesEmpleador[n].Monto;   
                 }
+
+                auxiliarDetalle.netoACobrar += miPlanilla.ListaDetalle[i].netoACobrar;
             }
 
          

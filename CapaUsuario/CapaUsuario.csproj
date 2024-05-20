@@ -490,6 +490,12 @@
     <Compile Include="Reportes\frmBoletaPagoxTrabajador.Designer.cs">
       <DependentUpon>frmBoletaPagoxTrabajador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\frmOpcionExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmOpcionExcel.Designer.cs">
+      <DependentUpon>frmOpcionExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\frmPlanilla2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1805,6 +1811,9 @@
     <EmbeddedResource Include="Reportes\frmBoletaPagoxTrabajador.resx">
       <DependentUpon>frmBoletaPagoxTrabajador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmOpcionExcel.resx">
+      <DependentUpon>frmOpcionExcel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmPlanilla2.resx">
       <DependentUpon>frmPlanilla2.cs</DependentUpon>
     </EmbeddedResource>
@@ -2239,6 +2248,8 @@
     <None Include="Resources\pdf32x32.ico" />
     <None Include="Resources\exit_32x32.ico" />
     <None Include="Resources\address_book_card_users.ico" />
+    <None Include="Resources\exportacionexcel01.jpg" />
+    <None Include="Resources\exportacionexcel02.jpg" />
     <Content Include="Resources\question.png" />
     <None Include="Resources\logo_MuniMaras.png" />
     <None Include="Resources\pdf3.jpg" />

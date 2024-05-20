@@ -11,21 +11,29 @@ using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace CapaDeNegocios.Reportes.Planilla
 {
+    public enum enumTipoReporte
+    {
+        reporte1,
+        reporte2,
+        reporte3
+    }
+
     public class cReporteExcel
     {
+        
         CapaDeNegocios.PlanillaNueva.blPlanilla oblPlanilla = new PlanillaNueva.blPlanilla();
 
-        public void ExportarPlanillaExcel(string ruta, PlanillaNueva.cnPlanilla oPlanilla, string ruc, string municipalidad, string lugar, string nombreOficina)
+        public void ExportarPlanillaExcel(string ruta, PlanillaNueva.cnPlanilla oPlanilla, string ruc, string municipalidad, string lugar, string nombreOficina, enumTipoReporte tipoReporte)
         {
             try
             {
                 SpreadsheetLight.SLDocument miReporte;
 
                 miReporte = new SpreadsheetLight.SLDocument();
-                int contador = 0;
+
 
                 SLBorder bordeCuadrado = new SLBorder();
-                bordeCuadrado.SetTopBorder(BorderStyleValues.Thin, System.Drawing.Color.Black); 
+                bordeCuadrado.SetTopBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
                 bordeCuadrado.SetBottomBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
                 bordeCuadrado.SetLeftBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
                 bordeCuadrado.SetRightBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
@@ -82,116 +90,22 @@ namespace CapaDeNegocios.Reportes.Planilla
                 miReporte.SetColumnWidth("F", 9);
                 miReporte.SetCellStyle("F10", estiloTituloReporte);
 
-                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanilla item in oPlanilla.ListaDetalle)
+                switch (tipoReporte)
                 {
-                    contador++;
-                    string celda = (contador + 10).ToString();
-                    miReporte.SetCellValue("A" + celda, contador.ToString());
-                    miReporte.SetCellStyle("A" + celda, estiloCeldaReporte);
-
-                    miReporte.SetCellValue("B" + celda, item.miTrabajador.Nombres + " " + item.miTrabajador.ApellidoPaterno + " " + item.miTrabajador.ApellidoMaterno);
-                    miReporte.SetCellStyle("B" + celda, estiloCeldaTextoReporte);
-                    miReporte.SetCellValue("C" + celda, item.cargo);
-                    miReporte.SetCellStyle("C" + celda, estiloCeldaTextoReporte);
-                    miReporte.SetCellValue("D" + celda, item.miTrabajador.Dni);
-                    miReporte.SetCellStyle("D" + celda, estiloCeldaTextoReporte);
-                    miReporte.SetCellValue("E" + celda, item.fechaInicio.ToShortDateString());
-                    miReporte.SetCellStyle("E" + celda, estiloCeldaTextoReporte);
-                    //Ojoooooooooooooooooooooooooooooooooo
-                    miReporte.SetCellValue("F" + celda, item.miTrabajador.ListaRegimenPensionario.Last().MiAFP.Nombre + Environment.NewLine + item.miTrabajador.ListaRegimenPensionario.Last().TipoComision
-                        + Environment.NewLine + item.miTrabajador.ListaRegimenPensionario.Last().Cuspp);
-                    miReporte.SetCellStyle("F" + celda, estiloCeldaTextoReporte);
-                    //PARTE INGRESOS
-                    string Ingresos = "";
-                    string TituloIngresos = "";
-                    foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaIngresos item2 in item.ListaDetalleIngresos)
-                    {
-                        TituloIngresos = TituloIngresos + item2.MaestroIngresos.Abreviacion + Environment.NewLine;
-                        Ingresos = Ingresos + item2.Monto.ToString() + Environment.NewLine;
-                    }
-                    miReporte.SetCellValue("G10", TituloIngresos);
-                    miReporte.SetCellStyle("G10", estiloTituloReporte);
-                    miReporte.SetCellValue("G" + celda, Ingresos);
-                    miReporte.SetCellStyle("G" + celda, estiloCeldaReporte);
-                    miReporte.SetCellValue("H10", "TOTAL INGRESOS");
-                    miReporte.SetCellStyle("H10", estiloTituloReporte);
-                    miReporte.SetCellValue("H" + celda, item.totalIngreso);
-                    miReporte.SetCellStyle("H" + celda, estiloCeldaReporte);
-                    //PARTE APORTACIONES TRABAJADOR
-                    string AportacionesT = "";
-                    string TituloAportacionesT = "";
-                    foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador item3 in item.ListaDetalleAportacionesTrabajador)
-                    {
-                        TituloAportacionesT = TituloAportacionesT + item3.MaestroAportacionTrabajador.Abreviacion + Environment.NewLine;
-                        AportacionesT = AportacionesT + item3.Monto.ToString() + Environment.NewLine;
-                    }
-                    miReporte.SetCellValue("I10", TituloAportacionesT);
-                    miReporte.SetCellStyle("I10", estiloTituloReporte);
-                    miReporte.SetCellValue("I" + celda, AportacionesT);
-                    miReporte.SetCellStyle("I" + celda, estiloCeldaReporte);
-                    miReporte.SetCellValue("J10", "TOTAL APORTACIONES TRABAJADOR");
-                    miReporte.SetCellStyle("J10", estiloTituloReporte);
-                    miReporte.SetCellValue("J" + celda, item.totalAportacionesTrabajador);
-                    miReporte.SetCellStyle("J" + celda, estiloCeldaReporte);
-                    //PARTE DESCUENTOS TRABAJADOR
-                    string Descuentos = "";
-                    string TituloDescuentos = "";
-                    foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaEgresos item4 in item.ListaDetalleEgresos)
-                    {
-                        TituloDescuentos = TituloDescuentos + item4.MaestroDescuentos.Abreviacion + Environment.NewLine;
-                        Descuentos = Descuentos + item4.Monto.ToString() + Environment.NewLine;
-                    }
-                    miReporte.SetCellValue("K10", TituloDescuentos);
-                    miReporte.SetCellStyle("K10", estiloTituloReporte);
-                    miReporte.SetCellValue("K" + celda, Descuentos);
-                    miReporte.SetCellStyle("K" + celda, estiloCeldaReporte);
-                    miReporte.SetCellValue("L10", "TOTAL DESCUENTOS TRABAJADOR");
-                    miReporte.SetCellStyle("L10", estiloTituloReporte);
-                    miReporte.SetCellValue("L" + celda, item.totalDescuentos);
-                    miReporte.SetCellStyle("L" + celda, estiloCeldaReporte);
-                    //PARTE APORTACIONES EMPLEADOR
-                    string AportacionesE = "";
-                    string TituloAportacionesE = "";
-                    foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesEmpleador item5 in item.ListaDetalleAportacionesEmpleador)
-                    {
-                        TituloAportacionesE = TituloAportacionesE + item5.MaestroAportacionesEmpleador.Abreviacion + Environment.NewLine;
-                        AportacionesE = AportacionesE + item5.Monto.ToString() + Environment.NewLine;
-                    }
-                    miReporte.SetCellValue("M10", TituloAportacionesE);
-                    miReporte.SetCellStyle("M10", estiloTituloReporte);
-                    miReporte.SetCellValue("M" + celda, AportacionesE);
-                    miReporte.SetCellStyle("M" + celda, estiloCeldaReporte);
-                    miReporte.SetCellValue("N10", "TOTAL APORTACIONES EMPLEADOR");
-                    miReporte.SetCellStyle("N10", estiloTituloReporte);
-                    miReporte.SetCellValue("N" + celda, item.totalAportacionesEmpleador);
-                    miReporte.SetCellStyle("N" + celda, estiloCeldaReporte);
-
-                    miReporte.SetCellValue("O10", "NETO A COBRAR");
-                    miReporte.SetCellStyle("O10", estiloTituloReporte);
-                    miReporte.SetCellValue("O" + celda, item.netoACobrar.ToString());
-                    miReporte.SetCellStyle("O" + celda, estiloCeldaReporte);
-                    miReporte.SetCellValue("P10", "DIAS LABORADOS");
-                    miReporte.SetCellStyle("P10", estiloTituloReporte);
-                    miReporte.SetCellValue("P" + celda, item.diasLaborados.ToString());
-                    miReporte.SetCellStyle("P" + celda, estiloCeldaReporte);
-                    miReporte.SetCellValue("Q10", "OBSERVACIONES");
-                    miReporte.SetCellStyle("Q10", estiloTituloReporte);
-                    miReporte.SetCellValue("Q" + celda, "");
-                    miReporte.SetCellStyle("Q" + celda, estiloCeldaReporte);
+                    case enumTipoReporte.reporte1:
+                        llenarReporte1(miReporte, oPlanilla, lugar);
+                        break;
+                    case enumTipoReporte.reporte2:
+                        break;
+                    case enumTipoReporte.reporte3:
+                        break;
+                    default:
+                        break;
                 }
+
+                CapaDeNegocios.PlanillaNueva.cnDetallePlanilla ListaTotales = oblPlanilla.ListaTotales(oPlanilla);
+
                 
-
-              
-
-                SLStyle estiloTitulo = new SLStyle();
-                estiloTitulo.SetPatternFill(PatternValues.Solid, System.Drawing.Color.LightGray, System.Drawing.Color.LightGray);
-                estiloTitulo.SetBottomBorder(BorderStyleValues.Thin, SLThemeColorIndexValues.Dark1Color);
-                estiloTitulo.SetTopBorder(BorderStyleValues.Thin, SLThemeColorIndexValues.Dark1Color);
-                estiloTitulo.SetRightBorder(BorderStyleValues.Thin, SLThemeColorIndexValues.Dark1Color);
-                estiloTitulo.SetLeftBorder(BorderStyleValues.Thin, SLThemeColorIndexValues.Dark1Color);
-
-                miReporte.SetCellValue("A3", "Nº");
-                miReporte.SetCellStyle("A3", estiloTitulo);
 
                 miReporte.SaveAs(ruta);
             }
@@ -200,5 +114,309 @@ namespace CapaDeNegocios.Reportes.Planilla
                 throw new cReglaNegociosException("Error en el metodo ExportarPlanillaExcel: " + ex.Message);
             }
         }
+
+        private void llenarReporte1(SpreadsheetLight.SLDocument miReporte, PlanillaNueva.cnPlanilla oPlanilla, string lugar)
+        {
+            int contador = 0;
+            SLBorder bordeCuadrado = new SLBorder();
+            bordeCuadrado.SetTopBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
+            bordeCuadrado.SetBottomBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
+            bordeCuadrado.SetLeftBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
+            bordeCuadrado.SetRightBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
+
+            SLStyle estiloTituloReporte = new SLStyle();
+            estiloTituloReporte.SetFontBold(true);
+            estiloTituloReporte.SetHorizontalAlignment(HorizontalAlignmentValues.Center);
+            estiloTituloReporte.SetPatternFill(PatternValues.Solid, System.Drawing.Color.LightGray, System.Drawing.Color.LightGray);
+            estiloTituloReporte.SetWrapText(true);
+            estiloTituloReporte.Border = bordeCuadrado;
+
+            SLStyle estiloCeldaReporte = new SLStyle();
+            estiloCeldaReporte.SetHorizontalAlignment(HorizontalAlignmentValues.Right);
+            estiloCeldaReporte.SetVerticalAlignment(VerticalAlignmentValues.Bottom);
+            estiloCeldaReporte.SetWrapText(true);
+            estiloCeldaReporte.Border = bordeCuadrado;
+
+            SLStyle estiloCeldaTextoReporte = new SLStyle();
+            estiloCeldaTextoReporte.SetHorizontalAlignment(HorizontalAlignmentValues.Left);
+            estiloCeldaTextoReporte.SetWrapText(true);
+            estiloCeldaTextoReporte.Border = bordeCuadrado;
+
+            string celda = "";
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanilla item in oPlanilla.ListaDetalle)
+            {
+                contador++;
+                celda = (contador + 10).ToString();
+                miReporte.SetCellValue("A" + celda, contador.ToString());
+                miReporte.SetCellStyle("A" + celda, estiloCeldaReporte);
+
+                miReporte.SetCellValue("B" + celda, item.miTrabajador.Nombres + " " + item.miTrabajador.ApellidoPaterno + " " + item.miTrabajador.ApellidoMaterno);
+                miReporte.SetCellStyle("B" + celda, estiloCeldaTextoReporte);
+                miReporte.SetCellValue("C" + celda, item.cargo);
+                miReporte.SetCellStyle("C" + celda, estiloCeldaTextoReporte);
+                miReporte.SetCellValue("D" + celda, item.miTrabajador.Dni);
+                miReporte.SetCellStyle("D" + celda, estiloCeldaTextoReporte);
+                miReporte.SetCellValue("E" + celda, item.fechaInicio.ToShortDateString());
+                miReporte.SetCellStyle("E" + celda, estiloCeldaTextoReporte);
+                //Ojoooooooooooooooooooooooooooooooooo
+                item.afp = item.miTrabajador.ListaRegimenPensionario.Last().MiAFP;
+                item.cuspp = item.miTrabajador.ListaRegimenPensionario.Last().Cuspp;
+                item.comision = item.miTrabajador.ListaRegimenPensionario.Last().TipoComision;
+                miReporte.SetCellValue("F" + celda, item.afp.Nombre + Environment.NewLine + item.comision + Environment.NewLine + item.comision);
+                miReporte.SetCellStyle("F" + celda, estiloCeldaTextoReporte);
+                
+                //PARTE INGRESOS
+                string Ingresos = "";
+                string TituloIngresos = "";
+                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaIngresos item2 in item.ListaDetalleIngresos)
+                {
+                    TituloIngresos = TituloIngresos + item2.MaestroIngresos.Abreviacion + Environment.NewLine;
+                    Ingresos = Ingresos + item2.Monto.ToString() + Environment.NewLine;
+                }
+                miReporte.SetCellValue("G10", TituloIngresos);
+                miReporte.SetCellStyle("G10", estiloTituloReporte);
+                miReporte.SetCellValue("G" + celda, Ingresos);
+                miReporte.SetCellStyle("G" + celda, estiloCeldaReporte);
+                miReporte.SetCellValue("H10", "TOTAL INGRESOS");
+                miReporte.SetCellStyle("H10", estiloTituloReporte);
+                miReporte.SetCellValue("H" + celda, item.totalIngreso);
+                miReporte.SetCellStyle("H" + celda, estiloCeldaReporte);
+                //PARTE APORTACIONES TRABAJADOR
+                string AportacionesT = "";
+                string TituloAportacionesT = "";
+                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador item3 in item.ListaDetalleAportacionesTrabajador)
+                {
+                    TituloAportacionesT = TituloAportacionesT + item3.MaestroAportacionTrabajador.Abreviacion + Environment.NewLine;
+                    AportacionesT = AportacionesT + item3.Monto.ToString() + Environment.NewLine;
+                }
+                miReporte.SetCellValue("I10", TituloAportacionesT);
+                miReporte.SetCellStyle("I10", estiloTituloReporte);
+                miReporte.SetCellValue("I" + celda, AportacionesT);
+                miReporte.SetCellStyle("I" + celda, estiloCeldaReporte);
+                miReporte.SetCellValue("J10", "TOTAL APORTACIONES TRABAJADOR");
+                miReporte.SetCellStyle("J10", estiloTituloReporte);
+                miReporte.SetCellValue("J" + celda, item.totalAportacionesTrabajador);
+                miReporte.SetCellStyle("J" + celda, estiloCeldaReporte);
+                //PARTE DESCUENTOS TRABAJADOR
+                string Descuentos = "";
+                string TituloDescuentos = "";
+                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaEgresos item4 in item.ListaDetalleEgresos)
+                {
+                    TituloDescuentos = TituloDescuentos + item4.MaestroDescuentos.Abreviacion + Environment.NewLine;
+                    Descuentos = Descuentos + item4.Monto.ToString() + Environment.NewLine;
+                }
+                miReporte.SetCellValue("K10", TituloDescuentos);
+                miReporte.SetCellStyle("K10", estiloTituloReporte);
+                miReporte.SetCellValue("K" + celda, Descuentos);
+                miReporte.SetCellStyle("K" + celda, estiloCeldaReporte);
+                miReporte.SetCellValue("L10", "TOTAL DESCUENTOS TRABAJADOR");
+                miReporte.SetCellStyle("L10", estiloTituloReporte);
+                miReporte.SetCellValue("L" + celda, item.totalDescuentos);
+                miReporte.SetCellStyle("L" + celda, estiloCeldaReporte);
+                //PARTE APORTACIONES EMPLEADOR
+                string AportacionesE = "";
+                string TituloAportacionesE = "";
+                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesEmpleador item5 in item.ListaDetalleAportacionesEmpleador)
+                {
+                    TituloAportacionesE = TituloAportacionesE + item5.MaestroAportacionesEmpleador.Abreviacion + Environment.NewLine;
+                    AportacionesE = AportacionesE + item5.Monto.ToString() + Environment.NewLine;
+                }
+                miReporte.SetCellValue("M10", TituloAportacionesE);
+                miReporte.SetCellStyle("M10", estiloTituloReporte);
+                miReporte.SetCellValue("M" + celda, AportacionesE);
+                miReporte.SetCellStyle("M" + celda, estiloCeldaReporte);
+                miReporte.SetCellValue("N10", "TOTAL APORTACIONES EMPLEADOR");
+                miReporte.SetCellStyle("N10", estiloTituloReporte);
+                miReporte.SetCellValue("N" + celda, item.totalAportacionesEmpleador);
+                miReporte.SetCellStyle("N" + celda, estiloCeldaReporte);
+
+                miReporte.SetCellValue("O10", "NETO A COBRAR");
+                miReporte.SetCellStyle("O10", estiloTituloReporte);
+                miReporte.SetCellValue("O" + celda, item.netoACobrar.ToString());
+                miReporte.SetCellStyle("O" + celda, estiloCeldaReporte);
+                miReporte.SetCellValue("P10", "DIAS LABORADOS");
+                miReporte.SetCellStyle("P10", estiloTituloReporte);
+                miReporte.SetCellValue("P" + celda, item.diasLaborados.ToString());
+                miReporte.SetCellStyle("P" + celda, estiloCeldaReporte);
+                miReporte.SetCellValue("Q10", "OBSERVACIONES");
+                miReporte.SetCellStyle("Q10", estiloTituloReporte);
+                miReporte.SetCellValue("Q" + celda, "");
+                miReporte.SetCellStyle("Q" + celda, estiloCeldaReporte);
+            }
+
+            //Parte Totales
+            contador++;
+            celda = (contador + 10).ToString();
+            CapaDeNegocios.PlanillaNueva.cnDetallePlanilla ListaTotales = oblPlanilla.ListaTotales(oPlanilla);
+
+
+
+            string totalIngresos = "";
+            double sumaIngresos = 0;
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaIngresos item in ListaTotales.ListaDetalleIngresos)
+            {
+                totalIngresos = totalIngresos + item.Monto.ToString() + Environment.NewLine;
+                sumaIngresos += item.Monto;
+            }
+            miReporte.SetCellValue("G" + celda, totalIngresos);
+            miReporte.SetCellStyle("G" + celda, estiloCeldaReporte);
+            miReporte.SetCellValue("H" + celda, sumaIngresos);
+
+            string totalAportacionesTrabajador = "";
+            double sumaAportaciones = 0;
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador item3 in ListaTotales.ListaDetalleAportacionesTrabajador)
+            {
+                totalAportacionesTrabajador += item3.Monto.ToString() + Environment.NewLine;
+                sumaAportaciones += item3.Monto;
+            }
+            miReporte.SetCellValue("I" + celda, totalAportacionesTrabajador);
+            miReporte.SetCellStyle("I" + celda, estiloCeldaReporte);
+            miReporte.SetCellValue("J" + celda, sumaAportaciones);
+
+            string totalDescuentos = "";
+            double sumaDescuentos = 0;
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaEgresos item2 in ListaTotales.ListaDetalleEgresos)
+            {
+                totalDescuentos += item2.Monto.ToString() + Environment.NewLine;
+                sumaDescuentos += item2.Monto;
+            }
+            miReporte.SetCellValue("K" + celda, totalDescuentos);
+            miReporte.SetCellStyle("K" + celda, estiloCeldaReporte);
+            miReporte.SetCellValue("L" + celda, sumaDescuentos);
+
+            string totalAportacionesEmpleador = "";
+            double sumaAportacionesEmpleador = 0;
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesEmpleador item4 in ListaTotales.ListaDetalleAportacionesEmpleador)
+            {
+                totalAportacionesEmpleador += item4.Monto.ToString() + Environment.NewLine;
+                sumaAportacionesEmpleador += item4.Monto;
+            }
+            miReporte.SetCellValue("M" + celda, totalAportacionesEmpleador);
+            miReporte.SetCellStyle("M" + celda, estiloCeldaReporte);
+            miReporte.SetCellValue("N" + celda, sumaAportacionesEmpleador);
+
+            miReporte.SetCellValue("O" + celda, ListaTotales.netoACobrar);
+
+            contador++;
+            celda = (contador + 10).ToString();
+            miReporte.SetCellValue("A" + celda, lugar + ", " + DateTime.Now.Day + " de " +DateTime.Now.ToString("mmm") + " " +DateTime.Now.Year.ToString());
+            contador++;
+            contador++;
+            celda = (contador + 10).ToString();
+
+            //parte resumen afp
+
+            miReporte.SetCellValue("A" + celda, "RESUMEN AFP");
+            miReporte.SetCellValue("B" + celda, "");
+            List<cDetalleResumenAFP> ResumenAFP = new List<cDetalleResumenAFP>();
+            cListaAFP listaAFP = new cListaAFP();
+            List<cAFP> afps = listaAFP.TraerListaAFPS();
+
+            foreach (cAFP item5 in afps )
+            {
+                cDetalleResumenAFP resumen = new cDetalleResumenAFP();
+                resumen.AFP = item5;
+                resumen.Monto = 0;
+                ResumenAFP.Add(resumen);
+            }
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanilla item5 in oPlanilla.ListaDetalle)
+            {
+                foreach (cDetalleResumenAFP item6 in ResumenAFP)
+                {
+                    if (item6.AFP.CodigoAFP == item5.afp.CodigoAFP)
+                    {
+                        item6.Monto += item5.totalDescuentoAFP;
+                    }
+                }
+            }
+
+            foreach (cDetalleResumenAFP item7 in ResumenAFP)
+            {
+                if (item7.Monto > 0)
+                {
+                    contador++;
+                    celda = (contador + 10).ToString();
+                    miReporte.SetCellValue("B" + celda, item7.AFP.Nombre);
+                    miReporte.SetCellValue("C" + celda, item7.Monto);
+                }
+            }
+
+            //parte debe haber
+
+            List<cDetalleDebeHaber> ResumenDebeHaber = new List<cDetalleDebeHaber>();
+
+            cDetalleDebeHaber debeHaberIngresos = new cDetalleDebeHaber();
+            debeHaberIngresos.TipoHaberDebe = enumTipoHaberDebe.haber;
+            debeHaberIngresos.Concepto = "TOTAL INGRESOS";
+            debeHaberIngresos.Monto = sumaIngresos;
+            ResumenDebeHaber.Add(debeHaberIngresos);
+
+            cDetalleDebeHaber debeHaberAportaciones = new cDetalleDebeHaber();
+            debeHaberAportaciones.TipoHaberDebe = enumTipoHaberDebe.haber;
+            debeHaberAportaciones.Concepto = "TOTAL APORTACIONES";
+            debeHaberAportaciones.Monto = sumaAportacionesEmpleador;
+            ResumenDebeHaber.Add(debeHaberAportaciones);
+
+            cDetalleDebeHaber debeHaberNeto = new cDetalleDebeHaber();
+            debeHaberNeto.TipoHaberDebe = enumTipoHaberDebe.debe;
+            debeHaberNeto.Concepto = "NETO A COBRAR";
+            debeHaberNeto.Monto = ListaTotales.netoACobrar;
+            ResumenDebeHaber.Add(debeHaberNeto);
+
+            cDetalleDebeHaber debeHaberAFP = new cDetalleDebeHaber();
+            debeHaberAFP.TipoHaberDebe = enumTipoHaberDebe.debe;
+            debeHaberAFP.Concepto = "AFP";
+            debeHaberAFP.Monto = ListaTotales.totalDescuentoAFP;
+            ResumenDebeHaber.Add(debeHaberAFP);
+
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador item in ListaTotales.ListaDetalleAportacionesTrabajador)
+            {
+                if (item.MaestroAportacionTrabajador.Codigo != "0608" && item.MaestroAportacionTrabajador.Codigo != "0601" && item.MaestroAportacionTrabajador.Codigo != "0606")
+                {
+                    cDetalleDebeHaber debeHaber = new cDetalleDebeHaber();
+                    debeHaber.TipoHaberDebe = enumTipoHaberDebe.debe;
+                    debeHaber.Concepto = item.MaestroAportacionTrabajador.Abreviacion;
+                    debeHaber.Monto = item.Monto;
+                    ResumenDebeHaber.Add(debeHaber);
+                }
+            }
+
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaEgresos item in ListaTotales.ListaDetalleEgresos)
+            {
+                cDetalleDebeHaber debeHaber = new cDetalleDebeHaber();
+                debeHaber.TipoHaberDebe = enumTipoHaberDebe.debe;
+                debeHaber.Concepto = item.MaestroDescuentos.Abreviacion;
+                debeHaber.Monto = item.Monto;
+                ResumenDebeHaber.Add(debeHaber);
+            }
+
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesEmpleador item in ListaTotales.ListaDetalleAportacionesEmpleador)
+            {
+                cDetalleDebeHaber debeHaber = new cDetalleDebeHaber();
+                debeHaber.TipoHaberDebe = enumTipoHaberDebe.debe;
+                debeHaber.Concepto = item.MaestroAportacionesEmpleador.Abreviacion;
+                debeHaber.Monto = item.Monto;
+                ResumenDebeHaber.Add(debeHaber);
+            }
+
+            foreach (cDetalleDebeHaber item7 in ResumenDebeHaber)
+            {
+                contador++;
+                celda = (contador + 10).ToString();
+                if (item7.TipoHaberDebe == enumTipoHaberDebe.haber)
+                {
+                    miReporte.SetCellValue("F" + celda, item7.Concepto);
+                    miReporte.SetCellValue("G" + celda, item7.Monto);
+                }
+                else
+                {
+                    miReporte.SetCellValue("F" + celda, item7.Concepto);
+                    miReporte.SetCellValue("H" + celda, item7.Monto);
+                }
+                
+            }
+        }
+
+        
     }
 }

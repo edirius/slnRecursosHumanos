@@ -5617,33 +5617,43 @@ namespace CapaUsuario.Reportes
         {
             try
             {
-                CapaDeNegocios.PlanillaNueva.blPlanilla blPlanilla = new CapaDeNegocios.PlanillaNueva.blPlanilla();
-                CapaDeNegocios.PlanillaNueva.cnPlanilla oPlanilla = new CapaDeNegocios.PlanillaNueva.cnPlanilla();
-                CapaDeNegocios.Reportes.Planilla.cReporteExcel oReporte = new CapaDeNegocios.Reportes.Planilla.cReporteExcel();
+                frmOpcionExcel fOpcionExcel = new frmOpcionExcel();
 
-                oPlanilla = blPlanilla.TraerPlanilla(sidtplanilla);
-
-                SaveFileDialog fichero = new SaveFileDialog();
-                fichero.Filter = "xls (*.xls)|*.xls";
-                fichero.FileName = "Planilla_" + oPlanilla.numeroPlanilla + "_" + cboMes.Text + "_" + cboAño.Text + ".xls";
-                if (fichero.ShowDialog() == DialogResult.OK)
+                if (fOpcionExcel.ShowDialog() == DialogResult.OK)
                 {
-                    oReporte.ExportarPlanillaExcel(fichero.FileName, oPlanilla, cDatosGeneralesEmpresa.RUC, cDatosGeneralesEmpresa.NombreEmpresa, cDatosGeneralesEmpresa.Lugar, cDatosGeneralesEmpresa.NombreOficina);
-                    FileInfo file = new FileInfo(fichero.FileName);
-                    bool estaAbierto = IsFileinUse(file, fichero.FileName);
+                    CapaDeNegocios.PlanillaNueva.blPlanilla blPlanilla = new CapaDeNegocios.PlanillaNueva.blPlanilla();
+                    CapaDeNegocios.PlanillaNueva.cnPlanilla oPlanilla = new CapaDeNegocios.PlanillaNueva.cnPlanilla();
+                    CapaDeNegocios.Reportes.Planilla.cReporteExcel oReporte = new CapaDeNegocios.Reportes.Planilla.cReporteExcel();
 
-                    if (!estaAbierto)
+                    oPlanilla = blPlanilla.TraerPlanilla(sidtplanilla);
+
+                    SaveFileDialog fichero = new SaveFileDialog();
+                    fichero.Filter = "xls (*.xls)|*.xls";
+                    fichero.FileName = "Planilla_" + oPlanilla.numeroPlanilla + "_" + cboMes.Text + "_" + cboAño.Text + ".xls";
+                    if (fichero.ShowDialog() == DialogResult.OK)
                     {
-                        System.Diagnostics.Process proc = new System.Diagnostics.Process();
-                        proc.EnableRaisingEvents = false;
-                        proc.StartInfo.FileName = fichero.FileName;
-                        proc.Start();
-                    }
-                    else
-                    {
-                        MessageBox.Show("El archivo ya esta abierto", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        oReporte.ExportarPlanillaExcel(fichero.FileName, oPlanilla, cDatosGeneralesEmpresa.RUC, cDatosGeneralesEmpresa.NombreEmpresa, cDatosGeneralesEmpresa.Lugar, cDatosGeneralesEmpresa.NombreOficina, (CapaDeNegocios.Reportes.Planilla.enumTipoReporte)fOpcionExcel.tipoReporte);
+                        FileInfo file = new FileInfo(fichero.FileName);
+                        bool estaAbierto = IsFileinUse(file, fichero.FileName);
+
+                        if (!estaAbierto)
+                        {
+                            System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                            proc.EnableRaisingEvents = false;
+                            proc.StartInfo.FileName = fichero.FileName;
+                            proc.Start();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El archivo ya esta abierto", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Operacion Cancelada", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                
             }
             catch (Exception ex)
             {
