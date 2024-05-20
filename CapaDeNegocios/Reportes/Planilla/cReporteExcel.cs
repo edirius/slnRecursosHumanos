@@ -56,15 +56,40 @@ namespace CapaDeNegocios.Reportes.Planilla
                 estiloCeldaTextoReporte.SetWrapText(true);
                 estiloCeldaTextoReporte.Border = bordeCuadrado;
 
+                SLStyle estiloTITULOMunicipalidad = new SLStyle();
+                estiloTITULOMunicipalidad.SetHorizontalAlignment(HorizontalAlignmentValues.Center);
+                estiloTITULOMunicipalidad.SetWrapText(true);
+                estiloTITULOMunicipalidad.Font = new SLFont();
+                estiloTITULOMunicipalidad.Font.FontSize = 14;
+                estiloTITULOMunicipalidad.Font.Bold = true;
+
+                SLStyle estiloTITULOMeta = new SLStyle();
+                estiloTITULOMeta.SetHorizontalAlignment(HorizontalAlignmentValues.Left);
+                estiloTITULOMeta.SetWrapText(true);
+                estiloTITULOMeta.Font = new SLFont();
+                estiloTITULOMeta.Font.FontSize = 14;
+                estiloTITULOMeta.Font.Bold = true;
+
+                miReporte.MergeWorksheetCells("A1", "Q1");
+                miReporte.MergeWorksheetCells("A2", "Q2");
+                miReporte.MergeWorksheetCells("A3", "Q3");
+                miReporte.MergeWorksheetCells("A4", "Q4");
+                miReporte.MergeWorksheetCells("A6", "Q6");
+                miReporte.MergeWorksheetCells("A8", "Q8");
 
                 miReporte.SetCellValue("A2", municipalidad);
+                miReporte.SetCellStyle("A2", estiloTITULOMunicipalidad);
                 miReporte.SetCellValue("A3", nombreOficina);
+                miReporte.SetCellStyle("A3", estiloTITULOMunicipalidad);
 
                 miReporte.SetCellValue("A4", oPlanilla.Descripcion + " DE " + oPlanilla.Mes + " " + oPlanilla.Año);
+                miReporte.SetCellStyle("A4", estiloTITULOMunicipalidad);
 
                 miReporte.SetCellValue("A6", "META: " + oPlanilla.Meta.Numero + " " + oPlanilla.Meta.Nombre);
+                miReporte.SetCellStyle("A6", estiloTITULOMeta);
 
                 miReporte.SetCellValue("A8", "FUENTE FINANCIAMIENTO: " + oPlanilla.FuenteFinanciamiento.Descripcion);
+                miReporte.SetCellStyle("A8", estiloTITULOMeta);
 
                 miReporte.SetCellValue("A10", "Nº");
                 miReporte.SetColumnWidth("A", 4);
@@ -136,11 +161,19 @@ namespace CapaDeNegocios.Reportes.Planilla
             estiloCeldaReporte.SetVerticalAlignment(VerticalAlignmentValues.Bottom);
             estiloCeldaReporte.SetWrapText(true);
             estiloCeldaReporte.Border = bordeCuadrado;
+            
 
             SLStyle estiloCeldaTextoReporte = new SLStyle();
             estiloCeldaTextoReporte.SetHorizontalAlignment(HorizontalAlignmentValues.Left);
             estiloCeldaTextoReporte.SetWrapText(true);
             estiloCeldaTextoReporte.Border = bordeCuadrado;
+
+            SLStyle estiloTITULOMunicipalidad = new SLStyle();
+            estiloTITULOMunicipalidad.SetHorizontalAlignment(HorizontalAlignmentValues.Center);
+            estiloTITULOMunicipalidad.SetWrapText(true);
+            estiloTITULOMunicipalidad.Font = new SLFont();
+            estiloTITULOMunicipalidad.Font.FontSize = 14;
+
 
             string celda = "";
             foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanilla item in oPlanilla.ListaDetalle)
@@ -239,6 +272,7 @@ namespace CapaDeNegocios.Reportes.Planilla
                 miReporte.SetCellValue("P" + celda, item.diasLaborados.ToString());
                 miReporte.SetCellStyle("P" + celda, estiloCeldaReporte);
                 miReporte.SetCellValue("Q10", "OBSERVACIONES");
+                miReporte.SetColumnWidth("Q", 27);
                 miReporte.SetCellStyle("Q10", estiloTituloReporte);
                 miReporte.SetCellValue("Q" + celda, "");
                 miReporte.SetCellStyle("Q" + celda, estiloCeldaReporte);
@@ -258,9 +292,13 @@ namespace CapaDeNegocios.Reportes.Planilla
                 totalIngresos = totalIngresos + item.Monto.ToString() + Environment.NewLine;
                 sumaIngresos += item.Monto;
             }
+            miReporte.MergeWorksheetCells("A" + celda, "F" + celda);
+            miReporte.SetCellValue("A" + celda, "TOTAL");
+            miReporte.SetCellStyle("A" + celda, "F" + celda, estiloCeldaTextoReporte);
             miReporte.SetCellValue("G" + celda, totalIngresos);
             miReporte.SetCellStyle("G" + celda, estiloCeldaReporte);
             miReporte.SetCellValue("H" + celda, sumaIngresos);
+            miReporte.SetCellStyle("H" + celda, estiloCeldaReporte);
 
             string totalAportacionesTrabajador = "";
             double sumaAportaciones = 0;
@@ -272,6 +310,7 @@ namespace CapaDeNegocios.Reportes.Planilla
             miReporte.SetCellValue("I" + celda, totalAportacionesTrabajador);
             miReporte.SetCellStyle("I" + celda, estiloCeldaReporte);
             miReporte.SetCellValue("J" + celda, sumaAportaciones);
+            miReporte.SetCellStyle("J" + celda, estiloCeldaReporte);
 
             string totalDescuentos = "";
             double sumaDescuentos = 0;
@@ -283,6 +322,7 @@ namespace CapaDeNegocios.Reportes.Planilla
             miReporte.SetCellValue("K" + celda, totalDescuentos);
             miReporte.SetCellStyle("K" + celda, estiloCeldaReporte);
             miReporte.SetCellValue("L" + celda, sumaDescuentos);
+            miReporte.SetCellStyle("L" + celda, estiloCeldaReporte);
 
             string totalAportacionesEmpleador = "";
             double sumaAportacionesEmpleador = 0;
@@ -294,20 +334,28 @@ namespace CapaDeNegocios.Reportes.Planilla
             miReporte.SetCellValue("M" + celda, totalAportacionesEmpleador);
             miReporte.SetCellStyle("M" + celda, estiloCeldaReporte);
             miReporte.SetCellValue("N" + celda, sumaAportacionesEmpleador);
+            miReporte.SetCellStyle("N" + celda, estiloCeldaReporte);
 
             miReporte.SetCellValue("O" + celda, ListaTotales.netoACobrar);
+            miReporte.SetCellStyle("O" + celda, estiloCeldaReporte);
+            miReporte.SetCellStyle("P" + celda, estiloCeldaReporte);
+            miReporte.SetCellStyle("Q" + celda, estiloCeldaReporte);
 
             contador++;
             celda = (contador + 10).ToString();
-            miReporte.SetCellValue("A" + celda, lugar + ", " + DateTime.Now.Day + " de " +DateTime.Now.ToString("mmm") + " " +DateTime.Now.Year.ToString());
+            miReporte.MergeWorksheetCells("A" + celda, "Q" + celda);
+            miReporte.SetCellValue("A" + celda, lugar + ", " + DateTime.Now.Day + " de " +DateTime.Now.ToString("MMMM") + " del " +DateTime.Now.Year.ToString());
+            miReporte.SetCellStyle("A" + celda, estiloTITULOMunicipalidad);
             contador++;
             contador++;
             celda = (contador + 10).ToString();
 
+            int FilaInicioResumenes = contador;
             //parte resumen afp
-
-            miReporte.SetCellValue("A" + celda, "RESUMEN AFP");
-            miReporte.SetCellValue("B" + celda, "");
+            miReporte.MergeWorksheetCells("B" + celda, "C" + celda);
+            miReporte.SetCellValue("B" + celda, "RESUMEN AFP");
+            miReporte.SetCellStyle("B" + celda, "C" + celda, estiloTituloReporte);
+            
             List<cDetalleResumenAFP> ResumenAFP = new List<cDetalleResumenAFP>();
             cListaAFP listaAFP = new cListaAFP();
             List<cAFP> afps = listaAFP.TraerListaAFPS();
@@ -337,7 +385,9 @@ namespace CapaDeNegocios.Reportes.Planilla
                     contador++;
                     celda = (contador + 10).ToString();
                     miReporte.SetCellValue("B" + celda, item7.AFP.Nombre);
+                    miReporte.SetCellStyle("B" + celda, estiloCeldaTextoReporte);
                     miReporte.SetCellValue("C" + celda, item7.Monto);
+                    miReporte.SetCellStyle("C" + celda, estiloCeldaReporte);
                 }
             }
 
@@ -399,22 +449,52 @@ namespace CapaDeNegocios.Reportes.Planilla
                 ResumenDebeHaber.Add(debeHaber);
             }
 
+            contador = FilaInicioResumenes;
+            contador++;
+            celda = (contador + 10).ToString();
+            miReporte.SetCellValue("O" + celda, "DEBE");
+            miReporte.SetCellStyle("O" + celda, estiloTituloReporte);
+            miReporte.SetCellValue("P" + celda, "HABER");
+            miReporte.SetCellStyle("P" + celda, estiloTituloReporte);
+
+            double totalDebe = 0;
+            double totalHaber = 0;
+
             foreach (cDetalleDebeHaber item7 in ResumenDebeHaber)
             {
                 contador++;
                 celda = (contador + 10).ToString();
                 if (item7.TipoHaberDebe == enumTipoHaberDebe.haber)
                 {
-                    miReporte.SetCellValue("F" + celda, item7.Concepto);
-                    miReporte.SetCellValue("G" + celda, item7.Monto);
+                    miReporte.MergeWorksheetCells("M" + celda, "N" + celda);
+                    miReporte.SetCellValue("M" + celda, item7.Concepto);
+                    miReporte.SetCellStyle("M" + celda,"N" + celda, estiloCeldaTextoReporte);
+                    
+                    miReporte.SetCellValue("O" + celda, item7.Monto);
+                    miReporte.SetCellStyle("O" + celda, estiloCeldaReporte);
+                    miReporte.SetCellStyle("P" + celda, estiloCeldaReporte);
+                    totalHaber += item7.Monto; 
                 }
                 else
                 {
-                    miReporte.SetCellValue("F" + celda, item7.Concepto);
-                    miReporte.SetCellValue("H" + celda, item7.Monto);
+                    miReporte.MergeWorksheetCells("M" + celda, "N" + celda);
+                    miReporte.SetCellValue("M" + celda, item7.Concepto);
+                    miReporte.SetCellStyle("M" + celda, "N" + celda, estiloCeldaTextoReporte);
+                    miReporte.SetCellValue("P" + celda, item7.Monto);
+                    miReporte.SetCellStyle("P" + celda, estiloCeldaReporte);
+                    miReporte.SetCellStyle("O" + celda, estiloCeldaReporte);
+                    totalDebe += item7.Monto;
                 }
-                
             }
+            contador++;
+            celda = (contador + 10).ToString();
+            miReporte.MergeWorksheetCells("M" + celda, "N" + celda);
+            miReporte.SetCellStyle("M" + celda, "N" + celda, estiloCeldaTextoReporte);
+            miReporte.SetCellValue("M" + celda, "TOTAL");
+            miReporte.SetCellValue("O" + celda, totalHaber);
+            miReporte.SetCellStyle("O" + celda, estiloCeldaReporte);
+            miReporte.SetCellValue("P" + celda, totalDebe);
+            miReporte.SetCellStyle("P" + celda, estiloCeldaReporte);
         }
 
         

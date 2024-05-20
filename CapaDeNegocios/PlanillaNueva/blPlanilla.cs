@@ -542,6 +542,7 @@ namespace CapaDeNegocios.PlanillaNueva
                 }
 
                 auxiliarDetalle.netoACobrar += miPlanilla.ListaDetalle[i].netoACobrar;
+                auxiliarDetalle.totalDescuentoAFP += miPlanilla.ListaDetalle[i].totalDescuentoAFP;
             }
 
          
