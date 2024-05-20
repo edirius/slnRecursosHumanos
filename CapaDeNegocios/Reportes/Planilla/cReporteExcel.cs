@@ -70,11 +70,20 @@ namespace CapaDeNegocios.Reportes.Planilla
                 estiloTITULOMeta.Font.FontSize = 14;
                 estiloTITULOMeta.Font.Bold = true;
 
+                SLStyle estiloTITULONro = new SLStyle();
+                estiloTITULONro.SetHorizontalAlignment(HorizontalAlignmentValues.Right);
+                estiloTITULONro.SetWrapText(true);
+                estiloTITULONro.Font = new SLFont();
+                estiloTITULONro.Font.FontSize = 14;
+                estiloTITULONro.Font.Bold = true;
+
+
                 miReporte.MergeWorksheetCells("A1", "Q1");
                 miReporte.MergeWorksheetCells("A2", "Q2");
                 miReporte.MergeWorksheetCells("A3", "Q3");
                 miReporte.MergeWorksheetCells("A4", "Q4");
                 miReporte.MergeWorksheetCells("A6", "Q6");
+                miReporte.MergeWorksheetCells("A5", "Q5");
                 miReporte.MergeWorksheetCells("A8", "Q8");
 
                 miReporte.SetCellValue("A2", municipalidad);
@@ -87,6 +96,9 @@ namespace CapaDeNegocios.Reportes.Planilla
 
                 miReporte.SetCellValue("A6", "META: " + oPlanilla.Meta.Numero + " " + oPlanilla.Meta.Nombre);
                 miReporte.SetCellStyle("A6", estiloTITULOMeta);
+
+                miReporte.SetCellValue("A5", "NRO. PLANILLA: " + oPlanilla.numeroPlanilla + " - " + oPlanilla.Fecha.Year);
+                miReporte.SetCellStyle("A5", estiloTITULONro);
 
                 miReporte.SetCellValue("A8", "FUENTE FINANCIAMIENTO: " + oPlanilla.FuenteFinanciamiento.Descripcion);
                 miReporte.SetCellStyle("A8", estiloTITULOMeta);
