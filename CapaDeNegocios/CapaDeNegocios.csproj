@@ -264,6 +264,7 @@
     <Compile Include="Trabajadores\cTrabajadorServidorPersonal.cs" />
     <Compile Include="Usuario\cPrivilegio.cs" />
     <Compile Include="Usuario\cUsuario.cs" />
+    <Compile Include="Utilidades\cUtilidades.cs" />
     <Compile Include="VerificadorDNI\cVerificadorDNI.cs" />
     <Compile Include="VerificadorDNI\trabajadorValidado.cs" />
   </ItemGroup>
