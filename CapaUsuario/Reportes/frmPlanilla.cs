@@ -5632,7 +5632,8 @@ namespace CapaUsuario.Reportes
                     fichero.FileName = "Planilla_" + oPlanilla.numeroPlanilla + "_" + cboMes.Text + "_" + cboAño.Text + ".xls";
                     if (fichero.ShowDialog() == DialogResult.OK)
                     {
-                        oReporte.ExportarPlanillaExcel(fichero.FileName, oPlanilla, cDatosGeneralesEmpresa.RUC, cDatosGeneralesEmpresa.NombreEmpresa, cDatosGeneralesEmpresa.Lugar, cDatosGeneralesEmpresa.NombreOficina, (CapaDeNegocios.Reportes.Planilla.enumTipoReporte)fOpcionExcel.tipoReporte);
+                        List<string> firmas = TraerListaFirmas();
+                        oReporte.ExportarPlanillaExcel(fichero.FileName, oPlanilla, cDatosGeneralesEmpresa.RUC, cDatosGeneralesEmpresa.NombreEmpresa, cDatosGeneralesEmpresa.Lugar, cDatosGeneralesEmpresa.NombreOficina, (CapaDeNegocios.Reportes.Planilla.enumTipoReporte)fOpcionExcel.tipoReporte, firmas);
                         FileInfo file = new FileInfo(fichero.FileName);
                         bool estaAbierto = IsFileinUse(file, fichero.FileName);
 
@@ -5659,6 +5660,20 @@ namespace CapaUsuario.Reportes
             {
                 MessageBox.Show("Error al exportar a excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private List<string> TraerListaFirmas()
+        {
+            List<string> firmas = new List<string>();
+            foreach (CheckBox item in this.groupBox2.Controls.OfType<CheckBox>().OrderBy(tb => tb.TabIndex))
+            {
+                if (item.Name != "chkAltoColumna" && item.Checked == true)
+                {
+                    firmas.Add(item.Text);
+                }
+            }
+
+            return firmas;
         }
     }
 }
