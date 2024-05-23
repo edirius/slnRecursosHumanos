@@ -971,7 +971,7 @@ namespace CapaUsuario.Planilla
 
                 else
                 {
-                    PagoTotal = CalcularRemuneracionMensual(DiasLaborados, DiasNoLaborados, Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value), 0);
+                    PagoTotal = CalcularRemuneracionMensual(DiasLaborados, DiasNoLaborados, Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value), diasSuspendidos);
 
                     PagoDia = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[11].Value) / 30;
                     dgvDetallePlanilla.Rows[fila].Cells["JORNAL"].Value = 0;
