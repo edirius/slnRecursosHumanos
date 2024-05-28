@@ -399,7 +399,7 @@
             // 
             // mnuAsistenciaTrabajador
             // 
-            this.mnuAsistenciaTrabajador.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_62;
+            this.mnuAsistenciaTrabajador.Image = global::CapaUsuario.Properties.Resources.clock_1;
             this.mnuAsistenciaTrabajador.Name = "mnuAsistenciaTrabajador";
             this.mnuAsistenciaTrabajador.Size = new System.Drawing.Size(297, 22);
             this.mnuAsistenciaTrabajador.Text = "Asistencia Trabajador";

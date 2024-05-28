@@ -2542,7 +2542,8 @@ namespace CapaUsuario.Reportes
 
                                     if (odtPlanilla.Rows.Count != auxiliarNumeroTrabPlanilla.Rows.Count)
                                     {
-                                        MessageBox.Show("El numero de trabajadores " + odtPlanilla.Rows.Count.ToString() + " , es diferente al numero de trabajadores activos en el mes " + auxiliarNumeroTrabPlanilla.Rows.Count.ToString(), "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                        MessageBox.Show("El numero de trabajadores " + odtPlanilla.Rows.Count.ToString() + " , es diferente al numero de trabajadores activos en el mes " + auxiliarNumeroTrabPlanilla.Rows.Count.ToString() + ": Verifique los periodos de los trabajadores para evitar la inconsistencia de la planilla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                                     }
 
 

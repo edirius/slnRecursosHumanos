@@ -311,6 +311,7 @@ namespace CapaUsuario.Planilla
                     miDetallePlanilla.Sueldopactado = Convert.ToDecimal(row.Cells["SUELDOPACTADO"].Value);
                     miDetallePlanilla.Sueldoafecto = Convert.ToDecimal(row.Cells["SUELDOAFECTO"].Value);
                     miDetallePlanilla.Jornal = Convert.ToBoolean(row.Cells["JORNAL"].Value);
+                    miDetallePlanilla.SPensiones = Convert.ToInt32(row.Cells["CODAFP"].Value);
                     if (row.Cells["OBSERVACIONES"].Value == null)
                     {
                         miDetallePlanilla.Observacion = "";
@@ -774,7 +775,8 @@ namespace CapaUsuario.Planilla
         }
 
         private void DatosAFP(int fila)
-        {   
+        {
+            int codafp = 0;
             foreach (DataRow rowPeriodoTrabajador in oDataPeriodoTrabajador.Select("idttrabajador = '" + dgvDetallePlanilla.Rows[fila].Cells[4].Value.ToString() + "'"))
             {
                 foreach (DataRow rowRegimenPensionarioTrabajador in oDataRegimenPensionarioTrabajador.Select("idtperiodotrabajador = '" + Convert.ToInt32(rowPeriodoTrabajador[0].ToString()) + "'"))
@@ -783,6 +785,7 @@ namespace CapaUsuario.Planilla
                     TipoComision = rowRegimenPensionarioTrabajador[4].ToString();
                     foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()) + "'"))
                     {
+                        codafp = Convert.ToInt16(rowAFP[0]);
                         AFP = rowAFP[1].ToString();
                     }
                     oDataComisionAFP = miComisionAFP.ListarComisionAFP(Convert.ToInt32(rowRegimenPensionarioTrabajador[5].ToString()));
@@ -821,8 +824,14 @@ namespace CapaUsuario.Planilla
                 }
             }
 
-            if (AFP == "") { dgvDetallePlanilla.Rows[fila].Cells[15 + con_ingresos].Value = "--"; }
-            else { dgvDetallePlanilla.Rows[fila].Cells[15 + con_ingresos].Value = AFP; }
+            if (AFP == "")
+            {
+                dgvDetallePlanilla.Rows[fila].Cells[15 + con_ingresos].Value = "--";
+            }
+            else {
+                dgvDetallePlanilla.Rows[fila].Cells[15 + con_ingresos].Value = AFP;
+                dgvDetallePlanilla.Rows[fila].Cells["CODAFP"].Value = codafp;
+            }
             if (TipoComision == "") { dgvDetallePlanilla.Rows[fila].Cells[16 + con_ingresos].Value = "--"; }
             else { dgvDetallePlanilla.Rows[fila].Cells[16 + con_ingresos].Value = TipoComision; }
             if (Cuspp == "") { dgvDetallePlanilla.Rows[fila].Cells[17 + con_ingresos].Value = "--"; }
@@ -2581,6 +2590,17 @@ namespace CapaUsuario.Planilla
             dgvDetallePlanilla.Columns["FECHAFIN"].Visible = false;
             dgvDetallePlanilla.Columns["FECHAFIN"].Width = 65;
             dgvDetallePlanilla.Columns["FECHAFIN"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            //COD AFP
+            col = new DataGridViewTextBoxColumn();
+            col.Name = "CODAFP";
+            col.HeaderText = "CODAFP";
+            dgvDetallePlanilla.Columns.Add(col);
+            dgvDetallePlanilla.Columns["CODAFP"].ReadOnly = true;
+            dgvDetallePlanilla.Columns["CODAFP"].Visible = false;
+            dgvDetallePlanilla.Columns["CODAFP"].Width = 65;
+            dgvDetallePlanilla.Columns["CODAFP"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
         }
 
         private void MostrarColumnas()

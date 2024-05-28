@@ -21,6 +21,8 @@ namespace CapaUsuario.Asistencia
 
         CapaDeNegocios.Asistencia.cAsistenciaMes oAsistenciaMes = new CapaDeNegocios.Asistencia.cAsistenciaMes();
 
+        Utilidades.cUtilidades oUtilidades = new Utilidades.cUtilidades();
+
         public frmAsistenciaMes()
         {
             InitializeComponent();
@@ -248,11 +250,25 @@ namespace CapaUsuario.Asistencia
                 CapaDeNegocios.Reportes.cReporteAsistencia oReporte = new CapaDeNegocios.Reportes.cReporteAsistencia();
 
                 CapaDeNegocios.Reportes.cReportePDF miReporte = new CapaDeNegocios.Reportes.cReportePDF();
+                dlgGuardarReportePDF.Filter = "pdf (*.pdf)|*.pdf";
+                dlgGuardarReportePDF.FileName = "Asistencia_" + miTrabajador.OTrabajador.Dni + "_" + cboMes.Text + "_" + cboAño.Text + ".pdf";
 
                 if (dlgGuardarReportePDF.ShowDialog() == DialogResult.OK)
                 {
                     oReporte.ImprimirReporteAsistenciaXTrabajador(miTrabajador.OTrabajador, oAsistenciaMes, dlgGuardarReportePDF.FileName);
-                }    
+                    if (!oUtilidades.ArchivoEstaAbierto(dlgGuardarReportePDF.FileName))
+                    {
+                        System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                        proc.EnableRaisingEvents = false;
+                        proc.StartInfo.FileName = dlgGuardarReportePDF.FileName;
+                        proc.Start();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El archivo ya esta abierto", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
 
             }
             catch (Exception ex)

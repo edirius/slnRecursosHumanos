@@ -291,7 +291,7 @@ namespace CapaUsuario.Asistencia
                         }
                         else
                         {
-                            MessageBox.Show("Se canceló la operación.", "Mantenimiento Salidas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Se canceló la operación.", "Asistencia Mes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     
@@ -377,6 +377,30 @@ namespace CapaUsuario.Asistencia
             {
                 MessageBox.Show("Error al ingresar horario del trabajador: " + ex.Message, "Asignar Horario", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnBuscarDNI_Click(object sender, EventArgs e)
+        {
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            dtgListaTrabajadores.DataSource = tablaAuxiliar;
+        }
+
+        private void btnBuscarNombre_Click(object sender, EventArgs e)
+        {
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            dtgListaTrabajadores.DataSource = tablaAuxiliar;
+        }
+
+        private void btnBuscarAPaterno_Click(object sender, EventArgs e)
+        {
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            dtgListaTrabajadores.DataSource = tablaAuxiliar;
+        }
+
+        private void btnBuscarAMaterno_Click(object sender, EventArgs e)
+        {
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            dtgListaTrabajadores.DataSource = tablaAuxiliar;
         }
     }
 }

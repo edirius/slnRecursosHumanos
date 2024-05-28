@@ -1545,6 +1545,7 @@
     <Compile Include="Usuarios\frmModificarServidor.Designer.cs">
       <DependentUpon>frmModificarServidor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utilidades\cUtilidades.cs" />
     <Compile Include="Variables\frmFuenteFinanciamiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2238,6 +2239,7 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\sched_tasks.png" />
     <None Include="Resources\search_file_2.ico" />
     <None Include="Resources\user_card.png" />
     <None Include="Resources\users_green-3.png" />
@@ -2250,6 +2252,7 @@
     <None Include="Resources\address_book_card_users.ico" />
     <None Include="Resources\exportacionexcel01.jpg" />
     <None Include="Resources\exportacionexcel02.jpg" />
+    <None Include="Resources\clock-1.png" />
     <Content Include="Resources\question.png" />
     <None Include="Resources\logo_MuniMaras.png" />
     <None Include="Resources\pdf3.jpg" />

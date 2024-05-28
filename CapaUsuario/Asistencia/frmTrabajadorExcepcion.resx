@@ -150,4 +150,27 @@
   <metadata name="descripcion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAEBAQAAEABAAoAQAAJgAAACAgEAABAAQA6AIAAE4BAAAoAAAAEAAAACAAAAABAAQAAAAAAMAA
+        AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAAgAAAAICAAIAAAACAAIAAgIAAAMDAwACAgIAAAAD/AAD/
+        AAAA//8A/wAAAP8A/wD//wAA////AAAAAAAAAAAAAAAJmZmQAAAACZkAAJmQAACZAP//CZkAAJD/+w/w
+        mQAJkPP//z8JkAkP//////CQCQ8P9ETw8JAJD7/0//vwkAkP//T///CQCZDz9P8/CZAAkP/7D/8JAACZ
+        AP//AJkAAAmZAACZkAAAAAmZmZAAAAAAAAAAAAAA+B///+AH///AA///gAH//4AB//8AAP//AAD//wAA
+        //8AAP//AAD//wAA//+AAf//gAH//8AD///gB///+B///ygAAAAgAAAAQAAAAAEABAAAAAAAgAIAAAAA
+        AAAAAAAAEAAAAAAAAAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAwMDAAICAgAAAAP8AAP8AAAD/
+        /wD/AAAA/wD/AP//AAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJmZmZkAAAAAAAAAAAAACZmZmZmZ
+        mZAAAAAAAAAACZmZmZmZmZmZkAAAAAAAAJmZmQAAAACZmZkAAAAAAAmZmQD/////AJmZkAAAAACZmZD/
+        //AP//8JmZkAAAAJmZkP///7D///8JmZkAAACZmQ/wD/////AP8JmZAAAJmZD/+w/////7D/8JmZAACZ
+        kP////////////8JmQAAmZDwD/+P//////APCZkACZkP+w//+P/////7D/CZkAmZD/////+P///////w
+        mZAJmQ//////9A//////8JmQCZkPAP//8AQAAAD/APCZkAmZD7D///RERERE/7DwmZAJmQ//////9A//
+        ////8JmQCZkP//////QP//////CZkAmZD/AP///0D///8A/wmZAAmZD7D///9A////sPCZkAAJmQ////
+        //QP/////wmZAACZmQ//AP/0D/8A//CZmQAACZkP/7D/////sP/wmZAAAAmZkP////AP////CZmQAAAA
+        mZkP///7D///8JmZAAAAAAmZkA//////8AmZkAAAAAAAmZmQAAAAAAmZmQAAAAAAAAmZmZmZmZmZmZAA
+        AAAAAAAACZmZmZmZmZAAAAAAAAAAAAAAmZmZmQAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/8A///4AB//4A
+        AH/8AAA/+AAAH/AAAA/gAAAHwAAAA8AAAAOAAAABgAAAAYAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAIAAAAGAAAABgAAAAcAAAAPAAAAD4AAAB/AAAA/4AAAf/AAAP/4AAH//gAH///AP/w==
+</value>
+  </data>
 </root>
