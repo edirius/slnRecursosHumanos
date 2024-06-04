@@ -14,6 +14,7 @@ namespace CapaDeNegocios.Asistencia
         DateTime _InicioExcepcion;
         DateTime _FinExcepcion;
         cTrabajador _Trabajador;
+        Boolean _Aprobado;
 
         public cExcepcionesAsistencia()
         {
@@ -98,6 +99,17 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
-      
+        public bool Aprobado
+        {
+            get
+            {
+                return _Aprobado;
+            }
+
+            set
+            {
+                _Aprobado = value;
+            }
+        }
     }
 }

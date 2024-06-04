@@ -39,6 +39,7 @@
             this.lblNombredelTrabajador = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtComentario = new System.Windows.Forms.TextBox();
+            this.chkAprobado = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -48,7 +49,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(262, 327);
+            this.btnCancelar.Location = new System.Drawing.Point(262, 348);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 65);
             this.btnCancelar.TabIndex = 85;
@@ -64,7 +65,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(181, 327);
+            this.btnAceptar.Location = new System.Drawing.Point(181, 348);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 84;
@@ -157,11 +158,22 @@
             this.txtComentario.Size = new System.Drawing.Size(250, 128);
             this.txtComentario.TabIndex = 87;
             // 
+            // chkAprobado
+            // 
+            this.chkAprobado.AutoSize = true;
+            this.chkAprobado.Location = new System.Drawing.Point(265, 314);
+            this.chkAprobado.Name = "chkAprobado";
+            this.chkAprobado.Size = new System.Drawing.Size(72, 17);
+            this.chkAprobado.TabIndex = 88;
+            this.chkAprobado.Text = "Aprobado";
+            this.chkAprobado.UseVisualStyleBackColor = true;
+            // 
             // frmMantenimientoSalidas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 404);
+            this.ClientSize = new System.Drawing.Size(374, 425);
+            this.Controls.Add(this.chkAprobado);
             this.Controls.Add(this.txtComentario);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCancelar);
@@ -195,5 +207,6 @@
         private System.Windows.Forms.Label lblNombredelTrabajador;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtComentario;
+        private System.Windows.Forms.CheckBox chkAprobado;
     }
 }

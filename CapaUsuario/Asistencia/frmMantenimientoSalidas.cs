@@ -41,7 +41,7 @@ namespace CapaUsuario.Asistencia
             txtComentario.Text = oSalidaTrabajador.Comentario;
             dtpFechaInicio.Value = oSalidaTrabajador.InicioExcepcion;
             dtpFechaFin.Value = oSalidaTrabajador.FinExcepcion;
-
+            chkAprobado.Checked = oSalidaTrabajador.Aprobado;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace CapaUsuario.Asistencia
                     oSalidaTrabajador.Comentario = txtComentario.Text;
                     oSalidaTrabajador.InicioExcepcion = dtpFechaInicio.Value;
                     oSalidaTrabajador.FinExcepcion = dtpFechaFin.Value;
-            
+                    oSalidaTrabajador.Aprobado = chkAprobado.Checked;
                     DialogResult = DialogResult.OK;
                 }
                 else

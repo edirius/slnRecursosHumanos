@@ -27,7 +27,7 @@ namespace CapaUsuario.Tareo
 
         public void cargarDatos()
         {
-            dtgPlantillaTareo.DataSource = oPlantillaTareo.ListarPlantillaTareos();
+            dtgPlantillaTareo.DataSource = oPlantillaTareo.ListarPlantillaTareos(true,true);
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)

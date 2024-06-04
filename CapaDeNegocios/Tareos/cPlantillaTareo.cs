@@ -14,6 +14,8 @@ namespace CapaDeNegocios.Tareos
         string descripcion;
         bool jornal;
         bool racionamiento;
+        bool obrero;
+        bool activo;
 
         public int IdPlantillaTareo
         {
@@ -67,78 +69,151 @@ namespace CapaDeNegocios.Tareos
             }
         }
 
-        public DataTable ListarPlantillaTareos()
+        public bool Obrero
         {
-            return Conexion.GDatos.TraerDataTable("spListarPlantillaTareo");
+            get
+            {
+                return obrero;
+            }
+
+            set
+            {
+                obrero = value;
+            }
+        }
+
+        public bool Activo
+        {
+            get
+            {
+                return activo;
+            }
+
+            set
+            {
+                activo = value;
+            }
+        }
+
+        public DataTable ListarPlantillaTareos(Boolean Todos, Boolean Activos)
+        {
+            try
+            {
+                return Conexion.GDatos.TraerDataTable("spListarPlantillaTareo2", Todos, Activos);
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo ListarPlantillaTareos: " + ex.Message);
+            }
         }
 
         public Boolean CrearPlantillaTareo(cPlantillaTareo miPlantilla)
         {
-            Conexion.GDatos.Ejecutar("spCrearPlantillaTareo", miPlantilla.Descripcion, miPlantilla.Jornal, miPlantilla.Racionamiento);
-            return true;
+            try
+            {
+                Conexion.GDatos.Ejecutar("spCrearPlantillaTareo2", miPlantilla.Descripcion, miPlantilla.Jornal, miPlantilla.Racionamiento, miPlantilla.Obrero, miPlantilla.Activo);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo CrearPlantillaTareos: " + ex.Message);
+            }
         }
 
         public Boolean ModificarPlantillaTareo(cPlantillaTareo miPlantilla)
         {
-            Conexion.GDatos.Ejecutar("spModificarPlantillaTareo", miPlantilla.IdPlantillaTareo, miPlantilla.descripcion, miPlantilla.Jornal, miPlantilla.Racionamiento);
-            return true;
+            try
+            {
+                Conexion.GDatos.Ejecutar("spModificarPlantillaTareo2", miPlantilla.IdPlantillaTareo, miPlantilla.descripcion, miPlantilla.Jornal, miPlantilla.Racionamiento, miPlantilla.Obrero, miPlantilla.Activo);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo ModificarPlantillaTareos: " + ex.Message);
+            }
         }
 
         public Boolean EliminarPlantillaTareo(int id)
         {
-            Conexion.GDatos.Ejecutar("spEliminarPlantillaTareo", id);
-            return true;
+            try
+            {
+                Conexion.GDatos.Ejecutar("spEliminarPlantillaTareo", id);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo EliminarPlantillaTareos: " + ex.Message);
+            }
         }
 
         public cPlantillaTareo TraerPlantillaTareo(int id)
         {
-            DataTable Plantilla = Conexion.GDatos.TraerDataTable("spTraerPlantillaTareo", id);
-            if (Plantilla.Rows.Count > 0)
+            try
             {
-                cPlantillaTareo NuevaPlantilla= new cPlantillaTareo();
-                NuevaPlantilla.IdPlantillaTareo = Convert.ToInt16(Plantilla.Rows[0][0].ToString());
-                NuevaPlantilla.Descripcion = Plantilla.Rows[0][1].ToString();
-                NuevaPlantilla.Jornal = Convert.ToBoolean(Plantilla.Rows[0][2]);
-                if (Plantilla.Rows[0][3] is DBNull)
+                DataTable Plantilla = Conexion.GDatos.TraerDataTable("spTraerPlantillaTareo", id);
+                if (Plantilla.Rows.Count > 0)
                 {
-                    NuevaPlantilla.Racionamiento = false;
+                    cPlantillaTareo NuevaPlantilla = new cPlantillaTareo();
+                    NuevaPlantilla.IdPlantillaTareo = Convert.ToInt16(Plantilla.Rows[0][0].ToString());
+                    NuevaPlantilla.Descripcion = Plantilla.Rows[0][1].ToString();
+                    NuevaPlantilla.Jornal = Convert.ToBoolean(Plantilla.Rows[0][2]);
+
+                    if (Plantilla.Rows[0][3] is DBNull)
+                    {
+                        NuevaPlantilla.Racionamiento = false;
+                    }
+                    else
+                    {
+                        NuevaPlantilla.Racionamiento = Convert.ToBoolean(Plantilla.Rows[0][3]);
+
+                    }
+                    NuevaPlantilla.Obrero = Convert.ToBoolean(Plantilla.Rows[0][4]);
+                    NuevaPlantilla.Activo = Convert.ToBoolean(Plantilla.Rows[0][5]);
+                    return NuevaPlantilla;
                 }
                 else
                 {
-                    NuevaPlantilla.Racionamiento = Convert.ToBoolean(Plantilla.Rows[0][3]);
-                    
+                    return null;
                 }
-                return NuevaPlantilla; 
             }
-            else
+            catch (Exception ex)
             {
-                return null;
+                throw new cReglaNegociosException("Error en el metodo TraerPlantillatareo: " + ex.Message);
             }
         }
 
         public cPlantillaTareo TraerPlantillaTareoXNombre(string pdescripcion)
         {
-            DataTable Plantilla = Conexion.GDatos.TraerDataTable("spBuscarPlantillaTareoXNombre", pdescripcion);
-            if (Plantilla.Rows.Count > 0)
+            try
             {
-                cPlantillaTareo NuevaPlantilla = new cPlantillaTareo();
-                NuevaPlantilla.IdPlantillaTareo = Convert.ToInt16(Plantilla.Rows[0][0].ToString());
-                NuevaPlantilla.Descripcion = Plantilla.Rows[0][1].ToString();
-                NuevaPlantilla.Jornal = Convert.ToBoolean(Plantilla.Rows[0][2]);
-                if (Plantilla.Rows[0][3] is DBNull)
+                DataTable Plantilla = Conexion.GDatos.TraerDataTable("spBuscarPlantillaTareoXNombre", pdescripcion);
+                if (Plantilla.Rows.Count > 0)
                 {
-                    NuevaPlantilla.Racionamiento = false;
+                    cPlantillaTareo NuevaPlantilla = new cPlantillaTareo();
+                    NuevaPlantilla.IdPlantillaTareo = Convert.ToInt16(Plantilla.Rows[0][0].ToString());
+                    NuevaPlantilla.Descripcion = Plantilla.Rows[0][1].ToString();
+                    NuevaPlantilla.Jornal = Convert.ToBoolean(Plantilla.Rows[0][2]);
+                    if (Plantilla.Rows[0][3] is DBNull)
+                    {
+                        NuevaPlantilla.Racionamiento = false;
+                    }
+                    else
+                    {
+                        NuevaPlantilla.Racionamiento = Convert.ToBoolean(Plantilla.Rows[0][3]);
+
+                    }
+                    NuevaPlantilla.Obrero = Convert.ToBoolean(Plantilla.Rows[0][4]);
+                    NuevaPlantilla.Activo = Convert.ToBoolean(Plantilla.Rows[0][5]);
+                    return NuevaPlantilla;
                 }
                 else
                 {
-                    NuevaPlantilla.Racionamiento = Convert.ToBoolean(Plantilla.Rows[0][3]);
-
+                    return null;
                 }
-                return NuevaPlantilla;
             }
-            else
+            catch (Exception ex)
             {
-                return null;
+                throw new cReglaNegociosException("Error en el metodo TraerPlantillaTareoXNombre: " + ex.Message);
             }
         }
     }

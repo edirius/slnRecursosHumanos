@@ -30,6 +30,8 @@ namespace CapaUsuario.Tareo
             txtDescripcion.Text = oPlantillaTareo.Descripcion;
             chkJornal.Checked = oPlantillaTareo.Jornal;
             chkRacionamiento.Checked = oPlantillaTareo.Racionamiento;
+            chkObrero.Checked = oPlantillaTareo.Obrero;
+            chkActivo.Checked = oPlantillaTareo.Activo;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -41,6 +43,8 @@ namespace CapaUsuario.Tareo
                     oPlantillaTareo.Descripcion = txtDescripcion.Text;
                     oPlantillaTareo.Jornal = chkJornal.Checked;
                     oPlantillaTareo.Racionamiento = chkRacionamiento.Checked;
+                    oPlantillaTareo.Obrero = chkObrero.Checked;
+                    oPlantillaTareo.Activo = chkActivo.Checked;
                     this.DialogResult = DialogResult.OK;
                 }
                 else

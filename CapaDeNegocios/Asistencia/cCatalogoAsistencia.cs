@@ -538,7 +538,7 @@ namespace CapaDeNegocios.Asistencia
         {
             try
             {
-                Conexion.GDatos.Ejecutar("spCrearSalidaTrabajador", NuevaSalida.Tipo, NuevaSalida.Comentario, NuevaSalida.InicioExcepcion, NuevaSalida.FinExcepcion, NuevaSalida.Trabajador.IdTrabajador);
+                Conexion.GDatos.Ejecutar("spCrearSalidaTrabajador", NuevaSalida.Tipo, NuevaSalida.Comentario, NuevaSalida.InicioExcepcion, NuevaSalida.FinExcepcion, NuevaSalida.Trabajador.IdTrabajador, NuevaSalida.Aprobado);
             }
             catch (Exception ex)
             {
@@ -552,7 +552,7 @@ namespace CapaDeNegocios.Asistencia
             {
                 try
                 {
-                    Conexion.GDatos.Ejecutar("spModificarSalidaTrabajador", NuevaSalida.CodigoExcepcion, NuevaSalida.Tipo, NuevaSalida.Comentario, NuevaSalida.InicioExcepcion, NuevaSalida.FinExcepcion);
+                    Conexion.GDatos.Ejecutar("spModificarSalidaTrabajador", NuevaSalida.CodigoExcepcion, NuevaSalida.Tipo, NuevaSalida.Comentario, NuevaSalida.InicioExcepcion, NuevaSalida.FinExcepcion, NuevaSalida.Trabajador.IdTrabajador, NuevaSalida.Aprobado);
                 }
                 catch (Exception ex)
                 {
@@ -595,6 +595,7 @@ namespace CapaDeNegocios.Asistencia
                     salida.InicioExcepcion = Convert.ToDateTime(item["iniciosalida"].ToString());
                     salida.FinExcepcion = Convert.ToDateTime(item["finsalida"].ToString());
                     salida.Trabajador = oTrabajador;
+                    salida.Aprobado = Convert.ToBoolean(item["aprobado"]);
                     oLista.Add(salida);
                 }
                 return oLista;
@@ -624,6 +625,7 @@ namespace CapaDeNegocios.Asistencia
                     salida.InicioExcepcion = Convert.ToDateTime(item["iniciosalida"].ToString());
                     salida.FinExcepcion = Convert.ToDateTime(item["finsalida"].ToString());
                     salida.Trabajador = oTrabajador;
+                    salida.Aprobado = Convert.ToBoolean(item["aprobado"]);
                     oLista.Add(salida);
                 }
                 return oLista;
@@ -652,6 +654,7 @@ namespace CapaDeNegocios.Asistencia
                     salida.InicioExcepcion = Convert.ToDateTime(item["iniciosalida"].ToString());
                     salida.FinExcepcion = Convert.ToDateTime(item["finsalida"].ToString());
                     salida.Trabajador = oTrabajador;
+                    salida.Aprobado = Convert.ToBoolean(item["aprobado"]);
                     oLista.Add(salida);
                 }
                 return oLista;
@@ -680,6 +683,7 @@ namespace CapaDeNegocios.Asistencia
                     salida.InicioExcepcion = Convert.ToDateTime(item["iniciosalida"].ToString());
                     salida.FinExcepcion = Convert.ToDateTime(item["finsalida"].ToString());
                     salida.Trabajador = oTrabajador;
+                    salida.Aprobado = Convert.ToBoolean(item["aprobado"]);
                     oLista.Add(salida);
                 }
                 return oLista;

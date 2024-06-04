@@ -229,7 +229,7 @@ namespace CapaUsuario.Asistencia
                 {
                     frmMantenimientoSalidas fMantenimientoSalidas = new frmMantenimientoSalidas();
                     fMantenimientoSalidas.oSalidaTrabajador = new CapaDeNegocios.Asistencia.cExcepcionesAsistencia();
-                    fMantenimientoSalidas.oSalidaTrabajador.InicioExcepcion = DateTime.Now;
+                    fMantenimientoSalidas.oSalidaTrabajador.InicioExcepcion = DateTime.Now.Date.AddHours(8);
                     fMantenimientoSalidas.oSalidaTrabajador.FinExcepcion = DateTime.Now;
                     fMantenimientoSalidas.oSalidaTrabajador.Trabajador = listaTrabajadores[0];
 
@@ -401,6 +401,47 @@ namespace CapaUsuario.Asistencia
         {
             tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
+        }
+
+        private void btnSalidas_Click(object sender, EventArgs e)
+        {
+            List<cTrabajador> listaTrabajadores = new List<cTrabajador>();
+
+            try
+            {
+                foreach (DataGridViewRow item in dtgListaTrabajadores.Rows)
+                {
+                    if (Convert.ToBoolean(item.Cells["☑"].Value) == true)
+                    {
+                        cTrabajador otrabajador = new cTrabajador();
+                        otrabajador = miListaTrabajadores.traerTrabajador(Convert.ToInt16(item.Cells["id_trabajador"].Value.ToString()));
+                        listaTrabajadores.Add(otrabajador);
+                    }
+                }
+
+
+                if (listaTrabajadores.Count > 0)
+                {
+                    if (listaTrabajadores.Count == 1)
+                    {
+                        frmListaSalidas fListaSalidas = new frmListaSalidas();
+                        fListaSalidas.miTrabajador = listaTrabajadores[0];
+                        fListaSalidas.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Para esta operacion solo debe seleccionar un solo trabajador", "Seleccionar Horario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un trabajador.", "Seleccionar Horario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ingresar horario del trabajador: " + ex.Message, "Asignar Horario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

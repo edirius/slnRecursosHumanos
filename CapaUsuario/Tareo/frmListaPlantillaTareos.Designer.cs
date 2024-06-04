@@ -38,6 +38,8 @@
             this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJornal = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colRacionamiento = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colObrero = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colActivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgPlantillaTareo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,12 +54,14 @@
             this.colID,
             this.colDescripcion,
             this.colJornal,
-            this.colRacionamiento});
+            this.colRacionamiento,
+            this.colObrero,
+            this.colActivo});
             this.dtgPlantillaTareo.Location = new System.Drawing.Point(22, 22);
             this.dtgPlantillaTareo.Name = "dtgPlantillaTareo";
             this.dtgPlantillaTareo.ReadOnly = true;
             this.dtgPlantillaTareo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgPlantillaTareo.Size = new System.Drawing.Size(556, 234);
+            this.dtgPlantillaTareo.Size = new System.Drawing.Size(702, 234);
             this.dtgPlantillaTareo.TabIndex = 0;
             // 
             // btnSalir
@@ -67,7 +71,7 @@
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSalir.ImageKey = "ssss.png";
-            this.btnSalir.Location = new System.Drawing.Point(495, 268);
+            this.btnSalir.Location = new System.Drawing.Point(641, 268);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(83, 53);
             this.btnSalir.TabIndex = 23;
@@ -83,7 +87,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnEliminar.ImageKey = "118.png";
-            this.btnEliminar.Location = new System.Drawing.Point(410, 268);
+            this.btnEliminar.Location = new System.Drawing.Point(556, 268);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(83, 53);
             this.btnEliminar.TabIndex = 22;
@@ -99,7 +103,7 @@
             this.btnModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnModificar.ImageKey = "13.png";
-            this.btnModificar.Location = new System.Drawing.Point(324, 268);
+            this.btnModificar.Location = new System.Drawing.Point(470, 268);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(83, 53);
             this.btnModificar.TabIndex = 21;
@@ -115,7 +119,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnNuevo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnNuevo.ImageIndex = 1;
-            this.btnNuevo.Location = new System.Drawing.Point(238, 268);
+            this.btnNuevo.Location = new System.Drawing.Point(384, 268);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(83, 53);
             this.btnNuevo.TabIndex = 20;
@@ -157,11 +161,27 @@
             this.colRacionamiento.Name = "colRacionamiento";
             this.colRacionamiento.ReadOnly = true;
             // 
+            // colObrero
+            // 
+            this.colObrero.DataPropertyName = "obrero";
+            this.colObrero.HeaderText = "Obrero";
+            this.colObrero.Name = "colObrero";
+            this.colObrero.ReadOnly = true;
+            this.colObrero.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colObrero.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colActivo
+            // 
+            this.colActivo.DataPropertyName = "activo";
+            this.colActivo.HeaderText = "Activo";
+            this.colActivo.Name = "colActivo";
+            this.colActivo.ReadOnly = true;
+            // 
             // frmListaPlantillaTareos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(597, 333);
+            this.ClientSize = new System.Drawing.Size(743, 333);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
@@ -187,5 +207,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colJornal;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colRacionamiento;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colObrero;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colActivo;
     }
 }

@@ -40,7 +40,7 @@ namespace CapaUsuario.Tareo
 
         private void cargarTiposTareos()
         {
-            DataTable ListaPlantillastareos = oPlantillatareos.ListarPlantillaTareos();
+            DataTable ListaPlantillastareos = oPlantillatareos.ListarPlantillaTareos(false,true);
             foreach (DataRow item in ListaPlantillastareos.Rows)
             {
                 cboDescripcion.Items.Add(item[1]);

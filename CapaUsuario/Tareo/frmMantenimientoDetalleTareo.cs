@@ -663,7 +663,7 @@ namespace CapaUsuario.Tareo
 
             if (oPlantillatareo != null)
             {
-                if (oPlantillatareo.Jornal == false)
+                if (oPlantillatareo.Obrero == false)
                 {
                     btnNuevoTrabajador.Visible = false;
                     btnNuevoTrabajadorRacionamiento.Visible = false;
@@ -997,7 +997,7 @@ namespace CapaUsuario.Tareo
                 col.HeaderText = auxiliarDiaSemana;
                 col.Width = 20;
                 dgvDetalleTareo.Columns.Add(col);
-                if (oPlantillatareo.Descripcion.Contains("OBRERO"))
+                if (oPlantillatareo.Obrero)
                 {
                     btnNuevoTrabajador.Visible = true;
                     btnNuevoTrabajadorTecnico.Visible = false;

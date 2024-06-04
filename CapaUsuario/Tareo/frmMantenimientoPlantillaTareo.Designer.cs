@@ -34,6 +34,8 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.chkRacionamiento = new System.Windows.Forms.CheckBox();
+            this.chkObrero = new System.Windows.Forms.CheckBox();
+            this.chkActivo = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -70,7 +72,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "13.png";
-            this.btnCancelar.Location = new System.Drawing.Point(272, 97);
+            this.btnCancelar.Location = new System.Drawing.Point(351, 97);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(83, 53);
             this.btnCancelar.TabIndex = 23;
@@ -86,7 +88,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageIndex = 1;
-            this.btnAceptar.Location = new System.Drawing.Point(186, 97);
+            this.btnAceptar.Location = new System.Drawing.Point(265, 97);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(83, 53);
             this.btnAceptar.TabIndex = 22;
@@ -98,18 +100,40 @@
             // chkRacionamiento
             // 
             this.chkRacionamiento.AutoSize = true;
-            this.chkRacionamiento.Location = new System.Drawing.Point(201, 64);
+            this.chkRacionamiento.Location = new System.Drawing.Point(162, 64);
             this.chkRacionamiento.Name = "chkRacionamiento";
             this.chkRacionamiento.Size = new System.Drawing.Size(116, 17);
             this.chkRacionamiento.TabIndex = 24;
             this.chkRacionamiento.Text = "RACIONAMIENTO";
             this.chkRacionamiento.UseVisualStyleBackColor = true;
             // 
+            // chkObrero
+            // 
+            this.chkObrero.AutoSize = true;
+            this.chkObrero.Location = new System.Drawing.Point(283, 64);
+            this.chkObrero.Name = "chkObrero";
+            this.chkObrero.Size = new System.Drawing.Size(72, 17);
+            this.chkObrero.TabIndex = 25;
+            this.chkObrero.Text = "OBRERO";
+            this.chkObrero.UseVisualStyleBackColor = true;
+            // 
+            // chkActivo
+            // 
+            this.chkActivo.AutoSize = true;
+            this.chkActivo.Location = new System.Drawing.Point(369, 64);
+            this.chkActivo.Name = "chkActivo";
+            this.chkActivo.Size = new System.Drawing.Size(65, 17);
+            this.chkActivo.TabIndex = 26;
+            this.chkActivo.Text = "ACTIVO";
+            this.chkActivo.UseVisualStyleBackColor = true;
+            // 
             // frmMantenimientoPlantillaTareo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 162);
+            this.ClientSize = new System.Drawing.Size(450, 162);
+            this.Controls.Add(this.chkActivo);
+            this.Controls.Add(this.chkObrero);
             this.Controls.Add(this.chkRacionamiento);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -133,5 +157,7 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.CheckBox chkRacionamiento;
+        private System.Windows.Forms.CheckBox chkObrero;
+        private System.Windows.Forms.CheckBox chkActivo;
     }
 }
