@@ -336,7 +336,7 @@ namespace CapaUsuario.Trabajador
             miRegimenTrabajador.FechaFin = "";
             miRegimenTrabajador.RUC = "";
             miRegimenTrabajador.IdtCategoriaOcupacional = sidtcategoriaocupacional;
-            miRegimenTrabajador.IdtOcupacion = sidtocupacion;
+            miRegimenTrabajador.IdtOcupacion = Convert.ToInt32(cboOcupacion.SelectedValue);
             miRegimenTrabajador.IdtCargo = sidtcargo;
             miRegimenTrabajador.IdtMeta = sidtmeta;
 
@@ -621,10 +621,7 @@ namespace CapaUsuario.Trabajador
 
         private void cboOcupacion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cboOcupacion.Text != "System.Data.DataRowView" && cboOcupacion.ValueMember != "")
-            {
-                sidtocupacion = Convert.ToInt32(cboOcupacion.SelectedValue);
-            }
+            
         }
 
         private void cboCargo_SelectedIndexChanged(object sender, EventArgs e)
@@ -704,7 +701,7 @@ namespace CapaUsuario.Trabajador
             tt.IsBalloon = true;
             tt.ToolTipIcon = ToolTipIcon.Info;
             //tt.Show(string.Empty, cboOcupacion);
-            tt.Show("Escriba un filtro y luego presione Enter para filtrar. Ejemplo: Abogado", cboOcupacion, 0);
+            tt.Show("Escriba un filtro de 3 letras o mas y luego presione Enter para filtrar. Ejemplo: Abogado; Si no existe, puede elegir 'Ocupacion No Especificada'", cboOcupacion, 0);
             
         }
 
