@@ -2239,6 +2239,8 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\user_cardx.png" />
+    <None Include="Resources\user_card1.png" />
     <None Include="Resources\sched_tasks.png" />
     <None Include="Resources\search_file_2.ico" />
     <None Include="Resources\user_card.png" />

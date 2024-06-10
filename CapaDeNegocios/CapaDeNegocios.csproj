@@ -227,6 +227,7 @@
     <Compile Include="Reportes\cReporteTareo.cs" />
     <Compile Include="Reportes\cResumenPlanillas.cs" />
     <Compile Include="Reportes\cTablaPDF.cs" />
+    <Compile Include="Reportes\General\cExcelGeneral.cs" />
     <Compile Include="Reportes\General\cReporteGeneral.cs" />
     <Compile Include="Reportes\NumLetra.cs" />
     <Compile Include="Reportes\Planilla\cDetalleDebeHaber.cs" />

@@ -50,5 +50,19 @@ namespace CapaUsuario.Utilidades
                 return false;
             }
         }
+
+        public List<int> ListaAños()
+        {
+            List<int> Lista = new List<int>();
+
+            int añoInicial = DateTime.Now.Year;
+            int añoFinal = añoInicial - 10;
+
+            for (int i = añoInicial; i > (añoFinal); i--)
+            {
+                Lista.Add(i);
+            }
+            return Lista;
+        }
     }
 }
