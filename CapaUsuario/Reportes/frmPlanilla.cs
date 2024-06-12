@@ -302,7 +302,11 @@ namespace CapaUsuario.Reportes
             if (oDatosGenerales.Ruc == "20195499765")
             {
                 chkFirmaGerencia.Text  = "        OGA";
+            }
 
+            if (oDatosGenerales.Ruc == "20177432360")
+            {
+                chkFirmaRecursos.Text = "TALENTO HUMANO";
             }
 
             DataTable odtA = new DataTable();
