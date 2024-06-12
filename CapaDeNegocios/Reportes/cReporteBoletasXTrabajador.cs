@@ -118,6 +118,7 @@ namespace CapaDeNegocios.Reportes
                         detalle.NetoACobrar = Convert.ToDecimal(item[19].ToString());
                         detalle.Trabajador = miTrabajador;
                         detalle.Meta = meta.TraerMeta(detalle.IdtMeta);
+                        detalle.DescripcionMeta = detalle.Meta.Numero + " - " + detalle.Meta.Nombre;
                         detalle.DetallePlanilla = oDetalle.TraerDetallePlanillaxCodigo(detalle.IdtDetallePlanilla);
                         detallesBoleta.Add(detalle);
                     }
@@ -133,7 +134,7 @@ namespace CapaDeNegocios.Reportes
 
        
 
-        public void ImprimirReporteBoleta(string RutaArchivo, OpcionesReporteBoleta opciones, Single tamañoLetra)
+        public void ImprimirReporteBoleta(string RutaArchivo, OpcionesReporteBoleta opciones, Single tamañoLetra, Boolean observaciones)
         {
             try
             {
@@ -558,6 +559,15 @@ namespace CapaDeNegocios.Reportes
 
                         tablaSubtotal.ListaFilas.Add(filaSub);
 
+                        cTablaPDF tablaObservaciones = new cTablaPDF();
+                        tablaObservaciones.columnas = 1;
+                        tablaObservaciones.anchoColumnas = new float[] { 500f };
+                        cFilasPDF filaObse = new cFilasPDF();
+                        cCeldaPDF celdaObse = new cCeldaPDF();
+                        celdaObse.Contenido = "Observaciones: " + item.Observaciones;
+                        celdaObse.TamañoLetra = oReporte.TamañoDefectoLetra;
+                        filaObse.ListaCeldas.Add(celdaObse);
+                        tablaObservaciones.ListaFilas.Add(filaObse);
 
                         cTablaPDF tablaFirmas = new cTablaPDF();
                         tablaFirmas.columnas = 2;
@@ -594,6 +604,7 @@ namespace CapaDeNegocios.Reportes
                             oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
                             oHojaPDF.ListaDeTablas.Add(TablaDetalle);
                             oHojaPDF.ListaDeTablas.Add(tablaSubtotal);
+                            if (item.Observaciones.Length > 0 && observaciones ) { oHojaPDF.ListaDeTablas.Add(tablaObservaciones); };
                             oHojaPDF.ListaDeTablas.Add(tablaFirmas);
                             oReporte.ListaHojasPDF.Add(oHojaPDF);
                         }
@@ -605,12 +616,14 @@ namespace CapaDeNegocios.Reportes
                             oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
                             oHojaPDF.ListaDeTablas.Add(TablaDetalle);
                             oHojaPDF.ListaDeTablas.Add(tablaSubtotal);
+                            if (item.Observaciones.Length > 0 && observaciones) { oHojaPDF.ListaDeTablas.Add(tablaObservaciones); };
                             oHojaPDF.ListaDeTablas.Add(tablaFirmas);
 
                             oHojaPDF.ListaDeTablas.Add(TablaLogo);
                             oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
                             oHojaPDF.ListaDeTablas.Add(TablaDetalle);
                             oHojaPDF.ListaDeTablas.Add(tablaSubtotal);
+                            if (item.Observaciones.Length > 0 && observaciones) { oHojaPDF.ListaDeTablas.Add(tablaObservaciones); };
                             oHojaPDF.ListaDeTablas.Add(tablaFirmas);
                             oReporte.ListaHojasPDF.Add(oHojaPDF);
                         }
@@ -623,6 +636,7 @@ namespace CapaDeNegocios.Reportes
                                 oHojaAuxiliar.ListaDeTablas.Add(TablaTituloPrincipal);
                                 oHojaAuxiliar.ListaDeTablas.Add(TablaDetalle);
                                 oHojaAuxiliar.ListaDeTablas.Add(tablaSubtotal);
+                                if (item.Observaciones.Length > 0 && observaciones) { oHojaAuxiliar.ListaDeTablas.Add(tablaObservaciones); };
                                 oHojaAuxiliar.ListaDeTablas.Add(tablaFirmas);
                                 if (numeroBoletasImpresas == listaBoletasXAño.Count)
                                 {
@@ -631,6 +645,7 @@ namespace CapaDeNegocios.Reportes
                                     oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
                                     oHojaPDF.ListaDeTablas.Add(TablaDetalle);
                                     oHojaPDF.ListaDeTablas.Add(tablaSubtotal);
+                                    if (item.Observaciones.Length > 0 && observaciones) { oHojaPDF.ListaDeTablas.Add(tablaObservaciones); };
                                     oHojaPDF.ListaDeTablas.Add(tablaFirmas);
                                     oReporte.ListaHojasPDF.Add(oHojaPDF);
                                 }
@@ -652,7 +667,9 @@ namespace CapaDeNegocios.Reportes
                                 oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
                                 oHojaPDF.ListaDeTablas.Add(TablaDetalle);
                                 oHojaPDF.ListaDeTablas.Add(tablaSubtotal);
+                                if (item.Observaciones.Length > 0 && observaciones) { oHojaPDF.ListaDeTablas.Add(tablaObservaciones); };
                                 oHojaPDF.ListaDeTablas.Add(tablaFirmas);
+                                
                                 oReporte.ListaHojasPDF.Add(oHojaPDF);
 
                                 oHojaAuxiliar = new cHojaPDF();

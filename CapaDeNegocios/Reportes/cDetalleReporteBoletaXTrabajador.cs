@@ -35,6 +35,7 @@ namespace CapaDeNegocios.Reportes
         private cDetallePlanilla detallePlanilla;
         private cPlanilla planilla;
         private cMeta meta;
+        private string descripcionMeta;
         private cTrabajador trabajador;
 
         public cDetallePlanilla DetallePlanilla
@@ -359,6 +360,19 @@ namespace CapaDeNegocios.Reportes
             set
             {
                 trabajador = value;
+            }
+        }
+
+        public string DescripcionMeta
+        {
+            get
+            {
+                return descripcionMeta;
+            }
+
+            set
+            {
+                descripcionMeta = value;
             }
         }
     }

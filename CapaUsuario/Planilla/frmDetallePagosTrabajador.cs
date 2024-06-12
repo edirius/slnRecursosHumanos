@@ -65,7 +65,7 @@ namespace CapaUsuario.Planilla
                     fichero.FileName = "BoletaPago_" + oTrabajador.Dni + DateTime.Now.Month + ".pdf";
                     if (fichero.ShowDialog() == DialogResult.OK)
                     {
-                        miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.BoletaDuplicada, Convert.ToSingle(8));
+                        miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.BoletaDuplicada, Convert.ToSingle(8), false);
 
                         FileInfo file = new FileInfo(fichero.FileName);
                         bool estaAbierto = false;

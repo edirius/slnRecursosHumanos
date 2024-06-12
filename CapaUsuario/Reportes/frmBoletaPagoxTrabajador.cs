@@ -124,7 +124,7 @@ namespace CapaUsuario.Reportes
                         {
                             if (rdnHorizontal.Checked)
                             {
-                                miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.BoletaDuplicada, Convert.ToSingle(numTamañoLetra.Value));
+                                miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.BoletaDuplicada, Convert.ToSingle(numTamañoLetra.Value), chkObservaciones.Checked);
                             }
                             else
                             {
@@ -137,7 +137,7 @@ namespace CapaUsuario.Reportes
                             {
                                 if (rdnHorizontal.Checked)
                                 {
-                                    miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.UnaBoletaxPagina, Convert.ToSingle(numTamañoLetra.Value));
+                                    miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.UnaBoletaxPagina, Convert.ToSingle(numTamañoLetra.Value), chkObservaciones.Checked);
                                 }
                                 else
                                 {
@@ -149,7 +149,7 @@ namespace CapaUsuario.Reportes
                                 //miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.UnaBoletaxPagina, Convert.ToSingle(numTamañoLetra.Value), CapaDeNegocios.Reportes.OpcionesPaginaReporteBoleta.Vertical);
                                 if (rdnHorizontal.Checked)
                                 {
-                                    miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.DosBoletaXPagina, Convert.ToSingle(numTamañoLetra.Value));
+                                    miReporte.ImprimirReporteBoleta(fichero.FileName, CapaDeNegocios.Reportes.OpcionesReporteBoleta.DosBoletaXPagina, Convert.ToSingle(numTamañoLetra.Value), chkObservaciones.Checked);
                                 }
                                 else
                                 {
