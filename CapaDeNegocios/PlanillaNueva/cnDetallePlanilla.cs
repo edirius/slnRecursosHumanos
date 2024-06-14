@@ -24,6 +24,10 @@ namespace CapaDeNegocios.PlanillaNueva
         public cAFP afp { get; set; }
         public string cuspp { get; set; }
         public string comision { get; set; }
+        public string observacion { get; set; }
+        public double sueldoPactado { get; set; }
+        public double sueldoAfecto { get; set; }
+        public Boolean jornal { get; set; }
 
         public List<cnDetallePlanillaIngresos> ListaDetalleIngresos { get; set; }
         public List<cnDetallePlanillaEgresos > ListaDetalleEgresos { get; set; }

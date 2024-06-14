@@ -110,5 +110,22 @@ namespace CapaDeNegocios
             }
             return afps;
         }
+
+        public List<cAFP> TraerListaAFPSSinSNP()
+        {
+            List<cAFP> afps = new List<cAFP>();
+            DataTable lista = Conexion.GDatos.TraerDataTable("listarAFP");
+            foreach (DataRow item in lista.Rows)
+            {
+                if (Convert.ToString(item[1]) != "SNP")
+                {
+                    cAFP afp = new cAFP();
+                    afp.CodigoAFP = Convert.ToInt32(item[0]);
+                    afp.Nombre = Convert.ToString(item[1]);
+                    afps.Add(afp);
+                }
+            }
+            return afps;
+        }
     }
 }

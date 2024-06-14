@@ -392,7 +392,7 @@ namespace CapaDeNegocios.Reportes.Planilla
             
             List<cDetalleResumenAFP> ResumenAFP = new List<cDetalleResumenAFP>();
             cListaAFP listaAFP = new cListaAFP();
-            List<cAFP> afps = listaAFP.TraerListaAFPS();
+            List<cAFP> afps = listaAFP.TraerListaAFPSSinSNP();
 
             foreach (cAFP item5 in afps )
             {
@@ -830,7 +830,7 @@ namespace CapaDeNegocios.Reportes.Planilla
 
             List<cDetalleResumenAFP> ResumenAFP = new List<cDetalleResumenAFP>();
             cListaAFP listaAFP = new cListaAFP();
-            List<cAFP> afps = listaAFP.TraerListaAFPS();
+            List<cAFP> afps = listaAFP.TraerListaAFPSSinSNP();
 
             foreach (cAFP item5 in afps)
             {

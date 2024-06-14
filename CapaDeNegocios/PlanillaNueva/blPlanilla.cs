@@ -228,6 +228,9 @@ namespace CapaDeNegocios.PlanillaNueva
                         detalleAuxiliar.totalAportacionesEmpleador = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][7]);
                         detalleAuxiliar.netoACobrar = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][8]);
                         detalleAuxiliar.miTrabajador = TraerTrabajador (Convert.ToInt32(ListaDetallesAuxiliar.Rows[i][9]));
+                        detalleAuxiliar.sueldoPactado = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][11]);
+                        detalleAuxiliar.sueldoAfecto = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][12]);
+                        detalleAuxiliar.observacion = ListaDetallesAuxiliar.Rows[i][12].ToString();
                         detalleAuxiliar.ListaDetalleIngresos = TraerListaIngresos(detalleAuxiliar);
                         detalleAuxiliar.ListaDetalleEgresos = TraerListaDescuentos(detalleAuxiliar);
                         detalleAuxiliar.ListaDetalleAportacionesTrabajador = TraerListaAportacionesTrabajador(detalleAuxiliar);
