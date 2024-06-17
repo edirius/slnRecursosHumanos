@@ -22,6 +22,7 @@ namespace CapaDeNegocios.PlanillaNueva
         public double totalDescuentoAFP { get; set; }
         public double netoACobrar { get; set; }
         public cAFP afp { get; set; }
+        public DatosLaborales.cRegimenPensionarioTrabajador regimenPensionario { get; set; }
         public string cuspp { get; set; }
         public string comision { get; set; }
         public string observacion { get; set; }

@@ -151,6 +151,7 @@ namespace CapaDeNegocios.Reportes.Planilla
                         llenarReporte2(miReporte, oPlanilla, lugar, Firmas);
                         break;
                     case enumTipoReporte.reporte3:
+                        llenarReporte3(miReporte, oPlanilla, lugar, Firmas);
                         break;
                     default:
                         break;
@@ -170,6 +171,7 @@ namespace CapaDeNegocios.Reportes.Planilla
 
         private void llenarReporte1(SpreadsheetLight.SLDocument miReporte, PlanillaNueva.cnPlanilla oPlanilla, string lugar, List<string> firmas)
         {
+            cListaAFP listaAFP = new cListaAFP();
             int contador = 0;
             SLBorder bordeCuadrado = new SLBorder();
             bordeCuadrado.SetTopBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
@@ -226,9 +228,28 @@ namespace CapaDeNegocios.Reportes.Planilla
                 miReporte.SetCellValue("E" + celda, item.fechaInicio.ToShortDateString());
                 miReporte.SetCellStyle("E" + celda, estiloCeldaTextoReporte);
                 //Ojoooooooooooooooooooooooooooooooooo
-                item.afp = item.miTrabajador.ListaRegimenPensionario.Last().MiAFP;
-                item.cuspp = item.miTrabajador.ListaRegimenPensionario.Last().Cuspp;
-                item.comision = item.miTrabajador.ListaRegimenPensionario.Last().TipoComision;
+                item.afp = item.regimenPensionario.Afp;
+                item.cuspp = item.regimenPensionario.CUSPP;
+                item.comision = item.regimenPensionario.TipoComision;
+
+                //Comprobacion SNP
+                Boolean EncontradoSNP = false;
+                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador apor in item.ListaDetalleAportacionesTrabajador)
+                {
+                    
+                    if (apor.MaestroAportacionTrabajador.Codigo == "0607")
+                    {
+                        if (apor.Monto > 0)
+                        {
+                            EncontradoSNP = true;
+                        }
+                    }
+                }
+                if (EncontradoSNP)
+                {
+                    item.afp = listaAFP.TraerSNP(); 
+                }
+
                 miReporte.SetCellValue("F" + celda, item.afp.Nombre + Environment.NewLine + item.comision + Environment.NewLine + item.cuspp);
                 miReporte.SetCellStyle("F" + celda, estiloCeldaTextoReporte);
                 
@@ -391,7 +412,7 @@ namespace CapaDeNegocios.Reportes.Planilla
             miReporte.SetCellStyle("B" + celda, "C" + celda, estiloTituloReporte);
             
             List<cDetalleResumenAFP> ResumenAFP = new List<cDetalleResumenAFP>();
-            cListaAFP listaAFP = new cListaAFP();
+            
             List<cAFP> afps = listaAFP.TraerListaAFPSSinSNP();
 
             foreach (cAFP item5 in afps )
@@ -616,9 +637,10 @@ namespace CapaDeNegocios.Reportes.Planilla
                 miReporte.SetCellStyle("E" + celda, estiloCeldaTextoReporte);
                 miReporte.MergeWorksheetCells("E10", "E11");
                 //Ojoooooooooooooooooooooooooooooooooo
-                item.afp = item.miTrabajador.ListaRegimenPensionario.Last().MiAFP;
-                item.cuspp = item.miTrabajador.ListaRegimenPensionario.Last().Cuspp;
-                item.comision = item.miTrabajador.ListaRegimenPensionario.Last().TipoComision;
+                item.afp = item.regimenPensionario.Afp;
+                item.cuspp = item.regimenPensionario.CUSPP;
+                item.comision = item.regimenPensionario.TipoComision;
+
                 string letraComision = "";
                 if (item.comision.Length>0 && !(item.afp.Nombre.Contains("SNP")))
                 {
@@ -980,14 +1002,476 @@ namespace CapaDeNegocios.Reportes.Planilla
             contador+=3;
             celda = (contador + 11).ToString();
             miReporte.MergeWorksheetCells("A" + celda, miUtilidades.DevolverLetraExcel(contadorColumna) + celda);
-            string todasFirmas = "        ";
+            string todasFirmas = "                               ";
+            string vacia = " ";
+
             foreach (string firma in firmas)
             {
-                
-                todasFirmas +=firma + "      ";
+                todasFirmas +=firma + "                               ";
             }
 
             miReporte.SetCellValue("A" + celda, todasFirmas);
+            
+        }
+
+        private void llenarReporte3(SpreadsheetLight.SLDocument miReporte, PlanillaNueva.cnPlanilla oPlanilla, string lugar, List<string> firmas)
+        {
+            int contador = 0;
+            SLBorder bordeCuadrado = new SLBorder();
+            bordeCuadrado.SetTopBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
+            bordeCuadrado.SetBottomBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
+            bordeCuadrado.SetLeftBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
+            bordeCuadrado.SetRightBorder(BorderStyleValues.Thin, System.Drawing.Color.Black);
+
+            SLStyle estiloTituloReporte = new SLStyle();
+            estiloTituloReporte.SetFontBold(true);
+            estiloTituloReporte.SetHorizontalAlignment(HorizontalAlignmentValues.Center);
+            estiloTituloReporte.SetPatternFill(PatternValues.Solid, System.Drawing.Color.LightGray, System.Drawing.Color.LightGray);
+            estiloTituloReporte.SetWrapText(true);
+            estiloTituloReporte.Border = bordeCuadrado;
+
+            SLStyle estiloCeldaReporte = new SLStyle();
+            estiloCeldaReporte.SetHorizontalAlignment(HorizontalAlignmentValues.Right);
+            estiloCeldaReporte.SetVerticalAlignment(VerticalAlignmentValues.Bottom);
+            estiloCeldaReporte.SetWrapText(true);
+            estiloCeldaReporte.Border = bordeCuadrado;
+
+            SLStyle estiloCeldaNumero = new SLStyle();
+            estiloCeldaNumero.SetHorizontalAlignment(HorizontalAlignmentValues.Right);
+            estiloCeldaNumero.SetVerticalAlignment(VerticalAlignmentValues.Bottom);
+            estiloCeldaNumero.SetWrapText(true);
+            estiloCeldaNumero.Border = bordeCuadrado;
+            estiloCeldaNumero.FormatCode = "#,##0.00";
+
+            SLStyle estiloCeldaMoneda = new SLStyle();
+            estiloCeldaMoneda.SetHorizontalAlignment(HorizontalAlignmentValues.Right);
+            estiloCeldaMoneda.SetVerticalAlignment(VerticalAlignmentValues.Bottom);
+            estiloCeldaMoneda.SetWrapText(true);
+            estiloCeldaMoneda.Border = bordeCuadrado;
+            estiloCeldaMoneda.FormatCode = "#,##0.00";
+
+
+            SLStyle estiloCeldaTextoReporte = new SLStyle();
+            estiloCeldaTextoReporte.SetHorizontalAlignment(HorizontalAlignmentValues.Left);
+            estiloCeldaTextoReporte.SetWrapText(true);
+            estiloCeldaTextoReporte.Border = bordeCuadrado;
+
+            SLStyle estiloTITULOMunicipalidad = new SLStyle();
+            estiloTITULOMunicipalidad.SetHorizontalAlignment(HorizontalAlignmentValues.Center);
+            estiloTITULOMunicipalidad.SetWrapText(true);
+            estiloTITULOMunicipalidad.Font = new SLFont();
+            estiloTITULOMunicipalidad.Font.FontSize = 14;
+
+            string celda = "";
+            int contadorColumna = 0;
+            int inicioColumnaIngresos = 0;
+            int inicioColumnaAportacionesTrabajador = 0;
+            int inicioColumnaDescuentos = 0;
+            int inicioColumnaAportacionesEmple = 0;
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanilla item in oPlanilla.ListaDetalle)
+            {
+                contador++;
+                celda = (contador + 11).ToString();
+                miReporte.SetCellValue("A" + celda, contador.ToString());
+                miReporte.SetCellStyle("A" + celda, estiloCeldaReporte);
+                miReporte.MergeWorksheetCells("A10", "A11");
+                miReporte.SetCellStyle("A10", "A11", estiloTituloReporte);
+
+                miReporte.SetCellValue("B" + celda, item.miTrabajador.Nombres + " " + item.miTrabajador.ApellidoPaterno + " " + item.miTrabajador.ApellidoMaterno);
+                miReporte.SetCellStyle("B" + celda, estiloCeldaTextoReporte);
+                miReporte.MergeWorksheetCells("B10", "B11");
+                miReporte.SetCellValue("C" + celda, item.cargo);
+                miReporte.SetCellStyle("C" + celda, estiloCeldaTextoReporte);
+                miReporte.MergeWorksheetCells("C10", "C11");
+                miReporte.SetCellValue("D" + celda, item.miTrabajador.Dni);
+                miReporte.SetCellStyle("D" + celda, estiloCeldaTextoReporte);
+                miReporte.MergeWorksheetCells("D10", "D11");
+                miReporte.SetCellValue("E" + celda, item.fechaInicio.ToShortDateString());
+                miReporte.SetCellStyle("E" + celda, estiloCeldaTextoReporte);
+                miReporte.MergeWorksheetCells("E10", "E11");
+                //Ojoooooooooooooooooooooooooooooooooo
+                item.afp = item.regimenPensionario.Afp;
+                item.cuspp = item.regimenPensionario.CUSPP;
+                item.comision = item.regimenPensionario.TipoComision;
+
+                string letraComision = "";
+                if (item.comision.Length > 0 && !(item.afp.Nombre.Contains("SNP")))
+                {
+                    letraComision = "(" + item.comision.Substring(0, 1) + ")";
+                }
+                miReporte.SetCellValue("F" + celda, item.afp.Nombre + letraComision);
+                miReporte.SetCellStyle("F" + celda, estiloCeldaTextoReporte);
+                miReporte.MergeWorksheetCells("F10", "F11");
+                //PARTE INGRESOS
+                inicioColumnaIngresos = 7;
+                contadorColumna = inicioColumnaIngresos - 1;
+                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaIngresos item2 in item.ListaDetalleIngresos)
+                {
+                    contadorColumna++;
+                    miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", item2.MaestroIngresos.Abreviacion);
+                    miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", estiloTituloReporte);
+
+                    miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item2.Monto);
+                    miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+
+                }
+                contadorColumna++;
+                miReporte.MergeWorksheetCells(miUtilidades.DevolverLetraExcel(inicioColumnaIngresos) + "10", miUtilidades.DevolverLetraExcel(contadorColumna) + 10);
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(inicioColumnaIngresos) + "10", "INGRESOS");
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(inicioColumnaIngresos) + "10", miUtilidades.DevolverLetraExcel(contadorColumna) + 10, estiloTituloReporte);
+
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", "TOTAL INGRESOS");
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", estiloTituloReporte);
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item.totalIngreso);
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+                //PARTE APORTACIONES TRABAJADOR
+
+
+                inicioColumnaAportacionesTrabajador = contadorColumna + 1;
+
+                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador item3 in item.ListaDetalleAportacionesTrabajador)
+                {
+                    contadorColumna++;
+                    miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", item3.MaestroAportacionTrabajador.Abreviacion);
+                    miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", estiloTituloReporte);
+
+                    miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item3.Monto);
+                    miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+                }
+                contadorColumna++;
+
+                miReporte.MergeWorksheetCells(miUtilidades.DevolverLetraExcel(inicioColumnaAportacionesTrabajador) + "10", miUtilidades.DevolverLetraExcel(contadorColumna) + 10);
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(inicioColumnaAportacionesTrabajador) + "10", "APORTACIONES TRABAJADOR");
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(inicioColumnaAportacionesTrabajador) + "10", miUtilidades.DevolverLetraExcel(contadorColumna) + 10, estiloTituloReporte);
+
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", "TOTAL APORTACIONES TRAB");
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", estiloTituloReporte);
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item.totalAportacionesTrabajador);
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+
+                //PARTE DESCUENTOS TRABAJADOR
+                inicioColumnaDescuentos = contadorColumna + 1;
+
+                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaEgresos item4 in item.ListaDetalleEgresos)
+                {
+                    contadorColumna++;
+                    miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", item4.MaestroDescuentos.Abreviacion);
+                    miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", estiloTituloReporte);
+
+                    miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item4.Monto);
+                    miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+                }
+                contadorColumna++;
+
+                miReporte.MergeWorksheetCells(miUtilidades.DevolverLetraExcel(inicioColumnaDescuentos) + "10", miUtilidades.DevolverLetraExcel(contadorColumna) + 10);
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(inicioColumnaDescuentos) + "10", "DESCUENTOS TRABAJADOR");
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(inicioColumnaDescuentos) + "10", miUtilidades.DevolverLetraExcel(contadorColumna) + 10, estiloTituloReporte);
+
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", "TOTAL DESCUENTOS");
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", estiloTituloReporte);
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item.totalAportacionesTrabajador);
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+
+                //PARTE APORTACIONES EMPLEADOR
+                inicioColumnaAportacionesEmple = contadorColumna + 1;
+
+                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesEmpleador item5 in item.ListaDetalleAportacionesEmpleador)
+                {
+                    contadorColumna++;
+                    miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", item5.MaestroAportacionesEmpleador.Abreviacion);
+                    miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", estiloTituloReporte);
+
+                    miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item5.Monto);
+                    miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+                }
+                contadorColumna++;
+
+                miReporte.MergeWorksheetCells(miUtilidades.DevolverLetraExcel(inicioColumnaAportacionesEmple) + "10", miUtilidades.DevolverLetraExcel(contadorColumna) + 10);
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(inicioColumnaAportacionesEmple) + "10", "APORTACIONES EMPLEADOR");
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(inicioColumnaAportacionesEmple) + "10", miUtilidades.DevolverLetraExcel(contadorColumna) + 10, estiloTituloReporte);
+
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", "TOTAL APORTACIONES EMPLEADOR");
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", estiloTituloReporte);
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item.totalAportacionesTrabajador);
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+
+                contadorColumna++;
+                miReporte.MergeWorksheetCells(miUtilidades.DevolverLetraExcel(contadorColumna) + "10", miUtilidades.DevolverLetraExcel(contadorColumna) + "11");
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "10", "NETO A COBRAR");
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "10", estiloTituloReporte);
+
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item.netoACobrar);
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+
+                contadorColumna++;
+                miReporte.MergeWorksheetCells(miUtilidades.DevolverLetraExcel(contadorColumna) + "10", miUtilidades.DevolverLetraExcel(contadorColumna) + "11");
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "10", "DIAS LABORADOS");
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "10", estiloTituloReporte);
+
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item.diasLaborados.ToString());
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaReporte);
+
+                contadorColumna++;
+                miReporte.MergeWorksheetCells(miUtilidades.DevolverLetraExcel(contadorColumna) + "10", miUtilidades.DevolverLetraExcel(contadorColumna) + "11");
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "10", "OBSERVACIONES");
+                miReporte.SetColumnWidth(miUtilidades.DevolverLetraExcel(contadorColumna), 27);
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "10", estiloTituloReporte);
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaReporte);
+            }
+            //Parte Totales
+            contador++;
+            celda = (contador + 11).ToString();
+            CapaDeNegocios.PlanillaNueva.cnDetallePlanilla ListaTotales = oblPlanilla.ListaTotales(oPlanilla);
+
+
+
+            double sumaIngresos = 0;
+            contadorColumna = inicioColumnaIngresos - 1;
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaIngresos item in ListaTotales.ListaDetalleIngresos)
+            {
+                contadorColumna++;
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item.Monto);
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+                sumaIngresos += item.Monto;
+            }
+            contadorColumna++;
+            miReporte.MergeWorksheetCells("A" + celda, "F" + celda);
+            miReporte.SetCellValue("A" + celda, "TOTAL");
+            miReporte.SetCellStyle("A" + celda, "F" + celda, estiloCeldaTextoReporte);
+
+            miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, sumaIngresos);
+            miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+
+            double sumaAportaciones = 0;
+
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador item3 in ListaTotales.ListaDetalleAportacionesTrabajador)
+            {
+                contadorColumna++;
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item3.Monto);
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+                sumaAportaciones += item3.Monto;
+            }
+            contadorColumna++;
+            miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, sumaAportaciones);
+            miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+
+            double sumaDescuentos = 0;
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaEgresos item2 in ListaTotales.ListaDetalleEgresos)
+            {
+                contadorColumna++;
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item2.Monto);
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+                sumaDescuentos += item2.Monto;
+            }
+            contadorColumna++;
+            miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, sumaDescuentos);
+            miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaReporte);
+
+            double sumaAportacionesEmpleador = 0;
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesEmpleador item4 in ListaTotales.ListaDetalleAportacionesEmpleador)
+            {
+                contadorColumna++;
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item4.Monto);
+                miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+                sumaAportacionesEmpleador += item4.Monto;
+            }
+
+            contadorColumna++;
+            miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, sumaAportacionesEmpleador);
+            miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaReporte);
+
+            contadorColumna++;
+            miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, ListaTotales.netoACobrar);
+            miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
+            contadorColumna++;
+            miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaReporte);
+            contadorColumna++;
+            miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaReporte);
+
+            contador++;
+            celda = (contador + 11).ToString();
+            miReporte.MergeWorksheetCells("A" + celda, miUtilidades.DevolverLetraExcel(contadorColumna) + celda);
+            miReporte.SetCellValue("A" + celda, lugar + ", " + DateTime.Now.Day + " de " + DateTime.Now.ToString("MMMM") + " del " + DateTime.Now.Year.ToString());
+            miReporte.SetCellStyle("A" + celda, estiloTITULOMunicipalidad);
+            contador++;
+            contador++;
+            celda = (contador + 11).ToString();
+
+            int FilaInicioResumenes = contador;
+            //parte resumen afp
+            miReporte.MergeWorksheetCells("B" + celda, "C" + celda);
+            miReporte.SetCellValue("B" + celda, "RESUMEN AFP");
+            miReporte.SetCellStyle("B" + celda, "C" + celda, estiloTituloReporte);
+
+            List<cDetalleResumenAFP> ResumenAFP = new List<cDetalleResumenAFP>();
+            cListaAFP listaAFP = new cListaAFP();
+            List<cAFP> afps = listaAFP.TraerListaAFPSSinSNP();
+
+            foreach (cAFP item5 in afps)
+            {
+                cDetalleResumenAFP resumen = new cDetalleResumenAFP();
+                resumen.AFP = item5;
+                resumen.Monto = 0;
+                ResumenAFP.Add(resumen);
+            }
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanilla item5 in oPlanilla.ListaDetalle)
+            {
+                foreach (cDetalleResumenAFP item6 in ResumenAFP)
+                {
+                    if (item6.AFP.CodigoAFP == item5.afp.CodigoAFP)
+                    {
+                        item6.Monto += item5.totalDescuentoAFP;
+                    }
+                }
+            }
+
+            double totalAFP = 0;
+            foreach (cDetalleResumenAFP item7 in ResumenAFP)
+            {
+                if (item7.Monto > 0)
+                {
+                    contador++;
+                    celda = (contador + 11).ToString();
+                    miReporte.SetCellValue("B" + celda, item7.AFP.Nombre);
+                    miReporte.SetCellStyle("B" + celda, estiloCeldaTextoReporte);
+                    miReporte.SetCellValue("C" + celda, item7.Monto);
+                    miReporte.SetCellStyle("C" + celda, estiloCeldaNumero);
+                    totalAFP += item7.Monto;
+                }
+            }
+
+            contador++;
+            celda = (contador + 11).ToString();
+            miReporte.SetCellValue("B" + celda, "TOTAL AFP");
+            miReporte.SetCellStyle("B" + celda, estiloCeldaTextoReporte);
+            miReporte.SetCellValue("C" + celda, totalAFP);
+            miReporte.SetCellStyle("C" + celda, estiloCeldaNumero);
+
+            //parte debe haber
+
+            List<cDetalleDebeHaber> ResumenDebeHaber = new List<cDetalleDebeHaber>();
+
+            cDetalleDebeHaber debeHaberIngresos = new cDetalleDebeHaber();
+            debeHaberIngresos.TipoHaberDebe = enumTipoHaberDebe.haber;
+            debeHaberIngresos.Concepto = "TOTAL INGRESOS";
+            debeHaberIngresos.Monto = sumaIngresos;
+            ResumenDebeHaber.Add(debeHaberIngresos);
+
+            cDetalleDebeHaber debeHaberAportaciones = new cDetalleDebeHaber();
+            debeHaberAportaciones.TipoHaberDebe = enumTipoHaberDebe.haber;
+            debeHaberAportaciones.Concepto = "TOTAL APORTACIONES";
+            debeHaberAportaciones.Monto = sumaAportacionesEmpleador;
+            ResumenDebeHaber.Add(debeHaberAportaciones);
+
+            cDetalleDebeHaber debeHaberNeto = new cDetalleDebeHaber();
+            debeHaberNeto.TipoHaberDebe = enumTipoHaberDebe.debe;
+            debeHaberNeto.Concepto = "NETO A COBRAR";
+            debeHaberNeto.Monto = ListaTotales.netoACobrar;
+            ResumenDebeHaber.Add(debeHaberNeto);
+
+            cDetalleDebeHaber debeHaberAFP = new cDetalleDebeHaber();
+            debeHaberAFP.TipoHaberDebe = enumTipoHaberDebe.debe;
+            debeHaberAFP.Concepto = "AFP";
+            debeHaberAFP.Monto = ListaTotales.totalDescuentoAFP;
+            ResumenDebeHaber.Add(debeHaberAFP);
+
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador item in ListaTotales.ListaDetalleAportacionesTrabajador)
+            {
+                if (item.MaestroAportacionTrabajador.Codigo != "0608" && item.MaestroAportacionTrabajador.Codigo != "0601" && item.MaestroAportacionTrabajador.Codigo != "0606")
+                {
+                    cDetalleDebeHaber debeHaber = new cDetalleDebeHaber();
+                    debeHaber.TipoHaberDebe = enumTipoHaberDebe.debe;
+                    debeHaber.Concepto = item.MaestroAportacionTrabajador.Abreviacion;
+                    debeHaber.Monto = item.Monto;
+                    ResumenDebeHaber.Add(debeHaber);
+                }
+            }
+
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaEgresos item in ListaTotales.ListaDetalleEgresos)
+            {
+                cDetalleDebeHaber debeHaber = new cDetalleDebeHaber();
+                debeHaber.TipoHaberDebe = enumTipoHaberDebe.debe;
+                debeHaber.Concepto = item.MaestroDescuentos.Abreviacion;
+                debeHaber.Monto = item.Monto;
+                ResumenDebeHaber.Add(debeHaber);
+            }
+
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesEmpleador item in ListaTotales.ListaDetalleAportacionesEmpleador)
+            {
+                cDetalleDebeHaber debeHaber = new cDetalleDebeHaber();
+                debeHaber.TipoHaberDebe = enumTipoHaberDebe.debe;
+                debeHaber.Concepto = item.MaestroAportacionesEmpleador.Abreviacion;
+                debeHaber.Monto = item.Monto;
+                ResumenDebeHaber.Add(debeHaber);
+            }
+
+            contador = FilaInicioResumenes;
+            contador++;
+            celda = (contador + 11).ToString();
+            miReporte.SetCellValue("O" + celda, "DEBE");
+            miReporte.SetCellStyle("O" + celda, estiloTituloReporte);
+            miReporte.SetCellValue("P" + celda, "HABER");
+            miReporte.SetCellStyle("P" + celda, estiloTituloReporte);
+
+            double totalDebe = 0;
+            double totalHaber = 0;
+
+            foreach (cDetalleDebeHaber item7 in ResumenDebeHaber)
+            {
+                contador++;
+                celda = (contador + 11).ToString();
+                if (item7.TipoHaberDebe == enumTipoHaberDebe.haber)
+                {
+                    miReporte.MergeWorksheetCells("M" + celda, "N" + celda);
+                    miReporte.SetCellValue("M" + celda, item7.Concepto);
+                    miReporte.SetCellStyle("M" + celda, "N" + celda, estiloCeldaTextoReporte);
+
+                    miReporte.SetCellValue("O" + celda, item7.Monto); //.ToString("c", new CultureInfo("es-PE")));
+                    miReporte.SetCellStyle("O" + celda, estiloCeldaMoneda);
+                    miReporte.SetCellStyle("P" + celda, estiloCeldaReporte);
+                    totalHaber += item7.Monto;
+                }
+                else
+                {
+                    miReporte.MergeWorksheetCells("M" + celda, "N" + celda);
+                    miReporte.SetCellValue("M" + celda, item7.Concepto);
+                    miReporte.SetCellStyle("M" + celda, "N" + celda, estiloCeldaTextoReporte);
+                    miReporte.SetCellValue("P" + celda, item7.Monto);
+                    miReporte.SetCellStyle("P" + celda, estiloCeldaMoneda);
+                    miReporte.SetCellStyle("O" + celda, estiloCeldaReporte);
+                    totalDebe += item7.Monto;
+                }
+            }
+            contador++;
+            celda = (contador + 11).ToString();
+            miReporte.MergeWorksheetCells("M" + celda, "N" + celda);
+            miReporte.SetCellStyle("M" + celda, "N" + celda, estiloCeldaTextoReporte);
+            miReporte.SetCellValue("M" + celda, "TOTAL");
+            miReporte.SetCellValue("O" + celda, totalHaber);
+            miReporte.SetCellStyle("O" + celda, estiloCeldaReporte);
+            miReporte.SetCellValue("P" + celda, totalDebe);
+            miReporte.SetCellStyle("P" + celda, estiloCeldaReporte);
+
+            contador += 3;
+            celda = (contador + 11).ToString();
+            miReporte.MergeWorksheetCells("A" + celda, miUtilidades.DevolverLetraExcel(contadorColumna) + celda);
+            string todasFirmas = "                                    ";
+            foreach (string firma in firmas)
+            {
+
+                todasFirmas += firma + "                                   ";
+            }
+
+            //miReporte.SetCellValue("A" + celda, todasFirmas);
+            SLPageSettings diseño = new SLPageSettings();
+            diseño.Orientation = OrientationValues.Landscape;
+            diseño.BottomMargin = 1.5;
+            
+            diseño.SetCenterFooterText(todasFirmas);
+            diseño.PaperSize = SLPaperSizeValues.A4Paper;
+            diseño.ScalePage(1, 999);
+            miReporte.SetPrintArea("A1", miUtilidades.DevolverLetraExcel(contadorColumna) + celda);
+            miReporte.SetPageSettings(diseño);
         }
     }
 }

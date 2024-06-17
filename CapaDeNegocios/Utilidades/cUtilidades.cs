@@ -110,5 +110,50 @@ namespace CapaDeNegocios.Utilidades
 
             return letra;
         }
+
+        public int ConvertirMesANumero(string pmes)
+        {
+            int x = 0;
+            switch (pmes)
+            {
+                case "ENERO":
+                    x = 1;
+                    break;
+                case "FEBRERO":
+                    x = 2;
+                    break;
+                case "MARZO":
+                    x = 3;
+                    break;
+                case "ABRIL":
+                    x = 4;
+                    break;
+                case "MAYO":
+                    x = 5;
+                    break;
+                case "JUNIO":
+                    x = 6;
+                    break;
+                case "JULIO":
+                    x = 7;
+                    break;
+                case "AGOSTO":
+                    x = 8;
+                    break;
+                case "SETIEMBRE":
+                    x = 9;
+                    break;
+                case "OCTUBRE":
+                    x = 10;
+                    break;
+                case "NOVIEMBRE":
+                    x = 11;
+                    break;
+                case "DICIEMBRE":
+                    x = 12;
+                    break;
+            }
+            return x;
+        }
     }
 }

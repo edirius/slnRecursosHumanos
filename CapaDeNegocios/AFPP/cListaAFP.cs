@@ -111,6 +111,23 @@ namespace CapaDeNegocios
             return afps;
         }
 
+        public cAFP TraerSNP()
+        {
+            DataTable lista = Conexion.GDatos.TraerDataTable("listarAFP");
+            cAFP snp=new cAFP();
+            foreach (DataRow item in lista.Rows)
+            {
+                if (item[1].ToString() =="SNP")
+                {
+                    snp = new cAFP();
+                    snp.CodigoAFP = Convert.ToInt32(item[0]);
+                    snp.Nombre = Convert.ToString(item[1]);
+                }
+                
+            }
+            return snp;
+        }
+
         public List<cAFP> TraerListaAFPSSinSNP()
         {
             List<cAFP> afps = new List<cAFP>();

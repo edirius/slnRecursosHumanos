@@ -32,6 +32,7 @@
             this.btnTipo2 = new System.Windows.Forms.Button();
             this.btnTipo1 = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnTipo3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnTipo2
@@ -72,11 +73,23 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // btnTipo3
+            // 
+            this.btnTipo3.BackgroundImage = global::CapaUsuario.Properties.Resources.exportacionexcel02;
+            this.btnTipo3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTipo3.Location = new System.Drawing.Point(389, 33);
+            this.btnTipo3.Name = "btnTipo3";
+            this.btnTipo3.Size = new System.Drawing.Size(140, 155);
+            this.btnTipo3.TabIndex = 89;
+            this.btnTipo3.UseVisualStyleBackColor = true;
+            this.btnTipo3.Click += new System.EventHandler(this.btnTipo3_Click);
+            // 
             // frmOpcionExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 326);
+            this.Controls.Add(this.btnTipo3);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnTipo2);
             this.Controls.Add(this.btnTipo1);
@@ -94,5 +107,6 @@
         private System.Windows.Forms.Button btnTipo1;
         private System.Windows.Forms.Button btnTipo2;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnTipo3;
     }
 }

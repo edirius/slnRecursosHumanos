@@ -31,7 +31,7 @@ namespace CapaDeNegocios.PlanillaNueva
                     oPlanilla.Meta = TraerMeta(oPlanilla.Meta.Codigo);
                     oPlanilla.FuenteFinanciamiento = TraerFuenteFinanciamiento(oPlanilla.FuenteFinanciamiento.IdTFuenteFinanciamiento);
                     oPlanilla.RegimenLaboral = TraerRegimenLaboral(oPlanilla.RegimenLaboral.IdTRegimenLaboral);
-                    oPlanilla.ListaDetalle = TraerDetallesPlanilla(oPlanilla.codigo);
+                    oPlanilla.ListaDetalle = TraerDetallesPlanilla(oPlanilla);
                 }
 
                 else
@@ -206,12 +206,14 @@ namespace CapaDeNegocios.PlanillaNueva
             }
         }
 
-        public List<cnDetallePlanilla> TraerDetallesPlanilla(int codigoPlanilla)
+        public List<cnDetallePlanilla> TraerDetallesPlanilla(cnPlanilla Planilla)
         {
             try
             {
+                Utilidades.cUtilidades miUtilidades = new Utilidades.cUtilidades();
+
                 List<cnDetallePlanilla> ListaDetalles = new List<cnDetallePlanilla>();
-                DataTable ListaDetallesAuxiliar = Conexion.GDatos.TraerDataTable("spTraerDetallePlanilla", codigoPlanilla);
+                DataTable ListaDetallesAuxiliar = Conexion.GDatos.TraerDataTable("spTraerDetallePlanilla", Planilla.codigo);
                 if (ListaDetallesAuxiliar.Rows.Count > 0 )
                 {
                     for (int i = 0; i < ListaDetallesAuxiliar.Rows.Count; i++)
@@ -230,7 +232,8 @@ namespace CapaDeNegocios.PlanillaNueva
                         detalleAuxiliar.miTrabajador = TraerTrabajador (Convert.ToInt32(ListaDetallesAuxiliar.Rows[i][9]));
                         detalleAuxiliar.sueldoPactado = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][11]);
                         detalleAuxiliar.sueldoAfecto = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][12]);
-                        detalleAuxiliar.observacion = ListaDetallesAuxiliar.Rows[i][12].ToString();
+                        detalleAuxiliar.observacion = ListaDetallesAuxiliar.Rows[i][13].ToString();
+                        detalleAuxiliar.regimenPensionario = TraerRegimenPensionarioDetallePlanilla(Convert.ToInt32(ListaDetallesAuxiliar.Rows[i][14]), detalleAuxiliar.miTrabajador, new DateTime(Convert.ToInt16(Planilla.Año), miUtilidades.ConvertirMesANumero(Planilla.Mes), 1));
                         detalleAuxiliar.ListaDetalleIngresos = TraerListaIngresos(detalleAuxiliar);
                         detalleAuxiliar.ListaDetalleEgresos = TraerListaDescuentos(detalleAuxiliar);
                         detalleAuxiliar.ListaDetalleAportacionesTrabajador = TraerListaAportacionesTrabajador(detalleAuxiliar);
@@ -255,6 +258,40 @@ namespace CapaDeNegocios.PlanillaNueva
             {
 
                 throw new cReglaNegociosException("blPlanilla: " + e.Message );
+            }
+        }
+
+        public DatosLaborales.cRegimenPensionarioTrabajador TraerRegimenPensionarioDetallePlanilla(int codigoAFP, cTrabajador Trabajador, DateTime mes)
+        {
+            try
+            {
+                CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador RegimenPensionario = new DatosLaborales.cRegimenPensionarioTrabajador();
+                
+                if (codigoAFP != 0)
+                {
+                    RegimenPensionario = RegimenPensionario.traerAFPTrabajador(Trabajador.IdTrabajador, mes);
+                    //no se encontro periodo regimen
+                    if (RegimenPensionario == null)
+                    {
+                        RegimenPensionario = new DatosLaborales.cRegimenPensionarioTrabajador();
+                    }
+                    RegimenPensionario.Afp = TraerAFP(codigoAFP); ;
+                }
+                //sginifica que es data de meses anteriores a la actualizacion de afp
+                else
+                {
+                    RegimenPensionario.traerAFPTrabajador(Trabajador.IdTrabajador, mes);
+                    if (RegimenPensionario == null)
+                    {
+                        throw new cReglaNegociosException("No se encontro un periodo de AFP/SNP de : " + Trabajador.Dni + " " + Trabajador.Nombres + " " + Trabajador.ApellidoPaterno + " " + Trabajador.ApellidoMaterno);
+                    }
+                }
+
+                return RegimenPensionario;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo TraerAFPDetallePlanilla: "  +ex.Message);
             }
         }
 

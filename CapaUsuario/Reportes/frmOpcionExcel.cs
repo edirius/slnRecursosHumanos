@@ -47,5 +47,11 @@ namespace CapaUsuario.Reportes
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void btnTipo3_Click(object sender, EventArgs e)
+        {
+            tipoReporte = enumTipoReporte.reporte3;
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }

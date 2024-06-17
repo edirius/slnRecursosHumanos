@@ -228,6 +228,58 @@ namespace CapaDeNegocios.DatosLaborales
             }
         }
 
+
+        public CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador traerAFPTrabajador(int idttrabajador, DateTime fecha)
+        {
+            cListaAFP miAFP = new cListaAFP();
+            cPeriodoTrabajador miPeriodoTrabajador = new cPeriodoTrabajador();
+
+            DataTable oDataAFP = miAFP.ObtenerListaAFP();
+
+            List<CapaDeNegocios.DatosLaborales.cPeriodoTrabajador> AuxiliarPeriodoTrabajador = miPeriodoTrabajador.traerPeriodosMesTrabajador(idttrabajador, fecha);
+            List<CapaDeNegocios.DatosLaborales.cRegimenTrabajador> ListaRegimenTrabajador = new List<CapaDeNegocios.DatosLaborales.cRegimenTrabajador>();
+            List<CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador> ListaPeriodoAFP = new List<CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador>();
+
+            CapaDeNegocios.DatosLaborales.cPeriodoTrabajador PeriodoElegido = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+            CapaDeNegocios.DatosLaborales.cRegimenTrabajador RegimenElegido = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+            CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador AFPElegido = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+
+            if (AuxiliarPeriodoTrabajador.Count > 0)
+            {
+                foreach (CapaDeNegocios.DatosLaborales.cPeriodoTrabajador item in AuxiliarPeriodoTrabajador)
+                {
+                    CapaDeNegocios.DatosLaborales.cRegimenTrabajador auxiliarRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+
+                    ListaRegimenTrabajador = auxiliarRegimenTrabajador.TraerRegimenTrabajadorMes(item.IdtPeriodoTrabajador, fecha);
+                    ListaPeriodoAFP = AFPElegido.TraerRegimenPensionarioxMes(item.IdtPeriodoTrabajador, fecha);
+
+                    if (ListaPeriodoAFP.Count > 0)
+                    {
+                        AFPElegido = ListaPeriodoAFP[ListaPeriodoAFP.Count - 1];
+                        AFPElegido.Afp = new CapaDeNegocios.cAFP();
+
+                        foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + AFPElegido.IdtAFP.ToString() + "'"))
+                        {
+                            AFPElegido.Afp.CodigoAFP = AFPElegido.IdtAFP;
+                            AFPElegido.Afp.Nombre = rowAFP[1].ToString();
+                        }
+
+                        return AFPElegido;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                return null;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
         public DateTime convertirFecha(string Fecha, bool Inicio)
         {
             if (Fecha.Length == 10)
