@@ -280,7 +280,7 @@ namespace CapaDeNegocios.PlanillaNueva
                 //sginifica que es data de meses anteriores a la actualizacion de afp
                 else
                 {
-                    RegimenPensionario.traerAFPTrabajador(Trabajador.IdTrabajador, mes);
+                    RegimenPensionario = RegimenPensionario.traerAFPTrabajador(Trabajador.IdTrabajador, mes);
                     if (RegimenPensionario == null)
                     {
                         throw new cReglaNegociosException("No se encontro un periodo de AFP/SNP de : " + Trabajador.Dni + " " + Trabajador.Nombres + " " + Trabajador.ApellidoPaterno + " " + Trabajador.ApellidoMaterno);
