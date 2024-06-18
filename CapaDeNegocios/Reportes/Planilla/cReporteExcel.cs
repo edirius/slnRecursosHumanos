@@ -716,7 +716,7 @@ namespace CapaDeNegocios.Reportes.Planilla
 
                 miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", "TOTAL DESCUENTOS");
                 miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", estiloTituloReporte);
-                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item.totalAportacionesTrabajador);
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item.totalDescuentos);
                 miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
 
                 //PARTE APORTACIONES EMPLEADOR
@@ -1169,7 +1169,7 @@ namespace CapaDeNegocios.Reportes.Planilla
 
                 miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", "TOTAL DESCUENTOS");
                 miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + "11", estiloTituloReporte);
-                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item.totalAportacionesTrabajador);
+                miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, item.totalDescuentos);
                 miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(contadorColumna) + celda, estiloCeldaNumero);
 
                 //PARTE APORTACIONES EMPLEADOR
