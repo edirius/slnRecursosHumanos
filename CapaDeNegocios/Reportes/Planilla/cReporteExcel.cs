@@ -1455,11 +1455,69 @@ namespace CapaDeNegocios.Reportes.Planilla
             contador += 3;
             celda = (contador + 11).ToString();
             miReporte.MergeWorksheetCells("A" + celda, miUtilidades.DevolverLetraExcel(contadorColumna) + celda);
-            string todasFirmas = "                                    ";
+            string todasFirmas = "           ";
+            string firmaDerecha = " ";
+            string firmaCentro = "";
+            string firmaIzquierdo= "  ";
+            int numeroFirmasXSeccion = 0;
+            switch (firmas.Count)
+            {
+                case 1:
+                    numeroFirmasXSeccion = 1;
+                    break;
+                case 2:
+                    numeroFirmasXSeccion = 1;
+                    break;
+                case 3:
+                    numeroFirmasXSeccion = 1;
+                    break;
+                case 4:
+                    numeroFirmasXSeccion = 2;
+                    break;
+                case 5:
+                    numeroFirmasXSeccion = 2;
+                    break;
+                case 6:
+                    numeroFirmasXSeccion = 2;
+                    break;
+                case 7:
+                    numeroFirmasXSeccion = 3;
+                    break;
+                case 8:
+                    numeroFirmasXSeccion = 3;
+                    break;
+                case 9:
+                    numeroFirmasXSeccion = 3;
+                    break;
+                case 10:
+                    numeroFirmasXSeccion = 4;
+                    break;
+                default:
+                    break;
+            }
+            
+            int contadorFirmas = 0;
+            foreach (string firma in firmas)
+            {
+                contadorFirmas++;
+                if (contadorFirmas <= numeroFirmasXSeccion)
+                {
+                    firmaIzquierdo += firma + "                                ";
+                }
+                if (contadorFirmas > numeroFirmasXSeccion && contadorFirmas <= (numeroFirmasXSeccion * 2))
+                {
+                    firmaCentro += firma + "                                   ";
+                }
+                if (contadorFirmas > (numeroFirmasXSeccion*2) && contadorFirmas <= (numeroFirmasXSeccion * 3))
+                {
+                    firmaDerecha += firma + "                               ";
+                }
+            }
+
             foreach (string firma in firmas)
             {
 
-                todasFirmas += firma + "                                   ";
+                todasFirmas += firma + "                                ";
             }
 
             //miReporte.SetCellValue("A" + celda, todasFirmas);
@@ -1467,7 +1525,9 @@ namespace CapaDeNegocios.Reportes.Planilla
             diseño.Orientation = OrientationValues.Landscape;
             diseño.BottomMargin = 1.5;
             
-            diseño.SetCenterFooterText(todasFirmas);
+            diseño.SetLeftFooterText(firmaIzquierdo);
+            diseño.SetCenterFooterText(firmaCentro);
+            diseño.SetRightFooterText(firmaDerecha);
             diseño.PaperSize = SLPaperSizeValues.A4Paper;
             diseño.ScalePage(1, 999);
             miReporte.SetPrintArea("A1", miUtilidades.DevolverLetraExcel(contadorColumna) + celda);
