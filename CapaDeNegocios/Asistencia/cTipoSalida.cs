@@ -65,5 +65,45 @@ namespace CapaDeNegocios.Asistencia
                 throw new cReglaNegociosException("Error en el metodo TraerTiposSalida: " + ex);
             }
         }
+
+        /// <summary>
+        /// Metodo para ingresar un nuevo tipo de salida
+        /// </summary>
+        /// <param name="NuevoTipoSalida">El nuevo Tipo de Salida</param>
+        public void IngresarTipoSalida(cTipoSalida NuevoTipoSalida)
+        {
+            try
+            {
+                Conexion.GDatos.Ejecutar("spCrearTiposalida", NuevoTipoSalida.descripcion);
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo IngresarTipoSalida: " + ex);
+            }
+        }
+
+        public void ModificarTipoSalida(cTipoSalida TipoSalidaAModificar)
+        {
+            try
+            {
+                Conexion.GDatos.Ejecutar("spModificarTiposalida", TipoSalidaAModificar.codigo, TipoSalidaAModificar.descripcion);
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo ModificarTipoSalida: " + ex);
+            }
+        }
+
+        public void EliminarTipoSalida(cTipoSalida TipoSalidaAEliminar)
+        {
+            try
+            {
+                Conexion.GDatos.Ejecutar("spEliminarTiposalida", TipoSalidaAEliminar.codigo);
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo EliminarTipoSalida: " + ex);
+            }
+        }
     }
 }

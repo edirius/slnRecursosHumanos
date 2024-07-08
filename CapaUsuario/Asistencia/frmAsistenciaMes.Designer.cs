@@ -84,7 +84,7 @@
             // 
             this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboMes.FormattingEnabled = true;
-            this.cboMes.Location = new System.Drawing.Point(132, 54);
+            this.cboMes.Location = new System.Drawing.Point(140, 54);
             this.cboMes.Name = "cboMes";
             this.cboMes.Size = new System.Drawing.Size(121, 21);
             this.cboMes.TabIndex = 79;

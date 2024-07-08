@@ -31,7 +31,7 @@ namespace CapaDeNegocios
             set { codigosunat = value; }
         }
 
-
+        private string tipo;
 
         private BindingList<cComisionesAFP> comisionesAFP;
 
@@ -52,7 +52,17 @@ namespace CapaDeNegocios
             }
         }
 
-       
+        public string Tipo
+        {
+            get
+            {
+                return tipo;
+            }
 
+            set
+            {
+                tipo = value;
+            }
+        }
     }
 }

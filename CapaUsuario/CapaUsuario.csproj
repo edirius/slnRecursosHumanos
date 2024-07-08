@@ -185,6 +185,12 @@
     <Compile Include="Asistencia\frmListaSalidas.Designer.cs">
       <DependentUpon>frmListaSalidas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Asistencia\frmListaTiposSalida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmListaTiposSalida.Designer.cs">
+      <DependentUpon>frmListaTiposSalida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Asistencia\frmListaTurnos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +220,12 @@
     </Compile>
     <Compile Include="Asistencia\frmMantenimientoSalidas.Designer.cs">
       <DependentUpon>frmMantenimientoSalidas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\frmMantenimientoTipoSalida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\frmMantenimientoTipoSalida.Designer.cs">
+      <DependentUpon>frmMantenimientoTipoSalida.cs</DependentUpon>
     </Compile>
     <Compile Include="Asistencia\frmMantenimientoTurno.cs">
       <SubType>Form</SubType>
@@ -393,6 +405,14 @@
     </Compile>
     <Compile Include="ExportarSunat\frmVerCodificacion.Designer.cs">
       <DependentUpon>frmVerCodificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportarSunat\Tregistro\cCatalogoAltaTRegistro.cs" />
+    <Compile Include="ExportarSunat\Tregistro\cListaTrabajadores.cs" />
+    <Compile Include="ExportarSunat\Tregistro\frmDarAltaTregistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarSunat\Tregistro\frmDarAltaTregistro.Designer.cs">
+      <DependentUpon>frmDarAltaTregistro.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -1603,6 +1623,9 @@
     <EmbeddedResource Include="Asistencia\frmListaSalidas.resx">
       <DependentUpon>frmListaSalidas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmListaTiposSalida.resx">
+      <DependentUpon>frmListaTiposSalida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Asistencia\frmListaTurnos.resx">
       <DependentUpon>frmListaTurnos.cs</DependentUpon>
     </EmbeddedResource>
@@ -1617,6 +1640,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Asistencia\frmMantenimientoSalidas.resx">
       <DependentUpon>frmMantenimientoSalidas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\frmMantenimientoTipoSalida.resx">
+      <DependentUpon>frmMantenimientoTipoSalida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Asistencia\frmMantenimientoTurno.resx">
       <DependentUpon>frmMantenimientoTurno.cs</DependentUpon>
@@ -1701,6 +1727,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExportarSunat\frmVerCodificacion.resx">
       <DependentUpon>frmVerCodificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportarSunat\Tregistro\frmDarAltaTregistro.resx">
+      <DependentUpon>frmDarAltaTregistro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

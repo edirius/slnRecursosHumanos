@@ -33,6 +33,9 @@
             this.txtNOmbreAFP = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.lblContador = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCodigoSunat = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -51,13 +54,14 @@
             this.txtNOmbreAFP.Name = "txtNOmbreAFP";
             this.txtNOmbreAFP.Size = new System.Drawing.Size(261, 20);
             this.txtNOmbreAFP.TabIndex = 1;
+            this.txtNOmbreAFP.TextChanged += new System.EventHandler(this.txtNOmbreAFP_TextChanged);
             // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.MintCream;
             this.btnGuardar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnGuardar.Location = new System.Drawing.Point(31, 80);
+            this.btnGuardar.Location = new System.Drawing.Point(31, 132);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(96, 53);
             this.btnGuardar.TabIndex = 2;
@@ -70,7 +74,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.MintCream;
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnCancelar.Location = new System.Drawing.Point(280, 80);
+            this.btnCancelar.Location = new System.Drawing.Point(280, 132);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(96, 53);
             this.btnCancelar.TabIndex = 3;
@@ -78,11 +82,40 @@
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // lblContador
+            // 
+            this.lblContador.AutoSize = true;
+            this.lblContador.Location = new System.Drawing.Point(344, 56);
+            this.lblContador.Name = "lblContador";
+            this.lblContador.Size = new System.Drawing.Size(30, 13);
+            this.lblContador.TabIndex = 4;
+            this.lblContador.Text = "1/44";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(31, 78);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Codigo Sunat";
+            // 
+            // txtCodigoSunat
+            // 
+            this.txtCodigoSunat.Location = new System.Drawing.Point(115, 73);
+            this.txtCodigoSunat.MaxLength = 2;
+            this.txtCodigoSunat.Name = "txtCodigoSunat";
+            this.txtCodigoSunat.Size = new System.Drawing.Size(32, 20);
+            this.txtCodigoSunat.TabIndex = 6;
+            // 
             // frmAFP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 145);
+            this.ClientSize = new System.Drawing.Size(391, 202);
+            this.Controls.Add(this.txtCodigoSunat);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblContador);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtNOmbreAFP);
@@ -103,5 +136,8 @@
         private System.Windows.Forms.TextBox txtNOmbreAFP;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label lblContador;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtCodigoSunat;
     }
 }

@@ -692,6 +692,13 @@ namespace CapaUsuario
             fSobre.ShowDialog();
         }
 
+        private void listaTiposSalidaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Asistencia.frmListaTiposSalida fListaTipoSalida = new Asistencia.frmListaTiposSalida();
+            fListaTipoSalida.MdiParent = this;
+            fListaTipoSalida.Show();
+        }
+
         private void mnuResidenteMeta_Click(object sender, EventArgs e)
         {
             ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();

@@ -141,6 +141,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
+            this.listaTiposSalidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -334,6 +335,7 @@
             this.mnuListaTurnosXDia,
             this.mnuListaTurnos,
             this.mnuListaDiasFestivos,
+            this.listaTiposSalidaToolStripMenuItem,
             this.mnuAsistenciaTrabajador,
             this.toolStripSeparator7,
             this.btnConexionReloj,
@@ -1040,6 +1042,13 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
+            // listaTiposSalidaToolStripMenuItem
+            // 
+            this.listaTiposSalidaToolStripMenuItem.Name = "listaTiposSalidaToolStripMenuItem";
+            this.listaTiposSalidaToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
+            this.listaTiposSalidaToolStripMenuItem.Text = "Lista Tipos Salida";
+            this.listaTiposSalidaToolStripMenuItem.Click += new System.EventHandler(this.listaTiposSalidaToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1186,6 +1195,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuResidenteMeta;
         private System.Windows.Forms.ToolStripMenuItem mnuPrivilegios;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
+        private System.Windows.Forms.ToolStripMenuItem listaTiposSalidaToolStripMenuItem;
     }
 }
 

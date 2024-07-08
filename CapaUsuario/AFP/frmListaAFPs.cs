@@ -35,6 +35,7 @@ namespace CapaUsuario.AFP
                 frmAFP fAFP = new frmAFP();
                 fAFP.Text = "Ingrese el nombre de la AFP";
                 fAFP.miAFP = new cAFP();
+                fAFP.miAFP.Tipo = "AFP";
                 if (fAFP.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     miNuevaAFP = fAFP.miAFP;
@@ -42,7 +43,10 @@ namespace CapaUsuario.AFP
                     miListaAFP.AgregarAfp(miNuevaAFP);
 
                     dtgListaAFPs.DataSource = miListaAFP.ObtenerListaAFP();
-
+                }
+                else
+                {
+                    MessageBox.Show("Se canceló la operación", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception E)
@@ -106,7 +110,8 @@ namespace CapaUsuario.AFP
                 cAFP miAFPaModificar = new cAFP();
                 miAFPaModificar.CodigoAFP = Convert.ToInt16(dtgListaAFPs.Rows[dtgListaAFPs.SelectedRows[0].Index].Cells[0].Value.ToString());
                 miAFPaModificar.Nombre = dtgListaAFPs.Rows[dtgListaAFPs.SelectedRows[0].Index].Cells[1].Value.ToString();
-                miAFPaModificar.Codigosunat = dtgListaAFPs.Rows[dtgListaAFPs.SelectedRows[0].Index].Cells[2].Value.ToString();  
+                miAFPaModificar.Codigosunat = dtgListaAFPs.Rows[dtgListaAFPs.SelectedRows[0].Index].Cells[2].Value.ToString();
+                miAFPaModificar.Tipo = "AFP";
                 frmAFP fAFP = new frmAFP();
                 fAFP.Text = "Modifique el nombre de la AFP";
                 fAFP.miAFP = miAFPaModificar;
@@ -115,6 +120,10 @@ namespace CapaUsuario.AFP
                     miAFPaModificar = fAFP.miAFP;
                     miListaAFP.ModificarAfp(miAFPaModificar);
                     dtgListaAFPs.DataSource = miListaAFP.ObtenerListaAFP();
+                }
+                else
+                {
+                    MessageBox.Show("Se canceló la operación", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else

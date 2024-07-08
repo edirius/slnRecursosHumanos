@@ -15,6 +15,8 @@ namespace CapaDeNegocios.Reportes
 {
     public class cReporteMensualTrabajadores
     {
+        private Utilidades.cUtilidades miUtilidades = new Utilidades.cUtilidades();
+
         public DataTable TraerListaTrabajadores(string mes, string año)
         {
             try
@@ -117,8 +119,8 @@ namespace CapaDeNegocios.Reportes
                 int contador = 0;
                 miReporte.SetCellValue("A1", "REPORTE MENSUAL TRABAJADORES");
                 miReporte.SetCellValue("A2", mes + " " + año);
-                miReporte.MergeWorksheetCells("A1", DevolverLetraxNumero(oTabla.Columns.Count) + "1");
-                miReporte.MergeWorksheetCells("A2", DevolverLetraxNumero(oTabla.Columns.Count) + "2");
+                miReporte.MergeWorksheetCells("A1", miUtilidades.DevolverLetraExcel(oTabla.Columns.Count+1) + "1");
+                miReporte.MergeWorksheetCells("A2", miUtilidades.DevolverLetraExcel(oTabla.Columns.Count+1) + "2");
 
                 SLStyle estiloTituloReporte = new SLStyle();
                 estiloTituloReporte.SetFontBold(true);
@@ -137,8 +139,8 @@ namespace CapaDeNegocios.Reportes
                 miReporte.SetCellStyle("A3", estiloTitulo);
                 for (int i = 0; i < oTabla.Columns.Count; i++)
                 {
-                    miReporte.SetCellValue(DevolverLetraxNumero(i+1) + "3", oTabla.Columns[i].ColumnName);
-                    miReporte.SetCellStyle(DevolverLetraxNumero(i + 1) + "3", estiloTitulo);
+                    miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(i+2) + "3", oTabla.Columns[i].ColumnName);
+                    miReporte.SetCellStyle(miUtilidades.DevolverLetraExcel(i + 2) + "3", estiloTitulo);
                     miReporte.AutoFitColumn(i);
                    
                 }
@@ -149,7 +151,7 @@ namespace CapaDeNegocios.Reportes
                     miReporte.SetCellValue("A" + (i + 4), contador.ToString());
                     for (int j = 0; j < oTabla.Columns.Count; j++)
                     {
-                        miReporte.SetCellValue(DevolverLetraxNumero(j + 1) + (i + 4), oTabla.Rows[i][j].ToString());
+                        miReporte.SetCellValue(miUtilidades.DevolverLetraExcel(j + 2) + (i + 4), oTabla.Rows[i][j].ToString());
                     }
                 }
                 if (Autoajustar)
@@ -169,80 +171,7 @@ namespace CapaDeNegocios.Reportes
             }
         }
 
-        public string DevolverLetraxNumero(int numero)
-        {
-            string letra = "A";
-
-            switch (numero) 
-            {
-                case 0:
-                    letra = "A";
-                    break;
-                case 1:
-                    letra = "B";
-                    break;
-                case 2:
-                    letra = "C";
-                    break;
-                case 3:
-                    letra = "D";
-                    break;
-                case 4:
-                    letra = "E";
-                    break;
-                case 5:
-                    letra = "F";
-                    break;
-                case 6:
-                    letra = "G";
-                    break;
-                case 7:
-                    letra = "H";
-                    break;
-                case 8:
-                    letra = "I";
-                    break;
-                case 9:
-                    letra = "J";
-                    break;
-                case 10:
-                    letra = "K";
-                    break;
-                case 11:
-                    letra = "L";
-                    break;
-                case 12:
-                    letra = "M";
-                    break;
-                case 13:
-                    letra = "N";
-                    break;
-                case 14:
-                    letra = "O";
-                    break;
-                case 15:
-                    letra = "P";
-                    break;
-                case 16:
-                    letra = "Q";
-                    break;
-                case 17:
-                    letra = "R";
-                    break;
-                case 18:
-                    letra = "S";
-                    break;
-                case 19:
-                    letra = "T";
-                    break;
-                case 20:
-                    letra = "U";
-                    break;
-                default:
-                    break;
-            }
-            return letra;
-        }
+       
 
         public float[] traerAnchoColumnas( DataTable oTabla)
         {

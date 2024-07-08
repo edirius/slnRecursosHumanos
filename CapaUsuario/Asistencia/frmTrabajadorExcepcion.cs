@@ -42,7 +42,7 @@ namespace CapaUsuario.Asistencia
 
         private void Iniciar()
         {
-            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj3(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
 
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
 
@@ -144,10 +144,15 @@ namespace CapaUsuario.Asistencia
                         }
                         break;
                 }
-                tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
-                dtgListaTrabajadores.DataSource = tablaAuxiliar;
+                CargarTrabajadores();
                
             }
+        }
+
+        private void CargarTrabajadores()
+        {
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj3(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
+            dtgListaTrabajadores.DataSource = tablaAuxiliar;
         }
 
         private void btnAsignarHorario_Click(object sender, EventArgs e)
@@ -339,7 +344,6 @@ namespace CapaUsuario.Asistencia
                         else
                         {
                             fAsignarCodigoReloj.oTrabajadorReloj.CodigoReloj = oCatalogo.TraerTrabajadorRelojXidTrabajador(listaTrabajadores[0].IdTrabajador).CodigoReloj;
-
                         }
                         
 
@@ -349,11 +353,13 @@ namespace CapaUsuario.Asistencia
                             {
                                 oCatalogo.CrearTrabajadorReloj(fAsignarCodigoReloj.oTrabajadorReloj);
                                 MessageBox.Show("Se ingreso el codigo del reloj: " + fAsignarCodigoReloj.oTrabajadorReloj.CodigoReloj + " al trabajador: " + fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador.Nombres + " " + fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador.ApellidoPaterno + " " + fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador.ApellidoMaterno, "Asignado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                CargarTrabajadores();
                             }
                             else
                             {
                                 oCatalogo.ModificarTrabajadorReloj(fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador, fAsignarCodigoReloj.oTrabajadorReloj.CodigoReloj);
                                 MessageBox.Show("Se modifico el codigo del reloj: " + fAsignarCodigoReloj.oTrabajadorReloj.CodigoReloj + " al trabajador: " + fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador.Nombres + " " + fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador.ApellidoPaterno + " " + fAsignarCodigoReloj.oTrabajadorReloj.OTrabajador.ApellidoMaterno, "Asignado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                CargarTrabajadores();
                             }
                             
 
@@ -381,25 +387,25 @@ namespace CapaUsuario.Asistencia
 
         private void btnBuscarDNI_Click(object sender, EventArgs e)
         {
-            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj3(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
         }
 
         private void btnBuscarNombre_Click(object sender, EventArgs e)
         {
-            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj3(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
         }
 
         private void btnBuscarAPaterno_Click(object sender, EventArgs e)
         {
-            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj3(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
         }
 
         private void btnBuscarAMaterno_Click(object sender, EventArgs e)
         {
-            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadores(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj3(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
         }
 
@@ -442,6 +448,19 @@ namespace CapaUsuario.Asistencia
             {
                 MessageBox.Show("Error al ingresar horario del trabajador: " + ex.Message, "Asignar Horario", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dtgListaTrabajadores_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewRow row = dtgListaTrabajadores.Rows[e.RowIndex];
+            if (row.Cells["colIdtreloj"].Value.ToString() != "" && e.ColumnIndex == 11)
+            {
+                e.CellStyle.ForeColor = Color.Blue;
+            }
+            //if (row.Cells["colIdtreloj"].Value.ToString() == "" && e.ColumnIndex == 11)
+            //{
+            //    row.Cells["colIdtreloj"].Value = "NO ASIGNADO";
+            //}
         }
     }
 }

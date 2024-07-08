@@ -22,14 +22,15 @@ namespace CapaUsuario.AFP
 
         private void Iniciar()
         {
-           
-            txtNOmbreAFP.Text  = miAFP.Nombre;
-
+            txtNOmbreAFP.Text = miAFP.Nombre;
+            txtCodigoSunat.Text = miAFP.Codigosunat;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             miAFP.Nombre = txtNOmbreAFP.Text;
+            miAFP.Codigosunat = txtCodigoSunat.Text;
+
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 
@@ -40,7 +41,12 @@ namespace CapaUsuario.AFP
 
         private void frmAFP_Load(object sender, EventArgs e)
         {
-            txtNOmbreAFP.Text = miAFP.Nombre;
+            Iniciar();
+        }
+
+        private void txtNOmbreAFP_TextChanged(object sender, EventArgs e)
+        {
+            lblContador.Text = txtNOmbreAFP.TextLength + "/44";
         }
     }
 }

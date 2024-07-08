@@ -14,7 +14,7 @@ namespace CapaDeNegocios
         public Boolean AgregarAfp(cAFP afp)
         {
             DataTable Auxiliar = new DataTable();
-            Auxiliar = Conexion.GDatos.TraerDataTable("spCrearAFP", afp.Nombre);
+            Auxiliar = Conexion.GDatos.TraerDataTable("spCrearAFP", afp.Nombre, afp.Codigosunat, afp.Tipo);
             if (Convert.ToString (Auxiliar.Rows[0][0]) == "0")
             {
                 return true;
@@ -47,8 +47,16 @@ namespace CapaDeNegocios
 
         public Boolean ModificarAfp(cAFP afp)
         {
-            Conexion.GDatos.Ejecutar("spModificarAFP",afp.CodigoAFP, afp.Nombre);
-            return true;
+            try
+            {
+                Conexion.GDatos.Ejecutar("spModificarAFP", afp.CodigoAFP, afp.Nombre, afp.Codigosunat, afp.Tipo);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error Modificar AFP. Detalles: " + ex.Message);
+            }
+            
         }
 
         private Boolean ComisionRepetida(cComisionesAFP miComision)
