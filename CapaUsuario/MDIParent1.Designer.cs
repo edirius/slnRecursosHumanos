@@ -59,6 +59,7 @@
             this.mnuListaTurnosXDia = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuListaTurnos = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuListaDiasFestivos = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaTiposSalidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAsistenciaTrabajador = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.btnConexionReloj = new System.Windows.Forms.ToolStripMenuItem();
@@ -141,7 +142,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.listaTiposSalidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -398,6 +399,13 @@
             this.mnuListaDiasFestivos.Size = new System.Drawing.Size(297, 22);
             this.mnuListaDiasFestivos.Text = "Lista Dias Festivos";
             this.mnuListaDiasFestivos.Click += new System.EventHandler(this.mnuListaDiasFestivos_Click);
+            // 
+            // listaTiposSalidaToolStripMenuItem
+            // 
+            this.listaTiposSalidaToolStripMenuItem.Name = "listaTiposSalidaToolStripMenuItem";
+            this.listaTiposSalidaToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
+            this.listaTiposSalidaToolStripMenuItem.Text = "Lista Tipos Salida";
+            this.listaTiposSalidaToolStripMenuItem.Click += new System.EventHandler(this.listaTiposSalidaToolStripMenuItem_Click);
             // 
             // mnuAsistenciaTrabajador
             // 
@@ -665,7 +673,8 @@
             this.tributosYDescuentosDelTrabajadorPDTPLAME2ToolStripMenuItem,
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem,
             this.datosDelPensionistaPENToolStripMenuItem,
-            this.exportarTodoToolStripMenuItem});
+            this.exportarTodoToolStripMenuItem,
+            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem});
             this.exportarTextoSUNATToolStripMenuItem.Name = "exportarTextoSUNATToolStripMenuItem";
             this.exportarTextoSUNATToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
             this.exportarTextoSUNATToolStripMenuItem.Text = "Exportar datos - SUNAT";
@@ -1042,12 +1051,12 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // listaTiposSalidaToolStripMenuItem
+            // darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem
             // 
-            this.listaTiposSalidaToolStripMenuItem.Name = "listaTiposSalidaToolStripMenuItem";
-            this.listaTiposSalidaToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
-            this.listaTiposSalidaToolStripMenuItem.Text = "Lista Tipos Salida";
-            this.listaTiposSalidaToolStripMenuItem.Click += new System.EventHandler(this.listaTiposSalidaToolStripMenuItem_Click);
+            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem.Name = "darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem";
+            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem.Size = new System.Drawing.Size(351, 22);
+            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem.Text = "Dar de alta al trabajador V2 (T-REGISTRO)";
+            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem.Click += new System.EventHandler(this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -1196,6 +1205,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuPrivilegios;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripMenuItem listaTiposSalidaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem;
     }
 }
 

@@ -2112,10 +2112,10 @@ namespace CapaUsuario.Planilla
                     ddval.Value = 0;
                     break;
                 case 2:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2023, 04, 30)) - DateFechaInicio).Days + 1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2024, 04, 30)) - DateFechaInicio).Days + 1);
                     break;
                 case 1:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2023, 05, 31)) - DateFechaInicio).Days + 1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2024, 05, 31)) - DateFechaInicio).Days + 1);
                     break;
                 case 0:
                     ddval.Value = Convert.ToDouble(((new DateTime(2024, 06, 30)) - DateFechaInicio).Days +1);

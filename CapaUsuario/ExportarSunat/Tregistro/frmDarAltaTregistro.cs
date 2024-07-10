@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaDeNegocios;
+using CapaDeNegocios.ExportarSunat;
 
 namespace CapaUsuario.ExportarSunat.Tregistro
 {
     public partial class frmDarAltaTregistro : Form
     {
+        Tregistro.cCatalogoAltaTRegistro oCatalogo = new cCatalogoAltaTRegistro();
+
         public frmDarAltaTregistro()
         {
             InitializeComponent();
@@ -44,7 +48,7 @@ namespace CapaUsuario.ExportarSunat.Tregistro
             {
                 if (cbAños.SelectedIndex != -1 && cbMes.SelectedIndex != -1)
                 {
-                    //dtgListaTrabajadores.DataSource = 
+                    dtgListaTrabajadores.DataSource = oCatalogo.TraerListaTrabajadoresTRegistro(cbMes.Text, cbAños.Text);
                 }
             }
             catch (Exception ex)

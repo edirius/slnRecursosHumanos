@@ -699,6 +699,13 @@ namespace CapaUsuario
             fListaTipoSalida.Show();
         }
 
+        private void darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportarSunat.Tregistro.frmDarAltaTregistro fDarAltaTregistro = new ExportarSunat.Tregistro.frmDarAltaTregistro();
+            fDarAltaTregistro.MdiParent = this;
+            fDarAltaTregistro.Show();
+        }
+
         private void mnuResidenteMeta_Click(object sender, EventArgs e)
         {
             ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();

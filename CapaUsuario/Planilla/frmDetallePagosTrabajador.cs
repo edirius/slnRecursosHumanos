@@ -37,7 +37,7 @@ namespace CapaUsuario.Planilla
                 {
                     lblTrabajador.Text = oTrabajador.Nombres + " " + oTrabajador.ApellidoPaterno + " " + oTrabajador.ApellidoMaterno;
                     miReporte = new CapaDeNegocios.Reportes.cReporteBoletasXTrabajador(oTrabajador);
-                    miReporte.TraerListaPLanillas(oTrabajador, 2023);
+                    miReporte.TraerListaPLanillas(oTrabajador, 2024);
                     dtgBoletasPago.DataSource = miReporte.ListaBoletasXAño;
                 }
 

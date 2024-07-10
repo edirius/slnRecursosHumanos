@@ -407,13 +407,17 @@
       <DependentUpon>frmVerCodificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportarSunat\Tregistro\cCatalogoAltaTRegistro.cs" />
-    <Compile Include="ExportarSunat\Tregistro\cListaTrabajadores.cs" />
+    <Compile Include="ExportarSunat\Tregistro\cDatosPersonales.cs" />
+    <Compile Include="ExportarSunat\Tregistro\cTrabajadorAltaTRegistro.cs" />
     <Compile Include="ExportarSunat\Tregistro\frmDarAltaTregistro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ExportarSunat\Tregistro\frmDarAltaTregistro.Designer.cs">
       <DependentUpon>frmDarAltaTregistro.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cPaisEmisorDocumento.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cSexo.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cTipoDocumentoIdentidad.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

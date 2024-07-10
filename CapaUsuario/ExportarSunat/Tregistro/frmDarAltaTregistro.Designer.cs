@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chkSRCT = new System.Windows.Forms.CheckBox();
             this.checkEDU = new System.Windows.Forms.CheckBox();
             this.checkEST = new System.Windows.Forms.CheckBox();
@@ -127,9 +128,15 @@
             // 
             // dtgListaTrabajadores
             // 
+            this.dtgListaTrabajadores.AllowUserToAddRows = false;
+            this.dtgListaTrabajadores.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightBlue;
+            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgListaTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaTrabajadores.Location = new System.Drawing.Point(6, 19);
             this.dtgListaTrabajadores.Name = "dtgListaTrabajadores";
+            this.dtgListaTrabajadores.ReadOnly = true;
+            this.dtgListaTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListaTrabajadores.Size = new System.Drawing.Size(781, 299);
             this.dtgListaTrabajadores.TabIndex = 0;
             // 
