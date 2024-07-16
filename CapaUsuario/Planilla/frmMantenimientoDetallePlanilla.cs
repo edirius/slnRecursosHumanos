@@ -1579,7 +1579,7 @@ namespace CapaUsuario.Planilla
             double otrosingresos_5ta = 0;
 
             //Calculamos la remuneracion afecta
-            if (codigo == "0804" || codigo == "0806" || codigo == "0808" || codigo == "0802" || codigo == "0807" || codigo == "0607" || codigo == "0608" || codigo == "0601" || codigo == "0606" || codigo == "0605" || codigo == "0610" || codigo == "0603" || codigo == "9998" || codigo == "9999")
+            if (codigo == "0804" || codigo == "0806" || codigo == "0808" || codigo == "0802" || codigo == "0807" || codigo == "0607" || codigo == "0608" || codigo == "0601" || codigo == "0606" || codigo == "0605" || codigo == "0610" || codigo == "0603" || codigo == "9998" || codigo == "9999" || codigo == "0618")
             {
                 for (int i = 0; i < con_ingresos; i++)
                 {
@@ -1590,6 +1590,7 @@ namespace CapaUsuario.Planilla
                     //{
                     //    dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + i].Value = Convert.ToDecimal(rowingresos[1].ToString());
                     //}
+                    //columna informativa
                     if (smingresos[i, 17].ToString() == "0")
                     {
                         if (codigo == "0804" && smingresos[i, 4].ToString() == "1")
@@ -1613,6 +1614,10 @@ namespace CapaUsuario.Planilla
                             remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
                         }
                         if (codigo == "0607" && smingresos[i, 11].ToString() == "1" && AFP == "SNP")
+                        {
+                            remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
+                        }
+                        if (codigo == "0618" && smingresos[i, 13].ToString() == "1")
                         {
                             remuneracion_afecta += Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
                         }
@@ -1763,7 +1768,7 @@ namespace CapaUsuario.Planilla
 
 
             //renta 4ta Categoria
-            if (codigo == "0618" && suma_ingresos <= 1500)
+            if (codigo == "0618" && suma_ingresos >= 1500)
             {
                 SuspencionRenta4ta(Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
                 if (ssuspencionrenta4ta == false)

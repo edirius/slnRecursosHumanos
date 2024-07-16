@@ -14,6 +14,7 @@ namespace CapaUsuario.Reloj
     public partial class frmAdministrarReloj : Form
     {
         public CapaDeNegocios.Reloj.cServidorReloj oServidorReloj;
+        private CapaDeNegocios.Reloj.cCatalogoMaquinaReloj oCatalogoMaquinaReloj = new CapaDeNegocios.Reloj.cCatalogoMaquinaReloj();
 
         public frmAdministrarReloj()
         {
@@ -27,7 +28,9 @@ namespace CapaUsuario.Reloj
 
         private void Iniciar()
         {
-            
+            cboListaRelojes.DataSource = oCatalogoMaquinaReloj.ListaRelojes(true);
+            cboListaRelojes.DisplayMember = "descripcion";
+            cboListaRelojes.ValueMember = "idtReloj";
         }
 
         private void btnConectarReloj_Click(object sender, EventArgs e)
@@ -89,6 +92,11 @@ namespace CapaUsuario.Reloj
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
+        }
+
+        private void cboListaRelojes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtIP.Text = ((CapaDeNegocios.Reloj.cMaquinaReloj)cboListaRelojes.SelectedItem).Ip;
         }
     }
 }

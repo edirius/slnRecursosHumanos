@@ -103,6 +103,7 @@
             this.darDeBajaAlTrabajadorTREGISTROToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.datosDelPensionistaPENToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportarTodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.boletaPagoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.boletaPagoPorPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -142,7 +143,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaRelojesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -340,7 +341,8 @@
             this.mnuAsistenciaTrabajador,
             this.toolStripSeparator7,
             this.btnConexionReloj,
-            this.btnDescargarDatosReloj});
+            this.btnDescargarDatosReloj,
+            this.listaRelojesToolStripMenuItem});
             this.viewMenu.Name = "viewMenu";
             this.viewMenu.Size = new System.Drawing.Size(86, 20);
             this.viewMenu.Text = "&Trabajadores";
@@ -739,6 +741,13 @@
             this.exportarTodoToolStripMenuItem.Text = "Dar de alta al trabajador(T-REGISTRO)";
             this.exportarTodoToolStripMenuItem.Click += new System.EventHandler(this.exportarTodoToolStripMenuItem_Click);
             // 
+            // darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem
+            // 
+            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem.Name = "darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem";
+            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem.Size = new System.Drawing.Size(351, 22);
+            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem.Text = "Dar de alta al trabajador V2 (T-REGISTRO)";
+            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem.Click += new System.EventHandler(this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem_Click);
+            // 
             // reportesToolStripMenuItem1
             // 
             this.reportesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1051,12 +1060,12 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem
+            // listaRelojesToolStripMenuItem
             // 
-            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem.Name = "darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem";
-            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem.Size = new System.Drawing.Size(351, 22);
-            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem.Text = "Dar de alta al trabajador V2 (T-REGISTRO)";
-            this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem.Click += new System.EventHandler(this.darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem_Click);
+            this.listaRelojesToolStripMenuItem.Name = "listaRelojesToolStripMenuItem";
+            this.listaRelojesToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
+            this.listaRelojesToolStripMenuItem.Text = "Lista Relojes";
+            this.listaRelojesToolStripMenuItem.Click += new System.EventHandler(this.listaRelojesToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -1206,6 +1215,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripMenuItem listaTiposSalidaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaRelojesToolStripMenuItem;
     }
 }
 

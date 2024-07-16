@@ -193,10 +193,12 @@
     <Compile Include="Planillas\cPlanilla.cs" />
     <Compile Include="Planillas\cPlantillaPlanilla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reloj\cCatalogoMaquinaReloj.cs" />
     <Compile Include="Reloj\cCatalogoPrivilegiosReloj.cs" />
     <Compile Include="Reloj\cHuellaDedo.cs" />
     <Compile Include="Reloj\cHuellaUsuarioReloj.cs" />
     <Compile Include="Reloj\cImprimirExcelAsistenciaReloj.cs" />
+    <Compile Include="Reloj\cMaquinaReloj.cs" />
     <Compile Include="Reloj\cPrivilegioReloj.cs" />
     <Compile Include="Reloj\cReloj.cs" />
     <Compile Include="Reloj\cServidorReloj.cs" />

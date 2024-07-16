@@ -76,6 +76,7 @@
             this.txtFPCnt = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.cboListaRelojes = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -83,7 +84,7 @@
             // 
             // txtIP
             // 
-            this.txtIP.Location = new System.Drawing.Point(52, 16);
+            this.txtIP.Location = new System.Drawing.Point(183, 16);
             this.txtIP.MaxLength = 20;
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(100, 20);
@@ -93,7 +94,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 23);
+            this.label1.Location = new System.Drawing.Point(157, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(20, 13);
             this.label1.TabIndex = 1;
@@ -102,7 +103,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(181, 23);
+            this.label2.Location = new System.Drawing.Point(312, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 2;
@@ -110,7 +111,7 @@
             // 
             // txtPuerto
             // 
-            this.txtPuerto.Location = new System.Drawing.Point(231, 16);
+            this.txtPuerto.Location = new System.Drawing.Point(362, 16);
             this.txtPuerto.MaxLength = 5;
             this.txtPuerto.Name = "txtPuerto";
             this.txtPuerto.Size = new System.Drawing.Size(100, 20);
@@ -120,7 +121,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(375, 23);
+            this.label3.Location = new System.Drawing.Point(506, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 13);
             this.label3.TabIndex = 4;
@@ -128,7 +129,7 @@
             // 
             // txtNumeroMaquina
             // 
-            this.txtNumeroMaquina.Location = new System.Drawing.Point(458, 16);
+            this.txtNumeroMaquina.Location = new System.Drawing.Point(589, 16);
             this.txtNumeroMaquina.Name = "txtNumeroMaquina";
             this.txtNumeroMaquina.Size = new System.Drawing.Size(51, 20);
             this.txtNumeroMaquina.TabIndex = 5;
@@ -522,11 +523,22 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // cboListaRelojes
+            // 
+            this.cboListaRelojes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboListaRelojes.FormattingEnabled = true;
+            this.cboListaRelojes.Location = new System.Drawing.Point(21, 16);
+            this.cboListaRelojes.Name = "cboListaRelojes";
+            this.cboListaRelojes.Size = new System.Drawing.Size(121, 21);
+            this.cboListaRelojes.TabIndex = 105;
+            this.cboListaRelojes.SelectedIndexChanged += new System.EventHandler(this.cboListaRelojes_SelectedIndexChanged);
+            // 
             // frmAdministrarReloj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(917, 336);
+            this.Controls.Add(this.cboListaRelojes);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lblInformacionreloj);
@@ -602,5 +614,6 @@
         private System.Windows.Forms.TextBox txtFPCnt;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.ComboBox cboListaRelojes;
     }
 }

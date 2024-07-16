@@ -12,11 +12,17 @@ namespace CapaUsuario.ExportarSunat.Tregistro
         public int Numero { get; set; }
         public int Id_trabajador { get; set; }
         public DateTime FechaInicio { get; set; }
+        public DateTime FechaNacimiento { get; set; }
         public string DNI { get; set; }
         public string Nombres { get; set; }
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
         public string Planilla { get; set; }
-        public cDatosIdentificacion DatosIdentificacion { get; set; }
+        public cDatosPersonales DatosPersonales { get; set; }
+
+        public cTrabajadorAltaTRegistro()
+        {
+            DatosPersonales = new cDatosPersonales();
+        }
     }
 }

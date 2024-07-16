@@ -706,6 +706,13 @@ namespace CapaUsuario
             fDarAltaTregistro.Show();
         }
 
+        private void listaRelojesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reloj.frmListaRelojes fListaRelojes = new Reloj.frmListaRelojes();
+            fListaRelojes.MdiParent = this;
+            fListaRelojes.Show();
+        }
+
         private void mnuResidenteMeta_Click(object sender, EventArgs e)
         {
             ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();

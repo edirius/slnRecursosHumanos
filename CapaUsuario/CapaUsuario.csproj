@@ -408,6 +408,7 @@
     </Compile>
     <Compile Include="ExportarSunat\Tregistro\cCatalogoAltaTRegistro.cs" />
     <Compile Include="ExportarSunat\Tregistro\cDatosPersonales.cs" />
+    <Compile Include="ExportarSunat\Tregistro\cDireccion.cs" />
     <Compile Include="ExportarSunat\Tregistro\cTrabajadorAltaTRegistro.cs" />
     <Compile Include="ExportarSunat\Tregistro\frmDarAltaTregistro.cs">
       <SubType>Form</SubType>
@@ -415,9 +416,18 @@
     <Compile Include="ExportarSunat\Tregistro\frmDarAltaTregistro.Designer.cs">
       <DependentUpon>frmDarAltaTregistro.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExportarSunat\Tregistro\frmVerCodificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportarSunat\Tregistro\frmVerCodificacion.Designer.cs">
+      <DependentUpon>frmVerCodificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cNacionalidad.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cPaisEmisorDocumento.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cSexo.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cTipoDocumentoIdentidad.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cTipoVia.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cTipoZona.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -471,6 +481,18 @@
     </Compile>
     <Compile Include="Reloj\frmAsistenciaReloj.Designer.cs">
       <DependentUpon>frmAsistenciaReloj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reloj\frmListaRelojes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reloj\frmListaRelojes.Designer.cs">
+      <DependentUpon>frmListaRelojes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reloj\frmMantenimientoReloj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reloj\frmMantenimientoReloj.Designer.cs">
+      <DependentUpon>frmMantenimientoReloj.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\crReporteContratos.cs">
       <AutoGen>True</AutoGen>
@@ -1735,6 +1757,9 @@
     <EmbeddedResource Include="ExportarSunat\Tregistro\frmDarAltaTregistro.resx">
       <DependentUpon>frmDarAltaTregistro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExportarSunat\Tregistro\frmVerCodificacion.resx">
+      <DependentUpon>frmVerCodificacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -1818,6 +1843,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reloj\frmAsistenciaReloj.resx">
       <DependentUpon>frmAsistenciaReloj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reloj\frmListaRelojes.resx">
+      <DependentUpon>frmListaRelojes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reloj\frmMantenimientoReloj.resx">
+      <DependentUpon>frmMantenimientoReloj.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\crReporteContratos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
