@@ -1768,7 +1768,7 @@ namespace CapaUsuario.Planilla
 
 
             //renta 4ta Categoria
-            if (codigo == "0618" && suma_ingresos >= 1500)
+            if (codigo == "0618")
             {
                 SuspencionRenta4ta(Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
                 if (ssuspencionrenta4ta == false)
