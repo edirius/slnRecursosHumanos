@@ -977,12 +977,43 @@ namespace CapaUsuario.Trabajador
             {
                 cVerificadorDNI Verificador = new cVerificadorDNI();
                 trabajadorValidado MiTrabajadorValidado;
-                MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(txtDNI.Text, cDatosGeneralesEmpresa.Bearer);
+                MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(txtDNI.Text, cDatosGeneralesEmpresa.Bearer2);
                 if (MiTrabajadorValidado != null)
                 {
                     txtNombres.Text = MiTrabajadorValidado.Data.nombres;
                     txtApellidoPaterno.Text = MiTrabajadorValidado.Data.apellido_paterno;
                     txtApellidoMaterno.Text = MiTrabajadorValidado.Data.apellido_materno;
+                    txtDireccion.Text = MiTrabajadorValidado.Data.direccion;
+                    switch (MiTrabajadorValidado.Data.estado_civil)
+                    {
+                        case "SOLTERO":
+                            cboEstadoCivil.Text = "Soltero";
+                            break;
+                        case "CASADO":
+                            cboEstadoCivil.Text = "Casado";
+                            break;
+                        case "VIUDO":
+                            cboEstadoCivil.Text = "Viudo";
+                            break;
+                        case "DIVORCIADO":
+                            cboEstadoCivil.Text = "Divorciado";
+                            break;
+                        default:
+                            break;
+                    }
+                    switch (MiTrabajadorValidado.Data.sexo)
+                    {
+                        case "MASCULINO":
+                            cboSexo.Text = "Masculino";
+                            break;
+                        case "FEMENINO":
+                            cboSexo.Text = "Femenino";
+                            break;
+                        default:
+                            break;
+                    }
+
+                    dtpFechaNacimiento.Value = ToDateTime(MiTrabajadorValidado.Data.fecha_nacimiento);
                 }
                 else
                 {
@@ -1000,6 +1031,13 @@ namespace CapaUsuario.Trabajador
         {
             int cursor = txtCorreo.SelectionStart;
             txtCorreo.Text = txtCorreo.Text.Insert(cursor, "@");
+        }
+
+        public static DateTime ToDateTime(String value)
+        {
+            if (value == null)
+                return DateTime.Now.AddYears(-1);
+            return DateTime.Parse(value);
         }
     }
 }

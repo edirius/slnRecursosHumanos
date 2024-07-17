@@ -13,5 +13,6 @@ namespace CapaUsuario
         public static string Lugar;
         public static string NombreOficina;
         public static string Bearer;
+        public static string Bearer2;
     }
 }

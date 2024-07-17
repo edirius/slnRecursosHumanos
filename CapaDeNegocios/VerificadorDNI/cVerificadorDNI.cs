@@ -26,7 +26,7 @@ namespace CapaDeNegocios.VerificadorDNI
                 client = new HttpClient();
                 client.DefaultRequestHeaders.ProxyAuthorization = null;
 
-                URL = "https://apiperu.dev/api/dni/" + myDNI;
+                URL = "https://api.apidev.pro/api/dni/" + myDNI;
                 client.BaseAddress = new Uri(URL);
 
                 client.DefaultRequestHeaders.Add("Accept", "application/json");

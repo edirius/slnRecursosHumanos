@@ -523,12 +523,27 @@ namespace CapaUsuario.Trabajador
             {
                 cVerificadorDNI Verificador = new cVerificadorDNI();
                 trabajadorValidado MiTrabajadorValidado;
-                MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(txtDNI.Text, cDatosGeneralesEmpresa.Bearer);
+                MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(txtDNI.Text, cDatosGeneralesEmpresa.Bearer2);
                 if (MiTrabajadorValidado != null)
                 {
                     txtNombre.Text = MiTrabajadorValidado.Data.nombres;
                     txtApePaterno.Text = MiTrabajadorValidado.Data.apellido_paterno;
                     txtApeMaterno.Text = MiTrabajadorValidado.Data.apellido_materno;
+                    txtDireccion.Text = MiTrabajadorValidado.Data.direccion;
+
+                    switch (MiTrabajadorValidado.Data.sexo)
+                    {
+                        case "MASCULINO":
+                            rbtMasculino.Checked = true; ;
+                            break;
+                        case "FEMENINO":
+                            rbtFemenino.Checked = true;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    dtpFechaNacimiento.Value = ToDateTime(MiTrabajadorValidado.Data.fecha_nacimiento);
                 }
                 else
                 {
@@ -539,7 +554,13 @@ namespace CapaUsuario.Trabajador
             {
                 MessageBox.Show("No se pudo traer el nombre de internet,  intenet de nuevo o ingrese los nombres manualmente: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+        }
+
+        public static DateTime ToDateTime(String value)
+        {
+            if (value == null)
+                return DateTime.Now.AddYears(-1);
+            return DateTime.Parse(value);
         }
     }
 }

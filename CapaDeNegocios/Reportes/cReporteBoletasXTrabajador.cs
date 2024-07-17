@@ -847,7 +847,16 @@ namespace CapaDeNegocios.Reportes
                         cFilasPDF filaNombre = new cFilasPDF();
 
                         cCeldaPDF celdaNombre = new cCeldaPDF();
-                        celdaNombre.Contenido = "Nombre: " + item.Trabajador.Nombres + " " + item.Trabajador.ApellidoPaterno + " " + item.Trabajador.ApellidoMaterno + "                        DNI: " + item.Trabajador.Dni + "                Nro. Planilla: " + item.Numero + "      DIAS LABORADOS:  " + item.DiasLaborados;
+                        if (OpcionBoleta == OpcionesPaginaReporteBoleta.Vertical)
+                        {
+                            celdaNombre.Contenido = "Nombre: " + item.Trabajador.Nombres + " " + item.Trabajador.ApellidoPaterno + " " + item.Trabajador.ApellidoMaterno + "            DNI: " + item.Trabajador.Dni + "   Nro. Planilla: " + item.Numero + "  DIAS LAB: " + item.DiasLaborados;
+                        }
+                        else
+                        {
+                            celdaNombre.Contenido = "Nombre: " + item.Trabajador.Nombres + " " + item.Trabajador.ApellidoPaterno + " " + item.Trabajador.ApellidoMaterno + "                        DNI: " + item.Trabajador.Dni + "                Nro. Planilla: " + item.Numero + "      DIAS LABORADOS:  " + item.DiasLaborados;
+                        }
+
+                        
                         celdaNombre.QuitarBordes();
                         celdaNombre.AltoColumna = 12;
                         celdaNombre.Alineamiento = enumAlineamiento.izquierda;
