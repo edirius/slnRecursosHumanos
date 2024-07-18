@@ -62,5 +62,24 @@ namespace CapaDeNegocios
                 return null;
             }
         }
+
+        public cDistrito TraerDistritoxUbigeo(string ubigeo)
+        {
+            cDistrito miDistrito = new cDistrito();
+            DataTable dt = Conexion.GDatos.TraerDataTable("spTraerDistritoxUbigeo", ubigeo);
+            if (dt.Rows.Count > 0)
+            {
+                miDistrito.miProvincia = new cProvincia();
+                miDistrito.codigo = Convert.ToInt16(dt.Rows[0][0]);
+                miDistrito.miProvincia.Codigo = Convert.ToInt16(dt.Rows[0][1]);
+                miDistrito.codigoUbigeo = Convert.ToString(dt.Rows[0][2]);
+                miDistrito.descripcion = Convert.ToString(dt.Rows[0][3]);
+                return miDistrito;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }
