@@ -88,7 +88,8 @@ namespace CapaUsuario.Trabajador
             cboProvincia.SelectedValue = miTrabajador.MiProvincia.Codigo;
             cboDistrito.SelectedValue = miTrabajador.MiDistrito.Codigo;
 
-            txtDireccion.Text = miRegimenTrabajador.NumeroDocumento;
+            txtDireccion.Text = miTrabajador.Direccion;
+            txtCuentaBancaria.Text =  miRegimenTrabajador.NumeroDocumento;
          
 
 
@@ -185,7 +186,8 @@ namespace CapaUsuario.Trabajador
             miTrabajador.Essaludvida = false;
             miTrabajador.Scrt = true;
             miPeriodoTrabajador.FechaInicio = dtpFechaInicio.Value.ToShortDateString();
-            miRegimenTrabajador.NumeroDocumento = txtDireccion.Text;
+            miRegimenTrabajador.NumeroDocumento = txtCuentaBancaria.Text;
+            miTrabajador.Direccion = txtDireccion.Text;
             if (modoEdicion == false || modoAltatrabajador == true)
             {
 

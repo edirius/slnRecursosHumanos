@@ -59,6 +59,8 @@
             this.picValidado = new System.Windows.Forms.PictureBox();
             this.txtValidador = new System.Windows.Forms.TextBox();
             this.btnTraerNombre = new System.Windows.Forms.Button();
+            this.txtCuentaBancaria = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.SuspendLayout();
             // 
@@ -202,10 +204,10 @@
             this.txtDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDireccion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDireccion.Location = new System.Drawing.Point(106, 165);
-            this.txtDireccion.MaxLength = 25;
+            this.txtDireccion.Location = new System.Drawing.Point(350, 165);
+            this.txtDireccion.MaxLength = 100;
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(162, 20);
+            this.txtDireccion.Size = new System.Drawing.Size(257, 20);
             this.txtDireccion.TabIndex = 100;
             // 
             // txtApeMaterno
@@ -369,11 +371,30 @@
             this.btnTraerNombre.Visible = false;
             this.btnTraerNombre.Click += new System.EventHandler(this.btnTraerNombre_Click);
             // 
+            // txtCuentaBancaria
+            // 
+            this.txtCuentaBancaria.Location = new System.Drawing.Point(106, 165);
+            this.txtCuentaBancaria.MaxLength = 25;
+            this.txtCuentaBancaria.Name = "txtCuentaBancaria";
+            this.txtCuentaBancaria.Size = new System.Drawing.Size(162, 20);
+            this.txtCuentaBancaria.TabIndex = 191;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(289, 168);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(55, 13);
+            this.label12.TabIndex = 192;
+            this.label12.Text = "Direccion:";
+            // 
             // frmNuevoObreroRacionamiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 291);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txtCuentaBancaria);
             this.Controls.Add(this.btnTraerNombre);
             this.Controls.Add(this.picValidado);
             this.Controls.Add(this.txtValidador);
@@ -447,5 +468,7 @@
         private System.Windows.Forms.PictureBox picValidado;
         private System.Windows.Forms.TextBox txtValidador;
         private System.Windows.Forms.Button btnTraerNombre;
+        private System.Windows.Forms.TextBox txtCuentaBancaria;
+        private System.Windows.Forms.Label label12;
     }
 }

@@ -976,6 +976,9 @@ namespace CapaUsuario.Trabajador
             try
             {
                 cVerificadorDNI Verificador = new cVerificadorDNI();
+                CapaDeNegocios.cDistrito oDistrito = new CapaDeNegocios.cDistrito();
+                CapaDeNegocios.cProvincia oProvincia = new CapaDeNegocios.cProvincia();
+                CapaDeNegocios.cDepartamento oDepartamento = new cDepartamento();
                 trabajadorValidado MiTrabajadorValidado;
                 MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(txtDNI.Text, cDatosGeneralesEmpresa.Bearer2);
                 if (MiTrabajadorValidado != null)
@@ -1014,6 +1017,13 @@ namespace CapaUsuario.Trabajador
                     }
 
                     dtpFechaNacimiento.Value = ToDateTime(MiTrabajadorValidado.Data.fecha_nacimiento);
+                    oDistrito = oDistrito.TraerDistritoxUbigeo(MiTrabajadorValidado.Data.ubigeo_sunat);
+                    oProvincia = oProvincia.TraerProvincia(oDistrito.MiProvincia.Codigo);
+                    oDepartamento = oDepartamento.TraerDepartamento(oProvincia.MiDepartamento.Codigo);
+
+                    txtDepartamento.Text = oDepartamento.Descripcion;
+                    txtProvincia.Text = oProvincia.Descripcion;
+                    txtDistrito.Text = oDistrito.Descripcion;
                 }
                 else
                 {
