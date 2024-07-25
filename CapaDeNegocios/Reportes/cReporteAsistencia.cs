@@ -322,14 +322,14 @@ namespace CapaDeNegocios.Reportes
                     cCeldaPDF DetalleExcepcionEntrada = new cCeldaPDF("");
                     if (item.ListaSalidas.Count > 0)
                     {
-                        DetalleExcepcionEntrada.Contenido = item.ListaSalidas[0].InicioExcepcion.ToShortTimeString();
+                        DetalleExcepcionEntrada.Contenido = item.ListaSalidas[0].InicioExcepcion.ToShortTimeString() + Environment.NewLine + item.ListaSalidas[0].FinExcepcion.ToShortTimeString();
                     }
                     FilaDetalle.ListaCeldas.Add(DetalleExcepcionEntrada);
 
                     cCeldaPDF DetalleExcepcionFin = new cCeldaPDF("");
                     if (item.ListaSalidas.Count > 0)
                     {
-                        DetalleExcepcionFin.Contenido = item.ListaSalidas[0].FinExcepcion.ToShortDateString();
+                        DetalleExcepcionFin.Contenido = item.ListaSalidas[0].Tipo + Environment.NewLine + "Nº" + item.ListaSalidas[0].CodigoExcepcion.ToString();
                     }
                     FilaDetalle.ListaCeldas.Add(DetalleExcepcionFin);
 
