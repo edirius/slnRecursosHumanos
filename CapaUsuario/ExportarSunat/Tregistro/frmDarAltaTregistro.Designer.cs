@@ -207,6 +207,7 @@
             this.btnVerCodificacion.Text = "&Ver Codificacion";
             this.btnVerCodificacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnVerCodificacion.UseVisualStyleBackColor = false;
+            this.btnVerCodificacion.Click += new System.EventHandler(this.btnVerCodificacion_Click);
             // 
             // btnExportar
             // 

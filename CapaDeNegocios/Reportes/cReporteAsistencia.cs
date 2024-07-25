@@ -15,9 +15,11 @@ namespace CapaDeNegocios.Reportes
 {
     public class cReporteAsistencia
     {
+        cDatosGenerales oDatosGenerales = new cDatosGenerales();
 
         public void ImprimirReporteAsistenciaXTrabajador(cTrabajador oTrabajador,  cAsistenciaMes oAsistenciaMes, string RutaArchivo )
         {
+
    
             cReportePDF oReporte = new cReportePDF();
 
@@ -50,7 +52,7 @@ namespace CapaDeNegocios.Reportes
             FilaTitulo1.ListaCeldas.Add(LabelEmpresa);
 
             cCeldaPDF NombreEmpresa = new cCeldaPDF();
-            NombreEmpresa.Contenido = "Municipalidad Distrital de Maras";
+            NombreEmpresa.Contenido = oDatosGenerales.Nombre;
             FilaTitulo1.ListaCeldas.Add(NombreEmpresa);
 
             cCeldaPDF LabelRuc = new cCeldaPDF();
@@ -58,7 +60,7 @@ namespace CapaDeNegocios.Reportes
             FilaTitulo1.ListaCeldas.Add(LabelRuc);
 
             cCeldaPDF NumeroRuc = new cCeldaPDF();
-            NumeroRuc.Contenido = "20177432360";
+            NumeroRuc.Contenido =oDatosGenerales.Ruc ;
             FilaTitulo1.ListaCeldas.Add(NumeroRuc);
 
             cCeldaPDF LabelFecha = new cCeldaPDF();
@@ -358,8 +360,41 @@ namespace CapaDeNegocios.Reportes
                     }
                     FilaDetalle.ListaCeldas.Add(DetalleTipoFalta);
                 TablaDetalleDetalle.ListaFilas.Add(FilaDetalle);
-               
+                
+
             }
+
+            cTablaPDF TablaResumenDetalle = new cTablaPDF();
+            TablaResumenDetalle.columnas = 6;
+            TablaResumenDetalle.anchoColumnas = new float[] { 350f, 100f, 50f, 100f, 50f, 50f };
+
+            cFilasPDF FilaResumen = new cFilasPDF();
+            cCeldaPDF ResumenTitulo = new cCeldaPDF();
+            ResumenTitulo.AltoColumna = 12f;
+            ResumenTitulo.Contenido = "Resumen"; 
+            FilaResumen.ListaCeldas.Add(ResumenTitulo);
+
+            cCeldaPDF ResumenTituloTardanzas = new cCeldaPDF();
+            ResumenTituloTardanzas.AltoColumna = 12f;
+            ResumenTituloTardanzas.Contenido = "Total Min.";
+            FilaResumen.ListaCeldas.Add(ResumenTituloTardanzas);
+
+            cCeldaPDF ResumenTardanzas = new cCeldaPDF();
+            ResumenTardanzas.AltoColumna = 12f;
+            ResumenTardanzas.Contenido = oAsistenciaMes.TotalMinutosTarde.ToString();
+            FilaResumen.ListaCeldas.Add(ResumenTardanzas);
+
+            cCeldaPDF ResumenTituloFaltas = new cCeldaPDF();
+            ResumenTituloFaltas.AltoColumna = 12f;
+            ResumenTituloFaltas.Contenido = "Total Falt.";
+            FilaResumen.ListaCeldas.Add(ResumenTituloFaltas);
+
+            cCeldaPDF ResumenFaltas = new cCeldaPDF();
+            ResumenFaltas.AltoColumna = 12f;
+            ResumenFaltas.Contenido = oAsistenciaMes.TotalFaltasMes.ToString();
+            FilaResumen.ListaCeldas.Add(ResumenFaltas);
+
+            TablaResumenDetalle.ListaFilas.Add(FilaResumen);
 
             oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
             oHojaPDF.ListaDeTablas.Add(TablaTitulo1);
@@ -368,6 +403,7 @@ namespace CapaDeNegocios.Reportes
             oHojaPDF.ListaDeTablas.Add(TablaTitulo3);
             oHojaPDF.ListaDeTablas.Add(TablaDetalle);
             oHojaPDF.ListaDeTablas.Add(TablaDetalleDetalle);
+            oHojaPDF.ListaDeTablas.Add(TablaResumenDetalle);
             oReporte.ListaHojasPDF.Add(oHojaPDF);
 
             ImprimirReportePDF(oReporte);
@@ -408,7 +444,7 @@ namespace CapaDeNegocios.Reportes
             FilaTitulo1.ListaCeldas.Add(LabelEmpresa);
 
             cCeldaPDF NombreEmpresa = new cCeldaPDF();
-            NombreEmpresa.Contenido = "Municipalidad Distrital de Maras";
+            NombreEmpresa.Contenido = oDatosGenerales.Nombre;
             FilaTitulo1.ListaCeldas.Add(NombreEmpresa);
 
             cCeldaPDF LabelRuc = new cCeldaPDF();
@@ -416,7 +452,7 @@ namespace CapaDeNegocios.Reportes
             FilaTitulo1.ListaCeldas.Add(LabelRuc);
 
             cCeldaPDF NumeroRuc = new cCeldaPDF();
-            NumeroRuc.Contenido = "20177432360";
+            NumeroRuc.Contenido = oDatosGenerales.Ruc;
             FilaTitulo1.ListaCeldas.Add(NumeroRuc);
             TablaTitulo1.ListaFilas.Add(FilaTitulo1);
            

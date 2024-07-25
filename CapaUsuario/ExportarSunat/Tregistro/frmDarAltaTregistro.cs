@@ -15,6 +15,7 @@ namespace CapaUsuario.ExportarSunat.Tregistro
     public partial class frmDarAltaTregistro : Form
     {
         Tregistro.cCatalogoAltaTRegistro oCatalogo = new cCatalogoAltaTRegistro();
+        List<Tregistro.cTrabajadorAltaTRegistro> ListaTrabajadoresAltaTRegistro = new List<cTrabajadorAltaTRegistro>();
 
         public frmDarAltaTregistro()
         {
@@ -48,12 +49,23 @@ namespace CapaUsuario.ExportarSunat.Tregistro
             {
                 if (cbAños.SelectedIndex != -1 && cbMes.SelectedIndex != -1)
                 {
-                    dtgListaTrabajadores.DataSource = oCatalogo.TraerListaTrabajadoresTRegistro(cbMes.Text, cbAños.Text);
+                    ListaTrabajadoresAltaTRegistro = oCatalogo.TraerListaTrabajadoresTRegistro(cbMes.Text, cbAños.Text);
+                    dtgListaTrabajadores.DataSource = ListaTrabajadoresAltaTRegistro;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error en cargar datos: " + ex.Message);
+            }
+        }
+
+        private void btnVerCodificacion_Click(object sender, EventArgs e)
+        {
+            Tregistro.frmVerCodificacion fVerCodificacion = new frmVerCodificacion();
+            fVerCodificacion.ListaTrabajadores = ListaTrabajadoresAltaTRegistro;
+            if (fVerCodificacion.ShowDialog() == DialogResult.OK)
+            {
+
             }
         }
     }

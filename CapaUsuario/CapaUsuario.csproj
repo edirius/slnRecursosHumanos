@@ -409,6 +409,7 @@
     <Compile Include="ExportarSunat\Tregistro\cCatalogoAltaTRegistro.cs" />
     <Compile Include="ExportarSunat\Tregistro\cDatosPersonales.cs" />
     <Compile Include="ExportarSunat\Tregistro\cDireccion.cs" />
+    <Compile Include="ExportarSunat\Tregistro\cFilarDatosJor.cs" />
     <Compile Include="ExportarSunat\Tregistro\cTrabajadorAltaTRegistro.cs" />
     <Compile Include="ExportarSunat\Tregistro\frmDarAltaTregistro.cs">
       <SubType>Form</SubType>

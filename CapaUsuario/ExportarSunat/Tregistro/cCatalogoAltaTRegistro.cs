@@ -159,5 +159,66 @@ namespace CapaUsuario.ExportarSunat.Tregistro
             oTipoZOna.Numero = oTrabajador.MiTipoZOna.CodigoSunat;
             return oTipoZOna;
         }
+
+        public List<Tregistro.cFilarDatosJor> TraerArchivoJOR(List<cTrabajadorAltaTRegistro> ListaTrabajadores)
+        {
+            try
+            {
+                List<Tregistro.cFilarDatosJor> Lista = new List<cFilarDatosJor>();
+                int contador = 0;
+                foreach (cTrabajadorAltaTRegistro item in ListaTrabajadores)
+                {
+                    Tregistro.cFilarDatosJor tra = new cFilarDatosJor();
+                    contador++;
+                    tra.Numero = contador;
+                    tra.TipoDocumento = item.DatosPersonales.TipoDocumento.DescripcionAbreviadad + Environment.NewLine + item.DatosPersonales.TipoDocumento.Numero;
+                    tra.NumeroDocumento = item.DatosPersonales.NumeroDocumento;
+                    tra.Nombres = item.DatosPersonales.Nombres;
+                    tra.ApellidoPaterno = item.DatosPersonales.ApellidoPaterno;
+                    tra.ApellidoMaterno = item.DatosPersonales.ApellidoMaterno;
+                    tra.FechaNacimiento = item.DatosPersonales.FechaNacimiento.ToShortDateString();
+                    tra.Sexo = item.DatosPersonales.Sexo.Sexo;
+                    tra.Nacionalidad = item.DatosPersonales.Nacionalidad.Descripcion + Environment.NewLine + item.DatosPersonales.Nacionalidad.Numero;
+                    tra.TelefonoCodigoLargaDistancia = item.DatosPersonales.TelefonoCodigoLargaDistancia;
+                    tra.Telefono = item.DatosPersonales.Telefono;
+                    tra.CorreoElectronico = item.DatosPersonales.CorreoElectronico;
+                    tra.Direccion01_Tipovia = item.DatosPersonales.Direccion01.TipoVia.Descripcion + Environment.NewLine + item.DatosPersonales.Direccion01.TipoVia.Numero;
+                    tra.Direccion01_Nombrevia = item.DatosPersonales.Direccion01.NombreVia;
+                    tra.Direccion01_Numerovia = item.DatosPersonales.Direccion01.NumeroVia;
+                    tra.Direccion01_Departamento = item.DatosPersonales.Direccion01.Departamento;
+                    tra.Direccion01_Interior = item.DatosPersonales.Direccion01.Interior;
+                    tra.Direccion01_Manzana = item.DatosPersonales.Direccion01.Manzana;
+                    tra.Direccion01_Lote = item.DatosPersonales.Direccion01.Lote;
+                    tra.Direccion01_Kilometro = item.DatosPersonales.Direccion01.Kilometro;
+                    tra.Direccion01_Bloque = item.DatosPersonales.Direccion01.Bloque;
+                    tra.Direccion01_Etapa = item.DatosPersonales.Direccion01.Etapa;
+                    tra.Direccion01_Tipozona = item.DatosPersonales.Direccion01.TipoZona.Descripcion + Environment.NewLine + item.DatosPersonales.Direccion01.TipoZona.Numero;
+                    tra.Direccion01_Nombrezona = item.DatosPersonales.Direccion01.NombreZona;
+                    tra.Direccion01_Referencia = item.DatosPersonales.Direccion01.Referencia;
+                    tra.Direccion01_Ubigeo = item.DatosPersonales.Direccion01.Distrito.Descripcion + Environment.NewLine + item.DatosPersonales.Direccion01.Distrito.CodigoUbigeo;
+                    tra.Direccion02_Tipovia = item.DatosPersonales.Direccion02.TipoVia.Descripcion + Environment.NewLine + item.DatosPersonales.Direccion02.TipoVia.Numero;
+                    tra.Direccion02_Nombrevia = item.DatosPersonales.Direccion02.NombreVia;
+                    tra.Direccion02_Numerovia = item.DatosPersonales.Direccion02.NumeroVia;
+                    tra.Direccion02_Departamento = item.DatosPersonales.Direccion02.Departamento;
+                    tra.Direccion02_Interior = item.DatosPersonales.Direccion02.Interior;
+                    tra.Direccion02_Manzana = item.DatosPersonales.Direccion02.Manzana;
+                    tra.Direccion02_Lote = item.DatosPersonales.Direccion02.Lote;
+                    tra.Direccion02_Kilometro = item.DatosPersonales.Direccion02.Kilometro;
+                    tra.Direccion02_Bloque = item.DatosPersonales.Direccion02.Bloque;
+                    tra.Direccion02_Etapa = item.DatosPersonales.Direccion02.Etapa;
+                    tra.Direccion02_Tipozona = item.DatosPersonales.Direccion02.TipoZona.Descripcion + Environment.NewLine + item.DatosPersonales.Direccion02.TipoZona.Numero;
+                    tra.Direccion02_Nombrezona = item.DatosPersonales.Direccion02.NombreZona;
+                    tra.IndicarSalud = item.DatosPersonales.IndicadorEssalud;
+
+
+                    Lista.Add(tra);
+                }
+                return Lista;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo TraerArchivoJOR: " + ex.Message);
+            }
+        }
     }
 }
