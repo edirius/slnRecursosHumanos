@@ -407,8 +407,12 @@
       <DependentUpon>frmVerCodificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="ExportarSunat\Tregistro\cCatalogoAltaTRegistro.cs" />
+    <Compile Include="ExportarSunat\Tregistro\cDatosPeriodo.cs" />
     <Compile Include="ExportarSunat\Tregistro\cDatosPersonales.cs" />
+    <Compile Include="ExportarSunat\Tregistro\cDatosTrabajador.cs" />
     <Compile Include="ExportarSunat\Tregistro\cDireccion.cs" />
+    <Compile Include="ExportarSunat\Tregistro\cFilaDatosPer.cs" />
+    <Compile Include="ExportarSunat\Tregistro\cFilaDatosTra.cs" />
     <Compile Include="ExportarSunat\Tregistro\cFilarDatosJor.cs" />
     <Compile Include="ExportarSunat\Tregistro\cTrabajadorAltaTRegistro.cs" />
     <Compile Include="ExportarSunat\Tregistro\frmDarAltaTregistro.cs">
@@ -423,10 +427,24 @@
     <Compile Include="ExportarSunat\Tregistro\frmVerCodificacion.Designer.cs">
       <DependentUpon>frmVerCodificacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cCategoriaOcupacionalTrabajador.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cEntidadesPrestadorasSalud.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cMotivoBaja.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cNacionalidad.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cOcupacion.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cPaisEmisorDocumento.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cPeriodicidadIngreso.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cRegimenLaboral.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cRegimenPensionario.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cRegimenSalud.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cSexo.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cSituacion.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cSituacionEducativa.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cSituacionEspecialTrabajador.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cTipoContrato.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cTipoDocumentoIdentidad.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cTipoPago.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cTipoTrabajador.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cTipoVia.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cTipoZona.cs" />
     <Compile Include="Form1.cs">

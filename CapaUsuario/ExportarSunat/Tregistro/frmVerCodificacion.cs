@@ -19,6 +19,7 @@ namespace CapaUsuario.ExportarSunat.Tregistro
         }
 
         public List<Tregistro.cTrabajadorAltaTRegistro> ListaTrabajadores;
+        public DateTime Mes;
         Tregistro.cCatalogoAltaTRegistro oCatalogo = new cCatalogoAltaTRegistro();
         List<Tregistro.cFilarDatosJor> ListaDatosJor = new List<cFilarDatosJor>();
 
@@ -30,6 +31,8 @@ namespace CapaUsuario.ExportarSunat.Tregistro
         private void Iniciar()
         {
             dtgJor.DataSource = oCatalogo.TraerArchivoJOR(ListaTrabajadores);
+            dtgTra.DataSource = oCatalogo.TraerArchivoTRA(ListaTrabajadores, Mes);
+            dtgPer.DataSource = oCatalogo.TraerArchivoPER(ListaTrabajadores, Mes);
         }
     }
 }

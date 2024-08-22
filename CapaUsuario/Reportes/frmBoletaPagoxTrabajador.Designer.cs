@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkObservaciones = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cboAño = new System.Windows.Forms.ComboBox();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -37,18 +38,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtgBoletasPago = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnImprimirBoleta = new System.Windows.Forms.Button();
-            this.btnBoletaXAnio = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.rdnDosBoletas = new System.Windows.Forms.RadioButton();
-            this.rdnBoletaDuplicada = new System.Windows.Forms.RadioButton();
-            this.rdnUnaBoleta = new System.Windows.Forms.RadioButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.numTamañoLetra = new System.Windows.Forms.NumericUpDown();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.rdnVertical = new System.Windows.Forms.RadioButton();
-            this.rdnHorizontal = new System.Windows.Forms.RadioButton();
             this.IDPLANILLA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Año = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,7 +64,18 @@
             this.Meta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Trabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescripcionMeta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chkObservaciones = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnImprimirBoleta = new System.Windows.Forms.Button();
+            this.btnBoletaXAnio = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rdnDosBoletas = new System.Windows.Forms.RadioButton();
+            this.rdnBoletaDuplicada = new System.Windows.Forms.RadioButton();
+            this.rdnUnaBoleta = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numTamañoLetra = new System.Windows.Forms.NumericUpDown();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rdnVertical = new System.Windows.Forms.RadioButton();
+            this.rdnHorizontal = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgBoletasPago)).BeginInit();
@@ -97,6 +97,16 @@
             this.groupBox1.Size = new System.Drawing.Size(935, 59);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // chkObservaciones
+            // 
+            this.chkObservaciones.AutoSize = true;
+            this.chkObservaciones.Location = new System.Drawing.Point(659, 20);
+            this.chkObservaciones.Name = "chkObservaciones";
+            this.chkObservaciones.Size = new System.Drawing.Size(128, 17);
+            this.chkObservaciones.TabIndex = 95;
+            this.chkObservaciones.Text = "Incluir Observaciones";
+            this.chkObservaciones.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -200,161 +210,6 @@
             this.dtgBoletasPago.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgBoletasPago.Size = new System.Drawing.Size(923, 257);
             this.dtgBoletasPago.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.MintCream;
-            this.button1.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.ImageKey = "NetByte Design Studio - 0849.png";
-            this.button1.Location = new System.Drawing.Point(860, 361);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 57);
-            this.button1.TabIndex = 93;
-            this.button1.Text = "&Salir";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btnImprimirBoleta
-            // 
-            this.btnImprimirBoleta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimirBoleta.BackColor = System.Drawing.Color.MintCream;
-            this.btnImprimirBoleta.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnImprimirBoleta.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnImprimirBoleta.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimirBoleta.Location = new System.Drawing.Point(49, 361);
-            this.btnImprimirBoleta.Name = "btnImprimirBoleta";
-            this.btnImprimirBoleta.Size = new System.Drawing.Size(89, 57);
-            this.btnImprimirBoleta.TabIndex = 94;
-            this.btnImprimirBoleta.Text = "&Imprimir Boleta 3er Formato";
-            this.btnImprimirBoleta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnImprimirBoleta.UseVisualStyleBackColor = false;
-            this.btnImprimirBoleta.Click += new System.EventHandler(this.btnImprimirBoleta_Click);
-            // 
-            // btnBoletaXAnio
-            // 
-            this.btnBoletaXAnio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBoletaXAnio.BackColor = System.Drawing.Color.MintCream;
-            this.btnBoletaXAnio.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnBoletaXAnio.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnBoletaXAnio.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnBoletaXAnio.Location = new System.Drawing.Point(153, 361);
-            this.btnBoletaXAnio.Name = "btnBoletaXAnio";
-            this.btnBoletaXAnio.Size = new System.Drawing.Size(89, 57);
-            this.btnBoletaXAnio.TabIndex = 95;
-            this.btnBoletaXAnio.Text = "&Imprimir Boletas x Año";
-            this.btnBoletaXAnio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnBoletaXAnio.UseVisualStyleBackColor = false;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.rdnDosBoletas);
-            this.groupBox3.Controls.Add(this.rdnBoletaDuplicada);
-            this.groupBox3.Controls.Add(this.rdnUnaBoleta);
-            this.groupBox3.Location = new System.Drawing.Point(248, 362);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(361, 60);
-            this.groupBox3.TabIndex = 96;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Opciones";
-            // 
-            // rdnDosBoletas
-            // 
-            this.rdnDosBoletas.AutoSize = true;
-            this.rdnDosBoletas.Location = new System.Drawing.Point(237, 20);
-            this.rdnDosBoletas.Name = "rdnDosBoletas";
-            this.rdnDosBoletas.Size = new System.Drawing.Size(113, 17);
-            this.rdnDosBoletas.TabIndex = 2;
-            this.rdnDosBoletas.Text = "2 Boletas x Pagina";
-            this.rdnDosBoletas.UseVisualStyleBackColor = true;
-            // 
-            // rdnBoletaDuplicada
-            // 
-            this.rdnBoletaDuplicada.AutoSize = true;
-            this.rdnBoletaDuplicada.Location = new System.Drawing.Point(125, 20);
-            this.rdnBoletaDuplicada.Name = "rdnBoletaDuplicada";
-            this.rdnBoletaDuplicada.Size = new System.Drawing.Size(106, 17);
-            this.rdnBoletaDuplicada.TabIndex = 1;
-            this.rdnBoletaDuplicada.Text = "Boleta Duplicada";
-            this.rdnBoletaDuplicada.UseVisualStyleBackColor = true;
-            // 
-            // rdnUnaBoleta
-            // 
-            this.rdnUnaBoleta.AutoSize = true;
-            this.rdnUnaBoleta.Checked = true;
-            this.rdnUnaBoleta.Location = new System.Drawing.Point(18, 20);
-            this.rdnUnaBoleta.Name = "rdnUnaBoleta";
-            this.rdnUnaBoleta.Size = new System.Drawing.Size(108, 17);
-            this.rdnUnaBoleta.TabIndex = 0;
-            this.rdnUnaBoleta.TabStop = true;
-            this.rdnUnaBoleta.Text = "1 Boleta x Pagina";
-            this.rdnUnaBoleta.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(769, 371);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
-            this.label3.TabIndex = 97;
-            this.label3.Text = "Tamaño Letra:";
-            // 
-            // numTamañoLetra
-            // 
-            this.numTamañoLetra.Location = new System.Drawing.Point(772, 398);
-            this.numTamañoLetra.Maximum = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            this.numTamañoLetra.Minimum = new decimal(new int[] {
-            7,
-            0,
-            0,
-            0});
-            this.numTamañoLetra.Name = "numTamañoLetra";
-            this.numTamañoLetra.Size = new System.Drawing.Size(46, 20);
-            this.numTamañoLetra.TabIndex = 98;
-            this.numTamañoLetra.Value = new decimal(new int[] {
-            7,
-            0,
-            0,
-            0});
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.rdnVertical);
-            this.groupBox4.Controls.Add(this.rdnHorizontal);
-            this.groupBox4.Location = new System.Drawing.Point(623, 362);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(140, 60);
-            this.groupBox4.TabIndex = 97;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Opciones";
-            // 
-            // rdnVertical
-            // 
-            this.rdnVertical.AutoSize = true;
-            this.rdnVertical.Location = new System.Drawing.Point(18, 36);
-            this.rdnVertical.Name = "rdnVertical";
-            this.rdnVertical.Size = new System.Drawing.Size(60, 17);
-            this.rdnVertical.TabIndex = 1;
-            this.rdnVertical.Text = "Vertical";
-            this.rdnVertical.UseVisualStyleBackColor = true;
-            // 
-            // rdnHorizontal
-            // 
-            this.rdnHorizontal.AutoSize = true;
-            this.rdnHorizontal.Checked = true;
-            this.rdnHorizontal.Location = new System.Drawing.Point(18, 16);
-            this.rdnHorizontal.Name = "rdnHorizontal";
-            this.rdnHorizontal.Size = new System.Drawing.Size(72, 17);
-            this.rdnHorizontal.TabIndex = 0;
-            this.rdnHorizontal.TabStop = true;
-            this.rdnHorizontal.Text = "Horizontal";
-            this.rdnHorizontal.UseVisualStyleBackColor = true;
             // 
             // IDPLANILLA
             // 
@@ -562,15 +417,161 @@
             this.colDescripcionMeta.ReadOnly = true;
             this.colDescripcionMeta.Width = 150;
             // 
-            // chkObservaciones
+            // button1
             // 
-            this.chkObservaciones.AutoSize = true;
-            this.chkObservaciones.Location = new System.Drawing.Point(659, 20);
-            this.chkObservaciones.Name = "chkObservaciones";
-            this.chkObservaciones.Size = new System.Drawing.Size(128, 17);
-            this.chkObservaciones.TabIndex = 95;
-            this.chkObservaciones.Text = "Incluir Observaciones";
-            this.chkObservaciones.UseVisualStyleBackColor = true;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.MintCream;
+            this.button1.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.ImageKey = "NetByte Design Studio - 0849.png";
+            this.button1.Location = new System.Drawing.Point(860, 361);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 57);
+            this.button1.TabIndex = 93;
+            this.button1.Text = "&Salir";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnImprimirBoleta
+            // 
+            this.btnImprimirBoleta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirBoleta.BackColor = System.Drawing.Color.MintCream;
+            this.btnImprimirBoleta.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnImprimirBoleta.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnImprimirBoleta.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnImprimirBoleta.Location = new System.Drawing.Point(49, 361);
+            this.btnImprimirBoleta.Name = "btnImprimirBoleta";
+            this.btnImprimirBoleta.Size = new System.Drawing.Size(89, 57);
+            this.btnImprimirBoleta.TabIndex = 94;
+            this.btnImprimirBoleta.Text = "&Imprimir Boleta 3er Formato";
+            this.btnImprimirBoleta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImprimirBoleta.UseVisualStyleBackColor = false;
+            this.btnImprimirBoleta.Click += new System.EventHandler(this.btnImprimirBoleta_Click);
+            // 
+            // btnBoletaXAnio
+            // 
+            this.btnBoletaXAnio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBoletaXAnio.BackColor = System.Drawing.Color.MintCream;
+            this.btnBoletaXAnio.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnBoletaXAnio.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnBoletaXAnio.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnBoletaXAnio.Location = new System.Drawing.Point(153, 361);
+            this.btnBoletaXAnio.Name = "btnBoletaXAnio";
+            this.btnBoletaXAnio.Size = new System.Drawing.Size(89, 57);
+            this.btnBoletaXAnio.TabIndex = 95;
+            this.btnBoletaXAnio.Text = "&Imprimir Boletas x Año";
+            this.btnBoletaXAnio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnBoletaXAnio.UseVisualStyleBackColor = false;
+            this.btnBoletaXAnio.Click += new System.EventHandler(this.btnBoletaXAnio_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.rdnDosBoletas);
+            this.groupBox3.Controls.Add(this.rdnBoletaDuplicada);
+            this.groupBox3.Controls.Add(this.rdnUnaBoleta);
+            this.groupBox3.Location = new System.Drawing.Point(248, 362);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(361, 60);
+            this.groupBox3.TabIndex = 96;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Opciones";
+            // 
+            // rdnDosBoletas
+            // 
+            this.rdnDosBoletas.AutoSize = true;
+            this.rdnDosBoletas.Location = new System.Drawing.Point(237, 20);
+            this.rdnDosBoletas.Name = "rdnDosBoletas";
+            this.rdnDosBoletas.Size = new System.Drawing.Size(113, 17);
+            this.rdnDosBoletas.TabIndex = 2;
+            this.rdnDosBoletas.Text = "2 Boletas x Pagina";
+            this.rdnDosBoletas.UseVisualStyleBackColor = true;
+            // 
+            // rdnBoletaDuplicada
+            // 
+            this.rdnBoletaDuplicada.AutoSize = true;
+            this.rdnBoletaDuplicada.Location = new System.Drawing.Point(125, 20);
+            this.rdnBoletaDuplicada.Name = "rdnBoletaDuplicada";
+            this.rdnBoletaDuplicada.Size = new System.Drawing.Size(106, 17);
+            this.rdnBoletaDuplicada.TabIndex = 1;
+            this.rdnBoletaDuplicada.Text = "Boleta Duplicada";
+            this.rdnBoletaDuplicada.UseVisualStyleBackColor = true;
+            // 
+            // rdnUnaBoleta
+            // 
+            this.rdnUnaBoleta.AutoSize = true;
+            this.rdnUnaBoleta.Checked = true;
+            this.rdnUnaBoleta.Location = new System.Drawing.Point(18, 20);
+            this.rdnUnaBoleta.Name = "rdnUnaBoleta";
+            this.rdnUnaBoleta.Size = new System.Drawing.Size(108, 17);
+            this.rdnUnaBoleta.TabIndex = 0;
+            this.rdnUnaBoleta.TabStop = true;
+            this.rdnUnaBoleta.Text = "1 Boleta x Pagina";
+            this.rdnUnaBoleta.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(769, 371);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(76, 13);
+            this.label3.TabIndex = 97;
+            this.label3.Text = "Tamaño Letra:";
+            // 
+            // numTamañoLetra
+            // 
+            this.numTamañoLetra.Location = new System.Drawing.Point(772, 398);
+            this.numTamañoLetra.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.numTamañoLetra.Minimum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.numTamañoLetra.Name = "numTamañoLetra";
+            this.numTamañoLetra.Size = new System.Drawing.Size(46, 20);
+            this.numTamañoLetra.TabIndex = 98;
+            this.numTamañoLetra.Value = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.rdnVertical);
+            this.groupBox4.Controls.Add(this.rdnHorizontal);
+            this.groupBox4.Location = new System.Drawing.Point(623, 362);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(140, 60);
+            this.groupBox4.TabIndex = 97;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Opciones";
+            // 
+            // rdnVertical
+            // 
+            this.rdnVertical.AutoSize = true;
+            this.rdnVertical.Location = new System.Drawing.Point(18, 36);
+            this.rdnVertical.Name = "rdnVertical";
+            this.rdnVertical.Size = new System.Drawing.Size(60, 17);
+            this.rdnVertical.TabIndex = 1;
+            this.rdnVertical.Text = "Vertical";
+            this.rdnVertical.UseVisualStyleBackColor = true;
+            // 
+            // rdnHorizontal
+            // 
+            this.rdnHorizontal.AutoSize = true;
+            this.rdnHorizontal.Checked = true;
+            this.rdnHorizontal.Location = new System.Drawing.Point(18, 16);
+            this.rdnHorizontal.Name = "rdnHorizontal";
+            this.rdnHorizontal.Size = new System.Drawing.Size(72, 17);
+            this.rdnHorizontal.TabIndex = 0;
+            this.rdnHorizontal.TabStop = true;
+            this.rdnHorizontal.Text = "Horizontal";
+            this.rdnHorizontal.UseVisualStyleBackColor = true;
             // 
             // frmBoletaPagoxTrabajador
             // 

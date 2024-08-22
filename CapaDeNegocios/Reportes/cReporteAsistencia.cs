@@ -345,11 +345,34 @@ namespace CapaDeNegocios.Reportes
                     switch (item.EventoDia)
                     {
                         case cAsistenciaDia.TipoDia.DiaLaborable:
-                            DetalleTipoFalta.Contenido = "Normal";
+                        switch (item.Falta)
+                        {
+                            case cAsistenciaDia.TipoFalta.FaltaPicadoEntrada:
+                                DetalleTipoFalta.Contenido = "Falta(E)";
+                                DetalleTipoFalta.ColorLetra = System.Drawing.Color.OrangeRed;
+                                break;
+                            case cAsistenciaDia.TipoFalta.FaltaPicadoFinal:
+                                DetalleTipoFalta.Contenido = "Falta(S)";
+                                DetalleTipoFalta.ColorLetra = System.Drawing.Color.OrangeRed;
+                                break;
+                            case cAsistenciaDia.TipoFalta.FaltaJustificada:
+                                DetalleTipoFalta.Contenido = "Justificada";
+                                DetalleTipoFalta.ColorLetra = System.Drawing.Color.Green;
+                                break;
+                            case cAsistenciaDia.TipoFalta.FaltaTotal:
+                                DetalleTipoFalta.Contenido = "Falta(ES)";
+                                DetalleTipoFalta.ColorLetra = System.Drawing.Color.OrangeRed;
+                                break;
+                            case cAsistenciaDia.TipoFalta.SinFalta:
+                                DetalleTipoFalta.Contenido = "Normal";
+                                break;
+                            default:
+                                break;
+                        }
                             break;
                         case cAsistenciaDia.TipoDia.DiaFestivo:
                             DetalleTipoFalta.Contenido = "Feriado";
-                            DetalleTipoFalta.ColorLetra = System.Drawing.Color.Blue;
+                            DetalleTipoFalta.ColorLetra = System.Drawing.Color.LightSteelBlue;
                             break;
                         case cAsistenciaDia.TipoDia.DiaLibre:
                             DetalleTipoFalta.Contenido = "Libre";
@@ -414,15 +437,15 @@ namespace CapaDeNegocios.Reportes
         {
 
             cReportePDF oReporte = new cReportePDF();
-
+            oReporte.FormatoHoja = cReportePDF.enumFormatoHoja.Horizontal;
             oReporte.RutaArchivo = RutaArchivo;
 
             cHojaPDF oHojaPDF = new cHojaPDF();
 
-
+            
             cTablaPDF TablaTituloPrincipal = new cTablaPDF();
             TablaTituloPrincipal.columnas = 1;
-            TablaTituloPrincipal.anchoColumnas = new float[] { 500f };
+            TablaTituloPrincipal.anchoColumnas = new float[] { 600f };
 
             cFilasPDF FilaTituloPrincipal = new cFilasPDF();
 
@@ -435,7 +458,7 @@ namespace CapaDeNegocios.Reportes
 
             cTablaPDF TablaTitulo1 = new cTablaPDF();
             TablaTitulo1.columnas = 4;
-            TablaTitulo1.anchoColumnas = new float[] { 50f, 50f, 50f, 50f};
+            TablaTitulo1.anchoColumnas = new float[] { 150f, 150f, 150f, 150f};
 
             cFilasPDF FilaTitulo1 = new cFilasPDF();
 
@@ -474,19 +497,22 @@ namespace CapaDeNegocios.Reportes
 
 
             cTablaPDF TablaDetalle = new cTablaPDF();
-            TablaDetalle.columnas = numeroDias + 3;
-            TablaDetalle.anchoColumnas = new float[numeroDias + 3];
+            TablaDetalle.columnas = numeroDias + 5;
+            TablaDetalle.anchoColumnas = new float[numeroDias + 5];
 
 
             
             TablaDetalle.anchoColumnas[0] = 50f;
-            TablaDetalle.anchoColumnas[1] = 300f;
-            TablaDetalle.anchoColumnas[2] = 120f;
+            TablaDetalle.anchoColumnas[1] = 280f;
+            TablaDetalle.anchoColumnas[2] = 110f;
 
             for (int i = 3; i < numeroDias+ 3; i++)
             {
-                TablaDetalle.anchoColumnas[i] = 50f;
+                TablaDetalle.anchoColumnas[i] = 55f;
             }
+            //Ancho del resumen de faltas y tardanzas
+            TablaDetalle.anchoColumnas[numeroDias+3] = 100f;
+            TablaDetalle.anchoColumnas[numeroDias+4] = 100f;
 
             cFilasPDF FilaTituloDetalle = new cFilasPDF();
             cFilasPDF FilaTituloDetalle2 = new cFilasPDF();
@@ -523,6 +549,16 @@ namespace CapaDeNegocios.Reportes
                 FilaTituloDetalle2.ListaCeldas.Add(labelTituloDetalle2);
             }
 
+            cCeldaPDF labelTituloResumenT = new cCeldaPDF();
+            labelTituloResumenT.Contenido = "Resum. Tar.";
+            FilaTituloDetalle.ListaCeldas.Add(labelTituloResumenT);
+            FilaTituloDetalle2.ListaCeldas.Add(Vacio3);
+
+            cCeldaPDF labelTituloResumenF = new cCeldaPDF();
+            labelTituloResumenF.Contenido = "Resum. Fal.";
+            FilaTituloDetalle.ListaCeldas.Add(labelTituloResumenF);
+            FilaTituloDetalle2.ListaCeldas.Add(Vacio3);
+
             cFilasPDF FilaDetalle = new cFilasPDF();
 
             cCeldaPDF Numero = new cCeldaPDF();
@@ -540,29 +576,60 @@ namespace CapaDeNegocios.Reportes
             for (int i = 0; i < numeroDias; i++)
             {
                 cCeldaPDF labelDetalle = new cCeldaPDF();
-                if (oAsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.SinFalta || oAsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.FaltaJustificada)
+                switch (oAsistenciaMes.ListaAsistenciaDia[i].EventoDia)
                 {
-                    if (oAsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.SinFalta)
-                    {
-                        labelDetalle.Contenido = "N";
-                    }
-                    else
-                    {
-                        labelDetalle.Contenido = "J";
-                    }
-                }
-                else
-                {
-                    labelDetalle.Contenido = "F";
-                    labelDetalle.ColorLetra = System.Drawing.Color.Red;
-                }
+                    case cAsistenciaDia.TipoDia.DiaLaborable:
+                        switch (oAsistenciaMes.ListaAsistenciaDia[i].Falta)
+                        {
+                            case cAsistenciaDia.TipoFalta.FaltaPicadoEntrada:
+                                labelDetalle.Contenido = "F" + Environment.NewLine + "(E)";
+                                labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                                break;
+                            case cAsistenciaDia.TipoFalta.FaltaPicadoFinal:
+                                labelDetalle.Contenido = "F" + Environment.NewLine + "(S)";
+                                labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                                break;
+                            case cAsistenciaDia.TipoFalta.FaltaJustificada:
+                                labelDetalle.Contenido = "J";
+                                labelDetalle.ColorLetra = System.Drawing.Color.Green;
+                                break;
+                            case cAsistenciaDia.TipoFalta.FaltaTotal:
+                                labelDetalle.Contenido = "F" + Environment.NewLine + "(ES)";
+                                labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                                break;
+                            case cAsistenciaDia.TipoFalta.SinFalta:
+                                labelDetalle.Contenido = "N";
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                    case cAsistenciaDia.TipoDia.DiaFestivo:
+                        labelDetalle.Contenido = "LF";
+                        labelDetalle.ColorLetra = System.Drawing.Color.LightSteelBlue;
+                        break;
+                    case cAsistenciaDia.TipoDia.DiaLibre:
+                        labelDetalle.Contenido = "L";
+                        labelDetalle.ColorLetra = System.Drawing.Color.Blue;
+                        break;
+                    default:
+                        break;
+                }     
+                
                 if (oAsistenciaMes.ListaAsistenciaDia[i].Tarde)
                 {
                     labelDetalle.Contenido = "T";
-                    labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                    labelDetalle.ColorLetra = System.Drawing.Color.OrangeRed;
                 }
                 FilaDetalle.ListaCeldas.Add(labelDetalle);
             }
+            cCeldaPDF ResumenTardanzas = new cCeldaPDF();
+            ResumenTardanzas.Contenido = oAsistenciaMes.TotalTardanzas.ToString();
+            FilaDetalle.ListaCeldas.Add(ResumenTardanzas);
+
+            cCeldaPDF ResumenFaltas = new cCeldaPDF();
+            ResumenFaltas.Contenido = oAsistenciaMes.TotalFaltasMes.ToString();
+            FilaDetalle.ListaCeldas.Add(ResumenFaltas);
 
             TablaDetalle.ListaFilas.Add(FilaTituloDetalle);
             TablaDetalle.ListaFilas.Add(FilaTituloDetalle2);
@@ -585,7 +652,7 @@ namespace CapaDeNegocios.Reportes
 
             cFilasPDF FilaDiaJustificado = new cFilasPDF();
             cCeldaPDF CeldaTituloDiaJustificado = new cCeldaPDF();
-            CeldaTituloDiaJustificado.Contenido = "Falta Justificada";
+            CeldaTituloDiaJustificado.Contenido = "Justificada -" + Environment.NewLine + "Papelete de Salida";
             FilaDiaJustificado.ListaCeldas.Add(CeldaTituloDiaJustificado);
 
             cCeldaPDF CeldaDiaJustificado = new cCeldaPDF();
@@ -596,11 +663,11 @@ namespace CapaDeNegocios.Reportes
 
             cFilasPDF FilaDiaFalta = new cFilasPDF();
             cCeldaPDF CeldaTituloDiaFalta = new cCeldaPDF();
-            CeldaTituloDiaFalta.Contenido = "Falta Injustificada";
+            CeldaTituloDiaFalta.Contenido = "Falta Injustificada" +Environment.NewLine + "(ENTRADA-SALIDA)";
             FilaDiaFalta.ListaCeldas.Add(CeldaTituloDiaFalta);
 
             cCeldaPDF CeldaDiaFalta = new cCeldaPDF();
-            CeldaDiaFalta.Contenido = "F";
+            CeldaDiaFalta.Contenido = "F" + Environment.NewLine + "(E-S)";
             FilaDiaFalta.ListaCeldas.Add(CeldaDiaFalta);
 
             TablaLeyenda.ListaFilas.Add(FilaDiaFalta);
@@ -615,6 +682,17 @@ namespace CapaDeNegocios.Reportes
             FilaDiaTarde.ListaCeldas.Add(CeldaDiatarde);
 
             TablaLeyenda.ListaFilas.Add(FilaDiaTarde);
+
+            cFilasPDF FilaDiaFestivo = new cFilasPDF();
+            cCeldaPDF CeldaTituloDiaFestivo = new cCeldaPDF();
+            CeldaTituloDiaFestivo.Contenido = "Dia Festivo -" + Environment.NewLine + "Feriado";
+            FilaDiaFestivo.ListaCeldas.Add(CeldaTituloDiaFestivo);
+
+            cCeldaPDF CeldaDiaFestivo = new cCeldaPDF();
+            CeldaDiaFestivo.Contenido = "LF";
+            FilaDiaFestivo.ListaCeldas.Add(CeldaDiaFestivo);
+
+            TablaLeyenda.ListaFilas.Add(FilaDiaFestivo);
 
             oHojaPDF.ListaDeTablas.Add(TablaTituloPrincipal);
             oHojaPDF.ListaDeTablas.Add(TablaTitulo1);
@@ -635,6 +713,7 @@ namespace CapaDeNegocios.Reportes
             cReportePDF oReporte = new cReportePDF();
 
             oReporte.RutaArchivo = RutaArchivo;
+            oReporte.FormatoHoja = cReportePDF.enumFormatoHoja.Horizontal;
 
             cHojaPDF oHojaPDF = new cHojaPDF();
 
@@ -663,7 +742,7 @@ namespace CapaDeNegocios.Reportes
             FilaTitulo1.ListaCeldas.Add(LabelEmpresa);
 
             cCeldaPDF NombreEmpresa = new cCeldaPDF();
-            NombreEmpresa.Contenido = "Municipalidad Distrital de Maras";
+            NombreEmpresa.Contenido = oDatosGenerales.Nombre;
             FilaTitulo1.ListaCeldas.Add(NombreEmpresa);
 
             cCeldaPDF LabelRuc = new cCeldaPDF();
@@ -671,7 +750,7 @@ namespace CapaDeNegocios.Reportes
             FilaTitulo1.ListaCeldas.Add(LabelRuc);
 
             cCeldaPDF NumeroRuc = new cCeldaPDF();
-            NumeroRuc.Contenido = "20177432360";
+            NumeroRuc.Contenido = oDatosGenerales.Ruc;
             FilaTitulo1.ListaCeldas.Add(NumeroRuc);
             TablaTitulo1.ListaFilas.Add(FilaTitulo1);
 
@@ -693,19 +772,23 @@ namespace CapaDeNegocios.Reportes
 
 
             cTablaPDF TablaDetalle = new cTablaPDF();
-            TablaDetalle.columnas = numeroDias + 3;
-            TablaDetalle.anchoColumnas = new float[numeroDias + 3];
+            TablaDetalle.columnas = numeroDias + 5;
+            TablaDetalle.anchoColumnas = new float[numeroDias + 5];
 
 
 
             TablaDetalle.anchoColumnas[0] = 50f;
-            TablaDetalle.anchoColumnas[1] = 300f;
-            TablaDetalle.anchoColumnas[2] = 120f;
+            TablaDetalle.anchoColumnas[1] = 280f;
+            TablaDetalle.anchoColumnas[2] = 110f;
 
             for (int i = 3; i < numeroDias + 3; i++)
             {
-                TablaDetalle.anchoColumnas[i] = 50f;
+                TablaDetalle.anchoColumnas[i] = 55f;
             }
+
+            //Ancho del resumen de faltas y tardanzas
+            TablaDetalle.anchoColumnas[numeroDias + 3] = 100f;
+            TablaDetalle.anchoColumnas[numeroDias + 4] = 100f;
 
             cFilasPDF FilaTituloDetalle = new cFilasPDF();
             cFilasPDF FilaTituloDetalle2 = new cFilasPDF();
@@ -742,6 +825,16 @@ namespace CapaDeNegocios.Reportes
                 FilaTituloDetalle2.ListaCeldas.Add(labelTituloDetalle2);
             }
 
+            cCeldaPDF labelTituloResumenT = new cCeldaPDF();
+            labelTituloResumenT.Contenido = "Resum. Tar.";
+            FilaTituloDetalle.ListaCeldas.Add(labelTituloResumenT);
+            FilaTituloDetalle2.ListaCeldas.Add(Vacio3);
+
+            cCeldaPDF labelTituloResumenF = new cCeldaPDF();
+            labelTituloResumenF.Contenido = "Resum. Fal.";
+            FilaTituloDetalle.ListaCeldas.Add(labelTituloResumenF);
+            FilaTituloDetalle2.ListaCeldas.Add(Vacio3);
+
             TablaDetalle.ListaFilas.Add(FilaTituloDetalle);
             TablaDetalle.ListaFilas.Add(FilaTituloDetalle2);
 
@@ -768,48 +861,88 @@ namespace CapaDeNegocios.Reportes
                 for (int i = 0; i < numeroDias; i++)
                 {
                     cCeldaPDF labelDetalle = new cCeldaPDF();
-                    if (item.AsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.SinFalta || item.AsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.FaltaJustificada)
+                    switch (item.AsistenciaMes.ListaAsistenciaDia[i].EventoDia)
                     {
-                        if (item.AsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.SinFalta)
-                        {
-                            labelDetalle.Contenido = "N";
-                        }
-                        else
-                        {
-                            labelDetalle.Contenido = "C";
-                        }
-                    }
-                    else
-                    {
-                        CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral jor = BuscarJornada(item.AsistenciaMes.ListaAsistenciaDia[i].Dia, item.JornadaLaboral);
-                        if (jor == null)
-                        {
-                            labelDetalle.Contenido = "C";
+                        case cAsistenciaDia.TipoDia.DiaLaborable:
+                            switch (item.AsistenciaMes.ListaAsistenciaDia[i].Falta)
+                            {
+                                case cAsistenciaDia.TipoFalta.FaltaPicadoEntrada:
+                                    labelDetalle.Contenido = "F" + Environment.NewLine + "(E)";
+                                    labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                                    break;
+                                case cAsistenciaDia.TipoFalta.FaltaPicadoFinal:
+                                    labelDetalle.Contenido = "F" + Environment.NewLine + "(S)";
+                                    labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                                    break;
+                                case cAsistenciaDia.TipoFalta.FaltaJustificada:
+                                    labelDetalle.Contenido = "J";
+                                    labelDetalle.ColorLetra = System.Drawing.Color.Green;
+                                    break;
+                                case cAsistenciaDia.TipoFalta.FaltaTotal:
+                                    labelDetalle.Contenido = "F" + Environment.NewLine + "(ES)";
+                                    labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                                    break;
+                                case cAsistenciaDia.TipoFalta.SinFalta:
+                                    labelDetalle.Contenido = "N";
+                                    break;
+                                default:
+                                    break;
+                            }
+                            break;
+                        case cAsistenciaDia.TipoDia.DiaFestivo:
+                            labelDetalle.Contenido = "LF";
+                            labelDetalle.ColorLetra = System.Drawing.Color.LightSteelBlue;
+                            break;
+                        case cAsistenciaDia.TipoDia.DiaLibre:
+                            labelDetalle.Contenido = "L";
                             labelDetalle.ColorLetra = System.Drawing.Color.Blue;
-                        }
-                        else
-                        {
-                            if (jor.TipoDia == AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.NoLaborado)
-                            {
-                                labelDetalle.Contenido = "F";
-                                labelDetalle.ColorLetra = System.Drawing.Color.Red;
-                            }
-                            else
-                            {
-                                if (jor.TipoDia == AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Subsidiado)
-                                {
-                                    labelDetalle.Contenido = "S";
-                                    labelDetalle.ColorLetra = System.Drawing.Color.Blue;
-                                }
-                                if (jor.TipoDia == AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Tardanza)
-                                {
-                                    labelDetalle.Contenido = "T";
-                                    labelDetalle.ColorLetra = System.Drawing.Color.DarkOrange;
-                                }
-                            }
-                        }
+                            break;
                         
+                        default:
+                            break;
                     }
+                    //if (item.AsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.SinFalta || item.AsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.FaltaJustificada)
+                    //{
+                    //    if (item.AsistenciaMes.ListaAsistenciaDia[i].Falta == cAsistenciaDia.TipoFalta.SinFalta)
+                    //    {
+                    //        labelDetalle.Contenido = "N";
+                    //    }
+                    //    else
+                    //    {
+                    //        labelDetalle.Contenido = "C";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral jor = BuscarJornada(item.AsistenciaMes.ListaAsistenciaDia[i].Dia, item.JornadaLaboral);
+                    //    if (jor == null)
+                    //    {
+                    //        labelDetalle.Contenido = "C";
+                    //        labelDetalle.ColorLetra = System.Drawing.Color.Blue;
+                    //    }
+                    //    else
+                    //    {
+                    //        if (jor.TipoDia == AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.NoLaborado)
+                    //        {
+                    //            labelDetalle.Contenido = "F";
+                    //            labelDetalle.ColorLetra = System.Drawing.Color.Red;
+                    //        }
+                    //        else
+                    //        {
+                    //            if (jor.TipoDia == AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Subsidiado)
+                    //            {
+                    //                labelDetalle.Contenido = "S";
+                    //                labelDetalle.ColorLetra = System.Drawing.Color.Blue;
+                    //            }
+                    //            if (jor.TipoDia == AsistenciaGeneral.cDetalleJornadaLaboral.enumTipoDiaJornada.Tardanza)
+                    //            {
+                    //                labelDetalle.Contenido = "T";
+                    //                labelDetalle.ColorLetra = System.Drawing.Color.DarkOrange;
+                    //            }
+                    //        }
+                    //    }
+
+                    //}
                     if (item.AsistenciaMes.ListaAsistenciaDia[i].Tarde)
                     {
                         CapaDeNegocios.AsistenciaGeneral.cDetalleJornadaLaboral jor = BuscarJornada(item.AsistenciaMes.ListaAsistenciaDia[i].Dia, item.JornadaLaboral);
@@ -837,7 +970,16 @@ namespace CapaDeNegocios.Reportes
                         
                     }
                     FilaDetalle.ListaCeldas.Add(labelDetalle);
+
+                  
                 }
+                cCeldaPDF ResumenTardanzas = new cCeldaPDF();
+                ResumenTardanzas.Contenido = item.AsistenciaMes.TotalTardanzas.ToString();
+                FilaDetalle.ListaCeldas.Add(ResumenTardanzas);
+
+                cCeldaPDF ResumenFaltas = new cCeldaPDF();
+                ResumenFaltas.Contenido = item.AsistenciaMes.TotalFaltasMes.ToString();
+                FilaDetalle.ListaCeldas.Add(ResumenFaltas);
 
                 TablaDetalle.ListaFilas.Add(FilaDetalle);
             }
@@ -878,11 +1020,11 @@ namespace CapaDeNegocios.Reportes
 
             cFilasPDF FilaDiaFalta = new cFilasPDF();
             cCeldaPDF CeldaTituloDiaFalta = new cCeldaPDF();
-            CeldaTituloDiaFalta.Contenido = "Falta Injustificada";
+            CeldaTituloDiaFalta.Contenido = "Falta Injustificada" + Environment.NewLine + "(ENTRADA-SALIDA)";
             FilaDiaFalta.ListaCeldas.Add(CeldaTituloDiaFalta);
 
             cCeldaPDF CeldaDiaFalta = new cCeldaPDF();
-            CeldaDiaFalta.Contenido = "F";
+            CeldaDiaFalta.Contenido = "F" + Environment.NewLine + "(E-S)";
             FilaDiaFalta.ListaCeldas.Add(CeldaDiaFalta);
 
             TablaLeyenda.ListaFilas.Add(FilaDiaFalta);
@@ -897,6 +1039,17 @@ namespace CapaDeNegocios.Reportes
             FilaDiaTarde.ListaCeldas.Add(CeldaDiatarde);
 
             TablaLeyenda.ListaFilas.Add(FilaDiaTarde);
+
+            cFilasPDF FilaDiaFestivo = new cFilasPDF();
+            cCeldaPDF CeldaTituloDiaFestivo = new cCeldaPDF();
+            CeldaTituloDiaFestivo.Contenido = "Dia Festivo -" + Environment.NewLine + "Feriado";
+            FilaDiaFestivo.ListaCeldas.Add(CeldaTituloDiaFestivo);
+
+            cCeldaPDF CeldaDiaFestivo = new cCeldaPDF();
+            CeldaDiaFestivo.Contenido = "LF";
+            FilaDiaFestivo.ListaCeldas.Add(CeldaDiaFestivo);
+
+            TablaLeyenda.ListaFilas.Add(FilaDiaFestivo);
 
             cFilasPDF FilaDiaSUB = new cFilasPDF();
             cCeldaPDF CeldaTituloDiaSUB = new cCeldaPDF();
@@ -941,14 +1094,15 @@ namespace CapaDeNegocios.Reportes
         {
             iTextSharp.text.Font fuente = new iTextSharp.text.Font(iTextSharp.text.Font.TIMES_ROMAN, 7);
             iTextSharp.text.Font fuenteTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.BOLD, 9, 1, iTextSharp.text.Color.BLUE);
-            Document pdfDoc = new Document(PageSize.A4, 30, 9, 10, 10);
-            if (oReportePDF.FormatoHoja == cReportePDF.enumFormatoHoja.Vertical)
+            Document pdfDoc = new Document(PageSize.A4, 50, 9, 50, 10);
+            
+            if (oReportePDF.FormatoHoja == cReportePDF.enumFormatoHoja.Horizontal)
             {
                 pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
             }
             else
             {
-                pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
+                //pdfDoc.SetPageSize(iTextSharp.text.PageSize.A4.Rotate());
             }
             FileStream stream = new FileStream(oReportePDF.RutaArchivo, FileMode.Create);
             PdfWriter.GetInstance(pdfDoc, stream);
@@ -961,6 +1115,7 @@ namespace CapaDeNegocios.Reportes
                     pdfTable.DefaultCell.Padding = 1;
                     pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
                     pdfTable.DefaultCell.BorderWidth = 1;
+                    pdfTable.WidthPercentage = 100;
                     pdfTable.SetWidths(item2.anchoColumnas);
 
                     foreach (cFilasPDF item3 in item2.ListaFilas)

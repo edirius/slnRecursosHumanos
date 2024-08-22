@@ -53,5 +53,26 @@ namespace CapaDeNegocios.DatosLaborales
             Conexion.GDatos.Ejecutar("spELiminarRegimenLaboral", IdTRegimenLaboral);
             return true;
         }
+
+        public DatosLaborales.cRegimenLaboral TraerRegimenLaboral(int codigo)
+        {
+            try
+            {
+                DatosLaborales.cRegimenLaboral miRegimenLaboral = new DatosLaborales.cRegimenLaboral();
+                DataTable RegimenAuxiliar = Conexion.GDatos.TraerDataTable("spTraerRegimenLaboral", codigo);
+                if (RegimenAuxiliar.Rows.Count > 0)
+                {
+                    miRegimenLaboral.IdTRegimenLaboral = Convert.ToInt16(RegimenAuxiliar.Rows[0][0]);
+                    miRegimenLaboral.Codigo = Convert.ToString(RegimenAuxiliar.Rows[0][1]);
+                    miRegimenLaboral.Descripcion = Convert.ToString(RegimenAuxiliar.Rows[0][2]);
+                    RegimenAuxiliar.Dispose();
+                }
+                return miRegimenLaboral;
+            }
+            catch (Exception e)
+            {
+                throw new cReglaNegociosException("blPlanilla: " + e.Message);
+            }
+        }
     }
 }

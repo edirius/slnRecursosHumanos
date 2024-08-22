@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtgJor = new System.Windows.Forms.DataGridView();
             this.colNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,16 +58,24 @@
             this.colNombreZona1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colReferencia1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUbigeo1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtgTra = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dtgPer = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgJor)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgTra)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgPer)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dtgJor);
-            this.groupBox1.Location = new System.Drawing.Point(31, 48);
+            this.groupBox1.Location = new System.Drawing.Point(28, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(771, 223);
+            this.groupBox1.Size = new System.Drawing.Size(771, 214);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de Identificacion - .jor";
@@ -295,11 +304,51 @@
             this.colUbigeo1.Name = "colUbigeo1";
             this.colUbigeo1.ReadOnly = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dtgTra);
+            this.groupBox2.Location = new System.Drawing.Point(28, 245);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(771, 185);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Datos de Identificacion - tra";
+            // 
+            // dtgTra
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
+            this.dtgTra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgTra.Location = new System.Drawing.Point(21, 22);
+            this.dtgTra.Name = "dtgTra";
+            this.dtgTra.Size = new System.Drawing.Size(719, 150);
+            this.dtgTra.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dtgPer);
+            this.groupBox3.Location = new System.Drawing.Point(28, 442);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(771, 183);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Datos de Periodo - per";
+            // 
+            // dtgPer
+            // 
+            this.dtgPer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgPer.Location = new System.Drawing.Point(21, 19);
+            this.dtgPer.Name = "dtgPer";
+            this.dtgPer.Size = new System.Drawing.Size(719, 150);
+            this.dtgPer.TabIndex = 0;
+            // 
             // frmVerCodificacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(930, 442);
+            this.ClientSize = new System.Drawing.Size(930, 637);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmVerCodificacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -307,6 +356,10 @@
             this.Load += new System.EventHandler(this.frmVerCodificacion_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgJor)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgTra)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtgPer)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -341,5 +394,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombreZona1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colReferencia1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUbigeo1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dtgTra;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.DataGridView dtgPer;
     }
 }

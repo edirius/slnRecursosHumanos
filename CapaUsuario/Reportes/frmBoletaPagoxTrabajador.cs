@@ -213,5 +213,10 @@ namespace CapaUsuario.Reportes
                 return false;
             }
         }
+
+        private void btnBoletaXAnio_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

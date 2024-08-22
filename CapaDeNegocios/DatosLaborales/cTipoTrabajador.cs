@@ -58,5 +58,18 @@ namespace CapaDeNegocios
         {
             return Conexion.GDatos.TraerDataTable("uspListarTiposDeTrabajador" );
         }
+
+        public cTipoTrabajador TraerTipoTrabajador(int idtTipoTrabajador)
+        {
+            cTipoTrabajador tipo = new cTipoTrabajador();
+            DataTable tabla = Conexion.GDatos.TraerDataTable("spTraerSunatTipoTrabajador", idtTipoTrabajador);
+            if (tabla.Rows.Count > 0)
+            {
+                tipo.Codigo = Convert.ToInt32(tabla.Rows[0][1].ToString());
+                tipo.CodigoSunat = tabla.Rows[0][1].ToString();
+                tipo.Descripcion = tabla.Rows[0][2].ToString();
+            }
+            return tipo;
+        }
     }
 }

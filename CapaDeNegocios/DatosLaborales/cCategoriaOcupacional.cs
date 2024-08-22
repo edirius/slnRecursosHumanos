@@ -55,5 +55,19 @@ namespace CapaDeNegocios.DatosLaborales
             Conexion.GDatos.Ejecutar("spELiminarCategoriaOcupacional", IdTCategoriaOcupacional);
             return true;
         }
+
+        public cCategoriaOcupacional TraerCategoriaOcupacional(int idtcategoria)
+        {
+            cCategoriaOcupacional cat = new cCategoriaOcupacional();
+            DataTable tablaCategoria = Conexion.GDatos.TraerDataTable("spTraerCategoriaOcupacional", idtcategoria);
+            if (tablaCategoria.Rows.Count > 0)
+            {
+                cat.IdTCategoriaOcupacional = Convert.ToInt32(tablaCategoria.Rows[0][0].ToString());
+                cat.Codigo = tablaCategoria.Rows[0][1].ToString();
+                cat.Descripcion = tablaCategoria.Rows[0][2].ToString();
+            }
+
+            return cat;
+        }
     }
 }

@@ -56,5 +56,29 @@ namespace CapaDeNegocios.DatosLaborales
             Conexion.GDatos.Ejecutar("spELiminarOcupacion", miOcupacion.IdTOcupacion);
             return true;
         }
+
+        public cOcupacion TraerOcupacion(int idtOcupacion)
+        {
+            try
+            {
+                cOcupacion ocu = new cOcupacion();
+                DataTable tabla = Conexion.GDatos.TraerDataTable("spTraerOcupacion", idtOcupacion);
+                if (tabla.Rows.Count > 0)
+                {
+                    ocu.IdTOcupacion = Convert.ToInt32(tabla.Rows[0][0].ToString());
+                    ocu.Codigo = tabla.Rows[0][1].ToString();
+                    ocu.Descripcion = tabla.Rows[0][2].ToString();
+                    return ocu;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo TraerOcupacion: " + ex.Message);
+            }
+        }
     }
 }

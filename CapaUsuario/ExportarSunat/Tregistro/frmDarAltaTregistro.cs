@@ -16,6 +16,7 @@ namespace CapaUsuario.ExportarSunat.Tregistro
     {
         Tregistro.cCatalogoAltaTRegistro oCatalogo = new cCatalogoAltaTRegistro();
         List<Tregistro.cTrabajadorAltaTRegistro> ListaTrabajadoresAltaTRegistro = new List<cTrabajadorAltaTRegistro>();
+        CapaDeNegocios.Utilidades.cUtilidades oUtilidades = new CapaDeNegocios.Utilidades.cUtilidades();
 
         public frmDarAltaTregistro()
         {
@@ -63,10 +64,16 @@ namespace CapaUsuario.ExportarSunat.Tregistro
         {
             Tregistro.frmVerCodificacion fVerCodificacion = new frmVerCodificacion();
             fVerCodificacion.ListaTrabajadores = ListaTrabajadoresAltaTRegistro;
+            fVerCodificacion.Mes = new DateTime(Convert.ToInt16(cbAños.Text), oUtilidades.ConvertirMesANumero(cbMes.Text), 1);
             if (fVerCodificacion.ShowDialog() == DialogResult.OK)
             {
 
             }
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

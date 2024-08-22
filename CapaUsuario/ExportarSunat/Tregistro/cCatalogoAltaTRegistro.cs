@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using CapaDeNegocios;
 using CapaDeDatos;
 using System.Data;
+using CapaDeNegocios.DatosLaborales;
 
 namespace CapaUsuario.ExportarSunat.Tregistro
 {
     public class cCatalogoAltaTRegistro
     {
         public cTrabajador miTrabajador = new cTrabajador();
+        CapaDeNegocios.Utilidades.cUtilidades miUtilidades = new CapaDeNegocios.Utilidades.cUtilidades();
 
         public List<cTrabajadorAltaTRegistro> TraerListaTrabajadoresTRegistro(string mes, string año)
         {
@@ -31,9 +33,23 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                     Trabajador.FechaNacimiento = Convert.ToDateTime(tLista.Rows[i][5]);
                     Trabajador.FechaInicio = Convert.ToDateTime(tLista.Rows[i][6]);
                     Trabajador.Planilla = tLista.Rows[i][7].ToString();
-
+                    Trabajador.PeriodoTrabajador.IdtPeriodoTrabajador = Convert.ToInt32(tLista.Rows[i][8].ToString());
                     miTrabajador = miTrabajador.traerTrabajador(Trabajador.Id_trabajador);
                     Trabajador.DatosPersonales = TraerDatosPersonales(miTrabajador);
+                    cRegimenPensionarioTrabajador regimen = new cRegimenPensionarioTrabajador();
+                    regimen.IdtRegimenPensionarioTrabajador = Convert.ToInt32(tLista.Rows[i][9].ToString());
+                    regimen.CUSPP = tLista.Rows[i][10].ToString();
+                    regimen.Afp = new cAFP();
+                    regimen.Afp.CodigoAFP = Convert.ToInt32(tLista.Rows[i][11].ToString());
+                    regimen.Afp.Nombre = tLista.Rows[i][12].ToString();
+                    regimen.Afp.Codigosunat = tLista.Rows[i][13].ToString();
+                    Trabajador.PeriodosRegimenPensionario.Add(regimen);
+                    Trabajador.DatosTrabajador = TraerDatosTrabajador(Trabajador, new DateTime(Convert.ToInt32(año), miUtilidades.ConvertirMesANumero(mes), 1));
+                    if (Trabajador.DatosTrabajador.Count == 0)
+                    {
+                        throw new cReglaNegociosException("Error al traer los datos del trabajador del trabajador: " + Trabajador.DNI + " " + Trabajador.Nombres + " " + Trabajador.ApellidoPaterno + " " + Trabajador.ApellidoMaterno + " y el mes " + mes);
+                    }
+                    Trabajador.DatosPeriodo = TraerDatosPeriodo(Trabajador, new DateTime(Convert.ToInt32(año), miUtilidades.ConvertirMesANumero(mes),1));
                     //Trabajador.DatosPersonales.NumeroDocumento = Trabajador.DNI;
                     //Trabajador.DatosPersonales.Nombres = Trabajador.Nombres;
                     //Trabajador.DatosPersonales.ApellidoPaterno = Trabajador.ApellidoPaterno;
@@ -220,5 +236,478 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                 throw new cReglaNegociosException("Error en el metodo TraerArchivoJOR: " + ex.Message);
             }
         }
+
+        public List<cDatosTrabajador> TraerDatosTrabajador(cTrabajadorAltaTRegistro Trabajador, DateTime mes)
+        {
+            try
+            {
+                List<cDatosTrabajador> Lista = new List<cDatosTrabajador>();
+                cRegimenTrabajador oRegimen = new cRegimenTrabajador();
+                List<cRegimenTrabajador> RegimenesTrabajador = oRegimen.TraerRegimenTrabajadorMes(Trabajador.PeriodoTrabajador.IdtPeriodoTrabajador, mes);
+                foreach (cRegimenTrabajador item in RegimenesTrabajador)
+                {
+                    cDatosTrabajador DatosRegimen = new cDatosTrabajador();
+                    DatosRegimen.TipoDocumento = Trabajador.DatosPersonales.TipoDocumento;
+                    DatosRegimen.NumeroDocumento = Trabajador.DatosPersonales.NumeroDocumento;
+                    DatosRegimen.PaisEmisor = Trabajador.DatosPersonales.PaisEmisor;
+                    DatosRegimen.RegimenLaboral = TraerRegimenLaboral(item.IdtRegimenLaboral);
+                    DatosRegimen.SituacionEducativa = TraerSituacionEducativa("07");
+                    DatosRegimen.Ocupacion = TraerOcupacion(item.IdtOcupacion);
+                    DatosRegimen.Discapacidad = "0";
+                    DatosRegimen.CUSPP = "";
+                    DatosRegimen.SCRTPension = "0";
+                    DatosRegimen.TipoContrato = TraerTipoContrato(item.IdtTipoContrato);
+                    DatosRegimen.SujetoARegimenAlternativo = "0";
+                    DatosRegimen.SujetoAJornadaMaxima = "0";
+                    DatosRegimen.SujetoAHorarioNocturno = "0";
+                    DatosRegimen.EsSindicalizado = "0";
+                    DatosRegimen.PeriodicidadIngreso = TraerPeriocidadIngreso(item.Periodicidad);
+                    DatosRegimen.MontoBasico = 0;
+                    DatosRegimen.Situacion = TraerSituacion("1");
+                    DatosRegimen.RentaQuintaExonerada = "0";
+                    DatosRegimen.SituacionEspecialTrabajador = TraerSituacionEspecialTrabajador("0");
+                    DatosRegimen.TipoPago = TraerTipoPago(item.TipoPago);
+                    DatosRegimen.CategoriaOcupacionalTrabajador = TraerCategoriaOcupacional(item.IdtCategoriaOcupacional);
+                    DatosRegimen.ConvenioParaEvitarDobleTri = "0";
+                    DatosRegimen.RUC = item.RUC;
+                    DatosRegimen.TipoTrabajador = TraerTipoTrabajador(item.IdtTipoTrabajador);
+                    Lista.Add(DatosRegimen);
+                }
+                return Lista;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo TraerDatosTrabajador: " + ex.Message);
+            }
+        }
+
+        public TablasParametricas.cRegimenLaboral TraerRegimenLaboral(int idtRegimenLaboral)
+        {
+            CapaDeNegocios.DatosLaborales.cRegimenLaboral oRegimen = new cRegimenLaboral();
+            TablasParametricas.cRegimenLaboral TablaRegimenLaboral = new TablasParametricas.cRegimenLaboral();
+            oRegimen=  oRegimen.TraerRegimenLaboral(idtRegimenLaboral);
+            TablaRegimenLaboral.Codigo = oRegimen.Codigo;
+            TablaRegimenLaboral.Descripcion = oRegimen.Descripcion;
+            return TablaRegimenLaboral;
+        }
+
+        public TablasParametricas.cOcupacion TraerOcupacion(int idtocupacion)
+        {
+            CapaDeNegocios.DatosLaborales.cOcupacion oOcupacion = new cOcupacion();
+            oOcupacion = oOcupacion.TraerOcupacion(idtocupacion);
+            TablasParametricas.cOcupacion ocu = new TablasParametricas.cOcupacion();
+            ocu.Codigo = oOcupacion.Codigo;
+            ocu.Nombre = oOcupacion.Descripcion;
+            return ocu;
+        }
+
+        public TablasParametricas.cSituacionEducativa TraerSituacionEducativa(string codigo)
+        {
+            TablasParametricas.cSituacionEducativa edu = new TablasParametricas.cSituacionEducativa();
+            switch (codigo)
+            {
+                case "07":
+                    edu.Descripcion = "EDUCACIÓN SECUNDARIA COMPLETA";
+                    edu.DescripcionAbreviada = "SECUNDARIA COMPLETA";
+                    edu.Numero = "07";
+                    break;
+                default:
+                    break;
+            }
+
+            return edu;
+        }
+
+        public TablasParametricas.cTipoContrato TraerTipoContrato(int idtTipoContrato)
+        {
+            CapaDeNegocios.DatosLaborales.cTipoContrato oTipoContrato = new cTipoContrato();
+            TablasParametricas.cTipoContrato tipo = new TablasParametricas.cTipoContrato();
+            tipo.Numero = oTipoContrato.CodigoSunat;
+            tipo.Descripcion = oTipoContrato.Descripcion;
+
+            return tipo;
+        }
+
+        public TablasParametricas.cPeriodicidadIngreso TraerPeriocidadIngreso(string periodicidad)
+        {
+            TablasParametricas.cPeriodicidadIngreso per = new TablasParametricas.cPeriodicidadIngreso();
+            switch (periodicidad)
+            {
+                case "MENSUAL":
+                    {
+                        per.Descripcion = "MENSUAL";
+                        per.Numero = "1";
+                        break;
+                    }
+                case "QUINCENAL":
+                    {
+                        per.Descripcion = "QUINCENAL";
+                        per.Numero = "2";
+                        break;
+                    }
+                case "SEMANAL":
+                    {
+                        per.Descripcion = "SEMANAL";
+                        per.Numero = "3";
+                        break;
+                    }
+                case "DIARIA":
+                    {
+                        per.Descripcion = "DIARIA";
+                        per.Numero = "4";
+                        break;
+                    }
+                case "OTROS":
+                    {
+                        per.Descripcion = "OTROS";
+                        per.Numero = "5";
+                        break;
+                    }
+            }
+
+            return per;
+        }
+
+        public TablasParametricas.cSituacion TraerSituacion(string idSituacion)
+        {
+            TablasParametricas.cSituacion sit = new TablasParametricas.cSituacion();
+            switch (idSituacion)
+            {
+                case "0":
+                    sit.Descripcion = "BAJA";
+                    sit.DescripcionAbreviada = "BAJA";
+                    sit.Numero = "0";
+                    break;
+                case "1":
+                    sit.Descripcion = "ACTIVO O SUBSIDIADO";
+                    sit.DescripcionAbreviada = "ACTIVO O SUBSIDIADO";
+                    sit.Numero = "1";
+                    break;
+                case "2":
+                    sit.Descripcion = "SIN VÍNCULO LABORAL CON CONCEPTOS PENDIENTE DE LIQUIDAR";
+                    sit.DescripcionAbreviada = "SIN VINC. LAB. CON CONC PEND POR LIQUIDAR";
+                    sit.Numero = "2";
+                    break;
+                case "3":
+                    sit.Descripcion = "SUSPENSIÓN PERFECTA DE LABORES";
+                    sit.DescripcionAbreviada = "SUSPENSIÓN PERFECTA DE LABORES";
+                    sit.Numero = "3";
+                    break;
+                default:
+                    break;
+            }
+            return sit; 
+        }
+
+        public TablasParametricas.cSituacionEspecialTrabajador TraerSituacionEspecialTrabajador(string idtSituacionEspecialTrabajador)
+        {
+            TablasParametricas.cSituacionEspecialTrabajador esp = new TablasParametricas.cSituacionEspecialTrabajador();
+            switch (idtSituacionEspecialTrabajador)
+            {
+                case "0":
+                    esp.Descripcion = "NINGUNA";
+                    esp.DescripcionAbreviada = "NINGUNA";
+                    esp.Numero = "0";
+                    break;
+                case "1":
+                    esp.Descripcion = "TRABAJADOR DE DIRECCIÓN – PRESENCIAL";
+                    esp.DescripcionAbreviada = "DIRECCIÓN – PRESENCIAL";
+                    esp.Numero = "1";
+                    break;
+                case "2":
+                    esp.Descripcion = "TRABAJADOR DE CONFIANZA - PRESENCIAL";
+                    esp.DescripcionAbreviada = "CONFIANZA - PRESENCIAL";
+                    esp.Numero = "2";
+                    break;
+                case "3":
+                    esp.Descripcion = "TRABAJADOR DE DIRECCIÓN - TELETRABAJO MIXTO";
+                    esp.DescripcionAbreviada = "DIRECCIÓN - TELETRABAJO MIXTO";
+                    esp.Numero = "3";
+                    break;
+                case "4":
+                    esp.Descripcion = "TRABAJADOR DE CONFIANZA - TELETRABAJO MIXTO";
+                    esp.DescripcionAbreviada = "CONFIANZA - TELETRABAJO MIXTO";
+                    esp.Numero = "4";
+                    break;
+                case "5":
+                    esp.Descripcion = "TRABAJADOR DE DIRECCIÓN - TELETRABAJO COMPLETO";
+                    esp.DescripcionAbreviada = "DIRECCIÓN - TELETRABAJO COMPLETO";
+                    esp.Numero = "5";
+                    break;
+                case "6":
+                    esp.Descripcion = "TRABAJADOR DE CONFIANZA - TELETRABAJO COMPLETO";
+                    esp.DescripcionAbreviada = "CONFIANZA - TELETRABAJO COMPLETO";
+                    esp.Numero = "6";
+                    break;
+                case "7":
+                    esp.Descripcion = "TELETRABAJO MIXTO";
+                    esp.DescripcionAbreviada = "TELETRABAJO MIXTO";
+                    esp.Numero = "7";
+                    break;
+                case "8":
+                    esp.Descripcion = "TELETRABAJO COMPLETO";
+                    esp.DescripcionAbreviada = "TELETRABAJO COMPLETO";
+                    esp.Numero = "8";
+                    break;
+                default:
+                    break;
+            }
+
+            return esp;
+        }
+
+        public TablasParametricas.cTipoPago TraerTipoPago(string TipoPago)
+        {
+            TablasParametricas.cTipoPago tipo = new TablasParametricas.cTipoPago();
+            switch (TipoPago)
+            {
+                case "EFECTIVO":
+                    {
+                        tipo.Descripcion = "EFECTIVO";
+                        tipo.Numero = "1";
+                        break;
+                    }
+                case "DEPOSITO":
+                    {
+                        tipo.Descripcion = "DEPOSITO EN CUENTA";
+                        tipo.Numero = "2";
+                        break;
+                    }
+                case "OTROS":
+                    {
+                        tipo.Descripcion = "OTROS";
+                        tipo.Numero = "3";
+                        break;
+                    }
+                default:
+                    break;
+            }
+            return tipo;
+        }
+
+        public TablasParametricas.cCategoriaOcupacionalTrabajador TraerCategoriaOcupacional(int idtCategoria)
+        {
+            TablasParametricas.cCategoriaOcupacionalTrabajador cat = new TablasParametricas.cCategoriaOcupacionalTrabajador();
+            CapaDeNegocios.DatosLaborales.cCategoriaOcupacional oCategoriaOcupacional = new cCategoriaOcupacional();
+            oCategoriaOcupacional = oCategoriaOcupacional.TraerCategoriaOcupacional(idtCategoria);
+
+            cat.Codigo = oCategoriaOcupacional.Codigo;
+            cat.Descripcion = oCategoriaOcupacional.Descripcion;
+            return cat;
+        }
+
+        public List<Tregistro.cFilaDatosTra> TraerArchivoTRA(List<cTrabajadorAltaTRegistro> ListaTrabajadores, DateTime Mes)
+        {
+            cCatalogoAltaTRegistro oCatalogo = new cCatalogoAltaTRegistro();
+            try
+            {
+                List<Tregistro.cFilaDatosTra> Lista = new List<cFilaDatosTra>();
+                int contador = 0;
+                foreach (cTrabajadorAltaTRegistro item in ListaTrabajadores)
+                {
+                    //item.DatosTrabajador = oCatalogo.TraerDatosTrabajador(item, Mes);
+                    foreach (cDatosTrabajador item2 in item.DatosTrabajador)
+                    {
+                        cFilaDatosTra tra = new cFilaDatosTra();
+                        contador++;
+                        tra.Numero = contador;
+                        tra.TipoDocumento = item2.TipoDocumento.Numero + " - " + item2.TipoDocumento.DescripcionAbreviadad;
+                        tra.NumeroDocumento = item2.NumeroDocumento;
+                        tra.PaisEmisorDocumento = item2.PaisEmisor.Codigo + " - " + item2.PaisEmisor.Descripcion;
+                        tra.RegimenLaboral = item2.RegimenLaboral.Codigo + " - " + item2.RegimenLaboral.DescripcionAbreviada;
+                        tra.SituacionEducativa = item2.SituacionEducativa.Numero + " - " + item2.SituacionEducativa.DescripcionAbreviada;
+                        tra.Ocupacion = item2.Ocupacion.Codigo + " - " + item2.Ocupacion.Nombre;
+                        tra.Discapacidad = item2.Discapacidad;
+                        tra.CUSPP = item2.CUSPP;
+                        tra.SCRTPension = item2.SCRTPension;
+                        tra.TipoContrato = item2.TipoContrato.Numero + " - " + item2.TipoContrato.DescripcionAbreviada;
+                        tra.SujetoARegimenAcumulativo = item2.SujetoARegimenAlternativo;
+                        tra.SujetoAjornadaMaxima = item2.SujetoAJornadaMaxima;
+                        tra.SujetoAHorarioNocturno = item2.SujetoAHorarioNocturno;
+                        tra.EsSindicalizado = item2.EsSindicalizado;
+                        tra.PeriocidadRemuneracion = item2.PeriodicidadIngreso.Numero + " - " + item2.PeriodicidadIngreso.Descripcion; ;
+                        tra.MontoBasicoRemuneracion = item2.MontoBasico.ToString();
+                        tra.Situacion = item2.Situacion.Numero + " - " + item2.Situacion.DescripcionAbreviada; ;
+                        tra.RentaQuintaExoneradas = item2.RentaQuintaExonerada;
+                        tra.SituacionEspecialTrabajador = item2.SituacionEspecialTrabajador.Numero + " - " + item2.SituacionEspecialTrabajador.DescripcionAbreviada;
+                        tra.TipoPago = item2.TipoPago.Numero + " - " + item2.TipoPago.Descripcion;
+                        tra.CategoriaOcupacionalTrabajador = item2.CategoriaOcupacionalTrabajador.Codigo + " - " + item2.CategoriaOcupacionalTrabajador.Descripcion;
+                        tra.ConvenioEvitarDobleTributacion = item2.ConvenioParaEvitarDobleTri;
+                        tra.RUC = item2.RUC;
+                        Lista.Add(tra);
+                    }
+                    
+                }
+                return Lista;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo TraerArchivoTRA: " + ex.Message);
+            }
+        }
+
+        public List<cDatosPeriodo> TraerDatosPeriodo(cTrabajadorAltaTRegistro Trabajador, DateTime mes)
+        {
+            List<cDatosPeriodo> ListaPeriodos = new List<cDatosPeriodo>();
+
+            cDatosPeriodo Periodo1 = new cDatosPeriodo();
+            Periodo1.TipoDocumento = Trabajador.DatosPersonales.TipoDocumento;
+            Periodo1.NumeroDocumento = Trabajador.DatosPersonales.NumeroDocumento;
+            Periodo1.PaisEmisor = Trabajador.DatosPersonales.PaisEmisor;
+            Periodo1.Categoria = enumCategoria.Trabajador;
+            Periodo1.TipoRegistro = enumTipoRegistro.Periodo;
+            Periodo1.FechaInicio = Trabajador.FechaInicio.ToString();
+            Periodo1.FechaFin = "";
+            Periodo1.MotivoFinPeriodo = new TablasParametricas.cMotivoBaja();
+            Periodo1.MotivoFinPeriodo.Numero = "";
+            Periodo1.EntidadesPrestadorasSalud = new TablasParametricas.cEntidadesPrestadorasSalud();
+            Periodo1.EntidadesPrestadorasSalud.Numero = "";
+            ListaPeriodos.Add(Periodo1);
+
+            cDatosPeriodo Periodo2 = new cDatosPeriodo();
+            Periodo2.TipoDocumento = Trabajador.DatosPersonales.TipoDocumento;
+            Periodo2.NumeroDocumento = Trabajador.DatosPersonales.NumeroDocumento;
+            Periodo2.PaisEmisor = Trabajador.DatosPersonales.PaisEmisor;
+            Periodo2.Categoria = enumCategoria.Trabajador;
+            Periodo2.TipoRegistro = enumTipoRegistro.TipoTrabajador;
+            Periodo2.FechaInicio = Trabajador.FechaInicio.ToString();
+            Periodo2.FechaFin = "";
+            Periodo2.TipoTrabajador = Trabajador.DatosTrabajador[0].TipoTrabajador;
+            Periodo2.EntidadesPrestadorasSalud = new TablasParametricas.cEntidadesPrestadorasSalud();
+            Periodo2.EntidadesPrestadorasSalud.Numero = "";
+            ListaPeriodos.Add(Periodo2);
+
+            cDatosPeriodo Periodo3 = new cDatosPeriodo();
+            Periodo3.TipoDocumento = Trabajador.DatosPersonales.TipoDocumento;
+            Periodo3.NumeroDocumento = Trabajador.DatosPersonales.NumeroDocumento;
+            Periodo3.PaisEmisor = Trabajador.DatosPersonales.PaisEmisor;
+            Periodo3.Categoria = enumCategoria.Trabajador;
+            Periodo3.TipoRegistro = enumTipoRegistro.RegimenSalud;
+            Periodo3.FechaInicio = Trabajador.FechaInicio.ToString();
+            Periodo3.FechaFin = "";
+            Periodo3.RegimenSalud = TraerRegimenSalud();
+            Periodo3.EntidadesPrestadorasSalud = new TablasParametricas.cEntidadesPrestadorasSalud();
+            Periodo3.EntidadesPrestadorasSalud.Numero = "";
+            ListaPeriodos.Add(Periodo3);
+
+            cDatosPeriodo Periodo4 = new cDatosPeriodo();
+            Periodo4.TipoDocumento = Trabajador.DatosPersonales.TipoDocumento;
+            Periodo4.NumeroDocumento = Trabajador.DatosPersonales.NumeroDocumento;
+            Periodo4.PaisEmisor = Trabajador.DatosPersonales.PaisEmisor;
+            Periodo4.Categoria = enumCategoria.Trabajador;
+            Periodo4.TipoRegistro = enumTipoRegistro.RegimenPensionario;
+            Periodo4.FechaInicio = Trabajador.FechaInicio.ToString();
+            Periodo4.FechaFin = "";
+            Periodo4.RegimenPensionario = TraerRegimenPensionario(Trabajador);
+            Periodo4.EntidadesPrestadorasSalud = new TablasParametricas.cEntidadesPrestadorasSalud();
+            Periodo4.EntidadesPrestadorasSalud.Numero = "";
+            ListaPeriodos.Add(Periodo4);
+
+            if (Trabajador.TieneScrt)
+            {
+                cDatosPeriodo Periodo5 = new cDatosPeriodo();
+                Periodo5.TipoDocumento = Trabajador.DatosPersonales.TipoDocumento;
+                Periodo5.NumeroDocumento = Trabajador.DatosPersonales.NumeroDocumento;
+                Periodo5.PaisEmisor = Trabajador.DatosPersonales.PaisEmisor;
+                Periodo5.Categoria = enumCategoria.Trabajador;
+                Periodo5.TipoRegistro = enumTipoRegistro.SCRTSalud;
+                Periodo5.FechaInicio = Trabajador.FechaInicio.ToString();
+                Periodo5.FechaFin = "";
+                switch (Trabajador.TipoSCRTSalud)
+                {
+                    case enumTipoSCRTSalud.Essalud:
+                        Periodo5.SCRTSalud = enumSCRTSalud.Essalud;
+                        break;
+                    case enumTipoSCRTSalud.EPS:
+                        Periodo5.SCRTSalud = enumSCRTSalud.EPS;
+                        break;
+                    default:
+                        break;
+                }
+                Periodo5.EntidadesPrestadorasSalud = new TablasParametricas.cEntidadesPrestadorasSalud();
+                Periodo5.EntidadesPrestadorasSalud.Numero = "";
+                ListaPeriodos.Add(Periodo5);
+            }
+
+            return ListaPeriodos;
+
+        }
+
+        public TablasParametricas.cTipoTrabajador TraerTipoTrabajador(int idtTipoTrabajador)
+        {
+            cTipoTrabajador tipo = new cTipoTrabajador();
+            tipo = tipo.TraerTipoTrabajador(idtTipoTrabajador);
+
+            TablasParametricas.cTipoTrabajador tra = new TablasParametricas.cTipoTrabajador();
+            tra.Numero = tipo.CodigoSunat;
+            tra.Descripcion = tipo.Descripcion;
+
+            return tra;
+        }
+
+        public TablasParametricas.cRegimenSalud TraerRegimenSalud()
+        {
+            TablasParametricas.cRegimenSalud Regimen = new TablasParametricas.cRegimenSalud();
+            Regimen.Numero = "00";
+            Regimen.Descripcion = "ESSALUD REGULAR (Exclusivamente)";
+            Regimen.DescripcionAbreviada = "ESSALUD REGULAR ";
+            return Regimen;
+        }
+
+        public TablasParametricas.cRegimenPensionario TraerRegimenPensionario(cTrabajadorAltaTRegistro tra)
+        {
+            TablasParametricas.cRegimenPensionario reg = new TablasParametricas.cRegimenPensionario();
+            reg.Numero = tra.PeriodosRegimenPensionario[0].Afp.Codigosunat;
+            reg.Descripcion = tra.PeriodosRegimenPensionario[0].Afp.Nombre;
+            reg.DescripcionAbreviada = tra.PeriodosRegimenPensionario[0].Afp.Nombre;
+            return reg;
+        }
+
+        public List<Tregistro.cFilaDatosPer> TraerArchivoPER(List<cTrabajadorAltaTRegistro> ListaTrabajadores, DateTime Mes)
+        {
+            List<Tregistro.cFilaDatosPer> Lista = new List<cFilaDatosPer>();
+            int contador = 0;
+            foreach (cTrabajadorAltaTRegistro item in ListaTrabajadores)
+            {
+                foreach (cDatosPeriodo item2 in item.DatosPeriodo)
+                {
+                    cFilaDatosPer per = new cFilaDatosPer();
+                    contador++;
+                    per.Numero = contador;
+                    per.TipoDocumento = item2.TipoDocumento.Numero + " - " + item2.TipoDocumento.DescripcionAbreviadad;
+                    per.NumeroDocumento = item2.NumeroDocumento;
+                    per.PaisEmisorDocumento = item2.PaisEmisor.Codigo + " - " + item2.PaisEmisor.Descripcion;
+                    per.Categoría = ((int)item2.Categoria).ToString();
+                    per.TipoDeRegistro = ((int)item2.TipoRegistro).ToString();
+                    per.FechaInicio = item2.FechaInicio.ToString();
+                    per.FechaFin = item2.FechaFin.ToString();
+                    switch (item2.TipoRegistro)
+                    {
+                        case enumTipoRegistro.Periodo:
+                            per.TipoDeRegistro = item2.MotivoFinPeriodo.Numero + " - " + item2.MotivoFinPeriodo.DescripcionAbreviada;
+                            break;
+                        case enumTipoRegistro.TipoTrabajador:
+                            per.TipoDeRegistro = item2.TipoTrabajador.Numero + " - " + item2.TipoTrabajador.DescripcionAbreviada;
+                            break;
+                        case enumTipoRegistro.RegimenSalud:
+                            per.TipoDeRegistro = item2.RegimenSalud.Numero + " - " + item2.RegimenSalud.DescripcionAbreviada;
+                            break;
+                        case enumTipoRegistro.RegimenPensionario:
+                            per.TipoDeRegistro = item2.RegimenPensionario.Numero + " - " + item2.RegimenPensionario.DescripcionAbreviada;
+                            break;
+                        case enumTipoRegistro.SCRTSalud:
+                            per.TipoDeRegistro = ((int)item2.SCRTSalud).ToString();
+                            break;
+                        default:
+                            break;
+                    }
+                    Lista.Add(per);
+                }
+            }
+
+            return Lista;
+        }
     }
+
+    
 }

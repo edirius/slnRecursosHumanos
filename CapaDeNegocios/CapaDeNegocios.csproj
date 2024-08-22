@@ -134,6 +134,7 @@
     <Compile Include="DatosLaborales\cRegimenPensionarioTrabajador.cs" />
     <Compile Include="DatosLaborales\cRegimenSaludTrabajador.cs" />
     <Compile Include="DatosLaborales\cRegimenTrabajador.cs" />
+    <Compile Include="DatosLaborales\cTipoContrato.cs" />
     <Compile Include="DatosLaborales\cTipoTrabajador.cs" />
     <Compile Include="cTipoVia.cs" />
     <Compile Include="cTipoZona.cs" />
