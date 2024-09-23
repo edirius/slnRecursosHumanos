@@ -33,19 +33,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chkSRCT = new System.Windows.Forms.CheckBox();
             this.checkEDU = new System.Windows.Forms.CheckBox();
-            this.checkEST = new System.Windows.Forms.CheckBox();
-            this.checkIDE = new System.Windows.Forms.CheckBox();
-            this.checkPER = new System.Windows.Forms.CheckBox();
-            this.checkTRA = new System.Windows.Forms.CheckBox();
+            this.chkEST = new System.Windows.Forms.CheckBox();
+            this.chkIDE = new System.Windows.Forms.CheckBox();
+            this.chkPER = new System.Windows.Forms.CheckBox();
+            this.chkTRA = new System.Windows.Forms.CheckBox();
             this.checkSelectAll = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtgListaTrabajadores = new System.Windows.Forms.DataGridView();
-            this.cbAños = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbMes = new System.Windows.Forms.ComboBox();
-            this.btnVerCodificacion = new System.Windows.Forms.Button();
-            this.btnExportar = new System.Windows.Forms.Button();
             this.colMarcado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +54,15 @@
             this.colTipoSCRTSalud = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPeriodoTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDatosPersonales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colObservaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRegimenTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbAños = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbMes = new System.Windows.Forms.ComboBox();
+            this.btnVerCodificacion = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
+            this.btnCambiarDatos = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaTrabajadores)).BeginInit();
             this.SuspendLayout();
@@ -84,45 +87,45 @@
             this.checkEDU.Text = "EDU";
             this.checkEDU.UseVisualStyleBackColor = true;
             // 
-            // checkEST
+            // chkEST
             // 
-            this.checkEST.AutoSize = true;
-            this.checkEST.Location = new System.Drawing.Point(238, 52);
-            this.checkEST.Name = "checkEST";
-            this.checkEST.Size = new System.Drawing.Size(47, 17);
-            this.checkEST.TabIndex = 60;
-            this.checkEST.Text = "EST";
-            this.checkEST.UseVisualStyleBackColor = true;
+            this.chkEST.AutoSize = true;
+            this.chkEST.Location = new System.Drawing.Point(238, 52);
+            this.chkEST.Name = "chkEST";
+            this.chkEST.Size = new System.Drawing.Size(47, 17);
+            this.chkEST.TabIndex = 60;
+            this.chkEST.Text = "EST";
+            this.chkEST.UseVisualStyleBackColor = true;
             // 
-            // checkIDE
+            // chkIDE
             // 
-            this.checkIDE.AutoSize = true;
-            this.checkIDE.Location = new System.Drawing.Point(25, 52);
-            this.checkIDE.Name = "checkIDE";
-            this.checkIDE.Size = new System.Drawing.Size(44, 17);
-            this.checkIDE.TabIndex = 57;
-            this.checkIDE.Text = "IDE";
-            this.checkIDE.UseVisualStyleBackColor = true;
+            this.chkIDE.AutoSize = true;
+            this.chkIDE.Location = new System.Drawing.Point(25, 52);
+            this.chkIDE.Name = "chkIDE";
+            this.chkIDE.Size = new System.Drawing.Size(44, 17);
+            this.chkIDE.TabIndex = 57;
+            this.chkIDE.Text = "IDE";
+            this.chkIDE.UseVisualStyleBackColor = true;
             // 
-            // checkPER
+            // chkPER
             // 
-            this.checkPER.AutoSize = true;
-            this.checkPER.Location = new System.Drawing.Point(160, 52);
-            this.checkPER.Name = "checkPER";
-            this.checkPER.Size = new System.Drawing.Size(48, 17);
-            this.checkPER.TabIndex = 59;
-            this.checkPER.Text = "PER";
-            this.checkPER.UseVisualStyleBackColor = true;
+            this.chkPER.AutoSize = true;
+            this.chkPER.Location = new System.Drawing.Point(160, 52);
+            this.chkPER.Name = "chkPER";
+            this.chkPER.Size = new System.Drawing.Size(48, 17);
+            this.chkPER.TabIndex = 59;
+            this.chkPER.Text = "PER";
+            this.chkPER.UseVisualStyleBackColor = true;
             // 
-            // checkTRA
+            // chkTRA
             // 
-            this.checkTRA.AutoSize = true;
-            this.checkTRA.Location = new System.Drawing.Point(88, 52);
-            this.checkTRA.Name = "checkTRA";
-            this.checkTRA.Size = new System.Drawing.Size(48, 17);
-            this.checkTRA.TabIndex = 58;
-            this.checkTRA.Text = "TRA";
-            this.checkTRA.UseVisualStyleBackColor = true;
+            this.chkTRA.AutoSize = true;
+            this.chkTRA.Location = new System.Drawing.Point(88, 52);
+            this.chkTRA.Name = "chkTRA";
+            this.chkTRA.Size = new System.Drawing.Size(48, 17);
+            this.chkTRA.TabIndex = 58;
+            this.chkTRA.Text = "TRA";
+            this.chkTRA.UseVisualStyleBackColor = true;
             // 
             // checkSelectAll
             // 
@@ -133,13 +136,14 @@
             this.checkSelectAll.TabIndex = 62;
             this.checkSelectAll.Text = "Seleccionar todos los trabajadores";
             this.checkSelectAll.UseVisualStyleBackColor = true;
+            this.checkSelectAll.CheckedChanged += new System.EventHandler(this.checkSelectAll_CheckedChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dtgListaTrabajadores);
             this.groupBox1.Location = new System.Drawing.Point(15, 75);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(919, 348);
+            this.groupBox1.Size = new System.Drawing.Size(975, 348);
             this.groupBox1.TabIndex = 56;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Lista de Trabajadores";
@@ -165,92 +169,14 @@
             this.colTieneSCRT,
             this.colTipoSCRTSalud,
             this.colPeriodoTrabajador,
-            this.colDatosPersonales});
+            this.colDatosPersonales,
+            this.colObservaciones,
+            this.colRegimenTrabajador});
             this.dtgListaTrabajadores.Location = new System.Drawing.Point(6, 19);
             this.dtgListaTrabajadores.Name = "dtgListaTrabajadores";
             this.dtgListaTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaTrabajadores.Size = new System.Drawing.Size(887, 299);
+            this.dtgListaTrabajadores.Size = new System.Drawing.Size(963, 299);
             this.dtgListaTrabajadores.TabIndex = 0;
-            // 
-            // cbAños
-            // 
-            this.cbAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAños.FormattingEnabled = true;
-            this.cbAños.Location = new System.Drawing.Point(211, 12);
-            this.cbAños.Name = "cbAños";
-            this.cbAños.Size = new System.Drawing.Size(74, 21);
-            this.cbAños.TabIndex = 53;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 54;
-            this.label1.Text = "Mes:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(179, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 55;
-            this.label3.Text = "Año:";
-            // 
-            // cbMes
-            // 
-            this.cbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMes.FormattingEnabled = true;
-            this.cbMes.Items.AddRange(new object[] {
-            "ENERO",
-            "FEBRERO",
-            "MARZO",
-            "ABRIL",
-            "MAYO",
-            "JUNIO",
-            "JULIO",
-            "AGOSTO",
-            "SETIEMBRE",
-            "OCTUBRE",
-            "NOVIEMBRE",
-            "DICIEMBRE"});
-            this.cbMes.Location = new System.Drawing.Point(46, 12);
-            this.cbMes.Name = "cbMes";
-            this.cbMes.Size = new System.Drawing.Size(121, 21);
-            this.cbMes.TabIndex = 52;
-            this.cbMes.SelectedIndexChanged += new System.EventHandler(this.cbMes_SelectedIndexChanged);
-            // 
-            // btnVerCodificacion
-            // 
-            this.btnVerCodificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVerCodificacion.BackColor = System.Drawing.Color.MintCream;
-            this.btnVerCodificacion.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnVerCodificacion.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnVerCodificacion.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnVerCodificacion.Location = new System.Drawing.Point(856, 12);
-            this.btnVerCodificacion.Name = "btnVerCodificacion";
-            this.btnVerCodificacion.Size = new System.Drawing.Size(100, 50);
-            this.btnVerCodificacion.TabIndex = 65;
-            this.btnVerCodificacion.Text = "&Ver Codificacion";
-            this.btnVerCodificacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnVerCodificacion.UseVisualStyleBackColor = false;
-            this.btnVerCodificacion.Click += new System.EventHandler(this.btnVerCodificacion_Click);
-            // 
-            // btnExportar
-            // 
-            this.btnExportar.BackColor = System.Drawing.Color.MintCream;
-            this.btnExportar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExportar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
-            this.btnExportar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnExportar.Location = new System.Drawing.Point(711, 12);
-            this.btnExportar.Name = "btnExportar";
-            this.btnExportar.Size = new System.Drawing.Size(106, 50);
-            this.btnExportar.TabIndex = 64;
-            this.btnExportar.Text = "&Exportar Datos";
-            this.btnExportar.UseVisualStyleBackColor = false;
-            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // colMarcado
             // 
@@ -358,19 +284,128 @@
             this.colDatosPersonales.Name = "colDatosPersonales";
             this.colDatosPersonales.Visible = false;
             // 
+            // colObservaciones
+            // 
+            this.colObservaciones.DataPropertyName = "Observaciones";
+            this.colObservaciones.HeaderText = "Observaciones";
+            this.colObservaciones.Name = "colObservaciones";
+            this.colObservaciones.Width = 120;
+            // 
+            // colRegimenTrabajador
+            // 
+            this.colRegimenTrabajador.DataPropertyName = "RegimenTrabajador";
+            this.colRegimenTrabajador.HeaderText = "Regimen Trabajador";
+            this.colRegimenTrabajador.Name = "colRegimenTrabajador";
+            this.colRegimenTrabajador.Visible = false;
+            // 
+            // cbAños
+            // 
+            this.cbAños.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAños.FormattingEnabled = true;
+            this.cbAños.Location = new System.Drawing.Point(211, 12);
+            this.cbAños.Name = "cbAños";
+            this.cbAños.Size = new System.Drawing.Size(74, 21);
+            this.cbAños.TabIndex = 53;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 13);
+            this.label1.TabIndex = 54;
+            this.label1.Text = "Mes:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(179, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.TabIndex = 55;
+            this.label3.Text = "Año:";
+            // 
+            // cbMes
+            // 
+            this.cbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMes.FormattingEnabled = true;
+            this.cbMes.Items.AddRange(new object[] {
+            "ENERO",
+            "FEBRERO",
+            "MARZO",
+            "ABRIL",
+            "MAYO",
+            "JUNIO",
+            "JULIO",
+            "AGOSTO",
+            "SETIEMBRE",
+            "OCTUBRE",
+            "NOVIEMBRE",
+            "DICIEMBRE"});
+            this.cbMes.Location = new System.Drawing.Point(46, 12);
+            this.cbMes.Name = "cbMes";
+            this.cbMes.Size = new System.Drawing.Size(121, 21);
+            this.cbMes.TabIndex = 52;
+            this.cbMes.SelectedIndexChanged += new System.EventHandler(this.cbMes_SelectedIndexChanged);
+            // 
+            // btnVerCodificacion
+            // 
+            this.btnVerCodificacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVerCodificacion.BackColor = System.Drawing.Color.MintCream;
+            this.btnVerCodificacion.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnVerCodificacion.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnVerCodificacion.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnVerCodificacion.Location = new System.Drawing.Point(890, 12);
+            this.btnVerCodificacion.Name = "btnVerCodificacion";
+            this.btnVerCodificacion.Size = new System.Drawing.Size(100, 50);
+            this.btnVerCodificacion.TabIndex = 65;
+            this.btnVerCodificacion.Text = "&Ver Codificacion";
+            this.btnVerCodificacion.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnVerCodificacion.UseVisualStyleBackColor = false;
+            this.btnVerCodificacion.Click += new System.EventHandler(this.btnVerCodificacion_Click);
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.BackColor = System.Drawing.Color.MintCream;
+            this.btnExportar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnExportar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnExportar.Location = new System.Drawing.Point(778, 12);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(106, 50);
+            this.btnExportar.TabIndex = 64;
+            this.btnExportar.Text = "&Exportar Datos";
+            this.btnExportar.UseVisualStyleBackColor = false;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // btnCambiarDatos
+            // 
+            this.btnCambiarDatos.BackColor = System.Drawing.Color.MintCream;
+            this.btnCambiarDatos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCambiarDatos.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCambiarDatos.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCambiarDatos.Location = new System.Drawing.Point(819, 429);
+            this.btnCambiarDatos.Name = "btnCambiarDatos";
+            this.btnCambiarDatos.Size = new System.Drawing.Size(106, 50);
+            this.btnCambiarDatos.TabIndex = 66;
+            this.btnCambiarDatos.Text = "&Cambiar Datos";
+            this.btnCambiarDatos.UseVisualStyleBackColor = false;
+            this.btnCambiarDatos.Click += new System.EventHandler(this.btnCambiarDatos_Click);
+            // 
             // frmDarAltaTregistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(970, 502);
+            this.ClientSize = new System.Drawing.Size(1004, 502);
+            this.Controls.Add(this.btnCambiarDatos);
             this.Controls.Add(this.btnVerCodificacion);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.chkSRCT);
             this.Controls.Add(this.checkEDU);
-            this.Controls.Add(this.checkEST);
-            this.Controls.Add(this.checkIDE);
-            this.Controls.Add(this.checkPER);
-            this.Controls.Add(this.checkTRA);
+            this.Controls.Add(this.chkEST);
+            this.Controls.Add(this.chkIDE);
+            this.Controls.Add(this.chkPER);
+            this.Controls.Add(this.chkTRA);
             this.Controls.Add(this.checkSelectAll);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cbAños);
@@ -392,10 +427,10 @@
 
         private System.Windows.Forms.CheckBox chkSRCT;
         private System.Windows.Forms.CheckBox checkEDU;
-        private System.Windows.Forms.CheckBox checkEST;
-        private System.Windows.Forms.CheckBox checkIDE;
-        private System.Windows.Forms.CheckBox checkPER;
-        private System.Windows.Forms.CheckBox checkTRA;
+        private System.Windows.Forms.CheckBox chkEST;
+        private System.Windows.Forms.CheckBox chkIDE;
+        private System.Windows.Forms.CheckBox chkPER;
+        private System.Windows.Forms.CheckBox chkTRA;
         private System.Windows.Forms.CheckBox checkSelectAll;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dtgListaTrabajadores;
@@ -405,6 +440,7 @@
         private System.Windows.Forms.ComboBox cbMes;
         private System.Windows.Forms.Button btnVerCodificacion;
         private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.Button btnCambiarDatos;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colMarcado;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNumero;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdTrabajador;
@@ -419,5 +455,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTipoSCRTSalud;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPeriodoTrabajador;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDatosPersonales;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colObservaciones;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRegimenTrabajador;
     }
 }

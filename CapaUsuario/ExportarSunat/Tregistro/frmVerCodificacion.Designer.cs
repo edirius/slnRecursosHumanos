@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtgJor = new System.Windows.Forms.DataGridView();
             this.colNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,6 +63,40 @@
             this.dtgTra = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dtgPer = new System.Windows.Forms.DataGridView();
+            this.traNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traTipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traNumeroDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traPaisEmisorDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traRegimenLaboral = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traSituacionEducativa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traOcupacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traDiscapacidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traCUSPP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traSRCTPension = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traTipoContrato = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traSujetoARegimenAcumulativo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traSujetoAjornadaMaxima = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traSujetoAHorarioNocturno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traEsSindicalizado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traPeriocidadRemuneracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traMontoBasicoRemuneracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traSituacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traRentaQuinta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traSituacionEspecialTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traTipoPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traCategoriaOcupacionalTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traConvenioEvitarDobleTributacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traRUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perTipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perNumeroDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perPaisEmisor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perCategoría = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perTipoDeRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perFechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perFechaFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perIndicadorTipoRegistro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.perEPSServicios = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgJor)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -316,11 +351,39 @@
             // 
             // dtgTra
             // 
+            this.dtgTra.AllowUserToAddRows = false;
+            this.dtgTra.AllowUserToDeleteRows = false;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightBlue;
             this.dtgTra.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgTra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgTra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.traNumero,
+            this.traTipoDocumento,
+            this.traNumeroDocumento,
+            this.traPaisEmisorDocumento,
+            this.traRegimenLaboral,
+            this.traSituacionEducativa,
+            this.traOcupacion,
+            this.traDiscapacidad,
+            this.traCUSPP,
+            this.traSRCTPension,
+            this.traTipoContrato,
+            this.traSujetoARegimenAcumulativo,
+            this.traSujetoAjornadaMaxima,
+            this.traSujetoAHorarioNocturno,
+            this.traEsSindicalizado,
+            this.traPeriocidadRemuneracion,
+            this.traMontoBasicoRemuneracion,
+            this.traSituacion,
+            this.traRentaQuinta,
+            this.traSituacionEspecialTrabajador,
+            this.traTipoPago,
+            this.traCategoriaOcupacionalTrabajador,
+            this.traConvenioEvitarDobleTributacion,
+            this.traRUC});
             this.dtgTra.Location = new System.Drawing.Point(21, 22);
             this.dtgTra.Name = "dtgTra";
+            this.dtgTra.ReadOnly = true;
             this.dtgTra.Size = new System.Drawing.Size(719, 150);
             this.dtgTra.TabIndex = 0;
             // 
@@ -336,11 +399,267 @@
             // 
             // dtgPer
             // 
+            this.dtgPer.AllowUserToAddRows = false;
+            this.dtgPer.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
+            this.dtgPer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgPer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgPer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.perNumero,
+            this.perTipoDocumento,
+            this.perNumeroDocumento,
+            this.perPaisEmisor,
+            this.perCategoría,
+            this.perTipoDeRegistro,
+            this.perFechaInicio,
+            this.perFechaFin,
+            this.perIndicadorTipoRegistro,
+            this.perEPSServicios});
             this.dtgPer.Location = new System.Drawing.Point(21, 19);
             this.dtgPer.Name = "dtgPer";
+            this.dtgPer.ReadOnly = true;
             this.dtgPer.Size = new System.Drawing.Size(719, 150);
             this.dtgPer.TabIndex = 0;
+            // 
+            // traNumero
+            // 
+            this.traNumero.DataPropertyName = "numero";
+            this.traNumero.HeaderText = "Nº";
+            this.traNumero.Name = "traNumero";
+            this.traNumero.ReadOnly = true;
+            this.traNumero.Width = 40;
+            // 
+            // traTipoDocumento
+            // 
+            this.traTipoDocumento.DataPropertyName = "tipoDocumento";
+            this.traTipoDocumento.HeaderText = "Tipo Documento";
+            this.traTipoDocumento.Name = "traTipoDocumento";
+            this.traTipoDocumento.ReadOnly = true;
+            // 
+            // traNumeroDocumento
+            // 
+            this.traNumeroDocumento.DataPropertyName = "numeroDocumento";
+            this.traNumeroDocumento.HeaderText = "Numero Documento";
+            this.traNumeroDocumento.Name = "traNumeroDocumento";
+            this.traNumeroDocumento.ReadOnly = true;
+            // 
+            // traPaisEmisorDocumento
+            // 
+            this.traPaisEmisorDocumento.DataPropertyName = "paisEmisorDocumento";
+            this.traPaisEmisorDocumento.HeaderText = "Pais Emisor";
+            this.traPaisEmisorDocumento.Name = "traPaisEmisorDocumento";
+            this.traPaisEmisorDocumento.ReadOnly = true;
+            // 
+            // traRegimenLaboral
+            // 
+            this.traRegimenLaboral.DataPropertyName = "RegimenLaboral";
+            this.traRegimenLaboral.HeaderText = "Regimen Laboral";
+            this.traRegimenLaboral.Name = "traRegimenLaboral";
+            this.traRegimenLaboral.ReadOnly = true;
+            // 
+            // traSituacionEducativa
+            // 
+            this.traSituacionEducativa.DataPropertyName = "SituacionEducativa";
+            this.traSituacionEducativa.HeaderText = "Situacion Educativa";
+            this.traSituacionEducativa.Name = "traSituacionEducativa";
+            this.traSituacionEducativa.ReadOnly = true;
+            // 
+            // traOcupacion
+            // 
+            this.traOcupacion.DataPropertyName = "Ocupacion";
+            this.traOcupacion.HeaderText = "Ocupacion";
+            this.traOcupacion.Name = "traOcupacion";
+            this.traOcupacion.ReadOnly = true;
+            // 
+            // traDiscapacidad
+            // 
+            this.traDiscapacidad.DataPropertyName = "Discapacidad";
+            this.traDiscapacidad.HeaderText = "Discapacidad";
+            this.traDiscapacidad.Name = "traDiscapacidad";
+            this.traDiscapacidad.ReadOnly = true;
+            // 
+            // traCUSPP
+            // 
+            this.traCUSPP.DataPropertyName = "CUSPP";
+            this.traCUSPP.HeaderText = "CUSPP";
+            this.traCUSPP.Name = "traCUSPP";
+            this.traCUSPP.ReadOnly = true;
+            // 
+            // traSRCTPension
+            // 
+            this.traSRCTPension.DataPropertyName = "SCRTPension";
+            this.traSRCTPension.HeaderText = "SCRT Pension";
+            this.traSRCTPension.Name = "traSRCTPension";
+            this.traSRCTPension.ReadOnly = true;
+            // 
+            // traTipoContrato
+            // 
+            this.traTipoContrato.DataPropertyName = "TipoContrato";
+            this.traTipoContrato.HeaderText = "Tipo Contrato";
+            this.traTipoContrato.Name = "traTipoContrato";
+            this.traTipoContrato.ReadOnly = true;
+            // 
+            // traSujetoARegimenAcumulativo
+            // 
+            this.traSujetoARegimenAcumulativo.DataPropertyName = "SujetoARegimenAcumulativo";
+            this.traSujetoARegimenAcumulativo.HeaderText = "Regimen Acumulativo";
+            this.traSujetoARegimenAcumulativo.Name = "traSujetoARegimenAcumulativo";
+            this.traSujetoARegimenAcumulativo.ReadOnly = true;
+            // 
+            // traSujetoAjornadaMaxima
+            // 
+            this.traSujetoAjornadaMaxima.DataPropertyName = "SujetoAJornadaMaxima";
+            this.traSujetoAjornadaMaxima.HeaderText = "Jornada Maxima";
+            this.traSujetoAjornadaMaxima.Name = "traSujetoAjornadaMaxima";
+            this.traSujetoAjornadaMaxima.ReadOnly = true;
+            // 
+            // traSujetoAHorarioNocturno
+            // 
+            this.traSujetoAHorarioNocturno.DataPropertyName = "SujetoAHorarioNocturno";
+            this.traSujetoAHorarioNocturno.HeaderText = "Horario Nocturno";
+            this.traSujetoAHorarioNocturno.Name = "traSujetoAHorarioNocturno";
+            this.traSujetoAHorarioNocturno.ReadOnly = true;
+            // 
+            // traEsSindicalizado
+            // 
+            this.traEsSindicalizado.DataPropertyName = "EsSindicalizado";
+            this.traEsSindicalizado.HeaderText = "Es Sindicalizado";
+            this.traEsSindicalizado.Name = "traEsSindicalizado";
+            this.traEsSindicalizado.ReadOnly = true;
+            // 
+            // traPeriocidadRemuneracion
+            // 
+            this.traPeriocidadRemuneracion.DataPropertyName = "PeriocidadRemuneracion";
+            this.traPeriocidadRemuneracion.HeaderText = "Periocidad Remuneracion";
+            this.traPeriocidadRemuneracion.Name = "traPeriocidadRemuneracion";
+            this.traPeriocidadRemuneracion.ReadOnly = true;
+            // 
+            // traMontoBasicoRemuneracion
+            // 
+            this.traMontoBasicoRemuneracion.DataPropertyName = "MontoBasicoRemuneracion";
+            this.traMontoBasicoRemuneracion.HeaderText = "Monto Basico";
+            this.traMontoBasicoRemuneracion.Name = "traMontoBasicoRemuneracion";
+            this.traMontoBasicoRemuneracion.ReadOnly = true;
+            // 
+            // traSituacion
+            // 
+            this.traSituacion.DataPropertyName = "Situacion";
+            this.traSituacion.HeaderText = "Situacion";
+            this.traSituacion.Name = "traSituacion";
+            this.traSituacion.ReadOnly = true;
+            // 
+            // traRentaQuinta
+            // 
+            this.traRentaQuinta.DataPropertyName = "RentaQuintaExoneradas";
+            this.traRentaQuinta.HeaderText = "Renta 5ta Exo.";
+            this.traRentaQuinta.Name = "traRentaQuinta";
+            this.traRentaQuinta.ReadOnly = true;
+            // 
+            // traSituacionEspecialTrabajador
+            // 
+            this.traSituacionEspecialTrabajador.DataPropertyName = "SituacionEspecialTrabajador";
+            this.traSituacionEspecialTrabajador.HeaderText = "Situacion Especial";
+            this.traSituacionEspecialTrabajador.Name = "traSituacionEspecialTrabajador";
+            this.traSituacionEspecialTrabajador.ReadOnly = true;
+            // 
+            // traTipoPago
+            // 
+            this.traTipoPago.DataPropertyName = "TipoPago";
+            this.traTipoPago.HeaderText = "Tipo Pago";
+            this.traTipoPago.Name = "traTipoPago";
+            this.traTipoPago.ReadOnly = true;
+            // 
+            // traCategoriaOcupacionalTrabajador
+            // 
+            this.traCategoriaOcupacionalTrabajador.DataPropertyName = "CategoriaOcupacionalTrabajador";
+            this.traCategoriaOcupacionalTrabajador.HeaderText = "Categoria Ocupacional";
+            this.traCategoriaOcupacionalTrabajador.Name = "traCategoriaOcupacionalTrabajador";
+            this.traCategoriaOcupacionalTrabajador.ReadOnly = true;
+            // 
+            // traConvenioEvitarDobleTributacion
+            // 
+            this.traConvenioEvitarDobleTributacion.DataPropertyName = "ConvenioEvitarDobleTributacion";
+            this.traConvenioEvitarDobleTributacion.HeaderText = "Convenio Evitar Doble Tributacion";
+            this.traConvenioEvitarDobleTributacion.Name = "traConvenioEvitarDobleTributacion";
+            this.traConvenioEvitarDobleTributacion.ReadOnly = true;
+            // 
+            // traRUC
+            // 
+            this.traRUC.DataPropertyName = "RUC";
+            this.traRUC.HeaderText = "RUC";
+            this.traRUC.Name = "traRUC";
+            this.traRUC.ReadOnly = true;
+            // 
+            // perNumero
+            // 
+            this.perNumero.DataPropertyName = "Numero";
+            this.perNumero.HeaderText = "Nº";
+            this.perNumero.Name = "perNumero";
+            this.perNumero.ReadOnly = true;
+            this.perNumero.Width = 40;
+            // 
+            // perTipoDocumento
+            // 
+            this.perTipoDocumento.DataPropertyName = "TipoDocumento";
+            this.perTipoDocumento.HeaderText = "Tipo Documento";
+            this.perTipoDocumento.Name = "perTipoDocumento";
+            this.perTipoDocumento.ReadOnly = true;
+            // 
+            // perNumeroDocumento
+            // 
+            this.perNumeroDocumento.DataPropertyName = "NumeroDocumento";
+            this.perNumeroDocumento.HeaderText = "Numero Documento";
+            this.perNumeroDocumento.Name = "perNumeroDocumento";
+            this.perNumeroDocumento.ReadOnly = true;
+            // 
+            // perPaisEmisor
+            // 
+            this.perPaisEmisor.DataPropertyName = "PaisEmisorDocumento";
+            this.perPaisEmisor.HeaderText = "Pais Emisor";
+            this.perPaisEmisor.Name = "perPaisEmisor";
+            this.perPaisEmisor.ReadOnly = true;
+            // 
+            // perCategoría
+            // 
+            this.perCategoría.DataPropertyName = "Categoría";
+            this.perCategoría.HeaderText = "Categoría";
+            this.perCategoría.Name = "perCategoría";
+            this.perCategoría.ReadOnly = true;
+            // 
+            // perTipoDeRegistro
+            // 
+            this.perTipoDeRegistro.DataPropertyName = "TipoDeRegistro";
+            this.perTipoDeRegistro.HeaderText = "Tipo De Registro";
+            this.perTipoDeRegistro.Name = "perTipoDeRegistro";
+            this.perTipoDeRegistro.ReadOnly = true;
+            // 
+            // perFechaInicio
+            // 
+            this.perFechaInicio.DataPropertyName = "FechaInicio";
+            this.perFechaInicio.HeaderText = "FechaInicio";
+            this.perFechaInicio.Name = "perFechaInicio";
+            this.perFechaInicio.ReadOnly = true;
+            // 
+            // perFechaFin
+            // 
+            this.perFechaFin.DataPropertyName = "FechaFin";
+            this.perFechaFin.HeaderText = "FechaFin";
+            this.perFechaFin.Name = "perFechaFin";
+            this.perFechaFin.ReadOnly = true;
+            // 
+            // perIndicadorTipoRegistro
+            // 
+            this.perIndicadorTipoRegistro.DataPropertyName = "IndicadorTipoRegistro";
+            this.perIndicadorTipoRegistro.HeaderText = "Indicador Tipo Registro";
+            this.perIndicadorTipoRegistro.Name = "perIndicadorTipoRegistro";
+            this.perIndicadorTipoRegistro.ReadOnly = true;
+            // 
+            // perEPSServicios
+            // 
+            this.perEPSServicios.DataPropertyName = "EPSServicios";
+            this.perEPSServicios.HeaderText = "EPSServicios";
+            this.perEPSServicios.Name = "perEPSServicios";
+            this.perEPSServicios.ReadOnly = true;
             // 
             // frmVerCodificacion
             // 
@@ -398,5 +717,39 @@
         private System.Windows.Forms.DataGridView dtgTra;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dtgPer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traNumero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traTipoDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traNumeroDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traPaisEmisorDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traRegimenLaboral;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traSituacionEducativa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traOcupacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traDiscapacidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traCUSPP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traSRCTPension;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traTipoContrato;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traSujetoARegimenAcumulativo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traSujetoAjornadaMaxima;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traSujetoAHorarioNocturno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traEsSindicalizado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traPeriocidadRemuneracion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traMontoBasicoRemuneracion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traSituacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traRentaQuinta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traSituacionEspecialTrabajador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traTipoPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traCategoriaOcupacionalTrabajador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traConvenioEvitarDobleTributacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn traRUC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn perNumero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn perTipoDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn perNumeroDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn perPaisEmisor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn perCategoría;
+        private System.Windows.Forms.DataGridViewTextBoxColumn perTipoDeRegistro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn perFechaInicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn perFechaFin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn perIndicadorTipoRegistro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn perEPSServicios;
     }
 }

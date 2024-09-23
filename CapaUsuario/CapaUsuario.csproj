@@ -427,6 +427,7 @@
     <Compile Include="ExportarSunat\Tregistro\frmVerCodificacion.Designer.cs">
       <DependentUpon>frmVerCodificacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cCargo.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cCategoriaOcupacionalTrabajador.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cEntidadesPrestadorasSalud.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cMotivoBaja.cs" />

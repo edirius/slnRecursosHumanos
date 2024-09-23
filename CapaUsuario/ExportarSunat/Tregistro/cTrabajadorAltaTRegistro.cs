@@ -33,14 +33,15 @@ namespace CapaUsuario.ExportarSunat.Tregistro
         public List<cRegimenPensionarioTrabajador> PeriodosRegimenPensionario { get; set; }
         public Boolean TieneScrt { get; set; }
         public enumTipoSCRTSalud TipoSCRTSalud { get; set; }
-
+        public string Observaciones { get; set; }
+        public cRegimenTrabajador RegimenTrabajador { get; set; }
         public cTrabajadorAltaTRegistro()
         {
             PeriodoTrabajador = new cPeriodoTrabajador();
             DatosPersonales = new cDatosPersonales();
             DatosTrabajador = new List<cDatosTrabajador>();
             PeriodosRegimenPensionario = new List<cRegimenPensionarioTrabajador>();
-
+            RegimenTrabajador = new cRegimenTrabajador();
         }
     }
 }

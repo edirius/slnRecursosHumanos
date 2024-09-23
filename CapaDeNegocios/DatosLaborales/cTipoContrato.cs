@@ -58,7 +58,7 @@ namespace CapaDeNegocios.DatosLaborales
             try
             {
                 cTipoContrato tipo = new cTipoContrato();
-                DataTable tabla = Conexion.GDatos.TraerDataTable("spTraerTipoContrato", idtTipocontrato);
+                DataTable tabla = Conexion.GDatos.TraerDataTable("spTraerTipoContrato", idtTipoContrato);
                 if (tabla.Rows.Count > 0)
                 {
                     tipo.IdtTipocontrato = Convert.ToInt32(tabla.Rows[0][0].ToString());

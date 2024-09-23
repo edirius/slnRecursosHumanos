@@ -1807,7 +1807,22 @@ namespace CapaUsuario.Planilla
                 BuscarSCRT(Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
                 if (sscrt == true)
                 {
-                    result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                    if (cDatosGeneralesEmpresa.RUC == "20200737211")
+                    {
+                        if (remuneracion_afecta < Convert.ToDouble(sRemuneracionBasica))
+                        {
+                            result = CalcularFormula(fila, Convert.ToDouble(sRemuneracionBasica), formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                        }
+                        else
+                        {
+                            result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                        }
+                    }
+                    else
+                    {
+                        result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                    }
+                    
                 }
                 else
                 {
@@ -1820,7 +1835,22 @@ namespace CapaUsuario.Planilla
                 BuscarSCRTPension(Convert.ToInt32(dgvDetallePlanilla.Rows[fila].Cells[4].Value));
                 if(sscrtp == true)
                 {
-                    result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                    if (cDatosGeneralesEmpresa.RUC == "20200737211")
+                    {
+                        if (remuneracion_afecta < Convert.ToDouble(sRemuneracionBasica))
+                        {
+                            result = CalcularFormula(fila, Convert.ToDouble(sRemuneracionBasica), formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                        }
+                        else
+                        {
+                            result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                        }
+                    }
+                    else
+                    {
+                        result = CalcularFormula(fila, remuneracion_afecta, formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                    }
+                    
                 }
                 else
                 {

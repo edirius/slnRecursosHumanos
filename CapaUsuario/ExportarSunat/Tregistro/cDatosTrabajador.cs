@@ -32,6 +32,7 @@ namespace CapaUsuario.ExportarSunat.Tregistro
         public string ConvenioParaEvitarDobleTri { get; set; }
         public string RUC { get; set; }
         public TablasParametricas.cTipoTrabajador TipoTrabajador { get; set; }
+        public TablasParametricas.cCargo Cargo { get; set; }
         public List<cDatosPeriodo> DatosPeriodo { get; set; }
 
         public cDatosTrabajador()

@@ -278,6 +278,47 @@ namespace CapaDeNegocios.DatosLaborales
             }
         }
 
+        /// <summary>
+        /// Metodo para traer Regimen Trabajador por ID
+        /// </summary>
+        /// <param name="idtRegimenTrabajador"></param>
+        /// <returns></returns>
+        public cRegimenTrabajador TraerRegimenTrabajadorXId (int idtRegimenTrabajador)
+        {
+            try
+            {
+                DataTable TablaRegimenTrabajador;
+                TablaRegimenTrabajador = Conexion.GDatos.TraerDataTable("spTraerRegimenTrabajador", idtRegimenTrabajador);
+                cRegimenTrabajador nuevoPeriodoTrabajador = new cRegimenTrabajador();
+                foreach (DataRow item in TablaRegimenTrabajador.Rows)
+                {
+                    nuevoPeriodoTrabajador.IdtRegimenTrabajador = Convert.ToInt16(item[0].ToString());
+                    nuevoPeriodoTrabajador.Condicion = item[1].ToString();
+                    nuevoPeriodoTrabajador.ServidorConfianza = Convert.ToBoolean(item[2]);
+                    nuevoPeriodoTrabajador.NumeroDocumento = item[3].ToString();
+                    nuevoPeriodoTrabajador.Periodicidad = item[4].ToString();
+                    nuevoPeriodoTrabajador.TipoPago = item[5].ToString();
+                    nuevoPeriodoTrabajador.MontoPago = Convert.ToDecimal(item[6]);
+                    nuevoPeriodoTrabajador.FechaInicio = item[7].ToString();
+                    nuevoPeriodoTrabajador.sfechafin = "";
+                    nuevoPeriodoTrabajador.RUC = item[9].ToString();
+                    nuevoPeriodoTrabajador.IdtRegimenLaboral = Convert.ToInt16(item[10].ToString());
+                    nuevoPeriodoTrabajador.IdtTipoTrabajador = Convert.ToInt16(item[11].ToString());
+                    nuevoPeriodoTrabajador.IdtTipoContrato = Convert.ToInt16(item[12].ToString());
+                    nuevoPeriodoTrabajador.IdtCategoriaOcupacional = Convert.ToInt16(item[13].ToString());
+                    nuevoPeriodoTrabajador.IdtOcupacion = Convert.ToInt16(item[14].ToString());
+                    nuevoPeriodoTrabajador.IdtCargo = Convert.ToInt16(item[15].ToString());
+                    nuevoPeriodoTrabajador.IdtMeta = Convert.ToInt16(item[16].ToString());
+                    nuevoPeriodoTrabajador.IdtPeriodoTrabajador = Convert.ToInt16(item[17]);
+                }
+                return nuevoPeriodoTrabajador;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo TraerRegimenTrabajadorXId: " + ex.Message);
+            }
+        }
+
         public DateTime convertirFecha(string Fecha, bool Inicio)
         {
             if (Fecha.Length == 10 )

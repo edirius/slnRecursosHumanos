@@ -20,7 +20,7 @@ namespace CapaUsuario.ExportarSunat.Tregistro
 
         public List<Tregistro.cTrabajadorAltaTRegistro> ListaTrabajadores;
         public DateTime Mes;
-        Tregistro.cCatalogoAltaTRegistro oCatalogo = new cCatalogoAltaTRegistro();
+        Tregistro.cCatalogoAltaTRegistro oCatalogo = new cCatalogoAltaTRegistro(cDatosGeneralesEmpresa.RUC);
         List<Tregistro.cFilarDatosJor> ListaDatosJor = new List<cFilarDatosJor>();
 
         private void frmVerCodificacion_Load(object sender, EventArgs e)
