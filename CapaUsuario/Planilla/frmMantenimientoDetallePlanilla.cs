@@ -1811,7 +1811,11 @@ namespace CapaUsuario.Planilla
                     {
                         if (remuneracion_afecta < Convert.ToDouble(sRemuneracionBasica))
                         {
-                            result = CalcularFormula(fila, Convert.ToDouble(sRemuneracionBasica), formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+
+                            result = CalcularFormula(fila, Convert.ToDouble(sRemuneracionBasica), "s*0.0068*1.18", dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                            
+
+
                         }
                         else
                         {
@@ -1839,7 +1843,7 @@ namespace CapaUsuario.Planilla
                     {
                         if (remuneracion_afecta < Convert.ToDouble(sRemuneracionBasica))
                         {
-                            result = CalcularFormula(fila, Convert.ToDouble(sRemuneracionBasica), formula, dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
+                            result = CalcularFormula(fila, Convert.ToDouble(sRemuneracionBasica), "s * 0.0070 * 1.18", dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString());
                         }
                         else
                         {
@@ -2030,6 +2034,10 @@ namespace CapaUsuario.Planilla
 
         double CalcularFormula(int fila, double remuneracion, string formula, string FechaInicio)
         {
+            if (true)
+            {
+
+            }
             int index = formula.IndexOf("&&p");
 
 
