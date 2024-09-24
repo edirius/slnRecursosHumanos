@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaDeNegocios.Tareos;
 using CapaDeNegocios;
+using CapaDeNegocios.VerificadorDNI;
 
 namespace CapaUsuario.Tareo
 {
@@ -91,28 +92,45 @@ namespace CapaUsuario.Tareo
                 int sidttrabajador;
                 int sidtperiodotrabajador;
 
-                DateTime dtpFechaInicio = new DateTime(2023, 10, 1);
-                miDistrito = miDistrito.TraerDistrito(790);
+                DateTime dtpFechaInicio = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                miDistrito = miDistrito.TraerDistrito(715);
 
 
                 foreach (cDetalleArchivoExcel item in miArchivoExcel.Detalles)
                 {
+
                     cTrabajador miTrabajador = new cTrabajador();
                     CapaDeNegocios.DatosLaborales.cPeriodoTrabajador miPeriodoTrabajador = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
                     CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador miRegimenPensionarioTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
                     CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador miRegimenSaludTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenSaludTrabajador();
                     CapaDeNegocios.DatosLaborales.cRegimenTrabajador miRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
 
+
+
                     if (item.CodigoTrabajador == 0)
                     {
                         miTrabajador.Nombres = item.Nombres;
                         miTrabajador.ApellidoPaterno = item.Apellidopaterno;
                         miTrabajador.ApellidoMaterno = item.Apellidomaterno;
-                        miTrabajador.Sexo = EnumSexo.Masculino;
-                        miTrabajador.FechaNacimiento = new DateTime(2022, 1, 1);
+                        switch (item.Sexo)
+                        {
+                            case "Masculino":
+                                miTrabajador.Sexo = EnumSexo.Masculino;
+                                break;
+                            case "Femenino":
+                                miTrabajador.Sexo = EnumSexo.Femenino;
+                                break;
+                            default:
+                                break;
+                        }
+                        miTrabajador.FechaNacimiento = item.FechaNacimiento;
                         miTrabajador.Dni = item.Dni;
                         miTrabajador.CelularPersonal = "";
-                        miTrabajador.Direccion = "";
+                        if (item.Direccion.Length > 49)
+                        {
+                            item.Direccion =  item.Direccion.Substring(0, 48);
+                        }
+                        miTrabajador.Direccion = item.Direccion;
                         miTrabajador.MiDistrito = miDistrito;
                         miTrabajador.MiDistrito.Codigo = miDistrito.Codigo;
 
@@ -210,7 +228,7 @@ namespace CapaUsuario.Tareo
 
                     oDetalle.IdtTrabajador = item.CodigoTrabajador;
                     oDetalle.IdtTareo = otareo.IdTTareo;
-                    oDetalle.Categoria = item.Cargo;
+                    oDetalle.Categoria = item.Cargo.Trim();
                     oDetalle.TotalDias = item.Dias;
                     oDetalle.DiasTareo = Diastareo(item.Dias);
 
@@ -243,6 +261,106 @@ namespace CapaUsuario.Tareo
             }
             return detalledias;
             
+        }
+
+        private void btnValidar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cVerificadorDNI Verificador = new cVerificadorDNI();
+                CapaDeNegocios.cDistrito oDistrito = new CapaDeNegocios.cDistrito();
+                CapaDeNegocios.cProvincia oProvincia = new CapaDeNegocios.cProvincia();
+                CapaDeNegocios.cDepartamento oDepartamento = new cDepartamento();
+                foreach (cDetalleArchivoExcel item in miArchivoExcel.Detalles)
+                {
+                    trabajadorValidado MiTrabajadorValidado;
+                    MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(item.Dni, cDatosGeneralesEmpresa.Bearer2);
+                    if (MiTrabajadorValidado != null)
+                    {
+                        item.NombresValidado = MiTrabajadorValidado.Data.nombres;
+                        item.ApellidoPaternoValidado = MiTrabajadorValidado.Data.apellido_paterno;
+                        item.ApellidoMaternoValidado = MiTrabajadorValidado.Data.apellido_materno;
+                        item.Direccion = MiTrabajadorValidado.Data.direccion;
+                        switch (MiTrabajadorValidado.Data.estado_civil)
+                        {
+                            case "SOLTERO":
+                                item.EstadoCivil = "Soltero";
+                                break;
+                            case "CASADO":
+                                item.EstadoCivil = "Casado";
+                                break;
+                            case "VIUDO":
+                                item.EstadoCivil = "Viudo";
+                                break;
+                            case "DIVORCIADO":
+                                item.EstadoCivil = "Divorciado";
+                                break;
+                            default:
+                                break;
+                        }
+                        switch (MiTrabajadorValidado.Data.sexo)
+                        {
+                            case "MASCULINO":
+                                item.Sexo = "Masculino";
+                                break;
+                            case "FEMENINO":
+                                item.Sexo = "Femenino";
+                                break;
+                            default:
+                                break;
+                        }
+
+                        item.FechaNacimiento = ToDateTime(MiTrabajadorValidado.Data.fecha_nacimiento);
+                        oDistrito = oDistrito.TraerDistritoxUbigeo(MiTrabajadorValidado.Data.ubigeo_sunat);
+                        oProvincia = oProvincia.TraerProvincia(oDistrito.MiProvincia.Codigo);
+                        oDepartamento = oDepartamento.TraerDepartamento(oProvincia.MiDepartamento.Codigo);
+
+
+                        item.Observaciones = validarFilaExcel(item);
+                        //txtDepartamento.Text = oDepartamento.Descripcion;
+                        //txtProvincia.Text = oProvincia.Descripcion;
+                        //txtDistrito.Text = oDistrito.Descripcion;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al traer los datos, ingrese los nombres manualmente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                MessageBox.Show("Datos validados.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo traer el nombre de internet: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static DateTime ToDateTime(String value)
+        {
+            if (value == null)
+                return DateTime.Now.AddYears(-1);
+            return DateTime.Parse(value);
+        }
+
+        private string validarFilaExcel(cDetalleArchivoExcel det)
+        {
+            string observaciones = "";
+            bool ValidadoNombres = string.Equals(det.Nombres.Trim(), det.NombresValidado, StringComparison.CurrentCultureIgnoreCase);
+            bool ValidadoApellidoP = string.Equals(det.Apellidopaterno.Trim(), det.ApellidoPaternoValidado, StringComparison.CurrentCultureIgnoreCase);
+            bool ValidadoApellidoM = string.Equals(det.Apellidomaterno.Trim(), det.ApellidoMaternoValidado, StringComparison.CurrentCultureIgnoreCase);
+            if (!ValidadoNombres)
+            {
+                observaciones += "- Nombres no son iguales";
+            }
+            if (!ValidadoApellidoP)
+            {
+                observaciones += "- Apellido Paterno no son iguales";
+            }
+            if (!ValidadoApellidoM)
+            {
+                observaciones += "- Apellido Materno no son iguales";
+            }
+
+            return observaciones;
         }
     }
 }

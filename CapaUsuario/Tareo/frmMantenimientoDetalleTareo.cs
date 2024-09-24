@@ -56,6 +56,10 @@ namespace CapaUsuario.Tareo
             oDataRegimenPensionarioTrabajador = miRegimenPensionarioTrabajor.ListarRegimenPensionarioTrabajador(0);
             oDataCargo = miCargo.ListaCargos();
             CargarDatos();
+            if (cDatosGeneralesEmpresa.RUC == "20170325185")
+            {
+                btnImportartareo.Visible = true;
+            }
         }
 
 

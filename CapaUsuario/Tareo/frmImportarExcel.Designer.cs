@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txtComienzoFila = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,18 +43,19 @@
             this.txtColumnaCategoria = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtgDatos = new System.Windows.Forms.DataGridView();
-            this.btnImportarExcel = new System.Windows.Forms.Button();
-            this.btnImportar = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtHojaExcel = new System.Windows.Forms.TextBox();
             this.colDNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colApellidopaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colApellidomaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDias = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnImportarExcel = new System.Windows.Forms.Button();
+            this.btnImportar = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtHojaExcel = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cboTipoOrden = new System.Windows.Forms.ComboBox();
+            this.btnValidar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatos)).BeginInit();
             this.SuspendLayout();
@@ -189,8 +190,8 @@
             // 
             this.dtgDatos.AllowUserToAddRows = false;
             this.dtgDatos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Honeydew;
-            this.dtgDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Honeydew;
+            this.dtgDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDNI,
@@ -204,51 +205,6 @@
             this.dtgDatos.ReadOnly = true;
             this.dtgDatos.Size = new System.Drawing.Size(832, 194);
             this.dtgDatos.TabIndex = 0;
-            // 
-            // btnImportarExcel
-            // 
-            this.btnImportarExcel.BackColor = System.Drawing.Color.Azure;
-            this.btnImportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportarExcel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.btnImportarExcel.Location = new System.Drawing.Point(687, 24);
-            this.btnImportarExcel.Name = "btnImportarExcel";
-            this.btnImportarExcel.Size = new System.Drawing.Size(116, 37);
-            this.btnImportarExcel.TabIndex = 13;
-            this.btnImportarExcel.Text = "Importar Excel";
-            this.btnImportarExcel.UseVisualStyleBackColor = false;
-            this.btnImportarExcel.Click += new System.EventHandler(this.btnImportarExcel_Click);
-            // 
-            // btnImportar
-            // 
-            this.btnImportar.BackColor = System.Drawing.Color.Azure;
-            this.btnImportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportar.ForeColor = System.Drawing.Color.DarkBlue;
-            this.btnImportar.Location = new System.Drawing.Point(687, 71);
-            this.btnImportar.Name = "btnImportar";
-            this.btnImportar.Size = new System.Drawing.Size(116, 37);
-            this.btnImportar.TabIndex = 14;
-            this.btnImportar.Text = "Importar a la BD";
-            this.btnImportar.UseVisualStyleBackColor = false;
-            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label7.Location = new System.Drawing.Point(21, 113);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 13);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Nombre Hoja:";
-            // 
-            // txtHojaExcel
-            // 
-            this.txtHojaExcel.Location = new System.Drawing.Point(153, 106);
-            this.txtHojaExcel.Name = "txtHojaExcel";
-            this.txtHojaExcel.Size = new System.Drawing.Size(100, 20);
-            this.txtHojaExcel.TabIndex = 16;
-            this.txtHojaExcel.Text = "Tareo";
             // 
             // colDNI
             // 
@@ -297,6 +253,51 @@
             this.colDias.ReadOnly = true;
             this.colDias.Width = 50;
             // 
+            // btnImportarExcel
+            // 
+            this.btnImportarExcel.BackColor = System.Drawing.Color.Azure;
+            this.btnImportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportarExcel.ForeColor = System.Drawing.Color.DarkBlue;
+            this.btnImportarExcel.Location = new System.Drawing.Point(687, 24);
+            this.btnImportarExcel.Name = "btnImportarExcel";
+            this.btnImportarExcel.Size = new System.Drawing.Size(116, 37);
+            this.btnImportarExcel.TabIndex = 13;
+            this.btnImportarExcel.Text = "Importar Excel";
+            this.btnImportarExcel.UseVisualStyleBackColor = false;
+            this.btnImportarExcel.Click += new System.EventHandler(this.btnImportarExcel_Click);
+            // 
+            // btnImportar
+            // 
+            this.btnImportar.BackColor = System.Drawing.Color.Azure;
+            this.btnImportar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportar.ForeColor = System.Drawing.Color.DarkBlue;
+            this.btnImportar.Location = new System.Drawing.Point(687, 113);
+            this.btnImportar.Name = "btnImportar";
+            this.btnImportar.Size = new System.Drawing.Size(116, 37);
+            this.btnImportar.TabIndex = 14;
+            this.btnImportar.Text = "Importar a la BD";
+            this.btnImportar.UseVisualStyleBackColor = false;
+            this.btnImportar.Click += new System.EventHandler(this.btnImportar_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label7.Location = new System.Drawing.Point(21, 113);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(84, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Nombre Hoja:";
+            // 
+            // txtHojaExcel
+            // 
+            this.txtHojaExcel.Location = new System.Drawing.Point(153, 106);
+            this.txtHojaExcel.Name = "txtHojaExcel";
+            this.txtHojaExcel.Size = new System.Drawing.Size(100, 20);
+            this.txtHojaExcel.TabIndex = 16;
+            this.txtHojaExcel.Text = "Tareo";
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -317,12 +318,26 @@
             this.cboTipoOrden.Size = new System.Drawing.Size(121, 21);
             this.cboTipoOrden.TabIndex = 18;
             // 
+            // btnValidar
+            // 
+            this.btnValidar.BackColor = System.Drawing.Color.Azure;
+            this.btnValidar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValidar.ForeColor = System.Drawing.Color.DarkBlue;
+            this.btnValidar.Location = new System.Drawing.Point(687, 70);
+            this.btnValidar.Name = "btnValidar";
+            this.btnValidar.Size = new System.Drawing.Size(116, 37);
+            this.btnValidar.TabIndex = 19;
+            this.btnValidar.Text = "Validar Datos";
+            this.btnValidar.UseVisualStyleBackColor = false;
+            this.btnValidar.Click += new System.EventHandler(this.btnValidar_Click);
+            // 
             // frmImportarExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(896, 452);
+            this.Controls.Add(this.btnValidar);
             this.Controls.Add(this.cboTipoOrden);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtHojaExcel);
@@ -381,5 +396,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDias;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cboTipoOrden;
+        private System.Windows.Forms.Button btnValidar;
     }
 }

@@ -451,7 +451,7 @@
             this.btnInsertarNuevaFila.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnInsertarNuevaFila.ForeColor = System.Drawing.Color.DarkGreen;
             this.btnInsertarNuevaFila.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnInsertarNuevaFila.Location = new System.Drawing.Point(389, 403);
+            this.btnInsertarNuevaFila.Location = new System.Drawing.Point(399, 403);
             this.btnInsertarNuevaFila.Name = "btnInsertarNuevaFila";
             this.btnInsertarNuevaFila.Size = new System.Drawing.Size(83, 65);
             this.btnInsertarNuevaFila.TabIndex = 82;
