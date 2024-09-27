@@ -128,9 +128,9 @@ namespace CapaUsuario.Tareo
 
                     if (item.CodigoTrabajador == 0)
                     {
-                        miTrabajador.Nombres = item.Nombres;
-                        miTrabajador.ApellidoPaterno = item.Apellidopaterno;
-                        miTrabajador.ApellidoMaterno = item.Apellidomaterno;
+                        miTrabajador.Nombres = item.NombresValidado;
+                        miTrabajador.ApellidoPaterno = item.ApellidoPaternoValidado;
+                        miTrabajador.ApellidoMaterno = item.ApellidoMaternoValidado;
                         switch (item.Sexo)
                         {
                             case "Masculino":
