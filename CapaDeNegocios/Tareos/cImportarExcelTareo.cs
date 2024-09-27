@@ -40,6 +40,7 @@ namespace CapaDeNegocios.Tareos
                     oDetalle.Apellidomaterno = nombreReal[2];
                     oDetalle.Cargo = miTareo.GetCellValueAsString(miExcel.ColumnaCargo + i).Trim().ToUpper();
                     oDetalle.Dni = miTareo.GetCellValueAsString(miExcel.ColumnaDNI + i).Trim();
+                    oDetalle.CuentaBancaria = miTareo.GetCellValueAsString(miExcel.ColumnaCuentaBancaria + i).Trim();
                     string prueba = miTareo.GetCellValueAsString(miExcel.ColumnaDias + i);
                     oDetalle.Dias =  Convert.ToInt16(prueba);
                     miNuevoExcel.Detalles.Add(oDetalle);

@@ -21,6 +21,7 @@ namespace CapaDeNegocios.Tareos
         string columnaDias;
         string columnaDNI;
         string nombreHoja;
+        string columnaCuentaBancaria;
         enumTipoNombres tipoNombres;
 
         List<cDetalleArchivoExcel> detalles;
@@ -145,6 +146,19 @@ namespace CapaDeNegocios.Tareos
             set
             {
                 tipoNombres = value;
+            }
+        }
+
+        public string ColumnaCuentaBancaria
+        {
+            get
+            {
+                return columnaCuentaBancaria;
+            }
+
+            set
+            {
+                columnaCuentaBancaria = value;
             }
         }
     }

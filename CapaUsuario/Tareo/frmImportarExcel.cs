@@ -53,6 +53,7 @@ namespace CapaUsuario.Tareo
                 miArchivoExcel.ColumnaDNI = txtColumnaDNI.Text;
                 miArchivoExcel.ColumnaCargo = txtColumnaCategoria.Text;
                 miArchivoExcel.ColumnaDias = txtColumnaDias.Text;
+                miArchivoExcel.ColumnaCuentaBancaria = txtColumnaCuentaBancaria.Text;
                 miArchivoExcel.TipoNombres = (enumTipoNombres) cboTipoOrden.SelectedValue;
 
                 miArchivoExcel = oImportadorExcelTareo.Importar(fichero.FileName, miArchivoExcel);
@@ -182,6 +183,7 @@ namespace CapaUsuario.Tareo
                         miRegimenTrabajador.Periodicidad = "MENSUAL";
                         miRegimenTrabajador.TipoPago = "EFECTIVO";
                         miRegimenTrabajador.MontoPago = 0;
+                        miRegimenTrabajador.NumeroDocumento = item.CuentaBancaria;
 
                         miRegimenTrabajador.FechaFin = "";
                         miRegimenTrabajador.RUC = "";

@@ -56,6 +56,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cboTipoOrden = new System.Windows.Forms.ComboBox();
             this.btnValidar = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtColumnaCuentaBancaria = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatos)).BeginInit();
             this.SuspendLayout();
@@ -331,12 +333,33 @@
             this.btnValidar.UseVisualStyleBackColor = false;
             this.btnValidar.Click += new System.EventHandler(this.btnValidar_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label9.Location = new System.Drawing.Point(338, 187);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(115, 13);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Columna Cuenta B:";
+            // 
+            // txtColumnaCuentaBancaria
+            // 
+            this.txtColumnaCuentaBancaria.Location = new System.Drawing.Point(486, 184);
+            this.txtColumnaCuentaBancaria.Name = "txtColumnaCuentaBancaria";
+            this.txtColumnaCuentaBancaria.Size = new System.Drawing.Size(100, 20);
+            this.txtColumnaCuentaBancaria.TabIndex = 21;
+            this.txtColumnaCuentaBancaria.Text = "H";
+            // 
             // frmImportarExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(896, 452);
+            this.Controls.Add(this.txtColumnaCuentaBancaria);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.btnValidar);
             this.Controls.Add(this.cboTipoOrden);
             this.Controls.Add(this.label8);
@@ -397,5 +420,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cboTipoOrden;
         private System.Windows.Forms.Button btnValidar;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtColumnaCuentaBancaria;
     }
 }

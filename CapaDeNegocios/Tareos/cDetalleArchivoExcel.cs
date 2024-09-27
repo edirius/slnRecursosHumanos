@@ -24,6 +24,7 @@ namespace CapaDeNegocios.Tareos
         string direccion;
         string estadoCivil;
         string observaciones;
+        string cuentaBancaria;
 
         Boolean trabajadorEncontrado;
 
@@ -237,6 +238,19 @@ namespace CapaDeNegocios.Tareos
             set
             {
                 observaciones = value;
+            }
+        }
+
+        public string CuentaBancaria
+        {
+            get
+            {
+                return cuentaBancaria;
+            }
+
+            set
+            {
+                cuentaBancaria = value;
             }
         }
     }

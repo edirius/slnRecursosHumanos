@@ -298,6 +298,13 @@ namespace CapaUsuario.Reportes
                 chkFirmaContabilidad.Text = "PRESUPUESTO Y CONTABILIDAD";
                 
             }
+            //Yanaoca
+            if (oDatosGenerales.Ruc == "20170325185")
+            {
+                chkFirmaRecursos.Text = "UNIDAD DE GESTION  .     DE RECURSOS                  .       HUMANOS";
+                chkFirmaGerencia.Text = "OFICINA GENERAL DE  .   ADMINISTRACION";
+                chkFirmaElaborado.Text = "REMUNERACIONES";
+            }
 
             //if (oDatosGenerales.Ruc == "20195499765")
             //{
