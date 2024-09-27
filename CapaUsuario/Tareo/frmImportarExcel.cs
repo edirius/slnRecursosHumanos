@@ -23,6 +23,8 @@ namespace CapaUsuario.Tareo
         cArchivoExcel miArchivoExcel = new cArchivoExcel();
         cDistrito miDistrito = new cDistrito();
 
+        CapaDeNegocios.Obras.cMetaJornal oMetaJornal = new CapaDeNegocios.Obras.cMetaJornal();
+
         public frmImportarExcel()
         {
             InitializeComponent();
@@ -57,6 +59,8 @@ namespace CapaUsuario.Tareo
                 dtgDatos.DataSource = miArchivoExcel.Detalles;
             }
 
+            List<string> ListaCategorias = new List<string>();
+
             foreach (cDetalleArchivoExcel item in miArchivoExcel.Detalles)
             {
                 int codigoTrabajador = oTrabajador.BuscarTrabajadorXDNIFormaCorta(item.Dni);
@@ -71,8 +75,20 @@ namespace CapaUsuario.Tareo
                     item.TrabajadorEncontrado = false;
                     item.CodigoTrabajador = 0;
                 }
+
+                ListaCategorias.Add(item.Cargo);
+
+            
             }
 
+            foreach (string item in ListaCategorias.Distinct().ToList())
+            {
+                if (oMetaJornal.TraerMetaJornalxCategoria(item, oMeta.Codigo) == null)
+                {
+                    MessageBox.Show("No existe la categoria: '" + item + "',  Ingrese la categoria antes de importar a la BD. ");
+                }
+                
+            }
 
             foreach (DataGridViewRow row in dtgDatos.Rows)
             {
@@ -84,6 +100,8 @@ namespace CapaUsuario.Tareo
                 } 
             }
         }
+
+
 
         private void btnImportar_Click(object sender, EventArgs e)
         {

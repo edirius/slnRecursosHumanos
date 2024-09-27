@@ -18,19 +18,28 @@ namespace CapaDeNegocios.Tareos
         {
             try
             {
+                miTareo = new SpreadsheetLight.SLDocument(ruta);
+                List<string> listaHojas = miTareo.GetWorksheetNames();
+                bool encontrado = listaHojas.Any(s => s.Contains(miExcel.NombreHoja));
+                //listaHojas.fin .Find(miExcel.NombreHoja);
+                if (!encontrado)
+                {
+                    throw new Exception("No se encontro el nombre de hoja '"  + miExcel.NombreHoja + "' en el archivo ");
+                }
                 cArchivoExcel miNuevoExcel = new cArchivoExcel();
 
                 miTareo = new SpreadsheetLight.SLDocument(ruta, miExcel.NombreHoja);
+                
                 for (int i = miExcel.InicioFila; i <= miExcel.FinFila; i++)
                 {
                     cDetalleArchivoExcel oDetalle = new cDetalleArchivoExcel();
                     List<string> nombreReal = new List<string>();
-                    nombreReal = SepararNombres(miExcel.TipoNombres, miTareo.GetCellValueAsString(miExcel.ColumnaNombres + i));
+                    nombreReal = SepararNombres(miExcel.TipoNombres, miTareo.GetCellValueAsString(miExcel.ColumnaNombres + i).Trim());
                     oDetalle.Nombres = nombreReal[0];
                     oDetalle.Apellidopaterno = nombreReal[1];
                     oDetalle.Apellidomaterno = nombreReal[2];
-                    oDetalle.Cargo = miTareo.GetCellValueAsString(miExcel.ColumnaCargo + i);
-                    oDetalle.Dni = miTareo.GetCellValueAsString(miExcel.ColumnaDNI + i);
+                    oDetalle.Cargo = miTareo.GetCellValueAsString(miExcel.ColumnaCargo + i).Trim().ToUpper();
+                    oDetalle.Dni = miTareo.GetCellValueAsString(miExcel.ColumnaDNI + i).Trim();
                     string prueba = miTareo.GetCellValueAsString(miExcel.ColumnaDias + i);
                     oDetalle.Dias =  Convert.ToInt16(prueba);
                     miNuevoExcel.Detalles.Add(oDetalle);

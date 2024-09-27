@@ -191,5 +191,33 @@ namespace CapaDeNegocios.Obras
             DataTable oTabla = Conexion.GDatos.TraerDataTable("spListarMetaJornalxAnio", anio);
             return oTabla;
         }
+
+        public cMetaJornal TraerMetaJornalxCategoria(string cat, int idtmeta)
+        {
+            cMetaJornal oMeta = new cMetaJornal();
+            try
+            {
+                DataTable oTabla = Conexion.GDatos.TraerDataTable("spTraerCategoriaMetaJornal", cat, idtmeta);
+                if (oTabla.Rows.Count > 0)
+                {
+                    oMeta.IdtMetaJornal = Convert.ToInt32(oTabla.Rows[0][0].ToString());
+                    oMeta.Categoria = oTabla.Rows[0][1].ToString();
+                    oMeta.Jornal = Convert.ToDouble(oTabla.Rows[0][2].ToString());
+                    oMeta.Meta = new cMeta();
+                    oMeta.Meta.Codigo = Convert.ToInt32(oTabla.Rows[0][3].ToString());
+                    oMeta.Mensual = Convert.ToDouble(oTabla.Rows[0][4].ToString());
+                    oMeta.Opcion = Convert.ToBoolean(oTabla.Rows[0][5]);
+                    return oMeta;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo TraerMetaJornalxCategoria: " + ex.Message);
+            }
+        }
     }
 }
