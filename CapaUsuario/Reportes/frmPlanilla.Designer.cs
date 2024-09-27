@@ -416,8 +416,6 @@
             // chkFirmaTesoreria
             // 
             this.chkFirmaTesoreria.AutoSize = true;
-            this.chkFirmaTesoreria.Checked = true;
-            this.chkFirmaTesoreria.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFirmaTesoreria.Location = new System.Drawing.Point(18, 66);
             this.chkFirmaTesoreria.Name = "chkFirmaTesoreria";
             this.chkFirmaTesoreria.Size = new System.Drawing.Size(88, 17);
@@ -428,8 +426,6 @@
             // chkFirmaContabilidad
             // 
             this.chkFirmaContabilidad.AutoSize = true;
-            this.chkFirmaContabilidad.Checked = true;
-            this.chkFirmaContabilidad.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkFirmaContabilidad.Location = new System.Drawing.Point(164, 43);
             this.chkFirmaContabilidad.Name = "chkFirmaContabilidad";
             this.chkFirmaContabilidad.Size = new System.Drawing.Size(105, 17);

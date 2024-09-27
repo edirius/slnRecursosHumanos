@@ -304,6 +304,10 @@ namespace CapaUsuario.Reportes
                 chkFirmaRecursos.Text = "UNIDAD DE GESTION  .     DE RECURSOS                  .       HUMANOS";
                 chkFirmaGerencia.Text = "OFICINA GENERAL DE  .   ADMINISTRACION";
                 chkFirmaElaborado.Text = "REMUNERACIONES";
+                chkSubGerenciaObras.Text = "GERENCIA";
+                chkCuentaBancaria.Checked = true;
+                chkSueldoPactado.Checked = true;
+                
             }
 
             //if (oDatosGenerales.Ruc == "20195499765")
