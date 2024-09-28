@@ -301,8 +301,8 @@ namespace CapaUsuario.Reportes
             //Yanaoca
             if (oDatosGenerales.Ruc == "20170325185")
             {
-                chkFirmaRecursos.Text = "UNIDAD DE GESTION  .     DE RECURSOS                  .       HUMANOS";
-                chkFirmaGerencia.Text = "OFICINA GENERAL DE  .   ADMINISTRACION";
+                chkFirmaRecursos.Text = "UNIDAD DE GESTION \n DE RECURSOS HUMANOS";
+                chkFirmaGerencia.Text = "OFICINA GENERAL \n DE ADMINISTRACION";
                 chkFirmaElaborado.Text = "REMUNERACIONES";
                 chkSubGerenciaObras.Text = "GERENCIA";
                 chkCuentaBancaria.Checked = true;
