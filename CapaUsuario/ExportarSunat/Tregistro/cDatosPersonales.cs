@@ -26,6 +26,8 @@ namespace CapaUsuario.ExportarSunat.Tregistro
         public cDireccion Direccion01 { get; set; }
         public cDireccion Direccion02 { get; set; }
         public string IndicadorEssalud { get; set; }
+        public Boolean SCRTSalud { get; set; }
+        public Boolean SCRTPension { get; set; }
 
         public cDatosPersonales()
         {

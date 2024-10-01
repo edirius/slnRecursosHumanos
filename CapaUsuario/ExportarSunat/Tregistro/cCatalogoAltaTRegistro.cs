@@ -94,9 +94,15 @@ namespace CapaUsuario.ExportarSunat.Tregistro
             datos.TelefonoCodigoLargaDistancia = "";
             datos.Telefono = oTrabajador.CelularPersonal;
             datos.CorreoElectronico = oTrabajador.CorreoElectronico;
+            if (datos.CorreoElectronico.Trim().Count() == 0)
+            {
+                datos.CorreoElectronico = datos.Nombres.Substring(0, 3).Replace("Ñ","").Replace("ñ","") + datos.ApellidoPaterno.Substring(0, 3).Replace("Ñ","").Replace("ñ", "") + "@gmail.com";
+            }
             datos.Direccion01 = TraerDireccion(oTrabajador);
             datos.Direccion02 = TraerDireccion2();
             datos.IndicadorEssalud = "1";
+            datos.SCRTSalud = oTrabajador.Scrt;
+
 
             return datos;
         }

@@ -33,6 +33,7 @@ namespace CapaUsuario.Tareo
         private void frmImportarExcel_Load(object sender, EventArgs e)
         {
             cboTipoOrden.DataSource = Enum.GetValues(typeof(enumTipoNombres));
+            dtpFechaInicio.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
         }
 
         private void btnImportarExcel_Click(object sender, EventArgs e)
@@ -111,7 +112,7 @@ namespace CapaUsuario.Tareo
                 int sidttrabajador;
                 int sidtperiodotrabajador;
 
-                DateTime dtpFechaInicio = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+                DateTime dtpFechaInicio2 = dtpFechaInicio.Value;
                 miDistrito = miDistrito.TraerDistrito(715);
 
 
@@ -168,13 +169,13 @@ namespace CapaUsuario.Tareo
                         miTrabajador.IdTrabajador = sidttrabajador;
 
                         item.CodigoTrabajador = sidttrabajador;
-                        miPeriodoTrabajador.FechaInicio = dtpFechaInicio.ToShortDateString();
-                        miRegimenPensionarioTrabajador.FechaInicio = dtpFechaInicio.ToShortDateString();
+                        miPeriodoTrabajador.FechaInicio = dtpFechaInicio2.ToShortDateString();
+                        miRegimenPensionarioTrabajador.FechaInicio = dtpFechaInicio2.ToShortDateString();
                         miRegimenPensionarioTrabajador.CUSPP = "";
                         miRegimenPensionarioTrabajador.TipoComision = "";
                         miRegimenPensionarioTrabajador.IdtAFP = 5;
-                        miRegimenSaludTrabajador.FechaInicio = dtpFechaInicio.ToShortDateString();
-                        miRegimenTrabajador.FechaInicio = dtpFechaInicio.ToShortDateString();
+                        miRegimenSaludTrabajador.FechaInicio = dtpFechaInicio2.ToShortDateString();
+                        miRegimenTrabajador.FechaInicio = dtpFechaInicio2.ToShortDateString();
                         miRegimenTrabajador.NumeroDocumento = "";
 
                         miRegimenTrabajador.Condicion = "CONTRATADO";
