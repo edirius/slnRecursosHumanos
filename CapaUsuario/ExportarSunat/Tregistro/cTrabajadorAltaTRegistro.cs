@@ -10,10 +10,17 @@ namespace CapaUsuario.ExportarSunat.Tregistro
 {
     public enum enumTipoSCRTSalud
     {
+        NoTiene=0,
         Essalud =1,
-        EPS =2
+        EPS_Privado =2
     }
 
+    public enum enumTipoSCRTPension
+    {
+        NoTiene=0,
+        ONP=1,
+        Privado=2
+    }
     public class cTrabajadorAltaTRegistro
     {
         public Boolean Marcado { get; set; }
@@ -31,10 +38,14 @@ namespace CapaUsuario.ExportarSunat.Tregistro
         public List<cDatosTrabajador> DatosTrabajador { get; set; }
         public List<cDatosPeriodo> DatosPeriodo { get; set; }
         public List<cRegimenPensionarioTrabajador> PeriodosRegimenPensionario { get; set; }
-        public Boolean TieneScrt { get; set; }
         public enumTipoSCRTSalud TipoSCRTSalud { get; set; }
+        public enumTipoSCRTPension TipoSCRTPension { get; set; }
         public string Observaciones { get; set; }
         public cRegimenTrabajador RegimenTrabajador { get; set; }
+        public int IdDetallePlanilla { get; set; }
+        public string Cargo { get; set; }
+        public cDatosCuentaBancaria CuentaBancaria { get; set; }
+        public string TieneCuentabancaria { get; set; }
         public cTrabajadorAltaTRegistro()
         {
             PeriodoTrabajador = new cPeriodoTrabajador();

@@ -103,6 +103,12 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                     ArrayList ListaEST = oCatalogo.GenerarListaEST(ListaTrabajadoresAltaTRegistro);
                     GuardarArchivo(ListaEST, NombreArchivo);
                 }
+                if (chkCTA.Checked)
+                {
+                    string NombreArchivo = "RP_" + cDatosGeneralesEmpresa.RUC + ".CTA";
+                    ArrayList ListaCTA = oCatalogo.GenerarListaCTA(ListaTrabajadoresAltaTRegistro);
+                    GuardarArchivo(ListaCTA, NombreArchivo);
+                }
             }
             catch (Exception ex)
             {
@@ -188,6 +194,7 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                         oRegimenTrabajador.FechaFin);
                     if (fRegimenTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
+                        MessageBox.Show("Datos Guardados", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         //CargarDatos();
                     }
                 }
@@ -217,6 +224,35 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                 {
                     dtgListaTrabajadores[0, i].Value = false;
                 }
+        }
+
+        private void btnCambiarDatosPersonales_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dtgListaTrabajadores.SelectedCells.Count > 0)
+                {
+                    Trabajador.frmNuevoTrabajador fModificarTrabajador = new Trabajador.frmNuevoTrabajador();
+                    fModificarTrabajador.modoEdicion = true;
+                    fModificarTrabajador.miTrabajador = new CapaDeNegocios.cTrabajador();
+                    fModificarTrabajador.miTrabajador = fModificarTrabajador.miTrabajador.BuscarTrabajadorXDNI(dtgListaTrabajadores.Rows[dtgListaTrabajadores.SelectedCells[0].RowIndex].Cells["colDNI"].Value.ToString());
+
+                    if (fModificarTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        fModificarTrabajador.miTrabajador.ModificarTrabajador(fModificarTrabajador.miTrabajador);
+                        MessageBox.Show("Datos Guardados", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No hay datos seleccionados", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception g)
+            {
+                MessageBox.Show(g.Message);
+
+            }
         }
     }
 }

@@ -52,8 +52,26 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                     regimen.Afp.Nombre = tLista.Rows[i][12].ToString();
                     regimen.Afp.Codigosunat = tLista.Rows[i][13].ToString();
                     Trabajador.PeriodosRegimenPensionario.Add(regimen);
+                    Trabajador.RegimenTrabajador.IdtRegimenTrabajador = Convert.ToInt32(tLista.Rows[i][14].ToString());
                     Trabajador.DatosTrabajador = TraerDatosTrabajador(Trabajador, new DateTime(Convert.ToInt32(año), miUtilidades.ConvertirMesANumero(mes), 1));
-                    Trabajador.RegimenTrabajador.IdtRegimenTrabajador = Convert.ToInt32( tLista.Rows[i][14].ToString());
+                    
+                    Trabajador.IdDetallePlanilla = Convert.ToInt32(tLista.Rows[i][15].ToString());
+                    Trabajador.Cargo = tLista.Rows[i][16].ToString();
+                    Trabajador.TipoSCRTPension = TraerSCRTPension(Trabajador.IdDetallePlanilla);
+                    Trabajador.TipoSCRTSalud = TraerSCRTSalud(Trabajador.IdDetallePlanilla);
+                    if (Trabajador.DatosTrabajador[0].NumeroCuenta.Trim().Count() > 0)
+                    {
+                        Trabajador.DatosTrabajador[0].TipoPago = TraerTipoPago("DEPOSITO");
+                        Trabajador.CuentaBancaria = TraerCuentaBancaria(Trabajador);
+                        Trabajador.TieneCuentabancaria = "Tiene";
+                    }
+                    else
+                    {
+                        Trabajador.CuentaBancaria = null;
+                        Trabajador.TieneCuentabancaria = "No tiene";
+                    }
+                    
+
                     if (Trabajador.DatosTrabajador.Count == 0)
                     {
                         throw new cReglaNegociosException("Error al traer los datos del trabajador del trabajador: " + Trabajador.DNI + " " + Trabajador.Nombres + " " + Trabajador.ApellidoPaterno + " " + Trabajador.ApellidoMaterno + " y el mes " + mes);
@@ -73,6 +91,102 @@ namespace CapaUsuario.ExportarSunat.Tregistro
             catch (Exception ex)
             {
                 throw new cReglaNegociosException("Error en el metodo TraerListaTrabajadoresTRegistro: " + ex.Message);
+            }
+        }
+
+
+        private cDatosCuentaBancaria TraerCuentaBancaria(cTrabajadorAltaTRegistro Tra)
+        {
+            try
+            {
+                cDatosCuentaBancaria cuenta = new cDatosCuentaBancaria();
+                cuenta.TipoDocumento = Tra.DatosPersonales.TipoDocumento;
+                cuenta.PaisEmisor = Tra.DatosPersonales.PaisEmisor;
+                cuenta.NumeroDocumento = Tra.DatosPersonales.NumeroDocumento;
+                cuenta.EntidadBancaria = new TablasParametricas.cEntidadBancaria();
+                cuenta.EntidadBancaria.Codigo = "018";
+                cuenta.EntidadBancaria.EntidadSistemaFinanciero = "BANCO DE LA NACION";
+                cuenta.NumeroCuenta = Tra.DatosTrabajador[0].NumeroCuenta.Replace("-","");
+                return cuenta;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo TraerCuentaBancaria: " + ex.Message);
+            }
+        }
+
+        private enumTipoSCRTSalud TraerSCRTSalud(int idtDetallePlanilla)
+        {
+            try
+            {
+                enumTipoSCRTSalud Scrt = enumTipoSCRTSalud.NoTiene;
+                List<cAportesEmpleador> Aportes = ListaAportesEmpleadorxDetallePlanilla(idtDetallePlanilla);
+                foreach (cAportesEmpleador item in Aportes)
+                {
+                    if (item.Codigo == "0806" && item.Monto > 0)
+                    {
+                        Scrt = enumTipoSCRTSalud.Essalud;
+                    }
+                    if ((item.Codigo == "0810" || item.Codigo == "0814") && item.Monto > 0)
+                    {
+                        Scrt = enumTipoSCRTSalud.EPS_Privado;
+                    }
+                }
+                return Scrt;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo TraerSCRTSalud: " + ex.Message);
+            }
+        }
+
+        public enumTipoSCRTPension TraerSCRTPension(int idtDetallePlanilla)
+        {
+            try
+            {
+                enumTipoSCRTPension ScrtP = enumTipoSCRTPension.NoTiene;
+                List<cAportesEmpleador> Aportes = ListaAportesEmpleadorxDetallePlanilla(idtDetallePlanilla);
+                foreach (cAportesEmpleador item in Aportes)
+                {
+                    if ((item.Codigo == "0805" || item.Codigo == "0813") && item.Monto > 0)
+                    {
+                        ScrtP = enumTipoSCRTPension.ONP;
+                    }
+                    if (item.Codigo == "0805" && item.Monto > 0 && cDatosGeneralesEmpresa.RUC == "20200737211")
+                    {
+                        ScrtP = enumTipoSCRTPension.Privado;
+                    }
+                }
+
+                return ScrtP;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo TraerSCRTPension: " + ex.Message);
+            }
+        }
+
+        public List<cAportesEmpleador> ListaAportesEmpleadorxDetallePlanilla (int idDetallePlanilla)
+        {
+            try
+            {
+                List<cAportesEmpleador> ListaAportes = new List<cAportesEmpleador>();
+                DataTable tLista = Conexion.GDatos.TraerDataTable("spTraerAportEmpleadorxDetPlanilla", idDetallePlanilla);
+                for (int i = 0; i < tLista.Rows.Count; i++)
+                {
+                    cAportesEmpleador aport = new cAportesEmpleador();
+                    aport.Codigo = tLista.Rows[i][5].ToString();
+                    aport.Descripcion = tLista.Rows[i][6].ToString();
+                    aport.Monto = Convert.ToDouble(tLista.Rows[i][1].ToString());
+                    ListaAportes.Add(aport);
+                }
+
+                return ListaAportes;
+            }
+            catch (Exception ex)
+            {
+
+                throw new cReglaNegociosException("Error en el metodo ListaAportesEmpleadorxDetallePlanilla: " + ex.Message);
             }
         }
 
@@ -266,29 +380,44 @@ namespace CapaUsuario.ExportarSunat.Tregistro
             {
                 List<cDatosTrabajador> Lista = new List<cDatosTrabajador>();
                 cRegimenTrabajador oRegimen = new cRegimenTrabajador();
-                List<cRegimenTrabajador> RegimenesTrabajador = oRegimen.TraerRegimenTrabajadorMes(Trabajador.PeriodoTrabajador.IdtPeriodoTrabajador, mes);
-                foreach (cRegimenTrabajador item in RegimenesTrabajador)
-                {
+                    oRegimen = oRegimen.TraerRegimenTrabajadorXId(Trabajador.RegimenTrabajador.IdtRegimenTrabajador);// .TraerRegimenTrabajadorMes(Trabajador.PeriodoTrabajador.IdtPeriodoTrabajador, mes);
+                
                     cDatosTrabajador DatosRegimen = new cDatosTrabajador();
                     DatosRegimen.TipoDocumento = Trabajador.DatosPersonales.TipoDocumento;
                     DatosRegimen.NumeroDocumento = Trabajador.DatosPersonales.NumeroDocumento;
                     DatosRegimen.PaisEmisor = Trabajador.DatosPersonales.PaisEmisor;
-                    DatosRegimen.RegimenLaboral = TraerRegimenLaboral(item.IdtRegimenLaboral);
+                    DatosRegimen.RegimenLaboral = TraerRegimenLaboral(oRegimen.IdtRegimenLaboral);
                     DatosRegimen.SituacionEducativa = TraerSituacionEducativa("07");
-                    DatosRegimen.Ocupacion = TraerOcupacion(item.IdtOcupacion);
+                    DatosRegimen.Ocupacion = TraerOcupacion(oRegimen.IdtOcupacion);
+                    
                     DatosRegimen.Discapacidad = "0";
                     DatosRegimen.CUSPP = "";
                     //1 PARA ONP, 2 PARA PRIVADA PENSION, VACIO PARA NINGUNO
-                    DatosRegimen.SCRTPension = "";
-                    DatosRegimen.TipoContrato = TraerTipoContrato(item.IdtTipoContrato);
+                    enumTipoSCRTPension Pension = TraerSCRTPension(Trabajador.IdDetallePlanilla);
+                    switch (Pension)
+                    {
+                        case enumTipoSCRTPension.NoTiene:
+                            DatosRegimen.SCRTPension = "";
+                            break;
+                        case enumTipoSCRTPension.ONP:
+                            DatosRegimen.SCRTPension = "1";
+                            break;
+                        case enumTipoSCRTPension.Privado:
+                            DatosRegimen.SCRTPension = "2";
+                            break;
+                        default:
+                            break;
+                    }
+                    
+                    DatosRegimen.TipoContrato = TraerTipoContrato(oRegimen.IdtTipoContrato);
                     DatosRegimen.SujetoARegimenAlternativo = "0";
                     DatosRegimen.SujetoAJornadaMaxima = "0";
                     DatosRegimen.SujetoAHorarioNocturno = "0";
                     DatosRegimen.EsSindicalizado = "0";
-                    DatosRegimen.PeriodicidadIngreso = TraerPeriocidadIngreso(item.Periodicidad);
+                    DatosRegimen.PeriodicidadIngreso = TraerPeriocidadIngreso(oRegimen.Periodicidad);
                     DatosRegimen.MontoBasico = 0;
                     DatosRegimen.Situacion = TraerSituacion("1");
-                    DatosRegimen.TipoTrabajador = TraerTipoTrabajador(item.IdtTipoTrabajador);
+                    DatosRegimen.TipoTrabajador = TraerTipoTrabajador(oRegimen.IdtTipoTrabajador);
                     //Para los TT: 23, 66, 67 y 71 es vacio.
                     if (DatosRegimen.TipoTrabajador.Numero == "23" || DatosRegimen.TipoTrabajador.Numero == "66" || DatosRegimen.TipoTrabajador.Numero == "67" || DatosRegimen.TipoTrabajador.Numero == "71")
                     {
@@ -299,16 +428,14 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                         DatosRegimen.RentaQuintaExonerada = "0";
                     }
                     DatosRegimen.SituacionEspecialTrabajador = TraerSituacionEspecialTrabajador("0");
-                    DatosRegimen.TipoPago = TraerTipoPago(item.TipoPago);
+                    DatosRegimen.TipoPago = TraerTipoPago(oRegimen.TipoPago);
                     //Para el TT: 20 OBRERO, se debe colocar vacio la categoria ocupacional
-                    if (DatosRegimen.TipoTrabajador.Numero == "20")
+                    DatosRegimen.CategoriaOcupacionalTrabajador = TraerCategoriaOcupacional(oRegimen.IdtCategoriaOcupacional);
+                    if (DatosRegimen.TipoTrabajador.Numero == "20" && DatosRegimen.CategoriaOcupacionalTrabajador.Codigo == "02")
                     {
                         DatosRegimen.CategoriaOcupacionalTrabajador = new TablasParametricas.cCategoriaOcupacionalTrabajador();
                         DatosRegimen.CategoriaOcupacionalTrabajador.Codigo = "";
-                    }
-                    else
-                    {
-                        DatosRegimen.CategoriaOcupacionalTrabajador = TraerCategoriaOcupacional(item.IdtCategoriaOcupacional);
+                        DatosRegimen.CategoriaOcupacionalTrabajador.Descripcion = "OBRERO";
                     }
                     
                     // PARA LOS TIPOS 19, 20, 21, 23, 66 71, 88, 89, 90, 91 y 98. ES VACIO
@@ -322,19 +449,19 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                     }
                     
                     //Dato interno del programa
-                    DatosRegimen.Cargo = TraerCargo(item.IdtCargo);
+                    DatosRegimen.Cargo = TraerCargo(oRegimen.IdtCargo);
                     if (DatosRegimen.RegimenLaboral.Codigo == "15" )
                     {
-                        DatosRegimen.RUC = item.RUC;
+                        DatosRegimen.RUC = oRegimen.RUC;
                     }
                     else
                     {
                         DatosRegimen.RUC = "";
                     }
+
+                DatosRegimen.NumeroCuenta = oRegimen.NumeroDocumento;
+                Lista.Add(DatosRegimen);
                     
-                    
-                    Lista.Add(DatosRegimen);
-                }
                 return Lista;
             }
             catch (Exception ex)
@@ -372,6 +499,28 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                 }
             }
 
+            if (tra.DatosTrabajador[0].CategoriaOcupacionalTrabajador.Codigo == "03" || tra.DatosTrabajador[0].CategoriaOcupacionalTrabajador.Codigo == "01" )
+            {
+                obs = obs + " - Hay inconsistencia en la categoria Ocupacional. " + Environment.NewLine;
+            }
+
+            if (tra.DatosTrabajador[0].Ocupacion.Codigo == "")
+            {
+                obs = obs + " - La ocupacion esta vacia. " + Environment.NewLine;
+            }
+
+            if (tra.DatosPersonales.Telefono != "" && tra.DatosPersonales.Telefono.Count() <9 )
+            {
+                obs = obs + " - Datos Personales: El telefono es menor a 9 digitos. " + Environment.NewLine;
+            }
+
+            DateTime edadTrabajador = new DateTime(1, 1, 1);
+            edadTrabajador = edadTrabajador + (DateTime.Now.Date - tra.DatosPersonales.FechaNacimiento);
+
+            if ((edadTrabajador.Year - 1) < 18)
+            {
+                obs = obs + " - Datos Personales: La edad del trabajador es: " + (edadTrabajador.Year - 1).ToString() + " años." + Environment.NewLine;
+            }
             return obs;
         }
 
@@ -710,7 +859,7 @@ namespace CapaUsuario.ExportarSunat.Tregistro
             Periodo4.EntidadesPrestadorasSalud.Numero = "";
             ListaPeriodos.Add(Periodo4);
 
-            if (Trabajador.TieneScrt)
+            if (Trabajador.TipoSCRTSalud != enumTipoSCRTSalud.NoTiene)
             {
                 cDatosPeriodo Periodo5 = new cDatosPeriodo();
                 Periodo5.TipoDocumento = Trabajador.DatosPersonales.TipoDocumento;
@@ -725,7 +874,7 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                     case enumTipoSCRTSalud.Essalud:
                         Periodo5.SCRTSalud = enumSCRTSalud.Essalud;
                         break;
-                    case enumTipoSCRTSalud.EPS:
+                    case enumTipoSCRTSalud.EPS_Privado:
                         Periodo5.SCRTSalud = enumSCRTSalud.EPS;
                         break;
                     default:
@@ -1005,7 +1154,7 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                                         (int)item2.TipoRegistro + Palo +
                                         item2.FechaInicio + Palo +
                                         item2.FechaFin + Palo +
-                                        item2.SCRTSalud + Palo +
+                                        ((int)item2.SCRTSalud).ToString() + Palo +
                                         Palo;
                                     ListaPER.Add(ContenidoPER);
                                     break;
@@ -1048,6 +1197,35 @@ namespace CapaUsuario.ExportarSunat.Tregistro
             catch (Exception ex)
             {
                 throw new cReglaNegociosException("Error en GenerarListaEST: " + ex.Message);
+            }
+        }
+
+        public ArrayList GenerarListaCTA(List<cTrabajadorAltaTRegistro> ListaTrabajadoresSeleccionados)
+        {
+            string Palo = "|";
+            try
+            {
+                ArrayList ListaCTA = new ArrayList();
+                foreach (cTrabajadorAltaTRegistro item in ListaTrabajadoresSeleccionados)
+                {
+                    if (item.Marcado && item.TieneCuentabancaria =="Tiene")
+                    {
+                        string ContenidoCTA = "";
+                        ContenidoCTA = item.DatosPersonales.TipoDocumento.Numero + Palo +
+                            item.DatosPersonales.NumeroDocumento + Palo +
+                            item.DatosPersonales.PaisEmisor.Codigo + Palo +
+                            item.CuentaBancaria.EntidadBancaria.Codigo + Palo +
+                            item.CuentaBancaria.NumeroCuenta + Palo;
+                        ListaCTA.Add(ContenidoCTA);
+                    }
+                }
+
+                return ListaCTA;
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

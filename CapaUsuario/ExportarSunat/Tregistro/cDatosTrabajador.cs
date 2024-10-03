@@ -35,6 +35,7 @@ namespace CapaUsuario.ExportarSunat.Tregistro
         public TablasParametricas.cCargo Cargo { get; set; }
         public List<cDatosPeriodo> DatosPeriodo { get; set; }
 
+        public string NumeroCuenta { get; set; }
         public cDatosTrabajador()
         {
             TipoDocumento = new TablasParametricas.cTipoDocumentoIdentidad();

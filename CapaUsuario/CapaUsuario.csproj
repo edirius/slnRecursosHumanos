@@ -406,7 +406,9 @@
     <Compile Include="ExportarSunat\frmVerCodificacion.Designer.cs">
       <DependentUpon>frmVerCodificacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="ExportarSunat\Tregistro\cAportesEmpleador.cs" />
     <Compile Include="ExportarSunat\Tregistro\cCatalogoAltaTRegistro.cs" />
+    <Compile Include="ExportarSunat\Tregistro\cDatosCuentaBancaria.cs" />
     <Compile Include="ExportarSunat\Tregistro\cDatosPeriodo.cs" />
     <Compile Include="ExportarSunat\Tregistro\cDatosPersonales.cs" />
     <Compile Include="ExportarSunat\Tregistro\cDatosTrabajador.cs" />
@@ -429,6 +431,7 @@
     </Compile>
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cCargo.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cCategoriaOcupacionalTrabajador.cs" />
+    <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cEntidadBancaria.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cEntidadesPrestadorasSalud.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cMotivoBaja.cs" />
     <Compile Include="ExportarSunat\Tregistro\TablasParametricas\cNacionalidad.cs" />

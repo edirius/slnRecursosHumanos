@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chkSRCT = new System.Windows.Forms.CheckBox();
             this.checkEDU = new System.Windows.Forms.CheckBox();
             this.chkEST = new System.Windows.Forms.CheckBox();
@@ -40,6 +41,15 @@
             this.checkSelectAll = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtgListaTrabajadores = new System.Windows.Forms.DataGridView();
+            this.cbAños = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbMes = new System.Windows.Forms.ComboBox();
+            this.btnVerCodificacion = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
+            this.btnCambiarDatos = new System.Windows.Forms.Button();
+            this.btnCambiarDatosPersonales = new System.Windows.Forms.Button();
+            this.chkCTA = new System.Windows.Forms.CheckBox();
             this.colMarcado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,19 +60,16 @@
             this.colApellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colApellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTieneSCRT = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colTipoSCRTSalud = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTipoSCRTPension = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPeriodoTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDatosPersonales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCuentaBancaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTieneCuentaBancaria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCargo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObservaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRegimenTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cbAños = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbMes = new System.Windows.Forms.ComboBox();
-            this.btnVerCodificacion = new System.Windows.Forms.Button();
-            this.btnExportar = new System.Windows.Forms.Button();
-            this.btnCambiarDatos = new System.Windows.Forms.Button();
+            this.colidtdetalleplanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaTrabajadores)).BeginInit();
             this.SuspendLayout();
@@ -130,7 +137,7 @@
             // checkSelectAll
             // 
             this.checkSelectAll.AutoSize = true;
-            this.checkSelectAll.Location = new System.Drawing.Point(447, 52);
+            this.checkSelectAll.Location = new System.Drawing.Point(551, 52);
             this.checkSelectAll.Name = "checkSelectAll";
             this.checkSelectAll.Size = new System.Drawing.Size(188, 17);
             this.checkSelectAll.TabIndex = 62;
@@ -166,137 +173,21 @@
             this.colApellidoPaterno,
             this.colApellidoMaterno,
             this.colPlanilla,
-            this.colTieneSCRT,
             this.colTipoSCRTSalud,
+            this.colTipoSCRTPension,
             this.colPeriodoTrabajador,
             this.colDatosPersonales,
+            this.colCuentaBancaria,
+            this.colTieneCuentaBancaria,
+            this.colCargo,
             this.colObservaciones,
-            this.colRegimenTrabajador});
+            this.colRegimenTrabajador,
+            this.colidtdetalleplanilla});
             this.dtgListaTrabajadores.Location = new System.Drawing.Point(6, 19);
             this.dtgListaTrabajadores.Name = "dtgListaTrabajadores";
             this.dtgListaTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgListaTrabajadores.Size = new System.Drawing.Size(963, 299);
             this.dtgListaTrabajadores.TabIndex = 0;
-            // 
-            // colMarcado
-            // 
-            this.colMarcado.DataPropertyName = "Marcado";
-            this.colMarcado.HeaderText = "Check";
-            this.colMarcado.Name = "colMarcado";
-            this.colMarcado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colMarcado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colMarcado.Width = 70;
-            // 
-            // colNumero
-            // 
-            this.colNumero.DataPropertyName = "Numero";
-            this.colNumero.HeaderText = "Numero";
-            this.colNumero.Name = "colNumero";
-            this.colNumero.Width = 50;
-            // 
-            // colIdTrabajador
-            // 
-            this.colIdTrabajador.DataPropertyName = "id_trabajador";
-            this.colIdTrabajador.HeaderText = "IdTrabajador";
-            this.colIdTrabajador.Name = "colIdTrabajador";
-            this.colIdTrabajador.Visible = false;
-            // 
-            // colFechaInicio
-            // 
-            this.colFechaInicio.DataPropertyName = "FechaInicio";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.colFechaInicio.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colFechaInicio.HeaderText = "Fecha Inicio";
-            this.colFechaInicio.Name = "colFechaInicio";
-            this.colFechaInicio.Width = 80;
-            // 
-            // colFechaNacimiento
-            // 
-            this.colFechaNacimiento.DataPropertyName = "FechaNacimiento";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.colFechaNacimiento.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colFechaNacimiento.HeaderText = "Fecha Nacimiento";
-            this.colFechaNacimiento.Name = "colFechaNacimiento";
-            this.colFechaNacimiento.Width = 80;
-            // 
-            // colDni
-            // 
-            this.colDni.DataPropertyName = "dni";
-            this.colDni.HeaderText = "DNI";
-            this.colDni.Name = "colDni";
-            this.colDni.Width = 80;
-            // 
-            // colNombres
-            // 
-            this.colNombres.DataPropertyName = "nombres";
-            this.colNombres.HeaderText = "Nombres";
-            this.colNombres.Name = "colNombres";
-            this.colNombres.Width = 120;
-            // 
-            // colApellidoPaterno
-            // 
-            this.colApellidoPaterno.DataPropertyName = "apellidoPaterno";
-            this.colApellidoPaterno.HeaderText = "Apellido Paterno";
-            this.colApellidoPaterno.Name = "colApellidoPaterno";
-            this.colApellidoPaterno.Width = 120;
-            // 
-            // colApellidoMaterno
-            // 
-            this.colApellidoMaterno.DataPropertyName = "ApellidoMaterno";
-            this.colApellidoMaterno.HeaderText = "Apellido Materno";
-            this.colApellidoMaterno.Name = "colApellidoMaterno";
-            this.colApellidoMaterno.Width = 120;
-            // 
-            // colPlanilla
-            // 
-            this.colPlanilla.DataPropertyName = "Planilla";
-            this.colPlanilla.HeaderText = "Planilla";
-            this.colPlanilla.Name = "colPlanilla";
-            this.colPlanilla.Width = 250;
-            // 
-            // colTieneSCRT
-            // 
-            this.colTieneSCRT.DataPropertyName = "TieneSCRT";
-            this.colTieneSCRT.HeaderText = "TieneSCRT";
-            this.colTieneSCRT.Name = "colTieneSCRT";
-            this.colTieneSCRT.ReadOnly = true;
-            // 
-            // colTipoSCRTSalud
-            // 
-            this.colTipoSCRTSalud.DataPropertyName = "TipoSCRTSalud";
-            this.colTipoSCRTSalud.HeaderText = "Tipo SCRT Salud";
-            this.colTipoSCRTSalud.Name = "colTipoSCRTSalud";
-            this.colTipoSCRTSalud.Visible = false;
-            // 
-            // colPeriodoTrabajador
-            // 
-            this.colPeriodoTrabajador.DataPropertyName = "PeriodoTrabajador";
-            this.colPeriodoTrabajador.HeaderText = "Periodo Trabajador";
-            this.colPeriodoTrabajador.Name = "colPeriodoTrabajador";
-            this.colPeriodoTrabajador.Visible = false;
-            // 
-            // colDatosPersonales
-            // 
-            this.colDatosPersonales.DataPropertyName = "DatosPersonales";
-            this.colDatosPersonales.HeaderText = "Datos Personales";
-            this.colDatosPersonales.Name = "colDatosPersonales";
-            this.colDatosPersonales.Visible = false;
-            // 
-            // colObservaciones
-            // 
-            this.colObservaciones.DataPropertyName = "Observaciones";
-            this.colObservaciones.HeaderText = "Observaciones";
-            this.colObservaciones.Name = "colObservaciones";
-            this.colObservaciones.Width = 120;
-            // 
-            // colRegimenTrabajador
-            // 
-            this.colRegimenTrabajador.DataPropertyName = "RegimenTrabajador";
-            this.colRegimenTrabajador.HeaderText = "Regimen Trabajador";
-            this.colRegimenTrabajador.Name = "colRegimenTrabajador";
-            this.colRegimenTrabajador.Visible = false;
             // 
             // cbAños
             // 
@@ -388,15 +279,190 @@
             this.btnCambiarDatos.Name = "btnCambiarDatos";
             this.btnCambiarDatos.Size = new System.Drawing.Size(106, 50);
             this.btnCambiarDatos.TabIndex = 66;
-            this.btnCambiarDatos.Text = "&Cambiar Datos";
+            this.btnCambiarDatos.Text = "&Cambiar Datos Trabajador";
             this.btnCambiarDatos.UseVisualStyleBackColor = false;
             this.btnCambiarDatos.Click += new System.EventHandler(this.btnCambiarDatos_Click);
+            // 
+            // btnCambiarDatosPersonales
+            // 
+            this.btnCambiarDatosPersonales.BackColor = System.Drawing.Color.MintCream;
+            this.btnCambiarDatosPersonales.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCambiarDatosPersonales.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCambiarDatosPersonales.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCambiarDatosPersonales.Location = new System.Drawing.Point(678, 429);
+            this.btnCambiarDatosPersonales.Name = "btnCambiarDatosPersonales";
+            this.btnCambiarDatosPersonales.Size = new System.Drawing.Size(106, 50);
+            this.btnCambiarDatosPersonales.TabIndex = 67;
+            this.btnCambiarDatosPersonales.Text = "C&ambiar Datos Personales";
+            this.btnCambiarDatosPersonales.UseVisualStyleBackColor = false;
+            this.btnCambiarDatosPersonales.Click += new System.EventHandler(this.btnCambiarDatosPersonales_Click);
+            // 
+            // chkCTA
+            // 
+            this.chkCTA.AutoSize = true;
+            this.chkCTA.Location = new System.Drawing.Point(456, 52);
+            this.chkCTA.Name = "chkCTA";
+            this.chkCTA.Size = new System.Drawing.Size(47, 17);
+            this.chkCTA.TabIndex = 68;
+            this.chkCTA.Text = "CTA";
+            this.chkCTA.UseVisualStyleBackColor = true;
+            // 
+            // colMarcado
+            // 
+            this.colMarcado.DataPropertyName = "Marcado";
+            this.colMarcado.HeaderText = "Check";
+            this.colMarcado.Name = "colMarcado";
+            this.colMarcado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colMarcado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colMarcado.Width = 70;
+            // 
+            // colNumero
+            // 
+            this.colNumero.DataPropertyName = "Numero";
+            this.colNumero.HeaderText = "Numero";
+            this.colNumero.Name = "colNumero";
+            this.colNumero.Width = 50;
+            // 
+            // colIdTrabajador
+            // 
+            this.colIdTrabajador.DataPropertyName = "id_trabajador";
+            this.colIdTrabajador.HeaderText = "IdTrabajador";
+            this.colIdTrabajador.Name = "colIdTrabajador";
+            this.colIdTrabajador.Visible = false;
+            // 
+            // colFechaInicio
+            // 
+            this.colFechaInicio.DataPropertyName = "FechaInicio";
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.colFechaInicio.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colFechaInicio.HeaderText = "Fecha Inicio";
+            this.colFechaInicio.Name = "colFechaInicio";
+            this.colFechaInicio.Width = 80;
+            // 
+            // colFechaNacimiento
+            // 
+            this.colFechaNacimiento.DataPropertyName = "FechaNacimiento";
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.colFechaNacimiento.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colFechaNacimiento.HeaderText = "Fecha Nacimiento";
+            this.colFechaNacimiento.Name = "colFechaNacimiento";
+            this.colFechaNacimiento.Width = 80;
+            // 
+            // colDni
+            // 
+            this.colDni.DataPropertyName = "dni";
+            this.colDni.HeaderText = "DNI";
+            this.colDni.Name = "colDni";
+            this.colDni.Width = 80;
+            // 
+            // colNombres
+            // 
+            this.colNombres.DataPropertyName = "nombres";
+            this.colNombres.HeaderText = "Nombres";
+            this.colNombres.Name = "colNombres";
+            this.colNombres.Width = 120;
+            // 
+            // colApellidoPaterno
+            // 
+            this.colApellidoPaterno.DataPropertyName = "apellidoPaterno";
+            this.colApellidoPaterno.HeaderText = "Apellido Paterno";
+            this.colApellidoPaterno.Name = "colApellidoPaterno";
+            this.colApellidoPaterno.Width = 120;
+            // 
+            // colApellidoMaterno
+            // 
+            this.colApellidoMaterno.DataPropertyName = "ApellidoMaterno";
+            this.colApellidoMaterno.HeaderText = "Apellido Materno";
+            this.colApellidoMaterno.Name = "colApellidoMaterno";
+            this.colApellidoMaterno.Width = 120;
+            // 
+            // colPlanilla
+            // 
+            this.colPlanilla.DataPropertyName = "Planilla";
+            this.colPlanilla.HeaderText = "Planilla";
+            this.colPlanilla.Name = "colPlanilla";
+            this.colPlanilla.Width = 250;
+            // 
+            // colTipoSCRTSalud
+            // 
+            this.colTipoSCRTSalud.DataPropertyName = "TipoSCRTSalud";
+            this.colTipoSCRTSalud.HeaderText = "Tipo SCRT Salud";
+            this.colTipoSCRTSalud.Name = "colTipoSCRTSalud";
+            this.colTipoSCRTSalud.Width = 70;
+            // 
+            // colTipoSCRTPension
+            // 
+            this.colTipoSCRTPension.DataPropertyName = "TipoSCRTPension";
+            this.colTipoSCRTPension.HeaderText = "Tipo SCRT Pension";
+            this.colTipoSCRTPension.Name = "colTipoSCRTPension";
+            this.colTipoSCRTPension.Width = 70;
+            // 
+            // colPeriodoTrabajador
+            // 
+            this.colPeriodoTrabajador.DataPropertyName = "PeriodoTrabajador";
+            this.colPeriodoTrabajador.HeaderText = "Periodo Trabajador";
+            this.colPeriodoTrabajador.Name = "colPeriodoTrabajador";
+            this.colPeriodoTrabajador.Visible = false;
+            // 
+            // colDatosPersonales
+            // 
+            this.colDatosPersonales.DataPropertyName = "DatosPersonales";
+            this.colDatosPersonales.HeaderText = "Datos Personales";
+            this.colDatosPersonales.Name = "colDatosPersonales";
+            this.colDatosPersonales.Visible = false;
+            // 
+            // colCuentaBancaria
+            // 
+            this.colCuentaBancaria.DataPropertyName = "CuentaBancaria";
+            dataGridViewCellStyle4.NullValue = "NoTiene";
+            this.colCuentaBancaria.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colCuentaBancaria.HeaderText = "Cuenta Bancaria";
+            this.colCuentaBancaria.Name = "colCuentaBancaria";
+            this.colCuentaBancaria.Visible = false;
+            // 
+            // colTieneCuentaBancaria
+            // 
+            this.colTieneCuentaBancaria.DataPropertyName = "TieneCuentaBancaria";
+            this.colTieneCuentaBancaria.HeaderText = "Cuenta Bancaria";
+            this.colTieneCuentaBancaria.Name = "colTieneCuentaBancaria";
+            this.colTieneCuentaBancaria.Width = 50;
+            // 
+            // colCargo
+            // 
+            this.colCargo.DataPropertyName = "Cargo";
+            this.colCargo.HeaderText = "Cargo";
+            this.colCargo.Name = "colCargo";
+            // 
+            // colObservaciones
+            // 
+            this.colObservaciones.DataPropertyName = "Observaciones";
+            this.colObservaciones.HeaderText = "Observaciones";
+            this.colObservaciones.Name = "colObservaciones";
+            this.colObservaciones.Width = 120;
+            // 
+            // colRegimenTrabajador
+            // 
+            this.colRegimenTrabajador.DataPropertyName = "RegimenTrabajador";
+            this.colRegimenTrabajador.HeaderText = "Regimen Trabajador";
+            this.colRegimenTrabajador.Name = "colRegimenTrabajador";
+            this.colRegimenTrabajador.Visible = false;
+            // 
+            // colidtdetalleplanilla
+            // 
+            this.colidtdetalleplanilla.DataPropertyName = "iddetalleplanilla";
+            this.colidtdetalleplanilla.HeaderText = "IDdetallePlanilla";
+            this.colidtdetalleplanilla.Name = "colidtdetalleplanilla";
+            this.colidtdetalleplanilla.Visible = false;
             // 
             // frmDarAltaTregistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1004, 502);
+            this.Controls.Add(this.chkCTA);
+            this.Controls.Add(this.btnCambiarDatosPersonales);
             this.Controls.Add(this.btnCambiarDatos);
             this.Controls.Add(this.btnVerCodificacion);
             this.Controls.Add(this.btnExportar);
@@ -441,6 +507,8 @@
         private System.Windows.Forms.Button btnVerCodificacion;
         private System.Windows.Forms.Button btnExportar;
         private System.Windows.Forms.Button btnCambiarDatos;
+        private System.Windows.Forms.Button btnCambiarDatosPersonales;
+        private System.Windows.Forms.CheckBox chkCTA;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colMarcado;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNumero;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdTrabajador;
@@ -451,11 +519,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colApellidoPaterno;
         private System.Windows.Forms.DataGridViewTextBoxColumn colApellidoMaterno;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPlanilla;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn colTieneSCRT;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTipoSCRTSalud;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTipoSCRTPension;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPeriodoTrabajador;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDatosPersonales;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCuentaBancaria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTieneCuentaBancaria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCargo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colObservaciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRegimenTrabajador;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colidtdetalleplanilla;
     }
 }
