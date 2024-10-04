@@ -51,13 +51,15 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                     regimen.Afp.CodigoAFP = Convert.ToInt32(tLista.Rows[i][11].ToString());
                     regimen.Afp.Nombre = tLista.Rows[i][12].ToString();
                     regimen.Afp.Codigosunat = tLista.Rows[i][13].ToString();
+                    Trabajador.IdDetallePlanilla = Convert.ToInt32(tLista.Rows[i][15].ToString());
                     Trabajador.PeriodosRegimenPensionario.Add(regimen);
                     Trabajador.RegimenTrabajador.IdtRegimenTrabajador = Convert.ToInt32(tLista.Rows[i][14].ToString());
                     Trabajador.DatosTrabajador = TraerDatosTrabajador(Trabajador, new DateTime(Convert.ToInt32(año), miUtilidades.ConvertirMesANumero(mes), 1));
                     
-                    Trabajador.IdDetallePlanilla = Convert.ToInt32(tLista.Rows[i][15].ToString());
+                    
                     Trabajador.Cargo = tLista.Rows[i][16].ToString();
                     Trabajador.TipoSCRTPension = TraerSCRTPension(Trabajador.IdDetallePlanilla);
+                    
                     Trabajador.TipoSCRTSalud = TraerSCRTSalud(Trabajador.IdDetallePlanilla);
                     if (Trabajador.DatosTrabajador[0].NumeroCuenta.Trim().Count() > 0)
                     {
