@@ -251,7 +251,7 @@ namespace CapaDeNegocios.PlanillaNueva
                 }     
                 else
                 {
-                    throw new cReglaNegociosException("blPlanilla: No existe detalles de planilla");
+                    throw new cReglaNegociosException("blPlanilla: No existe detalles de planilla Nro: " + Planilla.numeroPlanilla);
                 }
             }
             catch (Exception e)

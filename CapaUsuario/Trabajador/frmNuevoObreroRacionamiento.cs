@@ -454,7 +454,7 @@ namespace CapaUsuario.Trabajador
                     }
 
                     dtpFechaNacimiento.Value = ToDateTime(MiTrabajadorValidado.Data.fecha_nacimiento);
-                    oDistrito = miDistrito.TraerDistritoxUbigeo(MiTrabajadorValidado.Data.ubigeo_sunat);
+                    oDistrito = miDistrito.TraerDistritoxUbigeo(MiTrabajadorValidado.Data.ubigeo_reniec);
                     oProvincia = miProvincia.TraerProvincia(oDistrito.MiProvincia.Codigo);
 
                     cboDepartamento.SelectedValue = oProvincia.MiDepartamento.Codigo;

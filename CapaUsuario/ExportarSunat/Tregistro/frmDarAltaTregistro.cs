@@ -55,6 +55,25 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                 {
                     ListaTrabajadoresAltaTRegistro = oCatalogo.TraerListaTrabajadoresTRegistro(cbMes.Text, cbAños.Text);
                     dtgListaTrabajadores.DataSource = ListaTrabajadoresAltaTRegistro;
+                    List<string> Lista = new List<string>();
+                    foreach (cTrabajadorAltaTRegistro item in ListaTrabajadoresAltaTRegistro)
+                    {
+                        Lista.Add(item.DNI);
+                    }
+
+                    List<string> duplicados = Lista.GroupBy(x => x)
+                                      .Where(g => g.Count() > 1)
+                                      .Select(x => x.Key)
+                                      .ToList();
+                    if (duplicados.Count > 0)
+                    {
+                        string dniRepetidos = "";
+                        foreach (string item in duplicados)
+                        {
+                            dniRepetidos += " " + item;
+                        }
+                        MessageBox.Show("Hay dos registros con la fecha de ingreso con los dni:" + dniRepetidos);
+                    }
                 }
             }
             catch (Exception ex)
@@ -252,6 +271,15 @@ namespace CapaUsuario.ExportarSunat.Tregistro
             {
                 MessageBox.Show(g.Message);
 
+            }
+        }
+
+        private void mnuCopiarDNI_Click(object sender, EventArgs e)
+        {
+            if (dtgListaTrabajadores.SelectedCells.Count > 0)
+            {
+                Clipboard.SetDataObject(dtgListaTrabajadores.SelectedRows[0].Cells["colDNI"].Value.ToString());
+                MessageBox.Show("DNI " + dtgListaTrabajadores.SelectedRows[0].Cells["colDNI"].Value.ToString() + " copiado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

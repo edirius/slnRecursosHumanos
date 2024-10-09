@@ -713,6 +713,13 @@ namespace CapaUsuario
             fListaRelojes.Show();
         }
 
+        private void mnuTrabajadoresSinPlanilla_Click(object sender, EventArgs e)
+        {
+            Planilla.TrabajadoresSinPlanilla.frmTrabajadoresSinPlanilla fTrabajadoresSinPlanilla = new Planilla.TrabajadoresSinPlanilla.frmTrabajadoresSinPlanilla();
+            fTrabajadoresSinPlanilla.MdiParent = this;
+            fTrabajadoresSinPlanilla.Show();
+        }
+
         private void mnuResidenteMeta_Click(object sender, EventArgs e)
         {
             ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();

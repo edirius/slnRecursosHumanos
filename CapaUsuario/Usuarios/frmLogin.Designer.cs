@@ -191,9 +191,9 @@
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
             this.label3.Location = new System.Drawing.Point(291, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 13);
+            this.label3.Size = new System.Drawing.Size(102, 13);
             this.label3.TabIndex = 11;
-            this.label3.Text = "V: 2.09 09042024";
+            this.label3.Text = "V: 2.11 08/10/2024";
             // 
             // frmLogin
             // 

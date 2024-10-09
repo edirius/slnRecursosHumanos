@@ -1017,13 +1017,15 @@ namespace CapaUsuario.Trabajador
                     }
 
                     dtpFechaNacimiento.Value = ToDateTime(MiTrabajadorValidado.Data.fecha_nacimiento);
-                    oDistrito = oDistrito.TraerDistritoxUbigeo(MiTrabajadorValidado.Data.ubigeo_sunat);
+                    oDistrito = oDistrito.TraerDistritoxUbigeo(MiTrabajadorValidado.Data.ubigeo_reniec);
                     oProvincia = oProvincia.TraerProvincia(oDistrito.MiProvincia.Codigo);
                     oDepartamento = oDepartamento.TraerDepartamento(oProvincia.MiDepartamento.Codigo);
 
                     txtDepartamento.Text = oDepartamento.Descripcion;
                     txtProvincia.Text = oProvincia.Descripcion;
                     txtDistrito.Text = oDistrito.Descripcion;
+
+                    miTrabajador.MiDistrito = oDistrito;
                 }
                 else
                 {

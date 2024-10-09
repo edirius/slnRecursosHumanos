@@ -323,50 +323,53 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                 int contador = 0;
                 foreach (cTrabajadorAltaTRegistro item in ListaTrabajadores)
                 {
-                    Tregistro.cFilarDatosJor tra = new cFilarDatosJor();
-                    contador++;
-                    tra.Numero = contador;
-                    tra.TipoDocumento = item.DatosPersonales.TipoDocumento.Numero + " - " + item.DatosPersonales.TipoDocumento.DescripcionAbreviadad;
-                    tra.NumeroDocumento = item.DatosPersonales.NumeroDocumento;
-                    tra.Nombres = item.DatosPersonales.Nombres;
-                    tra.ApellidoPaterno = item.DatosPersonales.ApellidoPaterno;
-                    tra.ApellidoMaterno = item.DatosPersonales.ApellidoMaterno;
-                    tra.FechaNacimiento = item.DatosPersonales.FechaNacimiento.ToShortDateString();
-                    tra.Sexo = item.DatosPersonales.Sexo.Sexo;
-                    tra.Nacionalidad = item.DatosPersonales.Nacionalidad.Numero + " - " + item.DatosPersonales.Nacionalidad.Descripcion;
-                    tra.TelefonoCodigoLargaDistancia = item.DatosPersonales.TelefonoCodigoLargaDistancia;
-                    tra.Telefono = item.DatosPersonales.Telefono;
-                    tra.CorreoElectronico = item.DatosPersonales.CorreoElectronico;
-                    tra.Direccion01_Tipovia = item.DatosPersonales.Direccion01.TipoVia.Numero + " - " + item.DatosPersonales.Direccion01.TipoVia.Descripcion;
-                    tra.Direccion01_Nombrevia = item.DatosPersonales.Direccion01.NombreVia;
-                    tra.Direccion01_Numerovia = item.DatosPersonales.Direccion01.NumeroVia;
-                    tra.Direccion01_Departamento = item.DatosPersonales.Direccion01.Departamento;
-                    tra.Direccion01_Interior = item.DatosPersonales.Direccion01.Interior;
-                    tra.Direccion01_Manzana = item.DatosPersonales.Direccion01.Manzana;
-                    tra.Direccion01_Lote = item.DatosPersonales.Direccion01.Lote;
-                    tra.Direccion01_Kilometro = item.DatosPersonales.Direccion01.Kilometro;
-                    tra.Direccion01_Bloque = item.DatosPersonales.Direccion01.Bloque;
-                    tra.Direccion01_Etapa = item.DatosPersonales.Direccion01.Etapa;
-                    tra.Direccion01_Tipozona = item.DatosPersonales.Direccion01.TipoZona.Numero + " - " + item.DatosPersonales.Direccion01.TipoZona.Descripcion;
-                    tra.Direccion01_Nombrezona = item.DatosPersonales.Direccion01.NombreZona;
-                    tra.Direccion01_Referencia = item.DatosPersonales.Direccion01.Referencia;
-                    tra.Direccion01_Ubigeo = item.DatosPersonales.Direccion01.Distrito.CodigoUbigeo + " - " + item.DatosPersonales.Direccion01.Distrito.Descripcion;
-                    tra.Direccion02_Tipovia = item.DatosPersonales.Direccion02.TipoVia.Numero + " - " + item.DatosPersonales.Direccion02.TipoVia.Descripcion;
-                    tra.Direccion02_Nombrevia = item.DatosPersonales.Direccion02.NombreVia;
-                    tra.Direccion02_Numerovia = item.DatosPersonales.Direccion02.NumeroVia;
-                    tra.Direccion02_Departamento = item.DatosPersonales.Direccion02.Departamento;
-                    tra.Direccion02_Interior = item.DatosPersonales.Direccion02.Interior;
-                    tra.Direccion02_Manzana = item.DatosPersonales.Direccion02.Manzana;
-                    tra.Direccion02_Lote = item.DatosPersonales.Direccion02.Lote;
-                    tra.Direccion02_Kilometro = item.DatosPersonales.Direccion02.Kilometro;
-                    tra.Direccion02_Bloque = item.DatosPersonales.Direccion02.Bloque;
-                    tra.Direccion02_Etapa = item.DatosPersonales.Direccion02.Etapa;
-                    tra.Direccion02_Tipozona = item.DatosPersonales.Direccion02.TipoZona.Numero + " - " + item.DatosPersonales.Direccion02.TipoZona.Descripcion;
-                    tra.Direccion02_Nombrezona = item.DatosPersonales.Direccion02.NombreZona;
-                    tra.IndicarSalud = item.DatosPersonales.IndicadorEssalud;
+                    if (item.Marcado == true)
+                    {
+                        Tregistro.cFilarDatosJor tra = new cFilarDatosJor();
+                        contador++;
+                        tra.Numero = contador;
+                        tra.TipoDocumento = item.DatosPersonales.TipoDocumento.Numero + " - " + item.DatosPersonales.TipoDocumento.DescripcionAbreviadad;
+                        tra.NumeroDocumento = item.DatosPersonales.NumeroDocumento;
+                        tra.Nombres = item.DatosPersonales.Nombres;
+                        tra.ApellidoPaterno = item.DatosPersonales.ApellidoPaterno;
+                        tra.ApellidoMaterno = item.DatosPersonales.ApellidoMaterno;
+                        tra.FechaNacimiento = item.DatosPersonales.FechaNacimiento.ToShortDateString();
+                        tra.Sexo = item.DatosPersonales.Sexo.Sexo;
+                        tra.Nacionalidad = item.DatosPersonales.Nacionalidad.Numero + " - " + item.DatosPersonales.Nacionalidad.Descripcion;
+                        tra.TelefonoCodigoLargaDistancia = item.DatosPersonales.TelefonoCodigoLargaDistancia;
+                        tra.Telefono = item.DatosPersonales.Telefono;
+                        tra.CorreoElectronico = item.DatosPersonales.CorreoElectronico;
+                        tra.Direccion01_Tipovia = item.DatosPersonales.Direccion01.TipoVia.Numero + " - " + item.DatosPersonales.Direccion01.TipoVia.Descripcion;
+                        tra.Direccion01_Nombrevia = item.DatosPersonales.Direccion01.NombreVia;
+                        tra.Direccion01_Numerovia = item.DatosPersonales.Direccion01.NumeroVia;
+                        tra.Direccion01_Departamento = item.DatosPersonales.Direccion01.Departamento;
+                        tra.Direccion01_Interior = item.DatosPersonales.Direccion01.Interior;
+                        tra.Direccion01_Manzana = item.DatosPersonales.Direccion01.Manzana;
+                        tra.Direccion01_Lote = item.DatosPersonales.Direccion01.Lote;
+                        tra.Direccion01_Kilometro = item.DatosPersonales.Direccion01.Kilometro;
+                        tra.Direccion01_Bloque = item.DatosPersonales.Direccion01.Bloque;
+                        tra.Direccion01_Etapa = item.DatosPersonales.Direccion01.Etapa;
+                        tra.Direccion01_Tipozona = item.DatosPersonales.Direccion01.TipoZona.Numero + " - " + item.DatosPersonales.Direccion01.TipoZona.Descripcion;
+                        tra.Direccion01_Nombrezona = item.DatosPersonales.Direccion01.NombreZona;
+                        tra.Direccion01_Referencia = item.DatosPersonales.Direccion01.Referencia;
+                        tra.Direccion01_Ubigeo = item.DatosPersonales.Direccion01.Distrito.CodigoUbigeo + " - " + item.DatosPersonales.Direccion01.Distrito.Descripcion;
+                        tra.Direccion02_Tipovia = item.DatosPersonales.Direccion02.TipoVia.Numero + " - " + item.DatosPersonales.Direccion02.TipoVia.Descripcion;
+                        tra.Direccion02_Nombrevia = item.DatosPersonales.Direccion02.NombreVia;
+                        tra.Direccion02_Numerovia = item.DatosPersonales.Direccion02.NumeroVia;
+                        tra.Direccion02_Departamento = item.DatosPersonales.Direccion02.Departamento;
+                        tra.Direccion02_Interior = item.DatosPersonales.Direccion02.Interior;
+                        tra.Direccion02_Manzana = item.DatosPersonales.Direccion02.Manzana;
+                        tra.Direccion02_Lote = item.DatosPersonales.Direccion02.Lote;
+                        tra.Direccion02_Kilometro = item.DatosPersonales.Direccion02.Kilometro;
+                        tra.Direccion02_Bloque = item.DatosPersonales.Direccion02.Bloque;
+                        tra.Direccion02_Etapa = item.DatosPersonales.Direccion02.Etapa;
+                        tra.Direccion02_Tipozona = item.DatosPersonales.Direccion02.TipoZona.Numero + " - " + item.DatosPersonales.Direccion02.TipoZona.Descripcion;
+                        tra.Direccion02_Nombrezona = item.DatosPersonales.Direccion02.NombreZona;
+                        tra.IndicarSalud = item.DatosPersonales.IndicadorEssalud;
 
 
-                    Lista.Add(tra);
+                        Lista.Add(tra);
+                    }
                 }
                 return Lista;
             }
@@ -763,38 +766,54 @@ namespace CapaUsuario.ExportarSunat.Tregistro
                 int contador = 0;
                 foreach (cTrabajadorAltaTRegistro item in ListaTrabajadores)
                 {
-                    //item.DatosTrabajador = oCatalogo.TraerDatosTrabajador(item, Mes);
-                    foreach (cDatosTrabajador item2 in item.DatosTrabajador)
+                    if (item.Marcado == true)
                     {
-                        cFilaDatosTra tra = new cFilaDatosTra();
-                        contador++;
-                        tra.Numero = contador;
-                        tra.TipoDocumento = item2.TipoDocumento.Numero + " - " + item2.TipoDocumento.DescripcionAbreviadad;
-                        tra.NumeroDocumento = item2.NumeroDocumento;
-                        tra.PaisEmisorDocumento = item2.PaisEmisor.Codigo + " - " + item2.PaisEmisor.Descripcion;
-                        tra.RegimenLaboral = item2.RegimenLaboral.Codigo + " - " + item2.RegimenLaboral.DescripcionAbreviada;
-                        tra.SituacionEducativa = item2.SituacionEducativa.Numero + " - " + item2.SituacionEducativa.DescripcionAbreviada;
-                        tra.Ocupacion = item2.Ocupacion.Codigo + " - " + item2.Ocupacion.Nombre;
-                        tra.Discapacidad = item2.Discapacidad;
-                        tra.CUSPP = item2.CUSPP;
-                        tra.SCRTPension = item2.SCRTPension;
-                        tra.TipoContrato = item2.TipoContrato.Numero + " - " + item2.TipoContrato.DescripcionAbreviada;
-                        tra.SujetoARegimenAcumulativo = item2.SujetoARegimenAlternativo;
-                        tra.SujetoAjornadaMaxima = item2.SujetoAJornadaMaxima;
-                        tra.SujetoAHorarioNocturno = item2.SujetoAHorarioNocturno;
-                        tra.EsSindicalizado = item2.EsSindicalizado;
-                        tra.PeriocidadRemuneracion = item2.PeriodicidadIngreso.Numero + " - " + item2.PeriodicidadIngreso.Descripcion; ;
-                        tra.MontoBasicoRemuneracion = item2.MontoBasico.ToString();
-                        tra.Situacion = item2.Situacion.Numero + " - " + item2.Situacion.DescripcionAbreviada; ;
-                        tra.RentaQuintaExoneradas = item2.RentaQuintaExonerada;
-                        tra.SituacionEspecialTrabajador = item2.SituacionEspecialTrabajador.Numero + " - " + item2.SituacionEspecialTrabajador.DescripcionAbreviada;
-                        tra.TipoPago = item2.TipoPago.Numero + " - " + item2.TipoPago.Descripcion;
-                        tra.CategoriaOcupacionalTrabajador = item2.CategoriaOcupacionalTrabajador.Codigo + " - " + item2.CategoriaOcupacionalTrabajador.Descripcion;
-                        tra.ConvenioEvitarDobleTributacion = item2.ConvenioParaEvitarDobleTri;
-                        tra.RUC = item2.RUC;
-                        Lista.Add(tra);
+                        //item.DatosTrabajador = oCatalogo.TraerDatosTrabajador(item, Mes);
+                        foreach (cDatosTrabajador item2 in item.DatosTrabajador)
+                        {
+                            cFilaDatosTra tra = new cFilaDatosTra();
+                            contador++;
+                            tra.Numero = contador;
+                            tra.TipoDocumento = item2.TipoDocumento.Numero + " - " + item2.TipoDocumento.DescripcionAbreviadad;
+                            tra.NumeroDocumento = item2.NumeroDocumento;
+                            tra.PaisEmisorDocumento = item2.PaisEmisor.Codigo + " - " + item2.PaisEmisor.Descripcion;
+                            tra.RegimenLaboral = item2.RegimenLaboral.Codigo + " - " + item2.RegimenLaboral.DescripcionAbreviada;
+                            tra.SituacionEducativa = item2.SituacionEducativa.Numero + " - " + item2.SituacionEducativa.DescripcionAbreviada;
+                            tra.Ocupacion = item2.Ocupacion.Codigo + " - " + item2.Ocupacion.Nombre;
+                            tra.Discapacidad = item2.Discapacidad;
+                            tra.CUSPP = item2.CUSPP;
+                            tra.SCRTPension = item2.SCRTPension;
+                            switch (item2.SCRTPension)
+                            {
+                                case "":
+                                    tra.SCRTPension += " - Sin SCRT";
+                                    break;
+                                case "1":
+                                    tra.SCRTPension += " - ONP";
+                                    break;
+                                case "2":
+                                    tra.SCRTPension += " - Privado";
+                                    break;
+                                default:
+                                    break;
+                            }
+                            tra.TipoContrato = item2.TipoContrato.Numero + " - " + item2.TipoContrato.Descripcion;
+                            tra.SujetoARegimenAcumulativo = item2.SujetoARegimenAlternativo;
+                            tra.SujetoAjornadaMaxima = item2.SujetoAJornadaMaxima;
+                            tra.SujetoAHorarioNocturno = item2.SujetoAHorarioNocturno;
+                            tra.EsSindicalizado = item2.EsSindicalizado;
+                            tra.PeriocidadRemuneracion = item2.PeriodicidadIngreso.Numero + " - " + item2.PeriodicidadIngreso.Descripcion; ;
+                            tra.MontoBasicoRemuneracion = item2.MontoBasico.ToString();
+                            tra.Situacion = item2.Situacion.Numero + " - " + item2.Situacion.DescripcionAbreviada; ;
+                            tra.RentaQuintaExoneradas = item2.RentaQuintaExonerada;
+                            tra.SituacionEspecialTrabajador = item2.SituacionEspecialTrabajador.Numero + " - " + item2.SituacionEspecialTrabajador.DescripcionAbreviada;
+                            tra.TipoPago = item2.TipoPago.Numero + " - " + item2.TipoPago.Descripcion;
+                            tra.CategoriaOcupacionalTrabajador = item2.CategoriaOcupacionalTrabajador.Codigo + " - " + item2.CategoriaOcupacionalTrabajador.Descripcion;
+                            tra.ConvenioEvitarDobleTributacion = item2.ConvenioParaEvitarDobleTri;
+                            tra.RUC = item2.RUC;
+                            Lista.Add(tra);
+                        }
                     }
-                    
                 }
                 return Lista;
             }
@@ -928,42 +947,44 @@ namespace CapaUsuario.ExportarSunat.Tregistro
             int contador = 0;
             foreach (cTrabajadorAltaTRegistro item in ListaTrabajadores)
             {
-                foreach (cDatosPeriodo item2 in item.DatosPeriodo)
+                if (item.Marcado)
                 {
-                    cFilaDatosPer per = new cFilaDatosPer();
-                    contador++;
-                    per.Numero = contador;
-                    per.TipoDocumento = item2.TipoDocumento.Numero + " - " + item2.TipoDocumento.DescripcionAbreviadad;
-                    per.NumeroDocumento = item2.NumeroDocumento;
-                    per.PaisEmisorDocumento = item2.PaisEmisor.Codigo + " - " + item2.PaisEmisor.Descripcion;
-                    per.Categoría = ((int)item2.Categoria).ToString() + " - " + item2.Categoria.ToString();
-                    per.TipoDeRegistro = ((int)item2.TipoRegistro).ToString() + " - " + item2.TipoRegistro.ToString();
-                    per.FechaInicio = item2.FechaInicio.ToString();
-                    per.FechaFin = item2.FechaFin.ToString();
-                    switch (item2.TipoRegistro)
+                    foreach (cDatosPeriodo item2 in item.DatosPeriodo)
                     {
-                        case enumTipoRegistro.Periodo:
-                            per.IndicadorTipoRegistro = item2.MotivoFinPeriodo.Numero + " - " + item2.MotivoFinPeriodo.DescripcionAbreviada;
-                            break;
-                        case enumTipoRegistro.TipoTrabajador:
-                            per.IndicadorTipoRegistro = item2.TipoTrabajador.Numero + " - " + item2.TipoTrabajador.DescripcionAbreviada;
-                            break;
-                        case enumTipoRegistro.RegimenSalud:
-                            per.IndicadorTipoRegistro = item2.RegimenSalud.Numero + " - " + item2.RegimenSalud.DescripcionAbreviada;
-                            break;
-                        case enumTipoRegistro.RegimenPensionario:
-                            per.IndicadorTipoRegistro = item2.RegimenPensionario.Numero + " - " + item2.RegimenPensionario.DescripcionAbreviada;
-                            break;
-                        case enumTipoRegistro.SCRTSalud:
-                            per.IndicadorTipoRegistro = ((int)item2.SCRTSalud).ToString();
-                            break;
-                        default:
-                            break;
+                        cFilaDatosPer per = new cFilaDatosPer();
+                        contador++;
+                        per.Numero = contador;
+                        per.TipoDocumento = item2.TipoDocumento.Numero + " - " + item2.TipoDocumento.DescripcionAbreviadad;
+                        per.NumeroDocumento = item2.NumeroDocumento;
+                        per.PaisEmisorDocumento = item2.PaisEmisor.Codigo + " - " + item2.PaisEmisor.Descripcion;
+                        per.Categoría = ((int)item2.Categoria).ToString() + " - " + item2.Categoria.ToString();
+                        per.TipoDeRegistro = ((int)item2.TipoRegistro).ToString() + " - " + item2.TipoRegistro.ToString();
+                        per.FechaInicio = item2.FechaInicio.ToString();
+                        per.FechaFin = item2.FechaFin.ToString();
+                        switch (item2.TipoRegistro)
+                        {
+                            case enumTipoRegistro.Periodo:
+                                per.IndicadorTipoRegistro = item2.MotivoFinPeriodo.Numero + " - " + item2.MotivoFinPeriodo.DescripcionAbreviada;
+                                break;
+                            case enumTipoRegistro.TipoTrabajador:
+                                per.IndicadorTipoRegistro = item2.TipoTrabajador.Numero + " - " + item2.TipoTrabajador.DescripcionAbreviada;
+                                break;
+                            case enumTipoRegistro.RegimenSalud:
+                                per.IndicadorTipoRegistro = item2.RegimenSalud.Numero + " - " + item2.RegimenSalud.DescripcionAbreviada;
+                                break;
+                            case enumTipoRegistro.RegimenPensionario:
+                                per.IndicadorTipoRegistro = item2.RegimenPensionario.Numero + " - " + item2.RegimenPensionario.DescripcionAbreviada;
+                                break;
+                            case enumTipoRegistro.SCRTSalud:
+                                per.IndicadorTipoRegistro = ((int)item2.SCRTSalud).ToString();
+                                break;
+                            default:
+                                break;
+                        }
+                        Lista.Add(per);
                     }
-                    Lista.Add(per);
                 }
             }
-
             return Lista;
         }
 

@@ -64,6 +64,7 @@
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.btnConexionReloj = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDescargarDatosReloj = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaRelojesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horasHombreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -86,6 +87,8 @@
             this.planillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plantillaPlanillaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.residenteMetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuTrabajadoresSinPlanilla = new System.Windows.Forms.ToolStripMenuItem();
             this.sUNATToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.motivoFinPeriodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.maestroIngresosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -143,7 +146,6 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.listaRelojesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -436,6 +438,13 @@
             this.btnDescargarDatosReloj.Text = "Descargar Datos Reloj";
             this.btnDescargarDatosReloj.Click += new System.EventHandler(this.btnDescargarDatosReloj_Click);
             // 
+            // listaRelojesToolStripMenuItem
+            // 
+            this.listaRelojesToolStripMenuItem.Name = "listaRelojesToolStripMenuItem";
+            this.listaRelojesToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
+            this.listaRelojesToolStripMenuItem.Text = "Lista Relojes";
+            this.listaRelojesToolStripMenuItem.Click += new System.EventHandler(this.listaRelojesToolStripMenuItem_Click);
+            // 
             // toolsMenu
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -577,7 +586,9 @@
             this.planillasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.planillaToolStripMenuItem,
             this.plantillaPlanillaToolStripMenuItem,
-            this.residenteMetaToolStripMenuItem});
+            this.residenteMetaToolStripMenuItem,
+            this.toolStripSeparator14,
+            this.mnuTrabajadoresSinPlanilla});
             this.planillasToolStripMenuItem.Name = "planillasToolStripMenuItem";
             this.planillasToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.planillasToolStripMenuItem.Text = "Planillas";
@@ -586,23 +597,36 @@
             // 
             this.planillaToolStripMenuItem.Image = global::CapaUsuario.Properties.Resources.WinXPSetV4_Icon_61;
             this.planillaToolStripMenuItem.Name = "planillaToolStripMenuItem";
-            this.planillaToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.planillaToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.planillaToolStripMenuItem.Text = "Planilla";
             this.planillaToolStripMenuItem.Click += new System.EventHandler(this.planillaToolStripMenuItem_Click);
             // 
             // plantillaPlanillaToolStripMenuItem
             // 
             this.plantillaPlanillaToolStripMenuItem.Name = "plantillaPlanillaToolStripMenuItem";
-            this.plantillaPlanillaToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.plantillaPlanillaToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.plantillaPlanillaToolStripMenuItem.Text = "Formatos de Planillas";
             this.plantillaPlanillaToolStripMenuItem.Click += new System.EventHandler(this.plantillaPlanillaToolStripMenuItem_Click);
             // 
             // residenteMetaToolStripMenuItem
             // 
             this.residenteMetaToolStripMenuItem.Name = "residenteMetaToolStripMenuItem";
-            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.residenteMetaToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.residenteMetaToolStripMenuItem.Text = "Residente Meta";
             this.residenteMetaToolStripMenuItem.Click += new System.EventHandler(this.residenteMetaToolStripMenuItem_Click_1);
+            // 
+            // toolStripSeparator14
+            // 
+            this.toolStripSeparator14.Name = "toolStripSeparator14";
+            this.toolStripSeparator14.Size = new System.Drawing.Size(197, 6);
+            // 
+            // mnuTrabajadoresSinPlanilla
+            // 
+            this.mnuTrabajadoresSinPlanilla.Image = global::CapaUsuario.Properties.Resources.user_calendar_0;
+            this.mnuTrabajadoresSinPlanilla.Name = "mnuTrabajadoresSinPlanilla";
+            this.mnuTrabajadoresSinPlanilla.Size = new System.Drawing.Size(200, 22);
+            this.mnuTrabajadoresSinPlanilla.Text = "Trabajadores sin Planilla";
+            this.mnuTrabajadoresSinPlanilla.Click += new System.EventHandler(this.mnuTrabajadoresSinPlanilla_Click);
             // 
             // sUNATToolStripMenuItem
             // 
@@ -1060,13 +1084,6 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // listaRelojesToolStripMenuItem
-            // 
-            this.listaRelojesToolStripMenuItem.Name = "listaRelojesToolStripMenuItem";
-            this.listaRelojesToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
-            this.listaRelojesToolStripMenuItem.Text = "Lista Relojes";
-            this.listaRelojesToolStripMenuItem.Click += new System.EventHandler(this.listaRelojesToolStripMenuItem_Click);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1216,6 +1233,8 @@
         private System.Windows.Forms.ToolStripMenuItem listaTiposSalidaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem darDeAltaAlTrabajadorV2TREGISTROToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaRelojesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
+        private System.Windows.Forms.ToolStripMenuItem mnuTrabajadoresSinPlanilla;
     }
 }
 

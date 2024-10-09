@@ -493,6 +493,12 @@
     <Compile Include="Planilla\frmRenta5taProyectado.Designer.cs">
       <DependentUpon>frmRenta5taProyectado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Planilla\TrabajadoresSinPlanilla\frmTrabajadoresSinPlanilla.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\TrabajadoresSinPlanilla\frmTrabajadoresSinPlanilla.Designer.cs">
+      <DependentUpon>frmTrabajadoresSinPlanilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reloj\frmAdministrarReloj.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1861,6 +1867,9 @@
     <EmbeddedResource Include="Planilla\frmRenta5taProyectado.resx">
       <DependentUpon>frmRenta5taProyectado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\TrabajadoresSinPlanilla\frmTrabajadoresSinPlanilla.resx">
+      <DependentUpon>frmTrabajadoresSinPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reloj\frmAdministrarReloj.resx">
       <DependentUpon>frmAdministrarReloj.cs</DependentUpon>
     </EmbeddedResource>
@@ -2326,6 +2335,7 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\user_calendar-0.png" />
     <None Include="Resources\user_cardx.png" />
     <None Include="Resources\user_card1.png" />
     <None Include="Resources\sched_tasks.png" />

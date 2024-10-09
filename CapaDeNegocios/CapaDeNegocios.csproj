@@ -179,6 +179,8 @@
     <Compile Include="PlanillaNueva\cnDetallePlanillaAportacionesTrabajador.cs" />
     <Compile Include="PlanillaNueva\cnPlanilla.cs" />
     <Compile Include="PlanillaNueva\cPeriodoRegimenPensionario.cs" />
+    <Compile Include="Planillas\Baja\cCatalogoBaja.cs" />
+    <Compile Include="Planillas\Baja\cTrabajadorParaDarBaja.cs" />
     <Compile Include="Planillas\cAportaciones.cs" />
     <Compile Include="Planillas\cCalculo5taProyectada.cs" />
     <Compile Include="Planillas\cCalculo5taCategoria.cs" />

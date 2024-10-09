@@ -61,8 +61,6 @@
             this.colUbigeo1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtgTra = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dtgPer = new System.Windows.Forms.DataGridView();
             this.traNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.traTipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.traNumeroDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +85,8 @@
             this.traCategoriaOcupacionalTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.traConvenioEvitarDobleTributacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.traRUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dtgPer = new System.Windows.Forms.DataGridView();
             this.perNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.perTipoDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.perNumeroDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -108,12 +108,12 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dtgJor);
-            this.groupBox1.Location = new System.Drawing.Point(28, 24);
+            this.groupBox1.Location = new System.Drawing.Point(12, 10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(771, 214);
+            this.groupBox1.Size = new System.Drawing.Size(905, 200);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos de Identificacion - .jor";
+            this.groupBox1.Text = "Datos de Identificacion - .IDE";
             // 
             // dtgJor
             // 
@@ -149,10 +149,10 @@
             this.colNombreZona1,
             this.colReferencia1,
             this.colUbigeo1});
-            this.dtgJor.Location = new System.Drawing.Point(21, 19);
+            this.dtgJor.Location = new System.Drawing.Point(6, 19);
             this.dtgJor.Name = "dtgJor";
             this.dtgJor.ReadOnly = true;
-            this.dtgJor.Size = new System.Drawing.Size(719, 174);
+            this.dtgJor.Size = new System.Drawing.Size(890, 170);
             this.dtgJor.TabIndex = 0;
             // 
             // colNumero
@@ -342,12 +342,12 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dtgTra);
-            this.groupBox2.Location = new System.Drawing.Point(28, 245);
+            this.groupBox2.Location = new System.Drawing.Point(12, 218);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(771, 185);
+            this.groupBox2.Size = new System.Drawing.Size(905, 201);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Datos de Identificacion - tra";
+            this.groupBox2.Text = "Datos de Trabajador - TRA";
             // 
             // dtgTra
             // 
@@ -381,45 +381,11 @@
             this.traCategoriaOcupacionalTrabajador,
             this.traConvenioEvitarDobleTributacion,
             this.traRUC});
-            this.dtgTra.Location = new System.Drawing.Point(21, 22);
+            this.dtgTra.Location = new System.Drawing.Point(6, 22);
             this.dtgTra.Name = "dtgTra";
             this.dtgTra.ReadOnly = true;
-            this.dtgTra.Size = new System.Drawing.Size(719, 150);
+            this.dtgTra.Size = new System.Drawing.Size(890, 170);
             this.dtgTra.TabIndex = 0;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.dtgPer);
-            this.groupBox3.Location = new System.Drawing.Point(28, 442);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(771, 183);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Datos de Periodo - per";
-            // 
-            // dtgPer
-            // 
-            this.dtgPer.AllowUserToAddRows = false;
-            this.dtgPer.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
-            this.dtgPer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dtgPer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgPer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.perNumero,
-            this.perTipoDocumento,
-            this.perNumeroDocumento,
-            this.perPaisEmisor,
-            this.perCategoría,
-            this.perTipoDeRegistro,
-            this.perFechaInicio,
-            this.perFechaFin,
-            this.perIndicadorTipoRegistro,
-            this.perEPSServicios});
-            this.dtgPer.Location = new System.Drawing.Point(21, 19);
-            this.dtgPer.Name = "dtgPer";
-            this.dtgPer.ReadOnly = true;
-            this.dtgPer.Size = new System.Drawing.Size(719, 150);
-            this.dtgPer.TabIndex = 0;
             // 
             // traNumero
             // 
@@ -589,6 +555,40 @@
             this.traRUC.HeaderText = "RUC";
             this.traRUC.Name = "traRUC";
             this.traRUC.ReadOnly = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.dtgPer);
+            this.groupBox3.Location = new System.Drawing.Point(12, 427);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(905, 181);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Datos de Periodo - PER";
+            // 
+            // dtgPer
+            // 
+            this.dtgPer.AllowUserToAddRows = false;
+            this.dtgPer.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.LightBlue;
+            this.dtgPer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgPer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgPer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.perNumero,
+            this.perTipoDocumento,
+            this.perNumeroDocumento,
+            this.perPaisEmisor,
+            this.perCategoría,
+            this.perTipoDeRegistro,
+            this.perFechaInicio,
+            this.perFechaFin,
+            this.perIndicadorTipoRegistro,
+            this.perEPSServicios});
+            this.dtgPer.Location = new System.Drawing.Point(6, 19);
+            this.dtgPer.Name = "dtgPer";
+            this.dtgPer.ReadOnly = true;
+            this.dtgPer.Size = new System.Drawing.Size(890, 150);
+            this.dtgPer.TabIndex = 0;
             // 
             // perNumero
             // 

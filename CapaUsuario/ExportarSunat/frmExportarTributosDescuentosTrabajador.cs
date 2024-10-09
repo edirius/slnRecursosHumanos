@@ -204,9 +204,9 @@ namespace CapaUsuario.ExportarSunat
                     {
                         CapaDeNegocios.PlanillaNueva.cnPlanilla miPlanilla = new CapaDeNegocios.PlanillaNueva.cnPlanilla();
                         miPlanilla = oPlanilla.TraerPlanilla(Convert.ToInt32(fila.Cells["colIdtPlanilla"].Value.ToString()));
-                        foreach(CapaDeNegocios.PlanillaNueva.cnDetallePlanilla detalle in miPlanilla.ListaDetalle)
+                        foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanilla detalle in miPlanilla.ListaDetalle)
                         {
-                            string mes = miPlanilla.Mes ;
+                            string mes = miPlanilla.Mes;
                             string año = miPlanilla.Año;
                             string TipoDoc = "01";
                             string dni = detalle.miTrabajador.Dni;
@@ -240,7 +240,7 @@ namespace CapaUsuario.ExportarSunat
                             }
                             bool EstaEnSNP = false;
 
-                            foreach(CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador aportacionT in detalle.ListaDetalleAportacionesTrabajador)
+                            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador aportacionT in detalle.ListaDetalleAportacionesTrabajador)
                             {
                                 //si cumple, esta en SNP
                                 if (aportacionT.MaestroAportacionTrabajador.Codigo == "0607" && aportacionT.Monto > 0)
@@ -273,7 +273,7 @@ namespace CapaUsuario.ExportarSunat
 
                             foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaEgresos descuento in detalle.ListaDetalleEgresos)
                             {
-                                if (chkDescuentos.Checked == true )
+                                if (chkDescuentos.Checked == true)
                                 {
                                     string codigo = descuento.MaestroDescuentos.Codigo;
                                     string MontoDevengado = descuento.Monto.ToString();
@@ -293,8 +293,8 @@ namespace CapaUsuario.ExportarSunat
                                     }
                                 }
                             }
-                            
-                            foreach(CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesEmpleador aportacionE in detalle.ListaDetalleAportacionesEmpleador)
+
+                            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesEmpleador aportacionE in detalle.ListaDetalleAportacionesEmpleador)
                             {
                                 //806 es el codigo de essalud
                                 if (aportacionE.Monto > 0 && aportacionE.MaestroAportacionesEmpleador.Codigo == "0806")

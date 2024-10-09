@@ -163,5 +163,27 @@ namespace CapaDeNegocios.DatosLaborales
                 throw new cReglaNegociosException("Error en el metodo traerPeriodosMesTrabajador-cperiodoTrabajador: " + ex.Message);
             }
         }
+
+        public cPeriodoTrabajador TraerPeriodoTrabajadorXID (int pidtperiodo)
+        {
+            try
+            {
+                cPeriodoTrabajador miPeriodo = new cPeriodoTrabajador();
+                DataTable tablaPeriodo = Conexion.GDatos.TraerDataTable("spTraerPeriodoXID", pidtperiodo);
+                foreach (DataRow item in tablaPeriodo.Rows)
+                {
+                    miPeriodo.IdtPeriodoTrabajador = Convert.ToInt32(item[0]);
+                    miPeriodo.FechaInicio = item[1].ToString();
+                    miPeriodo.FechaFin = item[2].ToString();
+                    miPeriodo.IdtMotivoFinPeriodo = Convert.ToInt32(item[3]);
+                    miPeriodo.IdtTrabajador = Convert.ToInt32(item[4]);
+                }
+                return miPeriodo;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo TraerPeriodoTrabajadorXID: " + ex.Message);
+            }
+        }
     }
 }
