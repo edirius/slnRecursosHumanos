@@ -77,6 +77,7 @@
             this.txtCuentaBancaria = new System.Windows.Forms.TextBox();
             this.btnArroba = new System.Windows.Forms.Button();
             this.btnTraerNombre = new System.Windows.Forms.Button();
+            this.lblCorreoPorDefecto = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picValidado)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -84,7 +85,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(4, 200);
+            this.label16.Location = new System.Drawing.Point(4, 215);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(100, 13);
             this.label16.TabIndex = 177;
@@ -95,11 +96,12 @@
             this.txtCorreoElectronico.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCorreoElectronico.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCorreoElectronico.Location = new System.Drawing.Point(111, 197);
+            this.txtCorreoElectronico.Location = new System.Drawing.Point(111, 212);
             this.txtCorreoElectronico.MaxLength = 49;
             this.txtCorreoElectronico.Name = "txtCorreoElectronico";
             this.txtCorreoElectronico.Size = new System.Drawing.Size(432, 20);
             this.txtCorreoElectronico.TabIndex = 176;
+            this.txtCorreoElectronico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCorreoElectronico_KeyPress);
             // 
             // picValidado
             // 
@@ -482,7 +484,7 @@
             // 
             // label17
             // 
-            this.label17.Location = new System.Drawing.Point(8, 252);
+            this.label17.Location = new System.Drawing.Point(8, 267);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(96, 27);
             this.label17.TabIndex = 181;
@@ -491,7 +493,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(10, 228);
+            this.label18.Location = new System.Drawing.Point(10, 243);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(95, 13);
             this.label18.TabIndex = 180;
@@ -502,7 +504,7 @@
             this.cboCategoriaOcupacional.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboCategoriaOcupacional.FormattingEnabled = true;
-            this.cboCategoriaOcupacional.Location = new System.Drawing.Point(111, 225);
+            this.cboCategoriaOcupacional.Location = new System.Drawing.Point(111, 240);
             this.cboCategoriaOcupacional.Name = "cboCategoriaOcupacional";
             this.cboCategoriaOcupacional.Size = new System.Drawing.Size(432, 21);
             this.cboCategoriaOcupacional.TabIndex = 178;
@@ -513,7 +515,7 @@
             this.cboOcupacion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboOcupacion.FormattingEnabled = true;
-            this.cboOcupacion.Location = new System.Drawing.Point(111, 252);
+            this.cboOcupacion.Location = new System.Drawing.Point(111, 267);
             this.cboOcupacion.Name = "cboOcupacion";
             this.cboOcupacion.Size = new System.Drawing.Size(432, 21);
             this.cboOcupacion.TabIndex = 179;
@@ -524,7 +526,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(63, 282);
+            this.label19.Location = new System.Drawing.Point(63, 297);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(41, 13);
             this.label19.TabIndex = 183;
@@ -535,7 +537,7 @@
             this.cboCargo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboCargo.FormattingEnabled = true;
-            this.cboCargo.Location = new System.Drawing.Point(110, 279);
+            this.cboCargo.Location = new System.Drawing.Point(110, 294);
             this.cboCargo.Name = "cboCargo";
             this.cboCargo.Size = new System.Drawing.Size(432, 21);
             this.cboCargo.TabIndex = 182;
@@ -544,7 +546,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(14, 314);
+            this.label20.Location = new System.Drawing.Point(14, 326);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(89, 13);
             this.label20.TabIndex = 184;
@@ -552,15 +554,16 @@
             // 
             // txtCuentaBancaria
             // 
-            this.txtCuentaBancaria.Location = new System.Drawing.Point(110, 309);
+            this.txtCuentaBancaria.Location = new System.Drawing.Point(110, 321);
             this.txtCuentaBancaria.MaxLength = 25;
             this.txtCuentaBancaria.Name = "txtCuentaBancaria";
             this.txtCuentaBancaria.Size = new System.Drawing.Size(156, 20);
             this.txtCuentaBancaria.TabIndex = 185;
+            this.txtCuentaBancaria.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuentaBancaria_KeyPress);
             // 
             // btnArroba
             // 
-            this.btnArroba.Location = new System.Drawing.Point(550, 195);
+            this.btnArroba.Location = new System.Drawing.Point(550, 210);
             this.btnArroba.Name = "btnArroba";
             this.btnArroba.Size = new System.Drawing.Size(35, 23);
             this.btnArroba.TabIndex = 186;
@@ -585,11 +588,24 @@
             this.btnTraerNombre.Visible = false;
             this.btnTraerNombre.Click += new System.EventHandler(this.btnTraerNombre_Click);
             // 
+            // lblCorreoPorDefecto
+            // 
+            this.lblCorreoPorDefecto.AutoSize = true;
+            this.lblCorreoPorDefecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCorreoPorDefecto.ForeColor = System.Drawing.Color.Green;
+            this.lblCorreoPorDefecto.Location = new System.Drawing.Point(108, 196);
+            this.lblCorreoPorDefecto.Name = "lblCorreoPorDefecto";
+            this.lblCorreoPorDefecto.Size = new System.Drawing.Size(175, 13);
+            this.lblCorreoPorDefecto.TabIndex = 191;
+            this.lblCorreoPorDefecto.Text = "Correo Eletronico Por Defecto";
+            this.lblCorreoPorDefecto.Visible = false;
+            // 
             // frmNuevoTecnico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 531);
+            this.Controls.Add(this.lblCorreoPorDefecto);
             this.Controls.Add(this.btnTraerNombre);
             this.Controls.Add(this.btnArroba);
             this.Controls.Add(this.txtCuentaBancaria);
@@ -695,5 +711,6 @@
         private System.Windows.Forms.TextBox txtCuentaBancaria;
         private System.Windows.Forms.Button btnArroba;
         private System.Windows.Forms.Button btnTraerNombre;
+        private System.Windows.Forms.Label lblCorreoPorDefecto;
     }
 }

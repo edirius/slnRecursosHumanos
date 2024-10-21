@@ -53,6 +53,8 @@ namespace CapaUsuario.Trabajador
             if (modoEdicion)
             {
                 CargarTrabajador();
+                txtDNI.Enabled = false;
+                txtValidador.Enabled = false;
             }
            
         }
@@ -150,6 +152,7 @@ namespace CapaUsuario.Trabajador
                 }
 
             }
+            
             if (txtDNI.Text == "" || txtNombre.Text == "" || txtApePaterno.Text == "" || txtApeMaterno.Text == "" || cboDepartamento.Text == "" || cboProvincia.Text == "" || cboDistrito.Text == "" )
             {
                 MessageBox.Show("Existen datos en Blanco, no se puede Guardar al nuevo Trabajador", "Mensaje de error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -477,6 +480,14 @@ namespace CapaUsuario.Trabajador
             if (value == null)
                 return DateTime.Now.AddYears(-1);
             return DateTime.Parse(value);
+        }
+
+        private void txtCuentaBancaria_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '-' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

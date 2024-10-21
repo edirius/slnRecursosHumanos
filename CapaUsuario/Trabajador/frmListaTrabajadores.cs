@@ -79,6 +79,11 @@ namespace CapaUsuario.Trabajador
                 fNuevoTrabajador.miTrabajador.NombreZona = "N";
                 fNuevoTrabajador.modoEdicion = false;
                 fNuevoTrabajador.miTrabajador.NroRenta4ta = "";
+                fNuevoTrabajador.miTrabajador.CorreoElectronico = cDatosGeneralesEmpresa.CorreoElectronico;
+                fNuevoTrabajador.miTrabajador.MiNacionalidad = fNuevoTrabajador.miTrabajador.MiNacionalidad.TraerNacionalidad(1);
+                fNuevoTrabajador.miTrabajador.MiTipoVia = fNuevoTrabajador.miTrabajador.MiTipoVia.TraerTipoVia(1);
+                fNuevoTrabajador.miTrabajador.MiTipoZOna = fNuevoTrabajador.miTrabajador.MiTipoZOna.TraerTipoZona(1);
+                fNuevoTrabajador.miTrabajador.NumeroVia = "0";
                 if (fNuevoTrabajador.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     miListaTrabajadores.AgregarTrabajador(fNuevoTrabajador.miTrabajador);

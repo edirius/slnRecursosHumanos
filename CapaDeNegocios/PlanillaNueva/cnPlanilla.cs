@@ -18,6 +18,7 @@ namespace CapaDeNegocios.PlanillaNueva
         public cFuenteFinanciamiento FuenteFinanciamiento { get; set; }
         public DatosLaborales.cRegimenLaboral RegimenLaboral { get; set; }
         public string Descripcion { get; set; }
+        public CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta TipoImpresionTardanzaFalta { get; set; }
 
         public cnPlanilla ()
         {

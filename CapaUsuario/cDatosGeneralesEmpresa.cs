@@ -14,5 +14,6 @@ namespace CapaUsuario
         public static string NombreOficina;
         public static string Bearer;
         public static string Bearer2;
+        public static string CorreoElectronico;
     }
 }

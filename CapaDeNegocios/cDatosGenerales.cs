@@ -18,6 +18,7 @@ namespace CapaDeNegocios
         string bearer;
         string beare2;
         Boolean obreros276;
+        string correoElectronico;
 
         public cDatosGenerales()
         {
@@ -34,6 +35,7 @@ namespace CapaDeNegocios
                     this.bearer = item[7].ToString();
                     this.Beare2 = item[8].ToString();
                     this.obreros276 = Convert.ToBoolean(item[9]);
+                    this.correoElectronico = item[10].ToString();
                 }
             }
             catch (Exception ex)
@@ -144,6 +146,19 @@ namespace CapaDeNegocios
             set
             {
                 obreros276 = value;
+            }
+        }
+
+        public string CorreoElectronico
+        {
+            get
+            {
+                return correoElectronico;
+            }
+
+            set
+            {
+                correoElectronico = value;
             }
         }
     }

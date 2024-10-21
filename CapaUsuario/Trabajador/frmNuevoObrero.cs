@@ -57,10 +57,17 @@ namespace CapaUsuario.Trabajador
             CargarDepartamento();
             CargarAFP();
             LimitarMes();
+            txtCorreoElectronico.Text = cDatosGeneralesEmpresa.CorreoElectronico;
             
             if (modoEdicion || modoAltaTrabajador)
             {
                 CargarTrabajador();
+                txtDNI.Enabled = false;
+                txtValidador.Enabled = false;
+            }
+            else
+            {
+                lblCorreoPorDefecto.Visible = true;
             }
         }
 
@@ -570,6 +577,19 @@ namespace CapaUsuario.Trabajador
             if (value == null)
                 return DateTime.Now.AddYears(-1);
             return DateTime.Parse(value);
+        }
+
+        private void txtCuentaBancaria_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '-' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtCorreoElectronico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            lblCorreoPorDefecto.Visible = false;
         }
     }
 }

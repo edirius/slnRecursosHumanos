@@ -59,6 +59,8 @@
             this.btn7 = new System.Windows.Forms.Button();
             this.btnDiasInicio = new System.Windows.Forms.Button();
             this.btnMesesInicio = new System.Windows.Forms.Button();
+            this.btnSueldoXdiasmes = new System.Windows.Forms.Button();
+            this.btnSueldoAfecto = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,7 +81,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(309, 280);
+            this.btnCancelar.Location = new System.Drawing.Point(309, 321);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 106;
@@ -95,7 +97,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(228, 280);
+            this.btnAceptar.Location = new System.Drawing.Point(228, 321);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 105;
@@ -108,8 +110,9 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.chkTipoRegimen);
+            this.groupBox1.Controls.Add(this.btnSueldoAfecto);
             this.groupBox1.Controls.Add(this.btnMes);
+            this.groupBox1.Controls.Add(this.btnSueldoXdiasmes);
             this.groupBox1.Controls.Add(this.btnDias);
             this.groupBox1.Controls.Add(this.btnParentesis2);
             this.groupBox1.Controls.Add(this.btnParentesis1);
@@ -135,7 +138,7 @@
             this.groupBox1.Controls.Add(this.btn7);
             this.groupBox1.Location = new System.Drawing.Point(12, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(372, 217);
+            this.groupBox1.Size = new System.Drawing.Size(372, 254);
             this.groupBox1.TabIndex = 107;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operadores";
@@ -143,7 +146,7 @@
             // chkTipoRegimen
             // 
             this.chkTipoRegimen.AutoSize = true;
-            this.chkTipoRegimen.Location = new System.Drawing.Point(162, 194);
+            this.chkTipoRegimen.Location = new System.Drawing.Point(159, 298);
             this.chkTipoRegimen.Name = "chkTipoRegimen";
             this.chkTipoRegimen.Size = new System.Drawing.Size(96, 17);
             this.chkTipoRegimen.TabIndex = 134;
@@ -158,7 +161,7 @@
             this.btnMes.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnMes.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnMes.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnMes.Location = new System.Drawing.Point(6, 181);
+            this.btnMes.Location = new System.Drawing.Point(6, 208);
             this.btnMes.Name = "btnMes";
             this.btnMes.Size = new System.Drawing.Size(129, 35);
             this.btnMes.TabIndex = 133;
@@ -174,7 +177,7 @@
             this.btnDias.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDias.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDias.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnDias.Location = new System.Drawing.Point(6, 140);
+            this.btnDias.Location = new System.Drawing.Point(6, 167);
             this.btnDias.Name = "btnDias";
             this.btnDias.Size = new System.Drawing.Size(129, 35);
             this.btnDias.TabIndex = 132;
@@ -190,7 +193,7 @@
             this.btnParentesis2.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnParentesis2.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnParentesis2.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnParentesis2.Location = new System.Drawing.Point(141, 100);
+            this.btnParentesis2.Location = new System.Drawing.Point(141, 168);
             this.btnParentesis2.Name = "btnParentesis2";
             this.btnParentesis2.Size = new System.Drawing.Size(61, 35);
             this.btnParentesis2.TabIndex = 131;
@@ -206,7 +209,7 @@
             this.btnParentesis1.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnParentesis1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnParentesis1.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnParentesis1.Location = new System.Drawing.Point(141, 59);
+            this.btnParentesis1.Location = new System.Drawing.Point(141, 127);
             this.btnParentesis1.Name = "btnParentesis1";
             this.btnParentesis1.Size = new System.Drawing.Size(61, 35);
             this.btnParentesis1.TabIndex = 130;
@@ -222,9 +225,9 @@
             this.btnAObligatorio.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAObligatorio.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAObligatorio.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAObligatorio.Location = new System.Drawing.Point(6, 18);
+            this.btnAObligatorio.Location = new System.Drawing.Point(6, 19);
             this.btnAObligatorio.Name = "btnAObligatorio";
-            this.btnAObligatorio.Size = new System.Drawing.Size(129, 35);
+            this.btnAObligatorio.Size = new System.Drawing.Size(129, 42);
             this.btnAObligatorio.TabIndex = 129;
             this.btnAObligatorio.Text = "Apor. Obligatorio";
             this.btnAObligatorio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -238,9 +241,9 @@
             this.btnPSeguro.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnPSeguro.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnPSeguro.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnPSeguro.Location = new System.Drawing.Point(6, 100);
+            this.btnPSeguro.Location = new System.Drawing.Point(6, 115);
             this.btnPSeguro.Name = "btnPSeguro";
-            this.btnPSeguro.Size = new System.Drawing.Size(129, 35);
+            this.btnPSeguro.Size = new System.Drawing.Size(129, 46);
             this.btnPSeguro.TabIndex = 128;
             this.btnPSeguro.Text = "Prima Seguro";
             this.btnPSeguro.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -254,7 +257,7 @@
             this.btnDeshacer.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDeshacer.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDeshacer.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnDeshacer.Location = new System.Drawing.Point(141, 140);
+            this.btnDeshacer.Location = new System.Drawing.Point(141, 208);
             this.btnDeshacer.Name = "btnDeshacer";
             this.btnDeshacer.Size = new System.Drawing.Size(102, 35);
             this.btnDeshacer.TabIndex = 127;
@@ -270,9 +273,9 @@
             this.btnSueldo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnSueldo.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSueldo.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnSueldo.Location = new System.Drawing.Point(141, 18);
+            this.btnSueldo.Location = new System.Drawing.Point(141, 19);
             this.btnSueldo.Name = "btnSueldo";
-            this.btnSueldo.Size = new System.Drawing.Size(61, 35);
+            this.btnSueldo.Size = new System.Drawing.Size(61, 61);
             this.btnSueldo.TabIndex = 108;
             this.btnSueldo.Text = "Sueldo";
             this.btnSueldo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -286,7 +289,7 @@
             this.btnPunto.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnPunto.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnPunto.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnPunto.Location = new System.Drawing.Point(290, 140);
+            this.btnPunto.Location = new System.Drawing.Point(290, 208);
             this.btnPunto.Name = "btnPunto";
             this.btnPunto.Size = new System.Drawing.Size(35, 35);
             this.btnPunto.TabIndex = 120;
@@ -302,9 +305,9 @@
             this.btnComision.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnComision.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnComision.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnComision.Location = new System.Drawing.Point(6, 59);
+            this.btnComision.Location = new System.Drawing.Point(6, 67);
             this.btnComision.Name = "btnComision";
-            this.btnComision.Size = new System.Drawing.Size(129, 35);
+            this.btnComision.Size = new System.Drawing.Size(129, 42);
             this.btnComision.TabIndex = 125;
             this.btnComision.Text = "Comisión";
             this.btnComision.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -318,7 +321,7 @@
             this.btnSuma.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnSuma.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnSuma.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnSuma.Location = new System.Drawing.Point(331, 141);
+            this.btnSuma.Location = new System.Drawing.Point(331, 209);
             this.btnSuma.Name = "btnSuma";
             this.btnSuma.Size = new System.Drawing.Size(35, 35);
             this.btnSuma.TabIndex = 124;
@@ -334,7 +337,7 @@
             this.btnResta.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnResta.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnResta.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnResta.Location = new System.Drawing.Point(331, 100);
+            this.btnResta.Location = new System.Drawing.Point(331, 168);
             this.btnResta.Name = "btnResta";
             this.btnResta.Size = new System.Drawing.Size(35, 35);
             this.btnResta.TabIndex = 123;
@@ -350,7 +353,7 @@
             this.btnMultiplicacion.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnMultiplicacion.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnMultiplicacion.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnMultiplicacion.Location = new System.Drawing.Point(331, 59);
+            this.btnMultiplicacion.Location = new System.Drawing.Point(331, 127);
             this.btnMultiplicacion.Name = "btnMultiplicacion";
             this.btnMultiplicacion.Size = new System.Drawing.Size(35, 35);
             this.btnMultiplicacion.TabIndex = 122;
@@ -366,7 +369,7 @@
             this.btnDivision.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDivision.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDivision.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnDivision.Location = new System.Drawing.Point(331, 18);
+            this.btnDivision.Location = new System.Drawing.Point(331, 86);
             this.btnDivision.Name = "btnDivision";
             this.btnDivision.Size = new System.Drawing.Size(35, 35);
             this.btnDivision.TabIndex = 121;
@@ -382,7 +385,7 @@
             this.btn0.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btn0.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btn0.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btn0.Location = new System.Drawing.Point(249, 141);
+            this.btn0.Location = new System.Drawing.Point(249, 209);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(35, 35);
             this.btn0.TabIndex = 119;
@@ -398,7 +401,7 @@
             this.btn3.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btn3.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btn3.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btn3.Location = new System.Drawing.Point(290, 100);
+            this.btn3.Location = new System.Drawing.Point(290, 168);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(35, 35);
             this.btn3.TabIndex = 117;
@@ -414,7 +417,7 @@
             this.btn2.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btn2.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btn2.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btn2.Location = new System.Drawing.Point(249, 100);
+            this.btn2.Location = new System.Drawing.Point(249, 168);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(35, 35);
             this.btn2.TabIndex = 116;
@@ -430,7 +433,7 @@
             this.btn1.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btn1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btn1.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btn1.Location = new System.Drawing.Point(208, 100);
+            this.btn1.Location = new System.Drawing.Point(208, 168);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(35, 35);
             this.btn1.TabIndex = 115;
@@ -446,7 +449,7 @@
             this.btn6.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btn6.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btn6.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btn6.Location = new System.Drawing.Point(290, 59);
+            this.btn6.Location = new System.Drawing.Point(290, 127);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(35, 35);
             this.btn6.TabIndex = 114;
@@ -462,7 +465,7 @@
             this.btn5.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btn5.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btn5.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btn5.Location = new System.Drawing.Point(249, 59);
+            this.btn5.Location = new System.Drawing.Point(249, 127);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(35, 35);
             this.btn5.TabIndex = 113;
@@ -478,7 +481,7 @@
             this.btn4.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btn4.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btn4.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btn4.Location = new System.Drawing.Point(208, 59);
+            this.btn4.Location = new System.Drawing.Point(208, 127);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(35, 35);
             this.btn4.TabIndex = 112;
@@ -494,7 +497,7 @@
             this.btn9.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btn9.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btn9.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btn9.Location = new System.Drawing.Point(290, 18);
+            this.btn9.Location = new System.Drawing.Point(290, 86);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(35, 35);
             this.btn9.TabIndex = 111;
@@ -510,7 +513,7 @@
             this.btn8.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btn8.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btn8.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btn8.Location = new System.Drawing.Point(249, 18);
+            this.btn8.Location = new System.Drawing.Point(249, 86);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(35, 35);
             this.btn8.TabIndex = 110;
@@ -526,7 +529,7 @@
             this.btn7.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btn7.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btn7.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btn7.Location = new System.Drawing.Point(208, 18);
+            this.btn7.Location = new System.Drawing.Point(208, 86);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(35, 35);
             this.btn7.TabIndex = 109;
@@ -542,7 +545,7 @@
             this.btnDiasInicio.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDiasInicio.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnDiasInicio.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnDiasInicio.Location = new System.Drawing.Point(18, 261);
+            this.btnDiasInicio.Location = new System.Drawing.Point(18, 302);
             this.btnDiasInicio.Name = "btnDiasInicio";
             this.btnDiasInicio.Size = new System.Drawing.Size(129, 35);
             this.btnDiasInicio.TabIndex = 135;
@@ -558,7 +561,7 @@
             this.btnMesesInicio.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnMesesInicio.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnMesesInicio.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnMesesInicio.Location = new System.Drawing.Point(18, 302);
+            this.btnMesesInicio.Location = new System.Drawing.Point(18, 343);
             this.btnMesesInicio.Name = "btnMesesInicio";
             this.btnMesesInicio.Size = new System.Drawing.Size(129, 35);
             this.btnMesesInicio.TabIndex = 136;
@@ -567,11 +570,44 @@
             this.btnMesesInicio.UseVisualStyleBackColor = false;
             this.btnMesesInicio.Click += new System.EventHandler(this.btnMesesInicio_Click);
             // 
+            // btnSueldoXdiasmes
+            // 
+            this.btnSueldoXdiasmes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSueldoXdiasmes.BackColor = System.Drawing.Color.MintCream;
+            this.btnSueldoXdiasmes.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSueldoXdiasmes.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSueldoXdiasmes.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnSueldoXdiasmes.Location = new System.Drawing.Point(208, 19);
+            this.btnSueldoXdiasmes.Name = "btnSueldoXdiasmes";
+            this.btnSueldoXdiasmes.Size = new System.Drawing.Size(76, 61);
+            this.btnSueldoXdiasmes.TabIndex = 135;
+            this.btnSueldoXdiasmes.Text = "Sueldo x Dias";
+            this.btnSueldoXdiasmes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSueldoXdiasmes.UseVisualStyleBackColor = false;
+            this.btnSueldoXdiasmes.Click += new System.EventHandler(this.btnSueldoXdiasmes_Click);
+            // 
+            // btnSueldoAfecto
+            // 
+            this.btnSueldoAfecto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSueldoAfecto.BackColor = System.Drawing.Color.MintCream;
+            this.btnSueldoAfecto.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSueldoAfecto.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSueldoAfecto.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnSueldoAfecto.Location = new System.Drawing.Point(290, 19);
+            this.btnSueldoAfecto.Name = "btnSueldoAfecto";
+            this.btnSueldoAfecto.Size = new System.Drawing.Size(76, 61);
+            this.btnSueldoAfecto.TabIndex = 136;
+            this.btnSueldoAfecto.Text = "Sueldo Afecto";
+            this.btnSueldoAfecto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSueldoAfecto.UseVisualStyleBackColor = false;
+            this.btnSueldoAfecto.Click += new System.EventHandler(this.btnSueldoAfecto_Click);
+            // 
             // frmFormula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 357);
+            this.ClientSize = new System.Drawing.Size(396, 398);
+            this.Controls.Add(this.chkTipoRegimen);
             this.Controls.Add(this.btnMesesInicio);
             this.Controls.Add(this.btnDiasInicio);
             this.Controls.Add(this.groupBox1);
@@ -584,7 +620,6 @@
             this.Text = "Formula";
             this.Load += new System.EventHandler(this.frmFormula_Load);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -623,5 +658,7 @@
         private System.Windows.Forms.CheckBox chkTipoRegimen;
         private System.Windows.Forms.Button btnDiasInicio;
         private System.Windows.Forms.Button btnMesesInicio;
+        private System.Windows.Forms.Button btnSueldoXdiasmes;
+        private System.Windows.Forms.Button btnSueldoAfecto;
     }
 }

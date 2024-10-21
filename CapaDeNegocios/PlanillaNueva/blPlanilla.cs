@@ -27,6 +27,15 @@ namespace CapaDeNegocios.PlanillaNueva
                     oPlanilla.FuenteFinanciamiento.IdTFuenteFinanciamiento = Convert.ToInt16(tAuxiliar.Rows[0][6]);
                     oPlanilla.RegimenLaboral.IdTRegimenLaboral = Convert.ToInt16(tAuxiliar.Rows[0][7]);
                     oPlanilla.Descripcion = Convert.ToString(tAuxiliar.Rows[0][8]);
+                    if (Convert.ToBoolean(tAuxiliar.Rows[0][16]))
+                    {
+                        oPlanilla.TipoImpresionTardanzaFalta = Planillas.enumTipoImpresionTardanzaFalta.AfectaAlSueldo;
+                    }
+                    else
+                    {
+                        oPlanilla.TipoImpresionTardanzaFalta = Planillas.enumTipoImpresionTardanzaFalta.AfectaALNeto;
+                    }
+                    
                     tAuxiliar.Dispose();
                     oPlanilla.Meta = TraerMeta(oPlanilla.Meta.Codigo);
                     oPlanilla.FuenteFinanciamiento = TraerFuenteFinanciamiento(oPlanilla.FuenteFinanciamiento.IdTFuenteFinanciamiento);

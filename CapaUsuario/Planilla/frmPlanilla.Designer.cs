@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkAnulado = new System.Windows.Forms.CheckBox();
+            this.cboTipoImpresionTarFaltas = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,6 +54,8 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.cboTipoDescuento = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +63,11 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.cboTipoDescuento);
+            this.groupBox2.Controls.Add(this.chkAnulado);
+            this.groupBox2.Controls.Add(this.cboTipoImpresionTarFaltas);
+            this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.txtObservaciones);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
@@ -80,10 +90,41 @@
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(500, 289);
+            this.groupBox2.Size = new System.Drawing.Size(500, 357);
             this.groupBox2.TabIndex = 64;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalles";
+            // 
+            // chkAnulado
+            // 
+            this.chkAnulado.AutoSize = true;
+            this.chkAnulado.Location = new System.Drawing.Point(429, 288);
+            this.chkAnulado.Name = "chkAnulado";
+            this.chkAnulado.Size = new System.Drawing.Size(65, 17);
+            this.chkAnulado.TabIndex = 97;
+            this.chkAnulado.Text = "Anulado";
+            this.chkAnulado.UseVisualStyleBackColor = true;
+            // 
+            // cboTipoImpresionTarFaltas
+            // 
+            this.cboTipoImpresionTarFaltas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoImpresionTarFaltas.FormattingEnabled = true;
+            this.cboTipoImpresionTarFaltas.Items.AddRange(new object[] {
+            "AFECTO NETO",
+            "AFECTO SUELDO"});
+            this.cboTipoImpresionTarFaltas.Location = new System.Drawing.Point(132, 286);
+            this.cboTipoImpresionTarFaltas.Name = "cboTipoImpresionTarFaltas";
+            this.cboTipoImpresionTarFaltas.Size = new System.Drawing.Size(212, 21);
+            this.cboTipoImpresionTarFaltas.TabIndex = 96;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 286);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(114, 13);
+            this.label8.TabIndex = 95;
+            this.label8.Text = "Impresion Falta/Tard. :";
             // 
             // txtObservaciones
             // 
@@ -305,7 +346,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(437, 307);
+            this.btnCancelar.Location = new System.Drawing.Point(437, 374);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 65);
             this.btnCancelar.TabIndex = 66;
@@ -321,7 +362,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(356, 307);
+            this.btnAceptar.Location = new System.Drawing.Point(356, 374);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 65;
@@ -330,11 +371,32 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // cboTipoDescuento
+            // 
+            this.cboTipoDescuento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoDescuento.FormattingEnabled = true;
+            this.cboTipoDescuento.Items.AddRange(new object[] {
+            "DIVIDIR ENTRE 30",
+            "DIAS LABORADOS"});
+            this.cboTipoDescuento.Location = new System.Drawing.Point(133, 318);
+            this.cboTipoDescuento.Name = "cboTipoDescuento";
+            this.cboTipoDescuento.Size = new System.Drawing.Size(211, 21);
+            this.cboTipoDescuento.TabIndex = 98;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(31, 326);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 13);
+            this.label9.TabIndex = 99;
+            this.label9.Text = "Tipo Descuento: ";
+            // 
             // frmPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 384);
+            this.ClientSize = new System.Drawing.Size(524, 451);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -374,5 +436,10 @@
         private System.Windows.Forms.ComboBox cboRegimenLaboral;
         private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cboTipoImpresionTarFaltas;
+        private System.Windows.Forms.CheckBox chkAnulado;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cboTipoDescuento;
     }
 }

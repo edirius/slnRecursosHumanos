@@ -2606,8 +2606,21 @@ namespace CapaUsuario.Reportes
                                                     
                                             }
 
+                                            int ContadorIngresosInformativos = 0;
+                                            if (miPlanilla.TipoImpresionTardanzaFalta == CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta.AfectaAlSueldo)
+                                            {
+                                                foreach (DataRow row_i in odtPlanillaXIngresos.Rows)
+                                                {
+                                                    if (Convert.ToBoolean(row_i[10]) == true)
+                                                    {
+                                                        ContadorIngresosInformativos++;
+                                                    }
+                                                }
+                                            }
+                                            int contadorRecorrido = 0;
                                             foreach (DataRow row_i in odtPlanillaXIngresos.Rows)
                                             {
+                                                contadorRecorrido++;
                                                 // si no existe columna agregar titulo
                                                 if (!ExisteColumna(odtPrueba, row_i))
                                                 {
@@ -2615,8 +2628,8 @@ namespace CapaUsuario.Reportes
                                                     total_tipo_ingreso++;
                                                     arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
                                                     t++;
-
                                                 }
+
                                                 //Buscar indice del titulo respectivo al monto
                                                 indice_ingreso = BuscarIndiceColumna(odtPrueba, row_i[8].ToString());
 
@@ -2625,6 +2638,46 @@ namespace CapaUsuario.Reportes
                                                     drFila[indice_ingreso] = 0.00;
                                                 else
                                                     drFila[indice_ingreso] = row_i[9];
+
+                                                if (miPlanilla.TipoImpresionTardanzaFalta == CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta.AfectaAlSueldo && contadorRecorrido == ContadorIngresosInformativos)
+                                                {
+                                                    odtPrueba.Columns.Add("SUELDO MES", typeof(string));
+                                                    total_tipo_ingreso++;
+                                                    arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
+                                                    t++;
+
+                                                    indice_ingreso = BuscarIndiceColumna(odtPrueba, "SUELDO MES");
+                                                    if (chkCuentaBancaria.Checked)
+                                                    {
+                                                        if (row[20].ToString() == "")
+                                                            drFila[indice_ingreso] = 0.00;
+                                                        else
+                                                            drFila[indice_ingreso] = row[20];
+                                                    }
+                                                    else
+                                                    {
+                                                        if (row[19].ToString() == "")
+                                                            drFila[indice_ingreso] = 0.00;
+                                                        else
+                                                            drFila[indice_ingreso] = row[19];
+                                                    }
+
+                                                    odtPrueba.Columns.Add(".FALT.", typeof(string));
+                                                    total_tipo_ingreso++;
+                                                    arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
+                                                    t++;
+
+                                                    indice_ingreso = BuscarIndiceColumna(odtPrueba, ".FALT.");
+                                                    drFila[indice_ingreso] = 0.00;
+
+                                                    odtPrueba.Columns.Add(".TARD.", typeof(string));
+                                                    total_tipo_ingreso++;
+                                                    arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
+                                                    t++;
+
+                                                    indice_ingreso = BuscarIndiceColumna(odtPrueba, ".TARD.");
+                                                    drFila[indice_ingreso] = 0.00;
+                                                }
                                             }
 
                                             //Insertando la sumatoria total de ingresos
@@ -2651,23 +2704,53 @@ namespace CapaUsuario.Reportes
 
                                             foreach (DataRow row_d in odtPlanillaXDescuentos.Rows)
                                             {
-                                                // si no existe columna agregar titulo
-                                                if (!ExisteColumna(odtPrueba, row_d))
+                                                if (miPlanilla.TipoImpresionTardanzaFalta == CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta.AfectaAlSueldo && (row_d[10].ToString() == "0704" || row_d[10].ToString() == "0705"))
                                                 {
-                                                    odtPrueba.Columns.Add(row_d[8].ToString().Trim(), typeof(string));
-                                                    total_tipo_descuento++;
+                                                    //tardanzas
+                                                    if (row_d[10].ToString() == "0704")
+                                                    {
+                                                        indice_descuento = BuscarIndiceColumna(odtPrueba,".TARD.");
 
-                                                    arr_descuento[t] = (odtPrueba.Columns.Count - 1).ToString();
-                                                    t++;
+                                                        //insertar monto de ingresos a la planilla
+                                                        if (row_d[9].ToString() == "")
+                                                            drFila[indice_descuento] = 0.00;
+                                                        else
+                                                            drFila[indice_descuento] = row_d[9];
+                                                    }
+                                                    if (row_d[10].ToString() == "0705")
+                                                    {
+                                                        indice_descuento = BuscarIndiceColumna(odtPrueba,".FALT.");
+
+                                                        //insertar monto de ingresos a la planilla
+                                                        if (row_d[9].ToString() == "")
+                                                            drFila[indice_descuento] = 0.00;
+                                                        else
+                                                            drFila[indice_descuento] = row_d[9];
+                                                    }
+                                                    
+                                                    
                                                 }
-                                                //Buscar indice del titulo respectivo al monto
-                                                indice_descuento = BuscarIndiceColumna(odtPrueba, row_d[8].ToString());
-
-                                                //insertar monto de ingresos a la planilla
-                                                if (row_d[9].ToString() == "")
-                                                    drFila[indice_descuento] = 0.00;
                                                 else
-                                                    drFila[indice_descuento] = row_d[9];
+                                                {
+                                                    // si no existe columna agregar titulo
+                                                    if (!ExisteColumna(odtPrueba, row_d))
+                                                    {
+                                                        odtPrueba.Columns.Add(row_d[8].ToString().Trim(), typeof(string));
+                                                        total_tipo_descuento++;
+
+                                                        arr_descuento[t] = (odtPrueba.Columns.Count - 1).ToString();
+                                                        t++;
+                                                    }
+                                                    //Buscar indice del titulo respectivo al monto
+                                                    indice_descuento = BuscarIndiceColumna(odtPrueba, row_d[8].ToString());
+
+                                                    //insertar monto de ingresos a la planilla
+                                                    if (row_d[9].ToString() == "")
+                                                        drFila[indice_descuento] = 0.00;
+                                                    else
+                                                        drFila[indice_descuento] = row_d[9];
+                                                }
+                                                
 
                                             }
 
@@ -5522,6 +5605,7 @@ namespace CapaUsuario.Reportes
             if (e.RowIndex != -1)
             {
                 sidtplanilla = Convert.ToInt32(dgvPlanilla.Rows[e.RowIndex].Cells[0].Value);
+                miPlanilla = miPlanilla.TraerPlanilla(sidtplanilla);
                 snumero = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[1].Value);
                 sdescripcion = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[2].Value);
                 smes = Convert.ToString(dgvPlanilla.Rows[e.RowIndex].Cells[3].Value);

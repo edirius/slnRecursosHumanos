@@ -212,5 +212,16 @@ namespace CapaUsuario.Sunat
         {
             txtFormula.Text = txtFormula.Text + "yy";
         }
+
+        private void btnSueldoXdiasmes_Click(object sender, EventArgs e)
+        {
+            txtFormula.Text = txtFormula.Text + "rt";
+        }
+
+        private void btnSueldoAfecto_Click(object sender, EventArgs e)
+        {
+            txtFormula.Text = txtFormula.Text + "ra";
+        }
+    
     }
 }

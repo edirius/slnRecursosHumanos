@@ -10,6 +10,27 @@ using CapaDeDatos;
 
 namespace CapaDeNegocios.Planillas
 {
+    public enum enumTipoCalculoMensual
+    {
+        DividirEntre30 = 1,
+        DiasLaborados =2
+    }
+
+    public enum enumTipoImpresionTardanzaFalta
+    {
+        AfectaALNeto = 0,
+        AfectaAlSueldo =1
+        
+    }
+
+    public enum enumTipoPlanilla
+    {
+        Normal =1,
+        Racionamiento = 2,
+        VacacionesTruncas = 3,
+        CTS = 4
+    }
+
     public class cPlanilla
     {
         int sidtplanilla;
@@ -23,11 +44,24 @@ namespace CapaDeNegocios.Planillas
         string sdescripcion;
         string splantilla;
         string sobservaciones;
+        Boolean anulado;
+        string numerosiaf;
+        bool bloqueado;
+        int idtplantilla;
+        enumTipoCalculoMensual tipocalculomensual;
+        enumTipoImpresionTardanzaFalta tipoImpresionTardanzaFalta;
+        enumTipoPlanilla tipoPlanilla;
 
         private List<cDetallePlanilla> listaDetallePlanilla;
         private cMeta miMeta;
         private cPlantillaPlanilla oPlantilla = new cPlantillaPlanilla();
 
+        public cPlanilla()
+        {
+            this.bloqueado = false;
+            this.anulado = false;
+            this.tipocalculomensual = enumTipoCalculoMensual.DividirEntre30;
+        }
         public int IdtPlanilla
         {
             get { return sidtplanilla; }
@@ -111,6 +145,97 @@ namespace CapaDeNegocios.Planillas
             }
         }
 
+        public bool Anulado
+        {
+            get
+            {
+                return anulado;
+            }
+
+            set
+            {
+                anulado = value;
+            }
+        }
+
+        public string Numerosiaf
+        {
+            get
+            {
+                return numerosiaf;
+            }
+
+            set
+            {
+                numerosiaf = value;
+            }
+        }
+
+        public bool Bloqueado
+        {
+            get
+            {
+                return bloqueado;
+            }
+
+            set
+            {
+                bloqueado = value;
+            }
+        }
+
+        public int Idtplantilla
+        {
+            get
+            {
+                return idtplantilla;
+            }
+
+            set
+            {
+                idtplantilla = value;
+            }
+        }
+
+        public enumTipoCalculoMensual Tipocalculomensual
+        {
+            get
+            {
+                return tipocalculomensual;
+            }
+
+            set
+            {
+                tipocalculomensual = value;
+            }
+        }
+
+        public enumTipoImpresionTardanzaFalta TipoImpresionTardanzaFalta
+        {
+            get
+            {
+                return tipoImpresionTardanzaFalta;
+            }
+
+            set
+            {
+                tipoImpresionTardanzaFalta = value;
+            }
+        }
+
+        public enumTipoPlanilla TipoPlanilla
+        {
+            get
+            {
+                return tipoPlanilla;
+            }
+
+            set
+            {
+                tipoPlanilla = value;
+            }
+        }
+
         public DataTable ListarFechaPlanilla(int pidtplanilla)
         {
             return Conexion.GDatos.TraerDataTable("spListarFechaPlanilla", pidtplanilla);
@@ -172,13 +297,15 @@ namespace CapaDeNegocios.Planillas
 
         public Boolean CrearPlanilla(cPlanilla miPlanilla)
         {
-            Conexion.GDatos.Ejecutar("spCrearPlanilla", miPlanilla.Numero, miPlanilla.Mes, miPlanilla.Año, miPlanilla.Fecha, miPlanilla.IdtMeta, miPlanilla.IdtFuenteFinanciamiento, miPlanilla.IdtRegimenLaboral, miPlanilla.Descripcion, miPlanilla.Plantilla, miPlanilla.Observaciones);
+            Conexion.GDatos.Ejecutar("spCrearPlanilla", miPlanilla.Numero, miPlanilla.Mes, miPlanilla.Año, miPlanilla.Fecha, miPlanilla.IdtMeta, miPlanilla.IdtFuenteFinanciamiento, miPlanilla.IdtRegimenLaboral, miPlanilla.Descripcion, miPlanilla.Plantilla, miPlanilla.Observaciones,
+                miPlanilla.anulado, miPlanilla.numerosiaf, miPlanilla.bloqueado, miPlanilla.idtplantilla, miPlanilla.tipocalculomensual, miPlanilla.tipoImpresionTardanzaFalta, miPlanilla.tipoPlanilla);
             return true;
         }
 
         public Boolean ModificarPlanilla(cPlanilla miPlanilla)
         {
-            Conexion.GDatos.Ejecutar("spModificarPlanilla", miPlanilla.IdtPlanilla, miPlanilla.Numero, miPlanilla.Mes,miPlanilla.Año, miPlanilla.Fecha, miPlanilla.IdtMeta, miPlanilla.IdtFuenteFinanciamiento, miPlanilla.IdtRegimenLaboral, miPlanilla.Descripcion, miPlanilla.Plantilla, miPlanilla.Observaciones);
+            Conexion.GDatos.Ejecutar("spModificarPlanilla", miPlanilla.IdtPlanilla, miPlanilla.Numero, miPlanilla.Mes,miPlanilla.Año, miPlanilla.Fecha, miPlanilla.IdtMeta, miPlanilla.IdtFuenteFinanciamiento, miPlanilla.IdtRegimenLaboral, miPlanilla.Descripcion, miPlanilla.Plantilla, miPlanilla.Observaciones,
+                miPlanilla.anulado, miPlanilla.numerosiaf, miPlanilla.bloqueado, miPlanilla.idtplantilla, (int)miPlanilla.tipocalculomensual, miPlanilla.tipoImpresionTardanzaFalta, (int)miPlanilla.tipoPlanilla);
             return true;
         }
 
@@ -195,17 +322,61 @@ namespace CapaDeNegocios.Planillas
             tablaAuxiliar = Conexion.GDatos.TraerDataTable("spTraerPlanillaxID", idtPlanilla);
             if (tablaAuxiliar.Rows.Count > 0)
             {
-                planillaAuxiliar.IdtPlanilla = Convert.ToInt16(tablaAuxiliar.Rows[0][0]);
+                planillaAuxiliar.IdtPlanilla = Convert.ToInt32(tablaAuxiliar.Rows[0][0]);
                 planillaAuxiliar.Numero = Convert.ToString(tablaAuxiliar.Rows[0][1]);
                 planillaAuxiliar.Mes = Convert.ToString(tablaAuxiliar.Rows[0][2]);
                 planillaAuxiliar.Año = Convert.ToString(tablaAuxiliar.Rows[0][3]);
                 planillaAuxiliar.Fecha = Convert.ToDateTime(tablaAuxiliar.Rows[0][4]);
-                planillaAuxiliar.IdtMeta = Convert.ToInt16(tablaAuxiliar.Rows[0][5]);
-                planillaAuxiliar.IdtFuenteFinanciamiento = Convert.ToInt16(tablaAuxiliar.Rows[0][6]);
-                planillaAuxiliar.IdtRegimenLaboral = Convert.ToInt16(tablaAuxiliar.Rows[0][7]);
+                planillaAuxiliar.IdtMeta = Convert.ToInt32(tablaAuxiliar.Rows[0][5]);
+                planillaAuxiliar.IdtFuenteFinanciamiento = Convert.ToInt32(tablaAuxiliar.Rows[0][6]);
+                planillaAuxiliar.IdtRegimenLaboral = Convert.ToInt32(tablaAuxiliar.Rows[0][7]);
                 planillaAuxiliar.Descripcion = Convert.ToString(tablaAuxiliar.Rows[0][8]);
                 planillaAuxiliar.Plantilla = Convert.ToString(tablaAuxiliar.Rows[0][8]);
                 planillaAuxiliar.Observaciones = Convert.ToString(tablaAuxiliar.Rows[0][10]);
+                planillaAuxiliar.anulado = Convert.ToBoolean(tablaAuxiliar.Rows[0][11]);
+                planillaAuxiliar.numerosiaf = Convert.ToString(tablaAuxiliar.Rows[0][12]);
+                planillaAuxiliar.bloqueado = Convert.ToBoolean(tablaAuxiliar.Rows[0][13]);
+                planillaAuxiliar.idtplantilla = Convert.ToInt32(tablaAuxiliar.Rows[0][14]);
+                switch (Convert.ToInt32(tablaAuxiliar.Rows[0][15].ToString()))
+                {
+                    case 1:
+                        planillaAuxiliar.tipocalculomensual = enumTipoCalculoMensual.DividirEntre30;
+                        break;
+                    case 2:
+                        planillaAuxiliar.tipocalculomensual = enumTipoCalculoMensual.DiasLaborados;
+                        break;
+                    default:
+                        break;
+                }
+                switch (Convert.ToBoolean(tablaAuxiliar.Rows[0][16]))   
+                {
+                    case false:
+                        planillaAuxiliar.TipoImpresionTardanzaFalta = enumTipoImpresionTardanzaFalta.AfectaALNeto;
+                        break;
+                    case true:
+                        planillaAuxiliar.TipoImpresionTardanzaFalta = enumTipoImpresionTardanzaFalta.AfectaAlSueldo;
+                        break;
+                    default:
+                        break;
+                }
+
+                switch (Convert.ToInt32(tablaAuxiliar.Rows[0][16]))
+                {
+                    case 1:
+                        planillaAuxiliar.tipoPlanilla = enumTipoPlanilla.Normal;
+                        break;
+                    case 2:
+                        planillaAuxiliar.tipoPlanilla = enumTipoPlanilla.Racionamiento;
+                        break;
+                    case 3:
+                        planillaAuxiliar.tipoPlanilla = enumTipoPlanilla.VacacionesTruncas;
+                        break;
+                    case 4:
+                        planillaAuxiliar.tipoPlanilla = enumTipoPlanilla.CTS;
+                        break;
+                    default:
+                        break;
+                }
                 return planillaAuxiliar;
             }
            else

@@ -223,19 +223,48 @@ namespace CapaUsuario.ExportarSunat
 
                             milistaJornada.Add(Jornada);//agregamos los datos concatenados al arreglo(ArrayList)
 
-
+                            int contadorUnico = 0;
                             foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaIngresos ingreso in detalle.ListaDetalleIngresos)
                             {
                                 if (!(ingreso.MaestroIngresos.Codigo == "0000" || ingreso.MaestroIngresos.Informativa == true))
                                 {
-                                    string codigo = ingreso.MaestroIngresos.Codigo;
-                                    string MontoDevengado = ingreso.Monto.ToString();
-                                    string Monto = ingreso.Monto.ToString();
-                                    string codigoform = "0601";
-                                    ConvertirMes(mes);
-                                    Ingresos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
-                                    Titulo = oExportar.ExportarTitulo(codigoform, año, Nromes, Ruc);
-                                    milista.Add(Ingresos);//agregamos los datos concatenados al arreglo(ArrayList)
+                                    if (miPlanilla.TipoImpresionTardanzaFalta == CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta.AfectaAlSueldo && (ingreso.MaestroIngresos.Codigo == "0122" || ingreso.MaestroIngresos.Codigo == "0121" || ingreso.MaestroIngresos.Codigo == "2039") && contadorUnico==0)
+                                    {
+                                        contadorUnico++;
+                                        double tardanza = 0;
+                                        double falta = 0;
+                                        foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaEgresos descuento in detalle.ListaDetalleEgresos)
+                                        {
+                                            if (descuento.MaestroDescuentos.Codigo == "0704")
+                                            {
+                                                tardanza = descuento.Monto;
+                                            }
+                                            if (descuento.MaestroDescuentos.Codigo == "0705")
+                                            {
+                                                falta = descuento.Monto;
+                                            }
+                                        }
+                                        string codigo = ingreso.MaestroIngresos.Codigo;
+                                        string MontoDevengado = (ingreso.Monto +tardanza + falta).ToString();
+                                        string Monto = (ingreso.Monto + tardanza + falta).ToString();
+                                        string codigoform = "0601";
+                                        ConvertirMes(mes);
+                                        Ingresos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
+                                        Titulo = oExportar.ExportarTitulo(codigoform, año, Nromes, Ruc);
+                                        milista.Add(Ingresos);//agregamos los datos concatenados al arreglo(ArrayList)
+                                    }
+                                    else
+                                    {
+                                        string codigo = ingreso.MaestroIngresos.Codigo;
+                                        string MontoDevengado = ingreso.Monto.ToString();
+                                        string Monto = ingreso.Monto.ToString();
+                                        string codigoform = "0601";
+                                        ConvertirMes(mes);
+                                        Ingresos = oExportar.ExportarTexto(TipoDoc, dni, codigo, MontoDevengado, Monto);
+                                        Titulo = oExportar.ExportarTitulo(codigoform, año, Nromes, Ruc);
+                                        milista.Add(Ingresos);//agregamos los datos concatenados al arreglo(ArrayList)
+                                    }
+                                    
                                 }
                             }
                             bool EstaEnSNP = false;
@@ -373,7 +402,7 @@ namespace CapaUsuario.ExportarSunat
                 }
             }
 
-            for (int i = 0; i < lista.Count - 1; i++)
+            for (int i = 0; i < lista.Count; i++)
             {
                 if (lista[i].ToString() !="")
                 {

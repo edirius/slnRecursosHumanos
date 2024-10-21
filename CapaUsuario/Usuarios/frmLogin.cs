@@ -110,6 +110,7 @@ namespace CapaUsuario.Usuarios
                     cDatosGeneralesEmpresa.NombreOficina = oDatosGenerales.NombreOficina;
                     cDatosGeneralesEmpresa.Bearer = oDatosGenerales.Bearer;
                     cDatosGeneralesEmpresa.Bearer2 = oDatosGenerales.Beare2;
+                    cDatosGeneralesEmpresa.CorreoElectronico = oDatosGenerales.CorreoElectronico;
                     Principal.DarPrivilegios(txtUsuario.Text);
                     Principal.Show();
                     this.Hide();

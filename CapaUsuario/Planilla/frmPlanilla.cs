@@ -23,6 +23,7 @@ namespace CapaUsuario.Planilla
         string saño;
         string splantilla;
         string sobservacion;
+        public CapaDeNegocios.Planillas.cPlanilla oPlanilla;
 
         public frmPlanilla()
         {
@@ -92,6 +93,28 @@ namespace CapaUsuario.Planilla
                     miPlanilla.Descripcion = txtDescripcion.Text;
                     miPlanilla.Plantilla = cboPlantilla.Text;
                     miPlanilla.Observaciones = txtObservaciones.Text;
+                    if (cboTipoImpresionTarFaltas.SelectedIndex == 1)
+                    {
+                        miPlanilla.TipoImpresionTardanzaFalta = CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta.AfectaAlSueldo;
+                    }
+                    else
+                    {
+                        miPlanilla.TipoImpresionTardanzaFalta = CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta.AfectaALNeto;
+                    }
+
+                    switch (cboTipoDescuento.SelectedIndex)
+                    {
+                        case 0:
+                            miPlanilla.Tipocalculomensual = CapaDeNegocios.Planillas.enumTipoCalculoMensual.DividirEntre30;
+                            break;
+                        case 1:
+                            miPlanilla.Tipocalculomensual = CapaDeNegocios.Planillas.enumTipoCalculoMensual.DiasLaborados;
+                            break;
+                        default:
+                            break;
+                    }
+                    miPlanilla.Anulado = chkAnulado.Checked;
+
                     if (iAccion == 1)
                     {
                         miPlanilla.CrearPlanilla(miPlanilla);
@@ -172,6 +195,20 @@ namespace CapaUsuario.Planilla
             iAccion = pAccion;
             sobservacion = pobservacion;
             txtObservaciones.Text = pobservacion;
+            chkAnulado.Checked = oPlanilla.Anulado;
+            cboTipoImpresionTarFaltas.SelectedIndex = (int)oPlanilla.TipoImpresionTardanzaFalta;
+            switch (oPlanilla.Tipocalculomensual)
+            {
+                case CapaDeNegocios.Planillas.enumTipoCalculoMensual.DividirEntre30:
+                    cboTipoDescuento.SelectedIndex = 0;
+                    break;
+                case CapaDeNegocios.Planillas.enumTipoCalculoMensual.DiasLaborados:
+                    cboTipoDescuento.SelectedIndex = 1;
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         private void CargarAños()

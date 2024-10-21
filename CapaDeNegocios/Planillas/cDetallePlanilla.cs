@@ -22,6 +22,12 @@ namespace CapaDeNegocios.Planillas
         decimal snetoacobrar;
         decimal ssueldopactado;
         decimal ssueldoafecto;
+        decimal sueldoDespuesTardanzas;
+        decimal sueldoMes;
+        int diasMes;
+        int diasSuspendidos;
+        DateTime fechaFin;
+        DateTime fechaInicioMeta;
         string sobservacion;
         int sspensiones;
         bool sjornal;
@@ -231,6 +237,84 @@ namespace CapaDeNegocios.Planillas
             }
         }
 
+        public decimal SueldoDespuesTardanzas
+        {
+            get
+            {
+                return sueldoDespuesTardanzas;
+            }
+
+            set
+            {
+                sueldoDespuesTardanzas = value;
+            }
+        }
+
+        public decimal SueldoMes
+        {
+            get
+            {
+                return sueldoMes;
+            }
+
+            set
+            {
+                sueldoMes = value;
+            }
+        }
+
+        public int DiasMes
+        {
+            get
+            {
+                return diasMes;
+            }
+
+            set
+            {
+                diasMes = value;
+            }
+        }
+
+        public int DiasSuspendidos
+        {
+            get
+            {
+                return diasSuspendidos;
+            }
+
+            set
+            {
+                diasSuspendidos = value;
+            }
+        }
+
+        public DateTime FechaFin
+        {
+            get
+            {
+                return fechaFin;
+            }
+
+            set
+            {
+                fechaFin = value;
+            }
+        }
+
+        public DateTime FechaInicioMeta
+        {
+            get
+            {
+                return fechaInicioMeta;
+            }
+
+            set
+            {
+                fechaInicioMeta = value;
+            }
+        }
+
         public DataTable ListarPlanillaXMesYRegimenLaboral(int pidPlanilla, int pidRegimenLaboral, string pmes, string paño)
         {
             return Conexion.GDatos.TraerDataTable("spListarPlanillaXMesYRegimenLaboral", pidPlanilla, pidRegimenLaboral, pmes,  paño);
@@ -309,13 +393,16 @@ namespace CapaDeNegocios.Planillas
 
         public Boolean CrearDetallePlanilla(cDetallePlanilla miDetallePlanilla)
         {
-            Conexion.GDatos.Ejecutar("spCrearDetallePlanilla", miDetallePlanilla.Cargo, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.NetoaCobrar, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla, miDetallePlanilla.Sueldopactado, miDetallePlanilla.Sueldoafecto, miDetallePlanilla.Observacion, miDetallePlanilla.SPensiones, miDetallePlanilla.Jornal);
+            Conexion.GDatos.Ejecutar("spCrearDetallePlanilla", miDetallePlanilla.Cargo, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.NetoaCobrar, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla, miDetallePlanilla.Sueldopactado, miDetallePlanilla.Sueldoafecto, miDetallePlanilla.Observacion, miDetallePlanilla.SPensiones, miDetallePlanilla.Jornal,
+                miDetallePlanilla.diasSuspendidos, miDetallePlanilla.fechaInicioMeta, miDetallePlanilla.sueldoDespuesTardanzas, miDetallePlanilla.fechaFin, miDetallePlanilla.diasMes, miDetallePlanilla.sueldoMes);
             return true;
         }
 
         public Boolean ModificarDetallePlanilla(cDetallePlanilla miDetallePlanilla)
         {
-            Conexion.GDatos.Ejecutar("spModificarDetallePlanilla", miDetallePlanilla.IdtDetallePlanilla, miDetallePlanilla.Cargo, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.NetoaCobrar, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla, miDetallePlanilla.Sueldopactado, miDetallePlanilla.Sueldoafecto, miDetallePlanilla.Observacion, miDetallePlanilla.SPensiones, miDetallePlanilla.Jornal);
+            Conexion.GDatos.Ejecutar("spModificarDetallePlanilla", miDetallePlanilla.IdtDetallePlanilla, miDetallePlanilla.Cargo, miDetallePlanilla.FechaInicio, miDetallePlanilla.DiasLaborados, miDetallePlanilla.TotalIngresos, miDetallePlanilla.TotalATrabajador, miDetallePlanilla.TotalDescuentos, miDetallePlanilla.TotalAEmpleador, miDetallePlanilla.NetoaCobrar, miDetallePlanilla.IdtTrabajador, miDetallePlanilla.IdtPlanilla, miDetallePlanilla.Sueldopactado, miDetallePlanilla.Sueldoafecto, miDetallePlanilla.Observacion, miDetallePlanilla.SPensiones, miDetallePlanilla.Jornal,
+                miDetallePlanilla.diasSuspendidos, miDetallePlanilla.fechaInicioMeta, miDetallePlanilla.sueldoDespuesTardanzas, miDetallePlanilla.fechaFin, miDetallePlanilla.diasMes, miDetallePlanilla.sueldoMes);
+            
             return true;
         }
 

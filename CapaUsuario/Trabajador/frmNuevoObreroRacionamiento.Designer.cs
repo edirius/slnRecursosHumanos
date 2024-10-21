@@ -378,6 +378,7 @@
             this.txtCuentaBancaria.Name = "txtCuentaBancaria";
             this.txtCuentaBancaria.Size = new System.Drawing.Size(162, 20);
             this.txtCuentaBancaria.TabIndex = 191;
+            this.txtCuentaBancaria.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCuentaBancaria_KeyPress);
             // 
             // label12
             // 

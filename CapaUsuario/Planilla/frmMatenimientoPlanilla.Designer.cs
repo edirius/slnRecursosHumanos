@@ -42,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnHabilitarTareo = new System.Windows.Forms.Button();
+            this.chkIncluirAnulados = new System.Windows.Forms.CheckBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +57,8 @@
             this.IdtRegimenLaboral = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Plantilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colobservaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAnulado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colTipoPlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -179,7 +182,9 @@
             this.Column9,
             this.IdtRegimenLaboral,
             this.Plantilla,
-            this.colobservaciones});
+            this.colobservaciones,
+            this.colAnulado,
+            this.colTipoPlanilla});
             this.dgvPlanilla.Cursor = System.Windows.Forms.Cursors.Default;
             this.dgvPlanilla.Location = new System.Drawing.Point(12, 39);
             this.dgvPlanilla.MultiSelect = false;
@@ -259,6 +264,16 @@
             this.btnHabilitarTareo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnHabilitarTareo.UseVisualStyleBackColor = false;
             this.btnHabilitarTareo.Click += new System.EventHandler(this.btnHabilitarTareo_Click);
+            // 
+            // chkIncluirAnulados
+            // 
+            this.chkIncluirAnulados.AutoSize = true;
+            this.chkIncluirAnulados.Location = new System.Drawing.Point(993, 10);
+            this.chkIncluirAnulados.Name = "chkIncluirAnulados";
+            this.chkIncluirAnulados.Size = new System.Drawing.Size(101, 17);
+            this.chkIncluirAnulados.TabIndex = 36;
+            this.chkIncluirAnulados.Text = "Incluir Anulados";
+            this.chkIncluirAnulados.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 
@@ -367,11 +382,30 @@
             this.colobservaciones.ReadOnly = true;
             this.colobservaciones.Visible = false;
             // 
+            // colAnulado
+            // 
+            this.colAnulado.DataPropertyName = "anulado";
+            this.colAnulado.HeaderText = "Anulado";
+            this.colAnulado.Name = "colAnulado";
+            this.colAnulado.ReadOnly = true;
+            this.colAnulado.Visible = false;
+            // 
+            // colTipoPlanilla
+            // 
+            this.colTipoPlanilla.DataPropertyName = "tipoPlanilla";
+            this.colTipoPlanilla.HeaderText = "Tipo Planilla";
+            this.colTipoPlanilla.Name = "colTipoPlanilla";
+            this.colTipoPlanilla.ReadOnly = true;
+            this.colTipoPlanilla.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colTipoPlanilla.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colTipoPlanilla.Visible = false;
+            // 
             // frmMatenimientoPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 536);
+            this.Controls.Add(this.chkIncluirAnulados);
             this.Controls.Add(this.btnHabilitarTareo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -410,6 +444,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnHabilitarTareo;
+        private System.Windows.Forms.CheckBox chkIncluirAnulados;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtDescripcion;
@@ -424,5 +459,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdtRegimenLaboral;
         private System.Windows.Forms.DataGridViewTextBoxColumn Plantilla;
         private System.Windows.Forms.DataGridViewTextBoxColumn colobservaciones;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colAnulado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTipoPlanilla;
     }
 }
