@@ -495,7 +495,7 @@ namespace CapaUsuario.Reportes
             {
                 altoColumna = Convert.ToInt16(txtAltoColumnas.Text);
             }
-           
+            miPlanilla = miPlanilla.TraerPlanilla(sidtplanilla);
             FileInfo file = new FileInfo("C:\\PDFs\\Planilla.pdf");
             bool estaAbierto = IsFileinUse(file, "C:\\PDFs\\Planilla.pdf");
             if (!estaAbierto)

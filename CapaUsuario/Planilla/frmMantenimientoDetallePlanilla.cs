@@ -1175,7 +1175,7 @@ namespace CapaUsuario.Planilla
         private decimal CalcularRemuneracionMensual(int diasLaborados, int diasNoLaborados, decimal Monto, int diassuspendidos, CapaDeNegocios.Planillas.enumTipoCalculoMensual CalculoMensual, int diasfalta)
         {
             decimal Remuneracion = 0;
-            if (diasNoLaborados == 0 )
+            if ((diasNoLaborados+ diasfalta + diassuspendidos) == 0 )
             {
                 return Monto;
             }
@@ -1192,6 +1192,7 @@ namespace CapaUsuario.Planilla
                         }
                         else
                         {
+
                             //Remuneracion = Math.Round(Math.Round(Monto / 30, 2) * diasLaborados, 2);
                             Remuneracion = Math.Round((Monto / 30) * diasLaborados, 2) -Math.Round((Monto / 30) * (diassuspendidos + diasfalta), 2);
                         }
