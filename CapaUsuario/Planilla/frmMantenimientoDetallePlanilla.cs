@@ -1790,8 +1790,8 @@ namespace CapaUsuario.Planilla
                                 }
                                 else
                                 {
-                                    remuneracion_5ta = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
-                                    remuneracionBasica = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[11].Value);
+                                    remuneracion_5ta = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells["remuneracion"].Value);
+                                    remuneracionBasica = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells["remuneracion"].Value);
 
                                     //remuneracion_5ta = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
                                     //remuneracionBasica = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio_ingresos + i].Value);
