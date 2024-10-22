@@ -2641,10 +2641,14 @@ namespace CapaUsuario.Reportes
 
                                                 if (miPlanilla.TipoImpresionTardanzaFalta == CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta.AfectaAlSueldo && contadorRecorrido == ContadorIngresosInformativos)
                                                 {
-                                                    odtPrueba.Columns.Add("SUELDO MES", typeof(string));
-                                                    total_tipo_ingreso++;
-                                                    arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
-                                                    t++;
+                                                    if (!ExisteColumnaTexto(odtPrueba, "SUELDO MES"))
+                                                    {
+                                                        odtPrueba.Columns.Add("SUELDO MES", typeof(string));
+                                                        total_tipo_ingreso++;
+                                                        arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
+                                                        t++;
+                                                    }
+                                                    
 
                                                     indice_ingreso = BuscarIndiceColumna(odtPrueba, "SUELDO MES");
                                                     if (chkCuentaBancaria.Checked)
@@ -2662,18 +2666,26 @@ namespace CapaUsuario.Reportes
                                                             drFila[indice_ingreso] = row[19];
                                                     }
 
-                                                    odtPrueba.Columns.Add(".FALT.", typeof(string));
-                                                    total_tipo_ingreso++;
-                                                    arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
-                                                    t++;
+                                                    if (!ExisteColumnaTexto(odtPrueba, ".FALT."))
+                                                    {
+                                                        odtPrueba.Columns.Add(".FALT.", typeof(string));
+                                                        total_tipo_ingreso++;
+                                                        arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
+                                                        t++;
+                                                    }
+                                                    
 
                                                     indice_ingreso = BuscarIndiceColumna(odtPrueba, ".FALT.");
                                                     drFila[indice_ingreso] = 0.00;
 
-                                                    odtPrueba.Columns.Add(".TARD.", typeof(string));
-                                                    total_tipo_ingreso++;
-                                                    arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
-                                                    t++;
+                                                    if (!ExisteColumnaTexto(odtPrueba, ".TARD."))
+                                                    {
+                                                        odtPrueba.Columns.Add(".TARD.", typeof(string));
+                                                        total_tipo_ingreso++;
+                                                        arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
+                                                        t++;
+                                                    }
+                                                    
 
                                                     indice_ingreso = BuscarIndiceColumna(odtPrueba, ".TARD.");
                                                     drFila[indice_ingreso] = 0.00;
