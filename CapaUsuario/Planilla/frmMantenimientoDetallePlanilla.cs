@@ -1186,7 +1186,7 @@ namespace CapaUsuario.Planilla
                 switch (CalculoMensual)
                 {
                     case CapaDeNegocios.Planillas.enumTipoCalculoMensual.DividirEntre30:
-                        if (diasLaborados == 30)
+                        if (diasLaborados == 31)
                         {
                             return Monto - Math.Round((Monto / 30) * (diassuspendidos + diasfalta), 2);
                         }
@@ -2838,10 +2838,13 @@ namespace CapaUsuario.Planilla
                 dgvDetallePlanilla.Columns["SecFunc"].Visible = false;
                 dgvDetallePlanilla.Columns["FechaInicio"].Visible = false;
                 dgvDetallePlanilla.Columns["DiasLaborados"].Visible = false;
-                dgvDetallePlanilla.Columns["AFP"].Visible = false;
-                dgvDetallePlanilla.Columns["TipoComision"].Visible = false;
-                dgvDetallePlanilla.Columns["Cuspp"].Visible = false;
+                dgvDetallePlanilla.Columns["colAFP"].Visible = false;
+                dgvDetallePlanilla.Columns["colComision"].Visible = false;
+                dgvDetallePlanilla.Columns["colCUSPP"].Visible = false;
                 dgvDetallePlanilla.Columns["SUMA_A_TRABAJADOR"].Visible = false;
+                dgvDetallePlanilla.Columns["fechafin"].Visible = false;
+                dgvDetallePlanilla.Columns["DIASMES"].Visible = false;
+                dgvDetallePlanilla.Columns["DIASSUSPENDIDOS"].Visible = false;
             }
         }
 

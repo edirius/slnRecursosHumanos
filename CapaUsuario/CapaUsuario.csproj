@@ -499,6 +499,26 @@
     <Compile Include="Planilla\TrabajadoresSinPlanilla\frmTrabajadoresSinPlanilla.Designer.cs">
       <DependentUpon>frmTrabajadoresSinPlanilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Planilla\VacacionesTruncas\cCatalogoBusqueda.cs" />
+    <Compile Include="Planilla\VacacionesTruncas\cTrabajadorBuscado.cs" />
+    <Compile Include="Planilla\VacacionesTruncas\frmBuscarTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\VacacionesTruncas\frmBuscarTrabajador.Designer.cs">
+      <DependentUpon>frmBuscarTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planilla\VacacionesTruncas\frmImportarPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\VacacionesTruncas\frmImportarPeriodo.Designer.cs">
+      <DependentUpon>frmImportarPeriodo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planilla\VacacionesTruncas\frmMantenimientoDetalleVac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\VacacionesTruncas\frmMantenimientoDetalleVac.Designer.cs">
+      <DependentUpon>frmMantenimientoDetalleVac.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reloj\frmAdministrarReloj.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1869,6 +1889,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Planilla\TrabajadoresSinPlanilla\frmTrabajadoresSinPlanilla.resx">
       <DependentUpon>frmTrabajadoresSinPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\VacacionesTruncas\frmBuscarTrabajador.resx">
+      <DependentUpon>frmBuscarTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\VacacionesTruncas\frmImportarPeriodo.resx">
+      <DependentUpon>frmImportarPeriodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\VacacionesTruncas\frmMantenimientoDetalleVac.resx">
+      <DependentUpon>frmMantenimientoDetalleVac.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reloj\frmAdministrarReloj.resx">
       <DependentUpon>frmAdministrarReloj.cs</DependentUpon>
