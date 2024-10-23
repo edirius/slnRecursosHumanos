@@ -1683,18 +1683,24 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        //if (PlanillaEncontrada == null || sma_empleador[i, 1].ToString() != "0804")
-                        //{
+                        if (PlanillaEncontrada == null || sma_empleador[i, 1].ToString() != "0804")
+                        {
                             decimal result = IngresosAfectos(fila, sma_empleador[i, 1].ToString(), sma_empleador[i, 3].ToString());
                             dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value = String.Format("{0:0.00}", result);
                             total_aempleador += decimal.Round(Convert.ToDecimal(result), 2);
-                        //}
-                        //else
-                        //{
-                           
-                        //    total_aempleador += decimal.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value), 2);
-                        //}
-                        
+                        }
+                        else
+                        {
+                            if (dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value == null)
+                            {
+                                decimal result = IngresosAfectos(fila, sma_empleador[i, 1].ToString(), sma_empleador[i, 3].ToString());
+                                dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value = String.Format("{0:0.00}", result);
+                                
+                            }
+                            dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Style.BackColor = Color.LightGreen;
+                            total_aempleador += decimal.Round(Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value), 2);
+                        }
+
                     }
                 }
                 else
