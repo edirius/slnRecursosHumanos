@@ -14,6 +14,8 @@ namespace CapaDeNegocios.Tareos
     {
         SpreadsheetLight.SLDocument miTareo;
 
+        SpreadsheetLight.SLDocument miHoja;
+
         public cArchivoExcel Importar(string ruta, cArchivoExcel miExcel)
         {
             try
@@ -33,14 +35,20 @@ namespace CapaDeNegocios.Tareos
                 for (int i = miExcel.InicioFila; i <= miExcel.FinFila; i++)
                 {
                     cDetalleArchivoExcel oDetalle = new cDetalleArchivoExcel();
-                    List<string> nombreReal = new List<string>();
-                    nombreReal = SepararNombres(miExcel.TipoNombres, miTareo.GetCellValueAsString(miExcel.ColumnaNombres + i).Trim());
-                    oDetalle.Nombres = nombreReal[0];
-                    oDetalle.Apellidopaterno = nombreReal[1];
-                    oDetalle.Apellidomaterno = nombreReal[2];
+                    if (miExcel.TipoNombres != enumTipoNombres.separados)
+                    {
+                        List<string> nombreReal = new List<string>();
+                        nombreReal = SepararNombres(miExcel.TipoNombres, miTareo.GetCellValueAsString(miExcel.ColumnaNombres + i).Trim());
+                        oDetalle.Nombres = nombreReal[0];
+                        oDetalle.Apellidopaterno = nombreReal[1];
+                        oDetalle.Apellidomaterno = nombreReal[2];
+                    }
+                    oDetalle.Nombres = miTareo.GetCellValueAsString(miExcel.ColumnaNombres+ i).Trim().ToUpper();
+                    oDetalle.Apellidopaterno = miTareo.GetCellValueAsString(miExcel.ColumnaApellidoPaterno + i).Trim().ToUpper();
+                    oDetalle.Apellidomaterno = miTareo.GetCellValueAsString(miExcel.ColumnaApellidoMaterno + i).Trim().ToUpper();
                     oDetalle.Cargo = miTareo.GetCellValueAsString(miExcel.ColumnaCargo + i).Trim().ToUpper();
                     oDetalle.Dni = miTareo.GetCellValueAsString(miExcel.ColumnaDNI + i).Trim();
-                    oDetalle.CuentaBancaria = miTareo.GetCellValueAsString(miExcel.ColumnaCuentaBancaria + i).Trim();
+                    //oDetalle.CuentaBancaria = miTareo.GetCellValueAsString(miExcel.ColumnaCuentaBancaria + i).Trim();
                     string prueba = miTareo.GetCellValueAsString(miExcel.ColumnaDias + i);
                     oDetalle.Dias =  Convert.ToInt16(prueba);
                     miNuevoExcel.Detalles.Add(oDetalle);
@@ -52,6 +60,62 @@ namespace CapaDeNegocios.Tareos
             catch (Exception ex)
             {
                 throw new Exception("Error en el metodo Importar: cImportarExcelTareo " + ex.Message);
+            }
+        }
+
+
+        public cExcelHojaInformativa ImportarHojaInformativa (string ruta, cExcelHojaInformativa miHojaInformativa)
+        {
+            try
+            {
+                miHoja = new SpreadsheetLight.SLDocument(ruta);
+                List<string> listaHojas = miHoja.GetWorksheetNames();
+                bool encontrado = listaHojas.Any(s => s.Contains(miHojaInformativa.NombreHoja));
+                //listaHojas.fin .Find(miExcel.NombreHoja);
+                if (!encontrado)
+                {
+                    throw new Exception("No se encontro el nombre de hoja '" + miHojaInformativa.NombreHoja + "' en el archivo ");
+                }
+                cExcelHojaInformativa miNuevoHoja = new cExcelHojaInformativa();
+
+                miTareo = new SpreadsheetLight.SLDocument(ruta, miHojaInformativa.NombreHoja);
+
+                for (int i = miHojaInformativa.InicioFila; i <= miHojaInformativa.FinFila; i++)
+                {
+                    cDetalleHojaInformativa oDetalle = new cDetalleHojaInformativa();
+                    oDetalle.Dni = miTareo.GetCellValueAsString(miHojaInformativa.ColumnaDNI + i).Trim();
+                    oDetalle.CuentaBancaria = miTareo.GetCellValueAsString(miHojaInformativa.ColumnaCuentaBancaria + i).Trim();
+                    miNuevoHoja.Detalles.Add(oDetalle);
+                }
+
+                return miNuevoHoja;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el metodo Importar: cImportarExcelTareo " + ex.Message);
+            }
+        }
+
+
+        public void PonerNumerosCuentaBancaria(cArchivoExcel miExcel, cExcelHojaInformativa miHoja)
+        {
+            try
+            {
+                foreach (cDetalleArchivoExcel item in miExcel.Detalles)
+                {
+                    foreach (cDetalleHojaInformativa item2 in miHoja.Detalles)
+                    {
+                        if (item.Dni == item2.Dni)
+                        {
+                            item.CuentaBancaria = item2.CuentaBancaria;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el metodo PonerNumerosCuentaBancaria:" + ex.Message);
             }
         }
 

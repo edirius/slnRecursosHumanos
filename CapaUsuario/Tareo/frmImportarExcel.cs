@@ -21,6 +21,8 @@ namespace CapaUsuario.Tareo
 
         cImportarExcelTareo oImportadorExcelTareo = new cImportarExcelTareo();
         cArchivoExcel miArchivoExcel = new cArchivoExcel();
+        cExcelHojaInformativa HojaInformativa = new cExcelHojaInformativa();
+
         cDistrito miDistrito = new cDistrito();
 
         CapaDeNegocios.Obras.cMetaJornal oMetaJornal = new CapaDeNegocios.Obras.cMetaJornal();
@@ -33,16 +35,15 @@ namespace CapaUsuario.Tareo
         private void frmImportarExcel_Load(object sender, EventArgs e)
         {
             cboTipoOrden.DataSource = Enum.GetValues(typeof(enumTipoNombres));
+            cboTipoOrden.SelectedIndex = 0;
             dtpFechaInicio.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
         }
 
         private void btnImportarExcel_Click(object sender, EventArgs e)
         {
-            
-
             OpenFileDialog fichero = new OpenFileDialog();
             fichero.Filter = "Excel (*.xlsx)|*.xlsx| Excel (*.xls)|*.xls";
-            fichero.FileName = "consultaCUSPPMasiva.xlsX";
+            fichero.FileName = "TAREO.xlsX";
         
             if (fichero.ShowDialog() == DialogResult.OK)
             {
@@ -51,6 +52,8 @@ namespace CapaUsuario.Tareo
                 miArchivoExcel.InicioFila = Convert.ToInt16(txtComienzoFila.Text);
                 miArchivoExcel.FinFila = Convert.ToInt16(txtFinFila.Text);
                 miArchivoExcel.ColumnaNombres = txtColumnaNombres.Text;
+                miArchivoExcel.ColumnaApellidoPaterno = txtApellidoPaterno.Text;
+                miArchivoExcel.ColumnaApellidoMaterno = txtApellidoMaterno.Text;
                 miArchivoExcel.ColumnaDNI = txtColumnaDNI.Text;
                 miArchivoExcel.ColumnaCargo = txtColumnaCategoria.Text;
                 miArchivoExcel.ColumnaDias = txtColumnaDias.Text;
@@ -96,7 +99,7 @@ namespace CapaUsuario.Tareo
             {
                 Color color = Color.DarkOrange;
 
-                if (!Convert.ToBoolean(row.Cells["TrabajadorEncontrado"].Value))
+                if (!Convert.ToBoolean(row.Cells["colTrabajadorEncontrado"].Value))
                 {
                     row.DefaultCellStyle.BackColor = color;
                 } 
@@ -292,60 +295,69 @@ namespace CapaUsuario.Tareo
                 CapaDeNegocios.cDistrito oDistrito = new CapaDeNegocios.cDistrito();
                 CapaDeNegocios.cProvincia oProvincia = new CapaDeNegocios.cProvincia();
                 CapaDeNegocios.cDepartamento oDepartamento = new cDepartamento();
+                dtgDatos.Columns["colNombreValidado"].Visible = true;
+                dtgDatos.Columns["colApellidoValidado"].Visible = true;
+                dtgDatos.Columns["colApellidoMaternoValidado"].Visible = true;
                 foreach (cDetalleArchivoExcel item in miArchivoExcel.Detalles)
                 {
-                    trabajadorValidado MiTrabajadorValidado;
-                    MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(item.Dni, cDatosGeneralesEmpresa.Bearer2);
-                    if (MiTrabajadorValidado != null)
+                    //Si no esta validado todavia
+                    if (!item.TrabajadorValidado)
                     {
-                        item.NombresValidado = MiTrabajadorValidado.Data.nombres;
-                        item.ApellidoPaternoValidado = MiTrabajadorValidado.Data.apellido_paterno;
-                        item.ApellidoMaternoValidado = MiTrabajadorValidado.Data.apellido_materno;
-                        item.Direccion = MiTrabajadorValidado.Data.direccion;
-                        switch (MiTrabajadorValidado.Data.estado_civil)
+                        trabajadorValidado MiTrabajadorValidado;
+                        MiTrabajadorValidado = Verificador.TraerTrabajadorValidado(item.Dni, cDatosGeneralesEmpresa.Bearer2);
+                        if (MiTrabajadorValidado != null)
                         {
-                            case "SOLTERO":
-                                item.EstadoCivil = "Soltero";
-                                break;
-                            case "CASADO":
-                                item.EstadoCivil = "Casado";
-                                break;
-                            case "VIUDO":
-                                item.EstadoCivil = "Viudo";
-                                break;
-                            case "DIVORCIADO":
-                                item.EstadoCivil = "Divorciado";
-                                break;
-                            default:
-                                break;
+                            item.NombresValidado = MiTrabajadorValidado.Data.nombres;
+                            item.ApellidoPaternoValidado = MiTrabajadorValidado.Data.apellido_paterno;
+                            item.ApellidoMaternoValidado = MiTrabajadorValidado.Data.apellido_materno;
+                            item.Direccion = MiTrabajadorValidado.Data.direccion;
+                            switch (MiTrabajadorValidado.Data.estado_civil)
+                            {
+                                case "SOLTERO":
+                                    item.EstadoCivil = "Soltero";
+                                    break;
+                                case "CASADO":
+                                    item.EstadoCivil = "Casado";
+                                    break;
+                                case "VIUDO":
+                                    item.EstadoCivil = "Viudo";
+                                    break;
+                                case "DIVORCIADO":
+                                    item.EstadoCivil = "Divorciado";
+                                    break;
+                                default:
+                                    break;
+                            }
+                            switch (MiTrabajadorValidado.Data.sexo)
+                            {
+                                case "MASCULINO":
+                                    item.Sexo = "Masculino";
+                                    break;
+                                case "FEMENINO":
+                                    item.Sexo = "Femenino";
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            item.FechaNacimiento = ToDateTime(MiTrabajadorValidado.Data.fecha_nacimiento);
+                            oDistrito = oDistrito.TraerDistritoxUbigeo(MiTrabajadorValidado.Data.ubigeo_sunat);
+                            oProvincia = oProvincia.TraerProvincia(oDistrito.MiProvincia.Codigo);
+                            oDepartamento = oDepartamento.TraerDepartamento(oProvincia.MiDepartamento.Codigo);
+
+
+                            item.Observaciones = validarFilaExcel(item);
+                            item.TrabajadorValidado = true;
+                            //txtDepartamento.Text = oDepartamento.Descripcion;
+                            //txtProvincia.Text = oProvincia.Descripcion;
+                            //txtDistrito.Text = oDistrito.Descripcion;
                         }
-                        switch (MiTrabajadorValidado.Data.sexo)
+                        else
                         {
-                            case "MASCULINO":
-                                item.Sexo = "Masculino";
-                                break;
-                            case "FEMENINO":
-                                item.Sexo = "Femenino";
-                                break;
-                            default:
-                                break;
+                            MessageBox.Show("Error al traer los datos, ingrese los nombres manualmente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
-                        item.FechaNacimiento = ToDateTime(MiTrabajadorValidado.Data.fecha_nacimiento);
-                        oDistrito = oDistrito.TraerDistritoxUbigeo(MiTrabajadorValidado.Data.ubigeo_sunat);
-                        oProvincia = oProvincia.TraerProvincia(oDistrito.MiProvincia.Codigo);
-                        oDepartamento = oDepartamento.TraerDepartamento(oProvincia.MiDepartamento.Codigo);
-
-
-                        item.Observaciones = validarFilaExcel(item);
-                        //txtDepartamento.Text = oDepartamento.Descripcion;
-                        //txtProvincia.Text = oProvincia.Descripcion;
-                        //txtDistrito.Text = oDistrito.Descripcion;
                     }
-                    else
-                    {
-                        MessageBox.Show("Error al traer los datos, ingrese los nombres manualmente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    
                 }
                 MessageBox.Show("Datos validados.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -382,6 +394,52 @@ namespace CapaUsuario.Tareo
             }
 
             return observaciones;
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnImportarHojaInformativa_Click(object sender, EventArgs e)
+        {
+            
+
+            OpenFileDialog fichero = new OpenFileDialog();
+            fichero.Filter = "Excel (*.xlsx)|*.xlsx| Excel (*.xls)|*.xls";
+            fichero.FileName = "FICHA_INFORMATIVA.xlsX";
+
+            if (fichero.ShowDialog() == DialogResult.OK)
+            {
+
+               
+                HojaInformativa = oImportadorExcelTareo.ImportarHojaInformativa(fichero.FileName, HojaInformativa);
+
+                oImportadorExcelTareo.PonerNumerosCuentaBancaria(miArchivoExcel, HojaInformativa);
+
+                dtgDatos.DataSource = miArchivoExcel.Detalles;
+            }
+        }
+
+        private void btnFormatoHojaInformativa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmDatosHojaInformativa fDatosHojaInformativa = new frmDatosHojaInformativa();
+                fDatosHojaInformativa.HojaInformativa = HojaInformativa;
+                if (fDatosHojaInformativa.ShowDialog() == DialogResult.OK)
+                {
+                    HojaInformativa.ColumnaCuentaBancaria = fDatosHojaInformativa.HojaInformativa.ColumnaCuentaBancaria;
+                    HojaInformativa.ColumnaDNI = fDatosHojaInformativa.HojaInformativa.ColumnaDNI;
+                    HojaInformativa.InicioFila = fDatosHojaInformativa.HojaInformativa.InicioFila;
+                    HojaInformativa.FinFila = fDatosHojaInformativa.HojaInformativa.FinFila;
+                    HojaInformativa.NombreHoja = fDatosHojaInformativa.HojaInformativa.NombreHoja;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en dar formato a la Hoja Informativa: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

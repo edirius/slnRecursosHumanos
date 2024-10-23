@@ -8,6 +8,7 @@ namespace CapaDeNegocios.Tareos
 {
     public enum enumTipoNombres
     {
+        separados,
         primeroNombres,
         primeroApellidos
     }
@@ -17,6 +18,8 @@ namespace CapaDeNegocios.Tareos
         int inicioFila;
         int finFila;
         string columnaNombres;
+        string columnaApellidoPaterno;
+        string columnaApellidoMaterno;
         string columnaCargo;
         string columnaDias;
         string columnaDNI;
@@ -159,6 +162,32 @@ namespace CapaDeNegocios.Tareos
             set
             {
                 columnaCuentaBancaria = value;
+            }
+        }
+
+        public string ColumnaApellidoPaterno
+        {
+            get
+            {
+                return columnaApellidoPaterno;
+            }
+
+            set
+            {
+                columnaApellidoPaterno = value;
+            }
+        }
+
+        public string ColumnaApellidoMaterno
+        {
+            get
+            {
+                return columnaApellidoMaterno;
+            }
+
+            set
+            {
+                columnaApellidoMaterno = value;
             }
         }
     }

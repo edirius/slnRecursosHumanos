@@ -25,12 +25,14 @@ namespace CapaDeNegocios.Tareos
         string estadoCivil;
         string observaciones;
         string cuentaBancaria;
-
+        DateTime fechaInicio;
+        Boolean trabajadorValidado;
         Boolean trabajadorEncontrado;
 
         public cDetalleArchivoExcel()
         {
             trabajadorEncontrado = false;
+            trabajadorValidado = false;
         }
 
         public string Nombres
@@ -46,6 +48,31 @@ namespace CapaDeNegocios.Tareos
             }
         }
 
+        public string Apellidopaterno
+        {
+            get
+            {
+                return apellidopaterno;
+            }
+
+            set
+            {
+                apellidopaterno = value;
+            }
+        }
+
+        public string Apellidomaterno
+        {
+            get
+            {
+                return apellidomaterno;
+            }
+
+            set
+            {
+                apellidomaterno = value;
+            }
+        }
         public string Dni
         {
             get
@@ -85,31 +112,7 @@ namespace CapaDeNegocios.Tareos
             }
         }
 
-        public string Apellidopaterno
-        {
-            get
-            {
-                return apellidopaterno;
-            }
-
-            set
-            {
-                apellidopaterno = value;
-            }
-        }
-
-        public string Apellidomaterno
-        {
-            get
-            {
-                return apellidomaterno;
-            }
-
-            set
-            {
-                apellidomaterno = value;
-            }
-        }
+      
 
         public bool TrabajadorEncontrado
         {
@@ -251,6 +254,32 @@ namespace CapaDeNegocios.Tareos
             set
             {
                 cuentaBancaria = value;
+            }
+        }
+
+        public DateTime FechaInicio
+        {
+            get
+            {
+                return fechaInicio;
+            }
+
+            set
+            {
+                fechaInicio = value;
+            }
+        }
+
+        public bool TrabajadorValidado
+        {
+            get
+            {
+                return trabajadorValidado;
+            }
+
+            set
+            {
+                trabajadorValidado = value;
             }
         }
     }
