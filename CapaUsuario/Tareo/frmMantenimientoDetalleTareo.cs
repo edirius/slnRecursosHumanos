@@ -1500,10 +1500,18 @@ namespace CapaUsuario.Tareo
 
         private void btnImportartareo_Click(object sender, EventArgs e)
         {
-            Tareo.frmImportarExcel fImportarExcel = new frmImportarExcel();
-            fImportarExcel.oMeta = miMeta;
-            fImportarExcel.otareo = miTareo;
-            fImportarExcel.Show();
+            if (miDetalleTareo.ListarDetalleTareo(miTareo.IdTTareo).Rows.Count == 0)
+            {
+                Tareo.frmImportarExcel fImportarExcel = new frmImportarExcel();
+                fImportarExcel.oMeta = miMeta;
+                fImportarExcel.otareo = miTareo;
+                fImportarExcel.ShowDialog();
+                CargarDatos();
+            }
+            else
+            {
+                MessageBox.Show("El tareo debe estar vacio para importar los datos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

@@ -258,7 +258,7 @@ namespace CapaUsuario.Tareo
 
                     oDetalle.CrearDetalleTareo(oDetalle);
                 }
-                MessageBox.Show("Datos Importador", "Importacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Datos Importados", "Importacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -291,6 +291,7 @@ namespace CapaUsuario.Tareo
         {
             try
             {
+                btnValidar.Text = "Volver a Validar";
                 cVerificadorDNI Verificador = new cVerificadorDNI();
                 CapaDeNegocios.cDistrito oDistrito = new CapaDeNegocios.cDistrito();
                 CapaDeNegocios.cProvincia oProvincia = new CapaDeNegocios.cProvincia();
@@ -440,6 +441,11 @@ namespace CapaUsuario.Tareo
             {
                 MessageBox.Show("Error en dar formato a la Hoja Informativa: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
