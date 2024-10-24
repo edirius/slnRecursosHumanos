@@ -184,11 +184,11 @@ namespace CapaUsuario.Planilla
                                 //monto jornal o mensual col 11
                                 if (miMetaJornal.Opcion == false)
                                 {
-                                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["Remuneracion"].Value = String.Format("{ 0:0.00}", miMetaJornal.Jornal);
+                                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["Remuneracion"].Value = String.Format("{0:0.00}", miMetaJornal.Jornal);
                                 }
                                 else
                                 {
-                                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["Remuneracion"].Value = String.Format("{ 0:0.00}", miMetaJornal.Mensual);
+                                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["Remuneracion"].Value = String.Format("{0:0.00}", miMetaJornal.Mensual);
                                 }
                                 
                             }
@@ -1671,9 +1671,9 @@ namespace CapaUsuario.Planilla
 
                     if (PlanillaEncontrada != null)
                     {
-                        
                         MessageBox.Show("Se encontro al trabajador: " + miTrabajador.Dni + ": " + miTrabajador.Nombres + " " + miTrabajador.ApellidoPaterno + " " + miTrabajador.ApellidoMaterno + " Cargo: " + PlanillaEncontrada.ListaDetallePlanilla[0].Cargo +
                             " en la planilla Nro: " + PlanillaEncontrada.Numero + " " + PlanillaEncontrada.Descripcion + ": Tendra que calcular su essalud manualmente ", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        
                     }
                     decimal number2 = 0;
                     if (decimal.TryParse(sma_empleador[i, 3].ToString(), out number2) == true)
@@ -1691,6 +1691,7 @@ namespace CapaUsuario.Planilla
                         }
                         else
                         {
+                            //Si es la primera vez que entra calculara el aporte normal
                             if (dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value == null)
                             {
                                 decimal result = IngresosAfectos(fila, sma_empleador[i, 1].ToString(), sma_empleador[i, 3].ToString());
