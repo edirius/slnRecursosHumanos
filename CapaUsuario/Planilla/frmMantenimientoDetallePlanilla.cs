@@ -1853,7 +1853,7 @@ namespace CapaUsuario.Planilla
             }
             else
             {
-                remuneracion_afecta = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells[13].Value);
+                remuneracion_afecta = Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells["TotalRemuneracio"].Value);
             }
 
 
