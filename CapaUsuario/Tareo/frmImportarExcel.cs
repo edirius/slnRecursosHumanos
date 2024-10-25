@@ -132,44 +132,93 @@ namespace CapaUsuario.Tareo
 
                     if (item.CodigoTrabajador == 0)
                     {
-                        miTrabajador.Nombres = item.NombresValidado;
-                        miTrabajador.ApellidoPaterno = item.ApellidoPaternoValidado;
-                        miTrabajador.ApellidoMaterno = item.ApellidoMaternoValidado;
-                        switch (item.Sexo)
+                        if (item.TrabajadorValidado)
                         {
-                            case "Masculino":
-                                miTrabajador.Sexo = EnumSexo.Masculino;
-                                break;
-                            case "Femenino":
-                                miTrabajador.Sexo = EnumSexo.Femenino;
-                                break;
-                            default:
-                                break;
+                            miTrabajador.Nombres = item.NombresValidado;
+                            miTrabajador.ApellidoPaterno = item.ApellidoPaternoValidado;
+                            miTrabajador.ApellidoMaterno = item.ApellidoMaternoValidado;
+                            switch (item.Sexo)
+                            {
+                                case "Masculino":
+                                    miTrabajador.Sexo = EnumSexo.Masculino;
+                                    break;
+                                case "Femenino":
+                                    miTrabajador.Sexo = EnumSexo.Femenino;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            miTrabajador.FechaNacimiento = item.FechaNacimiento;
+                            miTrabajador.Dni = item.Dni;
+                            miTrabajador.CelularPersonal = "";
+                            if (item.Direccion.Length > 49)
+                            {
+                                item.Direccion = item.Direccion.Substring(0, 48);
+                            }
+                            miTrabajador.Direccion = item.Direccion;
+                            miTrabajador.MiDistrito = miDistrito;
+                            miTrabajador.MiDistrito.Codigo = miDistrito.Codigo;
+
+                            miTrabajador.CorreoElectronico = "";
+
+                            miTrabajador.MiTipoVia = new cTipoVia();
+                            miTrabajador.MiTipoVia.Codigo = 1;
+                            miTrabajador.MiTipoZOna = new cTipoZona();
+                            miTrabajador.MiTipoZOna.Codigo = 1;
+                            miTrabajador.MiNacionalidad = new cNacionalidad();
+                            miTrabajador.MiNacionalidad.Codigo = 1;
+                            miTrabajador.Essaludvida = false;
+                            miTrabajador.Scrt = true;
+                            miTrabajador.NroRenta4ta = "1";
+                            sidttrabajador = miTrabajador.AgregarTrabajadorConID(miTrabajador);
+                            miTrabajador.IdTrabajador = sidttrabajador;
+
+                           
                         }
-                        miTrabajador.FechaNacimiento = item.FechaNacimiento;
-                        miTrabajador.Dni = item.Dni;
-                        miTrabajador.CelularPersonal = "";
-                        if (item.Direccion.Length > 49)
+                        else
                         {
-                            item.Direccion =  item.Direccion.Substring(0, 48);
+                            MessageBox.Show("El trabajador: " + item.Dni + " " + item.Nombres + " " + item.Apellidopaterno + item.Apellidomaterno + " No esta validado, se utilizara los nombres del archivo excel, actualizar sus datos como fecha de nacimiento por el menu trabajadores", "Observacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            miTrabajador.Nombres = item.Nombres;
+                            miTrabajador.ApellidoPaterno = item.Apellidopaterno;
+                            miTrabajador.ApellidoMaterno = item.Apellidomaterno;
+                            switch (item.Sexo)
+                            {
+                                case "Masculino":
+                                    miTrabajador.Sexo = EnumSexo.Masculino;
+                                    break;
+                                case "Femenino":
+                                    miTrabajador.Sexo = EnumSexo.Femenino;
+                                    break;
+                                default:
+                                    break;
+                            }
+                            miTrabajador.FechaNacimiento = item.FechaNacimiento;
+                            miTrabajador.Dni = item.Dni;
+                            miTrabajador.CelularPersonal = "";
+                            item.Direccion = "";
+                            if (item.Direccion.Length > 49)
+                            {
+                                item.Direccion = item.Direccion.Substring(0, 48);
+                            }
+                            miTrabajador.Direccion = item.Direccion;
+                            miTrabajador.MiDistrito = miDistrito;
+                            miTrabajador.MiDistrito.Codigo = miDistrito.Codigo;
+
+                            miTrabajador.CorreoElectronico = "";
+
+                            miTrabajador.MiTipoVia = new cTipoVia();
+                            miTrabajador.MiTipoVia.Codigo = 1;
+                            miTrabajador.MiTipoZOna = new cTipoZona();
+                            miTrabajador.MiTipoZOna.Codigo = 1;
+                            miTrabajador.MiNacionalidad = new cNacionalidad();
+                            miTrabajador.MiNacionalidad.Codigo = 1;
+                            miTrabajador.Essaludvida = false;
+                            miTrabajador.Scrt = true;
+                            miTrabajador.NroRenta4ta = "1";
+                            sidttrabajador = miTrabajador.AgregarTrabajadorConID(miTrabajador);
+                            miTrabajador.IdTrabajador = sidttrabajador;
+
                         }
-                        miTrabajador.Direccion = item.Direccion;
-                        miTrabajador.MiDistrito = miDistrito;
-                        miTrabajador.MiDistrito.Codigo = miDistrito.Codigo;
-
-                        miTrabajador.CorreoElectronico = "";
-
-                        miTrabajador.MiTipoVia = new cTipoVia();
-                        miTrabajador.MiTipoVia.Codigo = 1;
-                        miTrabajador.MiTipoZOna = new cTipoZona();
-                        miTrabajador.MiTipoZOna.Codigo = 1;
-                        miTrabajador.MiNacionalidad = new cNacionalidad();
-                        miTrabajador.MiNacionalidad.Codigo = 1;
-                        miTrabajador.Essaludvida = false;
-                        miTrabajador.Scrt = true;
-                        miTrabajador.NroRenta4ta = "1";
-                        sidttrabajador = miTrabajador.AgregarTrabajadorConID(miTrabajador);
-                        miTrabajador.IdTrabajador = sidttrabajador;
 
                         item.CodigoTrabajador = sidttrabajador;
                         miPeriodoTrabajador.FechaInicio = dtpFechaInicio2.ToShortDateString();
