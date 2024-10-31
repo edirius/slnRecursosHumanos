@@ -2617,29 +2617,14 @@ namespace CapaUsuario.Reportes
                                                     }
                                                 }
                                             }
+
+                                           
                                             int contadorRecorrido = 0;
                                             foreach (DataRow row_i in odtPlanillaXIngresos.Rows)
                                             {
-                                                contadorRecorrido++;
-                                                // si no existe columna agregar titulo
-                                                if (!ExisteColumna(odtPrueba, row_i))
-                                                {
-                                                    odtPrueba.Columns.Add(row_i[8].ToString().Trim(), typeof(string));
-                                                    total_tipo_ingreso++;
-                                                    arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
-                                                    t++;
-                                                }
+                                                
 
-                                                //Buscar indice del titulo respectivo al monto
-                                                indice_ingreso = BuscarIndiceColumna(odtPrueba, row_i[8].ToString());
-
-                                                //insertar monto de ingresos a la planilla
-                                                if (row_i[9].ToString() == "")
-                                                    drFila[indice_ingreso] = 0.00;
-                                                else
-                                                    drFila[indice_ingreso] = row_i[9];
-
-                                                if (miPlanilla.TipoImpresionTardanzaFalta == CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta.AfectaAlSueldo && ( contadorRecorrido == ContadorIngresosInformativos || ContadorIngresosInformativos == 0))
+                                                if (miPlanilla.TipoImpresionTardanzaFalta == CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta.AfectaAlSueldo && ( contadorRecorrido == ContadorIngresosInformativos))
                                                 {
                                                     if (!ExisteColumnaTexto(odtPrueba, "SUELDO MES"))
                                                     {
@@ -2690,6 +2675,24 @@ namespace CapaUsuario.Reportes
                                                     indice_ingreso = BuscarIndiceColumna(odtPrueba, ".TARD.");
                                                     drFila[indice_ingreso] = 0.00;
                                                 }
+                                                contadorRecorrido++;
+                                                // si no existe columna agregar titulo
+                                                if (!ExisteColumna(odtPrueba, row_i))
+                                                {
+                                                    odtPrueba.Columns.Add(row_i[8].ToString().Trim(), typeof(string));
+                                                    total_tipo_ingreso++;
+                                                    arr_ingresos[t] = (odtPrueba.Columns.Count - 1).ToString();
+                                                    t++;
+                                                }
+
+                                                //Buscar indice del titulo respectivo al monto
+                                                indice_ingreso = BuscarIndiceColumna(odtPrueba, row_i[8].ToString());
+
+                                                //insertar monto de ingresos a la planilla
+                                                if (row_i[9].ToString() == "")
+                                                    drFila[indice_ingreso] = 0.00;
+                                                else
+                                                    drFila[indice_ingreso] = row_i[9];
                                             }
 
                                             //Insertando la sumatoria total de ingresos
