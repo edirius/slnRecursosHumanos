@@ -2639,7 +2639,7 @@ namespace CapaUsuario.Reportes
                                                 else
                                                     drFila[indice_ingreso] = row_i[9];
 
-                                                if (miPlanilla.TipoImpresionTardanzaFalta == CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta.AfectaAlSueldo && contadorRecorrido == ContadorIngresosInformativos)
+                                                if (miPlanilla.TipoImpresionTardanzaFalta == CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta.AfectaAlSueldo && ( contadorRecorrido == ContadorIngresosInformativos || ContadorIngresosInformativos == 0))
                                                 {
                                                     if (!ExisteColumnaTexto(odtPrueba, "SUELDO MES"))
                                                     {
