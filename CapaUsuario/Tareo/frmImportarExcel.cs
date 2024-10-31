@@ -292,7 +292,15 @@ namespace CapaUsuario.Tareo
                         miRegimenTrabajador.IdtPeriodoTrabajador = sidtperiodotrabajador;
                         miRegimenTrabajador.CrearRegimenTrabajador(miRegimenTrabajador);
                     }
+                    else
+                    {
+                        int periodoUltimo = 0;
+                        periodoUltimo = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(item.CodigoTrabajador).IdtPeriodoTrabajador;
 
+                        miRegimenTrabajador = miRegimenTrabajador.TraerUltimoRegimenTrabajadorInclusoTerminado(periodoUltimo);
+                        miRegimenTrabajador.NumeroDocumento = item.CuentaBancaria;
+                        miRegimenTrabajador.ModificarRegimenTrabajador(miRegimenTrabajador);
+                    }
 
 
                     //PARTE TAREO

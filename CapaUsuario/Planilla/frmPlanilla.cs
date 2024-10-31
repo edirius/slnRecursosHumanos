@@ -32,6 +32,7 @@ namespace CapaUsuario.Planilla
 
         private void frmPlanilla_Load(object sender, EventArgs e)
         {
+            //cboTipoPlanilla.DataSource = Enum.GetValues(typeof(CapaDeNegocios.Planillas.enumTipoPlanilla));
             CargarAños();
             CargarFuenteFinanciamiento();
             CargarRegimenLaboral();
@@ -113,6 +114,23 @@ namespace CapaUsuario.Planilla
                         default:
                             break;
                     }
+                    switch (cboTipoPlanilla.SelectedIndex)
+                    {
+                        case 0:
+                            miPlanilla.TipoPlanilla = CapaDeNegocios.Planillas.enumTipoPlanilla.NORMAL;
+                            break;
+                        case 1:
+                            miPlanilla.TipoPlanilla = CapaDeNegocios.Planillas.enumTipoPlanilla.RACIONAMIENTO;
+                            break;
+                        case 2:
+                            miPlanilla.TipoPlanilla = CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS;
+                            break;
+                        case 3:
+                            miPlanilla.TipoPlanilla = CapaDeNegocios.Planillas.enumTipoPlanilla.CTS;
+                            break;
+                        default:
+                            break;
+                    }
                     miPlanilla.Anulado = chkAnulado.Checked;
 
                     if (iAccion == 1)
@@ -179,6 +197,7 @@ namespace CapaUsuario.Planilla
 
         public void RecibirDatos(int pidtplanilla, string pnumero, string pmes, string paño, DateTime pfecha, int pidtmeta, string pmeta, int pidtfuentefinanciamiento, string pfuentefinanciamiento, int pidtregimenlaboral, string pregimenlaboral, string pdescripcion, string pplanilla, int pAccion , string pobservacion)
         {
+            cboTipoPlanilla.DataSource = Enum.GetValues(typeof(CapaDeNegocios.Planillas.enumTipoPlanilla));
             sidtplanilla = pidtplanilla;
             txtNumero.Text = pnumero;
             cboMes.Text = pmes;
@@ -209,6 +228,28 @@ namespace CapaUsuario.Planilla
                     break;
             }
 
+            switch (oPlanilla.TipoPlanilla)
+            {
+                case CapaDeNegocios.Planillas.enumTipoPlanilla.NORMAL:
+                    cboTipoPlanilla.SelectedIndex = 0;
+                    break;
+                case CapaDeNegocios.Planillas.enumTipoPlanilla.RACIONAMIENTO:
+                    cboTipoPlanilla.SelectedIndex = 1;
+                    break;
+                case CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS:
+                    cboTipoPlanilla.SelectedIndex = 2;
+                    break;
+                case  CapaDeNegocios.Planillas.enumTipoPlanilla.CTS:
+                    cboTipoPlanilla.SelectedIndex = 3;
+                    break;
+                default:
+                    break;
+            }
+
+            if (sidtplanilla != 0)
+            {
+                cboTipoPlanilla.Enabled = false;
+            }
         }
 
         private void CargarAños()

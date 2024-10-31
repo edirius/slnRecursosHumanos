@@ -27,6 +27,7 @@ namespace CapaUsuario.Tareo
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            HojaInformativa.ColumnaDNI = txtColumnaDNI.Text;
             HojaInformativa.ColumnaCuentaBancaria = txtColumnaCuentaBancaria.Text;
             HojaInformativa.NombreHoja = txtHojaExcel.Text;
             HojaInformativa.InicioFila = Convert.ToInt16(txtComienzoFila.Text);

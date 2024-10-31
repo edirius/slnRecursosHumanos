@@ -25,9 +25,9 @@ namespace CapaDeNegocios.Planillas
 
     public enum enumTipoPlanilla
     {
-        Normal =1,
-        Racionamiento = 2,
-        VacacionesTruncas = 3,
+        NORMAL =1,
+        RACIONAMIENTO = 2,
+        VACACIONES_TRUNCAS = 3,
         CTS = 4
     }
 
@@ -360,16 +360,16 @@ namespace CapaDeNegocios.Planillas
                         break;
                 }
 
-                switch (Convert.ToInt32(tablaAuxiliar.Rows[0][16]))
+                switch (Convert.ToInt32(tablaAuxiliar.Rows[0][17]))
                 {
                     case 1:
-                        planillaAuxiliar.tipoPlanilla = enumTipoPlanilla.Normal;
+                        planillaAuxiliar.tipoPlanilla = enumTipoPlanilla.NORMAL;
                         break;
                     case 2:
-                        planillaAuxiliar.tipoPlanilla = enumTipoPlanilla.Racionamiento;
+                        planillaAuxiliar.tipoPlanilla = enumTipoPlanilla.RACIONAMIENTO;
                         break;
                     case 3:
-                        planillaAuxiliar.tipoPlanilla = enumTipoPlanilla.VacacionesTruncas;
+                        planillaAuxiliar.tipoPlanilla = enumTipoPlanilla.VACACIONES_TRUNCAS;
                         break;
                     case 4:
                         planillaAuxiliar.tipoPlanilla = enumTipoPlanilla.CTS;

@@ -123,6 +123,7 @@ namespace CapaUsuario.Planilla
         private void btnDetallePlanilla_Click(object sender, EventArgs e)
         {
             CapaDeNegocios.Planillas.cPlanilla oPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
+
             if (sidtplanilla == 0)
             {
                 MessageBox.Show("Debe seleccionar nuevamente los datos", "Mensaje Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -136,10 +137,19 @@ namespace CapaUsuario.Planilla
             }
             else
             {
-                CapaUsuario.Planilla.frmMantenimientoDetallePlanilla fMantenimientoDetallePlanilla = new frmMantenimientoDetallePlanilla();
-                fMantenimientoDetallePlanilla.oPlanilla = oPlanilla.TraerPlanilla(sidtplanilla);
-                fMantenimientoDetallePlanilla.RecibirDatos(sidtplanilla, snumero, smes, saño, sidtmeta, snumerometa, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, sidtregimenlaboral, sRegimenLaboral, splantilla);
-                fMantenimientoDetallePlanilla.ShowDialog();
+                if (oPlanilla.TraerPlanilla(sidtplanilla).TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                {
+                    VacacionesTruncas.frmMantenimientoDetalleVac fMantenimientoDetalleVac = new VacacionesTruncas.frmMantenimientoDetalleVac();
+                    fMantenimientoDetalleVac.ShowDialog();
+                }
+                else
+                {
+                    CapaUsuario.Planilla.frmMantenimientoDetallePlanilla fMantenimientoDetallePlanilla = new frmMantenimientoDetallePlanilla();
+                    fMantenimientoDetallePlanilla.oPlanilla = oPlanilla.TraerPlanilla(sidtplanilla);
+                    fMantenimientoDetallePlanilla.RecibirDatos(sidtplanilla, snumero, smes, saño, sidtmeta, snumerometa, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, sidtregimenlaboral, sRegimenLaboral, splantilla);
+                    fMantenimientoDetallePlanilla.ShowDialog();
+                }
+                
             }
         }
 
@@ -246,7 +256,7 @@ namespace CapaUsuario.Planilla
                         sidtfuentefinanciamiento = Convert.ToInt32(roww[0]);
                         sfuentefinanciamiento = roww[2].ToString();
                     }
-                    dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, snumerometa, snumerometa + " - " + smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString(), row[10].ToString(), Convert.ToBoolean(row[11]), Convert.ToInt32(row[16]));
+                    dgvPlanilla.Rows.Add(row[0].ToString(), row[1].ToString(), row[8].ToString(), row[2].ToString(), row[3].ToString(), row[4].ToString(), sidtmeta, snumerometa, snumerometa + " - " + smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, row[7].ToString(), row[9].ToString(), row[10].ToString(), Convert.ToBoolean(row[11]), Convert.ToInt32(row[17]));
 
                 }
                 if (dgvPlanilla.Rows.Count > 0)
@@ -263,6 +273,12 @@ namespace CapaUsuario.Planilla
                     {
                         row.DefaultCellStyle.BackColor = System.Drawing.Color.DarkRed; // Cambia el color de fondo
                         row.DefaultCellStyle.ForeColor = System.Drawing.Color.Gray; // Cambia el color de fondo
+                    }
+
+                    ///vACACIONES TRUNCAS
+                    if (Convert.ToInt16(row.Cells["colTipoPlanilla"].Value)== 3)
+                    {
+                        row.DefaultCellStyle.BackColor = System.Drawing.Color.LightSeaGreen; // Cambia el color de fondo
                     }
                 }
             }

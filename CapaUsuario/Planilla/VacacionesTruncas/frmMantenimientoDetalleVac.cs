@@ -21,5 +21,14 @@ namespace CapaUsuario.Planilla.VacacionesTruncas
         {
 
         }
+
+        private void btnImportar_Click(object sender, EventArgs e)
+        {
+            frmImportarPeriodo fImportarPeriodo = new frmImportarPeriodo();
+            if (fImportarPeriodo.ShowDialog() == DialogResult.OK)
+            {
+
+            }
+        }
     }
 }

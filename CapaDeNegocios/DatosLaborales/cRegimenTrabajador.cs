@@ -212,6 +212,58 @@ namespace CapaDeNegocios.DatosLaborales
             }
         }
 
+
+        public cRegimenTrabajador TraerUltimoRegimenTrabajadorInclusoTerminado(int idtPeriodoTrabajador)
+        {
+            try
+            {
+                List<cRegimenTrabajador> listaPeriodosTrabajador = new List<cRegimenTrabajador>();
+
+                DataTable listaPeriodos;
+                listaPeriodos = Conexion.GDatos.TraerDataTable("spListarRegimenTrabajador", idtPeriodoTrabajador);
+
+                foreach (DataRow item in listaPeriodos.Rows)
+                {
+
+                        cRegimenTrabajador nuevoPeriodoTrabajador = new cRegimenTrabajador();
+                        nuevoPeriodoTrabajador.IdtRegimenTrabajador = Convert.ToInt16(item[0].ToString());
+                        nuevoPeriodoTrabajador.Condicion = item[1].ToString();
+                        nuevoPeriodoTrabajador.ServidorConfianza = Convert.ToBoolean(item[2]);
+                        nuevoPeriodoTrabajador.NumeroDocumento = item[3].ToString();
+                        nuevoPeriodoTrabajador.Periodicidad = item[4].ToString();
+                        nuevoPeriodoTrabajador.TipoPago = item[5].ToString();
+                        nuevoPeriodoTrabajador.MontoPago = Convert.ToDecimal(item[6]);
+                        nuevoPeriodoTrabajador.FechaInicio = item[7].ToString();
+                        nuevoPeriodoTrabajador.sfechafin = "";
+                        nuevoPeriodoTrabajador.RUC = item[9].ToString();
+                        nuevoPeriodoTrabajador.IdtRegimenLaboral = Convert.ToInt16(item[10].ToString());
+                        nuevoPeriodoTrabajador.IdtTipoTrabajador = Convert.ToInt16(item[11].ToString());
+                        nuevoPeriodoTrabajador.IdtTipoContrato = Convert.ToInt16(item[12].ToString());
+                        nuevoPeriodoTrabajador.IdtCategoriaOcupacional = Convert.ToInt16(item[13].ToString());
+                        nuevoPeriodoTrabajador.IdtOcupacion = Convert.ToInt16(item[14].ToString());
+                        nuevoPeriodoTrabajador.IdtCargo = Convert.ToInt16(item[15].ToString());
+                        nuevoPeriodoTrabajador.IdtMeta = Convert.ToInt16(item[16].ToString());
+                        nuevoPeriodoTrabajador.IdtPeriodoTrabajador = Convert.ToInt16(item[17]);
+                        listaPeriodosTrabajador.Add(nuevoPeriodoTrabajador);
+
+                }
+
+                if (listaPeriodosTrabajador.Count == 0)
+                {
+                    throw new cReglaNegociosException("Error,  el regimen laboral del  trabajador no esta activo ");
+                }
+                else
+                {
+                    return listaPeriodosTrabajador[listaPeriodosTrabajador.Count - 1];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en traer el regimen laboral del trabajador: " + ex.Message);
+            }
+        }
+
+
         /// <summary>
         /// Metodo para traer el ultimo regimen del trabajador.
         /// idtregimentrabajador, condicion, servidorconfianza, numerodocumento, periodicidad, tipopago, montopago, fechainicio, fechafin, ruc,

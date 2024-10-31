@@ -8,12 +8,13 @@ namespace CapaUsuario.Planilla.VacacionesTruncas
 {
     public class cTrabajadorBuscado
     {
-        string DNI { get; set; }
-        string NOMBRES { get; set; }
-        string APELLIDOPATERNO { get; set; }
-        string APELLIDOMATERNO { get; set; }
-        DateTime FECHANACIMIENTO { get; set; }
-        string GENERO { get; set; }
-        string CARGO { get; set; }
+        public int CODIGOTRABAJADOR { get; set; }
+        public string DNI { get; set; }
+        public string NOMBRES { get; set; }
+        public string APELLIDOPATERNO { get; set; }
+        public string APELLIDOMATERNO { get; set; }
+        public DateTime FECHANACIMIENTO { get; set; }
+        public string GENERO { get; set; }
+        public string CARGO { get; set; }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnAgregarTrabajador = new System.Windows.Forms.Button();
+            this.lblTrabajador = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAgregarTrabajador
@@ -45,22 +46,35 @@
             this.btnAgregarTrabajador.Text = "&Buscar Trabajador";
             this.btnAgregarTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAgregarTrabajador.UseVisualStyleBackColor = false;
+            this.btnAgregarTrabajador.Click += new System.EventHandler(this.btnAgregarTrabajador_Click);
+            // 
+            // lblTrabajador
+            // 
+            this.lblTrabajador.AutoSize = true;
+            this.lblTrabajador.Location = new System.Drawing.Point(129, 63);
+            this.lblTrabajador.Name = "lblTrabajador";
+            this.lblTrabajador.Size = new System.Drawing.Size(58, 13);
+            this.lblTrabajador.TabIndex = 123;
+            this.lblTrabajador.Text = "Trabajador";
             // 
             // frmImportarPeriodo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 414);
+            this.Controls.Add(this.lblTrabajador);
             this.Controls.Add(this.btnAgregarTrabajador);
             this.Name = "frmImportarPeriodo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Importar Periodo";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnAgregarTrabajador;
+        private System.Windows.Forms.Label lblTrabajador;
     }
 }
