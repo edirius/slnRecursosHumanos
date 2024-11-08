@@ -26,6 +26,19 @@ namespace CapaDeNegocios.Reportes.ReporteMensual
             }
         }
 
+        public DataTable TraerListaTrabajadoresLargo(string mes, string año, int concepto, string tipo)
+        {
+            try
+            {
+                return Conexion.GDatos.TraerDataTable("spListaDeMontosxConceptoLargo", mes, año, concepto, tipo);
+            }
+            catch (Exception ex)
+            {
+
+                throw new cReglaNegociosException("Error en el metodo cReporteUnicoMonto TraerListaTrabajadoresLargo: " + ex.Message);
+            }
+        }
+
         public void ImprimirReporteMensualaPDF(DataTable oTabla, string ruta, string mes, string año)
         {
             try

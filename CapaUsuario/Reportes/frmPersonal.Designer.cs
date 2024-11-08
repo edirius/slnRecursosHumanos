@@ -43,6 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cboConceptos = new System.Windows.Forms.ComboBox();
+            this.chkDatosAdicionales = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaTrabajadores)).BeginInit();
             this.SuspendLayout();
@@ -224,11 +225,22 @@
             this.cboConceptos.TabIndex = 52;
             this.cboConceptos.SelectedIndexChanged += new System.EventHandler(this.cboConceptos_SelectedIndexChanged);
             // 
+            // chkDatosAdicionales
+            // 
+            this.chkDatosAdicionales.AutoSize = true;
+            this.chkDatosAdicionales.Location = new System.Drawing.Point(218, 364);
+            this.chkDatosAdicionales.Name = "chkDatosAdicionales";
+            this.chkDatosAdicionales.Size = new System.Drawing.Size(111, 17);
+            this.chkDatosAdicionales.TabIndex = 54;
+            this.chkDatosAdicionales.Text = "Datos Adicionales";
+            this.chkDatosAdicionales.UseVisualStyleBackColor = true;
+            // 
             // frmPersonal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1035, 421);
+            this.Controls.Add(this.chkDatosAdicionales);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cboConceptos);
             this.Controls.Add(this.label3);
@@ -244,7 +256,7 @@
             this.Controls.Add(this.cboAño);
             this.Name = "frmPersonal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Reporte SCRT";
+            this.Text = "Reporte Conceptos";
             this.Load += new System.EventHandler(this.frmPersonal_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaTrabajadores)).EndInit();
@@ -269,5 +281,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cboConceptos;
+        private System.Windows.Forms.CheckBox chkDatosAdicionales;
     }
 }

@@ -42,7 +42,14 @@ namespace CapaUsuario.Reportes
                 {
                     CapaDeNegocios.Reportes.ReporteMensual.cReporteUnicoMonto oReporteUnicoMonto = new CapaDeNegocios.Reportes.ReporteMensual.cReporteUnicoMonto();
 
-                    dgvListaTrabajadores.DataSource = oReporteUnicoMonto.TraerListaTrabajadores(cboMes.Text, cboAño.Text, Convert.ToInt32(cboConceptos.SelectedValue), tipo);
+                    if (chkDatosAdicionales.Checked)
+                    {
+                        dgvListaTrabajadores.DataSource = oReporteUnicoMonto.TraerListaTrabajadoresLargo(cboMes.Text, cboAño.Text, Convert.ToInt32(cboConceptos.SelectedValue), tipo);
+                    }
+                    else
+                    {
+                        dgvListaTrabajadores.DataSource = oReporteUnicoMonto.TraerListaTrabajadores(cboMes.Text, cboAño.Text, Convert.ToInt32(cboConceptos.SelectedValue), tipo);
+                    }
                 }
             }
             catch (Exception ex)
