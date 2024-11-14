@@ -2353,15 +2353,15 @@ namespace CapaUsuario.Reportes
                                             drFila[1] = row[0];
                                             drFila[2] = row[1];   
                                             drFila[3] = row[2];
-                                            if (Convert.ToDateTime(row[3].ToString()) < new DateTime(2023, 11, 1))
+                                            if (Convert.ToDateTime(row[3].ToString()) < new DateTime(2024, 05, 1))
                                             {
                                                 drFila[4] = "DEL 01/05/2024 AL 31/10/2024";
                                                 drFila[5] = "6 MESES";
                                             }
                                             else
                                             {
-                                                drFila[4] = "DEL " + Convert.ToDateTime(row[3].ToString()).ToShortDateString() + " AL 30/04/2024";
-                                                drFila[5] = Math.Round(((new DateTime(2024, 04, 30) - Convert.ToDateTime(row[3].ToString())).TotalDays/365.25 *12),0).ToString() +  " MESES";
+                                                drFila[4] = "DEL " + Convert.ToDateTime(row[3].ToString()).ToShortDateString() + " AL 31/10/2024";
+                                                drFila[5] = Math.Round(((new DateTime(2024, 10, 31) - Convert.ToDateTime(row[3].ToString())).TotalDays/365.25 *12),0).ToString() +  " MESES";
                                             }
 
 
