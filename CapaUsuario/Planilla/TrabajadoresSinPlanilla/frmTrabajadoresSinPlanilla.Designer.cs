@@ -50,6 +50,7 @@
             this.lblContadorTrabajadores = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnDarDeBaja = new System.Windows.Forms.Button();
+            this.chkMarcarTodos = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgTrabajadores)).BeginInit();
             this.mnuOpciones.SuspendLayout();
@@ -58,7 +59,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dtgTrabajadores);
-            this.groupBox1.Location = new System.Drawing.Point(12, 60);
+            this.groupBox1.Location = new System.Drawing.Point(12, 49);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(859, 268);
             this.groupBox1.TabIndex = 0;
@@ -218,7 +219,7 @@
             this.lblContadorTrabajadores.AutoSize = true;
             this.lblContadorTrabajadores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContadorTrabajadores.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblContadorTrabajadores.Location = new System.Drawing.Point(13, 335);
+            this.lblContadorTrabajadores.Location = new System.Drawing.Point(12, 332);
             this.lblContadorTrabajadores.Name = "lblContadorTrabajadores";
             this.lblContadorTrabajadores.Size = new System.Drawing.Size(129, 13);
             this.lblContadorTrabajadores.TabIndex = 77;
@@ -230,9 +231,8 @@
             this.btnSalir.BackColor = System.Drawing.Color.MintCream;
             this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnSalir.Image = global::CapaUsuario.Properties.Resources.exit_32x32;
             this.btnSalir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnSalir.Location = new System.Drawing.Point(754, 347);
+            this.btnSalir.Location = new System.Drawing.Point(754, 327);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(117, 54);
             this.btnSalir.TabIndex = 79;
@@ -247,9 +247,8 @@
             this.btnDarDeBaja.BackColor = System.Drawing.Color.MintCream;
             this.btnDarDeBaja.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDarDeBaja.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnDarDeBaja.Image = global::CapaUsuario.Properties.Resources.user_calendar_0;
             this.btnDarDeBaja.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnDarDeBaja.Location = new System.Drawing.Point(583, 347);
+            this.btnDarDeBaja.Location = new System.Drawing.Point(583, 327);
             this.btnDarDeBaja.Name = "btnDarDeBaja";
             this.btnDarDeBaja.Size = new System.Drawing.Size(147, 54);
             this.btnDarDeBaja.TabIndex = 74;
@@ -258,11 +257,23 @@
             this.btnDarDeBaja.UseVisualStyleBackColor = false;
             this.btnDarDeBaja.Click += new System.EventHandler(this.btnDarDeBaja_Click);
             // 
+            // chkMarcarTodos
+            // 
+            this.chkMarcarTodos.AutoSize = true;
+            this.chkMarcarTodos.Location = new System.Drawing.Point(496, 25);
+            this.chkMarcarTodos.Name = "chkMarcarTodos";
+            this.chkMarcarTodos.Size = new System.Drawing.Size(92, 17);
+            this.chkMarcarTodos.TabIndex = 80;
+            this.chkMarcarTodos.Text = "Marcar Todos";
+            this.chkMarcarTodos.UseVisualStyleBackColor = true;
+            this.chkMarcarTodos.CheckedChanged += new System.EventHandler(this.chkMarcarTodos_CheckedChanged);
+            // 
             // frmTrabajadoresSinPlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 413);
+            this.ClientSize = new System.Drawing.Size(878, 393);
+            this.Controls.Add(this.chkMarcarTodos);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lblContadorTrabajadores);
             this.Controls.Add(this.dtpFechaFin);
@@ -307,5 +318,6 @@
         private System.Windows.Forms.ContextMenuStrip mnuOpciones;
         private System.Windows.Forms.ToolStripMenuItem copiarDNIToolStripMenuItem;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.CheckBox chkMarcarTodos;
     }
 }

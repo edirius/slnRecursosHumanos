@@ -39,7 +39,7 @@ namespace CapaUsuario.Variables
             miVariables.Año = cboAño.Text; ;
             miVariables.SueldoMinimo = Convert.ToInt32(nudSueldoMinimo.Value);
             miVariables.UIT = Convert.ToInt32(nudUIT.Value);
-            miVariables.Dieta = Convert.ToInt32(nudDieta.Value);
+            miVariables.Dieta = Convert.ToDecimal(nudDieta.Value);
 
             if (iAccion == 1)
             {

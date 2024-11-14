@@ -87,7 +87,7 @@ namespace CapaUsuario.Variables
                 saño = Convert.ToString(dgvVariables.Rows[e.RowIndex].Cells[1].Value);
                 ssueldominimo = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[2].Value);
                 suit = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[3].Value);
-                sdieta = Convert.ToInt32(dgvVariables.Rows[e.RowIndex].Cells[4].Value);
+                sdieta = Convert.ToDecimal(dgvVariables.Rows[e.RowIndex].Cells[4].Value);
             }
         }
 

@@ -126,5 +126,18 @@ namespace CapaUsuario.Planilla.TrabajadoresSinPlanilla
         {
             this.Close();
         }
+
+        private void chkMarcarTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkMarcarTodos.Checked)
+            {
+                
+                foreach (DataGridViewRow row in dtgTrabajadores.Rows)
+                {
+                    row.Cells["colCheck"].Value = true;
+                }
+                
+            }
+        }
     }
 }

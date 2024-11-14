@@ -48,5 +48,40 @@ namespace CapaUsuario.Planilla.VacacionesTruncas
                 throw new cReglaNegociosException("Error en el método TraerTrabajadoresSegunFiltro: " + ex.Message);
             }
         }
+
+        public List<cPeriodoTrabajador> TraerPeriodoTrabajador(int idtTrabajador)
+        {
+            try
+            {
+                DataTable oTabla = Conexion.GDatos.TraerDataTable("spBuscarPeriodosRegimenXTrabajador", idtTrabajador);
+
+                List<cPeriodoTrabajador> Lista = new List<cPeriodoTrabajador>();
+                for (int i = 0; i < oTabla.Rows.Count; i++)
+                {
+                    cPeriodoTrabajador tra = new cPeriodoTrabajador();
+                    tra.IdtTrabajador = Convert.ToInt32(oTabla.Rows[i][0].ToString());
+                    tra.IdtPeriodo = Convert.ToInt32(oTabla.Rows[i][1].ToString());
+                    tra.Regimen = oTabla.Rows[i][2].ToString();
+                    tra.FechaInicio = Convert.ToDateTime(oTabla.Rows[i][3].ToString());
+                    if (oTabla.Rows[i][4].ToString() == "")
+                    {
+                        tra.FechaFin = new DateTime(3000, 1, 1);
+                    }
+                    else
+                    {
+                        tra.FechaFin = Convert.ToDateTime(oTabla.Rows[i][4].ToString());
+                    }
+                    
+                    tra.Sueldo = Convert.ToDouble(oTabla.Rows[i][5].ToString());
+                    Lista.Add(tra);
+                }
+
+                return Lista;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error en el método TraerPeriodoTrabajador: " + ex.Message);
+            }
+        }
     }
 }

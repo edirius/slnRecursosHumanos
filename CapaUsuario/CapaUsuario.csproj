@@ -500,6 +500,8 @@
       <DependentUpon>frmTrabajadoresSinPlanilla.cs</DependentUpon>
     </Compile>
     <Compile Include="Planilla\VacacionesTruncas\cCatalogoBusqueda.cs" />
+    <Compile Include="Planilla\VacacionesTruncas\cDetallePlanillaImpresion.cs" />
+    <Compile Include="Planilla\VacacionesTruncas\cPeriodoTrabajador.cs" />
     <Compile Include="Planilla\VacacionesTruncas\cTrabajadorBuscado.cs" />
     <Compile Include="Planilla\VacacionesTruncas\frmBuscarTrabajador.cs">
       <SubType>Form</SubType>
