@@ -2355,7 +2355,7 @@ namespace CapaUsuario.Reportes
                                             drFila[3] = row[2];
                                             if (Convert.ToDateTime(row[3].ToString()) < new DateTime(2023, 11, 1))
                                             {
-                                                drFila[4] = "DEL 01/11/2023 AL 30/04/2024";
+                                                drFila[4] = "DEL 01/05/2024 AL 31/10/2024";
                                                 drFila[5] = "6 MESES";
                                             }
                                             else
