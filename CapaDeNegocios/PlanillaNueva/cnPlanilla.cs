@@ -6,8 +6,30 @@ using System.Threading.Tasks;
 
 namespace CapaDeNegocios.PlanillaNueva
 {
+    public enum enumTipoCalculoMensual
+    {
+        DividirEntre30 = 1,
+        DiasLaborados = 2
+    }
+
+    public enum enumTipoImpresionTardanzaFalta
+    {
+        AfectaALNeto = 0,
+        AfectaAlSueldo = 1
+
+    }
+
+    public enum enumTipoPlanilla
+    {
+        NORMAL = 1,
+        RACIONAMIENTO = 2,
+        VACACIONES_TRUNCAS = 3,
+        CTS = 4
+    }
+
     public class cnPlanilla
     {
+
         public List<cnDetallePlanilla> ListaDetalle { get; set; }
         public int codigo { get; set; }
         public string numeroPlanilla { get; set; }
@@ -18,7 +40,14 @@ namespace CapaDeNegocios.PlanillaNueva
         public cFuenteFinanciamiento FuenteFinanciamiento { get; set; }
         public DatosLaborales.cRegimenLaboral RegimenLaboral { get; set; }
         public string Descripcion { get; set; }
+        public string Observaciones { get; set; }
+        public Boolean Anulado { get; set; }
+        public string Numerosiaf { get; set; }
+        public bool Bloqueado { get; set; }
+        public int Idtplantilla { get; set; }
+        public enumTipoCalculoMensual Tipocalculomensual { get; set; }
         public CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta TipoImpresionTardanzaFalta { get; set; }
+        public enumTipoPlanilla TipoPlanilla { get; set; }
 
         public cnPlanilla ()
         {

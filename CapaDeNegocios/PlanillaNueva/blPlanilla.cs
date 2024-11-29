@@ -27,6 +27,22 @@ namespace CapaDeNegocios.PlanillaNueva
                     oPlanilla.FuenteFinanciamiento.IdTFuenteFinanciamiento = Convert.ToInt16(tAuxiliar.Rows[0][6]);
                     oPlanilla.RegimenLaboral.IdTRegimenLaboral = Convert.ToInt16(tAuxiliar.Rows[0][7]);
                     oPlanilla.Descripcion = Convert.ToString(tAuxiliar.Rows[0][8]);
+                    oPlanilla.Observaciones = Convert.ToString(tAuxiliar.Rows[0][10]);
+                    oPlanilla.Anulado = Convert.ToBoolean(tAuxiliar.Rows[0][11]);
+                    oPlanilla.Numerosiaf = Convert.ToString(tAuxiliar.Rows[0][12]);
+                    oPlanilla.Bloqueado = Convert.ToBoolean(tAuxiliar.Rows[0][13]);
+                    oPlanilla.Idtplantilla = Convert.ToInt32(tAuxiliar.Rows[0][14]);
+                    switch (Convert.ToInt32(tAuxiliar.Rows[0][15].ToString()))
+                    {
+                        case 1:
+                            oPlanilla.Tipocalculomensual = enumTipoCalculoMensual.DividirEntre30;
+                            break;
+                        case 2:
+                            oPlanilla.Tipocalculomensual = enumTipoCalculoMensual.DiasLaborados;
+                            break;
+                        default:
+                            break;
+                    }
                     if (Convert.ToBoolean(tAuxiliar.Rows[0][16]))
                     {
                         oPlanilla.TipoImpresionTardanzaFalta = Planillas.enumTipoImpresionTardanzaFalta.AfectaAlSueldo;
@@ -35,6 +51,25 @@ namespace CapaDeNegocios.PlanillaNueva
                     {
                         oPlanilla.TipoImpresionTardanzaFalta = Planillas.enumTipoImpresionTardanzaFalta.AfectaALNeto;
                     }
+
+                    switch (Convert.ToInt32(tAuxiliar.Rows[0][17]))
+                    {
+                        case 1:
+                            oPlanilla.TipoPlanilla = enumTipoPlanilla.NORMAL;
+                            break;
+                        case 2:
+                            oPlanilla.TipoPlanilla = enumTipoPlanilla.RACIONAMIENTO;
+                            break;
+                        case 3:
+                            oPlanilla.TipoPlanilla = enumTipoPlanilla.VACACIONES_TRUNCAS;
+                            break;
+                        case 4:
+                            oPlanilla.TipoPlanilla = enumTipoPlanilla.CTS;
+                            break;
+                        default:
+                            break;
+                    }
+                    
                     
                     tAuxiliar.Dispose();
                     oPlanilla.Meta = TraerMeta(oPlanilla.Meta.Codigo);
@@ -43,10 +78,10 @@ namespace CapaDeNegocios.PlanillaNueva
                     oPlanilla.ListaDetalle = TraerDetallesPlanilla(oPlanilla);
                 }
 
-                else
-                {
-                    throw new cReglaNegociosException("No existe alguna planilla para el codigo. blPlanilla" );
-                }
+                //else
+                //{
+                //    throw new cReglaNegociosException("No existe alguna planilla para el codigo. blPlanilla" );
+                //}
                 return oPlanilla;
             }
             catch (Exception e)
@@ -256,12 +291,13 @@ namespace CapaDeNegocios.PlanillaNueva
                         detalleAuxiliar.ListaDetalleAportacionesEmpleador = TraerListaAportacionesEmpleador(detalleAuxiliar);
                         ListaDetalles.Add(detalleAuxiliar);
                     }
-                    return ListaDetalles; 
-                }     
-                else
-                {
-                    throw new cReglaNegociosException("blPlanilla: No existe detalles de planilla Nro: " + Planilla.numeroPlanilla);
+                    
                 }
+                return ListaDetalles;
+                //else
+                //{
+                //    throw new cReglaNegociosException("blPlanilla: No existe detalles de planilla Nro: " + Planilla.numeroPlanilla);
+                //}
             }
             catch (Exception e)
             {

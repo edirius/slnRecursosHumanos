@@ -39,6 +39,8 @@ namespace CapaUsuario.Planilla
 
         CapaUsuario.Reportes.frmPlanilla fPlanilla = new CapaUsuario.Reportes.frmPlanilla();
         CapaDeNegocios.Planillas.cPlanilla miPlanilla = new CapaDeNegocios.Planillas.cPlanilla();
+        CapaDeNegocios.PlanillaNueva.blPlanilla CatalogoPlanilla = new CapaDeNegocios.PlanillaNueva.blPlanilla();
+
         string FechaTexto = "";
 
         public frmMatenimientoPlanilla()
@@ -140,6 +142,7 @@ namespace CapaUsuario.Planilla
                 if (oPlanilla.TraerPlanilla(sidtplanilla).TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
                 {
                     VacacionesTruncas.frmMantenimientoDetalleVac fMantenimientoDetalleVac = new VacacionesTruncas.frmMantenimientoDetalleVac();
+                    fMantenimientoDetalleVac.oPlanilla = CatalogoPlanilla.TraerPlanilla(sidtplanilla);
                     fMantenimientoDetalleVac.ShowDialog();
                 }
                 else

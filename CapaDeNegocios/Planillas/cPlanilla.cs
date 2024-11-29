@@ -331,7 +331,7 @@ namespace CapaDeNegocios.Planillas
                 planillaAuxiliar.IdtFuenteFinanciamiento = Convert.ToInt32(tablaAuxiliar.Rows[0][6]);
                 planillaAuxiliar.IdtRegimenLaboral = Convert.ToInt32(tablaAuxiliar.Rows[0][7]);
                 planillaAuxiliar.Descripcion = Convert.ToString(tablaAuxiliar.Rows[0][8]);
-                planillaAuxiliar.Plantilla = Convert.ToString(tablaAuxiliar.Rows[0][8]);
+                planillaAuxiliar.Plantilla = Convert.ToString(tablaAuxiliar.Rows[0][9]);
                 planillaAuxiliar.Observaciones = Convert.ToString(tablaAuxiliar.Rows[0][10]);
                 planillaAuxiliar.anulado = Convert.ToBoolean(tablaAuxiliar.Rows[0][11]);
                 planillaAuxiliar.numerosiaf = Convert.ToString(tablaAuxiliar.Rows[0][12]);

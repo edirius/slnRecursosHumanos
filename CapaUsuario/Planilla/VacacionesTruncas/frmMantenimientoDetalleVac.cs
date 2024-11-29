@@ -18,7 +18,7 @@ namespace CapaUsuario.Planilla.VacacionesTruncas
             InitializeComponent();
         }
 
-        public cPlanilla oPlanilla;
+        public CapaDeNegocios.PlanillaNueva.cnPlanilla oPlanilla;
         private void frmMantenimientoDetalleVac_Load(object sender, EventArgs e)
         {
             CargarDatos();
@@ -37,7 +37,7 @@ namespace CapaUsuario.Planilla.VacacionesTruncas
         {
             //Si la planilla tiene datos
 
-            if (oPlanilla.ListaDetallePlanilla.Count > 0)
+            if (oPlanilla.ListaDetalle.Count > 0)
             {
                 CargarConceptosPlanilla();
             }
@@ -49,10 +49,10 @@ namespace CapaUsuario.Planilla.VacacionesTruncas
 
         private void CargarConceptosPlanilla()
         {
-            foreach (cDetallePlanillaIngresos item in oPlanilla.ListaDetallePlanilla[0].ListaIngresos)
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaIngresos item in oPlanilla.ListaDetalle[0].ListaDetalleIngresos)
             {
                 DataGridViewColumn col = new DataGridViewColumn();
-                col.Name = "I" + item.IdtDetallePlanillaIngresos.ToString();
+                col.Name = "I" + item.Codigo.ToString();
                 col.HeaderText = item.MaestroIngresos.Abreviacion;
                 col.ToolTipText = item.MaestroIngresos.Descripcion;
                 dgvDetallePlanilla.Columns.Add(col);
@@ -67,10 +67,10 @@ namespace CapaUsuario.Planilla.VacacionesTruncas
 
         private void CargarConceptosPlantilla()
         {
-            foreach (var item in oPlanilla.Plantilla)
-            {
+            //foreach (var item in oPlanilla.pla .pla .Plantilla)
+            //{
 
-            }
+            //}
         }
     }
 }
