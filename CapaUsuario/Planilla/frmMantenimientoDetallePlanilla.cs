@@ -2238,8 +2238,8 @@ namespace CapaUsuario.Planilla
             {
                 DateFechaInicioTemporal = DateFechaInicioTemporal.AddDays(-1);
             }
-            DateTime DateFechacalculo = new DateTime(2024, 06, 30);
-            DateTime DateFechacalculo2 = new DateTime(2024, 06, 30);
+            DateTime DateFechacalculo = new DateTime(2024, 11, 30);
+            DateTime DateFechacalculo2 = new DateTime(2024, 11, 30);
 
             int numeroMeses = ((DateFechacalculo.Month - DateFechaInicioTemporal.Month) + 12 * (DateFechacalculo.Year - DateFechaInicioTemporal.Year));
             
@@ -2308,13 +2308,13 @@ namespace CapaUsuario.Planilla
                     ddval.Value = 0;
                     break;
                 case 2:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2024, 04, 30)) - DateFechaInicio).Days + 1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2024, 09, 30)) - DateFechaInicio).Days + 1);
                     break;
                 case 1:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2024, 05, 31)) - DateFechaInicio).Days + 1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2024, 10, 31)) - DateFechaInicio).Days + 1);
                     break;
                 case 0:
-                    ddval.Value = Convert.ToDouble(((new DateTime(2024, 06, 30)) - DateFechaInicio).Days +1);
+                    ddval.Value = Convert.ToDouble(((new DateTime(2024, 11, 30)) - DateFechaInicio).Days +1);
                     break;
                 
                 default:
@@ -2343,23 +2343,23 @@ namespace CapaUsuario.Planilla
                         ddval.Value = 0;
                         break;
                     case 5:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2024, 01, 31)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2024, 06, 30)) - DateFechaInicio).Days);
                         break;
 
                     case 4:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2024, 02,29 )) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2024, 07,31 )) - DateFechaInicio).Days);
                         break;
                     case 3:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2024, 03, 31)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2024, 08, 31)) - DateFechaInicio).Days);
                         break;
                     case 2:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2024, 04, 30)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2024, 09, 30)) - DateFechaInicio).Days);
                         break;
                     case 1:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2024, 05, 31)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2024, 10, 31)) - DateFechaInicio).Days);
                         break;
                     case 0:
-                        ddval.Value = Convert.ToDouble(((new DateTime(2024, 06, 30)) - DateFechaInicio).Days);
+                        ddval.Value = Convert.ToDouble(((new DateTime(2024, 11, 30)) - DateFechaInicio).Days);
                         break;
 
                     default:

@@ -48,12 +48,14 @@ namespace CapaDeNegocios.PlanillaNueva
         public enumTipoCalculoMensual Tipocalculomensual { get; set; }
         public CapaDeNegocios.Planillas.enumTipoImpresionTardanzaFalta TipoImpresionTardanzaFalta { get; set; }
         public enumTipoPlanilla TipoPlanilla { get; set; }
+        public cnPlantilla Plantilla { get; set; }
 
         public cnPlanilla ()
         {
             Meta = new Obras.cMeta();
             FuenteFinanciamiento = new cFuenteFinanciamiento();
             RegimenLaboral = new DatosLaborales.cRegimenLaboral();
+            Plantilla = new cnPlantilla();
             ListaDetalle = new List<cnDetallePlanilla>();
         }
     }

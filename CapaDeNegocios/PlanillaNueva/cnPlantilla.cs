@@ -14,5 +14,12 @@ namespace CapaDeNegocios.PlanillaNueva
         public Boolean Tareo { get; set; }
         public Boolean MetaJornal { get; set; }
         public Boolean DescuentoAfectaTotal { get; set; }
+
+        public List<cnDetallePlanilla> DetallesPantilla { get; set; }
+
+        public cnPlantilla()
+        {
+            DetallesPantilla = new List<cnDetallePlanilla>();
+        }
     }
 }

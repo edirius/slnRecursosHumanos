@@ -75,6 +75,7 @@ namespace CapaDeNegocios.PlanillaNueva
                     oPlanilla.Meta = TraerMeta(oPlanilla.Meta.Codigo);
                     oPlanilla.FuenteFinanciamiento = TraerFuenteFinanciamiento(oPlanilla.FuenteFinanciamiento.IdTFuenteFinanciamiento);
                     oPlanilla.RegimenLaboral = TraerRegimenLaboral(oPlanilla.RegimenLaboral.IdTRegimenLaboral);
+                    oPlanilla.Plantilla = TraerPlantillaXNombre(Convert.ToString(tAuxiliar.Rows[0][9]));
                     oPlanilla.ListaDetalle = TraerDetallesPlanilla(oPlanilla);
                 }
 
@@ -89,6 +90,51 @@ namespace CapaDeNegocios.PlanillaNueva
                 throw new cReglaNegociosException ("blPLanilla : " + e.Message);
             }
             
+        }
+
+        public cnPlantilla TraerPlantillaXNombre(string codigoPlantilla)
+        {
+            try
+            {
+                cnPlantilla Plan = new cnPlantilla();
+                DataTable tablaPlantilla = Conexion.GDatos.TraerDataTable("spListarPlantillaPlanilla", codigoPlantilla);
+                if (tablaPlantilla.Rows.Count > 0)
+                {
+                    Plan.Descripcion = tablaPlantilla.Rows[0][1].ToString();
+                    Plan.Tareo = Convert.ToBoolean(tablaPlantilla.Rows[0][5].ToString());
+                    Plan.MetaJornal = Convert.ToBoolean(tablaPlantilla.Rows[0][6].ToString());
+                    Plan.DescuentoAfectaTotal = Convert.ToBoolean(tablaPlantilla.Rows[0][7].ToString());
+                }
+                foreach (DataRow item in tablaPlantilla.Rows)
+                {
+                    cnDetallePlantilla det = new cnDetallePlantilla();
+                    switch (item[3].ToString())
+                    {
+                        case "INGRESOS":
+                            det.TipoPlantilla = enumTipoPlantilla.Ingreso;
+                            det.MaestroIngresos = new Sunat.cMaestroIngresos();
+                            det.MaestroIngresos.IdtMaestroIngresos = Convert.ToInt32(tablaPlantilla.Rows[0][4].ToString());
+                            break;
+                        case "DESCUENTOS":
+                            det.TipoPlantilla = enumTipoPlantilla.Descuento;
+                            break;
+                        case "A_TRABAJADOR":
+                            det.TipoPlantilla = enumTipoPlantilla.AporteTrabajador;
+                            break;
+                        case "A_EMPLEADOR":
+                            det.TipoPlantilla = enumTipoPlantilla.AporteEmpleador;
+                            break;
+                        default:
+                            break;
+                    }
+                    det.Orden = Convert.ToInt16(tablaPlantilla.Rows[0][1].ToString());
+                }
+                return Plan;
+            }
+            catch (Exception e)
+            {
+                throw new cReglaNegociosException("blPLanilla: " + e.Message);
+            }
         }
 
         public Obras.cMeta TraerMeta(int codigo)
