@@ -20,6 +20,7 @@ namespace CapaDeNegocios.PlanillaNueva
         
 
         public int Orden { get; set; }
+        
         public enumTipoPlantilla TipoPlantilla { get; set; }
         public Sunat.cMaestroDescuentos MaestroDescuentos { get; set; }
         public Sunat.cMaestroIngresos MaestroIngresos { get; set; }

@@ -67,10 +67,22 @@ namespace CapaUsuario.Planilla.VacacionesTruncas
 
         private void CargarConceptosPlantilla()
         {
-            //foreach (var item in oPlanilla.pla .pla .Plantilla)
-            //{
-
-            //}
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlantilla item in oPlanilla.Plantilla.DetallesPantilla)
+            {
+                if (item.TipoPlantilla == CapaDeNegocios.PlanillaNueva.enumTipoPlantilla.Ingreso)
+                {
+                    DataGridViewColumn col = new DataGridViewColumn();
+                    col.Name = "I" + item.Orden.ToString();
+                    col.HeaderText = item.MaestroIngresos.Abreviacion;
+                    col.ToolTipText = item.MaestroIngresos.Descripcion;
+                    dgvDetallePlanilla.Columns.Add(col);
+                }
+            }
+            DataGridViewColumn colTotalIngresos = new DataGridViewColumn();
+            colTotalIngresos.Name = "colTotalIngresos";
+            colTotalIngresos.HeaderText = "Total Ingresos";
+            colTotalIngresos.ToolTipText = "Total Ingresos";
+            dgvDetallePlanilla.Columns.Add(colTotalIngresos);
         }
     }
 }

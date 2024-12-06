@@ -117,17 +117,24 @@ namespace CapaDeNegocios.PlanillaNueva
                             break;
                         case "DESCUENTOS":
                             det.TipoPlantilla = enumTipoPlantilla.Descuento;
+                            det.MaestroDescuentos = new Sunat.cMaestroDescuentos();
+                            det.MaestroDescuentos.IdtMaestroDescuentos = det.MaestroIngresos.IdtMaestroIngresos = Convert.ToInt32(tablaPlantilla.Rows[0][4].ToString()); 
                             break;
                         case "A_TRABAJADOR":
                             det.TipoPlantilla = enumTipoPlantilla.AporteTrabajador;
+                            det.MaestroAportacionTrabajador = new Sunat.cMaestroAportacionesTrabajador();
+                            det.MaestroAportacionTrabajador.IdtMaestroAportacionesTrabajador = det.MaestroIngresos.IdtMaestroIngresos = Convert.ToInt32(tablaPlantilla.Rows[0][4].ToString());
                             break;
                         case "A_EMPLEADOR":
                             det.TipoPlantilla = enumTipoPlantilla.AporteEmpleador;
+                            det.MaestroAportacionesEmpleador = new Sunat.cMaestroAportacionesEmpleador();
+                            det.MaestroAportacionesEmpleador.IdtMaestroAportacionesEmpleador = det.MaestroIngresos.IdtMaestroIngresos = Convert.ToInt32(tablaPlantilla.Rows[0][4].ToString()); 
                             break;
                         default:
                             break;
                     }
                     det.Orden = Convert.ToInt16(tablaPlantilla.Rows[0][1].ToString());
+                    Plan.DetallesPantilla.Add(det);
                 }
                 return Plan;
             }
