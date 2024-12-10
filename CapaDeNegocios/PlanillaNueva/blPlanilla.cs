@@ -96,14 +96,15 @@ namespace CapaDeNegocios.PlanillaNueva
         {
             try
             {
+                
                 cnPlantilla Plan = new cnPlantilla();
                 DataTable tablaPlantilla = Conexion.GDatos.TraerDataTable("spListarPlantillaPlanilla", codigoPlantilla);
                 if (tablaPlantilla.Rows.Count > 0)
                 {
                     Plan.Descripcion = tablaPlantilla.Rows[0][1].ToString();
-                    Plan.Tareo = Convert.ToBoolean(tablaPlantilla.Rows[0][5].ToString());
-                    Plan.MetaJornal = Convert.ToBoolean(tablaPlantilla.Rows[0][6].ToString());
-                    Plan.DescuentoAfectaTotal = Convert.ToBoolean(tablaPlantilla.Rows[0][7].ToString());
+                    Plan.Tareo = Convert.ToBoolean(tablaPlantilla.Rows[0][5]);
+                    Plan.MetaJornal = Convert.ToBoolean(tablaPlantilla.Rows[0][6]);
+                    Plan.DescuentoAfectaTotal = Convert.ToBoolean(tablaPlantilla.Rows[0][7]);
                 }
                 foreach (DataRow item in tablaPlantilla.Rows)
                 {
@@ -113,27 +114,29 @@ namespace CapaDeNegocios.PlanillaNueva
                         case "INGRESOS":
                             det.TipoPlantilla = enumTipoPlantilla.Ingreso;
                             det.MaestroIngresos = new Sunat.cMaestroIngresos();
-                            det.MaestroIngresos.IdtMaestroIngresos = Convert.ToInt32(tablaPlantilla.Rows[0][4].ToString());
+                            det.MaestroIngresos.IdtMaestroIngresos = Convert.ToInt32(item[4].ToString());
+                            det.MaestroIngresos = TraerMaestroIngresos(det.MaestroIngresos.IdtMaestroIngresos);
+                            
                             break;
                         case "DESCUENTOS":
                             det.TipoPlantilla = enumTipoPlantilla.Descuento;
                             det.MaestroDescuentos = new Sunat.cMaestroDescuentos();
-                            det.MaestroDescuentos.IdtMaestroDescuentos = det.MaestroIngresos.IdtMaestroIngresos = Convert.ToInt32(tablaPlantilla.Rows[0][4].ToString()); 
+                            det.MaestroDescuentos = TraerMaestroDescuento(Convert.ToInt32(item[4].ToString()));
                             break;
                         case "A_TRABAJADOR":
                             det.TipoPlantilla = enumTipoPlantilla.AporteTrabajador;
                             det.MaestroAportacionTrabajador = new Sunat.cMaestroAportacionesTrabajador();
-                            det.MaestroAportacionTrabajador.IdtMaestroAportacionesTrabajador = det.MaestroIngresos.IdtMaestroIngresos = Convert.ToInt32(tablaPlantilla.Rows[0][4].ToString());
+                            det.MaestroAportacionTrabajador = TraerMaestroAportacionesTrabajador(Convert.ToInt32(item[4].ToString()));
                             break;
                         case "A_EMPLEADOR":
                             det.TipoPlantilla = enumTipoPlantilla.AporteEmpleador;
                             det.MaestroAportacionesEmpleador = new Sunat.cMaestroAportacionesEmpleador();
-                            det.MaestroAportacionesEmpleador.IdtMaestroAportacionesEmpleador = det.MaestroIngresos.IdtMaestroIngresos = Convert.ToInt32(tablaPlantilla.Rows[0][4].ToString()); 
+                            det.MaestroAportacionesEmpleador = TraerMaestroAportacionesEmpleador(Convert.ToInt32(item[4].ToString())); 
                             break;
                         default:
                             break;
                     }
-                    det.Orden = Convert.ToInt16(tablaPlantilla.Rows[0][1].ToString());
+                    det.Orden = Convert.ToInt16(tablaPlantilla.Rows[0][2].ToString());
                     Plan.DetallesPantilla.Add(det);
                 }
                 return Plan;

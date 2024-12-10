@@ -155,5 +155,6 @@ namespace CapaDeNegocios.Sunat
             Conexion.GDatos.Ejecutar("spELiminarMaestroIngresos", IdtMaestroIngresos);
             return true;
         }
+
     }
 }
