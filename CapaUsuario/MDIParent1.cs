@@ -720,6 +720,13 @@ namespace CapaUsuario
             fTrabajadoresSinPlanilla.Show();
         }
 
+        private void reporteTrabajadoreXAñoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reportes.ReporteTrabaxAño.frmReporteTrabajadorXAño fReporteTrabajadorXAño = new Reportes.ReporteTrabaxAño.frmReporteTrabajadorXAño();
+            fReporteTrabajadorXAño.MdiParent = this;
+            fReporteTrabajadorXAño.Show();
+        }
+
         private void mnuResidenteMeta_Click(object sender, EventArgs e)
         {
             ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();

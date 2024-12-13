@@ -893,6 +893,16 @@
     <Compile Include="Reportes\frmPlanilla.Designer.cs">
       <DependentUpon>frmPlanilla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\ReporteTrabaxAño\cCatalogoReporteXAño.cs" />
+    <Compile Include="Reportes\ReporteTrabaxAño\cDetalleMeses.cs" />
+    <Compile Include="Reportes\ReporteTrabaxAño\cDetallesReporteTrabajadores.cs" />
+    <Compile Include="Reportes\ReporteTrabaxAño\cReporteTrabajadoresXAño.cs" />
+    <Compile Include="Reportes\ReporteTrabaxAño\frmReporteTrabajadorXAño.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteTrabaxAño\frmReporteTrabajadorXAño.Designer.cs">
+      <DependentUpon>frmReporteTrabajadorXAño.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReporteTrabajadores.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2039,6 +2049,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmPlanilla.resx">
       <DependentUpon>frmPlanilla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteTrabaxAño\frmReporteTrabajadorXAño.resx">
+      <DependentUpon>frmReporteTrabajadorXAño.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteTrabajadores.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

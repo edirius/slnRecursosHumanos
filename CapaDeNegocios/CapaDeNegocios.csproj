@@ -308,6 +308,7 @@
   <ItemGroup>
     <Folder Include="BoletaPago\" />
     <Folder Include="dlls\" />
+    <Folder Include="Reportes\TrabajadoresXAño\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaDeDatos\CapaDeDatos.csproj">

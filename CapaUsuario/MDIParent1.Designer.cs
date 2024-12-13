@@ -146,6 +146,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
+            this.reporteTrabajadoreXAñoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -787,7 +788,8 @@
             this.impresionPlanillasToolStripMenuItem,
             this.mnuResumenXDetallePlanillas,
             this.analiticoPlanillasToolStripMenuItem,
-            this.planilla2ToolStripMenuItem});
+            this.planilla2ToolStripMenuItem,
+            this.reporteTrabajadoreXAñoToolStripMenuItem});
             this.reportesToolStripMenuItem1.Name = "reportesToolStripMenuItem1";
             this.reportesToolStripMenuItem1.Size = new System.Drawing.Size(65, 20);
             this.reportesToolStripMenuItem1.Text = "Reportes";
@@ -1084,6 +1086,13 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
+            // reporteTrabajadoreXAñoToolStripMenuItem
+            // 
+            this.reporteTrabajadoreXAñoToolStripMenuItem.Name = "reporteTrabajadoreXAñoToolStripMenuItem";
+            this.reporteTrabajadoreXAñoToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.reporteTrabajadoreXAñoToolStripMenuItem.Text = "Reporte Trabajadore x Año";
+            this.reporteTrabajadoreXAñoToolStripMenuItem.Click += new System.EventHandler(this.reporteTrabajadoreXAñoToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1235,6 +1244,7 @@
         private System.Windows.Forms.ToolStripMenuItem listaRelojesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
         private System.Windows.Forms.ToolStripMenuItem mnuTrabajadoresSinPlanilla;
+        private System.Windows.Forms.ToolStripMenuItem reporteTrabajadoreXAñoToolStripMenuItem;
     }
 }
 

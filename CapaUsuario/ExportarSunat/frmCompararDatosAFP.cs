@@ -131,7 +131,7 @@ namespace CapaUsuario.ExportarSunat
                     else
                     {
                         //datos AFP
-                        if (dtgDatosPlanilla.Rows[i].Cells[8].Value.ToString() != dtgDatosExcel.Rows[i].Cells[13].Value.ToString())
+                        if (dtgDatosPlanilla.Rows[i].Cells[8].Value.ToString() != dtgDatosExcel.Rows[i].Cells["AFP"].Value.ToString())
                         {
                             nuevo.ErrorAFP = true;
                         }
@@ -161,7 +161,7 @@ namespace CapaUsuario.ExportarSunat
                         }
 
                         //Datos Comision
-                        if (Convert.ToDouble(dtgDatosPlanilla.Rows[i].Cells[10].Value.ToString()) != Convert.ToDouble(dtgDatosExcel.Rows[i].Cells[14].Value.ToString()))
+                        if (Convert.ToDouble(dtgDatosPlanilla.Rows[i].Cells[10].Value.ToString()) != Convert.ToDouble(dtgDatosExcel.Rows[i].Cells["% Comisión"].Value.ToString()))
                         {
                             nuevo.ErrorComision = true;
                         }
