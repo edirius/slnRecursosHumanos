@@ -469,6 +469,18 @@
     <Compile Include="ImportadorExcel\frmVerificadorDNI.Designer.cs">
       <DependentUpon>frmVerificadorDNI.cs</DependentUpon>
     </Compile>
+    <Compile Include="Planilla\frmCambiarFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\frmCambiarFecha.Designer.cs">
+      <DependentUpon>frmCambiarFecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planilla\frmCambiarString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\frmCambiarString.Designer.cs">
+      <DependentUpon>frmCambiarString.cs</DependentUpon>
+    </Compile>
     <Compile Include="Planilla\frmDetallePagosTrabajador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -492,6 +504,12 @@
     </Compile>
     <Compile Include="Planilla\frmRenta5taProyectado.Designer.cs">
       <DependentUpon>frmRenta5taProyectado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Planilla\frmTraerTrabajadorVac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Planilla\frmTraerTrabajadorVac.Designer.cs">
+      <DependentUpon>frmTraerTrabajadorVac.cs</DependentUpon>
     </Compile>
     <Compile Include="Planilla\TrabajadoresSinPlanilla\frmTrabajadoresSinPlanilla.cs">
       <SubType>Form</SubType>
@@ -1890,6 +1908,12 @@
     <EmbeddedResource Include="Navegador\frmNavegador.resx">
       <DependentUpon>frmNavegador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\frmCambiarFecha.resx">
+      <DependentUpon>frmCambiarFecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\frmCambiarString.resx">
+      <DependentUpon>frmCambiarString.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Planilla\frmDetallePagosTrabajador.resx">
       <DependentUpon>frmDetallePagosTrabajador.cs</DependentUpon>
     </EmbeddedResource>
@@ -1904,6 +1928,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Planilla\frmRenta5taProyectado.resx">
       <DependentUpon>frmRenta5taProyectado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Planilla\frmTraerTrabajadorVac.resx">
+      <DependentUpon>frmTraerTrabajadorVac.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Planilla\TrabajadoresSinPlanilla\frmTrabajadoresSinPlanilla.resx">
       <DependentUpon>frmTrabajadoresSinPlanilla.cs</DependentUpon>

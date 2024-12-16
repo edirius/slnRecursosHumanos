@@ -51,22 +51,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dgvDetallePlanilla = new System.Windows.Forms.DataGridView();
-            this.txtRegimenLaboral = new System.Windows.Forms.TextBox();
-            this.txtFuenteFinanciamiento = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnAgregarTrabajador = new System.Windows.Forms.Button();
-            this.btnCalcular = new System.Windows.Forms.Button();
-            this.btnAprobacion = new System.Windows.Forms.Button();
-            this.btnRenta5ta = new System.Windows.Forms.Button();
-            this.chkQuinta = new System.Windows.Forms.CheckBox();
-            this.btnAsistenciaReloj = new System.Windows.Forms.Button();
-            this.btnImprimirReporteAsistencia = new System.Windows.Forms.Button();
-            this.dlgGuardarReportePDF = new System.Windows.Forms.SaveFileDialog();
-            this.chkAguinaldo = new System.Windows.Forms.CheckBox();
-            this.chkAFP = new System.Windows.Forms.CheckBox();
-            this.btnVerDetalleTrabajador = new System.Windows.Forms.Button();
-            this.chkObservaciones = new System.Windows.Forms.CheckBox();
             this.txtIdTDetallePlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnProceso = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -92,6 +76,24 @@
             this.FALTAS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TARDANZAS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SUELDOFALTASTAR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtRegimenLaboral = new System.Windows.Forms.TextBox();
+            this.txtFuenteFinanciamiento = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnAgregarTrabajador = new System.Windows.Forms.Button();
+            this.btnCalcular = new System.Windows.Forms.Button();
+            this.btnAprobacion = new System.Windows.Forms.Button();
+            this.btnRenta5ta = new System.Windows.Forms.Button();
+            this.chkQuinta = new System.Windows.Forms.CheckBox();
+            this.btnAsistenciaReloj = new System.Windows.Forms.Button();
+            this.btnImprimirReporteAsistencia = new System.Windows.Forms.Button();
+            this.dlgGuardarReportePDF = new System.Windows.Forms.SaveFileDialog();
+            this.chkAguinaldo = new System.Windows.Forms.CheckBox();
+            this.chkAFP = new System.Windows.Forms.CheckBox();
+            this.btnVerDetalleTrabajador = new System.Windows.Forms.Button();
+            this.chkObservaciones = new System.Windows.Forms.CheckBox();
+            this.btnCambiarFechaInicio = new System.Windows.Forms.Button();
+            this.btnCambiarCargo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -252,6 +254,198 @@
             this.dgvDetallePlanilla.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellClick);
             this.dgvDetallePlanilla.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellContentClick);
             this.dgvDetallePlanilla.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetallePlanilla_CellEndEdit);
+            // 
+            // txtIdTDetallePlanilla
+            // 
+            this.txtIdTDetallePlanilla.HeaderText = "IdTDetallePlanilla";
+            this.txtIdTDetallePlanilla.Name = "txtIdTDetallePlanilla";
+            this.txtIdTDetallePlanilla.ReadOnly = true;
+            this.txtIdTDetallePlanilla.Visible = false;
+            this.txtIdTDetallePlanilla.Width = 30;
+            // 
+            // txtAccion
+            // 
+            this.txtAccion.HeaderText = "Accion";
+            this.txtAccion.Name = "txtAccion";
+            this.txtAccion.Visible = false;
+            this.txtAccion.Width = 30;
+            // 
+            // btnProceso
+            // 
+            this.btnProceso.HeaderText = "";
+            this.btnProceso.Name = "btnProceso";
+            this.btnProceso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnProceso.Width = 30;
+            // 
+            // txtNro
+            // 
+            this.txtNro.HeaderText = "NRO";
+            this.txtNro.Name = "txtNro";
+            this.txtNro.ReadOnly = true;
+            this.txtNro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtNro.Width = 30;
+            // 
+            // txtIdTTrabajador
+            // 
+            this.txtIdTTrabajador.HeaderText = "IdTTrabajador";
+            this.txtIdTTrabajador.Name = "txtIdTTrabajador";
+            this.txtIdTTrabajador.ReadOnly = true;
+            this.txtIdTTrabajador.Visible = false;
+            this.txtIdTTrabajador.Width = 50;
+            // 
+            // txtApellidosNombres
+            // 
+            this.txtApellidosNombres.HeaderText = "APELLIDOS Y NOMBRES";
+            this.txtApellidosNombres.Name = "txtApellidosNombres";
+            this.txtApellidosNombres.ReadOnly = true;
+            this.txtApellidosNombres.Width = 200;
+            // 
+            // txtIdTCargo
+            // 
+            this.txtIdTCargo.HeaderText = "IdTCargo";
+            this.txtIdTCargo.Name = "txtIdTCargo";
+            this.txtIdTCargo.ReadOnly = true;
+            this.txtIdTCargo.Visible = false;
+            this.txtIdTCargo.Width = 30;
+            // 
+            // colCargo
+            // 
+            this.colCargo.HeaderText = "CARGO";
+            this.colCargo.Name = "colCargo";
+            this.colCargo.ReadOnly = true;
+            this.colCargo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colCargo.Width = 150;
+            // 
+            // txtDNI
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.txtDNI.DefaultCellStyle = dataGridViewCellStyle3;
+            this.txtDNI.HeaderText = "DNI";
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.ReadOnly = true;
+            this.txtDNI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.txtDNI.Width = 60;
+            // 
+            // SecFunc
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SecFunc.DefaultCellStyle = dataGridViewCellStyle4;
+            this.SecFunc.HeaderText = "SEC. FUNC.";
+            this.SecFunc.Name = "SecFunc";
+            this.SecFunc.ReadOnly = true;
+            this.SecFunc.Width = 30;
+            // 
+            // FechaInicio
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.FechaInicio.DefaultCellStyle = dataGridViewCellStyle5;
+            this.FechaInicio.HeaderText = "FEC. INICIO";
+            this.FechaInicio.Name = "FechaInicio";
+            this.FechaInicio.ReadOnly = true;
+            this.FechaInicio.Width = 70;
+            // 
+            // FECHAINICIOMETA
+            // 
+            this.FECHAINICIOMETA.HeaderText = "FEC.INI. META";
+            this.FECHAINICIOMETA.Name = "FECHAINICIOMETA";
+            this.FECHAINICIOMETA.Width = 70;
+            // 
+            // fechafin
+            // 
+            this.fechafin.HeaderText = "FECHA FIN";
+            this.fechafin.Name = "fechafin";
+            this.fechafin.Width = 70;
+            // 
+            // DIASMES
+            // 
+            this.DIASMES.HeaderText = "DIAS MES";
+            this.DIASMES.Name = "DIASMES";
+            this.DIASMES.Width = 40;
+            // 
+            // DIASSUSPENDIDOS
+            // 
+            this.DIASSUSPENDIDOS.HeaderText = "DIAS SUSP.";
+            this.DIASSUSPENDIDOS.Name = "DIASSUSPENDIDOS";
+            this.DIASSUSPENDIDOS.Width = 40;
+            // 
+            // DiasLaborados
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DiasLaborados.DefaultCellStyle = dataGridViewCellStyle6;
+            this.DiasLaborados.HeaderText = "DIAS LABOR.";
+            this.DiasLaborados.Name = "DiasLaborados";
+            this.DiasLaborados.Width = 40;
+            // 
+            // colAFP
+            // 
+            this.colAFP.HeaderText = "AFP";
+            this.colAFP.Name = "colAFP";
+            this.colAFP.Width = 80;
+            // 
+            // colComision
+            // 
+            this.colComision.HeaderText = "Comision";
+            this.colComision.Name = "colComision";
+            this.colComision.Width = 50;
+            // 
+            // colCUSPP
+            // 
+            this.colCUSPP.HeaderText = "CUSPP";
+            this.colCUSPP.Name = "colCUSPP";
+            this.colCUSPP.Width = 90;
+            // 
+            // SUELDOPACTADO
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.SUELDOPACTADO.DefaultCellStyle = dataGridViewCellStyle7;
+            this.SUELDOPACTADO.HeaderText = "REM. CONTRATO";
+            this.SUELDOPACTADO.Name = "SUELDOPACTADO";
+            this.SUELDOPACTADO.ReadOnly = true;
+            this.SUELDOPACTADO.Width = 65;
+            // 
+            // Remuneracion
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.NullValue = null;
+            this.Remuneracion.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Remuneracion.HeaderText = "REM. x CONTRATO";
+            this.Remuneracion.Name = "Remuneracion";
+            this.Remuneracion.ReadOnly = true;
+            this.Remuneracion.Width = 50;
+            // 
+            // TotalRemuneracio
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.TotalRemuneracio.DefaultCellStyle = dataGridViewCellStyle9;
+            this.TotalRemuneracio.HeaderText = "REM. X DIAS LABORADOS";
+            this.TotalRemuneracio.Name = "TotalRemuneracio";
+            this.TotalRemuneracio.ReadOnly = true;
+            this.TotalRemuneracio.Width = 50;
+            // 
+            // FALTAS
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.FALTAS.DefaultCellStyle = dataGridViewCellStyle10;
+            this.FALTAS.HeaderText = "FALTAS";
+            this.FALTAS.Name = "FALTAS";
+            this.FALTAS.Width = 50;
+            // 
+            // TARDANZAS
+            // 
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.TARDANZAS.DefaultCellStyle = dataGridViewCellStyle11;
+            this.TARDANZAS.HeaderText = "TARDAN.";
+            this.TARDANZAS.Name = "TARDANZAS";
+            this.TARDANZAS.ToolTipText = "TARDANZAS";
+            this.TARDANZAS.Width = 50;
+            // 
+            // SUELDOFALTASTAR
+            // 
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.SUELDOFALTASTAR.DefaultCellStyle = dataGridViewCellStyle12;
+            this.SUELDOFALTASTAR.HeaderText = "SUELDO DESPUES FAL/TAR";
+            this.SUELDOFALTASTAR.Name = "SUELDOFALTASTAR";
+            this.SUELDOFALTASTAR.Width = 65;
             // 
             // txtRegimenLaboral
             // 
@@ -449,203 +643,46 @@
             this.chkObservaciones.UseVisualStyleBackColor = true;
             this.chkObservaciones.CheckedChanged += new System.EventHandler(this.chkObservaciones_CheckedChanged);
             // 
-            // txtIdTDetallePlanilla
+            // btnCambiarFechaInicio
             // 
-            this.txtIdTDetallePlanilla.HeaderText = "IdTDetallePlanilla";
-            this.txtIdTDetallePlanilla.Name = "txtIdTDetallePlanilla";
-            this.txtIdTDetallePlanilla.ReadOnly = true;
-            this.txtIdTDetallePlanilla.Visible = false;
-            this.txtIdTDetallePlanilla.Width = 30;
+            this.btnCambiarFechaInicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCambiarFechaInicio.BackColor = System.Drawing.Color.MintCream;
+            this.btnCambiarFechaInicio.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCambiarFechaInicio.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnCambiarFechaInicio.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnCambiarFechaInicio.Location = new System.Drawing.Point(168, 418);
+            this.btnCambiarFechaInicio.Name = "btnCambiarFechaInicio";
+            this.btnCambiarFechaInicio.Size = new System.Drawing.Size(90, 38);
+            this.btnCambiarFechaInicio.TabIndex = 107;
+            this.btnCambiarFechaInicio.Text = "&Cambiar Fecha";
+            this.btnCambiarFechaInicio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCambiarFechaInicio.UseVisualStyleBackColor = false;
+            this.btnCambiarFechaInicio.Click += new System.EventHandler(this.btnCambiarFechaInicio_Click);
             // 
-            // txtAccion
+            // btnCambiarCargo
             // 
-            this.txtAccion.HeaderText = "Accion";
-            this.txtAccion.Name = "txtAccion";
-            this.txtAccion.Visible = false;
-            this.txtAccion.Width = 30;
-            // 
-            // btnProceso
-            // 
-            this.btnProceso.HeaderText = "";
-            this.btnProceso.Name = "btnProceso";
-            this.btnProceso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnProceso.Width = 30;
-            // 
-            // txtNro
-            // 
-            this.txtNro.HeaderText = "NRO";
-            this.txtNro.Name = "txtNro";
-            this.txtNro.ReadOnly = true;
-            this.txtNro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.txtNro.Width = 30;
-            // 
-            // txtIdTTrabajador
-            // 
-            this.txtIdTTrabajador.HeaderText = "IdTTrabajador";
-            this.txtIdTTrabajador.Name = "txtIdTTrabajador";
-            this.txtIdTTrabajador.ReadOnly = true;
-            this.txtIdTTrabajador.Visible = false;
-            this.txtIdTTrabajador.Width = 50;
-            // 
-            // txtApellidosNombres
-            // 
-            this.txtApellidosNombres.HeaderText = "APELLIDOS Y NOMBRES";
-            this.txtApellidosNombres.Name = "txtApellidosNombres";
-            this.txtApellidosNombres.ReadOnly = true;
-            this.txtApellidosNombres.Width = 200;
-            // 
-            // txtIdTCargo
-            // 
-            this.txtIdTCargo.HeaderText = "IdTCargo";
-            this.txtIdTCargo.Name = "txtIdTCargo";
-            this.txtIdTCargo.ReadOnly = true;
-            this.txtIdTCargo.Visible = false;
-            this.txtIdTCargo.Width = 30;
-            // 
-            // colCargo
-            // 
-            this.colCargo.HeaderText = "CARGO";
-            this.colCargo.Name = "colCargo";
-            this.colCargo.ReadOnly = true;
-            this.colCargo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colCargo.Width = 150;
-            // 
-            // txtDNI
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.txtDNI.DefaultCellStyle = dataGridViewCellStyle3;
-            this.txtDNI.HeaderText = "DNI";
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.ReadOnly = true;
-            this.txtDNI.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.txtDNI.Width = 60;
-            // 
-            // SecFunc
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SecFunc.DefaultCellStyle = dataGridViewCellStyle4;
-            this.SecFunc.HeaderText = "SEC. FUNC.";
-            this.SecFunc.Name = "SecFunc";
-            this.SecFunc.ReadOnly = true;
-            this.SecFunc.Width = 30;
-            // 
-            // FechaInicio
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.FechaInicio.DefaultCellStyle = dataGridViewCellStyle5;
-            this.FechaInicio.HeaderText = "FEC. INICIO";
-            this.FechaInicio.Name = "FechaInicio";
-            this.FechaInicio.ReadOnly = true;
-            this.FechaInicio.Width = 70;
-            // 
-            // FECHAINICIOMETA
-            // 
-            this.FECHAINICIOMETA.HeaderText = "FEC.INI. META";
-            this.FECHAINICIOMETA.Name = "FECHAINICIOMETA";
-            this.FECHAINICIOMETA.Width = 70;
-            // 
-            // fechafin
-            // 
-            this.fechafin.HeaderText = "FECHA FIN";
-            this.fechafin.Name = "fechafin";
-            this.fechafin.Width = 70;
-            // 
-            // DIASMES
-            // 
-            this.DIASMES.HeaderText = "DIAS MES";
-            this.DIASMES.Name = "DIASMES";
-            this.DIASMES.Width = 40;
-            // 
-            // DIASSUSPENDIDOS
-            // 
-            this.DIASSUSPENDIDOS.HeaderText = "DIAS SUSP.";
-            this.DIASSUSPENDIDOS.Name = "DIASSUSPENDIDOS";
-            this.DIASSUSPENDIDOS.Width = 40;
-            // 
-            // DiasLaborados
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.DiasLaborados.DefaultCellStyle = dataGridViewCellStyle6;
-            this.DiasLaborados.HeaderText = "DIAS LABOR.";
-            this.DiasLaborados.Name = "DiasLaborados";
-            this.DiasLaborados.Width = 40;
-            // 
-            // colAFP
-            // 
-            this.colAFP.HeaderText = "AFP";
-            this.colAFP.Name = "colAFP";
-            this.colAFP.Width = 80;
-            // 
-            // colComision
-            // 
-            this.colComision.HeaderText = "Comision";
-            this.colComision.Name = "colComision";
-            this.colComision.Width = 50;
-            // 
-            // colCUSPP
-            // 
-            this.colCUSPP.HeaderText = "CUSPP";
-            this.colCUSPP.Name = "colCUSPP";
-            this.colCUSPP.Width = 90;
-            // 
-            // SUELDOPACTADO
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.SUELDOPACTADO.DefaultCellStyle = dataGridViewCellStyle7;
-            this.SUELDOPACTADO.HeaderText = "REM. CONTRATO";
-            this.SUELDOPACTADO.Name = "SUELDOPACTADO";
-            this.SUELDOPACTADO.ReadOnly = true;
-            this.SUELDOPACTADO.Width = 65;
-            // 
-            // Remuneracion
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.NullValue = null;
-            this.Remuneracion.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Remuneracion.HeaderText = "REM. x CONTRATO";
-            this.Remuneracion.Name = "Remuneracion";
-            this.Remuneracion.ReadOnly = true;
-            this.Remuneracion.Width = 50;
-            // 
-            // TotalRemuneracio
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.TotalRemuneracio.DefaultCellStyle = dataGridViewCellStyle9;
-            this.TotalRemuneracio.HeaderText = "REM. X DIAS LABORADOS";
-            this.TotalRemuneracio.Name = "TotalRemuneracio";
-            this.TotalRemuneracio.ReadOnly = true;
-            this.TotalRemuneracio.Width = 50;
-            // 
-            // FALTAS
-            // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.FALTAS.DefaultCellStyle = dataGridViewCellStyle10;
-            this.FALTAS.HeaderText = "FALTAS";
-            this.FALTAS.Name = "FALTAS";
-            this.FALTAS.Width = 50;
-            // 
-            // TARDANZAS
-            // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.TARDANZAS.DefaultCellStyle = dataGridViewCellStyle11;
-            this.TARDANZAS.HeaderText = "TARDAN.";
-            this.TARDANZAS.Name = "TARDANZAS";
-            this.TARDANZAS.ToolTipText = "TARDANZAS";
-            this.TARDANZAS.Width = 50;
-            // 
-            // SUELDOFALTASTAR
-            // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.SUELDOFALTASTAR.DefaultCellStyle = dataGridViewCellStyle12;
-            this.SUELDOFALTASTAR.HeaderText = "SUELDO DESPUES FAL/TAR";
-            this.SUELDOFALTASTAR.Name = "SUELDOFALTASTAR";
-            this.SUELDOFALTASTAR.Width = 65;
+            this.btnCambiarCargo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCambiarCargo.BackColor = System.Drawing.Color.MintCream;
+            this.btnCambiarCargo.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCambiarCargo.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnCambiarCargo.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnCambiarCargo.Location = new System.Drawing.Point(264, 418);
+            this.btnCambiarCargo.Name = "btnCambiarCargo";
+            this.btnCambiarCargo.Size = new System.Drawing.Size(90, 38);
+            this.btnCambiarCargo.TabIndex = 108;
+            this.btnCambiarCargo.Text = "&Cambiar Cargo";
+            this.btnCambiarCargo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCambiarCargo.UseVisualStyleBackColor = false;
+            this.btnCambiarCargo.Visible = false;
+            this.btnCambiarCargo.Click += new System.EventHandler(this.btnCambiarCargo_Click);
             // 
             // frmMantenimientoDetallePlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 468);
+            this.Controls.Add(this.btnCambiarCargo);
+            this.Controls.Add(this.btnCambiarFechaInicio);
             this.Controls.Add(this.chkObservaciones);
             this.Controls.Add(this.btnVerDetalleTrabajador);
             this.Controls.Add(this.chkAFP);
@@ -736,5 +773,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FALTAS;
         private System.Windows.Forms.DataGridViewTextBoxColumn TARDANZAS;
         private System.Windows.Forms.DataGridViewTextBoxColumn SUELDOFALTASTAR;
+        private System.Windows.Forms.Button btnCambiarFechaInicio;
+        private System.Windows.Forms.Button btnCambiarCargo;
     }
 }

@@ -220,7 +220,50 @@ namespace CapaUsuario.Planilla.VacacionesTruncas
 
         private void CargarDatosPlanilla()
         {
+            foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanilla item in oPlanilla.ListaDetalle)
+            {
+                dgvDetallePlanilla.Rows.Add();
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["idtdetalleplanilla"].Value = item.codigo;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["txtNro"].Value = item.numero;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["txtIdTTrabajador"].Value = item.miTrabajador.IdTrabajador;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["txtApellidosNombres"].Value = item.miTrabajador.ApellidoPaterno + " " + item.miTrabajador.ApellidoMaterno + ", " + item.miTrabajador.Nombres;
+                //dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["txtIdTCargo"].Value = ;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["colCargo"].Value = item.cargo;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["txtDNI"].Value = item.miTrabajador.Dni;
+                //dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["SecFunc"].Value =  
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["FechaInicio"].Value = item.fechaInicio;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["FECHAINICIOMETA"].Value = item.fechaInicioMeta;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["fechafin"].Value = item.fechaFin;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["DIASMES"].Value = item.diasMes;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["DIASSUSPENDIDOS"].Value = item.diasSuspendidos;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["DiasLaborados"].Value = item.diasLaborados;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["colAFP"].Value = item.afp.Nombre;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["colComision"].Value = item.comision;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["colCUSPP"].Value = item.cuspp;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["SUELDOPACTADO"].Value = item.sueldoPactado;
+                //dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["Remuneracion"].Value = item.re .sueldoPactado;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["TotalRemuneracio"].Value = item.sueldoDiasLaborados;
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["SUELDOFALTASTAR"].Value = item.sueldoDespuesFaltas;
 
+                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaIngresos item2 in item.ListaDetalleIngresos)
+                {
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells[ "I" + item2.MaestroIngresos.IdtMaestroIngresos].Value = item2.Monto;
+                }
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["colTotalIngresos"].Value = item.totalIngreso;
+
+                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaAportacionesTrabajador item3 in item.ListaDetalleAportacionesTrabajador)
+                {
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["T" + item3.MaestroAportacionTrabajador.IdtMaestroAportacionesTrabajador].Value = item3.Monto;
+                }
+                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["colTotalAportacionE"].Value = item.totalAportacionesTrabajador;
+
+                foreach (CapaDeNegocios.PlanillaNueva.cnDetallePlanillaEgresos item4 in item.ListaDetalleEgresos)
+                {
+                    dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["D" + item4.MaestroDescuentos.IdtMaestroDescuentos].Value = item4.Monto;
+                }
+
+                //dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["].Value = item.totalAportacionesTrabajador;
+            }
         }
     }
 }

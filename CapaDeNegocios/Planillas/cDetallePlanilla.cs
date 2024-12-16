@@ -325,6 +325,15 @@ namespace CapaDeNegocios.Planillas
             return Conexion.GDatos.TraerDataTable("spListarPlanillaXMesYRegimenLaboralBancaria", pidPlanilla, pidRegimenLaboral, pmes, paño);
         }
 
+        public DataTable ListarPlanillaVACACIONESBancaria(int pidPlanilla)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarPlanillaVACIONESBancaria", pidPlanilla);
+        }
+        public DataTable ListarPlanillaVACACIONES(int pidPlanilla)
+        {
+            return Conexion.GDatos.TraerDataTable("spListarPlanillaVACACIONES", pidPlanilla);
+        }
+        
         public DataTable ListarPlanillaXMesYRegimenLaboralRacionamiento(int pidPlanilla, int pidRegimenLaboral, string pmes, string paño)
         {
             return Conexion.GDatos.TraerDataTable("spListarPlanillaXMesYRegimenLaboralRacionamiento", pidPlanilla, pidRegimenLaboral, pmes, paño);

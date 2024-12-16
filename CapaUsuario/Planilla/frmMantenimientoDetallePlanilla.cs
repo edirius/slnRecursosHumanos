@@ -231,32 +231,44 @@ namespace CapaUsuario.Planilla
         {
             try
             {
-                CapaUsuario.Planilla.frmSeleccionTrabajadorPlanilla fSeleccionTrabajadorPlanilla = new frmSeleccionTrabajadorPlanilla();
-                fSeleccionTrabajadorPlanilla.RecibirDatos(smes, saño, sidtmeta, sidtregimenlaboral);
-                if (fSeleccionTrabajadorPlanilla.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (oPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
                 {
-                    sselecciontrabajadores = fSeleccionTrabajadorPlanilla.strabajadores;
-                    sfilasselecciontrabajadores = fSeleccionTrabajadorPlanilla.sfilasselecciontrabajadores;
-
-                    int z = 0;
-                    for (int i = 0; i < sfilasselecciontrabajadores; i++)
+                    frmTraerTrabajadorVac fTraerTrabajadorVac = new frmTraerTrabajadorVac();
+                    if (fTraerTrabajadorVac.ShowDialog() == DialogResult.OK)
                     {
-                        z = 0;
-                        foreach (DataGridViewRow rowDgvDetallePlanilla in dgvDetallePlanilla.Rows)
+                        CargarTrabajador(fTraerTrabajadorVac.TrabajadorSeleccionado.IdTrabajador, splantilla);
+                        TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
+                    }
+                }
+                else
+                {
+                    CapaUsuario.Planilla.frmSeleccionTrabajadorPlanilla fSeleccionTrabajadorPlanilla = new frmSeleccionTrabajadorPlanilla();
+                    fSeleccionTrabajadorPlanilla.RecibirDatos(smes, saño, sidtmeta, sidtregimenlaboral);
+                    if (fSeleccionTrabajadorPlanilla.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        sselecciontrabajadores = fSeleccionTrabajadorPlanilla.strabajadores;
+                        sfilasselecciontrabajadores = fSeleccionTrabajadorPlanilla.sfilasselecciontrabajadores;
+
+                        int z = 0;
+                        for (int i = 0; i < sfilasselecciontrabajadores; i++)
                         {
-                            if (Convert.ToString(rowDgvDetallePlanilla.Cells[4].Value) == sselecciontrabajadores[i, 0].ToString())
+                            z = 0;
+                            foreach (DataGridViewRow rowDgvDetallePlanilla in dgvDetallePlanilla.Rows)
                             {
-                                z = 1;
+                                if (Convert.ToString(rowDgvDetallePlanilla.Cells[4].Value) == sselecciontrabajadores[i, 0].ToString())
+                                {
+                                    z = 1;
+                                }
                             }
-                        }
-                        if (z == 0)
-                        {
-                            CargarTrabajador(Convert.ToInt32(sselecciontrabajadores[i, 0].ToString()), splantilla);
-                            TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
-                        }
-                        else
-                        {
-                            MessageBox.Show("El trabajador ya se encuentra en la planilla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            if (z == 0)
+                            {
+                                CargarTrabajador(Convert.ToInt32(sselecciontrabajadores[i, 0].ToString()), splantilla);
+                                TotalRemuneracion(dgvDetallePlanilla.Rows.Count - 1);
+                            }
+                            else
+                            {
+                                MessageBox.Show("El trabajador ya se encuentra en la planilla.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -647,99 +659,120 @@ namespace CapaUsuario.Planilla
                         " en la planilla Nro: " + PlanillaEncontrada.Numero + " - " + PlanillaEncontrada.Descripcion, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
-
-                foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + pidtrabajador + "'"))
+                if (oPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
                 {
-                    Nombre = rowTrabajador[2].ToString() + " " + rowTrabajador[3].ToString() + " " + rowTrabajador[4].ToString();
-                    DNI = rowTrabajador[1].ToString();
-
-                    List<CapaDeNegocios.DatosLaborales.cPeriodoTrabajador> AuxiliarPeriodoTrabajador = miPeriodoTrabajador.traerPeriodosMesTrabajador(pidtrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1));
-                    List<CapaDeNegocios.DatosLaborales.cRegimenTrabajador> ListaRegimenTrabajador = new List<CapaDeNegocios.DatosLaborales.cRegimenTrabajador>();
-                    List<CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador> ListaPeriodoAFP = new List<CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador>();
-
-                    CapaDeNegocios.DatosLaborales.cPeriodoTrabajador PeriodoElegido = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
-                    CapaDeNegocios.DatosLaborales.cRegimenTrabajador RegimenElegido = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
-                    CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador AFPElegido = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
-
-                    if (AuxiliarPeriodoTrabajador.Count == 0)
+                    foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + pidtrabajador + "'"))
                     {
-                        throw new cReglaNegociosException("No hay periodos para el trabajador: " + Nombre + " y el mes " + smes + "/" + saño);
-                    }
+                        Nombre = rowTrabajador[2].ToString() + " " + rowTrabajador[3].ToString() + " " + rowTrabajador[4].ToString();
+                        DNI = rowTrabajador[1].ToString();
 
-                    if (AuxiliarPeriodoTrabajador.Count > 0)
-                    {
-                        foreach (CapaDeNegocios.DatosLaborales.cPeriodoTrabajador item in AuxiliarPeriodoTrabajador)
+                        CapaDeNegocios.DatosLaborales.cPeriodoTrabajador AuxiliarPeriodoTrabajador = miPeriodoTrabajador.traerUltimoPeriodoTrabajador(pidtrabajador);
+                        CapaDeNegocios.DatosLaborales.cRegimenTrabajador ListaRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                        CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador ListaPeriodoAFP = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+                        
+
+                        CapaDeNegocios.DatosLaborales.cPeriodoTrabajador PeriodoElegido = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+                        CapaDeNegocios.DatosLaborales.cRegimenTrabajador RegimenElegido = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                        CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador AFPElegido = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+                        ListaRegimenTrabajador = ListaRegimenTrabajador.TraerUltimoRegimenTrabajadorInclusoTerminado(AuxiliarPeriodoTrabajador.IdtPeriodoTrabajador);
+                        ListaPeriodoAFP = AFPElegido.TraerUltimoRegimenPensionario(AuxiliarPeriodoTrabajador.IdtPeriodoTrabajador);
+
+                        PeriodoElegido = AuxiliarPeriodoTrabajador;
+                        RegimenElegido = ListaRegimenTrabajador;
+                        FechaInicio = PeriodoElegido.FechaInicio;
+                        
+                        MontoPago = RegimenElegido.MontoPago.ToString();
+                        foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + RegimenElegido.IdtCargo.ToString() + "'"))
                         {
-                            
-                            CapaDeNegocios.DatosLaborales.cRegimenTrabajador auxiliarRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
-
-                            ListaRegimenTrabajador = auxiliarRegimenTrabajador.TraerRegimenTrabajadorMes(item.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1));
-                            ListaPeriodoAFP = AFPElegido.TraerRegimenPensionarioxMes(item.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1));
-
-                            ListaRegimenTrabajador = auxiliarRegimenTrabajador.TraerRegimenTrabajadorMes(item.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)),1));
-
-                            foreach (CapaDeNegocios.DatosLaborales.cRegimenTrabajador item2 in ListaRegimenTrabajador)
-                            {
-                                if (item2.IdtMeta == sidtmeta)
-                                {
-                                    PeriodoElegido = item;
-                                    RegimenElegido = item2;
-                                    FechaInicio = PeriodoElegido.FechaInicio;
-                                    MontoPago = RegimenElegido.MontoPago.ToString();
-                                    foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + RegimenElegido.IdtCargo.ToString() + "'"))
-                                    {
-                                        IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
-                                        Cargo = rowCargo[1].ToString();
-                                    }
-                                }
-                            }
-
-                            //error cuando no encuentra un periodo = a la meta
-                            if ( PeriodoElegido.IdtPeriodoTrabajador == 0)
-                            {
-                                PeriodoElegido = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
-                                PeriodoElegido = item;
-                                foreach (CapaDeNegocios.DatosLaborales.cRegimenTrabajador item2 in ListaRegimenTrabajador)
-                                {
-                                    RegimenElegido = item2;
-                                    FechaInicio = PeriodoElegido.FechaInicio;
-                                    MontoPago = RegimenElegido.MontoPago.ToString();
-                                    foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + RegimenElegido.IdtCargo.ToString() + "'"))
-                                    {
-                                        IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
-                                        Cargo = rowCargo[1].ToString();
-                                    }
-                                }
-
-                            }
-
+                            IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
+                            Cargo = rowCargo[1].ToString();
                         }
-                    }
-                    
-                    
-                    FechaInicio = PeriodoElegido.FechaInicio;
-
-                    
-
-                    if (tipoPlanilla == "RACIONAMIENTO")
-                    {
                         contador += 1;
                         dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio);
                         dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["Remuneracion"].Value = MontoPago;
                         dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["FECHAFIN"].Value = PeriodoElegido.FechaFin;
                         dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["FECHAINICIOMETA"].Value = RegimenElegido.FechaInicio;
-                    }
-                    else
-                    {
-                        if (ListaPeriodoAFP.Count > 0)
-                        {
-                            TienAFP = true;
-                            AFPElegido = ListaPeriodoAFP[ListaPeriodoAFP.Count - 1];
-                            foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + AFPElegido.IdtAFP.ToString() + "'"))
-                            {
-                                AFP = rowAFP[1].ToString();
-                            }
 
+
+                    }
+                }
+                else
+                {
+                    foreach (DataRow rowTrabajador in oDataTrabajador.Select("id_trabajador = '" + pidtrabajador + "'"))
+                    {
+                        Nombre = rowTrabajador[2].ToString() + " " + rowTrabajador[3].ToString() + " " + rowTrabajador[4].ToString();
+                        DNI = rowTrabajador[1].ToString();
+
+                        List<CapaDeNegocios.DatosLaborales.cPeriodoTrabajador> AuxiliarPeriodoTrabajador = miPeriodoTrabajador.traerPeriodosMesTrabajador(pidtrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1));
+                        List<CapaDeNegocios.DatosLaborales.cRegimenTrabajador> ListaRegimenTrabajador = new List<CapaDeNegocios.DatosLaborales.cRegimenTrabajador>();
+                        List<CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador> ListaPeriodoAFP = new List<CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador>();
+
+                        CapaDeNegocios.DatosLaborales.cPeriodoTrabajador PeriodoElegido = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+                        CapaDeNegocios.DatosLaborales.cRegimenTrabajador RegimenElegido = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+                        CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador AFPElegido = new CapaDeNegocios.DatosLaborales.cRegimenPensionarioTrabajador();
+
+                        if (AuxiliarPeriodoTrabajador.Count == 0)
+                        {
+                            throw new cReglaNegociosException("No hay periodos para el trabajador: " + Nombre + " y el mes " + smes + "/" + saño);
+                        }
+
+                        if (AuxiliarPeriodoTrabajador.Count > 0)
+                        {
+                            foreach (CapaDeNegocios.DatosLaborales.cPeriodoTrabajador item in AuxiliarPeriodoTrabajador)
+                            {
+
+                                CapaDeNegocios.DatosLaborales.cRegimenTrabajador auxiliarRegimenTrabajador = new CapaDeNegocios.DatosLaborales.cRegimenTrabajador();
+
+                                ListaRegimenTrabajador = auxiliarRegimenTrabajador.TraerRegimenTrabajadorMes(item.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1));
+                                ListaPeriodoAFP = AFPElegido.TraerRegimenPensionarioxMes(item.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1));
+
+                                ListaRegimenTrabajador = auxiliarRegimenTrabajador.TraerRegimenTrabajadorMes(item.IdtPeriodoTrabajador, new DateTime(Convert.ToInt16(saño), Convert.ToInt16(Mes(smes)), 1));
+
+                                foreach (CapaDeNegocios.DatosLaborales.cRegimenTrabajador item2 in ListaRegimenTrabajador)
+                                {
+                                    if (item2.IdtMeta == sidtmeta)
+                                    {
+                                        PeriodoElegido = item;
+                                        RegimenElegido = item2;
+                                        FechaInicio = PeriodoElegido.FechaInicio;
+                                        MontoPago = RegimenElegido.MontoPago.ToString();
+                                        foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + RegimenElegido.IdtCargo.ToString() + "'"))
+                                        {
+                                            IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
+                                            Cargo = rowCargo[1].ToString();
+                                        }
+                                    }
+                                }
+
+                                //error cuando no encuentra un periodo = a la meta
+                                if (PeriodoElegido.IdtPeriodoTrabajador == 0)
+                                {
+                                    PeriodoElegido = new CapaDeNegocios.DatosLaborales.cPeriodoTrabajador();
+                                    PeriodoElegido = item;
+                                    foreach (CapaDeNegocios.DatosLaborales.cRegimenTrabajador item2 in ListaRegimenTrabajador)
+                                    {
+                                        RegimenElegido = item2;
+                                        FechaInicio = PeriodoElegido.FechaInicio;
+                                        MontoPago = RegimenElegido.MontoPago.ToString();
+                                        foreach (DataRow rowCargo in oDataCargo.Select("idtcargo = '" + RegimenElegido.IdtCargo.ToString() + "'"))
+                                        {
+                                            IdtCargo = Convert.ToInt32(rowCargo[0].ToString());
+                                            Cargo = rowCargo[1].ToString();
+                                        }
+                                    }
+
+                                }
+
+                            }
+                        }
+
+
+                        FechaInicio = PeriodoElegido.FechaInicio;
+
+
+
+                        if (tipoPlanilla == "RACIONAMIENTO")
+                        {
                             contador += 1;
                             dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio);
                             dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["Remuneracion"].Value = MontoPago;
@@ -748,12 +781,31 @@ namespace CapaUsuario.Planilla
                         }
                         else
                         {
-                            TienAFP = false;
-                            MessageBox.Show("El trabajador " + DNI + " : " + Nombre + " no tiene datos de AFP. No se podra agregar al trabajador. Corrija su periodo en Mantenimiento de Trabajadores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                            if (ListaPeriodoAFP.Count > 0)
+                            {
+                                TienAFP = true;
+                                AFPElegido = ListaPeriodoAFP[ListaPeriodoAFP.Count - 1];
+                                foreach (DataRow rowAFP in oDataAFP.Select("idtafp = '" + AFPElegido.IdtAFP.ToString() + "'"))
+                                {
+                                    AFP = rowAFP[1].ToString();
+                                }
 
+                                contador += 1;
+                                dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio);
+                                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["Remuneracion"].Value = MontoPago;
+                                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["FECHAFIN"].Value = PeriodoElegido.FechaFin;
+                                dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["FECHAINICIOMETA"].Value = RegimenElegido.FechaInicio;
+                            }
+                            else
+                            {
+                                TienAFP = false;
+                                MessageBox.Show("El trabajador " + DNI + " : " + Nombre + " no tiene datos de AFP. No se podra agregar al trabajador. Corrija su periodo en Mantenimiento de Trabajadores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
+                        }
                     }
                 }
+                
             }
             catch (Exception ex)
             {
@@ -1169,6 +1221,10 @@ namespace CapaUsuario.Planilla
             dgvDetallePlanilla.Rows[fila].Cells["SUELDOPACTADO"].Value = Convert.ToDecimal(dgvDetallePlanilla.Rows[fila].Cells["remuneracion"].Value);
             dgvDetallePlanilla.Rows[fila].Cells["DIASMES"].Value = DiasMes2;
             dgvDetallePlanilla.Rows[fila].Cells["DiasLaborados"].Value = DiasMes2 - diasSuspendidos - diasfalta;
+            if (oPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+            {
+                dgvDetallePlanilla.Rows[fila].Cells["DiasLaborados"].Value = 0;
+            }
         }
 
 
@@ -1659,7 +1715,7 @@ namespace CapaUsuario.Planilla
 
                     PlanillaEncontrada = PlanillaEncontrada.TraerPLanillaConTrabajadorDuplicadoConCargasSociales(miTrabajador, PlanillaEncontrada.Mes, Convert.ToInt16(PlanillaEncontrada.Año), PlanillaEncontrada.IdtPlanilla);
 
-                    if (PlanillaEncontrada != null)
+                    if (PlanillaEncontrada != null || oPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
                     {
                         dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].ReadOnly = false;
                     } 
@@ -1683,7 +1739,7 @@ namespace CapaUsuario.Planilla
                     }
                     else
                     {
-                        if (PlanillaEncontrada == null || sma_empleador[i, 1].ToString() != "0804")
+                        if ((PlanillaEncontrada == null && oPlanilla.TipoPlanilla != CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS) || sma_empleador[i, 1].ToString() != "0804")
                         {
                             decimal result = IngresosAfectos(fila, sma_empleador[i, 1].ToString(), sma_empleador[i, 3].ToString());
                             dgvDetallePlanilla.Rows[fila].Cells[celda_inicio + con_ingresos + con_trabajador + con_descuento + i].Value = String.Format("{0:0.00}", result);
@@ -2398,6 +2454,54 @@ namespace CapaUsuario.Planilla
             }
         }
 
+        private void btnCambiarFechaInicio_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvDetallePlanilla.SelectedCells.Count > 0)
+                {
+                    frmCambiarFecha fCambiarFecha = new frmCambiarFecha();
+                    fCambiarFecha.FechaSeleccionada = Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.SelectedCells[0].RowIndex].Cells["FechaInicio"].Value);
+                    if (fCambiarFecha.ShowDialog() == DialogResult.OK)
+                    {
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.SelectedCells[0].RowIndex].Cells["FechaInicio"].Value = fCambiarFecha.FechaSeleccionada;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una fila.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cambiar fecha: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCambiarCargo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvDetallePlanilla.SelectedCells.Count > 0)
+                {
+                    frmCambiarString fCambiarString = new frmCambiarString();
+                    fCambiarString.StringSeleccionado = dgvDetallePlanilla.Rows[dgvDetallePlanilla.SelectedCells[0].RowIndex].Cells["colCargo"].Value.ToString();
+                    if (fCambiarString.ShowDialog() == DialogResult.OK)
+                    {
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.SelectedCells[0].RowIndex].Cells["colCargo"].Value = fCambiarString.StringSeleccionado;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una fila.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cambiar fecha: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnAsistenciaReloj_Click(object sender, EventArgs e)
         {
             try
@@ -2852,6 +2956,11 @@ namespace CapaUsuario.Planilla
                 dgvDetallePlanilla.Columns["fechafin"].Visible = false;
                 dgvDetallePlanilla.Columns["DIASMES"].Visible = false;
                 dgvDetallePlanilla.Columns["DIASSUSPENDIDOS"].Visible = false;
+            }
+
+            if (oPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+            {
+                btnCambiarCargo.Visible = true;
             }
         }
 

@@ -534,6 +534,8 @@ namespace CapaUsuario.Reportes
                 CapaDeNegocios.Planillas.cDetallePlanillaATrabajador oPlanillaTrabajador = new CapaDeNegocios.Planillas.cDetallePlanillaATrabajador();
                 CapaDeNegocios.Planillas.cDetallePlanillaAEmpleador oPlanillaEmpleador = new CapaDeNegocios.Planillas.cDetallePlanillaAEmpleador();
 
+                CapaDeNegocios.PlanillaNueva.cnPlanilla oNuevaPlanilla = new CapaDeNegocios.PlanillaNueva.cnPlanilla();
+
                 //Mes  y Regimen laboral
 
                 decimal renumeracion = 0;
@@ -2520,6 +2522,7 @@ namespace CapaUsuario.Reportes
                                 }
                                 else
                                 {
+
                                     #region Planilla Normal
                                     //Limpiando titulos de la plantilla
                                     odtPrueba.Columns.Clear();
@@ -2548,8 +2551,22 @@ namespace CapaUsuario.Reportes
                                     {
                                         odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
                                     }
-
-                                    odtPlanilla = buscarDuplicados(odtPlanilla);
+                                    if (miPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                                    {
+                                        if (chkCuentaBancaria.Checked)
+                                        {
+                                            odtPlanilla = oPlanilla.ListarPlanillaVACACIONESBancaria(sidtplanilla);
+                                        }
+                                        else
+                                        {
+                                            odtPlanilla = oPlanilla.ListarPlanillaVACACIONES(sidtplanilla);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        odtPlanilla = buscarDuplicados(odtPlanilla);
+                                    }
+                                    
 
                                     odtPrueba.Clear();
 
@@ -3252,8 +3269,13 @@ namespace CapaUsuario.Reportes
                                         }
 
                                         //Planilla por mes y regimen laboral
+                                        
                                         odtPlanilla = oPlanilla.ListarPlanillaXMesYRegimenLaboral(sidtplanilla, pRegimenLaboral, pmes_nro, paño);
                                         odtPlanilla = buscarDuplicados(odtPlanilla);
+                                        if (miPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                                        {
+                                            odtPlanilla = oPlanilla.ListarPlanillaVACACIONES(sidtplanilla);
+                                        }
                                         int ll = 0;
                                         //esribir datos de planilla
                                         int total_prueba_corta = odtPrueba.Rows.Count;

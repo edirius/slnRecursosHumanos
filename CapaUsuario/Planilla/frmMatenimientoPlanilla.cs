@@ -139,19 +139,21 @@ namespace CapaUsuario.Planilla
             }
             else
             {
-                if (oPlanilla.TraerPlanilla(sidtplanilla).TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
-                {
-                    VacacionesTruncas.frmMantenimientoDetalleVac fMantenimientoDetalleVac = new VacacionesTruncas.frmMantenimientoDetalleVac();
-                    fMantenimientoDetalleVac.oPlanilla = CatalogoPlanilla.TraerPlanilla(sidtplanilla);
-                    fMantenimientoDetalleVac.ShowDialog();
-                }
-                else
-                {
-                    CapaUsuario.Planilla.frmMantenimientoDetallePlanilla fMantenimientoDetallePlanilla = new frmMantenimientoDetallePlanilla();
-                    fMantenimientoDetallePlanilla.oPlanilla = oPlanilla.TraerPlanilla(sidtplanilla);
-                    fMantenimientoDetallePlanilla.RecibirDatos(sidtplanilla, snumero, smes, saño, sidtmeta, snumerometa, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, sidtregimenlaboral, sRegimenLaboral, splantilla);
-                    fMantenimientoDetallePlanilla.ShowDialog();
-                }
+                CapaUsuario.Planilla.frmMantenimientoDetallePlanilla fMantenimientoDetallePlanilla = new frmMantenimientoDetallePlanilla();
+                fMantenimientoDetallePlanilla.oPlanilla = oPlanilla.TraerPlanilla(sidtplanilla);
+                fMantenimientoDetallePlanilla.RecibirDatos(sidtplanilla, snumero, smes, saño, sidtmeta, snumerometa, smeta, sidtfuentefinanciamiento, sfuentefinanciamiento, sidtregimenlaboral, sRegimenLaboral, splantilla);
+                fMantenimientoDetallePlanilla.ShowDialog();
+
+                //if (oPlanilla.TraerPlanilla(sidtplanilla).TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                //{
+                //    VacacionesTruncas.frmMantenimientoDetalleVac fMantenimientoDetalleVac = new VacacionesTruncas.frmMantenimientoDetalleVac();
+                //    fMantenimientoDetalleVac.oPlanilla = CatalogoPlanilla.TraerPlanilla(sidtplanilla);
+                //    fMantenimientoDetalleVac.ShowDialog();
+                //}
+                //else
+                //{
+                   
+                //}
                 
             }
         }

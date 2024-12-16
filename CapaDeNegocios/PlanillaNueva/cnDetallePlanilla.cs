@@ -14,7 +14,11 @@ namespace CapaDeNegocios.PlanillaNueva
         public cTrabajador miTrabajador { get; set; }
         public string cargo { get; set; }
         public DateTime fechaInicio { get; set; }
+        public DateTime fechaInicioMeta { get; set; }
+        public DateTime fechaFin { get; set; }
         public int diasLaborados { get; set; }
+        public int diasSuspendidos { get; set; }
+        public int diasMes { get; set; }
         public double totalIngreso { get; set; }
         public double totalAportacionesTrabajador { get; set; }
         public double totalDescuentos { get; set; }
@@ -28,6 +32,8 @@ namespace CapaDeNegocios.PlanillaNueva
         public string observacion { get; set; }
         public double sueldoPactado { get; set; }
         public double sueldoAfecto { get; set; }
+        public double sueldoDiasLaborados { get; set; }
+        public double sueldoDespuesFaltas { get; set; }
         public Boolean jornal { get; set; }
 
         public List<cnDetallePlanillaIngresos> ListaDetalleIngresos { get; set; }
