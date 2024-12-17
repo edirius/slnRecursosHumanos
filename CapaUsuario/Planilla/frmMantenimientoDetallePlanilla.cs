@@ -570,6 +570,11 @@ namespace CapaUsuario.Planilla
                     dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[1].Value = "M";
                     dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells["colCargo"].Value = row[1].ToString();//Cargo
                     dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells["FechaInicio"].Value = Convert.ToDateTime(row[2]).ToShortDateString();//Fecha Inicio
+                    if (oPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                    {
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells["FechaFin"].Value = Convert.ToDateTime(row[19]).ToShortDateString();//Fecha Inicio
+                    }
+                    
                     dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[inicioIngresos + con_ingresos].Value = row[4].ToString();
                     dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[inicioAportacionesTra + con_ingresos + con_trabajador].Value = row[5].ToString();
                     dgvDetallePlanilla.Rows[dgvDetallePlanilla.RowCount - 1].Cells[inicioDescuentos + con_ingresos + con_trabajador + con_descuento].Value = row[6].ToString();
@@ -690,7 +695,7 @@ namespace CapaUsuario.Planilla
                         contador += 1;
                         dgvDetallePlanilla.Rows.Add("0", "I", "", contador, pidtrabajador, Nombre, IdtCargo, Cargo, DNI, snumerometa, FechaInicio);
                         dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["Remuneracion"].Value = MontoPago;
-                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["FECHAFIN"].Value = PeriodoElegido.FechaFin;
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["fechafin"].Value = PeriodoElegido.FechaFin;
                         dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["FECHAINICIOMETA"].Value = RegimenElegido.FechaInicio;
 
 
@@ -2489,6 +2494,37 @@ namespace CapaUsuario.Planilla
                     if (fCambiarString.ShowDialog() == DialogResult.OK)
                     {
                         dgvDetallePlanilla.Rows[dgvDetallePlanilla.SelectedCells[0].RowIndex].Cells["colCargo"].Value = fCambiarString.StringSeleccionado;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar una fila.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cambiar fecha: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCambiarFechaFin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvDetallePlanilla.SelectedCells.Count > 0)
+                {
+                    frmCambiarFecha fCambiarFecha = new frmCambiarFecha();
+                    if (dgvDetallePlanilla.Rows[dgvDetallePlanilla.SelectedCells[0].RowIndex].Cells["fechafin"].Value.ToString() == "")
+                    {
+                        fCambiarFecha.FechaSeleccionada = DateTime.Now;
+                    }
+                    else
+                    {
+                        fCambiarFecha.FechaSeleccionada = Convert.ToDateTime(dgvDetallePlanilla.Rows[dgvDetallePlanilla.SelectedCells[0].RowIndex].Cells["fechafin"].Value);
+                    }
+                    if (fCambiarFecha.ShowDialog() == DialogResult.OK)
+                    {
+                        dgvDetallePlanilla.Rows[dgvDetallePlanilla.SelectedCells[0].RowIndex].Cells["fechafin"].Value = fCambiarFecha.FechaSeleccionada;
                     }
                 }
                 else

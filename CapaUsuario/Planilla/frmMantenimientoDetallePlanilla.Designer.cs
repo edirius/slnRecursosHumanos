@@ -94,6 +94,7 @@
             this.chkObservaciones = new System.Windows.Forms.CheckBox();
             this.btnCambiarFechaInicio = new System.Windows.Forms.Button();
             this.btnCambiarCargo = new System.Windows.Forms.Button();
+            this.btnCambiarFechaFin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetallePlanilla)).BeginInit();
             this.SuspendLayout();
             // 
@@ -676,11 +677,28 @@
             this.btnCambiarCargo.Visible = false;
             this.btnCambiarCargo.Click += new System.EventHandler(this.btnCambiarCargo_Click);
             // 
+            // btnCambiarFechaFin
+            // 
+            this.btnCambiarFechaFin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCambiarFechaFin.BackColor = System.Drawing.Color.MintCream;
+            this.btnCambiarFechaFin.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCambiarFechaFin.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnCambiarFechaFin.ImageKey = "NetByte Design Studio - 0849.png";
+            this.btnCambiarFechaFin.Location = new System.Drawing.Point(360, 418);
+            this.btnCambiarFechaFin.Name = "btnCambiarFechaFin";
+            this.btnCambiarFechaFin.Size = new System.Drawing.Size(90, 38);
+            this.btnCambiarFechaFin.TabIndex = 109;
+            this.btnCambiarFechaFin.Text = "&Cambiar Fecha Fin";
+            this.btnCambiarFechaFin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCambiarFechaFin.UseVisualStyleBackColor = false;
+            this.btnCambiarFechaFin.Click += new System.EventHandler(this.btnCambiarFechaFin_Click);
+            // 
             // frmMantenimientoDetallePlanilla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1158, 468);
+            this.Controls.Add(this.btnCambiarFechaFin);
             this.Controls.Add(this.btnCambiarCargo);
             this.Controls.Add(this.btnCambiarFechaInicio);
             this.Controls.Add(this.chkObservaciones);
@@ -775,5 +793,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SUELDOFALTASTAR;
         private System.Windows.Forms.Button btnCambiarFechaInicio;
         private System.Windows.Forms.Button btnCambiarCargo;
+        private System.Windows.Forms.Button btnCambiarFechaFin;
     }
 }

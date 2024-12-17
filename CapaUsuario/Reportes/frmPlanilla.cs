@@ -2532,6 +2532,14 @@ namespace CapaUsuario.Reportes
                                     odtPrueba.Columns.Add("NOMBRE COMPLETO", typeof(string));
                                     odtPrueba.Columns.Add("CARGO", typeof(string));
                                     odtPrueba.Columns.Add("DNI", typeof(string));
+                                    if (miPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                                    {
+                                        odtPrueba.Columns.Add("FECHAS", typeof(string));
+                                    }
+                                    else
+                                    {
+                                        odtPrueba.Columns.Add("FECHA INICIO", typeof(string));
+                                    }
                                     odtPrueba.Columns.Add("FECHA INICIO", typeof(string));
                                     odtPrueba.Columns.Add("SEC. FUNC.", typeof(string));
                                     odtPrueba.Columns.Add("AFIL. AFP/SNP", typeof(string));
@@ -2905,7 +2913,21 @@ namespace CapaUsuario.Reportes
                                             drFila[0] = row[0];
                                             drFila[1] = row[1];
                                             drFila[2] = row[2];
-                                            drFila[3] = row[3];
+                                            if (miPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                                            {
+                                                if (chkCuentaBancaria.Checked)
+                                                {
+                                                    drFila[3] = Convert.ToDateTime(row[3]).ToShortDateString() + " - \n" + Convert.ToDateTime(row[21]).ToShortDateString();
+                                                }
+                                                else
+                                                {
+                                                    drFila[3] = Convert.ToDateTime(row[3]).ToShortDateString() + " - \n" + Convert.ToDateTime(row[20]).ToShortDateString();
+                                                }
+                                            }
+                                            else
+                                            {
+                                                drFila[3] = row[3];
+                                            }
                                             //secuencia funcional
                                             drFila[4] = smeta_numero;
                                             //drFila[4] = row[6];
@@ -3105,8 +3127,15 @@ namespace CapaUsuario.Reportes
                                         odtPruebaCorta.Columns.Add("NOMBRE COMPLETO", typeof(string));
                                         odtPruebaCorta.Columns.Add("CARGO", typeof(string));
                                         odtPruebaCorta.Columns.Add("DNI", typeof(string));
-
-                                        odtPruebaCorta.Columns.Add("FECHA INICIO", typeof(string));
+                                        if (miPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                                        {
+                                            odtPruebaCorta.Columns.Add("FECHAS", typeof(string));
+                                        }
+                                        else
+                                        {
+                                            odtPruebaCorta.Columns.Add("FECHA INICIO", typeof(string));
+                                        }
+                                        
 
                                         odtPruebaCorta.Columns.Add("SEC. FUNC.", typeof(string));
                                         odtPruebaCorta.Columns.Add("AFIL. AFP/SNP \n\n COMIS. \n\n CUSP ", typeof(string));
@@ -3432,8 +3461,16 @@ namespace CapaUsuario.Reportes
                                             drFilaCorta[2] = odtPrueba.Rows[d][1];
                                             drFilaCorta[3] = odtPrueba.Rows[d][2];
 
-                                            if (odtPrueba.Rows[d][3].ToString() != "")
-                                                drFilaCorta[4] = Convert.ToDateTime(odtPrueba.Rows[d][3]).Date.ToString("dd/MM/yyyy");
+                                            if (miPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                                            {
+                                                drFilaCorta[4] = odtPrueba.Rows[d][3];
+                                            }
+                                            else
+                                            {
+                                                if (odtPrueba.Rows[d][3].ToString() != "")
+                                                    drFilaCorta[4] = Convert.ToDateTime(odtPrueba.Rows[d][3]).Date.ToString("dd/MM/yyyy");
+                                            }
+                                            
 
                                             //drFilaCorta[5] = odtPrueba.Rows[d][4];
 
