@@ -4542,6 +4542,7 @@ namespace CapaUsuario.Reportes
                 Paragraph paragraph2 = new Paragraph();
                 paragraph2.Alignment = Element.ALIGN_RIGHT;
                 paragraph2.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
+                
                 paragraph2.Add("PLANILLA Nº " + sNumeroPlanilla + " - " + saño + " \n ");
                 paragraph2.SpacingBefore = 0f;
                 paragraph2.SpacingAfter = 0f;
@@ -4553,7 +4554,14 @@ namespace CapaUsuario.Reportes
                 paragraph3.Font = FontFactory.GetFont(FontFactory.TIMES_BOLD, 10);
                 /*paragraph3.Add("PLANILLA DE RENUMERACIONES DEL PERSONAL DE " + sRegimenLaboral + " DE " + saño + " DE " + smes + ".");*/
                 /*Titulo de planilla */
-                paragraph3.Add(sdescripcion.ToString().ToUpper() + " DE " + smes + " DE " + saño + ".");
+                if (miPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                {
+                    paragraph3.Add(sdescripcion.ToString().ToUpper() + ".");
+                }
+                else
+                {
+                    paragraph3.Add(sdescripcion.ToString().ToUpper() + " DE " + smes + " DE " + saño + ".");
+                }
                 paragraph3.SpacingBefore = 0f;
                 paragraph3.SpacingAfter = 0f;
 
