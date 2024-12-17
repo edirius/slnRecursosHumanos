@@ -4149,7 +4149,10 @@ namespace CapaUsuario.Reportes
                                         /* FIN HABER */
 
                                         /*Fin del 3er cuadro de la ultima parte de la planilla*/
-
+                                        if (miPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                                        {
+                                            odtPruebaCorta.Columns.Remove("DIAS LABORADOS");
+                                        }
                                         exportar_a_pdf(sidtregimenlaboral);
                                     }
                                     else
@@ -4267,12 +4270,20 @@ namespace CapaUsuario.Reportes
 
                 if (i == dg.ColumnCount - 1) values[i] = 300;
                 if (i == dg.ColumnCount - 2) values[i] = 50;
+                if (miPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                {
+                    if (i == dg.ColumnCount - 2) values[i] = 120;
+                }
 
                 if (chkCuentaBancaria.Checked)
                 {
                     if (i == dg.ColumnCount - 1) values[i] = 250;
                     if (i == dg.ColumnCount - 2) values[i] = 150;
                     if (i == dg.ColumnCount - 3) values[i] = 50;
+                    if (miPlanilla.TipoPlanilla == CapaDeNegocios.Planillas.enumTipoPlanilla.VACACIONES_TRUNCAS)
+                    {
+                        if (i == dg.ColumnCount - 3) values[i] = 120;
+                    }
                 }
                 if (oDatosGenerales.Ruc == "20159308708")
                 {
