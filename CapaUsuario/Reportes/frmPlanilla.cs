@@ -2540,7 +2540,7 @@ namespace CapaUsuario.Reportes
                                     {
                                         odtPrueba.Columns.Add("FECHA INICIO", typeof(string));
                                     }
-                                    odtPrueba.Columns.Add("FECHA INICIO", typeof(string));
+                                    
                                     odtPrueba.Columns.Add("SEC. FUNC.", typeof(string));
                                     odtPrueba.Columns.Add("AFIL. AFP/SNP", typeof(string));
                                     odtPrueba.Columns.Add("COMISION", typeof(string));
