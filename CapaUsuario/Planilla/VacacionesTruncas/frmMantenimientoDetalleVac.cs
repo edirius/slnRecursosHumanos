@@ -265,5 +265,10 @@ namespace CapaUsuario.Planilla.VacacionesTruncas
                 //dgvDetallePlanilla.Rows[dgvDetallePlanilla.Rows.Count - 1].Cells["].Value = item.totalAportacionesTrabajador;
             }
         }
+
+        private void btnAgregarTrabajador_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

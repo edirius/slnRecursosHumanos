@@ -42,6 +42,11 @@
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboRegimenLaborales = new System.Windows.Forms.ComboBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.cboSituacion = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaTrabajadores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -182,11 +187,68 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(233, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.TabIndex = 51;
+            this.label1.Text = "Regimen Laboral :";
+            // 
+            // cboRegimenLaborales
+            // 
+            this.cboRegimenLaborales.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRegimenLaborales.FormattingEnabled = true;
+            this.cboRegimenLaborales.Location = new System.Drawing.Point(347, 24);
+            this.cboRegimenLaborales.Name = "cboRegimenLaborales";
+            this.cboRegimenLaborales.Size = new System.Drawing.Size(179, 21);
+            this.cboRegimenLaborales.TabIndex = 52;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscar.BackColor = System.Drawing.Color.MintCream;
+            this.btnBuscar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnBuscar.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBuscar.Location = new System.Drawing.Point(552, 18);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(78, 32);
+            this.btnBuscar.TabIndex = 53;
+            this.btnBuscar.Text = "&Buscar";
+            this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // cboSituacion
+            // 
+            this.cboSituacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSituacion.FormattingEnabled = true;
+            this.cboSituacion.Location = new System.Drawing.Point(75, 24);
+            this.cboSituacion.Name = "cboSituacion";
+            this.cboSituacion.Size = new System.Drawing.Size(140, 21);
+            this.cboSituacion.TabIndex = 54;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.TabIndex = 55;
+            this.label2.Text = "Situacion :";
+            // 
             // frmTraerTrabajadorVac
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(901, 410);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cboSituacion);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.cboRegimenLaborales);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.dtgListaTrabajadores);
@@ -195,6 +257,7 @@
             this.Load += new System.EventHandler(this.frmTraerTrabajadorVac_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaTrabajadores)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -213,5 +276,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboRegimenLaborales;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.ComboBox cboSituacion;
+        private System.Windows.Forms.Label label2;
     }
 }

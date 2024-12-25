@@ -238,6 +238,7 @@
             this.btnAgregarTrabajador.Text = "&Agregar Trabajador";
             this.btnAgregarTrabajador.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAgregarTrabajador.UseVisualStyleBackColor = false;
+            this.btnAgregarTrabajador.Click += new System.EventHandler(this.btnAgregarTrabajador_Click);
             // 
             // label2
             // 
