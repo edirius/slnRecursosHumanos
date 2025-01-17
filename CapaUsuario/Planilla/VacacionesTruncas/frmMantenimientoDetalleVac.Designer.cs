@@ -40,6 +40,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.chkObservaciones = new System.Windows.Forms.CheckBox();
             this.btnVerDetalleTrabajador = new System.Windows.Forms.Button();
             this.chkAFP = new System.Windows.Forms.CheckBox();
@@ -67,7 +69,6 @@
             this.dgvDetallePlanilla = new System.Windows.Forms.DataGridView();
             this.txtIdTDetallePlanilla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtAccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnProceso = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txtNro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtIdTTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtApellidosNombres = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -317,6 +318,7 @@
             this.btnCancelar.Text = "&Salir";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAceptar
             // 
@@ -401,7 +403,6 @@
             this.dgvDetallePlanilla.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.txtIdTDetallePlanilla,
             this.txtAccion,
-            this.btnProceso,
             this.txtNro,
             this.txtIdTTrabajador,
             this.txtApellidosNombres,
@@ -445,13 +446,6 @@
             this.txtAccion.Name = "txtAccion";
             this.txtAccion.Visible = false;
             this.txtAccion.Width = 30;
-            // 
-            // btnProceso
-            // 
-            this.btnProceso.HeaderText = "";
-            this.btnProceso.Name = "btnProceso";
-            this.btnProceso.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnProceso.Width = 30;
             // 
             // txtNro
             // 
@@ -534,20 +528,24 @@
             // 
             // DIASMES
             // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.DIASMES.DefaultCellStyle = dataGridViewCellStyle6;
             this.DIASMES.HeaderText = "DIAS MES";
             this.DIASMES.Name = "DIASMES";
             this.DIASMES.Width = 40;
             // 
             // DIASSUSPENDIDOS
             // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.DIASSUSPENDIDOS.DefaultCellStyle = dataGridViewCellStyle7;
             this.DIASSUSPENDIDOS.HeaderText = "DIAS SUSP.";
             this.DIASSUSPENDIDOS.Name = "DIASSUSPENDIDOS";
             this.DIASSUSPENDIDOS.Width = 40;
             // 
             // DiasLaborados
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.DiasLaborados.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.DiasLaborados.DefaultCellStyle = dataGridViewCellStyle8;
             this.DiasLaborados.HeaderText = "DIAS LABOR.";
             this.DiasLaborados.Name = "DiasLaborados";
             this.DiasLaborados.Width = 40;
@@ -572,8 +570,10 @@
             // 
             // SUELDOPACTADO
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.SUELDOPACTADO.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.SUELDOPACTADO.DefaultCellStyle = dataGridViewCellStyle9;
             this.SUELDOPACTADO.HeaderText = "REM. CONTRATO";
             this.SUELDOPACTADO.Name = "SUELDOPACTADO";
             this.SUELDOPACTADO.ReadOnly = true;
@@ -581,9 +581,10 @@
             // 
             // Remuneracion
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.NullValue = null;
-            this.Remuneracion.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.Remuneracion.DefaultCellStyle = dataGridViewCellStyle10;
             this.Remuneracion.HeaderText = "REM. x CONTRATO";
             this.Remuneracion.Name = "Remuneracion";
             this.Remuneracion.ReadOnly = true;
@@ -591,8 +592,10 @@
             // 
             // TotalRemuneracio
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.TotalRemuneracio.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N2";
+            dataGridViewCellStyle11.NullValue = null;
+            this.TotalRemuneracio.DefaultCellStyle = dataGridViewCellStyle11;
             this.TotalRemuneracio.HeaderText = "REM. X DIAS LABORADOS";
             this.TotalRemuneracio.Name = "TotalRemuneracio";
             this.TotalRemuneracio.ReadOnly = true;
@@ -600,16 +603,20 @@
             // 
             // FALTAS
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.FALTAS.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = null;
+            this.FALTAS.DefaultCellStyle = dataGridViewCellStyle12;
             this.FALTAS.HeaderText = "FALTAS";
             this.FALTAS.Name = "FALTAS";
             this.FALTAS.Width = 50;
             // 
             // TARDANZAS
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.TARDANZAS.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N2";
+            dataGridViewCellStyle13.NullValue = null;
+            this.TARDANZAS.DefaultCellStyle = dataGridViewCellStyle13;
             this.TARDANZAS.HeaderText = "TARDAN.";
             this.TARDANZAS.Name = "TARDANZAS";
             this.TARDANZAS.ToolTipText = "TARDANZAS";
@@ -617,9 +624,12 @@
             // 
             // SUELDOFALTASTAR
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.SUELDOFALTASTAR.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = null;
+            this.SUELDOFALTASTAR.DefaultCellStyle = dataGridViewCellStyle14;
             this.SUELDOFALTASTAR.HeaderText = "SUELDO DESPUES FAL/TAR";
+            this.SUELDOFALTASTAR.MaxInputLength = 10;
             this.SUELDOFALTASTAR.Name = "SUELDOFALTASTAR";
             this.SUELDOFALTASTAR.Width = 65;
             // 
@@ -693,7 +703,6 @@
         private System.Windows.Forms.DataGridView dgvDetallePlanilla;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtIdTDetallePlanilla;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtAccion;
-        private System.Windows.Forms.DataGridViewButtonColumn btnProceso;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtNro;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtIdTTrabajador;
         private System.Windows.Forms.DataGridViewTextBoxColumn txtApellidosNombres;

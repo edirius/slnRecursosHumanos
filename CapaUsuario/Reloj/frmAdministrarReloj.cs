@@ -97,6 +97,7 @@ namespace CapaUsuario.Reloj
         private void cboListaRelojes_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtIP.Text = ((CapaDeNegocios.Reloj.cMaquinaReloj)cboListaRelojes.SelectedItem).Ip;
+            txtPuerto.Text = ((CapaDeNegocios.Reloj.cMaquinaReloj)cboListaRelojes.SelectedItem).Puerto;
         }
     }
 }

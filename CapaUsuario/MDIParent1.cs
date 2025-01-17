@@ -727,6 +727,13 @@ namespace CapaUsuario
             fReporteTrabajadorXAño.Show();
         }
 
+        private void bajarDatosDelRelojToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reloj.frmBajarDatosReloj fBajarDatosReloj = new Reloj.frmBajarDatosReloj();
+            fBajarDatosReloj.MdiParent = this;
+            fBajarDatosReloj.Show();
+        }
+
         private void mnuResidenteMeta_Click(object sender, EventArgs e)
         {
             ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();

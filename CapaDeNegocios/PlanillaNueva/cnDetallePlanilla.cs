@@ -34,6 +34,8 @@ namespace CapaDeNegocios.PlanillaNueva
         public double sueldoAfecto { get; set; }
         public double sueldoDiasLaborados { get; set; }
         public double sueldoDespuesFaltas { get; set; }
+        public double sueldoMes { get; set; }
+
         public Boolean jornal { get; set; }
 
         public List<cnDetallePlanillaIngresos> ListaDetalleIngresos { get; set; }

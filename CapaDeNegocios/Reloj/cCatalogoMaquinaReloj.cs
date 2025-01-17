@@ -23,6 +23,7 @@ namespace CapaDeNegocios.Reloj
                     Reloj.Descripcion = Relojes.Rows[i][1].ToString();
                     Reloj.Ip = Relojes.Rows[i][2].ToString();
                     Reloj.Activo = Convert.ToBoolean(Relojes.Rows[i][3]);
+                    Reloj.Puerto = Relojes.Rows[i][4].ToString();
                     ListaRelojes.Add(Reloj);
                 }
 
@@ -39,7 +40,7 @@ namespace CapaDeNegocios.Reloj
         {
             try
             {
-                Conexion.GDatos.Ejecutar("spCrearReloj", reloj.Descripcion, reloj.Ip, reloj.Activo);
+                Conexion.GDatos.Ejecutar("spCrearReloj", reloj.Descripcion, reloj.Ip, reloj.Activo, reloj.Puerto);
             }
             catch (Exception ex)
             {
@@ -51,7 +52,7 @@ namespace CapaDeNegocios.Reloj
         {
             try
             {
-                Conexion.GDatos.Ejecutar("spModificarReloj", reloj.IdtReloj, reloj.Descripcion, reloj.Ip, reloj.Activo);
+                Conexion.GDatos.Ejecutar("spModificarReloj", reloj.IdtReloj, reloj.Descripcion, reloj.Ip, reloj.Activo, reloj.Puerto);
             }
             catch (Exception ex)
             {

@@ -97,7 +97,7 @@ namespace CapaDeNegocios.DatosLaborales
                 cPeriodoTrabajador nuevoPeriodoTrabajador = new cPeriodoTrabajador();
                         nuevoPeriodoTrabajador.IdtPeriodoTrabajador = Convert.ToInt16(listaPeriodos.Rows[listaPeriodos.Rows.Count -1][0].ToString());
                         nuevoPeriodoTrabajador.sfechainicio = listaPeriodos.Rows[listaPeriodos.Rows.Count - 1][1].ToString();
-                        nuevoPeriodoTrabajador.sfechafin = "";
+                        nuevoPeriodoTrabajador.sfechafin = listaPeriodos.Rows[listaPeriodos.Rows.Count - 1][2].ToString(); ;
                         nuevoPeriodoTrabajador.IdtMotivoFinPeriodo = Convert.ToInt16(listaPeriodos.Rows[listaPeriodos.Rows.Count - 1][3].ToString());
                         nuevoPeriodoTrabajador.IdtTrabajador = Convert.ToInt16(listaPeriodos.Rows[listaPeriodos.Rows.Count - 1][4].ToString());
                         

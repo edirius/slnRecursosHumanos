@@ -36,6 +36,8 @@
             this.chkActivo = new System.Windows.Forms.CheckBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtPuerto = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -69,7 +71,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 72);
+            this.label2.Location = new System.Drawing.Point(27, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(20, 13);
             this.label2.TabIndex = 3;
@@ -77,7 +79,7 @@
             // 
             // txtIP
             // 
-            this.txtIP.Location = new System.Drawing.Point(97, 72);
+            this.txtIP.Location = new System.Drawing.Point(97, 55);
             this.txtIP.MaxLength = 45;
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(138, 20);
@@ -86,7 +88,7 @@
             // chkActivo
             // 
             this.chkActivo.AutoSize = true;
-            this.chkActivo.Location = new System.Drawing.Point(97, 115);
+            this.chkActivo.Location = new System.Drawing.Point(97, 119);
             this.chkActivo.Name = "chkActivo";
             this.chkActivo.Size = new System.Drawing.Size(56, 17);
             this.chkActivo.TabIndex = 5;
@@ -100,7 +102,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnCancelar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnCancelar.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnCancelar.Location = new System.Drawing.Point(273, 130);
+            this.btnCancelar.Location = new System.Drawing.Point(273, 140);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(79, 65);
             this.btnCancelar.TabIndex = 87;
@@ -116,7 +118,7 @@
             this.btnAceptar.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAceptar.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnAceptar.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAceptar.Location = new System.Drawing.Point(192, 130);
+            this.btnAceptar.Location = new System.Drawing.Point(192, 140);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 65);
             this.btnAceptar.TabIndex = 86;
@@ -125,11 +127,29 @@
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(27, 95);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 88;
+            this.label3.Text = "Puerto:";
+            // 
+            // txtPuerto
+            // 
+            this.txtPuerto.Location = new System.Drawing.Point(97, 88);
+            this.txtPuerto.Name = "txtPuerto";
+            this.txtPuerto.Size = new System.Drawing.Size(138, 20);
+            this.txtPuerto.TabIndex = 89;
+            // 
             // frmMantenimientoReloj
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(364, 217);
+            this.Controls.Add(this.txtPuerto);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.chkActivo);
@@ -157,5 +177,7 @@
         private System.Windows.Forms.CheckBox chkActivo;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtPuerto;
     }
 }

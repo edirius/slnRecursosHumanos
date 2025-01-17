@@ -121,6 +121,7 @@
             this.mnuResumenXDetallePlanillas = new System.Windows.Forms.ToolStripMenuItem();
             this.analiticoPlanillasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planilla2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteTrabajadoreXAñoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -146,7 +147,7 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
-            this.reporteTrabajadoreXAñoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bajarDatosDelRelojToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -345,7 +346,8 @@
             this.toolStripSeparator7,
             this.btnConexionReloj,
             this.btnDescargarDatosReloj,
-            this.listaRelojesToolStripMenuItem});
+            this.listaRelojesToolStripMenuItem,
+            this.bajarDatosDelRelojToolStripMenuItem});
             this.viewMenu.Name = "viewMenu";
             this.viewMenu.Size = new System.Drawing.Size(86, 20);
             this.viewMenu.Text = "&Trabajadores";
@@ -891,6 +893,13 @@
             this.planilla2ToolStripMenuItem.Text = "Planilla 2";
             this.planilla2ToolStripMenuItem.Click += new System.EventHandler(this.planilla2ToolStripMenuItem_Click);
             // 
+            // reporteTrabajadoreXAñoToolStripMenuItem
+            // 
+            this.reporteTrabajadoreXAñoToolStripMenuItem.Name = "reporteTrabajadoreXAñoToolStripMenuItem";
+            this.reporteTrabajadoreXAñoToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
+            this.reporteTrabajadoreXAñoToolStripMenuItem.Text = "Reporte Trabajadore x Año";
+            this.reporteTrabajadoreXAñoToolStripMenuItem.Click += new System.EventHandler(this.reporteTrabajadoreXAñoToolStripMenuItem_Click);
+            // 
             // helpMenu
             // 
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1086,12 +1095,12 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
-            // reporteTrabajadoreXAñoToolStripMenuItem
+            // bajarDatosDelRelojToolStripMenuItem
             // 
-            this.reporteTrabajadoreXAñoToolStripMenuItem.Name = "reporteTrabajadoreXAñoToolStripMenuItem";
-            this.reporteTrabajadoreXAñoToolStripMenuItem.Size = new System.Drawing.Size(357, 22);
-            this.reporteTrabajadoreXAñoToolStripMenuItem.Text = "Reporte Trabajadore x Año";
-            this.reporteTrabajadoreXAñoToolStripMenuItem.Click += new System.EventHandler(this.reporteTrabajadoreXAñoToolStripMenuItem_Click);
+            this.bajarDatosDelRelojToolStripMenuItem.Name = "bajarDatosDelRelojToolStripMenuItem";
+            this.bajarDatosDelRelojToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
+            this.bajarDatosDelRelojToolStripMenuItem.Text = "Bajar Datos del Reloj";
+            this.bajarDatosDelRelojToolStripMenuItem.Click += new System.EventHandler(this.bajarDatosDelRelojToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -1245,6 +1254,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
         private System.Windows.Forms.ToolStripMenuItem mnuTrabajadoresSinPlanilla;
         private System.Windows.Forms.ToolStripMenuItem reporteTrabajadoreXAñoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bajarDatosDelRelojToolStripMenuItem;
     }
 }
 

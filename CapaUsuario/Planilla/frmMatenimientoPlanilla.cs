@@ -152,9 +152,9 @@ namespace CapaUsuario.Planilla
                 //}
                 //else
                 //{
-                   
+                    
                 //}
-                
+
             }
         }
 

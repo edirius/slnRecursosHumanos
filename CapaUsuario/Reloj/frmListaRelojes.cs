@@ -62,12 +62,13 @@ namespace CapaUsuario.Reloj
                 if (dtgListaRelojes.SelectedRows.Count > 0)
                 {
                     frmMantenimientoReloj fMantenimientoReloj = new frmMantenimientoReloj();
-                    fMantenimientoReloj.oMaquinaReloj = new CapaDeNegocios.Reloj.cMaquinaReloj();
-                    fMantenimientoReloj.oMaquinaReloj.IdtReloj = Convert.ToInt32(dtgListaRelojes.SelectedRows[0].Cells[0].Value);
-                    fMantenimientoReloj.oMaquinaReloj.Descripcion = dtgListaRelojes.SelectedRows[0].Cells[1].Value.ToString();
-                    fMantenimientoReloj.oMaquinaReloj.Ip = dtgListaRelojes.SelectedRows[0].Cells[2].Value.ToString();
-                    fMantenimientoReloj.oMaquinaReloj.Activo = Convert.ToBoolean(dtgListaRelojes.SelectedRows[0].Cells[3].Value);
-
+                    fMantenimientoReloj.oMaquinaReloj = (CapaDeNegocios.Reloj.cMaquinaReloj)dtgListaRelojes.SelectedRows[0].DataBoundItem;
+                    //new CapaDeNegocios.Reloj.cMaquinaReloj();
+                    //fMantenimientoReloj.oMaquinaReloj.IdtReloj = Convert.ToInt32(dtgListaRelojes.SelectedRows[0].Cells[0].Value);
+                    //fMantenimientoReloj.oMaquinaReloj.Descripcion = dtgListaRelojes.SelectedRows[0].Cells[1].Value.ToString();
+                    //fMantenimientoReloj.oMaquinaReloj.Ip = dtgListaRelojes.SelectedRows[0].Cells[2].Value.ToString();
+                    //fMantenimientoReloj.oMaquinaReloj.Activo = Convert.ToBoolean(dtgListaRelojes.SelectedRows[0].Cells[3].Value);
+                    //fMantenimientoReloj.oMaquinaReloj.
                     if (fMantenimientoReloj.ShowDialog() == DialogResult.OK)
                     {
                         oCatalogo.ModificarMaquinaReloj(fMantenimientoReloj.oMaquinaReloj);

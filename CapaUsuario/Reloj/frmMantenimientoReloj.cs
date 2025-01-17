@@ -26,6 +26,7 @@ namespace CapaUsuario.Reloj
             {
                 oMaquinaReloj.Descripcion = txtDescripcion.Text;
                 oMaquinaReloj.Ip = txtIP.Text;
+                oMaquinaReloj.Puerto = txtPuerto.Text;
                 oMaquinaReloj.Activo = chkActivo.Checked;
                 DialogResult = DialogResult.OK;
             }
@@ -44,6 +45,7 @@ namespace CapaUsuario.Reloj
         {
             txtDescripcion.Text = oMaquinaReloj.Descripcion;
             txtIP.Text = oMaquinaReloj.Ip;
+            txtPuerto.Text = oMaquinaReloj.Puerto;
             chkActivo.Checked = oMaquinaReloj.Activo;
         }
 

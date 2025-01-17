@@ -2025,7 +2025,7 @@ namespace CapaUsuario.Planilla
                         if (remuneracion_afecta < Convert.ToDouble(sRemuneracionBasica))
                         {
 
-                            result = CalcularFormula(fila, Convert.ToDouble(sRemuneracionBasica), "s*0.0068*1.18", dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString(), Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells["TotalRemuneracio"].Value), Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells["SUELDOAFECTO"].Value));
+                            result = CalcularFormula(fila, Convert.ToDouble(sRemuneracionBasica), "s*0.0070*1.18", dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString(), Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells["TotalRemuneracio"].Value), Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells["SUELDOAFECTO"].Value));
                             
 
 
@@ -2056,7 +2056,7 @@ namespace CapaUsuario.Planilla
                     {
                         if (remuneracion_afecta < Convert.ToDouble(sRemuneracionBasica))
                         {
-                            result = CalcularFormula(fila, Convert.ToDouble(sRemuneracionBasica), "s * 0.0070 * 1.18", dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString(), Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells["TotalRemuneracio"].Value), Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells["SUELDOAFECTO"].Value));
+                            result = CalcularFormula(fila, Convert.ToDouble(sRemuneracionBasica), "s * 0.0068 * 1.18", dgvDetallePlanilla.Rows[fila].Cells[10].Value.ToString(), Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells["TotalRemuneracio"].Value), Convert.ToDouble(dgvDetallePlanilla.Rows[fila].Cells["SUELDOAFECTO"].Value));
                         }
                         else
                         {

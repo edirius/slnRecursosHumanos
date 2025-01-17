@@ -552,6 +552,12 @@
     <Compile Include="Reloj\frmAsistenciaReloj.Designer.cs">
       <DependentUpon>frmAsistenciaReloj.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reloj\frmBajarDatosReloj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reloj\frmBajarDatosReloj.Designer.cs">
+      <DependentUpon>frmBajarDatosReloj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reloj\frmListaRelojes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1951,6 +1957,9 @@
     <EmbeddedResource Include="Reloj\frmAsistenciaReloj.resx">
       <DependentUpon>frmAsistenciaReloj.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reloj\frmBajarDatosReloj.resx">
+      <DependentUpon>frmBajarDatosReloj.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reloj\frmListaRelojes.resx">
       <DependentUpon>frmListaRelojes.cs</DependentUpon>
     </EmbeddedResource>
@@ -2416,6 +2425,9 @@
       <DependentUpon>modPersonal.edmx</DependentUpon>
       <LastGenOutput>modPersonal.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\schedule+_002.ico" />
+    <None Include="Resources\schedule+_003.ico" />
+    <None Include="Resources\sched_tasks1.png" />
     <None Include="Resources\user_calendar-0.png" />
     <None Include="Resources\user_cardx.png" />
     <None Include="Resources\user_card1.png" />

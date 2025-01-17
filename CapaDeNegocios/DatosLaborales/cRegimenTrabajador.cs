@@ -29,6 +29,12 @@ namespace CapaDeNegocios.DatosLaborales
         int sidtcargo;
         int sidtmeta;
         int sidtperiodotrabajador;
+        public cCargo Cargo { get; set; }
+
+        public cRegimenTrabajador()
+        {
+            Cargo = new cCargo();
+        }
 
         public int IdtRegimenTrabajador
         {

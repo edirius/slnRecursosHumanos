@@ -334,6 +334,15 @@ namespace CapaDeNegocios.PlanillaNueva
                         detalleAuxiliar.sueldoAfecto = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][12]);
                         detalleAuxiliar.observacion = ListaDetallesAuxiliar.Rows[i][13].ToString();
                         detalleAuxiliar.regimenPensionario = TraerRegimenPensionarioDetallePlanilla(Convert.ToInt32(ListaDetallesAuxiliar.Rows[i][14]), detalleAuxiliar.miTrabajador, new DateTime(Convert.ToInt16(Planilla.Año), miUtilidades.ConvertirMesANumero(Planilla.Mes), 1));
+                        detalleAuxiliar.jornal = Convert.ToBoolean(ListaDetallesAuxiliar.Rows[i][15]);
+                        detalleAuxiliar.diasSuspendidos = Convert.ToInt16(ListaDetallesAuxiliar.Rows[i][16]);
+                        detalleAuxiliar.fechaInicioMeta = Convert.ToDateTime(ListaDetallesAuxiliar.Rows[i][17]);
+                        detalleAuxiliar.sueldoDespuesFaltas = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][18]);
+                        detalleAuxiliar.fechaFin = Convert.ToDateTime(ListaDetallesAuxiliar.Rows[i][19]);
+                        detalleAuxiliar.diasMes = Convert.ToInt16(ListaDetallesAuxiliar.Rows[i][20]);
+                        detalleAuxiliar.sueldoMes = Convert.ToDouble(ListaDetallesAuxiliar.Rows[i][21]);
+
+
                         detalleAuxiliar.ListaDetalleIngresos = TraerListaIngresos(detalleAuxiliar);
                         detalleAuxiliar.ListaDetalleEgresos = TraerListaDescuentos(detalleAuxiliar);
                         detalleAuxiliar.ListaDetalleAportacionesTrabajador = TraerListaAportacionesTrabajador(detalleAuxiliar);
@@ -370,6 +379,7 @@ namespace CapaDeNegocios.PlanillaNueva
                 
                 if (codigoAFP != 0)
                 {
+                    //Se hace esta consulta para buscar el cussp y comision
                     RegimenPensionario = RegimenPensionario.traerAFPTrabajador(Trabajador.IdTrabajador, mes);
                     //no se encontro periodo regimen
                     if (RegimenPensionario == null)
