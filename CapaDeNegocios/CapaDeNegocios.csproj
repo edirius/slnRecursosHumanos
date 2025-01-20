@@ -97,6 +97,8 @@
     <Compile Include="Asistencia\cTrabajadorReloj.cs" />
     <Compile Include="Asistencia\cTurno.cs" />
     <Compile Include="Asistencia\cTurnoDia.cs" />
+    <Compile Include="Asistencia\ImportarPapeleta\cArchivoExcelPapeleta.cs" />
+    <Compile Include="Asistencia\ImportarPapeleta\cImportarExcelPapeleta.cs" />
     <Compile Include="cDatosGenerales.cs" />
     <Compile Include="cDepartamento.cs" />
     <Compile Include="cDistrito.cs" />

@@ -56,6 +56,7 @@
             treeNode12});
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAsignarHorario = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -100,6 +101,7 @@
             this.fechaInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdtreloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNombreHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -124,7 +126,7 @@
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1095, 28);
+            this.toolStrip1.Size = new System.Drawing.Size(1176, 28);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -238,8 +240,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.txtDNI);
             this.splitContainer1.Panel2.Controls.Add(this.dtgListaTrabajadores);
-            this.splitContainer1.Size = new System.Drawing.Size(1095, 551);
-            this.splitContainer1.SplitterDistance = 214;
+            this.splitContainer1.Size = new System.Drawing.Size(1176, 551);
+            this.splitContainer1.SplitterDistance = 229;
             this.splitContainer1.TabIndex = 4;
             // 
             // treeFiltro
@@ -305,7 +307,7 @@
             treeNode13.ToolTipText = "Seleccione abajo para filtrar la lista de trabajadores.";
             this.treeFiltro.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode13});
-            this.treeFiltro.Size = new System.Drawing.Size(214, 551);
+            this.treeFiltro.Size = new System.Drawing.Size(229, 551);
             this.treeFiltro.TabIndex = 0;
             this.treeFiltro.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeFiltro_NodeMouseClick);
             // 
@@ -512,13 +514,14 @@
             this.fechafin,
             this.fechaInicio,
             this.descripcion,
-            this.colIdtreloj});
+            this.colIdtreloj,
+            this.colNombreHorario});
             this.dtgListaTrabajadores.Location = new System.Drawing.Point(7, 212);
             this.dtgListaTrabajadores.MultiSelect = false;
             this.dtgListaTrabajadores.Name = "dtgListaTrabajadores";
             this.dtgListaTrabajadores.RowHeadersVisible = false;
             this.dtgListaTrabajadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgListaTrabajadores.Size = new System.Drawing.Size(859, 271);
+            this.dtgListaTrabajadores.Size = new System.Drawing.Size(924, 271);
             this.dtgListaTrabajadores.TabIndex = 13;
             this.dtgListaTrabajadores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgListaTrabajadores_CellClick);
             this.dtgListaTrabajadores.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dtgListaTrabajadores_CellFormatting);
@@ -600,12 +603,22 @@
             this.colIdtreloj.DefaultCellStyle = dataGridViewCellStyle2;
             this.colIdtreloj.HeaderText = "Codigo Reloj";
             this.colIdtreloj.Name = "colIdtreloj";
+            this.colIdtreloj.Width = 90;
+            // 
+            // colNombreHorario
+            // 
+            this.colNombreHorario.DataPropertyName = "nombrehorario";
+            dataGridViewCellStyle3.NullValue = "Sin Horario";
+            this.colNombreHorario.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colNombreHorario.HeaderText = "Nombre Horario";
+            this.colNombreHorario.Name = "colNombreHorario";
+            this.colNombreHorario.Width = 120;
             // 
             // frmTrabajadorExcepcion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 579);
+            this.ClientSize = new System.Drawing.Size(1176, 579);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -672,5 +685,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdtreloj;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNombreHorario;
     }
 }

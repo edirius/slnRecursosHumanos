@@ -55,7 +55,12 @@ namespace CapaUsuario.Asistencia
                 {
                     foreach (cTrabajador item in ListaTrabajadores)
                     {
-                        CapaDeNegocios.Asistencia.cHorarioTrabajador oHorarioTrabajador = new CapaDeNegocios.Asistencia.cHorarioTrabajador();
+                        CapaDeNegocios.Asistencia.cHorarioTrabajador oHorarioTrabajador = ocatalogo.TraerHorarioTrabajadorSiTiene(item);
+                        if (oHorarioTrabajador == null)
+                        {
+                            oHorarioTrabajador = new CapaDeNegocios.Asistencia.cHorarioTrabajador();
+                            oHorarioTrabajador.Codigo = 0;
+                        }
                         oHorarioTrabajador.Trabajador = item;
                         oHorarioTrabajador.FechaInicioHorario = dtpFechaInicio.Value;
                         oHorarioTrabajador.FechaFinHorario = dtpFechaFin.Value;

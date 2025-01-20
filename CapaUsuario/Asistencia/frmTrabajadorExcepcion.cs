@@ -42,7 +42,7 @@ namespace CapaUsuario.Asistencia
 
         private void Iniciar()
         {
-            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj3(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj4(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
 
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
 
@@ -151,7 +151,7 @@ namespace CapaUsuario.Asistencia
 
         private void CargarTrabajadores()
         {
-            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj3(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj4(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
         }
 
@@ -180,9 +180,16 @@ namespace CapaUsuario.Asistencia
                     {
                         foreach (CapaDeNegocios.Asistencia.cHorarioTrabajador item in fTrabajadorHorario.ListaHorarioTrabajador)
                         {
-                            oCatalogo.CrearHorarioTrabajador(item);
+                            if (item.Codigo== 0)
+                            {
+                                oCatalogo.CrearHorarioTrabajador(item);
+                            }
+                            else
+                            {
+                                oCatalogo.ModificarHorarioTrabajador(item);
+                            }
                         }
-                        
+                        MessageBox.Show("Se agregó/modificó el horario.", "Asignar Horarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -457,6 +464,11 @@ namespace CapaUsuario.Asistencia
             {
                 e.CellStyle.ForeColor = Color.Blue;
             }
+            if (row.Cells["colNombreHorario"].Value.ToString() != "" && e.ColumnIndex == 12)
+            {
+                e.CellStyle.ForeColor = Color.DarkGreen;
+            }
+
             //if (row.Cells["colIdtreloj"].Value.ToString() == "" && e.ColumnIndex == 11)
             //{
             //    row.Cells["colIdtreloj"].Value = "NO ASIGNADO";

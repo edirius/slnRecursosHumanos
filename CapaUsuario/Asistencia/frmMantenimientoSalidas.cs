@@ -72,5 +72,43 @@ namespace CapaUsuario.Asistencia
         {
             DialogResult = DialogResult.Cancel;
         }
+
+        private void btnImportarExcel_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fichero = new OpenFileDialog();
+            fichero.Filter = "Excel (*.xlsx)|*.xlsx| Excel (*.xls)|*.xls";
+            fichero.FileName = "PAPELETA.xlsX";
+
+            CapaDeNegocios.Asistencia.ImportarPapeleta.cArchivoExcelPapeleta miArchivoExcel = new CapaDeNegocios.Asistencia.ImportarPapeleta.cArchivoExcelPapeleta();
+            CapaDeNegocios.Asistencia.ImportarPapeleta.cImportarExcelPapeleta oImportadorExcelPapeleta = new CapaDeNegocios.Asistencia.ImportarPapeleta.cImportarExcelPapeleta();
+
+            if (fichero.ShowDialog() == DialogResult.OK)
+            {
+
+                miArchivoExcel.NombreHoja = "Hoja1";
+                miArchivoExcel.ColumnaDNI = "I";
+                miArchivoExcel.ColumnaNombres = "D";
+                miArchivoExcel.FilaAtencionMedica = 10;
+                miArchivoExcel.FilaCapacitacionOficializada = 14;
+                miArchivoExcel.FilaComisionServicio = 12;
+                miArchivoExcel.FilaDescansoMedico = 9;
+                miArchivoExcel.FilaFechaFin = 12;
+                miArchivoExcel.FilaFechaInicio = 11;
+                miArchivoExcel.FilaFinJustificacion = 21;
+                miArchivoExcel.FilaHoraFin = 12;
+                miArchivoExcel.FilaHoraInicio = 11;
+                miArchivoExcel.FilaInicioJustificacion = 20;
+                miArchivoExcel.FilaPermisoSinContraprestacion = 11;
+                miArchivoExcel.FilaVacaciones = 13;
+
+                CapaDeNegocios.Asistencia.cExcepcionesAsistencia oPapeletaSalidaExcel = oImportadorExcelPapeleta.ImportarExcel(fichero.FileName, miArchivoExcel);
+
+                cboTipoSalidas.Text = oPapeletaSalidaExcel.Tipo;
+                txtComentario.Text = oPapeletaSalidaExcel.Comentario;
+                dtpFechaInicio.Value = oPapeletaSalidaExcel.InicioExcepcion;
+                dtpFechaFin.Value = oPapeletaSalidaExcel.FinExcepcion;
+                chkAprobado.Checked = oPapeletaSalidaExcel.Aprobado;
+            }
+        }
     }
 }

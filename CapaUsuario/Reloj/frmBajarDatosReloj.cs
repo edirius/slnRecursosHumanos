@@ -139,8 +139,9 @@ namespace CapaUsuario.Reloj
                         if (oCatalogoReloj.TraerPicadoRelojXTrabajadorFecha(miPicado.TrabajadorReloj.CodigoReloj, miPicado.Picado) == null)
                         {
                             oCatalogoReloj.CrearPicadoReloj(miPicado);
+                            datosGuardados += 1;
                         }
-                        datosGuardados += 1;
+                        
                     }
                     MessageBox.Show("Datos guardados: " + datosGuardados.ToString(), "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

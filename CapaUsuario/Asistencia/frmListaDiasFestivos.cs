@@ -59,6 +59,7 @@ namespace CapaUsuario.Asistencia
             {
                 frmMantenimientoDiaFestivo fMantenimientoDiaFestivo = new frmMantenimientoDiaFestivo();
                 fMantenimientoDiaFestivo.oDiaFestivo = new CapaDeNegocios.Asistencia.cDiaFestivo();
+                fMantenimientoDiaFestivo.oDiaFestivo.DiaFestivo = DateTime.Now;
                 if (fMantenimientoDiaFestivo.ShowDialog() == DialogResult.OK)
                 {
                     oCatalogo.AgregarDiaFestivo(fMantenimientoDiaFestivo.oDiaFestivo);
@@ -107,7 +108,7 @@ namespace CapaUsuario.Asistencia
 
         private void cboAño_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dtgListaDiasFestivos.DataSource = oDiaFestivo.ListaDiasFestivos(Convert.ToInt16(cboAño.Text.ToString()));
+            dtgListaDiasFestivos.DataSource = oCatalogo.ListaDiaFestivo(Convert.ToInt16(cboAño.Text.ToString()));
         }
 
         private void btnEliminarDiaFestivo_Click(object sender, EventArgs e)

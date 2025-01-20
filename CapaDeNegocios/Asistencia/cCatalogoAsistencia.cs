@@ -190,6 +190,44 @@ namespace CapaDeNegocios.Asistencia
             }
         }
 
+        public cHorarioTrabajador TraerHorarioTrabajadorSiTiene(cTrabajador oTrabajador)
+        {
+            try
+            {
+                cHorarioTrabajador oHorario = new cHorarioTrabajador();
+
+                DataTable data = Conexion.GDatos.TraerDataTable("spTraerHorarioTrabajador", oTrabajador.IdTrabajador);
+                if (data.Rows.Count == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    foreach (DataRow item in data.Rows)
+                    {
+                        oHorario.Codigo = Convert.ToInt16(item["idthorariotrabajador"].ToString());
+                        oHorario.Horario = new cHorario();
+                        oHorario.Horario.CodigoHorario = Convert.ToInt16(item["idthorario"].ToString());
+                        oHorario.Horario.NombreHorario = item["nombrehorario"].ToString();
+                        oHorario.Horario.TurnoLunes = TraerTurnoDia(Convert.ToInt16(item["turnolunes"].ToString()));
+                        oHorario.Horario.TurnoMartes = TraerTurnoDia(Convert.ToInt16(item["turnomartes"].ToString()));
+                        oHorario.Horario.TurnoMiercoles = TraerTurnoDia(Convert.ToInt16(item["turnomiercoles"].ToString()));
+                        oHorario.Horario.TurnoJueves = TraerTurnoDia(Convert.ToInt16(item["turnojueves"].ToString()));
+                        oHorario.Horario.TurnoViernes = TraerTurnoDia(Convert.ToInt16(item["turnoviernes"].ToString()));
+                        oHorario.Horario.TurnoSabado = TraerTurnoDia(Convert.ToInt16(item["turnosabado"].ToString()));
+                        oHorario.Horario.TurnoDomingo = TraerTurnoDia(Convert.ToInt16(item["turnodomingo"].ToString()));
+                        oHorario.Horario.InicioMes = Convert.ToInt16(item["iniciomes"].ToString());
+                    }
+                }
+                
+
+                return oHorario;
+            }
+            catch (Exception ex)
+            {
+                throw new cReglaNegociosException("Error al traer el horario del trabajador: " + ex.Message);
+            }
+        }
         #endregion
 
         #region horarios

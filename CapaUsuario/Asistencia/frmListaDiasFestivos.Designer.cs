@@ -104,7 +104,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 18);
+            this.label1.Location = new System.Drawing.Point(10, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 79;
@@ -112,8 +112,9 @@
             // 
             // cboAño
             // 
+            this.cboAño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAño.FormattingEnabled = true;
-            this.cboAño.Location = new System.Drawing.Point(61, 10);
+            this.cboAño.Location = new System.Drawing.Point(48, 12);
             this.cboAño.Name = "cboAño";
             this.cboAño.Size = new System.Drawing.Size(91, 21);
             this.cboAño.TabIndex = 80;

@@ -88,31 +88,28 @@ namespace CapaDeNegocios.Asistencia
             }
             catch (Exception ex)
             {
-                throw new cReglaNegociosException("Error al eliminar el dia festivo.");
+                throw new cReglaNegociosException("Error al eliminar el dia festivo:" + ex.Message);
             }
         }
 
-        public List<cDiaFestivo> ListaDiasFestivos(int anio)
-        {
-            try
-            {
-                List<cDiaFestivo> nuevaLista = new List<cDiaFestivo>();
+        //public List<cDiaFestivo> ListaDiasFestivos(int anio)
+        //{
+        //    try
+        //    {
+        //        List<cDiaFestivo> nuevaLista = new List<cDiaFestivo>();
 
-                //ejemplo
-                cDiaFestivo nuevo = new cDiaFestivo();
-                nuevo.Nombre = "Cumpleaños";
-                nuevo.DiaFestivo = new DateTime(2021, 5, 18);
+        //        //ejemplo
+        //        cDiaFestivo nuevo = new cDiaFestivo();
+        //        nuevo.Nombre = "Cumpleaños";
+        //        nuevo.DiaFestivo = new DateTime(2021, 5, 18);
 
-                nuevaLista.Add(nuevo);
-                return nuevaLista;
-            }
-            catch (Exception ex)
-            {
-                throw new cReglaNegociosException("Error al traer la lista de dias festivos: " + ex.Message);
-            }
-            
-
-            
-        }
+        //        nuevaLista.Add(nuevo);
+        //        return nuevaLista;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new cReglaNegociosException("Error al traer la lista de dias festivos: " + ex.Message);
+        //    }
+        //}
     }
 }

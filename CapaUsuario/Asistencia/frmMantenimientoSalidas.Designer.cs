@@ -40,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtComentario = new System.Windows.Forms.TextBox();
             this.chkAprobado = new System.Windows.Forms.CheckBox();
+            this.btnImportarExcel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -168,11 +169,28 @@
             this.chkAprobado.Text = "Aprobado";
             this.chkAprobado.UseVisualStyleBackColor = true;
             // 
+            // btnImportarExcel
+            // 
+            this.btnImportarExcel.BackColor = System.Drawing.Color.Azure;
+            this.btnImportarExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImportarExcel.ForeColor = System.Drawing.Color.DarkBlue;
+            this.btnImportarExcel.Image = global::CapaUsuario.Properties.Resources.excel_001;
+            this.btnImportarExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImportarExcel.Location = new System.Drawing.Point(16, 348);
+            this.btnImportarExcel.Name = "btnImportarExcel";
+            this.btnImportarExcel.Size = new System.Drawing.Size(116, 56);
+            this.btnImportarExcel.TabIndex = 89;
+            this.btnImportarExcel.Text = "Importar Excel";
+            this.btnImportarExcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImportarExcel.UseVisualStyleBackColor = false;
+            this.btnImportarExcel.Click += new System.EventHandler(this.btnImportarExcel_Click);
+            // 
             // frmMantenimientoSalidas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(374, 425);
+            this.Controls.Add(this.btnImportarExcel);
             this.Controls.Add(this.chkAprobado);
             this.Controls.Add(this.txtComentario);
             this.Controls.Add(this.label4);
@@ -208,5 +226,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtComentario;
         private System.Windows.Forms.CheckBox chkAprobado;
+        private System.Windows.Forms.Button btnImportarExcel;
     }
 }
