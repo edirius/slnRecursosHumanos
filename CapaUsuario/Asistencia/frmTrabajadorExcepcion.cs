@@ -188,6 +188,7 @@ namespace CapaUsuario.Asistencia
                             {
                                 oCatalogo.ModificarHorarioTrabajador(item);
                             }
+                            CargarTrabajadores();
                         }
                         MessageBox.Show("Se agregó/modificó el horario.", "Asignar Horarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -473,6 +474,70 @@ namespace CapaUsuario.Asistencia
             //{
             //    row.Cells["colIdtreloj"].Value = "NO ASIGNADO";
             //}
+        }
+
+        private void chkMarcarTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkMarcarTodos.Checked == true)
+            {
+                foreach (DataGridViewRow item in dtgListaTrabajadores.Rows)
+                {
+                    item.Cells["☑"].Value = true;
+                    chkMarcarTodos.Text = "Desmarcar Todos";
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow item in dtgListaTrabajadores.Rows)
+                {
+                    item.Cells["☑"].Value = false;
+                    chkMarcarTodos.Text = "Marcar Todos";
+                }
+            }
+        }
+
+        private void btnEliminarHorario_Click(object sender, EventArgs e)
+        {
+            List<cTrabajador> listaTrabajadores = new List<cTrabajador>();
+
+            try
+            {
+                foreach (DataGridViewRow item in dtgListaTrabajadores.Rows)
+                {
+                    if (Convert.ToBoolean(item.Cells["☑"].Value) == true)
+                    {
+                        cTrabajador otrabajador = new cTrabajador();
+                        otrabajador = miListaTrabajadores.traerTrabajador(Convert.ToInt16(item.Cells["id_trabajador"].Value.ToString()));
+                        listaTrabajadores.Add(otrabajador);
+                    }
+                }
+
+
+                if (listaTrabajadores.Count > 0)
+                {
+                    if (MessageBox.Show("¿Desea eliminar los horarios seleccionados?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        foreach (cTrabajador item in listaTrabajadores)
+                        {
+                            CapaDeNegocios.Asistencia.cHorarioTrabajador oHorario = oCatalogo.TraerHorarioTrabajadorSiTiene(item);
+                            if (oHorario.Codigo != 0)
+                            {
+                                oCatalogo.EliminarHorarioTrabajador(oHorario);
+                            }
+                        }
+                        MessageBox.Show("Se eliminó los horarios.", "Asignar Horarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarTrabajadores();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un trabajador.", "Seleccionar Horario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ingresar horario del trabajador: " + ex.Message, "Asignar Horario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

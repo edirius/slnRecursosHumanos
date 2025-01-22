@@ -41,6 +41,26 @@ namespace CapaDeNegocios.Asistencia.ImportarPapeleta
                 {
                     miNuevoExcel.Tipo = "DESCANSO MEDICO";
                 }
+                else if (miPapeleta.GetCellValueAsString("A" + miExcel.FilaAtencionMedica).Trim().ToUpper() == "X")
+                {
+                    miNuevoExcel.Tipo = "ATENCION MEDICA";
+                }
+                else if (miPapeleta.GetCellValueAsString("A" + miExcel.FilaCapacitacionOficializada).Trim().ToUpper() == "X")
+                {
+                    miNuevoExcel.Tipo = "CAPACITACION OFICIALIZADA"; 
+                }
+                else if (miPapeleta.GetCellValueAsString("A" + miExcel.FilaComisionServicio).Trim().ToUpper() == "X")
+                {
+                    miNuevoExcel.Tipo = "COMISION SERVICIO";
+                }
+                else if (miPapeleta.GetCellValueAsString("A" + miExcel.FilaPermisoSinContraprestacion).Trim().ToUpper() == "X")
+                {
+                    miNuevoExcel.Tipo = "PERMISO SIN CONTRAPRESTACION";
+                }
+                else if (miPapeleta.GetCellValueAsString("A" + miExcel.FilaVacaciones).Trim().ToUpper() == "X")
+                {
+                    miNuevoExcel.Tipo = "VACACIONES";
+                }
                 return miNuevoExcel;
 
             }

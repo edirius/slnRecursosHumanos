@@ -33,13 +33,17 @@ namespace CapaUsuario.Asistencia
 
         private void Iniciar()
         {
+            dtpFechaInicio.Value = DateTime.Now;
+            dtpFechaFin.Value = new DateTime(DateTime.Now.Year, 12, 31);
             if (ListaTrabajadores.Count > 1)
             {
                 lblNombredelTrabajador.Text = "Varios Trabajadores";
+                
             }
             else
             {
                 lblNombredelTrabajador.Text = ListaTrabajadores[0].Nombres + " " + ListaTrabajadores[0].ApellidoPaterno + " " + ListaTrabajadores[0].ApellidoMaterno;
+                
             }
 
             cboListaHorarios.DataSource = ocatalogo.ListaHorarios();

@@ -102,6 +102,8 @@
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdtreloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombreHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkMarcarTodos = new System.Windows.Forms.CheckBox();
+            this.btnEliminarHorario = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -114,6 +116,7 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAsignarHorario,
+            this.btnEliminarHorario,
             this.toolStripSeparator1,
             this.btnNuevaSalidaTrabajador,
             this.toolStripSeparator2,
@@ -221,6 +224,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.chkMarcarTodos);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarXMeta);
             this.splitContainer1.Panel2.Controls.Add(this.cboMeta);
@@ -241,7 +245,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.txtDNI);
             this.splitContainer1.Panel2.Controls.Add(this.dtgListaTrabajadores);
             this.splitContainer1.Size = new System.Drawing.Size(1176, 551);
-            this.splitContainer1.SplitterDistance = 229;
+            this.splitContainer1.SplitterDistance = 228;
             this.splitContainer1.TabIndex = 4;
             // 
             // treeFiltro
@@ -307,7 +311,7 @@
             treeNode13.ToolTipText = "Seleccione abajo para filtrar la lista de trabajadores.";
             this.treeFiltro.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode13});
-            this.treeFiltro.Size = new System.Drawing.Size(229, 551);
+            this.treeFiltro.Size = new System.Drawing.Size(228, 551);
             this.treeFiltro.TabIndex = 0;
             this.treeFiltro.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeFiltro_NodeMouseClick);
             // 
@@ -326,7 +330,7 @@
             this.btnBuscarXMeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarXMeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarXMeta.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnBuscarXMeta.Location = new System.Drawing.Point(557, 167);
+            this.btnBuscarXMeta.Location = new System.Drawing.Point(676, 133);
             this.btnBuscarXMeta.Name = "btnBuscarXMeta";
             this.btnBuscarXMeta.Size = new System.Drawing.Size(164, 23);
             this.btnBuscarXMeta.TabIndex = 38;
@@ -336,7 +340,7 @@
             // cboMeta
             // 
             this.cboMeta.FormattingEnabled = true;
-            this.cboMeta.Location = new System.Drawing.Point(113, 169);
+            this.cboMeta.Location = new System.Drawing.Point(248, 135);
             this.cboMeta.Name = "cboMeta";
             this.cboMeta.Size = new System.Drawing.Size(422, 21);
             this.cboMeta.TabIndex = 37;
@@ -352,7 +356,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 177);
+            this.label6.Location = new System.Drawing.Point(205, 143);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 35;
@@ -442,7 +446,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 106);
+            this.label4.Location = new System.Drawing.Point(19, 106);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(95, 13);
             this.label4.TabIndex = 22;
@@ -451,7 +455,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 77);
+            this.label3.Location = new System.Drawing.Point(19, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 21;
@@ -460,7 +464,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 48);
+            this.label2.Location = new System.Drawing.Point(19, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 20;
@@ -483,7 +487,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 19);
+            this.label1.Location = new System.Drawing.Point(19, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 18;
@@ -614,6 +618,26 @@
             this.colNombreHorario.Name = "colNombreHorario";
             this.colNombreHorario.Width = 120;
             // 
+            // chkMarcarTodos
+            // 
+            this.chkMarcarTodos.AutoSize = true;
+            this.chkMarcarTodos.Location = new System.Drawing.Point(22, 180);
+            this.chkMarcarTodos.Name = "chkMarcarTodos";
+            this.chkMarcarTodos.Size = new System.Drawing.Size(92, 17);
+            this.chkMarcarTodos.TabIndex = 40;
+            this.chkMarcarTodos.Text = "Marcar Todos";
+            this.chkMarcarTodos.UseVisualStyleBackColor = true;
+            this.chkMarcarTodos.CheckedChanged += new System.EventHandler(this.chkMarcarTodos_CheckedChanged);
+            // 
+            // btnEliminarHorario
+            // 
+            this.btnEliminarHorario.Image = global::CapaUsuario.Properties.Resources.user_cardx;
+            this.btnEliminarHorario.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEliminarHorario.Name = "btnEliminarHorario";
+            this.btnEliminarHorario.Size = new System.Drawing.Size(113, 25);
+            this.btnEliminarHorario.Text = "Eliminar Horario";
+            this.btnEliminarHorario.Click += new System.EventHandler(this.btnEliminarHorario_Click);
+            // 
             // frmTrabajadorExcepcion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -686,5 +710,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdtreloj;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNombreHorario;
+        private System.Windows.Forms.CheckBox chkMarcarTodos;
+        private System.Windows.Forms.ToolStripButton btnEliminarHorario;
     }
 }

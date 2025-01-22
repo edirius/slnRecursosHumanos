@@ -46,7 +46,7 @@
             this.lblNombredelTrabajador.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblNombredelTrabajador.Location = new System.Drawing.Point(0, 0);
             this.lblNombredelTrabajador.Name = "lblNombredelTrabajador";
-            this.lblNombredelTrabajador.Size = new System.Drawing.Size(371, 23);
+            this.lblNombredelTrabajador.Size = new System.Drawing.Size(350, 23);
             this.lblNombredelTrabajador.TabIndex = 1;
             this.lblNombredelTrabajador.Text = "Lista Cargos";
             this.lblNombredelTrabajador.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -54,7 +54,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 66);
+            this.label1.Location = new System.Drawing.Point(12, 65);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 2;
@@ -62,6 +62,7 @@
             // 
             // cboListaHorarios
             // 
+            this.cboListaHorarios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboListaHorarios.FormattingEnabled = true;
             this.cboListaHorarios.Location = new System.Drawing.Point(93, 57);
             this.cboListaHorarios.Name = "cboListaHorarios";
@@ -70,14 +71,14 @@
             // 
             // dtpFechaInicio
             // 
-            this.dtpFechaInicio.Location = new System.Drawing.Point(93, 103);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(93, 102);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaInicio.TabIndex = 4;
             // 
             // dtpFechaFin
             // 
-            this.dtpFechaFin.Location = new System.Drawing.Point(93, 153);
+            this.dtpFechaFin.Location = new System.Drawing.Point(93, 146);
             this.dtpFechaFin.Name = "dtpFechaFin";
             this.dtpFechaFin.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaFin.TabIndex = 5;
@@ -85,7 +86,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 109);
+            this.label2.Location = new System.Drawing.Point(12, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 13);
             this.label2.TabIndex = 6;
@@ -94,7 +95,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 160);
+            this.label3.Location = new System.Drawing.Point(12, 153);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 7;
@@ -106,13 +107,14 @@
             this.btnSalir.BackColor = System.Drawing.Color.MintCream;
             this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSalir.Image = global::CapaUsuario.Properties.Resources.exit_32x32;
             this.btnSalir.ImageKey = "NetByte Design Studio - 0957.png";
-            this.btnSalir.Location = new System.Drawing.Point(262, 219);
+            this.btnSalir.Location = new System.Drawing.Point(256, 203);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(79, 65);
             this.btnSalir.TabIndex = 76;
             this.btnSalir.Text = "&Salir";
-            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
@@ -122,13 +124,14 @@
             this.btnAsignarHorario.BackColor = System.Drawing.Color.MintCream;
             this.btnAsignarHorario.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnAsignarHorario.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAsignarHorario.Image = global::CapaUsuario.Properties.Resources.user_calendar_0;
             this.btnAsignarHorario.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnAsignarHorario.Location = new System.Drawing.Point(181, 219);
+            this.btnAsignarHorario.Location = new System.Drawing.Point(153, 203);
             this.btnAsignarHorario.Name = "btnAsignarHorario";
-            this.btnAsignarHorario.Size = new System.Drawing.Size(75, 65);
+            this.btnAsignarHorario.Size = new System.Drawing.Size(97, 65);
             this.btnAsignarHorario.TabIndex = 75;
             this.btnAsignarHorario.Text = "&Asignar Horario";
-            this.btnAsignarHorario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAsignarHorario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAsignarHorario.UseVisualStyleBackColor = false;
             this.btnAsignarHorario.Click += new System.EventHandler(this.btnAsignarHorario_Click);
             // 
@@ -136,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 310);
+            this.ClientSize = new System.Drawing.Size(350, 280);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnAsignarHorario);
             this.Controls.Add(this.label3);
