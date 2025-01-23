@@ -236,7 +236,15 @@ namespace CapaDeNegocios.Asistencia
             {
                 foreach (cAsistenciaDia item in  ListaAsistenciaDia)
                 {
-                    item.Actualizardatos();
+                    //Si no tiene horario
+                    if (HorarioTrabajador.CodigoHorario == 0)
+                    {
+                        item.Actualizardatos(false);
+                    }
+                    else
+                    {
+                        item.Actualizardatos(true);
+                    }
                     if (item.Falta == cAsistenciaDia.TipoFalta.FaltaPicadoEntrada || item.Falta == cAsistenciaDia.TipoFalta.FaltaPicadoFinal || item.Falta == cAsistenciaDia.TipoFalta.FaltaTotal)
                     {
                         TotalFaltasMes++;

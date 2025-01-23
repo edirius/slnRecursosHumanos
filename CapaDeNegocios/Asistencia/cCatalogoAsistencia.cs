@@ -14,7 +14,7 @@ namespace CapaDeNegocios.Asistencia
         {
             cAsistenciaMes oAsistenciaMes = new cAsistenciaMes();
             oAsistenciaMes.Trabajador = miTrabajador;
-            if (HorarioTrabajador.InicioMes == 1 )
+            if (HorarioTrabajador == null || HorarioTrabajador.InicioMes == 1 )
             {
                 oAsistenciaMes.InicioMes = new DateTime(año, mes, 1);
                 oAsistenciaMes.FinMes = new DateTime(año, mes, 1).AddMonths(1).AddDays(-1);
@@ -157,8 +157,8 @@ namespace CapaDeNegocios.Asistencia
                 DataTable data = Conexion.GDatos.TraerDataTable("spTraerHorarioTrabajador", oTrabajador.IdTrabajador);
                 if (data.Rows.Count == 0)
                 {
-                    oHorario.CodigoHorario = 1;
-                    oHorario.NombreHorario = "HORARIO NORMAL";
+                    oHorario.CodigoHorario = 0;
+                    oHorario.NombreHorario = "SIN HORARIO";
                     oHorario.TurnoLunes = TraerTurnoDia(1);
                     oHorario.TurnoMartes = TraerTurnoDia(1);
                     oHorario.TurnoMiercoles = TraerTurnoDia(1);

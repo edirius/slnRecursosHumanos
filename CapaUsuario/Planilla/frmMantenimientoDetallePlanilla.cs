@@ -2574,7 +2574,7 @@ namespace CapaUsuario.Planilla
                     CapaDeNegocios.Reportes.cReporteAsistencia oReporte = new CapaDeNegocios.Reportes.cReporteAsistencia();
 
                     CapaDeNegocios.Reportes.cReportePDF miReporte = new CapaDeNegocios.Reportes.cReportePDF();
-
+                    dlgGuardarReportePDF.FileName = "RepAsist_Nro_" + oPlanilla.Numero.Trim() + "_" + oPlanilla.Mes + "_" + oPlanilla.Año;
                     if (dlgGuardarReportePDF.ShowDialog() == DialogResult.OK)
                     {
                         List<CapaDeNegocios.Reportes.cReporteMultipleAsistencia> ListaMultiplesAsistencias = new List<CapaDeNegocios.Reportes.cReporteMultipleAsistencia>();
@@ -2590,10 +2590,10 @@ namespace CapaUsuario.Planilla
                             miTrabajadorReloj = miCatalogoAsistencia.TraerTrabajadorReloj(oMultiple.Trabajador);
                             oHorario = miCatalogoAsistencia.TraerHorarioTrabajador(oMultiple.Trabajador);
 
-                            if (oHorario == null)
-                            {
-                                MessageBox.Show("No existe asignado horario para el trabajador: " + oMultiple.Trabajador.ApellidoPaterno + " " + oMultiple.Trabajador.ApellidoMaterno + ", " + oMultiple.Trabajador.Nombres);
-                            }
+                            //if (oHorario == null)
+                            //{
+                            //    MessageBox.Show("No existe asignado horario para el trabajador: " + oMultiple.Trabajador.ApellidoPaterno + " " + oMultiple.Trabajador.ApellidoMaterno + ", " + oMultiple.Trabajador.Nombres);
+                            //}
                             oMultiple.AsistenciaMes = miCatalogoAsistencia.LLenarAsistencia(oMultiple.Trabajador, MesActual.Month, MesActual.Year, oHorario);
                             Inicio = oMultiple.AsistenciaMes.InicioMes;
                             Fin = oMultiple.AsistenciaMes.FinMes;
