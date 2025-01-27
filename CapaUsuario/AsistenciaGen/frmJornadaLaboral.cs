@@ -223,12 +223,12 @@ namespace CapaUsuario.AsistenciaGen
 
         private void btnSincronizarReloj_Click(object sender, EventArgs e)
         {
-
-            miCatalogo.ActualizarDetalleSuspensionLaboral(vJordanaLaboral.AsistenciaMes, vJordanaLaboral.JornadaLaboral);
-            
-            txtTotalMinutos.Text = vJordanaLaboral.AsistenciaMes.TotalMinutosTarde.ToString();
-            Iniciar();
-
+            if (MessageBox.Show("¿Desea sincronizar con el reloj?.","Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question)== DialogResult.Yes)
+            {
+                miCatalogo.ActualizarDetalleSuspensionLaboral(vJordanaLaboral.AsistenciaMes, vJordanaLaboral.JornadaLaboral);
+                txtTotalMinutos.Text = vJordanaLaboral.AsistenciaMes.TotalMinutosTarde.ToString();
+                Iniciar();
+            }
         }
 
         private void miMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
