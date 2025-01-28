@@ -397,25 +397,25 @@ namespace CapaUsuario.Asistencia
 
         private void btnBuscarDNI_Click(object sender, EventArgs e)
         {
-            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj3(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj4(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
         }
 
         private void btnBuscarNombre_Click(object sender, EventArgs e)
         {
-            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj3(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj4(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
         }
 
         private void btnBuscarAPaterno_Click(object sender, EventArgs e)
         {
-            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj3(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj4(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
         }
 
         private void btnBuscarAMaterno_Click(object sender, EventArgs e)
         {
-            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj3(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
+            tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj4(filtroSituacionLaboral, txtBuscarNombre.Text, txtBuscarApellidoPaterno.Text, txtBuscarApellidoMaterno.Text, txtDNI.Text, filtroRegimeLaboral, "Todos");
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
         }
 
