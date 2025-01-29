@@ -119,7 +119,7 @@ namespace CapaUsuario.ExportarSunat
 
                     if (dtgDatosPlanilla.Rows[i].Cells[8].Value.ToString() == "SNP")
                     {
-                        if (dtgDatosExcel.Rows[i].Cells[13].Value.ToString() == "")
+                        if (dtgDatosExcel.Rows[i].Cells[14].Value.ToString() == "")
                         {
                             nuevo.ErrorAFP = false;
                         }
