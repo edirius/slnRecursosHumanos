@@ -185,7 +185,7 @@ namespace CapaDeNegocios.Asistencia
 
                     foreach (cDiaFestivo item in ListaDiaFestivosMes)
                     {
-                        if (NuevaAsistencia.Dia.Date == item.DiaFestivo)
+                        if (NuevaAsistencia.Dia.Date == item.DiaFestivo.Date)
                         {
                             NuevaAsistencia.DiaFestivo = item;
                         }

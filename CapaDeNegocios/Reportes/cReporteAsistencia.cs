@@ -1328,7 +1328,7 @@ namespace CapaDeNegocios.Reportes
                             }
                             break;
                         case cAsistenciaDia.TipoDia.DiaFestivo:
-                            labelDetalle.Contenido = "LF";
+                            labelDetalle.Contenido = "DF";
                             labelDetalle.ColorLetra = System.Drawing.Color.LightSteelBlue;
                             break;
                         case cAsistenciaDia.TipoDia.DiaLibre:
@@ -1484,7 +1484,7 @@ namespace CapaDeNegocios.Reportes
             FilaDiaFestivo.ListaCeldas.Add(CeldaTituloDiaFestivo);
 
             cCeldaPDF CeldaDiaFestivo = new cCeldaPDF();
-            CeldaDiaFestivo.Contenido = "LF";
+            CeldaDiaFestivo.Contenido = "DF";
             FilaDiaFestivo.ListaCeldas.Add(CeldaDiaFestivo);
 
             TablaLeyenda.ListaFilas.Add(FilaDiaFestivo);

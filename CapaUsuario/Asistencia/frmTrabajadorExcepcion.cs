@@ -609,6 +609,17 @@ namespace CapaUsuario.Asistencia
                             
                         }
                         oReporte.ImprimirReporteAsistenciMultipleAsistencia(ListaMultiplesAsistencias, dlgGuardarReportePDF.FileName, Inicio, Fin);
+                        if (!oUtilidades.ArchivoEstaAbierto(dlgGuardarReportePDF.FileName))
+                        {
+                            System.Diagnostics.Process proc = new System.Diagnostics.Process();
+                            proc.EnableRaisingEvents = false;
+                            proc.StartInfo.FileName = dlgGuardarReportePDF.FileName;
+                            proc.Start();
+                        }
+                        else
+                        {
+                            MessageBox.Show("El archivo ya esta abierto", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                 }
             }
