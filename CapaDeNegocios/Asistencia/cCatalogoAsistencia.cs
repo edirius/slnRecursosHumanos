@@ -45,6 +45,33 @@ namespace CapaDeNegocios.Asistencia
             return oAsistenciaMes;
         }
 
+        public cAsistenciaMes LLenarAsistenciaXFechas(cTrabajador miTrabajador, DateTime InicioFecha, DateTime FinFecha, cHorario HorarioTrabajador)
+        {
+            cAsistenciaMes oAsistenciaMes = new cAsistenciaMes();
+            oAsistenciaMes.HorarioTrabajador = HorarioTrabajador;
+            oAsistenciaMes.Trabajador = miTrabajador;
+
+            oAsistenciaMes.InicioMes = InicioFecha;
+            oAsistenciaMes.FinMes = FinFecha;
+
+            
+            //DataTable ListaTrabajadores = new DataTable();
+
+
+            //ejemplo
+            //cAsistenciaDia oAsistenciaDia = new cAsistenciaDia();
+            //oAsistenciaDia.Dia = new DateTime(2021, 5, 18);
+
+            //cPicado oPicado = new cPicado();
+            //oPicado.Picado = new DateTime(2021, 5, 18, 8, 1, 0);
+            //oPicado.Trabajador = miTrabajador;
+
+            //oAsistenciaDia.ListaPicados.Add(oPicado);
+
+            //oAsistenciaMes.ListaAsistenciaDia.Add(oAsistenciaDia);
+
+            return oAsistenciaMes;
+        }
         #region DiaFestivo
         public void AgregarDiaFestivo(cDiaFestivo oFestivo)
         {

@@ -44,6 +44,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dtgListaSalidas = new System.Windows.Forms.DataGridView();
+            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInicioExcepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFinExcepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAprobado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.chkTodoElMes = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -53,13 +60,7 @@
             this.dlgGuardarReportePDF = new System.Windows.Forms.SaveFileDialog();
             this.chkSalidasTodoElMes = new System.Windows.Forms.CheckBox();
             this.btnImprimirMes = new System.Windows.Forms.Button();
-            this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colComentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInicioExcepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFinExcepcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTrabajador = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAprobado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnSalir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDetalleAsistencia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaSalidas)).BeginInit();
             this.SuspendLayout();
@@ -212,6 +213,58 @@
             this.dtgListaSalidas.Size = new System.Drawing.Size(571, 162);
             this.dtgListaSalidas.TabIndex = 89;
             // 
+            // colCodigo
+            // 
+            this.colCodigo.DataPropertyName = "CodigoExcepcion";
+            this.colCodigo.HeaderText = "Codigo";
+            this.colCodigo.Name = "colCodigo";
+            this.colCodigo.ReadOnly = true;
+            this.colCodigo.Width = 50;
+            // 
+            // colTipo
+            // 
+            this.colTipo.DataPropertyName = "Tipo";
+            this.colTipo.HeaderText = "Tipo Salida";
+            this.colTipo.Name = "colTipo";
+            this.colTipo.ReadOnly = true;
+            // 
+            // colComentario
+            // 
+            this.colComentario.DataPropertyName = "Comentario";
+            this.colComentario.HeaderText = "Comentario";
+            this.colComentario.Name = "colComentario";
+            this.colComentario.ReadOnly = true;
+            // 
+            // colInicioExcepcion
+            // 
+            this.colInicioExcepcion.DataPropertyName = "InicioExcepcion";
+            this.colInicioExcepcion.HeaderText = "Inicio Salida";
+            this.colInicioExcepcion.Name = "colInicioExcepcion";
+            this.colInicioExcepcion.ReadOnly = true;
+            // 
+            // colFinExcepcion
+            // 
+            this.colFinExcepcion.DataPropertyName = "FinExcepcion";
+            this.colFinExcepcion.HeaderText = "Fin Salida";
+            this.colFinExcepcion.Name = "colFinExcepcion";
+            this.colFinExcepcion.ReadOnly = true;
+            // 
+            // colTrabajador
+            // 
+            this.colTrabajador.DataPropertyName = "Trabajador";
+            this.colTrabajador.HeaderText = "Trabajador";
+            this.colTrabajador.Name = "colTrabajador";
+            this.colTrabajador.ReadOnly = true;
+            this.colTrabajador.Visible = false;
+            // 
+            // colAprobado
+            // 
+            this.colAprobado.DataPropertyName = "Aprobado";
+            this.colAprobado.HeaderText = "Aprob.";
+            this.colAprobado.Name = "colAprobado";
+            this.colAprobado.ReadOnly = true;
+            this.colAprobado.Width = 50;
+            // 
             // chkTodoElMes
             // 
             this.chkTodoElMes.AutoSize = true;
@@ -270,11 +323,11 @@
             this.btnImprimir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimir.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimir.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimir.Location = new System.Drawing.Point(904, 297);
+            this.btnImprimir.Location = new System.Drawing.Point(811, 308);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(92, 65);
+            this.btnImprimir.Size = new System.Drawing.Size(92, 54);
             this.btnImprimir.TabIndex = 95;
-            this.btnImprimir.Text = "&Imprimir Asistencia ";
+            this.btnImprimir.Text = "&Imprimir Asistencia Detallada";
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImprimir.UseVisualStyleBackColor = false;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
@@ -300,72 +353,37 @@
             this.btnImprimirMes.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnImprimirMes.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.btnImprimirMes.ImageKey = "NetByte Design Studio - 0849.png";
-            this.btnImprimirMes.Location = new System.Drawing.Point(1012, 297);
+            this.btnImprimirMes.Location = new System.Drawing.Point(909, 308);
             this.btnImprimirMes.Name = "btnImprimirMes";
-            this.btnImprimirMes.Size = new System.Drawing.Size(92, 65);
+            this.btnImprimirMes.Size = new System.Drawing.Size(92, 54);
             this.btnImprimirMes.TabIndex = 97;
             this.btnImprimirMes.Text = "&Imprimir Asistencia Mes";
             this.btnImprimirMes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImprimirMes.UseVisualStyleBackColor = false;
             this.btnImprimirMes.Click += new System.EventHandler(this.btnImprimirMes_Click);
             // 
-            // colCodigo
+            // btnSalir
             // 
-            this.colCodigo.DataPropertyName = "CodigoExcepcion";
-            this.colCodigo.HeaderText = "Codigo";
-            this.colCodigo.Name = "colCodigo";
-            this.colCodigo.ReadOnly = true;
-            this.colCodigo.Width = 50;
-            // 
-            // colTipo
-            // 
-            this.colTipo.DataPropertyName = "Tipo";
-            this.colTipo.HeaderText = "Tipo Salida";
-            this.colTipo.Name = "colTipo";
-            this.colTipo.ReadOnly = true;
-            // 
-            // colComentario
-            // 
-            this.colComentario.DataPropertyName = "Comentario";
-            this.colComentario.HeaderText = "Comentario";
-            this.colComentario.Name = "colComentario";
-            this.colComentario.ReadOnly = true;
-            // 
-            // colInicioExcepcion
-            // 
-            this.colInicioExcepcion.DataPropertyName = "InicioExcepcion";
-            this.colInicioExcepcion.HeaderText = "Inicio Salida";
-            this.colInicioExcepcion.Name = "colInicioExcepcion";
-            this.colInicioExcepcion.ReadOnly = true;
-            // 
-            // colFinExcepcion
-            // 
-            this.colFinExcepcion.DataPropertyName = "FinExcepcion";
-            this.colFinExcepcion.HeaderText = "Fin Salida";
-            this.colFinExcepcion.Name = "colFinExcepcion";
-            this.colFinExcepcion.ReadOnly = true;
-            // 
-            // colTrabajador
-            // 
-            this.colTrabajador.DataPropertyName = "Trabajador";
-            this.colTrabajador.HeaderText = "Trabajador";
-            this.colTrabajador.Name = "colTrabajador";
-            this.colTrabajador.ReadOnly = true;
-            this.colTrabajador.Visible = false;
-            // 
-            // colAprobado
-            // 
-            this.colAprobado.DataPropertyName = "Aprobado";
-            this.colAprobado.HeaderText = "Aprob.";
-            this.colAprobado.Name = "colAprobado";
-            this.colAprobado.ReadOnly = true;
-            this.colAprobado.Width = 50;
+            this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalir.BackColor = System.Drawing.Color.MintCream;
+            this.btnSalir.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSalir.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnSalir.Image = global::CapaUsuario.Properties.Resources.exit_32x32;
+            this.btnSalir.Location = new System.Drawing.Point(1011, 309);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(93, 53);
+            this.btnSalir.TabIndex = 98;
+            this.btnSalir.Text = "&Salir";
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmAsistenciaMes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1119, 402);
+            this.ClientSize = new System.Drawing.Size(1119, 394);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnImprimirMes);
             this.Controls.Add(this.chkSalidasTodoElMes);
             this.Controls.Add(this.btnImprimir);
@@ -430,5 +448,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colFinExcepcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTrabajador;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colAprobado;
+        private System.Windows.Forms.Button btnSalir;
     }
 }

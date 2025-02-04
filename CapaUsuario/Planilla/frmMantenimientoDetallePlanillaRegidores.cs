@@ -288,6 +288,7 @@ namespace CapaUsuario.Planilla
                 }
                 else
                 {
+                    MessageBox.Show("Datos guardados.", "Gestión del Sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     CargarDatos();
                 }
             }

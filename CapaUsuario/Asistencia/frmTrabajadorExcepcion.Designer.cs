@@ -29,34 +29,34 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTrabajadorExcepcion));
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Todos");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Activos", 2, 2);
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Inactivos", 2, 2);
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Sin Periodo Laboral", 2, 2);
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Situacion Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
-            treeNode14,
-            treeNode15,
-            treeNode16,
-            treeNode17});
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Todos", 1, 1);
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Regimen CAS", 2, 2);
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("DL. 276", 2, 2);
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("DL. 728", 2, 2);
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("DL. 30057");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Racionamiento");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Regimen Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
-            treeNode19,
-            treeNode20,
-            treeNode21,
-            treeNode22,
-            treeNode23,
-            treeNode24});
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", 2, 2, new System.Windows.Forms.TreeNode[] {
-            treeNode18,
-            treeNode25});
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Todos");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Activos", 2, 2);
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Inactivos", 2, 2);
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Sin Periodo Laboral", 2, 2);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Situacion Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Todos", 1, 1);
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Regimen CAS", 2, 2);
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("DL. 276", 2, 2);
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("DL. 728", 2, 2);
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("DL. 30057");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Racionamiento");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Regimen Laboral", 2, 2, new System.Windows.Forms.TreeNode[] {
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9,
+            treeNode10,
+            treeNode11});
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("FILTRO DE TRABAJADORES", 2, 2, new System.Windows.Forms.TreeNode[] {
+            treeNode5,
+            treeNode12});
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnAsignarHorario = new System.Windows.Forms.ToolStripButton();
             this.btnEliminarHorario = new System.Windows.Forms.ToolStripButton();
@@ -69,6 +69,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSalidas = new System.Windows.Forms.ToolStripButton();
             this.btnImprimir = new System.Windows.Forms.ToolStripButton();
+            this.btnImprimir2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -105,7 +106,12 @@
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdtreloj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNombreHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnImprimir2 = new System.Windows.Forms.ToolStripButton();
+            this.btnImprimirAsistenciaXFechas = new System.Windows.Forms.Button();
+            this.dtpInicioFecha = new System.Windows.Forms.DateTimePicker();
+            this.dtpFinFecha = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.chkAsistenciaFechas = new System.Windows.Forms.CheckBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -221,6 +227,15 @@
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
+            // btnImprimir2
+            // 
+            this.btnImprimir2.Image = global::CapaUsuario.Properties.Resources._17;
+            this.btnImprimir2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImprimir2.Name = "btnImprimir2";
+            this.btnImprimir2.Size = new System.Drawing.Size(129, 25);
+            this.btnImprimir2.Text = "Imprimir Asistencia";
+            this.btnImprimir2.Click += new System.EventHandler(this.btnImprimir2_Click);
+            // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
@@ -246,6 +261,12 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.chkAsistenciaFechas);
+            this.splitContainer1.Panel2.Controls.Add(this.label8);
+            this.splitContainer1.Panel2.Controls.Add(this.label5);
+            this.splitContainer1.Panel2.Controls.Add(this.dtpFinFecha);
+            this.splitContainer1.Panel2.Controls.Add(this.dtpInicioFecha);
+            this.splitContainer1.Panel2.Controls.Add(this.btnImprimirAsistenciaXFechas);
             this.splitContainer1.Panel2.Controls.Add(this.chkMarcarTodos);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.btnBuscarXMeta);
@@ -275,64 +296,64 @@
             this.treeFiltro.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeFiltro.Location = new System.Drawing.Point(0, 0);
             this.treeFiltro.Name = "treeFiltro";
-            treeNode14.BackColor = System.Drawing.Color.Teal;
-            treeNode14.Name = "Node3";
-            treeNode14.SelectedImageIndex = 0;
-            treeNode14.Text = "Todos";
-            treeNode15.ImageIndex = 2;
-            treeNode15.Name = "Node4";
-            treeNode15.SelectedImageIndex = 2;
-            treeNode15.Text = "Activos";
-            treeNode16.ImageIndex = 2;
-            treeNode16.Name = "Node5";
-            treeNode16.SelectedImageIndex = 2;
-            treeNode16.Text = "Inactivos";
-            treeNode17.ImageIndex = 2;
-            treeNode17.Name = "Node6";
-            treeNode17.SelectedImageIndex = 2;
-            treeNode17.Text = "Sin Periodo Laboral";
-            treeNode18.Checked = true;
-            treeNode18.ImageIndex = 2;
-            treeNode18.Name = "Node1";
-            treeNode18.SelectedImageIndex = 2;
-            treeNode18.Text = "Situacion Laboral";
-            treeNode19.BackColor = System.Drawing.Color.Teal;
-            treeNode19.ImageIndex = 1;
-            treeNode19.Name = "Node0";
-            treeNode19.SelectedImageIndex = 1;
-            treeNode19.Text = "Todos";
-            treeNode20.ImageIndex = 2;
-            treeNode20.Name = "Node9";
-            treeNode20.SelectedImageIndex = 2;
-            treeNode20.Text = "Regimen CAS";
-            treeNode21.ImageIndex = 2;
-            treeNode21.Name = "Node10";
-            treeNode21.SelectedImageIndex = 2;
-            treeNode21.Text = "DL. 276";
-            treeNode22.ImageIndex = 2;
-            treeNode22.Name = "Node11";
-            treeNode22.SelectedImageIndex = 2;
-            treeNode22.Text = "DL. 728";
-            treeNode23.ImageIndex = 2;
-            treeNode23.Name = "Node0";
-            treeNode23.Text = "DL. 30057";
-            treeNode24.ImageIndex = 2;
-            treeNode24.Name = "Node1";
-            treeNode24.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            treeNode24.Text = "Racionamiento";
-            treeNode25.Checked = true;
-            treeNode25.ImageIndex = 2;
-            treeNode25.Name = "Node8";
-            treeNode25.SelectedImageIndex = 2;
-            treeNode25.Text = "Regimen Laboral";
-            treeNode26.Checked = true;
-            treeNode26.ImageIndex = 2;
-            treeNode26.Name = "Node0";
-            treeNode26.SelectedImageIndex = 2;
-            treeNode26.Text = "FILTRO DE TRABAJADORES";
-            treeNode26.ToolTipText = "Seleccione abajo para filtrar la lista de trabajadores.";
+            treeNode1.BackColor = System.Drawing.Color.Teal;
+            treeNode1.Name = "Node3";
+            treeNode1.SelectedImageIndex = 0;
+            treeNode1.Text = "Todos";
+            treeNode2.ImageIndex = 2;
+            treeNode2.Name = "Node4";
+            treeNode2.SelectedImageIndex = 2;
+            treeNode2.Text = "Activos";
+            treeNode3.ImageIndex = 2;
+            treeNode3.Name = "Node5";
+            treeNode3.SelectedImageIndex = 2;
+            treeNode3.Text = "Inactivos";
+            treeNode4.ImageIndex = 2;
+            treeNode4.Name = "Node6";
+            treeNode4.SelectedImageIndex = 2;
+            treeNode4.Text = "Sin Periodo Laboral";
+            treeNode5.Checked = true;
+            treeNode5.ImageIndex = 2;
+            treeNode5.Name = "Node1";
+            treeNode5.SelectedImageIndex = 2;
+            treeNode5.Text = "Situacion Laboral";
+            treeNode6.BackColor = System.Drawing.Color.Teal;
+            treeNode6.ImageIndex = 1;
+            treeNode6.Name = "Node0";
+            treeNode6.SelectedImageIndex = 1;
+            treeNode6.Text = "Todos";
+            treeNode7.ImageIndex = 2;
+            treeNode7.Name = "Node9";
+            treeNode7.SelectedImageIndex = 2;
+            treeNode7.Text = "Regimen CAS";
+            treeNode8.ImageIndex = 2;
+            treeNode8.Name = "Node10";
+            treeNode8.SelectedImageIndex = 2;
+            treeNode8.Text = "DL. 276";
+            treeNode9.ImageIndex = 2;
+            treeNode9.Name = "Node11";
+            treeNode9.SelectedImageIndex = 2;
+            treeNode9.Text = "DL. 728";
+            treeNode10.ImageIndex = 2;
+            treeNode10.Name = "Node0";
+            treeNode10.Text = "DL. 30057";
+            treeNode11.ImageIndex = 2;
+            treeNode11.Name = "Node1";
+            treeNode11.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            treeNode11.Text = "Racionamiento";
+            treeNode12.Checked = true;
+            treeNode12.ImageIndex = 2;
+            treeNode12.Name = "Node8";
+            treeNode12.SelectedImageIndex = 2;
+            treeNode12.Text = "Regimen Laboral";
+            treeNode13.Checked = true;
+            treeNode13.ImageIndex = 2;
+            treeNode13.Name = "Node0";
+            treeNode13.SelectedImageIndex = 2;
+            treeNode13.Text = "FILTRO DE TRABAJADORES";
+            treeNode13.ToolTipText = "Seleccione abajo para filtrar la lista de trabajadores.";
             this.treeFiltro.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode26});
+            treeNode13});
             this.treeFiltro.Size = new System.Drawing.Size(228, 551);
             this.treeFiltro.TabIndex = 0;
             this.treeFiltro.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeFiltro_NodeMouseClick);
@@ -537,8 +558,8 @@
             // dtgListaTrabajadores
             // 
             this.dtgListaTrabajadores.AllowUserToAddRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.dtgListaTrabajadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgListaTrabajadores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgListaTrabajadores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_trabajador,
@@ -636,8 +657,8 @@
             // colIdtreloj
             // 
             this.colIdtreloj.DataPropertyName = "idtreloj";
-            dataGridViewCellStyle5.NullValue = "No Asignado";
-            this.colIdtreloj.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.NullValue = "No Asignado";
+            this.colIdtreloj.DefaultCellStyle = dataGridViewCellStyle2;
             this.colIdtreloj.HeaderText = "Codigo Reloj";
             this.colIdtreloj.Name = "colIdtreloj";
             this.colIdtreloj.Width = 90;
@@ -645,20 +666,73 @@
             // colNombreHorario
             // 
             this.colNombreHorario.DataPropertyName = "nombrehorario";
-            dataGridViewCellStyle6.NullValue = "Sin Horario";
-            this.colNombreHorario.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.NullValue = "Sin Horario";
+            this.colNombreHorario.DefaultCellStyle = dataGridViewCellStyle3;
             this.colNombreHorario.HeaderText = "Nombre Horario";
             this.colNombreHorario.Name = "colNombreHorario";
             this.colNombreHorario.Width = 120;
             // 
-            // btnImprimir2
+            // btnImprimirAsistenciaXFechas
             // 
-            this.btnImprimir2.Image = global::CapaUsuario.Properties.Resources._17;
-            this.btnImprimir2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImprimir2.Name = "btnImprimir2";
-            this.btnImprimir2.Size = new System.Drawing.Size(129, 25);
-            this.btnImprimir2.Text = "Imprimir Asistencia";
-            this.btnImprimir2.Click += new System.EventHandler(this.btnImprimir2_Click);
+            this.btnImprimirAsistenciaXFechas.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnImprimirAsistenciaXFechas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimirAsistenciaXFechas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirAsistenciaXFechas.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.btnImprimirAsistenciaXFechas.Location = new System.Drawing.Point(256, 173);
+            this.btnImprimirAsistenciaXFechas.Name = "btnImprimirAsistenciaXFechas";
+            this.btnImprimirAsistenciaXFechas.Size = new System.Drawing.Size(187, 23);
+            this.btnImprimirAsistenciaXFechas.TabIndex = 41;
+            this.btnImprimirAsistenciaXFechas.Text = "Imprimir Asistencia por Fecha";
+            this.btnImprimirAsistenciaXFechas.UseVisualStyleBackColor = false;
+            this.btnImprimirAsistenciaXFechas.Visible = false;
+            this.btnImprimirAsistenciaXFechas.Click += new System.EventHandler(this.btnImprimirAsistenciaXFechas_Click);
+            // 
+            // dtpInicioFecha
+            // 
+            this.dtpInicioFecha.Location = new System.Drawing.Point(481, 176);
+            this.dtpInicioFecha.Name = "dtpInicioFecha";
+            this.dtpInicioFecha.Size = new System.Drawing.Size(200, 20);
+            this.dtpInicioFecha.TabIndex = 42;
+            this.dtpInicioFecha.Visible = false;
+            // 
+            // dtpFinFecha
+            // 
+            this.dtpFinFecha.Location = new System.Drawing.Point(712, 176);
+            this.dtpFinFecha.Name = "dtpFinFecha";
+            this.dtpFinFecha.Size = new System.Drawing.Size(200, 20);
+            this.dtpFinFecha.TabIndex = 43;
+            this.dtpFinFecha.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(449, 183);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 13);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "Del:";
+            this.label5.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(687, 183);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(19, 13);
+            this.label8.TabIndex = 45;
+            this.label8.Text = "Al:";
+            this.label8.Visible = false;
+            // 
+            // chkAsistenciaFechas
+            // 
+            this.chkAsistenciaFechas.AutoSize = true;
+            this.chkAsistenciaFechas.Location = new System.Drawing.Point(133, 179);
+            this.chkAsistenciaFechas.Name = "chkAsistenciaFechas";
+            this.chkAsistenciaFechas.Size = new System.Drawing.Size(116, 17);
+            this.chkAsistenciaFechas.TabIndex = 46;
+            this.chkAsistenciaFechas.Text = "Asist. entre Fechas";
+            this.chkAsistenciaFechas.UseVisualStyleBackColor = true;
+            this.chkAsistenciaFechas.CheckedChanged += new System.EventHandler(this.chkAsistenciaFechas_CheckedChanged);
             // 
             // frmTrabajadorExcepcion
             // 
@@ -736,5 +810,11 @@
         private System.Windows.Forms.ToolStripButton btnEliminarHorario;
         private System.Windows.Forms.ToolStripButton btnImprimir;
         private System.Windows.Forms.ToolStripButton btnImprimir2;
+        private System.Windows.Forms.Button btnImprimirAsistenciaXFechas;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DateTimePicker dtpFinFecha;
+        private System.Windows.Forms.DateTimePicker dtpInicioFecha;
+        private System.Windows.Forms.CheckBox chkAsistenciaFechas;
     }
 }
