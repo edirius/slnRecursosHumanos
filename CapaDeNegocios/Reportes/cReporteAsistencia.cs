@@ -1115,7 +1115,7 @@ namespace CapaDeNegocios.Reportes
                     cCeldaPDF LabelFalta = new cCeldaPDF("Falta");
                     FilaTituloDetalle.ListaCeldas.Add(LabelFalta);
 
-                    cCeldaPDF labelTipoHorario = new cCeldaPDF("Tipo Horario");
+                    cCeldaPDF labelTipoHorario = new cCeldaPDF("Ocurren cia");
                     FilaTituloDetalle.ListaCeldas.Add(labelTipoHorario);
 
                     TablaDetalle.ListaFilas.Add(FilaTituloDetalle);
@@ -1243,6 +1243,11 @@ namespace CapaDeNegocios.Reportes
                                         break;
                                     case cAsistenciaDia.TipoFalta.SinFalta:
                                         DetalleTipoFalta.Contenido = "Normal";
+                                        if (item.Tarde)
+                                        {
+                                            DetalleTipoFalta.Contenido = "Normal" + Environment.NewLine + "Tarde";
+                                            DetalleTipoFalta.ColorLetra = System.Drawing.Color.Red;
+                                        }
                                         break;
                                     default:
                                         break;
@@ -1259,6 +1264,7 @@ namespace CapaDeNegocios.Reportes
                             default:
                                 break;
                         }
+                        
                         FilaDetalle.ListaCeldas.Add(DetalleTipoFalta);
                         TablaDetalleDetalle.ListaFilas.Add(FilaDetalle);
 
