@@ -784,11 +784,11 @@ namespace CapaDeNegocios.Reportes
                                 {
                                     case cAsistenciaDia.TipoFalta.FaltaPicadoEntrada:
                                         DetalleTipoFalta.Contenido = "Falta(E)";
-                                        DetalleTipoFalta.ColorLetra = System.Drawing.Color.OrangeRed;
+                                        DetalleTipoFalta.ColorLetra = System.Drawing.Color.Red;
                                         break;
                                     case cAsistenciaDia.TipoFalta.FaltaPicadoFinal:
                                         DetalleTipoFalta.Contenido = "Falta(S)";
-                                        DetalleTipoFalta.ColorLetra = System.Drawing.Color.OrangeRed;
+                                        DetalleTipoFalta.ColorLetra = System.Drawing.Color.Red;
                                         break;
                                     case cAsistenciaDia.TipoFalta.FaltaJustificada:
                                         DetalleTipoFalta.Contenido = "Justificada";
@@ -796,10 +796,15 @@ namespace CapaDeNegocios.Reportes
                                         break;
                                     case cAsistenciaDia.TipoFalta.FaltaTotal:
                                         DetalleTipoFalta.Contenido = "Falta(ES)";
-                                        DetalleTipoFalta.ColorLetra = System.Drawing.Color.OrangeRed;
+                                        DetalleTipoFalta.ColorLetra = System.Drawing.Color.Red;
                                         break;
                                     case cAsistenciaDia.TipoFalta.SinFalta:
                                         DetalleTipoFalta.Contenido = "Normal";
+                                        if (item.Tarde)
+                                        {
+                                            DetalleTipoFalta.Contenido = "Normal" + Environment.NewLine + "Tarde";
+                                            DetalleTipoFalta.ColorLetra = System.Drawing.Color.OrangeRed;
+                                        }
                                         break;
                                     default:
                                         break;
@@ -1227,11 +1232,11 @@ namespace CapaDeNegocios.Reportes
                                 {
                                     case cAsistenciaDia.TipoFalta.FaltaPicadoEntrada:
                                         DetalleTipoFalta.Contenido = "Falta(E)";
-                                        DetalleTipoFalta.ColorLetra = System.Drawing.Color.OrangeRed;
+                                        DetalleTipoFalta.ColorLetra = System.Drawing.Color.Red;
                                         break;
                                     case cAsistenciaDia.TipoFalta.FaltaPicadoFinal:
                                         DetalleTipoFalta.Contenido = "Falta(S)";
-                                        DetalleTipoFalta.ColorLetra = System.Drawing.Color.OrangeRed;
+                                        DetalleTipoFalta.ColorLetra = System.Drawing.Color.Red;
                                         break;
                                     case cAsistenciaDia.TipoFalta.FaltaJustificada:
                                         DetalleTipoFalta.Contenido = "Justificada";
@@ -1239,14 +1244,14 @@ namespace CapaDeNegocios.Reportes
                                         break;
                                     case cAsistenciaDia.TipoFalta.FaltaTotal:
                                         DetalleTipoFalta.Contenido = "Falta(ES)";
-                                        DetalleTipoFalta.ColorLetra = System.Drawing.Color.OrangeRed;
+                                        DetalleTipoFalta.ColorLetra = System.Drawing.Color.Red;
                                         break;
                                     case cAsistenciaDia.TipoFalta.SinFalta:
                                         DetalleTipoFalta.Contenido = "Normal";
                                         if (item.Tarde)
                                         {
                                             DetalleTipoFalta.Contenido = "Normal" + Environment.NewLine + "Tarde";
-                                            DetalleTipoFalta.ColorLetra = System.Drawing.Color.Red;
+                                            DetalleTipoFalta.ColorLetra = System.Drawing.Color.OrangeRed;
                                         }
                                         break;
                                     default:
