@@ -764,7 +764,7 @@ namespace CapaUsuario.Asistencia
                         }
 
                     }
-                    oReporte.ImprimirReporteAsistenciaGrupal(ListaMultiplesAsistencias, dlgGuardarReportePDF.FileName);
+                    oReporte.ImprimirReporteAsistenciaGrupal2(ListaMultiplesAsistencias, dlgGuardarReportePDF.FileName);
                     if (!oUtilidades.ArchivoEstaAbierto(dlgGuardarReportePDF.FileName))
                     {
                         System.Diagnostics.Process proc = new System.Diagnostics.Process();
