@@ -60,8 +60,8 @@
             this.mnuListaTurnos = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuListaDiasFestivos = new System.Windows.Forms.ToolStripMenuItem();
             this.listaTiposSalidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuAsistenciaTrabajador = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuAsistenciaTrabajador = new System.Windows.Forms.ToolStripMenuItem();
             this.btnConexionReloj = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDescargarDatosReloj = new System.Windows.Forms.ToolStripMenuItem();
             this.listaRelojesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -148,6 +148,8 @@
             this.dgvCargo = new System.Windows.Forms.DataGridView();
             this.dlgAbrirArchivo = new System.Windows.Forms.OpenFileDialog();
             this.dlgSalvarArchivo = new System.Windows.Forms.SaveFileDialog();
+            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+            this.gruposParaAsistenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -347,7 +349,9 @@
             this.btnConexionReloj,
             this.btnDescargarDatosReloj,
             this.listaRelojesToolStripMenuItem,
-            this.bajarDatosDelRelojToolStripMenuItem});
+            this.bajarDatosDelRelojToolStripMenuItem,
+            this.toolStripSeparator15,
+            this.gruposParaAsistenciaToolStripMenuItem});
             this.viewMenu.Name = "viewMenu";
             this.viewMenu.Size = new System.Drawing.Size(86, 20);
             this.viewMenu.Text = "&Trabajadores";
@@ -414,6 +418,11 @@
             this.listaTiposSalidaToolStripMenuItem.Text = "Lista Tipos Salida";
             this.listaTiposSalidaToolStripMenuItem.Click += new System.EventHandler(this.listaTiposSalidaToolStripMenuItem_Click);
             // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(294, 6);
+            // 
             // mnuAsistenciaTrabajador
             // 
             this.mnuAsistenciaTrabajador.Image = global::CapaUsuario.Properties.Resources.clock_1;
@@ -421,11 +430,6 @@
             this.mnuAsistenciaTrabajador.Size = new System.Drawing.Size(297, 22);
             this.mnuAsistenciaTrabajador.Text = "Asistencia Trabajador";
             this.mnuAsistenciaTrabajador.Click += new System.EventHandler(this.mnuAsistenciaTrabajador_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(294, 6);
             // 
             // btnConexionReloj
             // 
@@ -1102,6 +1106,18 @@
             // 
             this.dlgAbrirArchivo.FileName = "backup";
             // 
+            // toolStripSeparator15
+            // 
+            this.toolStripSeparator15.Name = "toolStripSeparator15";
+            this.toolStripSeparator15.Size = new System.Drawing.Size(294, 6);
+            // 
+            // gruposParaAsistenciaToolStripMenuItem
+            // 
+            this.gruposParaAsistenciaToolStripMenuItem.Name = "gruposParaAsistenciaToolStripMenuItem";
+            this.gruposParaAsistenciaToolStripMenuItem.Size = new System.Drawing.Size(297, 22);
+            this.gruposParaAsistenciaToolStripMenuItem.Text = "Grupos para Asistencia";
+            this.gruposParaAsistenciaToolStripMenuItem.Click += new System.EventHandler(this.gruposParaAsistenciaToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1255,6 +1271,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTrabajadoresSinPlanilla;
         private System.Windows.Forms.ToolStripMenuItem reporteTrabajadoreXAñoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bajarDatosDelRelojToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
+        private System.Windows.Forms.ToolStripMenuItem gruposParaAsistenciaToolStripMenuItem;
     }
 }
 

@@ -734,6 +734,13 @@ namespace CapaUsuario
             fBajarDatosReloj.Show();
         }
 
+        private void gruposParaAsistenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Asistencia.GrupoAsistencia.frmListaGrupoAsistencia fListaGrupoAsistencia = new Asistencia.GrupoAsistencia.frmListaGrupoAsistencia();
+            fListaGrupoAsistencia.MdiParent = this;
+            fListaGrupoAsistencia.Show();
+        }
+
         private void mnuResidenteMeta_Click(object sender, EventArgs e)
         {
             ResidenteMeta.frmMantenimientoResidenteMeta fMantenimientoResidenteMeta = new ResidenteMeta.frmMantenimientoResidenteMeta();

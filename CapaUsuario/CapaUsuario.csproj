@@ -263,6 +263,24 @@
     <Compile Include="Asistencia\frmTrabajadorHorario.Designer.cs">
       <DependentUpon>frmTrabajadorHorario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Asistencia\GrupoAsistencia\frmListaDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\GrupoAsistencia\frmListaDetalle.Designer.cs">
+      <DependentUpon>frmListaDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\GrupoAsistencia\frmListaGrupoAsistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\GrupoAsistencia\frmListaGrupoAsistencia.Designer.cs">
+      <DependentUpon>frmListaGrupoAsistencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Asistencia\GrupoAsistencia\frmMantenimientoGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asistencia\GrupoAsistencia\frmMantenimientoGrupo.Designer.cs">
+      <DependentUpon>frmMantenimientoGrupo.cs</DependentUpon>
+    </Compile>
     <Compile Include="CargaInicial\cDetalleCargaInicial.cs" />
     <Compile Include="CargaInicial\frmCargaInicial.cs">
       <SubType>Form</SubType>
@@ -1785,6 +1803,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Asistencia\frmTrabajadorHorario.resx">
       <DependentUpon>frmTrabajadorHorario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\GrupoAsistencia\frmListaDetalle.resx">
+      <DependentUpon>frmListaDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\GrupoAsistencia\frmListaGrupoAsistencia.resx">
+      <DependentUpon>frmListaGrupoAsistencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Asistencia\GrupoAsistencia\frmMantenimientoGrupo.resx">
+      <DependentUpon>frmMantenimientoGrupo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CargaInicial\frmCargaInicial.resx">
       <DependentUpon>frmCargaInicial.cs</DependentUpon>

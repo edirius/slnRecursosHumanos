@@ -154,7 +154,7 @@
             this.btnGuardarAsistencia.BackColor = System.Drawing.Color.MintCream;
             this.btnGuardarAsistencia.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnGuardarAsistencia.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnGuardarAsistencia.Image = global::CapaUsuario.Properties.Resources.schedule__002;
+            this.btnGuardarAsistencia.Image = global::CapaUsuario.Properties.Resources.user_calendar_0;
             this.btnGuardarAsistencia.ImageKey = "NetByte Design Studio - 0849.png";
             this.btnGuardarAsistencia.Location = new System.Drawing.Point(402, 511);
             this.btnGuardarAsistencia.Name = "btnGuardarAsistencia";
@@ -171,7 +171,7 @@
             this.btnDescargarAsistencia.BackColor = System.Drawing.Color.MintCream;
             this.btnDescargarAsistencia.Font = new System.Drawing.Font("Bookman Old Style", 9F, System.Drawing.FontStyle.Bold);
             this.btnDescargarAsistencia.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnDescargarAsistencia.Image = global::CapaUsuario.Properties.Resources.sched_tasks;
+            this.btnDescargarAsistencia.Image = global::CapaUsuario.Properties.Resources.schedule__002;
             this.btnDescargarAsistencia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDescargarAsistencia.ImageKey = "NetByte Design Studio - 0849.png";
             this.btnDescargarAsistencia.Location = new System.Drawing.Point(277, 511);
