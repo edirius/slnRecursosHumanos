@@ -243,7 +243,47 @@ namespace CapaDeNegocios.Asistencia
                     }
                     else
                     {
-                        item.Actualizardatos(true);
+                        if ((HorarioTrabajador.InicioHorario.Month == item.Dia.Month && HorarioTrabajador.InicioHorario.Year == item.Dia.Year)||
+                            (HorarioTrabajador.FinHorario.Month == item.Dia.Month && HorarioTrabajador.FinHorario.Year == item.Dia.Year))
+                        {
+                            //Codigo para buscar el inicio de horario, buscar el mes
+                            if (HorarioTrabajador.InicioHorario.Month == item.Dia.Month && HorarioTrabajador.InicioHorario.Year == item.Dia.Year)
+                            {
+                                if (item.Dia.Day < HorarioTrabajador.InicioHorario.Day)
+                                {
+                                    item.Actualizardatos(false);
+                                }
+                                else
+                                {
+                                    item.Actualizardatos(true);
+                                }
+                            }
+                            else
+                            {
+                                //Codigo para buscar el fin de horario, buscar el mes
+                                if (HorarioTrabajador.FinHorario.Month == item.Dia.Month && HorarioTrabajador.FinHorario.Year == item.Dia.Year)
+                                {
+                                    if (HorarioTrabajador.FinHorario.Day > item.Dia.Day)
+                                    {
+                                        item.Actualizardatos(false);
+                                    }
+                                    else
+                                    {
+                                        item.Actualizardatos(true);
+                                    }
+                                }
+                                else
+                                {
+                                    item.Actualizardatos(true);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            item.Actualizardatos(true);
+                        }
+
+                        
                     }
                     if (item.Falta == cAsistenciaDia.TipoFalta.FaltaPicadoEntrada || item.Falta == cAsistenciaDia.TipoFalta.FaltaPicadoFinal || item.Falta == cAsistenciaDia.TipoFalta.FaltaTotal)
                     {

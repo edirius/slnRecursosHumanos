@@ -208,6 +208,8 @@ namespace CapaDeNegocios.Asistencia
                     oHorario.TurnoSabado = TraerTurnoDia(Convert.ToInt16(item["turnosabado"].ToString()));
                     oHorario.TurnoDomingo = TraerTurnoDia(Convert.ToInt16(item["turnodomingo"].ToString()));
                     oHorario.InicioMes = Convert.ToInt16(item["iniciomes"].ToString());
+                    oHorario.InicioHorario = Convert.ToDateTime(item["fechainiciohorario"]);
+                    oHorario.FinHorario = Convert.ToDateTime(item["fechafinhorario"]);
                 }
 
                 return oHorario;

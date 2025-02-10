@@ -43,6 +43,8 @@
             this.colTurnoViernes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTurnoSabado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTurnoDomingo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInicioHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFinHorario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgListaMantenimeintoHorarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +64,9 @@
             this.colTurnoJueves,
             this.colTurnoViernes,
             this.colTurnoSabado,
-            this.colTurnoDomingo});
+            this.colTurnoDomingo,
+            this.colInicioHorario,
+            this.colFinHorario});
             this.dtgListaMantenimeintoHorarios.Location = new System.Drawing.Point(12, 52);
             this.dtgListaMantenimeintoHorarios.Name = "dtgListaMantenimeintoHorarios";
             this.dtgListaMantenimeintoHorarios.ReadOnly = true;
@@ -190,6 +194,22 @@
             this.colTurnoDomingo.ReadOnly = true;
             this.colTurnoDomingo.Visible = false;
             // 
+            // colInicioHorario
+            // 
+            this.colInicioHorario.DataPropertyName = "iniciohorario";
+            this.colInicioHorario.HeaderText = "Inicio Horario";
+            this.colInicioHorario.Name = "colInicioHorario";
+            this.colInicioHorario.ReadOnly = true;
+            this.colInicioHorario.Visible = false;
+            // 
+            // colFinHorario
+            // 
+            this.colFinHorario.DataPropertyName = "finhorario";
+            this.colFinHorario.HeaderText = "Fin Horario";
+            this.colFinHorario.Name = "colFinHorario";
+            this.colFinHorario.ReadOnly = true;
+            this.colFinHorario.Visible = false;
+            // 
             // frmMantenimientoHorario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,5 +244,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTurnoViernes;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTurnoSabado;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTurnoDomingo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colInicioHorario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFinHorario;
     }
 }

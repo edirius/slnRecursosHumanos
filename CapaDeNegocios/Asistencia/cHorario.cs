@@ -18,6 +18,8 @@ namespace CapaDeNegocios.Asistencia
         cTurnoDia _TurnoSabado;
         cTurnoDia _TurnoDomingo;
         int _InicioMes;
+        DateTime _InicioHorario;
+        DateTime _FinHorario;
 
         public cHorario()
         {
@@ -156,6 +158,32 @@ namespace CapaDeNegocios.Asistencia
             set
             {
                 _InicioMes = value;
+            }
+        }
+
+        public DateTime InicioHorario
+        {
+            get
+            {
+                return _InicioHorario;
+            }
+
+            set
+            {
+                _InicioHorario = value;
+            }
+        }
+
+        public DateTime FinHorario
+        {
+            get
+            {
+                return _FinHorario;
+            }
+
+            set
+            {
+                _FinHorario = value;
             }
         }
 

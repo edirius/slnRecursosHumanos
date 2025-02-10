@@ -271,7 +271,8 @@ namespace CapaDeNegocios.AsistenciaGeneral
                 //luego creamos el nuevo
                 item2 = DevolverJornadaAPartirAsistencia(item, item2.Trabajador);
                 CrearJornadaLaboral(item2);
-                if (item2.SuspensionLaboral != null)
+                //OJO
+                if (item2 != null &&  item2.SuspensionLaboral != null)
                 {
                     DataTable oAsistenciaTrabajador = new DataTable();
                     oAsistenciaTrabajador = miAsistenciaTrabajador.ListarAsistenciaTrabajador(item2.Trabajador.IdTrabajador);

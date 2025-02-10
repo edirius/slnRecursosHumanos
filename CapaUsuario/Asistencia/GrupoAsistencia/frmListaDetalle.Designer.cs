@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblNombre = new System.Windows.Forms.Label();
             this.dtgDetallesGrupo = new System.Windows.Forms.DataGridView();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@
             this.lblNombre.AutoSize = true;
             this.lblNombre.BackColor = System.Drawing.Color.LightSkyBlue;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.lblNombre.ForeColor = System.Drawing.Color.Navy;
             this.lblNombre.Location = new System.Drawing.Point(13, 13);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(113, 16);
@@ -60,8 +60,8 @@
             // 
             this.dtgDetallesGrupo.AllowUserToAddRows = false;
             this.dtgDetallesGrupo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SkyBlue;
-            this.dtgDetallesGrupo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.SkyBlue;
+            this.dtgDetallesGrupo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgDetallesGrupo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgDetallesGrupo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
@@ -74,6 +74,7 @@
             this.dtgDetallesGrupo.Location = new System.Drawing.Point(12, 48);
             this.dtgDetallesGrupo.Name = "dtgDetallesGrupo";
             this.dtgDetallesGrupo.ReadOnly = true;
+            this.dtgDetallesGrupo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgDetallesGrupo.Size = new System.Drawing.Size(553, 150);
             this.dtgDetallesGrupo.TabIndex = 1;
             // 
