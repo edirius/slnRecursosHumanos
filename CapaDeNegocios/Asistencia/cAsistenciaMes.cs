@@ -243,34 +243,20 @@ namespace CapaDeNegocios.Asistencia
                     }
                     else
                     {
-                        if ((HorarioTrabajador.InicioHorario.Month == item.Dia.Month && HorarioTrabajador.InicioHorario.Year == item.Dia.Year)||
-                            (HorarioTrabajador.FinHorario.Month == item.Dia.Month && HorarioTrabajador.FinHorario.Year == item.Dia.Year))
+                        if ((HorarioTrabajador.InicioHorario.Date > item.Dia.Date)||
+                            (HorarioTrabajador.FinHorario.Date < item.Dia.Date))
                         {
                             //Codigo para buscar el inicio de horario, buscar el mes
-                            if (HorarioTrabajador.InicioHorario.Month == item.Dia.Month && HorarioTrabajador.InicioHorario.Year == item.Dia.Year)
+                            if (HorarioTrabajador.InicioHorario.Date > item.Dia.Date)
                             {
-                                if (item.Dia.Day < HorarioTrabajador.InicioHorario.Day)
-                                {
-                                    item.Actualizardatos(false);
-                                }
-                                else
-                                {
-                                    item.Actualizardatos(true);
-                                }
+                                item.Actualizardatos(false);
                             }
                             else
                             {
                                 //Codigo para buscar el fin de horario, buscar el mes
-                                if (HorarioTrabajador.FinHorario.Month == item.Dia.Month && HorarioTrabajador.FinHorario.Year == item.Dia.Year)
+                                if (HorarioTrabajador.FinHorario.Date < item.Dia.Date)
                                 {
-                                    if (HorarioTrabajador.FinHorario.Day > item.Dia.Day)
-                                    {
-                                        item.Actualizardatos(false);
-                                    }
-                                    else
-                                    {
-                                        item.Actualizardatos(true);
-                                    }
+                                    item.Actualizardatos(false);
                                 }
                                 else
                                 {
