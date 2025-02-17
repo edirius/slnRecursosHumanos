@@ -49,11 +49,13 @@ namespace CapaDeNegocios.Asistencia.GrupoAsistencia
                 {
                     cDetalleGrupoAsistencia grupo = new cDetalleGrupoAsistencia();
                     grupo.IdtDetalleGrupoAsistencia = Convert.ToInt32(item["idtdetallegrupoasistecia"]);
-                    grupo.IdtTrabajador = Convert.ToInt32(item["id_trabajador"]);
+                    grupo.Id_Trabajador = Convert.ToInt32(item["id_trabajador"]);
                     grupo.Nombres = item["nombres"].ToString();
                     grupo.ApellidoPaterno = item["apellidoPaterno"].ToString();
                     grupo.ApellidoMaterno = item["apellidoMaterno"].ToString();
                     grupo.DNI = item["DNI"].ToString();
+                    grupo.Idtreloj = Convert.ToInt32(item["idtreloj"]);
+                    grupo.NombreHorario = item["nombrehorario"].ToString();
                     Lista.Add(grupo);
                 }
                 return Lista;
@@ -104,7 +106,7 @@ namespace CapaDeNegocios.Asistencia.GrupoAsistencia
         {
             try
             {
-                Conexion.GDatos.Ejecutar("spCrearDetalleGrupoAsistencia", NuevoDetalle.IdtTrabajador, NuevoDetalle.GrupoAsistencia.IdtGrupoAsistencia);
+                Conexion.GDatos.Ejecutar("spCrearDetalleGrupoAsistencia", NuevoDetalle.Id_Trabajador, NuevoDetalle.GrupoAsistencia.IdtGrupoAsistencia);
             }
             catch (Exception ex)
             {
@@ -116,7 +118,7 @@ namespace CapaDeNegocios.Asistencia.GrupoAsistencia
         {
             try
             {
-                Conexion.GDatos.Ejecutar("spModificarDetalleGrupoAsistencia", DetalleAModificar.IdtDetalleGrupoAsistencia, DetalleAModificar.IdtTrabajador, DetalleAModificar.GrupoAsistencia.IdtGrupoAsistencia);
+                Conexion.GDatos.Ejecutar("spModificarDetalleGrupoAsistencia", DetalleAModificar.IdtDetalleGrupoAsistencia, DetalleAModificar.Id_Trabajador, DetalleAModificar.GrupoAsistencia.IdtGrupoAsistencia);
             }
             catch (Exception ex)
             {

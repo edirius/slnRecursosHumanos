@@ -13,7 +13,9 @@ namespace CapaDeNegocios.Asistencia.GrupoAsistencia
         public string Nombres { get; set; }
         public string ApellidoPaterno { get; set; }
         public string ApellidoMaterno { get; set; }
-        public int IdtTrabajador { get; set; }
+        public int Id_Trabajador { get; set; }
+        public int Idtreloj { get; set; }
+        public string NombreHorario { get; set; }
         public cGrupoAsistencia GrupoAsistencia { get; set; }
 
         public cDetalleGrupoAsistencia()

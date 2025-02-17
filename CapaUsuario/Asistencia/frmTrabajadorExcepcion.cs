@@ -23,8 +23,7 @@ namespace CapaUsuario.Asistencia
 
         CapaDeNegocios.Asistencia.GrupoAsistencia.cCatalogoGrupoAsistencia oCatalogoGrupoAsistencia = new CapaDeNegocios.Asistencia.GrupoAsistencia.cCatalogoGrupoAsistencia();
 
-        int pidttrabajador = 0;
-        string trabajador = "";
+        bool modoGrupo = false;
 
         private string filtroRegimeLaboral = "Todos";
         private string filtroSituacionLaboral = "Todos";
@@ -83,6 +82,16 @@ namespace CapaUsuario.Asistencia
 
             dtpFinFecha.Value = DateTime.Now.Date;
             dtpInicioFecha.Value = DateTime.Now.Date;
+
+            List<CapaDeNegocios.Asistencia.GrupoAsistencia.cGrupoAsistencia> ListaGrupos =  oCatalogoGrupoAsistencia.TraerGrupoAsistencia(true);
+            foreach (CapaDeNegocios.Asistencia.GrupoAsistencia.cGrupoAsistencia item in ListaGrupos)
+            {
+                TreeNode NuevoNodo = new TreeNode();
+                NuevoNodo.Text = item.Descripcion;
+                NuevoNodo.Name = item.IdtGrupoAsistencia.ToString();
+                treeFiltro.Nodes["Node1"].Nodes.Add(NuevoNodo);
+                //treeFiltro.Nodes["Node1"].Nodes.Add(item.Descripcion);
+            }
         }
 
         private void treeFiltro_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -115,6 +124,7 @@ namespace CapaUsuario.Asistencia
                                 filtroSituacionLaboral = "Sin Periodo Laboral";
                                 break;
                         }
+                        CargarTrabajadores();
                         break;
 
                     case "Regimen Laboral":
@@ -149,15 +159,23 @@ namespace CapaUsuario.Asistencia
                                 filtroRegimeLaboral = "30057";
                                 break;
                         }
+                        CargarTrabajadores();
+                        break;
+                    case "GRUPO DE TRABAJADORES":
+                        CapaDeNegocios.Asistencia.GrupoAsistencia.cGrupoAsistencia oGrup = new CapaDeNegocios.Asistencia.GrupoAsistencia.cGrupoAsistencia();
+                        oGrup.IdtGrupoAsistencia = Convert.ToInt32(e.Node.Name);
+                        dtgListaTrabajadores.DataSource = oCatalogoGrupoAsistencia.TraerDetallesGrupoAsistencia(oGrup.IdtGrupoAsistencia);
+                        modoGrupo = true;
                         break;
                 }
-                CargarTrabajadores();
+                
                
             }
         }
 
         private void CargarTrabajadores()
         {
+            modoGrupo = false;
             tablaAuxiliar = miListaTrabajadores.ObtenerListaTrabajadoresConReloj4(filtroSituacionLaboral, "", "", "", "", filtroRegimeLaboral, "Todos");
             dtgListaTrabajadores.DataSource = tablaAuxiliar;
         }
@@ -468,15 +486,18 @@ namespace CapaUsuario.Asistencia
         private void dtgListaTrabajadores_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridViewRow row = dtgListaTrabajadores.Rows[e.RowIndex];
-            if (row.Cells["colIdtreloj"].Value.ToString() != "" && e.ColumnIndex == 11)
+            if (modoGrupo ==false)
+            {
+
+            }
+            if (row.Cells["colIdtreloj"].Value.ToString() != "" && row.Cells[e.ColumnIndex].OwningColumn.Name == "colIdtreloj")
             {
                 e.CellStyle.ForeColor = Color.Blue;
             }
-            if (row.Cells["colNombreHorario"].Value.ToString() != "" && e.ColumnIndex == 12)
+            if (row.Cells["colNombreHorario"].Value.ToString() != "" && row.Cells[e.ColumnIndex].OwningColumn.Name == "colNombreHorario")
             {
                 e.CellStyle.ForeColor = Color.DarkGreen;
             }
-
             //if (row.Cells["colIdtreloj"].Value.ToString() == "" && e.ColumnIndex == 11)
             //{
             //    row.Cells["colIdtreloj"].Value = "NO ASIGNADO";
@@ -855,7 +876,7 @@ namespace CapaUsuario.Asistencia
                             if (Convert.ToBoolean(item.Cells["☑"].Value) == true)
                             {
                                 CapaDeNegocios.Asistencia.GrupoAsistencia.cDetalleGrupoAsistencia oDetalle = new CapaDeNegocios.Asistencia.GrupoAsistencia.cDetalleGrupoAsistencia();
-                                oDetalle.IdtTrabajador = Convert.ToInt16(item.Cells["id_trabajador"].Value.ToString());
+                                oDetalle.Id_Trabajador = Convert.ToInt16(item.Cells["id_trabajador"].Value.ToString());
                                 oDetalle.GrupoAsistencia = oGrupo;
                                 oCatalogoGrupoAsistencia.CrearDetalleGrupoAsistencia(oDetalle);
                             }
@@ -907,7 +928,7 @@ namespace CapaUsuario.Asistencia
                         foreach (CapaDeNegocios.Asistencia.GrupoAsistencia.cDetalleGrupoAsistencia item in ListaDetalleGrupo)
                         {
                                 CapaDeNegocios.Reportes.cReporteMultipleAsistencia oMultiple = new CapaDeNegocios.Reportes.cReporteMultipleAsistencia();
-                                oMultiple.Trabajador = miListaTrabajadores.traerTrabajador(item.IdtTrabajador);
+                                oMultiple.Trabajador = miListaTrabajadores.traerTrabajador(item.Id_Trabajador);
 
                                 miTrabajadorReloj = miCatalogoAsistencia.TraerTrabajadorReloj(oMultiple.Trabajador);
                                 oHorario = miCatalogoAsistencia.TraerHorarioTrabajador(oMultiple.Trabajador);

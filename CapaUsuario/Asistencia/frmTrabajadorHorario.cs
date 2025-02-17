@@ -33,6 +33,8 @@ namespace CapaUsuario.Asistencia
 
         private void Iniciar()
         {
+            
+
             dtpFechaInicio.Value = DateTime.Now;
             dtpFechaFin.Value = new DateTime(DateTime.Now.Year, 12, 31);
             if (ListaTrabajadores.Count > 1)
@@ -43,7 +45,12 @@ namespace CapaUsuario.Asistencia
             else
             {
                 lblNombredelTrabajador.Text = ListaTrabajadores[0].Nombres + " " + ListaTrabajadores[0].ApellidoPaterno + " " + ListaTrabajadores[0].ApellidoMaterno;
-                
+                CapaDeNegocios.Asistencia.cHorarioTrabajador oHorarioTrabajador = ocatalogo.TraerHorarioTrabajadorSiTiene(ListaTrabajadores[0]);
+                if (oHorarioTrabajador != null)
+                {
+                    dtpFechaInicio.Value = oHorarioTrabajador.FechaInicioHorario;
+                    dtpFechaFin.Value = oHorarioTrabajador.FechaFinHorario;
+                }
             }
 
             cboListaHorarios.DataSource = ocatalogo.ListaHorarios();

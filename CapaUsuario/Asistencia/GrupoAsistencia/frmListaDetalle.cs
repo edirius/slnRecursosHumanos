@@ -43,7 +43,7 @@ namespace CapaUsuario.Asistencia.GrupoAsistencia
             if (fTraerTrabajador.ShowDialog() == DialogResult.OK)
             {
                 cDetalleGrupoAsistencia oDetalle = new cDetalleGrupoAsistencia();
-                oDetalle.IdtTrabajador = fTraerTrabajador.TrabajadorSeleccionado.IdTrabajador;
+                oDetalle.Id_Trabajador = fTraerTrabajador.TrabajadorSeleccionado.IdTrabajador;
                 oDetalle.GrupoAsistencia.IdtGrupoAsistencia = oGrupo.IdtGrupoAsistencia;
                 oCatalogo.CrearDetalleGrupoAsistencia(oDetalle);
                 CargarDatos();
